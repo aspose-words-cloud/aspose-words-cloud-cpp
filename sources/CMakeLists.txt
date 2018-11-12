@@ -40,7 +40,7 @@ endif( NOT DEFINED CPPREST_ROOT )
 #SUPPORTING FILES
 set(SUPPORTING_FILES  "ApiClient" "ApiConfiguration" "ApiException" "HttpContent" "IHttpBody" "JsonBody" "ModelBase" "MultipartFormData" "Object")
 #SOURCE FILES
-file(GLOB SOURCE_FILES  "api/*"  "model/*")
+file(GLOB SOURCE_FILES  "api/*"  "model/* "model/requests/*)
 
 add_library(${PROJECT_NAME} ${SUPPORTING_FILES} ${SOURCE_FILES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR} api model ${CPPREST_INCLUDE_DIR})
