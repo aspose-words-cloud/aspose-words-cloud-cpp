@@ -24,12 +24,14 @@
 #include "ApiException.h"
 #include "IHttpBody.h"
 #include "HttpContent.h"
+#include "JsonBody.h"
 
 #include <memory>
 #include <vector>
 
 #include <cpprest/details/basic_types.h>
 #include <cpprest/http_client.h>
+#include <cpprest/json.h>
 
 namespace io {
 namespace swagger {
@@ -65,11 +67,20 @@ public:
         const std::map<utility::string_t, utility::string_t>& formParams,
         const std::map<utility::string_t, std::shared_ptr<HttpContent>>& fileParams,
         const utility::string_t& contentType
-    ) const;
+    );
+
+    void setAccessToken(utility::string_t token);
 
 protected:
 
     std::shared_ptr<ApiConfiguration> m_Configuration;
+
+private:
+    utility::string_t m_AccessToken;
+
+private:
+    pplx::task<void> requestToken();
+    utility::string_t getTokenUrl() const;
 };
 
 template<class T>

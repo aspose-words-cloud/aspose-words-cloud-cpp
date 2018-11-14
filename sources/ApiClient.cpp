@@ -41,6 +41,34 @@ ApiClient::~ApiClient()
 {
 }
 
+pplx::task<void> ApiClient::requestToken()
+{
+    std::map<utility::string_t, utility::string_t> queryParams, formParams, headerParams;
+    std::map<utility::string_t, std::shared_ptr<io::swagger::client::model::HttpContent>> fileParams;
+
+    web::json::value obj;
+    obj[L"grant_type"] = web::json::value::string(L"client_credentials");
+
+    obj[L"client_id"] = web::json::value::string(this->m_Configuration->getAppKey());
+    obj[L"client_secret"] = web::json::value::string(this->m_Configuration->getAppKey());
+    std::shared_ptr<IHttpBody> httpBody = std::shared_ptr<IHttpBody>(new JsonBody(obj));
+    return callApi(getTokenUrl(), L"POST", queryParams,httpBody, headerParams, formParams, fileParams, utility::conversions::to_string_t("application/json")).then([=](web::http::http_response response) {
+        if (response.status_code() == 200){
+            return response.extract_string();
+        }
+    }).then([this](utility::string_t str) {
+        this->setAccessToken(str);
+    });
+}
+
+utility::string_t ApiClient::getTokenUrl() const {
+	return m_Configuration->getBaseUrl() + utility::conversions::to_string_t("/oauth2/token");            
+}
+
+void ApiClient::setAccessToken(utility::string_t token){
+    m_AccessToken = token;
+}
+
 std::shared_ptr<ApiConfiguration> ApiClient::getConfiguration() const
 {
     return m_Configuration;
@@ -92,7 +120,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     const std::map<utility::string_t, utility::string_t>& formParams,
     const std::map<utility::string_t, std::shared_ptr<HttpContent>>& fileParams,
     const utility::string_t& contentType
-) const
+)
 {
     if (postBody != nullptr && formParams.size() != 0)
     {

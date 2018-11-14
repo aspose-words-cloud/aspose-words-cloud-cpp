@@ -37,6 +37,24 @@ ApiConfiguration::~ApiConfiguration()
 {
 }
 
+void ApiConfiguration::setAppKey(const utility::string_t& appKey){
+    m_AppKey = appKey;
+}
+
+utility::string_t ApiConfiguration::getAppKey() const {
+    return m_AppKey;
+}
+
+void ApiConfiguration::setAppSid(const utility::string_t& appSid){
+    m_AppSid = appSid;
+}
+
+utility::string_t ApiConfiguration::getAppSid() const{
+    return m_AppSid;
+}
+
+
+
 web::http::client::http_client_config& ApiConfiguration::getHttpConfig()
 {
     return m_HttpConfig;

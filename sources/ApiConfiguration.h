@@ -50,10 +50,20 @@ public:
     utility::string_t getApiKey( const utility::string_t& prefix) const;
     void setApiKey( const utility::string_t& prefix, const utility::string_t& apiKey );
 
+    utility::string_t getAppKey() const;
+    void setAppKey( const utility::string_t& apiKey );
+
+    utility::string_t getAppSid() const;
+    void setAppSid( const utility::string_t& apiSid );
+
 protected:
     utility::string_t m_BaseUrl;
     std::map<utility::string_t, utility::string_t> m_DefaultHeaders;
     std::map<utility::string_t, utility::string_t> m_ApiKeys;
+
+    utility::string_t m_AppKey;
+    utility::string_t m_AppSid;
+
     web::http::client::http_client_config m_HttpConfig;
     utility::string_t m_UserAgent;
 };
