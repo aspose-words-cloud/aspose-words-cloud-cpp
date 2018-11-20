@@ -76,17 +76,16 @@ public:
         const utility::string_t& contentType
     );
 
-    void setAccessToken(utility::string_t token);
+    pplx::task<void> requestToken();
 
 protected:
-
+    void setAccessToken(utility::string_t token);
     std::shared_ptr<ApiConfiguration> m_Configuration;
 
 private:
     utility::string_t m_AccessToken;
 
 private:
-    pplx::task<void> requestToken();
     utility::string_t getTokenUrl() const;
 };
 
