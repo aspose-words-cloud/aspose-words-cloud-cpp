@@ -43,21 +43,31 @@ ApiClient::~ApiClient()
 
 pplx::task<void> ApiClient::requestToken()
 {
+    if (m_Configuration == nullptr)
+            throw "Configuration must be set before calling an api methods";
+
     std::map<utility::string_t, utility::string_t> queryParams, formParams, headerParams;
     std::map<utility::string_t, std::shared_ptr<io::swagger::client::model::HttpContent>> fileParams;
+    std::shared_ptr<IHttpBody> httpBody;
 
-    web::json::value obj;
-    obj[L"grant_type"] = web::json::value::string(L"client_credentials");
+    formParams.insert(std::make_pair(utility::conversions::to_string_t("grant_type"), 
+		utility::conversions::to_string_t("client_credentials")));
+	formParams.insert(std::make_pair(utility::conversions::to_string_t("client_id"),
+		m_Configuration->getAppSid()));
+	formParams.insert(std::make_pair(utility::conversions::to_string_t("client_secret"),
+		m_Configuration->getAppKey()));
 
-    obj[L"client_id"] = web::json::value::string(this->m_Configuration->getAppKey());
-    obj[L"client_secret"] = web::json::value::string(this->m_Configuration->getAppKey());
-    std::shared_ptr<IHttpBody> httpBody = std::shared_ptr<IHttpBody>(new JsonBody(obj));
-    return callApi(getTokenUrl(), L"POST", queryParams,httpBody, headerParams, formParams, fileParams, utility::conversions::to_string_t("application/json")).then([=](web::http::http_response response) {
-        if (response.status_code() == 200){
-            return response.extract_string();
-        }
-    }).then([this](utility::string_t str) {
-        this->setAccessToken(str);
+    return callApi(getTokenUrl(), L"POST", queryParams,httpBody, headerParams, formParams, fileParams, 
+		utility::conversions::to_string_t("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
+		
+		if (response.status_code() >= 400)
+			throw ApiException(response.status_code()
+				, utility::conversions::to_string_t("error requesting token: ") + response.reason_phrase()
+				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+
+		return response.extract_json();
+    }).then([this](web::json::value val) {
+        this->setAccessToken(val[L"access_token"].as_string());
     });
 }
 
