@@ -32,8 +32,11 @@
 *.app
 
 .vs/*
+<<<<<<< HEAD
 
 build/
 install/
 
 TODO
+=======
+>>>>>>> 570980f5d1b02725ed792277a1c9923c50f8f8ff
