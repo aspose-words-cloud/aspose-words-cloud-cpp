@@ -62,7 +62,14 @@ web::json::value AsposeResponse::toJson() const
 
 void AsposeResponse::fromJson(web::json::value& val)
 {
-    setCode(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("Code")]));
+    if(val.has_field(utility::conversions::to_string_t("Code")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("Code")];
+        if(!fieldValue.is_null())
+        {
+            setCode(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("Status")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("Status")];

@@ -86,7 +86,8 @@ void Document::fromJson(web::json::value& val)
     {
         m_Links.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("Links")))
+        if(val.has_field(utility::conversions::to_string_t("Links")) 
+                            && !val[utility::conversions::to_string_t("Links")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("Links")].as_array() )
         {
@@ -112,8 +113,22 @@ void Document::fromJson(web::json::value& val)
         }
     }
     setSourceFormat(ModelBase::stringFromJson(val[utility::conversions::to_string_t("SourceFormat")]));
-    setIsEncrypted(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsEncrypted")]));
-    setIsSigned(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsSigned")]));
+    if(val.has_field(utility::conversions::to_string_t("IsEncrypted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("IsEncrypted")];
+        if(!fieldValue.is_null())
+        {
+            setIsEncrypted(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("IsSigned")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("IsSigned")];
+        if(!fieldValue.is_null())
+        {
+            setIsSigned(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("DocumentProperties")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("DocumentProperties")];

@@ -69,7 +69,8 @@ void DocumentEntryList::fromJson(web::json::value& val)
     {
         m_DocumentEntries.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("DocumentEntries")))
+        if(val.has_field(utility::conversions::to_string_t("DocumentEntries")) 
+                            && !val[utility::conversions::to_string_t("DocumentEntries")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("DocumentEntries")].as_array() )
         {

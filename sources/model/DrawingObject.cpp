@@ -175,7 +175,8 @@ void DrawingObject::fromJson(web::json::value& val)
     {
         m_RenderLinks.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("RenderLinks")))
+        if(val.has_field(utility::conversions::to_string_t("RenderLinks")) 
+                            && !val[utility::conversions::to_string_t("RenderLinks")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("RenderLinks")].as_array() )
         {

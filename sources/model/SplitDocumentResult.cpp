@@ -89,7 +89,8 @@ void SplitDocumentResult::fromJson(web::json::value& val)
     {
         m_Pages.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("Pages")))
+        if(val.has_field(utility::conversions::to_string_t("Pages")) 
+                            && !val[utility::conversions::to_string_t("Pages")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("Pages")].as_array() )
         {

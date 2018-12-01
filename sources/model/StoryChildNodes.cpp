@@ -69,7 +69,8 @@ void StoryChildNodes::fromJson(web::json::value& val)
     {
         m_ChildNodes.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("ChildNodes")))
+        if(val.has_field(utility::conversions::to_string_t("ChildNodes")) 
+                            && !val[utility::conversions::to_string_t("ChildNodes")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("ChildNodes")].as_array() )
         {

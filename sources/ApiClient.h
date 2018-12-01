@@ -72,7 +72,7 @@ public:
         const std::shared_ptr<IHttpBody> postBody,
         const std::map<utility::string_t, utility::string_t>& headerParams,
         const std::map<utility::string_t, utility::string_t>& formParams,
-        const std::map<utility::string_t, std::shared_ptr<HttpContent>>& fileParams,
+        const std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>>& fileParams,
         const utility::string_t& contentType
     );
 
@@ -84,6 +84,7 @@ protected:
 
 private:
     utility::string_t m_AccessToken;
+    std::vector<std::pair<utility::string_t, utility::string_t>> defaultHeaders;
 
 private:
     utility::string_t getTokenUrl() const;

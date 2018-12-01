@@ -71,7 +71,8 @@ void DrawingObjectCollection::fromJson(web::json::value& val)
     {
         m_List.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("List")))
+        if(val.has_field(utility::conversions::to_string_t("List")) 
+                            && !val[utility::conversions::to_string_t("List")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("List")].as_array() )
         {

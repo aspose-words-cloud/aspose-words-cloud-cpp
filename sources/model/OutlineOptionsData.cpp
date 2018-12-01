@@ -99,7 +99,8 @@ void OutlineOptionsData::fromJson(web::json::value& val)
     {
         m_BookmarksOutlineLevels.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("BookmarksOutlineLevels")))
+        if(val.has_field(utility::conversions::to_string_t("BookmarksOutlineLevels")) 
+                            && !val[utility::conversions::to_string_t("BookmarksOutlineLevels")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("BookmarksOutlineLevels")].as_array() )
         {

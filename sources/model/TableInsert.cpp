@@ -73,8 +73,22 @@ void TableInsert::fromJson(web::json::value& val)
             setPostion( newItem );
         }
     }
-    setColumnsCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("ColumnsCount")]));
-    setRowsCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("RowsCount")]));
+    if(val.has_field(utility::conversions::to_string_t("ColumnsCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ColumnsCount")];
+        if(!fieldValue.is_null())
+        {
+            setColumnsCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("RowsCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("RowsCount")];
+        if(!fieldValue.is_null())
+        {
+            setRowsCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void TableInsert::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

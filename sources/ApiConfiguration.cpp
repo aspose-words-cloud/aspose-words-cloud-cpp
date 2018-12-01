@@ -53,7 +53,15 @@ utility::string_t ApiConfiguration::getAppSid() const{
     return m_AppSid;
 }
 
+utility::string_t ApiConfiguration::getApiVersion() const
+{
+	return m_ApiVersion;
+}
 
+void ApiConfiguration::setApiVersion(const utility::string_t & apiVersion)
+{
+	m_ApiVersion = apiVersion;
+}
 
 web::http::client::http_client_config& ApiConfiguration::getHttpConfig()
 {

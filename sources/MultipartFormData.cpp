@@ -78,10 +78,12 @@ std::shared_ptr<HttpContent> MultipartFormData::getContent(const utility::string
 
 void MultipartFormData::writeTo( std::ostream& target )
 {
-    for ( size_t i = 0; i < m_Contents.size(); i++ )
+    size_t contentSize = m_Contents.size();
+
+    for ( size_t i = 0; i < contentSize; i++ )
     {
         std::shared_ptr<HttpContent> content = m_Contents[i];
-
+        if (contentSize > 1) {
         // boundary
         target << "\r\n" << "--" << utility::conversions::to_utf8string( m_Boundary ) << "\r\n";
 
@@ -103,6 +105,7 @@ void MultipartFormData::writeTo( std::ostream& target )
         }
 
         target << "\r\n";
+        }
 
         // body
         std::shared_ptr<std::istream> data = content->getData();
@@ -115,7 +118,7 @@ void MultipartFormData::writeTo( std::ostream& target )
 
 		std::copy( dataBytes.begin(), dataBytes.end(), std::ostreambuf_iterator<char>( target ) );
     }
-
+    if (contentSize > 1)
     target << "\r\n--" << utility::conversions::to_utf8string( m_Boundary ) << "--\r\n";
 }
 

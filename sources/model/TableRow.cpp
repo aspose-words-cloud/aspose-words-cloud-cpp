@@ -86,7 +86,8 @@ void TableRow::fromJson(web::json::value& val)
     {
         m_TableCellList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("TableCellList")))
+        if(val.has_field(utility::conversions::to_string_t("TableCellList")) 
+                            && !val[utility::conversions::to_string_t("TableCellList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("TableCellList")].as_array() )
         {

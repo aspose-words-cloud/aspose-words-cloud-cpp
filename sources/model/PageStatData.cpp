@@ -65,9 +65,30 @@ web::json::value PageStatData::toJson() const
 
 void PageStatData::fromJson(web::json::value& val)
 {
-    setPageNumber(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("PageNumber")]));
-    setWordCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("WordCount")]));
-    setParagraphCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("ParagraphCount")]));
+    if(val.has_field(utility::conversions::to_string_t("PageNumber")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("PageNumber")];
+        if(!fieldValue.is_null())
+        {
+            setPageNumber(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("WordCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("WordCount")];
+        if(!fieldValue.is_null())
+        {
+            setWordCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("ParagraphCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ParagraphCount")];
+        if(!fieldValue.is_null())
+        {
+            setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("FootnotesStatData")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("FootnotesStatData")];

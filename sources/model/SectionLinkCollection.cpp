@@ -71,7 +71,8 @@ void SectionLinkCollection::fromJson(web::json::value& val)
     {
         m_SectionLinkList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("SectionLinkList")))
+        if(val.has_field(utility::conversions::to_string_t("SectionLinkList")) 
+                            && !val[utility::conversions::to_string_t("SectionLinkList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("SectionLinkList")].as_array() )
         {

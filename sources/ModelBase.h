@@ -40,6 +40,11 @@ namespace swagger {
 namespace client {
 namespace model {
 
+class FormFieldCheckbox;
+class FormFieldDropDown;
+class FormFieldTextInput;
+
+
 class  ModelBase
 {
 public:

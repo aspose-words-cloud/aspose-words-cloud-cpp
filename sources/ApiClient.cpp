@@ -36,6 +36,11 @@ using namespace io::swagger::client::model;
 ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
     : m_Configuration(configuration)
 {
+    defaultHeaders.push_back(std::make_pair(utility::conversions::to_string_t("x-aspose-client-version"),
+		utility::conversions::to_string_t("1.0")));
+
+	defaultHeaders.push_back(std::make_pair(utility::conversions::to_string_t("x-aspose-client"),
+		utility::conversions::to_string_t("C++ SDK")));
 }
 ApiClient::~ApiClient()
 {
@@ -47,8 +52,7 @@ pplx::task<void> ApiClient::requestToken()
             throw "Configuration must be set before calling an api methods";
 
     std::map<utility::string_t, utility::string_t> queryParams, formParams, headerParams;
-    std::map<utility::string_t, std::shared_ptr<io::swagger::client::model::HttpContent>> fileParams;
-    std::shared_ptr<IHttpBody> httpBody;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<io::swagger::client::model::HttpContent>>> fileParams;
 
     formParams.insert(std::make_pair(utility::conversions::to_string_t("grant_type"), 
 		utility::conversions::to_string_t("client_credentials")));
@@ -57,7 +61,7 @@ pplx::task<void> ApiClient::requestToken()
 	formParams.insert(std::make_pair(utility::conversions::to_string_t("client_secret"),
 		m_Configuration->getAppKey()));
 
-    return callApi(getTokenUrl(), L"POST", queryParams,httpBody, headerParams, formParams, fileParams, 
+    return callApi(getTokenUrl(), L"POST", queryParams,nullptr, headerParams, formParams, fileParams, 
 		utility::conversions::to_string_t("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
 		
 		if (response.status_code() >= 400)
@@ -128,7 +132,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     const std::shared_ptr<IHttpBody> postBody,
     const std::map<utility::string_t, utility::string_t>& headerParams,
     const std::map<utility::string_t, utility::string_t>& formParams,
-    const std::map<utility::string_t, std::shared_ptr<HttpContent>>& fileParams,
+    const std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>>& fileParams,
     const utility::string_t& contentType
 )
 {
@@ -170,7 +174,11 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         uploadData.writeTo(data);
         auto bodyString = data.str();
         auto length = bodyString.size();
-        request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, utility::conversions::to_string_t("multipart/form-data; boundary=") + uploadData.getBoundary());
+        if (fileParams.size() + formParams.size() > 1)
+			request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, 
+				utility::conversions::to_string_t("multipart/form-data; boundary = ") + uploadData.getBoundary());
+		else
+        request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, utility::conversions::to_string_t("multipart/form-data;"));
     }
     else
     {
@@ -201,11 +209,14 @@ pplx::task<web::http::http_response> ApiClient::callApi(
                 web::http::uri_builder formData;
                 for (auto& kvp : formParams)
                 {
-                    formData.append_query(kvp.first, kvp.second);
+                   if (contentType == utility::conversions::to_string_t("multipart/form-data"))
+										formData.append_query(kvp.second);
+									else
+									formData.append_query(kvp.first, kvp.second);
                 }
                 if (!formParams.empty())
                 {
-                    request.set_body(formData.query(), utility::conversions::to_string_t("application/x-www-form-urlencoded"));
+                    request.set_body(formData.query(), contentType);
                 }
             }
         }
@@ -222,7 +233,16 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     {
         request.headers().add( web::http::header_names::user_agent, m_Configuration->getUserAgent() );
     }
+	if (!request.headers().has(web::http::header_names::authorization)) {
+		if (this->m_AccessToken.empty() && path != getTokenUrl()) {
+			requestToken().wait();
+		}
 
+		request.headers().add(web::http::header_names::authorization, utility::conversions::to_string_t("Bearer ") + m_AccessToken);
+	}
+    for (auto header : defaultHeaders) {
+		request.headers().add(header.first, header.second);
+	}
     return client.request(request);
 }
 

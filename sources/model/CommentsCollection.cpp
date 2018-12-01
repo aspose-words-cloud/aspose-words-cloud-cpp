@@ -71,7 +71,8 @@ void CommentsCollection::fromJson(web::json::value& val)
     {
         m_CommentList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("CommentList")))
+        if(val.has_field(utility::conversions::to_string_t("CommentList")) 
+                            && !val[utility::conversions::to_string_t("CommentList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("CommentList")].as_array() )
         {

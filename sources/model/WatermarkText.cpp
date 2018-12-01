@@ -70,7 +70,14 @@ void WatermarkText::fromJson(web::json::value& val)
             setText(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setRotationAngle(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("RotationAngle")]));
+    if(val.has_field(utility::conversions::to_string_t("RotationAngle")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("RotationAngle")];
+        if(!fieldValue.is_null())
+        {
+            setRotationAngle(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
 }
 
 void WatermarkText::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

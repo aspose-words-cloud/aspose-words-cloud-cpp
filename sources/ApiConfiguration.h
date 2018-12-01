@@ -62,6 +62,9 @@ public:
     utility::string_t getAppSid() const;
     void setAppSid( const utility::string_t& apiSid );
 
+    utility::string_t getApiVersion() const;
+	void setApiVersion(const utility::string_t& apiVersion);
+
 protected:
     utility::string_t m_BaseUrl;
     std::map<utility::string_t, utility::string_t> m_DefaultHeaders;
@@ -69,6 +72,7 @@ protected:
 
     utility::string_t m_AppKey;
     utility::string_t m_AppSid;
+	utility::string_t m_ApiVersion;
 
     web::http::client::http_client_config m_HttpConfig;
     utility::string_t m_UserAgent;

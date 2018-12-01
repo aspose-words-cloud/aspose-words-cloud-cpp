@@ -86,8 +86,22 @@ void PageNumber::fromJson(web::json::value& val)
             setAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setIsTop(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsTop")]));
-    setSetPageNumberOnFirstPage(ModelBase::boolFromJson(val[utility::conversions::to_string_t("SetPageNumberOnFirstPage")]));
+    if(val.has_field(utility::conversions::to_string_t("IsTop")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("IsTop")];
+        if(!fieldValue.is_null())
+        {
+            setIsTop(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("SetPageNumberOnFirstPage")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("SetPageNumberOnFirstPage")];
+        if(!fieldValue.is_null())
+        {
+            setSetPageNumberOnFirstPage(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void PageNumber::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

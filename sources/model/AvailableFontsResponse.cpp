@@ -95,7 +95,8 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
     {
         m_AdditionalFonts.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("AdditionalFonts")))
+        if(val.has_field(utility::conversions::to_string_t("AdditionalFonts")) 
+                            && !val[utility::conversions::to_string_t("AdditionalFonts")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("AdditionalFonts")].as_array() )
         {
@@ -115,7 +116,8 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
     {
         m_CustomFonts.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("CustomFonts")))
+        if(val.has_field(utility::conversions::to_string_t("CustomFonts")) 
+                            && !val[utility::conversions::to_string_t("CustomFonts")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("CustomFonts")].as_array() )
         {
@@ -135,7 +137,8 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
     {
         m_SystemFonts.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("SystemFonts")))
+        if(val.has_field(utility::conversions::to_string_t("SystemFonts")) 
+                            && !val[utility::conversions::to_string_t("SystemFonts")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("SystemFonts")].as_array() )
         {

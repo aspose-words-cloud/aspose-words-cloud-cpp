@@ -58,8 +58,22 @@ web::json::value FootnotesStatData::toJson() const
 
 void FootnotesStatData::fromJson(web::json::value& val)
 {
-    setWordCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("WordCount")]));
-    setParagraphCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("ParagraphCount")]));
+    if(val.has_field(utility::conversions::to_string_t("WordCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("WordCount")];
+        if(!fieldValue.is_null())
+        {
+            setWordCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("ParagraphCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ParagraphCount")];
+        if(!fieldValue.is_null())
+        {
+            setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void FootnotesStatData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -88,9 +88,30 @@ void ReplaceTextRequest::fromJson(web::json::value& val)
             setNewValue(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setIsMatchCase(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsMatchCase")]));
-    setIsMatchWholeWord(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsMatchWholeWord")]));
-    setIsOldValueRegex(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsOldValueRegex")]));
+    if(val.has_field(utility::conversions::to_string_t("IsMatchCase")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("IsMatchCase")];
+        if(!fieldValue.is_null())
+        {
+            setIsMatchCase(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("IsMatchWholeWord")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("IsMatchWholeWord")];
+        if(!fieldValue.is_null())
+        {
+            setIsMatchWholeWord(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("IsOldValueRegex")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("IsOldValueRegex")];
+        if(!fieldValue.is_null())
+        {
+            setIsOldValueRegex(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void ReplaceTextRequest::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

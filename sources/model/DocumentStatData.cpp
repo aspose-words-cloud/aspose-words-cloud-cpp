@@ -77,9 +77,30 @@ web::json::value DocumentStatData::toJson() const
 
 void DocumentStatData::fromJson(web::json::value& val)
 {
-    setWordCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("WordCount")]));
-    setParagraphCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("ParagraphCount")]));
-    setPageCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("PageCount")]));
+    if(val.has_field(utility::conversions::to_string_t("WordCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("WordCount")];
+        if(!fieldValue.is_null())
+        {
+            setWordCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("ParagraphCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ParagraphCount")];
+        if(!fieldValue.is_null())
+        {
+            setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("PageCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("PageCount")];
+        if(!fieldValue.is_null())
+        {
+            setPageCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("FootnotesStatData")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("FootnotesStatData")];
@@ -93,7 +114,8 @@ void DocumentStatData::fromJson(web::json::value& val)
     {
         m_PageStatData.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("PageStatData")))
+        if(val.has_field(utility::conversions::to_string_t("PageStatData")) 
+                            && !val[utility::conversions::to_string_t("PageStatData")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("PageStatData")].as_array() )
         {

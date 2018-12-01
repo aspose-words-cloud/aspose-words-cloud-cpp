@@ -71,7 +71,8 @@ void FieldNames::fromJson(web::json::value& val)
     {
         m_Names.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("Names")))
+        if(val.has_field(utility::conversions::to_string_t("Names")) 
+                            && !val[utility::conversions::to_string_t("Names")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("Names")].as_array() )
         {

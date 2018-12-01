@@ -36,7 +36,25 @@ namespace io {
 namespace swagger {
 namespace client {
 namespace api {
+utility::string_t replacePathParameter(utility::string_t path, utility::string_t paramName, utility::string_t value) {
+					if (!value.empty()) {
+						boost::replace_all(path, utility::conversions::to_string_t("{") + paramName + utility::conversions::to_string_t("}"),
+							ApiClient::parameterToString(value));
+					}
+					else {
+						boost::replace_all(path, utility::conversions::to_string_t("/{") + paramName + utility::conversions::to_string_t("}"),
+							utility::conversions::to_string_t(value));
+					}
+					return path;
+				}
 
+template<class T> 
+utility::string_t extractOptional(boost::optional<T> parameter) {
+	if (parameter.has_value())
+		return ApiClient::parameterToString(parameter.value());
+	else
+		return utility::conversions::to_string_t("");
+}
 using namespace io::swagger::client::model;
 
 WordsApi::WordsApi( std::shared_ptr<ApiClient> apiClient )
@@ -53,13 +71,19 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRe
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/revisions/acceptAll");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/revisions/acceptAll"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -93,23 +117,23 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRe
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -148,18 +172,6 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRe
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling acceptAllRevisions: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -190,12 +202,15 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shar
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/classify");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/classify"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("text"), ApiClient::parameterToString(request->text));
+    path = replacePathParameter(path, utility::conversions::to_string_t("bestClassesCount"), extractOptional(request->bestClassesCount));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -229,7 +244,7 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shar
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->bestClassesCount)
+    if (request->bestClassesCount && bPath.find(utility::conversions::to_string_t("bestClassesCount")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("BestClassesCount")] = ApiClient::parameterToString(*(request->bestClassesCount));
     }
@@ -278,18 +293,6 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling classify: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -320,13 +323,20 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(s
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{documentName}/classify");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("DocumentName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->documentName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{documentName}/classify"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("documentName"), ApiClient::parameterToString(request->documentName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("bestClassesCount"), extractOptional(request->bestClassesCount));
+    path = replacePathParameter(path, utility::conversions::to_string_t("taxonomy"), extractOptional(request->taxonomy));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -360,27 +370,27 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(s
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->bestClassesCount)
+    if (request->bestClassesCount && bPath.find(utility::conversions::to_string_t("bestClassesCount")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("BestClassesCount")] = ApiClient::parameterToString(*(request->bestClassesCount));
     }
-    if (request->taxonomy)
+    if (request->taxonomy && bPath.find(utility::conversions::to_string_t("taxonomy")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Taxonomy")] = ApiClient::parameterToString(*(request->taxonomy));
     }
@@ -419,18 +429,6 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling classifyDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -467,14 +465,22 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::createOrUpdateDo
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/documentProperties/{propertyName}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("PropertyName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->propertyName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/documentProperties/{propertyName}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("propertyName"), ApiClient::parameterToString(request->propertyName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -508,31 +514,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -586,18 +592,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling createOrUpdateDocumentProperty: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -628,15 +622,23 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::deleteBorder(std::shared_p
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/borders/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("NodePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->nodePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/borders/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), ApiClient::parameterToString(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -670,31 +672,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -733,18 +735,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteBorder: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -775,14 +765,22 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::deleteBorders(std::shared
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/borders");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("NodePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->nodePath));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/borders"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), ApiClient::parameterToString(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -816,31 +814,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -879,18 +877,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteBorders: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -921,14 +907,22 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteComment(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/comments/{commentIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("CommentIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->commentIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/comments/{commentIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("commentIndex"), ApiClient::parameterToString(request->commentIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -962,31 +956,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -1025,18 +1019,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteComment: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1067,13 +1049,21 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDocumentMacros(std::
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/macros");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/macros"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1107,31 +1097,31 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDocumentMacros(std::
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -1170,18 +1160,6 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDocumentMacros(std::
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteDocumentMacros: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1212,14 +1190,22 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDocumentProperty(std
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/documentProperties/{propertyName}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("PropertyName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->propertyName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/documentProperties/{propertyName}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("propertyName"), ApiClient::parameterToString(request->propertyName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1253,31 +1239,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -1316,18 +1302,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteDocumentProperty: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1358,13 +1332,21 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::deleteDocumentWatermark(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/watermark");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/watermark"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1398,31 +1380,31 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::deleteDocumentWatermark(
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -1461,18 +1443,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::deleteDocumentWatermark(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteDocumentWatermark: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1503,14 +1473,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDrawingObject(std::s
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1544,35 +1523,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -1611,18 +1590,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteDrawingObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1653,14 +1620,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteField(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/fields/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/fields/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1694,35 +1670,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -1761,18 +1737,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1803,13 +1767,22 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFields(std::shared_p
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/fields");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/fields"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1843,35 +1816,35 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFields(std::shared_p
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -1910,18 +1883,6 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFields(std::shared_p
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteFields: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -1952,14 +1913,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFootnote(std::shared
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -1993,35 +1963,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -2060,18 +2030,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteFootnote: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -2102,14 +2060,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFormField(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -2143,35 +2110,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -2210,18 +2177,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteFormField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -2252,14 +2207,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteHeaderFooter(std::sh
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionPath"), extractOptional(request->sectionPath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -2293,35 +2257,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->sectionPath)
+    if (request->sectionPath && bPath.find(utility::conversions::to_string_t("sectionPath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("SectionPath")] = ApiClient::parameterToString(*(request->sectionPath));
     }
@@ -2360,18 +2324,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteHeaderFooter: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -2402,13 +2354,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteHeadersFooters(std::
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionPath"), extractOptional(request->sectionPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("headersFootersTypes"), extractOptional(request->headersFootersTypes));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -2442,39 +2404,39 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteHeadersFooters(std::
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->sectionPath)
+    if (request->sectionPath && bPath.find(utility::conversions::to_string_t("sectionPath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("SectionPath")] = ApiClient::parameterToString(*(request->sectionPath));
     }
-    if (request->headersFootersTypes)
+    if (request->headersFootersTypes && bPath.find(utility::conversions::to_string_t("headersFootersTypes")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("HeadersFootersTypes")] = ApiClient::parameterToString(*(request->headersFootersTypes));
     }
@@ -2513,18 +2475,6 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteHeadersFooters(std::
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteHeadersFooters: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -2555,14 +2505,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteOfficeMathObject(std
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -2596,35 +2555,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -2663,18 +2622,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteOfficeMathObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -2705,14 +2652,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteParagraph(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -2746,35 +2702,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -2813,18 +2769,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteParagraph: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -2855,15 +2799,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteRun(std::shared_ptr<
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -2897,31 +2849,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -2960,18 +2912,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteRun: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3002,14 +2942,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteTable(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3043,35 +2992,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -3110,18 +3059,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteTable: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3152,15 +3089,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteTableCell(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TableRowPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tableRowPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tableRowPath"), ApiClient::parameterToString(request->tableRowPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3194,31 +3139,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -3257,18 +3202,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteTableCell: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3299,15 +3232,23 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteTableRow(std::shared
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TablePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tablePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tablePath"), ApiClient::parameterToString(request->tablePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3341,31 +3282,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -3404,18 +3345,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteTableRow: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3452,13 +3381,19 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::deleteUnprotectDoc
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/protection");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/protection"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3492,23 +3427,23 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::deleteUnprotectDoc
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -3562,18 +3497,6 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::deleteUnprotectDoc
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling deleteUnprotectDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3604,12 +3527,14 @@ pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/fonts/available");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/fonts/available"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3643,7 +3568,7 @@ pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -3682,18 +3607,6 @@ pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getAvailableFonts: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3724,15 +3637,20 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::getBorder(std::shared_ptr<
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/borders/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("NodePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->nodePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/borders/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), ApiClient::parameterToString(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3766,19 +3684,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -3817,18 +3735,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getBorder: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3859,14 +3765,19 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::getBorders(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/borders");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("NodePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->nodePath));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/borders"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), ApiClient::parameterToString(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -3900,19 +3811,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -3951,18 +3862,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getBorders: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -3993,14 +3892,19 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::getComment(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/comments/{commentIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("CommentIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->commentIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/comments/{commentIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("commentIndex"), ApiClient::parameterToString(request->commentIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4034,19 +3938,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -4085,18 +3989,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getComment: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -4127,13 +4019,18 @@ pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/comments");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/comments"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4167,19 +4064,19 @@ pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -4218,18 +4115,6 @@ pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getComments: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -4260,13 +4145,18 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{documentName}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("DocumentName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->documentName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{documentName}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("documentName"), ApiClient::parameterToString(request->documentName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4300,19 +4190,19 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -4351,18 +4241,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -4393,14 +4271,19 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::getDocumentBookmarkByNam
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/bookmarks/{bookmarkName}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("BookmarkName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->bookmarkName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/bookmarks/{bookmarkName}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("bookmarkName"), ApiClient::parameterToString(request->bookmarkName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4434,19 +4317,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -4485,18 +4368,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentBookmarkByName: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -4527,13 +4398,18 @@ pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getDocumentBookmarks(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/bookmarks");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/bookmarks"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4567,19 +4443,19 @@ pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getDocumentBookmarks(st
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -4618,18 +4494,6 @@ pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getDocumentBookmarks(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentBookmarks: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -4660,14 +4524,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingO
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4701,23 +4571,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -4756,18 +4626,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentDrawingObjectByIndex: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -4798,14 +4656,20 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageData(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}/imageData");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}/imageData"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4840,23 +4704,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -4895,18 +4759,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentDrawingObjectImageData: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -4922,14 +4774,20 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleData(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}/oleData");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}/oleData"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -4964,23 +4822,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -5019,18 +4877,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentDrawingObjectOleData: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -5046,13 +4892,19 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5086,23 +4938,23 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -5141,18 +4993,6 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentDrawingObjects: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5183,13 +5023,19 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/mailMergeFieldNames");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/mailMergeFieldNames"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("useNonMergeFields"), extractOptional(request->useNonMergeFields));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5223,23 +5069,23 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->useNonMergeFields)
+    if (request->useNonMergeFields && bPath.find(utility::conversions::to_string_t("useNonMergeFields")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseNonMergeFields")] = ApiClient::parameterToString(*(request->useNonMergeFields));
     }
@@ -5278,18 +5124,6 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentFieldNames: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5320,14 +5154,19 @@ pplx::task<std::shared_ptr<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByI
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/hyperlinks/{hyperlinkIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("HyperlinkIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->hyperlinkIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/hyperlinks/{hyperlinkIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("hyperlinkIndex"), ApiClient::parameterToString(request->hyperlinkIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5361,19 +5200,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -5412,18 +5251,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentHyperlinkByIndex: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5454,13 +5281,18 @@ pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/hyperlinks");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/hyperlinks"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5494,19 +5326,19 @@ pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -5545,18 +5377,6 @@ pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentHyperlinks: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5587,14 +5407,20 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getDocumentParagraph(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5628,23 +5454,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -5683,18 +5509,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentParagraph: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5725,14 +5539,20 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getDocumentParagr
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}/format");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}/format"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5766,23 +5586,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -5821,18 +5641,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentParagraphFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5863,15 +5671,20 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::getDocumentParagraphRun(std::
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -5905,19 +5718,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -5956,18 +5769,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentParagraphRun: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -5998,15 +5799,20 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::getDocumentParagraphRunFont(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}/font");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}/font"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6040,19 +5846,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -6091,18 +5897,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentParagraphRunFont: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6133,14 +5927,19 @@ pplx::task<std::shared_ptr<RunsResponse>> WordsApi::getDocumentParagraphRuns(std
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6174,19 +5973,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -6225,18 +6024,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentParagraphRuns: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6267,13 +6054,19 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getDocume
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6307,23 +6100,23 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getDocume
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -6362,18 +6155,6 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getDocume
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentParagraphs: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6404,13 +6185,18 @@ pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentPro
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/documentProperties");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/documentProperties"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6444,19 +6230,19 @@ pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentPro
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -6495,18 +6281,6 @@ pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentPro
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentProperties: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6537,14 +6311,19 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::getDocumentPrope
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/documentProperties/{propertyName}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("PropertyName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->propertyName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/documentProperties/{propertyName}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("propertyName"), ApiClient::parameterToString(request->propertyName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6578,19 +6357,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -6629,18 +6408,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentProperty: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6671,13 +6438,18 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtect
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/protection");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/protection"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6711,19 +6483,19 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtect
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -6762,18 +6534,6 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtect
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentProtection: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6804,13 +6564,21 @@ pplx::task<std::shared_ptr<StatDataResponse>> WordsApi::getDocumentStatistics(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/statistics");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/statistics"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("includeComments"), extractOptional(request->includeComments));
+    path = replacePathParameter(path, utility::conversions::to_string_t("includeFootnotes"), extractOptional(request->includeFootnotes));
+    path = replacePathParameter(path, utility::conversions::to_string_t("includeTextInShapes"), extractOptional(request->includeTextInShapes));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6844,31 +6612,31 @@ pplx::task<std::shared_ptr<StatDataResponse>> WordsApi::getDocumentStatistics(st
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->includeComments)
+    if (request->includeComments && bPath.find(utility::conversions::to_string_t("includeComments")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("IncludeComments")] = ApiClient::parameterToString(*(request->includeComments));
     }
-    if (request->includeFootnotes)
+    if (request->includeFootnotes && bPath.find(utility::conversions::to_string_t("includeFootnotes")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("IncludeFootnotes")] = ApiClient::parameterToString(*(request->includeFootnotes));
     }
-    if (request->includeTextInShapes)
+    if (request->includeTextInShapes && bPath.find(utility::conversions::to_string_t("includeTextInShapes")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("IncludeTextInShapes")] = ApiClient::parameterToString(*(request->includeTextInShapes));
     }
@@ -6907,18 +6675,6 @@ pplx::task<std::shared_ptr<StatDataResponse>> WordsApi::getDocumentStatistics(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentStatistics: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -6949,13 +6705,18 @@ pplx::task<std::shared_ptr<TextItemsResponse>> WordsApi::getDocumentTextItems(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/textItems");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/textItems"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -6989,19 +6750,19 @@ pplx::task<std::shared_ptr<TextItemsResponse>> WordsApi::getDocumentTextItems(st
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -7040,18 +6801,6 @@ pplx::task<std::shared_ptr<TextItemsResponse>> WordsApi::getDocumentTextItems(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentTextItems: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -7082,13 +6831,21 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("outPath"), extractOptional(request->outPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7126,27 +6883,27 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->outPath)
+    if (request->outPath && bPath.find(utility::conversions::to_string_t("outPath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("OutPath")] = ApiClient::parameterToString(*(request->outPath));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -7185,18 +6942,6 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDocumentWithFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -7212,14 +6957,20 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getField(std::shared_ptr<Ge
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/fields/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/fields/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7253,23 +7004,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -7308,18 +7059,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -7350,13 +7089,19 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/fields");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/fields"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7390,23 +7135,23 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -7445,18 +7190,6 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getFields: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -7487,14 +7220,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnote(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7528,23 +7267,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -7583,18 +7322,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getFootnote: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -7625,13 +7352,19 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7665,23 +7398,23 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::share
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -7720,18 +7453,6 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getFootnotes: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -7762,14 +7483,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormField(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7803,23 +7530,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -7858,18 +7585,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getFormField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -7900,13 +7615,19 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::sha
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -7940,23 +7661,23 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::sha
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -7995,18 +7716,6 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::sha
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getFormFields: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8037,14 +7746,20 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooter(std:
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/headersfooters/{headerFooterIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("HeaderFooterIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->headerFooterIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/headersfooters/{headerFooterIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("headerFooterIndex"), ApiClient::parameterToString(request->headerFooterIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("filterByType"), extractOptional(request->filterByType));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8078,23 +7793,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->filterByType)
+    if (request->filterByType && bPath.find(utility::conversions::to_string_t("filterByType")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FilterByType")] = ApiClient::parameterToString(*(request->filterByType));
     }
@@ -8133,18 +7848,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getHeaderFooter: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8175,15 +7878,21 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSec
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}/headersfooters/{headerFooterIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("HeaderFooterIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->headerFooterIndex));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("SectionIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->sectionIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}/headersfooters/{headerFooterIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("headerFooterIndex"), ApiClient::parameterToString(request->headerFooterIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionIndex"), ApiClient::parameterToString(request->sectionIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("filterByType"), extractOptional(request->filterByType));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8217,23 +7926,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->filterByType)
+    if (request->filterByType && bPath.find(utility::conversions::to_string_t("filterByType")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FilterByType")] = ApiClient::parameterToString(*(request->filterByType));
     }
@@ -8272,18 +7981,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getHeaderFooterOfSection: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8314,13 +8011,20 @@ pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionPath"), extractOptional(request->sectionPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("filterByType"), extractOptional(request->filterByType));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8354,27 +8058,27 @@ pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(st
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->sectionPath)
+    if (request->sectionPath && bPath.find(utility::conversions::to_string_t("sectionPath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("SectionPath")] = ApiClient::parameterToString(*(request->sectionPath));
     }
-    if (request->filterByType)
+    if (request->filterByType && bPath.find(utility::conversions::to_string_t("filterByType")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FilterByType")] = ApiClient::parameterToString(*(request->filterByType));
     }
@@ -8413,18 +8117,6 @@ pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getHeaderFooters: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8455,14 +8147,20 @@ pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObj
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8496,23 +8194,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -8551,18 +8249,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getOfficeMathObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8593,13 +8279,19 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8633,23 +8325,23 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -8688,18 +8380,6 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getOfficeMathObjects: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8730,14 +8410,19 @@ pplx::task<std::shared_ptr<SectionResponse>> WordsApi::getSection(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("SectionIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->sectionIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionIndex"), ApiClient::parameterToString(request->sectionIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8771,19 +8456,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -8822,18 +8507,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getSection: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8864,14 +8537,19 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::getSectionPageSe
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}/pageSetup");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("SectionIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->sectionIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}/pageSetup"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionIndex"), ApiClient::parameterToString(request->sectionIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -8905,19 +8583,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -8956,18 +8634,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getSectionPageSetup: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -8998,13 +8664,18 @@ pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/sections");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/sections"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9038,19 +8709,19 @@ pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -9089,18 +8760,6 @@ pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getSections: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9131,14 +8790,20 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTable(std::shared_ptr<Ge
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9172,23 +8837,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -9227,18 +8892,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTable: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9269,15 +8922,20 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::getTableCell(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TableRowPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tableRowPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tableRowPath"), ApiClient::parameterToString(request->tableRowPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9311,19 +8969,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -9362,18 +9020,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTableCell: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9404,15 +9050,20 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::getTableCellForma
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}/cellformat");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TableRowPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tableRowPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}/cellformat"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tableRowPath"), ApiClient::parameterToString(request->tableRowPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9446,19 +9097,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -9497,18 +9148,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTableCellFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9539,14 +9178,20 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertie
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}/properties");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}/properties"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9580,23 +9225,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -9635,18 +9280,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTableProperties: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9677,15 +9310,20 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::getTableRow(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TablePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tablePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tablePath"), ApiClient::parameterToString(request->tablePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9719,19 +9357,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -9770,18 +9408,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTableRow: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9812,15 +9438,20 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::getTableRowFormat(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}/rowformat");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TablePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tablePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}/rowformat"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tablePath"), ApiClient::parameterToString(request->tablePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9854,19 +9485,19 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -9905,18 +9536,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTableRowFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -9947,13 +9566,19 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -9987,23 +9612,23 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -10042,18 +9667,6 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getTables: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -10084,13 +9697,22 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -10124,35 +9746,35 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -10206,18 +9828,6 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling insertTable: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -10248,14 +9858,22 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::insertTableCell(std::sh
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TableRowPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tableRowPath));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tableRowPath"), ApiClient::parameterToString(request->tableRowPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -10289,31 +9907,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -10367,18 +9985,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling insertTableCell: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -10409,14 +10015,22 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::insertTableRow(std::shar
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tablePath}/rows");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TablePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tablePath));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tablePath}/rows"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tablePath"), ApiClient::parameterToString(request->tablePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -10450,31 +10064,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -10528,18 +10142,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling insertTableRow: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -10576,13 +10178,21 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postAppendDocument(std::
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/appendDocument");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/appendDocument"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -10616,31 +10226,31 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postAppendDocument(std::
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -10694,18 +10304,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postAppendDocument(std::
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postAppendDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -10742,13 +10340,19 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::postChangeDocument
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/protection");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/protection"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -10782,23 +10386,23 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::postChangeDocument
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -10852,18 +10456,6 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::postChangeDocument
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postChangeDocumentProtection: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -10900,14 +10492,22 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::postComment(std::shared_p
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/comments/{commentIndex}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("CommentIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->commentIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/comments/{commentIndex}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("commentIndex"), ApiClient::parameterToString(request->commentIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -10941,31 +10541,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -11019,18 +10619,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postComment: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -11067,13 +10655,19 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postCompareDocument(std:
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/compareDocument");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/compareDocument"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -11107,23 +10701,23 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postCompareDocument(std:
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -11177,18 +10771,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postCompareDocument(std:
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postCompareDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -11219,13 +10801,24 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postDocumentExecuteMailM
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/executeMailMerge");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/executeMailMerge"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("data"), extractOptional(request->data));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("withRegions"), extractOptional(request->withRegions));
+    path = replacePathParameter(path, utility::conversions::to_string_t("mailMergeDataFile"), extractOptional(request->mailMergeDataFile));
+    path = replacePathParameter(path, utility::conversions::to_string_t("cleanup"), extractOptional(request->cleanup));
+    path = replacePathParameter(path, utility::conversions::to_string_t("useWholeParagraphAsRegion"), extractOptional(request->useWholeParagraphAsRegion));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -11258,43 +10851,43 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postDocumentExecuteMailM
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("multipart/form-data") );
 
-    if (request->data)
+    if (request->data && bPath.find(utility::conversions::to_string_t("data")) == std::string::npos)
     {
         formParams[ utility::conversions::to_string_t("Data") ] = ApiClient::parameterToString(*(request->data));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->withRegions)
+    if (request->withRegions && bPath.find(utility::conversions::to_string_t("withRegions")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("WithRegions")] = ApiClient::parameterToString(*(request->withRegions));
     }
-    if (request->mailMergeDataFile)
+    if (request->mailMergeDataFile && bPath.find(utility::conversions::to_string_t("mailMergeDataFile")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("MailMergeDataFile")] = ApiClient::parameterToString(*(request->mailMergeDataFile));
     }
-    if (request->cleanup)
+    if (request->cleanup && bPath.find(utility::conversions::to_string_t("cleanup")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Cleanup")] = ApiClient::parameterToString(*(request->cleanup));
     }
-    if (request->useWholeParagraphAsRegion)
+    if (request->useWholeParagraphAsRegion && bPath.find(utility::conversions::to_string_t("useWholeParagraphAsRegion")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseWholeParagraphAsRegion")] = ApiClient::parameterToString(*(request->useWholeParagraphAsRegion));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -11333,18 +10926,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postDocumentExecuteMailM
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postDocumentExecuteMailMerge: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -11381,15 +10962,23 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::postDocumentParag
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}/format");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("NodePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->nodePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}/format"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), ApiClient::parameterToString(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -11423,31 +11012,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -11501,18 +11090,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postDocumentParagraphFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -11549,15 +11126,23 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::postDocumentParagraphRunFont
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}/font");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}/font"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -11591,31 +11176,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -11669,18 +11254,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postDocumentParagraphRunFont: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -11717,13 +11290,20 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postDocumentSaveAs(std::shar
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/saveAs");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/saveAs"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -11757,27 +11337,27 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postDocumentSaveAs(std::shar
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -11831,18 +11411,6 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postDocumentSaveAs(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postDocumentSaveAs: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -11879,14 +11447,24 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::postDrawingObject(s
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("drawingObject"), ApiClient::parameterToString(request->drawingObject));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -11924,37 +11502,37 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     }
     if (request->imageFile != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("ImageFile") ] = (request->imageFile);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("ImageFile"), (request->imageFile)));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -11993,18 +11571,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postDrawingObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -12035,13 +11601,23 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postExecuteTemplate(std:
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/executeTemplate");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/executeTemplate"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("data"), ApiClient::parameterToString(request->data));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("cleanup"), extractOptional(request->cleanup));
+    path = replacePathParameter(path, utility::conversions::to_string_t("useWholeParagraphAsRegion"), extractOptional(request->useWholeParagraphAsRegion));
+    path = replacePathParameter(path, utility::conversions::to_string_t("withRegions"), extractOptional(request->withRegions));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -12077,35 +11653,35 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postExecuteTemplate(std:
     {
         formParams[ utility::conversions::to_string_t("Data") ] = ApiClient::parameterToString((request->data));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->cleanup)
+    if (request->cleanup && bPath.find(utility::conversions::to_string_t("cleanup")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Cleanup")] = ApiClient::parameterToString(*(request->cleanup));
     }
-    if (request->useWholeParagraphAsRegion)
+    if (request->useWholeParagraphAsRegion && bPath.find(utility::conversions::to_string_t("useWholeParagraphAsRegion")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseWholeParagraphAsRegion")] = ApiClient::parameterToString(*(request->useWholeParagraphAsRegion));
     }
-    if (request->withRegions)
+    if (request->withRegions && bPath.find(utility::conversions::to_string_t("withRegions")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("WithRegions")] = ApiClient::parameterToString(*(request->withRegions));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -12144,18 +11720,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postExecuteTemplate(std:
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postExecuteTemplate: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -12192,14 +11756,23 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::postField(std::shared_ptr<P
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/fields/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/fields/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -12233,35 +11806,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -12315,18 +11888,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -12363,14 +11924,23 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::postFootnote(std::shared
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -12404,35 +11974,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -12486,18 +12056,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postFootnote: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -12534,14 +12092,23 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::postFormField(std::shar
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -12575,35 +12142,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -12657,18 +12224,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postFormField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -12699,13 +12254,23 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/watermark/insertImage");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/watermark/insertImage"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("rotationAngle"), extractOptional(request->rotationAngle));
+    path = replacePathParameter(path, utility::conversions::to_string_t("image"), extractOptional(request->image));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -12740,41 +12305,41 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
 
     if (request->imageFile && *(request->imageFile) != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("ImageFile") ] = *(request->imageFile);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("ImageFile"), *(request->imageFile)));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->rotationAngle)
+    if (request->rotationAngle && bPath.find(utility::conversions::to_string_t("rotationAngle")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RotationAngle")] = ApiClient::parameterToString(*(request->rotationAngle));
     }
-    if (request->image)
+    if (request->image && bPath.find(utility::conversions::to_string_t("image")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Image")] = ApiClient::parameterToString(*(request->image));
     }
@@ -12813,18 +12378,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postInsertDocumentWatermarkImage: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -12861,13 +12414,21 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/watermark/insertText");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/watermark/insertText"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -12901,31 +12462,31 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -12979,18 +12540,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postInsertDocumentWatermarkText: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13027,13 +12576,21 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertPageNumbers(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/insertPageNumbers");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/insertPageNumbers"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -13067,31 +12624,31 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertPageNumbers(st
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -13145,18 +12702,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertPageNumbers(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postInsertPageNumbers: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13193,12 +12738,14 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postLoadWebDocument(std::sha
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/loadWebDocument");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/loadWebDocument"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -13232,7 +12779,7 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postLoadWebDocument(std::sha
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
@@ -13286,18 +12833,6 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postLoadWebDocument(std::sha
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postLoadWebDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13334,13 +12869,21 @@ pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::postReplaceText(std::
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/replaceText");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/replaceText"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -13374,31 +12917,31 @@ pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::postReplaceText(std::
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -13452,18 +12995,6 @@ pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::postReplaceText(std::
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postReplaceText: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13500,15 +13031,23 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::postRun(std::shared_ptr<PostR
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -13542,31 +13081,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -13620,18 +13159,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postRun: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13662,13 +13189,24 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::postSplitDocument(s
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/split");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/split"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), extractOptional(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("from"), extractOptional(request->from));
+    path = replacePathParameter(path, utility::conversions::to_string_t("to"), extractOptional(request->to));
+    path = replacePathParameter(path, utility::conversions::to_string_t("zipOutput"), extractOptional(request->zipOutput));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -13702,43 +13240,43 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::postSplitDocument(s
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->format)
+    if (request->format && bPath.find(utility::conversions::to_string_t("format")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString(*(request->format));
     }
-    if (request->from)
+    if (request->from && bPath.find(utility::conversions::to_string_t("from")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("From")] = ApiClient::parameterToString(*(request->from));
     }
-    if (request->to)
+    if (request->to && bPath.find(utility::conversions::to_string_t("to")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("To")] = ApiClient::parameterToString(*(request->to));
     }
-    if (request->zipOutput)
+    if (request->zipOutput && bPath.find(utility::conversions::to_string_t("zipOutput")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("ZipOutput")] = ApiClient::parameterToString(*(request->zipOutput));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -13777,18 +13315,6 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::postSplitDocument(s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postSplitDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13825,14 +13351,22 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::postUpdateDocumentBookma
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/bookmarks/{bookmarkName}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("BookmarkName") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->bookmarkName));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/bookmarks/{bookmarkName}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("bookmarkName"), ApiClient::parameterToString(request->bookmarkName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -13866,31 +13400,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -13944,18 +13478,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postUpdateDocumentBookmark: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -13986,13 +13508,19 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postUpdateDocumentFields
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/updateFields");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/updateFields"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14026,23 +13554,23 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postUpdateDocumentFields
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -14081,18 +13609,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postUpdateDocumentFields
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postUpdateDocumentFields: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -14129,13 +13645,21 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::putComment(std::shared_pt
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/comments");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/comments"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14169,31 +13693,31 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::putComment(std::shared_pt
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -14247,18 +13771,6 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::putComment(std::shared_pt
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putComment: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -14295,12 +13807,18 @@ pplx::task<HttpContent> WordsApi::putConvertDocument(std::shared_ptr<PutConvertD
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/convert");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/convert"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("outPath"), extractOptional(request->outPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("documentFileName"), extractOptional(request->documentFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14336,24 +13854,24 @@ pplx::task<HttpContent> WordsApi::putConvertDocument(std::shared_ptr<PutConvertD
 
     if (request->document != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("Document") ] = (request->document);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("Document"), (request->document)));
     }
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->outPath)
+    if (request->outPath && bPath.find(utility::conversions::to_string_t("outPath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("OutPath")] = ApiClient::parameterToString(*(request->outPath));
     }
-    if (request->documentFileName)
+    if (request->documentFileName && bPath.find(utility::conversions::to_string_t("documentFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DocumentFileName")] = ApiClient::parameterToString(*(request->documentFileName));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -14392,18 +13910,6 @@ pplx::task<HttpContent> WordsApi::putConvertDocument(std::shared_ptr<PutConvertD
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putConvertDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -14419,12 +13925,16 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::putCreateDocument(std::s
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/create");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/create"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fileName"), extractOptional(request->fileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14458,15 +13968,15 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::putCreateDocument(std::s
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->fileName)
+    if (request->fileName && bPath.find(utility::conversions::to_string_t("fileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FileName")] = ApiClient::parameterToString(*(request->fileName));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
@@ -14505,18 +14015,6 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::putCreateDocument(std::s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putCreateDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -14553,12 +14051,14 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::putDocumentFieldNames(
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/mailMergeFieldNames");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/mailMergeFieldNames"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("useNonMergeFields"), extractOptional(request->useNonMergeFields));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14593,9 +14093,9 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::putDocumentFieldNames(
 
     if (request->_template != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("Template") ] = (request->_template);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("Template"), (request->_template)));
     }
-    if (request->useNonMergeFields)
+    if (request->useNonMergeFields && bPath.find(utility::conversions::to_string_t("useNonMergeFields")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseNonMergeFields")] = ApiClient::parameterToString(*(request->useNonMergeFields));
     }
@@ -14634,18 +14134,6 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::putDocumentFieldNames(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putDocumentFieldNames: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -14682,13 +14170,38 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::putDocumentSaveAsTiff(std::s
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/saveAs/tiff");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/saveAs/tiff"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("resultFile"), extractOptional(request->resultFile));
+    path = replacePathParameter(path, utility::conversions::to_string_t("useAntiAliasing"), extractOptional(request->useAntiAliasing));
+    path = replacePathParameter(path, utility::conversions::to_string_t("useHighQualityRendering"), extractOptional(request->useHighQualityRendering));
+    path = replacePathParameter(path, utility::conversions::to_string_t("imageBrightness"), extractOptional(request->imageBrightness));
+    path = replacePathParameter(path, utility::conversions::to_string_t("imageColorMode"), extractOptional(request->imageColorMode));
+    path = replacePathParameter(path, utility::conversions::to_string_t("imageContrast"), extractOptional(request->imageContrast));
+    path = replacePathParameter(path, utility::conversions::to_string_t("numeralFormat"), extractOptional(request->numeralFormat));
+    path = replacePathParameter(path, utility::conversions::to_string_t("pageCount"), extractOptional(request->pageCount));
+    path = replacePathParameter(path, utility::conversions::to_string_t("pageIndex"), extractOptional(request->pageIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paperColor"), extractOptional(request->paperColor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("pixelFormat"), extractOptional(request->pixelFormat));
+    path = replacePathParameter(path, utility::conversions::to_string_t("resolution"), extractOptional(request->resolution));
+    path = replacePathParameter(path, utility::conversions::to_string_t("scale"), extractOptional(request->scale));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tiffCompression"), extractOptional(request->tiffCompression));
+    path = replacePathParameter(path, utility::conversions::to_string_t("dmlRenderingMode"), extractOptional(request->dmlRenderingMode));
+    path = replacePathParameter(path, utility::conversions::to_string_t("dmlEffectsRenderingMode"), extractOptional(request->dmlEffectsRenderingMode));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tiffBinarizationMethod"), extractOptional(request->tiffBinarizationMethod));
+    path = replacePathParameter(path, utility::conversions::to_string_t("zipOutput"), extractOptional(request->zipOutput));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14722,99 +14235,99 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::putDocumentSaveAsTiff(std::s
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->resultFile)
+    if (request->resultFile && bPath.find(utility::conversions::to_string_t("resultFile")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("ResultFile")] = ApiClient::parameterToString(*(request->resultFile));
     }
-    if (request->useAntiAliasing)
+    if (request->useAntiAliasing && bPath.find(utility::conversions::to_string_t("useAntiAliasing")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseAntiAliasing")] = ApiClient::parameterToString(*(request->useAntiAliasing));
     }
-    if (request->useHighQualityRendering)
+    if (request->useHighQualityRendering && bPath.find(utility::conversions::to_string_t("useHighQualityRendering")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseHighQualityRendering")] = ApiClient::parameterToString(*(request->useHighQualityRendering));
     }
-    if (request->imageBrightness)
+    if (request->imageBrightness && bPath.find(utility::conversions::to_string_t("imageBrightness")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("ImageBrightness")] = ApiClient::parameterToString(*(request->imageBrightness));
     }
-    if (request->imageColorMode)
+    if (request->imageColorMode && bPath.find(utility::conversions::to_string_t("imageColorMode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("ImageColorMode")] = ApiClient::parameterToString(*(request->imageColorMode));
     }
-    if (request->imageContrast)
+    if (request->imageContrast && bPath.find(utility::conversions::to_string_t("imageContrast")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("ImageContrast")] = ApiClient::parameterToString(*(request->imageContrast));
     }
-    if (request->numeralFormat)
+    if (request->numeralFormat && bPath.find(utility::conversions::to_string_t("numeralFormat")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NumeralFormat")] = ApiClient::parameterToString(*(request->numeralFormat));
     }
-    if (request->pageCount)
+    if (request->pageCount && bPath.find(utility::conversions::to_string_t("pageCount")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("PageCount")] = ApiClient::parameterToString(*(request->pageCount));
     }
-    if (request->pageIndex)
+    if (request->pageIndex && bPath.find(utility::conversions::to_string_t("pageIndex")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("PageIndex")] = ApiClient::parameterToString(*(request->pageIndex));
     }
-    if (request->paperColor)
+    if (request->paperColor && bPath.find(utility::conversions::to_string_t("paperColor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("PaperColor")] = ApiClient::parameterToString(*(request->paperColor));
     }
-    if (request->pixelFormat)
+    if (request->pixelFormat && bPath.find(utility::conversions::to_string_t("pixelFormat")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("PixelFormat")] = ApiClient::parameterToString(*(request->pixelFormat));
     }
-    if (request->resolution)
+    if (request->resolution && bPath.find(utility::conversions::to_string_t("resolution")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Resolution")] = ApiClient::parameterToString(*(request->resolution));
     }
-    if (request->scale)
+    if (request->scale && bPath.find(utility::conversions::to_string_t("scale")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Scale")] = ApiClient::parameterToString(*(request->scale));
     }
-    if (request->tiffCompression)
+    if (request->tiffCompression && bPath.find(utility::conversions::to_string_t("tiffCompression")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("TiffCompression")] = ApiClient::parameterToString(*(request->tiffCompression));
     }
-    if (request->dmlRenderingMode)
+    if (request->dmlRenderingMode && bPath.find(utility::conversions::to_string_t("dmlRenderingMode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DmlRenderingMode")] = ApiClient::parameterToString(*(request->dmlRenderingMode));
     }
-    if (request->dmlEffectsRenderingMode)
+    if (request->dmlEffectsRenderingMode && bPath.find(utility::conversions::to_string_t("dmlEffectsRenderingMode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DmlEffectsRenderingMode")] = ApiClient::parameterToString(*(request->dmlEffectsRenderingMode));
     }
-    if (request->tiffBinarizationMethod)
+    if (request->tiffBinarizationMethod && bPath.find(utility::conversions::to_string_t("tiffBinarizationMethod")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("TiffBinarizationMethod")] = ApiClient::parameterToString(*(request->tiffBinarizationMethod));
     }
-    if (request->zipOutput)
+    if (request->zipOutput && bPath.find(utility::conversions::to_string_t("zipOutput")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("ZipOutput")] = ApiClient::parameterToString(*(request->zipOutput));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -14868,18 +14381,6 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::putDocumentSaveAsTiff(std::s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putDocumentSaveAsTiff: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -14916,13 +14417,23 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::putDrawingObject(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("drawingObject"), ApiClient::parameterToString(request->drawingObject));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -14960,37 +14471,37 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::putDrawingObject(st
     }
     if (request->imageFile != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("ImageFile") ] = (request->imageFile);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("ImageFile"), (request->imageFile)));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -15027,18 +14538,6 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::putDrawingObject(st
             throw ApiException(response.status_code()
                 , utility::conversions::to_string_t("error calling putDrawingObject: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
-
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putDrawingObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
         }
 
         return response.extract_string();
@@ -15083,12 +14582,16 @@ pplx::task<HttpContent> WordsApi::putExecuteMailMergeOnline(std::shared_ptr<PutE
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/executeMailMerge");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/executeMailMerge"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("withRegions"), extractOptional(request->withRegions));
+    path = replacePathParameter(path, utility::conversions::to_string_t("cleanup"), extractOptional(request->cleanup));
+    path = replacePathParameter(path, utility::conversions::to_string_t("documentFileName"), extractOptional(request->documentFileName));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -15124,21 +14627,21 @@ pplx::task<HttpContent> WordsApi::putExecuteMailMergeOnline(std::shared_ptr<PutE
 
     if (request->_template != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("Template") ] = (request->_template);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("Template"), (request->_template)));
     }
     if (request->data != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("Data") ] = (request->data);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("Data"), (request->data)));
     }
-    if (request->withRegions)
+    if (request->withRegions && bPath.find(utility::conversions::to_string_t("withRegions")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("WithRegions")] = ApiClient::parameterToString(*(request->withRegions));
     }
-    if (request->cleanup)
+    if (request->cleanup && bPath.find(utility::conversions::to_string_t("cleanup")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Cleanup")] = ApiClient::parameterToString(*(request->cleanup));
     }
-    if (request->documentFileName)
+    if (request->documentFileName && bPath.find(utility::conversions::to_string_t("documentFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DocumentFileName")] = ApiClient::parameterToString(*(request->documentFileName));
     }
@@ -15177,18 +14680,6 @@ pplx::task<HttpContent> WordsApi::putExecuteMailMergeOnline(std::shared_ptr<PutE
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putExecuteMailMergeOnline: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -15216,12 +14707,17 @@ pplx::task<HttpContent> WordsApi::putExecuteTemplateOnline(std::shared_ptr<PutEx
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/executeTemplate");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/executeTemplate"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("cleanup"), extractOptional(request->cleanup));
+    path = replacePathParameter(path, utility::conversions::to_string_t("useWholeParagraphAsRegion"), extractOptional(request->useWholeParagraphAsRegion));
+    path = replacePathParameter(path, utility::conversions::to_string_t("withRegions"), extractOptional(request->withRegions));
+    path = replacePathParameter(path, utility::conversions::to_string_t("documentFileName"), extractOptional(request->documentFileName));
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -15257,25 +14753,25 @@ pplx::task<HttpContent> WordsApi::putExecuteTemplateOnline(std::shared_ptr<PutEx
 
     if (request->_template != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("Template") ] = (request->_template);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("Template"), (request->_template)));
     }
     if (request->data != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("Data") ] = (request->data);
+        fileParams.push_back(make_pair(utility::conversions::to_string_t("Data"), (request->data)));
     }
-    if (request->cleanup)
+    if (request->cleanup && bPath.find(utility::conversions::to_string_t("cleanup")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Cleanup")] = ApiClient::parameterToString(*(request->cleanup));
     }
-    if (request->useWholeParagraphAsRegion)
+    if (request->useWholeParagraphAsRegion && bPath.find(utility::conversions::to_string_t("useWholeParagraphAsRegion")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("UseWholeParagraphAsRegion")] = ApiClient::parameterToString(*(request->useWholeParagraphAsRegion));
     }
-    if (request->withRegions)
+    if (request->withRegions && bPath.find(utility::conversions::to_string_t("withRegions")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("WithRegions")] = ApiClient::parameterToString(*(request->withRegions));
     }
-    if (request->documentFileName)
+    if (request->documentFileName && bPath.find(utility::conversions::to_string_t("documentFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DocumentFileName")] = ApiClient::parameterToString(*(request->documentFileName));
     }
@@ -15314,18 +14810,6 @@ pplx::task<HttpContent> WordsApi::putExecuteTemplateOnline(std::shared_ptr<PutEx
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putExecuteTemplateOnline: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -15347,13 +14831,23 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::putField(std::shared_ptr<Pu
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/fields");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/fields"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("insertBeforeNode"), extractOptional(request->insertBeforeNode));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -15387,39 +14881,39 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::putField(std::shared_ptr<Pu
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->insertBeforeNode)
+    if (request->insertBeforeNode && bPath.find(utility::conversions::to_string_t("insertBeforeNode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("InsertBeforeNode")] = ApiClient::parameterToString(*(request->insertBeforeNode));
     }
@@ -15473,18 +14967,6 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::putField(std::shared_ptr<Pu
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -15521,13 +15003,22 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::putFootnote(std::shared_
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/footnotes"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -15561,35 +15052,35 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::putFootnote(std::shared_
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -15643,18 +15134,6 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::putFootnote(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putFootnote: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -15691,13 +15170,23 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::putFormField(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/formfields"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("insertBeforeNode"), extractOptional(request->insertBeforeNode));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -15731,39 +15220,39 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::putFormField(std::share
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->insertBeforeNode)
+    if (request->insertBeforeNode && bPath.find(utility::conversions::to_string_t("insertBeforeNode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("InsertBeforeNode")] = ApiClient::parameterToString(*(request->insertBeforeNode));
     }
@@ -15817,18 +15306,6 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::putFormField(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putFormField: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -15859,13 +15336,23 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::putHeaderFooter(std:
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{sectionPath}/headersfooters"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("headerFooterType"), ApiClient::parameterToString(request->headerFooterType));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionPath"), extractOptional(request->sectionPath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -15899,35 +15386,35 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::putHeaderFooter(std:
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->sectionPath)
+    if (request->sectionPath && bPath.find(utility::conversions::to_string_t("sectionPath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("SectionPath")] = ApiClient::parameterToString(*(request->sectionPath));
     }
@@ -15976,18 +15463,6 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::putHeaderFooter(std:
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putHeaderFooter: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -16024,13 +15499,23 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::putParagraph(std::share
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("insertBeforeNode"), extractOptional(request->insertBeforeNode));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16064,39 +15549,39 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::putParagraph(std::share
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->insertBeforeNode)
+    if (request->insertBeforeNode && bPath.find(utility::conversions::to_string_t("insertBeforeNode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("InsertBeforeNode")] = ApiClient::parameterToString(*(request->insertBeforeNode));
     }
@@ -16150,18 +15635,6 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::putParagraph(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putParagraph: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -16198,13 +15671,19 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::putProtectDocument
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/protection");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/protection"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16238,23 +15717,23 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::putProtectDocument
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -16308,18 +15787,6 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::putProtectDocument
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putProtectDocument: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -16356,14 +15823,23 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::putRun(std::shared_ptr<PutRun
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("ParagraphPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->paragraphPath));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{paragraphPath}/runs"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("paragraphPath"), ApiClient::parameterToString(request->paragraphPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("insertBeforeNode"), extractOptional(request->insertBeforeNode));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16397,35 +15873,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->insertBeforeNode)
+    if (request->insertBeforeNode && bPath.find(utility::conversions::to_string_t("insertBeforeNode")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("InsertBeforeNode")] = ApiClient::parameterToString(*(request->insertBeforeNode));
     }
@@ -16479,18 +15955,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putRun: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -16521,13 +15985,19 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRe
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/revisions/rejectAll");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/revisions/rejectAll"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16561,23 +16031,23 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRe
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
@@ -16616,18 +16086,6 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRe
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling rejectAllRevisions: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -16658,14 +16116,22 @@ pplx::task<HttpContent> WordsApi::renderDrawingObject(std::shared_ptr<RenderDraw
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}/render");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/drawingObjects/{index}/render"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16703,27 +16169,27 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -16762,18 +16228,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling renderDrawingObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -16789,14 +16243,22 @@ pplx::task<HttpContent> WordsApi::renderMathObject(std::shared_ptr<RenderMathObj
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects/{index}/render");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/OfficeMathObjects/{index}/render"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16834,27 +16296,27 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -16893,18 +16355,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling renderMathObject: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -16920,14 +16370,21 @@ pplx::task<HttpContent> WordsApi::renderPage(std::shared_ptr<RenderPageRequest> 
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/pages/{pageIndex}/render");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("PageIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->pageIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/pages/{pageIndex}/render"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("pageIndex"), ApiClient::parameterToString(request->pageIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -16965,23 +16422,23 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -17020,18 +16477,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling renderPage: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -17047,14 +16492,22 @@ pplx::task<HttpContent> WordsApi::renderParagraph(std::shared_ptr<RenderParagrap
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}/render");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/paragraphs/{index}/render"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17092,27 +16545,27 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -17151,18 +16604,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling renderParagraph: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -17178,14 +16619,22 @@ pplx::task<HttpContent> WordsApi::renderTable(std::shared_ptr<RenderTableRequest
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}/render");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}/render"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("format"), ApiClient::parameterToString(request->format));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("fontsLocation"), extractOptional(request->fontsLocation));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17223,27 +16672,27 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     {
         queryParams[utility::conversions::to_string_t("Format")] = ApiClient::parameterToString((request->format));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
-    if (request->fontsLocation)
+    if (request->fontsLocation && bPath.find(utility::conversions::to_string_t("fontsLocation")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("FontsLocation")] = ApiClient::parameterToString(*(request->fontsLocation));
     }
@@ -17282,18 +16731,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling renderTable: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_vector();
     })
     .then([=](std::vector<unsigned char> response)
@@ -17309,12 +16746,13 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::resetCache(std::shared_ptr
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/fonts/cache");
-    
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/fonts/cache"),
+    path = bPath;
+
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17383,18 +16821,6 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::resetCache(std::shared_ptr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling resetCache: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -17425,13 +16851,19 @@ pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<Sea
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/search");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/search"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("pattern"), ApiClient::parameterToString(request->pattern));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17468,19 +16900,19 @@ pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<Sea
     {
         queryParams[utility::conversions::to_string_t("Pattern")] = ApiClient::parameterToString((request->pattern));
     }
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
@@ -17519,18 +16951,6 @@ pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<Sea
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling search: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -17567,15 +16987,23 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::updateBorder(std::shared_p
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/borders/{index}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("NodePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->nodePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/borders/{index}"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), ApiClient::parameterToString(request->nodePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17609,31 +17037,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -17687,18 +17115,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling updateBorder: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -17735,14 +17151,22 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::updateSectionPag
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}/pageSetup");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("SectionIndex") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->sectionIndex));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/sections/{sectionIndex}/pageSetup"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("sectionIndex"), ApiClient::parameterToString(request->sectionIndex));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17776,31 +17200,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -17854,18 +17278,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling updateSectionPageSetup: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -17896,15 +17308,23 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::updateTableCellFo
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}/cellformat");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TableRowPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tableRowPath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tableRowPath}/cells/{index}/cellformat"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tableRowPath"), ApiClient::parameterToString(request->tableRowPath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -17938,31 +17358,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -18016,18 +17436,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling updateTableCellFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -18058,14 +17466,23 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProper
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}/properties");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{nodePath}/tables/{index}/properties"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
+    path = replacePathParameter(path, utility::conversions::to_string_t("nodePath"), extractOptional(request->nodePath));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -18099,35 +17516,35 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
-    if (request->nodePath)
+    if (request->nodePath && bPath.find(utility::conversions::to_string_t("nodePath")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("NodePath")] = ApiClient::parameterToString(*(request->nodePath));
     }
@@ -18181,18 +17598,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling updateTableProperties: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
         return response.extract_string();
     })
     .then([=](utility::string_t response)
@@ -18223,15 +17628,23 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::updateTableRowForm
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}/rowformat");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->name));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("TablePath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->tablePath));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("Index") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(request->index));
+    utility::string_t bPath = L"/" + apiConfiguration->getApiVersion() + utility::conversions::to_string_t("/words/{name}/{tablePath}/rows/{index}/rowformat"),
+    path = bPath;
+    path = replacePathParameter(path, utility::conversions::to_string_t("name"), ApiClient::parameterToString(request->name));
+    path = replacePathParameter(path, utility::conversions::to_string_t("tablePath"), ApiClient::parameterToString(request->tablePath));
+    path = replacePathParameter(path, utility::conversions::to_string_t("index"), ApiClient::parameterToString(request->index));
+    path = replacePathParameter(path, utility::conversions::to_string_t("folder"), extractOptional(request->folder));
+    path = replacePathParameter(path, utility::conversions::to_string_t("storage"), extractOptional(request->storage));
+    path = replacePathParameter(path, utility::conversions::to_string_t("loadEncoding"), extractOptional(request->loadEncoding));
+    path = replacePathParameter(path, utility::conversions::to_string_t("password"), extractOptional(request->password));
+    path = replacePathParameter(path, utility::conversions::to_string_t("destFileName"), extractOptional(request->destFileName));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionAuthor"), extractOptional(request->revisionAuthor));
+    path = replacePathParameter(path, utility::conversions::to_string_t("revisionDateTime"), extractOptional(request->revisionDateTime));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
@@ -18265,31 +17678,31 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (request->folder)
+    if (request->folder && bPath.find(utility::conversions::to_string_t("folder")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Folder")] = ApiClient::parameterToString(*(request->folder));
     }
-    if (request->storage)
+    if (request->storage && bPath.find(utility::conversions::to_string_t("storage")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Storage")] = ApiClient::parameterToString(*(request->storage));
     }
-    if (request->loadEncoding)
+    if (request->loadEncoding && bPath.find(utility::conversions::to_string_t("loadEncoding")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("LoadEncoding")] = ApiClient::parameterToString(*(request->loadEncoding));
     }
-    if (request->password)
+    if (request->password && bPath.find(utility::conversions::to_string_t("password")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("Password")] = ApiClient::parameterToString(*(request->password));
     }
-    if (request->destFileName)
+    if (request->destFileName && bPath.find(utility::conversions::to_string_t("destFileName")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("DestFileName")] = ApiClient::parameterToString(*(request->destFileName));
     }
-    if (request->revisionAuthor)
+    if (request->revisionAuthor && bPath.find(utility::conversions::to_string_t("revisionAuthor")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionAuthor")] = ApiClient::parameterToString(*(request->revisionAuthor));
     }
-    if (request->revisionDateTime)
+    if (request->revisionDateTime && bPath.find(utility::conversions::to_string_t("revisionDateTime")) == std::string::npos)
     {
         queryParams[utility::conversions::to_string_t("RevisionDateTime")] = ApiClient::parameterToString(*(request->revisionDateTime));
     }
@@ -18341,18 +17754,6 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
             throw ApiException(response.status_code()
                 , utility::conversions::to_string_t("error calling updateTableRowFormat: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
-
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling updateTableRowFormat: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
         }
 
         return response.extract_string();

@@ -71,7 +71,8 @@ void Hyperlinks::fromJson(web::json::value& val)
     {
         m_HyperlinkList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("HyperlinkList")))
+        if(val.has_field(utility::conversions::to_string_t("HyperlinkList")) 
+                            && !val[utility::conversions::to_string_t("HyperlinkList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("HyperlinkList")].as_array() )
         {

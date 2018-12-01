@@ -71,7 +71,8 @@ void ParagraphLinkCollection::fromJson(web::json::value& val)
     {
         m_ParagraphLinkList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("ParagraphLinkList")))
+        if(val.has_field(utility::conversions::to_string_t("ParagraphLinkList")) 
+                            && !val[utility::conversions::to_string_t("ParagraphLinkList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("ParagraphLinkList")].as_array() )
         {

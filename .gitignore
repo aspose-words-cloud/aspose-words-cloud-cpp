@@ -32,3 +32,8 @@
 *.app
 
 .vs/*
+
+build/
+install/
+
+TODO

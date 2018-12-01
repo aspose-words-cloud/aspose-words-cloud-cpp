@@ -71,7 +71,8 @@ void SearchResultsCollection::fromJson(web::json::value& val)
     {
         m_ResultsList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("ResultsList")))
+        if(val.has_field(utility::conversions::to_string_t("ResultsList")) 
+                            && !val[utility::conversions::to_string_t("ResultsList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("ResultsList")].as_array() )
         {

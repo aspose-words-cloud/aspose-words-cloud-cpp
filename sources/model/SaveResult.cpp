@@ -99,7 +99,8 @@ void SaveResult::fromJson(web::json::value& val)
     {
         m_AdditionalItems.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("AdditionalItems")))
+        if(val.has_field(utility::conversions::to_string_t("AdditionalItems")) 
+                            && !val[utility::conversions::to_string_t("AdditionalItems")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("AdditionalItems")].as_array() )
         {

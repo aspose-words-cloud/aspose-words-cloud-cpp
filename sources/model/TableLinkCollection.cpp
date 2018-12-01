@@ -71,7 +71,8 @@ void TableLinkCollection::fromJson(web::json::value& val)
     {
         m_TableLinkList.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("TableLinkList")))
+        if(val.has_field(utility::conversions::to_string_t("TableLinkList")) 
+                            && !val[utility::conversions::to_string_t("TableLinkList")].is_null())
         {
         for( auto& item : val[utility::conversions::to_string_t("TableLinkList")].as_array() )
         {

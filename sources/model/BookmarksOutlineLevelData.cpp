@@ -70,7 +70,14 @@ void BookmarksOutlineLevelData::fromJson(web::json::value& val)
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setBookmarksOutlineLevel(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("BookmarksOutlineLevel")]));
+    if(val.has_field(utility::conversions::to_string_t("BookmarksOutlineLevel")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("BookmarksOutlineLevel")];
+        if(!fieldValue.is_null())
+        {
+            setBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void BookmarksOutlineLevelData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

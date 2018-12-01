@@ -70,7 +70,14 @@ void ClassificationResult::fromJson(web::json::value& val)
             setClassName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setClassProbability(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("ClassProbability")]));
+    if(val.has_field(utility::conversions::to_string_t("ClassProbability")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ClassProbability")];
+        if(!fieldValue.is_null())
+        {
+            setClassProbability(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
 }
 
 void ClassificationResult::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
