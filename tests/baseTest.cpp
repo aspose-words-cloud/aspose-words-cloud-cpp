@@ -4,6 +4,93 @@
 #include <iostream>
 #include <regex>
 
+class ConfigurationTest : public InfrastructureTest {
+protected:
+	utility::string_t dataFolder = STCONVERT("BaseApiTest");
+};
+
+///Checks that debug message is writing when debug mode is turned on
+TEST_F(ConfigurationTest, TestDebugMode) {
+	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDebugMode.docx"),
+		fullName = path_combine(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	auto client = get_client();
+	auto config = get_config();
+	config->setDebugMode(true);
+	client->setConfiguration(config);
+	shared_ptr<WordsApi> api(new WordsApi(client));
+	
+	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::wstringstream ss;
+	std::wstreambuf *outbuf = std::wcout.rdbuf(ss.rdbuf());
+
+	api->deleteFields(request).get();
+
+	std::wcout.rdbuf(outbuf);
+	utility::string_t res = ss.str(),
+		fwSlash = STCONVERT("/"),
+		expectedUri = STCONVERT("DELETE: ") +
+						fwSlash + config->getApiVersion() + fwSlash + STCONVERT("words") +
+						fwSlash + remoteName + fwSlash + STCONVERT("fields"),
+		expectedResponseHeader = STCONVERT("Response 200: OK"),
+		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
+
+	ASSERT_TRUE(res.find(expectedUri) != std::string::npos);
+
+	ASSERT_TRUE(res.find(expectedResponseHeader) != std::string::npos);
+
+	ASSERT_TRUE(res.find(expectedResponseBody) != std::string::npos);
+
+}
+
+///Checks that API version is properly applied to path building
+TEST_F(ConfigurationTest, TestVersionIsUsing) {
+	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestVersionIsUsing.docx"),
+		fullName = path_combine(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	auto client = get_client();
+	auto config = get_config();
+	config->setDebugMode(true);
+	config->setApiVersion(STCONVERT("v2"));
+
+	client->setConfiguration(config);
+	shared_ptr<WordsApi> api(new WordsApi(client));
+
+	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::wstringstream ss;
+	std::wstreambuf *outbuf = std::wcout.rdbuf(ss.rdbuf());
+
+	api->deleteFields(request).get();
+
+	std::wcout.rdbuf(outbuf);
+	utility::string_t res = ss.str(),
+		fwSlash = STCONVERT("/"),
+		expectedUri = STCONVERT("DELETE: ") +
+		fwSlash + config->getApiVersion() + fwSlash + STCONVERT("words") +
+		fwSlash + remoteName + fwSlash + STCONVERT("fields"),
+		expectedResponseHeader = STCONVERT("Response 200: OK"),
+		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
+
+	ASSERT_TRUE(res.find(expectedUri) != std::string::npos);
+
+	ASSERT_TRUE(res.find(expectedResponseHeader) != std::string::npos);
+
+	ASSERT_TRUE(res.find(expectedResponseBody) != std::string::npos);
+
+}
+
 class BaseApiTest : public InfrastructureTest {
 
 };

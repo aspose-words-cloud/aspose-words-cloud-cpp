@@ -133,6 +133,8 @@ protected:
 	const utility::string_t buildAbsPath;
 
 private:
+	std::shared_ptr<ApiClient> client;
+	std::shared_ptr<WordsApi> api;
 	std::shared_ptr<ApiConfiguration> m_Config;
 };
 #endif

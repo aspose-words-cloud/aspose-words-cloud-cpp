@@ -29,6 +29,11 @@
 
 #include "../ApiClient.h"
 
+
+#include "FormFieldTextInput.h"
+#include "FormFieldCheckbox.h"
+#include "FormFieldDropDown.h"
+
 #include "requests/AcceptAllRevisionsRequest.h"
 #include "requests/ClassifyRequest.h"
 #include "requests/ClassifyDocumentRequest.h"

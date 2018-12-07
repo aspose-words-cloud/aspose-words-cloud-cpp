@@ -65,7 +65,11 @@ public:
     utility::string_t getApiVersion() const;
 	void setApiVersion(const utility::string_t& apiVersion);
 
+    bool isDebugMode() const;
+    void setDebugMode(bool debug);
+
 protected:
+    bool m_DebugMode = false;
     utility::string_t m_BaseUrl;
     std::map<utility::string_t, utility::string_t> m_DefaultHeaders;
     std::map<utility::string_t, utility::string_t> m_ApiKeys;

@@ -36,6 +36,58 @@ namespace io {
 namespace swagger {
 namespace client {
 namespace api {
+
+std::shared_ptr<FormField> deserializeFormField(web::json::value json) {
+					std::shared_ptr<FormField> field;
+					if (json.has_field(utility::conversions::to_string_t("Checked")))
+						field.reset(new FormFieldCheckbox());
+
+					if (json.has_field(utility::conversions::to_string_t("TextInputFormat")) ||
+						json.has_field(utility::conversions::to_string_t("TextInputDefault")))
+						field.reset(new FormFieldTextInput());
+
+					if (json.has_field(utility::conversions::to_string_t("DropDownItems")))
+						field.reset(new FormFieldDropDown());
+
+					if (!field) throw new std::exception("Wrong json provided for FormFieldResponse");
+					field->fromJson(json);
+					return field;
+				}
+				void postInitializeResponse(web::json::value json, void* response) {
+					if (json.has_field(utility::conversions::to_string_t("FormField")))
+					{
+						FormFieldResponse* fieldResponse = (FormFieldResponse*)response;
+						web::json::value formField = json[utility::conversions::to_string_t("FormField")];
+						fieldResponse->setFormField(deserializeFormField(formField));
+					}
+
+					if (json.has_field(utility::conversions::to_string_t("FormFields")))
+					{
+						FormFieldsResponse* fieldResponse = (FormFieldsResponse*)response;
+						web::json::value formField = json[utility::conversions::to_string_t("FormFields")];
+						std::shared_ptr<FormFieldCollection> fields(new FormFieldCollection);
+
+						std::vector<std::shared_ptr<FormField>> list;
+						if (formField.has_field(utility::conversions::to_string_t("List"))
+							&& !formField[utility::conversions::to_string_t("List")].is_null())
+						{
+							for (auto& item : formField[utility::conversions::to_string_t("List")].as_array())
+							{
+								if (item.is_null())
+								{
+									list.push_back(std::shared_ptr<FormField>(nullptr));
+								}
+								else
+								{	
+									list.push_back(deserializeFormField(item));
+								}
+							}
+						}
+
+                        fields->setList(list);
+                        fieldResponse->setFormFields(fields);
+					}
+				}
 utility::string_t replacePathParameter(utility::string_t path, utility::string_t paramName, utility::string_t value) {
 					if (!value.empty()) {
 						boost::replace_all(path, utility::conversions::to_string_t("{") + paramName + utility::conversions::to_string_t("}"),
@@ -182,7 +234,10 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRe
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -303,7 +358,10 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shar
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -439,7 +497,10 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(s
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -602,7 +663,10 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::createOrUpdateDo
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -745,7 +809,10 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::deleteBorder(std::shared_p
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -887,7 +954,10 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::deleteBorders(std::shared
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1029,7 +1099,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteComment(std::shared_
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1170,7 +1243,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDocumentMacros(std::
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1312,7 +1388,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDocumentProperty(std
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1453,7 +1532,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::deleteDocumentWatermark(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1600,7 +1682,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteDrawingObject(std::s
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1747,7 +1832,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteField(std::shared_pt
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1893,7 +1981,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFields(std::shared_p
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2040,7 +2131,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFootnote(std::shared
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2187,7 +2281,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteFormField(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2334,7 +2431,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteHeaderFooter(std::sh
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2485,7 +2585,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteHeadersFooters(std::
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2632,7 +2735,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteOfficeMathObject(std
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2779,7 +2885,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteParagraph(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -2922,7 +3031,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteRun(std::shared_ptr<
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3069,7 +3181,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteTable(std::shared_pt
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3212,7 +3327,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteTableCell(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3355,7 +3473,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::deleteTableRow(std::shared
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3507,7 +3628,10 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::deleteUnprotectDoc
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3617,7 +3741,10 @@ pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3745,7 +3872,10 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::getBorder(std::shared_ptr<
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3872,7 +4002,10 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::getBorders(std::shared_pt
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -3999,7 +4132,10 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::getComment(std::shared_pt
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -4125,7 +4261,10 @@ pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -4251,7 +4390,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -4378,7 +4520,10 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::getDocumentBookmarkByNam
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -4504,7 +4649,10 @@ pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getDocumentBookmarks(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -4636,7 +4784,10 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingO
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5003,7 +5154,10 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5134,7 +5288,10 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5261,7 +5418,10 @@ pplx::task<std::shared_ptr<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByI
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5387,7 +5547,10 @@ pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5519,7 +5682,10 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getDocumentParagraph(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5651,7 +5817,10 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getDocumentParagr
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5779,7 +5948,10 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::getDocumentParagraphRun(std::
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -5907,7 +6079,10 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::getDocumentParagraphRunFont(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6034,7 +6209,10 @@ pplx::task<std::shared_ptr<RunsResponse>> WordsApi::getDocumentParagraphRuns(std
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6165,7 +6343,10 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getDocume
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6291,7 +6472,10 @@ pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentPro
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6418,7 +6602,10 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::getDocumentPrope
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6544,7 +6731,10 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtect
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6685,7 +6875,10 @@ pplx::task<std::shared_ptr<StatDataResponse>> WordsApi::getDocumentStatistics(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -6811,7 +7004,10 @@ pplx::task<std::shared_ptr<TextItemsResponse>> WordsApi::getDocumentTextItems(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7069,7 +7265,10 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getField(std::shared_ptr<Ge
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7200,7 +7399,10 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7332,7 +7534,10 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnote(std::shared_
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7463,7 +7668,10 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7595,7 +7803,10 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormField(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7726,7 +7937,10 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::sha
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7858,7 +8072,10 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooter(std:
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -7991,7 +8208,10 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSec
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8127,7 +8347,10 @@ pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8259,7 +8482,10 @@ pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObj
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8390,7 +8616,10 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8517,7 +8746,10 @@ pplx::task<std::shared_ptr<SectionResponse>> WordsApi::getSection(std::shared_pt
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8644,7 +8876,10 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::getSectionPageSe
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8770,7 +9005,10 @@ pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8902,7 +9140,10 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTable(std::shared_ptr<Ge
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9030,7 +9271,10 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::getTableCell(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9158,7 +9402,10 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::getTableCellForma
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9290,7 +9537,10 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertie
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9418,7 +9668,10 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::getTableRow(std::shared_
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9546,7 +9799,10 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::getTableRowFormat(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9677,7 +9933,10 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9838,7 +10097,10 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9995,7 +10257,10 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::insertTableCell(std::sh
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10152,7 +10417,10 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::insertTableRow(std::shar
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10314,7 +10582,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postAppendDocument(std::
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10466,7 +10737,10 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::postChangeDocument
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10629,7 +10903,10 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::postComment(std::shared_p
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10781,7 +11058,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postCompareDocument(std:
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10936,7 +11216,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postDocumentExecuteMailM
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -11100,7 +11383,10 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::postDocumentParag
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -11264,7 +11550,10 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::postDocumentParagraphRunFont
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -11421,7 +11710,10 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postDocumentSaveAs(std::shar
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -11581,7 +11873,10 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::postDrawingObject(s
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -11730,7 +12025,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postExecuteTemplate(std:
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -11898,7 +12196,10 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::postField(std::shared_ptr<P
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -12066,7 +12367,10 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::postFootnote(std::shared
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -12234,7 +12538,10 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::postFormField(std::shar
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -12388,7 +12695,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -12550,7 +12860,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertDocumentWaterm
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -12712,7 +13025,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postInsertPageNumbers(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -12843,7 +13159,10 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::postLoadWebDocument(std::sha
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -13005,7 +13324,10 @@ pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::postReplaceText(std::
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -13169,7 +13491,10 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::postRun(std::shared_ptr<PostR
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -13325,7 +13650,10 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::postSplitDocument(s
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -13488,7 +13816,10 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::postUpdateDocumentBookma
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -13619,7 +13950,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::postUpdateDocumentFields
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -13781,7 +14115,10 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::putComment(std::shared_pt
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -14025,7 +14362,10 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::putCreateDocument(std::s
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -14144,7 +14484,10 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::putDocumentFieldNames(
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -14391,7 +14734,10 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::putDocumentSaveAsTiff(std::s
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -14550,7 +14896,10 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::putDrawingObject(st
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -14977,7 +15326,10 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::putField(std::shared_ptr<Pu
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -15144,7 +15496,10 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::putFootnote(std::shared_
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -15316,7 +15671,10 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::putFormField(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -15473,7 +15831,10 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::putHeaderFooter(std:
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -15645,7 +16006,10 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::putParagraph(std::share
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -15797,7 +16161,10 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::putProtectDocument
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -15965,7 +16332,10 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::putRun(std::shared_ptr<PutRun
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -16096,7 +16466,10 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRe
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -16831,7 +17204,10 @@ pplx::task<std::shared_ptr<AsposeResponse>> WordsApi::resetCache(std::shared_ptr
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -16961,7 +17337,10 @@ pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<Sea
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -17125,7 +17504,10 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::updateBorder(std::shared_p
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -17288,7 +17670,10 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::updateSectionPag
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -17446,7 +17831,10 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::updateTableCellFo
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -17608,7 +17996,10 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProper
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -17766,7 +18157,10 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::updateTableRowForm
         {
             web::json::value json = web::json::value::parse(response);
 
+            
             result->fromJson(json);
+            postInitializeResponse(json, result.get());
+            
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {

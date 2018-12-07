@@ -63,6 +63,14 @@ void ApiConfiguration::setApiVersion(const utility::string_t & apiVersion)
 	m_ApiVersion = apiVersion;
 }
 
+bool ApiConfiguration::isDebugMode() const {
+    return m_DebugMode;
+}
+
+void ApiConfiguration::setDebugMode(bool debug) {
+    m_DebugMode = debug;
+}
+
 web::http::client::http_client_config& ApiConfiguration::getHttpConfig()
 {
     return m_HttpConfig;

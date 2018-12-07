@@ -89,7 +89,24 @@ TEST_F(FormFieldTest, TestGetFormFields)
 
 	std::shared_ptr<FormFieldsResponse> actual = get_api()->getFormFields(request).get();
 
+	auto formFields = actual->getFormFields()->getList();
+
 	ASSERT_EQ(200, actual->getCode());
+
+
+	std::shared_ptr<FormFieldTextInput> input1 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(0)),
+		input2 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(1)),
+		input3 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(2));
+
+	ASSERT_EQ(STCONVERT("Regular"), input1->getTextInputType());
+	ASSERT_EQ(STCONVERT("Date"), input2->getTextInputType());
+	ASSERT_EQ(STCONVERT("Number"), input3->getTextInputType());
+
+	std::shared_ptr<FormFieldCheckbox> checkbox = std::static_pointer_cast<FormFieldCheckbox>(formFields.at(3));
+	ASSERT_EQ(10, checkbox->getCheckBoxSize());
+
+	std::shared_ptr<FormFieldDropDown> dropDown = std::static_pointer_cast<FormFieldDropDown>(formFields.at(4));
+	ASSERT_TRUE(dropDown->getDropDownItems().size() > 0);
 }
 
 /// <summary>

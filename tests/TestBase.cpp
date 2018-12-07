@@ -1,7 +1,6 @@
 #include "TestBase.h"
 
-std::shared_ptr<ApiClient> client;
-std::shared_ptr<WordsApi> api;
+
 
 std::shared_ptr<ApiConfiguration> get_config()
 {
