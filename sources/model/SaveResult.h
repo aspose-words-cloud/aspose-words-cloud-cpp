@@ -82,7 +82,7 @@ public:
     std::vector<std::shared_ptr<FileLink>>& getAdditionalItems();
     bool additionalItemsIsSet() const;
     void unsetAdditionalItems();
-    void setAdditionalItems(std::vector<std::shared_ptr<FileLink>> value);
+    void setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value);
 
 protected:
     std::shared_ptr<FileLink> m_SourceDocument;

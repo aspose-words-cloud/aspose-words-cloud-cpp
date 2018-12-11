@@ -34,7 +34,7 @@ namespace model {
 
 class PostLoadWebDocumentRequest{
     public: 
-    PostLoadWebDocumentRequest(
+     PostLoadWebDocumentRequest(
         std::shared_ptr<LoadWebDocumentData> data,
                 boost::optional<utility::string_t> storage
         );

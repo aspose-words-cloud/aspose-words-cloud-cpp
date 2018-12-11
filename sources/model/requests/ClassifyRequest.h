@@ -33,7 +33,7 @@ namespace model {
 
 class ClassifyRequest{
     public: 
-    ClassifyRequest(
+     ClassifyRequest(
         utility::string_t text,
                 boost::optional<utility::string_t> bestClassesCount
         );

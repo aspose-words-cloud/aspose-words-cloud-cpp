@@ -34,7 +34,7 @@ namespace model {
 
 class PutDrawingObjectRequest{
     public: 
-    PutDrawingObjectRequest(
+     PutDrawingObjectRequest(
         utility::string_t name,
                 utility::string_t drawingObject,
                 std::shared_ptr<HttpContent> imageFile,

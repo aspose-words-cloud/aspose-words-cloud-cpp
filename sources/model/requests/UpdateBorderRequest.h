@@ -34,7 +34,7 @@ namespace model {
 
 class UpdateBorderRequest{
     public: 
-    UpdateBorderRequest(
+     UpdateBorderRequest(
         utility::string_t name,
                 std::shared_ptr<Border> borderProperties,
                 utility::string_t nodePath,

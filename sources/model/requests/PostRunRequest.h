@@ -34,7 +34,7 @@ namespace model {
 
 class PostRunRequest{
     public: 
-    PostRunRequest(
+     PostRunRequest(
         utility::string_t name,
                 std::shared_ptr<Run> run,
                 utility::string_t paragraphPath,

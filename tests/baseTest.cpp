@@ -133,8 +133,6 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 	std::vector<utility::string_t> apiMethods;
 	std::smatch match;
 	std::regex regEx(">> (.*)\\(");
-	std::string::const_iterator xItStart = apiCode_str.begin();
-	std::string::const_iterator xItEnd = apiCode_str.end();
 	while (std::regex_search(apiCode_str, match, regEx)) {
 		apiMethods.push_back(STCONVERT(match[1].str()));
 		apiCode_str = match.suffix().str();
@@ -144,8 +142,6 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 	utility::string_t testsCode;
 	for (auto file : files)
 		testsCode += get_file_text(file);
-
-	std::string testsCode_str(testsCode.begin(), testsCode.end());
 
 	vector<utility::string_t> uncoveredMethods;
 	for (auto method : apiMethods) {

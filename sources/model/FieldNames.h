@@ -68,7 +68,7 @@ public:
     std::vector<utility::string_t>& getNames();
     bool namesIsSet() const;
     void unsetNames();
-    void setNames(std::vector<utility::string_t> value);
+    void setNames(std::vector<utility::string_t> const& value);
 
 protected:
     std::vector<utility::string_t> m_Names;

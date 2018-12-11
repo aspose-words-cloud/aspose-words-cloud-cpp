@@ -51,10 +51,11 @@ web::json::value FieldNames::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Names )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("Names")] = web::json::value::array(jsonArray);
@@ -70,14 +71,14 @@ void FieldNames::fromJson(web::json::value& val)
 
     {
         m_Names.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("Names")) 
                             && !val[utility::conversions::to_string_t("Names")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("Names")].as_array() )
-        {
-            m_Names.push_back(ModelBase::stringFromJson(item));
-        }
+        auto arr = val[utility::conversions::to_string_t("Names")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Names), [&](auto item){
+            return ModelBase::stringFromJson(item);
+        });
+
         }
     }
 }
@@ -100,10 +101,9 @@ void FieldNames::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Names )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -134,11 +134,10 @@ void FieldNames::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
         if(multipart->hasContent(utility::conversions::to_string_t("Names")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Names"))));
-        for( auto& item : jsonArray.as_array() )
-        {
-            m_Names.push_back(ModelBase::stringFromJson(item));
-        }
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Names")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Names), [&](auto& item) {
+            return ModelBase::stringFromJson(item);
+        });
         }
     }
 }
@@ -148,7 +147,7 @@ std::vector<utility::string_t>& FieldNames::getNames()
     return m_Names;
 }
 
-void FieldNames::setNames(std::vector<utility::string_t> value)
+void FieldNames::setNames(std::vector<utility::string_t> const& value)
 {
     m_Names = value;
     m_NamesIsSet = true;

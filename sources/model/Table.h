@@ -77,7 +77,7 @@ public:
     std::vector<std::shared_ptr<TableRow>>& getTableRowList();
     bool tableRowListIsSet() const;
     void unsetTableRowList();
-    void setTableRowList(std::vector<std::shared_ptr<TableRow>> value);
+    void setTableRowList(std::vector<std::shared_ptr<TableRow>> const& value);
 
 protected:
     std::shared_ptr<TableProperties> m_TableProperties;

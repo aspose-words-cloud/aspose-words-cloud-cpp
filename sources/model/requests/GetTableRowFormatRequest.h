@@ -33,7 +33,7 @@ namespace model {
 
 class GetTableRowFormatRequest{
     public: 
-    GetTableRowFormatRequest(
+     GetTableRowFormatRequest(
         utility::string_t name,
                 utility::string_t tablePath,
                 int32_t index,

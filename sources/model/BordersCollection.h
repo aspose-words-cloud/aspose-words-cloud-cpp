@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<Border>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<Border>> value);
+    void setList(std::vector<std::shared_ptr<Border>> const& value);
 
 protected:
     std::vector<std::shared_ptr<Border>> m_List;

@@ -34,7 +34,7 @@ namespace model {
 
 class PutFieldRequest{
     public: 
-    PutFieldRequest(
+     PutFieldRequest(
         utility::string_t name,
                 std::shared_ptr<Field> field,
                 boost::optional<utility::string_t> folder,

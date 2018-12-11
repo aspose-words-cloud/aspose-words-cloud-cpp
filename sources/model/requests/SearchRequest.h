@@ -33,7 +33,7 @@ namespace model {
 
 class SearchRequest{
     public: 
-    SearchRequest(
+     SearchRequest(
         utility::string_t name,
                 utility::string_t pattern,
                 boost::optional<utility::string_t> folder,

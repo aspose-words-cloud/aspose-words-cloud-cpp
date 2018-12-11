@@ -33,7 +33,7 @@ namespace model {
 
 class GetHeaderFooterOfSectionRequest{
     public: 
-    GetHeaderFooterOfSectionRequest(
+     GetHeaderFooterOfSectionRequest(
         utility::string_t name,
                 int32_t headerFooterIndex,
                 int32_t sectionIndex,

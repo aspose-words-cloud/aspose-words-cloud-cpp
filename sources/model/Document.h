@@ -70,7 +70,7 @@ public:
     std::vector<std::shared_ptr<Link>>& getLinks();
     bool linksIsSet() const;
     void unsetLinks();
-    void setLinks(std::vector<std::shared_ptr<Link>> value);
+    void setLinks(std::vector<std::shared_ptr<Link>> const& value);
     /// <summary>
     /// Gets the name of the file.
     /// </summary>

@@ -33,7 +33,7 @@ namespace model {
 
 class RenderDrawingObjectRequest{
     public: 
-    RenderDrawingObjectRequest(
+     RenderDrawingObjectRequest(
         utility::string_t name,
                 utility::string_t format,
                 int32_t index,

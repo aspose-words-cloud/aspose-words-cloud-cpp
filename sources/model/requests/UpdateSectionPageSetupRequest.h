@@ -34,7 +34,7 @@ namespace model {
 
 class UpdateSectionPageSetupRequest{
     public: 
-    UpdateSectionPageSetupRequest(
+     UpdateSectionPageSetupRequest(
         utility::string_t name,
                 int32_t sectionIndex,
                 std::shared_ptr<PageSetup> pageSetup,

@@ -57,10 +57,11 @@ web::json::value Document::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Links )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("Links")] = web::json::value::array(jsonArray);
@@ -85,23 +86,23 @@ void Document::fromJson(web::json::value& val)
 {
     {
         m_Links.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("Links")) 
                             && !val[utility::conversions::to_string_t("Links")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("Links")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("Links")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Links), [&](auto item){
             if(item.is_null())
             {
-                m_Links.push_back( std::shared_ptr<Link>(nullptr) );
+                return std::shared_ptr<Link>(nullptr);
             }
             else
             {
                 std::shared_ptr<Link> newItem(new Link());
                 newItem->fromJson(item);
-                m_Links.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
     if(val.has_field(utility::conversions::to_string_t("FileName")))
@@ -151,10 +152,9 @@ void Document::toMultipart(std::shared_ptr<MultipartFormData> multipart, const u
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Links )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -192,20 +192,19 @@ void Document::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
         if(multipart->hasContent(utility::conversions::to_string_t("Links")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Links"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Links")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Links), [&](auto& item) {
             if(item.is_null())
             {
-                m_Links.push_back( std::shared_ptr<Link>(nullptr) );
+                return std::shared_ptr<Link>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<Link> newItem(new Link());
                 newItem->fromJson(item);
-                m_Links.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
     if(multipart->hasContent(utility::conversions::to_string_t("FileName")))
@@ -231,7 +230,7 @@ std::vector<std::shared_ptr<Link>>& Document::getLinks()
     return m_Links;
 }
 
-void Document::setLinks(std::vector<std::shared_ptr<Link>> value)
+void Document::setLinks(std::vector<std::shared_ptr<Link>> const& value)
 {
     m_Links = value;
     m_LinksIsSet = true;

@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<FormField>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<FormField>> value);
+    void setList(std::vector<std::shared_ptr<FormField>> const& value);
 
 protected:
     std::vector<std::shared_ptr<FormField>> m_List;

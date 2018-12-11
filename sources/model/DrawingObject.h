@@ -110,7 +110,7 @@ public:
     std::vector<std::shared_ptr<WordsApiLink>>& getRenderLinks();
     bool renderLinksIsSet() const;
     void unsetRenderLinks();
-    void setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> value);
+    void setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value);
     /// <summary>
     /// Distance in points from the origin to the top side of the image.
     /// </summary>

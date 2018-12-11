@@ -34,7 +34,7 @@ namespace model {
 
 class InsertTableCellRequest{
     public: 
-    InsertTableCellRequest(
+     InsertTableCellRequest(
         utility::string_t name,
                 utility::string_t tableRowPath,
                 boost::optional<utility::string_t> folder,

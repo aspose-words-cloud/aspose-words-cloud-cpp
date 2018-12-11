@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;
     void unsetChildNodes();
-    void setChildNodes(std::vector<std::shared_ptr<NodeLink>> value);
+    void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
 
 protected:
     std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;

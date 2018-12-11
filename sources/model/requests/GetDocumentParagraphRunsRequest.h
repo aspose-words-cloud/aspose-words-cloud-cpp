@@ -33,7 +33,7 @@ namespace model {
 
 class GetDocumentParagraphRunsRequest{
     public: 
-    GetDocumentParagraphRunsRequest(
+     GetDocumentParagraphRunsRequest(
         utility::string_t name,
                 utility::string_t paragraphPath,
                 boost::optional<utility::string_t> folder,

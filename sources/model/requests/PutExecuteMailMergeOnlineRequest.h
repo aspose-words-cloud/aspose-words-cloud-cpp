@@ -34,7 +34,7 @@ namespace model {
 
 class PutExecuteMailMergeOnlineRequest{
     public: 
-    PutExecuteMailMergeOnlineRequest(
+     PutExecuteMailMergeOnlineRequest(
         std::shared_ptr<HttpContent> _template,
                 std::shared_ptr<HttpContent> data,
                 boost::optional<bool> withRegions,

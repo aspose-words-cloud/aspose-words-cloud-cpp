@@ -33,7 +33,7 @@ namespace model {
 
 class ClassifyDocumentRequest{
     public: 
-    ClassifyDocumentRequest(
+     ClassifyDocumentRequest(
         utility::string_t documentName,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

@@ -34,7 +34,7 @@ namespace model {
 
 class PutFootnoteRequest{
     public: 
-    PutFootnoteRequest(
+     PutFootnoteRequest(
         utility::string_t name,
                 std::shared_ptr<Footnote> footnoteDto,
                 boost::optional<utility::string_t> folder,

@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<Comment>>& getCommentList();
     bool commentListIsSet() const;
     void unsetCommentList();
-    void setCommentList(std::vector<std::shared_ptr<Comment>> value);
+    void setCommentList(std::vector<std::shared_ptr<Comment>> const& value);
 
 protected:
     std::vector<std::shared_ptr<Comment>> m_CommentList;

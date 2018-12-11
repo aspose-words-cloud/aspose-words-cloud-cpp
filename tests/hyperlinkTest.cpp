@@ -40,8 +40,6 @@ TEST_F(HyperlinkTest, TestGetDocumentHyperlinks) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	int32_t hyperlinkIndex = 0;
-
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetDocumentHyperlinksRequest> request(new GetDocumentHyperlinksRequest(remoteName, dataFolder, boost::none,

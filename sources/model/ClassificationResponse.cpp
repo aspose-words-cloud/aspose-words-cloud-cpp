@@ -63,10 +63,11 @@ web::json::value ClassificationResponse::toJson() const
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_BestResults )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("BestResults")] = web::json::value::array(jsonArray);
@@ -98,23 +99,23 @@ void ClassificationResponse::fromJson(web::json::value& val)
     }
     {
         m_BestResults.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("BestResults")) 
                             && !val[utility::conversions::to_string_t("BestResults")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("BestResults")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("BestResults")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](auto item){
             if(item.is_null())
             {
-                m_BestResults.push_back( std::shared_ptr<ClassificationResult>(nullptr) );
+                return std::shared_ptr<ClassificationResult>(nullptr);
             }
             else
             {
                 std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
                 newItem->fromJson(item);
-                m_BestResults.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -144,10 +145,9 @@ void ClassificationResponse::toMultipart(std::shared_ptr<MultipartFormData> mult
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_BestResults )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -182,20 +182,19 @@ void ClassificationResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         if(multipart->hasContent(utility::conversions::to_string_t("BestResults")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BestResults"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BestResults")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BestResults), [&](auto& item) {
             if(item.is_null())
             {
-                m_BestResults.push_back( std::shared_ptr<ClassificationResult>(nullptr) );
+                return std::shared_ptr<ClassificationResult>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
                 newItem->fromJson(item);
-                m_BestResults.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -247,7 +246,7 @@ std::vector<std::shared_ptr<ClassificationResult>>& ClassificationResponse::getB
     return m_BestResults;
 }
 
-void ClassificationResponse::setBestResults(std::vector<std::shared_ptr<ClassificationResult>> value)
+void ClassificationResponse::setBestResults(std::vector<std::shared_ptr<ClassificationResult>> const& value)
 {
     m_BestResults = value;
     m_BestResultsIsSet = true;

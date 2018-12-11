@@ -51,10 +51,11 @@ web::json::value SearchResultsCollection::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_ResultsList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("ResultsList")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void SearchResultsCollection::fromJson(web::json::value& val)
 
     {
         m_ResultsList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("ResultsList")) 
                             && !val[utility::conversions::to_string_t("ResultsList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("ResultsList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("ResultsList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](auto item){
             if(item.is_null())
             {
-                m_ResultsList.push_back( std::shared_ptr<SearchResult>(nullptr) );
+                return std::shared_ptr<SearchResult>(nullptr);
             }
             else
             {
                 std::shared_ptr<SearchResult> newItem(new SearchResult());
                 newItem->fromJson(item);
-                m_ResultsList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void SearchResultsCollection::toMultipart(std::shared_ptr<MultipartFormData> mul
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_ResultsList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void SearchResultsCollection::fromMultiPart(std::shared_ptr<MultipartFormData> m
         if(multipart->hasContent(utility::conversions::to_string_t("ResultsList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ResultsList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ResultsList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](auto& item) {
             if(item.is_null())
             {
-                m_ResultsList.push_back( std::shared_ptr<SearchResult>(nullptr) );
+                return std::shared_ptr<SearchResult>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<SearchResult> newItem(new SearchResult());
                 newItem->fromJson(item);
-                m_ResultsList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<SearchResult>>& SearchResultsCollection::getResultsL
     return m_ResultsList;
 }
 
-void SearchResultsCollection::setResultsList(std::vector<std::shared_ptr<SearchResult>> value)
+void SearchResultsCollection::setResultsList(std::vector<std::shared_ptr<SearchResult>> const& value)
 {
     m_ResultsList = value;
     m_ResultsListIsSet = true;

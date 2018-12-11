@@ -34,7 +34,7 @@ namespace model {
 
 class CreateOrUpdateDocumentPropertyRequest{
     public: 
-    CreateOrUpdateDocumentPropertyRequest(
+     CreateOrUpdateDocumentPropertyRequest(
         utility::string_t name,
                 utility::string_t propertyName,
                 std::shared_ptr<DocumentProperty> property,

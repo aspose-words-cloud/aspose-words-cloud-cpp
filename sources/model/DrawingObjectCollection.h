@@ -67,7 +67,7 @@ public:
     std::vector<std::shared_ptr<LinkElement>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<LinkElement>> value);
+    void setList(std::vector<std::shared_ptr<LinkElement>> const& value);
 
 protected:
     std::vector<std::shared_ptr<LinkElement>> m_List;

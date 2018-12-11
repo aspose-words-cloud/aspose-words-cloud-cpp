@@ -33,7 +33,7 @@ namespace model {
 
 class GetDocumentHyperlinkByIndexRequest{
     public: 
-    GetDocumentHyperlinkByIndexRequest(
+     GetDocumentHyperlinkByIndexRequest(
         utility::string_t name,
                 int32_t hyperlinkIndex,
                 boost::optional<utility::string_t> folder,

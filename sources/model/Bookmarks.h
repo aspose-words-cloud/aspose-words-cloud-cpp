@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<Bookmark>>& getBookmarkList();
     bool bookmarkListIsSet() const;
     void unsetBookmarkList();
-    void setBookmarkList(std::vector<std::shared_ptr<Bookmark>> value);
+    void setBookmarkList(std::vector<std::shared_ptr<Bookmark>> const& value);
 
 protected:
     std::vector<std::shared_ptr<Bookmark>> m_BookmarkList;

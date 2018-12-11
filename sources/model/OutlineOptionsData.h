@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& getBookmarksOutlineLevels();
     bool bookmarksOutlineLevelsIsSet() const;
     void unsetBookmarksOutlineLevels();
-    void setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> value);
+    void setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value);
     /// <summary>
     /// Specifies the default level in the document outline at which to display Word bookmarks
     /// </summary>

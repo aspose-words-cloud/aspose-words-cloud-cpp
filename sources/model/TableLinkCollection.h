@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<TableLink>>& getTableLinkList();
     bool tableLinkListIsSet() const;
     void unsetTableLinkList();
-    void setTableLinkList(std::vector<std::shared_ptr<TableLink>> value);
+    void setTableLinkList(std::vector<std::shared_ptr<TableLink>> const& value);
 
 protected:
     std::vector<std::shared_ptr<TableLink>> m_TableLinkList;

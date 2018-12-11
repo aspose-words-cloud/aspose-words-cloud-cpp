@@ -61,10 +61,11 @@ web::json::value OutlineOptionsData::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_BookmarksOutlineLevels )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_BookmarksOutlineLevels.begin(), m_BookmarksOutlineLevels.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("BookmarksOutlineLevels")] = web::json::value::array(jsonArray);
@@ -98,23 +99,23 @@ void OutlineOptionsData::fromJson(web::json::value& val)
 {
     {
         m_BookmarksOutlineLevels.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("BookmarksOutlineLevels")) 
                             && !val[utility::conversions::to_string_t("BookmarksOutlineLevels")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("BookmarksOutlineLevels")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("BookmarksOutlineLevels")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](auto item){
             if(item.is_null())
             {
-                m_BookmarksOutlineLevels.push_back( std::shared_ptr<BookmarksOutlineLevelData>(nullptr) );
+                return std::shared_ptr<BookmarksOutlineLevelData>(nullptr);
             }
             else
             {
                 std::shared_ptr<BookmarksOutlineLevelData> newItem(new BookmarksOutlineLevelData());
                 newItem->fromJson(item);
-                m_BookmarksOutlineLevels.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
     if(val.has_field(utility::conversions::to_string_t("DefaultBookmarksOutlineLevel")))
@@ -169,10 +170,9 @@ void OutlineOptionsData::toMultipart(std::shared_ptr<MultipartFormData> multipar
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_BookmarksOutlineLevels )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_BookmarksOutlineLevels.begin(), m_BookmarksOutlineLevels.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -214,20 +214,19 @@ void OutlineOptionsData::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         if(multipart->hasContent(utility::conversions::to_string_t("BookmarksOutlineLevels")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BookmarksOutlineLevels"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BookmarksOutlineLevels")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](auto& item) {
             if(item.is_null())
             {
-                m_BookmarksOutlineLevels.push_back( std::shared_ptr<BookmarksOutlineLevelData>(nullptr) );
+                return std::shared_ptr<BookmarksOutlineLevelData>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<BookmarksOutlineLevelData> newItem(new BookmarksOutlineLevelData());
                 newItem->fromJson(item);
-                m_BookmarksOutlineLevels.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
     if(multipart->hasContent(utility::conversions::to_string_t("DefaultBookmarksOutlineLevel")))
@@ -257,7 +256,7 @@ std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& OutlineOptionsData::get
     return m_BookmarksOutlineLevels;
 }
 
-void OutlineOptionsData::setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> value)
+void OutlineOptionsData::setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value)
 {
     m_BookmarksOutlineLevels = value;
     m_BookmarksOutlineLevelsIsSet = true;

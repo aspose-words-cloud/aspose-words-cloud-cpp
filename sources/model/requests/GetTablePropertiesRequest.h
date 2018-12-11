@@ -33,7 +33,7 @@ namespace model {
 
 class GetTablePropertiesRequest{
     public: 
-    GetTablePropertiesRequest(
+     GetTablePropertiesRequest(
         utility::string_t name,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

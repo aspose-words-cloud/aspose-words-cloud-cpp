@@ -34,7 +34,7 @@ namespace model {
 
 class PostReplaceTextRequest{
     public: 
-    PostReplaceTextRequest(
+     PostReplaceTextRequest(
         utility::string_t name,
                 std::shared_ptr<ReplaceTextRequest> replaceText,
                 boost::optional<utility::string_t> folder,

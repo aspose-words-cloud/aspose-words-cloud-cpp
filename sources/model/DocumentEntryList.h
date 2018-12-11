@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<DocumentEntry>>& getDocumentEntries();
     bool documentEntriesIsSet() const;
     void unsetDocumentEntries();
-    void setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> value);
+    void setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> const& value);
 
 protected:
     std::vector<std::shared_ptr<DocumentEntry>> m_DocumentEntries;

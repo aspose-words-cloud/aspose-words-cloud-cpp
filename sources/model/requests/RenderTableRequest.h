@@ -33,7 +33,7 @@ namespace model {
 
 class RenderTableRequest{
     public: 
-    RenderTableRequest(
+     RenderTableRequest(
         utility::string_t name,
                 utility::string_t format,
                 int32_t index,

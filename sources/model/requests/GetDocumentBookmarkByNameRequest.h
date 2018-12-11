@@ -33,7 +33,7 @@ namespace model {
 
 class GetDocumentBookmarkByNameRequest{
     public: 
-    GetDocumentBookmarkByNameRequest(
+     GetDocumentBookmarkByNameRequest(
         utility::string_t name,
                 utility::string_t bookmarkName,
                 boost::optional<utility::string_t> folder,

@@ -34,7 +34,7 @@ namespace model {
 
 class PostCompareDocumentRequest{
     public: 
-    PostCompareDocumentRequest(
+     PostCompareDocumentRequest(
         utility::string_t name,
                 std::shared_ptr<CompareData> compareData,
                 boost::optional<utility::string_t> folder,

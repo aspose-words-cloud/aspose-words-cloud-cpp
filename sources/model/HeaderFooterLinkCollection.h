@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<HeaderFooterLink>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<HeaderFooterLink>> value);
+    void setList(std::vector<std::shared_ptr<HeaderFooterLink>> const& value);
 
 protected:
     std::vector<std::shared_ptr<HeaderFooterLink>> m_List;

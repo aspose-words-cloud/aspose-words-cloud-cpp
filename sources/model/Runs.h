@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<Run>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<Run>> value);
+    void setList(std::vector<std::shared_ptr<Run>> const& value);
 
 protected:
     std::vector<std::shared_ptr<Run>> m_List;

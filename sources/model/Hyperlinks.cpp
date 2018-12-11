@@ -51,10 +51,11 @@ web::json::value Hyperlinks::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_HyperlinkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("HyperlinkList")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void Hyperlinks::fromJson(web::json::value& val)
 
     {
         m_HyperlinkList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("HyperlinkList")) 
                             && !val[utility::conversions::to_string_t("HyperlinkList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("HyperlinkList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("HyperlinkList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_HyperlinkList), [&](auto item){
             if(item.is_null())
             {
-                m_HyperlinkList.push_back( std::shared_ptr<Hyperlink>(nullptr) );
+                return std::shared_ptr<Hyperlink>(nullptr);
             }
             else
             {
                 std::shared_ptr<Hyperlink> newItem(new Hyperlink());
                 newItem->fromJson(item);
-                m_HyperlinkList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void Hyperlinks::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_HyperlinkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void Hyperlinks::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
         if(multipart->hasContent(utility::conversions::to_string_t("HyperlinkList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("HyperlinkList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("HyperlinkList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_HyperlinkList), [&](auto& item) {
             if(item.is_null())
             {
-                m_HyperlinkList.push_back( std::shared_ptr<Hyperlink>(nullptr) );
+                return std::shared_ptr<Hyperlink>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<Hyperlink> newItem(new Hyperlink());
                 newItem->fromJson(item);
-                m_HyperlinkList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<Hyperlink>>& Hyperlinks::getHyperlinkList()
     return m_HyperlinkList;
 }
 
-void Hyperlinks::setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> value)
+void Hyperlinks::setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> const& value)
 {
     m_HyperlinkList = value;
     m_HyperlinkListIsSet = true;

@@ -33,7 +33,7 @@ namespace model {
 
 class DeleteTableRowRequest{
     public: 
-    DeleteTableRowRequest(
+     DeleteTableRowRequest(
         utility::string_t name,
                 utility::string_t tablePath,
                 int32_t index,

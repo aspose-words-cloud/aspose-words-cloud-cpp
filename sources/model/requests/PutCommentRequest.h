@@ -34,7 +34,7 @@ namespace model {
 
 class PutCommentRequest{
     public: 
-    PutCommentRequest(
+     PutCommentRequest(
         utility::string_t name,
                 std::shared_ptr<Comment> comment,
                 boost::optional<utility::string_t> folder,

@@ -51,10 +51,11 @@ web::json::value DocumentEntryList::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_DocumentEntries )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("DocumentEntries")] = web::json::value::array(jsonArray);
@@ -68,23 +69,23 @@ void DocumentEntryList::fromJson(web::json::value& val)
 {
     {
         m_DocumentEntries.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("DocumentEntries")) 
                             && !val[utility::conversions::to_string_t("DocumentEntries")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("DocumentEntries")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("DocumentEntries")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_DocumentEntries), [&](auto item){
             if(item.is_null())
             {
-                m_DocumentEntries.push_back( std::shared_ptr<DocumentEntry>(nullptr) );
+                return std::shared_ptr<DocumentEntry>(nullptr);
             }
             else
             {
                 std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
                 newItem->fromJson(item);
-                m_DocumentEntries.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -99,10 +100,9 @@ void DocumentEntryList::toMultipart(std::shared_ptr<MultipartFormData> multipart
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_DocumentEntries )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -124,20 +124,19 @@ void DocumentEntryList::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         if(multipart->hasContent(utility::conversions::to_string_t("DocumentEntries")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DocumentEntries"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DocumentEntries")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DocumentEntries), [&](auto& item) {
             if(item.is_null())
             {
-                m_DocumentEntries.push_back( std::shared_ptr<DocumentEntry>(nullptr) );
+                return std::shared_ptr<DocumentEntry>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
                 newItem->fromJson(item);
-                m_DocumentEntries.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -147,7 +146,7 @@ std::vector<std::shared_ptr<DocumentEntry>>& DocumentEntryList::getDocumentEntri
     return m_DocumentEntries;
 }
 
-void DocumentEntryList::setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> value)
+void DocumentEntryList::setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> const& value)
 {
     m_DocumentEntries = value;
     m_DocumentEntriesIsSet = true;

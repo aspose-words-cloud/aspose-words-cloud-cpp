@@ -33,7 +33,7 @@ namespace model {
 
 class GetHeaderFooterRequest{
     public: 
-    GetHeaderFooterRequest(
+     GetHeaderFooterRequest(
         utility::string_t name,
                 int32_t headerFooterIndex,
                 boost::optional<utility::string_t> folder,

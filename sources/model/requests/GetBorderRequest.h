@@ -33,7 +33,7 @@ namespace model {
 
 class GetBorderRequest{
     public: 
-    GetBorderRequest(
+     GetBorderRequest(
         utility::string_t name,
                 utility::string_t nodePath,
                 int32_t index,

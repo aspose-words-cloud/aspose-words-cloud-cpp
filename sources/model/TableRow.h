@@ -77,7 +77,7 @@ public:
     std::vector<std::shared_ptr<TableCell>>& getTableCellList();
     bool tableCellListIsSet() const;
     void unsetTableCellList();
-    void setTableCellList(std::vector<std::shared_ptr<TableCell>> value);
+    void setTableCellList(std::vector<std::shared_ptr<TableCell>> const& value);
 
 protected:
     std::shared_ptr<TableRowFormat> m_RowFormat;

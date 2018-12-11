@@ -33,7 +33,7 @@ namespace model {
 
 class GetDocumentDrawingObjectImageDataRequest{
     public: 
-    GetDocumentDrawingObjectImageDataRequest(
+     GetDocumentDrawingObjectImageDataRequest(
         utility::string_t name,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

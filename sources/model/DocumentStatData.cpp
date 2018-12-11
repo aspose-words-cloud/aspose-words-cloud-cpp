@@ -62,10 +62,11 @@ web::json::value DocumentStatData::toJson() const
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_PageStatData )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_PageStatData.begin(), m_PageStatData.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("PageStatData")] = web::json::value::array(jsonArray);
@@ -113,23 +114,23 @@ void DocumentStatData::fromJson(web::json::value& val)
     }
     {
         m_PageStatData.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("PageStatData")) 
                             && !val[utility::conversions::to_string_t("PageStatData")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("PageStatData")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("PageStatData")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_PageStatData), [&](auto item){
             if(item.is_null())
             {
-                m_PageStatData.push_back( std::shared_ptr<PageStatData>(nullptr) );
+                return std::shared_ptr<PageStatData>(nullptr);
             }
             else
             {
                 std::shared_ptr<PageStatData> newItem(new PageStatData());
                 newItem->fromJson(item);
-                m_PageStatData.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -155,10 +156,9 @@ void DocumentStatData::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_PageStatData )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_PageStatData.begin(), m_PageStatData.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -192,20 +192,19 @@ void DocumentStatData::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
         if(multipart->hasContent(utility::conversions::to_string_t("PageStatData")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PageStatData"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PageStatData")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_PageStatData), [&](auto& item) {
             if(item.is_null())
             {
-                m_PageStatData.push_back( std::shared_ptr<PageStatData>(nullptr) );
+                return std::shared_ptr<PageStatData>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<PageStatData> newItem(new PageStatData());
                 newItem->fromJson(item);
-                m_PageStatData.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -269,7 +268,7 @@ std::vector<std::shared_ptr<PageStatData>>& DocumentStatData::getPageStatData()
     return m_PageStatData;
 }
 
-void DocumentStatData::setPageStatData(std::vector<std::shared_ptr<PageStatData>> value)
+void DocumentStatData::setPageStatData(std::vector<std::shared_ptr<PageStatData>> const& value)
 {
     m_PageStatData = value;
     m_PageStatDataIsSet = true;

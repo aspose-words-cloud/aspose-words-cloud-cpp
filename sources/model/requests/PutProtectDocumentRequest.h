@@ -34,7 +34,7 @@ namespace model {
 
 class PutProtectDocumentRequest{
     public: 
-    PutProtectDocumentRequest(
+     PutProtectDocumentRequest(
         utility::string_t name,
                 std::shared_ptr<ProtectionRequest> protectionRequest,
                 boost::optional<utility::string_t> folder,

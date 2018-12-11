@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<Footnote>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<Footnote>> value);
+    void setList(std::vector<std::shared_ptr<Footnote>> const& value);
 
 protected:
     std::vector<std::shared_ptr<Footnote>> m_List;

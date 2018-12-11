@@ -51,10 +51,11 @@ web::json::value SectionLinkCollection::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_SectionLinkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_SectionLinkList.begin(), m_SectionLinkList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("SectionLinkList")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void SectionLinkCollection::fromJson(web::json::value& val)
 
     {
         m_SectionLinkList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("SectionLinkList")) 
                             && !val[utility::conversions::to_string_t("SectionLinkList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("SectionLinkList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("SectionLinkList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_SectionLinkList), [&](auto item){
             if(item.is_null())
             {
-                m_SectionLinkList.push_back( std::shared_ptr<SectionLink>(nullptr) );
+                return std::shared_ptr<SectionLink>(nullptr);
             }
             else
             {
                 std::shared_ptr<SectionLink> newItem(new SectionLink());
                 newItem->fromJson(item);
-                m_SectionLinkList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void SectionLinkCollection::toMultipart(std::shared_ptr<MultipartFormData> multi
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_SectionLinkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_SectionLinkList.begin(), m_SectionLinkList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void SectionLinkCollection::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         if(multipart->hasContent(utility::conversions::to_string_t("SectionLinkList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SectionLinkList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SectionLinkList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_SectionLinkList), [&](auto& item) {
             if(item.is_null())
             {
-                m_SectionLinkList.push_back( std::shared_ptr<SectionLink>(nullptr) );
+                return std::shared_ptr<SectionLink>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<SectionLink> newItem(new SectionLink());
                 newItem->fromJson(item);
-                m_SectionLinkList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<SectionLink>>& SectionLinkCollection::getSectionLink
     return m_SectionLinkList;
 }
 
-void SectionLinkCollection::setSectionLinkList(std::vector<std::shared_ptr<SectionLink>> value)
+void SectionLinkCollection::setSectionLinkList(std::vector<std::shared_ptr<SectionLink>> const& value)
 {
     m_SectionLinkList = value;
     m_SectionLinkListIsSet = true;

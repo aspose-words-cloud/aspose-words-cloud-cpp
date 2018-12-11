@@ -33,7 +33,7 @@ namespace model {
 
 class PostExecuteTemplateRequest{
     public: 
-    PostExecuteTemplateRequest(
+     PostExecuteTemplateRequest(
         utility::string_t name,
                 utility::string_t data,
                 boost::optional<utility::string_t> folder,

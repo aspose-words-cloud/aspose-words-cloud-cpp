@@ -34,7 +34,7 @@ namespace model {
 
 class PostUpdateDocumentBookmarkRequest{
     public: 
-    PostUpdateDocumentBookmarkRequest(
+     PostUpdateDocumentBookmarkRequest(
         utility::string_t name,
                 std::shared_ptr<BookmarkData> bookmarkData,
                 utility::string_t bookmarkName,

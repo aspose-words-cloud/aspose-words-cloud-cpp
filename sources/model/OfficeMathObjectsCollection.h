@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<OfficeMathObject>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<OfficeMathObject>> value);
+    void setList(std::vector<std::shared_ptr<OfficeMathObject>> const& value);
 
 protected:
     std::vector<std::shared_ptr<OfficeMathObject>> m_List;

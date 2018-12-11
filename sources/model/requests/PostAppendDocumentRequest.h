@@ -34,7 +34,7 @@ namespace model {
 
 class PostAppendDocumentRequest{
     public: 
-    PostAppendDocumentRequest(
+     PostAppendDocumentRequest(
         utility::string_t name,
                 std::shared_ptr<DocumentEntryList> documentList,
                 boost::optional<utility::string_t> folder,

@@ -34,7 +34,7 @@ namespace model {
 
 class PostInsertDocumentWatermarkTextRequest{
     public: 
-    PostInsertDocumentWatermarkTextRequest(
+     PostInsertDocumentWatermarkTextRequest(
         utility::string_t name,
                 std::shared_ptr<WatermarkText> watermarkText,
                 boost::optional<utility::string_t> folder,

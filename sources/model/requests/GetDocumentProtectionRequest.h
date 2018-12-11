@@ -33,7 +33,7 @@ namespace model {
 
 class GetDocumentProtectionRequest{
     public: 
-    GetDocumentProtectionRequest(
+     GetDocumentProtectionRequest(
         utility::string_t name,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

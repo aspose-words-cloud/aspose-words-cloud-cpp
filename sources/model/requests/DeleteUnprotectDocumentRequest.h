@@ -34,7 +34,7 @@ namespace model {
 
 class DeleteUnprotectDocumentRequest{
     public: 
-    DeleteUnprotectDocumentRequest(
+     DeleteUnprotectDocumentRequest(
         utility::string_t name,
                 std::shared_ptr<ProtectionRequest> protectionRequest,
                 boost::optional<utility::string_t> folder,

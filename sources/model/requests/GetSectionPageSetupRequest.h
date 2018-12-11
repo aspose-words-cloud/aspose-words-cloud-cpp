@@ -33,7 +33,7 @@ namespace model {
 
 class GetSectionPageSetupRequest{
     public: 
-    GetSectionPageSetupRequest(
+     GetSectionPageSetupRequest(
         utility::string_t name,
                 int32_t sectionIndex,
                 boost::optional<utility::string_t> folder,

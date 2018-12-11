@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<SearchResult>>& getResultsList();
     bool resultsListIsSet() const;
     void unsetResultsList();
-    void setResultsList(std::vector<std::shared_ptr<SearchResult>> value);
+    void setResultsList(std::vector<std::shared_ptr<SearchResult>> const& value);
 
 protected:
     std::vector<std::shared_ptr<SearchResult>> m_ResultsList;

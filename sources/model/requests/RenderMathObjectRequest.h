@@ -33,7 +33,7 @@ namespace model {
 
 class RenderMathObjectRequest{
     public: 
-    RenderMathObjectRequest(
+     RenderMathObjectRequest(
         utility::string_t name,
                 utility::string_t format,
                 int32_t index,

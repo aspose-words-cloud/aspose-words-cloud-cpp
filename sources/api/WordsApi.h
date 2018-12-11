@@ -2380,7 +2380,7 @@ public:
         );
 
 public:
-    WordsApi( std::shared_ptr<ApiClient> apiClient );
+    explicit WordsApi( std::shared_ptr<ApiClient> apiClient );
     virtual ~WordsApi();
     
 protected:

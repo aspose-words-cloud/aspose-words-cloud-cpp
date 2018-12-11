@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<ParagraphLink>>& getParagraphLinkList();
     bool paragraphLinkListIsSet() const;
     void unsetParagraphLinkList();
-    void setParagraphLinkList(std::vector<std::shared_ptr<ParagraphLink>> value);
+    void setParagraphLinkList(std::vector<std::shared_ptr<ParagraphLink>> const& value);
 
 protected:
     std::vector<std::shared_ptr<ParagraphLink>> m_ParagraphLinkList;

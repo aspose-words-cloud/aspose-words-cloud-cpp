@@ -34,7 +34,7 @@ namespace model {
 
 class PostChangeDocumentProtectionRequest{
     public: 
-    PostChangeDocumentProtectionRequest(
+     PostChangeDocumentProtectionRequest(
         utility::string_t name,
                 std::shared_ptr<ProtectionRequest> protectionRequest,
                 boost::optional<utility::string_t> folder,

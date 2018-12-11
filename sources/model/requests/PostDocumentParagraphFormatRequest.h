@@ -34,7 +34,7 @@ namespace model {
 
 class PostDocumentParagraphFormatRequest{
     public: 
-    PostDocumentParagraphFormatRequest(
+     PostDocumentParagraphFormatRequest(
         utility::string_t name,
                 std::shared_ptr<ParagraphFormat> dto,
                 utility::string_t nodePath,

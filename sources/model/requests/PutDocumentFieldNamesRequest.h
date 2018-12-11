@@ -34,7 +34,7 @@ namespace model {
 
 class PutDocumentFieldNamesRequest{
     public: 
-    PutDocumentFieldNamesRequest(
+     PutDocumentFieldNamesRequest(
         std::shared_ptr<HttpContent> _template,
                 boost::optional<bool> useNonMergeFields
         );

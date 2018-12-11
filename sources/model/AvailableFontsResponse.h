@@ -68,21 +68,21 @@ public:
     std::vector<std::shared_ptr<FontInfo>>& getAdditionalFonts();
     bool additionalFontsIsSet() const;
     void unsetAdditionalFonts();
-    void setAdditionalFonts(std::vector<std::shared_ptr<FontInfo>> value);
+    void setAdditionalFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
     /// <summary>
     /// Custom user fonts (from user file storage). To use them, you should specify \&quot;fontsLocation\&quot; parameter in any request
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getCustomFonts();
     bool customFontsIsSet() const;
     void unsetCustomFonts();
-    void setCustomFonts(std::vector<std::shared_ptr<FontInfo>> value);
+    void setCustomFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
     /// <summary>
     /// The list of system fonts, availiable on the server
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getSystemFonts();
     bool systemFontsIsSet() const;
     void unsetSystemFonts();
-    void setSystemFonts(std::vector<std::shared_ptr<FontInfo>> value);
+    void setSystemFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
 
 protected:
     std::vector<std::shared_ptr<FontInfo>> m_AdditionalFonts;

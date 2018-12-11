@@ -33,7 +33,7 @@ namespace model {
 
 class GetBordersRequest{
     public: 
-    GetBordersRequest(
+     GetBordersRequest(
         utility::string_t name,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,

@@ -34,7 +34,7 @@ namespace model {
 
 class PutDocumentSaveAsTiffRequest{
     public: 
-    PutDocumentSaveAsTiffRequest(
+     PutDocumentSaveAsTiffRequest(
         utility::string_t name,
                 std::shared_ptr<TiffSaveOptionsData> saveOptions,
                 boost::optional<utility::string_t> folder,

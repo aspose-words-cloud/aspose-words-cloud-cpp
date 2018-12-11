@@ -75,7 +75,7 @@ public:
     std::vector<std::shared_ptr<FileLink>>& getPages();
     bool pagesIsSet() const;
     void unsetPages();
-    void setPages(std::vector<std::shared_ptr<FileLink>> value);
+    void setPages(std::vector<std::shared_ptr<FileLink>> const& value);
     /// <summary>
     /// Link to the file archive with pages.
     /// </summary>

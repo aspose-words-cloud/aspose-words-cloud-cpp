@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<SectionLink>>& getSectionLinkList();
     bool sectionLinkListIsSet() const;
     void unsetSectionLinkList();
-    void setSectionLinkList(std::vector<std::shared_ptr<SectionLink>> value);
+    void setSectionLinkList(std::vector<std::shared_ptr<SectionLink>> const& value);
 
 protected:
     std::vector<std::shared_ptr<SectionLink>> m_SectionLinkList;

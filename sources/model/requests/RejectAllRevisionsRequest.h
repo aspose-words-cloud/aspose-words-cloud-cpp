@@ -33,7 +33,7 @@ namespace model {
 
 class RejectAllRevisionsRequest{
     public: 
-    RejectAllRevisionsRequest(
+     RejectAllRevisionsRequest(
         utility::string_t name,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

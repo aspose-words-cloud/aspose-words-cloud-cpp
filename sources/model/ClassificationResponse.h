@@ -82,7 +82,7 @@ public:
     std::vector<std::shared_ptr<ClassificationResult>>& getBestResults();
     bool bestResultsIsSet() const;
     void unsetBestResults();
-    void setBestResults(std::vector<std::shared_ptr<ClassificationResult>> value);
+    void setBestResults(std::vector<std::shared_ptr<ClassificationResult>> const& value);
 
 protected:
     utility::string_t m_BestClassName;

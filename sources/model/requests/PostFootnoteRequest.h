@@ -34,7 +34,7 @@ namespace model {
 
 class PostFootnoteRequest{
     public: 
-    PostFootnoteRequest(
+     PostFootnoteRequest(
         utility::string_t name,
                 std::shared_ptr<Footnote> footnoteDto,
                 int32_t index,

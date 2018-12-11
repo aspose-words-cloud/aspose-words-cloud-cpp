@@ -34,7 +34,7 @@ namespace model {
 
 class PutParagraphRequest{
     public: 
-    PutParagraphRequest(
+     PutParagraphRequest(
         utility::string_t name,
                 std::shared_ptr<ParagraphInsert> paragraph,
                 boost::optional<utility::string_t> folder,

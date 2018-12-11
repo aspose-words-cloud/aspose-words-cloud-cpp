@@ -33,7 +33,7 @@ namespace model {
 
 class DeleteBorderRequest{
     public: 
-    DeleteBorderRequest(
+     DeleteBorderRequest(
         utility::string_t name,
                 utility::string_t nodePath,
                 int32_t index,

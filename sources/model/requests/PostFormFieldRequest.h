@@ -34,7 +34,7 @@ namespace model {
 
 class PostFormFieldRequest{
     public: 
-    PostFormFieldRequest(
+     PostFormFieldRequest(
         utility::string_t name,
                 std::shared_ptr<FormField> formField,
                 int32_t index,

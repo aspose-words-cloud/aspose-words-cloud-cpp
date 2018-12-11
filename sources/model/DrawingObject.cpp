@@ -91,10 +91,11 @@ web::json::value DrawingObject::toJson() const
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_RenderLinks )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_RenderLinks.begin(), m_RenderLinks.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("RenderLinks")] = web::json::value::array(jsonArray);
@@ -174,23 +175,23 @@ void DrawingObject::fromJson(web::json::value& val)
     }
     {
         m_RenderLinks.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("RenderLinks")) 
                             && !val[utility::conversions::to_string_t("RenderLinks")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("RenderLinks")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("RenderLinks")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_RenderLinks), [&](auto item){
             if(item.is_null())
             {
-                m_RenderLinks.push_back( std::shared_ptr<WordsApiLink>(nullptr) );
+                return std::shared_ptr<WordsApiLink>(nullptr);
             }
             else
             {
                 std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
                 newItem->fromJson(item);
-                m_RenderLinks.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
     if(val.has_field(utility::conversions::to_string_t("Top")))
@@ -276,10 +277,9 @@ void DrawingObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, co
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_RenderLinks )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_RenderLinks.begin(), m_RenderLinks.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -361,20 +361,19 @@ void DrawingObject::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, 
         if(multipart->hasContent(utility::conversions::to_string_t("RenderLinks")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("RenderLinks"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("RenderLinks")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_RenderLinks), [&](auto& item) {
             if(item.is_null())
             {
-                m_RenderLinks.push_back( std::shared_ptr<WordsApiLink>(nullptr) );
+                return std::shared_ptr<WordsApiLink>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
                 newItem->fromJson(item);
-                m_RenderLinks.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
     if(multipart->hasContent(utility::conversions::to_string_t("Top")))
@@ -522,7 +521,7 @@ std::vector<std::shared_ptr<WordsApiLink>>& DrawingObject::getRenderLinks()
     return m_RenderLinks;
 }
 
-void DrawingObject::setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> value)
+void DrawingObject::setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value)
 {
     m_RenderLinks = value;
     m_RenderLinksIsSet = true;

@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<Hyperlink>>& getHyperlinkList();
     bool hyperlinkListIsSet() const;
     void unsetHyperlinkList();
-    void setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> value);
+    void setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> const& value);
 
 protected:
     std::vector<std::shared_ptr<Hyperlink>> m_HyperlinkList;

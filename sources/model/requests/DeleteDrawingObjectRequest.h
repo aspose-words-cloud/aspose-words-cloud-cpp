@@ -33,7 +33,7 @@ namespace model {
 
 class DeleteDrawingObjectRequest{
     public: 
-    DeleteDrawingObjectRequest(
+     DeleteDrawingObjectRequest(
         utility::string_t name,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

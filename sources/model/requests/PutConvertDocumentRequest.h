@@ -34,7 +34,7 @@ namespace model {
 
 class PutConvertDocumentRequest{
     public: 
-    PutConvertDocumentRequest(
+     PutConvertDocumentRequest(
         std::shared_ptr<HttpContent> document,
                 utility::string_t format,
                 boost::optional<utility::string_t> storage,

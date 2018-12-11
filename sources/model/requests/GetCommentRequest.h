@@ -33,7 +33,7 @@ namespace model {
 
 class GetCommentRequest{
     public: 
-    GetCommentRequest(
+     GetCommentRequest(
         utility::string_t name,
                 int32_t commentIndex,
                 boost::optional<utility::string_t> folder,

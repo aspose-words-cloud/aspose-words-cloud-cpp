@@ -34,7 +34,7 @@ namespace model {
 
 class PutExecuteTemplateOnlineRequest{
     public: 
-    PutExecuteTemplateOnlineRequest(
+     PutExecuteTemplateOnlineRequest(
         std::shared_ptr<HttpContent> _template,
                 std::shared_ptr<HttpContent> data,
                 boost::optional<utility::string_t> cleanup,

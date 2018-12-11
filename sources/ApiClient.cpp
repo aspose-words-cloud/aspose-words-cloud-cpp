@@ -256,8 +256,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 					if (!stream.is_valid()) return utility::conversions::to_string_t("EMPTY");
 
 					auto bodyStreamBuf = stream.streambuf();
-					size_t streamSize = bodyStreamBuf.size(),
-						bufferSize = bodyStreamBuf.buffer_size(1);
+					size_t streamSize = bodyStreamBuf.size();
 					uint8_t* data;
 					if (streamSize)
 					{

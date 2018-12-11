@@ -33,7 +33,7 @@ namespace model {
 
 class GetTableCellRequest{
     public: 
-    GetTableCellRequest(
+     GetTableCellRequest(
         utility::string_t name,
                 utility::string_t tableRowPath,
                 int32_t index,

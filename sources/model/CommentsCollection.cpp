@@ -51,10 +51,11 @@ web::json::value CommentsCollection::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_CommentList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_CommentList.begin(), m_CommentList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("CommentList")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void CommentsCollection::fromJson(web::json::value& val)
 
     {
         m_CommentList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("CommentList")) 
                             && !val[utility::conversions::to_string_t("CommentList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("CommentList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("CommentList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_CommentList), [&](auto item){
             if(item.is_null())
             {
-                m_CommentList.push_back( std::shared_ptr<Comment>(nullptr) );
+                return std::shared_ptr<Comment>(nullptr);
             }
             else
             {
                 std::shared_ptr<Comment> newItem(new Comment());
                 newItem->fromJson(item);
-                m_CommentList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void CommentsCollection::toMultipart(std::shared_ptr<MultipartFormData> multipar
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_CommentList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_CommentList.begin(), m_CommentList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void CommentsCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         if(multipart->hasContent(utility::conversions::to_string_t("CommentList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("CommentList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("CommentList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CommentList), [&](auto& item) {
             if(item.is_null())
             {
-                m_CommentList.push_back( std::shared_ptr<Comment>(nullptr) );
+                return std::shared_ptr<Comment>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<Comment> newItem(new Comment());
                 newItem->fromJson(item);
-                m_CommentList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<Comment>>& CommentsCollection::getCommentList()
     return m_CommentList;
 }
 
-void CommentsCollection::setCommentList(std::vector<std::shared_ptr<Comment>> value)
+void CommentsCollection::setCommentList(std::vector<std::shared_ptr<Comment>> const& value)
 {
     m_CommentList = value;
     m_CommentListIsSet = true;

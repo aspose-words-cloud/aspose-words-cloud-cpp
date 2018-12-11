@@ -33,7 +33,7 @@ namespace model {
 
 class DeleteRunRequest{
     public: 
-    DeleteRunRequest(
+     DeleteRunRequest(
         utility::string_t name,
                 utility::string_t paragraphPath,
                 int32_t index,

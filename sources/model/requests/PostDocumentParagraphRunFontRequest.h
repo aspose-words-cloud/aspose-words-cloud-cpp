@@ -34,7 +34,7 @@ namespace model {
 
 class PostDocumentParagraphRunFontRequest{
     public: 
-    PostDocumentParagraphRunFontRequest(
+     PostDocumentParagraphRunFontRequest(
         utility::string_t name,
                 std::shared_ptr<Font> fontDto,
                 utility::string_t paragraphPath,

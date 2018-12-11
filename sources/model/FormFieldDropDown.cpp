@@ -53,10 +53,11 @@ web::json::value FormFieldDropDown::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_DropDownItems )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("DropDownItems")] = web::json::value::array(jsonArray);
@@ -76,14 +77,14 @@ void FormFieldDropDown::fromJson(web::json::value& val)
 
     {
         m_DropDownItems.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("DropDownItems")) 
                             && !val[utility::conversions::to_string_t("DropDownItems")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("DropDownItems")].as_array() )
-        {
-            m_DropDownItems.push_back(ModelBase::stringFromJson(item));
-        }
+        auto arr = val[utility::conversions::to_string_t("DropDownItems")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_DropDownItems), [&](auto item){
+            return ModelBase::stringFromJson(item);
+        });
+
         }
     }
     if(val.has_field(utility::conversions::to_string_t("DropDownSelectedIndex")))
@@ -160,10 +161,9 @@ void FormFieldDropDown::toMultipart(std::shared_ptr<MultipartFormData> multipart
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_DropDownItems )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -238,11 +238,10 @@ void FormFieldDropDown::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         if(multipart->hasContent(utility::conversions::to_string_t("DropDownItems")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DropDownItems"))));
-        for( auto& item : jsonArray.as_array() )
-        {
-            m_DropDownItems.push_back(ModelBase::stringFromJson(item));
-        }
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DropDownItems")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DropDownItems), [&](auto& item) {
+            return ModelBase::stringFromJson(item);
+        });
         }
     }
     if(multipart->hasContent(utility::conversions::to_string_t("DropDownSelectedIndex")))
@@ -256,7 +255,7 @@ std::vector<utility::string_t>& FormFieldDropDown::getDropDownItems()
     return m_DropDownItems;
 }
 
-void FormFieldDropDown::setDropDownItems(std::vector<utility::string_t> value)
+void FormFieldDropDown::setDropDownItems(std::vector<utility::string_t> const& value)
 {
     m_DropDownItems = value;
     m_DropDownItemsIsSet = true;

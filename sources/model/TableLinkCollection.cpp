@@ -51,10 +51,11 @@ web::json::value TableLinkCollection::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_TableLinkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_TableLinkList.begin(), m_TableLinkList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("TableLinkList")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void TableLinkCollection::fromJson(web::json::value& val)
 
     {
         m_TableLinkList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("TableLinkList")) 
                             && !val[utility::conversions::to_string_t("TableLinkList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("TableLinkList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("TableLinkList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableLinkList), [&](auto item){
             if(item.is_null())
             {
-                m_TableLinkList.push_back( std::shared_ptr<TableLink>(nullptr) );
+                return std::shared_ptr<TableLink>(nullptr);
             }
             else
             {
                 std::shared_ptr<TableLink> newItem(new TableLink());
                 newItem->fromJson(item);
-                m_TableLinkList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void TableLinkCollection::toMultipart(std::shared_ptr<MultipartFormData> multipa
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_TableLinkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_TableLinkList.begin(), m_TableLinkList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void TableLinkCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multi
         if(multipart->hasContent(utility::conversions::to_string_t("TableLinkList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TableLinkList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TableLinkList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableLinkList), [&](auto& item) {
             if(item.is_null())
             {
-                m_TableLinkList.push_back( std::shared_ptr<TableLink>(nullptr) );
+                return std::shared_ptr<TableLink>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<TableLink> newItem(new TableLink());
                 newItem->fromJson(item);
-                m_TableLinkList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<TableLink>>& TableLinkCollection::getTableLinkList()
     return m_TableLinkList;
 }
 
-void TableLinkCollection::setTableLinkList(std::vector<std::shared_ptr<TableLink>> value)
+void TableLinkCollection::setTableLinkList(std::vector<std::shared_ptr<TableLink>> const& value)
 {
     m_TableLinkList = value;
     m_TableLinkListIsSet = true;

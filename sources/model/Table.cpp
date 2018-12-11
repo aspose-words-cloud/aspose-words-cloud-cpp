@@ -56,10 +56,11 @@ web::json::value Table::toJson() const
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_TableRowList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("TableRowList")] = web::json::value::array(jsonArray);
@@ -85,23 +86,23 @@ void Table::fromJson(web::json::value& val)
     }
     {
         m_TableRowList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("TableRowList")) 
                             && !val[utility::conversions::to_string_t("TableRowList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("TableRowList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("TableRowList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableRowList), [&](auto item){
             if(item.is_null())
             {
-                m_TableRowList.push_back( std::shared_ptr<TableRow>(nullptr) );
+                return std::shared_ptr<TableRow>(nullptr);
             }
             else
             {
                 std::shared_ptr<TableRow> newItem(new TableRow());
                 newItem->fromJson(item);
-                m_TableRowList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -137,10 +138,9 @@ void Table::toMultipart(std::shared_ptr<MultipartFormData> multipart, const util
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_TableRowList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -184,20 +184,19 @@ void Table::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const ut
         if(multipart->hasContent(utility::conversions::to_string_t("TableRowList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TableRowList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TableRowList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableRowList), [&](auto& item) {
             if(item.is_null())
             {
-                m_TableRowList.push_back( std::shared_ptr<TableRow>(nullptr) );
+                return std::shared_ptr<TableRow>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<TableRow> newItem(new TableRow());
                 newItem->fromJson(item);
-                m_TableRowList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -228,7 +227,7 @@ std::vector<std::shared_ptr<TableRow>>& Table::getTableRowList()
     return m_TableRowList;
 }
 
-void Table::setTableRowList(std::vector<std::shared_ptr<TableRow>> value)
+void Table::setTableRowList(std::vector<std::shared_ptr<TableRow>> const& value)
 {
     m_TableRowList = value;
     m_TableRowListIsSet = true;

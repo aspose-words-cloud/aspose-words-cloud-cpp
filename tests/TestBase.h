@@ -49,7 +49,7 @@ protected:
 	utility::string_t get_executable_path() {
 #if defined (__WIN32__) || defined (_WIN32)
 		char buffer[MAX_PATH];
-		size_t pathLength = GetModuleFileName(nullptr, buffer, MAX_PATH);
+		GetModuleFileName(nullptr, buffer, MAX_PATH);
 		utility::string_t result = STCONVERT(buffer);
 		auto resultParts = split(result);
 		resultParts.pop_back();
@@ -100,9 +100,9 @@ protected:
 
 #elif defined(__unix__)
 		DIR *dir;
-		struct dirent *ent;
 		if ((dir = opendir("c:\\src\\")) != NULL) {
 			/* print all the files and directories within directory */
+			struct dirent *ent;
 			while ((ent = readdir(dir)) != NULL) {
 				files.push_back(dir + STCONVERT("\\") + STCONVERT(ent->d_name));
 			}

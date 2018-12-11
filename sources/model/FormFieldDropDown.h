@@ -68,7 +68,7 @@ public:
     std::vector<utility::string_t>& getDropDownItems();
     bool dropDownItemsIsSet() const;
     void unsetDropDownItems();
-    void setDropDownItems(std::vector<utility::string_t> value);
+    void setDropDownItems(std::vector<utility::string_t> const& value);
     /// <summary>
     /// Gets or sets the index specifying the currently selected item in a dropdown form field.
     /// </summary>

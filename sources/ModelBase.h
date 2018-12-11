@@ -107,9 +107,10 @@ public:
 template<class T>
 web::json::value ModelBase::toJson(const std::vector<T>& value) {
     std::vector<web::json::value> ret;
-    for (auto& x : value) {
-        ret.push_back(toJson(x));
-    }
+    std::transform(value.begin(), value.end(), std::back_inserter(ret),
+    [&](auto x){
+        return toJson(x);
+    });
 
     return web::json::value::array(ret);
 }

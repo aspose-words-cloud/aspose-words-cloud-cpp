@@ -50,7 +50,7 @@ using namespace io::swagger::client::model;
 class  ApiClient
 {
 public:
-    ApiClient( std::shared_ptr<ApiConfiguration> configuration = nullptr );
+    explicit ApiClient( std::shared_ptr<ApiConfiguration> configuration = nullptr );
     virtual ~ApiClient();
 
     std::shared_ptr<ApiConfiguration> getConfiguration() const;

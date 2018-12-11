@@ -91,7 +91,7 @@ public:
     std::vector<std::shared_ptr<PageStatData>>& getPageStatData();
     bool pageStatDataIsSet() const;
     void unsetPageStatData();
-    void setPageStatData(std::vector<std::shared_ptr<PageStatData>> value);
+    void setPageStatData(std::vector<std::shared_ptr<PageStatData>> const& value);
 
 protected:
     int32_t m_WordCount;

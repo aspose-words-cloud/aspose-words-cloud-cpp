@@ -34,7 +34,7 @@ namespace model {
 
 class UpdateTablePropertiesRequest{
     public: 
-    UpdateTablePropertiesRequest(
+     UpdateTablePropertiesRequest(
         utility::string_t name,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

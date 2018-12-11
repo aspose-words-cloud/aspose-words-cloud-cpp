@@ -51,10 +51,11 @@ web::json::value Bookmarks::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_BookmarkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_BookmarkList.begin(), m_BookmarkList.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("BookmarkList")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void Bookmarks::fromJson(web::json::value& val)
 
     {
         m_BookmarkList.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("BookmarkList")) 
                             && !val[utility::conversions::to_string_t("BookmarkList")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("BookmarkList")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("BookmarkList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarkList), [&](auto item){
             if(item.is_null())
             {
-                m_BookmarkList.push_back( std::shared_ptr<Bookmark>(nullptr) );
+                return std::shared_ptr<Bookmark>(nullptr);
             }
             else
             {
                 std::shared_ptr<Bookmark> newItem(new Bookmark());
                 newItem->fromJson(item);
-                m_BookmarkList.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void Bookmarks::toMultipart(std::shared_ptr<MultipartFormData> multipart, const 
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_BookmarkList )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_BookmarkList.begin(), m_BookmarkList.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void Bookmarks::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, cons
         if(multipart->hasContent(utility::conversions::to_string_t("BookmarkList")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BookmarkList"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BookmarkList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BookmarkList), [&](auto& item) {
             if(item.is_null())
             {
-                m_BookmarkList.push_back( std::shared_ptr<Bookmark>(nullptr) );
+                return std::shared_ptr<Bookmark>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<Bookmark> newItem(new Bookmark());
                 newItem->fromJson(item);
-                m_BookmarkList.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<Bookmark>>& Bookmarks::getBookmarkList()
     return m_BookmarkList;
 }
 
-void Bookmarks::setBookmarkList(std::vector<std::shared_ptr<Bookmark>> value)
+void Bookmarks::setBookmarkList(std::vector<std::shared_ptr<Bookmark>> const& value)
 {
     m_BookmarkList = value;
     m_BookmarkListIsSet = true;

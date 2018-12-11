@@ -34,7 +34,7 @@ namespace model {
 
 class UpdateTableCellFormatRequest{
     public: 
-    UpdateTableCellFormatRequest(
+     UpdateTableCellFormatRequest(
         utility::string_t name,
                 utility::string_t tableRowPath,
                 int32_t index,

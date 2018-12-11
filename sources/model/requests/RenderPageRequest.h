@@ -33,7 +33,7 @@ namespace model {
 
 class RenderPageRequest{
     public: 
-    RenderPageRequest(
+     RenderPageRequest(
         utility::string_t name,
                 int32_t pageIndex,
                 utility::string_t format,

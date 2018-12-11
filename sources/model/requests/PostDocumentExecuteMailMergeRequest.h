@@ -33,7 +33,7 @@ namespace model {
 
 class PostDocumentExecuteMailMergeRequest{
     public: 
-    PostDocumentExecuteMailMergeRequest(
+     PostDocumentExecuteMailMergeRequest(
         utility::string_t name,
                 boost::optional<utility::string_t> data,
                 boost::optional<utility::string_t> folder,

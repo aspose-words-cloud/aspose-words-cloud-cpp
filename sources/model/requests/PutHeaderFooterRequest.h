@@ -33,7 +33,7 @@ namespace model {
 
 class PutHeaderFooterRequest{
     public: 
-    PutHeaderFooterRequest(
+     PutHeaderFooterRequest(
         utility::string_t name,
                 utility::string_t headerFooterType,
                 boost::optional<utility::string_t> folder,

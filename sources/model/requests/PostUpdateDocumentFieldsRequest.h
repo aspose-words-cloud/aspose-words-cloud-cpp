@@ -33,7 +33,7 @@ namespace model {
 
 class PostUpdateDocumentFieldsRequest{
     public: 
-    PostUpdateDocumentFieldsRequest(
+     PostUpdateDocumentFieldsRequest(
         utility::string_t name,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

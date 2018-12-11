@@ -51,10 +51,11 @@ web::json::value BordersCollection::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_List )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
+			[&](auto item) {
+			return ModelBase::toJson(item);
+		});
+        
         if(jsonArray.size() > 0)
         {
             val[utility::conversions::to_string_t("List")] = web::json::value::array(jsonArray);
@@ -70,23 +71,23 @@ void BordersCollection::fromJson(web::json::value& val)
 
     {
         m_List.clear();
-        std::vector<web::json::value> jsonArray;
         if(val.has_field(utility::conversions::to_string_t("List")) 
                             && !val[utility::conversions::to_string_t("List")].is_null())
         {
-        for( auto& item : val[utility::conversions::to_string_t("List")].as_array() )
-        {
+        auto arr = val[utility::conversions::to_string_t("List")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](auto item){
             if(item.is_null())
             {
-                m_List.push_back( std::shared_ptr<Border>(nullptr) );
+                return std::shared_ptr<Border>(nullptr);
             }
             else
             {
                 std::shared_ptr<Border> newItem(new Border());
                 newItem->fromJson(item);
-                m_List.push_back( newItem );
+                return newItem;
             }
-        }
+        });
+
         }
     }
 }
@@ -109,10 +110,9 @@ void BordersCollection::toMultipart(std::shared_ptr<MultipartFormData> multipart
     }
     {
         std::vector<web::json::value> jsonArray;
-        for( auto& item : m_List )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](auto& item){
+            return ModelBase::toJson(item);
+        });
         
         if(jsonArray.size() > 0)
         {
@@ -143,20 +143,19 @@ void BordersCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         if(multipart->hasContent(utility::conversions::to_string_t("List")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("List"))));
-        for( auto& item : jsonArray.as_array() )
-        {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("List")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](auto& item) {
             if(item.is_null())
             {
-                m_List.push_back( std::shared_ptr<Border>(nullptr) );
+                return std::shared_ptr<Border>(nullptr) ;
             }
             else
             {
                 std::shared_ptr<Border> newItem(new Border());
                 newItem->fromJson(item);
-                m_List.push_back( newItem );
+                return newItem ;
             }
-        }
+        });
         }
     }
 }
@@ -166,7 +165,7 @@ std::vector<std::shared_ptr<Border>>& BordersCollection::getList()
     return m_List;
 }
 
-void BordersCollection::setList(std::vector<std::shared_ptr<Border>> value)
+void BordersCollection::setList(std::vector<std::shared_ptr<Border>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

@@ -33,7 +33,7 @@ namespace model {
 
 class DeleteDocumentPropertyRequest{
     public: 
-    DeleteDocumentPropertyRequest(
+     DeleteDocumentPropertyRequest(
         utility::string_t name,
                 utility::string_t propertyName,
                 boost::optional<utility::string_t> folder,

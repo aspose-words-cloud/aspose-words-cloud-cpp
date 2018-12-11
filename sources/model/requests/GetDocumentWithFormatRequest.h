@@ -33,7 +33,7 @@ namespace model {
 
 class GetDocumentWithFormatRequest{
     public: 
-    GetDocumentWithFormatRequest(
+     GetDocumentWithFormatRequest(
         utility::string_t name,
                 utility::string_t format,
                 boost::optional<utility::string_t> folder,

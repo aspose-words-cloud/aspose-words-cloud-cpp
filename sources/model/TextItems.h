@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<TextItem>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<TextItem>> value);
+    void setList(std::vector<std::shared_ptr<TextItem>> const& value);
 
 protected:
     std::vector<std::shared_ptr<TextItem>> m_List;

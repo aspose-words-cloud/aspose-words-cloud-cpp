@@ -34,7 +34,7 @@ namespace model {
 
 class PostCommentRequest{
     public: 
-    PostCommentRequest(
+     PostCommentRequest(
         utility::string_t name,
                 int32_t commentIndex,
                 std::shared_ptr<Comment> comment,

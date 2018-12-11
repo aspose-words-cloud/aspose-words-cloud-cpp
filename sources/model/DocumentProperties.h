@@ -68,7 +68,7 @@ public:
     std::vector<std::shared_ptr<DocumentProperty>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(std::vector<std::shared_ptr<DocumentProperty>> value);
+    void setList(std::vector<std::shared_ptr<DocumentProperty>> const& value);
 
 protected:
     std::vector<std::shared_ptr<DocumentProperty>> m_List;
