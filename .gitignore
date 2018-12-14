@@ -38,3 +38,6 @@ install/*
 CppBuild-cppcheck-build-dir/*
 *.cppcheck
 TODO
+
+checkResult.xml
+
