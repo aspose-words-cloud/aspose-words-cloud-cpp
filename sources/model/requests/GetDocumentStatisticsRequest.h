@@ -44,15 +44,38 @@ class GetDocumentStatisticsRequest{
                 boost::optional<bool> includeTextInShapes
         );
 
-    public:
-        utility::string_t name;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<bool> includeComments;
-        boost::optional<bool> includeFootnotes;
-        boost::optional<bool> includeTextInShapes;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<bool> getIncludeComments() const;
+        void setIncludeComments(boost::optional<bool> includeComments);
+
+        boost::optional<bool> getIncludeFootnotes() const;
+        void setIncludeFootnotes(boost::optional<bool> includeFootnotes);
+
+        boost::optional<bool> getIncludeTextInShapes() const;
+        void setIncludeTextInShapes(boost::optional<bool> includeTextInShapes);
+    private:
+        utility::string_t m_name;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<bool> m_includeComments;
+        boost::optional<bool> m_includeFootnotes;
+        boost::optional<bool> m_includeTextInShapes;
 };
 
 }

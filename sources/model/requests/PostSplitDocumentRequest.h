@@ -47,18 +47,50 @@ class PostSplitDocumentRequest{
                 boost::optional<utility::string_t> fontsLocation
         );
 
-    public:
-        utility::string_t name;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
-        boost::optional<utility::string_t> format;
-        boost::optional<int32_t> from;
-        boost::optional<int32_t> to;
-        boost::optional<bool> zipOutput;
-        boost::optional<utility::string_t> fontsLocation;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getFormat() const;
+        void setFormat(boost::optional<utility::string_t> format);
+
+        boost::optional<int32_t> getFrom() const;
+        void setFrom(boost::optional<int32_t> from);
+
+        boost::optional<int32_t> getTo() const;
+        void setTo(boost::optional<int32_t> to);
+
+        boost::optional<bool> getZipOutput() const;
+        void setZipOutput(boost::optional<bool> zipOutput);
+
+        boost::optional<utility::string_t> getFontsLocation() const;
+        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+    private:
+        utility::string_t m_name;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_format;
+        boost::optional<int32_t> m_from;
+        boost::optional<int32_t> m_to;
+        boost::optional<bool> m_zipOutput;
+        boost::optional<utility::string_t> m_fontsLocation;
 };
 
 }

@@ -35,15 +35,66 @@ GetTableRowRequest::GetTableRowRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_tablePath(tablePath),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->tablePath = tablePath;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetTableRowRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetTableRowRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t GetTableRowRequest::getTablePath() const
+        {
+            return m_tablePath;
+        }
+        void GetTableRowRequest::setTablePath(utility::string_t tablePath){
+            m_tablePath = tablePath;
+        }
+        int32_t GetTableRowRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void GetTableRowRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> GetTableRowRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetTableRowRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetTableRowRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetTableRowRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetTableRowRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetTableRowRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetTableRowRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetTableRowRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

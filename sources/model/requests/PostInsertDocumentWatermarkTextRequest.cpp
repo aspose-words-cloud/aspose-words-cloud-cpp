@@ -37,17 +37,82 @@ PostInsertDocumentWatermarkTextRequest::PostInsertDocumentWatermarkTextRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_watermarkText(watermarkText),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->watermarkText = watermarkText;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t PostInsertDocumentWatermarkTextRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<WatermarkText> PostInsertDocumentWatermarkTextRequest::getWatermarkText() const
+        {
+            return m_watermarkText;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setWatermarkText(std::shared_ptr<WatermarkText> watermarkText){
+            m_watermarkText = watermarkText;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkTextRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PostInsertDocumentWatermarkTextRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

@@ -35,15 +35,66 @@ PostCompareDocumentRequest::PostCompareDocumentRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName
-        )
+        ) : 
+            m_name(name),
+            m_compareData(compareData),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName)
         {
-            this->name = name;
-            this->compareData = compareData;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
+            
+        }
+
+        utility::string_t PostCompareDocumentRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostCompareDocumentRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<CompareData> PostCompareDocumentRequest::getCompareData() const
+        {
+            return m_compareData;
+        }
+        void PostCompareDocumentRequest::setCompareData(std::shared_ptr<CompareData> compareData){
+            m_compareData = compareData;
+        }
+        boost::optional<utility::string_t> PostCompareDocumentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostCompareDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostCompareDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostCompareDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostCompareDocumentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostCompareDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostCompareDocumentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostCompareDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostCompareDocumentRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostCompareDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
         }
 
 }

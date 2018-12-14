@@ -43,13 +43,30 @@ class PutConvertDocumentRequest{
                 boost::optional<utility::string_t> fontsLocation
         );
 
-    public:
-        std::shared_ptr<HttpContent> document;
-        utility::string_t format;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> outPath;
-        boost::optional<utility::string_t> documentFileName;
-        boost::optional<utility::string_t> fontsLocation;
+        std::shared_ptr<HttpContent> getDocument() const;
+        void setDocument(std::shared_ptr<HttpContent> document);
+
+        utility::string_t getFormat() const;
+        void setFormat(utility::string_t format);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getOutPath() const;
+        void setOutPath(boost::optional<utility::string_t> outPath);
+
+        boost::optional<utility::string_t> getDocumentFileName() const;
+        void setDocumentFileName(boost::optional<utility::string_t> documentFileName);
+
+        boost::optional<utility::string_t> getFontsLocation() const;
+        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+    private:
+        std::shared_ptr<HttpContent> m_document;
+        utility::string_t m_format;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_outPath;
+        boost::optional<utility::string_t> m_documentFileName;
+        boost::optional<utility::string_t> m_fontsLocation;
 };
 
 }

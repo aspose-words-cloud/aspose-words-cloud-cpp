@@ -35,15 +35,66 @@ ClassifyDocumentRequest::ClassifyDocumentRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> bestClassesCount,
                 boost::optional<utility::string_t> taxonomy
-        )
+        ) : 
+            m_documentName(documentName),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_bestClassesCount(bestClassesCount),
+            m_taxonomy(taxonomy)
         {
-            this->documentName = documentName;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->bestClassesCount = bestClassesCount;
-            this->taxonomy = taxonomy;
+            
+        }
+
+        utility::string_t ClassifyDocumentRequest::getDocumentName() const
+        {
+            return m_documentName;
+        }
+        void ClassifyDocumentRequest::setDocumentName(utility::string_t documentName){
+            m_documentName = documentName;
+        }
+        boost::optional<utility::string_t> ClassifyDocumentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void ClassifyDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> ClassifyDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void ClassifyDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> ClassifyDocumentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void ClassifyDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> ClassifyDocumentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void ClassifyDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> ClassifyDocumentRequest::getBestClassesCount() const
+        {
+            return m_bestClassesCount;
+        }
+        void ClassifyDocumentRequest::setBestClassesCount(boost::optional<utility::string_t> bestClassesCount){
+            m_bestClassesCount = bestClassesCount;
+        }
+        boost::optional<utility::string_t> ClassifyDocumentRequest::getTaxonomy() const
+        {
+            return m_taxonomy;
+        }
+        void ClassifyDocumentRequest::setTaxonomy(boost::optional<utility::string_t> taxonomy){
+            m_taxonomy = taxonomy;
         }
 
 }

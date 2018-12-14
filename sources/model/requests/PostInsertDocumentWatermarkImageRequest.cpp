@@ -39,19 +39,98 @@ PostInsertDocumentWatermarkImageRequest::PostInsertDocumentWatermarkImageRequest
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<double> rotationAngle,
                 boost::optional<utility::string_t> image
-        )
+        ) : 
+            m_name(name),
+            m_imageFile(imageFile),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_rotationAngle(rotationAngle),
+            m_image(image)
         {
-            this->name = name;
-            this->imageFile = imageFile;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->rotationAngle = rotationAngle;
-            this->image = image;
+            
+        }
+
+        utility::string_t PostInsertDocumentWatermarkImageRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<std::shared_ptr<HttpContent>> PostInsertDocumentWatermarkImageRequest::getImageFile() const
+        {
+            return m_imageFile;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setImageFile(boost::optional<std::shared_ptr<HttpContent>> imageFile){
+            m_imageFile = imageFile;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<double> PostInsertDocumentWatermarkImageRequest::getRotationAngle() const
+        {
+            return m_rotationAngle;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setRotationAngle(boost::optional<double> rotationAngle){
+            m_rotationAngle = rotationAngle;
+        }
+        boost::optional<utility::string_t> PostInsertDocumentWatermarkImageRequest::getImage() const
+        {
+            return m_image;
+        }
+        void PostInsertDocumentWatermarkImageRequest::setImage(boost::optional<utility::string_t> image){
+            m_image = image;
         }
 
 }

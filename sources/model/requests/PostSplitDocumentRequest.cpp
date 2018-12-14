@@ -39,19 +39,98 @@ PostSplitDocumentRequest::PostSplitDocumentRequest(
                 boost::optional<int32_t> to,
                 boost::optional<bool> zipOutput,
                 boost::optional<utility::string_t> fontsLocation
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_format(format),
+            m_from(from),
+            m_to(to),
+            m_zipOutput(zipOutput),
+            m_fontsLocation(fontsLocation)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->format = format;
-            this->from = from;
-            this->to = to;
-            this->zipOutput = zipOutput;
-            this->fontsLocation = fontsLocation;
+            
+        }
+
+        utility::string_t PostSplitDocumentRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostSplitDocumentRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostSplitDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostSplitDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostSplitDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostSplitDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostSplitDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getFormat() const
+        {
+            return m_format;
+        }
+        void PostSplitDocumentRequest::setFormat(boost::optional<utility::string_t> format){
+            m_format = format;
+        }
+        boost::optional<int32_t> PostSplitDocumentRequest::getFrom() const
+        {
+            return m_from;
+        }
+        void PostSplitDocumentRequest::setFrom(boost::optional<int32_t> from){
+            m_from = from;
+        }
+        boost::optional<int32_t> PostSplitDocumentRequest::getTo() const
+        {
+            return m_to;
+        }
+        void PostSplitDocumentRequest::setTo(boost::optional<int32_t> to){
+            m_to = to;
+        }
+        boost::optional<bool> PostSplitDocumentRequest::getZipOutput() const
+        {
+            return m_zipOutput;
+        }
+        void PostSplitDocumentRequest::setZipOutput(boost::optional<bool> zipOutput){
+            m_zipOutput = zipOutput;
+        }
+        boost::optional<utility::string_t> PostSplitDocumentRequest::getFontsLocation() const
+        {
+            return m_fontsLocation;
+        }
+        void PostSplitDocumentRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = fontsLocation;
         }
 
 }

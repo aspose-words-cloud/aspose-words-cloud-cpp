@@ -34,14 +34,58 @@ GetDocumentParagraphRunsRequest::GetDocumentParagraphRunsRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_paragraphPath(paragraphPath),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->paragraphPath = paragraphPath;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetDocumentParagraphRunsRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentParagraphRunsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t GetDocumentParagraphRunsRequest::getParagraphPath() const
+        {
+            return m_paragraphPath;
+        }
+        void GetDocumentParagraphRunsRequest::setParagraphPath(utility::string_t paragraphPath){
+            m_paragraphPath = paragraphPath;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentParagraphRunsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentParagraphRunsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentParagraphRunsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentParagraphRunsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

@@ -37,17 +37,82 @@ DeleteBordersRequest::DeleteBordersRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_nodePath(nodePath),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->nodePath = nodePath;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t DeleteBordersRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteBordersRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t DeleteBordersRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void DeleteBordersRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = nodePath;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteBordersRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteBordersRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteBordersRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteBordersRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteBordersRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteBordersRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteBordersRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteBordersRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

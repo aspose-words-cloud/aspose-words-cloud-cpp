@@ -46,17 +46,46 @@ class PostExecuteTemplateRequest{
                 boost::optional<utility::string_t> destFileName
         );
 
-    public:
-        utility::string_t name;
-        utility::string_t data;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> cleanup;
-        boost::optional<bool> useWholeParagraphAsRegion;
-        boost::optional<bool> withRegions;
-        boost::optional<utility::string_t> destFileName;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        utility::string_t getData() const;
+        void setData(utility::string_t data);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getCleanup() const;
+        void setCleanup(boost::optional<utility::string_t> cleanup);
+
+        boost::optional<bool> getUseWholeParagraphAsRegion() const;
+        void setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion);
+
+        boost::optional<bool> getWithRegions() const;
+        void setWithRegions(boost::optional<bool> withRegions);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+    private:
+        utility::string_t m_name;
+        utility::string_t m_data;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_cleanup;
+        boost::optional<bool> m_useWholeParagraphAsRegion;
+        boost::optional<bool> m_withRegions;
+        boost::optional<utility::string_t> m_destFileName;
 };
 
 }

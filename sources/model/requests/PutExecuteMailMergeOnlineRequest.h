@@ -42,12 +42,26 @@ class PutExecuteMailMergeOnlineRequest{
                 boost::optional<utility::string_t> documentFileName
         );
 
-    public:
-        std::shared_ptr<HttpContent> _template;
-        std::shared_ptr<HttpContent> data;
-        boost::optional<bool> withRegions;
-        boost::optional<utility::string_t> cleanup;
-        boost::optional<utility::string_t> documentFileName;
+        std::shared_ptr<HttpContent> getTemplate() const;
+        void setTemplate(std::shared_ptr<HttpContent> _template);
+
+        std::shared_ptr<HttpContent> getData() const;
+        void setData(std::shared_ptr<HttpContent> data);
+
+        boost::optional<bool> getWithRegions() const;
+        void setWithRegions(boost::optional<bool> withRegions);
+
+        boost::optional<utility::string_t> getCleanup() const;
+        void setCleanup(boost::optional<utility::string_t> cleanup);
+
+        boost::optional<utility::string_t> getDocumentFileName() const;
+        void setDocumentFileName(boost::optional<utility::string_t> documentFileName);
+    private:
+        std::shared_ptr<HttpContent> m__template;
+        std::shared_ptr<HttpContent> m_data;
+        boost::optional<bool> m_withRegions;
+        boost::optional<utility::string_t> m_cleanup;
+        boost::optional<utility::string_t> m_documentFileName;
 };
 
 }

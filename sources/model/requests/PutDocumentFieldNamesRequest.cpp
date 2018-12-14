@@ -30,10 +30,26 @@ namespace model{
 PutDocumentFieldNamesRequest::PutDocumentFieldNamesRequest(
         std::shared_ptr<HttpContent> _template,
                 boost::optional<bool> useNonMergeFields
-        )
+        ) : 
+            m__template(_template),
+            m_useNonMergeFields(useNonMergeFields)
         {
-            this->_template = _template;
-            this->useNonMergeFields = useNonMergeFields;
+            
+        }
+
+        std::shared_ptr<HttpContent> PutDocumentFieldNamesRequest::getTemplate() const
+        {
+            return m__template;
+        }
+        void PutDocumentFieldNamesRequest::setTemplate(std::shared_ptr<HttpContent> _template){
+            m__template = _template;
+        }
+        boost::optional<bool> PutDocumentFieldNamesRequest::getUseNonMergeFields() const
+        {
+            return m_useNonMergeFields;
+        }
+        void PutDocumentFieldNamesRequest::setUseNonMergeFields(boost::optional<bool> useNonMergeFields){
+            m_useNonMergeFields = useNonMergeFields;
         }
 
 }

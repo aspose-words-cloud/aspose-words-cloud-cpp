@@ -38,18 +38,90 @@ DeleteTableRequest::DeleteTableRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t DeleteTableRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteTableRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t DeleteTableRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void DeleteTableRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteTableRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteTableRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteTableRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteTableRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteTableRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteTableRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteTableRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> DeleteTableRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void DeleteTableRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

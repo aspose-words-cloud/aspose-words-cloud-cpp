@@ -30,10 +30,26 @@ namespace model{
 PostLoadWebDocumentRequest::PostLoadWebDocumentRequest(
         std::shared_ptr<LoadWebDocumentData> data,
                 boost::optional<utility::string_t> storage
-        )
+        ) : 
+            m_data(data),
+            m_storage(storage)
         {
-            this->data = data;
-            this->storage = storage;
+            
+        }
+
+        std::shared_ptr<LoadWebDocumentData> PostLoadWebDocumentRequest::getData() const
+        {
+            return m_data;
+        }
+        void PostLoadWebDocumentRequest::setData(std::shared_ptr<LoadWebDocumentData> data){
+            m_data = data;
+        }
+        boost::optional<utility::string_t> PostLoadWebDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostLoadWebDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
         }
 
 }

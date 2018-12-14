@@ -39,9 +39,14 @@ class PutDocumentFieldNamesRequest{
                 boost::optional<bool> useNonMergeFields
         );
 
-    public:
-        std::shared_ptr<HttpContent> _template;
-        boost::optional<bool> useNonMergeFields;
+        std::shared_ptr<HttpContent> getTemplate() const;
+        void setTemplate(std::shared_ptr<HttpContent> _template);
+
+        boost::optional<bool> getUseNonMergeFields() const;
+        void setUseNonMergeFields(boost::optional<bool> useNonMergeFields);
+    private:
+        std::shared_ptr<HttpContent> m__template;
+        boost::optional<bool> m_useNonMergeFields;
 };
 
 }

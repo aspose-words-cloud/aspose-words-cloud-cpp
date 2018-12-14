@@ -44,14 +44,34 @@ class PostChangeDocumentProtectionRequest{
                 boost::optional<utility::string_t> destFileName
         );
 
-    public:
-        utility::string_t name;
-        std::shared_ptr<ProtectionRequest> protectionRequest;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        std::shared_ptr<ProtectionRequest> getProtectionRequest() const;
+        void setProtectionRequest(std::shared_ptr<ProtectionRequest> protectionRequest);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+    private:
+        utility::string_t m_name;
+        std::shared_ptr<ProtectionRequest> m_protectionRequest;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
 };
 
 }

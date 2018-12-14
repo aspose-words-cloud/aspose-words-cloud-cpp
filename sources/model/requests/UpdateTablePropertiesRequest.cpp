@@ -39,19 +39,98 @@ UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<std::shared_ptr<TableProperties>> properties,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_properties(properties),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->properties = properties;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t UpdateTablePropertiesRequest::getName() const
+        {
+            return m_name;
+        }
+        void UpdateTablePropertiesRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t UpdateTablePropertiesRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void UpdateTablePropertiesRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void UpdateTablePropertiesRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void UpdateTablePropertiesRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void UpdateTablePropertiesRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void UpdateTablePropertiesRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void UpdateTablePropertiesRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void UpdateTablePropertiesRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void UpdateTablePropertiesRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<std::shared_ptr<TableProperties>> UpdateTablePropertiesRequest::getProperties() const
+        {
+            return m_properties;
+        }
+        void UpdateTablePropertiesRequest::setProperties(boost::optional<std::shared_ptr<TableProperties>> properties){
+            m_properties = properties;
+        }
+        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void UpdateTablePropertiesRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

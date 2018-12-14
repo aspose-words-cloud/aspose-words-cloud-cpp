@@ -39,19 +39,98 @@ PutFormFieldRequest::PutFormFieldRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath,
                 boost::optional<utility::string_t> insertBeforeNode
-        )
+        ) : 
+            m_name(name),
+            m_formField(formField),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_nodePath(nodePath),
+            m_insertBeforeNode(insertBeforeNode)
         {
-            this->name = name;
-            this->formField = formField;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->nodePath = nodePath;
-            this->insertBeforeNode = insertBeforeNode;
+            
+        }
+
+        utility::string_t PutFormFieldRequest::getName() const
+        {
+            return m_name;
+        }
+        void PutFormFieldRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<FormField> PutFormFieldRequest::getFormField() const
+        {
+            return m_formField;
+        }
+        void PutFormFieldRequest::setFormField(std::shared_ptr<FormField> formField){
+            m_formField = formField;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PutFormFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PutFormFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PutFormFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PutFormFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PutFormFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PutFormFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PutFormFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void PutFormFieldRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
+        }
+        boost::optional<utility::string_t> PutFormFieldRequest::getInsertBeforeNode() const
+        {
+            return m_insertBeforeNode;
+        }
+        void PutFormFieldRequest::setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode){
+            m_insertBeforeNode = insertBeforeNode;
         }
 
 }

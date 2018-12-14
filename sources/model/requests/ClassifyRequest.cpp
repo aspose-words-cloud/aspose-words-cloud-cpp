@@ -30,10 +30,26 @@ namespace model{
 ClassifyRequest::ClassifyRequest(
         utility::string_t text,
                 boost::optional<utility::string_t> bestClassesCount
-        )
+        ) : 
+            m_text(text),
+            m_bestClassesCount(bestClassesCount)
         {
-            this->text = text;
-            this->bestClassesCount = bestClassesCount;
+            
+        }
+
+        utility::string_t ClassifyRequest::getText() const
+        {
+            return m_text;
+        }
+        void ClassifyRequest::setText(utility::string_t text){
+            m_text = text;
+        }
+        boost::optional<utility::string_t> ClassifyRequest::getBestClassesCount() const
+        {
+            return m_bestClassesCount;
+        }
+        void ClassifyRequest::setBestClassesCount(boost::optional<utility::string_t> bestClassesCount){
+            m_bestClassesCount = bestClassesCount;
         }
 
 }

@@ -35,15 +35,66 @@ GetHeaderFooterRequest::GetHeaderFooterRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> filterByType
-        )
+        ) : 
+            m_name(name),
+            m_headerFooterIndex(headerFooterIndex),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_filterByType(filterByType)
         {
-            this->name = name;
-            this->headerFooterIndex = headerFooterIndex;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->filterByType = filterByType;
+            
+        }
+
+        utility::string_t GetHeaderFooterRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetHeaderFooterRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t GetHeaderFooterRequest::getHeaderFooterIndex() const
+        {
+            return m_headerFooterIndex;
+        }
+        void GetHeaderFooterRequest::setHeaderFooterIndex(int32_t headerFooterIndex){
+            m_headerFooterIndex = headerFooterIndex;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetHeaderFooterRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetHeaderFooterRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetHeaderFooterRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetHeaderFooterRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterRequest::getFilterByType() const
+        {
+            return m_filterByType;
+        }
+        void GetHeaderFooterRequest::setFilterByType(boost::optional<utility::string_t> filterByType){
+            m_filterByType = filterByType;
         }
 
 }

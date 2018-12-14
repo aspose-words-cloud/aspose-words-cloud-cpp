@@ -38,18 +38,90 @@ DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> sectionPath
-        )
+        ) : 
+            m_name(name),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_sectionPath(sectionPath)
         {
-            this->name = name;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->sectionPath = sectionPath;
+            
+        }
+
+        utility::string_t DeleteHeaderFooterRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteHeaderFooterRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t DeleteHeaderFooterRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void DeleteHeaderFooterRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteHeaderFooterRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteHeaderFooterRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteHeaderFooterRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteHeaderFooterRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteHeaderFooterRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteHeaderFooterRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteHeaderFooterRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getSectionPath() const
+        {
+            return m_sectionPath;
+        }
+        void DeleteHeaderFooterRequest::setSectionPath(boost::optional<utility::string_t> sectionPath){
+            m_sectionPath = sectionPath;
         }
 
 }

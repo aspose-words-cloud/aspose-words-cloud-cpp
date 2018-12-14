@@ -39,19 +39,98 @@ PutFieldRequest::PutFieldRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath,
                 boost::optional<utility::string_t> insertBeforeNode
-        )
+        ) : 
+            m_name(name),
+            m_field(field),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_nodePath(nodePath),
+            m_insertBeforeNode(insertBeforeNode)
         {
-            this->name = name;
-            this->field = field;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->nodePath = nodePath;
-            this->insertBeforeNode = insertBeforeNode;
+            
+        }
+
+        utility::string_t PutFieldRequest::getName() const
+        {
+            return m_name;
+        }
+        void PutFieldRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<Field> PutFieldRequest::getField() const
+        {
+            return m_field;
+        }
+        void PutFieldRequest::setField(std::shared_ptr<Field> field){
+            m_field = field;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PutFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PutFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PutFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PutFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PutFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PutFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PutFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void PutFieldRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
+        }
+        boost::optional<utility::string_t> PutFieldRequest::getInsertBeforeNode() const
+        {
+            return m_insertBeforeNode;
+        }
+        void PutFieldRequest::setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode){
+            m_insertBeforeNode = insertBeforeNode;
         }
 
 }

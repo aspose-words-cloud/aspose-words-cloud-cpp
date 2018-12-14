@@ -42,13 +42,30 @@ class GetDocumentParagraphRunsRequest{
                 boost::optional<utility::string_t> password
         );
 
-    public:
-        utility::string_t name;
-        utility::string_t paragraphPath;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        utility::string_t getParagraphPath() const;
+        void setParagraphPath(utility::string_t paragraphPath);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+    private:
+        utility::string_t m_name;
+        utility::string_t m_paragraphPath;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
 };
 
 }

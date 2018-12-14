@@ -35,8 +35,7 @@ class ResetCacheRequest{
     public: 
     explicit ResetCacheRequest(
 );
-
-    public:
+    private:
 };
 
 }

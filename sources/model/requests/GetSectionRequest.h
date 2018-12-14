@@ -42,13 +42,30 @@ class GetSectionRequest{
                 boost::optional<utility::string_t> password
         );
 
-    public:
-        utility::string_t name;
-        int32_t sectionIndex;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        int32_t getSectionIndex() const;
+        void setSectionIndex(int32_t sectionIndex);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+    private:
+        utility::string_t m_name;
+        int32_t m_sectionIndex;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
 };
 
 }

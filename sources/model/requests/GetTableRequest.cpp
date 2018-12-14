@@ -35,15 +35,66 @@ GetTableRequest::GetTableRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t GetTableRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetTableRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t GetTableRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void GetTableRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> GetTableRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetTableRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetTableRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetTableRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetTableRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetTableRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetTableRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetTableRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> GetTableRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void GetTableRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

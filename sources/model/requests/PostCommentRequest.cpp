@@ -38,18 +38,90 @@ PostCommentRequest::PostCommentRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_commentIndex(commentIndex),
+            m_comment(comment),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->commentIndex = commentIndex;
-            this->comment = comment;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t PostCommentRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostCommentRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t PostCommentRequest::getCommentIndex() const
+        {
+            return m_commentIndex;
+        }
+        void PostCommentRequest::setCommentIndex(int32_t commentIndex){
+            m_commentIndex = commentIndex;
+        }
+        std::shared_ptr<Comment> PostCommentRequest::getComment() const
+        {
+            return m_comment;
+        }
+        void PostCommentRequest::setComment(std::shared_ptr<Comment> comment){
+            m_comment = comment;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostCommentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostCommentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostCommentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostCommentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostCommentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PostCommentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PostCommentRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PostCommentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

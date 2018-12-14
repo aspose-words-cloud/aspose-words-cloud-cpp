@@ -36,16 +36,74 @@ GetHeaderFooterOfSectionRequest::GetHeaderFooterOfSectionRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> filterByType
-        )
+        ) : 
+            m_name(name),
+            m_headerFooterIndex(headerFooterIndex),
+            m_sectionIndex(sectionIndex),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_filterByType(filterByType)
         {
-            this->name = name;
-            this->headerFooterIndex = headerFooterIndex;
-            this->sectionIndex = sectionIndex;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->filterByType = filterByType;
+            
+        }
+
+        utility::string_t GetHeaderFooterOfSectionRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetHeaderFooterOfSectionRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t GetHeaderFooterOfSectionRequest::getHeaderFooterIndex() const
+        {
+            return m_headerFooterIndex;
+        }
+        void GetHeaderFooterOfSectionRequest::setHeaderFooterIndex(int32_t headerFooterIndex){
+            m_headerFooterIndex = headerFooterIndex;
+        }
+        int32_t GetHeaderFooterOfSectionRequest::getSectionIndex() const
+        {
+            return m_sectionIndex;
+        }
+        void GetHeaderFooterOfSectionRequest::setSectionIndex(int32_t sectionIndex){
+            m_sectionIndex = sectionIndex;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetHeaderFooterOfSectionRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetHeaderFooterOfSectionRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetHeaderFooterOfSectionRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetHeaderFooterOfSectionRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getFilterByType() const
+        {
+            return m_filterByType;
+        }
+        void GetHeaderFooterOfSectionRequest::setFilterByType(boost::optional<utility::string_t> filterByType){
+            m_filterByType = filterByType;
         }
 
 }

@@ -38,18 +38,90 @@ UpdateSectionPageSetupRequest::UpdateSectionPageSetupRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_sectionIndex(sectionIndex),
+            m_pageSetup(pageSetup),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->sectionIndex = sectionIndex;
-            this->pageSetup = pageSetup;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t UpdateSectionPageSetupRequest::getName() const
+        {
+            return m_name;
+        }
+        void UpdateSectionPageSetupRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t UpdateSectionPageSetupRequest::getSectionIndex() const
+        {
+            return m_sectionIndex;
+        }
+        void UpdateSectionPageSetupRequest::setSectionIndex(int32_t sectionIndex){
+            m_sectionIndex = sectionIndex;
+        }
+        std::shared_ptr<PageSetup> UpdateSectionPageSetupRequest::getPageSetup() const
+        {
+            return m_pageSetup;
+        }
+        void UpdateSectionPageSetupRequest::setPageSetup(std::shared_ptr<PageSetup> pageSetup){
+            m_pageSetup = pageSetup;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void UpdateSectionPageSetupRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void UpdateSectionPageSetupRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void UpdateSectionPageSetupRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void UpdateSectionPageSetupRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void UpdateSectionPageSetupRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void UpdateSectionPageSetupRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void UpdateSectionPageSetupRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

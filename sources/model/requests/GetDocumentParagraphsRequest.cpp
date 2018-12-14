@@ -34,14 +34,58 @@ GetDocumentParagraphsRequest::GetDocumentParagraphsRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t GetDocumentParagraphsRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentParagraphsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentParagraphsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentParagraphsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentParagraphsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentParagraphsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphsRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void GetDocumentParagraphsRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

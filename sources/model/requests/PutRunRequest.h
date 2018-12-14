@@ -48,18 +48,50 @@ class PutRunRequest{
                 boost::optional<utility::string_t> insertBeforeNode
         );
 
-    public:
-        utility::string_t name;
-        utility::string_t paragraphPath;
-        std::shared_ptr<Run> run;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
-        boost::optional<utility::string_t> revisionAuthor;
-        boost::optional<utility::string_t> revisionDateTime;
-        boost::optional<utility::string_t> insertBeforeNode;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        utility::string_t getParagraphPath() const;
+        void setParagraphPath(utility::string_t paragraphPath);
+
+        std::shared_ptr<Run> getRun() const;
+        void setRun(std::shared_ptr<Run> run);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+
+        boost::optional<utility::string_t> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+
+        boost::optional<utility::string_t> getInsertBeforeNode() const;
+        void setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode);
+    private:
+        utility::string_t m_name;
+        utility::string_t m_paragraphPath;
+        std::shared_ptr<Run> m_run;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_revisionAuthor;
+        boost::optional<utility::string_t> m_revisionDateTime;
+        boost::optional<utility::string_t> m_insertBeforeNode;
 };
 
 }

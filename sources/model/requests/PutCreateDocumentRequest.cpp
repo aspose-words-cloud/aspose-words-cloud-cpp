@@ -31,11 +31,34 @@ PutCreateDocumentRequest::PutCreateDocumentRequest(
         boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> fileName,
                 boost::optional<utility::string_t> folder
-        )
+        ) : 
+            m_storage(storage),
+            m_fileName(fileName),
+            m_folder(folder)
         {
-            this->storage = storage;
-            this->fileName = fileName;
-            this->folder = folder;
+            
+        }
+
+        boost::optional<utility::string_t> PutCreateDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PutCreateDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PutCreateDocumentRequest::getFileName() const
+        {
+            return m_fileName;
+        }
+        void PutCreateDocumentRequest::setFileName(boost::optional<utility::string_t> fileName){
+            m_fileName = fileName;
+        }
+        boost::optional<utility::string_t> PutCreateDocumentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PutCreateDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
         }
 
 }

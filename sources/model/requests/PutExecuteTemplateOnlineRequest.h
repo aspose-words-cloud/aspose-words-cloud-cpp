@@ -43,13 +43,30 @@ class PutExecuteTemplateOnlineRequest{
                 boost::optional<utility::string_t> documentFileName
         );
 
-    public:
-        std::shared_ptr<HttpContent> _template;
-        std::shared_ptr<HttpContent> data;
-        boost::optional<utility::string_t> cleanup;
-        boost::optional<bool> useWholeParagraphAsRegion;
-        boost::optional<bool> withRegions;
-        boost::optional<utility::string_t> documentFileName;
+        std::shared_ptr<HttpContent> getTemplate() const;
+        void setTemplate(std::shared_ptr<HttpContent> _template);
+
+        std::shared_ptr<HttpContent> getData() const;
+        void setData(std::shared_ptr<HttpContent> data);
+
+        boost::optional<utility::string_t> getCleanup() const;
+        void setCleanup(boost::optional<utility::string_t> cleanup);
+
+        boost::optional<bool> getUseWholeParagraphAsRegion() const;
+        void setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion);
+
+        boost::optional<bool> getWithRegions() const;
+        void setWithRegions(boost::optional<bool> withRegions);
+
+        boost::optional<utility::string_t> getDocumentFileName() const;
+        void setDocumentFileName(boost::optional<utility::string_t> documentFileName);
+    private:
+        std::shared_ptr<HttpContent> m__template;
+        std::shared_ptr<HttpContent> m_data;
+        boost::optional<utility::string_t> m_cleanup;
+        boost::optional<bool> m_useWholeParagraphAsRegion;
+        boost::optional<bool> m_withRegions;
+        boost::optional<utility::string_t> m_documentFileName;
 };
 
 }

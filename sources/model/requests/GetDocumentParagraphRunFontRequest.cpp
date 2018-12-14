@@ -35,15 +35,66 @@ GetDocumentParagraphRunFontRequest::GetDocumentParagraphRunFontRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_paragraphPath(paragraphPath),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->paragraphPath = paragraphPath;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetDocumentParagraphRunFontRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentParagraphRunFontRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t GetDocumentParagraphRunFontRequest::getParagraphPath() const
+        {
+            return m_paragraphPath;
+        }
+        void GetDocumentParagraphRunFontRequest::setParagraphPath(utility::string_t paragraphPath){
+            m_paragraphPath = paragraphPath;
+        }
+        int32_t GetDocumentParagraphRunFontRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void GetDocumentParagraphRunFontRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunFontRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentParagraphRunFontRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunFontRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentParagraphRunFontRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunFontRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentParagraphRunFontRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentParagraphRunFontRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentParagraphRunFontRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

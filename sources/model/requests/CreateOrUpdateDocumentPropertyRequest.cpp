@@ -38,18 +38,90 @@ CreateOrUpdateDocumentPropertyRequest::CreateOrUpdateDocumentPropertyRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_propertyName(propertyName),
+            m_property(property),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->propertyName = propertyName;
-            this->property = property;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t CreateOrUpdateDocumentPropertyRequest::getName() const
+        {
+            return m_name;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t CreateOrUpdateDocumentPropertyRequest::getPropertyName() const
+        {
+            return m_propertyName;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setPropertyName(utility::string_t propertyName){
+            m_propertyName = propertyName;
+        }
+        std::shared_ptr<DocumentProperty> CreateOrUpdateDocumentPropertyRequest::getProperty() const
+        {
+            return m_property;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setProperty(std::shared_ptr<DocumentProperty> property){
+            m_property = property;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void CreateOrUpdateDocumentPropertyRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

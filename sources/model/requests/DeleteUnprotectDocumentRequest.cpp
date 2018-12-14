@@ -35,15 +35,66 @@ DeleteUnprotectDocumentRequest::DeleteUnprotectDocumentRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName
-        )
+        ) : 
+            m_name(name),
+            m_protectionRequest(protectionRequest),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName)
         {
-            this->name = name;
-            this->protectionRequest = protectionRequest;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
+            
+        }
+
+        utility::string_t DeleteUnprotectDocumentRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteUnprotectDocumentRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<ProtectionRequest> DeleteUnprotectDocumentRequest::getProtectionRequest() const
+        {
+            return m_protectionRequest;
+        }
+        void DeleteUnprotectDocumentRequest::setProtectionRequest(std::shared_ptr<ProtectionRequest> protectionRequest){
+            m_protectionRequest = protectionRequest;
+        }
+        boost::optional<utility::string_t> DeleteUnprotectDocumentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteUnprotectDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteUnprotectDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteUnprotectDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteUnprotectDocumentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteUnprotectDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteUnprotectDocumentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteUnprotectDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteUnprotectDocumentRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteUnprotectDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
         }
 
 }

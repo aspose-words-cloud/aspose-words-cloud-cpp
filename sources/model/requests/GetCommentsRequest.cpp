@@ -33,13 +33,50 @@ GetCommentsRequest::GetCommentsRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetCommentsRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetCommentsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> GetCommentsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetCommentsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetCommentsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetCommentsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetCommentsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetCommentsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetCommentsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetCommentsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

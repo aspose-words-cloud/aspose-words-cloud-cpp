@@ -37,8 +37,10 @@ class GetAvailableFontsRequest{
         boost::optional<utility::string_t> fontsLocation
         );
 
-    public:
-        boost::optional<utility::string_t> fontsLocation;
+        boost::optional<utility::string_t> getFontsLocation() const;
+        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+    private:
+        boost::optional<utility::string_t> m_fontsLocation;
 };
 
 }

@@ -39,19 +39,98 @@ PutDrawingObjectRequest::PutDrawingObjectRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_drawingObject(drawingObject),
+            m_imageFile(imageFile),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->drawingObject = drawingObject;
-            this->imageFile = imageFile;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t PutDrawingObjectRequest::getName() const
+        {
+            return m_name;
+        }
+        void PutDrawingObjectRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t PutDrawingObjectRequest::getDrawingObject() const
+        {
+            return m_drawingObject;
+        }
+        void PutDrawingObjectRequest::setDrawingObject(utility::string_t drawingObject){
+            m_drawingObject = drawingObject;
+        }
+        std::shared_ptr<HttpContent> PutDrawingObjectRequest::getImageFile() const
+        {
+            return m_imageFile;
+        }
+        void PutDrawingObjectRequest::setImageFile(std::shared_ptr<HttpContent> imageFile){
+            m_imageFile = imageFile;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PutDrawingObjectRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PutDrawingObjectRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PutDrawingObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PutDrawingObjectRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PutDrawingObjectRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PutDrawingObjectRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PutDrawingObjectRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> PutDrawingObjectRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void PutDrawingObjectRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

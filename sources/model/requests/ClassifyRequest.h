@@ -38,9 +38,14 @@ class ClassifyRequest{
                 boost::optional<utility::string_t> bestClassesCount
         );
 
-    public:
-        utility::string_t text;
-        boost::optional<utility::string_t> bestClassesCount;
+        utility::string_t getText() const;
+        void setText(utility::string_t text);
+
+        boost::optional<utility::string_t> getBestClassesCount() const;
+        void setBestClassesCount(boost::optional<utility::string_t> bestClassesCount);
+    private:
+        utility::string_t m_text;
+        boost::optional<utility::string_t> m_bestClassesCount;
 };
 
 }

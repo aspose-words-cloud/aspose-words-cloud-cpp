@@ -38,18 +38,90 @@ DeleteFormFieldRequest::DeleteFormFieldRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t DeleteFormFieldRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteFormFieldRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t DeleteFormFieldRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void DeleteFormFieldRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteFormFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteFormFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteFormFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteFormFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteFormFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteFormFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteFormFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void DeleteFormFieldRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

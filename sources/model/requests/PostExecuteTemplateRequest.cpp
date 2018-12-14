@@ -38,18 +38,90 @@ PostExecuteTemplateRequest::PostExecuteTemplateRequest(
                 boost::optional<bool> useWholeParagraphAsRegion,
                 boost::optional<bool> withRegions,
                 boost::optional<utility::string_t> destFileName
-        )
+        ) : 
+            m_name(name),
+            m_data(data),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_cleanup(cleanup),
+            m_useWholeParagraphAsRegion(useWholeParagraphAsRegion),
+            m_withRegions(withRegions),
+            m_destFileName(destFileName)
         {
-            this->name = name;
-            this->data = data;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->cleanup = cleanup;
-            this->useWholeParagraphAsRegion = useWholeParagraphAsRegion;
-            this->withRegions = withRegions;
-            this->destFileName = destFileName;
+            
+        }
+
+        utility::string_t PostExecuteTemplateRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostExecuteTemplateRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t PostExecuteTemplateRequest::getData() const
+        {
+            return m_data;
+        }
+        void PostExecuteTemplateRequest::setData(utility::string_t data){
+            m_data = data;
+        }
+        boost::optional<utility::string_t> PostExecuteTemplateRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostExecuteTemplateRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostExecuteTemplateRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostExecuteTemplateRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostExecuteTemplateRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostExecuteTemplateRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostExecuteTemplateRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostExecuteTemplateRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostExecuteTemplateRequest::getCleanup() const
+        {
+            return m_cleanup;
+        }
+        void PostExecuteTemplateRequest::setCleanup(boost::optional<utility::string_t> cleanup){
+            m_cleanup = cleanup;
+        }
+        boost::optional<bool> PostExecuteTemplateRequest::getUseWholeParagraphAsRegion() const
+        {
+            return m_useWholeParagraphAsRegion;
+        }
+        void PostExecuteTemplateRequest::setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion){
+            m_useWholeParagraphAsRegion = useWholeParagraphAsRegion;
+        }
+        boost::optional<bool> PostExecuteTemplateRequest::getWithRegions() const
+        {
+            return m_withRegions;
+        }
+        void PostExecuteTemplateRequest::setWithRegions(boost::optional<bool> withRegions){
+            m_withRegions = withRegions;
+        }
+        boost::optional<utility::string_t> PostExecuteTemplateRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostExecuteTemplateRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
         }
 
 }

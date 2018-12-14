@@ -46,17 +46,46 @@ class DeleteHeadersFootersRequest{
                 boost::optional<utility::string_t> headersFootersTypes
         );
 
-    public:
-        utility::string_t name;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
-        boost::optional<utility::string_t> revisionAuthor;
-        boost::optional<utility::string_t> revisionDateTime;
-        boost::optional<utility::string_t> sectionPath;
-        boost::optional<utility::string_t> headersFootersTypes;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+
+        boost::optional<utility::string_t> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+
+        boost::optional<utility::string_t> getSectionPath() const;
+        void setSectionPath(boost::optional<utility::string_t> sectionPath);
+
+        boost::optional<utility::string_t> getHeadersFootersTypes() const;
+        void setHeadersFootersTypes(boost::optional<utility::string_t> headersFootersTypes);
+    private:
+        utility::string_t m_name;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_revisionAuthor;
+        boost::optional<utility::string_t> m_revisionDateTime;
+        boost::optional<utility::string_t> m_sectionPath;
+        boost::optional<utility::string_t> m_headersFootersTypes;
 };
 
 }

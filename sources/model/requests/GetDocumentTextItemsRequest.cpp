@@ -33,13 +33,50 @@ GetDocumentTextItemsRequest::GetDocumentTextItemsRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetDocumentTextItemsRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentTextItemsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> GetDocumentTextItemsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentTextItemsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentTextItemsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentTextItemsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentTextItemsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentTextItemsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentTextItemsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentTextItemsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

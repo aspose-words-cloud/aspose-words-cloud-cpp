@@ -29,9 +29,18 @@ namespace client{
 namespace model{
 GetAvailableFontsRequest::GetAvailableFontsRequest(
         boost::optional<utility::string_t> fontsLocation
-        )
+        ) : 
+            m_fontsLocation(fontsLocation)
         {
-            this->fontsLocation = fontsLocation;
+            
+        }
+
+        boost::optional<utility::string_t> GetAvailableFontsRequest::getFontsLocation() const
+        {
+            return m_fontsLocation;
+        }
+        void GetAvailableFontsRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = fontsLocation;
         }
 
 }

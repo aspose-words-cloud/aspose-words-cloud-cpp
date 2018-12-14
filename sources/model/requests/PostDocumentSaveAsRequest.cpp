@@ -36,16 +36,74 @@ PostDocumentSaveAsRequest::PostDocumentSaveAsRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> fontsLocation
-        )
+        ) : 
+            m_name(name),
+            m_saveOptionsData(saveOptionsData),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_fontsLocation(fontsLocation)
         {
-            this->name = name;
-            this->saveOptionsData = saveOptionsData;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->fontsLocation = fontsLocation;
+            
+        }
+
+        utility::string_t PostDocumentSaveAsRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostDocumentSaveAsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<SaveOptionsData> PostDocumentSaveAsRequest::getSaveOptionsData() const
+        {
+            return m_saveOptionsData;
+        }
+        void PostDocumentSaveAsRequest::setSaveOptionsData(std::shared_ptr<SaveOptionsData> saveOptionsData){
+            m_saveOptionsData = saveOptionsData;
+        }
+        boost::optional<utility::string_t> PostDocumentSaveAsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostDocumentSaveAsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostDocumentSaveAsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostDocumentSaveAsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostDocumentSaveAsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostDocumentSaveAsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostDocumentSaveAsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostDocumentSaveAsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostDocumentSaveAsRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostDocumentSaveAsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PostDocumentSaveAsRequest::getFontsLocation() const
+        {
+            return m_fontsLocation;
+        }
+        void PostDocumentSaveAsRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = fontsLocation;
         }
 
 }

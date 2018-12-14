@@ -39,19 +39,98 @@ UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<std::shared_ptr<TableRowFormat>> format
-        )
+        ) : 
+            m_name(name),
+            m_tablePath(tablePath),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_format(format)
         {
-            this->name = name;
-            this->tablePath = tablePath;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->format = format;
+            
+        }
+
+        utility::string_t UpdateTableRowFormatRequest::getName() const
+        {
+            return m_name;
+        }
+        void UpdateTableRowFormatRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t UpdateTableRowFormatRequest::getTablePath() const
+        {
+            return m_tablePath;
+        }
+        void UpdateTableRowFormatRequest::setTablePath(utility::string_t tablePath){
+            m_tablePath = tablePath;
+        }
+        int32_t UpdateTableRowFormatRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void UpdateTableRowFormatRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void UpdateTableRowFormatRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void UpdateTableRowFormatRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void UpdateTableRowFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void UpdateTableRowFormatRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void UpdateTableRowFormatRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void UpdateTableRowFormatRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void UpdateTableRowFormatRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<std::shared_ptr<TableRowFormat>> UpdateTableRowFormatRequest::getFormat() const
+        {
+            return m_format;
+        }
+        void UpdateTableRowFormatRequest::setFormat(boost::optional<std::shared_ptr<TableRowFormat>> format){
+            m_format = format;
         }
 
 }

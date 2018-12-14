@@ -43,14 +43,34 @@ class GetDocumentDrawingObjectByIndexRequest{
                 boost::optional<utility::string_t> nodePath
         );
 
-    public:
-        utility::string_t name;
-        int32_t index;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> nodePath;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        int32_t getIndex() const;
+        void setIndex(int32_t index);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getNodePath() const;
+        void setNodePath(boost::optional<utility::string_t> nodePath);
+    private:
+        utility::string_t m_name;
+        int32_t m_index;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_nodePath;
 };
 
 }

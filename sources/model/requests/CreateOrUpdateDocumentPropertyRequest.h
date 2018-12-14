@@ -47,17 +47,46 @@ class CreateOrUpdateDocumentPropertyRequest{
                 boost::optional<utility::string_t> revisionDateTime
         );
 
-    public:
-        utility::string_t name;
-        utility::string_t propertyName;
-        std::shared_ptr<DocumentProperty> property;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
-        boost::optional<utility::string_t> revisionAuthor;
-        boost::optional<utility::string_t> revisionDateTime;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        utility::string_t getPropertyName() const;
+        void setPropertyName(utility::string_t propertyName);
+
+        std::shared_ptr<DocumentProperty> getProperty() const;
+        void setProperty(std::shared_ptr<DocumentProperty> property);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+
+        boost::optional<utility::string_t> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+    private:
+        utility::string_t m_name;
+        utility::string_t m_propertyName;
+        std::shared_ptr<DocumentProperty> m_property;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_revisionAuthor;
+        boost::optional<utility::string_t> m_revisionDateTime;
 };
 
 }

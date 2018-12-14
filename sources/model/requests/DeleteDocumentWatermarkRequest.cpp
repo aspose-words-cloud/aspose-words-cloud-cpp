@@ -36,16 +36,74 @@ DeleteDocumentWatermarkRequest::DeleteDocumentWatermarkRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t DeleteDocumentWatermarkRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteDocumentWatermarkRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteDocumentWatermarkRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteDocumentWatermarkRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteDocumentWatermarkRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteDocumentWatermarkRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteDocumentWatermarkRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteDocumentWatermarkRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteDocumentWatermarkRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteDocumentWatermarkRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

@@ -38,18 +38,90 @@ PutFootnoteRequest::PutFootnoteRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
-        )
+        ) : 
+            m_name(name),
+            m_footnoteDto(footnoteDto),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_nodePath(nodePath)
         {
-            this->name = name;
-            this->footnoteDto = footnoteDto;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->nodePath = nodePath;
+            
+        }
+
+        utility::string_t PutFootnoteRequest::getName() const
+        {
+            return m_name;
+        }
+        void PutFootnoteRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<Footnote> PutFootnoteRequest::getFootnoteDto() const
+        {
+            return m_footnoteDto;
+        }
+        void PutFootnoteRequest::setFootnoteDto(std::shared_ptr<Footnote> footnoteDto){
+            m_footnoteDto = footnoteDto;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PutFootnoteRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PutFootnoteRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PutFootnoteRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PutFootnoteRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PutFootnoteRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PutFootnoteRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PutFootnoteRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> PutFootnoteRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void PutFootnoteRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
         }
 
 }

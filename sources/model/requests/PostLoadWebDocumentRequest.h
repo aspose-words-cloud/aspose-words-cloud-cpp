@@ -39,9 +39,14 @@ class PostLoadWebDocumentRequest{
                 boost::optional<utility::string_t> storage
         );
 
-    public:
-        std::shared_ptr<LoadWebDocumentData> data;
-        boost::optional<utility::string_t> storage;
+        std::shared_ptr<LoadWebDocumentData> getData() const;
+        void setData(std::shared_ptr<LoadWebDocumentData> data);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+    private:
+        std::shared_ptr<LoadWebDocumentData> m_data;
+        boost::optional<utility::string_t> m_storage;
 };
 
 }

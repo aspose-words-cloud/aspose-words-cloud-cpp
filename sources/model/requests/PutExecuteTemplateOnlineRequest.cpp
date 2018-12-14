@@ -34,14 +34,58 @@ PutExecuteTemplateOnlineRequest::PutExecuteTemplateOnlineRequest(
                 boost::optional<bool> useWholeParagraphAsRegion,
                 boost::optional<bool> withRegions,
                 boost::optional<utility::string_t> documentFileName
-        )
+        ) : 
+            m__template(_template),
+            m_data(data),
+            m_cleanup(cleanup),
+            m_useWholeParagraphAsRegion(useWholeParagraphAsRegion),
+            m_withRegions(withRegions),
+            m_documentFileName(documentFileName)
         {
-            this->_template = _template;
-            this->data = data;
-            this->cleanup = cleanup;
-            this->useWholeParagraphAsRegion = useWholeParagraphAsRegion;
-            this->withRegions = withRegions;
-            this->documentFileName = documentFileName;
+            
+        }
+
+        std::shared_ptr<HttpContent> PutExecuteTemplateOnlineRequest::getTemplate() const
+        {
+            return m__template;
+        }
+        void PutExecuteTemplateOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template){
+            m__template = _template;
+        }
+        std::shared_ptr<HttpContent> PutExecuteTemplateOnlineRequest::getData() const
+        {
+            return m_data;
+        }
+        void PutExecuteTemplateOnlineRequest::setData(std::shared_ptr<HttpContent> data){
+            m_data = data;
+        }
+        boost::optional<utility::string_t> PutExecuteTemplateOnlineRequest::getCleanup() const
+        {
+            return m_cleanup;
+        }
+        void PutExecuteTemplateOnlineRequest::setCleanup(boost::optional<utility::string_t> cleanup){
+            m_cleanup = cleanup;
+        }
+        boost::optional<bool> PutExecuteTemplateOnlineRequest::getUseWholeParagraphAsRegion() const
+        {
+            return m_useWholeParagraphAsRegion;
+        }
+        void PutExecuteTemplateOnlineRequest::setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion){
+            m_useWholeParagraphAsRegion = useWholeParagraphAsRegion;
+        }
+        boost::optional<bool> PutExecuteTemplateOnlineRequest::getWithRegions() const
+        {
+            return m_withRegions;
+        }
+        void PutExecuteTemplateOnlineRequest::setWithRegions(boost::optional<bool> withRegions){
+            m_withRegions = withRegions;
+        }
+        boost::optional<utility::string_t> PutExecuteTemplateOnlineRequest::getDocumentFileName() const
+        {
+            return m_documentFileName;
+        }
+        void PutExecuteTemplateOnlineRequest::setDocumentFileName(boost::optional<utility::string_t> documentFileName){
+            m_documentFileName = documentFileName;
         }
 
 }

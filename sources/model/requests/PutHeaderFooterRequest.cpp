@@ -38,18 +38,90 @@ PutHeaderFooterRequest::PutHeaderFooterRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> sectionPath
-        )
+        ) : 
+            m_name(name),
+            m_headerFooterType(headerFooterType),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_sectionPath(sectionPath)
         {
-            this->name = name;
-            this->headerFooterType = headerFooterType;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->sectionPath = sectionPath;
+            
+        }
+
+        utility::string_t PutHeaderFooterRequest::getName() const
+        {
+            return m_name;
+        }
+        void PutHeaderFooterRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t PutHeaderFooterRequest::getHeaderFooterType() const
+        {
+            return m_headerFooterType;
+        }
+        void PutHeaderFooterRequest::setHeaderFooterType(utility::string_t headerFooterType){
+            m_headerFooterType = headerFooterType;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PutHeaderFooterRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PutHeaderFooterRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PutHeaderFooterRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PutHeaderFooterRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PutHeaderFooterRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PutHeaderFooterRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PutHeaderFooterRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<utility::string_t> PutHeaderFooterRequest::getSectionPath() const
+        {
+            return m_sectionPath;
+        }
+        void PutHeaderFooterRequest::setSectionPath(boost::optional<utility::string_t> sectionPath){
+            m_sectionPath = sectionPath;
         }
 
 }

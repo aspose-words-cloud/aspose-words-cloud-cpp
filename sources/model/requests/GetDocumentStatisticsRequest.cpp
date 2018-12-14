@@ -36,16 +36,74 @@ GetDocumentStatisticsRequest::GetDocumentStatisticsRequest(
                 boost::optional<bool> includeComments,
                 boost::optional<bool> includeFootnotes,
                 boost::optional<bool> includeTextInShapes
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_includeComments(includeComments),
+            m_includeFootnotes(includeFootnotes),
+            m_includeTextInShapes(includeTextInShapes)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->includeComments = includeComments;
-            this->includeFootnotes = includeFootnotes;
-            this->includeTextInShapes = includeTextInShapes;
+            
+        }
+
+        utility::string_t GetDocumentStatisticsRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentStatisticsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentStatisticsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentStatisticsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentStatisticsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentStatisticsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<bool> GetDocumentStatisticsRequest::getIncludeComments() const
+        {
+            return m_includeComments;
+        }
+        void GetDocumentStatisticsRequest::setIncludeComments(boost::optional<bool> includeComments){
+            m_includeComments = includeComments;
+        }
+        boost::optional<bool> GetDocumentStatisticsRequest::getIncludeFootnotes() const
+        {
+            return m_includeFootnotes;
+        }
+        void GetDocumentStatisticsRequest::setIncludeFootnotes(boost::optional<bool> includeFootnotes){
+            m_includeFootnotes = includeFootnotes;
+        }
+        boost::optional<bool> GetDocumentStatisticsRequest::getIncludeTextInShapes() const
+        {
+            return m_includeTextInShapes;
+        }
+        void GetDocumentStatisticsRequest::setIncludeTextInShapes(boost::optional<bool> includeTextInShapes){
+            m_includeTextInShapes = includeTextInShapes;
         }
 
 }

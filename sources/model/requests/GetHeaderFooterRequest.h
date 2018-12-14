@@ -43,14 +43,34 @@ class GetHeaderFooterRequest{
                 boost::optional<utility::string_t> filterByType
         );
 
-    public:
-        utility::string_t name;
-        int32_t headerFooterIndex;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> filterByType;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        int32_t getHeaderFooterIndex() const;
+        void setHeaderFooterIndex(int32_t headerFooterIndex);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getFilterByType() const;
+        void setFilterByType(boost::optional<utility::string_t> filterByType);
+    private:
+        utility::string_t m_name;
+        int32_t m_headerFooterIndex;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_filterByType;
 };
 
 }

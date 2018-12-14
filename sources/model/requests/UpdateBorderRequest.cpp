@@ -39,19 +39,98 @@ UpdateBorderRequest::UpdateBorderRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_borderProperties(borderProperties),
+            m_nodePath(nodePath),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->borderProperties = borderProperties;
-            this->nodePath = nodePath;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t UpdateBorderRequest::getName() const
+        {
+            return m_name;
+        }
+        void UpdateBorderRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<Border> UpdateBorderRequest::getBorderProperties() const
+        {
+            return m_borderProperties;
+        }
+        void UpdateBorderRequest::setBorderProperties(std::shared_ptr<Border> borderProperties){
+            m_borderProperties = borderProperties;
+        }
+        utility::string_t UpdateBorderRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void UpdateBorderRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = nodePath;
+        }
+        int32_t UpdateBorderRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void UpdateBorderRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void UpdateBorderRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void UpdateBorderRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void UpdateBorderRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void UpdateBorderRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void UpdateBorderRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void UpdateBorderRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> UpdateBorderRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void UpdateBorderRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

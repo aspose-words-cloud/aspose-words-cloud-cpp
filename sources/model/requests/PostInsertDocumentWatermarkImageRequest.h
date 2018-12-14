@@ -48,18 +48,50 @@ class PostInsertDocumentWatermarkImageRequest{
                 boost::optional<utility::string_t> image
         );
 
-    public:
-        utility::string_t name;
-        boost::optional<std::shared_ptr<HttpContent>> imageFile;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
-        boost::optional<utility::string_t> revisionAuthor;
-        boost::optional<utility::string_t> revisionDateTime;
-        boost::optional<double> rotationAngle;
-        boost::optional<utility::string_t> image;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        boost::optional<std::shared_ptr<HttpContent>> getImageFile() const;
+        void setImageFile(boost::optional<std::shared_ptr<HttpContent>> imageFile);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+
+        boost::optional<utility::string_t> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+
+        boost::optional<double> getRotationAngle() const;
+        void setRotationAngle(boost::optional<double> rotationAngle);
+
+        boost::optional<utility::string_t> getImage() const;
+        void setImage(boost::optional<utility::string_t> image);
+    private:
+        utility::string_t m_name;
+        boost::optional<std::shared_ptr<HttpContent>> m_imageFile;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_revisionAuthor;
+        boost::optional<utility::string_t> m_revisionDateTime;
+        boost::optional<double> m_rotationAngle;
+        boost::optional<utility::string_t> m_image;
 };
 
 }

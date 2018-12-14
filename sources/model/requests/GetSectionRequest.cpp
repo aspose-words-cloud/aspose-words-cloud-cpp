@@ -34,14 +34,58 @@ GetSectionRequest::GetSectionRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_sectionIndex(sectionIndex),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->sectionIndex = sectionIndex;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetSectionRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetSectionRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t GetSectionRequest::getSectionIndex() const
+        {
+            return m_sectionIndex;
+        }
+        void GetSectionRequest::setSectionIndex(int32_t sectionIndex){
+            m_sectionIndex = sectionIndex;
+        }
+        boost::optional<utility::string_t> GetSectionRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetSectionRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetSectionRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetSectionRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetSectionRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetSectionRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetSectionRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetSectionRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

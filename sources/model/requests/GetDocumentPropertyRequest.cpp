@@ -34,14 +34,58 @@ GetDocumentPropertyRequest::GetDocumentPropertyRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_propertyName(propertyName),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->propertyName = propertyName;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetDocumentPropertyRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentPropertyRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t GetDocumentPropertyRequest::getPropertyName() const
+        {
+            return m_propertyName;
+        }
+        void GetDocumentPropertyRequest::setPropertyName(utility::string_t propertyName){
+            m_propertyName = propertyName;
+        }
+        boost::optional<utility::string_t> GetDocumentPropertyRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentPropertyRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentPropertyRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentPropertyRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentPropertyRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentPropertyRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentPropertyRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentPropertyRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

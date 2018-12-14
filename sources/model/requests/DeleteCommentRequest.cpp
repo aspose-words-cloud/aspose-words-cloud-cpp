@@ -37,17 +37,82 @@ DeleteCommentRequest::DeleteCommentRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_commentIndex(commentIndex),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->commentIndex = commentIndex;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t DeleteCommentRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteCommentRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        int32_t DeleteCommentRequest::getCommentIndex() const
+        {
+            return m_commentIndex;
+        }
+        void DeleteCommentRequest::setCommentIndex(int32_t commentIndex){
+            m_commentIndex = commentIndex;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteCommentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteCommentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteCommentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteCommentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteCommentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteCommentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteCommentRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteCommentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

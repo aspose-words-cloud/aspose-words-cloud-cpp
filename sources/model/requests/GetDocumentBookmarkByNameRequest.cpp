@@ -34,14 +34,58 @@ GetDocumentBookmarkByNameRequest::GetDocumentBookmarkByNameRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_bookmarkName(bookmarkName),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->bookmarkName = bookmarkName;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetDocumentBookmarkByNameRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetDocumentBookmarkByNameRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t GetDocumentBookmarkByNameRequest::getBookmarkName() const
+        {
+            return m_bookmarkName;
+        }
+        void GetDocumentBookmarkByNameRequest::setBookmarkName(utility::string_t bookmarkName){
+            m_bookmarkName = bookmarkName;
+        }
+        boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetDocumentBookmarkByNameRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetDocumentBookmarkByNameRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetDocumentBookmarkByNameRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetDocumentBookmarkByNameRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }

@@ -38,18 +38,90 @@ DeleteTableCellRequest::DeleteTableCellRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_tableRowPath(tableRowPath),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->tableRowPath = tableRowPath;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t DeleteTableCellRequest::getName() const
+        {
+            return m_name;
+        }
+        void DeleteTableCellRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t DeleteTableCellRequest::getTableRowPath() const
+        {
+            return m_tableRowPath;
+        }
+        void DeleteTableCellRequest::setTableRowPath(utility::string_t tableRowPath){
+            m_tableRowPath = tableRowPath;
+        }
+        int32_t DeleteTableCellRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void DeleteTableCellRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void DeleteTableCellRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void DeleteTableCellRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void DeleteTableCellRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void DeleteTableCellRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void DeleteTableCellRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void DeleteTableCellRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> DeleteTableCellRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void DeleteTableCellRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

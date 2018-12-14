@@ -45,15 +45,38 @@ class PostDocumentSaveAsRequest{
                 boost::optional<utility::string_t> fontsLocation
         );
 
-    public:
-        utility::string_t name;
-        std::shared_ptr<SaveOptionsData> saveOptionsData;
-        boost::optional<utility::string_t> folder;
-        boost::optional<utility::string_t> storage;
-        boost::optional<utility::string_t> loadEncoding;
-        boost::optional<utility::string_t> password;
-        boost::optional<utility::string_t> destFileName;
-        boost::optional<utility::string_t> fontsLocation;
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
+
+        std::shared_ptr<SaveOptionsData> getSaveOptionsData() const;
+        void setSaveOptionsData(std::shared_ptr<SaveOptionsData> saveOptionsData);
+
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
+
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
+
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
+
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getFontsLocation() const;
+        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+    private:
+        utility::string_t m_name;
+        std::shared_ptr<SaveOptionsData> m_saveOptionsData;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_fontsLocation;
 };
 
 }

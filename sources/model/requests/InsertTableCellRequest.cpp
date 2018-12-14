@@ -38,18 +38,90 @@ InsertTableCellRequest::InsertTableCellRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<std::shared_ptr<TableCellInsert>> cell
-        )
+        ) : 
+            m_name(name),
+            m_tableRowPath(tableRowPath),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime),
+            m_cell(cell)
         {
-            this->name = name;
-            this->tableRowPath = tableRowPath;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
-            this->cell = cell;
+            
+        }
+
+        utility::string_t InsertTableCellRequest::getName() const
+        {
+            return m_name;
+        }
+        void InsertTableCellRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t InsertTableCellRequest::getTableRowPath() const
+        {
+            return m_tableRowPath;
+        }
+        void InsertTableCellRequest::setTableRowPath(utility::string_t tableRowPath){
+            m_tableRowPath = tableRowPath;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void InsertTableCellRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void InsertTableCellRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void InsertTableCellRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void InsertTableCellRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void InsertTableCellRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void InsertTableCellRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> InsertTableCellRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void InsertTableCellRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
+        }
+        boost::optional<std::shared_ptr<TableCellInsert>> InsertTableCellRequest::getCell() const
+        {
+            return m_cell;
+        }
+        void InsertTableCellRequest::setCell(boost::optional<std::shared_ptr<TableCellInsert>> cell){
+            m_cell = cell;
         }
 
 }

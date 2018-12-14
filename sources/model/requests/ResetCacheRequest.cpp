@@ -28,9 +28,11 @@ namespace swagger{
 namespace client{
 namespace model{
 ResetCacheRequest::ResetCacheRequest(
-)
+) 
         {
+            
         }
+
 
 }
 }

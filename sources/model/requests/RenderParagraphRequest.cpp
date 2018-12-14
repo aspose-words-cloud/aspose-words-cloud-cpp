@@ -37,17 +37,82 @@ RenderParagraphRequest::RenderParagraphRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> nodePath,
                 boost::optional<utility::string_t> fontsLocation
-        )
+        ) : 
+            m_name(name),
+            m_format(format),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_nodePath(nodePath),
+            m_fontsLocation(fontsLocation)
         {
-            this->name = name;
-            this->format = format;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->nodePath = nodePath;
-            this->fontsLocation = fontsLocation;
+            
+        }
+
+        utility::string_t RenderParagraphRequest::getName() const
+        {
+            return m_name;
+        }
+        void RenderParagraphRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t RenderParagraphRequest::getFormat() const
+        {
+            return m_format;
+        }
+        void RenderParagraphRequest::setFormat(utility::string_t format){
+            m_format = format;
+        }
+        int32_t RenderParagraphRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void RenderParagraphRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> RenderParagraphRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void RenderParagraphRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> RenderParagraphRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void RenderParagraphRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> RenderParagraphRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void RenderParagraphRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> RenderParagraphRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void RenderParagraphRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> RenderParagraphRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void RenderParagraphRequest::setNodePath(boost::optional<utility::string_t> nodePath){
+            m_nodePath = nodePath;
+        }
+        boost::optional<utility::string_t> RenderParagraphRequest::getFontsLocation() const
+        {
+            return m_fontsLocation;
+        }
+        void RenderParagraphRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = fontsLocation;
         }
 
 }

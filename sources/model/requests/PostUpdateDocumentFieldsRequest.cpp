@@ -34,14 +34,58 @@ PostUpdateDocumentFieldsRequest::PostUpdateDocumentFieldsRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName
-        )
+        ) : 
+            m_name(name),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName)
         {
-            this->name = name;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
+            
+        }
+
+        utility::string_t PostUpdateDocumentFieldsRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostUpdateDocumentFieldsRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        boost::optional<utility::string_t> PostUpdateDocumentFieldsRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostUpdateDocumentFieldsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostUpdateDocumentFieldsRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostUpdateDocumentFieldsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostUpdateDocumentFieldsRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostUpdateDocumentFieldsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostUpdateDocumentFieldsRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostUpdateDocumentFieldsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostUpdateDocumentFieldsRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostUpdateDocumentFieldsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
         }
 
 }

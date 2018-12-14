@@ -37,17 +37,82 @@ PostAppendDocumentRequest::PostAppendDocumentRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
-        )
+        ) : 
+            m_name(name),
+            m_documentList(documentList),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password),
+            m_destFileName(destFileName),
+            m_revisionAuthor(revisionAuthor),
+            m_revisionDateTime(revisionDateTime)
         {
-            this->name = name;
-            this->documentList = documentList;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
-            this->destFileName = destFileName;
-            this->revisionAuthor = revisionAuthor;
-            this->revisionDateTime = revisionDateTime;
+            
+        }
+
+        utility::string_t PostAppendDocumentRequest::getName() const
+        {
+            return m_name;
+        }
+        void PostAppendDocumentRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        std::shared_ptr<DocumentEntryList> PostAppendDocumentRequest::getDocumentList() const
+        {
+            return m_documentList;
+        }
+        void PostAppendDocumentRequest::setDocumentList(std::shared_ptr<DocumentEntryList> documentList){
+            m_documentList = documentList;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void PostAppendDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void PostAppendDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void PostAppendDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void PostAppendDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getDestFileName() const
+        {
+            return m_destFileName;
+        }
+        void PostAppendDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = destFileName;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getRevisionAuthor() const
+        {
+            return m_revisionAuthor;
+        }
+        void PostAppendDocumentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = revisionAuthor;
+        }
+        boost::optional<utility::string_t> PostAppendDocumentRequest::getRevisionDateTime() const
+        {
+            return m_revisionDateTime;
+        }
+        void PostAppendDocumentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = revisionDateTime;
         }
 
 }

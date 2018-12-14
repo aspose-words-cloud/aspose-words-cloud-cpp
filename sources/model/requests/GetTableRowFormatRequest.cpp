@@ -35,15 +35,66 @@ GetTableRowFormatRequest::GetTableRowFormatRequest(
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
-        )
+        ) : 
+            m_name(name),
+            m_tablePath(tablePath),
+            m_index(index),
+            m_folder(folder),
+            m_storage(storage),
+            m_loadEncoding(loadEncoding),
+            m_password(password)
         {
-            this->name = name;
-            this->tablePath = tablePath;
-            this->index = index;
-            this->folder = folder;
-            this->storage = storage;
-            this->loadEncoding = loadEncoding;
-            this->password = password;
+            
+        }
+
+        utility::string_t GetTableRowFormatRequest::getName() const
+        {
+            return m_name;
+        }
+        void GetTableRowFormatRequest::setName(utility::string_t name){
+            m_name = name;
+        }
+        utility::string_t GetTableRowFormatRequest::getTablePath() const
+        {
+            return m_tablePath;
+        }
+        void GetTableRowFormatRequest::setTablePath(utility::string_t tablePath){
+            m_tablePath = tablePath;
+        }
+        int32_t GetTableRowFormatRequest::getIndex() const
+        {
+            return m_index;
+        }
+        void GetTableRowFormatRequest::setIndex(int32_t index){
+            m_index = index;
+        }
+        boost::optional<utility::string_t> GetTableRowFormatRequest::getFolder() const
+        {
+            return m_folder;
+        }
+        void GetTableRowFormatRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = folder;
+        }
+        boost::optional<utility::string_t> GetTableRowFormatRequest::getStorage() const
+        {
+            return m_storage;
+        }
+        void GetTableRowFormatRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = storage;
+        }
+        boost::optional<utility::string_t> GetTableRowFormatRequest::getLoadEncoding() const
+        {
+            return m_loadEncoding;
+        }
+        void GetTableRowFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = loadEncoding;
+        }
+        boost::optional<utility::string_t> GetTableRowFormatRequest::getPassword() const
+        {
+            return m_password;
+        }
+        void GetTableRowFormatRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = password;
         }
 
 }
