@@ -40,4 +40,4 @@ CppBuild-cppcheck-build-dir/*
 TODO
 
 checkResult.xml
-
+servercreds.json

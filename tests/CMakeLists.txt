@@ -36,4 +36,4 @@ add_custom_command(TARGET words-cloud-test POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_PROPERTY:cpprestsdk::cpprest,IMPORTED_LOCATION_DEBUG> $<TARGET_FILE_DIR:words-cloud-test>
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_PROPERTY:cpprestsdk::cpprest,IMPORTED_LOCATION_RELEASE> $<TARGET_FILE_DIR:words-cloud-test>)
 
-add_test(NAME words-cloud-test COMMAND words-cloud-test) 
+add_test(NAME words-cloud-test COMMAND words-cloud-test --gtest_output=xml:test_result.xml) 

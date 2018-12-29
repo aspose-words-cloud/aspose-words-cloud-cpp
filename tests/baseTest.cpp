@@ -57,11 +57,11 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	auto client = get_client();
-	auto config = get_config();
-	config->setDebugMode(true);
-	config->setApiVersion(STCONVERT("v2"));
+	auto newConfig = get_config();
+	newConfig->setDebugMode(true);
+	newConfig->setApiVersion(STCONVERT("v2"));
 
-	client->setConfiguration(config);
+	client->setConfiguration(newConfig);
 	shared_ptr<WordsApi> api(new WordsApi(client));
 
 	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
@@ -78,7 +78,7 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
 		expectedUri = STCONVERT("DELETE: ") +
-		fwSlash + config->getApiVersion() + fwSlash + STCONVERT("words") +
+		fwSlash + newConfig->getApiVersion() + fwSlash + STCONVERT("words") +
 		fwSlash + remoteName + fwSlash + STCONVERT("fields"),
 		expectedResponseHeader = STCONVERT("Response 200: OK"),
 		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");

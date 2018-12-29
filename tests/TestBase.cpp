@@ -5,7 +5,7 @@
 std::shared_ptr<ApiConfiguration> get_config()
 {
 	ifstream fileStream("servercreds.json");
-	std::shared_ptr<ApiConfiguration> config(new ApiConfiguration);
+	std::shared_ptr<ApiConfiguration> newConfig(new ApiConfiguration);
 
 	if (!fileStream.is_open())
 	{
@@ -18,20 +18,20 @@ std::shared_ptr<ApiConfiguration> get_config()
 		lines += line;
 	}
 	web::json::value fileJson = web::json::value::parse(utility::conversions::to_string_t(lines));
-	config.reset(new ApiConfiguration);
+	newConfig.reset(new ApiConfiguration);
 
-	config->setAppKey(fileJson[L"AppKey"].as_string());
-	config->setBaseUrl(fileJson[L"BaseUrl"].as_string());
-	config->setAppSid(fileJson[L"AppSid"].as_string());
-	config->setUserAgent(STCONVERT("CppAsposeClient"));
-	config->setApiVersion(STCONVERT("v1"));
+	newConfig->setAppKey(fileJson[L"AppKey"].as_string());
+	newConfig->setBaseUrl(fileJson[L"BaseUrl"].as_string());
+	newConfig->setAppSid(fileJson[L"AppSid"].as_string());
+	newConfig->setUserAgent(STCONVERT("CppAsposeClient"));
+	newConfig->setApiVersion(STCONVERT("v1"));
 
 	web::http::client::http_client_config conf;
 
 	conf.set_timeout(chrono::seconds(60));
-	config->setHttpConfig(conf);
+	newConfig->setHttpConfig(conf);
 
-	return config;
+	return newConfig;
 }
 
 vector<utility::string_t> split(utility::string_t stringToSplit)

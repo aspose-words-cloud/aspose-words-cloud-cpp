@@ -38,7 +38,6 @@ TEST_F(FormFieldTest, TestPostFormField)
 
 	std::shared_ptr<FormFieldResponse> actual = get_api()->postFormField(request).get();
 	std::shared_ptr<FormField> formField = actual->getFormField();
-	ApiConfiguration config;
 
 	ASSERT_EQ(200, actual->getCode());
 	ASSERT_EQ(STCONVERT("FullName"), formField->getName());

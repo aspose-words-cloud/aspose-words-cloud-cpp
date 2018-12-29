@@ -5,3 +5,4 @@ sources/*
 tests/*
 thirdparty/*
 .gitignore
+*/servercreds.json
