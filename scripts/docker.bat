@@ -1,1 +1,1 @@
-docker run --rm -v "%cd%/tests/TestData:C:/TestData" -v "%cd%/scripts:C:/scripts" cppwc:latest cmd /c "cd ..\ & .\scripts\prepareCode & .\scripts\runTests & .\scripts\runCheck"
+docker run -it --rm -v "%cd%/tests/TestData:C:/TestData" -v "%cd%/scripts:C:/scripts" cppwc:latest cmd /c "cd ..\ & .\scripts\prepareCode & .\scripts\runTests & .\scripts\runCheck"
