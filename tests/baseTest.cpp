@@ -17,8 +17,8 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	auto client = get_client();
-	auto config = get_config();
-	config->setDebugMode(true);
+	auto newConfig = get_config();
+	newConfig->setDebugMode(true);
 	client->setConfiguration(config);
 	shared_ptr<WordsApi> api(new WordsApi(client));
 	
@@ -36,7 +36,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
 		expectedUri = STCONVERT("DELETE: ") +
-						fwSlash + config->getApiVersion() + fwSlash + STCONVERT("words") +
+						fwSlash + newConfig->getApiVersion() + fwSlash + STCONVERT("words") +
 						fwSlash + remoteName + fwSlash + STCONVERT("fields"),
 		expectedResponseHeader = STCONVERT("Response 200: OK"),
 		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
