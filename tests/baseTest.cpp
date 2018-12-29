@@ -19,7 +19,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
-	client->setConfiguration(config);
+	client->setConfiguration(newConfig);
 	shared_ptr<WordsApi> api(new WordsApi(client));
 	
 	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
