@@ -75,7 +75,7 @@ void SearchResultsCollection::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("ResultsList")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("ResultsList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](std::shared_ptr<SearchResult> item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](web::json::value& item){
             if(item.is_null())
             {
                 return std::shared_ptr<SearchResult>(nullptr);
@@ -144,7 +144,7 @@ void SearchResultsCollection::fromMultiPart(std::shared_ptr<MultipartFormData> m
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ResultsList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](std::shared_ptr<SearchResult> item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](web::json::value item) {
             if(item.is_null())
             {
                 return std::shared_ptr<SearchResult>(nullptr) ;

@@ -75,7 +75,7 @@ void CommentsCollection::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("CommentList")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("CommentList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_CommentList), [&](std::shared_ptr<Comment> item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_CommentList), [&](web::json::value& item){
             if(item.is_null())
             {
                 return std::shared_ptr<Comment>(nullptr);
@@ -144,7 +144,7 @@ void CommentsCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("CommentList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CommentList), [&](std::shared_ptr<Comment> item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CommentList), [&](web::json::value item) {
             if(item.is_null())
             {
                 return std::shared_ptr<Comment>(nullptr) ;

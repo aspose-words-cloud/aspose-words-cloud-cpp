@@ -90,7 +90,7 @@ void Table::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("TableRowList")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("TableRowList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableRowList), [&](std::shared_ptr<TableRow> item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableRowList), [&](web::json::value& item){
             if(item.is_null())
             {
                 return std::shared_ptr<TableRow>(nullptr);
@@ -185,7 +185,7 @@ void Table::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const ut
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TableRowList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableRowList), [&](std::shared_ptr<TableRow> item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableRowList), [&](web::json::value item) {
             if(item.is_null())
             {
                 return std::shared_ptr<TableRow>(nullptr) ;

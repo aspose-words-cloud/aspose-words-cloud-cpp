@@ -61,7 +61,7 @@ pplx::task<void> ApiClient::requestToken()
 	formParams.insert(std::make_pair(utility::conversions::to_string_t("client_secret"),
 		m_Configuration->getAppKey()));
 
-    return callApi(getTokenUrl(), L"POST", queryParams,nullptr, headerParams, formParams, fileParams, 
+    return callApi(getTokenUrl(), utility::conversions::to_string_t("POST"), queryParams,nullptr, headerParams, formParams, fileParams, 
 		utility::conversions::to_string_t("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
 		
 		if (response.status_code() >= 400)

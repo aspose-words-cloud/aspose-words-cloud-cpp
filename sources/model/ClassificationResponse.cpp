@@ -103,7 +103,7 @@ void ClassificationResponse::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("BestResults")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("BestResults")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](std::shared_ptr<ClassificationResult> item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](web::json::value& item){
             if(item.is_null())
             {
                 return std::shared_ptr<ClassificationResult>(nullptr);
@@ -183,7 +183,7 @@ void ClassificationResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BestResults")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BestResults), [&](std::shared_ptr<ClassificationResult> item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BestResults), [&](web::json::value item) {
             if(item.is_null())
             {
                 return std::shared_ptr<ClassificationResult>(nullptr) ;
