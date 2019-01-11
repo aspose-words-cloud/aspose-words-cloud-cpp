@@ -81,3 +81,5 @@ class GetDocumentDrawingObjectOleDataRequest{
 }
 }
 }
+
+#endif

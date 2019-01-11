@@ -96,3 +96,5 @@ class DeleteFootnoteRequest{
 }
 }
 }
+
+#endif

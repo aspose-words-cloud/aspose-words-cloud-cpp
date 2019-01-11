@@ -71,3 +71,5 @@ class GetDocumentProtectionRequest{
 }
 }
 }
+
+#endif

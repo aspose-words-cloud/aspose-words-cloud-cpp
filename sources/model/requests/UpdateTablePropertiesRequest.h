@@ -102,3 +102,5 @@ class UpdateTablePropertiesRequest{
 }
 }
 }
+
+#endif
