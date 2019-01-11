@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postRun_H
+#define postRun_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "Run.h"

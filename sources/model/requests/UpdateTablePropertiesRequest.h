@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef updateTableProperties_H
+#define updateTableProperties_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "TableProperties.h"

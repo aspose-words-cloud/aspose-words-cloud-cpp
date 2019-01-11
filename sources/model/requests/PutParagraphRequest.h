@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef putParagraph_H
+#define putParagraph_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "ParagraphInsert.h"

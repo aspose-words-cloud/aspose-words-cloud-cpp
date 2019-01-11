@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef deleteTableCell_H
+#define deleteTableCell_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include <boost/optional.hpp>

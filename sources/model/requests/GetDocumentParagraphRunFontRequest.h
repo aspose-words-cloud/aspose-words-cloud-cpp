@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef getDocumentParagraphRunFont_H
+#define getDocumentParagraphRunFont_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include <boost/optional.hpp>

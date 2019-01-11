@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef putProtectDocument_H
+#define putProtectDocument_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "ProtectionRequest.h"

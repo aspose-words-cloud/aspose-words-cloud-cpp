@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postReplaceText_H
+#define postReplaceText_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "ReplaceTextRequest.h"

@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef putConvertDocument_H
+#define putConvertDocument_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "HttpContent.h"

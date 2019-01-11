@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef deleteUnprotectDocument_H
+#define deleteUnprotectDocument_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "ProtectionRequest.h"

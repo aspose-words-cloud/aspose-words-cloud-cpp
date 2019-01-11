@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postDrawingObject_H
+#define postDrawingObject_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "HttpContent.h"

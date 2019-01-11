@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postFootnote_H
+#define postFootnote_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "Footnote.h"

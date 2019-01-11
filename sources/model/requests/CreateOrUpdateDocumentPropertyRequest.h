@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef createOrUpdateDocumentProperty_H
+#define createOrUpdateDocumentProperty_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "DocumentProperty.h"

@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef updateTableRowFormat_H
+#define updateTableRowFormat_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "TableRowFormat.h"
@@ -98,3 +102,5 @@ class UpdateTableRowFormatRequest{
 }
 }
 }
+
+#endif

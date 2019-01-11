@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postAppendDocument_H
+#define postAppendDocument_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "DocumentEntryList.h"

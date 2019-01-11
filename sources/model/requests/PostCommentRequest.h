@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postComment_H
+#define postComment_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "Comment.h"

@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef updateBorder_H
+#define updateBorder_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "Border.h"

@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef putExecuteTemplateOnline_H
+#define putExecuteTemplateOnline_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "HttpContent.h"

@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postInsertDocumentWatermarkText_H
+#define postInsertDocumentWatermarkText_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "WatermarkText.h"

@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postFormField_H
+#define postFormField_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "FormField.h"

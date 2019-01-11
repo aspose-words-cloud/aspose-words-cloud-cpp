@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postInsertPageNumbers_H
+#define postInsertPageNumbers_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "PageNumber.h"

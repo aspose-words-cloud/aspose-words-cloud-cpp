@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef putExecuteMailMergeOnline_H
+#define putExecuteMailMergeOnline_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "HttpContent.h"

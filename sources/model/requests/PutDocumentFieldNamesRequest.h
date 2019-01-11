@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef putDocumentFieldNames_H
+#define putDocumentFieldNames_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "HttpContent.h"

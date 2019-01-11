@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef updateTableCellFormat_H
+#define updateTableCellFormat_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "TableCellFormat.h"

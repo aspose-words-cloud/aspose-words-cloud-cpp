@@ -22,6 +22,10 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+#pragma once
+#ifndef postDocumentParagraphFormat_H
+#define postDocumentParagraphFormat_H 
+
 #include "cpprest/details/basic_types.h"
 #undef U
 #include "ParagraphFormat.h"
