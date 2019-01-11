@@ -28,11 +28,11 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::wstringstream ss;
-	std::wstreambuf *outbuf = std::wcout.rdbuf(ss.rdbuf());
+	std::wstreambuf *outbuf = ucout.rdbuf(ss.rdbuf());
 
 	api->deleteFields(request).get();
 
-	std::wcout.rdbuf(outbuf);
+	ucout.rdbuf(outbuf);
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
 		expectedUri = STCONVERT("DELETE: ") +
@@ -70,11 +70,11 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::wstringstream ss;
-	std::wstreambuf *outbuf = std::wcout.rdbuf(ss.rdbuf());
+	std::wstreambuf *outbuf = ucout.rdbuf(ss.rdbuf());
 
 	api->deleteFields(request).get();
 
-	std::wcout.rdbuf(outbuf);
+	ucout.rdbuf(outbuf);
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
 		expectedUri = STCONVERT("DELETE: ") +
@@ -110,7 +110,7 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 		ASSERT_EQ(400, exception.error_code().value()) << "Exception code is not equals to 400";
 		std::string message((std::istreambuf_iterator<char>(*(exception.getContent()))), std::istreambuf_iterator<char>());
 		web::json::value actual = web::json::value::parse(STCONVERT(message));
-		std::wcout << STCONVERT(message) << "====" << std::endl;
+		ucout << STCONVERT(message) << "====" << std::endl;
 		ASSERT_TRUE(actual.has_field(STCONVERT("Message")));
 		ASSERT_EQ(STCONVERT("Error while loading file 'noFileWithThisName.docx' from storage:"),
 			actual[STCONVERT("Message")].as_string().substr(0, 64)) << "Wrong message: " << message;

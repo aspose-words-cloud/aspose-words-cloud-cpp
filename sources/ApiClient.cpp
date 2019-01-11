@@ -71,7 +71,7 @@ pplx::task<void> ApiClient::requestToken()
 
 		return response.extract_json();
     }).then([this](web::json::value val) {
-        this->setAccessToken(val[L"access_token"].as_string());
+        this->setAccessToken(val[utility::conversions::to_string_t("access_token")].as_string());
     });
 }
 
@@ -287,8 +287,8 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						request.request_uri().to_string(),
 						body = copyDataFromStream(request.body());
 
-					std::wcout << header << std::endl << body << std::endl;
-					std::wcout.clear();
+					ucout << header << std::endl << body << std::endl;
+					ucout.clear();
 				}
 
 				void ApiClient::logResponse(web::http::http_response response) {
@@ -299,8 +299,8 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						utility::conversions::to_string_t(": ") + response.reason_phrase(),
 						body = copyDataFromStream(response.body());
 
-					std::wcout << header << std::endl << body << std::endl;
-					std::wcout.clear();
+					ucout << header << std::endl << body << std::endl;
+					ucout.clear();
 				}
 
 }
