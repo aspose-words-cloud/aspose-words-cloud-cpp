@@ -161,7 +161,7 @@ void FormFieldDropDown::toMultipart(std::shared_ptr<MultipartFormData> multipart
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<utility::string_t> item){
+        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
             return ModelBase::toJson(item);
         });
         
