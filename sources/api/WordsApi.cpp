@@ -49,7 +49,7 @@ std::shared_ptr<FormField> deserializeFormField(web::json::value json) {
 					if (json.has_field(utility::conversions::to_string_t("DropDownItems")))
 						field.reset(new FormFieldDropDown());
 
-					if (!field) throw new ApiException(utility::conversions::to_string_t("Wrong json provided for FormFieldResponse"));
+					if (!field) throw std::invalid_argument("Wrong json provided for FormFieldResponse");
 					field->fromJson(json);
 					return field;
 				}
