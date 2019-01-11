@@ -54,7 +54,7 @@ web::json::value AvailableFontsResponse::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_AdditionalFonts.begin(), m_AdditionalFonts.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<FontInfo> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -66,7 +66,7 @@ web::json::value AvailableFontsResponse::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_CustomFonts.begin(), m_CustomFonts.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<FontInfo> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -78,7 +78,7 @@ web::json::value AvailableFontsResponse::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_SystemFonts.begin(), m_SystemFonts.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<FontInfo> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -101,7 +101,7 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("AdditionalFonts")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("AdditionalFonts")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalFonts), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalFonts), [&](std::shared_ptr<FontInfo> item){
             if(item.is_null())
             {
                 return std::shared_ptr<FontInfo>(nullptr);
@@ -122,7 +122,7 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("CustomFonts")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("CustomFonts")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_CustomFonts), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_CustomFonts), [&](std::shared_ptr<FontInfo> item){
             if(item.is_null())
             {
                 return std::shared_ptr<FontInfo>(nullptr);
@@ -143,7 +143,7 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("SystemFonts")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("SystemFonts")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_SystemFonts), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_SystemFonts), [&](std::shared_ptr<FontInfo> item){
             if(item.is_null())
             {
                 return std::shared_ptr<FontInfo>(nullptr);
@@ -176,7 +176,7 @@ void AvailableFontsResponse::toMultipart(std::shared_ptr<MultipartFormData> mult
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_AdditionalFonts.begin(), m_AdditionalFonts.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_AdditionalFonts.begin(), m_AdditionalFonts.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FontInfo> item){
             return ModelBase::toJson(item);
         });
         
@@ -187,7 +187,7 @@ void AvailableFontsResponse::toMultipart(std::shared_ptr<MultipartFormData> mult
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_CustomFonts.begin(), m_CustomFonts.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_CustomFonts.begin(), m_CustomFonts.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FontInfo> item){
             return ModelBase::toJson(item);
         });
         
@@ -198,7 +198,7 @@ void AvailableFontsResponse::toMultipart(std::shared_ptr<MultipartFormData> mult
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_SystemFonts.begin(), m_SystemFonts.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_SystemFonts.begin(), m_SystemFonts.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FontInfo> item){
             return ModelBase::toJson(item);
         });
         
@@ -228,7 +228,7 @@ void AvailableFontsResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("AdditionalFonts")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalFonts), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalFonts), [&](std::shared_ptr<FontInfo> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<FontInfo>(nullptr) ;
@@ -248,7 +248,7 @@ void AvailableFontsResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("CustomFonts")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CustomFonts), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CustomFonts), [&](std::shared_ptr<FontInfo> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<FontInfo>(nullptr) ;
@@ -268,7 +268,7 @@ void AvailableFontsResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SystemFonts")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_SystemFonts), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_SystemFonts), [&](std::shared_ptr<FontInfo> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<FontInfo>(nullptr) ;

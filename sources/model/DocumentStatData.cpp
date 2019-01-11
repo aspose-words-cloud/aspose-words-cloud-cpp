@@ -63,7 +63,7 @@ web::json::value DocumentStatData::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_PageStatData.begin(), m_PageStatData.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<PageStatData> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -118,7 +118,7 @@ void DocumentStatData::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("PageStatData")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("PageStatData")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_PageStatData), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_PageStatData), [&](std::shared_ptr<PageStatData> item){
             if(item.is_null())
             {
                 return std::shared_ptr<PageStatData>(nullptr);
@@ -156,7 +156,7 @@ void DocumentStatData::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_PageStatData.begin(), m_PageStatData.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_PageStatData.begin(), m_PageStatData.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<PageStatData> item){
             return ModelBase::toJson(item);
         });
         
@@ -193,7 +193,7 @@ void DocumentStatData::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PageStatData")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_PageStatData), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_PageStatData), [&](std::shared_ptr<PageStatData> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<PageStatData>(nullptr) ;

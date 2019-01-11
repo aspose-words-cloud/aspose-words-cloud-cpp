@@ -52,7 +52,7 @@ web::json::value StoryChildNodes::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<NodeLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -73,7 +73,7 @@ void StoryChildNodes::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("ChildNodes")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("ChildNodes")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](std::shared_ptr<NodeLink> item){
             if(item.is_null())
             {
                 return std::shared_ptr<NodeLink>(nullptr);
@@ -100,7 +100,7 @@ void StoryChildNodes::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -125,7 +125,7 @@ void StoryChildNodes::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ChildNodes")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](std::shared_ptr<NodeLink> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<NodeLink>(nullptr) ;

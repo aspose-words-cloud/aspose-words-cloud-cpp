@@ -54,7 +54,7 @@ web::json::value FormFieldDropDown::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<utility::string_t> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -81,7 +81,7 @@ void FormFieldDropDown::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("DropDownItems")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("DropDownItems")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_DropDownItems), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_DropDownItems), [&](std::shared_ptr<utility::string_t> item){
             return ModelBase::stringFromJson(item);
         });
 
@@ -161,7 +161,7 @@ void FormFieldDropDown::toMultipart(std::shared_ptr<MultipartFormData> multipart
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<utility::string_t> item){
             return ModelBase::toJson(item);
         });
         
@@ -239,7 +239,7 @@ void FormFieldDropDown::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DropDownItems")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DropDownItems), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DropDownItems), [&](std::shared_ptr<utility::string_t> item) {
             return ModelBase::stringFromJson(item);
         });
         }

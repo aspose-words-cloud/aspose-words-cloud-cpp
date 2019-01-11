@@ -58,7 +58,7 @@ web::json::value SplitDocumentResult::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Pages.begin(), m_Pages.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<FileLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -93,7 +93,7 @@ void SplitDocumentResult::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("Pages")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("Pages")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Pages), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Pages), [&](std::shared_ptr<FileLink> item){
             if(item.is_null())
             {
                 return std::shared_ptr<FileLink>(nullptr);
@@ -138,7 +138,7 @@ void SplitDocumentResult::toMultipart(std::shared_ptr<MultipartFormData> multipa
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Pages.begin(), m_Pages.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_Pages.begin(), m_Pages.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FileLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -180,7 +180,7 @@ void SplitDocumentResult::fromMultiPart(std::shared_ptr<MultipartFormData> multi
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Pages")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Pages), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Pages), [&](std::shared_ptr<FileLink> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<FileLink>(nullptr) ;

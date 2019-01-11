@@ -52,7 +52,7 @@ web::json::value ParagraphLinkCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<ParagraphLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -75,7 +75,7 @@ void ParagraphLinkCollection::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("ParagraphLinkList")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("ParagraphLinkList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ParagraphLinkList), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ParagraphLinkList), [&](std::shared_ptr<ParagraphLink> item){
             if(item.is_null())
             {
                 return std::shared_ptr<ParagraphLink>(nullptr);
@@ -110,7 +110,7 @@ void ParagraphLinkCollection::toMultipart(std::shared_ptr<MultipartFormData> mul
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ParagraphLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -144,7 +144,7 @@ void ParagraphLinkCollection::fromMultiPart(std::shared_ptr<MultipartFormData> m
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ParagraphLinkList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ParagraphLinkList), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ParagraphLinkList), [&](std::shared_ptr<ParagraphLink> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<ParagraphLink>(nullptr) ;

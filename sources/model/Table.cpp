@@ -57,7 +57,7 @@ web::json::value Table::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<TableRow> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -90,7 +90,7 @@ void Table::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("TableRowList")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("TableRowList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableRowList), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableRowList), [&](std::shared_ptr<TableRow> item){
             if(item.is_null())
             {
                 return std::shared_ptr<TableRow>(nullptr);
@@ -138,7 +138,7 @@ void Table::toMultipart(std::shared_ptr<MultipartFormData> multipart, const util
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<TableRow> item){
             return ModelBase::toJson(item);
         });
         
@@ -185,7 +185,7 @@ void Table::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const ut
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TableRowList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableRowList), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableRowList), [&](std::shared_ptr<TableRow> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<TableRow>(nullptr) ;

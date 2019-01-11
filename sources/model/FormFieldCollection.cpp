@@ -52,7 +52,7 @@ web::json::value FormFieldCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<FormField> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -75,7 +75,7 @@ void FormFieldCollection::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("List")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("List")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](std::shared_ptr<FormField> item){
             if(item.is_null())
             {
                 return std::shared_ptr<FormField>(nullptr);
@@ -110,7 +110,7 @@ void FormFieldCollection::toMultipart(std::shared_ptr<MultipartFormData> multipa
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FormField> item){
             return ModelBase::toJson(item);
         });
         
@@ -144,7 +144,7 @@ void FormFieldCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multi
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("List")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](std::shared_ptr<FormField> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<FormField>(nullptr) ;

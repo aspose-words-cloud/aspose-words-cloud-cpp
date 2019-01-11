@@ -52,7 +52,7 @@ web::json::value SearchResultsCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<SearchResult> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -75,7 +75,7 @@ void SearchResultsCollection::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("ResultsList")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("ResultsList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](std::shared_ptr<SearchResult> item){
             if(item.is_null())
             {
                 return std::shared_ptr<SearchResult>(nullptr);
@@ -110,7 +110,7 @@ void SearchResultsCollection::toMultipart(std::shared_ptr<MultipartFormData> mul
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<SearchResult> item){
             return ModelBase::toJson(item);
         });
         
@@ -144,7 +144,7 @@ void SearchResultsCollection::fromMultiPart(std::shared_ptr<MultipartFormData> m
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ResultsList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](std::shared_ptr<SearchResult> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<SearchResult>(nullptr) ;

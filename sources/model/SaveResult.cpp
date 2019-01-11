@@ -62,7 +62,7 @@ web::json::value SaveResult::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<FileLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -103,7 +103,7 @@ void SaveResult::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("AdditionalItems")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("AdditionalItems")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalItems), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalItems), [&](std::shared_ptr<FileLink> item){
             if(item.is_null())
             {
                 return std::shared_ptr<FileLink>(nullptr);
@@ -146,7 +146,7 @@ void SaveResult::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FileLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -189,7 +189,7 @@ void SaveResult::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("AdditionalItems")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalItems), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalItems), [&](std::shared_ptr<FileLink> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<FileLink>(nullptr) ;

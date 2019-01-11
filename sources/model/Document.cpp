@@ -58,7 +58,7 @@ web::json::value Document::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray),
-			[&](auto item) {
+			[&](std::shared_ptr<Link> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -90,7 +90,7 @@ void Document::fromJson(web::json::value& val)
                             && !val[utility::conversions::to_string_t("Links")].is_null())
         {
         auto arr = val[utility::conversions::to_string_t("Links")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Links), [&](auto item){
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Links), [&](std::shared_ptr<Link> item){
             if(item.is_null())
             {
                 return std::shared_ptr<Link>(nullptr);
@@ -152,7 +152,7 @@ void Document::toMultipart(std::shared_ptr<MultipartFormData> multipart, const u
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray), [&](auto& item){
+        std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Link> item){
             return ModelBase::toJson(item);
         });
         
@@ -193,7 +193,7 @@ void Document::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
         {
 
         web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Links")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Links), [&](auto& item) {
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Links), [&](std::shared_ptr<Link> item) {
             if(item.is_null())
             {
                 return std::shared_ptr<Link>(nullptr) ;
