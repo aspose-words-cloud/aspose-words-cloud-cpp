@@ -54,7 +54,7 @@ web::json::value FormFieldDropDown::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<utility::string_t> item) {
+			[&](utility::string_t item) {
 			return ModelBase::toJson(item);
 		});
         
