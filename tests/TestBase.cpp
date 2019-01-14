@@ -65,11 +65,11 @@ utility::string_t cutFileExtension(utility::string_t filename)
 utility::string_t InfrastructureTest::get_sdk_root()
 {
 	utility::string_t workingDir;
-	#if defined(_unix_)
+	#if defined(__unix__)
 		char directory[PATH_MAX];
 		getcwd(directory, PATH_MAX);
 		workingDir = STCONVERT(directory);
-	#elif defined(__WIN32__) || definde (_WIN32)
+	#elif defined(__WIN32__) || defined (_WIN32)
 		workingDir = STCONVERT(_getcwd(nullptr, 0));
 	#endif
 	vector<utility::string_t> dirParts = split(workingDir);

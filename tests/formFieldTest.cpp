@@ -27,9 +27,9 @@ TEST_F(FormFieldTest, TestPostFormField)
 	body->setName(STCONVERT("FullName"));
 	body->setEnabled(true);
 	body->setCalculateOnExit(true);
-	body->setStatusText(L"");
+	body->setStatusText(STCONVERT(""));
 	body->setTextInputType(STCONVERT("Regular"));
-	body->setTextInputDefault(L"");
+	body->setTextInputDefault(STCONVERT(""));
 
 	UploadFileToStorage(fullName, filePath);
 
@@ -124,9 +124,9 @@ TEST_F(FormFieldTest, TestPutFormField)
 	body->setName(STCONVERT("FullName"));
 	body->setEnabled(true);
 	body->setCalculateOnExit(true);
-	body->setStatusText(L"");
+	body->setStatusText(STCONVERT(""));
 	body->setTextInputType(STCONVERT("Regular"));
-	body->setTextInputDefault(L"123");
+	body->setTextInputDefault(STCONVERT("123"));
 	body->setTextInputFormat(STCONVERT("UPPERCASE"));
 
 	UploadFileToStorage(fullName, filePath);

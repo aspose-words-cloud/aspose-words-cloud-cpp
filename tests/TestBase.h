@@ -3,14 +3,14 @@
 #include <gtest/gtest.h>
 #include "WordsApi.h"
 
-typedef std::string
-
 #if defined (__WIN32__) || defined(_WIN32)
+typedef std::wstreambuf streambuf_t;
 #include <Windows.h>
 #endif
 
 #if defined (__unix__)
 #include <dirent.h>
+typedef std::streambuf streambuf_t;
 #endif
 
 #define STCONVERT(s) utility::conversions::to_string_t(s)

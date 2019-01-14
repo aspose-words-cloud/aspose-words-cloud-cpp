@@ -21,15 +21,13 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	newConfig->setDebugMode(true);
 	client->setConfiguration(newConfig);
 	shared_ptr<WordsApi> api(new WordsApi(client));
-	
 	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none));
 
 	UploadFileToStorage(fullName, filePath);
 
 	utility::stringstream_t ss;
-	std::wstreambuf *outbuf = ucout.rdbuf(ss.rdbuf());
-
+	streambuf_t *outbuf = ucout.rdbuf(ss.rdbuf());
 	api->deleteFields(request).get();
 
 	ucout.rdbuf(outbuf);
@@ -69,8 +67,8 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::wstringstream ss;
-	std::wstreambuf *outbuf = ucout.rdbuf(ss.rdbuf());
+	utility::stringstream_t ss;
+	streambuf_t *outbuf = ucout.rdbuf(ss.rdbuf());
 
 	api->deleteFields(request).get();
 
