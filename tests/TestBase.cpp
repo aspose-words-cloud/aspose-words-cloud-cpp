@@ -9,7 +9,7 @@ std::shared_ptr<ApiConfiguration> get_config()
 
 	if (!fileStream.is_open())
 	{
-		cout << "File is not open" << endl;
+		ucout << "File is not open" << endl;
 		return nullptr;
 	}
 	string lines, line;
@@ -20,12 +20,11 @@ std::shared_ptr<ApiConfiguration> get_config()
 	web::json::value fileJson = web::json::value::parse(utility::conversions::to_string_t(lines));
 	newConfig.reset(new ApiConfiguration);
 
-	newConfig->setAppKey(fileJson[L"AppKey"].as_string());
-	newConfig->setBaseUrl(fileJson[L"BaseUrl"].as_string());
-	newConfig->setAppSid(fileJson[L"AppSid"].as_string());
+	newConfig->setAppKey(fileJson[STCONVERT("AppKey")].as_string());
+	newConfig->setBaseUrl(fileJson[STCONVERT("BaseUrl")].as_string());
+	newConfig->setAppSid(fileJson[STCONVERT("AppSid")].as_string());
 	newConfig->setUserAgent(STCONVERT("CppAsposeClient"));
 	newConfig->setApiVersion(STCONVERT("v1"));
-
 	web::http::client::http_client_config conf;
 
 	conf.set_timeout(chrono::seconds(60));
@@ -38,8 +37,8 @@ vector<utility::string_t> split(utility::string_t stringToSplit)
 {
 	vector<utility::string_t> parts;
 	utility::string_t temp;
-	wstringstream wss(stringToSplit);
-	while (getline(wss, temp, L'\\'))
+	utility::stringstream_t wss(stringToSplit);
+	while (getline(wss, temp))
 	{
 		parts.push_back(temp);
 	}
@@ -65,7 +64,14 @@ utility::string_t cutFileExtension(utility::string_t filename)
 
 utility::string_t InfrastructureTest::get_sdk_root()
 {
-	utility::string_t workingDir = STCONVERT(_getcwd(nullptr, 0));
+	utility::string_t workingDir;
+	#if defined(_unix_)
+		char directory[PATH_MAX];
+		getcwd(directory, PATH_MAX);
+		workingDir = STCONVERT(directory);
+	#elif defined(__WIN32__) || definde (_WIN32)
+		workingDir = STCONVERT(_getcwd(nullptr, 0));
+	#endif
 	vector<utility::string_t> dirParts = split(workingDir);
 	size_t lastIndex = dirParts.size() - 1;
 	while (dirParts[lastIndex--] != STCONVERT("tests"))
@@ -133,8 +139,8 @@ void InfrastructureTest::UploadFileToStorage(utility::string_t path, utility::st
 	queryParams[utility::conversions::to_string_t("path")] = path;
 
 	std::shared_ptr<ApiClient> client = get_client();
-	client->callApi(client->getConfiguration()->getBaseUrl() + L"/v1.1/storage/file",
-		L"PUT", queryParams, nullptr, headerParams, formParams, fileParams, L"multipart/form-data")
+	client->callApi(client->getConfiguration()->getBaseUrl() + STCONVERT("/v1.1/storage/file"),
+		STCONVERT("PUT"), queryParams, nullptr, headerParams, formParams, fileParams, STCONVERT("multipart/form-data"))
 		.then([=](web::http::http_response response) {
 		if (response.status_code() >= 400)
 			throw ApiException(response.status_code(), utility::conversions::to_string_t("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
@@ -156,8 +162,8 @@ bool InfrastructureTest::GetIsExists(utility::string_t path)
 	queryParams[utility::conversions::to_string_t("path")] = path;
 
 	std::shared_ptr<ApiClient> client = get_client();
-	return (client->callApi(client->getConfiguration()->getBaseUrl() + L"/v1.1/storage/exist",
-		L"GET", queryParams, nullptr, headerParams, formParams, fileParams, L"application/json")
+	return (client->callApi(client->getConfiguration()->getBaseUrl() + STCONVERT("/v1.1/storage/exist"),
+		STCONVERT("GET"), queryParams, nullptr, headerParams, formParams, fileParams, STCONVERT("application/json"))
 		.then([=](web::http::http_response response) {
 		if (response.status_code() >= 400)
 			throw ApiException(response.status_code(), utility::conversions::to_string_t("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));

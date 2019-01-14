@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 #include "WordsApi.h"
 
+typedef std::string
+
 #if defined (__WIN32__) || defined(_WIN32)
 #include <Windows.h>
 #endif
@@ -80,7 +82,7 @@ protected:
 	}
 	std::vector<utility::string_t> get_directory_files(utility::string_t dir){
 		std::vector<utility::string_t> files;
-#ifdef _WIN32
+#if defined(_WIN32)
 		WIN32_FIND_DATA fd;
 		std::string s(dir.begin(), dir.end());
 		s += "/*.*";
@@ -99,19 +101,19 @@ protected:
 		}
 
 #elif defined(__unix__)
-		DIR *dir;
-		if ((dir = opendir("c:\\src\\")) != NULL) {
+		DIR *dirObj;
+		if ((dirObj = opendir(dir.c_str())) != NULL) {
 			/* print all the files and directories within directory */
 			struct dirent *ent;
-			while ((ent = readdir(dir)) != NULL) {
+			while ((ent = readdir(dirObj)) != NULL) {
 				files.push_back(dir + STCONVERT("\\") + STCONVERT(ent->d_name));
 			}
-			closedir(dir);
+			closedir(dirObj);
 		}
 		else {
 			/* could not open directory */
 			perror("");
-			return EXIT_FAILURE;
+			return files;
 		}
 #endif
 		return files;

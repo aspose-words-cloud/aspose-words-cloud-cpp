@@ -11,3 +11,4 @@ cmake --build build --config Release --target install
 # Compile aw
 mkdir aspose-words-cloud-cpp/build
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -S aspose-words-cloud-cpp -B aspose-words-cloud-cpp/build
+cmake --build aspose-words-sdk/build --config Debug --target words-cloud-test 2>>log.txt

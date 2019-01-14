@@ -27,7 +27,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::wstringstream ss;
+	utility::stringstream_t ss;
 	std::wstreambuf *outbuf = ucout.rdbuf(ss.rdbuf());
 
 	api->deleteFields(request).get();
