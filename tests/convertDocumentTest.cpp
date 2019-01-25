@@ -3,7 +3,8 @@
 class ConvertDocumentTest : public InfrastructureTest {
 protected:
 	const utility::string_t baseFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\ConvertDocument")),
-		convertFolder = STCONVERT("DocumentActions\\ConvertDocument");
+		convertFolder = STCONVERT("DocumentActions") +
+				SYSTEM_DELIMITER + STCONVERT("ConvertDocument");
 };
 
 /// <summary>

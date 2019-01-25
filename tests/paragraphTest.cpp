@@ -6,7 +6,7 @@
 class ParagraphTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Paragraphs")),
-		fieldFolder = STCONVERT("DocumentElements\\Fields");
+		fieldFolder = STCONVERT("DocumentElements/Fields");
 };
 
 /// <summary>

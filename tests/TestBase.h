@@ -2,18 +2,20 @@
 #define TEST_BASE
 #include <gtest/gtest.h>
 #include "WordsApi.h"
+#define STCONVERT(s) utility::conversions::to_string_t(s)
 
 #if defined (__WIN32__) || defined(_WIN32)
 typedef std::wstreambuf streambuf_t;
 #include <Windows.h>
+#define SYSTEM_DELIMITER STCONVERT("\\")
 #endif
 
 #if defined (__unix__)
 #include <dirent.h>
 typedef std::streambuf streambuf_t;
+#define SYSTEM_DELIMITER STCONVERT("/")
 #endif
 
-#define STCONVERT(s) utility::conversions::to_string_t(s)
 
 using namespace io::swagger::client::api;
 using namespace std;
@@ -23,14 +25,15 @@ const std::shared_ptr<ApiConfiguration> config = get_config();
 
 vector<utility::string_t> split(utility::string_t stringToSplit);
 
-utility::string_t join(vector<utility::string_t> parts, utility::string_t delim = STCONVERT("\\"));
+utility::string_t join(vector<utility::string_t> parts, utility::string_t delim = SYSTEM_DELIMITER);
 
 utility::string_t cutFileExtension(utility::string_t filename);
 
 class InfrastructureTest : public ::testing::Test
 {
 protected:
-	utility::string_t LocalTestDataFolder = path_combine(get_sdk_root(), STCONVERT("tests\\TestData"));
+	utility::string_t LocalTestDataFolder = path_combine(get_sdk_root(),
+	        STCONVERT("tests") + SYSTEM_DELIMITER + STCONVERT("TestData"));
 
 	utility::string_t get_sdk_root();
 	utility::string_t virtual get_data_folder();
@@ -106,7 +109,7 @@ protected:
 			/* print all the files and directories within directory */
 			struct dirent *ent;
 			while ((ent = readdir(dirObj)) != NULL) {
-				files.push_back(dir + STCONVERT("\\") + STCONVERT(ent->d_name));
+				files.push_back(dir + SYSTEM_DELIMITER + STCONVERT(ent->d_name));
 			}
 			closedir(dirObj);
 		}
@@ -129,7 +132,8 @@ public:
 
 protected:
 	const utility::string_t baseTestOutPath = STCONVERT("TestOut"),
-		remoteBaseTestDataFolder = STCONVERT("Temp\\SdkTests\\TestData"),
+		remoteBaseTestDataFolder = STCONVERT("Temp") + SYSTEM_DELIMITER +
+		            STCONVERT("SdkTests") + SYSTEM_DELIMITER + STCONVERT("TestData"),
 		commonFolder = STCONVERT("Common");
 
 	const utility::string_t buildAbsPath;

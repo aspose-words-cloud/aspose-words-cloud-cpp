@@ -109,7 +109,7 @@ web::json::value ModelBase::toJson(const std::vector<T>& value) {
     std::vector<web::json::value> ret;
     std::transform(value.begin(), value.end(), std::back_inserter(ret),
     [&](T x){
-        return toJson(x);
+        return ModelBase::toJson(x);
     });
 
     return web::json::value::array(ret);

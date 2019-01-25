@@ -6,7 +6,7 @@
 class MathObjectTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\MathObjects")),
-		mathObjectFolder = STCONVERT("DocumentElements\\MathObjects");
+		mathObjectFolder = STCONVERT("DocumentElements/MathObjects");
 };
 
 /// <summary>

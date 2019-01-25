@@ -9,7 +9,6 @@ std::shared_ptr<ApiConfiguration> get_config()
 
 	if (!fileStream.is_open())
 	{
-		ucout << "File is not open" << endl;
 		return nullptr;
 	}
 	string lines, line;
@@ -38,7 +37,7 @@ vector<utility::string_t> split(utility::string_t stringToSplit)
 	vector<utility::string_t> parts;
 	utility::string_t temp;
 	utility::stringstream_t wss(stringToSplit);
-	while (getline(wss, temp))
+	while (getline(wss, temp, '/'))
 	{
 		parts.push_back(temp);
 	}
@@ -69,9 +68,10 @@ utility::string_t InfrastructureTest::get_sdk_root()
 		char directory[PATH_MAX];
 		getcwd(directory, PATH_MAX);
 		workingDir = STCONVERT(directory);
+		std::cout << workingDir;
 	#elif defined(__WIN32__) || defined (_WIN32)
 		workingDir = STCONVERT(_getcwd(nullptr, 0));
-	#endif
+    #endif
 	vector<utility::string_t> dirParts = split(workingDir);
 	size_t lastIndex = dirParts.size() - 1;
 	while (dirParts[lastIndex--] != STCONVERT("tests"))
@@ -79,7 +79,6 @@ utility::string_t InfrastructureTest::get_sdk_root()
 		dirParts.pop_back();
 	}
 	dirParts.pop_back();
-
 	return join(dirParts);
 }
 utility::string_t InfrastructureTest::get_data_folder()
@@ -88,7 +87,7 @@ utility::string_t InfrastructureTest::get_data_folder()
 }
 utility::string_t InfrastructureTest::path_combine(utility::string_t base, utility::string_t stringToAdd)
 {
-	return base + STCONVERT("/") + stringToAdd;
+	return base + SYSTEM_DELIMITER + stringToAdd;
 }
 utility::string_t InfrastructureTest::path_combine_url(utility::string_t base, utility::string_t stringToAdd)
 {
@@ -104,8 +103,17 @@ std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file
 	utility::string_t filename, utility::string_t contentType)
 {
 	ifstream checkStream(filePath);
-	if (!checkStream.good())
-		throw STCONVERT("Cannot open file ") + filePath + STCONVERT(" to upload");
+
+	if (!checkStream.good()) {
+		utility::string_t errreason;
+#if defined(__WIN32)
+
+#elif defined(__unix__)
+		char buffer[255];
+		errreason = utility::conversions::to_string_t(std::string(strerror_r(errno,buffer, sizeof(buffer))));
+#endif
+		ucerr << STCONVERT("Cannot open file ") + filePath + STCONVERT(" to upload. Reason: " + errreason);
+	}
 	checkStream.close();
 
 	std::shared_ptr<HttpContent> content(new HttpContent);
@@ -131,18 +139,19 @@ utility::string_t InfrastructureTest::get_file_text(utility::string_t file)
 
 void InfrastructureTest::UploadFileToStorage(utility::string_t path, utility::string_t filePath)
 {
-
 	std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
 	map<utility::string_t, utility::string_t> queryParams, headerParams, formParams;
-	std::shared_ptr<HttpContent> fileToUpload = generate_http_content_from_file(filePath);
-	fileParams.push_back(std::make_pair(STCONVERT("file"), fileToUpload));
+    std::shared_ptr<HttpContent> fileToUpload = generate_http_content_from_file(filePath);
+    fileParams.push_back(std::make_pair(STCONVERT("file"), fileToUpload));
 	queryParams[utility::conversions::to_string_t("path")] = path;
 
 	std::shared_ptr<ApiClient> client = get_client();
-	client->callApi(client->getConfiguration()->getBaseUrl() + STCONVERT("/v1.1/storage/file"),
+
+    client->callApi(client->getConfiguration()->getBaseUrl() + STCONVERT("/v1.1/storage/file"),
 		STCONVERT("PUT"), queryParams, nullptr, headerParams, formParams, fileParams, STCONVERT("multipart/form-data"))
 		.then([=](web::http::http_response response) {
-		if (response.status_code() >= 400)
+
+            if (response.status_code() >= 400)
 			throw ApiException(response.status_code(), utility::conversions::to_string_t("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 	})
 		.wait();

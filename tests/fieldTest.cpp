@@ -6,8 +6,8 @@
 class FieldTest : public InfrastructureTest {
 protected:
 	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Fields")),
-		textFolder = STCONVERT("DocumentElements\\Text"),
-		fieldFolder = STCONVERT("DocumentElements\\Fields");
+		textFolder = STCONVERT("DocumentElements/Text"),
+		fieldFolder = STCONVERT("DocumentElements/Fields");
 };
 
 /// <summary>

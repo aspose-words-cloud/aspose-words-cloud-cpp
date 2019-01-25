@@ -7,7 +7,7 @@
 class FormFieldTest : public InfrastructureTest {
 protected:
 	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\FormFields")),
-		fieldFolder = STCONVERT("DocumentElements\\FormFields");
+		fieldFolder = STCONVERT("DocumentElements/FormFields");
 };
 
 /// <summary>

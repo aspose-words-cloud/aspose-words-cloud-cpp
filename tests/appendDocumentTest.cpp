@@ -17,7 +17,6 @@ TEST_F(AppendDocumentTest, TestPostAppendDocument) {
 		fullName = path_combine(get_data_folder(), remoteName),
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 	utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
-
 	std::shared_ptr<DocumentEntryList> body(new DocumentEntryList());
 	std::shared_ptr<DocumentEntry> entry(new DocumentEntry());
 	entry->setHref(fullName);
@@ -29,7 +28,7 @@ TEST_F(AppendDocumentTest, TestPostAppendDocument) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostAppendDocumentRequest> request(new PostAppendDocumentRequest(remoteName, body, get_data_folder(), boost::none,
+    std::shared_ptr<PostAppendDocumentRequest> request(new PostAppendDocumentRequest(remoteName, body, get_data_folder(), boost::none,
 		boost::none, boost::none, destFileName, boost::none, boost::none));
 	auto requestTask = get_api()->postAppendDocument(request);
 	std::shared_ptr<DocumentResponse> actual = requestTask.get();

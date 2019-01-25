@@ -166,6 +166,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         {
             uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
         }
+
         for (auto& kvp : fileParams)
         {
             uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
@@ -275,8 +276,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						std::ostream_iterator<uint8_t>(oss, ""));
 
 					std::string s = oss.str();
-					utility::string_t resultString(s.begin(), s.end());
-					return resultString;
+					return utility::conversions::to_string_t(s);;
 				}
 
 

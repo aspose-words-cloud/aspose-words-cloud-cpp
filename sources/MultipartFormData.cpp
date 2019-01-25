@@ -109,12 +109,10 @@ void MultipartFormData::writeTo( std::ostream& target )
 
         // body
         std::shared_ptr<std::istream> data = content->getData();
-
 		data->seekg( 0, data->end );
-		std::vector<char> dataBytes( data->tellg() );
-		
-		data->seekg( 0, data->beg );
-		data->read( &dataBytes[0], dataBytes.size() );
+        std::vector<char> dataBytes( data->tellg() );
+        data->seekg( 0, data->beg );
+        data->read( &dataBytes[0], dataBytes.size() );
 
 		std::copy( dataBytes.begin(), dataBytes.end(), std::ostreambuf_iterator<char>( target ) );
     }

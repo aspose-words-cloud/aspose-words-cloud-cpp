@@ -5,7 +5,7 @@
 /// </summary>
 class TextTest : public InfrastructureTest {
 protected:
-	utility::string_t textFolder = STCONVERT("DocumentElements\\Text"),
+	utility::string_t textFolder = STCONVERT("DocumentElements/Text"),
 		remoteTextFolder = path_combine_url(remoteBaseTestDataFolder, textFolder);
 };
 

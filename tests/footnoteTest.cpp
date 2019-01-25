@@ -6,7 +6,7 @@
 class FootnoteTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Footnotes")),
-		footnoteFolder = STCONVERT("DocumentElements\\Footnotes");
+		footnoteFolder = STCONVERT("DocumentElements/Footnotes");
 };
 
 /// <summary>

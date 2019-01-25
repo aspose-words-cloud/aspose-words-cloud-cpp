@@ -6,7 +6,7 @@
 class RunTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Runs")),
-		runFolder = STCONVERT("DocumentElements\\Runs");
+		runFolder = STCONVERT("DocumentElements/Runs");
 };
 
 /// <summary>

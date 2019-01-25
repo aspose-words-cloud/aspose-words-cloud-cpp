@@ -30,7 +30,6 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	streambuf_t *outbuf = ucout.rdbuf(ss.rdbuf());
 	api->deleteFields(request).get();
 
-	ucout.rdbuf(outbuf);
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
 		expectedUri = STCONVERT("DELETE: ") +
@@ -38,6 +37,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 						fwSlash + remoteName + fwSlash + STCONVERT("fields"),
 		expectedResponseHeader = STCONVERT("Response 200: OK"),
 		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
+    ucout.rdbuf(outbuf);
 
 	ASSERT_TRUE(res.find(expectedUri) != std::string::npos);
 
@@ -108,7 +108,6 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 		ASSERT_EQ(400, exception.error_code().value()) << "Exception code is not equals to 400";
 		std::string message((std::istreambuf_iterator<char>(*(exception.getContent()))), std::istreambuf_iterator<char>());
 		web::json::value actual = web::json::value::parse(STCONVERT(message));
-		ucout << STCONVERT(message) << "====" << std::endl;
 		ASSERT_TRUE(actual.has_field(STCONVERT("Message")));
 		ASSERT_EQ(STCONVERT("Error while loading file 'noFileWithThisName.docx' from storage:"),
 			actual[STCONVERT("Message")].as_string().substr(0, 64)) << "Wrong message: " << message;
@@ -191,7 +190,7 @@ TEST_F(StorageApiTest, TestIsExists) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	ASSERT_TRUE(GetIsExists(remoteName));
+	ASSERT_TRUE(GetIsExists(fullName));
 }
 
 TEST_F(StorageApiTest, TestIsNotExists) {

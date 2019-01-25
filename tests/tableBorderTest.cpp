@@ -7,7 +7,7 @@
 class TableBorderTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Tables")),
-		tableFolder = STCONVERT("DocumentElements\\Tables");
+		tableFolder = STCONVERT("DocumentElements/Tables");
 };
 
 /// <summary>
