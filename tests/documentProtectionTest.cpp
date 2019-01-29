@@ -17,13 +17,14 @@ TEST_F(DocumentProtectionTest, TestPutProtectDocument) {
 		destFileName = path_combine_url(baseTestOutPath, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<ProtectionRequest> body(new ProtectionRequest);
+	std::shared_ptr<ProtectionRequest> body = std::make_shared<ProtectionRequest>();
 	body->setNewPassword(STCONVERT("123"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutProtectDocumentRequest> request(new PutProtectDocumentRequest(remoteName, body, dataFolder, boost::none,
-		boost::none, boost::none, destFileName));
+	std::shared_ptr<PutProtectDocumentRequest> request=
+			std::make_shared<PutProtectDocumentRequest>(remoteName, body, dataFolder, boost::none,
+		boost::none, boost::none, destFileName);
 
 	std::shared_ptr<ProtectionDataResponse> actual = get_api()->putProtectDocument(request).get();
 
@@ -42,8 +43,9 @@ TEST_F(DocumentProtectionTest, TestGetDocumentProtection) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentProtectionRequest> request(new GetDocumentProtectionRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentProtectionRequest> request=
+			std::make_shared<GetDocumentProtectionRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<ProtectionDataResponse> actual = get_api()->getDocumentProtection(request).get();
 
@@ -60,13 +62,14 @@ TEST_F(DocumentProtectionTest, TestPostChangeDocumentProtection) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<ProtectionRequest> body(new ProtectionRequest);
+	std::shared_ptr<ProtectionRequest> body = std::make_shared<ProtectionRequest>();
 	body->setNewPassword(STCONVERT(""));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostChangeDocumentProtectionRequest> request(new PostChangeDocumentProtectionRequest(remoteName, body, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<PostChangeDocumentProtectionRequest> request=
+			std::make_shared<PostChangeDocumentProtectionRequest>(remoteName, body, dataFolder,
+					boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<ProtectionDataResponse> actual = get_api()->postChangeDocumentProtection(request).get();
 
@@ -83,13 +86,14 @@ TEST_F(DocumentProtectionTest, TestDeleteUnprotectDocument) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(protectionFolder), localName);
 
-	std::shared_ptr<ProtectionRequest> body(new ProtectionRequest);
+	std::shared_ptr<ProtectionRequest> body = std::make_shared<ProtectionRequest>();
 	body->setPassword(STCONVERT("aspose"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteUnprotectDocumentRequest> request(new DeleteUnprotectDocumentRequest(remoteName, body, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteUnprotectDocumentRequest> request=
+			std::make_shared<DeleteUnprotectDocumentRequest>(remoteName, body, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<ProtectionDataResponse> actual = get_api()->deleteUnprotectDocument(request).get();
 

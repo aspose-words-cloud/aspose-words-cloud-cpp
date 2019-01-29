@@ -23,7 +23,7 @@ TEST_F(FormFieldTest, TestPostFormField)
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 	int32_t index = 0;
 
-	std::shared_ptr<FormFieldTextInput> body(new FormFieldTextInput);
+	std::shared_ptr<FormFieldTextInput> body= std::make_shared<FormFieldTextInput>();
 	body->setName(STCONVERT("FullName"));
 	body->setEnabled(true);
 	body->setCalculateOnExit(true);
@@ -33,8 +33,8 @@ TEST_F(FormFieldTest, TestPostFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostFormFieldRequest> request(new PostFormFieldRequest(remoteName, body, index, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0")));
+	std::shared_ptr<PostFormFieldRequest> request= std::make_shared<PostFormFieldRequest>(remoteName, body, index, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"));
 
 	std::shared_ptr<FormFieldResponse> actual = get_api()->postFormField(request).get();
 	std::shared_ptr<FormField> formField = actual->getFormField();
@@ -62,8 +62,8 @@ TEST_F(FormFieldTest, TestGetFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetFormFieldRequest> request(new GetFormFieldRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0")));
+	std::shared_ptr<GetFormFieldRequest> request= std::make_shared<GetFormFieldRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, STCONVERT("sections/0"));
 
 	std::shared_ptr<FormFieldResponse> actual = get_api()->getFormField(request).get();
 
@@ -83,8 +83,8 @@ TEST_F(FormFieldTest, TestGetFormFields)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetFormFieldsRequest> request(new GetFormFieldsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0")));
+	std::shared_ptr<GetFormFieldsRequest> request= std::make_shared<GetFormFieldsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, STCONVERT("sections/0"));
 
 	std::shared_ptr<FormFieldsResponse> actual = get_api()->getFormFields(request).get();
 
@@ -120,7 +120,7 @@ TEST_F(FormFieldTest, TestPutFormField)
 		filePath = path_combine(get_data_dir(commonFolder), localName),
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 
-	std::shared_ptr<FormFieldTextInput> body(new FormFieldTextInput);
+	std::shared_ptr<FormFieldTextInput> body= std::make_shared<FormFieldTextInput>();
 	body->setName(STCONVERT("FullName"));
 	body->setEnabled(true);
 	body->setCalculateOnExit(true);
@@ -131,8 +131,10 @@ TEST_F(FormFieldTest, TestPutFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutFormFieldRequest> request(new PutFormFieldRequest(remoteName, body, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0/paragraphs/0"), boost::none));
+	std::shared_ptr<PutFormFieldRequest> request=
+			std::make_shared<PutFormFieldRequest>(remoteName, body, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none,
+		STCONVERT("sections/0/paragraphs/0"), boost::none);
 
 	std::shared_ptr<FormFieldResponse> actual = get_api()->putFormField(request).get();
 
@@ -154,8 +156,8 @@ TEST_F(FormFieldTest, TestDeleteFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteFormFieldRequest> request(new DeleteFormFieldRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0")));
+	std::shared_ptr<DeleteFormFieldRequest> request= std::make_shared<DeleteFormFieldRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"));
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFormField(request).get();
 	ASSERT_EQ(200, actual->getCode());

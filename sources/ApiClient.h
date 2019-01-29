@@ -90,7 +90,7 @@ private:
     utility::string_t getTokenUrl() const;
     void logRequest(web::http::http_request request);
 	void logResponse(web::http::http_response response);
-	utility::string_t copyDataFromStream(Concurrency::streams::istream stream);
+	utility::string_t copyDataFromStream(const Concurrency::streams::istream& stream);
 };
 
 template<class T>

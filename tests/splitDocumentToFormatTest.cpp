@@ -26,8 +26,9 @@ TEST_F(SplitDocumentToFormatTest, TestPostSplitDocument)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostSplitDocumentRequest> request(new PostSplitDocumentRequest(remoteName, dataFolder, boost::none, boost::none,
-		boost::none, destFileName, format, from, to, boost::none, boost::none));
+	std::shared_ptr<PostSplitDocumentRequest> request=
+			std::make_shared<PostSplitDocumentRequest>(remoteName, dataFolder, boost::none, boost::none,
+		boost::none, destFileName, format, from, to, boost::none, boost::none);
 
 	std::shared_ptr<SplitDocumentResponse> actual = get_api()->postSplitDocument(request).get();
 

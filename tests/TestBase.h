@@ -33,7 +33,7 @@ class InfrastructureTest : public ::testing::Test
 {
 protected:
 	utility::string_t LocalTestDataFolder = path_combine(get_sdk_root(),
-	        STCONVERT("tests") + SYSTEM_DELIMITER + STCONVERT("TestData"));
+			SYSTEM_DELIMITER + STCONVERT("TestData"));
 
 	utility::string_t get_sdk_root();
 	utility::string_t virtual get_data_folder();

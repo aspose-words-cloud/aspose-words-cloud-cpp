@@ -25,8 +25,9 @@ TEST_F(WatermarkTest, TestPostInsertDocumentWatermarkImage) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostInsertDocumentWatermarkImageRequest> request(new PostInsertDocumentWatermarkImageRequest(remoteName, file,
-		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none, rotationAngle, boost::none));
+	std::shared_ptr<PostInsertDocumentWatermarkImageRequest> request=
+			std::make_shared<PostInsertDocumentWatermarkImageRequest>(remoteName, file,
+		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none, rotationAngle, boost::none);
 
 	std::shared_ptr<DocumentResponse> actual = get_api()->postInsertDocumentWatermarkImage(request).get();
 
@@ -54,8 +55,9 @@ TEST_F(WatermarkTest, TestPostInsertWatermarkImage) {
 	UploadFileToStorage(fullName, filePath);
 	UploadFileToStorage(fullImagePath, localImagePath);
 
-	std::shared_ptr<PostInsertDocumentWatermarkImageRequest> request(new PostInsertDocumentWatermarkImageRequest(remoteName, boost::none, dataFolder,
-		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none, rotationAngle, fullImagePath));
+	std::shared_ptr<PostInsertDocumentWatermarkImageRequest> request=
+			std::make_shared<PostInsertDocumentWatermarkImageRequest>(remoteName, boost::none, dataFolder,
+		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none, rotationAngle, fullImagePath);
 
 	std::shared_ptr<DocumentResponse> actual = get_api()->postInsertDocumentWatermarkImage(request).get();
 
@@ -73,14 +75,15 @@ TEST_F(WatermarkTest, TestPostInsertWatermarkText) {
 		filePath = path_combine(get_data_dir(commonFolder), localName),
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 
-	std::shared_ptr<WatermarkText> body(new WatermarkText);
+	std::shared_ptr<WatermarkText> body = std::make_shared<WatermarkText>();
 	body->setText(STCONVERT("This is the text"));
 	body->setRotationAngle(90);
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostInsertDocumentWatermarkTextRequest> request(new PostInsertDocumentWatermarkTextRequest(remoteName, body,
-		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<PostInsertDocumentWatermarkTextRequest> request=
+			std::make_shared<PostInsertDocumentWatermarkTextRequest>(remoteName, body,
+		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<DocumentResponse> actual = get_api()->postInsertDocumentWatermarkText(request).get();
 
@@ -100,8 +103,9 @@ TEST_F(WatermarkTest, TestDeleteDocumentWatermark) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteDocumentWatermarkRequest> request(new DeleteDocumentWatermarkRequest(remoteName,
-		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<DeleteDocumentWatermarkRequest> request=
+			std::make_shared<DeleteDocumentWatermarkRequest>(remoteName,
+		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteDocumentWatermark(request).get();
 

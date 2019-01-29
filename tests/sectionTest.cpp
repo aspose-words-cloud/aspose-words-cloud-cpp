@@ -21,8 +21,9 @@ TEST_F(SectionTest, TestGetSection) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetSectionRequest> request(new GetSectionRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetSectionRequest> request=
+	        std::make_shared<GetSectionRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<SectionResponse> actual = get_api()->getSection(request).get();
 
@@ -41,8 +42,9 @@ TEST_F(SectionTest, TestGetSections) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetSectionsRequest> request(new GetSectionsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetSectionsRequest> request=
+	        std::make_shared<GetSectionsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<SectionLinkCollectionResponse> actual = get_api()->getSections(request).get();
 

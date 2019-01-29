@@ -20,8 +20,9 @@ TEST_F(CommentTest, TestGetComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetCommentRequest> request(new GetCommentRequest(remoteName, commentIndex, get_data_folder(),
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetCommentRequest> request=
+			std::make_shared<GetCommentRequest>(remoteName, commentIndex, get_data_folder(),
+		boost::none, boost::none, boost::none);
 	auto requestTask = get_api()->getComment(request);
 	std::shared_ptr<CommentResponse> actual = requestTask.get();
 
@@ -39,8 +40,9 @@ TEST_F(CommentTest, TestGetComments) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetCommentsRequest> request(new GetCommentsRequest(remoteName, get_data_folder(),
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetCommentsRequest> request=
+			std::make_shared<GetCommentsRequest>(remoteName, get_data_folder(),
+		boost::none, boost::none, boost::none);
 	auto requestTask = get_api()->getComments(request);
 	std::shared_ptr<CommentsResponse> actual = requestTask.get();
 
@@ -56,16 +58,16 @@ TEST_F(CommentTest, TestPutComment) {
 		fullName = path_combine(get_data_folder(), remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<NodeLink> nodeLink(new NodeLink);
+	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
 	nodeLink->setNodeId(STCONVERT("0.0.3"));
 
-	std::shared_ptr<DocumentPosition> position(new DocumentPosition);
+	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
 	position->setNode(nodeLink);
 	position->setOffset(0);
 
 
 
-	std::shared_ptr<Comment> body(new Comment);
+	std::shared_ptr<Comment> body= std::make_shared<Comment>();
 	body->setRangeStart(position);
 	body->setRangeEnd(position);
 	body->setInitial(STCONVERT("IA"));
@@ -74,8 +76,9 @@ TEST_F(CommentTest, TestPutComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutCommentRequest> request(new PutCommentRequest(remoteName, body, get_data_folder(),
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<PutCommentRequest> request=
+			std::make_shared<PutCommentRequest>(remoteName, body, get_data_folder(),
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	auto requestTask = get_api()->putComment(request);
 	std::shared_ptr<CommentResponse> actual = requestTask.get();
@@ -93,16 +96,16 @@ TEST_F(CommentTest, TestPostComment) {
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 	int32_t commentIndex = 0;
 
-	std::shared_ptr<NodeLink> nodeLink(new NodeLink);
+	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
 	nodeLink->setNodeId(STCONVERT("0.0.3"));
 
-	std::shared_ptr<DocumentPosition> position(new DocumentPosition);
+	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
 	position->setNode(nodeLink);
 	position->setOffset(0);
 
 
 
-	std::shared_ptr<Comment> body(new Comment);
+	std::shared_ptr<Comment> body= std::make_shared<Comment>();
 	body->setRangeStart(position);
 	body->setRangeEnd(position);
 	body->setInitial(STCONVERT("IA"));
@@ -111,8 +114,9 @@ TEST_F(CommentTest, TestPostComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostCommentRequest> request(new PostCommentRequest(remoteName, commentIndex, body, get_data_folder(),
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<PostCommentRequest> request=
+			std::make_shared<PostCommentRequest>(remoteName, commentIndex, body, get_data_folder(),
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	auto requestTask = get_api()->postComment(request);
 	std::shared_ptr<CommentResponse> actual = requestTask.get();
@@ -133,8 +137,9 @@ TEST_F(CommentTest, TestDeleteComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteCommentRequest> request(new DeleteCommentRequest(remoteName, commentIndex, get_data_folder(),
-		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<DeleteCommentRequest> request=
+			std::make_shared<DeleteCommentRequest>(remoteName, commentIndex, get_data_folder(),
+		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 	auto requestTask = get_api()->deleteComment(request);
 	std::shared_ptr<AsposeResponse> actual = requestTask.get();
 

@@ -16,7 +16,9 @@ TEST_F(BookmarkTest, TestGetDocumentBookmarks) {
 	utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	UploadFileToStorage(fullName, filePath);
-	std::shared_ptr<GetDocumentBookmarksRequest> req(new GetDocumentBookmarksRequest(remoteName, get_data_folder(), boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentBookmarksRequest> req=
+			std::make_shared<GetDocumentBookmarksRequest>(remoteName, get_data_folder(), boost::none,
+					boost::none, boost::none);
 
 	auto requestTask = get_api()->getDocumentBookmarks(req);
 
@@ -35,7 +37,9 @@ TEST_F(BookmarkTest, TestGetDocumentBookmarkByName) {
 		bookmark = STCONVERT("aspose");
 
 	UploadFileToStorage(fullName, filePath);
-	std::shared_ptr<GetDocumentBookmarkByNameRequest> req(new GetDocumentBookmarkByNameRequest(remoteName, bookmark, get_data_folder(), boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentBookmarkByNameRequest> req=
+			std::make_shared<GetDocumentBookmarkByNameRequest>(remoteName, bookmark, get_data_folder(),
+					boost::none, boost::none, boost::none);
 
 	auto requestTask = get_api()->getDocumentBookmarkByName(req);
 
@@ -54,14 +58,15 @@ TEST_F(BookmarkTest, TestPostUpdateDocumentBookmark) {
 		bookmarkName = STCONVERT("aspose"),
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 
-	std::shared_ptr<BookmarkData> body(new BookmarkData());
+	std::shared_ptr<BookmarkData> body= std::make_shared<BookmarkData>();
 	body->setName(bookmarkName);
 	body->setText(STCONVERT("This will be the text for Aspose"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostUpdateDocumentBookmarkRequest> request(new PostUpdateDocumentBookmarkRequest(remoteName, body, bookmarkName, this->get_data_folder(),
-		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<PostUpdateDocumentBookmarkRequest> request=
+			std::make_shared<PostUpdateDocumentBookmarkRequest>(remoteName, body, bookmarkName, this->get_data_folder(),
+		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 	auto requestTask = get_api()->postUpdateDocumentBookmark(request);
 	std::shared_ptr<BookmarkResponse> actual = requestTask.get();
 	ASSERT_EQ(200, actual->getCode());

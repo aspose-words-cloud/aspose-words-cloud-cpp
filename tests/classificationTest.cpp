@@ -11,7 +11,8 @@ protected:
 /// Test for raw text classification
 /// </summary>
 TEST_F(ClassificationTests, TestClassify) {
-	std::shared_ptr<ClassifyRequest> request(new ClassifyRequest(STCONVERT("Try text classification"), STCONVERT("3")));
+	std::shared_ptr<ClassifyRequest> request=
+			std::make_shared<ClassifyRequest>(STCONVERT("Try text classification"), STCONVERT("3"));
 	auto requestTask = get_api()->classify(request);
 	std::shared_ptr<ClassificationResponse> actual = requestTask.get();
 
@@ -29,8 +30,9 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<ClassifyDocumentRequest> request(new ClassifyDocumentRequest(remoteName, get_data_folder(),
-		boost::none, boost::none, boost::none, STCONVERT("3"), boost::none));
+	std::shared_ptr<ClassifyDocumentRequest> request=
+			std::make_shared<ClassifyDocumentRequest>(remoteName, get_data_folder(),
+		boost::none, boost::none, boost::none, STCONVERT("3"), boost::none);
 	auto requestTask = get_api()->classifyDocument(request);
 	std::shared_ptr<ClassificationResponse> actual = requestTask.get();
 
@@ -49,8 +51,8 @@ TEST_F(ClassificationTests, TestClassifyTaxonomyDocuments) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<ClassifyDocumentRequest> request(new ClassifyDocumentRequest(remoteName, get_data_folder(),
-		boost::none, boost::none, boost::none, STCONVERT("3"), taxonomy));
+	std::shared_ptr<ClassifyDocumentRequest> request= std::make_shared<ClassifyDocumentRequest>(remoteName, get_data_folder(),
+		boost::none, boost::none, boost::none, STCONVERT("3"), taxonomy);
 	auto requestTask = get_api()->classifyDocument(request);
 	std::shared_ptr<ClassificationResponse> actual = requestTask.get();
 

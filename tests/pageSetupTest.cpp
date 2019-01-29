@@ -23,8 +23,9 @@ TEST_F(PageSetupTest, TestGetSectionPageSetup) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetSectionPageSetupRequest> request(new GetSectionPageSetupRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetSectionPageSetupRequest> request=
+			std::make_shared<GetSectionPageSetupRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<SectionPageSetupResponse> actual = get_api()->getSectionPageSetup(request).get();
 
@@ -43,7 +44,7 @@ TEST_F(PageSetupTest, TestUpdateSectionPageSetup) {
 
 	int32_t index = 0;
 
-	std::shared_ptr<PageSetup> body(new PageSetup);
+	std::shared_ptr<PageSetup> body= std::make_shared<PageSetup>();
 	body->setRtlGutter(true);
 	body->setLeftMargin(10.0);
 	body->setOrientation(STCONVERT("Landscape"));
@@ -51,8 +52,9 @@ TEST_F(PageSetupTest, TestUpdateSectionPageSetup) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<UpdateSectionPageSetupRequest> request(new UpdateSectionPageSetupRequest(remoteName, index, body, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<UpdateSectionPageSetupRequest> request=
+			std::make_shared<UpdateSectionPageSetupRequest>(remoteName, index, body, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<SectionPageSetupResponse> actual = get_api()->updateSectionPageSetup(request).get();
 
@@ -74,8 +76,9 @@ TEST_F(PageSetupTest, TestGetRenderPage) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<RenderPageRequest> request(new RenderPageRequest(remoteName, pageNumber, format, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<RenderPageRequest> request=
+			std::make_shared<RenderPageRequest>(remoteName, pageNumber, format, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->renderPage(request).get();
 

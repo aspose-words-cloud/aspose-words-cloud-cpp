@@ -22,8 +22,9 @@ TEST_F(TableBorderTest, TestGetTableBorders) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetBordersRequest> request(new GetBordersRequest(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetBordersRequest> request=
+			std::make_shared<GetBordersRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), dataFolder,
+					boost::none, boost::none, boost::none);
 
 	std::shared_ptr<BordersResponse> actual = get_api()->getBorders(request).get();
 
@@ -42,8 +43,9 @@ TEST_F(TableBorderTest, TestGetTableBorder) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetBorderRequest> request(new GetBorderRequest(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetBorderRequest> request=
+			std::make_shared<GetBorderRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<BorderResponse> actual = get_api()->getBorder(request).get();
 
@@ -62,8 +64,9 @@ TEST_F(TableBorderTest, TestDeleteTableBorders) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteBordersRequest> request(new DeleteBordersRequest(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteBordersRequest> request=
+			std::make_shared<DeleteBordersRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<BordersResponse> actual = get_api()->deleteBorders(request).get();
 
@@ -82,8 +85,8 @@ TEST_F(TableBorderTest, TestDeleteTableBorder) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteBorderRequest> request(new DeleteBorderRequest(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteBorderRequest> request= std::make_shared<DeleteBorderRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<BorderResponse> actual = get_api()->deleteBorder(request).get();
 
@@ -100,10 +103,10 @@ TEST_F(TableBorderTest, TestUpdateTableBorder) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(tableFolder), localName);
 
-	std::shared_ptr<XmlColor> color(new XmlColor);
+	std::shared_ptr<XmlColor> color= std::make_shared<XmlColor>();
 	color->setAlpha(2);
 
-	std::shared_ptr<Border> border(new Border);
+	std::shared_ptr<Border> border= std::make_shared<Border>();
 	border->setBorderType(STCONVERT("Left"));
 	border->setColor(color);
 	border->setDistanceFromText(6);
@@ -113,8 +116,9 @@ TEST_F(TableBorderTest, TestUpdateTableBorder) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<UpdateBorderRequest> request(new UpdateBorderRequest(remoteName, border, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<UpdateBorderRequest> request=
+			std::make_shared<UpdateBorderRequest>(remoteName, border, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<BorderResponse> actual = get_api()->updateBorder(request).get();
 

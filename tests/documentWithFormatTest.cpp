@@ -21,8 +21,9 @@ TEST_F(DocumentWithFormatTest, TestGetDocumentWithFormat) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentWithFormatRequest> request(new GetDocumentWithFormatRequest(remoteName, format, dataFolder, boost::none, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentWithFormatRequest> request=
+			std::make_shared<GetDocumentWithFormatRequest>(remoteName, format, dataFolder, boost::none,
+					boost::none, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->getDocumentWithFormat(request).get();
 
@@ -43,8 +44,9 @@ TEST_F(DocumentWithFormatTest, TestGetDocumentWithFormatAndOutPath) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentWithFormatRequest> request(new GetDocumentWithFormatRequest(remoteName, format, dataFolder, boost::none, boost::none,
-		boost::none, destFileName, boost::none));
+	std::shared_ptr<GetDocumentWithFormatRequest> request=
+			std::make_shared<GetDocumentWithFormatRequest>(remoteName, format, dataFolder, boost::none,
+					boost::none, boost::none, destFileName, boost::none);
 
 	get_api()->getDocumentWithFormat(request).get();
 	bool result = GetIsExists(destFileName);

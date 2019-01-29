@@ -20,8 +20,9 @@ TEST_F(DocumentStatisticsTest, TestGetDocumentStatistics) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentStatisticsRequest> request(new GetDocumentStatisticsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentStatisticsRequest> request=
+			std::make_shared<GetDocumentStatisticsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<StatDataResponse> actual = get_api()->getDocumentStatistics(request).get();
 

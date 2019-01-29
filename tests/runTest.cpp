@@ -19,13 +19,14 @@ TEST_F(RunTest, TestPostRun) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(runFolder), localName);
 
-	std::shared_ptr<io::swagger::client::api::Run > run(new io::swagger::client::api::Run);
+	std::shared_ptr<io::swagger::client::api::Run > run = std::make_shared<io::swagger::client::api::Run>();
 	run->setText(STCONVERT("run with text"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostRunRequest> request(new PostRunRequest(remoteName, run, STCONVERT("paragraphs/1"), 0, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<PostRunRequest> request=
+			std::make_shared<PostRunRequest>(remoteName, run, STCONVERT("paragraphs/1"), 0, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<RunResponse> actual = get_api()->postRun(request).get();
 
@@ -42,13 +43,13 @@ TEST_F(RunTest, TestPutRun) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(runFolder), localName);
 
-	std::shared_ptr<io::swagger::client::api::Run > run(new io::swagger::client::api::Run);
+	std::shared_ptr<io::swagger::client::api::Run > run = std::make_shared<io::swagger::client::api::Run>();
 	run->setText(STCONVERT("run with text"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutRunRequest> request(new PutRunRequest(remoteName, STCONVERT("paragraphs/1"), run, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<PutRunRequest> request= std::make_shared<PutRunRequest>(remoteName, STCONVERT("paragraphs/1"), run, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<RunResponse> actual = get_api()->putRun(request).get();
 
@@ -68,8 +69,8 @@ TEST_F(RunTest, TestDeleteRun) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteRunRequest> request(new DeleteRunRequest(remoteName, STCONVERT("paragraphs/1"), index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteRunRequest> request= std::make_shared<DeleteRunRequest>(remoteName, STCONVERT("paragraphs/1"), index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteRun(request).get();
 

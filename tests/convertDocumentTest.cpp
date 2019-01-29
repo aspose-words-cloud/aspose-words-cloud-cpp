@@ -18,14 +18,15 @@ TEST_F(ConvertDocumentTest, TestPostDocumentSaveAs) {
 		destFileName = path_combine_url(baseTestOutPath, cutFileExtension(remoteName) + STCONVERT(".pdf")),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<SaveOptionsData> saveOptionsData(new SaveOptionsData);
+	std::shared_ptr<SaveOptionsData> saveOptionsData= std::make_shared<SaveOptionsData>();
 	saveOptionsData->setSaveFormat(STCONVERT("pdf"));
 	saveOptionsData->setFileName(destFileName);
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostDocumentSaveAsRequest> request(new PostDocumentSaveAsRequest(remoteName, saveOptionsData, baseFolder, boost::none, boost::none
-		, boost::none, boost::none, boost::none));
+	std::shared_ptr<PostDocumentSaveAsRequest> request=
+			std::make_shared<PostDocumentSaveAsRequest>(remoteName, saveOptionsData, baseFolder,
+					boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<SaveResponse> actual = get_api()->postDocumentSaveAs(request).get();
 
@@ -43,14 +44,15 @@ TEST_F(ConvertDocumentTest, TestPostDocumentSaveAsFromPdfToDoc) {
 		destFileName = path_combine_url(baseTestOutPath, cutFileExtension(remoteName) + STCONVERT(".docx")),
 		filePath = path_combine(get_data_dir(convertFolder), localName);
 
-	std::shared_ptr<SaveOptionsData> saveOptionsData(new SaveOptionsData);
+	std::shared_ptr<SaveOptionsData> saveOptionsData= std::make_shared<SaveOptionsData>();
 	saveOptionsData->setSaveFormat(STCONVERT("docx"));
 	saveOptionsData->setFileName(destFileName);
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostDocumentSaveAsRequest> request(new PostDocumentSaveAsRequest(remoteName, saveOptionsData, baseFolder, boost::none, boost::none
-		, boost::none, boost::none, boost::none));
+	std::shared_ptr<PostDocumentSaveAsRequest> request=
+			std::make_shared<PostDocumentSaveAsRequest>(remoteName, saveOptionsData, baseFolder,
+					boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<SaveResponse> actual = get_api()->postDocumentSaveAs(request).get();
 
@@ -81,16 +83,16 @@ TEST_F(ConvertDocumentTest, TestPutDocumentAsTiff) {
 		destFileName = path_combine_url(baseTestOutPath, cutFileExtension(remoteName) + STCONVERT(".tiff")),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<TiffSaveOptionsData> saveOptionsData(new TiffSaveOptionsData);
+	std::shared_ptr<TiffSaveOptionsData> saveOptionsData= std::make_shared<TiffSaveOptionsData>();
 	saveOptionsData->setSaveFormat(STCONVERT("tiff"));
 	saveOptionsData->setFileName(STCONVERT("abc.tiff"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutDocumentSaveAsTiffRequest> request(new PutDocumentSaveAsTiffRequest(remoteName, saveOptionsData, baseFolder, boost::none, boost::none
+	std::shared_ptr<PutDocumentSaveAsTiffRequest> request= std::make_shared<PutDocumentSaveAsTiffRequest>(remoteName, saveOptionsData, baseFolder, boost::none, boost::none
 		, boost::none, destFileName, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none
 		, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none,
-		boost::none));
+		boost::none);
 
 	std::shared_ptr<SaveResponse> actual = get_api()->putDocumentSaveAsTiff(request).get();
 

@@ -20,8 +20,9 @@ TEST_F(MacrosTest, TestDeleteDocumentMacros) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteDocumentMacrosRequest> request(new DeleteDocumentMacrosRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteDocumentMacrosRequest> request=
+			std::make_shared<DeleteDocumentMacrosRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteDocumentMacros(request).get();
 

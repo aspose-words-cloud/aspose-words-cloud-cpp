@@ -21,8 +21,9 @@ TEST_F(RevisionTest, TestAcceptAllRevisions) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<AcceptAllRevisionsRequest> request(new AcceptAllRevisionsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, destFileName));
+	std::shared_ptr<AcceptAllRevisionsRequest> request=
+			std::make_shared<AcceptAllRevisionsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, destFileName);
 
 	std::shared_ptr<RevisionsModificationResponse> actual = get_api()->acceptAllRevisions(request).get();
 
@@ -42,8 +43,9 @@ TEST_F(RevisionTest, TestRejectAllRevisions) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<RejectAllRevisionsRequest> request(new RejectAllRevisionsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, destFileName));
+	std::shared_ptr<RejectAllRevisionsRequest> request=
+			std::make_shared<RejectAllRevisionsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, destFileName);
 
 	std::shared_ptr<RevisionsModificationResponse> actual = get_api()->rejectAllRevisions(request).get();
 

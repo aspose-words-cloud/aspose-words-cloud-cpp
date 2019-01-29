@@ -21,8 +21,9 @@ TEST_F(TextTest, TestGetDocumentTextItems) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentTextItemsRequest> request(new GetDocumentTextItemsRequest(remoteName, remoteTextFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentTextItemsRequest> request=
+			std::make_shared<GetDocumentTextItemsRequest>(remoteName, remoteTextFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<TextItemsResponse> actual = get_api()->getDocumentTextItems(request).get();
 
@@ -40,14 +41,14 @@ TEST_F(TextTest, TestPostReplaceText) {
 		filePath = path_combine(get_data_dir(commonFolder), localName),
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 
-	std::shared_ptr<ReplaceTextRequest> body(new ReplaceTextRequest);
+	std::shared_ptr<ReplaceTextRequest> body = std::make_shared<ReplaceTextRequest>();
 	body->setOldValue(STCONVERT("aspose"));
 	body->setNewValue(STCONVERT("aspose new"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostReplaceTextRequest> request(new PostReplaceTextRequest(remoteName, body, remoteTextFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<PostReplaceTextRequest> request= std::make_shared<PostReplaceTextRequest>(remoteName, body, remoteTextFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<ReplaceTextResponse> actual = get_api()->postReplaceText(request).get();
 
@@ -67,8 +68,9 @@ TEST_F(TextTest, TestSearch) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<SearchRequest> request(new SearchRequest(remoteName, pattern, remoteTextFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<SearchRequest> request=
+			std::make_shared<SearchRequest>(remoteName, pattern, remoteTextFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<SearchResponse> actual = get_api()->search(request).get();
 

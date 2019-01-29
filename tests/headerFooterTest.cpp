@@ -21,8 +21,10 @@ TEST_F(HeaderFooterTest, TestDeleteHeadersFooters) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteHeadersFootersRequest> request(new DeleteHeadersFootersRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"), boost::none));
+	std::shared_ptr<DeleteHeadersFootersRequest> request=
+			std::make_shared<DeleteHeadersFootersRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"),
+		boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteHeadersFooters(request).get();
 

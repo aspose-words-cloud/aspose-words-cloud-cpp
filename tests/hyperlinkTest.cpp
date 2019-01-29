@@ -22,8 +22,9 @@ TEST_F(HyperlinkTest, TestGetDocumentHyperlinkByIndex) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentHyperlinkByIndexRequest> request(new GetDocumentHyperlinkByIndexRequest(remoteName, hyperlinkIndex, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentHyperlinkByIndexRequest> request=
+			std::make_shared<GetDocumentHyperlinkByIndexRequest>(remoteName, hyperlinkIndex, dataFolder,
+					boost::none, boost::none, boost::none);
 
 	std::shared_ptr<HyperlinkResponse> actual = get_api()->getDocumentHyperlinkByIndex(request).get();
 
@@ -42,8 +43,9 @@ TEST_F(HyperlinkTest, TestGetDocumentHyperlinks) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentHyperlinksRequest> request(new GetDocumentHyperlinksRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentHyperlinksRequest> request=
+			std::make_shared<GetDocumentHyperlinksRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<HyperlinksResponse> actual = get_api()->getDocumentHyperlinks(request).get();
 

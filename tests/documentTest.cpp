@@ -20,8 +20,9 @@ TEST_F(DocumentTest, TestGetDocument) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentRequest> request(new GetDocumentRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentRequest> request=
+			std::make_shared<GetDocumentRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<DocumentResponse> actual = get_api()->getDocument(request).get();
 
@@ -35,7 +36,8 @@ TEST_F(DocumentTest, TestPutCreateDocument) {
 	utility::string_t
 		remoteName = STCONVERT("TestPutCreateDocument.docx");
 
-	std::shared_ptr<PutCreateDocumentRequest> request(new PutCreateDocumentRequest(boost::none, remoteName, dataFolder));
+	std::shared_ptr<PutCreateDocumentRequest> request=
+			std::make_shared<PutCreateDocumentRequest>(boost::none, remoteName, dataFolder);
 
 	std::shared_ptr<DocumentResponse> actual = get_api()->putCreateDocument(request).get();
 

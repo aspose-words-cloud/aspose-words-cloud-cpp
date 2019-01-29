@@ -252,7 +252,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     });
 }
 
-				utility::string_t ApiClient::copyDataFromStream(Concurrency::streams::istream stream)
+				utility::string_t ApiClient::copyDataFromStream(const Concurrency::streams::istream& stream)
 				{
 					if (!stream.is_valid()) return utility::conversions::to_string_t("EMPTY");
 
@@ -275,8 +275,10 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 					std::copy(saveVector.begin(), saveVector.end(),
 						std::ostream_iterator<uint8_t>(oss, ""));
 
-					std::string s = oss.str();
-					return utility::conversions::to_string_t(s);;
+					std::string s = std::string(oss.str());
+					oss.flush();
+                    ucout << s << std::endl;
+                    return utility::string_t(std::string(s));
 				}
 
 
@@ -288,7 +290,6 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						body = copyDataFromStream(request.body());
 
 					ucout << header << std::endl << body << std::endl;
-					ucout.clear();
 				}
 
 				void ApiClient::logResponse(web::http::http_response response) {
@@ -300,7 +301,6 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						body = copyDataFromStream(response.body());
 
 					ucout << header << std::endl << body << std::endl;
-					ucout.clear();
 				}
 
 }

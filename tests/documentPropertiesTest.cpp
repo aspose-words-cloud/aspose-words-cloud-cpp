@@ -18,8 +18,9 @@ TEST_F(DocumentPropertiesTest, TestGetDocumentProperties)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentPropertiesRequest> request(new GetDocumentPropertiesRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentPropertiesRequest> request=
+			std::make_shared<GetDocumentPropertiesRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<DocumentPropertiesResponse> actual = get_api()->getDocumentProperties(request).get();
 
@@ -40,8 +41,9 @@ TEST_F(DocumentPropertiesTest, TestGetDocumentProperty)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentPropertyRequest> request(new GetDocumentPropertyRequest(remoteName, propertyName, dataFolder, boost::none,
-		boost::none, boost::none));
+	std::shared_ptr<GetDocumentPropertyRequest> request=
+			std::make_shared<GetDocumentPropertyRequest>(remoteName, propertyName, dataFolder, boost::none,
+		boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->getDocumentProperty(request).get();
 
@@ -62,8 +64,9 @@ TEST_F(DocumentPropertiesTest, TestDeleteDocumentProperty) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteDocumentPropertyRequest> request(new DeleteDocumentPropertyRequest(remoteName, propertyName, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<DeleteDocumentPropertyRequest> request=
+			std::make_shared<DeleteDocumentPropertyRequest>(remoteName, propertyName, dataFolder,
+					boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteDocumentProperty(request).get();
 
@@ -82,15 +85,16 @@ TEST_F(DocumentPropertiesTest, TestPutUpdateDocumentProperty) {
 		destFileName = path_combine_url(baseTestOutPath, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<DocumentProperty> body(new DocumentProperty);
+	std::shared_ptr<DocumentProperty> body= std::make_shared<DocumentProperty>();
 	body->setName(STCONVERT("Author"));
 	body->setValue(STCONVERT("Imran Anwar"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<CreateOrUpdateDocumentPropertyRequest> request(new CreateOrUpdateDocumentPropertyRequest(
+	std::shared_ptr<CreateOrUpdateDocumentPropertyRequest> request=
+			std::make_shared<CreateOrUpdateDocumentPropertyRequest>(
 		remoteName, propertyName, body, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none));
+		boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<DocumentPropertyResponse> actual = get_api()->createOrUpdateDocumentProperty(request).get();
 

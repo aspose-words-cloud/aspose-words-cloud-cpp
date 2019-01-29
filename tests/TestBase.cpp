@@ -4,8 +4,8 @@
 
 std::shared_ptr<ApiConfiguration> get_config()
 {
-	ifstream fileStream("servercreds.json");
-	std::shared_ptr<ApiConfiguration> newConfig(new ApiConfiguration);
+	ifstream fileStream(STCONVERT(TEST_ROOT) + SYSTEM_DELIMITER + STCONVERT("servercreds.json"));
+	std::shared_ptr<ApiConfiguration> newConfig= std::make_shared<ApiConfiguration>();
 
 	if (!fileStream.is_open())
 	{
@@ -17,7 +17,7 @@ std::shared_ptr<ApiConfiguration> get_config()
 		lines += line;
 	}
 	web::json::value fileJson = web::json::value::parse(utility::conversions::to_string_t(lines));
-	newConfig.reset(new ApiConfiguration);
+	newConfig = std::make_shared<ApiConfiguration>();
 
 	newConfig->setAppKey(fileJson[STCONVERT("AppKey")].as_string());
 	newConfig->setBaseUrl(fileJson[STCONVERT("BaseUrl")].as_string());
@@ -63,23 +63,7 @@ utility::string_t cutFileExtension(utility::string_t filename)
 
 utility::string_t InfrastructureTest::get_sdk_root()
 {
-	utility::string_t workingDir;
-	#if defined(__unix__)
-		char directory[PATH_MAX];
-		getcwd(directory, PATH_MAX);
-		workingDir = STCONVERT(directory);
-		std::cout << workingDir;
-	#elif defined(__WIN32__) || defined (_WIN32)
-		workingDir = STCONVERT(_getcwd(nullptr, 0));
-    #endif
-	vector<utility::string_t> dirParts = split(workingDir);
-	size_t lastIndex = dirParts.size() - 1;
-	while (dirParts[lastIndex--] != STCONVERT("tests"))
-	{
-		dirParts.pop_back();
-	}
-	dirParts.pop_back();
-	return join(dirParts);
+	return STCONVERT(TEST_ROOT);
 }
 utility::string_t InfrastructureTest::get_data_folder()
 {
@@ -116,8 +100,8 @@ std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file
 	}
 	checkStream.close();
 
-	std::shared_ptr<HttpContent> content(new HttpContent);
-	std::shared_ptr<istream> stream(new ifstream(filePath, std::ifstream::binary));
+	std::shared_ptr<HttpContent> content= std::make_shared<HttpContent>();
+	std::shared_ptr<istream> stream= std::make_shared<ifstream>(filePath, std::ifstream::binary);
 	content->setData(stream);
 	content->setContentDisposition(STCONVERT("form-data"));
 
@@ -191,7 +175,7 @@ std::shared_ptr<ApiConfiguration> InfrastructureTest::get_configuration()
 std::shared_ptr<ApiClient> InfrastructureTest::get_client()
 {
 	if (client == nullptr) {
-		client.reset(new ApiClient);
+		client = std::make_shared<ApiClient>();
 		client->setConfiguration(get_configuration());
 	}
 	return client;
@@ -200,7 +184,7 @@ std::shared_ptr<WordsApi> InfrastructureTest::get_api()
 {
 	if (api == nullptr)
 	{
-		api.reset(new WordsApi(get_client()));
+		api = std::make_shared<WordsApi>(get_client());
 	}
 	return api;
 }

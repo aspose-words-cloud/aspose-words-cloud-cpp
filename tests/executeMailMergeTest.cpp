@@ -13,10 +13,11 @@ protected:
 /// Test for executing mail merge online
 /// </summary>
 TEST_F(ExecuteMailMergeTest, TestPutExecuteMailMergeOnline) {
-	std::shared_ptr<PutExecuteMailMergeOnlineRequest> request(new PutExecuteMailMergeOnlineRequest(
+	std::shared_ptr<PutExecuteMailMergeOnlineRequest> request=
+			std::make_shared<PutExecuteMailMergeOnlineRequest>(
 		generate_http_content_from_file(path_combine(get_data_dir(mailMergeFolder), STCONVERT("SampleExecuteTemplate.docx")), STCONVERT("template")),
 		generate_http_content_from_file(path_combine(get_data_dir(mailMergeFolder), STCONVERT("SampleExecuteTemplateData.txt")), STCONVERT("data")),
-		boost::none, boost::none, boost::none));
+		boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->putExecuteMailMergeOnline(request).get();
 
@@ -36,8 +37,10 @@ TEST_F(ExecuteMailMergeTest, TestPostDocumentExecuteMailMerge) {
 		fileContent = get_file_text(path_combine(get_data_dir(mailMergeFolder), STCONVERT("SampleMailMergeTemplateData.txt")));
 
 	UploadFileToStorage(fullName, filePath);
-	std::shared_ptr<PostDocumentExecuteMailMergeRequest> request(new PostDocumentExecuteMailMergeRequest(remoteName,
-		fileContent, dataFolder, boost::none, boost::none, boost::none, false, boost::none, boost::none, boost::none, destFileName));
+	std::shared_ptr<PostDocumentExecuteMailMergeRequest> request=
+			std::make_shared<PostDocumentExecuteMailMergeRequest>(remoteName,
+		fileContent, dataFolder, boost::none, boost::none, boost::none, false, boost::none,
+		boost::none, boost::none, destFileName);
 
 	std::shared_ptr<DocumentResponse> actual = get_api()->postDocumentExecuteMailMerge(request).get();
 

@@ -21,8 +21,9 @@ TEST_F(MailMergeFiledsTest, TestGetDocumentFieldNames) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentFieldNamesRequest> request(new GetDocumentFieldNamesRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentFieldNamesRequest> request=
+			std::make_shared<GetDocumentFieldNamesRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<FieldNamesResponse> actual = get_api()->getDocumentFieldNames(request).get();
 
@@ -36,7 +37,8 @@ TEST_F(MailMergeFiledsTest, TestGetDocumentFieldNames) {
 TEST_F(MailMergeFiledsTest, TestPutDocumentFieldNames) {
 	std::shared_ptr<HttpContent> file = generate_http_content_from_file(path_combine(get_data_dir(mailMergeFolder), STCONVERT("SampleExecuteTemplate.docx")));
 
-	std::shared_ptr<PutDocumentFieldNamesRequest> request(new PutDocumentFieldNamesRequest(file, boost::none));
+	std::shared_ptr<PutDocumentFieldNamesRequest> request=
+			std::make_shared<PutDocumentFieldNamesRequest>(file, boost::none);
 
 	std::shared_ptr<FieldNamesResponse> actual = get_api()->putDocumentFieldNames(request).get();
 

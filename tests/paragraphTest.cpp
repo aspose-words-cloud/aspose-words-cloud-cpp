@@ -22,8 +22,9 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphByIndex) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRequest> request(new GetDocumentParagraphRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0")));
+	std::shared_ptr<GetDocumentParagraphRequest> request=
+			std::make_shared<GetDocumentParagraphRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, STCONVERT("sections/0"));
 
 	std::shared_ptr<ParagraphResponse> actual = get_api()->getDocumentParagraph(request).get();
 
@@ -42,8 +43,9 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphs) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphsRequest> request(new GetDocumentParagraphsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0")));
+	std::shared_ptr<GetDocumentParagraphsRequest> request=
+			std::make_shared<GetDocumentParagraphsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, STCONVERT("sections/0"));
 
 	std::shared_ptr<ParagraphLinkCollectionResponse> actual = get_api()->getDocumentParagraphs(request).get();
 
@@ -63,8 +65,9 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphWithoutNodePath) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRequest> request(new GetDocumentParagraphRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentParagraphRequest> request=
+			std::make_shared<GetDocumentParagraphRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<ParagraphResponse> actual = get_api()->getDocumentParagraph(request).get();
 
@@ -84,8 +87,9 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphRun) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRunRequest> request(new GetDocumentParagraphRunRequest(remoteName, STCONVERT("paragraphs/0"), index, dataFolder,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentParagraphRunRequest> request=
+			std::make_shared<GetDocumentParagraphRunRequest>(remoteName, STCONVERT("paragraphs/0"), index, dataFolder,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<RunResponse> actual = get_api()->getDocumentParagraphRun(request).get();
 
@@ -105,8 +109,9 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphRunFont) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRunFontRequest> request(new GetDocumentParagraphRunFontRequest(remoteName, STCONVERT("paragraphs/0"),
-		index, dataFolder, boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentParagraphRunFontRequest> request=
+			std::make_shared<GetDocumentParagraphRunFontRequest>(remoteName, STCONVERT("paragraphs/0"),
+		index, dataFolder, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<FontResponse> actual = get_api()->getDocumentParagraphRunFont(request).get();
 
@@ -125,8 +130,9 @@ TEST_F(ParagraphTest, TestGetParagraphRuns) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRunsRequest> request(new GetDocumentParagraphRunsRequest(remoteName, STCONVERT("sections/0/paragraphs/0"),
-		dataFolder, boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentParagraphRunsRequest> request=
+			std::make_shared<GetDocumentParagraphRunsRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"),
+		dataFolder, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<RunsResponse> actual = get_api()->getDocumentParagraphRuns(request).get();
 
@@ -145,13 +151,14 @@ TEST_F(ParagraphTest, TestPostDocumentParagraphRunFont) {
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 	int32_t index = 0;
 
-	std::shared_ptr<Font> fontDto(new Font);
+	std::shared_ptr<Font> fontDto= std::make_shared<Font>();
 	fontDto->setBold(true);
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostDocumentParagraphRunFontRequest> request(new PostDocumentParagraphRunFontRequest(remoteName, fontDto, STCONVERT("paragraphs/0"),
-		index, dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none));
+	std::shared_ptr<PostDocumentParagraphRunFontRequest> request=
+			std::make_shared<PostDocumentParagraphRunFontRequest>(remoteName, fontDto, STCONVERT("paragraphs/0"),
+		index, dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<FontResponse> actual = get_api()->postDocumentParagraphRunFont(request).get();
 
@@ -168,13 +175,14 @@ TEST_F(ParagraphTest, TestPutParagraph) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<ParagraphInsert> paragraph(new ParagraphInsert);
+	std::shared_ptr<ParagraphInsert> paragraph= std::make_shared<ParagraphInsert>();
 	paragraph->setText(STCONVERT("This is a new paragraph for your document"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutParagraphRequest> request(new PutParagraphRequest(remoteName, paragraph,
-		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, STCONVERT("sections/0"), boost::none));
+	std::shared_ptr<PutParagraphRequest> request=
+			std::make_shared<PutParagraphRequest>(remoteName, paragraph, dataFolder, boost::none, boost::none,
+					boost::none, boost::none, boost::none, boost::none, STCONVERT("sections/0"), boost::none);
 
 	std::shared_ptr<ParagraphResponse> actual = get_api()->putParagraph(request).get();
 
@@ -193,8 +201,9 @@ TEST_F(ParagraphTest, TestDeleteParagraph) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteParagraphRequest> request(new DeleteParagraphRequest(remoteName,0, dataFolder, boost::none, boost::none, boost::none,
-		boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteParagraphRequest> request=
+			std::make_shared<DeleteParagraphRequest>(remoteName,0, dataFolder, boost::none, boost::none,
+					boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteParagraph(request).get();
 
@@ -215,8 +224,9 @@ TEST_F(ParagraphTest, TestRenderParagraph) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<RenderParagraphRequest> request(new RenderParagraphRequest(remoteName, format, index,
-		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<RenderParagraphRequest> request=
+			std::make_shared<RenderParagraphRequest>(remoteName, format, index,
+		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->renderParagraph(request).get();
 
@@ -235,8 +245,9 @@ TEST_F(ParagraphTest, TestGetParagraphFormat) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphFormatRequest> request(new GetDocumentParagraphFormatRequest(remoteName, 0,
-		dataFolder, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<GetDocumentParagraphFormatRequest> request=
+			std::make_shared<GetDocumentParagraphFormatRequest>(remoteName, 0,
+		dataFolder, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<ParagraphFormatResponse> actual = get_api()->getDocumentParagraphFormat(request).get();
 
@@ -253,13 +264,14 @@ TEST_F(ParagraphTest, TestUpdateParagraphFormat) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<ParagraphFormat> body(new ParagraphFormat);
+	std::shared_ptr<ParagraphFormat> body= std::make_shared<ParagraphFormat>();
 	body->setAlignment(STCONVERT("Right"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostDocumentParagraphFormatRequest> request(new PostDocumentParagraphFormatRequest(remoteName, body, STCONVERT(""), 0,
-		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<PostDocumentParagraphFormatRequest> request=
+			std::make_shared<PostDocumentParagraphFormatRequest>(remoteName, body, STCONVERT(""), 0,
+		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<ParagraphFormatResponse> actual = get_api()->postDocumentParagraphFormat(request).get();
 

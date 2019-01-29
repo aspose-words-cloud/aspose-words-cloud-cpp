@@ -21,8 +21,9 @@ TEST_F(MathObjectTest, TestGetOfficeMathObjects) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetOfficeMathObjectsRequest> request(new GetOfficeMathObjectsRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetOfficeMathObjectsRequest> request=
+			std::make_shared<GetOfficeMathObjectsRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<OfficeMathObjectsResponse> actual = get_api()->getOfficeMathObjects(request).get();
 
@@ -43,8 +44,9 @@ TEST_F(MathObjectTest, TestGetOfficeMathObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetOfficeMathObjectRequest> request(new GetOfficeMathObjectRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetOfficeMathObjectRequest> request=
+			std::make_shared<GetOfficeMathObjectRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<OfficeMathObjectResponse> actual = get_api()->getOfficeMathObject(request).get();
 
@@ -65,8 +67,9 @@ TEST_F(MathObjectTest, TestRenderMathObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<RenderMathObjectRequest> request(new RenderMathObjectRequest(remoteName, STCONVERT("png"), index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<RenderMathObjectRequest> request=
+			std::make_shared<RenderMathObjectRequest>(remoteName, STCONVERT("png"), index, dataFolder,
+					boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->renderMathObject(request).get();
 
@@ -87,8 +90,9 @@ TEST_F(MathObjectTest, TestDeleteMathObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteOfficeMathObjectRequest> request(new DeleteOfficeMathObjectRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteOfficeMathObjectRequest> request=
+			std::make_shared<DeleteOfficeMathObjectRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteOfficeMathObject(request).get();
 

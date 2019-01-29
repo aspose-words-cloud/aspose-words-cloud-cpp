@@ -12,8 +12,8 @@ protected:
 /// Test for loading web document
 /// </summary>
 TEST_F(LoadWebDocumentTest, TestPostLoadWebDocument) {
-	std::shared_ptr<LoadWebDocumentData> body(new LoadWebDocumentData);
-	std::shared_ptr<SaveOptionsData> saveOptions(new SaveOptionsData);
+	std::shared_ptr<LoadWebDocumentData> body = std::make_shared<LoadWebDocumentData>();
+	std::shared_ptr<SaveOptionsData> saveOptions = std::make_shared<SaveOptionsData>();
 	saveOptions->setFileName(STCONVERT("google.doc"));
 	saveOptions->setSaveFormat(STCONVERT("doc"));
 	saveOptions->setColorMode(STCONVERT("1"));
@@ -25,7 +25,8 @@ TEST_F(LoadWebDocumentTest, TestPostLoadWebDocument) {
 	body->setLoadingDocumentUrl(STCONVERT("http://google.com"));
 	body->setSaveOptions(saveOptions);
 
-	std::shared_ptr<PostLoadWebDocumentRequest> request(new PostLoadWebDocumentRequest(body, boost::none));
+	std::shared_ptr<PostLoadWebDocumentRequest> request=
+			std::make_shared<PostLoadWebDocumentRequest>(body, boost::none);
 	std::shared_ptr<SaveResponse> actual = get_api()->postLoadWebDocument(request).get();
 
 	ASSERT_EQ(200, actual->getCode());

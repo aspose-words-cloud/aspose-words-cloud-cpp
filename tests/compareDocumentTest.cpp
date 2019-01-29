@@ -23,7 +23,7 @@ TEST_F(CompareDocumentTest, TestCompareDocument) {
 		filePath1 = path_combine(get_data_dir(compareFolder), localName1),
 		filePath2 = path_combine(get_data_dir(compareFolder), localName2);
 
-	std::shared_ptr<CompareData> compareData(new CompareData);
+	std::shared_ptr<CompareData> compareData= std::make_shared<CompareData>();
 	compareData->setAuthor(STCONVERT("author"));
 	compareData->setComparingWithDocument(fullName2);
 	compareData->setDateTime(utility::datetime::from_string(STCONVERT("Mon, 26 OCT 2015")));
@@ -31,8 +31,9 @@ TEST_F(CompareDocumentTest, TestCompareDocument) {
 	UploadFileToStorage(fullName1, filePath1);
 	UploadFileToStorage(fullName2, filePath2);
 
-	std::shared_ptr<PostCompareDocumentRequest> request(new PostCompareDocumentRequest(remoteName1, compareData, get_data_folder(), boost::none, boost::none,
-		boost::none, destFileName));
+	std::shared_ptr<PostCompareDocumentRequest> request=
+			std::make_shared<PostCompareDocumentRequest>(remoteName1, compareData, get_data_folder(),
+					boost::none, boost::none, boost::none, destFileName);
 	auto requestTask = get_api()->postCompareDocument(request);
 
 	std::shared_ptr<DocumentResponse> actual = requestTask.get();

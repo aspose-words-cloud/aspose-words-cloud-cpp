@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <regex>
+#include <boost/filesystem.hpp>
 
 class ConfigurationTest : public InfrastructureTest {
 protected:
@@ -19,16 +20,17 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
-	client->setConfiguration(newConfig);
-	shared_ptr<WordsApi> api(new WordsApi(client));
-	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
+	shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
+	shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	UploadFileToStorage(fullName, filePath);
 
 	utility::stringstream_t ss;
 	streambuf_t *outbuf = ucout.rdbuf(ss.rdbuf());
-	api->deleteFields(request).get();
+    client->setConfiguration(newConfig);
+
+    api->deleteFields(request).get();
 
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
@@ -37,6 +39,8 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 						fwSlash + remoteName + fwSlash + STCONVERT("fields"),
 		expectedResponseHeader = STCONVERT("Response 200: OK"),
 		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
+
+    boost::filesystem::path myPath;
     ucout.rdbuf(outbuf);
 
 	ASSERT_TRUE(res.find(expectedUri) != std::string::npos);
@@ -54,25 +58,26 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 		fullName = path_combine(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
+
+
 	auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
 	newConfig->setApiVersion(STCONVERT("v2"));
 
-	client->setConfiguration(newConfig);
-	shared_ptr<WordsApi> api(new WordsApi(client));
+	shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
 
-	shared_ptr<DeleteFieldsRequest> request(new DeleteFieldsRequest(remoteName, dataFolder, boost::none, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none));
-
+	shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
+	ucout << "Uploading";
 	UploadFileToStorage(fullName, filePath);
 
 	utility::stringstream_t ss;
 	streambuf_t *outbuf = ucout.rdbuf(ss.rdbuf());
+    client->setConfiguration(newConfig);
 
 	api->deleteFields(request).get();
 
-	ucout.rdbuf(outbuf);
 	utility::string_t res = ss.str(),
 		fwSlash = STCONVERT("/"),
 		expectedUri = STCONVERT("DELETE: ") +
@@ -80,6 +85,7 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 		fwSlash + remoteName + fwSlash + STCONVERT("fields"),
 		expectedResponseHeader = STCONVERT("Response 200: OK"),
 		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
+    ucout.rdbuf(outbuf);
 
 	ASSERT_TRUE(res.find(expectedUri) != std::string::npos);
 
@@ -99,7 +105,7 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 	utility::string_t name = STCONVERT("noFileWithThisName.docx");
 
 	try {
-		std::shared_ptr<GetSectionsRequest> request(new GetSectionsRequest(name, boost::none, boost::none, boost::none, boost::none));
+		std::shared_ptr<GetSectionsRequest> request= std::make_shared<GetSectionsRequest>(name, boost::none, boost::none, boost::none, boost::none);
 		auto response = get_api()->getSections(request).wait();
 
 		ASSERT_FALSE(true) << STCONVERT("Expected exception has not been thrown");

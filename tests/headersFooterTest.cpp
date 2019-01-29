@@ -21,8 +21,9 @@ TEST_F(HeadersFooterTest, TestGetHeadersFooters) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetHeaderFootersRequest> request(new GetHeaderFootersRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<GetHeaderFootersRequest> request=
+			std::make_shared<GetHeaderFootersRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<HeaderFootersResponse> actual = get_api()->getHeaderFooters(request).get();
 
@@ -43,8 +44,9 @@ TEST_F(HeadersFooterTest, TestGetHeaderFooter) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetHeaderFooterRequest> request(new GetHeaderFooterRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetHeaderFooterRequest> request=
+			std::make_shared<GetHeaderFooterRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	std::shared_ptr<HeaderFooterResponse> actual = get_api()->getHeaderFooter(request).get();
 
@@ -66,8 +68,9 @@ TEST_F(HeadersFooterTest, TestGetHeaderFooterOfSection) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetHeaderFooterOfSectionRequest> request(new GetHeaderFooterOfSectionRequest(remoteName, index, sectionIndex, dataFolder, boost::none,
-		boost::none, boost::none, boost::none));
+	std::shared_ptr<GetHeaderFooterOfSectionRequest> request=
+			std::make_shared<GetHeaderFooterOfSectionRequest>(remoteName, index, sectionIndex, dataFolder,
+					boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<HeaderFooterResponse> actual = get_api()->getHeaderFooterOfSection(request).get();
 
@@ -88,8 +91,9 @@ TEST_F(HeadersFooterTest, TestDeleteHeaderFooter) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteHeaderFooterRequest> request(new DeleteHeaderFooterRequest(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteHeaderFooterRequest> request=
+			std::make_shared<DeleteHeaderFooterRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteHeaderFooter(request).get();
 
@@ -108,8 +112,9 @@ TEST_F(HeadersFooterTest, TestDeleteHeaderFooters) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteHeadersFootersRequest> request(new DeleteHeadersFootersRequest(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<DeleteHeadersFootersRequest> request=
+			std::make_shared<DeleteHeadersFootersRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->deleteHeadersFooters(request).get();
 
@@ -128,8 +133,9 @@ TEST_F(HeadersFooterTest, TestPutHeaderFooter) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutHeaderFooterRequest> request(new PutHeaderFooterRequest(remoteName, STCONVERT("FooterEven"), dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none));
+	std::shared_ptr<PutHeaderFooterRequest> request=
+			std::make_shared<PutHeaderFooterRequest>(remoteName, STCONVERT("FooterEven"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<AsposeResponse> actual = get_api()->putHeaderFooter(request).get();
 
