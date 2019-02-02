@@ -166,7 +166,6 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         {
             uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
         }
-
         for (auto& kvp : fileParams)
         {
             uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
@@ -271,14 +270,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						bodyStreamBuf.acquire(data, streamSize);
 					}
 					std::vector<uint8_t> saveVector(data, data + streamSize);
-					std::ostringstream oss;
-					std::copy(saveVector.begin(), saveVector.end(),
-						std::ostream_iterator<uint8_t>(oss, ""));
-
-					std::string s = std::string(oss.str());
-					oss.flush();
-                    ucout << s << std::endl;
-                    return utility::string_t(std::string(s));
+                    return utility::string_t(saveVector.begin(), saveVector.end());
 				}
 
 
@@ -290,6 +282,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						body = copyDataFromStream(request.body());
 
 					ucout << header << std::endl << body << std::endl;
+					ucout.clear();
 				}
 
 				void ApiClient::logResponse(web::http::http_response response) {
@@ -301,6 +294,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 						body = copyDataFromStream(response.body());
 
 					ucout << header << std::endl << body << std::endl;
+					ucout.clear();
 				}
 
 }
