@@ -17,7 +17,6 @@ std::shared_ptr<ApiConfiguration> get_config()
 		lines += line;
 	}
 	web::json::value fileJson = web::json::value::parse(utility::conversions::to_string_t(lines));
-	newConfig = std::make_shared<ApiConfiguration>();
 
 	newConfig->setAppKey(fileJson[STCONVERT("AppKey")].as_string());
 	newConfig->setBaseUrl(fileJson[STCONVERT("BaseUrl")].as_string());
@@ -37,7 +36,8 @@ vector<utility::string_t> split(utility::string_t stringToSplit)
 	vector<utility::string_t> parts;
 	utility::string_t temp;
 	utility::stringstream_t wss(stringToSplit);
-	while (getline(wss, temp, '/'))
+
+	while (getline(wss, temp, (utility::char_t)'/'))
 	{
 		parts.push_back(temp);
 	}
@@ -96,7 +96,7 @@ std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file
 		char buffer[255];
 		errreason = utility::conversions::to_string_t(std::string(strerror_r(errno,buffer, sizeof(buffer))));
 #endif
-		ucerr << STCONVERT("Cannot open file ") + filePath + STCONVERT(" to upload. Reason: " + errreason);
+		ucerr << STCONVERT("Cannot open file ") + filePath + STCONVERT(" to upload. Reason: ") + errreason;
 	}
 	checkStream.close();
 

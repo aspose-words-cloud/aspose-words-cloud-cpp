@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 #include <regex>
-#include <boost/filesystem.hpp>
 
 class ConfigurationTest : public InfrastructureTest {
 protected:
@@ -40,7 +39,6 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 		expectedResponseHeader = STCONVERT("Response 200: OK"),
 		expectedResponseBody = STCONVERT("{\"Code\":200,\"Status\":\"OK\"}");
 
-    boost::filesystem::path myPath;
     ucout.rdbuf(outbuf);
 
 	ASSERT_TRUE(res.find(expectedUri) != std::string::npos);
@@ -123,10 +121,8 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 /// Check if all API methods have covered by tests
 /// </summary>
 TEST_F(BaseApiTest, TestApiCoverage) {
-	utility::string_t sdkRoot = get_executable_path();
+	utility::string_t sdkRoot = get_sdk_root();
 	auto rootParts = split(sdkRoot);
-	rootParts.pop_back();
-	rootParts.pop_back();
 	rootParts.pop_back();
 	utility::string_t testsPath = join(rootParts) + STCONVERT("\\tests");
 	utility::string_t apiPath = join(rootParts) + STCONVERT("\\sources\\api\\WordsApi.h");
