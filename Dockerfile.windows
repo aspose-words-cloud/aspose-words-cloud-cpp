@@ -1,8 +1,8 @@
 # FROM compulim/msbuild
-# FROM microsoft/windowsservercore
+FROM microsoft/windowsservercore
 # escape=`
 
-FROM mcr.microsoft.com/windows:1809
+#FROM mcr.microsoft.com/windows:1809
 
 # Visual Studio
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe vs_buildtools.exe
