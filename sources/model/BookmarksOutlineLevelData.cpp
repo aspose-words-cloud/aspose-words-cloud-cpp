@@ -33,7 +33,7 @@ namespace model {
 
 BookmarksOutlineLevelData::BookmarksOutlineLevelData()
 {
-    m_Name = utility::conversions::to_string_t("");
+    m_Name = _XPLATSTR("");
     m_NameIsSet = false;
     m_BookmarksOutlineLevel = 0;
 }
@@ -53,26 +53,26 @@ web::json::value BookmarksOutlineLevelData::toJson() const
 
     if(m_NameIsSet)
     {
-        val[utility::conversions::to_string_t("Name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
-    val[utility::conversions::to_string_t("BookmarksOutlineLevel")] = ModelBase::toJson(m_BookmarksOutlineLevel);
+    val[_XPLATSTR("BookmarksOutlineLevel")] = ModelBase::toJson(m_BookmarksOutlineLevel);
 
     return val;
 }
 
 void BookmarksOutlineLevelData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("BookmarksOutlineLevel")))
+    if(val.has_field(_XPLATSTR("BookmarksOutlineLevel")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("BookmarksOutlineLevel")];
+        web::json::value& fieldValue = val[_XPLATSTR("BookmarksOutlineLevel")];
         if(!fieldValue.is_null())
         {
             setBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
@@ -80,35 +80,27 @@ void BookmarksOutlineLevelData::fromJson(web::json::value& val)
     }
 }
 
-void BookmarksOutlineLevelData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void BookmarksOutlineLevelData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("BookmarksOutlineLevel"), m_BookmarksOutlineLevel));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BookmarksOutlineLevel"), m_BookmarksOutlineLevel));
 }
 
-void BookmarksOutlineLevelData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void BookmarksOutlineLevelData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    setBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BookmarksOutlineLevel"))));
+    setBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevel"))));
 }
 
 utility::string_t BookmarksOutlineLevelData::getName() const

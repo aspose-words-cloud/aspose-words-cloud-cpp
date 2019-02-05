@@ -51,7 +51,7 @@ web::json::value RunsResponse::toJson() const
 
     if(m_RunsIsSet)
     {
-        val[utility::conversions::to_string_t("Runs")] = ModelBase::toJson(m_Runs);
+        val[_XPLATSTR("Runs")] = ModelBase::toJson(m_Runs);
     }
 
     return val;
@@ -61,9 +61,9 @@ void RunsResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Runs")))
+    if(val.has_field(_XPLATSTR("Runs")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Runs")];
+        web::json::value& fieldValue = val[_XPLATSTR("Runs")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Runs> newItem(new Runs());
@@ -73,49 +73,41 @@ void RunsResponse::fromJson(web::json::value& val)
     }
 }
 
-void RunsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void RunsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_RunsIsSet)
     {
         if (m_Runs.get())
         {
-            m_Runs->toMultipart(multipart, utility::conversions::to_string_t("Runs."));
+            m_Runs->toMultipart(multipart, _XPLATSTR("Runs."));
         }
         
     }
 }
 
-void RunsResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void RunsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Runs")))
+    if(multipart->hasContent(_XPLATSTR("Runs")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Runs")))
+        if(multipart->hasContent(_XPLATSTR("Runs")))
         {
             std::shared_ptr<Runs> newItem(new Runs());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Runs."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Runs."));
             setRuns( newItem );
         }
     }

@@ -58,7 +58,7 @@ web::json::value BordersCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[utility::conversions::to_string_t("List")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("List")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -71,10 +71,10 @@ void BordersCollection::fromJson(web::json::value& val)
 
     {
         m_List.clear();
-        if(val.has_field(utility::conversions::to_string_t("List")) 
-                            && !val[utility::conversions::to_string_t("List")].is_null())
+        if(val.has_field(_XPLATSTR("List")) 
+                            && !val[_XPLATSTR("List")].is_null())
         {
-        auto arr = val[utility::conversions::to_string_t("List")].as_array();
+        auto arr = val[_XPLATSTR("List")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -92,19 +92,15 @@ void BordersCollection::fromJson(web::json::value& val)
     }
 }
 
-void BordersCollection::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void BordersCollection::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
@@ -116,34 +112,30 @@ void BordersCollection::toMultipart(std::shared_ptr<MultipartFormData> multipart
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("List"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("List"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
 
-void BordersCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void BordersCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
     {
         m_List.clear();
-        if(multipart->hasContent(utility::conversions::to_string_t("List")))
+        if(multipart->hasContent(_XPLATSTR("List")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("List")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("List")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {

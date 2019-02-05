@@ -33,7 +33,7 @@ namespace model {
 
 FieldLink::FieldLink()
 {
-    m_FieldCode = utility::conversions::to_string_t("");
+    m_FieldCode = _XPLATSTR("");
     m_FieldCodeIsSet = false;
 }
 
@@ -52,7 +52,7 @@ web::json::value FieldLink::toJson() const
 
     if(m_FieldCodeIsSet)
     {
-        val[utility::conversions::to_string_t("FieldCode")] = ModelBase::toJson(m_FieldCode);
+        val[_XPLATSTR("FieldCode")] = ModelBase::toJson(m_FieldCode);
     }
 
     return val;
@@ -62,9 +62,9 @@ void FieldLink::fromJson(web::json::value& val)
 {
     this->NodeLink::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("FieldCode")))
+    if(val.has_field(_XPLATSTR("FieldCode")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("FieldCode")];
+        web::json::value& fieldValue = val[_XPLATSTR("FieldCode")];
         if(!fieldValue.is_null())
         {
             setFieldCode(ModelBase::stringFromJson(fieldValue));
@@ -72,58 +72,50 @@ void FieldLink::fromJson(web::json::value& val)
     }
 }
 
-void FieldLink::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void FieldLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_FieldCodeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FieldCode"), m_FieldCode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FieldCode"), m_FieldCode));
         
     }
 }
 
-void FieldLink::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void FieldLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FieldCode")))
+    if(multipart->hasContent(_XPLATSTR("FieldCode")))
     {
-        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FieldCode"))));
+        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FieldCode"))));
     }
 }
 

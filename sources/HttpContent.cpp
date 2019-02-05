@@ -29,60 +29,52 @@ namespace swagger {
 namespace client {
 namespace model {
 
-HttpContent::HttpContent()
-{
-}
-
-HttpContent::~HttpContent()
-{
-}
-
-utility::string_t HttpContent::getContentDisposition()
+utility::string_t HttpContent::getContentDisposition() const
 {
     return m_ContentDisposition;
 }
 
-void HttpContent::setContentDisposition( const utility::string_t & value )
+void HttpContent::setContentDisposition(utility::string_t value )
 {
-    m_ContentDisposition = value;
+    m_ContentDisposition = std::move(value);
 }
 
-utility::string_t HttpContent::getName()
+utility::string_t HttpContent::getName() const
 {
     return m_Name;
 }
 
-void HttpContent::setName( const utility::string_t & value )
+void HttpContent::setName( utility::string_t value )
 {
-    m_Name = value;
+    m_Name = std::move(value);
 }
 
-utility::string_t HttpContent::getFileName()
+utility::string_t HttpContent::getFileName() const
 {
     return m_FileName;
 }
 
-void HttpContent::setFileName( const utility::string_t & value )
+void HttpContent::setFileName( utility::string_t value )
 {
-    m_FileName = value;
+    m_FileName = std::move(value);
 }
 
-utility::string_t HttpContent::getContentType()
+utility::string_t HttpContent::getContentType() const
 {
     return m_ContentType;
 }
 
-void HttpContent::setContentType( const utility::string_t & value )
+void HttpContent::setContentType( utility::string_t value )
 {
-    m_ContentType = value;
+    m_ContentType = std::move(value);
 }
 
-std::shared_ptr<std::istream> HttpContent::getData()
+std::shared_ptr<std::istream> HttpContent::getData() const
 {
     return m_Data;
 }
 
-void HttpContent::setData( std::shared_ptr<std::istream> value )
+void HttpContent::setData(const std::shared_ptr<std::istream>& value )
 {
     m_Data = value;
 }

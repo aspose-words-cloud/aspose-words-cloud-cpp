@@ -51,7 +51,7 @@ web::json::value DocumentPropertyResponse::toJson() const
 
     if(m_DocumentPropertyIsSet)
     {
-        val[utility::conversions::to_string_t("DocumentProperty")] = ModelBase::toJson(m_DocumentProperty);
+        val[_XPLATSTR("DocumentProperty")] = ModelBase::toJson(m_DocumentProperty);
     }
 
     return val;
@@ -61,9 +61,9 @@ void DocumentPropertyResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("DocumentProperty")))
+    if(val.has_field(_XPLATSTR("DocumentProperty")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DocumentProperty")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentProperty")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
@@ -73,49 +73,41 @@ void DocumentPropertyResponse::fromJson(web::json::value& val)
     }
 }
 
-void DocumentPropertyResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DocumentPropertyResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_DocumentPropertyIsSet)
     {
         if (m_DocumentProperty.get())
         {
-            m_DocumentProperty->toMultipart(multipart, utility::conversions::to_string_t("DocumentProperty."));
+            m_DocumentProperty->toMultipart(multipart, _XPLATSTR("DocumentProperty."));
         }
         
     }
 }
 
-void DocumentPropertyResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DocumentPropertyResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DocumentProperty")))
+    if(multipart->hasContent(_XPLATSTR("DocumentProperty")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("DocumentProperty")))
+        if(multipart->hasContent(_XPLATSTR("DocumentProperty")))
         {
             std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("DocumentProperty."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentProperty."));
             setDocumentProperty( newItem );
         }
     }

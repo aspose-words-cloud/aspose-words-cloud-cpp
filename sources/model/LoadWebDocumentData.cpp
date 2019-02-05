@@ -33,7 +33,7 @@ namespace model {
 
 LoadWebDocumentData::LoadWebDocumentData()
 {
-    m_LoadingDocumentUrl = utility::conversions::to_string_t("");
+    m_LoadingDocumentUrl = _XPLATSTR("");
     m_LoadingDocumentUrlIsSet = false;
     m_SaveOptionsIsSet = false;
 }
@@ -53,11 +53,11 @@ web::json::value LoadWebDocumentData::toJson() const
 
     if(m_LoadingDocumentUrlIsSet)
     {
-        val[utility::conversions::to_string_t("LoadingDocumentUrl")] = ModelBase::toJson(m_LoadingDocumentUrl);
+        val[_XPLATSTR("LoadingDocumentUrl")] = ModelBase::toJson(m_LoadingDocumentUrl);
     }
     if(m_SaveOptionsIsSet)
     {
-        val[utility::conversions::to_string_t("SaveOptions")] = ModelBase::toJson(m_SaveOptions);
+        val[_XPLATSTR("SaveOptions")] = ModelBase::toJson(m_SaveOptions);
     }
 
     return val;
@@ -65,17 +65,17 @@ web::json::value LoadWebDocumentData::toJson() const
 
 void LoadWebDocumentData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("LoadingDocumentUrl")))
+    if(val.has_field(_XPLATSTR("LoadingDocumentUrl")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("LoadingDocumentUrl")];
+        web::json::value& fieldValue = val[_XPLATSTR("LoadingDocumentUrl")];
         if(!fieldValue.is_null())
         {
             setLoadingDocumentUrl(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("SaveOptions")))
+    if(val.has_field(_XPLATSTR("SaveOptions")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("SaveOptions")];
+        web::json::value& fieldValue = val[_XPLATSTR("SaveOptions")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
@@ -85,47 +85,39 @@ void LoadWebDocumentData::fromJson(web::json::value& val)
     }
 }
 
-void LoadWebDocumentData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LoadingDocumentUrlIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("LoadingDocumentUrl"), m_LoadingDocumentUrl));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LoadingDocumentUrl"), m_LoadingDocumentUrl));
         
     }
     if(m_SaveOptionsIsSet)
     {
         if (m_SaveOptions.get())
         {
-            m_SaveOptions->toMultipart(multipart, utility::conversions::to_string_t("SaveOptions."));
+            m_SaveOptions->toMultipart(multipart, _XPLATSTR("SaveOptions."));
         }
         
     }
 }
 
-void LoadWebDocumentData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void LoadWebDocumentData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("LoadingDocumentUrl")))
+    if(multipart->hasContent(_XPLATSTR("LoadingDocumentUrl")))
     {
-        setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("LoadingDocumentUrl"))));
+        setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LoadingDocumentUrl"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SaveOptions")))
+    if(multipart->hasContent(_XPLATSTR("SaveOptions")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("SaveOptions")))
+        if(multipart->hasContent(_XPLATSTR("SaveOptions")))
         {
             std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("SaveOptions."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("SaveOptions."));
             setSaveOptions( newItem );
         }
     }

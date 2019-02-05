@@ -33,9 +33,9 @@ namespace model {
 
 OoxmlSaveOptionsData::OoxmlSaveOptionsData()
 {
-    m_Compliance = utility::conversions::to_string_t("");
+    m_Compliance = _XPLATSTR("");
     m_ComplianceIsSet = false;
-    m_Password = utility::conversions::to_string_t("");
+    m_Password = _XPLATSTR("");
     m_PasswordIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
@@ -56,15 +56,15 @@ web::json::value OoxmlSaveOptionsData::toJson() const
 
     if(m_ComplianceIsSet)
     {
-        val[utility::conversions::to_string_t("Compliance")] = ModelBase::toJson(m_Compliance);
+        val[_XPLATSTR("Compliance")] = ModelBase::toJson(m_Compliance);
     }
     if(m_PasswordIsSet)
     {
-        val[utility::conversions::to_string_t("Password")] = ModelBase::toJson(m_Password);
+        val[_XPLATSTR("Password")] = ModelBase::toJson(m_Password);
     }
     if(m_PrettyFormatIsSet)
     {
-        val[utility::conversions::to_string_t("PrettyFormat")] = ModelBase::toJson(m_PrettyFormat);
+        val[_XPLATSTR("PrettyFormat")] = ModelBase::toJson(m_PrettyFormat);
     }
 
     return val;
@@ -74,25 +74,25 @@ void OoxmlSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Compliance")))
+    if(val.has_field(_XPLATSTR("Compliance")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Compliance")];
+        web::json::value& fieldValue = val[_XPLATSTR("Compliance")];
         if(!fieldValue.is_null())
         {
             setCompliance(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Password")))
+    if(val.has_field(_XPLATSTR("Password")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Password")];
+        web::json::value& fieldValue = val[_XPLATSTR("Password")];
         if(!fieldValue.is_null())
         {
             setPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("PrettyFormat")))
+    if(val.has_field(_XPLATSTR("PrettyFormat")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("PrettyFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
             setPrettyFormat(ModelBase::boolFromJson(fieldValue));
@@ -100,126 +100,118 @@ void OoxmlSaveOptionsData::fromJson(web::json::value& val)
     }
 }
 
-void OoxmlSaveOptionsData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void OoxmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ColorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("SaveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ZipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
     if(m_ComplianceIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Compliance"), m_Compliance));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Compliance"), m_Compliance));
         
     }
     if(m_PasswordIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Password"), m_Password));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Password"), m_Password));
         
     }
     if(m_PrettyFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("PrettyFormat"), m_PrettyFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
     }
 }
 
-void OoxmlSaveOptionsData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void OoxmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ColorMode")))
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ColorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SaveFormat")))
+    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SaveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FileName")))
+    if(multipart->hasContent(_XPLATSTR("FileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ZipOutput")))
+    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateFields")))
+    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Compliance")))
+    if(multipart->hasContent(_XPLATSTR("Compliance")))
     {
-        setCompliance(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Compliance"))));
+        setCompliance(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Compliance"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Password")))
+    if(multipart->hasContent(_XPLATSTR("Password")))
     {
-        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Password"))));
+        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("PrettyFormat")))
+    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PrettyFormat"))));
+        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
 }
 

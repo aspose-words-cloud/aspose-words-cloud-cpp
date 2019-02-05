@@ -39,7 +39,7 @@ TableRowFormat::TableRowFormat()
     m_HeadingFormatIsSet = false;
     m_Height = 0.0;
     m_HeightIsSet = false;
-    m_HeightRule = utility::conversions::to_string_t("");
+    m_HeightRule = _XPLATSTR("");
     m_HeightRuleIsSet = false;
 }
 
@@ -58,19 +58,19 @@ web::json::value TableRowFormat::toJson() const
 
     if(m_AllowBreakAcrossPagesIsSet)
     {
-        val[utility::conversions::to_string_t("AllowBreakAcrossPages")] = ModelBase::toJson(m_AllowBreakAcrossPages);
+        val[_XPLATSTR("AllowBreakAcrossPages")] = ModelBase::toJson(m_AllowBreakAcrossPages);
     }
     if(m_HeadingFormatIsSet)
     {
-        val[utility::conversions::to_string_t("HeadingFormat")] = ModelBase::toJson(m_HeadingFormat);
+        val[_XPLATSTR("HeadingFormat")] = ModelBase::toJson(m_HeadingFormat);
     }
     if(m_HeightIsSet)
     {
-        val[utility::conversions::to_string_t("Height")] = ModelBase::toJson(m_Height);
+        val[_XPLATSTR("Height")] = ModelBase::toJson(m_Height);
     }
     if(m_HeightRuleIsSet)
     {
-        val[utility::conversions::to_string_t("HeightRule")] = ModelBase::toJson(m_HeightRule);
+        val[_XPLATSTR("HeightRule")] = ModelBase::toJson(m_HeightRule);
     }
 
     return val;
@@ -80,33 +80,33 @@ void TableRowFormat::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("AllowBreakAcrossPages")))
+    if(val.has_field(_XPLATSTR("AllowBreakAcrossPages")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("AllowBreakAcrossPages")];
+        web::json::value& fieldValue = val[_XPLATSTR("AllowBreakAcrossPages")];
         if(!fieldValue.is_null())
         {
             setAllowBreakAcrossPages(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("HeadingFormat")))
+    if(val.has_field(_XPLATSTR("HeadingFormat")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("HeadingFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("HeadingFormat")];
         if(!fieldValue.is_null())
         {
             setHeadingFormat(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Height")))
+    if(val.has_field(_XPLATSTR("Height")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Height")];
+        web::json::value& fieldValue = val[_XPLATSTR("Height")];
         if(!fieldValue.is_null())
         {
             setHeight(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("HeightRule")))
+    if(val.has_field(_XPLATSTR("HeightRule")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("HeightRule")];
+        web::json::value& fieldValue = val[_XPLATSTR("HeightRule")];
         if(!fieldValue.is_null())
         {
             setHeightRule(ModelBase::stringFromJson(fieldValue));
@@ -114,73 +114,65 @@ void TableRowFormat::fromJson(web::json::value& val)
     }
 }
 
-void TableRowFormat::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableRowFormat::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_AllowBreakAcrossPagesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("AllowBreakAcrossPages"), m_AllowBreakAcrossPages));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllowBreakAcrossPages"), m_AllowBreakAcrossPages));
     }
     if(m_HeadingFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("HeadingFormat"), m_HeadingFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeadingFormat"), m_HeadingFormat));
     }
     if(m_HeightIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Height"), m_Height));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Height"), m_Height));
     }
     if(m_HeightRuleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("HeightRule"), m_HeightRule));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeightRule"), m_HeightRule));
         
     }
 }
 
-void TableRowFormat::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableRowFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("AllowBreakAcrossPages")))
+    if(multipart->hasContent(_XPLATSTR("AllowBreakAcrossPages")))
     {
-        setAllowBreakAcrossPages(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("AllowBreakAcrossPages"))));
+        setAllowBreakAcrossPages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowBreakAcrossPages"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("HeadingFormat")))
+    if(multipart->hasContent(_XPLATSTR("HeadingFormat")))
     {
-        setHeadingFormat(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("HeadingFormat"))));
+        setHeadingFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("HeadingFormat"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Height")))
+    if(multipart->hasContent(_XPLATSTR("Height")))
     {
-        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Height"))));
+        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("HeightRule")))
+    if(multipart->hasContent(_XPLATSTR("HeightRule")))
     {
-        setHeightRule(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("HeightRule"))));
+        setHeightRule(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HeightRule"))));
     }
 }
 

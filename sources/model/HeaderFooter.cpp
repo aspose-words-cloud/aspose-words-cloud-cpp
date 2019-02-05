@@ -52,11 +52,11 @@ web::json::value HeaderFooter::toJson() const
 
     if(m_DrawingObjectsIsSet)
     {
-        val[utility::conversions::to_string_t("DrawingObjects")] = ModelBase::toJson(m_DrawingObjects);
+        val[_XPLATSTR("DrawingObjects")] = ModelBase::toJson(m_DrawingObjects);
     }
     if(m_ParagraphsIsSet)
     {
-        val[utility::conversions::to_string_t("Paragraphs")] = ModelBase::toJson(m_Paragraphs);
+        val[_XPLATSTR("Paragraphs")] = ModelBase::toJson(m_Paragraphs);
     }
 
     return val;
@@ -66,9 +66,9 @@ void HeaderFooter::fromJson(web::json::value& val)
 {
     this->HeaderFooterLink::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("DrawingObjects")))
+    if(val.has_field(_XPLATSTR("DrawingObjects")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DrawingObjects")];
+        web::json::value& fieldValue = val[_XPLATSTR("DrawingObjects")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
@@ -76,9 +76,9 @@ void HeaderFooter::fromJson(web::json::value& val)
             setDrawingObjects( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Paragraphs")))
+    if(val.has_field(_XPLATSTR("Paragraphs")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Paragraphs")];
+        web::json::value& fieldValue = val[_XPLATSTR("Paragraphs")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
@@ -88,32 +88,28 @@ void HeaderFooter::fromJson(web::json::value& val)
     }
 }
 
-void HeaderFooter::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void HeaderFooter::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_TypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Type"), m_Type));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
         
     }
     if(m_DrawingObjectsIsSet)
     {
         if (m_DrawingObjects.get())
         {
-            m_DrawingObjects->toMultipart(multipart, utility::conversions::to_string_t("DrawingObjects."));
+            m_DrawingObjects->toMultipart(multipart, _XPLATSTR("DrawingObjects."));
         }
         
     }
@@ -121,48 +117,44 @@ void HeaderFooter::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     {
         if (m_Paragraphs.get())
         {
-            m_Paragraphs->toMultipart(multipart, utility::conversions::to_string_t("Paragraphs."));
+            m_Paragraphs->toMultipart(multipart, _XPLATSTR("Paragraphs."));
         }
         
     }
 }
 
-void HeaderFooter::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Type")))
+    if(multipart->hasContent(_XPLATSTR("Type")))
     {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Type"))));
+        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DrawingObjects")))
+    if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("DrawingObjects")))
+        if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("DrawingObjects."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObjects."));
             setDrawingObjects( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Paragraphs")))
+    if(multipart->hasContent(_XPLATSTR("Paragraphs")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Paragraphs")))
+        if(multipart->hasContent(_XPLATSTR("Paragraphs")))
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Paragraphs."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
             setParagraphs( newItem );
         }
     }

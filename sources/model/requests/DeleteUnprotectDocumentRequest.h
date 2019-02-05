@@ -27,7 +27,7 @@
 #define deleteUnprotectDocument_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "ProtectionRequest.h"
 #include <boost/optional.hpp>
 

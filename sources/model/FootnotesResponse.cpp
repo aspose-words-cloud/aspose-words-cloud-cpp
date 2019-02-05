@@ -51,7 +51,7 @@ web::json::value FootnotesResponse::toJson() const
 
     if(m_FootnotesIsSet)
     {
-        val[utility::conversions::to_string_t("Footnotes")] = ModelBase::toJson(m_Footnotes);
+        val[_XPLATSTR("Footnotes")] = ModelBase::toJson(m_Footnotes);
     }
 
     return val;
@@ -61,9 +61,9 @@ void FootnotesResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Footnotes")))
+    if(val.has_field(_XPLATSTR("Footnotes")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Footnotes")];
+        web::json::value& fieldValue = val[_XPLATSTR("Footnotes")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FootnoteCollection> newItem(new FootnoteCollection());
@@ -73,49 +73,41 @@ void FootnotesResponse::fromJson(web::json::value& val)
     }
 }
 
-void FootnotesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void FootnotesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_FootnotesIsSet)
     {
         if (m_Footnotes.get())
         {
-            m_Footnotes->toMultipart(multipart, utility::conversions::to_string_t("Footnotes."));
+            m_Footnotes->toMultipart(multipart, _XPLATSTR("Footnotes."));
         }
         
     }
 }
 
-void FootnotesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void FootnotesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Footnotes")))
+    if(multipart->hasContent(_XPLATSTR("Footnotes")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Footnotes")))
+        if(multipart->hasContent(_XPLATSTR("Footnotes")))
         {
             std::shared_ptr<FootnoteCollection> newItem(new FootnoteCollection());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Footnotes."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Footnotes."));
             setFootnotes( newItem );
         }
     }

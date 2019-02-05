@@ -33,9 +33,9 @@ namespace model {
 
 DocumentEntry::DocumentEntry()
 {
-    m_Href = utility::conversions::to_string_t("");
+    m_Href = _XPLATSTR("");
     m_HrefIsSet = false;
-    m_ImportFormatMode = utility::conversions::to_string_t("");
+    m_ImportFormatMode = _XPLATSTR("");
     m_ImportFormatModeIsSet = false;
 }
 
@@ -54,11 +54,11 @@ web::json::value DocumentEntry::toJson() const
 
     if(m_HrefIsSet)
     {
-        val[utility::conversions::to_string_t("Href")] = ModelBase::toJson(m_Href);
+        val[_XPLATSTR("Href")] = ModelBase::toJson(m_Href);
     }
     if(m_ImportFormatModeIsSet)
     {
-        val[utility::conversions::to_string_t("ImportFormatMode")] = ModelBase::toJson(m_ImportFormatMode);
+        val[_XPLATSTR("ImportFormatMode")] = ModelBase::toJson(m_ImportFormatMode);
     }
 
     return val;
@@ -66,17 +66,17 @@ web::json::value DocumentEntry::toJson() const
 
 void DocumentEntry::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Href")))
+    if(val.has_field(_XPLATSTR("Href")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Href")];
+        web::json::value& fieldValue = val[_XPLATSTR("Href")];
         if(!fieldValue.is_null())
         {
             setHref(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ImportFormatMode")))
+    if(val.has_field(_XPLATSTR("ImportFormatMode")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ImportFormatMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImportFormatMode")];
         if(!fieldValue.is_null())
         {
             setImportFormatMode(ModelBase::stringFromJson(fieldValue));
@@ -84,41 +84,33 @@ void DocumentEntry::fromJson(web::json::value& val)
     }
 }
 
-void DocumentEntry::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DocumentEntry::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_HrefIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Href"), m_Href));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
         
     }
     if(m_ImportFormatModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ImportFormatMode"), m_ImportFormatMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImportFormatMode"), m_ImportFormatMode));
         
     }
 }
 
-void DocumentEntry::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DocumentEntry::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Href")))
+    if(multipart->hasContent(_XPLATSTR("Href")))
     {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Href"))));
+        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ImportFormatMode")))
+    if(multipart->hasContent(_XPLATSTR("ImportFormatMode")))
     {
-        setImportFormatMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ImportFormatMode"))));
+        setImportFormatMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImportFormatMode"))));
     }
 }
 

@@ -53,26 +53,26 @@ web::json::value TableRowInsert::toJson() const
 
     if(m_InsertAfterIsSet)
     {
-        val[utility::conversions::to_string_t("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
+        val[_XPLATSTR("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
     }
-    val[utility::conversions::to_string_t("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
+    val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
 
     return val;
 }
 
 void TableRowInsert::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("InsertAfter")))
+    if(val.has_field(_XPLATSTR("InsertAfter")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("InsertAfter")];
+        web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
         if(!fieldValue.is_null())
         {
             setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ColumnsCount")))
+    if(val.has_field(_XPLATSTR("ColumnsCount")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ColumnsCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("ColumnsCount")];
         if(!fieldValue.is_null())
         {
             setColumnsCount(ModelBase::int32_tFromJson(fieldValue));
@@ -80,34 +80,26 @@ void TableRowInsert::fromJson(web::json::value& val)
     }
 }
 
-void TableRowInsert::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableRowInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_InsertAfterIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("InsertAfter"), m_InsertAfter));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InsertAfter"), m_InsertAfter));
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ColumnsCount"), m_ColumnsCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
 }
 
-void TableRowInsert::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableRowInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("InsertAfter")))
+    if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
-        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("InsertAfter"))));
+        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
     }
-    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ColumnsCount"))));
+    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
 }
 
 int32_t TableRowInsert::getInsertAfter() const

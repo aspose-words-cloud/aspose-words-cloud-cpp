@@ -33,15 +33,15 @@ namespace model {
 
 SaveOptionsData::SaveOptionsData()
 {
-    m_ColorMode = utility::conversions::to_string_t("");
+    m_ColorMode = _XPLATSTR("");
     m_ColorModeIsSet = false;
-    m_SaveFormat = utility::conversions::to_string_t("");
+    m_SaveFormat = _XPLATSTR("");
     m_SaveFormatIsSet = false;
-    m_FileName = utility::conversions::to_string_t("");
+    m_FileName = _XPLATSTR("");
     m_FileNameIsSet = false;
-    m_DmlRenderingMode = utility::conversions::to_string_t("");
+    m_DmlRenderingMode = _XPLATSTR("");
     m_DmlRenderingModeIsSet = false;
-    m_DmlEffectsRenderingMode = utility::conversions::to_string_t("");
+    m_DmlEffectsRenderingMode = _XPLATSTR("");
     m_DmlEffectsRenderingModeIsSet = false;
     m_ZipOutput = false;
     m_ZipOutputIsSet = false;
@@ -68,39 +68,39 @@ web::json::value SaveOptionsData::toJson() const
 
     if(m_ColorModeIsSet)
     {
-        val[utility::conversions::to_string_t("ColorMode")] = ModelBase::toJson(m_ColorMode);
+        val[_XPLATSTR("ColorMode")] = ModelBase::toJson(m_ColorMode);
     }
     if(m_SaveFormatIsSet)
     {
-        val[utility::conversions::to_string_t("SaveFormat")] = ModelBase::toJson(m_SaveFormat);
+        val[_XPLATSTR("SaveFormat")] = ModelBase::toJson(m_SaveFormat);
     }
     if(m_FileNameIsSet)
     {
-        val[utility::conversions::to_string_t("FileName")] = ModelBase::toJson(m_FileName);
+        val[_XPLATSTR("FileName")] = ModelBase::toJson(m_FileName);
     }
     if(m_DmlRenderingModeIsSet)
     {
-        val[utility::conversions::to_string_t("DmlRenderingMode")] = ModelBase::toJson(m_DmlRenderingMode);
+        val[_XPLATSTR("DmlRenderingMode")] = ModelBase::toJson(m_DmlRenderingMode);
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        val[utility::conversions::to_string_t("DmlEffectsRenderingMode")] = ModelBase::toJson(m_DmlEffectsRenderingMode);
+        val[_XPLATSTR("DmlEffectsRenderingMode")] = ModelBase::toJson(m_DmlEffectsRenderingMode);
     }
     if(m_ZipOutputIsSet)
     {
-        val[utility::conversions::to_string_t("ZipOutput")] = ModelBase::toJson(m_ZipOutput);
+        val[_XPLATSTR("ZipOutput")] = ModelBase::toJson(m_ZipOutput);
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        val[utility::conversions::to_string_t("UpdateLastSavedTimeProperty")] = ModelBase::toJson(m_UpdateLastSavedTimeProperty);
+        val[_XPLATSTR("UpdateLastSavedTimeProperty")] = ModelBase::toJson(m_UpdateLastSavedTimeProperty);
     }
     if(m_UpdateSdtContentIsSet)
     {
-        val[utility::conversions::to_string_t("UpdateSdtContent")] = ModelBase::toJson(m_UpdateSdtContent);
+        val[_XPLATSTR("UpdateSdtContent")] = ModelBase::toJson(m_UpdateSdtContent);
     }
     if(m_UpdateFieldsIsSet)
     {
-        val[utility::conversions::to_string_t("UpdateFields")] = ModelBase::toJson(m_UpdateFields);
+        val[_XPLATSTR("UpdateFields")] = ModelBase::toJson(m_UpdateFields);
     }
 
     return val;
@@ -108,73 +108,73 @@ web::json::value SaveOptionsData::toJson() const
 
 void SaveOptionsData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("ColorMode")))
+    if(val.has_field(_XPLATSTR("ColorMode")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ColorMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("ColorMode")];
         if(!fieldValue.is_null())
         {
             setColorMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("SaveFormat")))
+    if(val.has_field(_XPLATSTR("SaveFormat")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("SaveFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("SaveFormat")];
         if(!fieldValue.is_null())
         {
             setSaveFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("FileName")))
+    if(val.has_field(_XPLATSTR("FileName")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("FileName")];
+        web::json::value& fieldValue = val[_XPLATSTR("FileName")];
         if(!fieldValue.is_null())
         {
             setFileName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("DmlRenderingMode")))
+    if(val.has_field(_XPLATSTR("DmlRenderingMode")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DmlRenderingMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("DmlRenderingMode")];
         if(!fieldValue.is_null())
         {
             setDmlRenderingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("DmlEffectsRenderingMode")))
+    if(val.has_field(_XPLATSTR("DmlEffectsRenderingMode")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DmlEffectsRenderingMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("DmlEffectsRenderingMode")];
         if(!fieldValue.is_null())
         {
             setDmlEffectsRenderingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ZipOutput")))
+    if(val.has_field(_XPLATSTR("ZipOutput")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ZipOutput")];
+        web::json::value& fieldValue = val[_XPLATSTR("ZipOutput")];
         if(!fieldValue.is_null())
         {
             setZipOutput(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("UpdateLastSavedTimeProperty")))
+    if(val.has_field(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("UpdateLastSavedTimeProperty")];
+        web::json::value& fieldValue = val[_XPLATSTR("UpdateLastSavedTimeProperty")];
         if(!fieldValue.is_null())
         {
             setUpdateLastSavedTimeProperty(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("UpdateSdtContent")))
+    if(val.has_field(_XPLATSTR("UpdateSdtContent")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("UpdateSdtContent")];
+        web::json::value& fieldValue = val[_XPLATSTR("UpdateSdtContent")];
         if(!fieldValue.is_null())
         {
             setUpdateSdtContent(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("UpdateFields")))
+    if(val.has_field(_XPLATSTR("UpdateFields")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("UpdateFields")];
+        web::json::value& fieldValue = val[_XPLATSTR("UpdateFields")];
         if(!fieldValue.is_null())
         {
             setUpdateFields(ModelBase::boolFromJson(fieldValue));
@@ -182,100 +182,92 @@ void SaveOptionsData::fromJson(web::json::value& val)
     }
 }
 
-void SaveOptionsData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ColorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("SaveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ZipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
 }
 
-void SaveOptionsData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ColorMode")))
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ColorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SaveFormat")))
+    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SaveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FileName")))
+    if(multipart->hasContent(_XPLATSTR("FileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ZipOutput")))
+    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateFields")))
+    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
 }
 

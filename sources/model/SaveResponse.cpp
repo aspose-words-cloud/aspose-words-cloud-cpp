@@ -51,7 +51,7 @@ web::json::value SaveResponse::toJson() const
 
     if(m_SaveResultIsSet)
     {
-        val[utility::conversions::to_string_t("SaveResult")] = ModelBase::toJson(m_SaveResult);
+        val[_XPLATSTR("SaveResult")] = ModelBase::toJson(m_SaveResult);
     }
 
     return val;
@@ -61,9 +61,9 @@ void SaveResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("SaveResult")))
+    if(val.has_field(_XPLATSTR("SaveResult")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("SaveResult")];
+        web::json::value& fieldValue = val[_XPLATSTR("SaveResult")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SaveResult> newItem(new SaveResult());
@@ -73,49 +73,41 @@ void SaveResponse::fromJson(web::json::value& val)
     }
 }
 
-void SaveResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void SaveResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_SaveResultIsSet)
     {
         if (m_SaveResult.get())
         {
-            m_SaveResult->toMultipart(multipart, utility::conversions::to_string_t("SaveResult."));
+            m_SaveResult->toMultipart(multipart, _XPLATSTR("SaveResult."));
         }
         
     }
 }
 
-void SaveResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void SaveResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SaveResult")))
+    if(multipart->hasContent(_XPLATSTR("SaveResult")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("SaveResult")))
+        if(multipart->hasContent(_XPLATSTR("SaveResult")))
         {
             std::shared_ptr<SaveResult> newItem(new SaveResult());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("SaveResult."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("SaveResult."));
             setSaveResult( newItem );
         }
     }

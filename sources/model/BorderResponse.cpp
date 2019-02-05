@@ -51,7 +51,7 @@ web::json::value BorderResponse::toJson() const
 
     if(m_BorderIsSet)
     {
-        val[utility::conversions::to_string_t("Border")] = ModelBase::toJson(m_Border);
+        val[_XPLATSTR("Border")] = ModelBase::toJson(m_Border);
     }
 
     return val;
@@ -61,9 +61,9 @@ void BorderResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Border")))
+    if(val.has_field(_XPLATSTR("Border")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Border")];
+        web::json::value& fieldValue = val[_XPLATSTR("Border")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Border> newItem(new Border());
@@ -73,49 +73,41 @@ void BorderResponse::fromJson(web::json::value& val)
     }
 }
 
-void BorderResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void BorderResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_BorderIsSet)
     {
         if (m_Border.get())
         {
-            m_Border->toMultipart(multipart, utility::conversions::to_string_t("Border."));
+            m_Border->toMultipart(multipart, _XPLATSTR("Border."));
         }
         
     }
 }
 
-void BorderResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void BorderResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Border")))
+    if(multipart->hasContent(_XPLATSTR("Border")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Border")))
+        if(multipart->hasContent(_XPLATSTR("Border")))
         {
             std::shared_ptr<Border> newItem(new Border());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Border."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Border."));
             setBorder( newItem );
         }
     }

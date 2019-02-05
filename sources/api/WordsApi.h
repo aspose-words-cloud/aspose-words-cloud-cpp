@@ -240,7 +240,7 @@
 #include "TiffSaveOptionsData.h"
 #include "WatermarkText.h"
 #include <cpprest/details/basic_types.h>
-#undef U
+
 #include <boost/optional.hpp>
 namespace io {
 namespace swagger {
@@ -2380,8 +2380,8 @@ public:
         );
 
 public:
-    explicit WordsApi( std::shared_ptr<ApiClient> apiClient );
-    virtual ~WordsApi();
+    explicit WordsApi(std::shared_ptr<ApiClient> apiClient );
+    virtual ~WordsApi() = default;
     
 protected:
     std::shared_ptr<ApiClient> m_ApiClient;

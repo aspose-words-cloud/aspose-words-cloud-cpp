@@ -51,7 +51,7 @@ web::json::value TableCellResponse::toJson() const
 
     if(m_CellIsSet)
     {
-        val[utility::conversions::to_string_t("Cell")] = ModelBase::toJson(m_Cell);
+        val[_XPLATSTR("Cell")] = ModelBase::toJson(m_Cell);
     }
 
     return val;
@@ -61,9 +61,9 @@ void TableCellResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Cell")))
+    if(val.has_field(_XPLATSTR("Cell")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Cell")];
+        web::json::value& fieldValue = val[_XPLATSTR("Cell")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableCell> newItem(new TableCell());
@@ -73,49 +73,41 @@ void TableCellResponse::fromJson(web::json::value& val)
     }
 }
 
-void TableCellResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableCellResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_CellIsSet)
     {
         if (m_Cell.get())
         {
-            m_Cell->toMultipart(multipart, utility::conversions::to_string_t("Cell."));
+            m_Cell->toMultipart(multipart, _XPLATSTR("Cell."));
         }
         
     }
 }
 
-void TableCellResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableCellResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Cell")))
+    if(multipart->hasContent(_XPLATSTR("Cell")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Cell")))
+        if(multipart->hasContent(_XPLATSTR("Cell")))
         {
             std::shared_ptr<TableCell> newItem(new TableCell());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Cell."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Cell."));
             setCell( newItem );
         }
     }

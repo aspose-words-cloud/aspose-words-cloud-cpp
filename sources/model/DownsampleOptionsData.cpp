@@ -56,15 +56,15 @@ web::json::value DownsampleOptionsData::toJson() const
 
     if(m_DownsampleImagesIsSet)
     {
-        val[utility::conversions::to_string_t("DownsampleImages")] = ModelBase::toJson(m_DownsampleImages);
+        val[_XPLATSTR("DownsampleImages")] = ModelBase::toJson(m_DownsampleImages);
     }
     if(m_ResolutionIsSet)
     {
-        val[utility::conversions::to_string_t("Resolution")] = ModelBase::toJson(m_Resolution);
+        val[_XPLATSTR("Resolution")] = ModelBase::toJson(m_Resolution);
     }
     if(m_ResolutionThresholdIsSet)
     {
-        val[utility::conversions::to_string_t("ResolutionThreshold")] = ModelBase::toJson(m_ResolutionThreshold);
+        val[_XPLATSTR("ResolutionThreshold")] = ModelBase::toJson(m_ResolutionThreshold);
     }
 
     return val;
@@ -72,25 +72,25 @@ web::json::value DownsampleOptionsData::toJson() const
 
 void DownsampleOptionsData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("DownsampleImages")))
+    if(val.has_field(_XPLATSTR("DownsampleImages")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DownsampleImages")];
+        web::json::value& fieldValue = val[_XPLATSTR("DownsampleImages")];
         if(!fieldValue.is_null())
         {
             setDownsampleImages(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Resolution")))
+    if(val.has_field(_XPLATSTR("Resolution")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Resolution")];
+        web::json::value& fieldValue = val[_XPLATSTR("Resolution")];
         if(!fieldValue.is_null())
         {
             setResolution(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ResolutionThreshold")))
+    if(val.has_field(_XPLATSTR("ResolutionThreshold")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ResolutionThreshold")];
+        web::json::value& fieldValue = val[_XPLATSTR("ResolutionThreshold")];
         if(!fieldValue.is_null())
         {
             setResolutionThreshold(ModelBase::int32_tFromJson(fieldValue));
@@ -98,47 +98,39 @@ void DownsampleOptionsData::fromJson(web::json::value& val)
     }
 }
 
-void DownsampleOptionsData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DownsampleOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_DownsampleImagesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DownsampleImages"), m_DownsampleImages));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DownsampleImages"), m_DownsampleImages));
     }
     if(m_ResolutionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Resolution"), m_Resolution));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Resolution"), m_Resolution));
     }
     if(m_ResolutionThresholdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ResolutionThreshold"), m_ResolutionThreshold));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResolutionThreshold"), m_ResolutionThreshold));
     }
 }
 
-void DownsampleOptionsData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DownsampleOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("DownsampleImages")))
+    if(multipart->hasContent(_XPLATSTR("DownsampleImages")))
     {
-        setDownsampleImages(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DownsampleImages"))));
+        setDownsampleImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DownsampleImages"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Resolution")))
+    if(multipart->hasContent(_XPLATSTR("Resolution")))
     {
-        setResolution(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Resolution"))));
+        setResolution(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Resolution"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ResolutionThreshold")))
+    if(multipart->hasContent(_XPLATSTR("ResolutionThreshold")))
     {
-        setResolutionThreshold(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ResolutionThreshold"))));
+        setResolutionThreshold(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ResolutionThreshold"))));
     }
 }
 

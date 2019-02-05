@@ -52,11 +52,11 @@ web::json::value SearchResult::toJson() const
 
     if(m_RangeStartIsSet)
     {
-        val[utility::conversions::to_string_t("RangeStart")] = ModelBase::toJson(m_RangeStart);
+        val[_XPLATSTR("RangeStart")] = ModelBase::toJson(m_RangeStart);
     }
     if(m_RangeEndIsSet)
     {
-        val[utility::conversions::to_string_t("RangeEnd")] = ModelBase::toJson(m_RangeEnd);
+        val[_XPLATSTR("RangeEnd")] = ModelBase::toJson(m_RangeEnd);
     }
 
     return val;
@@ -64,9 +64,9 @@ web::json::value SearchResult::toJson() const
 
 void SearchResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("RangeStart")))
+    if(val.has_field(_XPLATSTR("RangeStart")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RangeStart")];
+        web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -74,9 +74,9 @@ void SearchResult::fromJson(web::json::value& val)
             setRangeStart( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("RangeEnd")))
+    if(val.has_field(_XPLATSTR("RangeEnd")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RangeEnd")];
+        web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -86,19 +86,15 @@ void SearchResult::fromJson(web::json::value& val)
     }
 }
 
-void SearchResult::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_RangeStartIsSet)
     {
         if (m_RangeStart.get())
         {
-            m_RangeStart->toMultipart(multipart, utility::conversions::to_string_t("RangeStart."));
+            m_RangeStart->toMultipart(multipart, _XPLATSTR("RangeStart."));
         }
         
     }
@@ -106,35 +102,31 @@ void SearchResult::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     {
         if (m_RangeEnd.get())
         {
-            m_RangeEnd->toMultipart(multipart, utility::conversions::to_string_t("RangeEnd."));
+            m_RangeEnd->toMultipart(multipart, _XPLATSTR("RangeEnd."));
         }
         
     }
 }
 
-void SearchResult::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("RangeStart")))
+    if(multipart->hasContent(_XPLATSTR("RangeStart")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("RangeStart")))
+        if(multipart->hasContent(_XPLATSTR("RangeStart")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("RangeStart."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
             setRangeStart( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("RangeEnd")))
+    if(multipart->hasContent(_XPLATSTR("RangeEnd")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("RangeEnd")))
+        if(multipart->hasContent(_XPLATSTR("RangeEnd")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("RangeEnd."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
             setRangeEnd( newItem );
         }
     }

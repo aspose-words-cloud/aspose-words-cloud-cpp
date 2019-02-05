@@ -33,7 +33,7 @@ namespace model {
 
 TextItem::TextItem()
 {
-    m_Text = utility::conversions::to_string_t("");
+    m_Text = _XPLATSTR("");
     m_TextIsSet = false;
 }
 
@@ -52,7 +52,7 @@ web::json::value TextItem::toJson() const
 
     if(m_TextIsSet)
     {
-        val[utility::conversions::to_string_t("Text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -62,9 +62,9 @@ void TextItem::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -72,49 +72,41 @@ void TextItem::fromJson(web::json::value& val)
     }
 }
 
-void TextItem::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TextItem::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
 }
 
-void TextItem::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TextItem::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
 }
 

@@ -27,7 +27,7 @@
 #define postComment_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "Comment.h"
 #include <boost/optional.hpp>
 

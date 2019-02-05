@@ -27,7 +27,7 @@
 #define postUpdateDocumentBookmark_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "BookmarkData.h"
 #include <boost/optional.hpp>
 

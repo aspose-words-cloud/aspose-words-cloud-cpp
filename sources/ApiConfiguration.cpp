@@ -29,24 +29,16 @@ namespace swagger {
 namespace client {
 namespace api {
 
-ApiConfiguration::ApiConfiguration()
-{
-}
-
-ApiConfiguration::~ApiConfiguration()
-{
-}
-
-void ApiConfiguration::setAppKey(const utility::string_t& appKey){
-    m_AppKey = appKey;
+void ApiConfiguration::setAppKey( utility::string_t appKey){
+    m_AppKey = std::move(appKey);
 }
 
 utility::string_t ApiConfiguration::getAppKey() const {
     return m_AppKey;
 }
 
-void ApiConfiguration::setAppSid(const utility::string_t& appSid){
-    m_AppSid = appSid;
+void ApiConfiguration::setAppSid( utility::string_t appSid){
+    m_AppSid = std::move(appSid);
 }
 
 utility::string_t ApiConfiguration::getAppSid() const{
@@ -58,9 +50,9 @@ utility::string_t ApiConfiguration::getApiVersion() const
 	return m_ApiVersion;
 }
 
-void ApiConfiguration::setApiVersion(const utility::string_t & apiVersion)
+void ApiConfiguration::setApiVersion( utility::string_t  apiVersion)
 {
-	m_ApiVersion = apiVersion;
+	m_ApiVersion = std::move(apiVersion);
 }
 
 bool ApiConfiguration::isDebugMode() const {
@@ -76,7 +68,7 @@ web::http::client::http_client_config& ApiConfiguration::getHttpConfig()
     return m_HttpConfig;
 }
 
-void ApiConfiguration::setHttpConfig( web::http::client::http_client_config& value )
+void ApiConfiguration::setHttpConfig(const web::http::client::http_client_config& value )
 {
     m_HttpConfig = value;
 }
@@ -86,9 +78,9 @@ utility::string_t ApiConfiguration::getBaseUrl() const
     return m_BaseUrl;
 }
 
-void ApiConfiguration::setBaseUrl( const utility::string_t value )
+void ApiConfiguration::setBaseUrl( utility::string_t value )
 {
-    m_BaseUrl = value;
+    m_BaseUrl = std::move(value);
 }
 
 utility::string_t ApiConfiguration::getUserAgent() const
@@ -96,9 +88,9 @@ utility::string_t ApiConfiguration::getUserAgent() const
     return m_UserAgent;
 }
 
-void ApiConfiguration::setUserAgent( const utility::string_t value )
+void ApiConfiguration::setUserAgent( utility::string_t value )
 {
-    m_UserAgent = value;
+    m_UserAgent = std::move(value);
 }
 
 std::map<utility::string_t, utility::string_t>& ApiConfiguration::getDefaultHeaders()
@@ -108,12 +100,12 @@ std::map<utility::string_t, utility::string_t>& ApiConfiguration::getDefaultHead
 
 utility::string_t ApiConfiguration::getApiKey( const utility::string_t& prefix) const
 {
-    auto result = m_ApiKeys.find(prefix);
+    const auto result = m_ApiKeys.find(prefix);
     if( result != m_ApiKeys.end() )
     {
         return result->second;
     }
-    return utility::conversions::to_string_t("");
+    return {};
 }
 
 void ApiConfiguration::setApiKey( const utility::string_t& prefix, const utility::string_t& apiKey )

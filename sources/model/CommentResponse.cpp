@@ -51,7 +51,7 @@ web::json::value CommentResponse::toJson() const
 
     if(m_CommentIsSet)
     {
-        val[utility::conversions::to_string_t("Comment")] = ModelBase::toJson(m_Comment);
+        val[_XPLATSTR("Comment")] = ModelBase::toJson(m_Comment);
     }
 
     return val;
@@ -61,9 +61,9 @@ void CommentResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Comment")))
+    if(val.has_field(_XPLATSTR("Comment")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Comment")];
+        web::json::value& fieldValue = val[_XPLATSTR("Comment")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Comment> newItem(new Comment());
@@ -73,49 +73,41 @@ void CommentResponse::fromJson(web::json::value& val)
     }
 }
 
-void CommentResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void CommentResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_CommentIsSet)
     {
         if (m_Comment.get())
         {
-            m_Comment->toMultipart(multipart, utility::conversions::to_string_t("Comment."));
+            m_Comment->toMultipart(multipart, _XPLATSTR("Comment."));
         }
         
     }
 }
 
-void CommentResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void CommentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Comment")))
+    if(multipart->hasContent(_XPLATSTR("Comment")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Comment")))
+        if(multipart->hasContent(_XPLATSTR("Comment")))
         {
             std::shared_ptr<Comment> newItem(new Comment());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Comment."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Comment."));
             setComment( newItem );
         }
     }

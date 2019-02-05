@@ -33,16 +33,16 @@ namespace model {
 
 Comment::Comment()
 {
-    m_Author = utility::conversions::to_string_t("");
+    m_Author = _XPLATSTR("");
     m_AuthorIsSet = false;
     m_ContentIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
-    m_Initial = utility::conversions::to_string_t("");
+    m_Initial = _XPLATSTR("");
     m_InitialIsSet = false;
     m_RangeEndIsSet = false;
     m_RangeStartIsSet = false;
-    m_Text = utility::conversions::to_string_t("");
+    m_Text = _XPLATSTR("");
     m_TextIsSet = false;
 }
 
@@ -61,31 +61,31 @@ web::json::value Comment::toJson() const
 
     if(m_AuthorIsSet)
     {
-        val[utility::conversions::to_string_t("Author")] = ModelBase::toJson(m_Author);
+        val[_XPLATSTR("Author")] = ModelBase::toJson(m_Author);
     }
     if(m_ContentIsSet)
     {
-        val[utility::conversions::to_string_t("Content")] = ModelBase::toJson(m_Content);
+        val[_XPLATSTR("Content")] = ModelBase::toJson(m_Content);
     }
     if(m_DateTimeIsSet)
     {
-        val[utility::conversions::to_string_t("DateTime")] = ModelBase::toJson(m_DateTime);
+        val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
     }
     if(m_InitialIsSet)
     {
-        val[utility::conversions::to_string_t("Initial")] = ModelBase::toJson(m_Initial);
+        val[_XPLATSTR("Initial")] = ModelBase::toJson(m_Initial);
     }
     if(m_RangeEndIsSet)
     {
-        val[utility::conversions::to_string_t("RangeEnd")] = ModelBase::toJson(m_RangeEnd);
+        val[_XPLATSTR("RangeEnd")] = ModelBase::toJson(m_RangeEnd);
     }
     if(m_RangeStartIsSet)
     {
-        val[utility::conversions::to_string_t("RangeStart")] = ModelBase::toJson(m_RangeStart);
+        val[_XPLATSTR("RangeStart")] = ModelBase::toJson(m_RangeStart);
     }
     if(m_TextIsSet)
     {
-        val[utility::conversions::to_string_t("Text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -95,17 +95,17 @@ void Comment::fromJson(web::json::value& val)
 {
     this->CommentLink::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Author")))
+    if(val.has_field(_XPLATSTR("Author")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Author")];
+        web::json::value& fieldValue = val[_XPLATSTR("Author")];
         if(!fieldValue.is_null())
         {
             setAuthor(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Content")))
+    if(val.has_field(_XPLATSTR("Content")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Content")];
+        web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
@@ -113,25 +113,25 @@ void Comment::fromJson(web::json::value& val)
             setContent( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("DateTime")))
+    if(val.has_field(_XPLATSTR("DateTime")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DateTime")];
+        web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
             setDateTime(ModelBase::dateFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Initial")))
+    if(val.has_field(_XPLATSTR("Initial")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Initial")];
+        web::json::value& fieldValue = val[_XPLATSTR("Initial")];
         if(!fieldValue.is_null())
         {
             setInitial(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("RangeEnd")))
+    if(val.has_field(_XPLATSTR("RangeEnd")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RangeEnd")];
+        web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -139,9 +139,9 @@ void Comment::fromJson(web::json::value& val)
             setRangeEnd( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("RangeStart")))
+    if(val.has_field(_XPLATSTR("RangeStart")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RangeStart")];
+        web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -149,9 +149,9 @@ void Comment::fromJson(web::json::value& val)
             setRangeStart( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -159,50 +159,46 @@ void Comment::fromJson(web::json::value& val)
     }
 }
 
-void Comment::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void Comment::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_AuthorIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Author"), m_Author));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Author"), m_Author));
         
     }
     if(m_ContentIsSet)
     {
         if (m_Content.get())
         {
-            m_Content->toMultipart(multipart, utility::conversions::to_string_t("Content."));
+            m_Content->toMultipart(multipart, _XPLATSTR("Content."));
         }
         
     }
     if(m_DateTimeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DateTime"), m_DateTime));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
         
     }
     if(m_InitialIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Initial"), m_Initial));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Initial"), m_Initial));
         
     }
     if(m_RangeEndIsSet)
     {
         if (m_RangeEnd.get())
         {
-            m_RangeEnd->toMultipart(multipart, utility::conversions::to_string_t("RangeEnd."));
+            m_RangeEnd->toMultipart(multipart, _XPLATSTR("RangeEnd."));
         }
         
     }
@@ -210,76 +206,72 @@ void Comment::toMultipart(std::shared_ptr<MultipartFormData> multipart, const ut
     {
         if (m_RangeStart.get())
         {
-            m_RangeStart->toMultipart(multipart, utility::conversions::to_string_t("RangeStart."));
+            m_RangeStart->toMultipart(multipart, _XPLATSTR("RangeStart."));
         }
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
 }
 
-void Comment::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Author")))
+    if(multipart->hasContent(_XPLATSTR("Author")))
     {
-        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Author"))));
+        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Author"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Content")))
+    if(multipart->hasContent(_XPLATSTR("Content")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Content")))
+        if(multipart->hasContent(_XPLATSTR("Content")))
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Content."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DateTime")))
+    if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Initial")))
+    if(multipart->hasContent(_XPLATSTR("Initial")))
     {
-        setInitial(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Initial"))));
+        setInitial(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Initial"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("RangeEnd")))
+    if(multipart->hasContent(_XPLATSTR("RangeEnd")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("RangeEnd")))
+        if(multipart->hasContent(_XPLATSTR("RangeEnd")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("RangeEnd."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
             setRangeEnd( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("RangeStart")))
+    if(multipart->hasContent(_XPLATSTR("RangeStart")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("RangeStart")))
+        if(multipart->hasContent(_XPLATSTR("RangeStart")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("RangeStart."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
             setRangeStart( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
 }
 

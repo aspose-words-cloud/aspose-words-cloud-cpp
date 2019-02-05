@@ -53,11 +53,11 @@ web::json::value DocumentPosition::toJson() const
 
     if(m_NodeIsSet)
     {
-        val[utility::conversions::to_string_t("Node")] = ModelBase::toJson(m_Node);
+        val[_XPLATSTR("Node")] = ModelBase::toJson(m_Node);
     }
     if(m_OffsetIsSet)
     {
-        val[utility::conversions::to_string_t("Offset")] = ModelBase::toJson(m_Offset);
+        val[_XPLATSTR("Offset")] = ModelBase::toJson(m_Offset);
     }
 
     return val;
@@ -65,9 +65,9 @@ web::json::value DocumentPosition::toJson() const
 
 void DocumentPosition::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Node")))
+    if(val.has_field(_XPLATSTR("Node")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Node")];
+        web::json::value& fieldValue = val[_XPLATSTR("Node")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<NodeLink> newItem(new NodeLink());
@@ -75,9 +75,9 @@ void DocumentPosition::fromJson(web::json::value& val)
             setNode( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Offset")))
+    if(val.has_field(_XPLATSTR("Offset")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Offset")];
+        web::json::value& fieldValue = val[_XPLATSTR("Offset")];
         if(!fieldValue.is_null())
         {
             setOffset(ModelBase::int32_tFromJson(fieldValue));
@@ -85,48 +85,40 @@ void DocumentPosition::fromJson(web::json::value& val)
     }
 }
 
-void DocumentPosition::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DocumentPosition::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_NodeIsSet)
     {
         if (m_Node.get())
         {
-            m_Node->toMultipart(multipart, utility::conversions::to_string_t("Node."));
+            m_Node->toMultipart(multipart, _XPLATSTR("Node."));
         }
         
     }
     if(m_OffsetIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Offset"), m_Offset));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Offset"), m_Offset));
     }
 }
 
-void DocumentPosition::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DocumentPosition::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Node")))
+    if(multipart->hasContent(_XPLATSTR("Node")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Node")))
+        if(multipart->hasContent(_XPLATSTR("Node")))
         {
             std::shared_ptr<NodeLink> newItem(new NodeLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Node."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Node."));
             setNode( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Offset")))
+    if(multipart->hasContent(_XPLATSTR("Offset")))
     {
-        setOffset(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Offset"))));
+        setOffset(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Offset"))));
     }
 }
 

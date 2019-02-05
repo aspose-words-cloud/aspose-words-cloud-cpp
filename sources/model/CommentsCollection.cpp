@@ -58,7 +58,7 @@ web::json::value CommentsCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[utility::conversions::to_string_t("CommentList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("CommentList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -71,10 +71,10 @@ void CommentsCollection::fromJson(web::json::value& val)
 
     {
         m_CommentList.clear();
-        if(val.has_field(utility::conversions::to_string_t("CommentList")) 
-                            && !val[utility::conversions::to_string_t("CommentList")].is_null())
+        if(val.has_field(_XPLATSTR("CommentList")) 
+                            && !val[_XPLATSTR("CommentList")].is_null())
         {
-        auto arr = val[utility::conversions::to_string_t("CommentList")].as_array();
+        auto arr = val[_XPLATSTR("CommentList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_CommentList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -92,19 +92,15 @@ void CommentsCollection::fromJson(web::json::value& val)
     }
 }
 
-void CommentsCollection::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void CommentsCollection::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
@@ -116,34 +112,30 @@ void CommentsCollection::toMultipart(std::shared_ptr<MultipartFormData> multipar
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("CommentList"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CommentList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
 
-void CommentsCollection::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void CommentsCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
     {
         m_CommentList.clear();
-        if(multipart->hasContent(utility::conversions::to_string_t("CommentList")))
+        if(multipart->hasContent(_XPLATSTR("CommentList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("CommentList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CommentList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CommentList), [&](web::json::value item) {
             if(item.is_null())
             {

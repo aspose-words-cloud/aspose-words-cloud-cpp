@@ -33,7 +33,7 @@ namespace model {
 
 SearchResponse::SearchResponse()
 {
-    m_SearchingPattern = utility::conversions::to_string_t("");
+    m_SearchingPattern = _XPLATSTR("");
     m_SearchingPatternIsSet = false;
     m_SearchResultsIsSet = false;
 }
@@ -53,11 +53,11 @@ web::json::value SearchResponse::toJson() const
 
     if(m_SearchingPatternIsSet)
     {
-        val[utility::conversions::to_string_t("SearchingPattern")] = ModelBase::toJson(m_SearchingPattern);
+        val[_XPLATSTR("SearchingPattern")] = ModelBase::toJson(m_SearchingPattern);
     }
     if(m_SearchResultsIsSet)
     {
-        val[utility::conversions::to_string_t("SearchResults")] = ModelBase::toJson(m_SearchResults);
+        val[_XPLATSTR("SearchResults")] = ModelBase::toJson(m_SearchResults);
     }
 
     return val;
@@ -67,17 +67,17 @@ void SearchResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("SearchingPattern")))
+    if(val.has_field(_XPLATSTR("SearchingPattern")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("SearchingPattern")];
+        web::json::value& fieldValue = val[_XPLATSTR("SearchingPattern")];
         if(!fieldValue.is_null())
         {
             setSearchingPattern(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("SearchResults")))
+    if(val.has_field(_XPLATSTR("SearchResults")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("SearchResults")];
+        web::json::value& fieldValue = val[_XPLATSTR("SearchResults")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
@@ -87,58 +87,50 @@ void SearchResponse::fromJson(web::json::value& val)
     }
 }
 
-void SearchResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void SearchResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_SearchingPatternIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("SearchingPattern"), m_SearchingPattern));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SearchingPattern"), m_SearchingPattern));
         
     }
     if(m_SearchResultsIsSet)
     {
         if (m_SearchResults.get())
         {
-            m_SearchResults->toMultipart(multipart, utility::conversions::to_string_t("SearchResults."));
+            m_SearchResults->toMultipart(multipart, _XPLATSTR("SearchResults."));
         }
         
     }
 }
 
-void SearchResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void SearchResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SearchingPattern")))
+    if(multipart->hasContent(_XPLATSTR("SearchingPattern")))
     {
-        setSearchingPattern(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SearchingPattern"))));
+        setSearchingPattern(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SearchingPattern"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SearchResults")))
+    if(multipart->hasContent(_XPLATSTR("SearchResults")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("SearchResults")))
+        if(multipart->hasContent(_XPLATSTR("SearchResults")))
         {
             std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("SearchResults."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("SearchResults."));
             setSearchResults( newItem );
         }
     }

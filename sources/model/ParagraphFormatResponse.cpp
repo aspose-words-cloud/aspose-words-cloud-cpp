@@ -51,7 +51,7 @@ web::json::value ParagraphFormatResponse::toJson() const
 
     if(m_ParagraphFormatIsSet)
     {
-        val[utility::conversions::to_string_t("ParagraphFormat")] = ModelBase::toJson(m_ParagraphFormat);
+        val[_XPLATSTR("ParagraphFormat")] = ModelBase::toJson(m_ParagraphFormat);
     }
 
     return val;
@@ -61,9 +61,9 @@ void ParagraphFormatResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("ParagraphFormat")))
+    if(val.has_field(_XPLATSTR("ParagraphFormat")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ParagraphFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("ParagraphFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ParagraphFormat> newItem(new ParagraphFormat());
@@ -73,49 +73,41 @@ void ParagraphFormatResponse::fromJson(web::json::value& val)
     }
 }
 
-void ParagraphFormatResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void ParagraphFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_ParagraphFormatIsSet)
     {
         if (m_ParagraphFormat.get())
         {
-            m_ParagraphFormat->toMultipart(multipart, utility::conversions::to_string_t("ParagraphFormat."));
+            m_ParagraphFormat->toMultipart(multipart, _XPLATSTR("ParagraphFormat."));
         }
         
     }
 }
 
-void ParagraphFormatResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void ParagraphFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ParagraphFormat")))
+    if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("ParagraphFormat")))
+        if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
         {
             std::shared_ptr<ParagraphFormat> newItem(new ParagraphFormat());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("ParagraphFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("ParagraphFormat."));
             setParagraphFormat( newItem );
         }
     }
