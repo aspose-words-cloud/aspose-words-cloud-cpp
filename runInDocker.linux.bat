@@ -1,1 +1,1 @@
-docker run -v "%cd%:/aspose-words-cloud-cpp" aspose-words-cloud-cpp:linux bash aspose-words-cloud-cpp/scripts/runAll.sh %CPPWC_AK% %CPPWC_AS% %CPPWC_BU%
+docker run -v "%cd%:/aspose-words-cloud-cpp/" aspose-words-cloud-cpp:linux bash aspose-words-cloud-cpp/scripts/runAll.sh %CPPWC_AK% %CPPWC_AS% %CPPWC_BU%
