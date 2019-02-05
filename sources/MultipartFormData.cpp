@@ -33,29 +33,23 @@ namespace swagger {
 namespace client {
 namespace model {
 
-MultipartFormData::MultipartFormData()
-{
-    utility::stringstream_t uuidString;
-    uuidString << boost::uuids::random_generator()();
-    m_Boundary = uuidString.str();
-}
-
-MultipartFormData::MultipartFormData(const utility::string_t& boundary)
-    : m_Boundary(boundary)
-{
-
-}
-
-MultipartFormData::~MultipartFormData()
+MultipartFormData::MultipartFormData() :
+    m_Boundary(utility::conversions::details::to_string_t(boost::uuids::random_generator()()))
 {
 }
 
-utility::string_t MultipartFormData::getBoundary()
+MultipartFormData::MultipartFormData(utility::string_t boundary)
+    : m_Boundary(std::move(boundary))
+{
+}
+
+
+utility::string_t MultipartFormData::getBoundary() const
 {
     return m_Boundary;
 }
 
-void MultipartFormData::add( std::shared_ptr<HttpContent> content )
+void MultipartFormData::add(const std::shared_ptr<HttpContent>& content )
 {
     m_Contents.push_back( content );
     m_ContentLookup[content->getName()] = content;
@@ -68,56 +62,51 @@ bool MultipartFormData::hasContent(const utility::string_t& name) const
 
 std::shared_ptr<HttpContent> MultipartFormData::getContent(const utility::string_t& name) const
 {
-    auto result = m_ContentLookup.find(name);
-    if(result == m_ContentLookup.end())
+    const auto result = m_ContentLookup.find(name);
+    if(result != m_ContentLookup.end())
     {
-        return std::shared_ptr<HttpContent>(nullptr);
+        return result->second;
     }
-    return result->second;
+    return nullptr;
 }
 
-void MultipartFormData::writeTo( std::ostream& target )
+void MultipartFormData::writeTo( std::ostream& target ) const
 {
-    size_t contentSize = m_Contents.size();
-
-    for ( size_t i = 0; i < contentSize; i++ )
+    for (const auto & content : m_Contents)
     {
-        std::shared_ptr<HttpContent> content = m_Contents[i];
-        if (contentSize > 1) {
-        // boundary
-        target << "\r\n" << "--" << utility::conversions::to_utf8string( m_Boundary ) << "\r\n";
-
-        // headers
-        target << "Content-Disposition: " << utility::conversions::to_utf8string( content->getContentDisposition() );
-        if ( content->getName().size() > 0 )
+        if (m_Contents.size() > 1)
         {
-            target << "; name=\"" << utility::conversions::to_utf8string( content->getName() ) << "\"";
-        }
-        if ( content->getFileName().size() > 0 )
-        {
-            target << "; filename=\"" << utility::conversions::to_utf8string( content->getFileName() ) << "\"";
-        }
-        target << "\r\n";
+            // boundary
+            target << "\r\n" << "--" << utility::conversions::to_utf8string(m_Boundary) << "\r\n";
 
-        if ( content->getContentType().size() > 0 )
-        {
-            target << "Content-Type: " << utility::conversions::to_utf8string( content->getContentType() ) << "\r\n";
-        }
+            // headers
+            target << "Content-Disposition: " << utility::conversions::to_utf8string(content->getContentDisposition());
+            if (!content->getName().empty())
+            {
+                target << "; name=\"" << utility::conversions::to_utf8string(content->getName()) << "\"";
+            }
+            if (!content->getFileName().empty())
+            {
+                target << "; filename=\"" << utility::conversions::to_utf8string(content->getFileName()) << "\"";
+            }
+            target << "\r\n";
 
-        target << "\r\n";
+            if (!content->getContentType().empty())
+            {
+                target << "Content-Type: " << utility::conversions::to_utf8string(content->getContentType()) << "\r\n";
+            }
+
+            target << "\r\n";
         }
 
         // body
-        std::shared_ptr<std::istream> data = content->getData();
-		data->seekg( 0, data->end );
-		std::vector<char> dataBytes( data->tellg() );
-		data->seekg( 0, data->beg );
-		data->read( &dataBytes[0], dataBytes.size() );
-
-		std::copy( dataBytes.begin(), dataBytes.end(), std::ostreambuf_iterator<char>( target ) );
+        target << content->getData()->rdbuf();
     }
-    if (contentSize > 1)
-    target << "\r\n--" << utility::conversions::to_utf8string( m_Boundary ) << "--\r\n";
+
+    if (m_Contents.size() > 1)
+    {
+        target << "\r\n--" << utility::conversions::to_utf8string( m_Boundary ) << "--\r\n";
+    }
 }
 
 }

@@ -51,7 +51,7 @@ web::json::value SectionLinkCollectionResponse::toJson() const
 
     if(m_SectionsIsSet)
     {
-        val[utility::conversions::to_string_t("Sections")] = ModelBase::toJson(m_Sections);
+        val[_XPLATSTR("Sections")] = ModelBase::toJson(m_Sections);
     }
 
     return val;
@@ -61,9 +61,9 @@ void SectionLinkCollectionResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Sections")))
+    if(val.has_field(_XPLATSTR("Sections")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Sections")];
+        web::json::value& fieldValue = val[_XPLATSTR("Sections")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
@@ -73,49 +73,41 @@ void SectionLinkCollectionResponse::fromJson(web::json::value& val)
     }
 }
 
-void SectionLinkCollectionResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void SectionLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_SectionsIsSet)
     {
         if (m_Sections.get())
         {
-            m_Sections->toMultipart(multipart, utility::conversions::to_string_t("Sections."));
+            m_Sections->toMultipart(multipart, _XPLATSTR("Sections."));
         }
         
     }
 }
 
-void SectionLinkCollectionResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void SectionLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Sections")))
+    if(multipart->hasContent(_XPLATSTR("Sections")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Sections")))
+        if(multipart->hasContent(_XPLATSTR("Sections")))
         {
             std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Sections."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Sections."));
             setSections( newItem );
         }
     }

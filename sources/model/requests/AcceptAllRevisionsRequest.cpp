@@ -23,6 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "AcceptAllRevisionsRequest.h"
+#include <utility>
+
 namespace io{
 namespace swagger{
 namespace client{
@@ -35,12 +37,12 @@ AcceptAllRevisionsRequest::AcceptAllRevisionsRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName
         ) : 
-            m_name(name),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName)
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
@@ -50,42 +52,42 @@ AcceptAllRevisionsRequest::AcceptAllRevisionsRequest(
             return m_name;
         }
         void AcceptAllRevisionsRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         boost::optional<utility::string_t> AcceptAllRevisionsRequest::getFolder() const
         {
             return m_folder;
         }
         void AcceptAllRevisionsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> AcceptAllRevisionsRequest::getStorage() const
         {
             return m_storage;
         }
         void AcceptAllRevisionsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> AcceptAllRevisionsRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void AcceptAllRevisionsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> AcceptAllRevisionsRequest::getPassword() const
         {
             return m_password;
         }
         void AcceptAllRevisionsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> AcceptAllRevisionsRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void AcceptAllRevisionsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
 
 }

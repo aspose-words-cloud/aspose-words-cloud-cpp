@@ -51,7 +51,7 @@ web::json::value HeaderFootersResponse::toJson() const
 
     if(m_HeaderFootersIsSet)
     {
-        val[utility::conversions::to_string_t("HeaderFooters")] = ModelBase::toJson(m_HeaderFooters);
+        val[_XPLATSTR("HeaderFooters")] = ModelBase::toJson(m_HeaderFooters);
     }
 
     return val;
@@ -61,9 +61,9 @@ void HeaderFootersResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("HeaderFooters")))
+    if(val.has_field(_XPLATSTR("HeaderFooters")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("HeaderFooters")];
+        web::json::value& fieldValue = val[_XPLATSTR("HeaderFooters")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<HeaderFooterLinkCollection> newItem(new HeaderFooterLinkCollection());
@@ -73,49 +73,41 @@ void HeaderFootersResponse::fromJson(web::json::value& val)
     }
 }
 
-void HeaderFootersResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void HeaderFootersResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_HeaderFootersIsSet)
     {
         if (m_HeaderFooters.get())
         {
-            m_HeaderFooters->toMultipart(multipart, utility::conversions::to_string_t("HeaderFooters."));
+            m_HeaderFooters->toMultipart(multipart, _XPLATSTR("HeaderFooters."));
         }
         
     }
 }
 
-void HeaderFootersResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void HeaderFootersResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("HeaderFooters")))
+    if(multipart->hasContent(_XPLATSTR("HeaderFooters")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("HeaderFooters")))
+        if(multipart->hasContent(_XPLATSTR("HeaderFooters")))
         {
             std::shared_ptr<HeaderFooterLinkCollection> newItem(new HeaderFooterLinkCollection());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("HeaderFooters."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("HeaderFooters."));
             setHeaderFooters( newItem );
         }
     }

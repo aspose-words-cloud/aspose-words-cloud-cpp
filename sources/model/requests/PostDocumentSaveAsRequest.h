@@ -27,7 +27,7 @@
 #define postDocumentSaveAs_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "SaveOptionsData.h"
 #include <boost/optional.hpp>
 

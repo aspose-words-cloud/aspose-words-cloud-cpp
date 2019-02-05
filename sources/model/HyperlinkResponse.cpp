@@ -51,7 +51,7 @@ web::json::value HyperlinkResponse::toJson() const
 
     if(m_HyperlinkIsSet)
     {
-        val[utility::conversions::to_string_t("Hyperlink")] = ModelBase::toJson(m_Hyperlink);
+        val[_XPLATSTR("Hyperlink")] = ModelBase::toJson(m_Hyperlink);
     }
 
     return val;
@@ -61,9 +61,9 @@ void HyperlinkResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Hyperlink")))
+    if(val.has_field(_XPLATSTR("Hyperlink")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Hyperlink")];
+        web::json::value& fieldValue = val[_XPLATSTR("Hyperlink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Hyperlink> newItem(new Hyperlink());
@@ -73,49 +73,41 @@ void HyperlinkResponse::fromJson(web::json::value& val)
     }
 }
 
-void HyperlinkResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void HyperlinkResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_HyperlinkIsSet)
     {
         if (m_Hyperlink.get())
         {
-            m_Hyperlink->toMultipart(multipart, utility::conversions::to_string_t("Hyperlink."));
+            m_Hyperlink->toMultipart(multipart, _XPLATSTR("Hyperlink."));
         }
         
     }
 }
 
-void HyperlinkResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void HyperlinkResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Hyperlink")))
+    if(multipart->hasContent(_XPLATSTR("Hyperlink")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Hyperlink")))
+        if(multipart->hasContent(_XPLATSTR("Hyperlink")))
         {
             std::shared_ptr<Hyperlink> newItem(new Hyperlink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Hyperlink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Hyperlink."));
             setHyperlink( newItem );
         }
     }

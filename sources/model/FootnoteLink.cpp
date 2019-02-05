@@ -58,49 +58,41 @@ void FootnoteLink::fromJson(web::json::value& val)
 
 }
 
-void FootnoteLink::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void FootnoteLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
 }
 
-void FootnoteLink::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void FootnoteLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
 }
 

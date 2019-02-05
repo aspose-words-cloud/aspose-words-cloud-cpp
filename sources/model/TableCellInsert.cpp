@@ -52,7 +52,7 @@ web::json::value TableCellInsert::toJson() const
 
     if(m_InsertAfterIsSet)
     {
-        val[utility::conversions::to_string_t("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
+        val[_XPLATSTR("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
     }
 
     return val;
@@ -60,9 +60,9 @@ web::json::value TableCellInsert::toJson() const
 
 void TableCellInsert::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("InsertAfter")))
+    if(val.has_field(_XPLATSTR("InsertAfter")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("InsertAfter")];
+        web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
         if(!fieldValue.is_null())
         {
             setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
@@ -70,31 +70,23 @@ void TableCellInsert::fromJson(web::json::value& val)
     }
 }
 
-void TableCellInsert::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableCellInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_InsertAfterIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("InsertAfter"), m_InsertAfter));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InsertAfter"), m_InsertAfter));
     }
 }
 
-void TableCellInsert::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableCellInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("InsertAfter")))
+    if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
-        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("InsertAfter"))));
+        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
     }
 }
 

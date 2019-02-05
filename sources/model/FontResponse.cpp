@@ -51,7 +51,7 @@ web::json::value FontResponse::toJson() const
 
     if(m_FontIsSet)
     {
-        val[utility::conversions::to_string_t("Font")] = ModelBase::toJson(m_Font);
+        val[_XPLATSTR("Font")] = ModelBase::toJson(m_Font);
     }
 
     return val;
@@ -61,9 +61,9 @@ void FontResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Font")))
+    if(val.has_field(_XPLATSTR("Font")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Font")];
+        web::json::value& fieldValue = val[_XPLATSTR("Font")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Font> newItem(new Font());
@@ -73,49 +73,41 @@ void FontResponse::fromJson(web::json::value& val)
     }
 }
 
-void FontResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void FontResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_FontIsSet)
     {
         if (m_Font.get())
         {
-            m_Font->toMultipart(multipart, utility::conversions::to_string_t("Font."));
+            m_Font->toMultipart(multipart, _XPLATSTR("Font."));
         }
         
     }
 }
 
-void FontResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void FontResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Font")))
+    if(multipart->hasContent(_XPLATSTR("Font")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Font")))
+        if(multipart->hasContent(_XPLATSTR("Font")))
         {
             std::shared_ptr<Font> newItem(new Font());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Font."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
             setFont( newItem );
         }
     }

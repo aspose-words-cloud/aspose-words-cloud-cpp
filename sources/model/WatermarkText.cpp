@@ -33,7 +33,7 @@ namespace model {
 
 WatermarkText::WatermarkText()
 {
-    m_Text = utility::conversions::to_string_t("");
+    m_Text = _XPLATSTR("");
     m_TextIsSet = false;
     m_RotationAngle = 0.0;
 }
@@ -53,26 +53,26 @@ web::json::value WatermarkText::toJson() const
 
     if(m_TextIsSet)
     {
-        val[utility::conversions::to_string_t("Text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
-    val[utility::conversions::to_string_t("RotationAngle")] = ModelBase::toJson(m_RotationAngle);
+    val[_XPLATSTR("RotationAngle")] = ModelBase::toJson(m_RotationAngle);
 
     return val;
 }
 
 void WatermarkText::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("RotationAngle")))
+    if(val.has_field(_XPLATSTR("RotationAngle")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RotationAngle")];
+        web::json::value& fieldValue = val[_XPLATSTR("RotationAngle")];
         if(!fieldValue.is_null())
         {
             setRotationAngle(ModelBase::doubleFromJson(fieldValue));
@@ -80,35 +80,27 @@ void WatermarkText::fromJson(web::json::value& val)
     }
 }
 
-void WatermarkText::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void WatermarkText::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("RotationAngle"), m_RotationAngle));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RotationAngle"), m_RotationAngle));
 }
 
-void WatermarkText::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void WatermarkText::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
-    setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("RotationAngle"))));
+    setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
 }
 
 utility::string_t WatermarkText::getText() const

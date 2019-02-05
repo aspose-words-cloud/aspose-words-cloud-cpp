@@ -51,7 +51,7 @@ web::json::value FieldNamesResponse::toJson() const
 
     if(m_FieldNamesIsSet)
     {
-        val[utility::conversions::to_string_t("FieldNames")] = ModelBase::toJson(m_FieldNames);
+        val[_XPLATSTR("FieldNames")] = ModelBase::toJson(m_FieldNames);
     }
 
     return val;
@@ -61,9 +61,9 @@ void FieldNamesResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("FieldNames")))
+    if(val.has_field(_XPLATSTR("FieldNames")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("FieldNames")];
+        web::json::value& fieldValue = val[_XPLATSTR("FieldNames")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FieldNames> newItem(new FieldNames());
@@ -73,49 +73,41 @@ void FieldNamesResponse::fromJson(web::json::value& val)
     }
 }
 
-void FieldNamesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void FieldNamesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_FieldNamesIsSet)
     {
         if (m_FieldNames.get())
         {
-            m_FieldNames->toMultipart(multipart, utility::conversions::to_string_t("FieldNames."));
+            m_FieldNames->toMultipart(multipart, _XPLATSTR("FieldNames."));
         }
         
     }
 }
 
-void FieldNamesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void FieldNamesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FieldNames")))
+    if(multipart->hasContent(_XPLATSTR("FieldNames")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("FieldNames")))
+        if(multipart->hasContent(_XPLATSTR("FieldNames")))
         {
             std::shared_ptr<FieldNames> newItem(new FieldNames());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("FieldNames."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("FieldNames."));
             setFieldNames( newItem );
         }
     }

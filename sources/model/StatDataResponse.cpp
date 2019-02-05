@@ -52,11 +52,11 @@ web::json::value StatDataResponse::toJson() const
 
     if(m_DocumentLinkIsSet)
     {
-        val[utility::conversions::to_string_t("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
+        val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
     }
     if(m_StatDataIsSet)
     {
-        val[utility::conversions::to_string_t("StatData")] = ModelBase::toJson(m_StatData);
+        val[_XPLATSTR("StatData")] = ModelBase::toJson(m_StatData);
     }
 
     return val;
@@ -66,9 +66,9 @@ void StatDataResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("DocumentLink")))
+    if(val.has_field(_XPLATSTR("DocumentLink")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DocumentLink")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -76,9 +76,9 @@ void StatDataResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("StatData")))
+    if(val.has_field(_XPLATSTR("StatData")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("StatData")];
+        web::json::value& fieldValue = val[_XPLATSTR("StatData")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
@@ -88,25 +88,21 @@ void StatDataResponse::fromJson(web::json::value& val)
     }
 }
 
-void StatDataResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void StatDataResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
-            m_DocumentLink->toMultipart(multipart, utility::conversions::to_string_t("DocumentLink."));
+            m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
         }
         
     }
@@ -114,40 +110,36 @@ void StatDataResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     {
         if (m_StatData.get())
         {
-            m_StatData->toMultipart(multipart, utility::conversions::to_string_t("StatData."));
+            m_StatData->toMultipart(multipart, _XPLATSTR("StatData."));
         }
         
     }
 }
 
-void StatDataResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void StatDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DocumentLink")))
+    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("DocumentLink")))
+        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("DocumentLink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
             setDocumentLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("StatData")))
+    if(multipart->hasContent(_XPLATSTR("StatData")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("StatData")))
+        if(multipart->hasContent(_XPLATSTR("StatData")))
         {
             std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("StatData."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("StatData."));
             setStatData( newItem );
         }
     }

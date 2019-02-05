@@ -35,9 +35,9 @@ DocumentProperty::DocumentProperty()
 {
     m_BuiltIn = false;
     m_BuiltInIsSet = false;
-    m_Name = utility::conversions::to_string_t("");
+    m_Name = _XPLATSTR("");
     m_NameIsSet = false;
-    m_Value = utility::conversions::to_string_t("");
+    m_Value = _XPLATSTR("");
     m_ValueIsSet = false;
 }
 
@@ -56,15 +56,15 @@ web::json::value DocumentProperty::toJson() const
 
     if(m_BuiltInIsSet)
     {
-        val[utility::conversions::to_string_t("BuiltIn")] = ModelBase::toJson(m_BuiltIn);
+        val[_XPLATSTR("BuiltIn")] = ModelBase::toJson(m_BuiltIn);
     }
     if(m_NameIsSet)
     {
-        val[utility::conversions::to_string_t("Name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
     if(m_ValueIsSet)
     {
-        val[utility::conversions::to_string_t("Value")] = ModelBase::toJson(m_Value);
+        val[_XPLATSTR("Value")] = ModelBase::toJson(m_Value);
     }
 
     return val;
@@ -74,25 +74,25 @@ void DocumentProperty::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("BuiltIn")))
+    if(val.has_field(_XPLATSTR("BuiltIn")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("BuiltIn")];
+        web::json::value& fieldValue = val[_XPLATSTR("BuiltIn")];
         if(!fieldValue.is_null())
         {
             setBuiltIn(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Value")))
+    if(val.has_field(_XPLATSTR("Value")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Value")];
+        web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
             setValue(ModelBase::stringFromJson(fieldValue));
@@ -100,66 +100,58 @@ void DocumentProperty::fromJson(web::json::value& val)
     }
 }
 
-void DocumentProperty::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DocumentProperty::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_BuiltInIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("BuiltIn"), m_BuiltIn));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BuiltIn"), m_BuiltIn));
     }
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
     if(m_ValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Value"), m_Value));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
         
     }
 }
 
-void DocumentProperty::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("BuiltIn")))
+    if(multipart->hasContent(_XPLATSTR("BuiltIn")))
     {
-        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BuiltIn"))));
+        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Value")))
+    if(multipart->hasContent(_XPLATSTR("Value")))
     {
-        setValue(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Value"))));
+        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
     }
 }
 

@@ -51,7 +51,7 @@ web::json::value OfficeMathObjectResponse::toJson() const
 
     if(m_OfficeMathObjectIsSet)
     {
-        val[utility::conversions::to_string_t("OfficeMathObject")] = ModelBase::toJson(m_OfficeMathObject);
+        val[_XPLATSTR("OfficeMathObject")] = ModelBase::toJson(m_OfficeMathObject);
     }
 
     return val;
@@ -61,9 +61,9 @@ void OfficeMathObjectResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("OfficeMathObject")))
+    if(val.has_field(_XPLATSTR("OfficeMathObject")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("OfficeMathObject")];
+        web::json::value& fieldValue = val[_XPLATSTR("OfficeMathObject")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<OfficeMathObject> newItem(new OfficeMathObject());
@@ -73,49 +73,41 @@ void OfficeMathObjectResponse::fromJson(web::json::value& val)
     }
 }
 
-void OfficeMathObjectResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void OfficeMathObjectResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_OfficeMathObjectIsSet)
     {
         if (m_OfficeMathObject.get())
         {
-            m_OfficeMathObject->toMultipart(multipart, utility::conversions::to_string_t("OfficeMathObject."));
+            m_OfficeMathObject->toMultipart(multipart, _XPLATSTR("OfficeMathObject."));
         }
         
     }
 }
 
-void OfficeMathObjectResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void OfficeMathObjectResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("OfficeMathObject")))
+    if(multipart->hasContent(_XPLATSTR("OfficeMathObject")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("OfficeMathObject")))
+        if(multipart->hasContent(_XPLATSTR("OfficeMathObject")))
         {
             std::shared_ptr<OfficeMathObject> newItem(new OfficeMathObject());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("OfficeMathObject."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("OfficeMathObject."));
             setOfficeMathObject( newItem );
         }
     }

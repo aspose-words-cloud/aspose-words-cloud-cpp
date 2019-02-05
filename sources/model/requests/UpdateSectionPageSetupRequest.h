@@ -27,7 +27,7 @@
 #define updateSectionPageSetup_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "PageSetup.h"
 #include <boost/optional.hpp>
 

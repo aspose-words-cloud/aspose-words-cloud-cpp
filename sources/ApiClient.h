@@ -35,6 +35,7 @@
 
 #include <memory>
 #include <vector>
+#include <array>
 
 #include <cpprest/details/basic_types.h>
 #include <cpprest/http_client.h>
@@ -47,11 +48,10 @@ namespace api {
 
 using namespace io::swagger::client::model;
 
-class  ApiClient
+class ApiClient
 {
 public:
     explicit ApiClient( std::shared_ptr<ApiConfiguration> configuration = nullptr );
-    virtual ~ApiClient();
 
     std::shared_ptr<ApiConfiguration> getConfiguration() const;
     void setConfiguration(std::shared_ptr<ApiConfiguration> configuration);
@@ -62,8 +62,25 @@ public:
     static utility::string_t parameterToString(float value);
     static utility::string_t parameterToString(double value);
     static utility::string_t parameterToString(const utility::datetime &value);
+
     template<class T>
-    static utility::string_t parameterToString(const std::vector<T>& value);
+    static utility::string_t parameterToString(const std::vector<T>& value)
+    {
+        utility::string_t result;
+        for (auto & item : value)
+        {
+            result.append(ApiClient::parameterToString(item));
+            result.append(_XPLATSTR(", "));
+        }
+
+        if (!value.empty())
+        {
+            result.resize(result.size() - 2);
+        }
+
+        return result;
+    }
+
 
     pplx::task<web::http::http_response> callApi(
         const utility::string_t& path,
@@ -84,28 +101,18 @@ protected:
 
 private:
     utility::string_t m_AccessToken;
-    std::vector<std::pair<utility::string_t, utility::string_t>> defaultHeaders;
+    std::array<std::pair<utility::string_t, utility::string_t>, 2> defaultHeaders =
+    {
+        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("1.0")),
+        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client"), _XPLATSTR("C++ SDK"))
+    };
 
 private:
     utility::string_t getTokenUrl() const;
-    void logRequest(web::http::http_request request);
-	void logResponse(web::http::http_response response);
-	utility::string_t copyDataFromStream(const Concurrency::streams::istream& stream);
+    void logRequest(web::http::http_request request) const;
+	void logResponse(web::http::http_response response) const;
+	utility::string_t copyDataFromStream(const Concurrency::streams::istream& stream) const;
 };
-
-template<class T>
-utility::string_t ApiClient::parameterToString(const std::vector<T>& value)
-{
-    utility::stringstream_t ss;
-
-    for( size_t i = 0; i < value.size(); i++)
-    {
-        if( i > 0) ss << utility::conversions::to_string_t(", ");
-        ss << ApiClient::parameterToString(value[i]);
-    }
-
-    return ss.str();
-}
 
 }
 }

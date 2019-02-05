@@ -34,7 +34,7 @@ namespace model {
 AsposeResponse::AsposeResponse()
 {
     m_Code = 0;
-    m_Status = utility::conversions::to_string_t("");
+    m_Status = _XPLATSTR("");
     m_StatusIsSet = false;
 }
 
@@ -51,10 +51,10 @@ web::json::value AsposeResponse::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[utility::conversions::to_string_t("Code")] = ModelBase::toJson(m_Code);
+    val[_XPLATSTR("Code")] = ModelBase::toJson(m_Code);
     if(m_StatusIsSet)
     {
-        val[utility::conversions::to_string_t("Status")] = ModelBase::toJson(m_Status);
+        val[_XPLATSTR("Status")] = ModelBase::toJson(m_Status);
     }
 
     return val;
@@ -62,17 +62,17 @@ web::json::value AsposeResponse::toJson() const
 
 void AsposeResponse::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Code")))
+    if(val.has_field(_XPLATSTR("Code")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Code")];
+        web::json::value& fieldValue = val[_XPLATSTR("Code")];
         if(!fieldValue.is_null())
         {
             setCode(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Status")))
+    if(val.has_field(_XPLATSTR("Status")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Status")];
+        web::json::value& fieldValue = val[_XPLATSTR("Status")];
         if(!fieldValue.is_null())
         {
             setStatus(ModelBase::stringFromJson(fieldValue));
@@ -80,34 +80,24 @@ void AsposeResponse::fromJson(web::json::value& val)
     }
 }
 
-void AsposeResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void AsposeResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
 }
 
-void AsposeResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void AsposeResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
-
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
-    {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
 }
 

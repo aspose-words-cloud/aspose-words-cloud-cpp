@@ -51,7 +51,7 @@ web::json::value TableRowFormatResponse::toJson() const
 
     if(m_RowFormatIsSet)
     {
-        val[utility::conversions::to_string_t("RowFormat")] = ModelBase::toJson(m_RowFormat);
+        val[_XPLATSTR("RowFormat")] = ModelBase::toJson(m_RowFormat);
     }
 
     return val;
@@ -61,9 +61,9 @@ void TableRowFormatResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("RowFormat")))
+    if(val.has_field(_XPLATSTR("RowFormat")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RowFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("RowFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
@@ -73,49 +73,41 @@ void TableRowFormatResponse::fromJson(web::json::value& val)
     }
 }
 
-void TableRowFormatResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableRowFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_RowFormatIsSet)
     {
         if (m_RowFormat.get())
         {
-            m_RowFormat->toMultipart(multipart, utility::conversions::to_string_t("RowFormat."));
+            m_RowFormat->toMultipart(multipart, _XPLATSTR("RowFormat."));
         }
         
     }
 }
 
-void TableRowFormatResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableRowFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("RowFormat")))
+    if(multipart->hasContent(_XPLATSTR("RowFormat")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("RowFormat")))
+        if(multipart->hasContent(_XPLATSTR("RowFormat")))
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("RowFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("RowFormat."));
             setRowFormat( newItem );
         }
     }

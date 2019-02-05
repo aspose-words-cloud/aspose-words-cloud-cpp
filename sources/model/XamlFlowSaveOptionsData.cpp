@@ -33,9 +33,9 @@ namespace model {
 
 XamlFlowSaveOptionsData::XamlFlowSaveOptionsData()
 {
-    m_ImagesFolder = utility::conversions::to_string_t("");
+    m_ImagesFolder = _XPLATSTR("");
     m_ImagesFolderIsSet = false;
-    m_ImagesFolderAlias = utility::conversions::to_string_t("");
+    m_ImagesFolderAlias = _XPLATSTR("");
     m_ImagesFolderAliasIsSet = false;
 }
 
@@ -54,11 +54,11 @@ web::json::value XamlFlowSaveOptionsData::toJson() const
 
     if(m_ImagesFolderIsSet)
     {
-        val[utility::conversions::to_string_t("ImagesFolder")] = ModelBase::toJson(m_ImagesFolder);
+        val[_XPLATSTR("ImagesFolder")] = ModelBase::toJson(m_ImagesFolder);
     }
     if(m_ImagesFolderAliasIsSet)
     {
-        val[utility::conversions::to_string_t("ImagesFolderAlias")] = ModelBase::toJson(m_ImagesFolderAlias);
+        val[_XPLATSTR("ImagesFolderAlias")] = ModelBase::toJson(m_ImagesFolderAlias);
     }
 
     return val;
@@ -68,17 +68,17 @@ void XamlFlowSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("ImagesFolder")))
+    if(val.has_field(_XPLATSTR("ImagesFolder")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ImagesFolder")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImagesFolder")];
         if(!fieldValue.is_null())
         {
             setImagesFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ImagesFolderAlias")))
+    if(val.has_field(_XPLATSTR("ImagesFolderAlias")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ImagesFolderAlias")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImagesFolderAlias")];
         if(!fieldValue.is_null())
         {
             setImagesFolderAlias(ModelBase::stringFromJson(fieldValue));
@@ -86,118 +86,110 @@ void XamlFlowSaveOptionsData::fromJson(web::json::value& val)
     }
 }
 
-void XamlFlowSaveOptionsData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void XamlFlowSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ColorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("SaveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ZipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
     if(m_ImagesFolderIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ImagesFolder"), m_ImagesFolder));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImagesFolder"), m_ImagesFolder));
         
     }
     if(m_ImagesFolderAliasIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ImagesFolderAlias"), m_ImagesFolderAlias));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImagesFolderAlias"), m_ImagesFolderAlias));
         
     }
 }
 
-void XamlFlowSaveOptionsData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void XamlFlowSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ColorMode")))
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ColorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SaveFormat")))
+    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SaveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FileName")))
+    if(multipart->hasContent(_XPLATSTR("FileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ZipOutput")))
+    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateFields")))
+    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ImagesFolder")))
+    if(multipart->hasContent(_XPLATSTR("ImagesFolder")))
     {
-        setImagesFolder(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ImagesFolder"))));
+        setImagesFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImagesFolder"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ImagesFolderAlias")))
+    if(multipart->hasContent(_XPLATSTR("ImagesFolderAlias")))
     {
-        setImagesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ImagesFolderAlias"))));
+        setImagesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImagesFolderAlias"))));
     }
 }
 

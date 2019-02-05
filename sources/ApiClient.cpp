@@ -36,14 +36,6 @@ using namespace io::swagger::client::model;
 ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
     : m_Configuration(configuration)
 {
-    defaultHeaders.push_back(std::make_pair(utility::conversions::to_string_t("x-aspose-client-version"),
-		utility::conversions::to_string_t("1.0")));
-
-	defaultHeaders.push_back(std::make_pair(utility::conversions::to_string_t("x-aspose-client"),
-		utility::conversions::to_string_t("C++ SDK")));
-}
-ApiClient::~ApiClient()
-{
 }
 
 pplx::task<void> ApiClient::requestToken()
@@ -51,32 +43,30 @@ pplx::task<void> ApiClient::requestToken()
     if (m_Configuration == nullptr)
             throw "Configuration must be set before calling an api methods";
 
-    std::map<utility::string_t, utility::string_t> queryParams, formParams, headerParams;
-    std::vector<std::pair<utility::string_t, std::shared_ptr<io::swagger::client::model::HttpContent>>> fileParams;
+    std::map<utility::string_t, utility::string_t> queryParams, headerParams;
 
-    formParams.insert(std::make_pair(utility::conversions::to_string_t("grant_type"), 
-		utility::conversions::to_string_t("client_credentials")));
-	formParams.insert(std::make_pair(utility::conversions::to_string_t("client_id"),
-		m_Configuration->getAppSid()));
-	formParams.insert(std::make_pair(utility::conversions::to_string_t("client_secret"),
-		m_Configuration->getAppKey()));
+    std::map<utility::string_t, utility::string_t> formParams = {
+        {_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")},
+        {_XPLATSTR("client_id"), m_Configuration->getAppSid()},
+        {_XPLATSTR("client_secret"), m_Configuration->getAppKey()}
+    };
 
-    return callApi(getTokenUrl(), utility::conversions::to_string_t("POST"), queryParams,nullptr, headerParams, formParams, fileParams, 
-		utility::conversions::to_string_t("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
+    return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams,nullptr, headerParams, formParams, {}, 
+		_XPLATSTR("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
 		
 		if (response.status_code() >= 400)
 			throw ApiException(response.status_code()
-				, utility::conversions::to_string_t("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
 				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 
 		return response.extract_json();
     }).then([this](web::json::value val) {
-        this->setAccessToken(val[utility::conversions::to_string_t("access_token")].as_string());
+        this->setAccessToken(val[_XPLATSTR("access_token")].as_string());
     });
 }
 
 utility::string_t ApiClient::getTokenUrl() const {
-	return m_Configuration->getBaseUrl() + utility::conversions::to_string_t("/oauth2/token");            
+	return m_Configuration->getBaseUrl() + _XPLATSTR("/oauth2/token");            
 }
 
 void ApiClient::setAccessToken(utility::string_t token){
@@ -99,30 +89,26 @@ utility::string_t ApiClient::parameterToString(utility::string_t value)
 }
 utility::string_t ApiClient::parameterToString(int64_t value)
 {
-	std::stringstream valueAsStringStream;
-	valueAsStringStream << value;
-    return utility::conversions::to_string_t(valueAsStringStream.str());
+    return utility::conversions::details::to_string_t(value);
 }
 utility::string_t ApiClient::parameterToString(int32_t value)
 {
-	std::stringstream valueAsStringStream;
-	valueAsStringStream << value;
-    return utility::conversions::to_string_t(valueAsStringStream.str());
+    return utility::conversions::details::to_string_t(value);
 }
 
 utility::string_t ApiClient::parameterToString(float value)
 {
-    return utility::conversions::to_string_t(std::to_string(value));
+    return utility::conversions::details::to_string_t(value);
 }
 
 utility::string_t ApiClient::parameterToString(double value)
 {
-    return utility::conversions::to_string_t(std::to_string(value));
+    return utility::conversions::details::to_string_t(value);
 }
 
 utility::string_t ApiClient::parameterToString(const utility::datetime &value)
 {
-    return utility::conversions::to_string_t(value.to_string(utility::datetime::ISO_8601));
+    return value.to_string(utility::datetime::ISO_8601);
 }
 
 pplx::task<web::http::http_response> ApiClient::callApi(
@@ -136,30 +122,32 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     const utility::string_t& contentType
 )
 {
-    if (postBody != nullptr && formParams.size() != 0)
+    if (postBody && !formParams.empty())
     {
-        throw ApiException(400, utility::conversions::to_string_t("Cannot have body and form params"));
+        throw ApiException(400, _XPLATSTR("Cannot have body and form params"));
     }
 
-    if (postBody != nullptr && fileParams.size() != 0)
+    if (postBody && !fileParams.empty())
     {
-        throw ApiException(400, utility::conversions::to_string_t("Cannot have body and file params"));
+        throw ApiException(400, _XPLATSTR("Cannot have body and file params"));
     }
 
-    if (fileParams.size() > 0 && contentType != utility::conversions::to_string_t("multipart/form-data"))
+    if (!fileParams.empty() && contentType != _XPLATSTR("multipart/form-data"))
     {
-        throw ApiException(400, utility::conversions::to_string_t("Operations with file parameters must be called with multipart/form-data"));
+        throw ApiException(400, _XPLATSTR("Operations with file parameters must be called with multipart/form-data"));
     }
 
     web::http::client::http_client client(m_Configuration->getBaseUrl(), m_Configuration->getHttpConfig());
 
     web::http::http_request request;
+
+    auto & request_header = request.headers();
     for ( auto& kvp : headerParams )
     {
-        request.headers().add(kvp.first, kvp.second);
+        request_header.add(kvp.first, kvp.second);
     }
 
-    if (fileParams.size() > 0)
+    if (!fileParams.empty())
     {
         MultipartFormData uploadData;
         for (auto& kvp : formParams)
@@ -170,21 +158,26 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         {
             uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
         }
-        std::stringstream data;
+        std::ostringstream data;
         uploadData.writeTo(data);
         auto bodyString = data.str();
         auto length = bodyString.size();
+
         if (fileParams.size() + formParams.size() > 1)
+        {
 			request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, 
-				utility::conversions::to_string_t("multipart/form-data; boundary = ") + uploadData.getBoundary());
+				_XPLATSTR("multipart/form-data; boundary = ") + uploadData.getBoundary());
+        }
 		else
-        request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, utility::conversions::to_string_t("multipart/form-data;"));
+		{
+            request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, _XPLATSTR("multipart/form-data;"));
+		}
     }
     else
     {
-        if (postBody != nullptr)
+        if (postBody)
         {
-            std::stringstream data;
+            std::ostringstream data;
             postBody->writeTo(data);
             auto bodyString = data.str();
             auto length = bodyString.size();
@@ -192,7 +185,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         }
         else
         {
-            if (contentType == utility::conversions::to_string_t("application/json"))
+            if (contentType == _XPLATSTR("application/json"))
             {
                 web::json::value body_data = web::json::value::object();
                 for (auto& kvp : formParams)
@@ -209,11 +202,16 @@ pplx::task<web::http::http_response> ApiClient::callApi(
                 web::http::uri_builder formData;
                 for (auto& kvp : formParams)
                 {
-                   if (contentType == utility::conversions::to_string_t("multipart/form-data"))
-										formData.append_query(kvp.second);
-									else
-									formData.append_query(kvp.first, kvp.second);
+                   if (contentType == _XPLATSTR("multipart/form-data"))
+                   {
+                       formData.append_query(kvp.second);
+                   }
+                   else
+                   {
+                       formData.append_query(kvp.first, kvp.second);
+                   }
                 }
+
                 if (!formParams.empty())
                 {
                     request.set_body(formData.query(), contentType);
@@ -238,7 +236,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 			requestToken().wait();
 		}
 
-		request.headers().add(web::http::header_names::authorization, utility::conversions::to_string_t("Bearer ") + m_AccessToken);
+		request.headers().add(web::http::header_names::authorization, _XPLATSTR("Bearer ") + m_AccessToken);
 	}
     for (auto header : defaultHeaders) {
 		request.headers().add(header.first, header.second);
@@ -251,51 +249,56 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     });
 }
 
-				utility::string_t ApiClient::copyDataFromStream(const Concurrency::streams::istream& stream)
-				{
-					if (!stream.is_valid()) return utility::conversions::to_string_t("EMPTY");
+utility::string_t ApiClient::copyDataFromStream(const Concurrency::streams::istream& stream) const
+{
+    if (!stream.is_valid()) return _XPLATSTR("EMPTY");
 
-					auto bodyStreamBuf = stream.streambuf();
-					size_t streamSize = bodyStreamBuf.size();
-					uint8_t* data;
-					if (streamSize)
-					{
-						data = new uint8_t[streamSize];
-						bodyStreamBuf.scopy(data, streamSize);
-					}
-					else
-					{
-						streamSize = bodyStreamBuf.in_avail();
-						data = new uint8_t[streamSize];
-						bodyStreamBuf.acquire(data, streamSize);
-					}
-					std::vector<uint8_t> saveVector(data, data + streamSize);
-                    return utility::string_t(saveVector.begin(), saveVector.end());
-				}
+    auto bodyStreamBuf = stream.streambuf();
+    const size_t streamSize = bodyStreamBuf.size();
+
+    std::string buffer;
+
+    if (streamSize)
+    {
+        buffer.resize(streamSize);
+        bodyStreamBuf.scopy(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data())) , buffer.size());
+    }
+    else
+    {
+        buffer.resize(bodyStreamBuf.in_avail());
+        uint8_t* ptr = const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data()));
+        auto size = buffer.size();
+        bodyStreamBuf.acquire(ptr, size);
+    }
+
+    auto result = utility::conversions::to_string_t(buffer);
+
+    ucout << result << _XPLATSTR('\n');
+    return result;
+}
 
 
-				void ApiClient::logRequest(web::http::http_request request) {
-					if (!m_Configuration->isDebugMode()) return;
+void ApiClient::logRequest(web::http::http_request request) const
+{
+    if (!m_Configuration->isDebugMode()) return;
 
-					utility::string_t header = request.method() + utility::conversions::to_string_t(": ") +
-						request.request_uri().to_string(),
-						body = copyDataFromStream(request.body());
+    // header
+    ucout << request.method() << _XPLATSTR(": ") << request.request_uri().to_string() << _XPLATSTR('\n');
 
-					ucout << header << std::endl << body << std::endl;
-					ucout.clear();
-				}
+    // body
+    ucout << copyDataFromStream(request.body()) << _XPLATSTR('\n');
+}
 
-				void ApiClient::logResponse(web::http::http_response response) {
-					if (!m_Configuration->isDebugMode()) return;
-					
-					utility::string_t header = utility::conversions::to_string_t("Response ") + 
-						utility::conversions::to_string_t(std::to_string(response.status_code())) +
-						utility::conversions::to_string_t(": ") + response.reason_phrase(),
-						body = copyDataFromStream(response.body());
+void ApiClient::logResponse(web::http::http_response response) const
+{
+    if (!m_Configuration->isDebugMode()) return;
 
-					ucout << header << std::endl << body << std::endl;
-					ucout.clear();
-				}
+    // header
+    ucout << _XPLATSTR("Response ") << response.status_code() << _XPLATSTR(": ") << response.reason_phrase() << _XPLATSTR('\n');
+
+    // body
+    ucout << copyDataFromStream(response.body()) << _XPLATSTR('\n');
+}
 
 }
 }

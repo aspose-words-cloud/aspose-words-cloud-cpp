@@ -33,15 +33,15 @@ namespace model {
 
 StringFormatData::StringFormatData()
 {
-    m_Alignment = utility::conversions::to_string_t("");
+    m_Alignment = _XPLATSTR("");
     m_AlignmentIsSet = false;
-    m_FormatFlags = utility::conversions::to_string_t("");
+    m_FormatFlags = _XPLATSTR("");
     m_FormatFlagsIsSet = false;
-    m_HotkeyPrefix = utility::conversions::to_string_t("");
+    m_HotkeyPrefix = _XPLATSTR("");
     m_HotkeyPrefixIsSet = false;
-    m_LineAlignment = utility::conversions::to_string_t("");
+    m_LineAlignment = _XPLATSTR("");
     m_LineAlignmentIsSet = false;
-    m_Trimming = utility::conversions::to_string_t("");
+    m_Trimming = _XPLATSTR("");
     m_TrimmingIsSet = false;
 }
 
@@ -60,23 +60,23 @@ web::json::value StringFormatData::toJson() const
 
     if(m_AlignmentIsSet)
     {
-        val[utility::conversions::to_string_t("Alignment")] = ModelBase::toJson(m_Alignment);
+        val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
     }
     if(m_FormatFlagsIsSet)
     {
-        val[utility::conversions::to_string_t("FormatFlags")] = ModelBase::toJson(m_FormatFlags);
+        val[_XPLATSTR("FormatFlags")] = ModelBase::toJson(m_FormatFlags);
     }
     if(m_HotkeyPrefixIsSet)
     {
-        val[utility::conversions::to_string_t("HotkeyPrefix")] = ModelBase::toJson(m_HotkeyPrefix);
+        val[_XPLATSTR("HotkeyPrefix")] = ModelBase::toJson(m_HotkeyPrefix);
     }
     if(m_LineAlignmentIsSet)
     {
-        val[utility::conversions::to_string_t("LineAlignment")] = ModelBase::toJson(m_LineAlignment);
+        val[_XPLATSTR("LineAlignment")] = ModelBase::toJson(m_LineAlignment);
     }
     if(m_TrimmingIsSet)
     {
-        val[utility::conversions::to_string_t("Trimming")] = ModelBase::toJson(m_Trimming);
+        val[_XPLATSTR("Trimming")] = ModelBase::toJson(m_Trimming);
     }
 
     return val;
@@ -84,41 +84,41 @@ web::json::value StringFormatData::toJson() const
 
 void StringFormatData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Alignment")))
+    if(val.has_field(_XPLATSTR("Alignment")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Alignment")];
+        web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
         if(!fieldValue.is_null())
         {
             setAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("FormatFlags")))
+    if(val.has_field(_XPLATSTR("FormatFlags")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("FormatFlags")];
+        web::json::value& fieldValue = val[_XPLATSTR("FormatFlags")];
         if(!fieldValue.is_null())
         {
             setFormatFlags(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("HotkeyPrefix")))
+    if(val.has_field(_XPLATSTR("HotkeyPrefix")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("HotkeyPrefix")];
+        web::json::value& fieldValue = val[_XPLATSTR("HotkeyPrefix")];
         if(!fieldValue.is_null())
         {
             setHotkeyPrefix(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("LineAlignment")))
+    if(val.has_field(_XPLATSTR("LineAlignment")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("LineAlignment")];
+        web::json::value& fieldValue = val[_XPLATSTR("LineAlignment")];
         if(!fieldValue.is_null())
         {
             setLineAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Trimming")))
+    if(val.has_field(_XPLATSTR("Trimming")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Trimming")];
+        web::json::value& fieldValue = val[_XPLATSTR("Trimming")];
         if(!fieldValue.is_null())
         {
             setTrimming(ModelBase::stringFromJson(fieldValue));
@@ -126,68 +126,60 @@ void StringFormatData::fromJson(web::json::value& val)
     }
 }
 
-void StringFormatData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void StringFormatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_AlignmentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Alignment"), m_Alignment));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
         
     }
     if(m_FormatFlagsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FormatFlags"), m_FormatFlags));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FormatFlags"), m_FormatFlags));
         
     }
     if(m_HotkeyPrefixIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("HotkeyPrefix"), m_HotkeyPrefix));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HotkeyPrefix"), m_HotkeyPrefix));
         
     }
     if(m_LineAlignmentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("LineAlignment"), m_LineAlignment));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineAlignment"), m_LineAlignment));
         
     }
     if(m_TrimmingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Trimming"), m_Trimming));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Trimming"), m_Trimming));
         
     }
 }
 
-void StringFormatData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void StringFormatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Alignment")))
+    if(multipart->hasContent(_XPLATSTR("Alignment")))
     {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Alignment"))));
+        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FormatFlags")))
+    if(multipart->hasContent(_XPLATSTR("FormatFlags")))
     {
-        setFormatFlags(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FormatFlags"))));
+        setFormatFlags(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FormatFlags"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("HotkeyPrefix")))
+    if(multipart->hasContent(_XPLATSTR("HotkeyPrefix")))
     {
-        setHotkeyPrefix(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("HotkeyPrefix"))));
+        setHotkeyPrefix(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HotkeyPrefix"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("LineAlignment")))
+    if(multipart->hasContent(_XPLATSTR("LineAlignment")))
     {
-        setLineAlignment(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("LineAlignment"))));
+        setLineAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LineAlignment"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Trimming")))
+    if(multipart->hasContent(_XPLATSTR("Trimming")))
     {
-        setTrimming(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Trimming"))));
+        setTrimming(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Trimming"))));
     }
 }
 

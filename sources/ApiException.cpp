@@ -46,10 +46,6 @@ ApiException::ApiException( int errorCode
 {
 }
 
-ApiException::~ApiException()
-{
-}
-
 std::shared_ptr<std::istream> ApiException::getContent() const
 {
     return m_Content;

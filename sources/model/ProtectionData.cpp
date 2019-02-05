@@ -33,7 +33,7 @@ namespace model {
 
 ProtectionData::ProtectionData()
 {
-    m_ProtectionType = utility::conversions::to_string_t("");
+    m_ProtectionType = _XPLATSTR("");
     m_ProtectionTypeIsSet = false;
 }
 
@@ -52,7 +52,7 @@ web::json::value ProtectionData::toJson() const
 
     if(m_ProtectionTypeIsSet)
     {
-        val[utility::conversions::to_string_t("ProtectionType")] = ModelBase::toJson(m_ProtectionType);
+        val[_XPLATSTR("ProtectionType")] = ModelBase::toJson(m_ProtectionType);
     }
 
     return val;
@@ -60,9 +60,9 @@ web::json::value ProtectionData::toJson() const
 
 void ProtectionData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("ProtectionType")))
+    if(val.has_field(_XPLATSTR("ProtectionType")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ProtectionType")];
+        web::json::value& fieldValue = val[_XPLATSTR("ProtectionType")];
         if(!fieldValue.is_null())
         {
             setProtectionType(ModelBase::stringFromJson(fieldValue));
@@ -70,32 +70,24 @@ void ProtectionData::fromJson(web::json::value& val)
     }
 }
 
-void ProtectionData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void ProtectionData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ProtectionTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ProtectionType"), m_ProtectionType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ProtectionType"), m_ProtectionType));
         
     }
 }
 
-void ProtectionData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void ProtectionData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ProtectionType")))
+    if(multipart->hasContent(_XPLATSTR("ProtectionType")))
     {
-        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ProtectionType"))));
+        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ProtectionType"))));
     }
 }
 

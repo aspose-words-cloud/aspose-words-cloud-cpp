@@ -37,9 +37,9 @@ namespace model {
 class  IHttpBody
 {
 public:
-    virtual ~IHttpBody() { }
+    virtual ~IHttpBody() = default;
 
-    virtual void writeTo( std::ostream& stream ) = 0;
+    virtual void writeTo( std::ostream& stream ) const = 0;
 };
 
 }

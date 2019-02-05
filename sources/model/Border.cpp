@@ -33,12 +33,12 @@ namespace model {
 
 Border::Border()
 {
-    m_BorderType = utility::conversions::to_string_t("");
+    m_BorderType = _XPLATSTR("");
     m_BorderTypeIsSet = false;
     m_ColorIsSet = false;
     m_DistanceFromText = 0.0;
     m_DistanceFromTextIsSet = false;
-    m_LineStyle = utility::conversions::to_string_t("");
+    m_LineStyle = _XPLATSTR("");
     m_LineStyleIsSet = false;
     m_LineWidth = 0.0;
     m_LineWidthIsSet = false;
@@ -61,27 +61,27 @@ web::json::value Border::toJson() const
 
     if(m_BorderTypeIsSet)
     {
-        val[utility::conversions::to_string_t("BorderType")] = ModelBase::toJson(m_BorderType);
+        val[_XPLATSTR("BorderType")] = ModelBase::toJson(m_BorderType);
     }
     if(m_ColorIsSet)
     {
-        val[utility::conversions::to_string_t("Color")] = ModelBase::toJson(m_Color);
+        val[_XPLATSTR("Color")] = ModelBase::toJson(m_Color);
     }
     if(m_DistanceFromTextIsSet)
     {
-        val[utility::conversions::to_string_t("DistanceFromText")] = ModelBase::toJson(m_DistanceFromText);
+        val[_XPLATSTR("DistanceFromText")] = ModelBase::toJson(m_DistanceFromText);
     }
     if(m_LineStyleIsSet)
     {
-        val[utility::conversions::to_string_t("LineStyle")] = ModelBase::toJson(m_LineStyle);
+        val[_XPLATSTR("LineStyle")] = ModelBase::toJson(m_LineStyle);
     }
     if(m_LineWidthIsSet)
     {
-        val[utility::conversions::to_string_t("LineWidth")] = ModelBase::toJson(m_LineWidth);
+        val[_XPLATSTR("LineWidth")] = ModelBase::toJson(m_LineWidth);
     }
     if(m_ShadowIsSet)
     {
-        val[utility::conversions::to_string_t("Shadow")] = ModelBase::toJson(m_Shadow);
+        val[_XPLATSTR("Shadow")] = ModelBase::toJson(m_Shadow);
     }
 
     return val;
@@ -91,17 +91,17 @@ void Border::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("BorderType")))
+    if(val.has_field(_XPLATSTR("BorderType")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("BorderType")];
+        web::json::value& fieldValue = val[_XPLATSTR("BorderType")];
         if(!fieldValue.is_null())
         {
             setBorderType(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Color")))
+    if(val.has_field(_XPLATSTR("Color")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Color")];
+        web::json::value& fieldValue = val[_XPLATSTR("Color")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
@@ -109,33 +109,33 @@ void Border::fromJson(web::json::value& val)
             setColor( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("DistanceFromText")))
+    if(val.has_field(_XPLATSTR("DistanceFromText")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DistanceFromText")];
+        web::json::value& fieldValue = val[_XPLATSTR("DistanceFromText")];
         if(!fieldValue.is_null())
         {
             setDistanceFromText(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("LineStyle")))
+    if(val.has_field(_XPLATSTR("LineStyle")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("LineStyle")];
+        web::json::value& fieldValue = val[_XPLATSTR("LineStyle")];
         if(!fieldValue.is_null())
         {
             setLineStyle(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("LineWidth")))
+    if(val.has_field(_XPLATSTR("LineWidth")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("LineWidth")];
+        web::json::value& fieldValue = val[_XPLATSTR("LineWidth")];
         if(!fieldValue.is_null())
         {
             setLineWidth(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Shadow")))
+    if(val.has_field(_XPLATSTR("Shadow")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Shadow")];
+        web::json::value& fieldValue = val[_XPLATSTR("Shadow")];
         if(!fieldValue.is_null())
         {
             setShadow(ModelBase::boolFromJson(fieldValue));
@@ -143,99 +143,91 @@ void Border::fromJson(web::json::value& val)
     }
 }
 
-void Border::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void Border::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_BorderTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("BorderType"), m_BorderType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderType"), m_BorderType));
         
     }
     if(m_ColorIsSet)
     {
         if (m_Color.get())
         {
-            m_Color->toMultipart(multipart, utility::conversions::to_string_t("Color."));
+            m_Color->toMultipart(multipart, _XPLATSTR("Color."));
         }
         
     }
     if(m_DistanceFromTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DistanceFromText"), m_DistanceFromText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DistanceFromText"), m_DistanceFromText));
     }
     if(m_LineStyleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("LineStyle"), m_LineStyle));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineStyle"), m_LineStyle));
         
     }
     if(m_LineWidthIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("LineWidth"), m_LineWidth));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineWidth"), m_LineWidth));
     }
     if(m_ShadowIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Shadow"), m_Shadow));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Shadow"), m_Shadow));
     }
 }
 
-void Border::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void Border::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("BorderType")))
+    if(multipart->hasContent(_XPLATSTR("BorderType")))
     {
-        setBorderType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("BorderType"))));
+        setBorderType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BorderType"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Color")))
+    if(multipart->hasContent(_XPLATSTR("Color")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Color")))
+        if(multipart->hasContent(_XPLATSTR("Color")))
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Color."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Color."));
             setColor( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DistanceFromText")))
+    if(multipart->hasContent(_XPLATSTR("DistanceFromText")))
     {
-        setDistanceFromText(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DistanceFromText"))));
+        setDistanceFromText(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("DistanceFromText"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("LineStyle")))
+    if(multipart->hasContent(_XPLATSTR("LineStyle")))
     {
-        setLineStyle(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("LineStyle"))));
+        setLineStyle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LineStyle"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("LineWidth")))
+    if(multipart->hasContent(_XPLATSTR("LineWidth")))
     {
-        setLineWidth(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("LineWidth"))));
+        setLineWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LineWidth"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Shadow")))
+    if(multipart->hasContent(_XPLATSTR("Shadow")))
     {
-        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Shadow"))));
+        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
     }
 }
 
