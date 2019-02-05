@@ -51,7 +51,7 @@ web::json::value DrawingObjectResponse::toJson() const
 
     if(m_DrawingObjectIsSet)
     {
-        val[utility::conversions::to_string_t("DrawingObject")] = ModelBase::toJson(m_DrawingObject);
+        val[_XPLATSTR("DrawingObject")] = ModelBase::toJson(m_DrawingObject);
     }
 
     return val;
@@ -61,9 +61,9 @@ void DrawingObjectResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("DrawingObject")))
+    if(val.has_field(_XPLATSTR("DrawingObject")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DrawingObject")];
+        web::json::value& fieldValue = val[_XPLATSTR("DrawingObject")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DrawingObject> newItem(new DrawingObject());
@@ -73,49 +73,41 @@ void DrawingObjectResponse::fromJson(web::json::value& val)
     }
 }
 
-void DrawingObjectResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DrawingObjectResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_DrawingObjectIsSet)
     {
         if (m_DrawingObject.get())
         {
-            m_DrawingObject->toMultipart(multipart, utility::conversions::to_string_t("DrawingObject."));
+            m_DrawingObject->toMultipart(multipart, _XPLATSTR("DrawingObject."));
         }
         
     }
 }
 
-void DrawingObjectResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DrawingObjectResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DrawingObject")))
+    if(multipart->hasContent(_XPLATSTR("DrawingObject")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("DrawingObject")))
+        if(multipart->hasContent(_XPLATSTR("DrawingObject")))
         {
             std::shared_ptr<DrawingObject> newItem(new DrawingObject());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("DrawingObject."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObject."));
             setDrawingObject( newItem );
         }
     }

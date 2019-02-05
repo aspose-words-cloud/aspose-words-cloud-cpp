@@ -53,12 +53,12 @@ web::json::value DocumentStatData::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[utility::conversions::to_string_t("WordCount")] = ModelBase::toJson(m_WordCount);
-    val[utility::conversions::to_string_t("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
-    val[utility::conversions::to_string_t("PageCount")] = ModelBase::toJson(m_PageCount);
+    val[_XPLATSTR("WordCount")] = ModelBase::toJson(m_WordCount);
+    val[_XPLATSTR("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
+    val[_XPLATSTR("PageCount")] = ModelBase::toJson(m_PageCount);
     if(m_FootnotesStatDataIsSet)
     {
-        val[utility::conversions::to_string_t("FootnotesStatData")] = ModelBase::toJson(m_FootnotesStatData);
+        val[_XPLATSTR("FootnotesStatData")] = ModelBase::toJson(m_FootnotesStatData);
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -69,7 +69,7 @@ web::json::value DocumentStatData::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[utility::conversions::to_string_t("PageStatData")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("PageStatData")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -78,33 +78,33 @@ web::json::value DocumentStatData::toJson() const
 
 void DocumentStatData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("WordCount")))
+    if(val.has_field(_XPLATSTR("WordCount")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("WordCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("WordCount")];
         if(!fieldValue.is_null())
         {
             setWordCount(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ParagraphCount")))
+    if(val.has_field(_XPLATSTR("ParagraphCount")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ParagraphCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("ParagraphCount")];
         if(!fieldValue.is_null())
         {
             setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("PageCount")))
+    if(val.has_field(_XPLATSTR("PageCount")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("PageCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("PageCount")];
         if(!fieldValue.is_null())
         {
             setPageCount(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("FootnotesStatData")))
+    if(val.has_field(_XPLATSTR("FootnotesStatData")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("FootnotesStatData")];
+        web::json::value& fieldValue = val[_XPLATSTR("FootnotesStatData")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FootnotesStatData> newItem(new FootnotesStatData());
@@ -114,10 +114,10 @@ void DocumentStatData::fromJson(web::json::value& val)
     }
     {
         m_PageStatData.clear();
-        if(val.has_field(utility::conversions::to_string_t("PageStatData")) 
-                            && !val[utility::conversions::to_string_t("PageStatData")].is_null())
+        if(val.has_field(_XPLATSTR("PageStatData")) 
+                            && !val[_XPLATSTR("PageStatData")].is_null())
         {
-        auto arr = val[utility::conversions::to_string_t("PageStatData")].as_array();
+        auto arr = val[_XPLATSTR("PageStatData")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_PageStatData), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -135,22 +135,18 @@ void DocumentStatData::fromJson(web::json::value& val)
     }
 }
 
-void DocumentStatData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DocumentStatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("WordCount"), m_WordCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ParagraphCount"), m_ParagraphCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("PageCount"), m_PageCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WordCount"), m_WordCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphCount"), m_ParagraphCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageCount"), m_PageCount));
     if(m_FootnotesStatDataIsSet)
     {
         if (m_FootnotesStatData.get())
         {
-            m_FootnotesStatData->toMultipart(multipart, utility::conversions::to_string_t("FootnotesStatData."));
+            m_FootnotesStatData->toMultipart(multipart, _XPLATSTR("FootnotesStatData."));
         }
         
     }
@@ -162,37 +158,33 @@ void DocumentStatData::toMultipart(std::shared_ptr<MultipartFormData> multipart,
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("PageStatData"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageStatData"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
 
-void DocumentStatData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void DocumentStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("WordCount"))));
-    setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ParagraphCount"))));
-    setPageCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PageCount"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("FootnotesStatData")))
+    setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
+    setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+    setPageCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageCount"))));
+    if(multipart->hasContent(_XPLATSTR("FootnotesStatData")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("FootnotesStatData")))
+        if(multipart->hasContent(_XPLATSTR("FootnotesStatData")))
         {
             std::shared_ptr<FootnotesStatData> newItem(new FootnotesStatData());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("FootnotesStatData."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("FootnotesStatData."));
             setFootnotesStatData( newItem );
         }
     }
     {
         m_PageStatData.clear();
-        if(multipart->hasContent(utility::conversions::to_string_t("PageStatData")))
+        if(multipart->hasContent(_XPLATSTR("PageStatData")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PageStatData")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("PageStatData")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_PageStatData), [&](web::json::value item) {
             if(item.is_null())
             {

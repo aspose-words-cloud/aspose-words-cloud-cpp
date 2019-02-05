@@ -33,13 +33,13 @@ namespace model {
 
 TextSaveOptionsData::TextSaveOptionsData()
 {
-    m_Encoding = utility::conversions::to_string_t("");
+    m_Encoding = _XPLATSTR("");
     m_EncodingIsSet = false;
     m_ExportHeadersFooters = false;
     m_ExportHeadersFootersIsSet = false;
     m_ForcePageBreaks = false;
     m_ForcePageBreaksIsSet = false;
-    m_ParagraphBreak = utility::conversions::to_string_t("");
+    m_ParagraphBreak = _XPLATSTR("");
     m_ParagraphBreakIsSet = false;
     m_PreserveTableLayout = false;
     m_PreserveTableLayoutIsSet = false;
@@ -62,27 +62,27 @@ web::json::value TextSaveOptionsData::toJson() const
 
     if(m_EncodingIsSet)
     {
-        val[utility::conversions::to_string_t("Encoding")] = ModelBase::toJson(m_Encoding);
+        val[_XPLATSTR("Encoding")] = ModelBase::toJson(m_Encoding);
     }
     if(m_ExportHeadersFootersIsSet)
     {
-        val[utility::conversions::to_string_t("ExportHeadersFooters")] = ModelBase::toJson(m_ExportHeadersFooters);
+        val[_XPLATSTR("ExportHeadersFooters")] = ModelBase::toJson(m_ExportHeadersFooters);
     }
     if(m_ForcePageBreaksIsSet)
     {
-        val[utility::conversions::to_string_t("ForcePageBreaks")] = ModelBase::toJson(m_ForcePageBreaks);
+        val[_XPLATSTR("ForcePageBreaks")] = ModelBase::toJson(m_ForcePageBreaks);
     }
     if(m_ParagraphBreakIsSet)
     {
-        val[utility::conversions::to_string_t("ParagraphBreak")] = ModelBase::toJson(m_ParagraphBreak);
+        val[_XPLATSTR("ParagraphBreak")] = ModelBase::toJson(m_ParagraphBreak);
     }
     if(m_PreserveTableLayoutIsSet)
     {
-        val[utility::conversions::to_string_t("PreserveTableLayout")] = ModelBase::toJson(m_PreserveTableLayout);
+        val[_XPLATSTR("PreserveTableLayout")] = ModelBase::toJson(m_PreserveTableLayout);
     }
     if(m_SimplifyListLabelsIsSet)
     {
-        val[utility::conversions::to_string_t("SimplifyListLabels")] = ModelBase::toJson(m_SimplifyListLabels);
+        val[_XPLATSTR("SimplifyListLabels")] = ModelBase::toJson(m_SimplifyListLabels);
     }
 
     return val;
@@ -92,49 +92,49 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Encoding")))
+    if(val.has_field(_XPLATSTR("Encoding")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Encoding")];
+        web::json::value& fieldValue = val[_XPLATSTR("Encoding")];
         if(!fieldValue.is_null())
         {
             setEncoding(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ExportHeadersFooters")))
+    if(val.has_field(_XPLATSTR("ExportHeadersFooters")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ExportHeadersFooters")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportHeadersFooters")];
         if(!fieldValue.is_null())
         {
             setExportHeadersFooters(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ForcePageBreaks")))
+    if(val.has_field(_XPLATSTR("ForcePageBreaks")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ForcePageBreaks")];
+        web::json::value& fieldValue = val[_XPLATSTR("ForcePageBreaks")];
         if(!fieldValue.is_null())
         {
             setForcePageBreaks(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ParagraphBreak")))
+    if(val.has_field(_XPLATSTR("ParagraphBreak")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ParagraphBreak")];
+        web::json::value& fieldValue = val[_XPLATSTR("ParagraphBreak")];
         if(!fieldValue.is_null())
         {
             setParagraphBreak(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("PreserveTableLayout")))
+    if(val.has_field(_XPLATSTR("PreserveTableLayout")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("PreserveTableLayout")];
+        web::json::value& fieldValue = val[_XPLATSTR("PreserveTableLayout")];
         if(!fieldValue.is_null())
         {
             setPreserveTableLayout(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("SimplifyListLabels")))
+    if(val.has_field(_XPLATSTR("SimplifyListLabels")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("SimplifyListLabels")];
+        web::json::value& fieldValue = val[_XPLATSTR("SimplifyListLabels")];
         if(!fieldValue.is_null())
         {
             setSimplifyListLabels(ModelBase::boolFromJson(fieldValue));
@@ -142,150 +142,142 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
     }
 }
 
-void TextSaveOptionsData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TextSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ColorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("SaveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ZipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UpdateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
     if(m_EncodingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Encoding"), m_Encoding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Encoding"), m_Encoding));
         
     }
     if(m_ExportHeadersFootersIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ExportHeadersFooters"), m_ExportHeadersFooters));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportHeadersFooters"), m_ExportHeadersFooters));
     }
     if(m_ForcePageBreaksIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ForcePageBreaks"), m_ForcePageBreaks));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ForcePageBreaks"), m_ForcePageBreaks));
     }
     if(m_ParagraphBreakIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ParagraphBreak"), m_ParagraphBreak));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphBreak"), m_ParagraphBreak));
         
     }
     if(m_PreserveTableLayoutIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("PreserveTableLayout"), m_PreserveTableLayout));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PreserveTableLayout"), m_PreserveTableLayout));
     }
     if(m_SimplifyListLabelsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("SimplifyListLabels"), m_SimplifyListLabels));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SimplifyListLabels"), m_SimplifyListLabels));
     }
 }
 
-void TextSaveOptionsData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ColorMode")))
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ColorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SaveFormat")))
+    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SaveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FileName")))
+    if(multipart->hasContent(_XPLATSTR("FileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ZipOutput")))
+    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("UpdateFields")))
+    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Encoding")))
+    if(multipart->hasContent(_XPLATSTR("Encoding")))
     {
-        setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Encoding"))));
+        setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Encoding"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ExportHeadersFooters")))
+    if(multipart->hasContent(_XPLATSTR("ExportHeadersFooters")))
     {
-        setExportHeadersFooters(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ExportHeadersFooters"))));
+        setExportHeadersFooters(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportHeadersFooters"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ForcePageBreaks")))
+    if(multipart->hasContent(_XPLATSTR("ForcePageBreaks")))
     {
-        setForcePageBreaks(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ForcePageBreaks"))));
+        setForcePageBreaks(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ForcePageBreaks"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ParagraphBreak")))
+    if(multipart->hasContent(_XPLATSTR("ParagraphBreak")))
     {
-        setParagraphBreak(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ParagraphBreak"))));
+        setParagraphBreak(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphBreak"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("PreserveTableLayout")))
+    if(multipart->hasContent(_XPLATSTR("PreserveTableLayout")))
     {
-        setPreserveTableLayout(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("PreserveTableLayout"))));
+        setPreserveTableLayout(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PreserveTableLayout"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("SimplifyListLabels")))
+    if(multipart->hasContent(_XPLATSTR("SimplifyListLabels")))
     {
-        setSimplifyListLabels(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("SimplifyListLabels"))));
+        setSimplifyListLabels(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SimplifyListLabels"))));
     }
 }
 

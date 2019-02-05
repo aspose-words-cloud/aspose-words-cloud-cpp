@@ -33,7 +33,7 @@ namespace model {
 
 XmlColor::XmlColor()
 {
-    m_Web = utility::conversions::to_string_t("");
+    m_Web = _XPLATSTR("");
     m_WebIsSet = false;
     m_Alpha = 0;
 }
@@ -53,26 +53,26 @@ web::json::value XmlColor::toJson() const
 
     if(m_WebIsSet)
     {
-        val[utility::conversions::to_string_t("Web")] = ModelBase::toJson(m_Web);
+        val[_XPLATSTR("Web")] = ModelBase::toJson(m_Web);
     }
-    val[utility::conversions::to_string_t("Alpha")] = ModelBase::toJson(m_Alpha);
+    val[_XPLATSTR("Alpha")] = ModelBase::toJson(m_Alpha);
 
     return val;
 }
 
 void XmlColor::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Web")))
+    if(val.has_field(_XPLATSTR("Web")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Web")];
+        web::json::value& fieldValue = val[_XPLATSTR("Web")];
         if(!fieldValue.is_null())
         {
             setWeb(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Alpha")))
+    if(val.has_field(_XPLATSTR("Alpha")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Alpha")];
+        web::json::value& fieldValue = val[_XPLATSTR("Alpha")];
         if(!fieldValue.is_null())
         {
             setAlpha(ModelBase::int32_tFromJson(fieldValue));
@@ -80,35 +80,27 @@ void XmlColor::fromJson(web::json::value& val)
     }
 }
 
-void XmlColor::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_WebIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Web"), m_Web));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Web"), m_Web));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Alpha"), m_Alpha));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alpha"), m_Alpha));
 }
 
-void XmlColor::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void XmlColor::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Web")))
+    if(multipart->hasContent(_XPLATSTR("Web")))
     {
-        setWeb(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Web"))));
+        setWeb(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Web"))));
     }
-    setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Alpha"))));
+    setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Alpha"))));
 }
 
 utility::string_t XmlColor::getWeb() const

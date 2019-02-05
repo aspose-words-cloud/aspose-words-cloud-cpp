@@ -48,21 +48,20 @@ class FormFieldTextInput;
 class  ModelBase
 {
 public:
-    ModelBase();
-    virtual ~ModelBase();
+    virtual ~ModelBase() = default;
 
     virtual void validate() = 0;
 
     virtual web::json::value toJson() const = 0;
     virtual void fromJson(web::json::value& json) = 0;
 
-    virtual void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const = 0;
-    virtual void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) = 0;
+    virtual void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const = 0;
+    virtual void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) = 0;
 
     static web::json::value toJson( const utility::string_t& value );
     static web::json::value toJson( const utility::datetime& value );
-    static web::json::value toJson( std::shared_ptr<HttpContent> value );
-    static web::json::value toJson( std::shared_ptr<ModelBase> value );
+    static web::json::value toJson(const std::shared_ptr<HttpContent>& value );
+    static web::json::value toJson(const std::shared_ptr<ModelBase>& value );
     static web::json::value toJson( int32_t value );
     static web::json::value toJson( int64_t value );
     static web::json::value toJson( double value );
@@ -79,29 +78,30 @@ public:
     static bool boolFromJson(web::json::value& val);
     static std::shared_ptr<HttpContent> fileFromJson(web::json::value& val);
 
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const utility::string_t& value, const utility::string_t& contentType = utility::conversions::to_string_t(""));
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const utility::datetime& value, const utility::string_t& contentType = utility::conversions::to_string_t(""));
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const utility::string_t& value, const utility::string_t& contentType = _XPLATSTR(""));
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const utility::datetime& value, const utility::string_t& contentType = _XPLATSTR(""));
     static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, std::shared_ptr<HttpContent> value );
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const web::json::value& value, const utility::string_t& contentType = utility::conversions::to_string_t("application/json") );
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, int32_t value, const utility::string_t& contentType = utility::conversions::to_string_t("") );
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, int64_t value, const utility::string_t& contentType = utility::conversions::to_string_t("") );
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, double value, const utility::string_t& contentType = utility::conversions::to_string_t("") );
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const web::json::value& value, const utility::string_t& contentType = _XPLATSTR("application/json") );
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, int32_t value, const utility::string_t& contentType = _XPLATSTR("") );
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, int64_t value, const utility::string_t& contentType = _XPLATSTR("") );
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, double value, const utility::string_t& contentType = _XPLATSTR("") );
     template <class T>
-    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const std::vector<T>& value, const utility::string_t& contentType = utility::conversions::to_string_t("") );
+    static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const std::vector<T>& value, const utility::string_t& contentType = _XPLATSTR("") );
 
-    static int64_t int64_tFromHttpContent(std::shared_ptr<HttpContent> val);
-    static int32_t int32_tFromHttpContent(std::shared_ptr<HttpContent> val);
-    static float floatFromHttpContent(std::shared_ptr<HttpContent> val);
-    static utility::string_t stringFromHttpContent(std::shared_ptr<HttpContent> val);
-    static utility::datetime dateFromHttpContent(std::shared_ptr<HttpContent> val);
-    static bool boolFromHttpContent(std::shared_ptr<HttpContent> val);
-    static double doubleFromHttpContent(std::shared_ptr<HttpContent> val);
-    static web::json::value valueFromHttpContent(std::shared_ptr<HttpContent> val);
+    static int64_t int64_tFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static int32_t int32_tFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static float floatFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static utility::string_t stringFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static utility::datetime dateFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static bool boolFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static double doubleFromHttpContent(const std::shared_ptr<HttpContent>& val);
+    static web::json::value valueFromHttpContent(const std::shared_ptr<HttpContent>& val);
 
 
-    static utility::string_t toBase64( utility::string_t value );
-    static utility::string_t toBase64( std::shared_ptr<std::istream> value );
+    static utility::string_t toBase64(const utility::string_t& value );
+    static utility::string_t toBase64(const std::shared_ptr<std::istream>& value );
     static std::shared_ptr<std::istream> fromBase64( const utility::string_t& encoded );
+    static utility::string_t fixNamePrefix(utility::string_t prefix);
 };
 
 template<class T>
@@ -118,11 +118,11 @@ web::json::value ModelBase::toJson(const std::vector<T>& value) {
 template <class T>
 std::shared_ptr<HttpContent> ModelBase::toHttpContent( const utility::string_t& name, const std::vector<T>& value, const utility::string_t& contentType ) {
     web::json::value json_array = ModelBase::toJson(value);
-    std::shared_ptr<HttpContent> content( new HttpContent );
+    auto content = std::make_shared<HttpContent>();
     content->setName( name );
-    content->setContentDisposition( utility::conversions::to_string_t("form-data") );
+    content->setContentDisposition( _XPLATSTR("form-data") );
     content->setContentType( contentType );
-    content->setData( std::shared_ptr<std::istream>( new std::stringstream( utility::conversions::to_utf8string(json_array.serialize()) ) ) );
+    content->setData(std::make_shared<std::stringstream>( utility::conversions::to_utf8string(json_array.serialize()) ) );
     return content;
 }
 

@@ -51,7 +51,7 @@ web::json::value TableLinkCollectionResponse::toJson() const
 
     if(m_TablesIsSet)
     {
-        val[utility::conversions::to_string_t("Tables")] = ModelBase::toJson(m_Tables);
+        val[_XPLATSTR("Tables")] = ModelBase::toJson(m_Tables);
     }
 
     return val;
@@ -61,9 +61,9 @@ void TableLinkCollectionResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Tables")))
+    if(val.has_field(_XPLATSTR("Tables")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Tables")];
+        web::json::value& fieldValue = val[_XPLATSTR("Tables")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
@@ -73,49 +73,41 @@ void TableLinkCollectionResponse::fromJson(web::json::value& val)
     }
 }
 
-void TableLinkCollectionResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_TablesIsSet)
     {
         if (m_Tables.get())
         {
-            m_Tables->toMultipart(multipart, utility::conversions::to_string_t("Tables."));
+            m_Tables->toMultipart(multipart, _XPLATSTR("Tables."));
         }
         
     }
 }
 
-void TableLinkCollectionResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Tables")))
+    if(multipart->hasContent(_XPLATSTR("Tables")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Tables")))
+        if(multipart->hasContent(_XPLATSTR("Tables")))
         {
             std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Tables."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Tables."));
             setTables( newItem );
         }
     }

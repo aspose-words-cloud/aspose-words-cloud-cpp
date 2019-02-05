@@ -33,9 +33,9 @@ namespace model {
 
 CompareData::CompareData()
 {
-    m_ComparingWithDocument = utility::conversions::to_string_t("");
+    m_ComparingWithDocument = _XPLATSTR("");
     m_ComparingWithDocumentIsSet = false;
-    m_Author = utility::conversions::to_string_t("");
+    m_Author = _XPLATSTR("");
     m_AuthorIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
@@ -56,15 +56,15 @@ web::json::value CompareData::toJson() const
 
     if(m_ComparingWithDocumentIsSet)
     {
-        val[utility::conversions::to_string_t("ComparingWithDocument")] = ModelBase::toJson(m_ComparingWithDocument);
+        val[_XPLATSTR("ComparingWithDocument")] = ModelBase::toJson(m_ComparingWithDocument);
     }
     if(m_AuthorIsSet)
     {
-        val[utility::conversions::to_string_t("Author")] = ModelBase::toJson(m_Author);
+        val[_XPLATSTR("Author")] = ModelBase::toJson(m_Author);
     }
     if(m_DateTimeIsSet)
     {
-        val[utility::conversions::to_string_t("DateTime")] = ModelBase::toJson(m_DateTime);
+        val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
     }
 
     return val;
@@ -72,25 +72,25 @@ web::json::value CompareData::toJson() const
 
 void CompareData::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("ComparingWithDocument")))
+    if(val.has_field(_XPLATSTR("ComparingWithDocument")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ComparingWithDocument")];
+        web::json::value& fieldValue = val[_XPLATSTR("ComparingWithDocument")];
         if(!fieldValue.is_null())
         {
             setComparingWithDocument(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Author")))
+    if(val.has_field(_XPLATSTR("Author")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Author")];
+        web::json::value& fieldValue = val[_XPLATSTR("Author")];
         if(!fieldValue.is_null())
         {
             setAuthor(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("DateTime")))
+    if(val.has_field(_XPLATSTR("DateTime")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DateTime")];
+        web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
             setDateTime(ModelBase::dateFromJson(fieldValue));
@@ -98,50 +98,42 @@ void CompareData::fromJson(web::json::value& val)
     }
 }
 
-void CompareData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ComparingWithDocumentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ComparingWithDocument"), m_ComparingWithDocument));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ComparingWithDocument"), m_ComparingWithDocument));
         
     }
     if(m_AuthorIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Author"), m_Author));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Author"), m_Author));
         
     }
     if(m_DateTimeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DateTime"), m_DateTime));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
         
     }
 }
 
-void CompareData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ComparingWithDocument")))
+    if(multipart->hasContent(_XPLATSTR("ComparingWithDocument")))
     {
-        setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ComparingWithDocument"))));
+        setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ComparingWithDocument"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Author")))
+    if(multipart->hasContent(_XPLATSTR("Author")))
     {
-        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Author"))));
+        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Author"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DateTime")))
+    if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
 }
 

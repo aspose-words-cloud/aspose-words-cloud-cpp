@@ -27,7 +27,7 @@
 #define createOrUpdateDocumentProperty_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "DocumentProperty.h"
 #include <boost/optional.hpp>
 

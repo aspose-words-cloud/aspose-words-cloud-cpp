@@ -27,7 +27,7 @@
 #define postFootnote_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "Footnote.h"
 #include <boost/optional.hpp>
 

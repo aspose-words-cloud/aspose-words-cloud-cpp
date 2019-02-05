@@ -33,7 +33,7 @@ namespace model {
 
 PreferredWidth::PreferredWidth()
 {
-    m_Type = utility::conversions::to_string_t("");
+    m_Type = _XPLATSTR("");
     m_Value = 0.0;
     m_ValueIsSet = false;
 }
@@ -51,10 +51,10 @@ web::json::value PreferredWidth::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[utility::conversions::to_string_t("Type")] = ModelBase::toJson(m_Type);
+    val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
     if(m_ValueIsSet)
     {
-        val[utility::conversions::to_string_t("Value")] = ModelBase::toJson(m_Value);
+        val[_XPLATSTR("Value")] = ModelBase::toJson(m_Value);
     }
 
     return val;
@@ -62,10 +62,10 @@ web::json::value PreferredWidth::toJson() const
 
 void PreferredWidth::fromJson(web::json::value& val)
 {
-    setType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("Type")]));
-    if(val.has_field(utility::conversions::to_string_t("Value")))
+    setType(ModelBase::stringFromJson(val[_XPLATSTR("Type")]));
+    if(val.has_field(_XPLATSTR("Value")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Value")];
+        web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
             setValue(ModelBase::doubleFromJson(fieldValue));
@@ -73,33 +73,25 @@ void PreferredWidth::fromJson(web::json::value& val)
     }
 }
 
-void PreferredWidth::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void PreferredWidth::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Type"), m_Type));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
     if(m_ValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Value"), m_Value));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
     }
 }
 
-void PreferredWidth::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void PreferredWidth::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Type"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Value")))
+    setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
+    if(multipart->hasContent(_XPLATSTR("Value")))
     {
-        setValue(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Value"))));
+        setValue(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
     }
 }
 

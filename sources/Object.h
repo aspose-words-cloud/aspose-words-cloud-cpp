@@ -40,9 +40,6 @@ namespace model {
 class  Object : public ModelBase
 {
 public:
-    Object();
-    virtual ~Object();
-
     /////////////////////////////////////////////
     /// ModelBase overrides
     void validate() override;
@@ -50,8 +47,8 @@ public:
     web::json::value toJson() const override;
     void fromJson(web::json::value& json) override;
 
-    void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
-    void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
+    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const override;
+    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
     /// Object manipulation
@@ -59,7 +56,7 @@ public:
     void setValue(const utility::string_t& key, const web::json::value& value);
 
 private:
-    web::json::value m_object;
+    web::json::value m_object = web::json::value::object();
 };
 
 }

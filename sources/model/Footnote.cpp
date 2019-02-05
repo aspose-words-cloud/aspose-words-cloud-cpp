@@ -34,12 +34,12 @@ namespace model {
 Footnote::Footnote()
 {
     m_ContentIsSet = false;
-    m_FootnoteType = utility::conversions::to_string_t("");
+    m_FootnoteType = _XPLATSTR("");
     m_FootnoteTypeIsSet = false;
     m_PositionIsSet = false;
-    m_ReferenceMark = utility::conversions::to_string_t("");
+    m_ReferenceMark = _XPLATSTR("");
     m_ReferenceMarkIsSet = false;
-    m_Text = utility::conversions::to_string_t("");
+    m_Text = _XPLATSTR("");
     m_TextIsSet = false;
 }
 
@@ -58,23 +58,23 @@ web::json::value Footnote::toJson() const
 
     if(m_ContentIsSet)
     {
-        val[utility::conversions::to_string_t("Content")] = ModelBase::toJson(m_Content);
+        val[_XPLATSTR("Content")] = ModelBase::toJson(m_Content);
     }
     if(m_FootnoteTypeIsSet)
     {
-        val[utility::conversions::to_string_t("FootnoteType")] = ModelBase::toJson(m_FootnoteType);
+        val[_XPLATSTR("FootnoteType")] = ModelBase::toJson(m_FootnoteType);
     }
     if(m_PositionIsSet)
     {
-        val[utility::conversions::to_string_t("Position")] = ModelBase::toJson(m_Position);
+        val[_XPLATSTR("Position")] = ModelBase::toJson(m_Position);
     }
     if(m_ReferenceMarkIsSet)
     {
-        val[utility::conversions::to_string_t("ReferenceMark")] = ModelBase::toJson(m_ReferenceMark);
+        val[_XPLATSTR("ReferenceMark")] = ModelBase::toJson(m_ReferenceMark);
     }
     if(m_TextIsSet)
     {
-        val[utility::conversions::to_string_t("Text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -84,9 +84,9 @@ void Footnote::fromJson(web::json::value& val)
 {
     this->FootnoteLink::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Content")))
+    if(val.has_field(_XPLATSTR("Content")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Content")];
+        web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
@@ -94,17 +94,17 @@ void Footnote::fromJson(web::json::value& val)
             setContent( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("FootnoteType")))
+    if(val.has_field(_XPLATSTR("FootnoteType")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("FootnoteType")];
+        web::json::value& fieldValue = val[_XPLATSTR("FootnoteType")];
         if(!fieldValue.is_null())
         {
             setFootnoteType(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Position")))
+    if(val.has_field(_XPLATSTR("Position")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Position")];
+        web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -112,17 +112,17 @@ void Footnote::fromJson(web::json::value& val)
             setPosition( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ReferenceMark")))
+    if(val.has_field(_XPLATSTR("ReferenceMark")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ReferenceMark")];
+        web::json::value& fieldValue = val[_XPLATSTR("ReferenceMark")];
         if(!fieldValue.is_null())
         {
             setReferenceMark(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -130,110 +130,102 @@ void Footnote::fromJson(web::json::value& val)
     }
 }
 
-void Footnote::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void Footnote::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_ContentIsSet)
     {
         if (m_Content.get())
         {
-            m_Content->toMultipart(multipart, utility::conversions::to_string_t("Content."));
+            m_Content->toMultipart(multipart, _XPLATSTR("Content."));
         }
         
     }
     if(m_FootnoteTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FootnoteType"), m_FootnoteType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FootnoteType"), m_FootnoteType));
         
     }
     if(m_PositionIsSet)
     {
         if (m_Position.get())
         {
-            m_Position->toMultipart(multipart, utility::conversions::to_string_t("Position."));
+            m_Position->toMultipart(multipart, _XPLATSTR("Position."));
         }
         
     }
     if(m_ReferenceMarkIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ReferenceMark"), m_ReferenceMark));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ReferenceMark"), m_ReferenceMark));
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
 }
 
-void Footnote::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Content")))
+    if(multipart->hasContent(_XPLATSTR("Content")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Content")))
+        if(multipart->hasContent(_XPLATSTR("Content")))
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Content."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FootnoteType")))
+    if(multipart->hasContent(_XPLATSTR("FootnoteType")))
     {
-        setFootnoteType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FootnoteType"))));
+        setFootnoteType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FootnoteType"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Position")))
+    if(multipart->hasContent(_XPLATSTR("Position")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Position")))
+        if(multipart->hasContent(_XPLATSTR("Position")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Position."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Position."));
             setPosition( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("ReferenceMark")))
+    if(multipart->hasContent(_XPLATSTR("ReferenceMark")))
     {
-        setReferenceMark(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ReferenceMark"))));
+        setReferenceMark(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ReferenceMark"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
 }
 

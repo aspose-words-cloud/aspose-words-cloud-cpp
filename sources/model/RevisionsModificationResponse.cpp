@@ -51,7 +51,7 @@ web::json::value RevisionsModificationResponse::toJson() const
 
     if(m_ResultIsSet)
     {
-        val[utility::conversions::to_string_t("Result")] = ModelBase::toJson(m_Result);
+        val[_XPLATSTR("Result")] = ModelBase::toJson(m_Result);
     }
 
     return val;
@@ -61,9 +61,9 @@ void RevisionsModificationResponse::fromJson(web::json::value& val)
 {
     this->AsposeResponse::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Result")))
+    if(val.has_field(_XPLATSTR("Result")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Result")];
+        web::json::value& fieldValue = val[_XPLATSTR("Result")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
@@ -73,49 +73,41 @@ void RevisionsModificationResponse::fromJson(web::json::value& val)
     }
 }
 
-void RevisionsModificationResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void RevisionsModificationResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
     if(m_StatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
         
     }
     if(m_ResultIsSet)
     {
         if (m_Result.get())
         {
-            m_Result->toMultipart(multipart, utility::conversions::to_string_t("Result."));
+            m_Result->toMultipart(multipart, _XPLATSTR("Result."));
         }
         
     }
 }
 
-void RevisionsModificationResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void RevisionsModificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Code"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Status")))
+    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+    if(multipart->hasContent(_XPLATSTR("Status")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Status"))));
+        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Result")))
+    if(multipart->hasContent(_XPLATSTR("Result")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Result")))
+        if(multipart->hasContent(_XPLATSTR("Result")))
         {
             std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Result."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Result."));
             setResult( newItem );
         }
     }

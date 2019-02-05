@@ -27,7 +27,7 @@
 #define postCompareDocument_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "CompareData.h"
 #include <boost/optional.hpp>
 

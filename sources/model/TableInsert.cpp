@@ -53,19 +53,19 @@ web::json::value TableInsert::toJson() const
 
     if(m_PostionIsSet)
     {
-        val[utility::conversions::to_string_t("Postion")] = ModelBase::toJson(m_Postion);
+        val[_XPLATSTR("Postion")] = ModelBase::toJson(m_Postion);
     }
-    val[utility::conversions::to_string_t("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
-    val[utility::conversions::to_string_t("RowsCount")] = ModelBase::toJson(m_RowsCount);
+    val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
+    val[_XPLATSTR("RowsCount")] = ModelBase::toJson(m_RowsCount);
 
     return val;
 }
 
 void TableInsert::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Postion")))
+    if(val.has_field(_XPLATSTR("Postion")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Postion")];
+        web::json::value& fieldValue = val[_XPLATSTR("Postion")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -73,17 +73,17 @@ void TableInsert::fromJson(web::json::value& val)
             setPostion( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ColumnsCount")))
+    if(val.has_field(_XPLATSTR("ColumnsCount")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ColumnsCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("ColumnsCount")];
         if(!fieldValue.is_null())
         {
             setColumnsCount(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("RowsCount")))
+    if(val.has_field(_XPLATSTR("RowsCount")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("RowsCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("RowsCount")];
         if(!fieldValue.is_null())
         {
             setRowsCount(ModelBase::int32_tFromJson(fieldValue));
@@ -91,45 +91,37 @@ void TableInsert::fromJson(web::json::value& val)
     }
 }
 
-void TableInsert::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void TableInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_PostionIsSet)
     {
         if (m_Postion.get())
         {
-            m_Postion->toMultipart(multipart, utility::conversions::to_string_t("Postion."));
+            m_Postion->toMultipart(multipart, _XPLATSTR("Postion."));
         }
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ColumnsCount"), m_ColumnsCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("RowsCount"), m_RowsCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RowsCount"), m_RowsCount));
 }
 
-void TableInsert::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void TableInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Postion")))
+    if(multipart->hasContent(_XPLATSTR("Postion")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Postion")))
+        if(multipart->hasContent(_XPLATSTR("Postion")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Postion."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Postion."));
             setPostion( newItem );
         }
     }
-    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ColumnsCount"))));
-    setRowsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("RowsCount"))));
+    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
+    setRowsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("RowsCount"))));
 }
 
 std::shared_ptr<DocumentPosition> TableInsert::getPostion() const

@@ -27,7 +27,7 @@
 #define putConvertDocument_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "HttpContent.h"
 #include <boost/optional.hpp>
 

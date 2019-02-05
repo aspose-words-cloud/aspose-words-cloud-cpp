@@ -52,11 +52,11 @@ web::json::value ModificationOperationResult::toJson() const
 
     if(m_SourceIsSet)
     {
-        val[utility::conversions::to_string_t("Source")] = ModelBase::toJson(m_Source);
+        val[_XPLATSTR("Source")] = ModelBase::toJson(m_Source);
     }
     if(m_DestIsSet)
     {
-        val[utility::conversions::to_string_t("Dest")] = ModelBase::toJson(m_Dest);
+        val[_XPLATSTR("Dest")] = ModelBase::toJson(m_Dest);
     }
 
     return val;
@@ -64,9 +64,9 @@ web::json::value ModificationOperationResult::toJson() const
 
 void ModificationOperationResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("Source")))
+    if(val.has_field(_XPLATSTR("Source")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Source")];
+        web::json::value& fieldValue = val[_XPLATSTR("Source")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -74,9 +74,9 @@ void ModificationOperationResult::fromJson(web::json::value& val)
             setSource( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Dest")))
+    if(val.has_field(_XPLATSTR("Dest")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Dest")];
+        web::json::value& fieldValue = val[_XPLATSTR("Dest")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -86,19 +86,15 @@ void ModificationOperationResult::fromJson(web::json::value& val)
     }
 }
 
-void ModificationOperationResult::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_SourceIsSet)
     {
         if (m_Source.get())
         {
-            m_Source->toMultipart(multipart, utility::conversions::to_string_t("Source."));
+            m_Source->toMultipart(multipart, _XPLATSTR("Source."));
         }
         
     }
@@ -106,35 +102,31 @@ void ModificationOperationResult::toMultipart(std::shared_ptr<MultipartFormData>
     {
         if (m_Dest.get())
         {
-            m_Dest->toMultipart(multipart, utility::conversions::to_string_t("Dest."));
+            m_Dest->toMultipart(multipart, _XPLATSTR("Dest."));
         }
         
     }
 }
 
-void ModificationOperationResult::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void ModificationOperationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Source")))
+    if(multipart->hasContent(_XPLATSTR("Source")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Source")))
+        if(multipart->hasContent(_XPLATSTR("Source")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Source."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Source."));
             setSource( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Dest")))
+    if(multipart->hasContent(_XPLATSTR("Dest")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Dest")))
+        if(multipart->hasContent(_XPLATSTR("Dest")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Dest."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Dest."));
             setDest( newItem );
         }
     }

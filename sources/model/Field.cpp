@@ -33,9 +33,9 @@ namespace model {
 
 Field::Field()
 {
-    m_LocaleId = utility::conversions::to_string_t("");
+    m_LocaleId = _XPLATSTR("");
     m_LocaleIdIsSet = false;
-    m_Result = utility::conversions::to_string_t("");
+    m_Result = _XPLATSTR("");
     m_ResultIsSet = false;
 }
 
@@ -54,11 +54,11 @@ web::json::value Field::toJson() const
 
     if(m_LocaleIdIsSet)
     {
-        val[utility::conversions::to_string_t("LocaleId")] = ModelBase::toJson(m_LocaleId);
+        val[_XPLATSTR("LocaleId")] = ModelBase::toJson(m_LocaleId);
     }
     if(m_ResultIsSet)
     {
-        val[utility::conversions::to_string_t("Result")] = ModelBase::toJson(m_Result);
+        val[_XPLATSTR("Result")] = ModelBase::toJson(m_Result);
     }
 
     return val;
@@ -68,17 +68,17 @@ void Field::fromJson(web::json::value& val)
 {
     this->FieldLink::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("LocaleId")))
+    if(val.has_field(_XPLATSTR("LocaleId")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("LocaleId")];
+        web::json::value& fieldValue = val[_XPLATSTR("LocaleId")];
         if(!fieldValue.is_null())
         {
             setLocaleId(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Result")))
+    if(val.has_field(_XPLATSTR("Result")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Result")];
+        web::json::value& fieldValue = val[_XPLATSTR("Result")];
         if(!fieldValue.is_null())
         {
             setResult(ModelBase::stringFromJson(fieldValue));
@@ -86,76 +86,68 @@ void Field::fromJson(web::json::value& val)
     }
 }
 
-void Field::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void Field::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_FieldCodeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("FieldCode"), m_FieldCode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FieldCode"), m_FieldCode));
         
     }
     if(m_LocaleIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("LocaleId"), m_LocaleId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleId"), m_LocaleId));
         
     }
     if(m_ResultIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Result"), m_Result));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Result"), m_Result));
         
     }
 }
 
-void Field::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void Field::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("FieldCode")))
+    if(multipart->hasContent(_XPLATSTR("FieldCode")))
     {
-        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("FieldCode"))));
+        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FieldCode"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("LocaleId")))
+    if(multipart->hasContent(_XPLATSTR("LocaleId")))
     {
-        setLocaleId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("LocaleId"))));
+        setLocaleId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LocaleId"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Result")))
+    if(multipart->hasContent(_XPLATSTR("Result")))
     {
-        setResult(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Result"))));
+        setResult(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Result"))));
     }
 }
 

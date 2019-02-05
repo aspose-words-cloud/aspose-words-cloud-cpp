@@ -33,7 +33,7 @@ namespace model {
 
 HeaderFooterLink::HeaderFooterLink()
 {
-    m_Type = utility::conversions::to_string_t("");
+    m_Type = _XPLATSTR("");
     m_TypeIsSet = false;
 }
 
@@ -52,7 +52,7 @@ web::json::value HeaderFooterLink::toJson() const
 
     if(m_TypeIsSet)
     {
-        val[utility::conversions::to_string_t("Type")] = ModelBase::toJson(m_Type);
+        val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
     }
 
     return val;
@@ -62,9 +62,9 @@ void HeaderFooterLink::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Type")))
+    if(val.has_field(_XPLATSTR("Type")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Type")];
+        web::json::value& fieldValue = val[_XPLATSTR("Type")];
         if(!fieldValue.is_null())
         {
             setType(ModelBase::stringFromJson(fieldValue));
@@ -72,49 +72,41 @@ void HeaderFooterLink::fromJson(web::json::value& val)
     }
 }
 
-void HeaderFooterLink::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void HeaderFooterLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_TypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Type"), m_Type));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
         
     }
 }
 
-void HeaderFooterLink::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void HeaderFooterLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Type")))
+    if(multipart->hasContent(_XPLATSTR("Type")))
     {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Type"))));
+        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
     }
 }
 

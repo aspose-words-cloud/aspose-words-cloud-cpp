@@ -51,7 +51,6 @@ public:
         , const utility::string_t& message
         , std::map<utility::string_t, utility::string_t>& headers
         , std::shared_ptr<std::istream> content = nullptr );
-    virtual ~ApiException();
 
     std::map<utility::string_t, utility::string_t>& getHeaders();
     std::shared_ptr<std::istream> getContent() const;

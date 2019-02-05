@@ -27,7 +27,7 @@
 #define postInsertDocumentWatermarkText_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "WatermarkText.h"
 #include <boost/optional.hpp>
 

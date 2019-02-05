@@ -27,7 +27,7 @@
 #define putDocumentSaveAsTiff_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "TiffSaveOptionsData.h"
 #include <boost/optional.hpp>
 

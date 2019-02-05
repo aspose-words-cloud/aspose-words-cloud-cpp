@@ -34,11 +34,11 @@ namespace model {
 OfficeMathObject::OfficeMathObject()
 {
     m_ContentIsSet = false;
-    m_DisplayType = utility::conversions::to_string_t("");
+    m_DisplayType = _XPLATSTR("");
     m_DisplayTypeIsSet = false;
-    m_Justification = utility::conversions::to_string_t("");
+    m_Justification = _XPLATSTR("");
     m_JustificationIsSet = false;
-    m_MathObjectType = utility::conversions::to_string_t("");
+    m_MathObjectType = _XPLATSTR("");
     m_MathObjectTypeIsSet = false;
 }
 
@@ -57,19 +57,19 @@ web::json::value OfficeMathObject::toJson() const
 
     if(m_ContentIsSet)
     {
-        val[utility::conversions::to_string_t("Content")] = ModelBase::toJson(m_Content);
+        val[_XPLATSTR("Content")] = ModelBase::toJson(m_Content);
     }
     if(m_DisplayTypeIsSet)
     {
-        val[utility::conversions::to_string_t("DisplayType")] = ModelBase::toJson(m_DisplayType);
+        val[_XPLATSTR("DisplayType")] = ModelBase::toJson(m_DisplayType);
     }
     if(m_JustificationIsSet)
     {
-        val[utility::conversions::to_string_t("Justification")] = ModelBase::toJson(m_Justification);
+        val[_XPLATSTR("Justification")] = ModelBase::toJson(m_Justification);
     }
     if(m_MathObjectTypeIsSet)
     {
-        val[utility::conversions::to_string_t("MathObjectType")] = ModelBase::toJson(m_MathObjectType);
+        val[_XPLATSTR("MathObjectType")] = ModelBase::toJson(m_MathObjectType);
     }
 
     return val;
@@ -79,9 +79,9 @@ void OfficeMathObject::fromJson(web::json::value& val)
 {
     this->OfficeMathLink::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("Content")))
+    if(val.has_field(_XPLATSTR("Content")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Content")];
+        web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
@@ -89,25 +89,25 @@ void OfficeMathObject::fromJson(web::json::value& val)
             setContent( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("DisplayType")))
+    if(val.has_field(_XPLATSTR("DisplayType")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("DisplayType")];
+        web::json::value& fieldValue = val[_XPLATSTR("DisplayType")];
         if(!fieldValue.is_null())
         {
             setDisplayType(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("Justification")))
+    if(val.has_field(_XPLATSTR("Justification")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("Justification")];
+        web::json::value& fieldValue = val[_XPLATSTR("Justification")];
         if(!fieldValue.is_null())
         {
             setJustification(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("MathObjectType")))
+    if(val.has_field(_XPLATSTR("MathObjectType")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("MathObjectType")];
+        web::json::value& fieldValue = val[_XPLATSTR("MathObjectType")];
         if(!fieldValue.is_null())
         {
             setMathObjectType(ModelBase::stringFromJson(fieldValue));
@@ -115,93 +115,85 @@ void OfficeMathObject::fromJson(web::json::value& val)
     }
 }
 
-void OfficeMathObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void OfficeMathObject::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
     {
         if (m_Link.get())
         {
-            m_Link->toMultipart(multipart, utility::conversions::to_string_t("link."));
+            m_Link->toMultipart(multipart, _XPLATSTR("link."));
         }
         
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_ContentIsSet)
     {
         if (m_Content.get())
         {
-            m_Content->toMultipart(multipart, utility::conversions::to_string_t("Content."));
+            m_Content->toMultipart(multipart, _XPLATSTR("Content."));
         }
         
     }
     if(m_DisplayTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("DisplayType"), m_DisplayType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DisplayType"), m_DisplayType));
         
     }
     if(m_JustificationIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Justification"), m_Justification));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Justification"), m_Justification));
         
     }
     if(m_MathObjectTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("MathObjectType"), m_MathObjectType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MathObjectType"), m_MathObjectType));
         
     }
 }
 
-void OfficeMathObject::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void OfficeMathObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("link")))
+    if(multipart->hasContent(_XPLATSTR("link")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("link")))
+        if(multipart->hasContent(_XPLATSTR("link")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("link."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Content")))
+    if(multipart->hasContent(_XPLATSTR("Content")))
     {
-        if(multipart->hasContent(utility::conversions::to_string_t("Content")))
+        if(multipart->hasContent(_XPLATSTR("Content")))
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("Content."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("DisplayType")))
+    if(multipart->hasContent(_XPLATSTR("DisplayType")))
     {
-        setDisplayType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("DisplayType"))));
+        setDisplayType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DisplayType"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("Justification")))
+    if(multipart->hasContent(_XPLATSTR("Justification")))
     {
-        setJustification(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Justification"))));
+        setJustification(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Justification"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("MathObjectType")))
+    if(multipart->hasContent(_XPLATSTR("MathObjectType")))
     {
-        setMathObjectType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("MathObjectType"))));
+        setMathObjectType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("MathObjectType"))));
     }
 }
 

@@ -40,23 +40,22 @@ namespace model {
 class  HttpContent
 {
 public:
-    HttpContent();
-    virtual ~HttpContent();
+    virtual ~HttpContent() = default;
 
-    virtual utility::string_t getContentDisposition();
-    virtual void setContentDisposition( const utility::string_t& value );
+    virtual utility::string_t getContentDisposition() const;
+    virtual void setContentDisposition( utility::string_t value );
 
-    virtual utility::string_t getName();
-    virtual void setName( const utility::string_t& value );
+    virtual utility::string_t getName() const;
+    virtual void setName( utility::string_t value );
 
-    virtual utility::string_t getFileName();
-    virtual void setFileName( const utility::string_t& value );
+    virtual utility::string_t getFileName() const;
+    virtual void setFileName( utility::string_t value );
 
-    virtual utility::string_t getContentType();
-    virtual void setContentType( const utility::string_t& value );
+    virtual utility::string_t getContentType() const;
+    virtual void setContentType( utility::string_t value );
 
-    virtual std::shared_ptr<std::istream> getData();
-    virtual void setData( std::shared_ptr<std::istream> value );
+    virtual std::shared_ptr<std::istream> getData() const;
+    virtual void setData( const std::shared_ptr<std::istream>& value );
 
     virtual void writeTo( std::ostream& stream );
 

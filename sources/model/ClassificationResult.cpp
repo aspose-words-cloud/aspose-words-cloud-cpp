@@ -33,7 +33,7 @@ namespace model {
 
 ClassificationResult::ClassificationResult()
 {
-    m_ClassName = utility::conversions::to_string_t("");
+    m_ClassName = _XPLATSTR("");
     m_ClassNameIsSet = false;
     m_ClassProbability = 0.0;
 }
@@ -53,26 +53,26 @@ web::json::value ClassificationResult::toJson() const
 
     if(m_ClassNameIsSet)
     {
-        val[utility::conversions::to_string_t("ClassName")] = ModelBase::toJson(m_ClassName);
+        val[_XPLATSTR("ClassName")] = ModelBase::toJson(m_ClassName);
     }
-    val[utility::conversions::to_string_t("ClassProbability")] = ModelBase::toJson(m_ClassProbability);
+    val[_XPLATSTR("ClassProbability")] = ModelBase::toJson(m_ClassProbability);
 
     return val;
 }
 
 void ClassificationResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("ClassName")))
+    if(val.has_field(_XPLATSTR("ClassName")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ClassName")];
+        web::json::value& fieldValue = val[_XPLATSTR("ClassName")];
         if(!fieldValue.is_null())
         {
             setClassName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("ClassProbability")))
+    if(val.has_field(_XPLATSTR("ClassProbability")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("ClassProbability")];
+        web::json::value& fieldValue = val[_XPLATSTR("ClassProbability")];
         if(!fieldValue.is_null())
         {
             setClassProbability(ModelBase::doubleFromJson(fieldValue));
@@ -80,35 +80,27 @@ void ClassificationResult::fromJson(web::json::value& val)
     }
 }
 
-void ClassificationResult::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void ClassificationResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ClassNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ClassName"), m_ClassName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassName"), m_ClassName));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ClassProbability"), m_ClassProbability));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassProbability"), m_ClassProbability));
 }
 
-void ClassificationResult::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void ClassificationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    utility::string_t namePrefix = prefix;
-    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
-    {
-        namePrefix += utility::conversions::to_string_t(".");
-    }
+    auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(multipart->hasContent(utility::conversions::to_string_t("ClassName")))
+    if(multipart->hasContent(_XPLATSTR("ClassName")))
     {
-        setClassName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ClassName"))));
+        setClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ClassName"))));
     }
-    setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ClassProbability"))));
+    setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
 }
 
 utility::string_t ClassificationResult::getClassName() const

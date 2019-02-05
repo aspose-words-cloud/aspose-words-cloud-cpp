@@ -27,6 +27,7 @@
 
 
 
+#include <unordered_map>
 #include <map>
 
 #include <cpprest/details/basic_types.h>
@@ -39,17 +40,16 @@ namespace api {
 class  ApiConfiguration
 {
 public:
-    ApiConfiguration();
-    virtual ~ApiConfiguration();
+    virtual ~ApiConfiguration() = default;
 
     web::http::client::http_client_config& getHttpConfig();
-    void setHttpConfig( web::http::client::http_client_config& value );
+    void setHttpConfig(const web::http::client::http_client_config& value );
 
     utility::string_t getBaseUrl() const;
-    void setBaseUrl( const utility::string_t value );
+    void setBaseUrl( utility::string_t value );
 
     utility::string_t getUserAgent() const;
-    void setUserAgent( const utility::string_t value );
+    void setUserAgent( utility::string_t value );
 
     std::map<utility::string_t, utility::string_t>& getDefaultHeaders();
 
@@ -57,13 +57,13 @@ public:
     void setApiKey( const utility::string_t& prefix, const utility::string_t& apiKey );
 
     utility::string_t getAppKey() const;
-    void setAppKey( const utility::string_t& apiKey );
+    void setAppKey( utility::string_t apiKey );
 
     utility::string_t getAppSid() const;
-    void setAppSid( const utility::string_t& apiSid );
+    void setAppSid( utility::string_t apiSid );
 
     utility::string_t getApiVersion() const;
-	void setApiVersion(const utility::string_t& apiVersion);
+	void setApiVersion( utility::string_t apiVersion);
 
     bool isDebugMode() const;
     void setDebugMode(bool debug);
@@ -72,7 +72,7 @@ protected:
     bool m_DebugMode = false;
     utility::string_t m_BaseUrl;
     std::map<utility::string_t, utility::string_t> m_DefaultHeaders;
-    std::map<utility::string_t, utility::string_t> m_ApiKeys;
+    std::unordered_map<utility::string_t, utility::string_t> m_ApiKeys;
 
     utility::string_t m_AppKey;
     utility::string_t m_AppSid;

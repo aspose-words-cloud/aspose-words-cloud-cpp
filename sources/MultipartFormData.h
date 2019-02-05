@@ -30,7 +30,7 @@
 #include "HttpContent.h"
 
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <memory>
 
 #include <cpprest/details/basic_types.h>
@@ -46,19 +46,18 @@ class  MultipartFormData
 {
 public:
     MultipartFormData();
-    explicit MultipartFormData(const utility::string_t& boundary);
-    virtual ~MultipartFormData();
+    explicit MultipartFormData(utility::string_t boundary);
 
-    virtual void add( std::shared_ptr<HttpContent> content );
-    virtual utility::string_t getBoundary();
+    virtual void add(const std::shared_ptr<HttpContent>& content);
+    virtual utility::string_t getBoundary() const;
     virtual std::shared_ptr<HttpContent> getContent(const utility::string_t& name) const;
     virtual bool hasContent(const utility::string_t& name) const;
-    virtual void writeTo( std::ostream& target ) override;
+    void writeTo( std::ostream& target ) const override;
 
 protected:
     std::vector<std::shared_ptr<HttpContent>> m_Contents;
     utility::string_t m_Boundary;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> m_ContentLookup;
+    std::unordered_map<utility::string_t, std::shared_ptr<HttpContent>> m_ContentLookup;
 };
 
 }

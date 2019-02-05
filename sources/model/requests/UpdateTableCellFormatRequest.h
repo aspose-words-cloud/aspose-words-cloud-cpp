@@ -27,7 +27,7 @@
 #define updateTableCellFormat_H 
 
 #include "cpprest/details/basic_types.h"
-#undef U
+
 #include "TableCellFormat.h"
 #include <boost/optional.hpp>
 
