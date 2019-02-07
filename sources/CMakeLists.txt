@@ -39,8 +39,11 @@ find_package(Boost 1.68 REQUIRED COMPONENTS thread system regex date_time progra
 find_package(cpprestsdk CONFIG REQUIRED)
 target_link_libraries(Words.Cloud PUBLIC Boost::boost  Boost::thread Boost::system Boost::regex Boost::date_time Boost::program_options Boost::filesystem cpprestsdk::cpprest)
 target_compile_definitions(Words.Cloud PUBLIC _TURN_OFF_PLATFORM_STRING BOOST_ALL_NO_LIB)
-target_compile_options(Words.Cloud PRIVATE /bigobj)
 target_link_libraries(Words.Cloud PUBLIC $<$<CXX_COMPILER_ID:MSVC>:Bcrypt>)
+
+if(MSVC)
+  target_compile_options(Words.Cloud PRIVATE /bigobj)
+endif()
 
 if (COMMAND cotire)
     cotire(Words.Cloud)
