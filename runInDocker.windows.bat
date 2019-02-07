@@ -1,0 +1,1 @@
+docker run --rm -m 2g -v "%cd%/scripts:C:/scripts" words-cloud-cpp:windows cmd /c ".\scripts\runAll.bat %CPPWC_AK% %CPPWC_AS% %CPPWC_BU%"
