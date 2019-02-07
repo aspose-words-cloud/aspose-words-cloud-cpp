@@ -33,9 +33,9 @@ namespace model {
 
 PageNumber::PageNumber()
 {
-    m_Format = _XPLATSTR("");
+    m_Format = utility::conversions::to_string_t("");
     m_FormatIsSet = false;
-    m_Alignment = _XPLATSTR("");
+    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
     m_IsTop = false;
     m_SetPageNumberOnFirstPage = false;
@@ -124,8 +124,6 @@ void PageNumber::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
 
 void PageNumber::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Format")))
     {
         setFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Format"))));

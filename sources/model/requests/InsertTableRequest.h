@@ -27,7 +27,6 @@
 #define insertTable_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "TableInsert.h"
 #include <boost/optional.hpp>
 

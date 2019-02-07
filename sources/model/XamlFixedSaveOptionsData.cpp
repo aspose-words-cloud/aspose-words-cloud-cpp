@@ -33,9 +33,9 @@ namespace model {
 
 XamlFixedSaveOptionsData::XamlFixedSaveOptionsData()
 {
-    m_ResourcesFolder = _XPLATSTR("");
+    m_ResourcesFolder = utility::conversions::to_string_t("");
     m_ResourcesFolderIsSet = false;
-    m_ResourcesFolderAlias = _XPLATSTR("");
+    m_ResourcesFolderAlias = utility::conversions::to_string_t("");
     m_ResourcesFolderAliasIsSet = false;
 }
 
@@ -174,8 +174,6 @@ void XamlFixedSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void XamlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

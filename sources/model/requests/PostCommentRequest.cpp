@@ -39,16 +39,16 @@ PostCommentRequest::PostCommentRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_name(name),
-            m_commentIndex(commentIndex),
-            m_comment(comment),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime)
+            m_name(std::move(name)),
+            m_commentIndex(std::move(commentIndex)),
+            m_comment(std::move(comment)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -58,70 +58,70 @@ PostCommentRequest::PostCommentRequest(
             return m_name;
         }
         void PostCommentRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t PostCommentRequest::getCommentIndex() const
         {
             return m_commentIndex;
         }
         void PostCommentRequest::setCommentIndex(int32_t commentIndex){
-            m_commentIndex = commentIndex;
+            m_commentIndex = std::move(commentIndex);
         }
         std::shared_ptr<Comment> PostCommentRequest::getComment() const
         {
             return m_comment;
         }
         void PostCommentRequest::setComment(std::shared_ptr<Comment> comment){
-            m_comment = comment;
+            m_comment = std::move(comment);
         }
         boost::optional<utility::string_t> PostCommentRequest::getFolder() const
         {
             return m_folder;
         }
         void PostCommentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostCommentRequest::getStorage() const
         {
             return m_storage;
         }
         void PostCommentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostCommentRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostCommentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostCommentRequest::getPassword() const
         {
             return m_password;
         }
         void PostCommentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostCommentRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostCommentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PostCommentRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PostCommentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PostCommentRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PostCommentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

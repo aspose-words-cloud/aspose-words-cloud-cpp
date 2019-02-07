@@ -118,8 +118,6 @@ void DownsampleOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>
 
 void DownsampleOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("DownsampleImages")))
     {
         setDownsampleImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DownsampleImages"))));

@@ -39,16 +39,16 @@ DrawingObject::DrawingObject()
     m_Left = 0.0;
     m_LeftIsSet = false;
     m_OleDataLinkIsSet = false;
-    m_RelativeHorizontalPosition = _XPLATSTR("");
+    m_RelativeHorizontalPosition = utility::conversions::to_string_t("");
     m_RelativeHorizontalPositionIsSet = false;
-    m_RelativeVerticalPosition = _XPLATSTR("");
+    m_RelativeVerticalPosition = utility::conversions::to_string_t("");
     m_RelativeVerticalPositionIsSet = false;
     m_RenderLinksIsSet = false;
     m_Top = 0.0;
     m_TopIsSet = false;
     m_Width = 0.0;
     m_WidthIsSet = false;
-    m_WrapType = _XPLATSTR("");
+    m_WrapType = utility::conversions::to_string_t("");
     m_WrapTypeIsSet = false;
 }
 
@@ -299,8 +299,6 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

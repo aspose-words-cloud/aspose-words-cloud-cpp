@@ -27,7 +27,6 @@
 #define renderDrawingObject_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include <boost/optional.hpp>
 
 namespace io {

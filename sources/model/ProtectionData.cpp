@@ -33,7 +33,7 @@ namespace model {
 
 ProtectionData::ProtectionData()
 {
-    m_ProtectionType = _XPLATSTR("");
+    m_ProtectionType = utility::conversions::to_string_t("");
     m_ProtectionTypeIsSet = false;
 }
 
@@ -83,8 +83,6 @@ void ProtectionData::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void ProtectionData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ProtectionType")))
     {
         setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ProtectionType"))));

@@ -33,7 +33,7 @@ namespace model {
 
 SearchResponse::SearchResponse()
 {
-    m_SearchingPattern = _XPLATSTR("");
+    m_SearchingPattern = utility::conversions::to_string_t("");
     m_SearchingPatternIsSet = false;
     m_SearchResultsIsSet = false;
 }
@@ -114,8 +114,6 @@ void SearchResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void SearchResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
     if(multipart->hasContent(_XPLATSTR("Status")))
     {

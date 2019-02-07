@@ -33,7 +33,7 @@ namespace model {
 
 ParagraphLink::ParagraphLink()
 {
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
 }
 
@@ -98,8 +98,6 @@ void ParagraphLink::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void ParagraphLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

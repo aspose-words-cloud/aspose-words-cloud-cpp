@@ -37,20 +37,20 @@ TableCellFormat::TableCellFormat()
     m_BottomPaddingIsSet = false;
     m_FitText = false;
     m_FitTextIsSet = false;
-    m_HorizontalMerge = _XPLATSTR("");
+    m_HorizontalMerge = utility::conversions::to_string_t("");
     m_HorizontalMergeIsSet = false;
     m_LeftPadding = 0.0;
     m_LeftPaddingIsSet = false;
-    m_Orientation = _XPLATSTR("");
+    m_Orientation = utility::conversions::to_string_t("");
     m_OrientationIsSet = false;
     m_PreferredWidthIsSet = false;
     m_RightPadding = 0.0;
     m_RightPaddingIsSet = false;
     m_TopPadding = 0.0;
     m_TopPaddingIsSet = false;
-    m_VerticalAlignment = _XPLATSTR("");
+    m_VerticalAlignment = utility::conversions::to_string_t("");
     m_VerticalAlignmentIsSet = false;
-    m_VerticalMerge = _XPLATSTR("");
+    m_VerticalMerge = utility::conversions::to_string_t("");
     m_VerticalMergeIsSet = false;
     m_Width = 0.0;
     m_WidthIsSet = false;
@@ -299,8 +299,6 @@ void TableCellFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

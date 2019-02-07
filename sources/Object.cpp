@@ -56,7 +56,6 @@ void Object::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, co
 void Object::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     m_object = ModelBase::valueFromHttpContent(multipart->getContent(namePrefix + _XPLATSTR("object")));
 }
 

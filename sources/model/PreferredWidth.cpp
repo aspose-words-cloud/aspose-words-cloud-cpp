@@ -33,7 +33,7 @@ namespace model {
 
 PreferredWidth::PreferredWidth()
 {
-    m_Type = _XPLATSTR("");
+    m_Type = utility::conversions::to_string_t("");
     m_Value = 0.0;
     m_ValueIsSet = false;
 }
@@ -86,8 +86,6 @@ void PreferredWidth::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void PreferredWidth::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
     if(multipart->hasContent(_XPLATSTR("Value")))
     {

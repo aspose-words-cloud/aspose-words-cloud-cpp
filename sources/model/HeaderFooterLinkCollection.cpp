@@ -119,8 +119,6 @@ void HeaderFooterLinkCollection::toMultipart(const std::shared_ptr<MultipartForm
 
 void HeaderFooterLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

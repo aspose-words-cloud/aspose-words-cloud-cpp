@@ -36,7 +36,7 @@ FixedPageSaveOptionsData::FixedPageSaveOptionsData()
     m_JpegQuality = 0;
     m_JpegQualityIsSet = false;
     m_MetafileRenderingOptionsIsSet = false;
-    m_NumeralFormat = _XPLATSTR("");
+    m_NumeralFormat = utility::conversions::to_string_t("");
     m_NumeralFormatIsSet = false;
     m_OptimizeOutput = false;
     m_OptimizeOutputIsSet = false;
@@ -221,8 +221,6 @@ void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

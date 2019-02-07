@@ -27,7 +27,6 @@
 #define putProtectDocument_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "ProtectionRequest.h"
 #include <boost/optional.hpp>
 

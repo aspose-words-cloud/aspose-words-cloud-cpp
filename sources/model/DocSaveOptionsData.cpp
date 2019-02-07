@@ -33,7 +33,7 @@ namespace model {
 
 DocSaveOptionsData::DocSaveOptionsData()
 {
-    m_Password = _XPLATSTR("");
+    m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
     m_SaveRoutingSlip = false;
     m_SaveRoutingSlipIsSet = false;
@@ -144,8 +144,6 @@ void DocSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void DocSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

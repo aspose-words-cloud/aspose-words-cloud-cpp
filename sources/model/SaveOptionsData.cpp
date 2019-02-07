@@ -33,15 +33,15 @@ namespace model {
 
 SaveOptionsData::SaveOptionsData()
 {
-    m_ColorMode = _XPLATSTR("");
+    m_ColorMode = utility::conversions::to_string_t("");
     m_ColorModeIsSet = false;
-    m_SaveFormat = _XPLATSTR("");
+    m_SaveFormat = utility::conversions::to_string_t("");
     m_SaveFormatIsSet = false;
-    m_FileName = _XPLATSTR("");
+    m_FileName = utility::conversions::to_string_t("");
     m_FileNameIsSet = false;
-    m_DmlRenderingMode = _XPLATSTR("");
+    m_DmlRenderingMode = utility::conversions::to_string_t("");
     m_DmlRenderingModeIsSet = false;
-    m_DmlEffectsRenderingMode = _XPLATSTR("");
+    m_DmlEffectsRenderingMode = utility::conversions::to_string_t("");
     m_DmlEffectsRenderingModeIsSet = false;
     m_ZipOutput = false;
     m_ZipOutputIsSet = false;
@@ -231,8 +231,6 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

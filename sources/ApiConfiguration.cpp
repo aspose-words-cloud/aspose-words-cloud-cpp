@@ -50,7 +50,7 @@ utility::string_t ApiConfiguration::getApiVersion() const
 	return m_ApiVersion;
 }
 
-void ApiConfiguration::setApiVersion( utility::string_t  apiVersion)
+void ApiConfiguration::setApiVersion( utility::string_t apiVersion)
 {
 	m_ApiVersion = std::move(apiVersion);
 }

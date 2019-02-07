@@ -33,13 +33,13 @@ namespace model {
 
 PdfDigitalSignatureDetailsData::PdfDigitalSignatureDetailsData()
 {
-    m_CertificateFilename = _XPLATSTR("");
+    m_CertificateFilename = utility::conversions::to_string_t("");
     m_CertificateFilenameIsSet = false;
-    m_HashAlgorithm = _XPLATSTR("");
+    m_HashAlgorithm = utility::conversions::to_string_t("");
     m_HashAlgorithmIsSet = false;
-    m_Location = _XPLATSTR("");
+    m_Location = utility::conversions::to_string_t("");
     m_LocationIsSet = false;
-    m_Reason = _XPLATSTR("");
+    m_Reason = utility::conversions::to_string_t("");
     m_ReasonIsSet = false;
     m_SignatureDate = utility::datetime();
     m_SignatureDateIsSet = false;
@@ -159,8 +159,6 @@ void PdfDigitalSignatureDetailsData::toMultipart(const std::shared_ptr<Multipart
 
 void PdfDigitalSignatureDetailsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("CertificateFilename")))
     {
         setCertificateFilename(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CertificateFilename"))));

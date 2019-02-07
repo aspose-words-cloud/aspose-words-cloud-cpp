@@ -38,15 +38,15 @@ DeleteCommentRequest::DeleteCommentRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_name(name),
-            m_commentIndex(commentIndex),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime)
+            m_name(std::move(name)),
+            m_commentIndex(std::move(commentIndex)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -56,63 +56,63 @@ DeleteCommentRequest::DeleteCommentRequest(
             return m_name;
         }
         void DeleteCommentRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t DeleteCommentRequest::getCommentIndex() const
         {
             return m_commentIndex;
         }
         void DeleteCommentRequest::setCommentIndex(int32_t commentIndex){
-            m_commentIndex = commentIndex;
+            m_commentIndex = std::move(commentIndex);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getFolder() const
         {
             return m_folder;
         }
         void DeleteCommentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getStorage() const
         {
             return m_storage;
         }
         void DeleteCommentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void DeleteCommentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getPassword() const
         {
             return m_password;
         }
         void DeleteCommentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void DeleteCommentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void DeleteCommentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> DeleteCommentRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void DeleteCommentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

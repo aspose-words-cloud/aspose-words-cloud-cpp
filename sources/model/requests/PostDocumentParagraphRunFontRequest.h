@@ -27,7 +27,6 @@
 #define postDocumentParagraphRunFont_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "Font.h"
 #include <boost/optional.hpp>
 

@@ -35,7 +35,7 @@ OdtSaveOptionsData::OdtSaveOptionsData()
 {
     m_IsStrictSchema11 = false;
     m_IsStrictSchema11IsSet = false;
-    m_MeasureUnit = _XPLATSTR("");
+    m_MeasureUnit = utility::conversions::to_string_t("");
     m_MeasureUnitIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
@@ -162,8 +162,6 @@ void OdtSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void OdtSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

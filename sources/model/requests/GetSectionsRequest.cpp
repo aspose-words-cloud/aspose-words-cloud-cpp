@@ -34,11 +34,11 @@ GetSectionsRequest::GetSectionsRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
         ) : 
-            m_name(name),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password)
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
@@ -48,35 +48,35 @@ GetSectionsRequest::GetSectionsRequest(
             return m_name;
         }
         void GetSectionsRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         boost::optional<utility::string_t> GetSectionsRequest::getFolder() const
         {
             return m_folder;
         }
         void GetSectionsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetSectionsRequest::getStorage() const
         {
             return m_storage;
         }
         void GetSectionsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetSectionsRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetSectionsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetSectionsRequest::getPassword() const
         {
             return m_password;
         }
         void GetSectionsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
 
 }

@@ -33,7 +33,7 @@ namespace model {
 
 TextItem::TextItem()
 {
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
 }
 
@@ -93,8 +93,6 @@ void TextItem::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void TextItem::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

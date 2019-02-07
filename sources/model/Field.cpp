@@ -33,9 +33,9 @@ namespace model {
 
 Field::Field()
 {
-    m_LocaleId = _XPLATSTR("");
+    m_LocaleId = utility::conversions::to_string_t("");
     m_LocaleIdIsSet = false;
-    m_Result = _XPLATSTR("");
+    m_Result = utility::conversions::to_string_t("");
     m_ResultIsSet = false;
 }
 
@@ -122,8 +122,6 @@ void Field::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
 void Field::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

@@ -35,17 +35,17 @@ HtmlSaveOptionsData::HtmlSaveOptionsData()
 {
     m_AllowNegativeIndent = false;
     m_AllowNegativeIndentIsSet = false;
-    m_CssClassNamePrefix = _XPLATSTR("");
+    m_CssClassNamePrefix = utility::conversions::to_string_t("");
     m_CssClassNamePrefixIsSet = false;
-    m_CssStyleSheetFileName = _XPLATSTR("");
+    m_CssStyleSheetFileName = utility::conversions::to_string_t("");
     m_CssStyleSheetFileNameIsSet = false;
-    m_CssStyleSheetType = _XPLATSTR("");
+    m_CssStyleSheetType = utility::conversions::to_string_t("");
     m_CssStyleSheetTypeIsSet = false;
-    m_DocumentSplitCriteria = _XPLATSTR("");
+    m_DocumentSplitCriteria = utility::conversions::to_string_t("");
     m_DocumentSplitCriteriaIsSet = false;
     m_DocumentSplitHeadingLevel = 0;
     m_DocumentSplitHeadingLevelIsSet = false;
-    m_Encoding = _XPLATSTR("");
+    m_Encoding = utility::conversions::to_string_t("");
     m_EncodingIsSet = false;
     m_ExportDocumentProperties = false;
     m_ExportDocumentPropertiesIsSet = false;
@@ -55,13 +55,13 @@ HtmlSaveOptionsData::HtmlSaveOptionsData()
     m_ExportFontResourcesIsSet = false;
     m_ExportFontsAsBase64 = false;
     m_ExportFontsAsBase64IsSet = false;
-    m_ExportHeadersFootersMode = _XPLATSTR("");
+    m_ExportHeadersFootersMode = utility::conversions::to_string_t("");
     m_ExportHeadersFootersModeIsSet = false;
     m_ExportImagesAsBase64 = false;
     m_ExportImagesAsBase64IsSet = false;
     m_ExportLanguageInformation = false;
     m_ExportLanguageInformationIsSet = false;
-    m_ExportListLabels = _XPLATSTR("");
+    m_ExportListLabels = utility::conversions::to_string_t("");
     m_ExportListLabelsIsSet = false;
     m_ExportOriginalUrlForLinkedImages = false;
     m_ExportOriginalUrlForLinkedImagesIsSet = false;
@@ -83,31 +83,31 @@ HtmlSaveOptionsData::HtmlSaveOptionsData()
     m_ExportXhtmlTransitionalIsSet = false;
     m_FontResourcesSubsettingSizeThreshold = 0;
     m_FontResourcesSubsettingSizeThresholdIsSet = false;
-    m_FontsFolder = _XPLATSTR("");
+    m_FontsFolder = utility::conversions::to_string_t("");
     m_FontsFolderIsSet = false;
-    m_FontsFolderAlias = _XPLATSTR("");
+    m_FontsFolderAlias = utility::conversions::to_string_t("");
     m_FontsFolderAliasIsSet = false;
-    m_HtmlVersion = _XPLATSTR("");
+    m_HtmlVersion = utility::conversions::to_string_t("");
     m_HtmlVersionIsSet = false;
     m_ImageResolution = 0;
     m_ImageResolutionIsSet = false;
-    m_ImagesFolder = _XPLATSTR("");
+    m_ImagesFolder = utility::conversions::to_string_t("");
     m_ImagesFolderIsSet = false;
-    m_ImagesFolderAlias = _XPLATSTR("");
+    m_ImagesFolderAlias = utility::conversions::to_string_t("");
     m_ImagesFolderAliasIsSet = false;
-    m_MetafileFormat = _XPLATSTR("");
+    m_MetafileFormat = utility::conversions::to_string_t("");
     m_MetafileFormatIsSet = false;
-    m_OfficeMathOutputMode = _XPLATSTR("");
+    m_OfficeMathOutputMode = utility::conversions::to_string_t("");
     m_OfficeMathOutputModeIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
-    m_ResourceFolder = _XPLATSTR("");
+    m_ResourceFolder = utility::conversions::to_string_t("");
     m_ResourceFolderIsSet = false;
-    m_ResourceFolderAlias = _XPLATSTR("");
+    m_ResourceFolderAlias = utility::conversions::to_string_t("");
     m_ResourceFolderAliasIsSet = false;
     m_ScaleImageToShapeSize = false;
     m_ScaleImageToShapeSizeIsSet = false;
-    m_TableWidthOutputMode = _XPLATSTR("");
+    m_TableWidthOutputMode = utility::conversions::to_string_t("");
     m_TableWidthOutputModeIsSet = false;
 }
 
@@ -808,8 +808,6 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

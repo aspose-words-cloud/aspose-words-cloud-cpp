@@ -33,7 +33,7 @@ namespace model {
 
 WordsApiErrorResponse::WordsApiErrorResponse()
 {
-    m_Message = _XPLATSTR("");
+    m_Message = utility::conversions::to_string_t("");
     m_MessageIsSet = false;
 }
 
@@ -91,8 +91,6 @@ void WordsApiErrorResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
 void WordsApiErrorResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
     if(multipart->hasContent(_XPLATSTR("Status")))
     {

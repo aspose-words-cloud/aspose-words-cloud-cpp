@@ -33,7 +33,7 @@ namespace model {
 
 PclSaveOptionsData::PclSaveOptionsData()
 {
-    m_FalllbackFontName = _XPLATSTR("");
+    m_FalllbackFontName = utility::conversions::to_string_t("");
     m_FalllbackFontNameIsSet = false;
     m_RasterizeTransformedElements = false;
     m_RasterizeTransformedElementsIsSet = false;
@@ -173,8 +173,6 @@ void PclSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void PclSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

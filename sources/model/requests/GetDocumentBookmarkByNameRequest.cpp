@@ -35,12 +35,12 @@ GetDocumentBookmarkByNameRequest::GetDocumentBookmarkByNameRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
         ) : 
-            m_name(name),
-            m_bookmarkName(bookmarkName),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password)
+            m_name(std::move(name)),
+            m_bookmarkName(std::move(bookmarkName)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
@@ -50,42 +50,42 @@ GetDocumentBookmarkByNameRequest::GetDocumentBookmarkByNameRequest(
             return m_name;
         }
         void GetDocumentBookmarkByNameRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t GetDocumentBookmarkByNameRequest::getBookmarkName() const
         {
             return m_bookmarkName;
         }
         void GetDocumentBookmarkByNameRequest::setBookmarkName(utility::string_t bookmarkName){
-            m_bookmarkName = bookmarkName;
+            m_bookmarkName = std::move(bookmarkName);
         }
         boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getFolder() const
         {
             return m_folder;
         }
         void GetDocumentBookmarkByNameRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getStorage() const
         {
             return m_storage;
         }
         void GetDocumentBookmarkByNameRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetDocumentBookmarkByNameRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetDocumentBookmarkByNameRequest::getPassword() const
         {
             return m_password;
         }
         void GetDocumentBookmarkByNameRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
 
 }

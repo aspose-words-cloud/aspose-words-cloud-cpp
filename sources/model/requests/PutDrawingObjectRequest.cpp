@@ -40,17 +40,17 @@ PutDrawingObjectRequest::PutDrawingObjectRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
         ) : 
-            m_name(name),
-            m_drawingObject(drawingObject),
-            m_imageFile(imageFile),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime),
-            m_nodePath(nodePath)
+            m_name(std::move(name)),
+            m_drawingObject(std::move(drawingObject)),
+            m_imageFile(std::move(imageFile)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_nodePath(std::move(nodePath))
         {
             
         }
@@ -60,77 +60,77 @@ PutDrawingObjectRequest::PutDrawingObjectRequest(
             return m_name;
         }
         void PutDrawingObjectRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t PutDrawingObjectRequest::getDrawingObject() const
         {
             return m_drawingObject;
         }
         void PutDrawingObjectRequest::setDrawingObject(utility::string_t drawingObject){
-            m_drawingObject = drawingObject;
+            m_drawingObject = std::move(drawingObject);
         }
         std::shared_ptr<HttpContent> PutDrawingObjectRequest::getImageFile() const
         {
             return m_imageFile;
         }
         void PutDrawingObjectRequest::setImageFile(std::shared_ptr<HttpContent> imageFile){
-            m_imageFile = imageFile;
+            m_imageFile = std::move(imageFile);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getFolder() const
         {
             return m_folder;
         }
         void PutDrawingObjectRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getStorage() const
         {
             return m_storage;
         }
         void PutDrawingObjectRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PutDrawingObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getPassword() const
         {
             return m_password;
         }
         void PutDrawingObjectRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PutDrawingObjectRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PutDrawingObjectRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PutDrawingObjectRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
         boost::optional<utility::string_t> PutDrawingObjectRequest::getNodePath() const
         {
             return m_nodePath;
         }
         void PutDrawingObjectRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = nodePath;
+            m_nodePath = std::move(nodePath);
         }
 
 }

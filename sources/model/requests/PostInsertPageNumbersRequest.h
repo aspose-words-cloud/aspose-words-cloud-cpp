@@ -27,7 +27,6 @@
 #define postInsertPageNumbers_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "PageNumber.h"
 #include <boost/optional.hpp>
 

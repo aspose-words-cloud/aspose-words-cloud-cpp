@@ -33,7 +33,7 @@ namespace model {
 
 WatermarkText::WatermarkText()
 {
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
     m_RotationAngle = 0.0;
 }
@@ -94,8 +94,6 @@ void WatermarkText::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void WatermarkText::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Text")))
     {
         setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));

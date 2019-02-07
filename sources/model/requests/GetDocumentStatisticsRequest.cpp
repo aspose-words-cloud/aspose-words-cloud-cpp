@@ -37,14 +37,14 @@ GetDocumentStatisticsRequest::GetDocumentStatisticsRequest(
                 boost::optional<bool> includeFootnotes,
                 boost::optional<bool> includeTextInShapes
         ) : 
-            m_name(name),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_includeComments(includeComments),
-            m_includeFootnotes(includeFootnotes),
-            m_includeTextInShapes(includeTextInShapes)
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_includeComments(std::move(includeComments)),
+            m_includeFootnotes(std::move(includeFootnotes)),
+            m_includeTextInShapes(std::move(includeTextInShapes))
         {
             
         }
@@ -54,56 +54,56 @@ GetDocumentStatisticsRequest::GetDocumentStatisticsRequest(
             return m_name;
         }
         void GetDocumentStatisticsRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         boost::optional<utility::string_t> GetDocumentStatisticsRequest::getFolder() const
         {
             return m_folder;
         }
         void GetDocumentStatisticsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetDocumentStatisticsRequest::getStorage() const
         {
             return m_storage;
         }
         void GetDocumentStatisticsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetDocumentStatisticsRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetDocumentStatisticsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetDocumentStatisticsRequest::getPassword() const
         {
             return m_password;
         }
         void GetDocumentStatisticsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<bool> GetDocumentStatisticsRequest::getIncludeComments() const
         {
             return m_includeComments;
         }
         void GetDocumentStatisticsRequest::setIncludeComments(boost::optional<bool> includeComments){
-            m_includeComments = includeComments;
+            m_includeComments = std::move(includeComments);
         }
         boost::optional<bool> GetDocumentStatisticsRequest::getIncludeFootnotes() const
         {
             return m_includeFootnotes;
         }
         void GetDocumentStatisticsRequest::setIncludeFootnotes(boost::optional<bool> includeFootnotes){
-            m_includeFootnotes = includeFootnotes;
+            m_includeFootnotes = std::move(includeFootnotes);
         }
         boost::optional<bool> GetDocumentStatisticsRequest::getIncludeTextInShapes() const
         {
             return m_includeTextInShapes;
         }
         void GetDocumentStatisticsRequest::setIncludeTextInShapes(boost::optional<bool> includeTextInShapes){
-            m_includeTextInShapes = includeTextInShapes;
+            m_includeTextInShapes = std::move(includeTextInShapes);
         }
 
 }

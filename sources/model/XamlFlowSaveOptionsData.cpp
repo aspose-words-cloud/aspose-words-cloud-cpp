@@ -33,9 +33,9 @@ namespace model {
 
 XamlFlowSaveOptionsData::XamlFlowSaveOptionsData()
 {
-    m_ImagesFolder = _XPLATSTR("");
+    m_ImagesFolder = utility::conversions::to_string_t("");
     m_ImagesFolderIsSet = false;
-    m_ImagesFolderAlias = _XPLATSTR("");
+    m_ImagesFolderAlias = utility::conversions::to_string_t("");
     m_ImagesFolderAliasIsSet = false;
 }
 
@@ -145,8 +145,6 @@ void XamlFlowSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void XamlFlowSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

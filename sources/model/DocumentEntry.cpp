@@ -33,9 +33,9 @@ namespace model {
 
 DocumentEntry::DocumentEntry()
 {
-    m_Href = _XPLATSTR("");
+    m_Href = utility::conversions::to_string_t("");
     m_HrefIsSet = false;
-    m_ImportFormatMode = _XPLATSTR("");
+    m_ImportFormatMode = utility::conversions::to_string_t("");
     m_ImportFormatModeIsSet = false;
 }
 
@@ -102,8 +102,6 @@ void DocumentEntry::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void DocumentEntry::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Href")))
     {
         setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));

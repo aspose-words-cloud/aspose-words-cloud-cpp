@@ -27,7 +27,6 @@
 #define postRun_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "Run.h"
 #include <boost/optional.hpp>
 

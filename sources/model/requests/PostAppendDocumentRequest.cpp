@@ -38,15 +38,15 @@ PostAppendDocumentRequest::PostAppendDocumentRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_name(name),
-            m_documentList(documentList),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime)
+            m_name(std::move(name)),
+            m_documentList(std::move(documentList)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -56,63 +56,63 @@ PostAppendDocumentRequest::PostAppendDocumentRequest(
             return m_name;
         }
         void PostAppendDocumentRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         std::shared_ptr<DocumentEntryList> PostAppendDocumentRequest::getDocumentList() const
         {
             return m_documentList;
         }
         void PostAppendDocumentRequest::setDocumentList(std::shared_ptr<DocumentEntryList> documentList){
-            m_documentList = documentList;
+            m_documentList = std::move(documentList);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getFolder() const
         {
             return m_folder;
         }
         void PostAppendDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getStorage() const
         {
             return m_storage;
         }
         void PostAppendDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostAppendDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getPassword() const
         {
             return m_password;
         }
         void PostAppendDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostAppendDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PostAppendDocumentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PostAppendDocumentRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PostAppendDocumentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

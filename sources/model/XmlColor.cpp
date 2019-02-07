@@ -33,7 +33,7 @@ namespace model {
 
 XmlColor::XmlColor()
 {
-    m_Web = _XPLATSTR("");
+    m_Web = utility::conversions::to_string_t("");
     m_WebIsSet = false;
     m_Alpha = 0;
 }
@@ -94,8 +94,6 @@ void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void XmlColor::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Web")))
     {
         setWeb(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Web"))));

@@ -27,7 +27,6 @@
 #define insertTableCell_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "TableCellInsert.h"
 #include <boost/optional.hpp>
 

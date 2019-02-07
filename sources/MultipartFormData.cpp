@@ -34,7 +34,7 @@ namespace client {
 namespace model {
 
 MultipartFormData::MultipartFormData() :
-    m_Boundary(utility::conversions::details::to_string_t(boost::uuids::random_generator()()))
+ m_Boundary(utility::conversions::details::to_string_t(boost::uuids::random_generator()()))
 {
 }
 
@@ -72,7 +72,7 @@ std::shared_ptr<HttpContent> MultipartFormData::getContent(const utility::string
 
 void MultipartFormData::writeTo( std::ostream& target ) const
 {
-    for (const auto & content : m_Contents)
+for (const auto & content : m_Contents)
     {
         if (m_Contents.size() > 1)
         {

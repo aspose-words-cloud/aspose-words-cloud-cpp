@@ -27,7 +27,6 @@
 #define postField_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "Field.h"
 #include <boost/optional.hpp>
 

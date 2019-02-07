@@ -37,14 +37,14 @@ RenderPageRequest::RenderPageRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_name(name),
-            m_pageIndex(pageIndex),
-            m_format(format),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_fontsLocation(fontsLocation)
+            m_name(std::move(name)),
+            m_pageIndex(std::move(pageIndex)),
+            m_format(std::move(format)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
@@ -54,56 +54,56 @@ RenderPageRequest::RenderPageRequest(
             return m_name;
         }
         void RenderPageRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t RenderPageRequest::getPageIndex() const
         {
             return m_pageIndex;
         }
         void RenderPageRequest::setPageIndex(int32_t pageIndex){
-            m_pageIndex = pageIndex;
+            m_pageIndex = std::move(pageIndex);
         }
         utility::string_t RenderPageRequest::getFormat() const
         {
             return m_format;
         }
         void RenderPageRequest::setFormat(utility::string_t format){
-            m_format = format;
+            m_format = std::move(format);
         }
         boost::optional<utility::string_t> RenderPageRequest::getFolder() const
         {
             return m_folder;
         }
         void RenderPageRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> RenderPageRequest::getStorage() const
         {
             return m_storage;
         }
         void RenderPageRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> RenderPageRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void RenderPageRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> RenderPageRequest::getPassword() const
         {
             return m_password;
         }
         void RenderPageRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> RenderPageRequest::getFontsLocation() const
         {
             return m_fontsLocation;
         }
         void RenderPageRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = fontsLocation;
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

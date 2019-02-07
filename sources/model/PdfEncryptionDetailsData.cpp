@@ -33,13 +33,13 @@ namespace model {
 
 PdfEncryptionDetailsData::PdfEncryptionDetailsData()
 {
-    m_EncryptionAlgorithm = _XPLATSTR("");
+    m_EncryptionAlgorithm = utility::conversions::to_string_t("");
     m_EncryptionAlgorithmIsSet = false;
-    m_OwnerPassword = _XPLATSTR("");
+    m_OwnerPassword = utility::conversions::to_string_t("");
     m_OwnerPasswordIsSet = false;
-    m_Permissions = _XPLATSTR("");
+    m_Permissions = utility::conversions::to_string_t("");
     m_PermissionsIsSet = false;
-    m_UserPassword = _XPLATSTR("");
+    m_UserPassword = utility::conversions::to_string_t("");
     m_UserPasswordIsSet = false;
 }
 
@@ -140,8 +140,6 @@ void PdfEncryptionDetailsData::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void PdfEncryptionDetailsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("EncryptionAlgorithm")))
     {
         setEncryptionAlgorithm(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EncryptionAlgorithm"))));

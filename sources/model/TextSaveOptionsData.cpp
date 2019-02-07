@@ -33,13 +33,13 @@ namespace model {
 
 TextSaveOptionsData::TextSaveOptionsData()
 {
-    m_Encoding = _XPLATSTR("");
+    m_Encoding = utility::conversions::to_string_t("");
     m_EncodingIsSet = false;
     m_ExportHeadersFooters = false;
     m_ExportHeadersFootersIsSet = false;
     m_ForcePageBreaks = false;
     m_ForcePageBreaksIsSet = false;
-    m_ParagraphBreak = _XPLATSTR("");
+    m_ParagraphBreak = utility::conversions::to_string_t("");
     m_ParagraphBreakIsSet = false;
     m_PreserveTableLayout = false;
     m_PreserveTableLayoutIsSet = false;
@@ -217,8 +217,6 @@ void TextSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

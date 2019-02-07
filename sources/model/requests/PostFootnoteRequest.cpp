@@ -40,17 +40,17 @@ PostFootnoteRequest::PostFootnoteRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
         ) : 
-            m_name(name),
-            m_footnoteDto(footnoteDto),
-            m_index(index),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime),
-            m_nodePath(nodePath)
+            m_name(std::move(name)),
+            m_footnoteDto(std::move(footnoteDto)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_nodePath(std::move(nodePath))
         {
             
         }
@@ -60,77 +60,77 @@ PostFootnoteRequest::PostFootnoteRequest(
             return m_name;
         }
         void PostFootnoteRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         std::shared_ptr<Footnote> PostFootnoteRequest::getFootnoteDto() const
         {
             return m_footnoteDto;
         }
         void PostFootnoteRequest::setFootnoteDto(std::shared_ptr<Footnote> footnoteDto){
-            m_footnoteDto = footnoteDto;
+            m_footnoteDto = std::move(footnoteDto);
         }
         int32_t PostFootnoteRequest::getIndex() const
         {
             return m_index;
         }
         void PostFootnoteRequest::setIndex(int32_t index){
-            m_index = index;
+            m_index = std::move(index);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getFolder() const
         {
             return m_folder;
         }
         void PostFootnoteRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getStorage() const
         {
             return m_storage;
         }
         void PostFootnoteRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostFootnoteRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getPassword() const
         {
             return m_password;
         }
         void PostFootnoteRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostFootnoteRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PostFootnoteRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PostFootnoteRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
         boost::optional<utility::string_t> PostFootnoteRequest::getNodePath() const
         {
             return m_nodePath;
         }
         void PostFootnoteRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = nodePath;
+            m_nodePath = std::move(nodePath);
         }
 
 }

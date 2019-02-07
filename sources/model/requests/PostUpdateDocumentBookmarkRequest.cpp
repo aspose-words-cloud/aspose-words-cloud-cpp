@@ -39,16 +39,16 @@ PostUpdateDocumentBookmarkRequest::PostUpdateDocumentBookmarkRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_name(name),
-            m_bookmarkData(bookmarkData),
-            m_bookmarkName(bookmarkName),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime)
+            m_name(std::move(name)),
+            m_bookmarkData(std::move(bookmarkData)),
+            m_bookmarkName(std::move(bookmarkName)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -58,70 +58,70 @@ PostUpdateDocumentBookmarkRequest::PostUpdateDocumentBookmarkRequest(
             return m_name;
         }
         void PostUpdateDocumentBookmarkRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         std::shared_ptr<BookmarkData> PostUpdateDocumentBookmarkRequest::getBookmarkData() const
         {
             return m_bookmarkData;
         }
         void PostUpdateDocumentBookmarkRequest::setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData){
-            m_bookmarkData = bookmarkData;
+            m_bookmarkData = std::move(bookmarkData);
         }
         utility::string_t PostUpdateDocumentBookmarkRequest::getBookmarkName() const
         {
             return m_bookmarkName;
         }
         void PostUpdateDocumentBookmarkRequest::setBookmarkName(utility::string_t bookmarkName){
-            m_bookmarkName = bookmarkName;
+            m_bookmarkName = std::move(bookmarkName);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getFolder() const
         {
             return m_folder;
         }
         void PostUpdateDocumentBookmarkRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getStorage() const
         {
             return m_storage;
         }
         void PostUpdateDocumentBookmarkRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostUpdateDocumentBookmarkRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getPassword() const
         {
             return m_password;
         }
         void PostUpdateDocumentBookmarkRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostUpdateDocumentBookmarkRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PostUpdateDocumentBookmarkRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PostUpdateDocumentBookmarkRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PostUpdateDocumentBookmarkRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

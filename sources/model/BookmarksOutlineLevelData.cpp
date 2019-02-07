@@ -33,7 +33,7 @@ namespace model {
 
 BookmarksOutlineLevelData::BookmarksOutlineLevelData()
 {
-    m_Name = _XPLATSTR("");
+    m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
     m_BookmarksOutlineLevel = 0;
 }
@@ -94,8 +94,6 @@ void BookmarksOutlineLevelData::toMultipart(const std::shared_ptr<MultipartFormD
 
 void BookmarksOutlineLevelData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Name")))
     {
         setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));

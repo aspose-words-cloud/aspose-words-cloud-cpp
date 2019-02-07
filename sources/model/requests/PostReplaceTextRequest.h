@@ -27,7 +27,6 @@
 #define postReplaceText_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "ReplaceTextRequest.h"
 #include <boost/optional.hpp>
 

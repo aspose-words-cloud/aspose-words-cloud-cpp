@@ -37,13 +37,13 @@ SvgSaveOptionsData::SvgSaveOptionsData()
     m_ExportEmbeddedImagesIsSet = false;
     m_FitToViewPort = false;
     m_FitToViewPortIsSet = false;
-    m_ResourcesFolder = _XPLATSTR("");
+    m_ResourcesFolder = utility::conversions::to_string_t("");
     m_ResourcesFolderIsSet = false;
-    m_ResourcesFolderAlias = _XPLATSTR("");
+    m_ResourcesFolderAlias = utility::conversions::to_string_t("");
     m_ResourcesFolderAliasIsSet = false;
     m_ShowPageBorder = false;
     m_ShowPageBorderIsSet = false;
-    m_TextOutputMode = _XPLATSTR("");
+    m_TextOutputMode = utility::conversions::to_string_t("");
     m_TextOutputModeIsSet = false;
 }
 
@@ -247,8 +247,6 @@ void SvgSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void SvgSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

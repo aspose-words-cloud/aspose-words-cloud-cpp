@@ -27,7 +27,6 @@
 #define updateTableProperties_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "TableProperties.h"
 #include <boost/optional.hpp>
 

@@ -31,8 +31,8 @@ PutDocumentFieldNamesRequest::PutDocumentFieldNamesRequest(
         std::shared_ptr<HttpContent> _template,
                 boost::optional<bool> useNonMergeFields
         ) : 
-            m__template(_template),
-            m_useNonMergeFields(useNonMergeFields)
+            m__template(std::move(_template)),
+            m_useNonMergeFields(std::move(useNonMergeFields))
         {
             
         }
@@ -42,14 +42,14 @@ PutDocumentFieldNamesRequest::PutDocumentFieldNamesRequest(
             return m__template;
         }
         void PutDocumentFieldNamesRequest::setTemplate(std::shared_ptr<HttpContent> _template){
-            m__template = _template;
+            m__template = std::move(_template);
         }
         boost::optional<bool> PutDocumentFieldNamesRequest::getUseNonMergeFields() const
         {
             return m_useNonMergeFields;
         }
         void PutDocumentFieldNamesRequest::setUseNonMergeFields(boost::optional<bool> useNonMergeFields){
-            m_useNonMergeFields = useNonMergeFields;
+            m_useNonMergeFields = std::move(useNonMergeFields);
         }
 
 }

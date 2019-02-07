@@ -37,11 +37,11 @@ ParagraphFormat::ParagraphFormat()
     m_AddSpaceBetweenFarEastAndAlphaIsSet = false;
     m_AddSpaceBetweenFarEastAndDigit = false;
     m_AddSpaceBetweenFarEastAndDigitIsSet = false;
-    m_Alignment = _XPLATSTR("");
+    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
     m_Bidi = false;
     m_BidiIsSet = false;
-    m_DropCapPosition = _XPLATSTR("");
+    m_DropCapPosition = utility::conversions::to_string_t("");
     m_DropCapPositionIsSet = false;
     m_FirstLineIndent = 0.0;
     m_FirstLineIndentIsSet = false;
@@ -53,13 +53,13 @@ ParagraphFormat::ParagraphFormat()
     m_LeftIndentIsSet = false;
     m_LineSpacing = 0.0;
     m_LineSpacingIsSet = false;
-    m_LineSpacingRule = _XPLATSTR("");
+    m_LineSpacingRule = utility::conversions::to_string_t("");
     m_LineSpacingRuleIsSet = false;
     m_LinesToDrop = 0;
     m_LinesToDropIsSet = false;
     m_NoSpaceBetweenParagraphsOfSameStyle = false;
     m_NoSpaceBetweenParagraphsOfSameStyleIsSet = false;
-    m_OutlineLevel = _XPLATSTR("");
+    m_OutlineLevel = utility::conversions::to_string_t("");
     m_OutlineLevelIsSet = false;
     m_PageBreakBefore = false;
     m_PageBreakBeforeIsSet = false;
@@ -73,9 +73,9 @@ ParagraphFormat::ParagraphFormat()
     m_SpaceBeforeIsSet = false;
     m_SpaceBeforeAuto = false;
     m_SpaceBeforeAutoIsSet = false;
-    m_StyleIdentifier = _XPLATSTR("");
+    m_StyleIdentifier = utility::conversions::to_string_t("");
     m_StyleIdentifierIsSet = false;
-    m_StyleName = _XPLATSTR("");
+    m_StyleName = utility::conversions::to_string_t("");
     m_StyleNameIsSet = false;
     m_SuppressAutoHyphens = false;
     m_SuppressAutoHyphensIsSet = false;
@@ -530,8 +530,6 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

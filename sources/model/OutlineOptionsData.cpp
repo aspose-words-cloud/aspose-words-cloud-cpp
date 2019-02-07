@@ -199,8 +199,6 @@ void OutlineOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void OutlineOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         m_BookmarksOutlineLevels.clear();
         if(multipart->hasContent(_XPLATSTR("BookmarksOutlineLevels")))

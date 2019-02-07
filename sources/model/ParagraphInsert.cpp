@@ -33,7 +33,7 @@ namespace model {
 
 ParagraphInsert::ParagraphInsert()
 {
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
 }
 
@@ -83,8 +83,6 @@ void ParagraphInsert::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void ParagraphInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Text")))
     {
         setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));

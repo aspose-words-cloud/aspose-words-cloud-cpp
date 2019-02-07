@@ -33,9 +33,9 @@ namespace model {
 
 OoxmlSaveOptionsData::OoxmlSaveOptionsData()
 {
-    m_Compliance = _XPLATSTR("");
+    m_Compliance = utility::conversions::to_string_t("");
     m_ComplianceIsSet = false;
-    m_Password = _XPLATSTR("");
+    m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
@@ -163,8 +163,6 @@ void OoxmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>&
 
 void OoxmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

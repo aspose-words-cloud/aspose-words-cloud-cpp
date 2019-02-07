@@ -82,8 +82,6 @@ void TableCellInsert::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void TableCellInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
         setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));

@@ -33,7 +33,7 @@ namespace model {
 
 NodeLink::NodeLink()
 {
-    m_NodeId = _XPLATSTR("");
+    m_NodeId = utility::conversions::to_string_t("");
     m_NodeIdIsSet = false;
 }
 
@@ -93,8 +93,6 @@ void NodeLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void NodeLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

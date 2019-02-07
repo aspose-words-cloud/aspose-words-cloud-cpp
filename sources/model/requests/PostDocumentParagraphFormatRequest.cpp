@@ -40,17 +40,17 @@ PostDocumentParagraphFormatRequest::PostDocumentParagraphFormatRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_name(name),
-            m_dto(dto),
-            m_nodePath(nodePath),
-            m_index(index),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime)
+            m_name(std::move(name)),
+            m_dto(std::move(dto)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -60,77 +60,77 @@ PostDocumentParagraphFormatRequest::PostDocumentParagraphFormatRequest(
             return m_name;
         }
         void PostDocumentParagraphFormatRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         std::shared_ptr<ParagraphFormat> PostDocumentParagraphFormatRequest::getDto() const
         {
             return m_dto;
         }
         void PostDocumentParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormat> dto){
-            m_dto = dto;
+            m_dto = std::move(dto);
         }
         utility::string_t PostDocumentParagraphFormatRequest::getNodePath() const
         {
             return m_nodePath;
         }
         void PostDocumentParagraphFormatRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = nodePath;
+            m_nodePath = std::move(nodePath);
         }
         int32_t PostDocumentParagraphFormatRequest::getIndex() const
         {
             return m_index;
         }
         void PostDocumentParagraphFormatRequest::setIndex(int32_t index){
-            m_index = index;
+            m_index = std::move(index);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getFolder() const
         {
             return m_folder;
         }
         void PostDocumentParagraphFormatRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getStorage() const
         {
             return m_storage;
         }
         void PostDocumentParagraphFormatRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostDocumentParagraphFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getPassword() const
         {
             return m_password;
         }
         void PostDocumentParagraphFormatRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostDocumentParagraphFormatRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PostDocumentParagraphFormatRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PostDocumentParagraphFormatRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PostDocumentParagraphFormatRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

@@ -36,13 +36,13 @@ GetOfficeMathObjectRequest::GetOfficeMathObjectRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> nodePath
         ) : 
-            m_name(name),
-            m_index(index),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_nodePath(nodePath)
+            m_name(std::move(name)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_nodePath(std::move(nodePath))
         {
             
         }
@@ -52,49 +52,49 @@ GetOfficeMathObjectRequest::GetOfficeMathObjectRequest(
             return m_name;
         }
         void GetOfficeMathObjectRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t GetOfficeMathObjectRequest::getIndex() const
         {
             return m_index;
         }
         void GetOfficeMathObjectRequest::setIndex(int32_t index){
-            m_index = index;
+            m_index = std::move(index);
         }
         boost::optional<utility::string_t> GetOfficeMathObjectRequest::getFolder() const
         {
             return m_folder;
         }
         void GetOfficeMathObjectRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetOfficeMathObjectRequest::getStorage() const
         {
             return m_storage;
         }
         void GetOfficeMathObjectRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetOfficeMathObjectRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetOfficeMathObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetOfficeMathObjectRequest::getPassword() const
         {
             return m_password;
         }
         void GetOfficeMathObjectRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> GetOfficeMathObjectRequest::getNodePath() const
         {
             return m_nodePath;
         }
         void GetOfficeMathObjectRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = nodePath;
+            m_nodePath = std::move(nodePath);
         }
 
 }

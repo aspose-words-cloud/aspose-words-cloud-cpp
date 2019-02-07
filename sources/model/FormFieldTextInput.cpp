@@ -35,11 +35,11 @@ FormFieldTextInput::FormFieldTextInput()
 {
     m_MaxLength = 0;
     m_MaxLengthIsSet = false;
-    m_TextInputDefault = _XPLATSTR("");
+    m_TextInputDefault = utility::conversions::to_string_t("");
     m_TextInputDefaultIsSet = false;
-    m_TextInputFormat = _XPLATSTR("");
+    m_TextInputFormat = utility::conversions::to_string_t("");
     m_TextInputFormatIsSet = false;
-    m_TextInputType = _XPLATSTR("");
+    m_TextInputType = utility::conversions::to_string_t("");
     m_TextInputTypeIsSet = false;
 }
 
@@ -195,8 +195,6 @@ void FormFieldTextInput::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void FormFieldTextInput::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

@@ -36,13 +36,13 @@ GetHeaderFooterRequest::GetHeaderFooterRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> filterByType
         ) : 
-            m_name(name),
-            m_headerFooterIndex(headerFooterIndex),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_filterByType(filterByType)
+            m_name(std::move(name)),
+            m_headerFooterIndex(std::move(headerFooterIndex)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_filterByType(std::move(filterByType))
         {
             
         }
@@ -52,49 +52,49 @@ GetHeaderFooterRequest::GetHeaderFooterRequest(
             return m_name;
         }
         void GetHeaderFooterRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t GetHeaderFooterRequest::getHeaderFooterIndex() const
         {
             return m_headerFooterIndex;
         }
         void GetHeaderFooterRequest::setHeaderFooterIndex(int32_t headerFooterIndex){
-            m_headerFooterIndex = headerFooterIndex;
+            m_headerFooterIndex = std::move(headerFooterIndex);
         }
         boost::optional<utility::string_t> GetHeaderFooterRequest::getFolder() const
         {
             return m_folder;
         }
         void GetHeaderFooterRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetHeaderFooterRequest::getStorage() const
         {
             return m_storage;
         }
         void GetHeaderFooterRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetHeaderFooterRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetHeaderFooterRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetHeaderFooterRequest::getPassword() const
         {
             return m_password;
         }
         void GetHeaderFooterRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> GetHeaderFooterRequest::getFilterByType() const
         {
             return m_filterByType;
         }
         void GetHeaderFooterRequest::setFilterByType(boost::optional<utility::string_t> filterByType){
-            m_filterByType = filterByType;
+            m_filterByType = std::move(filterByType);
         }
 
 }

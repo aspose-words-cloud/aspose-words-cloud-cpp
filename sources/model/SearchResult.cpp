@@ -110,8 +110,6 @@ void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("RangeStart")))
     {
         if(multipart->hasContent(_XPLATSTR("RangeStart")))

@@ -38,13 +38,13 @@ ImageSaveOptionsData::ImageSaveOptionsData()
     m_HorizontalResolutionIsSet = false;
     m_ImageBrightness = 0.0;
     m_ImageBrightnessIsSet = false;
-    m_ImageColorMode = _XPLATSTR("");
+    m_ImageColorMode = utility::conversions::to_string_t("");
     m_ImageColorModeIsSet = false;
     m_ImageContrast = 0.0;
     m_ImageContrastIsSet = false;
-    m_PaperColor = _XPLATSTR("");
+    m_PaperColor = utility::conversions::to_string_t("");
     m_PaperColorIsSet = false;
-    m_PixelFormat = _XPLATSTR("");
+    m_PixelFormat = utility::conversions::to_string_t("");
     m_PixelFormatIsSet = false;
     m_Resolution = 0.0;
     m_ResolutionIsSet = false;
@@ -378,8 +378,6 @@ void ImageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>&
 
 void ImageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

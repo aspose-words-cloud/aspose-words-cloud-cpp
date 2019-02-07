@@ -39,7 +39,7 @@ TableRowFormat::TableRowFormat()
     m_HeadingFormatIsSet = false;
     m_Height = 0.0;
     m_HeightIsSet = false;
-    m_HeightRule = _XPLATSTR("");
+    m_HeightRule = utility::conversions::to_string_t("");
     m_HeightRuleIsSet = false;
 }
 
@@ -147,8 +147,6 @@ void TableRowFormat::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void TableRowFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

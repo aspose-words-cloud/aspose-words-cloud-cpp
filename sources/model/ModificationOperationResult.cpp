@@ -110,8 +110,6 @@ void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFor
 
 void ModificationOperationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Source")))
     {
         if(multipart->hasContent(_XPLATSTR("Source")))

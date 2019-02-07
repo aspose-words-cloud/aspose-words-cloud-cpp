@@ -33,7 +33,7 @@ namespace model {
 
 ClassificationResult::ClassificationResult()
 {
-    m_ClassName = _XPLATSTR("");
+    m_ClassName = utility::conversions::to_string_t("");
     m_ClassNameIsSet = false;
     m_ClassProbability = 0.0;
 }
@@ -94,8 +94,6 @@ void ClassificationResult::toMultipart(const std::shared_ptr<MultipartFormData>&
 
 void ClassificationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ClassName")))
     {
         setClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ClassName"))));

@@ -33,9 +33,9 @@ namespace model {
 
 Hyperlink::Hyperlink()
 {
-    m_DisplayText = _XPLATSTR("");
+    m_DisplayText = utility::conversions::to_string_t("");
     m_DisplayTextIsSet = false;
-    m_Value = _XPLATSTR("");
+    m_Value = utility::conversions::to_string_t("");
     m_ValueIsSet = false;
 }
 
@@ -112,8 +112,6 @@ void Hyperlink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void Hyperlink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

@@ -34,9 +34,9 @@ namespace model {
 Document::Document()
 {
     m_LinksIsSet = false;
-    m_FileName = _XPLATSTR("");
+    m_FileName = utility::conversions::to_string_t("");
     m_FileNameIsSet = false;
-    m_SourceFormat = _XPLATSTR("");
+    m_SourceFormat = utility::conversions::to_string_t("");
     m_IsEncrypted = false;
     m_IsSigned = false;
     m_DocumentPropertiesIsSet = false;
@@ -177,8 +177,6 @@ void Document::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         m_Links.clear();
         if(multipart->hasContent(_XPLATSTR("Links")))

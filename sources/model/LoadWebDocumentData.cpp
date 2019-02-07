@@ -33,7 +33,7 @@ namespace model {
 
 LoadWebDocumentData::LoadWebDocumentData()
 {
-    m_LoadingDocumentUrl = _XPLATSTR("");
+    m_LoadingDocumentUrl = utility::conversions::to_string_t("");
     m_LoadingDocumentUrlIsSet = false;
     m_SaveOptionsIsSet = false;
 }
@@ -106,8 +106,6 @@ void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void LoadWebDocumentData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("LoadingDocumentUrl")))
     {
         setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LoadingDocumentUrl"))));

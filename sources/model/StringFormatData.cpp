@@ -33,15 +33,15 @@ namespace model {
 
 StringFormatData::StringFormatData()
 {
-    m_Alignment = _XPLATSTR("");
+    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
-    m_FormatFlags = _XPLATSTR("");
+    m_FormatFlags = utility::conversions::to_string_t("");
     m_FormatFlagsIsSet = false;
-    m_HotkeyPrefix = _XPLATSTR("");
+    m_HotkeyPrefix = utility::conversions::to_string_t("");
     m_HotkeyPrefixIsSet = false;
-    m_LineAlignment = _XPLATSTR("");
+    m_LineAlignment = utility::conversions::to_string_t("");
     m_LineAlignmentIsSet = false;
-    m_Trimming = _XPLATSTR("");
+    m_Trimming = utility::conversions::to_string_t("");
     m_TrimmingIsSet = false;
 }
 
@@ -159,8 +159,6 @@ void StringFormatData::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void StringFormatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Alignment")))
     {
         setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));

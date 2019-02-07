@@ -39,16 +39,16 @@ PutHeaderFooterRequest::PutHeaderFooterRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> sectionPath
         ) : 
-            m_name(name),
-            m_headerFooterType(headerFooterType),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime),
-            m_sectionPath(sectionPath)
+            m_name(std::move(name)),
+            m_headerFooterType(std::move(headerFooterType)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_sectionPath(std::move(sectionPath))
         {
             
         }
@@ -58,70 +58,70 @@ PutHeaderFooterRequest::PutHeaderFooterRequest(
             return m_name;
         }
         void PutHeaderFooterRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t PutHeaderFooterRequest::getHeaderFooterType() const
         {
             return m_headerFooterType;
         }
         void PutHeaderFooterRequest::setHeaderFooterType(utility::string_t headerFooterType){
-            m_headerFooterType = headerFooterType;
+            m_headerFooterType = std::move(headerFooterType);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getFolder() const
         {
             return m_folder;
         }
         void PutHeaderFooterRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getStorage() const
         {
             return m_storage;
         }
         void PutHeaderFooterRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PutHeaderFooterRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getPassword() const
         {
             return m_password;
         }
         void PutHeaderFooterRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PutHeaderFooterRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void PutHeaderFooterRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void PutHeaderFooterRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
         boost::optional<utility::string_t> PutHeaderFooterRequest::getSectionPath() const
         {
             return m_sectionPath;
         }
         void PutHeaderFooterRequest::setSectionPath(boost::optional<utility::string_t> sectionPath){
-            m_sectionPath = sectionPath;
+            m_sectionPath = std::move(sectionPath);
         }
 
 }

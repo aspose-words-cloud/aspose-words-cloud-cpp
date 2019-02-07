@@ -27,7 +27,6 @@
 #define updateBorder_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "Border.h"
 #include <boost/optional.hpp>
 

@@ -65,7 +65,7 @@ web::json::value ModelBase::toJson(const std::shared_ptr<HttpContent>& content )
 
 std::shared_ptr<HttpContent> ModelBase::fileFromJson(web::json::value& val)
 {
-    std::shared_ptr<HttpContent> content(new HttpContent);
+    std::shared_ptr<HttpContent> content = std::make_shared<HttpContent>();
 
     if(val.has_field(_XPLATSTR("ContentDisposition")))
     {
@@ -135,9 +135,9 @@ std::shared_ptr<HttpContent> ModelBase::toHttpContent( const utility::string_t& 
     content->setName( name );
     content->setContentDisposition( _XPLATSTR("form-data") );
     content->setContentType( contentType );
-    auto valueAsStringStream = std::make_shared<std::stringstream>();
+	auto valueAsStringStream = std::make_shared<std::stringstream>();
 	(*valueAsStringStream) << value;
-    content->setData(valueAsStringStream);
+    content->setData( valueAsStringStream );
     return content;
 }
 std::shared_ptr<HttpContent> ModelBase::toHttpContent( const utility::string_t& name, int64_t value, const utility::string_t& contentType )
@@ -146,7 +146,7 @@ std::shared_ptr<HttpContent> ModelBase::toHttpContent( const utility::string_t& 
     content->setName( name );
     content->setContentDisposition( _XPLATSTR("form-data") );
     content->setContentType( contentType );
-    auto valueAsStringStream = std::make_shared<std::stringstream>();
+	auto valueAsStringStream = std::make_shared<std::stringstream>();
 	(*valueAsStringStream) << value;
     content->setData(valueAsStringStream) ;
     return content;
@@ -157,9 +157,9 @@ std::shared_ptr<HttpContent> ModelBase::toHttpContent( const utility::string_t& 
     content->setName( name );
     content->setContentDisposition( _XPLATSTR("form-data") );
     content->setContentType( contentType );
-    auto valueAsStringStream = std::make_shared<std::stringstream>();
+	auto valueAsStringStream = std::make_shared<std::stringstream>();
 	(*valueAsStringStream) << value;
-    content->setData( valueAsStringStream );
+    content->setData(valueAsStringStream);
     return content;
 }
 

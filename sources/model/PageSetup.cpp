@@ -37,9 +37,9 @@ PageSetup::PageSetup()
     m_BidiIsSet = false;
     m_BorderAlwaysInFront = false;
     m_BorderAlwaysInFrontIsSet = false;
-    m_BorderAppliesTo = _XPLATSTR("");
+    m_BorderAppliesTo = utility::conversions::to_string_t("");
     m_BorderAppliesToIsSet = false;
-    m_BorderDistanceFrom = _XPLATSTR("");
+    m_BorderDistanceFrom = utility::conversions::to_string_t("");
     m_BorderDistanceFromIsSet = false;
     m_BottomMargin = 0.0;
     m_BottomMarginIsSet = false;
@@ -59,23 +59,23 @@ PageSetup::PageSetup()
     m_LineNumberCountByIsSet = false;
     m_LineNumberDistanceFromText = 0.0;
     m_LineNumberDistanceFromTextIsSet = false;
-    m_LineNumberRestartMode = _XPLATSTR("");
+    m_LineNumberRestartMode = utility::conversions::to_string_t("");
     m_LineNumberRestartModeIsSet = false;
     m_LineStartingNumber = 0;
     m_LineStartingNumberIsSet = false;
-    m_Orientation = _XPLATSTR("");
+    m_Orientation = utility::conversions::to_string_t("");
     m_OrientationIsSet = false;
     m_OtherPagesTray = 0;
     m_OtherPagesTrayIsSet = false;
     m_PageHeight = 0.0;
     m_PageHeightIsSet = false;
-    m_PageNumberStyle = _XPLATSTR("");
+    m_PageNumberStyle = utility::conversions::to_string_t("");
     m_PageNumberStyleIsSet = false;
     m_PageStartingNumber = 0;
     m_PageStartingNumberIsSet = false;
     m_PageWidth = 0.0;
     m_PageWidthIsSet = false;
-    m_PaperSize = _XPLATSTR("");
+    m_PaperSize = utility::conversions::to_string_t("");
     m_PaperSizeIsSet = false;
     m_RestartPageNumbering = false;
     m_RestartPageNumberingIsSet = false;
@@ -83,13 +83,13 @@ PageSetup::PageSetup()
     m_RightMarginIsSet = false;
     m_RtlGutter = false;
     m_RtlGutterIsSet = false;
-    m_SectionStart = _XPLATSTR("");
+    m_SectionStart = utility::conversions::to_string_t("");
     m_SectionStartIsSet = false;
     m_SuppressEndnotes = false;
     m_SuppressEndnotesIsSet = false;
     m_TopMargin = 0.0;
     m_TopMarginIsSet = false;
-    m_VerticalAlignment = _XPLATSTR("");
+    m_VerticalAlignment = utility::conversions::to_string_t("");
     m_VerticalAlignmentIsSet = false;
 }
 
@@ -604,8 +604,6 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void PageSetup::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

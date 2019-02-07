@@ -33,9 +33,9 @@ namespace model {
 
 ReplaceTextRequest::ReplaceTextRequest()
 {
-    m_OldValue = _XPLATSTR("");
+    m_OldValue = utility::conversions::to_string_t("");
     m_OldValueIsSet = false;
-    m_NewValue = _XPLATSTR("");
+    m_NewValue = utility::conversions::to_string_t("");
     m_NewValueIsSet = false;
     m_IsMatchCase = false;
     m_IsMatchWholeWord = false;
@@ -135,8 +135,6 @@ void ReplaceTextRequest::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void ReplaceTextRequest::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("OldValue")))
     {
         setOldValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("OldValue"))));

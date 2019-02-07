@@ -35,9 +35,9 @@ DocumentProperty::DocumentProperty()
 {
     m_BuiltIn = false;
     m_BuiltInIsSet = false;
-    m_Name = _XPLATSTR("");
+    m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
-    m_Value = _XPLATSTR("");
+    m_Value = utility::conversions::to_string_t("");
     m_ValueIsSet = false;
 }
 
@@ -130,8 +130,6 @@ void DocumentProperty::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

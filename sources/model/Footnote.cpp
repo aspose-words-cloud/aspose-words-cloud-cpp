@@ -34,12 +34,12 @@ namespace model {
 Footnote::Footnote()
 {
     m_ContentIsSet = false;
-    m_FootnoteType = _XPLATSTR("");
+    m_FootnoteType = utility::conversions::to_string_t("");
     m_FootnoteTypeIsSet = false;
     m_PositionIsSet = false;
-    m_ReferenceMark = _XPLATSTR("");
+    m_ReferenceMark = utility::conversions::to_string_t("");
     m_ReferenceMarkIsSet = false;
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
 }
 
@@ -182,8 +182,6 @@ void Footnote::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

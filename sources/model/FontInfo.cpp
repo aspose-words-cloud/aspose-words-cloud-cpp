@@ -33,13 +33,13 @@ namespace model {
 
 FontInfo::FontInfo()
 {
-    m_FontFamilyName = _XPLATSTR("");
+    m_FontFamilyName = utility::conversions::to_string_t("");
     m_FontFamilyNameIsSet = false;
-    m_FullFontName = _XPLATSTR("");
+    m_FullFontName = utility::conversions::to_string_t("");
     m_FullFontNameIsSet = false;
-    m_Version = _XPLATSTR("");
+    m_Version = utility::conversions::to_string_t("");
     m_VersionIsSet = false;
-    m_FilePath = _XPLATSTR("");
+    m_FilePath = utility::conversions::to_string_t("");
     m_FilePathIsSet = false;
 }
 
@@ -140,8 +140,6 @@ void FontInfo::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void FontInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("FontFamilyName")))
     {
         setFontFamilyName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FontFamilyName"))));

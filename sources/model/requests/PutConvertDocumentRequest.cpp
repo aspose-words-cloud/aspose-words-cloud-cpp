@@ -35,12 +35,12 @@ PutConvertDocumentRequest::PutConvertDocumentRequest(
                 boost::optional<utility::string_t> documentFileName,
                 boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_document(document),
-            m_format(format),
-            m_storage(storage),
-            m_outPath(outPath),
-            m_documentFileName(documentFileName),
-            m_fontsLocation(fontsLocation)
+            m_document(std::move(document)),
+            m_format(std::move(format)),
+            m_storage(std::move(storage)),
+            m_outPath(std::move(outPath)),
+            m_documentFileName(std::move(documentFileName)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
@@ -50,42 +50,42 @@ PutConvertDocumentRequest::PutConvertDocumentRequest(
             return m_document;
         }
         void PutConvertDocumentRequest::setDocument(std::shared_ptr<HttpContent> document){
-            m_document = document;
+            m_document = std::move(document);
         }
         utility::string_t PutConvertDocumentRequest::getFormat() const
         {
             return m_format;
         }
         void PutConvertDocumentRequest::setFormat(utility::string_t format){
-            m_format = format;
+            m_format = std::move(format);
         }
         boost::optional<utility::string_t> PutConvertDocumentRequest::getStorage() const
         {
             return m_storage;
         }
         void PutConvertDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PutConvertDocumentRequest::getOutPath() const
         {
             return m_outPath;
         }
         void PutConvertDocumentRequest::setOutPath(boost::optional<utility::string_t> outPath){
-            m_outPath = outPath;
+            m_outPath = std::move(outPath);
         }
         boost::optional<utility::string_t> PutConvertDocumentRequest::getDocumentFileName() const
         {
             return m_documentFileName;
         }
         void PutConvertDocumentRequest::setDocumentFileName(boost::optional<utility::string_t> documentFileName){
-            m_documentFileName = documentFileName;
+            m_documentFileName = std::move(documentFileName);
         }
         boost::optional<utility::string_t> PutConvertDocumentRequest::getFontsLocation() const
         {
             return m_fontsLocation;
         }
         void PutConvertDocumentRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = fontsLocation;
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

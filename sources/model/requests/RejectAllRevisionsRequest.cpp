@@ -35,12 +35,12 @@ RejectAllRevisionsRequest::RejectAllRevisionsRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName
         ) : 
-            m_name(name),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName)
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
@@ -50,42 +50,42 @@ RejectAllRevisionsRequest::RejectAllRevisionsRequest(
             return m_name;
         }
         void RejectAllRevisionsRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         boost::optional<utility::string_t> RejectAllRevisionsRequest::getFolder() const
         {
             return m_folder;
         }
         void RejectAllRevisionsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> RejectAllRevisionsRequest::getStorage() const
         {
             return m_storage;
         }
         void RejectAllRevisionsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> RejectAllRevisionsRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void RejectAllRevisionsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> RejectAllRevisionsRequest::getPassword() const
         {
             return m_password;
         }
         void RejectAllRevisionsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> RejectAllRevisionsRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void RejectAllRevisionsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
 
 }

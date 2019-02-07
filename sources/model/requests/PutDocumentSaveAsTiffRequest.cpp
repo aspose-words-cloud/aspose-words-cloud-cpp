@@ -55,32 +55,32 @@ PutDocumentSaveAsTiffRequest::PutDocumentSaveAsTiffRequest(
                 boost::optional<bool> zipOutput,
                 boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_name(name),
-            m_saveOptions(saveOptions),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_resultFile(resultFile),
-            m_useAntiAliasing(useAntiAliasing),
-            m_useHighQualityRendering(useHighQualityRendering),
-            m_imageBrightness(imageBrightness),
-            m_imageColorMode(imageColorMode),
-            m_imageContrast(imageContrast),
-            m_numeralFormat(numeralFormat),
-            m_pageCount(pageCount),
-            m_pageIndex(pageIndex),
-            m_paperColor(paperColor),
-            m_pixelFormat(pixelFormat),
-            m_resolution(resolution),
-            m_scale(scale),
-            m_tiffCompression(tiffCompression),
-            m_dmlRenderingMode(dmlRenderingMode),
-            m_dmlEffectsRenderingMode(dmlEffectsRenderingMode),
-            m_tiffBinarizationMethod(tiffBinarizationMethod),
-            m_zipOutput(zipOutput),
-            m_fontsLocation(fontsLocation)
+            m_name(std::move(name)),
+            m_saveOptions(std::move(saveOptions)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_resultFile(std::move(resultFile)),
+            m_useAntiAliasing(std::move(useAntiAliasing)),
+            m_useHighQualityRendering(std::move(useHighQualityRendering)),
+            m_imageBrightness(std::move(imageBrightness)),
+            m_imageColorMode(std::move(imageColorMode)),
+            m_imageContrast(std::move(imageContrast)),
+            m_numeralFormat(std::move(numeralFormat)),
+            m_pageCount(std::move(pageCount)),
+            m_pageIndex(std::move(pageIndex)),
+            m_paperColor(std::move(paperColor)),
+            m_pixelFormat(std::move(pixelFormat)),
+            m_resolution(std::move(resolution)),
+            m_scale(std::move(scale)),
+            m_tiffCompression(std::move(tiffCompression)),
+            m_dmlRenderingMode(std::move(dmlRenderingMode)),
+            m_dmlEffectsRenderingMode(std::move(dmlEffectsRenderingMode)),
+            m_tiffBinarizationMethod(std::move(tiffBinarizationMethod)),
+            m_zipOutput(std::move(zipOutput)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
@@ -90,182 +90,182 @@ PutDocumentSaveAsTiffRequest::PutDocumentSaveAsTiffRequest(
             return m_name;
         }
         void PutDocumentSaveAsTiffRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         std::shared_ptr<TiffSaveOptionsData> PutDocumentSaveAsTiffRequest::getSaveOptions() const
         {
             return m_saveOptions;
         }
         void PutDocumentSaveAsTiffRequest::setSaveOptions(std::shared_ptr<TiffSaveOptionsData> saveOptions){
-            m_saveOptions = saveOptions;
+            m_saveOptions = std::move(saveOptions);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getFolder() const
         {
             return m_folder;
         }
         void PutDocumentSaveAsTiffRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getStorage() const
         {
             return m_storage;
         }
         void PutDocumentSaveAsTiffRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PutDocumentSaveAsTiffRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getPassword() const
         {
             return m_password;
         }
         void PutDocumentSaveAsTiffRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PutDocumentSaveAsTiffRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getResultFile() const
         {
             return m_resultFile;
         }
         void PutDocumentSaveAsTiffRequest::setResultFile(boost::optional<utility::string_t> resultFile){
-            m_resultFile = resultFile;
+            m_resultFile = std::move(resultFile);
         }
         boost::optional<bool> PutDocumentSaveAsTiffRequest::getUseAntiAliasing() const
         {
             return m_useAntiAliasing;
         }
         void PutDocumentSaveAsTiffRequest::setUseAntiAliasing(boost::optional<bool> useAntiAliasing){
-            m_useAntiAliasing = useAntiAliasing;
+            m_useAntiAliasing = std::move(useAntiAliasing);
         }
         boost::optional<bool> PutDocumentSaveAsTiffRequest::getUseHighQualityRendering() const
         {
             return m_useHighQualityRendering;
         }
         void PutDocumentSaveAsTiffRequest::setUseHighQualityRendering(boost::optional<bool> useHighQualityRendering){
-            m_useHighQualityRendering = useHighQualityRendering;
+            m_useHighQualityRendering = std::move(useHighQualityRendering);
         }
         boost::optional<double> PutDocumentSaveAsTiffRequest::getImageBrightness() const
         {
             return m_imageBrightness;
         }
         void PutDocumentSaveAsTiffRequest::setImageBrightness(boost::optional<double> imageBrightness){
-            m_imageBrightness = imageBrightness;
+            m_imageBrightness = std::move(imageBrightness);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getImageColorMode() const
         {
             return m_imageColorMode;
         }
         void PutDocumentSaveAsTiffRequest::setImageColorMode(boost::optional<utility::string_t> imageColorMode){
-            m_imageColorMode = imageColorMode;
+            m_imageColorMode = std::move(imageColorMode);
         }
         boost::optional<double> PutDocumentSaveAsTiffRequest::getImageContrast() const
         {
             return m_imageContrast;
         }
         void PutDocumentSaveAsTiffRequest::setImageContrast(boost::optional<double> imageContrast){
-            m_imageContrast = imageContrast;
+            m_imageContrast = std::move(imageContrast);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getNumeralFormat() const
         {
             return m_numeralFormat;
         }
         void PutDocumentSaveAsTiffRequest::setNumeralFormat(boost::optional<utility::string_t> numeralFormat){
-            m_numeralFormat = numeralFormat;
+            m_numeralFormat = std::move(numeralFormat);
         }
         boost::optional<int32_t> PutDocumentSaveAsTiffRequest::getPageCount() const
         {
             return m_pageCount;
         }
         void PutDocumentSaveAsTiffRequest::setPageCount(boost::optional<int32_t> pageCount){
-            m_pageCount = pageCount;
+            m_pageCount = std::move(pageCount);
         }
         boost::optional<int32_t> PutDocumentSaveAsTiffRequest::getPageIndex() const
         {
             return m_pageIndex;
         }
         void PutDocumentSaveAsTiffRequest::setPageIndex(boost::optional<int32_t> pageIndex){
-            m_pageIndex = pageIndex;
+            m_pageIndex = std::move(pageIndex);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getPaperColor() const
         {
             return m_paperColor;
         }
         void PutDocumentSaveAsTiffRequest::setPaperColor(boost::optional<utility::string_t> paperColor){
-            m_paperColor = paperColor;
+            m_paperColor = std::move(paperColor);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getPixelFormat() const
         {
             return m_pixelFormat;
         }
         void PutDocumentSaveAsTiffRequest::setPixelFormat(boost::optional<utility::string_t> pixelFormat){
-            m_pixelFormat = pixelFormat;
+            m_pixelFormat = std::move(pixelFormat);
         }
         boost::optional<double> PutDocumentSaveAsTiffRequest::getResolution() const
         {
             return m_resolution;
         }
         void PutDocumentSaveAsTiffRequest::setResolution(boost::optional<double> resolution){
-            m_resolution = resolution;
+            m_resolution = std::move(resolution);
         }
         boost::optional<double> PutDocumentSaveAsTiffRequest::getScale() const
         {
             return m_scale;
         }
         void PutDocumentSaveAsTiffRequest::setScale(boost::optional<double> scale){
-            m_scale = scale;
+            m_scale = std::move(scale);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getTiffCompression() const
         {
             return m_tiffCompression;
         }
         void PutDocumentSaveAsTiffRequest::setTiffCompression(boost::optional<utility::string_t> tiffCompression){
-            m_tiffCompression = tiffCompression;
+            m_tiffCompression = std::move(tiffCompression);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getDmlRenderingMode() const
         {
             return m_dmlRenderingMode;
         }
         void PutDocumentSaveAsTiffRequest::setDmlRenderingMode(boost::optional<utility::string_t> dmlRenderingMode){
-            m_dmlRenderingMode = dmlRenderingMode;
+            m_dmlRenderingMode = std::move(dmlRenderingMode);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getDmlEffectsRenderingMode() const
         {
             return m_dmlEffectsRenderingMode;
         }
         void PutDocumentSaveAsTiffRequest::setDmlEffectsRenderingMode(boost::optional<utility::string_t> dmlEffectsRenderingMode){
-            m_dmlEffectsRenderingMode = dmlEffectsRenderingMode;
+            m_dmlEffectsRenderingMode = std::move(dmlEffectsRenderingMode);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getTiffBinarizationMethod() const
         {
             return m_tiffBinarizationMethod;
         }
         void PutDocumentSaveAsTiffRequest::setTiffBinarizationMethod(boost::optional<utility::string_t> tiffBinarizationMethod){
-            m_tiffBinarizationMethod = tiffBinarizationMethod;
+            m_tiffBinarizationMethod = std::move(tiffBinarizationMethod);
         }
         boost::optional<bool> PutDocumentSaveAsTiffRequest::getZipOutput() const
         {
             return m_zipOutput;
         }
         void PutDocumentSaveAsTiffRequest::setZipOutput(boost::optional<bool> zipOutput){
-            m_zipOutput = zipOutput;
+            m_zipOutput = std::move(zipOutput);
         }
         boost::optional<utility::string_t> PutDocumentSaveAsTiffRequest::getFontsLocation() const
         {
             return m_fontsLocation;
         }
         void PutDocumentSaveAsTiffRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = fontsLocation;
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

@@ -33,9 +33,9 @@ namespace model {
 
 BookmarkData::BookmarkData()
 {
-    m_Name = _XPLATSTR("");
+    m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
 }
 
@@ -102,8 +102,6 @@ void BookmarkData::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void BookmarkData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Name")))
     {
         setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));

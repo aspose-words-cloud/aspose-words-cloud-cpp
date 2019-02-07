@@ -35,12 +35,12 @@ SearchRequest::SearchRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
         ) : 
-            m_name(name),
-            m_pattern(pattern),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password)
+            m_name(std::move(name)),
+            m_pattern(std::move(pattern)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
@@ -50,42 +50,42 @@ SearchRequest::SearchRequest(
             return m_name;
         }
         void SearchRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t SearchRequest::getPattern() const
         {
             return m_pattern;
         }
         void SearchRequest::setPattern(utility::string_t pattern){
-            m_pattern = pattern;
+            m_pattern = std::move(pattern);
         }
         boost::optional<utility::string_t> SearchRequest::getFolder() const
         {
             return m_folder;
         }
         void SearchRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> SearchRequest::getStorage() const
         {
             return m_storage;
         }
         void SearchRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> SearchRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void SearchRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> SearchRequest::getPassword() const
         {
             return m_password;
         }
         void SearchRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
 
 }

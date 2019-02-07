@@ -169,9 +169,9 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 				_XPLATSTR("multipart/form-data; boundary = ") + uploadData.getBoundary());
         }
 		else
-		{
+        {
             request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, _XPLATSTR("multipart/form-data;"));
-		}
+        }
     }
     else
     {
@@ -202,14 +202,14 @@ pplx::task<web::http::http_response> ApiClient::callApi(
                 web::http::uri_builder formData;
                 for (auto& kvp : formParams)
                 {
-                   if (contentType == _XPLATSTR("multipart/form-data"))
-                   {
-                       formData.append_query(kvp.second);
-                   }
-                   else
-                   {
-                       formData.append_query(kvp.first, kvp.second);
-                   }
+                    if (contentType == _XPLATSTR("multipart/form-data"))
+                    {
+                        formData.append_query(kvp.second);
+                    }
+                    else
+                    {
+                        formData.append_query(kvp.first, kvp.second);
+                    }
                 }
 
                 if (!formParams.empty())
@@ -249,7 +249,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     });
 }
 
-utility::string_t ApiClient::copyDataFromStream(const Concurrency::streams::istream& stream) const
+				utility::string_t ApiClient::copyDataFromStream(const Concurrency::streams::istream& stream) const
 {
     if (!stream.is_valid()) return _XPLATSTR("EMPTY");
 

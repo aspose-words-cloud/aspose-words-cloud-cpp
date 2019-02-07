@@ -109,8 +109,6 @@ void DocumentEntryList::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
 void DocumentEntryList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         m_DocumentEntries.clear();
         if(multipart->hasContent(_XPLATSTR("DocumentEntries")))

@@ -33,16 +33,16 @@ namespace model {
 
 GraphicsQualityOptionsData::GraphicsQualityOptionsData()
 {
-    m_CompositingMode = _XPLATSTR("");
+    m_CompositingMode = utility::conversions::to_string_t("");
     m_CompositingModeIsSet = false;
-    m_CompositingQuality = _XPLATSTR("");
+    m_CompositingQuality = utility::conversions::to_string_t("");
     m_CompositingQualityIsSet = false;
-    m_InterpolationMode = _XPLATSTR("");
+    m_InterpolationMode = utility::conversions::to_string_t("");
     m_InterpolationModeIsSet = false;
-    m_SmoothingMode = _XPLATSTR("");
+    m_SmoothingMode = utility::conversions::to_string_t("");
     m_SmoothingModeIsSet = false;
     m_StringFormatIsSet = false;
-    m_TextRenderingHint = _XPLATSTR("");
+    m_TextRenderingHint = utility::conversions::to_string_t("");
     m_TextRenderingHintIsSet = false;
 }
 
@@ -182,8 +182,6 @@ void GraphicsQualityOptionsData::toMultipart(const std::shared_ptr<MultipartForm
 
 void GraphicsQualityOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("CompositingMode")))
     {
         setCompositingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CompositingMode"))));

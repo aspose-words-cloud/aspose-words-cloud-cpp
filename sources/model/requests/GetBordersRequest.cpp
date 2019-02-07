@@ -35,12 +35,12 @@ GetBordersRequest::GetBordersRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
         ) : 
-            m_name(name),
-            m_nodePath(nodePath),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password)
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
@@ -50,42 +50,42 @@ GetBordersRequest::GetBordersRequest(
             return m_name;
         }
         void GetBordersRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t GetBordersRequest::getNodePath() const
         {
             return m_nodePath;
         }
         void GetBordersRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = nodePath;
+            m_nodePath = std::move(nodePath);
         }
         boost::optional<utility::string_t> GetBordersRequest::getFolder() const
         {
             return m_folder;
         }
         void GetBordersRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetBordersRequest::getStorage() const
         {
             return m_storage;
         }
         void GetBordersRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetBordersRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetBordersRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetBordersRequest::getPassword() const
         {
             return m_password;
         }
         void GetBordersRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
 
 }

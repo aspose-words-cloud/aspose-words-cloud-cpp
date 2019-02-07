@@ -34,11 +34,11 @@ PutExecuteMailMergeOnlineRequest::PutExecuteMailMergeOnlineRequest(
                 boost::optional<utility::string_t> cleanup,
                 boost::optional<utility::string_t> documentFileName
         ) : 
-            m__template(_template),
-            m_data(data),
-            m_withRegions(withRegions),
-            m_cleanup(cleanup),
-            m_documentFileName(documentFileName)
+            m__template(std::move(_template)),
+            m_data(std::move(data)),
+            m_withRegions(std::move(withRegions)),
+            m_cleanup(std::move(cleanup)),
+            m_documentFileName(std::move(documentFileName))
         {
             
         }
@@ -48,35 +48,35 @@ PutExecuteMailMergeOnlineRequest::PutExecuteMailMergeOnlineRequest(
             return m__template;
         }
         void PutExecuteMailMergeOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template){
-            m__template = _template;
+            m__template = std::move(_template);
         }
         std::shared_ptr<HttpContent> PutExecuteMailMergeOnlineRequest::getData() const
         {
             return m_data;
         }
         void PutExecuteMailMergeOnlineRequest::setData(std::shared_ptr<HttpContent> data){
-            m_data = data;
+            m_data = std::move(data);
         }
         boost::optional<bool> PutExecuteMailMergeOnlineRequest::getWithRegions() const
         {
             return m_withRegions;
         }
         void PutExecuteMailMergeOnlineRequest::setWithRegions(boost::optional<bool> withRegions){
-            m_withRegions = withRegions;
+            m_withRegions = std::move(withRegions);
         }
         boost::optional<utility::string_t> PutExecuteMailMergeOnlineRequest::getCleanup() const
         {
             return m_cleanup;
         }
         void PutExecuteMailMergeOnlineRequest::setCleanup(boost::optional<utility::string_t> cleanup){
-            m_cleanup = cleanup;
+            m_cleanup = std::move(cleanup);
         }
         boost::optional<utility::string_t> PutExecuteMailMergeOnlineRequest::getDocumentFileName() const
         {
             return m_documentFileName;
         }
         void PutExecuteMailMergeOnlineRequest::setDocumentFileName(boost::optional<utility::string_t> documentFileName){
-            m_documentFileName = documentFileName;
+            m_documentFileName = std::move(documentFileName);
         }
 
 }

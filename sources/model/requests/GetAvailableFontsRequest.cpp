@@ -30,7 +30,7 @@ namespace model{
 GetAvailableFontsRequest::GetAvailableFontsRequest(
         boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_fontsLocation(fontsLocation)
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
@@ -40,7 +40,7 @@ GetAvailableFontsRequest::GetAvailableFontsRequest(
             return m_fontsLocation;
         }
         void GetAvailableFontsRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = fontsLocation;
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

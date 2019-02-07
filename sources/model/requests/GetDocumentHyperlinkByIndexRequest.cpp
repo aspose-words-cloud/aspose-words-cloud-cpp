@@ -35,12 +35,12 @@ GetDocumentHyperlinkByIndexRequest::GetDocumentHyperlinkByIndexRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
         ) : 
-            m_name(name),
-            m_hyperlinkIndex(hyperlinkIndex),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password)
+            m_name(std::move(name)),
+            m_hyperlinkIndex(std::move(hyperlinkIndex)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
@@ -50,42 +50,42 @@ GetDocumentHyperlinkByIndexRequest::GetDocumentHyperlinkByIndexRequest(
             return m_name;
         }
         void GetDocumentHyperlinkByIndexRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t GetDocumentHyperlinkByIndexRequest::getHyperlinkIndex() const
         {
             return m_hyperlinkIndex;
         }
         void GetDocumentHyperlinkByIndexRequest::setHyperlinkIndex(int32_t hyperlinkIndex){
-            m_hyperlinkIndex = hyperlinkIndex;
+            m_hyperlinkIndex = std::move(hyperlinkIndex);
         }
         boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getFolder() const
         {
             return m_folder;
         }
         void GetDocumentHyperlinkByIndexRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getStorage() const
         {
             return m_storage;
         }
         void GetDocumentHyperlinkByIndexRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetDocumentHyperlinkByIndexRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getPassword() const
         {
             return m_password;
         }
         void GetDocumentHyperlinkByIndexRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
 
 }

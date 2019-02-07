@@ -33,9 +33,9 @@ namespace model {
 
 HtmlFixedSaveOptionsData::HtmlFixedSaveOptionsData()
 {
-    m_CssClassNamesPrefix = _XPLATSTR("");
+    m_CssClassNamesPrefix = utility::conversions::to_string_t("");
     m_CssClassNamesPrefixIsSet = false;
-    m_Encoding = _XPLATSTR("");
+    m_Encoding = utility::conversions::to_string_t("");
     m_EncodingIsSet = false;
     m_ExportEmbeddedCss = false;
     m_ExportEmbeddedCssIsSet = false;
@@ -45,15 +45,15 @@ HtmlFixedSaveOptionsData::HtmlFixedSaveOptionsData()
     m_ExportEmbeddedImagesIsSet = false;
     m_ExportFormFields = false;
     m_ExportFormFieldsIsSet = false;
-    m_FontFormat = _XPLATSTR("");
+    m_FontFormat = utility::conversions::to_string_t("");
     m_FontFormatIsSet = false;
-    m_PageHorizontalAlignment = _XPLATSTR("");
+    m_PageHorizontalAlignment = utility::conversions::to_string_t("");
     m_PageHorizontalAlignmentIsSet = false;
     m_PageMargins = 0.0;
     m_PageMarginsIsSet = false;
-    m_ResourcesFolder = _XPLATSTR("");
+    m_ResourcesFolder = utility::conversions::to_string_t("");
     m_ResourcesFolderIsSet = false;
-    m_ResourcesFolderAlias = _XPLATSTR("");
+    m_ResourcesFolderAlias = utility::conversions::to_string_t("");
     m_ResourcesFolderAliasIsSet = false;
     m_SaveFontFaceCssSeparately = false;
     m_SaveFontFaceCssSeparatelyIsSet = false;
@@ -376,8 +376,6 @@ void HtmlFixedSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void HtmlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

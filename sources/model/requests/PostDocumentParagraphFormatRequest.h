@@ -27,7 +27,6 @@
 #define postDocumentParagraphFormat_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "ParagraphFormat.h"
 #include <boost/optional.hpp>
 

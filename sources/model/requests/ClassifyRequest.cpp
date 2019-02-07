@@ -31,8 +31,8 @@ ClassifyRequest::ClassifyRequest(
         utility::string_t text,
                 boost::optional<utility::string_t> bestClassesCount
         ) : 
-            m_text(text),
-            m_bestClassesCount(bestClassesCount)
+            m_text(std::move(text)),
+            m_bestClassesCount(std::move(bestClassesCount))
         {
             
         }
@@ -42,14 +42,14 @@ ClassifyRequest::ClassifyRequest(
             return m_text;
         }
         void ClassifyRequest::setText(utility::string_t text){
-            m_text = text;
+            m_text = std::move(text);
         }
         boost::optional<utility::string_t> ClassifyRequest::getBestClassesCount() const
         {
             return m_bestClassesCount;
         }
         void ClassifyRequest::setBestClassesCount(boost::optional<utility::string_t> bestClassesCount){
-            m_bestClassesCount = bestClassesCount;
+            m_bestClassesCount = std::move(bestClassesCount);
         }
 
 }

@@ -27,7 +27,6 @@
 #define updateTableRowFormat_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "TableRowFormat.h"
 #include <boost/optional.hpp>
 

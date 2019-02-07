@@ -33,16 +33,16 @@ namespace model {
 
 Comment::Comment()
 {
-    m_Author = _XPLATSTR("");
+    m_Author = utility::conversions::to_string_t("");
     m_AuthorIsSet = false;
     m_ContentIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
-    m_Initial = _XPLATSTR("");
+    m_Initial = utility::conversions::to_string_t("");
     m_InitialIsSet = false;
     m_RangeEndIsSet = false;
     m_RangeStartIsSet = false;
-    m_Text = _XPLATSTR("");
+    m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
 }
 
@@ -219,8 +219,6 @@ void Comment::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, c
 
 void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

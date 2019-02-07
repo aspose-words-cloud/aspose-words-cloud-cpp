@@ -33,12 +33,12 @@ namespace model {
 
 Border::Border()
 {
-    m_BorderType = _XPLATSTR("");
+    m_BorderType = utility::conversions::to_string_t("");
     m_BorderTypeIsSet = false;
     m_ColorIsSet = false;
     m_DistanceFromText = 0.0;
     m_DistanceFromTextIsSet = false;
-    m_LineStyle = _XPLATSTR("");
+    m_LineStyle = utility::conversions::to_string_t("");
     m_LineStyleIsSet = false;
     m_LineWidth = 0.0;
     m_LineWidthIsSet = false;
@@ -189,8 +189,6 @@ void Border::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, co
 
 void Border::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

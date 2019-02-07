@@ -39,16 +39,16 @@ PostExecuteTemplateRequest::PostExecuteTemplateRequest(
                 boost::optional<bool> withRegions,
                 boost::optional<utility::string_t> destFileName
         ) : 
-            m_name(name),
-            m_data(data),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_cleanup(cleanup),
-            m_useWholeParagraphAsRegion(useWholeParagraphAsRegion),
-            m_withRegions(withRegions),
-            m_destFileName(destFileName)
+            m_name(std::move(name)),
+            m_data(std::move(data)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_cleanup(std::move(cleanup)),
+            m_useWholeParagraphAsRegion(std::move(useWholeParagraphAsRegion)),
+            m_withRegions(std::move(withRegions)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
@@ -58,70 +58,70 @@ PostExecuteTemplateRequest::PostExecuteTemplateRequest(
             return m_name;
         }
         void PostExecuteTemplateRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t PostExecuteTemplateRequest::getData() const
         {
             return m_data;
         }
         void PostExecuteTemplateRequest::setData(utility::string_t data){
-            m_data = data;
+            m_data = std::move(data);
         }
         boost::optional<utility::string_t> PostExecuteTemplateRequest::getFolder() const
         {
             return m_folder;
         }
         void PostExecuteTemplateRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostExecuteTemplateRequest::getStorage() const
         {
             return m_storage;
         }
         void PostExecuteTemplateRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostExecuteTemplateRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostExecuteTemplateRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostExecuteTemplateRequest::getPassword() const
         {
             return m_password;
         }
         void PostExecuteTemplateRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostExecuteTemplateRequest::getCleanup() const
         {
             return m_cleanup;
         }
         void PostExecuteTemplateRequest::setCleanup(boost::optional<utility::string_t> cleanup){
-            m_cleanup = cleanup;
+            m_cleanup = std::move(cleanup);
         }
         boost::optional<bool> PostExecuteTemplateRequest::getUseWholeParagraphAsRegion() const
         {
             return m_useWholeParagraphAsRegion;
         }
         void PostExecuteTemplateRequest::setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion){
-            m_useWholeParagraphAsRegion = useWholeParagraphAsRegion;
+            m_useWholeParagraphAsRegion = std::move(useWholeParagraphAsRegion);
         }
         boost::optional<bool> PostExecuteTemplateRequest::getWithRegions() const
         {
             return m_withRegions;
         }
         void PostExecuteTemplateRequest::setWithRegions(boost::optional<bool> withRegions){
-            m_withRegions = withRegions;
+            m_withRegions = std::move(withRegions);
         }
         boost::optional<utility::string_t> PostExecuteTemplateRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostExecuteTemplateRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
 
 }

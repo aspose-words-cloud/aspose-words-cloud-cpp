@@ -35,12 +35,12 @@ GetSectionPageSetupRequest::GetSectionPageSetupRequest(
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password
         ) : 
-            m_name(name),
-            m_sectionIndex(sectionIndex),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password)
+            m_name(std::move(name)),
+            m_sectionIndex(std::move(sectionIndex)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
@@ -50,42 +50,42 @@ GetSectionPageSetupRequest::GetSectionPageSetupRequest(
             return m_name;
         }
         void GetSectionPageSetupRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t GetSectionPageSetupRequest::getSectionIndex() const
         {
             return m_sectionIndex;
         }
         void GetSectionPageSetupRequest::setSectionIndex(int32_t sectionIndex){
-            m_sectionIndex = sectionIndex;
+            m_sectionIndex = std::move(sectionIndex);
         }
         boost::optional<utility::string_t> GetSectionPageSetupRequest::getFolder() const
         {
             return m_folder;
         }
         void GetSectionPageSetupRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetSectionPageSetupRequest::getStorage() const
         {
             return m_storage;
         }
         void GetSectionPageSetupRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetSectionPageSetupRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetSectionPageSetupRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetSectionPageSetupRequest::getPassword() const
         {
             return m_password;
         }
         void GetSectionPageSetupRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
 
 }

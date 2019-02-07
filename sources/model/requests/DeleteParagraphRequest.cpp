@@ -39,16 +39,16 @@ DeleteParagraphRequest::DeleteParagraphRequest(
                 boost::optional<utility::string_t> revisionDateTime,
                 boost::optional<utility::string_t> nodePath
         ) : 
-            m_name(name),
-            m_index(index),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime),
-            m_nodePath(nodePath)
+            m_name(std::move(name)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_nodePath(std::move(nodePath))
         {
             
         }
@@ -58,70 +58,70 @@ DeleteParagraphRequest::DeleteParagraphRequest(
             return m_name;
         }
         void DeleteParagraphRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         int32_t DeleteParagraphRequest::getIndex() const
         {
             return m_index;
         }
         void DeleteParagraphRequest::setIndex(int32_t index){
-            m_index = index;
+            m_index = std::move(index);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getFolder() const
         {
             return m_folder;
         }
         void DeleteParagraphRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getStorage() const
         {
             return m_storage;
         }
         void DeleteParagraphRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void DeleteParagraphRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getPassword() const
         {
             return m_password;
         }
         void DeleteParagraphRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void DeleteParagraphRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void DeleteParagraphRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void DeleteParagraphRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
         boost::optional<utility::string_t> DeleteParagraphRequest::getNodePath() const
         {
             return m_nodePath;
         }
         void DeleteParagraphRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = nodePath;
+            m_nodePath = std::move(nodePath);
         }
 
 }

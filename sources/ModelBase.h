@@ -60,8 +60,8 @@ public:
 
     static web::json::value toJson( const utility::string_t& value );
     static web::json::value toJson( const utility::datetime& value );
-    static web::json::value toJson(const std::shared_ptr<HttpContent>& value );
-    static web::json::value toJson(const std::shared_ptr<ModelBase>& value );
+    static web::json::value toJson( const std::shared_ptr<HttpContent>& value );
+    static web::json::value toJson( const std::shared_ptr<ModelBase>& value );
     static web::json::value toJson( int32_t value );
     static web::json::value toJson( int64_t value );
     static web::json::value toJson( double value );

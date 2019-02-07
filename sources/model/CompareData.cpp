@@ -33,9 +33,9 @@ namespace model {
 
 CompareData::CompareData()
 {
-    m_ComparingWithDocument = _XPLATSTR("");
+    m_ComparingWithDocument = utility::conversions::to_string_t("");
     m_ComparingWithDocumentIsSet = false;
-    m_Author = _XPLATSTR("");
+    m_Author = utility::conversions::to_string_t("");
     m_AuthorIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
@@ -121,8 +121,6 @@ void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
 void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ComparingWithDocument")))
     {
         setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ComparingWithDocument"))));

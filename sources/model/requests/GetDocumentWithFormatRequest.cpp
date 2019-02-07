@@ -37,14 +37,14 @@ GetDocumentWithFormatRequest::GetDocumentWithFormatRequest(
                 boost::optional<utility::string_t> outPath,
                 boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_name(name),
-            m_format(format),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_outPath(outPath),
-            m_fontsLocation(fontsLocation)
+            m_name(std::move(name)),
+            m_format(std::move(format)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_outPath(std::move(outPath)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
@@ -54,56 +54,56 @@ GetDocumentWithFormatRequest::GetDocumentWithFormatRequest(
             return m_name;
         }
         void GetDocumentWithFormatRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         utility::string_t GetDocumentWithFormatRequest::getFormat() const
         {
             return m_format;
         }
         void GetDocumentWithFormatRequest::setFormat(utility::string_t format){
-            m_format = format;
+            m_format = std::move(format);
         }
         boost::optional<utility::string_t> GetDocumentWithFormatRequest::getFolder() const
         {
             return m_folder;
         }
         void GetDocumentWithFormatRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> GetDocumentWithFormatRequest::getStorage() const
         {
             return m_storage;
         }
         void GetDocumentWithFormatRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> GetDocumentWithFormatRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void GetDocumentWithFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> GetDocumentWithFormatRequest::getPassword() const
         {
             return m_password;
         }
         void GetDocumentWithFormatRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> GetDocumentWithFormatRequest::getOutPath() const
         {
             return m_outPath;
         }
         void GetDocumentWithFormatRequest::setOutPath(boost::optional<utility::string_t> outPath){
-            m_outPath = outPath;
+            m_outPath = std::move(outPath);
         }
         boost::optional<utility::string_t> GetDocumentWithFormatRequest::getFontsLocation() const
         {
             return m_fontsLocation;
         }
         void GetDocumentWithFormatRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = fontsLocation;
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

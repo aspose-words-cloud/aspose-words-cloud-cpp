@@ -95,8 +95,6 @@ void BookmarkResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void BookmarkResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
     if(multipart->hasContent(_XPLATSTR("Status")))
     {

@@ -27,7 +27,6 @@
 #define putParagraph_H 
 
 #include "cpprest/details/basic_types.h"
-
 #include "ParagraphInsert.h"
 #include <boost/optional.hpp>
 

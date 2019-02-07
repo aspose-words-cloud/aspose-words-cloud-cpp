@@ -36,13 +36,13 @@ PostCompareDocumentRequest::PostCompareDocumentRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName
         ) : 
-            m_name(name),
-            m_compareData(compareData),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName)
+            m_name(std::move(name)),
+            m_compareData(std::move(compareData)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
@@ -52,49 +52,49 @@ PostCompareDocumentRequest::PostCompareDocumentRequest(
             return m_name;
         }
         void PostCompareDocumentRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         std::shared_ptr<CompareData> PostCompareDocumentRequest::getCompareData() const
         {
             return m_compareData;
         }
         void PostCompareDocumentRequest::setCompareData(std::shared_ptr<CompareData> compareData){
-            m_compareData = compareData;
+            m_compareData = std::move(compareData);
         }
         boost::optional<utility::string_t> PostCompareDocumentRequest::getFolder() const
         {
             return m_folder;
         }
         void PostCompareDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> PostCompareDocumentRequest::getStorage() const
         {
             return m_storage;
         }
         void PostCompareDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> PostCompareDocumentRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void PostCompareDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> PostCompareDocumentRequest::getPassword() const
         {
             return m_password;
         }
         void PostCompareDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> PostCompareDocumentRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void PostCompareDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
 
 }

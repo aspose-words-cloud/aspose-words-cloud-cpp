@@ -33,13 +33,13 @@ namespace model {
 
 Link::Link()
 {
-    m_Href = _XPLATSTR("");
+    m_Href = utility::conversions::to_string_t("");
     m_HrefIsSet = false;
-    m_Rel = _XPLATSTR("");
+    m_Rel = utility::conversions::to_string_t("");
     m_RelIsSet = false;
-    m_Type = _XPLATSTR("");
+    m_Type = utility::conversions::to_string_t("");
     m_TypeIsSet = false;
-    m_Title = _XPLATSTR("");
+    m_Title = utility::conversions::to_string_t("");
     m_TitleIsSet = false;
 }
 
@@ -140,8 +140,6 @@ void Link::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
 
 void Link::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("Href")))
     {
         setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));

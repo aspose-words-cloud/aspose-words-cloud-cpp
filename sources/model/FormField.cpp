@@ -37,19 +37,19 @@ FormField::FormField()
     m_CalculateOnExitIsSet = false;
     m_Enabled = false;
     m_EnabledIsSet = false;
-    m_EntryMacro = _XPLATSTR("");
+    m_EntryMacro = utility::conversions::to_string_t("");
     m_EntryMacroIsSet = false;
-    m_ExitMacro = _XPLATSTR("");
+    m_ExitMacro = utility::conversions::to_string_t("");
     m_ExitMacroIsSet = false;
-    m_HelpText = _XPLATSTR("");
+    m_HelpText = utility::conversions::to_string_t("");
     m_HelpTextIsSet = false;
-    m_Name = _XPLATSTR("");
+    m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
     m_OwnHelp = false;
     m_OwnHelpIsSet = false;
     m_OwnStatus = false;
     m_OwnStatusIsSet = false;
-    m_StatusText = _XPLATSTR("");
+    m_StatusText = utility::conversions::to_string_t("");
     m_StatusTextIsSet = false;
 }
 
@@ -246,8 +246,6 @@ void FormField::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

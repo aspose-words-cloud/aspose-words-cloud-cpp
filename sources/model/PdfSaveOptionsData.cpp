@@ -33,11 +33,11 @@ namespace model {
 
 PdfSaveOptionsData::PdfSaveOptionsData()
 {
-    m_Compliance = _XPLATSTR("");
+    m_Compliance = utility::conversions::to_string_t("");
     m_ComplianceIsSet = false;
     m_CreateNoteHyperlinks = false;
     m_CreateNoteHyperlinksIsSet = false;
-    m_CustomPropertiesExport = _XPLATSTR("");
+    m_CustomPropertiesExport = utility::conversions::to_string_t("");
     m_CustomPropertiesExportIsSet = false;
     m_DigitalSignatureDetailsIsSet = false;
     m_DisplayDocTitle = false;
@@ -50,30 +50,30 @@ PdfSaveOptionsData::PdfSaveOptionsData()
     m_EscapeUriIsSet = false;
     m_ExportDocumentStructure = false;
     m_ExportDocumentStructureIsSet = false;
-    m_FontEmbeddingMode = _XPLATSTR("");
+    m_FontEmbeddingMode = utility::conversions::to_string_t("");
     m_FontEmbeddingModeIsSet = false;
-    m_HeaderFooterBookmarksExportMode = _XPLATSTR("");
+    m_HeaderFooterBookmarksExportMode = utility::conversions::to_string_t("");
     m_HeaderFooterBookmarksExportModeIsSet = false;
-    m_ImageColorSpaceExportMode = _XPLATSTR("");
+    m_ImageColorSpaceExportMode = utility::conversions::to_string_t("");
     m_ImageColorSpaceExportModeIsSet = false;
-    m_ImageCompression = _XPLATSTR("");
+    m_ImageCompression = utility::conversions::to_string_t("");
     m_ImageCompressionIsSet = false;
     m_OpenHyperlinksInNewWindow = false;
     m_OpenHyperlinksInNewWindowIsSet = false;
     m_OutlineOptionsIsSet = false;
-    m_PageMode = _XPLATSTR("");
+    m_PageMode = utility::conversions::to_string_t("");
     m_PageModeIsSet = false;
     m_PreblendImages = false;
     m_PreblendImagesIsSet = false;
     m_PreserveFormFields = false;
     m_PreserveFormFieldsIsSet = false;
-    m_TextCompression = _XPLATSTR("");
+    m_TextCompression = utility::conversions::to_string_t("");
     m_TextCompressionIsSet = false;
     m_UseBookFoldPrintingSettings = false;
     m_UseBookFoldPrintingSettingsIsSet = false;
     m_UseCoreFonts = false;
     m_UseCoreFontsIsSet = false;
-    m_ZoomBehavior = _XPLATSTR("");
+    m_ZoomBehavior = utility::conversions::to_string_t("");
     m_ZoomBehaviorIsSet = false;
     m_ZoomFactor = 0;
     m_ZoomFactorIsSet = false;
@@ -597,8 +597,6 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

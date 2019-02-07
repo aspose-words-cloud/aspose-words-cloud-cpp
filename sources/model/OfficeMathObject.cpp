@@ -34,11 +34,11 @@ namespace model {
 OfficeMathObject::OfficeMathObject()
 {
     m_ContentIsSet = false;
-    m_DisplayType = _XPLATSTR("");
+    m_DisplayType = utility::conversions::to_string_t("");
     m_DisplayTypeIsSet = false;
-    m_Justification = _XPLATSTR("");
+    m_Justification = utility::conversions::to_string_t("");
     m_JustificationIsSet = false;
-    m_MathObjectType = _XPLATSTR("");
+    m_MathObjectType = utility::conversions::to_string_t("");
     m_MathObjectTypeIsSet = false;
 }
 
@@ -159,8 +159,6 @@ void OfficeMathObject::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void OfficeMathObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

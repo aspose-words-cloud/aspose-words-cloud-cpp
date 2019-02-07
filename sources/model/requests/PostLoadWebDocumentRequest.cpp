@@ -31,8 +31,8 @@ PostLoadWebDocumentRequest::PostLoadWebDocumentRequest(
         std::shared_ptr<LoadWebDocumentData> data,
                 boost::optional<utility::string_t> storage
         ) : 
-            m_data(data),
-            m_storage(storage)
+            m_data(std::move(data)),
+            m_storage(std::move(storage))
         {
             
         }
@@ -42,14 +42,14 @@ PostLoadWebDocumentRequest::PostLoadWebDocumentRequest(
             return m_data;
         }
         void PostLoadWebDocumentRequest::setData(std::shared_ptr<LoadWebDocumentData> data){
-            m_data = data;
+            m_data = std::move(data);
         }
         boost::optional<utility::string_t> PostLoadWebDocumentRequest::getStorage() const
         {
             return m_storage;
         }
         void PostLoadWebDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
 
 }

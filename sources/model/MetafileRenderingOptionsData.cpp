@@ -33,11 +33,11 @@ namespace model {
 
 MetafileRenderingOptionsData::MetafileRenderingOptionsData()
 {
-    m_EmfPlusDualRenderingMode = _XPLATSTR("");
+    m_EmfPlusDualRenderingMode = utility::conversions::to_string_t("");
     m_EmfPlusDualRenderingModeIsSet = false;
     m_EmulateRasterOperations = false;
     m_EmulateRasterOperationsIsSet = false;
-    m_RenderingMode = _XPLATSTR("");
+    m_RenderingMode = utility::conversions::to_string_t("");
     m_RenderingModeIsSet = false;
     m_UseEmfEmbeddedToWmf = false;
     m_UseEmfEmbeddedToWmfIsSet = false;
@@ -138,8 +138,6 @@ void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFo
 
 void MetafileRenderingOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("EmfPlusDualRenderingMode")))
     {
         setEmfPlusDualRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EmfPlusDualRenderingMode"))));

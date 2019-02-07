@@ -37,14 +37,14 @@ DeleteDocumentMacrosRequest::DeleteDocumentMacrosRequest(
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_name(name),
-            m_folder(folder),
-            m_storage(storage),
-            m_loadEncoding(loadEncoding),
-            m_password(password),
-            m_destFileName(destFileName),
-            m_revisionAuthor(revisionAuthor),
-            m_revisionDateTime(revisionDateTime)
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -54,56 +54,56 @@ DeleteDocumentMacrosRequest::DeleteDocumentMacrosRequest(
             return m_name;
         }
         void DeleteDocumentMacrosRequest::setName(utility::string_t name){
-            m_name = name;
+            m_name = std::move(name);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getFolder() const
         {
             return m_folder;
         }
         void DeleteDocumentMacrosRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = folder;
+            m_folder = std::move(folder);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getStorage() const
         {
             return m_storage;
         }
         void DeleteDocumentMacrosRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = storage;
+            m_storage = std::move(storage);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
         void DeleteDocumentMacrosRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = loadEncoding;
+            m_loadEncoding = std::move(loadEncoding);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getPassword() const
         {
             return m_password;
         }
         void DeleteDocumentMacrosRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = password;
+            m_password = std::move(password);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getDestFileName() const
         {
             return m_destFileName;
         }
         void DeleteDocumentMacrosRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = destFileName;
+            m_destFileName = std::move(destFileName);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
         void DeleteDocumentMacrosRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = revisionAuthor;
+            m_revisionAuthor = std::move(revisionAuthor);
         }
         boost::optional<utility::string_t> DeleteDocumentMacrosRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
         void DeleteDocumentMacrosRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = revisionDateTime;
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

@@ -66,15 +66,15 @@ Font::Font()
     m_LocaleIdBiIsSet = false;
     m_LocaleIdFarEast = 0;
     m_LocaleIdFarEastIsSet = false;
-    m_Name = _XPLATSTR("");
+    m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
-    m_NameAscii = _XPLATSTR("");
+    m_NameAscii = utility::conversions::to_string_t("");
     m_NameAsciiIsSet = false;
-    m_NameBi = _XPLATSTR("");
+    m_NameBi = utility::conversions::to_string_t("");
     m_NameBiIsSet = false;
-    m_NameFarEast = _XPLATSTR("");
+    m_NameFarEast = utility::conversions::to_string_t("");
     m_NameFarEastIsSet = false;
-    m_NameOther = _XPLATSTR("");
+    m_NameOther = utility::conversions::to_string_t("");
     m_NameOtherIsSet = false;
     m_NoProofing = false;
     m_NoProofingIsSet = false;
@@ -96,17 +96,17 @@ Font::Font()
     m_SpacingIsSet = false;
     m_StrikeThrough = false;
     m_StrikeThroughIsSet = false;
-    m_StyleIdentifier = _XPLATSTR("");
+    m_StyleIdentifier = utility::conversions::to_string_t("");
     m_StyleIdentifierIsSet = false;
-    m_StyleName = _XPLATSTR("");
+    m_StyleName = utility::conversions::to_string_t("");
     m_StyleNameIsSet = false;
     m_Subscript = false;
     m_SubscriptIsSet = false;
     m_Superscript = false;
     m_SuperscriptIsSet = false;
-    m_TextEffect = _XPLATSTR("");
+    m_TextEffect = utility::conversions::to_string_t("");
     m_TextEffectIsSet = false;
-    m_Underline = _XPLATSTR("");
+    m_Underline = utility::conversions::to_string_t("");
     m_UnderlineIsSet = false;
     m_UnderlineColorIsSet = false;
 }
@@ -823,8 +823,6 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
 
 void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

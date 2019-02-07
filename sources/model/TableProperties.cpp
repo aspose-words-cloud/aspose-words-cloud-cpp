@@ -33,7 +33,7 @@ namespace model {
 
 TableProperties::TableProperties()
 {
-    m_Alignment = _XPLATSTR("");
+    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
     m_AllowAutoFit = false;
     m_AllowAutoFitIsSet = false;
@@ -50,13 +50,13 @@ TableProperties::TableProperties()
     m_PreferredWidthIsSet = false;
     m_RightPadding = 0.0;
     m_RightPaddingIsSet = false;
-    m_StyleIdentifier = _XPLATSTR("");
+    m_StyleIdentifier = utility::conversions::to_string_t("");
     m_StyleIdentifierIsSet = false;
-    m_StyleName = _XPLATSTR("");
+    m_StyleName = utility::conversions::to_string_t("");
     m_StyleNameIsSet = false;
-    m_StyleOptions = _XPLATSTR("");
+    m_StyleOptions = utility::conversions::to_string_t("");
     m_StyleOptionsIsSet = false;
-    m_TextWrapping = _XPLATSTR("");
+    m_TextWrapping = utility::conversions::to_string_t("");
     m_TextWrappingIsSet = false;
     m_TopPadding = 0.0;
     m_TopPaddingIsSet = false;
@@ -336,8 +336,6 @@ void TableProperties::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void TableProperties::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

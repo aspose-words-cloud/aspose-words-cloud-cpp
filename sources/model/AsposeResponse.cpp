@@ -34,7 +34,7 @@ namespace model {
 AsposeResponse::AsposeResponse()
 {
     m_Code = 0;
-    m_Status = _XPLATSTR("");
+    m_Status = utility::conversions::to_string_t("");
     m_StatusIsSet = false;
 }
 

@@ -120,8 +120,6 @@ void PageStatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void PageStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     setPageNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageNumber"))));
     setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
     setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
