@@ -32,16 +32,16 @@ target_link_libraries(words-cloud-test PRIVATE gtest Aspose::Words.Cloud)
 
 # Copy cpprest dynamic library
 find_package(cpprestsdk CONFIG REQUIRED)
-if (MSVC)
-add_custom_command(TARGET words-cloud-test POST_BUILD 
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_PROPERTY:cpprestsdk::cpprest,IMPORTED_LOCATION_DEBUG> $<TARGET_FILE_DIR:words-cloud-test>
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_PROPERTY:cpprestsdk::cpprest,IMPORTED_LOCATION_RELEASE> $<TARGET_FILE_DIR:words-cloud-test>)
-endif()
 target_compile_definitions(words-cloud-test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
 if (COMMAND cotire)
   cotire(words-cloud-test)
 endif()
 
+if (MSVC)
+add_custom_command(TARGET words-cloud-test POST_BUILD 
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_PROPERTY:cpprestsdk::cpprest,IMPORTED_LOCATION_DEBUG> $<TARGET_FILE_DIR:words-cloud-test>
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_PROPERTY:cpprestsdk::cpprest,IMPORTED_LOCATION_RELEASE> $<TARGET_FILE_DIR:words-cloud-test>)
+endif()
 
-add_test(NAME words-cloud-test COMMAND words-cloud-test --gtest_output=xml:test_result.xml) 
+add_test(NAME words-cloud-test COMMAND words-cloud-test_unity --gtest_output=xml:test_result.xml) 
