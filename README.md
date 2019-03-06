@@ -21,7 +21,48 @@ cmake -G "Visual Studio 15 2017" -Thost=x64 -Ax64 -DBOOST_ROOT=<path-to-boost> -
 cmake --build aspose-words-cloud-cpp\build --config Debug --target words-cloud-test
 ```
 
-3. Run tests
+3. Create servercreds.json in the root SDK directory:
+````
+{
+	"AppKey" : "xxxxx",
+	"AppSid" : "xxxx",
+	"BaseUrl" : "xxx" 
+}
+````
+
+4. Run tests
 ```cmd
 cmake -E chdir aspose-words-cloud-cpp\build ctest -V -C Debug
 ```
+
+## How to run tests in Windows Docker container
+
+1. Create a base container
+```cmd
+docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .
+```
+
+2. Set CPPWC_AK, CPPWC_AS, CPPWC_BU environment variables to aaplication key, application SID, and base URL respectively.
+
+3. Run tests
+```cmd
+runinDocker.windows
+```
+
+Reports are saved in out directory.
+
+## How to run tests in Linux Docker container
+
+1. Create a base container
+```cmd
+docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
+```
+
+2. Set CPPWC_AK, CPPWC_AS, CPPWC_BU environment variables to aaplication key, application SID, and base URL respectively.
+
+3. Run tests
+```cmd
+runinDocker.linux
+```
+
+Reports are saved in out directory.
