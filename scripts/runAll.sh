@@ -1,13 +1,13 @@
 git clone https://github.com/Microsoft/cpprestsdk.git
 
 mkdir -p aspose-words-cloud-cpp/out
-rm aspose-words-cloud-cpp/build -R
+rm aspose-words-cloud-cpp/build -R -f
 # Generate credentials
 echo "{
         \"AppKey\" : \"$1\",
         \"AppSid\" : \"$2\",
         \"BaseUrl\" : \"$3\"
-      }" > aspose-words-cloud-cpp/tests/servercreds.json
+      }" > aspose-words-cloud-cpp/servercreds.json
 
 # Compile cppcheck
 cd /usr/bin/cppcheck-sources

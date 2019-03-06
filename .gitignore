@@ -35,6 +35,7 @@
 .idea/*
 
 build/*
+build2/*
 install/*
 CppBuild-cppcheck-build-dir/*
 *.cppcheck

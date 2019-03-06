@@ -1,107 +1,117 @@
+/** --------------------------------------------------------------------------------------------------------------------
+* <copyright company="Aspose" file="TestBase.cpp">
+*   Copyright (c) 2019 Aspose.Words for Cloud
+* </copyright>
+* <summary>
+*   Permission is hereby granted, free of charge, to any person obtaining a copy
+*  of this software and associated documentation files (the "Software"), to deal
+*  in the Software without restriction, including without limitation the rights
+*  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+*  copies of the Software, and to permit persons to whom the Software is
+*  furnished to do so, subject to the following conditions:
+* 
+*  The above copyright notice and this permission notice shall be included in all
+*  copies or substantial portions of the Software.
+* 
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+*  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+*  SOFTWARE.
+* </summary> 
+-------------------------------------------------------------------------------------------------------------------- **/
 #include "TestBase.h"
 
+#include <boost/filesystem/fstream.hpp>
+#include <boost/filesystem.hpp>
 
-std::shared_ptr<ApiConfiguration> get_config()
+namespace fs = boost::filesystem;
+
+utility::string_t get_file_text_as_string(const fs::path& file)
 {
-	ifstream fileStream(STCONVERT(TEST_ROOT) + SYSTEM_DELIMITER + STCONVERT("servercreds.json"));
-	std::shared_ptr<ApiConfiguration> newConfig= std::make_shared<ApiConfiguration>();
+#ifdef _UTF16_STRINGS
+	using ifstream_t = fs::wifstream;
+#else
+	using ifstream_t = fs::ifstream;
+#endif
+
+	ifstream_t fileStream{ file };
 
 	if (!fileStream.is_open())
 	{
 		return nullptr;
 	}
-	string lines, line;
-	while (getline(fileStream, line))
-	{
-		lines += line;
-	}
-	web::json::value fileJson = web::json::value::parse(utility::conversions::to_string_t(lines));
 
-	newConfig->setAppKey(fileJson[STCONVERT("AppKey")].as_string());
-	newConfig->setBaseUrl(fileJson[STCONVERT("BaseUrl")].as_string());
-	newConfig->setAppSid(fileJson[STCONVERT("AppSid")].as_string());
-	newConfig->setUserAgent(STCONVERT("CppAsposeClient"));
-	newConfig->setApiVersion(STCONVERT("v1"));
+	utility::stringstream_t buffer;
+	buffer << fileStream.rdbuf();
+	return buffer.str();
+}
+
+
+std::shared_ptr<ApiConfiguration> get_config()
+{
+	utility::string_t credentials;
+	credentials = get_file_text_as_string({ fs::path{ TEST_ROOT }.parent_path() / "servercreds.json" });
+	web::json::value fileJson = web::json::value::parse(credentials);
+
 	web::http::client::http_client_config conf;
+	conf.set_timeout(std::chrono::seconds(60));
 
-	conf.set_timeout(chrono::seconds(60));
+	auto newConfig = std::make_shared<ApiConfiguration>();
+	newConfig->setAppKey(fileJson[_XPLATSTR("AppKey")].as_string());
+	newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
+	newConfig->setAppSid(fileJson[_XPLATSTR("AppSid")].as_string());
+	newConfig->setUserAgent(_XPLATSTR("CppAsposeClient"));
+	newConfig->setApiVersion(_XPLATSTR("v1"));
 	newConfig->setHttpConfig(conf);
 
 	return newConfig;
 }
 
-vector<utility::string_t> split(utility::string_t stringToSplit)
+fs::path InfrastructureTest::get_sdk_root()
 {
-	vector<utility::string_t> parts;
-	utility::string_t temp;
-	utility::stringstream_t wss(stringToSplit);
-	while (std::getline(wss, temp, _XPLATSTR('/')))
-	{
-		parts.push_back(temp);
-	}
-	return parts;
+    return fs::path{TEST_ROOT}.normalize();
 }
 
-utility::string_t join(vector<utility::string_t> parts, utility::string_t delim)
-{
-	utility::string_t str;
-
-	for (vector<utility::string_t>::iterator it = parts.begin(); it != parts.end(); ++it)
-	{
-		str += *it + delim;
-	}
-
-	return str.substr(0, str.size() - 1);
-}
-
-utility::string_t cutFileExtension(utility::string_t filename)
-{
-	return filename.substr(0, filename.find(L'.'));
-}
-
-utility::string_t InfrastructureTest::get_sdk_root()
-{
-	return STCONVERT(TEST_ROOT);
-}
 utility::string_t InfrastructureTest::get_data_folder()
 {
-	return STCONVERT("");
-}
-utility::string_t InfrastructureTest::path_combine(utility::string_t base, utility::string_t stringToAdd)
-{
-	return base + SYSTEM_DELIMITER + stringToAdd;
-}
-utility::string_t InfrastructureTest::path_combine_url(utility::string_t base, utility::string_t stringToAdd)
-{
-	return base + STCONVERT("\\") + stringToAdd;
+    return {};
 }
 
-utility::string_t InfrastructureTest::get_data_dir(utility::string_t subfolder)
+utility::string_t InfrastructureTest::path_combine(const fs::path& base, const utility::string_t& stringToAdd)
 {
-	return path_combine(LocalTestDataFolder, subfolder);
+    return utility::conversions::to_string_t((base / stringToAdd).generic_string());
 }
 
-std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file(utility::string_t filePath,
-	utility::string_t filename, utility::string_t contentType)
+utility::string_t InfrastructureTest::path_combine_url(const utility::string_t& base, const utility::string_t& stringToAdd)
 {
-	ifstream checkStream(filePath);
+	return base + _XPLATSTR("\\") + stringToAdd;
+}
 
-	if (!checkStream.good()) {
-		utility::string_t errreason;
-#if defined(__WIN32)
+utility::string_t InfrastructureTest::cutFileExtension(const boost::filesystem::path& filename)
+{
+    return utility::conversions::to_string_t(filename.stem().generic_string());
+}
 
-#elif defined(__unix__)
-		char buffer[255];
-		errreason = utility::conversions::to_string_t(std::string(strerror_r(errno,buffer, sizeof(buffer))));
-#endif
-		ucerr << STCONVERT("Cannot open file ") + filePath + STCONVERT(" to upload. Reason: ") + errreason;
-	}
-	checkStream.close();
+fs::path InfrastructureTest::get_data_dir(const fs::path& subfolder) const
+{
+    return LocalTestDataFolder / fs::path{subfolder};
+}
 
-	std::shared_ptr<HttpContent> content= std::make_shared<HttpContent>();
-	std::shared_ptr<istream> stream= std::make_shared<ifstream>(filePath, std::ifstream::binary);
+std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file(const fs::path& filePath,
+	const utility::string_t& filename, const utility::string_t& contentType)
+{
+    if (!fs::exists(filePath))
+    {
+        ucerr << _XPLATSTR("Cannot open file ") << filePath << _XPLATSTR(" to upload\n");
+    }
+
+    auto content = std::make_shared<HttpContent>();
+	auto stream = std::make_shared<fs::ifstream>(filePath, std::ifstream::binary);
 	content->setData(stream);
-	content->setContentDisposition(STCONVERT("form-data"));
+	content->setContentDisposition(_XPLATSTR("form-data"));
 
 	content->setContentType(contentType);
 
@@ -111,27 +121,39 @@ std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file
 	return content;
 }
 
-utility::string_t InfrastructureTest::get_file_text(utility::string_t file)
+utility::string_t InfrastructureTest::get_file_text(const fs::path& file)
 {
-	std::ifstream fileStream(file);
-	utility::string_t s((std::istreambuf_iterator<char>(fileStream)),
-		std::istreambuf_iterator<char>());
-	return s;
+	return get_file_text_as_string(file);
 }
 
-void InfrastructureTest::UploadFileToStorage(utility::string_t path, utility::string_t filePath)
+std::vector<fs::path> InfrastructureTest::get_directory_files(const boost::filesystem::path& dir)
 {
+    const auto dirIterator = fs::directory_iterator{dir};
+    std::vector<fs::path> result;
+
+    std::transform(begin(dirIterator), end(dirIterator), std::back_inserter(result),
+        [](const fs::directory_entry& entry)
+    {
+        return entry.path();
+    });
+
+    return result;
+}
+
+void InfrastructureTest::UploadFileToStorage(const utility::string_t& path, const fs::path& filePath)
+{
+
+
 	std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
-	map<utility::string_t, utility::string_t> queryParams, headerParams, formParams;
-    std::shared_ptr<HttpContent> fileToUpload = generate_http_content_from_file(filePath);
-    fileParams.push_back(std::make_pair(STCONVERT("file"), fileToUpload));
-	queryParams[_XPLATSTR("path")] = path;
+    fileParams.emplace_back(_XPLATSTR("file"), generate_http_content_from_file(filePath));
+
+    std::map<utility::string_t, utility::string_t> queryParams{{_XPLATSTR("path"), path}};
 
 	std::shared_ptr<ApiClient> client = get_client();
 
-    client->callApi(client->getConfiguration()->getBaseUrl() + STCONVERT("/v1.1/storage/file"),
-		STCONVERT("PUT"), queryParams, nullptr, headerParams, formParams, fileParams, STCONVERT("multipart/form-data"))
-		.then([=](web::http::http_response response) {
+    client->callApi(client->getConfiguration()->getBaseUrl() + _XPLATSTR("/v1.1/storage/file"),
+        _XPLATSTR("PUT"), queryParams, nullptr, {}, {}, fileParams, _XPLATSTR("multipart/form-data"))
+		.then([](const web::http::http_response& response) {
 
             if (response.status_code() >= 400)
 			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
@@ -145,42 +167,42 @@ void InfrastructureTest::UploadFileToStorage(utility::string_t path, utility::st
 }
 
 
-bool InfrastructureTest::GetIsExists(utility::string_t path)
+bool InfrastructureTest::GetIsExists(const utility::string_t& path)
 {
-
-	std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
-	map<utility::string_t, utility::string_t> queryParams, headerParams, formParams;
-	queryParams[_XPLATSTR("path")] = path;
+    std::map<utility::string_t, utility::string_t> queryParams{{_XPLATSTR("path"), path}};
 
 	std::shared_ptr<ApiClient> client = get_client();
-	return (client->callApi(client->getConfiguration()->getBaseUrl() + STCONVERT("/v1.1/storage/exist"),
-		STCONVERT("GET"), queryParams, nullptr, headerParams, formParams, fileParams, STCONVERT("application/json"))
-		.then([=](web::http::http_response response) {
+
+	return (client->callApi(client->getConfiguration()->getBaseUrl() + _XPLATSTR("/v1.1/storage/exist"),
+        _XPLATSTR("GET"), queryParams, nullptr, {}, {}, {}, _XPLATSTR("application/json"))
+		.then([](const web::http::http_response& response) {
 		if (response.status_code() >= 400)
 			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 		return response.extract_json();
 	}).then([=](web::json::value ans) {
 		
-		return ans.has_field(STCONVERT("FileExist")) && 
-			ans[STCONVERT("FileExist")][STCONVERT("IsExist")].as_bool();
+		return ans.has_field(_XPLATSTR("FileExist")) && 
+			ans[_XPLATSTR("FileExist")][_XPLATSTR("IsExist")].as_bool();
 	}).get());
 }
 
-std::shared_ptr<ApiConfiguration> InfrastructureTest::get_configuration()
+std::shared_ptr<ApiConfiguration> InfrastructureTest::get_configuration() const
 {
 	return m_Config;
 }
+
 std::shared_ptr<ApiClient> InfrastructureTest::get_client()
 {
-	if (client == nullptr) {
+	if (!client) {
 		client = std::make_shared<ApiClient>();
 		client->setConfiguration(get_configuration());
 	}
 	return client;
 }
+
 std::shared_ptr<WordsApi> InfrastructureTest::get_api()
 {
-	if (api == nullptr)
+	if (!api)
 	{
 		api = std::make_shared<WordsApi>(get_client());
 	}
