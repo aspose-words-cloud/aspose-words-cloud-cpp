@@ -1,8 +1,5 @@
 # FROM compulim/msbuild
 FROM microsoft/windowsservercore
-# escape=`
-
-#FROM mcr.microsoft.com/windows:1809
 
 # Visual Studio
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe vs_buildtools.exe
@@ -17,7 +14,7 @@ RUN C:\vs_BuildTools.exe \
         --norestart \
         --wait \
         --nocache
-RUN del C:\vs_BuildTools.exe
+RUN del C:\vs_BuildTools.exe 
 
 # Chocolatey & Git
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
