@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiConfiguration.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,9 +24,9 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "ApiConfiguration.h"
 
-namespace io {
-namespace swagger {
-namespace client {
+namespace aspose {
+namespace words {
+namespace cloud {
 namespace api {
 
 void ApiConfiguration::setAppKey( utility::string_t appKey){

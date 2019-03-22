@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassifyRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "ClassifyRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 ClassifyRequest::ClassifyRequest(
         utility::string_t text,
                 boost::optional<utility::string_t> bestClassesCount
@@ -52,6 +53,7 @@ ClassifyRequest::ClassifyRequest(
             m_bestClassesCount = std::move(bestClassesCount);
         }
 
+}
 }
 }
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutDocumentFieldNamesRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "PutDocumentFieldNamesRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 PutDocumentFieldNamesRequest::PutDocumentFieldNamesRequest(
         std::shared_ptr<HttpContent> _template,
                 boost::optional<bool> useNonMergeFields
@@ -52,6 +53,7 @@ PutDocumentFieldNamesRequest::PutDocumentFieldNamesRequest(
             m_useNonMergeFields = std::move(useNonMergeFields);
         }
 
+}
 }
 }
 }

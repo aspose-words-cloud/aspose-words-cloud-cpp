@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostCompareDocumentRequest.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,10 +30,11 @@
 #include "CompareData.h"
 #include <boost/optional.hpp>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 class PostCompareDocumentRequest{
     public: 
@@ -77,6 +78,7 @@ class PostCompareDocumentRequest{
         boost::optional<utility::string_t> m_destFileName;
 };
 
+}
 }
 }
 }

@@ -1,7 +1,7 @@
 
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldNamesResponse.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,19 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_FieldNamesResponse_H_
-#define IO_SWAGGER_CLIENT_MODEL_FieldNamesResponse_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FieldNamesResponse_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_FieldNamesResponse_H_
 
 
 #include "AsposeResponse.h"
 #include "FieldNames.h"
 #include <cpprest/details/basic_types.h>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 /// <summary>
 /// This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
@@ -78,5 +79,6 @@ protected:
 }
 }
 }
+}
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_FieldNamesResponse_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_FieldNamesResponse_H_ */

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiConfiguration.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,8 +22,8 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#ifndef IO_SWAGGER_CLIENT_API_ApiConfiguration_H_
-#define IO_SWAGGER_CLIENT_API_ApiConfiguration_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_ApiConfiguration_H_
+#define ASPOSE_WORDS_CLOUD_API_ApiConfiguration_H_
 
 
 
@@ -32,9 +32,9 @@
 
 #include <cpprest/details/basic_types.h>
 #include <cpprest/http_client.h>
-namespace io {
-namespace swagger {
-namespace client {
+namespace aspose {
+namespace words {
+namespace cloud {
 namespace api {
 
 class  ApiConfiguration
@@ -86,4 +86,4 @@ protected:
 }
 }
 }
-#endif /* IO_SWAGGER_CLIENT_API_ApiConfiguration_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_ApiConfiguration_H_ */

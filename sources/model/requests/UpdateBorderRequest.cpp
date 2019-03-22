@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateBorderRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "UpdateBorderRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 UpdateBorderRequest::UpdateBorderRequest(
         utility::string_t name,
                 std::shared_ptr<Border> borderProperties,
@@ -133,6 +134,7 @@ UpdateBorderRequest::UpdateBorderRequest(
             m_revisionDateTime = std::move(revisionDateTime);
         }
 
+}
 }
 }
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ModelBase.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,10 +24,11 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "ModelBase.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 web::json::value ModelBase::toJson( const utility::string_t& value )
 {
@@ -296,6 +297,7 @@ web::json::value ModelBase::valueFromHttpContent(const std::shared_ptr<HttpConte
     return web::json::value::parse(str);
 }
 
+}
 }
 }
 }

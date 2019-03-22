@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TextSaveOptionsData.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,13 +26,16 @@
 
 #include "TextSaveOptionsData.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 TextSaveOptionsData::TextSaveOptionsData()
 {
+    m_AddBidiMarks = false;
+    m_AddBidiMarksIsSet = false;
     m_Encoding = utility::conversions::to_string_t("");
     m_EncodingIsSet = false;
     m_ExportHeadersFooters = false;
@@ -60,6 +63,10 @@ web::json::value TextSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
 
+    if(m_AddBidiMarksIsSet)
+    {
+        val[_XPLATSTR("AddBidiMarks")] = ModelBase::toJson(m_AddBidiMarks);
+    }
     if(m_EncodingIsSet)
     {
         val[_XPLATSTR("Encoding")] = ModelBase::toJson(m_Encoding);
@@ -92,6 +99,14 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
+    if(val.has_field(_XPLATSTR("AddBidiMarks")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("AddBidiMarks")];
+        if(!fieldValue.is_null())
+        {
+            setAddBidiMarks(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(_XPLATSTR("Encoding")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Encoding")];
@@ -187,6 +202,10 @@ void TextSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
+    if(m_AddBidiMarksIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AddBidiMarks"), m_AddBidiMarks));
+    }
     if(m_EncodingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Encoding"), m_Encoding));
@@ -253,6 +272,10 @@ void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
+    if(multipart->hasContent(_XPLATSTR("AddBidiMarks")))
+    {
+        setAddBidiMarks(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddBidiMarks"))));
+    }
     if(multipart->hasContent(_XPLATSTR("Encoding")))
     {
         setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Encoding"))));
@@ -277,6 +300,27 @@ void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         setSimplifyListLabels(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SimplifyListLabels"))));
     }
+}
+
+bool TextSaveOptionsData::isAddBidiMarks() const
+{
+    return m_AddBidiMarks;
+}
+
+
+void TextSaveOptionsData::setAddBidiMarks(bool value)
+{
+    m_AddBidiMarks = value;
+    m_AddBidiMarksIsSet = true;
+}
+bool TextSaveOptionsData::addBidiMarksIsSet() const
+{
+    return m_AddBidiMarksIsSet;
+}
+
+void TextSaveOptionsData::unsetAddBidiMarks()
+{
+    m_AddBidiMarksIsSet = false;
 }
 
 utility::string_t TextSaveOptionsData::getEncoding() const
@@ -405,6 +449,7 @@ void TextSaveOptionsData::unsetSimplifyListLabels()
     m_SimplifyListLabelsIsSet = false;
 }
 
+}
 }
 }
 }

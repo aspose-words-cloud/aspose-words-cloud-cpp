@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentParagraphRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "GetDocumentParagraphRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 GetDocumentParagraphRequest::GetDocumentParagraphRequest(
         utility::string_t name,
                 int32_t index,
@@ -97,6 +98,7 @@ GetDocumentParagraphRequest::GetDocumentParagraphRequest(
             m_nodePath = std::move(nodePath);
         }
 
+}
 }
 }
 }

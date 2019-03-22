@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostCompareDocumentRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "PostCompareDocumentRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 PostCompareDocumentRequest::PostCompareDocumentRequest(
         utility::string_t name,
                 std::shared_ptr<CompareData> compareData,
@@ -97,6 +98,7 @@ PostCompareDocumentRequest::PostCompareDocumentRequest(
             m_destFileName = std::move(destFileName);
         }
 
+}
 }
 }
 }

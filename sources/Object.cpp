@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Object.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,10 +24,11 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "Object.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 void Object::validate()
 {
@@ -70,6 +71,7 @@ void Object::setValue(const utility::string_t& key, const web::json::value& valu
     m_object[key] = value;
 }
 
+}
 }
 }
 }

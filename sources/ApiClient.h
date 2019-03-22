@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiClient.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef IO_SWAGGER_CLIENT_API_ApiClient_H_
-#define IO_SWAGGER_CLIENT_API_ApiClient_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_ApiClient_H_
+#define ASPOSE_WORDS_CLOUD_API_ApiClient_H_
 
 
 #include "ApiConfiguration.h"
@@ -41,12 +41,12 @@
 #include <cpprest/http_client.h>
 #include <cpprest/json.h>
 
-namespace io {
-namespace swagger {
-namespace client {
+namespace aspose {
+namespace words {
+namespace cloud {
 namespace api {
 
-using namespace io::swagger::client::model;
+using namespace aspose::words::cloud::api::models;
 
 class  ApiClient
 {
@@ -119,4 +119,4 @@ private:
 }
 }
 
-#endif /* IO_SWAGGER_CLIENT_API_ApiClient_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_ApiClient_H_ */

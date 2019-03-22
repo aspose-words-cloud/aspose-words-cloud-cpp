@@ -1,7 +1,7 @@
 
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResult.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_SaveResult_H_
-#define IO_SWAGGER_CLIENT_MODEL_SaveResult_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SaveResult_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_SaveResult_H_
 
 
 #include "../ModelBase.h"
@@ -33,10 +33,11 @@
 #include "FileLink.h"
 #include <vector>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 /// <summary>
 /// Result of saving.
@@ -97,5 +98,6 @@ protected:
 }
 }
 }
+}
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_SaveResult_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_SaveResult_H_ */

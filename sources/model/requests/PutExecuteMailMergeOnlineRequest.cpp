@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutExecuteMailMergeOnlineRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "PutExecuteMailMergeOnlineRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 PutExecuteMailMergeOnlineRequest::PutExecuteMailMergeOnlineRequest(
         std::shared_ptr<HttpContent> _template,
                 std::shared_ptr<HttpContent> data,
@@ -79,6 +80,7 @@ PutExecuteMailMergeOnlineRequest::PutExecuteMailMergeOnlineRequest(
             m_documentFileName = std::move(documentFileName);
         }
 
+}
 }
 }
 }

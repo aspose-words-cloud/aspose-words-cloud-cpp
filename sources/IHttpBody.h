@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="IHttpBody.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,16 +23,17 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_IHttpBody_H_
-#define IO_SWAGGER_CLIENT_MODEL_IHttpBody_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_IHttpBody_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_IHttpBody_H_
 
 
 #include <iostream>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 class  IHttpBody
 {
@@ -46,5 +47,6 @@ public:
 }
 }
 }
+}
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_IHttpBody_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_IHttpBody_H_ */

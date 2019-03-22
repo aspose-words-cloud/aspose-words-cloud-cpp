@@ -34,7 +34,7 @@
 
 using streambuf_t = std::basic_streambuf<utility::char_t>;
 
-using namespace io::swagger::client::api;
+using namespace aspose::words::cloud::api;
 
 std::shared_ptr<ApiConfiguration> get_config();
 

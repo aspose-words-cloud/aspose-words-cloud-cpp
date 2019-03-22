@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentPropertyRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "GetDocumentPropertyRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 GetDocumentPropertyRequest::GetDocumentPropertyRequest(
         utility::string_t name,
                 utility::string_t propertyName,
@@ -88,6 +89,7 @@ GetDocumentPropertyRequest::GetDocumentPropertyRequest(
             m_password = std::move(password);
         }
 
+}
 }
 }
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WordsApi.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,11 +33,11 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <utility>
 
-namespace io 
+namespace aspose 
 {
-namespace swagger 
+namespace words 
 {
-namespace client 
+namespace cloud 
 {
 namespace api 
 {
@@ -120,7 +120,7 @@ utility::string_t extractOptional(const boost::optional<T>& parameter)
 
     return {};
 }
-using namespace io::swagger::client::model;
+using namespace aspose::words::cloud::api::models;
 
 WordsApi::WordsApi(std::shared_ptr<ApiClient> apiClient)
     : m_ApiClient(std::move(apiClient))
