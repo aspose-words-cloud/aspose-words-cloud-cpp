@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutFormFieldRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "PutFormFieldRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 PutFormFieldRequest::PutFormFieldRequest(
         utility::string_t name,
                 std::shared_ptr<FormField> formField,
@@ -133,6 +134,7 @@ PutFormFieldRequest::PutFormFieldRequest(
             m_insertBeforeNode = std::move(insertBeforeNode);
         }
 
+}
 }
 }
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostInsertPageNumbersRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "PostInsertPageNumbersRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 PostInsertPageNumbersRequest::PostInsertPageNumbersRequest(
         utility::string_t name,
                 std::shared_ptr<PageNumber> pageNumber,
@@ -115,6 +116,7 @@ PostInsertPageNumbersRequest::PostInsertPageNumbersRequest(
             m_revisionDateTime = std::move(revisionDateTime);
         }
 
+}
 }
 }
 }

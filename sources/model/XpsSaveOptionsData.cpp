@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XpsSaveOptionsData.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,11 @@
 
 #include "XpsSaveOptionsData.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 XpsSaveOptionsData::XpsSaveOptionsData()
 {
@@ -385,6 +386,7 @@ void XpsSaveOptionsData::unsetUseBookFoldPrintingSettings()
     m_UseBookFoldPrintingSettingsIsSet = false;
 }
 
+}
 }
 }
 }

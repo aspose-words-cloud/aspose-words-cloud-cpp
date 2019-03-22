@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MultipartFormData.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,10 +28,11 @@
 #include <boost/uuid/random_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 MultipartFormData::MultipartFormData() :
  m_Boundary(utility::conversions::details::to_string_t(boost::uuids::random_generator()()))
@@ -109,6 +110,7 @@ for (const auto & content : m_Contents)
     }
 }
 
+}
 }
 }
 }

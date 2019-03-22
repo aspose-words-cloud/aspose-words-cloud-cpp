@@ -1,7 +1,7 @@
 
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XamlFlowSaveOptionsData.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,17 +24,18 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_XamlFlowSaveOptionsData_H_
-#define IO_SWAGGER_CLIENT_MODEL_XamlFlowSaveOptionsData_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_XamlFlowSaveOptionsData_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_XamlFlowSaveOptionsData_H_
 
 
 #include "SaveOptionsData.h"
 #include <cpprest/details/basic_types.h>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 /// <summary>
 /// container class for xaml flow save options
@@ -86,5 +87,6 @@ protected:
 }
 }
 }
+}
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_XamlFlowSaveOptionsData_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_XamlFlowSaveOptionsData_H_ */

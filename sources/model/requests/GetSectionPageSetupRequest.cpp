@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetSectionPageSetupRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "GetSectionPageSetupRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 GetSectionPageSetupRequest::GetSectionPageSetupRequest(
         utility::string_t name,
                 int32_t sectionIndex,
@@ -88,6 +89,7 @@ GetSectionPageSetupRequest::GetSectionPageSetupRequest(
             m_password = std::move(password);
         }
 
+}
 }
 }
 }

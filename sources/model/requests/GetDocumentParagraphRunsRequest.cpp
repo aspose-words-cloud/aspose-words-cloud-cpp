@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentParagraphRunsRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "GetDocumentParagraphRunsRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 GetDocumentParagraphRunsRequest::GetDocumentParagraphRunsRequest(
         utility::string_t name,
                 utility::string_t paragraphPath,
@@ -88,6 +89,7 @@ GetDocumentParagraphRunsRequest::GetDocumentParagraphRunsRequest(
             m_password = std::move(password);
         }
 
+}
 }
 }
 }

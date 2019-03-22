@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceTextRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,11 @@
 
 #include "ReplaceTextRequest.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 ReplaceTextRequest::ReplaceTextRequest()
 {
@@ -222,6 +223,7 @@ void ReplaceTextRequest::setIsOldValueRegex(bool value)
 {
     m_IsOldValueRegex = value;
     
+}
 }
 }
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassifyDocumentRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "ClassifyDocumentRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 ClassifyDocumentRequest::ClassifyDocumentRequest(
         utility::string_t documentName,
                 boost::optional<utility::string_t> folder,
@@ -97,6 +98,7 @@ ClassifyDocumentRequest::ClassifyDocumentRequest(
             m_taxonomy = std::move(taxonomy);
         }
 
+}
 }
 }
 }

@@ -1,7 +1,7 @@
 
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RevisionsModificationResponse.h">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,19 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_RevisionsModificationResponse_H_
-#define IO_SWAGGER_CLIENT_MODEL_RevisionsModificationResponse_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RevisionsModificationResponse_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_RevisionsModificationResponse_H_
 
 
 #include "ModificationOperationResult.h"
 #include "AsposeResponse.h"
 #include <cpprest/details/basic_types.h>
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 /// <summary>
 /// response of the modification operations for the revisions collection (now these are acceptAll and rejectAll)
@@ -78,5 +79,6 @@ protected:
 }
 }
 }
+}
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_RevisionsModificationResponse_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_RevisionsModificationResponse_H_ */

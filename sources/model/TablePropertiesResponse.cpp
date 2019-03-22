@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TablePropertiesResponse.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,11 @@
 
 #include "TablePropertiesResponse.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 TablePropertiesResponse::TablePropertiesResponse()
 {
@@ -132,6 +133,7 @@ void TablePropertiesResponse::unsetProperties()
     m_PropertiesIsSet = false;
 }
 
+}
 }
 }
 }

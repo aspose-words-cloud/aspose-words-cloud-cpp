@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostLoadWebDocumentRequest.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "PostLoadWebDocumentRequest.h"
-namespace io{
-namespace swagger{
-namespace client{
-namespace model{
+namespace aspose{
+namespace words{
+namespace cloud{
+namespace api{
+namespace models{
 PostLoadWebDocumentRequest::PostLoadWebDocumentRequest(
         std::shared_ptr<LoadWebDocumentData> data,
                 boost::optional<utility::string_t> storage
@@ -52,6 +53,7 @@ PostLoadWebDocumentRequest::PostLoadWebDocumentRequest(
             m_storage = std::move(storage);
         }
 
+}
 }
 }
 }

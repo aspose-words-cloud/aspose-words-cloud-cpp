@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OoxmlSaveOptionsData.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,11 @@
 
 #include "OoxmlSaveOptionsData.h"
 
-namespace io {
-namespace swagger {
-namespace client {
-namespace model {
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 
 OoxmlSaveOptionsData::OoxmlSaveOptionsData()
 {
@@ -276,6 +277,7 @@ void OoxmlSaveOptionsData::unsetPrettyFormat()
     m_PrettyFormatIsSet = false;
 }
 
+}
 }
 }
 }

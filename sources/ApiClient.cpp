@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiClient.cpp">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,12 +26,12 @@
 #include "MultipartFormData.h"
 #include "ModelBase.h"
 
-namespace io {
-namespace swagger {
-namespace client {
+namespace aspose {
+namespace words {
+namespace cloud {
 namespace api {
 
-using namespace io::swagger::client::model;
+using namespace aspose::words::cloud::api::models;
 
 ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
     : m_Configuration(configuration)
@@ -249,18 +249,55 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     });
 }
 
+				utility::string_t ApiClient::copyDataFromStream(const Concurrency::streams::istream& stream) const
+{
+    if (!stream.is_valid()) return _XPLATSTR("EMPTY");
+
+    auto bodyStreamBuf = stream.streambuf();
+    const size_t streamSize = bodyStreamBuf.size();
+
+    std::string buffer;
+
+    if (streamSize)
+    {
+        buffer.resize(streamSize);
+        bodyStreamBuf.scopy(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data())) , buffer.size());
+    }
+    else
+    {
+        buffer.resize(bodyStreamBuf.in_avail());
+        uint8_t* ptr = const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data()));
+        auto size = buffer.size();
+        bodyStreamBuf.acquire(ptr, size);
+    }
+
+    auto result = utility::conversions::to_string_t(buffer);
+
+    ucout << result << _XPLATSTR('\n');
+    return result;
+}
+
+
 void ApiClient::logRequest(web::http::http_request request) const
 {
     if (!m_Configuration->isDebugMode()) return;
 
-	ucout << request.to_string() << _XPLATSTR('\n');
+    // header
+    ucout << request.method() << _XPLATSTR(": ") << request.request_uri().to_string() << _XPLATSTR('\n');
+
+    // body
+    ucout << copyDataFromStream(request.body()) << _XPLATSTR('\n');
 }
 
 void ApiClient::logResponse(web::http::http_response response) const
 {
     if (!m_Configuration->isDebugMode()) return;
 
-	ucout << _XPLATSTR("Response ") << response.to_string() << _XPLATSTR('\n');
+    // header
+    ucout << _XPLATSTR("Response ") << response.status_code() << _XPLATSTR(": ") << response.reason_phrase() << _XPLATSTR('\n');
+
+    // body
+    ucout << copyDataFromStream(response.body()) << _XPLATSTR('\n');
 }
 
 }
