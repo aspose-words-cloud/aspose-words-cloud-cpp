@@ -103,7 +103,7 @@ private:
     utility::string_t m_AccessToken;
     std::array<std::pair<utility::string_t, utility::string_t>, 2> defaultHeaders =
     {
-        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("1.0")),
+        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("19.3")),
         std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client"), _XPLATSTR("C++ SDK"))
     };
 
