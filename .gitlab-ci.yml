@@ -1,7 +1,14 @@
 variables:
   GIT_STRATEGY: clone
 
-windows-test:
+stages:
+  - test-sources
+  - start-release
+  - test-lib
+  - publish
+  
+test-sources-windows:
+  stage: test-sources
   script:
     - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
     - cmd /c 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
@@ -12,7 +19,8 @@ windows-test:
     reports:
       junit: out/*.xml
 
-linux-test:
+test-sources-linux:
+  stage: test-sources
   script:
     - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
     - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
@@ -23,3 +31,18 @@ linux-test:
     expire_in: 1 hour
     reports:
       junit: out/*.xml
+      
+start-release:
+  stage: start-release
+  when: manual
+  only:
+    - master
+      
+test-sources-lib-windows:
+  stage: test-lib
+
+test-sources-lib-linux:
+  stage: test-lib
+
+publish-lib:
+  stage: publish
