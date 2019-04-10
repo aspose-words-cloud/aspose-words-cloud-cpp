@@ -1,5 +1,6 @@
 variables:
   GIT_STRATEGY: clone
+  SDK_VERSION: ((Get-Date).AddMonths(1)).tostring("yy.M")
 
 stages:
   - test-sources
@@ -14,6 +15,9 @@ test-sources-windows:
     - cmd /c 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
   tags:
     - awcloud
+  except:
+    - testPackage
+    - Release
   artifacts:
     expire_in: 1 hour
     reports:
@@ -27,6 +31,9 @@ test-sources-linux:
     - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $WordsBaseUrl
   tags:
     - awcloud-linux
+  except:
+    - testPackage
+    - Release
   artifacts:
     expire_in: 1 hour
     reports:
@@ -34,15 +41,56 @@ test-sources-linux:
       
 start-release:
   stage: start-release
+  script:
+    - git merge testPackage
+    - git checkout testPackage
+    - Remove-Item -Path Aspose.Words.Cloud -Recurse -Force -ErrorAction Ignore
+    - Get-ChildItem -Path sources | % {Copy-Item $_.fullname Aspose.Words.Cloud -Recurse -Force -Exclude (".*", "*.sh")}
+    - git add .
+    - git commit -m 'Create the release folder'
+    - git push  
   when: manual
   only:
     - master
+  tags:
+    - awcloud
       
 test-sources-lib-windows:
   stage: test-lib
+  script:
+    - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
+    - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
+  tags:
+    - awcloud-linux
+  only:
+    - testPackage
+  artifacts:
+    expire_in: 1 hour
+    reports:
+      junit: out/*.xml
 
 test-sources-lib-linux:
   stage: test-lib
+  script:
+    - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
+    - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
+    - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/testPackage.sh $WordsAppKey $WordsAppSid $WordsBaseUrl
+  tags:
+    - awcloud
+  only:
+    - testPackage
+  artifacts:
+    expire_in: 1 hour
+    reports:
+      junit: out/*.xml
 
 publish-lib:
   stage: publish
+  only:
+    - testPackage
+  script:
+    - git merge Release
+    - git checkout Release
+    - git tag -a v$SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $SDK_VERSION" 
+  tags:
+    - awcloud
