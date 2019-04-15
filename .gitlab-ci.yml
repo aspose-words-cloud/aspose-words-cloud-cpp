@@ -3,7 +3,7 @@ variables:
 
 stages:
   - test
-  - build-releas
+  - build-release
   - test-pakage
   - publish
   
@@ -21,7 +21,7 @@ test-windows:
   only:
     - branches
   except:
-    - master
+    - tmaster
   artifacts:
     expire_in: 1 hour
     reports:
@@ -38,7 +38,7 @@ test-linux:
   only:
     - branches
   except:
-    - master
+    - tmaster
   artifacts:
     expire_in: 1 hour
     reports:
@@ -53,7 +53,7 @@ build-release:
     - "git push $env:ORIGIN HEAD:master" 
   when: manual
   only:
-    - master
+    - tmaster
   tags:
     - awcloud
 
@@ -65,7 +65,7 @@ test-package-windows:
   tags:
     - awcloud-linux
   only:
-    - master
+    - tmaster
   artifacts:
     expire_in: 1 hour
     reports:
@@ -80,7 +80,7 @@ test-package-linux:
   tags:
     - awcloud
   only:
-    - master
+    - tmaster
   artifacts:
     expire_in: 1 hour
     reports:
@@ -89,11 +89,11 @@ test-package-linux:
 publish-lib:
   stage: publish
   only:
-    - master
+    - tmaster
   script:
     - git rebase release
     - git checkout release
-    - git merge master
+    - git merge tmaster
     - 'git push $env:ORIGIN HEAD:release'
     - 'git tag -a v$env:SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $env:SDK_VERSION"'
     - "git push $env:ORIGIN v$env:SDK_VERSION"
