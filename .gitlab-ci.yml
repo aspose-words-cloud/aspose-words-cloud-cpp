@@ -1,76 +1,78 @@
 variables:
   GIT_STRATEGY: clone
-  SDK_VERSION: ((Get-Date).AddMonths(1)).tostring("yy.M")
 
 stages:
-  - test-sources
-  - start-release
-  - test-lib
+  - test
+  - build-releas
+  - test-pakage
   - publish
   
-test-sources-windows:
-  stage: test-sources
+before_script:
+  - $env:ORIGIN += 'https://{0}:{1}@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git' -f $env:GIT_CI_USER, $env:GIT_CI_PASS
+  - $env:SDK_VERSION += ((Get-Date).AddMonths(1)).tostring("yy.M")
+  
+test-windows:
+  stage: test
   script:
     - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
     - cmd /c 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
   tags:
     - awcloud
+  only:
+    - branches
   except:
-    - testPackage
-    - Release
+    - master
   artifacts:
     expire_in: 1 hour
     reports:
       junit: out/*.xml
 
-test-sources-linux:
-  stage: test-sources
+test-linux:
+  stage: test
   script:
     - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
     - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
     - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $WordsBaseUrl
   tags:
     - awcloud-linux
+  only:
+    - branches
   except:
-    - testPackage
-    - Release
+    - master
   artifacts:
     expire_in: 1 hour
     reports:
       junit: out/*.xml
-      
-start-release:
-  stage: start-release
+
+build-release:
+  stage: build-release
   script:
-    - git merge testPackage
-    - git checkout testPackage
     - Remove-Item -Path Aspose.Words.Cloud -Recurse -Force -ErrorAction Ignore
     - Get-ChildItem -Path sources | % {Copy-Item $_.fullname Aspose.Words.Cloud -Recurse -Force -Exclude (".*", "*.sh")}
-    - git add .
-    - git commit -m 'Create the release folder'
-    - git push  
+    - git commit -am 'Create the release folder [ci skip]'
+    - "git push $env:ORIGIN HEAD:master" 
   when: manual
   only:
     - master
   tags:
     - awcloud
-      
-test-sources-lib-windows:
-  stage: test-lib
+
+test-package-windows:
+  stage: test-pakage
   script:
     - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
     - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
   tags:
     - awcloud-linux
   only:
-    - testPackage
+    - master
   artifacts:
     expire_in: 1 hour
     reports:
       junit: out/*.xml
 
-test-sources-lib-linux:
-  stage: test-lib
+test-package-linux:
+  stage: test-pakage
   script:
     - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
     - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
@@ -78,19 +80,23 @@ test-sources-lib-linux:
   tags:
     - awcloud
   only:
-    - testPackage
+    - master
   artifacts:
     expire_in: 1 hour
     reports:
-      junit: out/*.xml
-
+      junit: out/*.xml    
+    
 publish-lib:
   stage: publish
   only:
-    - testPackage
+    - master
   script:
-    - git merge Release
-    - git checkout Release
-    - git tag -a v$SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $SDK_VERSION" 
+    - git rebase release
+    - git checkout release
+    - git merge master
+    - 'git push $env:ORIGIN HEAD:release'
+    - 'git tag -a v$env:SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $env:SDK_VERSION"'
+    - "git push $env:ORIGIN v$env:SDK_VERSION"
+
   tags:
     - awcloud
