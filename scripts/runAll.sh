@@ -17,6 +17,9 @@ cmake --build build --config Release --target install
 # Compile aw
 mkdir -p aspose-words-cloud-cpp/build
 
+# exit if any command fails
+set -e
+
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Debug -S aspose-words-cloud-cpp -B aspose-words-cloud-cpp/build 
 cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- VERBOSE=1
 
