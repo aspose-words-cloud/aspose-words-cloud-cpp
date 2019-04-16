@@ -3,9 +3,6 @@ variables:
 
 stages:
   - test
-  - build-release
-  - test-pakage
-  - publish
   
 test-windows:
   stage: test
@@ -39,65 +36,3 @@ test-linux:
     expire_in: 1 hour
     reports:
       junit: out/*.xml
-
-build-release:
-  stage: build-release
-  when: manual
-  only:
-    - master
-  tags:
-    - awcloud
-  before_script:
-    - $env:ORIGIN += 'https://{0}:{1}@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git' -f $env:GIT_CI_USER, $env:GIT_CI_PASS
-  script:
-    - Remove-Item -Path Aspose.Words.Cloud -Recurse -Force -ErrorAction Ignore
-    - Get-ChildItem -Path sources | % {Copy-Item $_.fullname Aspose.Words.Cloud -Recurse -Force -Exclude (".*", "*.sh")}
-    - git commit -am 'Create the release folder [ci skip]'
-    - "git push $env:ORIGIN HEAD:master" 
-
-test-package-windows:
-  stage: test-pakage
-  tags:
-    - awcloud
-  only:
-    - master
-  script:
-    - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
-    - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
-  artifacts:
-    expire_in: 1 hour
-    reports:
-      junit: out/*.xml
-
-test-package-linux:
-  stage: test-pakage
-  tags:
-    - awcloud-linux
-  only:
-    - master
-  script:
-    - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
-    - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
-    - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/testPackage.sh $WordsAppKey $WordsAppSid $WordsBaseUrl
-  artifacts:
-    expire_in: 1 hour
-    reports:
-      junit: out/*.xml
-    
-publish-lib:
-  stage: publish
-  only:
-    - master
-  tags:
-    - awcloud
-  before_script:
-    - $env:ORIGIN += 'https://{0}:{1}@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git' -f $env:GIT_CI_USER, $env:GIT_CI_PASS
-    - $env:SDK_VERSION += ((Get-Date).AddMonths(1)).tostring("yy.M")
-  script:
-    - git rebase release
-    - git checkout release
-    - git merge master
-    - 'git push $env:ORIGIN HEAD:release'
-    - 'git tag -a v$env:SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $env:SDK_VERSION"'
-    - "git push $env:ORIGIN v$env:SDK_VERSION"
-
