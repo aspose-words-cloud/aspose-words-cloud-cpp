@@ -20,6 +20,9 @@ cp aspose-words-cloud-cpp/thirdparty aspose-words-cloud-cpp/app
 cp aspose-words-cloud-cpp/Aspose.Words.Cloud aspose-words-cloud-cpp/app
 mkdir -p aspose-words-cloud-cpp/app/build
 
+# exit if any command fails
+set -e
+
 # Generate credentials
 echo "{
         \"AppKey\" : \"$1\",
