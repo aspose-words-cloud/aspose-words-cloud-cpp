@@ -2,37 +2,36 @@ variables:
   GIT_STRATEGY: clone
 
 stages:
-  - test
-  
-test-windows:
-  stage: test
+  - build-release
+  - test-pakage
+ 
+build-release:
+  stage: build-release
   tags:
     - awcloud
-  only:
-    - branches
-  except:
-    - master
+  script:
+    - Remove-Item -Path Aspose.Words.Cloud -Recurse -Force -ErrorAction Ignore
+    - Get-ChildItem -Path sources | % {Copy-Item $_.fullname Aspose.Words.Cloud -Recurse -Force -Exclude (".*", "*.sh")}
+    - Copy-Item Aspose.Words.Cloud app
+    - Copy-Item thirdparty app
+    - Copy-Item tests app
+  artifacts:
+    paths:
+      - app/
+
+test-package-windows:
+  stage: test-pakage
+  tags:
+    - awcloud
   script:
     - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
-    - cmd /c 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
-  artifacts:
-    expire_in: 1 hour
-    reports:
-      junit: out/*.xml
+    - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
 
-test-linux:
-  stage: test
+test-package-linux:
+  stage: test-pakage
   tags:
     - awcloud-linux
-  only:
-    - branches
-  except:
-    - master
   script:
     - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
     - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
-    - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $WordsBaseUrl
-  artifacts:
-    expire_in: 1 hour
-    reports:
-      junit: out/*.xml
+    - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/testPackage.sh $WordsAppKey $WordsAppSid $WordsBaseUrl

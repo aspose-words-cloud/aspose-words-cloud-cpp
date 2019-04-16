@@ -11,13 +11,8 @@ cd /
 mkdir build
 mkdir install
 cmake -DCPPREST_EXCLUDE_WEBSOCKETS=ON -DCPPREST_EXCLUDE_COMPRESSION=ON -DCPPREST_EXCLUDE_BROTLI=ON -DBUILD_TESTS=OFF -DBUILD_SAMPLES=OFF -DCMAKE_INSTALL_PREFIX=install/cpprestsdk -S cpprestsdk -B build
-cmake --build build --config Debug --target install
 cmake --build build --config Release --target install
 
-# create test package
-cp aspose-words-cloud-cpp/tests aspose-words-cloud-cpp/app
-cp aspose-words-cloud-cpp/thirdparty aspose-words-cloud-cpp/app
-cp aspose-words-cloud-cpp/Aspose.Words.Cloud aspose-words-cloud-cpp/app
 mkdir -p aspose-words-cloud-cpp/app/build
 
 # exit if any command fails
@@ -32,7 +27,7 @@ echo "{
 
 # Compile aw
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Release -S aspose-words-cloud-cpp/app -B aspose-words-cloud-cpp/app/build 
-cmake --build aspose-words-cloud-cpp/app/build --config Release --target all_unity -- VERBOSE=1
+cmake --build aspose-words-cloud-cpp/app/build --config Release --target all_unity --VERBOSE=1
 
 # Run tests
 cmake -E chdir aspose-words-cloud-cpp/app/build ctest -V -C Release
