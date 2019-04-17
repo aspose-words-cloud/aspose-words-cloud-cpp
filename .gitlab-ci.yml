@@ -9,7 +9,7 @@ publish-lib:
     - $env:ORIGIN += 'https://{0}:{1}@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git' -f $env:GIT_CI_USER, $env:GIT_CI_PASS
     - $env:SDK_VERSION += ((Get-Date).AddMonths(1)).tostring("yy.M")
   script:
-    - git branch -d trelease
+    - git branch -d -f trelease
     - 'git remote set-url origin $env:ORIGIN'
     - git checkout trelease
     - git merge --no-ff -m "Merged master to Release by gitlab CI script [ci skip]" origin/$CI_COMMIT_REF_NAME
