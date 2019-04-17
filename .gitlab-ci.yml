@@ -9,7 +9,8 @@ publish-lib:
     - $env:ORIGIN += 'https://{0}:{1}@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git' -f $env:GIT_CI_USER, $env:GIT_CI_PASS
     - $env:SDK_VERSION += ((Get-Date).AddMonths(1)).tostring("yy.M")
   script:
-    - 'git checkout $env:ORIGIN/trelease'
-    - git merge $CI_COMMIT_REF_NAME
+    - 'git remote set-url origin $env:ORIGIN'
+    - 'git checkout -b trelease --track $env:ORIGIN/trelease'
+    - 'git merge $CI_COMMIT_REF_NAME
     - 'git tag -a v$env:SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $env:SDK_VERSION"'
     - 'git push --follow-tags $env:ORIGIN HEAD:trelease'
