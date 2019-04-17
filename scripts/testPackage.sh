@@ -15,7 +15,7 @@ cmake --build build --config Release --target install
 
 mkdir -p aspose-words-cloud-cpp/app/build
 
-# exit if any command fails
+# start test section
 set -e
 
 # Generate credentials
@@ -29,8 +29,11 @@ echo "{
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Release -S aspose-words-cloud-cpp/app -B aspose-words-cloud-cpp/app/build 
 cmake --build aspose-words-cloud-cpp/app/build --config Release --target all_unity -- VERBOSE=1
 
+# end test section
+set +e
+
 # Run tests
 cmake -E chdir aspose-words-cloud-cpp/app/build ctest -V -C Release
-cp aspose-words-cloud-cpp/build/tests/test_result.xml /out
+cp aspose-words-cloud-cpp/app/build/tests/test_result.xml /out
 chmod 777 -R out
 
