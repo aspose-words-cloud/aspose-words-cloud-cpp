@@ -28,7 +28,7 @@ test-app-windows:
     - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
 
 test-app-linux:
-  stage: test-pakage
+  stage: test-app
   tags:
     - awcloud-app
   script:
