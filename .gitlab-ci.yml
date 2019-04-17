@@ -1,25 +1,17 @@
-variables:
-  GIT_STRATEGY: clone
-
-windows-test:
-  script:
-    - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
-    - cmd /c 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
+publish-lib:
   tags:
     - awcloud
-  artifacts:
-    expire_in: 1 hour
-    reports:
-      junit: out/*.xml
-
-linux-test:
+  only:
+    - branches
+  except:
+    - trelease
+  before_script:
+    - $env:ORIGIN += 'https://{0}:{1}@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git' -f $env:GIT_CI_USER, $env:GIT_CI_PASS
+    - $env:SDK_VERSION += ((Get-Date).AddMonths(1)).tostring("yy.M")
   script:
-    - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
-    - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
-    - docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $WordsBaseUrl
-  tags:
-    - awcloud-linux
-  artifacts:
-    expire_in: 1 hour
-    reports:
-      junit: out/*.xml
+    - git branch -d -f trelease
+    - 'git remote set-url origin $env:ORIGIN'
+    - git checkout trelease
+    - git merge --no-ff -m "Merged master to Release by gitlab CI script [ci skip]" origin/$CI_COMMIT_REF_NAME
+    - 'git tag -a v$env:SDK_VERSION -m "Aspose.Words.Cloud SDK for C++ version $env:SDK_VERSION"'
+    - git push --follow-tags

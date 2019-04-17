@@ -44,3 +44,8 @@ TODO
 checkResult.xml
 servercreds.json
 *result.xml
+
+app/tests/*
+app/thirdparty/*
+app/Aspose.Words.Cloud/*
+app/build/*

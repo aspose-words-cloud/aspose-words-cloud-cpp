@@ -49,7 +49,7 @@ TEST_F(CompareDocumentTest, TestCompareDocument) {
 	std::shared_ptr<CompareData> compareData= std::make_shared<CompareData>();
 	compareData->setAuthor(STCONVERT("author"));
 	compareData->setComparingWithDocument(fullName2);
-	compareData->setDateTime(utility::datetime::from_string(STCONVERT("Mon, 26 OCT 2015")));
+	compareData->setDateTime(utility::datetime::from_string(STCONVERT("Mon, 26 Oct 2015 00:00:00 GMT")));
 
 	UploadFileToStorage(fullName1, filePath1);
 	UploadFileToStorage(fullName2, filePath2);
