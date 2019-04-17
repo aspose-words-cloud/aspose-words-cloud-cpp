@@ -1,7 +1,8 @@
 publish-lib:
-  stage: publish
   tags:
     - awcloud
+  only:
+    - branches
   except:
     - trelease
   before_script:
