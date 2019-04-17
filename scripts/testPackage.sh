@@ -27,7 +27,7 @@ echo "{
 
 # Compile aw
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Release -S aspose-words-cloud-cpp/app -B aspose-words-cloud-cpp/app/build 
-cmake --build aspose-words-cloud-cpp/app/build --config Release --target all_unity --VERBOSE=1
+cmake --build aspose-words-cloud-cpp/app/build --config Release --target all_unity -- VERBOSE=1
 
 # Run tests
 cmake -E chdir aspose-words-cloud-cpp/app/build ctest -V -C Release
