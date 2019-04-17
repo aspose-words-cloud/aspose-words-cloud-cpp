@@ -5,16 +5,16 @@ stages:
   - build-release
   - test-pakage
  
-build-release:
+build-app:
   stage: build-release
   tags:
     - awcloud
   script:
-    - Remove-Item -Path Aspose.Words.Cloud -Recurse -Force -ErrorAction Ignore
-    - Get-ChildItem -Path sources | % {Copy-Item $_.fullname Aspose.Words.Cloud -Recurse -Force -Exclude (".*", "*.sh")}
-    - Copy-Item Aspose.Words.Cloud app
-    - Copy-Item thirdparty app
-    - Copy-Item tests app
+    - mkdir app
+    - Copy-Item app.CMakeLists.txt app/CMakeLists.txt
+    - Get-ChildItem -Path sources | Copy-Item -Destination app/Aspose.Words.Cloud -Recurse -Exclude (".*", "*.sh")
+    - Copy-Item thirdparty app -Recurse
+    - Copy-Item tests app -Recurse
   artifacts:
     paths:
       - app/
