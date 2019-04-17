@@ -2,11 +2,11 @@ variables:
   GIT_STRATEGY: clone
 
 stages:
-  - build-release
-  - test-pakage
+  - build-app
+  - test-app
  
 build-app:
-  stage: build-release
+  stage: build-app
   tags:
     - awcloud
   script:
@@ -19,18 +19,18 @@ build-app:
     paths:
       - app/
 
-test-package-windows:
-  stage: test-pakage
+test-app-windows:
+  stage: test-app
   tags:
-    - awcloud
+    - awcloud-linux
   script:
     - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
     - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
 
-test-package-linux:
+test-app-linux:
   stage: test-pakage
   tags:
-    - awcloud-linux
+    - awcloud-app
   script:
     - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
     - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
