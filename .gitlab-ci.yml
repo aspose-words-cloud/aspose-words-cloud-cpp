@@ -22,7 +22,7 @@ build-app:
 test-app-windows:
   stage: test-app
   tags:
-    - awcloud-linux
+    - awcloud
   script:
     - cmd /c 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
     - cmd /c 'testPackageInDocker.windows.bat %WordsAppKey% %WordsAppSid% %WordsBaseUrl%'
@@ -30,7 +30,7 @@ test-app-windows:
 test-app-linux:
   stage: test-app
   tags:
-    - awcloud-app
+    - awcloud-linux
   script:
     - docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .
     - docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .
