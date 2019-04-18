@@ -17,6 +17,9 @@ cmake --build build --config Release --target install
 # Compile aw
 mkdir -p aspose-words-cloud-cpp/build
 
+# start test section
+set -e
+
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Debug -S aspose-words-cloud-cpp -B aspose-words-cloud-cpp/build 
 cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- VERBOSE=1
 
@@ -35,6 +38,9 @@ cppcheck aspose-words-cloud-cpp  --quiet --xml -iboost/ -iinstall/ -ithirdparty/
 --platform=win32W --enable=all --force --std=c++11 --suppress=useInitializationList --suppress=unusedFunction \
 -Iaspose-words-cloud-cpp/sources/ -Iaspose-words-cloud-cpp/sources/model -Iaspose-words-cloud-cpp/sources/model/requests --suppress=missingIncludeSystem --suppress=missingInclude \
 --suppress=unmatchedSuppression --output-file=checkResult.xml
+
+# end test section
+set +e
 
 cp aspose-words-cloud-cpp/build/tests/test_result.xml /out
 cp checkResult.xml /out
