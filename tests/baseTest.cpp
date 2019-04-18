@@ -25,6 +25,7 @@
 #include "TestBase.h"
 
 #include <gmock/gmock.h>
+#include <boost/filesystem.hpp>
 
 using ::testing::AllOf;
 using ::testing::HasSubstr;
@@ -139,36 +140,39 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 
 /// <summary>
 /// Check if all API methods have covered by tests
+/// This test requires structure of folders so it is skiiped if WordsApi.h isn't found
 /// </summary>
 TEST_F(BaseApiTest, TestApiCoverage) {
 	fs::path sdkRoot = get_sdk_root();
 	auto testsPath = sdkRoot.parent_path() / "tests";
 	auto apiPath = sdkRoot.parent_path() / "sources" / "api" / "WordsApi.h";
 
-	auto apiCode = get_file_text(apiPath);
-	std::string apiCode_str(apiCode.begin(), apiCode.end());
-	std::vector<std::string> apiMethods;
-	std::smatch match;
-	std::regex regEx(">> (.*)\\(");
-	while (std::regex_search(apiCode_str, match, regEx)) {
-		apiMethods.push_back(match[1].str());
-		apiCode_str = match.suffix().str();
-	}
-
-	auto files = get_directory_files(testsPath);
-	utility::string_t testsCode;
-	for (auto file : files)
+	if (fs::exists(apiPath))
 	{
-		if (file.extension() == ".cpp")
+		auto apiCode = get_file_text(apiPath);
+		std::string apiCode_str(apiCode.begin(), apiCode.end());
+		std::vector<std::string> apiMethods;
+		std::smatch match;
+		std::regex regEx(">> (.*)\\(");
+		while (std::regex_search(apiCode_str, match, regEx)) {
+			apiMethods.push_back(match[1].str());
+			apiCode_str = match.suffix().str();
+		}
+
+		auto files = get_directory_files(testsPath);
+		utility::string_t testsCode;
+		for (auto file : files)
 		{
-			testsCode += get_file_text(file);
+			if (file.extension() == ".cpp")
+			{
+				testsCode += get_file_text(file);
+			}
+		}
+
+		for (const auto& method : apiMethods) {
+			EXPECT_THAT(testsCode, HasSubstr(STCONVERT("->") + STCONVERT(method) + _XPLATSTR('('))) << " Uncovered method";
 		}
 	}
-
-	for (const auto& method : apiMethods) {
-		EXPECT_THAT(testsCode, HasSubstr(STCONVERT("->") + STCONVERT(method) + _XPLATSTR('('))) << " Uncovered method";
-	}
-
 }
 
 TEST_F(InfrastructureTest, OAuthTest)
