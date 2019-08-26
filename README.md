@@ -1,6 +1,6 @@
-﻿
 
-# Aspose.Words.Cloud API SDK for C++
+
+# Aspose.Words.Cloud API SDK for C++ [![GitHub](https://img.shields.io/badge/C%2B%2B-19.5-blue)](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp)
 This repository contains Aspose.Words.Cloud SDK for C++ source code. This SDK allows you to work with Aspose.Words Cloud REST APIs in your Ruby applications quickly and easily, with zero initial cost.
 
 ## Key Features
