@@ -1,7 +1,9 @@
 
-
 # Aspose.Words.Cloud API SDK for C++ [![GitHub](https://img.shields.io/badge/C%2B%2B-19.5-blue)](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp)
 This repository contains Aspose.Words.Cloud SDK for C++ source code. This SDK allows you to work with Aspose.Words Cloud REST APIs in your Ruby applications quickly and easily, with zero initial cost.
+
+[Aspose.Words Cloud](https://products.aspose.cloud/words/family "Aspose.Words Cloud")  
+[API Reference](https://apireference.aspose.cloud/words/)  
 
 ## Key Features
 * Conversion between various document-related formats (20+ formats supported), including PDF<->Word conversion
@@ -11,8 +13,6 @@ This repository contains Aspose.Words.Cloud SDK for C++ source code. This SDK al
 * Find and replace
 * Watermarks and protection
 * Full read & write access to Document Object Model, including sections, paragraphs, text, images, tables, headers/footers and many others
-
-See [API Reference](https://apireference.aspose.cloud/words/) for full API specification.
 
 ## How to use the SDK?
 The complete source code is available in this repository folder. For more details, please visit our [documentation website](https://docs.aspose.cloud/display/wordscloud/Available+SDKs).
@@ -143,9 +143,32 @@ Typical usage of the SDK in code follows this template:
 		cout << "Error code: " << exception.error_code() << endl;
 	}
 ```
+
+[Tests](tests) contain various examples of using the SDK.  For other examples, check the product [Developer Guide](https://docs.aspose.cloud/display/wordscloud/Developer+Guide).
+
+## Dependencies
+- gcc version 8+ for Linux
+- [VS Build Tools](https://aka.ms/vs/15/release/vs_buildtools.exe) for Windows
+- [Boost libraray](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz)
+- [Microsoft/cpprestsdk](https://github.com/Microsoft/cpprestsdk)
+- [CMake](https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-win64-x64.msi)
+
+## Licensing
+ 
+All Aspose.Words Cloud SDKs, helper scripts and templates are licensed under [MIT License](https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp/blob/master/LICENSE). 
+
 ## Contact Us
 Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.aspose.cloud/c/words).
 
-
-
-
+## Resources
+ 
+[Website](https://www.aspose.cloud/)  
+[Product Home](https://products.aspose.cloud/words/family)  
+[API Reference](https://apireference.aspose.cloud/words/)  
+[Documentation](https://docs.aspose.cloud/display/wordscloud/Home)  
+[Blog](https://blog.aspose.cloud/category/words/)  
+ 
+## Other languages
+We generate our SDKs in different languages so you may check if yours is available in our [list](https://github.com/aspose-words-cloud).
+ 
+If you don't find your language in the list, feel free to request it from us, or use raw REST API requests as you can find it [here](https://products.aspose.cloud/words/curl).
