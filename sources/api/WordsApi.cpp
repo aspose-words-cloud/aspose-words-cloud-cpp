@@ -22249,7 +22249,7 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::splitDocument(std::
         return result;
     });
 }
-pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::unprotectDocument(std::shared_ptr<UnProtectDocumentRequest> request)
+pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::unprotectDocument(std::shared_ptr<UnprotectDocumentRequest> request)
 {
 
     // verify the required parameter 'protectionRequest' is set

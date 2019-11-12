@@ -188,7 +188,7 @@
 #include "requests/SaveAsTiffRequest.h"
 #include "requests/SearchRequest.h"
 #include "requests/SplitDocumentRequest.h"
-#include "requests/UnProtectDocumentRequest.h"
+#include "requests/UnprotectDocumentRequest.h"
 #include "requests/UpdateBookmarkRequest.h"
 #include "requests/UpdateBorderRequest.h"
 #include "requests/UpdateCommentRequest.h"
@@ -2833,7 +2833,7 @@ public:
     /// <param name="password">Password for opening an encrypted document. (optional)</param>
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     pplx::task<std::shared_ptr<ProtectionDataResponse>> unprotectDocument(
-        std::shared_ptr<UnProtectDocumentRequest> request
+        std::shared_ptr<UnprotectDocumentRequest> request
         );
     ///<summary>
     ///Updates document bookmark.
