@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FootnoteResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "Footnote.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/footnote/0 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/footnote/0.
 /// </summary>
 class  FootnoteResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     FootnoteResponse();
@@ -63,7 +63,7 @@ public:
     /// FootnoteResponse members
 
     /// <summary>
-    /// Footnote information
+    /// Gets or sets footnote information.
     /// </summary>
     std::shared_ptr<Footnote> getFootnote() const;
     bool footnoteIsSet() const;

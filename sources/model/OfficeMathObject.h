@@ -64,28 +64,28 @@ public:
     /// OfficeMathObject members
 
     /// <summary>
-    /// Content of footnote.
+    /// Gets or sets content of footnote.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
     void unsetContent();
     void setContent(std::shared_ptr<StoryChildNodes> value);
     /// <summary>
-    /// Gets/sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line.
+    /// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line.
     /// </summary>
     utility::string_t getDisplayType() const;
     bool displayTypeIsSet() const;
     void unsetDisplayType();
     void setDisplayType(utility::string_t value);
     /// <summary>
-    /// Gets/sets Office Math justification.
+    /// Gets or sets /sets Office Math justification.
     /// </summary>
     utility::string_t getJustification() const;
     bool justificationIsSet() const;
     void unsetJustification();
     void setJustification(utility::string_t value);
     /// <summary>
-    /// Gets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
+    /// Gets or sets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
     /// </summary>
     utility::string_t getMathObjectType() const;
     bool mathObjectTypeIsSet() const;

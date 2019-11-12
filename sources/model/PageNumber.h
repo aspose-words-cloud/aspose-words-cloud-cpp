@@ -63,26 +63,26 @@ public:
     /// PageNumber members
 
     /// <summary>
-    /// Page number format, e.g. \&quot;{PAGE} of {NUMPAGES}\&quot;.
+    /// Gets or sets page number format, e.g. \&quot;{PAGE} of {NUMPAGES}\&quot;.
     /// </summary>
     utility::string_t getFormat() const;
     bool formatIsSet() const;
     void unsetFormat();
     void setFormat(utility::string_t value);
     /// <summary>
-    /// Text alignment, possible values are left, right, center or justify.
+    /// Gets or sets text alignment, possible values are left, right, center or justify.
     /// </summary>
     utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
     /// <summary>
-    /// If true the page number is added at the top of the page, else at the bottom.
+    /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
     /// </summary>
     bool isIsTop() const;
         void setIsTop(bool value);
     /// <summary>
-    /// If true the page number is added on first page too.
+    /// Gets or sets a value indicating whether if true the page number is added on first page too.
     /// </summary>
     bool isSetPageNumberOnFirstPage() const;
         void setSetPageNumberOnFirstPage(bool value);

@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SectionLinkCollectionResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "SectionLinkCollection.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/sections 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/sections.
 /// </summary>
 class  SectionLinkCollectionResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     SectionLinkCollectionResponse();
@@ -63,7 +63,7 @@ public:
     /// SectionLinkCollectionResponse members
 
     /// <summary>
-    /// Collection of sections
+    /// Gets or sets collection of sections.
     /// </summary>
     std::shared_ptr<SectionLinkCollection> getSections() const;
     bool sectionsIsSet() const;

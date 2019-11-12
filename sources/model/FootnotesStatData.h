@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the footnotes statistical data
+/// Container for the footnotes statistical data.
 /// </summary>
 class  FootnotesStatData
     : public ModelBase
@@ -62,12 +62,12 @@ public:
     /// FootnotesStatData members
 
     /// <summary>
-    /// Total count of words in footnotes
+    /// Gets or sets total count of words in footnotes.
     /// </summary>
     int32_t getWordCount() const;
         void setWordCount(int32_t value);
     /// <summary>
-    /// Total count of paragraphs in footnotes
+    /// Gets or sets total count of paragraphs in footnotes.
     /// </summary>
     int32_t getParagraphCount() const;
         void setParagraphCount(int32_t value);

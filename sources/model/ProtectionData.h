@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the data about protection of the document
+/// Container for the data about protection of the document.
 /// </summary>
 class  ProtectionData
     : public ModelBase
@@ -63,7 +63,7 @@ public:
     /// ProtectionData members
 
     /// <summary>
-    /// Type of the protection
+    /// Gets or sets type of the protection.
     /// </summary>
     utility::string_t getProtectionType() const;
     bool protectionTypeIsSet() const;

@@ -39,16 +39,19 @@ class GetTablePropertiesRequest{
     public: 
      GetTablePropertiesRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> password
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        utility::string_t getNodePath() const;
+        void setNodePath(utility::string_t nodePath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -64,17 +67,14 @@ class GetTablePropertiesRequest{
 
         boost::optional<utility::string_t> getPassword() const;
         void setPassword(boost::optional<utility::string_t> password);
-
-        boost::optional<utility::string_t> getNodePath() const;
-        void setNodePath(boost::optional<utility::string_t> nodePath);
     private:
         utility::string_t m_name;
+        utility::string_t m_nodePath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;
         boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_nodePath;
 };
 
 }

@@ -64,7 +64,7 @@ public:
     /// FieldCollection members
 
     /// <summary>
-    /// Collection of fields
+    /// Gets or sets collection of fields.
     /// </summary>
     std::vector<std::shared_ptr<Field>>& getList();
     bool listIsSet() const;

@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// FromField
+/// FromField.
 /// </summary>
 class  FormField
     : public NodeLink
@@ -63,35 +63,35 @@ public:
     /// FormField members
 
     /// <summary>
-    /// True if references to the specified form field are automatically updated whenever the field is exited.
+    /// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
     /// </summary>
     bool isCalculateOnExit() const;
     bool calculateOnExitIsSet() const;
     void unsetCalculateOnExit();
     void setCalculateOnExit(bool value);
     /// <summary>
-    /// True if a form field is enabled.
+    /// Gets or sets true if a form field is enabled.
     /// </summary>
     bool isEnabled() const;
     bool enabledIsSet() const;
     void unsetEnabled();
     void setEnabled(bool value);
     /// <summary>
-    /// Returns or sets an entry macro name for the form field.
+    /// Gets or sets returns or sets an entry macro name for the form field.
     /// </summary>
     utility::string_t getEntryMacro() const;
     bool entryMacroIsSet() const;
     void unsetEntryMacro();
     void setEntryMacro(utility::string_t value);
     /// <summary>
-    /// Returns or sets an exit macro name for the form field.
+    /// Gets or sets returns or sets an exit macro name for the form field.
     /// </summary>
     utility::string_t getExitMacro() const;
     bool exitMacroIsSet() const;
     void unsetExitMacro();
     void setExitMacro(utility::string_t value);
     /// <summary>
-    /// Returns or sets the text that&#39;s displayed in a message box when the form field has the focus and the user presses F1.
+    /// Gets or sets returns or sets the text that&#39;s displayed in a message box when the form field has the focus and the user presses F1.
     /// </summary>
     utility::string_t getHelpText() const;
     bool helpTextIsSet() const;
@@ -105,21 +105,21 @@ public:
     void unsetName();
     void setName(utility::string_t value);
     /// <summary>
-    /// Specifies the source of the text that&#39;s displayed in a message box when a form field has the focus and the user presses F1.
+    /// Gets or sets specifies the source of the text that&#39;s displayed in a message box when a form field has the focus and the user presses F1.
     /// </summary>
     bool isOwnHelp() const;
     bool ownHelpIsSet() const;
     void unsetOwnHelp();
     void setOwnHelp(bool value);
     /// <summary>
-    /// Specifies the source of the text that&#39;s displayed in the status bar when a form field has the focus.
+    /// Gets or sets specifies the source of the text that&#39;s displayed in the status bar when a form field has the focus.
     /// </summary>
     bool isOwnStatus() const;
     bool ownStatusIsSet() const;
     void unsetOwnStatus();
     void setOwnStatus(bool value);
     /// <summary>
-    /// Returns or sets the text that&#39;s displayed in the status bar when a form field has the focus.
+    /// Gets or sets returns or sets the text that&#39;s displayed in the status bar when a form field has the focus.
     /// </summary>
     utility::string_t getStatusText() const;
     bool statusTextIsSet() const;

@@ -66,36 +66,36 @@ public:
     /// Document members
 
     /// <summary>
-    /// A list of links that originate from this document.
+    /// Gets or sets a list of links that originate from this document.
     /// </summary>
     std::vector<std::shared_ptr<Link>>& getLinks();
     bool linksIsSet() const;
     void unsetLinks();
     void setLinks(std::vector<std::shared_ptr<Link>> const& value);
     /// <summary>
-    /// Gets the name of the file.
+    /// Gets or sets the name of the file.
     /// </summary>
     utility::string_t getFileName() const;
     bool fileNameIsSet() const;
     void unsetFileName();
     void setFileName(utility::string_t value);
     /// <summary>
-    /// Gets the original format of the document.
+    /// Gets or sets the original format of the document.
     /// </summary>
     utility::string_t getSourceFormat() const;
         void setSourceFormat(utility::string_t value);
     /// <summary>
-    /// Returns true if the document is encrypted and requires a password to open. 
+    /// Gets or sets a value indicating whether returns true if the document is encrypted and requires a password to open.
     /// </summary>
     bool isIsEncrypted() const;
         void setIsEncrypted(bool value);
     /// <summary>
-    /// Returns true if the document contains a digital signature. This property merely informs that a  digital signature is present on a document, but it does not specify whether the signature is valid or not. 
+    /// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
     /// </summary>
     bool isIsSigned() const;
         void setIsSigned(bool value);
     /// <summary>
-    /// Returns document properties.
+    /// Gets or sets returns document properties.
     /// </summary>
     std::shared_ptr<DocumentProperties> getDocumentProperties() const;
     bool documentPropertiesIsSet() const;

@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormatResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "ParagraphFormat.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/format
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/format.
 /// </summary>
 class  ParagraphFormatResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     ParagraphFormatResponse();
@@ -63,7 +63,7 @@ public:
     /// ParagraphFormatResponse members
 
     /// <summary>
-    /// Represents all the formatting for a paragraph.
+    /// Gets or sets represents all the formatting for a paragraph.
     /// </summary>
     std::shared_ptr<ParagraphFormat> getParagraphFormat() const;
     bool paragraphFormatIsSet() const;

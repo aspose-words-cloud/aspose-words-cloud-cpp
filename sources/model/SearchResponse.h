@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SearchResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "SearchResultsCollection.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/search 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/search.
 /// </summary>
 class  SearchResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     SearchResponse();
@@ -63,14 +63,14 @@ public:
     /// SearchResponse members
 
     /// <summary>
-    /// A regular expression pattern used to find matches.
+    /// Gets or sets a regular expression pattern used to find matches.
     /// </summary>
     utility::string_t getSearchingPattern() const;
     bool searchingPatternIsSet() const;
     void unsetSearchingPattern();
     void setSearchingPattern(utility::string_t value);
     /// <summary>
-    /// Collection of search results.
+    /// Gets or sets collection of search results.
     /// </summary>
     std::shared_ptr<SearchResultsCollection> getSearchResults() const;
     bool searchResultsIsSet() const;

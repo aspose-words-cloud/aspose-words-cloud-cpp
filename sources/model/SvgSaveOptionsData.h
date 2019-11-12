@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for svg save options
+/// container class for svg save options.
 /// </summary>
 class  SvgSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -63,42 +63,42 @@ public:
     /// SvgSaveOptionsData members
 
     /// <summary>
-    /// Specified whether images should be embedded into SVG document as base64
+    /// Gets or sets specified whether images should be embedded into SVG document as base64.
     /// </summary>
     bool isExportEmbeddedImages() const;
     bool exportEmbeddedImagesIsSet() const;
     void unsetExportEmbeddedImages();
     void setExportEmbeddedImages(bool value);
     /// <summary>
-    /// Specifies if the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
+    /// Gets or sets specifies if the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
     /// </summary>
     bool isFitToViewPort() const;
     bool fitToViewPortIsSet() const;
     void unsetFitToViewPort();
     void setFitToViewPort(bool value);
     /// <summary>
-    /// Specifies the physical folder where resources (images) are saved when exporting
+    /// Gets or sets specifies the physical folder where resources (images) are saved when exporting.
     /// </summary>
     utility::string_t getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
     void setResourcesFolder(utility::string_t value);
     /// <summary>
-    /// Specifies the name of the folder used to construct image URIs
+    /// Gets or sets specifies the name of the folder used to construct image URIs.
     /// </summary>
     utility::string_t getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;
     void unsetResourcesFolderAlias();
     void setResourcesFolderAlias(utility::string_t value);
     /// <summary>
-    /// Show/hide page stepper
+    /// Gets or sets show/hide page stepper.
     /// </summary>
     bool isShowPageBorder() const;
     bool showPageBorderIsSet() const;
     void unsetShowPageBorder();
     void setShowPageBorder(bool value);
     /// <summary>
-    /// Determines how text should be rendered
+    /// Gets or sets determines how text should be rendered.
     /// </summary>
     utility::string_t getTextOutputMode() const;
     bool textOutputModeIsSet() const;

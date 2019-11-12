@@ -63,14 +63,14 @@ public:
     /// SearchResult members
 
     /// <summary>
-    /// Link to result range start node.
+    /// Gets or sets link to result range start node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeStart() const;
     bool rangeStartIsSet() const;
     void unsetRangeStart();
     void setRangeStart(std::shared_ptr<DocumentPosition> value);
     /// <summary>
-    /// Link to result range end node.
+    /// Gets or sets link to result range end node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeEnd() const;
     bool rangeEndIsSet() const;

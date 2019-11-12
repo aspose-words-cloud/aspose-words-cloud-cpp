@@ -102,6 +102,8 @@ HtmlSaveOptionsData::HtmlSaveOptionsData()
     m_OfficeMathOutputModeIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
+    m_ResolveFontNames = false;
+    m_ResolveFontNamesIsSet = false;
     m_ResourceFolder = utility::conversions::to_string_t("");
     m_ResourceFolderIsSet = false;
     m_ResourceFolderAlias = utility::conversions::to_string_t("");
@@ -260,6 +262,10 @@ web::json::value HtmlSaveOptionsData::toJson() const
     if(m_PrettyFormatIsSet)
     {
         val[_XPLATSTR("PrettyFormat")] = ModelBase::toJson(m_PrettyFormat);
+    }
+    if(m_ResolveFontNamesIsSet)
+    {
+        val[_XPLATSTR("ResolveFontNames")] = ModelBase::toJson(m_ResolveFontNames);
     }
     if(m_ResourceFolderIsSet)
     {
@@ -557,6 +563,14 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
             setPrettyFormat(ModelBase::boolFromJson(fieldValue));
         }
     }
+    if(val.has_field(_XPLATSTR("ResolveFontNames")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("ResolveFontNames")];
+        if(!fieldValue.is_null())
+        {
+            setResolveFontNames(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(_XPLATSTR("ResourceFolder")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ResourceFolder")];
@@ -786,6 +800,10 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
     }
+    if(m_ResolveFontNamesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResolveFontNames"), m_ResolveFontNames));
+    }
     if(m_ResourceFolderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourceFolder"), m_ResourceFolder));
@@ -980,6 +998,10 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
         setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("ResolveFontNames")))
+    {
+        setResolveFontNames(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ResolveFontNames"))));
     }
     if(multipart->hasContent(_XPLATSTR("ResourceFolder")))
     {
@@ -1711,6 +1733,27 @@ bool HtmlSaveOptionsData::prettyFormatIsSet() const
 void HtmlSaveOptionsData::unsetPrettyFormat()
 {
     m_PrettyFormatIsSet = false;
+}
+
+bool HtmlSaveOptionsData::isResolveFontNames() const
+{
+    return m_ResolveFontNames;
+}
+
+
+void HtmlSaveOptionsData::setResolveFontNames(bool value)
+{
+    m_ResolveFontNames = value;
+    m_ResolveFontNamesIsSet = true;
+}
+bool HtmlSaveOptionsData::resolveFontNamesIsSet() const
+{
+    return m_ResolveFontNamesIsSet;
+}
+
+void HtmlSaveOptionsData::unsetResolveFontNames()
+{
+    m_ResolveFontNamesIsSet = false;
 }
 
 utility::string_t HtmlSaveOptionsData::getResourceFolder() const

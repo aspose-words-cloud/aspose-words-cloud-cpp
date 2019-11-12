@@ -64,7 +64,7 @@ public:
     /// CommentsCollection members
 
     /// <summary>
-    /// Collection of comments
+    /// Gets or sets collection of comments.
     /// </summary>
     std::vector<std::shared_ptr<Comment>>& getCommentList();
     bool commentListIsSet() const;

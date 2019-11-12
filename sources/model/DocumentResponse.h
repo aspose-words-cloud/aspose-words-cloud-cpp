@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "Document.h"
 
@@ -42,7 +42,7 @@ namespace models {
 /// Represents the response with document description.
 /// </summary>
 class  DocumentResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     DocumentResponse();
@@ -63,7 +63,7 @@ public:
     /// DocumentResponse members
 
     /// <summary>
-    /// Document description.
+    /// Gets or sets document description.
     /// </summary>
     std::shared_ptr<Document> getDocument() const;
     bool documentIsSet() const;

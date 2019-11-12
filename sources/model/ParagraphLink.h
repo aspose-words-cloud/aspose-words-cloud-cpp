@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph link element
+/// Paragraph link element.
 /// </summary>
 class  ParagraphLink
     : public NodeLink
@@ -63,7 +63,7 @@ public:
     /// ParagraphLink members
 
     /// <summary>
-    /// Paragraph&#39;s text
+    /// Gets or sets paragraph&#39;s text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

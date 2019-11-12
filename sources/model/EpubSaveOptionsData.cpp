@@ -268,6 +268,10 @@ void EpubSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
     }
+    if(m_ResolveFontNamesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResolveFontNames"), m_ResolveFontNames));
+    }
     if(m_ResourceFolderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourceFolder"), m_ResourceFolder));
@@ -466,6 +470,10 @@ void EpubSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
         setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("ResolveFontNames")))
+    {
+        setResolveFontNames(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ResolveFontNames"))));
     }
     if(multipart->hasContent(_XPLATSTR("ResourceFolder")))
     {

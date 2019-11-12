@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for xaml flow save options
+/// container class for xaml flow save options.
 /// </summary>
 class  XamlFlowSaveOptionsData
     : public SaveOptionsData
@@ -62,14 +62,14 @@ public:
     /// XamlFlowSaveOptionsData members
 
     /// <summary>
-    /// Specifies the physical folder where images are saved when exporting
+    /// Gets or sets specifies the physical folder where images are saved when exporting.
     /// </summary>
     utility::string_t getImagesFolder() const;
     bool imagesFolderIsSet() const;
     void unsetImagesFolder();
     void setImagesFolder(utility::string_t value);
     /// <summary>
-    /// Specifies the name of the folder used to construct image URIs
+    /// Gets or sets specifies the name of the folder used to construct image URIs.
     /// </summary>
     utility::string_t getImagesFolderAlias() const;
     bool imagesFolderAliasIsSet() const;

@@ -34,6 +34,7 @@ namespace models {
 
 HeaderFooter::HeaderFooter()
 {
+    m_ChildNodesIsSet = false;
     m_DrawingObjectsIsSet = false;
     m_ParagraphsIsSet = false;
 }
@@ -51,6 +52,18 @@ web::json::value HeaderFooter::toJson() const
 {
     web::json::value val = this->HeaderFooterLink::toJson();
 
+    {
+        std::vector<web::json::value> jsonArray;
+        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
+			[&](std::shared_ptr<NodeLink> item) {
+			return ModelBase::toJson(item);
+		});
+        
+        if(jsonArray.size() > 0)
+        {
+            val[_XPLATSTR("ChildNodes")] = web::json::value::array(jsonArray);
+        }
+    }
     if(m_DrawingObjectsIsSet)
     {
         val[_XPLATSTR("DrawingObjects")] = ModelBase::toJson(m_DrawingObjects);
@@ -67,6 +80,27 @@ void HeaderFooter::fromJson(web::json::value& val)
 {
     this->HeaderFooterLink::fromJson(val);
 
+    {
+        m_ChildNodes.clear();
+        if(val.has_field(_XPLATSTR("ChildNodes")) 
+                            && !val[_XPLATSTR("ChildNodes")].is_null())
+        {
+        auto arr = val[_XPLATSTR("ChildNodes")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
+            if(item.is_null())
+            {
+                return std::shared_ptr<NodeLink>(nullptr);
+            }
+            else
+            {
+                std::shared_ptr<NodeLink> newItem(new NodeLink());
+                newItem->fromJson(item);
+                return newItem;
+            }
+        });
+
+        }
+    }
     if(val.has_field(_XPLATSTR("DrawingObjects")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("DrawingObjects")];
@@ -106,6 +140,17 @@ void HeaderFooter::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
         
     }
+    {
+        std::vector<web::json::value> jsonArray;
+        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
+            return ModelBase::toJson(item);
+        });
+        
+        if(jsonArray.size() > 0)
+        {
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ChildNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+        }
+    }
     if(m_DrawingObjectsIsSet)
     {
         if (m_DrawingObjects.get())
@@ -139,6 +184,26 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
     }
+    {
+        m_ChildNodes.clear();
+        if(multipart->hasContent(_XPLATSTR("ChildNodes")))
+        {
+
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ChildNodes")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
+            if(item.is_null())
+            {
+                return std::shared_ptr<NodeLink>(nullptr) ;
+            }
+            else
+            {
+                std::shared_ptr<NodeLink> newItem(new NodeLink());
+                newItem->fromJson(item);
+                return newItem ;
+            }
+        });
+        }
+    }
     if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
     {
         if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
@@ -157,6 +222,26 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
             setParagraphs( newItem );
         }
     }
+}
+
+std::vector<std::shared_ptr<NodeLink>>& HeaderFooter::getChildNodes()
+{
+    return m_ChildNodes;
+}
+
+void HeaderFooter::setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value)
+{
+    m_ChildNodes = value;
+    m_ChildNodesIsSet = true;
+}
+bool HeaderFooter::childNodesIsSet() const
+{
+    return m_ChildNodesIsSet;
+}
+
+void HeaderFooter::unsetChildNodes()
+{
+    m_ChildNodesIsSet = false;
 }
 
 std::shared_ptr<LinkElement> HeaderFooter::getDrawingObjects() const

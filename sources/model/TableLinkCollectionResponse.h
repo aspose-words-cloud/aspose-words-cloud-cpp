@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableLinkCollectionResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "TableLinkCollection.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/tables.
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/tables.
 /// </summary>
 class  TableLinkCollectionResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     TableLinkCollectionResponse();
@@ -63,7 +63,7 @@ public:
     /// TableLinkCollectionResponse members
 
     /// <summary>
-    /// Collection of tables.
+    /// Gets or sets collection of tables.
     /// </summary>
     std::shared_ptr<TableLinkCollection> getTables() const;
     bool tablesIsSet() const;

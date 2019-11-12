@@ -29,7 +29,7 @@
 
 
 #include "ModificationOperationResult.h"
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// response of the modification operations for the revisions collection (now these are acceptAll and rejectAll)
+/// response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 /// </summary>
 class  RevisionsModificationResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     RevisionsModificationResponse();
@@ -63,7 +63,7 @@ public:
     /// RevisionsModificationResponse members
 
     /// <summary>
-    /// result of the modification operations for the revisions collection
+    /// Gets or sets result of the modification operations for the revisions collection.
     /// </summary>
     std::shared_ptr<ModificationOperationResult> getResult() const;
     bool resultIsSet() const;

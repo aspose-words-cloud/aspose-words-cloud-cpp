@@ -63,21 +63,21 @@ public:
     /// PageSetup members
 
     /// <summary>
-    /// Specifies that this section contains bidirectional (complex scripts) text.             
+    /// Gets or sets specifies that this section contains bidirectional (complex scripts) text.             
     /// </summary>
     bool isBidi() const;
     bool bidiIsSet() const;
     void unsetBidi();
     void setBidi(bool value);
     /// <summary>
-    /// Specifies where the page border is positioned relative to intersecting texts and objects.             
+    /// Gets or sets specifies where the page border is positioned relative to intersecting texts and objects.             
     /// </summary>
     bool isBorderAlwaysInFront() const;
     bool borderAlwaysInFrontIsSet() const;
     void unsetBorderAlwaysInFront();
     void setBorderAlwaysInFront(bool value);
     /// <summary>
-    /// Specifies which pages the page border is printed on.             
+    /// Gets or sets specifies which pages the page border is printed on.             
     /// </summary>
     utility::string_t getBorderAppliesTo() const;
     bool borderAppliesToIsSet() const;
@@ -91,14 +91,14 @@ public:
     void unsetBorderDistanceFrom();
     void setBorderDistanceFrom(utility::string_t value);
     /// <summary>
-    /// Returns or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body text.             
+    /// Gets or sets returns or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body text.             
     /// </summary>
     double getBottomMargin() const;
     bool bottomMarginIsSet() const;
     void unsetBottomMargin();
     void setBottomMargin(double value);
     /// <summary>
-    /// True if a different header or footer is used on the first page.             
+    /// Gets or sets true if a different header or footer is used on the first page.             
     /// </summary>
     bool isDifferentFirstPageHeaderFooter() const;
     bool differentFirstPageHeaderFooterIsSet() const;
@@ -112,7 +112,7 @@ public:
     void unsetFirstPageTray();
     void setFirstPageTray(int32_t value);
     /// <summary>
-    /// Returns or sets the distance (in points) between the footer and the bottom of the page.             
+    /// Gets or sets returns or sets the distance (in points) between the footer and the bottom of the page.             
     /// </summary>
     double getFooterDistance() const;
     bool footerDistanceIsSet() const;
@@ -126,21 +126,21 @@ public:
     void unsetGutter();
     void setGutter(double value);
     /// <summary>
-    /// Returns or sets the distance (in points) between the header and the top of the page.             
+    /// Gets or sets returns or sets the distance (in points) between the header and the top of the page.             
     /// </summary>
     double getHeaderDistance() const;
     bool headerDistanceIsSet() const;
     void unsetHeaderDistance();
     void setHeaderDistance(double value);
     /// <summary>
-    /// Returns or sets the distance (in points) between the left edge of the page and the left boundary of the body text.             
+    /// Gets or sets returns or sets the distance (in points) between the left edge of the page and the left boundary of the body text.             
     /// </summary>
     double getLeftMargin() const;
     bool leftMarginIsSet() const;
     void unsetLeftMargin();
     void setLeftMargin(double value);
     /// <summary>
-    /// Returns or sets the numeric increment for line numbers.             
+    /// Gets or sets returns or sets the numeric increment for line numbers.             
     /// </summary>
     int32_t getLineNumberCountBy() const;
     bool lineNumberCountByIsSet() const;
@@ -168,7 +168,7 @@ public:
     void unsetLineStartingNumber();
     void setLineStartingNumber(int32_t value);
     /// <summary>
-    /// Returns or sets the orientation of the page.             
+    /// Gets or sets returns or sets the orientation of the page.             
     /// </summary>
     utility::string_t getOrientation() const;
     bool orientationIsSet() const;
@@ -182,7 +182,7 @@ public:
     void unsetOtherPagesTray();
     void setOtherPagesTray(int32_t value);
     /// <summary>
-    /// Returns or sets the height of the page in points.             
+    /// Gets or sets returns or sets the height of the page in points.             
     /// </summary>
     double getPageHeight() const;
     bool pageHeightIsSet() const;
@@ -203,28 +203,28 @@ public:
     void unsetPageStartingNumber();
     void setPageStartingNumber(int32_t value);
     /// <summary>
-    /// Returns or sets the width of the page in points.             
+    /// Gets or sets returns or sets the width of the page in points.             
     /// </summary>
     double getPageWidth() const;
     bool pageWidthIsSet() const;
     void unsetPageWidth();
     void setPageWidth(double value);
     /// <summary>
-    /// Returns or sets the paper size.             
+    /// Gets or sets returns or sets the paper size.             
     /// </summary>
     utility::string_t getPaperSize() const;
     bool paperSizeIsSet() const;
     void unsetPaperSize();
     void setPaperSize(utility::string_t value);
     /// <summary>
-    /// True if page numbering restarts at the beginning of the section.             
+    /// Gets or sets true if page numbering restarts at the beginning of the section.             
     /// </summary>
     bool isRestartPageNumbering() const;
     bool restartPageNumberingIsSet() const;
     void unsetRestartPageNumbering();
     void setRestartPageNumbering(bool value);
     /// <summary>
-    /// Returns or sets the distance (in points) between the right edge of the page and the right boundary of the body text.             
+    /// Gets or sets returns or sets the distance (in points) between the right edge of the page and the right boundary of the body text.             
     /// </summary>
     double getRightMargin() const;
     bool rightMarginIsSet() const;
@@ -238,28 +238,28 @@ public:
     void unsetRtlGutter();
     void setRtlGutter(bool value);
     /// <summary>
-    /// Returns or sets the type of section break for the specified object.             
+    /// Gets or sets returns or sets the type of section break for the specified object.             
     /// </summary>
     utility::string_t getSectionStart() const;
     bool sectionStartIsSet() const;
     void unsetSectionStart();
     void setSectionStart(utility::string_t value);
     /// <summary>
-    /// True if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes.                 Suppressed endnotes are printed before the endnotes in that section.             
+    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes.                 Suppressed endnotes are printed before the endnotes in that section.             
     /// </summary>
     bool isSuppressEndnotes() const;
     bool suppressEndnotesIsSet() const;
     void unsetSuppressEndnotes();
     void setSuppressEndnotes(bool value);
     /// <summary>
-    /// Returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.             
+    /// Gets or sets returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.             
     /// </summary>
     double getTopMargin() const;
     bool topMarginIsSet() const;
     void unsetTopMargin();
     void setTopMargin(double value);
     /// <summary>
-    /// Returns or sets the vertical alignment of text on each page in a document or section.             
+    /// Gets or sets returns or sets the vertical alignment of text on each page in a document or section.             
     /// </summary>
     utility::string_t getVerticalAlignment() const;
     bool verticalAlignmentIsSet() const;

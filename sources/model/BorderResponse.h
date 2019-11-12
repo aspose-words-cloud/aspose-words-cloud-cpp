@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_BorderResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "Border.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling: GET {nodeWithBorders}/borders.
 /// </summary>
 class  BorderResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     BorderResponse();
@@ -63,7 +63,7 @@ public:
     /// BorderResponse members
 
     /// <summary>
-    /// Table.
+    /// Gets or sets table.
     /// </summary>
     std::shared_ptr<Border> getBorder() const;
     bool borderIsSet() const;

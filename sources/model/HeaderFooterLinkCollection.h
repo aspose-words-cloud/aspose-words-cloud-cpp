@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of links to header/footers
+/// Collection of links to header/footers.
 /// </summary>
 class  HeaderFooterLinkCollection
     : public LinkElement
@@ -64,7 +64,7 @@ public:
     /// HeaderFooterLinkCollection members
 
     /// <summary>
-    /// Collection of section&#39;s links
+    /// Gets or sets collection of section&#39;s links.
     /// </summary>
     std::vector<std::shared_ptr<HeaderFooterLink>>& getList();
     bool listIsSet() const;

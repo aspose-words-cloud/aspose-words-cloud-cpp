@@ -64,7 +64,7 @@ public:
     /// OfficeMathObjectsCollection members
 
     /// <summary>
-    /// Collection of OfficeMath objects.
+    /// Gets or sets collection of OfficeMath objects.
     /// </summary>
     std::vector<std::shared_ptr<OfficeMathObject>>& getList();
     bool listIsSet() const;

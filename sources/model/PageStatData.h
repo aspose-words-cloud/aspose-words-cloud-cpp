@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the page&#39;s statistical data
+/// Container for the page&#39;s statistical data.
 /// </summary>
 class  PageStatData
     : public ModelBase
@@ -63,22 +63,22 @@ public:
     /// PageStatData members
 
     /// <summary>
-    /// Page number
+    /// Gets or sets page number.
     /// </summary>
     int32_t getPageNumber() const;
         void setPageNumber(int32_t value);
     /// <summary>
-    /// Total count of words in the page
+    /// Gets or sets total count of words in the page.
     /// </summary>
     int32_t getWordCount() const;
         void setWordCount(int32_t value);
     /// <summary>
-    /// Total count of paragraphs in the page
+    /// Gets or sets total count of paragraphs in the page.
     /// </summary>
     int32_t getParagraphCount() const;
         void setParagraphCount(int32_t value);
     /// <summary>
-    /// Detailed statistics of footnotes
+    /// Gets or sets detailed statistics of footnotes.
     /// </summary>
     std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;

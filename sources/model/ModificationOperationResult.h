@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// result of the operation which modifies the original document and saves the result
+/// result of the operation which modifies the original document and saves the result.
 /// </summary>
 class  ModificationOperationResult
     : public ModelBase
@@ -63,14 +63,14 @@ public:
     /// ModificationOperationResult members
 
     /// <summary>
-    /// Link to the source document (source for the modification operation)
+    /// Gets or sets link to the source document (source for the modification operation).
     /// </summary>
     std::shared_ptr<FileLink> getSource() const;
     bool sourceIsSet() const;
     void unsetSource();
     void setSource(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Link to the dest document (result of the modification operation)
+    /// Gets or sets link to the dest document (result of the modification operation).
     /// </summary>
     std::shared_ptr<FileLink> getDest() const;
     bool destIsSet() const;

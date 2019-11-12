@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphLinkCollectionResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "ParagraphLinkCollection.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/paragraphs 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs.
 /// </summary>
 class  ParagraphLinkCollectionResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     ParagraphLinkCollectionResponse();
@@ -63,7 +63,7 @@ public:
     /// ParagraphLinkCollectionResponse members
 
     /// <summary>
-    /// Collection of paragraphs
+    /// Gets or sets collection of paragraphs.
     /// </summary>
     std::shared_ptr<ParagraphLinkCollection> getParagraphs() const;
     bool paragraphsIsSet() const;

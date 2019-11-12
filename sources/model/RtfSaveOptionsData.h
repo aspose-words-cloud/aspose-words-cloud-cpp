@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for rtf save options
+/// container class for rtf save options.
 /// </summary>
 class  RtfSaveOptionsData
     : public SaveOptionsData
@@ -62,21 +62,21 @@ public:
     /// RtfSaveOptionsData members
 
     /// <summary>
-    /// Allows to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly
+    /// Gets or sets allows to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly.
     /// </summary>
     bool isExportCompactSize() const;
     bool exportCompactSizeIsSet() const;
     void unsetExportCompactSize();
     void setExportCompactSize(bool value);
     /// <summary>
-    /// Specifies whether the keywords for \&quot;old readers\&quot; are written to RTF or not
+    /// Gets or sets specifies whether the keywords for \&quot;old readers\&quot; are written to RTF or not.
     /// </summary>
     bool isExportImagesForOldReaders() const;
     bool exportImagesForOldReadersIsSet() const;
     void unsetExportImagesForOldReaders();
     void setExportImagesForOldReaders(bool value);
     /// <summary>
-    /// Specifies whether or not use pretty formats output
+    /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
     bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;

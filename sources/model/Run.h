@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Run element
+/// Run element.
 /// </summary>
 class  Run
     : public RunLink

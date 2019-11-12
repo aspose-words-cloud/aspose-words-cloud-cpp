@@ -39,6 +39,7 @@ class DeleteParagraphRequest{
     public: 
      DeleteParagraphRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -46,12 +47,14 @@ class DeleteParagraphRequest{
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        utility::string_t getNodePath() const;
+        void setNodePath(utility::string_t nodePath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -76,11 +79,9 @@ class DeleteParagraphRequest{
 
         boost::optional<utility::string_t> getRevisionDateTime() const;
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
-
-        boost::optional<utility::string_t> getNodePath() const;
-        void setNodePath(boost::optional<utility::string_t> nodePath);
     private:
         utility::string_t m_name;
+        utility::string_t m_nodePath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
@@ -89,7 +90,6 @@ class DeleteParagraphRequest{
         boost::optional<utility::string_t> m_destFileName;
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<utility::string_t> m_nodePath;
 };
 
 }

@@ -64,7 +64,7 @@ public:
     /// DocumentEntryList members
 
     /// <summary>
-    /// List of documents.
+    /// Gets or sets list of documents.
     /// </summary>
     std::vector<std::shared_ptr<DocumentEntry>>& getDocumentEntries();
     bool documentEntriesIsSet() const;

@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentPropertiesResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "DocumentProperties.h"
 
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling:  GET /documentProperties.
 /// </summary>
 class  DocumentPropertiesResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     DocumentPropertiesResponse();
@@ -63,7 +63,7 @@ public:
     /// DocumentPropertiesResponse members
 
     /// <summary>
-    /// Collection of document properties.
+    /// Gets or sets collection of document properties.
     /// </summary>
     std::shared_ptr<DocumentProperties> getDocumentProperties() const;
     bool documentPropertiesIsSet() const;

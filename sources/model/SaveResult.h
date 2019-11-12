@@ -64,21 +64,21 @@ public:
     /// SaveResult members
 
     /// <summary>
-    /// Link to source document.
+    /// Gets or sets link to source document.
     /// </summary>
     std::shared_ptr<FileLink> getSourceDocument() const;
     bool sourceDocumentIsSet() const;
     void unsetSourceDocument();
     void setSourceDocument(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Link to destination document.
+    /// Gets or sets link to destination document.
     /// </summary>
     std::shared_ptr<FileLink> getDestDocument() const;
     bool destDocumentIsSet() const;
     void unsetDestDocument();
     void setDestDocument(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Links to additional items (css, images etc).
+    /// Gets or sets links to additional items (css, images etc).
     /// </summary>
     std::vector<std::shared_ptr<FileLink>>& getAdditionalItems();
     bool additionalItemsIsSet() const;

@@ -30,19 +30,19 @@ namespace api{
 namespace models{
 GetHeaderFootersRequest::GetHeaderFootersRequest(
         utility::string_t name,
+                utility::string_t sectionPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> sectionPath,
                 boost::optional<utility::string_t> filterByType
         ) : 
             m_name(std::move(name)),
+            m_sectionPath(std::move(sectionPath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
             m_password(std::move(password)),
-            m_sectionPath(std::move(sectionPath)),
             m_filterByType(std::move(filterByType))
         {
             
@@ -54,6 +54,13 @@ GetHeaderFootersRequest::GetHeaderFootersRequest(
         }
         void GetHeaderFootersRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t GetHeaderFootersRequest::getSectionPath() const
+        {
+            return m_sectionPath;
+        }
+        void GetHeaderFootersRequest::setSectionPath(utility::string_t sectionPath){
+            m_sectionPath = std::move(sectionPath);
         }
         boost::optional<utility::string_t> GetHeaderFootersRequest::getFolder() const
         {
@@ -82,13 +89,6 @@ GetHeaderFootersRequest::GetHeaderFootersRequest(
         }
         void GetHeaderFootersRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> GetHeaderFootersRequest::getSectionPath() const
-        {
-            return m_sectionPath;
-        }
-        void GetHeaderFootersRequest::setSectionPath(boost::optional<utility::string_t> sectionPath){
-            m_sectionPath = std::move(sectionPath);
         }
         boost::optional<utility::string_t> GetHeaderFootersRequest::getFilterByType() const
         {

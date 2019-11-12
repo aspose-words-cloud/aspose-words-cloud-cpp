@@ -30,6 +30,7 @@ namespace api{
 namespace models{
 DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
         utility::string_t name,
+                utility::string_t sectionPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -37,10 +38,10 @@ DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> sectionPath
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_sectionPath(std::move(sectionPath)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
@@ -48,8 +49,7 @@ DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_sectionPath(std::move(sectionPath))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -60,6 +60,13 @@ DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
         }
         void DeleteHeaderFooterRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t DeleteHeaderFooterRequest::getSectionPath() const
+        {
+            return m_sectionPath;
+        }
+        void DeleteHeaderFooterRequest::setSectionPath(utility::string_t sectionPath){
+            m_sectionPath = std::move(sectionPath);
         }
         int32_t DeleteHeaderFooterRequest::getIndex() const
         {
@@ -116,13 +123,6 @@ DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
         }
         void DeleteHeaderFooterRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<utility::string_t> DeleteHeaderFooterRequest::getSectionPath() const
-        {
-            return m_sectionPath;
-        }
-        void DeleteHeaderFooterRequest::setSectionPath(boost::optional<utility::string_t> sectionPath){
-            m_sectionPath = std::move(sectionPath);
         }
 
 }

@@ -66,14 +66,14 @@ public:
     /// TableRow members
 
     /// <summary>
-    /// Provides access to the formatting properties of the row.
+    /// Gets or sets provides access to the formatting properties of the row.
     /// </summary>
     std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;
     void unsetRowFormat();
     void setRowFormat(std::shared_ptr<TableRowFormat> value);
     /// <summary>
-    /// Collection of table&#39;s rows.
+    /// Gets or sets collection of table&#39;s rows.
     /// </summary>
     std::vector<std::shared_ptr<TableCell>>& getTableCellList();
     bool tableCellListIsSet() const;

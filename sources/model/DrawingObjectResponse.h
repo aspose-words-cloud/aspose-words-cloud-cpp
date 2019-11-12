@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "DrawingObject.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// Response for \&quot;drawingObjects/n\&quot; resource.
 /// </summary>
 class  DrawingObjectResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     DrawingObjectResponse();
@@ -63,7 +63,7 @@ public:
     /// DrawingObjectResponse members
 
     /// <summary>
-    /// Drawing object.
+    /// Gets or sets drawing object.
     /// </summary>
     std::shared_ptr<DrawingObject> getDrawingObject() const;
     bool drawingObjectIsSet() const;

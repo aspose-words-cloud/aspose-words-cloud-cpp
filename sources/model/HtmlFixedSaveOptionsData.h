@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for fixed html save options
+/// container class for fixed html save options.
 /// </summary>
 class  HtmlFixedSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -63,35 +63,35 @@ public:
     /// HtmlFixedSaveOptionsData members
 
     /// <summary>
-    /// Specifies prefix which is added to all class names in style.css file. Default value is \&quot;aw\&quot;.
+    /// Gets or sets specifies prefix which is added to all class names in style.css file. Default value is \&quot;aw\&quot;.
     /// </summary>
     utility::string_t getCssClassNamesPrefix() const;
     bool cssClassNamesPrefixIsSet() const;
     void unsetCssClassNamesPrefix();
     void setCssClassNamesPrefix(utility::string_t value);
     /// <summary>
-    /// Encoding.
+    /// Gets or sets encoding.
     /// </summary>
     utility::string_t getEncoding() const;
     bool encodingIsSet() const;
     void unsetEncoding();
     void setEncoding(utility::string_t value);
     /// <summary>
-    /// Specifies whether the CSS (Cascading Style Sheet) should be embedded into Html document.
+    /// Gets or sets specifies whether the CSS (Cascading Style Sheet) should be embedded into Html document.
     /// </summary>
     bool isExportEmbeddedCss() const;
     bool exportEmbeddedCssIsSet() const;
     void unsetExportEmbeddedCss();
     void setExportEmbeddedCss(bool value);
     /// <summary>
-    /// Specifies whether fonts should be embedded into Html document in Base64 format.
+    /// Gets or sets specifies whether fonts should be embedded into Html document in Base64 format.
     /// </summary>
     bool isExportEmbeddedFonts() const;
     bool exportEmbeddedFontsIsSet() const;
     void unsetExportEmbeddedFonts();
     void setExportEmbeddedFonts(bool value);
     /// <summary>
-    /// Specifies whether images should be embedded into Html document in Base64 format.
+    /// Gets or sets specifies whether images should be embedded into Html document in Base64 format.
     /// </summary>
     bool isExportEmbeddedImages() const;
     bool exportEmbeddedImagesIsSet() const;
@@ -105,49 +105,49 @@ public:
     void unsetExportFormFields();
     void setExportFormFields(bool value);
     /// <summary>
-    /// Specifies export format of fonts
+    /// Gets or sets specifies export format of fonts.
     /// </summary>
     utility::string_t getFontFormat() const;
     bool fontFormatIsSet() const;
     void unsetFontFormat();
     void setFontFormat(utility::string_t value);
     /// <summary>
-    /// Specifies the horizontal alignment of pages in an HTML document. Default value is HtmlFixedHorizontalPageAlignment.Center.
+    /// Gets or sets specifies the horizontal alignment of pages in an HTML document. Default value is HtmlFixedHorizontalPageAlignment.Center.
     /// </summary>
     utility::string_t getPageHorizontalAlignment() const;
     bool pageHorizontalAlignmentIsSet() const;
     void unsetPageHorizontalAlignment();
     void setPageHorizontalAlignment(utility::string_t value);
     /// <summary>
-    /// Specifies the margins around pages in an HTML document. The margins value is measured in points and should be equal to or greater than 0. Default value is 10 points.
+    /// Gets or sets specifies the margins around pages in an HTML document. The margins value is measured in points and should be equal to or greater than 0. Default value is 10 points.
     /// </summary>
     double getPageMargins() const;
     bool pageMarginsIsSet() const;
     void unsetPageMargins();
     void setPageMargins(double value);
     /// <summary>
-    /// Specifies the physical folder where resources are saved when exporting a document
+    /// Gets or sets specifies the physical folder where resources are saved when exporting a document.
     /// </summary>
     utility::string_t getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
     void setResourcesFolder(utility::string_t value);
     /// <summary>
-    /// Specifies the name of the folder used to construct resource URIs
+    /// Gets or sets specifies the name of the folder used to construct resource URIs.
     /// </summary>
     utility::string_t getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;
     void unsetResourcesFolderAlias();
     void setResourcesFolderAlias(utility::string_t value);
     /// <summary>
-    /// Flag indicates whether \&quot;@font-face\&quot; CSS rules should be placed into a separate file \&quot;fontFaces.css\&quot; when a document is being saved with external stylesheet (that is, when Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedCss is false). Default value is false, all CSS rules are written into single file \&quot;styles.css\&quot;.
+    /// Gets or sets flag indicates whether \&quot;@font-face\&quot; CSS rules should be placed into a separate file \&quot;fontFaces.css\&quot; when a document is being saved with external stylesheet (that is, when Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedCss is false). Default value is false, all CSS rules are written into single file \&quot;styles.css\&quot;.
     /// </summary>
     bool isSaveFontFaceCssSeparately() const;
     bool saveFontFaceCssSeparatelyIsSet() const;
     void unsetSaveFontFaceCssSeparately();
     void setSaveFontFaceCssSeparately(bool value);
     /// <summary>
-    /// Specifies whether border around pages should be shown.
+    /// Gets or sets specifies whether border around pages should be shown.
     /// </summary>
     bool isShowPageBorder() const;
     bool showPageBorderIsSet() const;

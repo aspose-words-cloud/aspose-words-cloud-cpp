@@ -38,8 +38,8 @@ TextSaveOptionsData::TextSaveOptionsData()
     m_AddBidiMarksIsSet = false;
     m_Encoding = utility::conversions::to_string_t("");
     m_EncodingIsSet = false;
-    m_ExportHeadersFooters = false;
-    m_ExportHeadersFootersIsSet = false;
+    m_ExportHeadersFootersMode = utility::conversions::to_string_t("");
+    m_ExportHeadersFootersModeIsSet = false;
     m_ForcePageBreaks = false;
     m_ForcePageBreaksIsSet = false;
     m_ParagraphBreak = utility::conversions::to_string_t("");
@@ -71,9 +71,9 @@ web::json::value TextSaveOptionsData::toJson() const
     {
         val[_XPLATSTR("Encoding")] = ModelBase::toJson(m_Encoding);
     }
-    if(m_ExportHeadersFootersIsSet)
+    if(m_ExportHeadersFootersModeIsSet)
     {
-        val[_XPLATSTR("ExportHeadersFooters")] = ModelBase::toJson(m_ExportHeadersFooters);
+        val[_XPLATSTR("ExportHeadersFootersMode")] = ModelBase::toJson(m_ExportHeadersFootersMode);
     }
     if(m_ForcePageBreaksIsSet)
     {
@@ -115,12 +115,12 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
             setEncoding(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ExportHeadersFooters")))
+    if(val.has_field(_XPLATSTR("ExportHeadersFootersMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ExportHeadersFooters")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportHeadersFootersMode")];
         if(!fieldValue.is_null())
         {
-            setExportHeadersFooters(ModelBase::boolFromJson(fieldValue));
+            setExportHeadersFootersMode(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ForcePageBreaks")))
@@ -211,9 +211,10 @@ void TextSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Encoding"), m_Encoding));
         
     }
-    if(m_ExportHeadersFootersIsSet)
+    if(m_ExportHeadersFootersModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportHeadersFooters"), m_ExportHeadersFooters));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportHeadersFootersMode"), m_ExportHeadersFootersMode));
+        
     }
     if(m_ForcePageBreaksIsSet)
     {
@@ -280,9 +281,9 @@ void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Encoding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ExportHeadersFooters")))
+    if(multipart->hasContent(_XPLATSTR("ExportHeadersFootersMode")))
     {
-        setExportHeadersFooters(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportHeadersFooters"))));
+        setExportHeadersFootersMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExportHeadersFootersMode"))));
     }
     if(multipart->hasContent(_XPLATSTR("ForcePageBreaks")))
     {
@@ -344,25 +345,25 @@ void TextSaveOptionsData::unsetEncoding()
     m_EncodingIsSet = false;
 }
 
-bool TextSaveOptionsData::isExportHeadersFooters() const
+utility::string_t TextSaveOptionsData::getExportHeadersFootersMode() const
 {
-    return m_ExportHeadersFooters;
+    return m_ExportHeadersFootersMode;
 }
 
 
-void TextSaveOptionsData::setExportHeadersFooters(bool value)
+void TextSaveOptionsData::setExportHeadersFootersMode(utility::string_t value)
 {
-    m_ExportHeadersFooters = value;
-    m_ExportHeadersFootersIsSet = true;
+    m_ExportHeadersFootersMode = value;
+    m_ExportHeadersFootersModeIsSet = true;
 }
-bool TextSaveOptionsData::exportHeadersFootersIsSet() const
+bool TextSaveOptionsData::exportHeadersFootersModeIsSet() const
 {
-    return m_ExportHeadersFootersIsSet;
+    return m_ExportHeadersFootersModeIsSet;
 }
 
-void TextSaveOptionsData::unsetExportHeadersFooters()
+void TextSaveOptionsData::unsetExportHeadersFootersMode()
 {
-    m_ExportHeadersFootersIsSet = false;
+    m_ExportHeadersFootersModeIsSet = false;
 }
 
 bool TextSaveOptionsData::isForcePageBreaks() const

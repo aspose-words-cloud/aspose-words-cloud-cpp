@@ -30,18 +30,18 @@ namespace api{
 namespace models{
 GetDocumentDrawingObjectsRequest::GetDocumentDrawingObjectsRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> password
         ) : 
             m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_nodePath(std::move(nodePath))
+            m_password(std::move(password))
         {
             
         }
@@ -52,6 +52,13 @@ GetDocumentDrawingObjectsRequest::GetDocumentDrawingObjectsRequest(
         }
         void GetDocumentDrawingObjectsRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t GetDocumentDrawingObjectsRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void GetDocumentDrawingObjectsRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         boost::optional<utility::string_t> GetDocumentDrawingObjectsRequest::getFolder() const
         {
@@ -80,13 +87,6 @@ GetDocumentDrawingObjectsRequest::GetDocumentDrawingObjectsRequest(
         }
         void GetDocumentDrawingObjectsRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectsRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void GetDocumentDrawingObjectsRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
 
 }

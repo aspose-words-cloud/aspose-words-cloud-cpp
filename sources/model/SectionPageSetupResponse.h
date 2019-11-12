@@ -29,7 +29,7 @@
 
 
 #include "PageSetup.h"
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/sections/{0}/PageSetup 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/sections/{0}/PageSetup.
 /// </summary>
 class  SectionPageSetupResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     SectionPageSetupResponse();
@@ -63,7 +63,7 @@ public:
     /// SectionPageSetupResponse members
 
     /// <summary>
-    /// Section
+    /// Gets or sets section.
     /// </summary>
     std::shared_ptr<PageSetup> getPageSetup() const;
     bool pageSetupIsSet() const;

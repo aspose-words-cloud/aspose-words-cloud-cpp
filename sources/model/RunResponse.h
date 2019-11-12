@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RunResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "Run.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/runs/{1} 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}.
 /// </summary>
 class  RunResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     RunResponse();
@@ -63,7 +63,7 @@ public:
     /// RunResponse members
 
     /// <summary>
-    /// Run
+    /// Gets or sets run.
     /// </summary>
     std::shared_ptr<Run> getRun() const;
     bool runIsSet() const;

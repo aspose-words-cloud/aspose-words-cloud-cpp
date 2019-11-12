@@ -42,6 +42,8 @@ MetafileRenderingOptionsData::MetafileRenderingOptionsData()
     m_RenderingModeIsSet = false;
     m_UseEmfEmbeddedToWmf = false;
     m_UseEmfEmbeddedToWmfIsSet = false;
+    m_ScaleWmfFontsToMetafileSize = false;
+    m_ScaleWmfFontsToMetafileSizeIsSet = false;
 }
 
 MetafileRenderingOptionsData::~MetafileRenderingOptionsData()
@@ -72,6 +74,10 @@ web::json::value MetafileRenderingOptionsData::toJson() const
     if(m_UseEmfEmbeddedToWmfIsSet)
     {
         val[_XPLATSTR("UseEmfEmbeddedToWmf")] = ModelBase::toJson(m_UseEmfEmbeddedToWmf);
+    }
+    if(m_ScaleWmfFontsToMetafileSizeIsSet)
+    {
+        val[_XPLATSTR("ScaleWmfFontsToMetafileSize")] = ModelBase::toJson(m_ScaleWmfFontsToMetafileSize);
     }
 
     return val;
@@ -111,6 +117,14 @@ void MetafileRenderingOptionsData::fromJson(web::json::value& val)
             setUseEmfEmbeddedToWmf(ModelBase::boolFromJson(fieldValue));
         }
     }
+    if(val.has_field(_XPLATSTR("ScaleWmfFontsToMetafileSize")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("ScaleWmfFontsToMetafileSize")];
+        if(!fieldValue.is_null())
+        {
+            setScaleWmfFontsToMetafileSize(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
@@ -135,6 +149,10 @@ void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFo
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseEmfEmbeddedToWmf"), m_UseEmfEmbeddedToWmf));
     }
+    if(m_ScaleWmfFontsToMetafileSizeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ScaleWmfFontsToMetafileSize"), m_ScaleWmfFontsToMetafileSize));
+    }
 }
 
 void MetafileRenderingOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
@@ -154,6 +172,10 @@ void MetafileRenderingOptionsData::fromMultiPart(const std::shared_ptr<Multipart
     if(multipart->hasContent(_XPLATSTR("UseEmfEmbeddedToWmf")))
     {
         setUseEmfEmbeddedToWmf(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseEmfEmbeddedToWmf"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("ScaleWmfFontsToMetafileSize")))
+    {
+        setScaleWmfFontsToMetafileSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ScaleWmfFontsToMetafileSize"))));
     }
 }
 
@@ -239,6 +261,27 @@ bool MetafileRenderingOptionsData::useEmfEmbeddedToWmfIsSet() const
 void MetafileRenderingOptionsData::unsetUseEmfEmbeddedToWmf()
 {
     m_UseEmfEmbeddedToWmfIsSet = false;
+}
+
+bool MetafileRenderingOptionsData::isScaleWmfFontsToMetafileSize() const
+{
+    return m_ScaleWmfFontsToMetafileSize;
+}
+
+
+void MetafileRenderingOptionsData::setScaleWmfFontsToMetafileSize(bool value)
+{
+    m_ScaleWmfFontsToMetafileSize = value;
+    m_ScaleWmfFontsToMetafileSizeIsSet = true;
+}
+bool MetafileRenderingOptionsData::scaleWmfFontsToMetafileSizeIsSet() const
+{
+    return m_ScaleWmfFontsToMetafileSizeIsSet;
+}
+
+void MetafileRenderingOptionsData::unsetScaleWmfFontsToMetafileSize()
+{
+    m_ScaleWmfFontsToMetafileSizeIsSet = false;
 }
 
 }

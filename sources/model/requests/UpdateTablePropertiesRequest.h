@@ -40,6 +40,7 @@ class UpdateTablePropertiesRequest{
     public: 
      UpdateTablePropertiesRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -48,12 +49,14 @@ class UpdateTablePropertiesRequest{
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableProperties>> properties,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<std::shared_ptr<TableProperties>> properties
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        utility::string_t getNodePath() const;
+        void setNodePath(utility::string_t nodePath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -81,11 +84,9 @@ class UpdateTablePropertiesRequest{
 
         boost::optional<std::shared_ptr<TableProperties>> getProperties() const;
         void setProperties(boost::optional<std::shared_ptr<TableProperties>> properties);
-
-        boost::optional<utility::string_t> getNodePath() const;
-        void setNodePath(boost::optional<utility::string_t> nodePath);
     private:
         utility::string_t m_name;
+        utility::string_t m_nodePath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
@@ -95,7 +96,6 @@ class UpdateTablePropertiesRequest{
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
         boost::optional<std::shared_ptr<TableProperties>> m_properties;
-        boost::optional<utility::string_t> m_nodePath;
 };
 
 }

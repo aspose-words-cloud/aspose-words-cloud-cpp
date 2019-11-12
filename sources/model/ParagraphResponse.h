@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "Paragraph.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0} 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}.
 /// </summary>
 class  ParagraphResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     ParagraphResponse();
@@ -63,7 +63,7 @@ public:
     /// ParagraphResponse members
 
     /// <summary>
-    /// Paragraph
+    /// Gets or sets paragraph.
     /// </summary>
     std::shared_ptr<Paragraph> getParagraph() const;
     bool paragraphIsSet() const;

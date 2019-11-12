@@ -29,7 +29,7 @@
 
 
 #include "TableProperties.h"
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/properties
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/properties.
 /// </summary>
 class  TablePropertiesResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     TablePropertiesResponse();
@@ -63,7 +63,7 @@ public:
     /// TablePropertiesResponse members
 
     /// <summary>
-    /// Table.
+    /// Gets or sets table.
     /// </summary>
     std::shared_ptr<TableProperties> getProperties() const;
     bool propertiesIsSet() const;

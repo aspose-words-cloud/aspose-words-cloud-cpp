@@ -63,7 +63,7 @@ public:
     /// PreferredWidth members
 
     /// <summary>
-    /// Gets the unit of measure used for this preferred width value.
+    /// Gets or sets the unit of measure used for this preferred width value.
     /// </summary>
     utility::string_t getType() const;
         void setType(utility::string_t value);

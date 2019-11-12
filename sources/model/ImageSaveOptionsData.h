@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container abstract class for image save options
+/// Container abstract class for image save options.
 /// </summary>
 class  ImageSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -64,7 +64,7 @@ public:
     /// ImageSaveOptionsData members
 
     /// <summary>
-    /// Allows to specify additional System.Drawing.Graphics quality options.
+    /// Gets or sets allows to specify additional System.Drawing.Graphics quality options.
     /// </summary>
     std::shared_ptr<GraphicsQualityOptionsData> getGraphicsQualityOptions() const;
     bool graphicsQualityOptionsIsSet() const;
@@ -78,56 +78,56 @@ public:
     void unsetHorizontalResolution();
     void setHorizontalResolution(double value);
     /// <summary>
-    /// Brightness of image
+    /// Gets or sets brightness of image.
     /// </summary>
     double getImageBrightness() const;
     bool imageBrightnessIsSet() const;
     void unsetImageBrightness();
     void setImageBrightness(double value);
     /// <summary>
-    /// Color mode of image
+    /// Gets or sets color mode of image.
     /// </summary>
     utility::string_t getImageColorMode() const;
     bool imageColorModeIsSet() const;
     void unsetImageColorMode();
     void setImageColorMode(utility::string_t value);
     /// <summary>
-    /// Contrast of image
+    /// Gets or sets contrast of image.
     /// </summary>
     double getImageContrast() const;
     bool imageContrastIsSet() const;
     void unsetImageContrast();
     void setImageContrast(double value);
     /// <summary>
-    /// Background (paper) color of image
+    /// Gets or sets background (paper) color of image.
     /// </summary>
     utility::string_t getPaperColor() const;
     bool paperColorIsSet() const;
     void unsetPaperColor();
     void setPaperColor(utility::string_t value);
     /// <summary>
-    /// Pixel format of image
+    /// Gets or sets pixel format of image.
     /// </summary>
     utility::string_t getPixelFormat() const;
     bool pixelFormatIsSet() const;
     void unsetPixelFormat();
     void setPixelFormat(utility::string_t value);
     /// <summary>
-    /// Sets both horizontal and vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
+    /// Gets or sets both horizontal and vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
     /// </summary>
     double getResolution() const;
     bool resolutionIsSet() const;
     void unsetResolution();
     void setResolution(double value);
     /// <summary>
-    /// Zoom factor of image
+    /// Gets or sets zoom factor of image.
     /// </summary>
     double getScale() const;
     bool scaleIsSet() const;
     void unsetScale();
     void setScale(double value);
     /// <summary>
-    /// Determine whether or not to use anti-aliasing for rendering
+    /// Gets or sets determine whether or not to use anti-aliasing for rendering.
     /// </summary>
     bool isUseAntiAliasing() const;
     bool useAntiAliasingIsSet() const;
@@ -141,7 +141,7 @@ public:
     void unsetUseGdiEmfRenderer();
     void setUseGdiEmfRenderer(bool value);
     /// <summary>
-    /// Determine whether or not to use high quality (i.e. slow) rendering algorithms
+    /// Gets or sets determine whether or not to use high quality (i.e. slow) rendering algorithms.
     /// </summary>
     bool isUseHighQualityRendering() const;
     bool useHighQualityRenderingIsSet() const;

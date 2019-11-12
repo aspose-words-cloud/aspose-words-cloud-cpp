@@ -64,7 +64,7 @@ public:
     /// FormFieldCollection members
 
     /// <summary>
-    /// Collection of formfields
+    /// Gets or sets collection of formfields.
     /// </summary>
     std::vector<std::shared_ptr<FormField>>& getList();
     bool listIsSet() const;

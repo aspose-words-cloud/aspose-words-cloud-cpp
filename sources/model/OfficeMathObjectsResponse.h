@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_OfficeMathObjectsResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "OfficeMathObjectsCollection.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/OfficeMathObjects 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/OfficeMathObjects.
 /// </summary>
 class  OfficeMathObjectsResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     OfficeMathObjectsResponse();
@@ -63,7 +63,7 @@ public:
     /// OfficeMathObjectsResponse members
 
     /// <summary>
-    /// Collection of OfficeMath objects.
+    /// Gets or sets collection of OfficeMath objects.
     /// </summary>
     std::shared_ptr<OfficeMathObjectsCollection> getOfficeMathObjects() const;
     bool officeMathObjectsIsSet() const;

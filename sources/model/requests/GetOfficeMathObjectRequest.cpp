@@ -30,20 +30,20 @@ namespace api{
 namespace models{
 GetOfficeMathObjectRequest::GetOfficeMathObjectRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> password
         ) : 
             m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_nodePath(std::move(nodePath))
+            m_password(std::move(password))
         {
             
         }
@@ -54,6 +54,13 @@ GetOfficeMathObjectRequest::GetOfficeMathObjectRequest(
         }
         void GetOfficeMathObjectRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t GetOfficeMathObjectRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void GetOfficeMathObjectRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         int32_t GetOfficeMathObjectRequest::getIndex() const
         {
@@ -89,13 +96,6 @@ GetOfficeMathObjectRequest::GetOfficeMathObjectRequest(
         }
         void GetOfficeMathObjectRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> GetOfficeMathObjectRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void GetOfficeMathObjectRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
 
 }

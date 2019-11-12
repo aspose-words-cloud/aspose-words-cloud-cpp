@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Reference to node
+/// Reference to node.
 /// </summary>
 class  NodeLink
     : public LinkElement
@@ -63,7 +63,7 @@ public:
     /// NodeLink members
 
     /// <summary>
-    /// Node id
+    /// Gets or sets node id.
     /// </summary>
     utility::string_t getNodeId() const;
     bool nodeIdIsSet() const;

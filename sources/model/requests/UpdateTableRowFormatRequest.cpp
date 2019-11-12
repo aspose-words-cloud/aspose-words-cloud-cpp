@@ -140,4 +140,3 @@ UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
 }
 }
 
-

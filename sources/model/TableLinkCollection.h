@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of links to tables
+/// Collection of links to tables.
 /// </summary>
 class  TableLinkCollection
     : public LinkElement
@@ -64,7 +64,7 @@ public:
     /// TableLinkCollection members
 
     /// <summary>
-    /// Collection of table&#39;s links
+    /// Gets or sets collection of table&#39;s links.
     /// </summary>
     std::vector<std::shared_ptr<TableLink>>& getTableLinkList();
     bool tableLinkListIsSet() const;

@@ -34,8 +34,7 @@ namespace models {
 
 WordsApiErrorResponse::WordsApiErrorResponse()
 {
-    m_Message = utility::conversions::to_string_t("");
-    m_MessageIsSet = false;
+    m_ErrorIsSet = false;
 }
 
 WordsApiErrorResponse::~WordsApiErrorResponse()
@@ -49,11 +48,11 @@ void WordsApiErrorResponse::validate()
 
 web::json::value WordsApiErrorResponse::toJson() const
 {
-    web::json::value val = this->AsposeResponse::toJson();
+    web::json::value val = this->WordsResponse::toJson();
 
-    if(m_MessageIsSet)
+    if(m_ErrorIsSet)
     {
-        val[_XPLATSTR("Message")] = ModelBase::toJson(m_Message);
+        val[_XPLATSTR("Error")] = ModelBase::toJson(m_Error);
     }
 
     return val;
@@ -61,14 +60,16 @@ web::json::value WordsApiErrorResponse::toJson() const
 
 void WordsApiErrorResponse::fromJson(web::json::value& val)
 {
-    this->AsposeResponse::fromJson(val);
+    this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Message")))
+    if(val.has_field(_XPLATSTR("Error")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Message")];
+        web::json::value& fieldValue = val[_XPLATSTR("Error")];
         if(!fieldValue.is_null())
         {
-            setMessage(ModelBase::stringFromJson(fieldValue));
+            std::shared_ptr<ApiError> newItem(new ApiError());
+            newItem->fromJson(fieldValue);
+            setError( newItem );
         }
     }
 }
@@ -77,51 +78,57 @@ void WordsApiErrorResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
-    if(m_StatusIsSet)
+    if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
-    if(m_MessageIsSet)
+    if(m_ErrorIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Message"), m_Message));
+        if (m_Error.get())
+        {
+            m_Error->toMultipart(multipart, _XPLATSTR("Error."));
+        }
         
     }
 }
 
 void WordsApiErrorResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
-    if(multipart->hasContent(_XPLATSTR("Status")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Message")))
+    if(multipart->hasContent(_XPLATSTR("Error")))
     {
-        setMessage(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Message"))));
+        if(multipart->hasContent(_XPLATSTR("Error")))
+        {
+            std::shared_ptr<ApiError> newItem(new ApiError());
+            newItem->fromMultiPart(multipart, _XPLATSTR("Error."));
+            setError( newItem );
+        }
     }
 }
 
-utility::string_t WordsApiErrorResponse::getMessage() const
+std::shared_ptr<ApiError> WordsApiErrorResponse::getError() const
 {
-    return m_Message;
+    return m_Error;
 }
 
 
-void WordsApiErrorResponse::setMessage(utility::string_t value)
+void WordsApiErrorResponse::setError(std::shared_ptr<ApiError> value)
 {
-    m_Message = value;
-    m_MessageIsSet = true;
+    m_Error = value;
+    m_ErrorIsSet = true;
 }
-bool WordsApiErrorResponse::messageIsSet() const
+bool WordsApiErrorResponse::errorIsSet() const
 {
-    return m_MessageIsSet;
+    return m_ErrorIsSet;
 }
 
-void WordsApiErrorResponse::unsetMessage()
+void WordsApiErrorResponse::unsetError()
 {
-    m_MessageIsSet = false;
+    m_ErrorIsSet = false;
 }
 
 }

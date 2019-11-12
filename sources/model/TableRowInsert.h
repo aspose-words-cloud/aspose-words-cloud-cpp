@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table row element
+/// Table row element.
 /// </summary>
 class  TableRowInsert
     : public ModelBase
@@ -62,14 +62,14 @@ public:
     /// TableRowInsert members
 
     /// <summary>
-    /// Table row will be inserted after row with specified 0-based index.
+    /// Gets or sets table row will be inserted after row with specified 0-based index.
     /// </summary>
     int32_t getInsertAfter() const;
     bool insertAfterIsSet() const;
     void unsetInsertAfter();
     void setInsertAfter(int32_t value);
     /// <summary>
-    /// Count of columns. Default is 1.
+    /// Gets or sets count of columns. Default is 1.
     /// </summary>
     int32_t getColumnsCount() const;
         void setColumnsCount(int32_t value);

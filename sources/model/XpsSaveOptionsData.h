@@ -64,28 +64,28 @@ public:
     /// XpsSaveOptionsData members
 
     /// <summary>
-    /// Specifies the level in the XPS document outline at which to display Word bookmarks.
+    /// Gets or sets specifies the level in the XPS document outline at which to display Word bookmarks.
     /// </summary>
     int32_t getBookmarksOutlineLevel() const;
     bool bookmarksOutlineLevelIsSet() const;
     void unsetBookmarksOutlineLevel();
     void setBookmarksOutlineLevel(int32_t value);
     /// <summary>
-    /// Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the XPS document outline.
+    /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the XPS document outline.
     /// </summary>
     int32_t getHeadingsOutlineLevels() const;
     bool headingsOutlineLevelsIsSet() const;
     void unsetHeadingsOutlineLevels();
     void setHeadingsOutlineLevels(int32_t value);
     /// <summary>
-    /// Allows to specify outline options
+    /// Gets or sets allows to specify outline options.
     /// </summary>
     std::shared_ptr<OutlineOptionsData> getOutlineOptions() const;
     bool outlineOptionsIsSet() const;
     void unsetOutlineOptions();
     void setOutlineOptions(std::shared_ptr<OutlineOptionsData> value);
     /// <summary>
-    /// Determines whether the document should be saved using a booklet printing layout
+    /// Gets or sets determines whether the document should be saved using a booklet printing layout.
     /// </summary>
     bool isUseBookFoldPrintingSettings() const;
     bool useBookFoldPrintingSettingsIsSet() const;

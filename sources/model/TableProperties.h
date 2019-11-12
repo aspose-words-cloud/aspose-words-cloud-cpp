@@ -64,14 +64,14 @@ public:
     /// TableProperties members
 
     /// <summary>
-    /// Specifies how an inline table is aligned in the document.
+    /// Gets or sets specifies how an inline table is aligned in the document.
     /// </summary>
     utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
     /// <summary>
-    /// Allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents.
+    /// Gets or sets allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents.
     /// </summary>
     bool isAllowAutoFit() const;
     bool allowAutoFitIsSet() const;
@@ -113,7 +113,7 @@ public:
     void unsetLeftPadding();
     void setLeftPadding(double value);
     /// <summary>
-    /// Gets or sets the table preferred width.  Preferred width can be specified as a percentage, number of points or a special \&quot;auto\&quot; value.
+    /// Gets or sets the table preferred width. Preferred width can be specified as a percentage, number of points or a special \&quot;auto\&quot; value.
     /// </summary>
     std::shared_ptr<PreferredWidth> getPreferredWidth() const;
     bool preferredWidthIsSet() const;
@@ -148,7 +148,7 @@ public:
     void unsetStyleOptions();
     void setStyleOptions(utility::string_t value);
     /// <summary>
-    /// Get or sets TextWrapping  for table.
+    /// Gets or sets get or sets TextWrapping  for table.
     /// </summary>
     utility::string_t getTextWrapping() const;
     bool textWrappingIsSet() const;

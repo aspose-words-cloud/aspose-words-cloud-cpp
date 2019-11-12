@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for wml save options
+/// container class for wml save options.
 /// </summary>
 class  WordMLSaveOptionsData
     : public SaveOptionsData
@@ -62,7 +62,7 @@ public:
     /// WordMLSaveOptionsData members
 
     /// <summary>
-    /// Specifies whether or not use pretty formats output
+    /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
     bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;

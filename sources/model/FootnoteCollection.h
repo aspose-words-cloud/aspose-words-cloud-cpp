@@ -64,7 +64,7 @@ public:
     /// FootnoteCollection members
 
     /// <summary>
-    /// Collection of foonotes links 
+    /// Gets or sets collection of foonotes links.
     /// </summary>
     std::vector<std::shared_ptr<Footnote>>& getList();
     bool listIsSet() const;

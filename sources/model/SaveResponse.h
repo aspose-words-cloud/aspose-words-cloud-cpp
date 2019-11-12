@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SaveResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "SaveResult.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// Save response.
 /// </summary>
 class  SaveResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     SaveResponse();
@@ -63,7 +63,7 @@ public:
     /// SaveResponse members
 
     /// <summary>
-    /// Save result.
+    /// Gets or sets save result.
     /// </summary>
     std::shared_ptr<SaveResult> getSaveResult() const;
     bool saveResultIsSet() const;

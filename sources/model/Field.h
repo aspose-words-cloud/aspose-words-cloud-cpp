@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Field
+/// Field.
 /// </summary>
 class  Field
     : public FieldLink
@@ -70,7 +70,7 @@ public:
     void unsetLocaleId();
     void setLocaleId(utility::string_t value);
     /// <summary>
-    /// Field result
+    /// Gets or sets field result.
     /// </summary>
     utility::string_t getResult() const;
     bool resultIsSet() const;

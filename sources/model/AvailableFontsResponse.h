@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_AvailableFontsResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include <vector>
 #include "FontInfo.h"
@@ -40,10 +40,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// The list of fonts, available for document processing
+/// The list of fonts, available for document processing.
 /// </summary>
 class  AvailableFontsResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     AvailableFontsResponse();
@@ -64,21 +64,21 @@ public:
     /// AvailableFontsResponse members
 
     /// <summary>
-    /// The list of addititional fonts, provided by aspose team
+    /// Gets or sets the list of addititional fonts, provided by aspose team.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getAdditionalFonts();
     bool additionalFontsIsSet() const;
     void unsetAdditionalFonts();
     void setAdditionalFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
     /// <summary>
-    /// Custom user fonts (from user file storage). To use them, you should specify \&quot;fontsLocation\&quot; parameter in any request
+    /// Gets or sets custom user fonts (from user file storage). To use them, you should specify \&quot;fontsLocation\&quot; parameter in any request.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getCustomFonts();
     bool customFontsIsSet() const;
     void unsetCustomFonts();
     void setCustomFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
     /// <summary>
-    /// The list of system fonts, availiable on the server
+    /// Gets or sets the list of system fonts, availiable on the server.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getSystemFonts();
     bool systemFontsIsSet() const;

@@ -64,7 +64,7 @@ public:
     /// TableCell members
 
     /// <summary>
-    /// Child nodes.
+    /// Gets or sets child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;

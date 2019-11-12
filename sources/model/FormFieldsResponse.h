@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldsResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "FormFieldCollection.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/{nodePath}/formfields
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/{nodePath}/formfields.
 /// </summary>
 class  FormFieldsResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     FormFieldsResponse();
@@ -63,7 +63,7 @@ public:
     /// FormFieldsResponse members
 
     /// <summary>
-    /// Collection of form fields.
+    /// Gets or sets collection of form fields.
     /// </summary>
     std::shared_ptr<FormFieldCollection> getFormFields() const;
     bool formFieldsIsSet() const;

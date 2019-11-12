@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ProtectionDataResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "FileLink.h"
 #include "ProtectionData.h"
@@ -40,10 +40,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for the request of data about protection
+/// Response for the request of data about protection.
 /// </summary>
 class  ProtectionDataResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     ProtectionDataResponse();
@@ -64,14 +64,14 @@ public:
     /// ProtectionDataResponse members
 
     /// <summary>
-    /// Link to the document
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Protection&#39;s data of the document
+    /// Gets or sets protection&#39;s data of the document.
     /// </summary>
     std::shared_ptr<ProtectionData> getProtectionData() const;
     bool protectionDataIsSet() const;

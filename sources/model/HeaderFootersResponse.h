@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_HeaderFootersResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "HeaderFooterLinkCollection.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/headersfooters 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/headersfooters.
 /// </summary>
 class  HeaderFootersResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     HeaderFootersResponse();
@@ -63,7 +63,7 @@ public:
     /// HeaderFootersResponse members
 
     /// <summary>
-    /// Collection of headers/footers
+    /// Gets or sets collection of headers/footers.
     /// </summary>
     std::shared_ptr<HeaderFooterLinkCollection> getHeaderFooters() const;
     bool headerFootersIsSet() const;

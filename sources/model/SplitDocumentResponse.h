@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "SplitDocumentResult.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling:  POST /{name}/split .
 /// </summary>
 class  SplitDocumentResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     SplitDocumentResponse();
@@ -63,7 +63,7 @@ public:
     /// SplitDocumentResponse members
 
     /// <summary>
-    /// Resylt of splitting document.
+    /// Gets or sets resylt of splitting document.
     /// </summary>
     std::shared_ptr<SplitDocumentResult> getSplitResult() const;
     bool splitResultIsSet() const;

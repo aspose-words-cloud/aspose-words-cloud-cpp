@@ -30,24 +30,24 @@ namespace api{
 namespace models{
 DeleteFieldsRequest::DeleteFieldsRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_nodePath(std::move(nodePath))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -58,6 +58,13 @@ DeleteFieldsRequest::DeleteFieldsRequest(
         }
         void DeleteFieldsRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t DeleteFieldsRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void DeleteFieldsRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         boost::optional<utility::string_t> DeleteFieldsRequest::getFolder() const
         {
@@ -107,13 +114,6 @@ DeleteFieldsRequest::DeleteFieldsRequest(
         }
         void DeleteFieldsRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<utility::string_t> DeleteFieldsRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void DeleteFieldsRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
 
 }

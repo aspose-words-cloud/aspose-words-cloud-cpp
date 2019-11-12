@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Section element
+/// Section element.
 /// </summary>
 class  Section
     : public LinkElement
@@ -64,35 +64,35 @@ public:
     /// Section members
 
     /// <summary>
-    /// Child nodes.
+    /// Gets or sets child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;
     void unsetChildNodes();
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
     /// <summary>
-    /// Link to HeaderFooters resource
+    /// Gets or sets link to HeaderFooters resource.
     /// </summary>
     std::shared_ptr<LinkElement> getHeaderFooters() const;
     bool headerFootersIsSet() const;
     void unsetHeaderFooters();
     void setHeaderFooters(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Link to PageSetup resource
+    /// Gets or sets link to PageSetup resource.
     /// </summary>
     std::shared_ptr<LinkElement> getPageSetup() const;
     bool pageSetupIsSet() const;
     void unsetPageSetup();
     void setPageSetup(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Link to Paragraphs resource
+    /// Gets or sets link to Paragraphs resource.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
     void unsetParagraphs();
     void setParagraphs(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Link to Tables resource
+    /// Gets or sets link to Tables resource.
     /// </summary>
     std::shared_ptr<LinkElement> getTables() const;
     bool tablesIsSet() const;

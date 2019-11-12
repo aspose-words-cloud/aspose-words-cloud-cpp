@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceTextResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "FileLink.h"
 
@@ -42,7 +42,7 @@ namespace models {
 /// Response for \&quot;Replace text\&quot; action.
 /// </summary>
 class  ReplaceTextResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     ReplaceTextResponse();
@@ -63,14 +63,14 @@ public:
     /// ReplaceTextResponse members
 
     /// <summary>
-    /// Link to the document.
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Number of occurrences of the captured text in the document.
+    /// Gets or sets number of occurrences of the captured text in the document.
     /// </summary>
     int32_t getMatches() const;
     bool matchesIsSet() const;

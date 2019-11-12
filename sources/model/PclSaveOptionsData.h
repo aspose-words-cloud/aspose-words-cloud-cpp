@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container class for pcl save options
+/// Container class for pcl save options.
 /// </summary>
 class  PclSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -63,7 +63,7 @@ public:
     /// PclSaveOptionsData members
 
     /// <summary>
-    /// Name of the font that will be used if no expected font is found in printer and built-in fonts collections.
+    /// Gets or sets name of the font that will be used if no expected font is found in printer and built-in fonts collections.
     /// </summary>
     utility::string_t getFalllbackFontName() const;
     bool falllbackFontNameIsSet() const;

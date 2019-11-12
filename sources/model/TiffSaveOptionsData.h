@@ -64,14 +64,21 @@ public:
     /// TiffSaveOptionsData members
 
     /// <summary>
-    /// Specifies method used while converting images to 1 bpp format.
+    /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering. Default value is 128.
+    /// </summary>
+    int32_t getThresholdForFloydSteinbergDithering() const;
+    bool thresholdForFloydSteinbergDitheringIsSet() const;
+    void unsetThresholdForFloydSteinbergDithering();
+    void setThresholdForFloydSteinbergDithering(int32_t value);
+    /// <summary>
+    /// Gets or sets specifies method used while converting images to 1 bpp format.
     /// </summary>
     utility::string_t getTiffBinarizationMethod() const;
     bool tiffBinarizationMethodIsSet() const;
     void unsetTiffBinarizationMethod();
     void setTiffBinarizationMethod(utility::string_t value);
     /// <summary>
-    /// Type of compression.
+    /// Gets or sets type of compression.
     /// </summary>
     utility::string_t getTiffCompression() const;
     bool tiffCompressionIsSet() const;
@@ -79,6 +86,8 @@ public:
     void setTiffCompression(utility::string_t value);
 
 protected:
+    int32_t m_ThresholdForFloydSteinbergDithering;
+    bool m_ThresholdForFloydSteinbergDitheringIsSet;
     utility::string_t m_TiffBinarizationMethod;
     bool m_TiffBinarizationMethodIsSet;
     utility::string_t m_TiffCompression;

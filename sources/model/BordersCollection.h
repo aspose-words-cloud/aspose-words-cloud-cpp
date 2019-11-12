@@ -64,7 +64,7 @@ public:
     /// BordersCollection members
 
     /// <summary>
-    /// Collection of comments
+    /// Gets or sets collection of comments.
     /// </summary>
     std::vector<std::shared_ptr<Border>>& getList();
     bool listIsSet() const;

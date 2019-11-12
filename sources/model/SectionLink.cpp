@@ -47,7 +47,7 @@ void SectionLink::validate()
 
 web::json::value SectionLink::toJson() const
 {
-    web::json::value val = this->LinkElement::toJson();
+    web::json::value val = this->NodeLink::toJson();
 
 
     return val;
@@ -55,7 +55,7 @@ web::json::value SectionLink::toJson() const
 
 void SectionLink::fromJson(web::json::value& val)
 {
-    this->LinkElement::fromJson(val);
+    this->NodeLink::fromJson(val);
 
 }
 
@@ -71,6 +71,11 @@ void SectionLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
         }
         
     }
+    if(m_NodeIdIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
+        
+    }
 }
 
 void SectionLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
@@ -83,6 +88,10 @@ void SectionLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
             newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
+    }
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
+    {
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
 }
 

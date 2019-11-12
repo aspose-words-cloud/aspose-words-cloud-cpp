@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_CommentResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "Comment.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/comments/0 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/comments/0.
 /// </summary>
 class  CommentResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     CommentResponse();
@@ -63,7 +63,7 @@ public:
     /// CommentResponse members
 
     /// <summary>
-    /// Comment information
+    /// Gets or sets comment information.
     /// </summary>
     std::shared_ptr<Comment> getComment() const;
     bool commentIsSet() const;

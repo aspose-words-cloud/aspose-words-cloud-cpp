@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ClassificationResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "ClassificationResult.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include <vector>
 
@@ -40,10 +40,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: PUT http://api.aspose.com/v1.1/words/classify
+/// This response should be returned by the service when handling: PUT http://api.aspose.com/v4.0/words/classify.
 /// </summary>
 class  ClassificationResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     ClassificationResponse();
@@ -64,21 +64,21 @@ public:
     /// ClassificationResponse members
 
     /// <summary>
-    /// Best class name.        
+    /// Gets or sets best class name.
     /// </summary>
     utility::string_t getBestClassName() const;
     bool bestClassNameIsSet() const;
     void unsetBestClassName();
     void setBestClassName(utility::string_t value);
     /// <summary>
-    /// Best class probability.
+    /// Gets or sets best class probability.
     /// </summary>
     double getBestClassProbability() const;
     bool bestClassProbabilityIsSet() const;
     void unsetBestClassProbability();
     void setBestClassProbability(double value);
     /// <summary>
-    /// Array of best classes results.
+    /// Gets or sets array of best classes results.
     /// </summary>
     std::vector<std::shared_ptr<ClassificationResult>>& getBestResults();
     bool bestResultsIsSet() const;

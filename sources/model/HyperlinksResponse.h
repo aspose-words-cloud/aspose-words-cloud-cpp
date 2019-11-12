@@ -29,7 +29,7 @@
 
 
 #include "Hyperlinks.h"
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling:  GET /{name}/hyperlinks .
 /// </summary>
 class  HyperlinksResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     HyperlinksResponse();
@@ -63,7 +63,7 @@ public:
     /// HyperlinksResponse members
 
     /// <summary>
-    /// Collection of hyperlinks.
+    /// Gets or sets collection of hyperlinks.
     /// </summary>
     std::shared_ptr<Hyperlinks> getHyperlinks() const;
     bool hyperlinksIsSet() const;

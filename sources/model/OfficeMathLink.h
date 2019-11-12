@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// OfficeMath object link element
+/// OfficeMath object link element.
 /// </summary>
 class  OfficeMathLink
     : public NodeLink

@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for doc/dot save options
+/// container class for doc/dot save options.
 /// </summary>
 class  DocSaveOptionsData
     : public SaveOptionsData
@@ -62,14 +62,28 @@ public:
     /// DocSaveOptionsData members
 
     /// <summary>
-    /// Password
+    /// Gets or sets When false, small metafiles are not compressed for performance reason. Default value is true, all metafiles are compressed regardless of its size.
+    /// </summary>
+    bool isAlwaysCompressMetafiles() const;
+    bool alwaysCompressMetafilesIsSet() const;
+    void unsetAlwaysCompressMetafiles();
+    void setAlwaysCompressMetafiles(bool value);
+    /// <summary>
+    /// Gets or sets password.
     /// </summary>
     utility::string_t getPassword() const;
     bool passwordIsSet() const;
     void unsetPassword();
     void setPassword(utility::string_t value);
     /// <summary>
-    /// Determine whether or not save RoutingSlip data saved to output document
+    /// Gets or sets When false, PictureBullet data is not saved to output document. Default value is true.
+    /// </summary>
+    bool isSavePictureBullet() const;
+    bool savePictureBulletIsSet() const;
+    void unsetSavePictureBullet();
+    void setSavePictureBullet(bool value);
+    /// <summary>
+    /// Gets or sets determine whether or not save RoutingSlip data saved to output document.
     /// </summary>
     bool isSaveRoutingSlip() const;
     bool saveRoutingSlipIsSet() const;
@@ -77,8 +91,12 @@ public:
     void setSaveRoutingSlip(bool value);
 
 protected:
+    bool m_AlwaysCompressMetafiles;
+    bool m_AlwaysCompressMetafilesIsSet;
     utility::string_t m_Password;
     bool m_PasswordIsSet;
+    bool m_SavePictureBullet;
+    bool m_SavePictureBulletIsSet;
     bool m_SaveRoutingSlip;
     bool m_SaveRoutingSlipIsSet;
 };

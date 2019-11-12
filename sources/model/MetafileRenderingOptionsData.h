@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for options of metafile rendering
+/// container class for options of metafile rendering.
 /// </summary>
 class  MetafileRenderingOptionsData
     : public ModelBase
@@ -63,7 +63,7 @@ public:
     /// MetafileRenderingOptionsData members
 
     /// <summary>
-    /// Determines how EMF+ Dual metafiles should be rendered
+    /// Gets or sets determines how EMF+ Dual metafiles should be rendered.
     /// </summary>
     utility::string_t getEmfPlusDualRenderingMode() const;
     bool emfPlusDualRenderingModeIsSet() const;
@@ -77,19 +77,26 @@ public:
     void unsetEmulateRasterOperations();
     void setEmulateRasterOperations(bool value);
     /// <summary>
-    /// Determines how metafile images should be rendered
+    /// Gets or sets determines how metafile images should be rendered.
     /// </summary>
     utility::string_t getRenderingMode() const;
     bool renderingModeIsSet() const;
     void unsetRenderingMode();
     void setRenderingMode(utility::string_t value);
     /// <summary>
-    /// Determines how WMF metafiles with embedded EMF metafiles should be rendered
+    /// Gets or sets determines how WMF metafiles with embedded EMF metafiles should be rendered.
     /// </summary>
     bool isUseEmfEmbeddedToWmf() const;
     bool useEmfEmbeddedToWmfIsSet() const;
     void unsetUseEmfEmbeddedToWmf();
     void setUseEmfEmbeddedToWmf(bool value);
+    /// <summary>
+    /// Gets or sets a value determining whether or not to scale fonts in WMF metafile according to metafile size on the page. The default value is true.
+    /// </summary>
+    bool isScaleWmfFontsToMetafileSize() const;
+    bool scaleWmfFontsToMetafileSizeIsSet() const;
+    void unsetScaleWmfFontsToMetafileSize();
+    void setScaleWmfFontsToMetafileSize(bool value);
 
 protected:
     utility::string_t m_EmfPlusDualRenderingMode;
@@ -100,6 +107,8 @@ protected:
     bool m_RenderingModeIsSet;
     bool m_UseEmfEmbeddedToWmf;
     bool m_UseEmfEmbeddedToWmfIsSet;
+    bool m_ScaleWmfFontsToMetafileSize;
+    bool m_ScaleWmfFontsToMetafileSizeIsSet;
 };
 
 }

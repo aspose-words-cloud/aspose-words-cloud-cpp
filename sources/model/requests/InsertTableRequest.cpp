@@ -30,6 +30,7 @@ namespace api{
 namespace models{
 InsertTableRequest::InsertTableRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -37,10 +38,10 @@ InsertTableRequest::InsertTableRequest(
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
                 boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableInsert>> table,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<std::shared_ptr<TableInsert>> table
         ) : 
             m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
@@ -48,8 +49,7 @@ InsertTableRequest::InsertTableRequest(
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
             m_revisionDateTime(std::move(revisionDateTime)),
-            m_table(std::move(table)),
-            m_nodePath(std::move(nodePath))
+            m_table(std::move(table))
         {
             
         }
@@ -60,6 +60,13 @@ InsertTableRequest::InsertTableRequest(
         }
         void InsertTableRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t InsertTableRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void InsertTableRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         boost::optional<utility::string_t> InsertTableRequest::getFolder() const
         {
@@ -116,13 +123,6 @@ InsertTableRequest::InsertTableRequest(
         }
         void InsertTableRequest::setTable(boost::optional<std::shared_ptr<TableInsert>> table){
             m_table = std::move(table);
-        }
-        boost::optional<utility::string_t> InsertTableRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void InsertTableRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
 
 }

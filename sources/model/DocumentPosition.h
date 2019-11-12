@@ -63,14 +63,14 @@ public:
     /// DocumentPosition members
 
     /// <summary>
-    /// Link to  node.
+    /// Gets or sets link to  node.
     /// </summary>
     std::shared_ptr<NodeLink> getNode() const;
     bool nodeIsSet() const;
     void unsetNode();
     void setNode(std::shared_ptr<NodeLink> value);
     /// <summary>
-    /// Offset into the node.
+    /// Gets or sets offset into the node.
     /// </summary>
     int32_t getOffset() const;
     bool offsetIsSet() const;

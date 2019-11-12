@@ -48,7 +48,7 @@ void FootnotesResponse::validate()
 
 web::json::value FootnotesResponse::toJson() const
 {
-    web::json::value val = this->AsposeResponse::toJson();
+    web::json::value val = this->WordsResponse::toJson();
 
     if(m_FootnotesIsSet)
     {
@@ -60,7 +60,7 @@ web::json::value FootnotesResponse::toJson() const
 
 void FootnotesResponse::fromJson(web::json::value& val)
 {
-    this->AsposeResponse::fromJson(val);
+    this->WordsResponse::fromJson(val);
 
     if(val.has_field(_XPLATSTR("Footnotes")))
     {
@@ -78,10 +78,9 @@ void FootnotesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
-    if(m_StatusIsSet)
+    if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_FootnotesIsSet)
@@ -96,10 +95,9 @@ void FootnotesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
 void FootnotesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
-    if(multipart->hasContent(_XPLATSTR("Status")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
     if(multipart->hasContent(_XPLATSTR("Footnotes")))
     {

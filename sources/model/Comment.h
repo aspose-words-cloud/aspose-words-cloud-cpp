@@ -65,49 +65,49 @@ public:
     /// Comment members
 
     /// <summary>
-    /// Returns or sets the author name for a comment.
+    /// Gets or sets returns or sets the author name for a comment.
     /// </summary>
     utility::string_t getAuthor() const;
     bool authorIsSet() const;
     void unsetAuthor();
     void setAuthor(utility::string_t value);
     /// <summary>
-    /// Content of comment
+    /// Gets or sets content of comment.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
     void unsetContent();
     void setContent(std::shared_ptr<StoryChildNodes> value);
     /// <summary>
-    /// Gets the date and time that the comment was made.
+    /// Gets or sets the date and time that the comment was made.
     /// </summary>
     utility::datetime getDateTime() const;
     bool dateTimeIsSet() const;
     void unsetDateTime();
     void setDateTime(utility::datetime value);
     /// <summary>
-    /// Returns or sets the initials of the user associated with a specific comment.
+    /// Gets or sets returns or sets the initials of the user associated with a specific comment.
     /// </summary>
     utility::string_t getInitial() const;
     bool initialIsSet() const;
     void unsetInitial();
     void setInitial(utility::string_t value);
     /// <summary>
-    /// Link to comment range end node.
+    /// Gets or sets link to comment range end node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeEnd() const;
     bool rangeEndIsSet() const;
     void unsetRangeEnd();
     void setRangeEnd(std::shared_ptr<DocumentPosition> value);
     /// <summary>
-    /// Link to comment range start node.
+    /// Gets or sets link to comment range start node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeStart() const;
     bool rangeStartIsSet() const;
     void unsetRangeStart();
     void setRangeStart(std::shared_ptr<DocumentPosition> value);
     /// <summary>
-    /// This is a convenience property that allows to easily get or set text of the comment.
+    /// Gets or sets this is a convenience property that allows to easily get or set text of the comment.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

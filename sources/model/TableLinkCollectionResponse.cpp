@@ -48,7 +48,7 @@ void TableLinkCollectionResponse::validate()
 
 web::json::value TableLinkCollectionResponse::toJson() const
 {
-    web::json::value val = this->AsposeResponse::toJson();
+    web::json::value val = this->WordsResponse::toJson();
 
     if(m_TablesIsSet)
     {
@@ -60,7 +60,7 @@ web::json::value TableLinkCollectionResponse::toJson() const
 
 void TableLinkCollectionResponse::fromJson(web::json::value& val)
 {
-    this->AsposeResponse::fromJson(val);
+    this->WordsResponse::fromJson(val);
 
     if(val.has_field(_XPLATSTR("Tables")))
     {
@@ -78,10 +78,9 @@ void TableLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFor
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
-    if(m_StatusIsSet)
+    if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Status"), m_Status));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_TablesIsSet)
@@ -96,10 +95,9 @@ void TableLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFor
 
 void TableLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
-    if(multipart->hasContent(_XPLATSTR("Status")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setStatus(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Status"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
     if(multipart->hasContent(_XPLATSTR("Tables")))
     {

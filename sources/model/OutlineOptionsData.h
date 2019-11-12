@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for outline options
+/// container class for outline options.
 /// </summary>
 class  OutlineOptionsData
     : public ModelBase
@@ -64,14 +64,14 @@ public:
     /// OutlineOptionsData members
 
     /// <summary>
-    /// Allows to specify individual bookmarks outline level
+    /// Gets or sets allows to specify individual bookmarks outline level.
     /// </summary>
     std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& getBookmarksOutlineLevels();
     bool bookmarksOutlineLevelsIsSet() const;
     void unsetBookmarksOutlineLevels();
     void setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value);
     /// <summary>
-    /// Specifies the default level in the document outline at which to display Word bookmarks
+    /// Gets or sets specifies the default level in the document outline at which to display Word bookmarks.
     /// </summary>
     int32_t getDefaultBookmarksOutlineLevel() const;
     bool defaultBookmarksOutlineLevelIsSet() const;
@@ -85,21 +85,21 @@ public:
     void unsetCreateMissingOutlineLevels();
     void setCreateMissingOutlineLevels(bool value);
     /// <summary>
-    /// Specifies whether or not to create outlines for headings (paragraphs formatted     with the Heading styles) inside tables.
+    /// Gets or sets specifies whether or not to create outlines for headings (paragraphs formatted     with the Heading styles) inside tables.
     /// </summary>
     bool isCreateOutlinesForHeadingsInTables() const;
     bool createOutlinesForHeadingsInTablesIsSet() const;
     void unsetCreateOutlinesForHeadingsInTables();
     void setCreateOutlinesForHeadingsInTables(bool value);
     /// <summary>
-    /// Specifies how many levels in the document outline to show expanded when the file is viewed
+    /// Gets or sets specifies how many levels in the document outline to show expanded when the file is viewed.
     /// </summary>
     int32_t getExpandedOutlineLevels() const;
     bool expandedOutlineLevelsIsSet() const;
     void unsetExpandedOutlineLevels();
     void setExpandedOutlineLevels(int32_t value);
     /// <summary>
-    /// Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline
+    /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
     /// </summary>
     int32_t getHeadingsOutlineLevels() const;
     bool headingsOutlineLevelsIsSet() const;

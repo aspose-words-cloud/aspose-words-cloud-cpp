@@ -30,6 +30,7 @@ namespace api{
 namespace models{
 DeleteTableRequest::DeleteTableRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -37,10 +38,10 @@ DeleteTableRequest::DeleteTableRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
@@ -48,8 +49,7 @@ DeleteTableRequest::DeleteTableRequest(
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_nodePath(std::move(nodePath))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -60,6 +60,13 @@ DeleteTableRequest::DeleteTableRequest(
         }
         void DeleteTableRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t DeleteTableRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void DeleteTableRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         int32_t DeleteTableRequest::getIndex() const
         {
@@ -116,13 +123,6 @@ DeleteTableRequest::DeleteTableRequest(
         }
         void DeleteTableRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void DeleteTableRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
 
 }

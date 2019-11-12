@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for odt/ott save options
+/// container class for odt/ott save options.
 /// </summary>
 class  OdtSaveOptionsData
     : public SaveOptionsData
@@ -62,21 +62,21 @@ public:
     /// OdtSaveOptionsData members
 
     /// <summary>
-    /// Specifies whether export should correspond to ODT specification 1.1 strictly
+    /// Gets or sets specifies whether export should correspond to ODT specification 1.1 strictly.
     /// </summary>
     bool isIsStrictSchema11() const;
     bool isStrictSchema11IsSet() const;
     void unsetIsStrictSchema11();
     void setIsStrictSchema11(bool value);
     /// <summary>
-    /// Allows to specify units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters  Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
+    /// Gets or sets allows to specify units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.  Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
     /// </summary>
     utility::string_t getMeasureUnit() const;
     bool measureUnitIsSet() const;
     void unsetMeasureUnit();
     void setMeasureUnit(utility::string_t value);
     /// <summary>
-    /// Specifies whether or not use pretty formats output
+    /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
     bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;

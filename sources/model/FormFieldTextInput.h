@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// FormField text input element
+/// FormField text input element.
 /// </summary>
 class  FormFieldTextInput
     : public FormField
@@ -63,21 +63,21 @@ public:
     /// FormFieldTextInput members
 
     /// <summary>
-    /// Maximum length for the text field. Zero when the length is not limited.
+    /// Gets or sets maximum length for the text field. Zero when the length is not limited.
     /// </summary>
     int32_t getMaxLength() const;
     bool maxLengthIsSet() const;
     void unsetMaxLength();
     void setMaxLength(int32_t value);
     /// <summary>
-    /// Gets or sets the default string or a calculation expression of a text form field. 
+    /// Gets or sets the default string or a calculation expression of a text form field.
     /// </summary>
     utility::string_t getTextInputDefault() const;
     bool textInputDefaultIsSet() const;
     void unsetTextInputDefault();
     void setTextInputDefault(utility::string_t value);
     /// <summary>
-    /// Returns or sets the text formatting for a text form field.
+    /// Gets or sets returns or sets the text formatting for a text form field.
     /// </summary>
     utility::string_t getTextInputFormat() const;
     bool textInputFormatIsSet() const;

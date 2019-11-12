@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table element
+/// Table element.
 /// </summary>
 class  TableInsert
     : public ModelBase
@@ -63,26 +63,26 @@ public:
     /// TableInsert members
 
     /// <summary>
-    /// Table will be inserted before specified position.
+    /// Gets or sets table will be inserted before specified position.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getPostion() const;
-    bool postionIsSet() const;
-    void unsetPostion();
-    void setPostion(std::shared_ptr<DocumentPosition> value);
+    std::shared_ptr<DocumentPosition> getPosition() const;
+    bool positionIsSet() const;
+    void unsetPosition();
+    void setPosition(std::shared_ptr<DocumentPosition> value);
     /// <summary>
-    /// Count of columns. Default is 2.
+    /// Gets or sets count of columns. Default is 2.
     /// </summary>
     int32_t getColumnsCount() const;
         void setColumnsCount(int32_t value);
     /// <summary>
-    /// Count of rows. Default is 2.
+    /// Gets or sets count of rows. Default is 2.
     /// </summary>
     int32_t getRowsCount() const;
         void setRowsCount(int32_t value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_Postion;
-    bool m_PostionIsSet;
+    std::shared_ptr<DocumentPosition> m_Position;
+    bool m_PositionIsSet;
     int32_t m_ColumnsCount;
         int32_t m_RowsCount;
     };

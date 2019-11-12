@@ -46,6 +46,8 @@ ParagraphFormat::ParagraphFormat()
     m_DropCapPositionIsSet = false;
     m_FirstLineIndent = 0.0;
     m_FirstLineIndentIsSet = false;
+    m_IsListItem = false;
+    m_IsListItemIsSet = false;
     m_KeepTogether = false;
     m_KeepTogetherIsSet = false;
     m_KeepWithNext = false;
@@ -122,6 +124,10 @@ web::json::value ParagraphFormat::toJson() const
     if(m_FirstLineIndentIsSet)
     {
         val[_XPLATSTR("FirstLineIndent")] = ModelBase::toJson(m_FirstLineIndent);
+    }
+    if(m_IsListItemIsSet)
+    {
+        val[_XPLATSTR("IsListItem")] = ModelBase::toJson(m_IsListItem);
     }
     if(m_KeepTogetherIsSet)
     {
@@ -253,6 +259,14 @@ void ParagraphFormat::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setFirstLineIndent(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(_XPLATSTR("IsListItem")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("IsListItem")];
+        if(!fieldValue.is_null())
+        {
+            setIsListItem(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("KeepTogether")))
@@ -447,6 +461,10 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FirstLineIndent"), m_FirstLineIndent));
     }
+    if(m_IsListItemIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsListItem"), m_IsListItem));
+    }
     if(m_KeepTogetherIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("KeepTogether"), m_KeepTogether));
@@ -563,6 +581,10 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     if(multipart->hasContent(_XPLATSTR("FirstLineIndent")))
     {
         setFirstLineIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("FirstLineIndent"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("IsListItem")))
+    {
+        setIsListItem(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
     }
     if(multipart->hasContent(_XPLATSTR("KeepTogether")))
     {
@@ -766,6 +788,27 @@ bool ParagraphFormat::firstLineIndentIsSet() const
 void ParagraphFormat::unsetFirstLineIndent()
 {
     m_FirstLineIndentIsSet = false;
+}
+
+bool ParagraphFormat::isIsListItem() const
+{
+    return m_IsListItem;
+}
+
+
+void ParagraphFormat::setIsListItem(bool value)
+{
+    m_IsListItem = value;
+    m_IsListItemIsSet = true;
+}
+bool ParagraphFormat::isListItemIsSet() const
+{
+    return m_IsListItemIsSet;
+}
+
+void ParagraphFormat::unsetIsListItem()
+{
+    m_IsListItemIsSet = false;
 }
 
 bool ParagraphFormat::isKeepTogether() const

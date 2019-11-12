@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "Table.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}.
 /// </summary>
 class  TableResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     TableResponse();
@@ -63,7 +63,7 @@ public:
     /// TableResponse members
 
     /// <summary>
-    /// Table.
+    /// Gets or sets table.
     /// </summary>
     std::shared_ptr<Table> getTable() const;
     bool tableIsSet() const;

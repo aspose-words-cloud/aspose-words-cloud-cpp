@@ -41,7 +41,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Font element             
+/// Font element.             
 /// </summary>
 class  Font
     : public LinkElement
@@ -65,35 +65,35 @@ public:
     /// Font members
 
     /// <summary>
-    /// True if the font is formatted as all capital letters.             
+    /// Gets or sets true if the font is formatted as all capital letters.             
     /// </summary>
     bool isAllCaps() const;
     bool allCapsIsSet() const;
     void unsetAllCaps();
     void setAllCaps(bool value);
     /// <summary>
-    /// Specifies whether the contents of this run shall have right-to-left characteristics.             
+    /// Gets or sets specifies whether the contents of this run shall have right-to-left characteristics.             
     /// </summary>
     bool isBidi() const;
     bool bidiIsSet() const;
     void unsetBidi();
     void setBidi(bool value);
     /// <summary>
-    /// True if the font is formatted as bold.             
+    /// Gets or sets true if the font is formatted as bold.             
     /// </summary>
     bool isBold() const;
     bool boldIsSet() const;
     void unsetBold();
     void setBold(bool value);
     /// <summary>
-    /// True if the right-to-left text is formatted as bold.             
+    /// Gets or sets true if the right-to-left text is formatted as bold.             
     /// </summary>
     bool isBoldBi() const;
     bool boldBiIsSet() const;
     void unsetBoldBi();
     void setBoldBi(bool value);
     /// <summary>
-    /// Border object that specifies border for the font.
+    /// Gets or sets border object that specifies border for the font.
     /// </summary>
     std::shared_ptr<Border> getBorder() const;
     bool borderIsSet() const;
@@ -107,35 +107,35 @@ public:
     void unsetColor();
     void setColor(std::shared_ptr<XmlColor> value);
     /// <summary>
-    /// Specifies whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.             
+    /// Gets or sets specifies whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.             
     /// </summary>
     bool isComplexScript() const;
     bool complexScriptIsSet() const;
     void unsetComplexScript();
     void setComplexScript(bool value);
     /// <summary>
-    /// True if the font is formatted as double strikethrough text.             
+    /// Gets or sets true if the font is formatted as double strikethrough text.             
     /// </summary>
     bool isDoubleStrikeThrough() const;
     bool doubleStrikeThroughIsSet() const;
     void unsetDoubleStrikeThrough();
     void setDoubleStrikeThrough(bool value);
     /// <summary>
-    /// True if the font is formatted as embossed.             
+    /// Gets or sets true if the font is formatted as embossed.             
     /// </summary>
     bool isEmboss() const;
     bool embossIsSet() const;
     void unsetEmboss();
     void setEmboss(bool value);
     /// <summary>
-    /// True if the font is formatted as engraved.             
+    /// Gets or sets true if the font is formatted as engraved.             
     /// </summary>
     bool isEngrave() const;
     bool engraveIsSet() const;
     void unsetEngrave();
     void setEngrave(bool value);
     /// <summary>
-    /// True if the font is formatted as hidden text.             
+    /// Gets or sets true if the font is formatted as hidden text.             
     /// </summary>
     bool isHidden() const;
     bool hiddenIsSet() const;
@@ -149,14 +149,14 @@ public:
     void unsetHighlightColor();
     void setHighlightColor(std::shared_ptr<XmlColor> value);
     /// <summary>
-    /// True if the font is formatted as italic.             
+    /// Gets or sets true if the font is formatted as italic.             
     /// </summary>
     bool isItalic() const;
     bool italicIsSet() const;
     void unsetItalic();
     void setItalic(bool value);
     /// <summary>
-    /// True if the right-to-left text is formatted as italic.             
+    /// Gets or sets true if the right-to-left text is formatted as italic.             
     /// </summary>
     bool isItalicBi() const;
     bool italicBiIsSet() const;
@@ -191,49 +191,49 @@ public:
     void unsetLocaleIdFarEast();
     void setLocaleIdFarEast(int32_t value);
     /// <summary>
-    /// Gets or sets the name of the font             
+    /// Gets or sets the name of the font.             
     /// </summary>
     utility::string_t getName() const;
     bool nameIsSet() const;
     void unsetName();
     void setName(utility::string_t value);
     /// <summary>
-    /// Returns or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).             
+    /// Gets or sets returns or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).             
     /// </summary>
     utility::string_t getNameAscii() const;
     bool nameAsciiIsSet() const;
     void unsetNameAscii();
     void setNameAscii(utility::string_t value);
     /// <summary>
-    /// Returns or sets the name of the font in a right-to-left language document.             
+    /// Gets or sets returns or sets the name of the font in a right-to-left language document.             
     /// </summary>
     utility::string_t getNameBi() const;
     bool nameBiIsSet() const;
     void unsetNameBi();
     void setNameBi(utility::string_t value);
     /// <summary>
-    /// Returns or sets an East Asian font name.             
+    /// Gets or sets returns or sets an East Asian font name.             
     /// </summary>
     utility::string_t getNameFarEast() const;
     bool nameFarEastIsSet() const;
     void unsetNameFarEast();
     void setNameFarEast(utility::string_t value);
     /// <summary>
-    /// Returns or sets the font used for characters with character codes from 128 through 255.             
+    /// Gets or sets returns or sets the font used for characters with character codes from 128 through 255.             
     /// </summary>
     utility::string_t getNameOther() const;
     bool nameOtherIsSet() const;
     void unsetNameOther();
     void setNameOther(utility::string_t value);
     /// <summary>
-    /// True when the formatted characters are not to be spell checked.
+    /// Gets or sets true when the formatted characters are not to be spell checked.
     /// </summary>
     bool isNoProofing() const;
     bool noProofingIsSet() const;
     void unsetNoProofing();
     void setNoProofing(bool value);
     /// <summary>
-    /// True if the font is formatted as outline.             
+    /// Gets or sets true if the font is formatted as outline.             
     /// </summary>
     bool isOutline() const;
     bool outlineIsSet() const;
@@ -254,7 +254,7 @@ public:
     void unsetScaling();
     void setScaling(int32_t value);
     /// <summary>
-    /// True if the font is formatted as shadowed.             
+    /// Gets or sets true if the font is formatted as shadowed.             
     /// </summary>
     bool isShadow() const;
     bool shadowIsSet() const;
@@ -275,21 +275,21 @@ public:
     void unsetSizeBi();
     void setSizeBi(double value);
     /// <summary>
-    /// True if the font is formatted as small capital letters.             
+    /// Gets or sets true if the font is formatted as small capital letters.             
     /// </summary>
     bool isSmallCaps() const;
     bool smallCapsIsSet() const;
     void unsetSmallCaps();
     void setSmallCaps(bool value);
     /// <summary>
-    /// Returns or sets the spacing (in points) between characters.             
+    /// Gets or sets returns or sets the spacing (in points) between characters.             
     /// </summary>
     double getSpacing() const;
     bool spacingIsSet() const;
     void unsetSpacing();
     void setSpacing(double value);
     /// <summary>
-    /// True if the font is formatted as strikethrough text.             
+    /// Gets or sets true if the font is formatted as strikethrough text.             
     /// </summary>
     bool isStrikeThrough() const;
     bool strikeThroughIsSet() const;
@@ -310,14 +310,14 @@ public:
     void unsetStyleName();
     void setStyleName(utility::string_t value);
     /// <summary>
-    /// True if the font is formatted as subscript.             
+    /// Gets or sets true if the font is formatted as subscript.             
     /// </summary>
     bool isSubscript() const;
     bool subscriptIsSet() const;
     void unsetSubscript();
     void setSubscript(bool value);
     /// <summary>
-    /// True if the font is formatted as superscript.             
+    /// Gets or sets true if the font is formatted as superscript.             
     /// </summary>
     bool isSuperscript() const;
     bool superscriptIsSet() const;

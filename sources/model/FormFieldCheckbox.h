@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// FormField checkbox element
+/// FormField checkbox element.
 /// </summary>
 class  FormFieldCheckbox
     : public FormField

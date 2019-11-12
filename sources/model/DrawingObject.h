@@ -64,70 +64,70 @@ public:
     /// DrawingObject members
 
     /// <summary>
-    /// Height of the drawing object in points.
+    /// Gets or sets height of the drawing object in points.
     /// </summary>
     double getHeight() const;
     bool heightIsSet() const;
     void unsetHeight();
     void setHeight(double value);
     /// <summary>
-    /// Link to image data. Can be null if shape does not have an image.
+    /// Gets or sets link to image data. Can be null if shape does not have an image.
     /// </summary>
     std::shared_ptr<WordsApiLink> getImageDataLink() const;
     bool imageDataLinkIsSet() const;
     void unsetImageDataLink();
     void setImageDataLink(std::shared_ptr<WordsApiLink> value);
     /// <summary>
-    /// Distance in points from the origin to the left side of the image.             
+    /// Gets or sets distance in points from the origin to the left side of the image.             
     /// </summary>
     double getLeft() const;
     bool leftIsSet() const;
     void unsetLeft();
     void setLeft(double value);
     /// <summary>
-    /// Link to ole object. Can be null if shape does not have ole data.
+    /// Gets or sets link to ole object. Can be null if shape does not have ole data.
     /// </summary>
     std::shared_ptr<WordsApiLink> getOleDataLink() const;
     bool oleDataLinkIsSet() const;
     void unsetOleDataLink();
     void setOleDataLink(std::shared_ptr<WordsApiLink> value);
     /// <summary>
-    /// Specifies where the distance to the image is measured from.             
+    /// Gets or sets specifies where the distance to the image is measured from.             
     /// </summary>
     utility::string_t getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
     void unsetRelativeHorizontalPosition();
     void setRelativeHorizontalPosition(utility::string_t value);
     /// <summary>
-    /// Specifies where the distance to the image measured from.
+    /// Gets or sets specifies where the distance to the image measured from.
     /// </summary>
     utility::string_t getRelativeVerticalPosition() const;
     bool relativeVerticalPositionIsSet() const;
     void unsetRelativeVerticalPosition();
     void setRelativeVerticalPosition(utility::string_t value);
     /// <summary>
-    /// A list of links that originate from this .
+    /// Gets or sets a list of links that originate from this .
     /// </summary>
     std::vector<std::shared_ptr<WordsApiLink>>& getRenderLinks();
     bool renderLinksIsSet() const;
     void unsetRenderLinks();
     void setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value);
     /// <summary>
-    /// Distance in points from the origin to the top side of the image.
+    /// Gets or sets distance in points from the origin to the top side of the image.
     /// </summary>
     double getTop() const;
     bool topIsSet() const;
     void unsetTop();
     void setTop(double value);
     /// <summary>
-    /// Width of the drawing objects in points.
+    /// Gets or sets width of the drawing objects in points.
     /// </summary>
     double getWidth() const;
     bool widthIsSet() const;
     void unsetWidth();
     void setWidth(double value);
     /// <summary>
-    /// Specifies how to wrap text around the image.
+    /// Gets or sets specifies how to wrap text around the image.
     /// </summary>
     utility::string_t getWrapType() const;
     bool wrapTypeIsSet() const;

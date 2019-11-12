@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Run link element
+/// Run link element.
 /// </summary>
 class  RunLink
     : public NodeLink
@@ -63,7 +63,7 @@ public:
     /// RunLink members
 
     /// <summary>
-    /// Run&#39;s text
+    /// Gets or sets run&#39;s text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

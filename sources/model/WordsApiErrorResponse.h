@@ -28,7 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_WordsApiErrorResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "ApiError.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for Api error
+/// Response for Api error.
 /// </summary>
 class  WordsApiErrorResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     WordsApiErrorResponse();
@@ -62,16 +63,16 @@ public:
     /// WordsApiErrorResponse members
 
     /// <summary>
-    /// Error message.
+    /// Gets or sets error.
     /// </summary>
-    utility::string_t getMessage() const;
-    bool messageIsSet() const;
-    void unsetMessage();
-    void setMessage(utility::string_t value);
+    std::shared_ptr<ApiError> getError() const;
+    bool errorIsSet() const;
+    void unsetError();
+    void setError(std::shared_ptr<ApiError> value);
 
 protected:
-    utility::string_t m_Message;
-    bool m_MessageIsSet;
+    std::shared_ptr<ApiError> m_Error;
+    bool m_ErrorIsSet;
 };
 
 }

@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FontResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "Font.h"
 
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/runs/{1}/font 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
 /// </summary>
 class  FontResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     FontResponse();
@@ -63,7 +63,7 @@ public:
     /// FontResponse members
 
     /// <summary>
-    /// Font
+    /// Gets or sets font.
     /// </summary>
     std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;

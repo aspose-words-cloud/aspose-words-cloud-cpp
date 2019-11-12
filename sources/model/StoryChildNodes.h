@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Child nodes of  or 
+/// Child nodes of  or .
 /// </summary>
 class  StoryChildNodes
     : public ModelBase
@@ -64,7 +64,7 @@ public:
     /// StoryChildNodes members
 
     /// <summary>
-    /// Child nodes.
+    /// Gets or sets child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;

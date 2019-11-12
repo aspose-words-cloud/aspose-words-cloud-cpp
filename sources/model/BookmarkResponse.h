@@ -29,7 +29,7 @@
 
 
 #include "Bookmark.h"
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling:  GET bookmarks/{bookmarkName}.
 /// </summary>
 class  BookmarkResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     BookmarkResponse();
@@ -63,7 +63,7 @@ public:
     /// BookmarkResponse members
 
     /// <summary>
-    /// Bookmark.
+    /// Gets or sets bookmark.
     /// </summary>
     std::shared_ptr<Bookmark> getBookmark() const;
     bool bookmarkIsSet() const;

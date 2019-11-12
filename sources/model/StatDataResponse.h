@@ -28,7 +28,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StatDataResponse_H_
 
 
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 #include "FileLink.h"
 #include "DocumentStatData.h"
@@ -40,10 +40,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for the request of the document&#39;s statistical data
+/// Response for the request of the document&#39;s statistical data.
 /// </summary>
 class  StatDataResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     StatDataResponse();
@@ -64,14 +64,14 @@ public:
     /// StatDataResponse members
 
     /// <summary>
-    /// Link to the document
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Statistical data of the document
+    /// Gets or sets statistical data of the document.
     /// </summary>
     std::shared_ptr<DocumentStatData> getStatData() const;
     bool statDataIsSet() const;

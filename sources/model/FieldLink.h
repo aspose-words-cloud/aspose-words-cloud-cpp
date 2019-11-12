@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Field link
+/// Field link.
 /// </summary>
 class  FieldLink
     : public NodeLink
@@ -63,7 +63,7 @@ public:
     /// FieldLink members
 
     /// <summary>
-    /// Field code
+    /// Gets or sets field code.
     /// </summary>
     utility::string_t getFieldCode() const;
     bool fieldCodeIsSet() const;

@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// base container class for save options data
+/// base container class for save options data.
 /// </summary>
 class  SaveOptionsData
     : public ModelBase
@@ -63,42 +63,42 @@ public:
     /// SaveOptionsData members
 
     /// <summary>
-    /// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}
+    /// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
     /// </summary>
     utility::string_t getColorMode() const;
     bool colorModeIsSet() const;
     void unsetColorMode();
     void setColorMode(utility::string_t value);
     /// <summary>
-    /// format of save
+    /// Gets or sets format of save.
     /// </summary>
     utility::string_t getSaveFormat() const;
     bool saveFormatIsSet() const;
     void unsetSaveFormat();
     void setSaveFormat(utility::string_t value);
     /// <summary>
-    /// name of destination file
+    /// Gets or sets name of destination file.
     /// </summary>
     utility::string_t getFileName() const;
     bool fileNameIsSet() const;
     void unsetFileName();
     void setFileName(utility::string_t value);
     /// <summary>
-    /// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }
+    /// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }.
     /// </summary>
     utility::string_t getDmlRenderingMode() const;
     bool dmlRenderingModeIsSet() const;
     void unsetDmlRenderingMode();
     void setDmlRenderingMode(utility::string_t value);
     /// <summary>
-    /// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }
+    /// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }.
     /// </summary>
     utility::string_t getDmlEffectsRenderingMode() const;
     bool dmlEffectsRenderingModeIsSet() const;
     void unsetDmlEffectsRenderingMode();
     void setDmlEffectsRenderingMode(utility::string_t value);
     /// <summary>
-    /// Controls zip output or not. Default value is false.
+    /// Gets or sets controls zip output or not. Default value is false.
     /// </summary>
     bool isZipOutput() const;
     bool zipOutputIsSet() const;
@@ -119,7 +119,7 @@ public:
     void unsetUpdateSdtContent();
     void setUpdateSdtContent(bool value);
     /// <summary>
-    /// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is true
+    /// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
     /// </summary>
     bool isUpdateFields() const;
     bool updateFieldsIsSet() const;

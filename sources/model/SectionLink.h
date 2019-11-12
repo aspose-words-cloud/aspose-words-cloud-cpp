@@ -28,7 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SectionLink_H_
 
 
-#include "LinkElement.h"
+#include "NodeLink.h"
+#include <cpprest/details/basic_types.h>
 #include "WordsApiLink.h"
 
 namespace aspose {
@@ -38,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Section link element
+/// Section link element.
 /// </summary>
 class  SectionLink
-    : public LinkElement
+    : public NodeLink
 {
 public:
     SectionLink();

@@ -41,7 +41,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the document&#39;s statistical data
+/// Container for the document&#39;s statistical data.
 /// </summary>
 class  DocumentStatData
     : public ModelBase
@@ -65,29 +65,29 @@ public:
     /// DocumentStatData members
 
     /// <summary>
-    /// Total count of words in the document
+    /// Gets or sets total count of words in the document.
     /// </summary>
     int32_t getWordCount() const;
         void setWordCount(int32_t value);
     /// <summary>
-    /// Total count of paragraphs in the document
+    /// Gets or sets total count of paragraphs in the document.
     /// </summary>
     int32_t getParagraphCount() const;
         void setParagraphCount(int32_t value);
     /// <summary>
-    /// Total count of pages in the document
+    /// Gets or sets total count of pages in the document.
     /// </summary>
     int32_t getPageCount() const;
         void setPageCount(int32_t value);
     /// <summary>
-    /// Detailed statistics of footnotes
+    /// Gets or sets detailed statistics of footnotes.
     /// </summary>
     std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
     void unsetFootnotesStatData();
     void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
     /// <summary>
-    /// Detailed statistics of all pages
+    /// Gets or sets detailed statistics of all pages.
     /// </summary>
     std::vector<std::shared_ptr<PageStatData>>& getPageStatData();
     bool pageStatDataIsSet() const;

@@ -63,14 +63,14 @@ public:
     /// Hyperlink members
 
     /// <summary>
-    /// Hypelink&#39;s display text
+    /// Gets or sets hypelink&#39;s display text.
     /// </summary>
     utility::string_t getDisplayText() const;
     bool displayTextIsSet() const;
     void unsetDisplayText();
     void setDisplayText(utility::string_t value);
     /// <summary>
-    /// Value
+    /// Gets or sets value.
     /// </summary>
     utility::string_t getValue() const;
     bool valueIsSet() const;

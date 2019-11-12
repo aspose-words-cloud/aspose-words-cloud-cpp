@@ -31,22 +31,22 @@ namespace models{
 RenderTableRequest::RenderTableRequest(
         utility::string_t name,
                 utility::string_t format,
+                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> nodePath,
                 boost::optional<utility::string_t> fontsLocation
         ) : 
             m_name(std::move(name)),
             m_format(std::move(format)),
+            m_nodePath(std::move(nodePath)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
             m_password(std::move(password)),
-            m_nodePath(std::move(nodePath)),
             m_fontsLocation(std::move(fontsLocation))
         {
             
@@ -65,6 +65,13 @@ RenderTableRequest::RenderTableRequest(
         }
         void RenderTableRequest::setFormat(utility::string_t format){
             m_format = std::move(format);
+        }
+        utility::string_t RenderTableRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void RenderTableRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         int32_t RenderTableRequest::getIndex() const
         {
@@ -100,13 +107,6 @@ RenderTableRequest::RenderTableRequest(
         }
         void RenderTableRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> RenderTableRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void RenderTableRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
         boost::optional<utility::string_t> RenderTableRequest::getFontsLocation() const
         {

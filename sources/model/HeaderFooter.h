@@ -29,8 +29,10 @@
 
 
 #include "HeaderFooterLink.h"
+#include "NodeLink.h"
 #include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
+#include <vector>
 #include "WordsApiLink.h"
 
 namespace aspose {
@@ -40,7 +42,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Section element
+/// Section element.
 /// </summary>
 class  HeaderFooter
     : public HeaderFooterLink
@@ -64,14 +66,21 @@ public:
     /// HeaderFooter members
 
     /// <summary>
-    /// Link to DrawingObjects resource
+    /// Gets or sets child nodes.
+    /// </summary>
+    std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
+    bool childNodesIsSet() const;
+    void unsetChildNodes();
+    void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
+    /// <summary>
+    /// Gets or sets link to DrawingObjects resource.
     /// </summary>
     std::shared_ptr<LinkElement> getDrawingObjects() const;
     bool drawingObjectsIsSet() const;
     void unsetDrawingObjects();
     void setDrawingObjects(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Link to Paragraphs resource
+    /// Gets or sets link to Paragraphs resource.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
@@ -79,6 +88,8 @@ public:
     void setParagraphs(std::shared_ptr<LinkElement> value);
 
 protected:
+    std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;
+    bool m_ChildNodesIsSet;
     std::shared_ptr<LinkElement> m_DrawingObjects;
     bool m_DrawingObjectsIsSet;
     std::shared_ptr<LinkElement> m_Paragraphs;

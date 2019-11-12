@@ -63,14 +63,14 @@ public:
     /// TableRowFormat members
 
     /// <summary>
-    /// True if the text in a table row is allowed to split across a page break.
+    /// Gets or sets true if the text in a table row is allowed to split across a page break.
     /// </summary>
     bool isAllowBreakAcrossPages() const;
     bool allowBreakAcrossPagesIsSet() const;
     void unsetAllowBreakAcrossPages();
     void setAllowBreakAcrossPages(bool value);
     /// <summary>
-    /// True if the row is repeated as a table heading on every page when the table spans more than one page.
+    /// Gets or sets true if the row is repeated as a table heading on every page when the table spans more than one page.
     /// </summary>
     bool isHeadingFormat() const;
     bool headingFormatIsSet() const;

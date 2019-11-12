@@ -34,8 +34,12 @@ namespace models {
 
 DocSaveOptionsData::DocSaveOptionsData()
 {
+    m_AlwaysCompressMetafiles = false;
+    m_AlwaysCompressMetafilesIsSet = false;
     m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
+    m_SavePictureBullet = false;
+    m_SavePictureBulletIsSet = false;
     m_SaveRoutingSlip = false;
     m_SaveRoutingSlipIsSet = false;
 }
@@ -53,9 +57,17 @@ web::json::value DocSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
 
+    if(m_AlwaysCompressMetafilesIsSet)
+    {
+        val[_XPLATSTR("AlwaysCompressMetafiles")] = ModelBase::toJson(m_AlwaysCompressMetafiles);
+    }
     if(m_PasswordIsSet)
     {
         val[_XPLATSTR("Password")] = ModelBase::toJson(m_Password);
+    }
+    if(m_SavePictureBulletIsSet)
+    {
+        val[_XPLATSTR("SavePictureBullet")] = ModelBase::toJson(m_SavePictureBullet);
     }
     if(m_SaveRoutingSlipIsSet)
     {
@@ -69,12 +81,28 @@ void DocSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
+    if(val.has_field(_XPLATSTR("AlwaysCompressMetafiles")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("AlwaysCompressMetafiles")];
+        if(!fieldValue.is_null())
+        {
+            setAlwaysCompressMetafiles(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(_XPLATSTR("Password")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Password")];
         if(!fieldValue.is_null())
         {
             setPassword(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(_XPLATSTR("SavePictureBullet")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("SavePictureBullet")];
+        if(!fieldValue.is_null())
+        {
+            setSavePictureBullet(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SaveRoutingSlip")))
@@ -132,10 +160,18 @@ void DocSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
+    if(m_AlwaysCompressMetafilesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AlwaysCompressMetafiles"), m_AlwaysCompressMetafiles));
+    }
     if(m_PasswordIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Password"), m_Password));
         
+    }
+    if(m_SavePictureBulletIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SavePictureBullet"), m_SavePictureBullet));
     }
     if(m_SaveRoutingSlipIsSet)
     {
@@ -181,14 +217,43 @@ void DocSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     {
         setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
+    if(multipart->hasContent(_XPLATSTR("AlwaysCompressMetafiles")))
+    {
+        setAlwaysCompressMetafiles(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AlwaysCompressMetafiles"))));
+    }
     if(multipart->hasContent(_XPLATSTR("Password")))
     {
         setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("SavePictureBullet")))
+    {
+        setSavePictureBullet(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SavePictureBullet"))));
     }
     if(multipart->hasContent(_XPLATSTR("SaveRoutingSlip")))
     {
         setSaveRoutingSlip(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SaveRoutingSlip"))));
     }
+}
+
+bool DocSaveOptionsData::isAlwaysCompressMetafiles() const
+{
+    return m_AlwaysCompressMetafiles;
+}
+
+
+void DocSaveOptionsData::setAlwaysCompressMetafiles(bool value)
+{
+    m_AlwaysCompressMetafiles = value;
+    m_AlwaysCompressMetafilesIsSet = true;
+}
+bool DocSaveOptionsData::alwaysCompressMetafilesIsSet() const
+{
+    return m_AlwaysCompressMetafilesIsSet;
+}
+
+void DocSaveOptionsData::unsetAlwaysCompressMetafiles()
+{
+    m_AlwaysCompressMetafilesIsSet = false;
 }
 
 utility::string_t DocSaveOptionsData::getPassword() const
@@ -210,6 +275,27 @@ bool DocSaveOptionsData::passwordIsSet() const
 void DocSaveOptionsData::unsetPassword()
 {
     m_PasswordIsSet = false;
+}
+
+bool DocSaveOptionsData::isSavePictureBullet() const
+{
+    return m_SavePictureBullet;
+}
+
+
+void DocSaveOptionsData::setSavePictureBullet(bool value)
+{
+    m_SavePictureBullet = value;
+    m_SavePictureBulletIsSet = true;
+}
+bool DocSaveOptionsData::savePictureBulletIsSet() const
+{
+    return m_SavePictureBulletIsSet;
+}
+
+void DocSaveOptionsData::unsetSavePictureBullet()
+{
+    m_SavePictureBulletIsSet = false;
 }
 
 bool DocSaveOptionsData::isSaveRoutingSlip() const

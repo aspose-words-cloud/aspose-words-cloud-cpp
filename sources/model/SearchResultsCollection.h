@@ -64,7 +64,7 @@ public:
     /// SearchResultsCollection members
 
     /// <summary>
-    /// Collection of comments
+    /// Gets or sets collection of comments.
     /// </summary>
     std::vector<std::shared_ptr<SearchResult>>& getResultsList();
     bool resultsListIsSet() const;

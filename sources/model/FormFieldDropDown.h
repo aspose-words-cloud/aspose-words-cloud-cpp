@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// FormField dropdownlist element
+/// FormField dropdownlist element.
 /// </summary>
 class  FormFieldDropDown
     : public FormField
@@ -64,7 +64,7 @@ public:
     /// FormFieldDropDown members
 
     /// <summary>
-    /// Provides access to the items of a dropdown form field.
+    /// Gets or sets provides access to the items of a dropdown form field.
     /// </summary>
     std::vector<utility::string_t>& getDropDownItems();
     bool dropDownItemsIsSet() const;

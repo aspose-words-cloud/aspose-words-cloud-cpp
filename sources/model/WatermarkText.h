@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Class for insert watermark text request building. 
+/// Class for insert watermark text request building.
 /// </summary>
 class  WatermarkText
     : public ModelBase
@@ -63,14 +63,14 @@ public:
     /// WatermarkText members
 
     /// <summary>
-    /// The watermark text.
+    /// Gets or sets the watermark text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;
     void unsetText();
     void setText(utility::string_t value);
     /// <summary>
-    /// The watermark rotation angle.
+    /// Gets or sets the watermark rotation angle.
     /// </summary>
     double getRotationAngle() const;
         void setRotationAngle(double value);

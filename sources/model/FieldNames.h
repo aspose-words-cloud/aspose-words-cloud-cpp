@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents a collection of merge fields within a document. 
+/// Represents a collection of merge fields within a document.
 /// </summary>
 class  FieldNames
     : public LinkElement
@@ -64,7 +64,7 @@ public:
     /// FieldNames members
 
     /// <summary>
-    /// Collection of fields names.
+    /// Gets or sets collection of fields names.
     /// </summary>
     std::vector<utility::string_t>& getNames();
     bool namesIsSet() const;

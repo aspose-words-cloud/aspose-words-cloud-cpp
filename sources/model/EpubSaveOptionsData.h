@@ -62,7 +62,7 @@ public:
     /// EpubSaveOptionsData members
 
     /// <summary>
-    /// Specifies the maximum level of headings populated to the navigation map when exporting
+    /// Gets or sets specifies the maximum level of headings populated to the navigation map when exporting.
     /// </summary>
     int32_t getEpubNavigationMapLevel() const;
     bool epubNavigationMapLevelIsSet() const;

@@ -63,7 +63,7 @@ public:
     /// DrawingObjectCollection members
 
     /// <summary>
-    /// Collection of DrawingObjects links 
+    /// Gets or sets collection of DrawingObjects links.
     /// </summary>
     std::vector<std::shared_ptr<LinkElement>>& getList();
     bool listIsSet() const;

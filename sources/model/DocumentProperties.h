@@ -64,7 +64,7 @@ public:
     /// DocumentProperties members
 
     /// <summary>
-    /// Collection of document properties.
+    /// Gets or sets collection of document properties.
     /// </summary>
     std::vector<std::shared_ptr<DocumentProperty>>& getList();
     bool listIsSet() const;

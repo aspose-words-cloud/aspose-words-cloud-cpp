@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Request on changing of protection
+/// Request on changing of protection.
 /// </summary>
 class  ProtectionRequest
     : public ModelBase
@@ -63,21 +63,21 @@ public:
     /// ProtectionRequest members
 
     /// <summary>
-    /// Current password
+    /// Gets or sets current password.
     /// </summary>
     utility::string_t getPassword() const;
     bool passwordIsSet() const;
     void unsetPassword();
     void setPassword(utility::string_t value);
     /// <summary>
-    /// New password
+    /// Gets or sets new password.
     /// </summary>
     utility::string_t getNewPassword() const;
     bool newPasswordIsSet() const;
     void unsetNewPassword();
     void setNewPassword(utility::string_t value);
     /// <summary>
-    /// New type of protection
+    /// Gets or sets new type of protection.
     /// </summary>
     utility::string_t getProtectionType() const;
     bool protectionTypeIsSet() const;

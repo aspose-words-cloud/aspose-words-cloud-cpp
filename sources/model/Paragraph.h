@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph element
+/// Paragraph element.
 /// </summary>
 class  Paragraph
     : public NodeLink
@@ -64,7 +64,7 @@ public:
     /// Paragraph members
 
     /// <summary>
-    /// Child nodes
+    /// Gets or sets child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;

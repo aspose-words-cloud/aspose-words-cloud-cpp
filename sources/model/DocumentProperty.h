@@ -63,21 +63,21 @@ public:
     /// DocumentProperty members
 
     /// <summary>
-    /// Flag indicates whether the property is built-in or not. If true the property is built-in, if false the property is custom.
+    /// Gets or sets a value indicating whether flag indicates whether the property is built-in or not. If true the property is built-in, if false the property is custom.
     /// </summary>
     bool isBuiltIn() const;
     bool builtInIsSet() const;
     void unsetBuiltIn();
     void setBuiltIn(bool value);
     /// <summary>
-    /// Name of the document property.
+    /// Gets or sets name of the document property.
     /// </summary>
     utility::string_t getName() const;
     bool nameIsSet() const;
     void unsetName();
     void setName(utility::string_t value);
     /// <summary>
-    /// string value of the document property. 
+    /// Gets or sets string value of the document property.
     /// </summary>
     utility::string_t getValue() const;
     bool valueIsSet() const;

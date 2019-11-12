@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// HeaderFooter link element
+/// HeaderFooter link element.
 /// </summary>
 class  HeaderFooterLink
     : public LinkElement
@@ -63,7 +63,7 @@ public:
     /// HeaderFooterLink members
 
     /// <summary>
-    /// Paragraph&#39;s text
+    /// Gets or sets paragraph&#39;s text.
     /// </summary>
     utility::string_t getType() const;
     bool typeIsSet() const;

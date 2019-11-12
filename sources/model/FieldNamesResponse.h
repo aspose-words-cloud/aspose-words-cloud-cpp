@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FieldNamesResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "FieldNames.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
 /// </summary>
 class  FieldNamesResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     FieldNamesResponse();
@@ -63,7 +63,7 @@ public:
     /// FieldNamesResponse members
 
     /// <summary>
-    /// Collection of mail merge fields.
+    /// Gets or sets collection of mail merge fields.
     /// </summary>
     std::shared_ptr<FieldNames> getFieldNames() const;
     bool fieldNamesIsSet() const;

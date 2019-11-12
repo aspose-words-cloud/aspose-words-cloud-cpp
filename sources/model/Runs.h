@@ -64,7 +64,7 @@ public:
     /// Runs members
 
     /// <summary>
-    /// Collection of fields
+    /// Gets or sets collection of fields.
     /// </summary>
     std::vector<std::shared_ptr<Run>>& getList();
     bool listIsSet() const;

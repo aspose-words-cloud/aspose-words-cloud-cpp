@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format element             
+/// Paragraph format element.             
 /// </summary>
 class  ParagraphFormat
     : public LinkElement
@@ -105,14 +105,21 @@ public:
     void unsetFirstLineIndent();
     void setFirstLineIndent(double value);
     /// <summary>
-    /// True if all lines in the paragraph are to remain on the same page.             
+    /// Gets or sets True when the paragraph is an item in a bulleted or numbered list.
+    /// </summary>
+    bool isIsListItem() const;
+    bool isListItemIsSet() const;
+    void unsetIsListItem();
+    void setIsListItem(bool value);
+    /// <summary>
+    /// Gets or sets true if all lines in the paragraph are to remain on the same page.             
     /// </summary>
     bool isKeepTogether() const;
     bool keepTogetherIsSet() const;
     void unsetKeepTogether();
     void setKeepTogether(bool value);
     /// <summary>
-    /// True if the paragraph is to remains on the same page as the paragraph that follows it.             
+    /// Gets or sets true if the paragraph is to remains on the same page as the paragraph that follows it.             
     /// </summary>
     bool isKeepWithNext() const;
     bool keepWithNextIsSet() const;
@@ -147,21 +154,21 @@ public:
     void unsetLinesToDrop();
     void setLinesToDrop(int32_t value);
     /// <summary>
-    /// When true,  and  will be ignored between the paragraphs of the same style.             
+    /// Gets or sets when true,  and  will be ignored between the paragraphs of the same style.             
     /// </summary>
     bool isNoSpaceBetweenParagraphsOfSameStyle() const;
     bool noSpaceBetweenParagraphsOfSameStyleIsSet() const;
     void unsetNoSpaceBetweenParagraphsOfSameStyle();
     void setNoSpaceBetweenParagraphsOfSameStyle(bool value);
     /// <summary>
-    /// Specifies the outline level of the paragraph in the document.             
+    /// Gets or sets specifies the outline level of the paragraph in the document.             
     /// </summary>
     utility::string_t getOutlineLevel() const;
     bool outlineLevelIsSet() const;
     void unsetOutlineLevel();
     void setOutlineLevel(utility::string_t value);
     /// <summary>
-    /// True if a page break is forced before the paragraph.             
+    /// Gets or sets true if a page break is forced before the paragraph.             
     /// </summary>
     bool isPageBreakBefore() const;
     bool pageBreakBeforeIsSet() const;
@@ -182,7 +189,7 @@ public:
     void unsetSpaceAfter();
     void setSpaceAfter(double value);
     /// <summary>
-    /// True if the amount of spacing after the paragraph is set automatically.             
+    /// Gets or sets true if the amount of spacing after the paragraph is set automatically.             
     /// </summary>
     bool isSpaceAfterAuto() const;
     bool spaceAfterAutoIsSet() const;
@@ -196,7 +203,7 @@ public:
     void unsetSpaceBefore();
     void setSpaceBefore(double value);
     /// <summary>
-    /// True if the amount of spacing before the paragraph is set automatically.             
+    /// Gets or sets true if the amount of spacing before the paragraph is set automatically.             
     /// </summary>
     bool isSpaceBeforeAuto() const;
     bool spaceBeforeAutoIsSet() const;
@@ -217,21 +224,21 @@ public:
     void unsetStyleName();
     void setStyleName(utility::string_t value);
     /// <summary>
-    /// Specifies whether the current paragraph should be exempted from any hyphenation which is applied in the document settings.             
+    /// Gets or sets specifies whether the current paragraph should be exempted from any hyphenation which is applied in the document settings.             
     /// </summary>
     bool isSuppressAutoHyphens() const;
     bool suppressAutoHyphensIsSet() const;
     void unsetSuppressAutoHyphens();
     void setSuppressAutoHyphens(bool value);
     /// <summary>
-    /// Specifies whether the current paragraph&#39;s lines should be exempted from line numbering which is applied in the parent section.             
+    /// Gets or sets specifies whether the current paragraph&#39;s lines should be exempted from line numbering which is applied in the parent section.             
     /// </summary>
     bool isSuppressLineNumbers() const;
     bool suppressLineNumbersIsSet() const;
     void unsetSuppressLineNumbers();
     void setSuppressLineNumbers(bool value);
     /// <summary>
-    /// True if the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.             
+    /// Gets or sets true if the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.             
     /// </summary>
     bool isWidowControl() const;
     bool widowControlIsSet() const;
@@ -251,6 +258,8 @@ protected:
     bool m_DropCapPositionIsSet;
     double m_FirstLineIndent;
     bool m_FirstLineIndentIsSet;
+    bool m_IsListItem;
+    bool m_IsListItemIsSet;
     bool m_KeepTogether;
     bool m_KeepTogetherIsSet;
     bool m_KeepWithNext;

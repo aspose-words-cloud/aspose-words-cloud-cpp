@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table cell element
+/// Table cell element.
 /// </summary>
 class  TableCellInsert
     : public ModelBase
@@ -62,7 +62,7 @@ public:
     /// TableCellInsert members
 
     /// <summary>
-    /// Table cell will be inserted after cell with specified 0-based index.
+    /// Gets or sets table cell will be inserted after cell with specified 0-based index.
     /// </summary>
     int32_t getInsertAfter() const;
     bool insertAfterIsSet() const;

@@ -64,84 +64,84 @@ public:
     /// TableCellFormat members
 
     /// <summary>
-    /// Returns or sets the amount of space (in points) to add below the contents of cell.
+    /// Gets or sets returns or sets the amount of space (in points) to add below the contents of cell.
     /// </summary>
     double getBottomPadding() const;
     bool bottomPaddingIsSet() const;
     void unsetBottomPadding();
     void setBottomPadding(double value);
     /// <summary>
-    /// If true, fits text in the cell, compressing each paragraph to the width of the cell.
+    /// Gets or sets if true, fits text in the cell, compressing each paragraph to the width of the cell.
     /// </summary>
     bool isFitText() const;
     bool fitTextIsSet() const;
     void unsetFitText();
     void setFitText(bool value);
     /// <summary>
-    /// Specifies how the cell is merged horizontally with other cells in the row.
+    /// Gets or sets specifies how the cell is merged horizontally with other cells in the row.
     /// </summary>
     utility::string_t getHorizontalMerge() const;
     bool horizontalMergeIsSet() const;
     void unsetHorizontalMerge();
     void setHorizontalMerge(utility::string_t value);
     /// <summary>
-    /// Returns or sets the amount of space (in points) to add to the left of the contents of cell.
+    /// Gets or sets returns or sets the amount of space (in points) to add to the left of the contents of cell.
     /// </summary>
     double getLeftPadding() const;
     bool leftPaddingIsSet() const;
     void unsetLeftPadding();
     void setLeftPadding(double value);
     /// <summary>
-    /// Returns or sets the orientation of text in a table cell.
+    /// Gets or sets returns or sets the orientation of text in a table cell.
     /// </summary>
     utility::string_t getOrientation() const;
     bool orientationIsSet() const;
     void unsetOrientation();
     void setOrientation(utility::string_t value);
     /// <summary>
-    /// Returns or sets the preferred width of the cell.
+    /// Gets or sets returns or sets the preferred width of the cell.
     /// </summary>
     std::shared_ptr<PreferredWidth> getPreferredWidth() const;
     bool preferredWidthIsSet() const;
     void unsetPreferredWidth();
     void setPreferredWidth(std::shared_ptr<PreferredWidth> value);
     /// <summary>
-    /// Returns or sets the amount of space (in points) to add to the right of the contents of cell.
+    /// Gets or sets returns or sets the amount of space (in points) to add to the right of the contents of cell.
     /// </summary>
     double getRightPadding() const;
     bool rightPaddingIsSet() const;
     void unsetRightPadding();
     void setRightPadding(double value);
     /// <summary>
-    /// Returns or sets the amount of space (in points) to add above the contents of cell.
+    /// Gets or sets returns or sets the amount of space (in points) to add above the contents of cell.
     /// </summary>
     double getTopPadding() const;
     bool topPaddingIsSet() const;
     void unsetTopPadding();
     void setTopPadding(double value);
     /// <summary>
-    /// Returns or sets the vertical alignment of text in the cell.
+    /// Gets or sets returns or sets the vertical alignment of text in the cell.
     /// </summary>
     utility::string_t getVerticalAlignment() const;
     bool verticalAlignmentIsSet() const;
     void unsetVerticalAlignment();
     void setVerticalAlignment(utility::string_t value);
     /// <summary>
-    /// Specifies how the cell is merged with other cells vertically.
+    /// Gets or sets specifies how the cell is merged with other cells vertically.
     /// </summary>
     utility::string_t getVerticalMerge() const;
     bool verticalMergeIsSet() const;
     void unsetVerticalMerge();
     void setVerticalMerge(utility::string_t value);
     /// <summary>
-    /// Gets the width of the cell in points.
+    /// Gets or sets the width of the cell in points.
     /// </summary>
     double getWidth() const;
     bool widthIsSet() const;
     void unsetWidth();
     void setWidth(double value);
     /// <summary>
-    /// If true, wrap text for the cell.
+    /// Gets or sets if true, wrap text for the cell.
     /// </summary>
     bool isWrapText() const;
     bool wrapTextIsSet() const;

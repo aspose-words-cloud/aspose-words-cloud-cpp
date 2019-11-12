@@ -42,7 +42,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table element
+/// Table element.
 /// </summary>
 class  Table
     : public NodeLink
@@ -66,14 +66,14 @@ public:
     /// Table members
 
     /// <summary>
-    /// Table properties.
+    /// Gets or sets table properties.
     /// </summary>
     std::shared_ptr<TableProperties> getTableProperties() const;
     bool tablePropertiesIsSet() const;
     void unsetTableProperties();
     void setTableProperties(std::shared_ptr<TableProperties> value);
     /// <summary>
-    /// Collection of table&#39;s rows.
+    /// Gets or sets collection of table&#39;s rows.
     /// </summary>
     std::vector<std::shared_ptr<TableRow>>& getTableRowList();
     bool tableRowListIsSet() const;

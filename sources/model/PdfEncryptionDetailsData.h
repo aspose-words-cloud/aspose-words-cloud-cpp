@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for details of encryption
+/// container class for details of encryption.
 /// </summary>
 class  PdfEncryptionDetailsData
     : public ModelBase
@@ -63,28 +63,28 @@ public:
     /// PdfEncryptionDetailsData members
 
     /// <summary>
-    /// Specifies the encryption algorithm to use
+    /// Gets or sets specifies the encryption algorithm to use.
     /// </summary>
     utility::string_t getEncryptionAlgorithm() const;
     bool encryptionAlgorithmIsSet() const;
     void unsetEncryptionAlgorithm();
     void setEncryptionAlgorithm(utility::string_t value);
     /// <summary>
-    /// Specifies the owner password for the encrypted PDF document
+    /// Gets or sets specifies the owner password for the encrypted PDF document.
     /// </summary>
     utility::string_t getOwnerPassword() const;
     bool ownerPasswordIsSet() const;
     void unsetOwnerPassword();
     void setOwnerPassword(utility::string_t value);
     /// <summary>
-    /// Specifies the operations that are allowed to a user on an encrypted PDF document        
+    /// Gets or sets specifies the operations that are allowed to a user on an encrypted PDF document.
     /// </summary>
     utility::string_t getPermissions() const;
     bool permissionsIsSet() const;
     void unsetPermissions();
     void setPermissions(utility::string_t value);
     /// <summary>
-    /// Specifies the user password required for opening the encrypted PDF document
+    /// Gets or sets specifies the user password required for opening the encrypted PDF document.
     /// </summary>
     utility::string_t getUserPassword() const;
     bool userPasswordIsSet() const;

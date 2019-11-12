@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Contains data for load web document
+/// Contains data for load web document.
 /// </summary>
 class  LoadWebDocumentData
     : public ModelBase
@@ -64,14 +64,14 @@ public:
     /// LoadWebDocumentData members
 
     /// <summary>
-    /// Web document url
+    /// Gets or sets web document url.
     /// </summary>
     utility::string_t getLoadingDocumentUrl() const;
     bool loadingDocumentUrlIsSet() const;
     void unsetLoadingDocumentUrl();
     void setLoadingDocumentUrl(utility::string_t value);
     /// <summary>
-    /// Save options
+    /// Gets or sets save options.
     /// </summary>
     std::shared_ptr<SaveOptionsData> getSaveOptions() const;
     bool saveOptionsIsSet() const;

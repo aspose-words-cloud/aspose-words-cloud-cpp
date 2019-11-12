@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_HyperlinkResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "Hyperlink.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} .
 /// </summary>
 class  HyperlinkResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     HyperlinkResponse();
@@ -63,7 +63,7 @@ public:
     /// HyperlinkResponse members
 
     /// <summary>
-    /// Hyperlink.
+    /// Gets or sets hyperlink.
     /// </summary>
     std::shared_ptr<Hyperlink> getHyperlink() const;
     bool hyperlinkIsSet() const;

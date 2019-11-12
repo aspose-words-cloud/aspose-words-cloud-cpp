@@ -30,18 +30,18 @@ namespace api{
 namespace models{
 GetOfficeMathObjectsRequest::GetOfficeMathObjectsRequest(
         utility::string_t name,
+                utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> nodePath
+                boost::optional<utility::string_t> password
         ) : 
             m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_nodePath(std::move(nodePath))
+            m_password(std::move(password))
         {
             
         }
@@ -52,6 +52,13 @@ GetOfficeMathObjectsRequest::GetOfficeMathObjectsRequest(
         }
         void GetOfficeMathObjectsRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        utility::string_t GetOfficeMathObjectsRequest::getNodePath() const
+        {
+            return m_nodePath;
+        }
+        void GetOfficeMathObjectsRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
         boost::optional<utility::string_t> GetOfficeMathObjectsRequest::getFolder() const
         {
@@ -80,13 +87,6 @@ GetOfficeMathObjectsRequest::GetOfficeMathObjectsRequest(
         }
         void GetOfficeMathObjectsRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> GetOfficeMathObjectsRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void GetOfficeMathObjectsRequest::setNodePath(boost::optional<utility::string_t> nodePath){
-            m_nodePath = std::move(nodePath);
         }
 
 }

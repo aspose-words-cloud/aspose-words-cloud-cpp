@@ -63,7 +63,7 @@ public:
     /// LinkElement members
 
     /// <summary>
-    /// Link to the document.
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<WordsApiLink> getLink() const;
     bool linkIsSet() const;

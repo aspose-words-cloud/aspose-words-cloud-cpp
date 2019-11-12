@@ -29,7 +29,7 @@
 
 
 #include "CommentsCollection.h"
-#include "AsposeResponse.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/comments 
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/comments.
 /// </summary>
 class  CommentsResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     CommentsResponse();
@@ -63,7 +63,7 @@ public:
     /// CommentsResponse members
 
     /// <summary>
-    /// Collection of comments.
+    /// Gets or sets collection of comments.
     /// </summary>
     std::shared_ptr<CommentsCollection> getComments() const;
     bool commentsIsSet() const;

@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Utility class for  serialization
+/// Utility class for  serialization.
 /// </summary>
 class  XmlColor
     : public ModelBase
@@ -63,14 +63,14 @@ public:
     /// XmlColor members
 
     /// <summary>
-    /// HTML string color representation
+    /// Gets or sets hTML string color representation.
     /// </summary>
     utility::string_t getWeb() const;
     bool webIsSet() const;
     void unsetWeb();
     void setWeb(utility::string_t value);
     /// <summary>
-    /// Alpha component of color structure
+    /// Gets or sets alpha component of color structure.
     /// </summary>
     int32_t getAlpha() const;
         void setAlpha(int32_t value);

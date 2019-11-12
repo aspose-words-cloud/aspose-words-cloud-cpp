@@ -28,8 +28,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableCellFormatResponse_H_
 
 
-#include "AsposeResponse.h"
 #include "TableCellFormat.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat
+/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
 /// </summary>
 class  TableCellFormatResponse
-    : public AsposeResponse
+    : public WordsResponse
 {
 public:
     TableCellFormatResponse();
@@ -63,7 +63,7 @@ public:
     /// TableCellFormatResponse members
 
     /// <summary>
-    /// Table.
+    /// Gets or sets table.
     /// </summary>
     std::shared_ptr<TableCellFormat> getCellFormat() const;
     bool cellFormatIsSet() const;

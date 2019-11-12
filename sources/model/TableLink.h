@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table link element
+/// Table link element.
 /// </summary>
 class  TableLink
     : public NodeLink
