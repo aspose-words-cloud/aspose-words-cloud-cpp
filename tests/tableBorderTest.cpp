@@ -50,9 +50,9 @@ TEST_F(TableBorderTest, TestGetTableBorders) {
 			std::make_shared<GetBordersRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), dataFolder,
 					boost::none, boost::none, boost::none);
 
-	std::shared_ptr<BordersResponse> actual = get_api()->getBorders(request).get();
+	AsposeResponse<BordersResponse> actual = get_api()->getBorders(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -71,9 +71,9 @@ TEST_F(TableBorderTest, TestGetTableBorder) {
 			std::make_shared<GetBorderRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<BorderResponse> actual = get_api()->getBorder(request).get();
+	AsposeResponse<BorderResponse> actual = get_api()->getBorder(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -92,9 +92,9 @@ TEST_F(TableBorderTest, TestDeleteTableBorders) {
 			std::make_shared<DeleteBordersRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<BordersResponse> actual = get_api()->deleteBorders(request).get();
+	AsposeResponse<BordersResponse> actual = get_api()->deleteBorders(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -112,9 +112,9 @@ TEST_F(TableBorderTest, TestDeleteTableBorder) {
 	std::shared_ptr<DeleteBorderRequest> request= std::make_shared<DeleteBorderRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<BorderResponse> actual = get_api()->deleteBorder(request).get();
+	AsposeResponse<BorderResponse> actual = get_api()->deleteBorder(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -144,7 +144,7 @@ TEST_F(TableBorderTest, TestUpdateTableBorder) {
 			std::make_shared<UpdateBorderRequest>(remoteName, border, STCONVERT("tables/1/rows/0/cells/0/"), 0, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<BorderResponse> actual = get_api()->updateBorder(request).get();
+	AsposeResponse<BorderResponse> actual = get_api()->updateBorder(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

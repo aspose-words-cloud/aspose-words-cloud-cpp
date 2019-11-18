@@ -49,9 +49,9 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjects) {
 			std::make_shared<GetDocumentDrawingObjectsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, STCONVERT("sections/0"));
 
-	std::shared_ptr<DrawingObjectsResponse> actual = get_api()->getDocumentDrawingObjects(request).get();
+	AsposeResponse<DrawingObjectsResponse> actual = get_api()->getDocumentDrawingObjects(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -69,12 +69,12 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjectByIndex) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetDocumentDrawingObjectByIndexRequest> request=
-			std::make_shared<GetDocumentDrawingObjectByIndexRequest>(remoteName, objectIndex,
-		dataFolder, boost::none, boost::none, boost::none, STCONVERT("sections/0"));
+			std::make_shared<GetDocumentDrawingObjectByIndexRequest>(remoteName, STCONVERT("sections/0"), objectIndex,
+		dataFolder, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<DrawingObjectResponse> actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
+	AsposeResponse<DrawingObjectResponse> actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -93,8 +93,8 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjectByIndexWithFormat) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<RenderDrawingObjectRequest> request=
-			std::make_shared<RenderDrawingObjectRequest>(remoteName, format, objectIndex,
-		dataFolder, boost::none, boost::none, boost::none, STCONVERT("sections/0"), boost::none);
+			std::make_shared<RenderDrawingObjectRequest>(remoteName, STCONVERT("sections/0"), format, objectIndex,
+		dataFolder, boost::none, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->renderDrawingObject(request).get();
 
@@ -116,8 +116,8 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjectOleData) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetDocumentDrawingObjectOleDataRequest> request=
-			std::make_shared<GetDocumentDrawingObjectOleDataRequest>(remoteName, objectIndex,
-		dataFolder, boost::none, boost::none, boost::none, STCONVERT("sections/0"));
+			std::make_shared<GetDocumentDrawingObjectOleDataRequest>(remoteName, STCONVERT("sections/0"), objectIndex,
+		dataFolder, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->getDocumentDrawingObjectOleData(request).get();
 
@@ -139,8 +139,8 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjectImageData) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetDocumentDrawingObjectImageDataRequest> request=
-			std::make_shared<GetDocumentDrawingObjectImageDataRequest>(remoteName, objectIndex,
-		dataFolder, boost::none, boost::none, boost::none, STCONVERT("sections/0"));
+			std::make_shared<GetDocumentDrawingObjectImageDataRequest>(remoteName, STCONVERT("sections/0"), objectIndex,
+		dataFolder, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->getDocumentDrawingObjectImageData(request).get();
 
@@ -160,15 +160,14 @@ TEST_F(DrawingObjectsTest, TestPutDrawingObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutDrawingObjectRequest> request=
-			std::make_shared<PutDrawingObjectRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
+	std::shared_ptr<UpdateDrawingObjectRequest> request=
+			std::make_shared<UpdateDrawingObjectRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
 		generate_http_content_from_file(path_combine(get_data_dir(commonFolder), image)),
-		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none,
-		boost::none);
+		STCONVERT(""), 0, dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<DrawingObjectResponse> actual = get_api()->putDrawingObject(request).get();
+	AsposeResponse<DrawingObjectResponse> actual = get_api()->updateDrawingObject(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -184,12 +183,12 @@ TEST_F(DrawingObjectsTest, TestDeleteDrawingObject) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteDrawingObjectRequest> request=
-			std::make_shared<DeleteDrawingObjectRequest>(remoteName, objectIndex, dataFolder,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<DeleteDrawingObjectRequest>(remoteName, STCONVERT(""), objectIndex, dataFolder,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteDrawingObject(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteDrawingObject(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -206,12 +205,12 @@ TEST_F(DrawingObjectsTest, TestPostDrawingObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostDrawingObjectRequest> request=
-			std::make_shared<PostDrawingObjectRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
-		generate_http_content_from_file(imagePath), 0, dataFolder,
+	std::shared_ptr<InsertDrawingObjectRequest> request=
+			std::make_shared<InsertDrawingObjectRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
+		generate_http_content_from_file(imagePath), dataFolder,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<DrawingObjectResponse> actual = get_api()->postDrawingObject(request).get();
+	AsposeResponse<DrawingObjectResponse> actual = get_api()->insertDrawingObject(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

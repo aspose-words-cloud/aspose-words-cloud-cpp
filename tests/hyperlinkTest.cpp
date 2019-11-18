@@ -50,9 +50,9 @@ TEST_F(HyperlinkTest, TestGetDocumentHyperlinkByIndex) {
 			std::make_shared<GetDocumentHyperlinkByIndexRequest>(remoteName, hyperlinkIndex, dataFolder,
 					boost::none, boost::none, boost::none);
 
-	std::shared_ptr<HyperlinkResponse> actual = get_api()->getDocumentHyperlinkByIndex(request).get();
+	AsposeResponse<HyperlinkResponse> actual = get_api()->getDocumentHyperlinkByIndex(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -71,7 +71,7 @@ TEST_F(HyperlinkTest, TestGetDocumentHyperlinks) {
 			std::make_shared<GetDocumentHyperlinksRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<HyperlinksResponse> actual = get_api()->getDocumentHyperlinks(request).get();
+	AsposeResponse<HyperlinksResponse> actual = get_api()->getDocumentHyperlinks(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

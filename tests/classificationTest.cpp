@@ -38,9 +38,9 @@ TEST_F(ClassificationTests, TestClassify) {
 	std::shared_ptr<ClassifyRequest> request=
 			std::make_shared<ClassifyRequest>(STCONVERT("Try text classification"), STCONVERT("3"));
 	auto requestTask = get_api()->classify(request);
-	std::shared_ptr<ClassificationResponse> actual = requestTask.get();
+	AsposeResponse<ClassificationResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -58,9 +58,9 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
 			std::make_shared<ClassifyDocumentRequest>(remoteName, get_data_folder(),
 		boost::none, boost::none, boost::none, STCONVERT("3"), boost::none);
 	auto requestTask = get_api()->classifyDocument(request);
-	std::shared_ptr<ClassificationResponse> actual = requestTask.get();
+	AsposeResponse<ClassificationResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -78,7 +78,7 @@ TEST_F(ClassificationTests, TestClassifyTaxonomyDocuments) {
 	std::shared_ptr<ClassifyDocumentRequest> request= std::make_shared<ClassifyDocumentRequest>(remoteName, get_data_folder(),
 		boost::none, boost::none, boost::none, STCONVERT("3"), taxonomy);
 	auto requestTask = get_api()->classifyDocument(request);
-	std::shared_ptr<ClassificationResponse> actual = requestTask.get();
+	AsposeResponse<ClassificationResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

@@ -35,9 +35,9 @@ protected:
 };
 
 /// <summary>
-/// Test for posting form field
+/// Test for updating form field
 /// </summary>
-TEST_F(FormFieldTest, TestPostFormField)
+TEST_F(FormFieldTest, TestPutFormField)
 {
 	utility::string_t
 		localName = STCONVERT("FormFilled.docx"),
@@ -57,13 +57,13 @@ TEST_F(FormFieldTest, TestPostFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostFormFieldRequest> request= std::make_shared<PostFormFieldRequest>(remoteName, body, index, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"));
+	std::shared_ptr<UpdateFormFieldRequest> request= std::make_shared<UpdateFormFieldRequest>(remoteName, body, STCONVERT("sections/0"), index, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none);
 
-	std::shared_ptr<FormFieldResponse> actual = get_api()->postFormField(request).get();
-	std::shared_ptr<FormField> formField = actual->getFormField();
+	AsposeResponse<FormFieldResponse> actual = get_api()->updateFormField(request).get();
+	std::shared_ptr<FormField> formField = actual.body->getFormField();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 	ASSERT_EQ(STCONVERT("FullName"), formField->getName());
 	ASSERT_TRUE(formField->isEnabled());
 	body = std::static_pointer_cast<FormFieldTextInput>(formField);
@@ -86,12 +86,12 @@ TEST_F(FormFieldTest, TestGetFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetFormFieldRequest> request= std::make_shared<GetFormFieldRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0"));
+	std::shared_ptr<GetFormFieldRequest> request= std::make_shared<GetFormFieldRequest>(remoteName, STCONVERT("sections/0"), index, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<FormFieldResponse> actual = get_api()->getFormField(request).get();
+	AsposeResponse<FormFieldResponse> actual = get_api()->getFormField(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -110,11 +110,11 @@ TEST_F(FormFieldTest, TestGetFormFields)
 	std::shared_ptr<GetFormFieldsRequest> request= std::make_shared<GetFormFieldsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, STCONVERT("sections/0"));
 
-	std::shared_ptr<FormFieldsResponse> actual = get_api()->getFormFields(request).get();
+	AsposeResponse<FormFieldsResponse> actual = get_api()->getFormFields(request).get();
 
-	auto formFields = actual->getFormFields()->getList();
+	auto formFields = actual.body->getFormFields()->getList();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 
 
 	std::shared_ptr<FormFieldTextInput> input1 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(0)),
@@ -133,9 +133,9 @@ TEST_F(FormFieldTest, TestGetFormFields)
 }
 
 /// <summary>
-/// Test for putting form field
+/// Test for inserting form field
 /// </summary>
-TEST_F(FormFieldTest, TestPutFormField)
+TEST_F(FormFieldTest, TestPostFormField)
 {
 	utility::string_t
 		localName = STCONVERT("test_multi_pages.docx"),
@@ -155,14 +155,14 @@ TEST_F(FormFieldTest, TestPutFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutFormFieldRequest> request=
-			std::make_shared<PutFormFieldRequest>(remoteName, body, dataFolder, boost::none,
+	std::shared_ptr<InsertFormFieldRequest> request=
+			std::make_shared<InsertFormFieldRequest>(remoteName, body, dataFolder, boost::none,
 		boost::none, boost::none, destFileName, boost::none, boost::none,
 		STCONVERT("sections/0/paragraphs/0"), boost::none);
 
-	std::shared_ptr<FormFieldResponse> actual = get_api()->putFormField(request).get();
+	AsposeResponse<FormFieldResponse> actual = get_api()->insertFormField(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -180,9 +180,9 @@ TEST_F(FormFieldTest, TestDeleteFormField)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteFormFieldRequest> request= std::make_shared<DeleteFormFieldRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"));
+	std::shared_ptr<DeleteFormFieldRequest> request= std::make_shared<DeleteFormFieldRequest>(remoteName, STCONVERT("sections/0"), index, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFormField(request).get();
-	ASSERT_EQ(200, actual->getCode());
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFormField(request).get();
+	ASSERT_EQ(200, actual->status_code());
 }

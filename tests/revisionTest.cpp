@@ -49,9 +49,9 @@ TEST_F(RevisionTest, TestAcceptAllRevisions) {
 			std::make_shared<AcceptAllRevisionsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, destFileName);
 
-	std::shared_ptr<RevisionsModificationResponse> actual = get_api()->acceptAllRevisions(request).get();
+	AsposeResponse<RevisionsModificationResponse> actual = get_api()->acceptAllRevisions(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -71,7 +71,7 @@ TEST_F(RevisionTest, TestRejectAllRevisions) {
 			std::make_shared<RejectAllRevisionsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, destFileName);
 
-	std::shared_ptr<RevisionsModificationResponse> actual = get_api()->rejectAllRevisions(request).get();
+	AsposeResponse<RevisionsModificationResponse> actual = get_api()->rejectAllRevisions(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

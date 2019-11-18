@@ -48,7 +48,7 @@ TEST_F(DocumentStatisticsTest, TestGetDocumentStatistics) {
 			std::make_shared<GetDocumentStatisticsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<StatDataResponse> actual = get_api()->getDocumentStatistics(request).get();
+	AsposeResponse<StatDataResponse> actual = get_api()->getDocumentStatistics(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

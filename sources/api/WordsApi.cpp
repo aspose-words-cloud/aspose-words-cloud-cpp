@@ -127,7 +127,7 @@ WordsApi::WordsApi(std::shared_ptr<ApiClient> apiClient)
 {
 }
 
-pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRevisions(std::shared_ptr<AcceptAllRevisionsRequest> request)
+pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::acceptAllRevisions(std::shared_ptr<AcceptAllRevisionsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -242,20 +242,20 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRe
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RevisionsModificationResponse> result(new RevisionsModificationResponse());
+		AsposeResponse<RevisionsModificationResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RevisionsModificationResponse>(new RevisionsModificationResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -270,7 +270,7 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::acceptAllRe
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::appendDocument(std::shared_ptr<AppendDocumentRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::shared_ptr<AppendDocumentRequest> request)
 {
 
     // verify the required parameter 'documentList' is set
@@ -418,20 +418,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::appendDocument(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -446,7 +446,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::appendDocument(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shared_ptr<ClassifyRequest> request)
+pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classify(std::shared_ptr<ClassifyRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -547,20 +547,20 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ClassificationResponse> result(new ClassificationResponse());
+		AsposeResponse<ClassificationResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ClassificationResponse>(new ClassificationResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -575,7 +575,7 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classify(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(std::shared_ptr<ClassifyDocumentRequest> request)
+pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classifyDocument(std::shared_ptr<ClassifyDocumentRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -696,20 +696,20 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ClassificationResponse> result(new ClassificationResponse());
+		AsposeResponse<ClassificationResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ClassificationResponse>(new ClassificationResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -724,7 +724,7 @@ pplx::task<std::shared_ptr<ClassificationResponse>> WordsApi::classifyDocument(s
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::compareDocument(std::shared_ptr<CompareDocumentRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::compareDocument(std::shared_ptr<CompareDocumentRequest> request)
 {
 
     // verify the required parameter 'compareData' is set
@@ -860,20 +860,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::compareDocument(std::sha
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -1020,7 +1020,7 @@ pplx::task<HttpContent> WordsApi::convertDocument(std::shared_ptr<ConvertDocumen
         return result;
     });
 }
-pplx::task<void> WordsApi::copyFile(std::shared_ptr<CopyFileRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFile(std::shared_ptr<CopyFileRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1128,14 +1128,14 @@ pplx::task<void> WordsApi::copyFile(std::shared_ptr<CopyFileRequest> request)
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::copyFolder(std::shared_ptr<CopyFolderRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFolder(std::shared_ptr<CopyFolderRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1237,14 +1237,14 @@ pplx::task<void> WordsApi::copyFolder(std::shared_ptr<CopyFolderRequest> request
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::createDocument(std::shared_ptr<CreateDocumentRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::createDocument(std::shared_ptr<CreateDocumentRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1345,20 +1345,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::createDocument(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -1373,7 +1373,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::createDocument(std::shar
         return result;
     });
 }
-pplx::task<void> WordsApi::createFolder(std::shared_ptr<CreateFolderRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::createFolder(std::shared_ptr<CreateFolderRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1464,14 +1464,14 @@ pplx::task<void> WordsApi::createFolder(std::shared_ptr<CreateFolderRequest> req
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::createOrUpdateDocumentProperty(std::shared_ptr<CreateOrUpdateDocumentPropertyRequest> request)
+pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::createOrUpdateDocumentProperty(std::shared_ptr<CreateOrUpdateDocumentPropertyRequest> request)
 {
 
     // verify the required parameter 'property' is set
@@ -1621,20 +1621,20 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::createOrUpdateDo
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentPropertyResponse> result(new DocumentPropertyResponse());
+		AsposeResponse<DocumentPropertyResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentPropertyResponse>(new DocumentPropertyResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -1649,7 +1649,7 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::createOrUpdateDo
         return result;
     });
 }
-pplx::task<std::shared_ptr<BorderResponse>> WordsApi::deleteBorder(std::shared_ptr<DeleteBorderRequest> request)
+pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_ptr<DeleteBorderRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1780,20 +1780,20 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::deleteBorder(std::shared_p
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BorderResponse> result(new BorderResponse());
+		AsposeResponse<BorderResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BorderResponse>(new BorderResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -1808,7 +1808,7 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::deleteBorder(std::shared_p
         return result;
     });
 }
-pplx::task<std::shared_ptr<BordersResponse>> WordsApi::deleteBorders(std::shared_ptr<DeleteBordersRequest> request)
+pplx::task<AsposeResponse<BordersResponse>> WordsApi::deleteBorders(std::shared_ptr<DeleteBordersRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1937,20 +1937,20 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::deleteBorders(std::shared
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BordersResponse> result(new BordersResponse());
+		AsposeResponse<BordersResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BordersResponse>(new BordersResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -1965,7 +1965,7 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::deleteBorders(std::shared
         return result;
     });
 }
-pplx::task<void> WordsApi::deleteComment(std::shared_ptr<DeleteCommentRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteComment(std::shared_ptr<DeleteCommentRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2094,14 +2094,14 @@ pplx::task<void> WordsApi::deleteComment(std::shared_ptr<DeleteCommentRequest> r
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteDocumentProperty(std::shared_ptr<DeleteDocumentPropertyRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDocumentProperty(std::shared_ptr<DeleteDocumentPropertyRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2230,14 +2230,14 @@ pplx::task<void> WordsApi::deleteDocumentProperty(std::shared_ptr<DeleteDocument
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteDrawingObject(std::shared_ptr<DeleteDrawingObjectRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObject(std::shared_ptr<DeleteDrawingObjectRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2368,14 +2368,14 @@ pplx::task<void> WordsApi::deleteDrawingObject(std::shared_ptr<DeleteDrawingObje
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteDrawingObjectWithoutNodePath(std::shared_ptr<DeleteDrawingObjectWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObjectWithoutNodePath(std::shared_ptr<DeleteDrawingObjectWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2504,14 +2504,14 @@ pplx::task<void> WordsApi::deleteDrawingObjectWithoutNodePath(std::shared_ptr<De
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteField(std::shared_ptr<DeleteFieldRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteField(std::shared_ptr<DeleteFieldRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2642,14 +2642,14 @@ pplx::task<void> WordsApi::deleteField(std::shared_ptr<DeleteFieldRequest> reque
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFieldWithoutNodePath(std::shared_ptr<DeleteFieldWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldWithoutNodePath(std::shared_ptr<DeleteFieldWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2778,14 +2778,14 @@ pplx::task<void> WordsApi::deleteFieldWithoutNodePath(std::shared_ptr<DeleteFiel
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFields(std::shared_ptr<DeleteFieldsRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFields(std::shared_ptr<DeleteFieldsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -2914,14 +2914,14 @@ pplx::task<void> WordsApi::deleteFields(std::shared_ptr<DeleteFieldsRequest> req
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+			return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFieldsWithoutNodePath(std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWithoutNodePath(std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3048,14 +3048,14 @@ pplx::task<void> WordsApi::deleteFieldsWithoutNodePath(std::shared_ptr<DeleteFie
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFile(std::shared_ptr<DeleteFileRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFile(std::shared_ptr<DeleteFileRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3152,14 +3152,14 @@ pplx::task<void> WordsApi::deleteFile(std::shared_ptr<DeleteFileRequest> request
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFolder(std::shared_ptr<DeleteFolderRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFolder(std::shared_ptr<DeleteFolderRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3256,14 +3256,14 @@ pplx::task<void> WordsApi::deleteFolder(std::shared_ptr<DeleteFolderRequest> req
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFootnote(std::shared_ptr<DeleteFootnoteRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnote(std::shared_ptr<DeleteFootnoteRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3394,14 +3394,14 @@ pplx::task<void> WordsApi::deleteFootnote(std::shared_ptr<DeleteFootnoteRequest>
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFootnoteWithoutNodePath(std::shared_ptr<DeleteFootnoteWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnoteWithoutNodePath(std::shared_ptr<DeleteFootnoteWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3530,14 +3530,14 @@ pplx::task<void> WordsApi::deleteFootnoteWithoutNodePath(std::shared_ptr<DeleteF
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFormField(std::shared_ptr<DeleteFormFieldRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormField(std::shared_ptr<DeleteFormFieldRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3668,14 +3668,14 @@ pplx::task<void> WordsApi::deleteFormField(std::shared_ptr<DeleteFormFieldReques
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteFormFieldWithoutNodePath(std::shared_ptr<DeleteFormFieldWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormFieldWithoutNodePath(std::shared_ptr<DeleteFormFieldWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3804,14 +3804,14 @@ pplx::task<void> WordsApi::deleteFormFieldWithoutNodePath(std::shared_ptr<Delete
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteHeaderFooter(std::shared_ptr<DeleteHeaderFooterRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeaderFooter(std::shared_ptr<DeleteHeaderFooterRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -3942,14 +3942,14 @@ pplx::task<void> WordsApi::deleteHeaderFooter(std::shared_ptr<DeleteHeaderFooter
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteHeadersFooters(std::shared_ptr<DeleteHeadersFootersRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeadersFooters(std::shared_ptr<DeleteHeadersFootersRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4084,14 +4084,14 @@ pplx::task<void> WordsApi::deleteHeadersFooters(std::shared_ptr<DeleteHeadersFoo
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteMacros(std::shared_ptr<DeleteMacrosRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteMacros(std::shared_ptr<DeleteMacrosRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4218,14 +4218,14 @@ pplx::task<void> WordsApi::deleteMacros(std::shared_ptr<DeleteMacrosRequest> req
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteOfficeMathObject(std::shared_ptr<DeleteOfficeMathObjectRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMathObject(std::shared_ptr<DeleteOfficeMathObjectRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4356,14 +4356,14 @@ pplx::task<void> WordsApi::deleteOfficeMathObject(std::shared_ptr<DeleteOfficeMa
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteOfficeMathObjectWithoutNodePath(std::shared_ptr<DeleteOfficeMathObjectWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMathObjectWithoutNodePath(std::shared_ptr<DeleteOfficeMathObjectWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4492,14 +4492,14 @@ pplx::task<void> WordsApi::deleteOfficeMathObjectWithoutNodePath(std::shared_ptr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteParagraph(std::shared_ptr<DeleteParagraphRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraph(std::shared_ptr<DeleteParagraphRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4630,14 +4630,14 @@ pplx::task<void> WordsApi::deleteParagraph(std::shared_ptr<DeleteParagraphReques
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteParagraphWithoutNodePath(std::shared_ptr<DeleteParagraphWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraphWithoutNodePath(std::shared_ptr<DeleteParagraphWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4766,14 +4766,14 @@ pplx::task<void> WordsApi::deleteParagraphWithoutNodePath(std::shared_ptr<Delete
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteRun(std::shared_ptr<DeleteRunRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteRun(std::shared_ptr<DeleteRunRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -4904,14 +4904,14 @@ pplx::task<void> WordsApi::deleteRun(std::shared_ptr<DeleteRunRequest> request)
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteSection(std::shared_ptr<DeleteSectionRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteSection(std::shared_ptr<DeleteSectionRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -5040,14 +5040,14 @@ pplx::task<void> WordsApi::deleteSection(std::shared_ptr<DeleteSectionRequest> r
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteTable(std::shared_ptr<DeleteTableRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTable(std::shared_ptr<DeleteTableRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -5178,14 +5178,14 @@ pplx::task<void> WordsApi::deleteTable(std::shared_ptr<DeleteTableRequest> reque
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteTableCell(std::shared_ptr<DeleteTableCellRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableCell(std::shared_ptr<DeleteTableCellRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -5316,14 +5316,14 @@ pplx::task<void> WordsApi::deleteTableCell(std::shared_ptr<DeleteTableCellReques
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteTableRow(std::shared_ptr<DeleteTableRowRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableRow(std::shared_ptr<DeleteTableRowRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -5454,14 +5454,14 @@ pplx::task<void> WordsApi::deleteTableRow(std::shared_ptr<DeleteTableRowRequest>
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::deleteTableWithoutNodePath(std::shared_ptr<DeleteTableWithoutNodePathRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableWithoutNodePath(std::shared_ptr<DeleteTableWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -5590,14 +5590,14 @@ pplx::task<void> WordsApi::deleteTableWithoutNodePath(std::shared_ptr<DeleteTabl
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::deleteWatermark(std::shared_ptr<DeleteWatermarkRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::deleteWatermark(std::shared_ptr<DeleteWatermarkRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -5724,20 +5724,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::deleteWatermark(std::sha
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -5860,7 +5860,7 @@ pplx::task<HttpContent> WordsApi::downloadFile(std::shared_ptr<DownloadFileReque
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::executeMailMerge(std::shared_ptr<ExecuteMailMergeRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::executeMailMerge(std::shared_ptr<ExecuteMailMergeRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6004,20 +6004,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::executeMailMerge(std::sh
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6163,7 +6163,7 @@ pplx::task<HttpContent> WordsApi::executeMailMergeOnline(std::shared_ptr<Execute
         return result;
     });
 }
-pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(std::shared_ptr<GetAvailableFontsRequest> request)
+pplx::task<AsposeResponse<AvailableFontsResponse>> WordsApi::getAvailableFonts(std::shared_ptr<GetAvailableFontsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6252,20 +6252,20 @@ pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<AvailableFontsResponse> result(new AvailableFontsResponse());
+		AsposeResponse<AvailableFontsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<AvailableFontsResponse>(new AvailableFontsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6280,7 +6280,7 @@ pplx::task<std::shared_ptr<AvailableFontsResponse>> WordsApi::getAvailableFonts(
         return result;
     });
 }
-pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::getBookmarkByName(std::shared_ptr<GetBookmarkByNameRequest> request)
+pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::getBookmarkByName(std::shared_ptr<GetBookmarkByNameRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6391,20 +6391,20 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::getBookmarkByName(std::s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BookmarkResponse> result(new BookmarkResponse());
+		AsposeResponse<BookmarkResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BookmarkResponse>(new BookmarkResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6419,7 +6419,7 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::getBookmarkByName(std::s
         return result;
     });
 }
-pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getBookmarks(std::shared_ptr<GetBookmarksRequest> request)
+pplx::task<AsposeResponse<BookmarksResponse>> WordsApi::getBookmarks(std::shared_ptr<GetBookmarksRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6528,20 +6528,20 @@ pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getBookmarks(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BookmarksResponse> result(new BookmarksResponse());
+		AsposeResponse<BookmarksResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BookmarksResponse>(new BookmarksResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6556,7 +6556,7 @@ pplx::task<std::shared_ptr<BookmarksResponse>> WordsApi::getBookmarks(std::share
         return result;
     });
 }
-pplx::task<std::shared_ptr<BorderResponse>> WordsApi::getBorder(std::shared_ptr<GetBorderRequest> request)
+pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<GetBorderRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6669,20 +6669,20 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::getBorder(std::shared_ptr<
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BorderResponse> result(new BorderResponse());
+		AsposeResponse<BorderResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BorderResponse>(new BorderResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6697,7 +6697,7 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::getBorder(std::shared_ptr<
         return result;
     });
 }
-pplx::task<std::shared_ptr<BordersResponse>> WordsApi::getBorders(std::shared_ptr<GetBordersRequest> request)
+pplx::task<AsposeResponse<BordersResponse>> WordsApi::getBorders(std::shared_ptr<GetBordersRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6808,20 +6808,20 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::getBorders(std::shared_pt
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BordersResponse> result(new BordersResponse());
+		AsposeResponse<BordersResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BordersResponse>(new BordersResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6836,7 +6836,7 @@ pplx::task<std::shared_ptr<BordersResponse>> WordsApi::getBorders(std::shared_pt
         return result;
     });
 }
-pplx::task<std::shared_ptr<CommentResponse>> WordsApi::getComment(std::shared_ptr<GetCommentRequest> request)
+pplx::task<AsposeResponse<CommentResponse>> WordsApi::getComment(std::shared_ptr<GetCommentRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -6947,20 +6947,20 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::getComment(std::shared_pt
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<CommentResponse> result(new CommentResponse());
+		AsposeResponse<CommentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<CommentResponse>(new CommentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -6975,7 +6975,7 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::getComment(std::shared_pt
         return result;
     });
 }
-pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_ptr<GetCommentsRequest> request)
+pplx::task<AsposeResponse<CommentsResponse>> WordsApi::getComments(std::shared_ptr<GetCommentsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -7084,20 +7084,20 @@ pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<CommentsResponse> result(new CommentsResponse());
+		AsposeResponse<CommentsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<CommentsResponse>(new CommentsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -7112,7 +7112,7 @@ pplx::task<std::shared_ptr<CommentsResponse>> WordsApi::getComments(std::shared_
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_ptr<GetDocumentRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::getDocument(std::shared_ptr<GetDocumentRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -7221,20 +7221,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -7249,7 +7249,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::getDocument(std::shared_
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingObjectByIndex(std::shared_ptr<GetDocumentDrawingObjectByIndexRequest> request)
+pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingObjectByIndex(std::shared_ptr<GetDocumentDrawingObjectByIndexRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -7362,20 +7362,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingO
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectResponse> result(new DrawingObjectResponse());
+		AsposeResponse<DrawingObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectResponse>(new DrawingObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -7390,7 +7390,7 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingO
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingObjectByIndexWithoutNodePath(std::shared_ptr<GetDocumentDrawingObjectByIndexWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingObjectByIndexWithoutNodePath(std::shared_ptr<GetDocumentDrawingObjectByIndexWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -7501,20 +7501,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::getDocumentDrawingO
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectResponse> result(new DrawingObjectResponse());
+		AsposeResponse<DrawingObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectResponse>(new DrawingObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8021,7 +8021,7 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleDataWithoutNodePath
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawingObjects(std::shared_ptr<GetDocumentDrawingObjectsRequest> request)
+pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingObjects(std::shared_ptr<GetDocumentDrawingObjectsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -8132,20 +8132,20 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectsResponse> result(new DrawingObjectsResponse());
+		AsposeResponse<DrawingObjectsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectsResponse>(new DrawingObjectsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8160,7 +8160,7 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawingObjectsWithoutNodePath(std::shared_ptr<GetDocumentDrawingObjectsWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingObjectsWithoutNodePath(std::shared_ptr<GetDocumentDrawingObjectsWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -8269,20 +8269,20 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectsResponse> result(new DrawingObjectsResponse());
+		AsposeResponse<DrawingObjectsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectsResponse>(new DrawingObjectsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8297,7 +8297,7 @@ pplx::task<std::shared_ptr<DrawingObjectsResponse>> WordsApi::getDocumentDrawing
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(std::shared_ptr<GetDocumentFieldNamesRequest> request)
+pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNames(std::shared_ptr<GetDocumentFieldNamesRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -8412,20 +8412,20 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldNamesResponse> result(new FieldNamesResponse());
+		AsposeResponse<FieldNamesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldNamesResponse>(new FieldNamesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8440,7 +8440,7 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNames(
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOnline(std::shared_ptr<GetDocumentFieldNamesOnlineRequest> request)
+pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOnline(std::shared_ptr<GetDocumentFieldNamesOnlineRequest> request)
 {
 
     // verify the required parameter '_template' is set
@@ -8538,20 +8538,20 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNamesO
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldNamesResponse> result(new FieldNamesResponse());
+		AsposeResponse<FieldNamesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldNamesResponse>(new FieldNamesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8566,7 +8566,7 @@ pplx::task<std::shared_ptr<FieldNamesResponse>> WordsApi::getDocumentFieldNamesO
         return result;
     });
 }
-pplx::task<std::shared_ptr<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIndex(std::shared_ptr<GetDocumentHyperlinkByIndexRequest> request)
+pplx::task<AsposeResponse<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIndex(std::shared_ptr<GetDocumentHyperlinkByIndexRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -8677,20 +8677,20 @@ pplx::task<std::shared_ptr<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByI
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<HyperlinkResponse> result(new HyperlinkResponse());
+		AsposeResponse<HyperlinkResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<HyperlinkResponse>(new HyperlinkResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8705,7 +8705,7 @@ pplx::task<std::shared_ptr<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByI
         return result;
     });
 }
-pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(std::shared_ptr<GetDocumentHyperlinksRequest> request)
+pplx::task<AsposeResponse<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(std::shared_ptr<GetDocumentHyperlinksRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -8814,20 +8814,20 @@ pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<HyperlinksResponse> result(new HyperlinksResponse());
+		AsposeResponse<HyperlinksResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<HyperlinksResponse>(new HyperlinksResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8842,7 +8842,7 @@ pplx::task<std::shared_ptr<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentProperties(std::shared_ptr<GetDocumentPropertiesRequest> request)
+pplx::task<AsposeResponse<DocumentPropertiesResponse>> WordsApi::getDocumentProperties(std::shared_ptr<GetDocumentPropertiesRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -8951,20 +8951,20 @@ pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentPro
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentPropertiesResponse> result(new DocumentPropertiesResponse());
+		AsposeResponse<DocumentPropertiesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentPropertiesResponse>(new DocumentPropertiesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -8979,7 +8979,7 @@ pplx::task<std::shared_ptr<DocumentPropertiesResponse>> WordsApi::getDocumentPro
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::getDocumentProperty(std::shared_ptr<GetDocumentPropertyRequest> request)
+pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::getDocumentProperty(std::shared_ptr<GetDocumentPropertyRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -9090,20 +9090,20 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::getDocumentPrope
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentPropertyResponse> result(new DocumentPropertyResponse());
+		AsposeResponse<DocumentPropertyResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentPropertyResponse>(new DocumentPropertyResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -9118,7 +9118,7 @@ pplx::task<std::shared_ptr<DocumentPropertyResponse>> WordsApi::getDocumentPrope
         return result;
     });
 }
-pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtection(std::shared_ptr<GetDocumentProtectionRequest> request)
+pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::getDocumentProtection(std::shared_ptr<GetDocumentProtectionRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -9227,20 +9227,20 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtect
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ProtectionDataResponse> result(new ProtectionDataResponse());
+		AsposeResponse<ProtectionDataResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ProtectionDataResponse>(new ProtectionDataResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -9255,7 +9255,7 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::getDocumentProtect
         return result;
     });
 }
-pplx::task<std::shared_ptr<StatDataResponse>> WordsApi::getDocumentStatistics(std::shared_ptr<GetDocumentStatisticsRequest> request)
+pplx::task<AsposeResponse<StatDataResponse>> WordsApi::getDocumentStatistics(std::shared_ptr<GetDocumentStatisticsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -9382,20 +9382,20 @@ pplx::task<std::shared_ptr<StatDataResponse>> WordsApi::getDocumentStatistics(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<StatDataResponse> result(new StatDataResponse());
+		AsposeResponse<StatDataResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<StatDataResponse>(new StatDataResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -9547,7 +9547,7 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getField(std::shared_ptr<GetFieldRequest> request)
+pplx::task<AsposeResponse<FieldResponse>> WordsApi::getField(std::shared_ptr<GetFieldRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -9660,20 +9660,20 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getField(std::shared_ptr<Ge
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldResponse> result(new FieldResponse());
+		AsposeResponse<FieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldResponse>(new FieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -9688,7 +9688,7 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getField(std::shared_ptr<Ge
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getFieldWithoutNodePath(std::shared_ptr<GetFieldWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FieldResponse>> WordsApi::getFieldWithoutNodePath(std::shared_ptr<GetFieldWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -9799,20 +9799,20 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getFieldWithoutNodePath(std
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldResponse> result(new FieldResponse());
+		AsposeResponse<FieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldResponse>(new FieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -9827,7 +9827,7 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::getFieldWithoutNodePath(std
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<GetFieldsRequest> request)
+pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFields(std::shared_ptr<GetFieldsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -9938,20 +9938,20 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldsResponse> result(new FieldsResponse());
+		AsposeResponse<FieldsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldsResponse>(new FieldsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -9966,7 +9966,7 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFields(std::shared_ptr<
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(std::shared_ptr<GetFieldsWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(std::shared_ptr<GetFieldsWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10075,20 +10075,20 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldsResponse> result(new FieldsResponse());
+		AsposeResponse<FieldsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldsResponse>(new FieldsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10103,7 +10103,7 @@ pplx::task<std::shared_ptr<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(s
         return result;
     });
 }
-pplx::task<std::shared_ptr<FilesList>> WordsApi::getFilesList(std::shared_ptr<GetFilesListRequest> request)
+pplx::task<AsposeResponse<FilesList>> WordsApi::getFilesList(std::shared_ptr<GetFilesListRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10194,20 +10194,20 @@ pplx::task<std::shared_ptr<FilesList>> WordsApi::getFilesList(std::shared_ptr<Ge
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FilesList> result(new FilesList());
+		AsposeResponse<FilesList> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FilesList>(new FilesList())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10222,7 +10222,7 @@ pplx::task<std::shared_ptr<FilesList>> WordsApi::getFilesList(std::shared_ptr<Ge
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnote(std::shared_ptr<GetFootnoteRequest> request)
+pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnote(std::shared_ptr<GetFootnoteRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10335,20 +10335,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnote(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnoteResponse> result(new FootnoteResponse());
+		AsposeResponse<FootnoteResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnoteResponse>(new FootnoteResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10363,7 +10363,7 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnote(std::shared_
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePath(std::shared_ptr<GetFootnoteWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePath(std::shared_ptr<GetFootnoteWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10474,20 +10474,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePa
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnoteResponse> result(new FootnoteResponse());
+		AsposeResponse<FootnoteResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnoteResponse>(new FootnoteResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10502,7 +10502,7 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePa
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::shared_ptr<GetFootnotesRequest> request)
+pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotes(std::shared_ptr<GetFootnotesRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10613,20 +10613,20 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnotesResponse> result(new FootnotesResponse());
+		AsposeResponse<FootnotesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnotesResponse>(new FootnotesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10641,7 +10641,7 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotes(std::share
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotesWithoutNodePath(std::shared_ptr<GetFootnotesWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotesWithoutNodePath(std::shared_ptr<GetFootnotesWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10750,20 +10750,20 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotesWithoutNode
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnotesResponse> result(new FootnotesResponse());
+		AsposeResponse<FootnotesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnotesResponse>(new FootnotesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10778,7 +10778,7 @@ pplx::task<std::shared_ptr<FootnotesResponse>> WordsApi::getFootnotesWithoutNode
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormField(std::shared_ptr<GetFormFieldRequest> request)
+pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormField(std::shared_ptr<GetFormFieldRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -10891,20 +10891,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormField(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldResponse> result(new FormFieldResponse());
+		AsposeResponse<FormFieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldResponse>(new FormFieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -10919,7 +10919,7 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormField(std::share
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormFieldWithoutNodePath(std::shared_ptr<GetFormFieldWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormFieldWithoutNodePath(std::shared_ptr<GetFormFieldWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11030,20 +11030,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormFieldWithoutNode
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldResponse> result(new FormFieldResponse());
+		AsposeResponse<FormFieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldResponse>(new FormFieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11058,7 +11058,7 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::getFormFieldWithoutNode
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::shared_ptr<GetFormFieldsRequest> request)
+pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFields(std::shared_ptr<GetFormFieldsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11169,20 +11169,20 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::sha
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldsResponse> result(new FormFieldsResponse());
+		AsposeResponse<FormFieldsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldsResponse>(new FormFieldsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11197,7 +11197,7 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFields(std::sha
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNodePath(std::shared_ptr<GetFormFieldsWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNodePath(std::shared_ptr<GetFormFieldsWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11306,20 +11306,20 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNo
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldsResponse> result(new FormFieldsResponse());
+		AsposeResponse<FormFieldsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldsResponse>(new FormFieldsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11334,7 +11334,7 @@ pplx::task<std::shared_ptr<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNo
         return result;
     });
 }
-pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::shared_ptr<GetHeaderFooterRequest> request)
+pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::shared_ptr<GetHeaderFooterRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11451,20 +11451,20 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooter(std:
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<HeaderFooterResponse> result(new HeaderFooterResponse());
+		AsposeResponse<HeaderFooterResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<HeaderFooterResponse>(new HeaderFooterResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11479,7 +11479,7 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooter(std:
         return result;
     });
 }
-pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSection(std::shared_ptr<GetHeaderFooterOfSectionRequest> request)
+pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSection(std::shared_ptr<GetHeaderFooterOfSectionRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11598,20 +11598,20 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSec
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<HeaderFooterResponse> result(new HeaderFooterResponse());
+		AsposeResponse<HeaderFooterResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<HeaderFooterResponse>(new HeaderFooterResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11626,7 +11626,7 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSec
         return result;
     });
 }
-pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(std::shared_ptr<GetHeaderFootersRequest> request)
+pplx::task<AsposeResponse<HeaderFootersResponse>> WordsApi::getHeaderFooters(std::shared_ptr<GetHeaderFootersRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11743,20 +11743,20 @@ pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<HeaderFootersResponse> result(new HeaderFootersResponse());
+		AsposeResponse<HeaderFootersResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<HeaderFootersResponse>(new HeaderFootersResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11771,7 +11771,7 @@ pplx::task<std::shared_ptr<HeaderFootersResponse>> WordsApi::getHeaderFooters(st
         return result;
     });
 }
-pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObject(std::shared_ptr<GetOfficeMathObjectRequest> request)
+pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObject(std::shared_ptr<GetOfficeMathObjectRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -11884,20 +11884,20 @@ pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObj
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<OfficeMathObjectResponse> result(new OfficeMathObjectResponse());
+		AsposeResponse<OfficeMathObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<OfficeMathObjectResponse>(new OfficeMathObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -11912,7 +11912,7 @@ pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObj
         return result;
     });
 }
-pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObjectWithoutNodePath(std::shared_ptr<GetOfficeMathObjectWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObjectWithoutNodePath(std::shared_ptr<GetOfficeMathObjectWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12023,20 +12023,20 @@ pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObj
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<OfficeMathObjectResponse> result(new OfficeMathObjectResponse());
+		AsposeResponse<OfficeMathObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<OfficeMathObjectResponse>(new OfficeMathObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12051,7 +12051,7 @@ pplx::task<std::shared_ptr<OfficeMathObjectResponse>> WordsApi::getOfficeMathObj
         return result;
     });
 }
-pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObjects(std::shared_ptr<GetOfficeMathObjectsRequest> request)
+pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObjects(std::shared_ptr<GetOfficeMathObjectsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12162,20 +12162,20 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<OfficeMathObjectsResponse> result(new OfficeMathObjectsResponse());
+		AsposeResponse<OfficeMathObjectsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<OfficeMathObjectsResponse>(new OfficeMathObjectsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12190,7 +12190,7 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
         return result;
     });
 }
-pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObjectsWithoutNodePath(std::shared_ptr<GetOfficeMathObjectsWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObjectsWithoutNodePath(std::shared_ptr<GetOfficeMathObjectsWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12299,20 +12299,20 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<OfficeMathObjectsResponse> result(new OfficeMathObjectsResponse());
+		AsposeResponse<OfficeMathObjectsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<OfficeMathObjectsResponse>(new OfficeMathObjectsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12327,7 +12327,7 @@ pplx::task<std::shared_ptr<OfficeMathObjectsResponse>> WordsApi::getOfficeMathOb
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getParagraph(std::shared_ptr<GetParagraphRequest> request)
+pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraph(std::shared_ptr<GetParagraphRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12440,20 +12440,20 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getParagraph(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphResponse> result(new ParagraphResponse());
+		AsposeResponse<ParagraphResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphResponse>(new ParagraphResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12468,7 +12468,7 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getParagraph(std::share
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getParagraphFormat(std::shared_ptr<GetParagraphFormatRequest> request)
+pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat(std::shared_ptr<GetParagraphFormatRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12581,20 +12581,20 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getParagraphForma
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphFormatResponse> result(new ParagraphFormatResponse());
+		AsposeResponse<ParagraphFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphFormatResponse>(new ParagraphFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12609,7 +12609,7 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getParagraphForma
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getParagraphFormatWithoutNodePath(std::shared_ptr<GetParagraphFormatWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormatWithoutNodePath(std::shared_ptr<GetParagraphFormatWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12720,20 +12720,20 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getParagraphForma
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphFormatResponse> result(new ParagraphFormatResponse());
+		AsposeResponse<ParagraphFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphFormatResponse>(new ParagraphFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12748,7 +12748,7 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::getParagraphForma
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getParagraphWithoutNodePath(std::shared_ptr<GetParagraphWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodePath(std::shared_ptr<GetParagraphWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12859,20 +12859,20 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getParagraphWithoutNode
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphResponse> result(new ParagraphResponse());
+		AsposeResponse<ParagraphResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphResponse>(new ParagraphResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -12887,7 +12887,7 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::getParagraphWithoutNode
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getParagraphs(std::shared_ptr<GetParagraphsRequest> request)
+pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagraphs(std::shared_ptr<GetParagraphsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -12998,20 +12998,20 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getParagr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphLinkCollectionResponse> result(new ParagraphLinkCollectionResponse());
+		AsposeResponse<ParagraphLinkCollectionResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphLinkCollectionResponse>(new ParagraphLinkCollectionResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13026,7 +13026,7 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getParagr
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getParagraphsWithoutNodePath(std::shared_ptr<GetParagraphsWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagraphsWithoutNodePath(std::shared_ptr<GetParagraphsWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13135,20 +13135,20 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getParagr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphLinkCollectionResponse> result(new ParagraphLinkCollectionResponse());
+		AsposeResponse<ParagraphLinkCollectionResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphLinkCollectionResponse>(new ParagraphLinkCollectionResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13163,7 +13163,7 @@ pplx::task<std::shared_ptr<ParagraphLinkCollectionResponse>> WordsApi::getParagr
         return result;
     });
 }
-pplx::task<std::shared_ptr<RangeTextResponse>> WordsApi::getRangeText(std::shared_ptr<GetRangeTextRequest> request)
+pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared_ptr<GetRangeTextRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13276,20 +13276,20 @@ pplx::task<std::shared_ptr<RangeTextResponse>> WordsApi::getRangeText(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RangeTextResponse> result(new RangeTextResponse());
+		AsposeResponse<RangeTextResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RangeTextResponse>(new RangeTextResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13304,7 +13304,7 @@ pplx::task<std::shared_ptr<RangeTextResponse>> WordsApi::getRangeText(std::share
         return result;
     });
 }
-pplx::task<std::shared_ptr<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunRequest> request)
+pplx::task<AsposeResponse<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13417,20 +13417,20 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRun
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RunResponse> result(new RunResponse());
+		AsposeResponse<RunResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RunResponse>(new RunResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13445,7 +13445,7 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRun
         return result;
     });
 }
-pplx::task<std::shared_ptr<FontResponse>> WordsApi::getRunFont(std::shared_ptr<GetRunFontRequest> request)
+pplx::task<AsposeResponse<FontResponse>> WordsApi::getRunFont(std::shared_ptr<GetRunFontRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13558,20 +13558,20 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::getRunFont(std::shared_ptr<G
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FontResponse> result(new FontResponse());
+		AsposeResponse<FontResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FontResponse>(new FontResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13586,7 +13586,7 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::getRunFont(std::shared_ptr<G
         return result;
     });
 }
-pplx::task<std::shared_ptr<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRunsRequest> request)
+pplx::task<AsposeResponse<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRunsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13697,20 +13697,20 @@ pplx::task<std::shared_ptr<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetR
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RunsResponse> result(new RunsResponse());
+		AsposeResponse<RunsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RunsResponse>(new RunsResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13725,7 +13725,7 @@ pplx::task<std::shared_ptr<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetR
         return result;
     });
 }
-pplx::task<std::shared_ptr<SectionResponse>> WordsApi::getSection(std::shared_ptr<GetSectionRequest> request)
+pplx::task<AsposeResponse<SectionResponse>> WordsApi::getSection(std::shared_ptr<GetSectionRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13836,20 +13836,20 @@ pplx::task<std::shared_ptr<SectionResponse>> WordsApi::getSection(std::shared_pt
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SectionResponse> result(new SectionResponse());
+		AsposeResponse<SectionResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SectionResponse>(new SectionResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -13864,7 +13864,7 @@ pplx::task<std::shared_ptr<SectionResponse>> WordsApi::getSection(std::shared_pt
         return result;
     });
 }
-pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::getSectionPageSetup(std::shared_ptr<GetSectionPageSetupRequest> request)
+pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::getSectionPageSetup(std::shared_ptr<GetSectionPageSetupRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -13975,20 +13975,20 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::getSectionPageSe
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SectionPageSetupResponse> result(new SectionPageSetupResponse());
+		AsposeResponse<SectionPageSetupResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SectionPageSetupResponse>(new SectionPageSetupResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14003,7 +14003,7 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::getSectionPageSe
         return result;
     });
 }
-pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections(std::shared_ptr<GetSectionsRequest> request)
+pplx::task<AsposeResponse<SectionLinkCollectionResponse>> WordsApi::getSections(std::shared_ptr<GetSectionsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14112,20 +14112,20 @@ pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SectionLinkCollectionResponse> result(new SectionLinkCollectionResponse());
+		AsposeResponse<SectionLinkCollectionResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SectionLinkCollectionResponse>(new SectionLinkCollectionResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14140,7 +14140,7 @@ pplx::task<std::shared_ptr<SectionLinkCollectionResponse>> WordsApi::getSections
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTable(std::shared_ptr<GetTableRequest> request)
+pplx::task<AsposeResponse<TableResponse>> WordsApi::getTable(std::shared_ptr<GetTableRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14253,20 +14253,20 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTable(std::shared_ptr<Ge
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableResponse> result(new TableResponse());
+		AsposeResponse<TableResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableResponse>(new TableResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14281,7 +14281,7 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTable(std::shared_ptr<Ge
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::getTableCell(std::shared_ptr<GetTableCellRequest> request)
+pplx::task<AsposeResponse<TableCellResponse>> WordsApi::getTableCell(std::shared_ptr<GetTableCellRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14394,20 +14394,20 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::getTableCell(std::share
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableCellResponse> result(new TableCellResponse());
+		AsposeResponse<TableCellResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableCellResponse>(new TableCellResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14422,7 +14422,7 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::getTableCell(std::share
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::getTableCellFormat(std::shared_ptr<GetTableCellFormatRequest> request)
+pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::getTableCellFormat(std::shared_ptr<GetTableCellFormatRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14535,20 +14535,20 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::getTableCellForma
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableCellFormatResponse> result(new TableCellFormatResponse());
+		AsposeResponse<TableCellFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableCellFormatResponse>(new TableCellFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14563,7 +14563,7 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::getTableCellForma
         return result;
     });
 }
-pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTableProperties(std::shared_ptr<GetTablePropertiesRequest> request)
+pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties(std::shared_ptr<GetTablePropertiesRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14676,20 +14676,20 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertie
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TablePropertiesResponse> result(new TablePropertiesResponse());
+		AsposeResponse<TablePropertiesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TablePropertiesResponse>(new TablePropertiesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14704,7 +14704,7 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertie
         return result;
     });
 }
-pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertiesWithoutNodePath(std::shared_ptr<GetTablePropertiesWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTablePropertiesWithoutNodePath(std::shared_ptr<GetTablePropertiesWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14815,20 +14815,20 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertie
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TablePropertiesResponse> result(new TablePropertiesResponse());
+		AsposeResponse<TablePropertiesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TablePropertiesResponse>(new TablePropertiesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14843,7 +14843,7 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::getTablePropertie
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::getTableRow(std::shared_ptr<GetTableRowRequest> request)
+pplx::task<AsposeResponse<TableRowResponse>> WordsApi::getTableRow(std::shared_ptr<GetTableRowRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -14956,20 +14956,20 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::getTableRow(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableRowResponse> result(new TableRowResponse());
+		AsposeResponse<TableRowResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableRowResponse>(new TableRowResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -14984,7 +14984,7 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::getTableRow(std::shared_
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::getTableRowFormat(std::shared_ptr<GetTableRowFormatRequest> request)
+pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::getTableRowFormat(std::shared_ptr<GetTableRowFormatRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -15097,20 +15097,20 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::getTableRowFormat(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableRowFormatResponse> result(new TableRowFormatResponse());
+		AsposeResponse<TableRowFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableRowFormatResponse>(new TableRowFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -15125,7 +15125,7 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::getTableRowFormat(
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTableWithoutNodePath(std::shared_ptr<GetTableWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<TableResponse>> WordsApi::getTableWithoutNodePath(std::shared_ptr<GetTableWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -15236,20 +15236,20 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTableWithoutNodePath(std
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableResponse> result(new TableResponse());
+		AsposeResponse<TableResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableResponse>(new TableResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -15264,7 +15264,7 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::getTableWithoutNodePath(std
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std::shared_ptr<GetTablesRequest> request)
+pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTables(std::shared_ptr<GetTablesRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -15375,20 +15375,20 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableLinkCollectionResponse> result(new TableLinkCollectionResponse());
+		AsposeResponse<TableLinkCollectionResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableLinkCollectionResponse>(new TableLinkCollectionResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -15403,7 +15403,7 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTables(std
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTablesWithoutNodePath(std::shared_ptr<GetTablesWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTablesWithoutNodePath(std::shared_ptr<GetTablesWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -15512,20 +15512,20 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTablesWith
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableLinkCollectionResponse> result(new TableLinkCollectionResponse());
+		AsposeResponse<TableLinkCollectionResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableLinkCollectionResponse>(new TableLinkCollectionResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -15540,7 +15540,7 @@ pplx::task<std::shared_ptr<TableLinkCollectionResponse>> WordsApi::getTablesWith
         return result;
     });
 }
-pplx::task<std::shared_ptr<CommentResponse>> WordsApi::insertComment(std::shared_ptr<InsertCommentRequest> request)
+pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_ptr<InsertCommentRequest> request)
 {
 
     // verify the required parameter 'comment' is set
@@ -15688,20 +15688,20 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::insertComment(std::shared
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<CommentResponse> result(new CommentResponse());
+		AsposeResponse<CommentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<CommentResponse>(new CommentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -15716,7 +15716,7 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::insertComment(std::shared
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::insertDrawingObject(std::shared_ptr<InsertDrawingObjectRequest> request)
+pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(std::shared_ptr<InsertDrawingObjectRequest> request)
 {
 
     // verify the required parameter 'imageFile' is set
@@ -15859,20 +15859,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::insertDrawingObject
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectResponse> result(new DrawingObjectResponse());
+		AsposeResponse<DrawingObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectResponse>(new DrawingObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -15887,7 +15887,7 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::insertDrawingObject
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::insertDrawingObjectWithoutNodePath(std::shared_ptr<InsertDrawingObjectWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectWithoutNodePath(std::shared_ptr<InsertDrawingObjectWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'imageFile' is set
@@ -16028,20 +16028,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::insertDrawingObject
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectResponse> result(new DrawingObjectResponse());
+		AsposeResponse<DrawingObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectResponse>(new DrawingObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -16056,7 +16056,7 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::insertDrawingObject
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldResponse>> WordsApi::insertField(std::shared_ptr<InsertFieldRequest> request)
+pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertField(std::shared_ptr<InsertFieldRequest> request)
 {
 
     // verify the required parameter 'field' is set
@@ -16212,20 +16212,20 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::insertField(std::shared_ptr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldResponse> result(new FieldResponse());
+		AsposeResponse<FieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldResponse>(new FieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -16240,7 +16240,7 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::insertField(std::shared_ptr
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldResponse>> WordsApi::insertFieldWithoutNodePath(std::shared_ptr<InsertFieldWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertFieldWithoutNodePath(std::shared_ptr<InsertFieldWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'field' is set
@@ -16394,20 +16394,20 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::insertFieldWithoutNodePath(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldResponse> result(new FieldResponse());
+		AsposeResponse<FieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldResponse>(new FieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -16422,7 +16422,7 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::insertFieldWithoutNodePath(
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::insertFootnote(std::shared_ptr<InsertFootnoteRequest> request)
+pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnote(std::shared_ptr<InsertFootnoteRequest> request)
 {
 
     // verify the required parameter 'footnoteDto' is set
@@ -16572,20 +16572,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::insertFootnote(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnoteResponse> result(new FootnoteResponse());
+		AsposeResponse<FootnoteResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnoteResponse>(new FootnoteResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -16600,7 +16600,7 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::insertFootnote(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::insertFootnoteWithoutNodePath(std::shared_ptr<InsertFootnoteWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnoteWithoutNodePath(std::shared_ptr<InsertFootnoteWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'footnoteDto' is set
@@ -16748,20 +16748,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::insertFootnoteWithoutNod
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnoteResponse> result(new FootnoteResponse());
+		AsposeResponse<FootnoteResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnoteResponse>(new FootnoteResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -16776,7 +16776,7 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::insertFootnoteWithoutNod
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::insertFormField(std::shared_ptr<InsertFormFieldRequest> request)
+pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormField(std::shared_ptr<InsertFormFieldRequest> request)
 {
 
     // verify the required parameter 'formField' is set
@@ -16932,20 +16932,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::insertFormField(std::sh
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldResponse> result(new FormFieldResponse());
+		AsposeResponse<FormFieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldResponse>(new FormFieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -16960,7 +16960,7 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::insertFormField(std::sh
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::insertFormFieldWithoutNodePath(std::shared_ptr<InsertFormFieldWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormFieldWithoutNodePath(std::shared_ptr<InsertFormFieldWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'formField' is set
@@ -17114,20 +17114,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::insertFormFieldWithoutN
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldResponse> result(new FormFieldResponse());
+		AsposeResponse<FormFieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldResponse>(new FormFieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -17142,7 +17142,7 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::insertFormFieldWithoutN
         return result;
     });
 }
-pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::insertHeaderFooter(std::shared_ptr<InsertHeaderFooterRequest> request)
+pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::insertHeaderFooter(std::shared_ptr<InsertHeaderFooterRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -17283,20 +17283,20 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::insertHeaderFooter(s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<HeaderFooterResponse> result(new HeaderFooterResponse());
+		AsposeResponse<HeaderFooterResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<HeaderFooterResponse>(new HeaderFooterResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -17311,7 +17311,7 @@ pplx::task<std::shared_ptr<HeaderFooterResponse>> WordsApi::insertHeaderFooter(s
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertPageNumbers(std::shared_ptr<InsertPageNumbersRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::shared_ptr<InsertPageNumbersRequest> request)
 {
 
     // verify the required parameter 'pageNumber' is set
@@ -17459,20 +17459,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertPageNumbers(std::s
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -17487,7 +17487,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertPageNumbers(std::s
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::insertParagraph(std::shared_ptr<InsertParagraphRequest> request)
+pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::shared_ptr<InsertParagraphRequest> request)
 {
 
     // verify the required parameter 'paragraph' is set
@@ -17643,20 +17643,20 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::insertParagraph(std::sh
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphResponse> result(new ParagraphResponse());
+		AsposeResponse<ParagraphResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphResponse>(new ParagraphResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -17671,7 +17671,7 @@ pplx::task<std::shared_ptr<ParagraphResponse>> WordsApi::insertParagraph(std::sh
         return result;
     });
 }
-pplx::task<std::shared_ptr<RunResponse>> WordsApi::insertRun(std::shared_ptr<InsertRunRequest> request)
+pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<InsertRunRequest> request)
 {
 
     // verify the required parameter 'run' is set
@@ -17827,20 +17827,20 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::insertRun(std::shared_ptr<Ins
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RunResponse> result(new RunResponse());
+		AsposeResponse<RunResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RunResponse>(new RunResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -17855,7 +17855,7 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::insertRun(std::shared_ptr<Ins
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr<InsertTableRequest> request)
+pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<InsertTableRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -17999,20 +17999,20 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableResponse> result(new TableResponse());
+		AsposeResponse<TableResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableResponse>(new TableResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -18027,7 +18027,7 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTable(std::shared_ptr
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::insertTableCell(std::shared_ptr<InsertTableCellRequest> request)
+pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::shared_ptr<InsertTableCellRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -18171,20 +18171,20 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::insertTableCell(std::sh
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableCellResponse> result(new TableCellResponse());
+		AsposeResponse<TableCellResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableCellResponse>(new TableCellResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -18199,7 +18199,7 @@ pplx::task<std::shared_ptr<TableCellResponse>> WordsApi::insertTableCell(std::sh
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::insertTableRow(std::shared_ptr<InsertTableRowRequest> request)
+pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::shared_ptr<InsertTableRowRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -18343,20 +18343,20 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::insertTableRow(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableRowResponse> result(new TableRowResponse());
+		AsposeResponse<TableRowResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableRowResponse>(new TableRowResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -18371,7 +18371,7 @@ pplx::task<std::shared_ptr<TableRowResponse>> WordsApi::insertTableRow(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTableWithoutNodePath(std::shared_ptr<InsertTableWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(std::shared_ptr<InsertTableWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -18513,20 +18513,20 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTableWithoutNodePath(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableResponse> result(new TableResponse());
+		AsposeResponse<TableResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableResponse>(new TableResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -18541,7 +18541,7 @@ pplx::task<std::shared_ptr<TableResponse>> WordsApi::insertTableWithoutNodePath(
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertWatermarkImage(std::shared_ptr<InsertWatermarkImageRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkImage(std::shared_ptr<InsertWatermarkImageRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -18683,20 +18683,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertWatermarkImage(std
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -18711,7 +18711,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertWatermarkImage(std
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertWatermarkText(std::shared_ptr<InsertWatermarkTextRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkText(std::shared_ptr<InsertWatermarkTextRequest> request)
 {
 
     // verify the required parameter 'watermarkText' is set
@@ -18859,20 +18859,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertWatermarkText(std:
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -18887,7 +18887,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::insertWatermarkText(std:
         return result;
     });
 }
-pplx::task<std::shared_ptr<SaveResponse>> WordsApi::loadWebDocument(std::shared_ptr<LoadWebDocumentRequest> request)
+pplx::task<AsposeResponse<SaveResponse>> WordsApi::loadWebDocument(std::shared_ptr<LoadWebDocumentRequest> request)
 {
 
     // verify the required parameter 'data' is set
@@ -18997,20 +18997,20 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::loadWebDocument(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SaveResponse> result(new SaveResponse());
+		AsposeResponse<SaveResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SaveResponse>(new SaveResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -19025,7 +19025,7 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::loadWebDocument(std::shared_
         return result;
     });
 }
-pplx::task<void> WordsApi::moveFile(std::shared_ptr<MoveFileRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFile(std::shared_ptr<MoveFileRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -19133,14 +19133,14 @@ pplx::task<void> WordsApi::moveFile(std::shared_ptr<MoveFileRequest> request)
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<void> WordsApi::moveFolder(std::shared_ptr<MoveFolderRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::shared_ptr<MoveFolderRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -19242,14 +19242,14 @@ pplx::task<void> WordsApi::moveFolder(std::shared_ptr<MoveFolderRequest> request
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::protectDocument(std::shared_ptr<ProtectDocumentRequest> request)
+pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std::shared_ptr<ProtectDocumentRequest> request)
 {
 
     // verify the required parameter 'protectionRequest' is set
@@ -19385,20 +19385,20 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::protectDocument(st
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ProtectionDataResponse> result(new ProtectionDataResponse());
+		AsposeResponse<ProtectionDataResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ProtectionDataResponse>(new ProtectionDataResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -19413,7 +19413,7 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::protectDocument(st
         return result;
     });
 }
-pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRevisions(std::shared_ptr<RejectAllRevisionsRequest> request)
+pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::rejectAllRevisions(std::shared_ptr<RejectAllRevisionsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -19528,20 +19528,20 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRe
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RevisionsModificationResponse> result(new RevisionsModificationResponse());
+		AsposeResponse<RevisionsModificationResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RevisionsModificationResponse>(new RevisionsModificationResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -19556,7 +19556,7 @@ pplx::task<std::shared_ptr<RevisionsModificationResponse>> WordsApi::rejectAllRe
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::removeRange(std::shared_ptr<RemoveRangeRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_ptr<RemoveRangeRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -19675,20 +19675,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::removeRange(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -20908,7 +20908,7 @@ pplx::task<HttpContent> WordsApi::renderTableWithoutNodePath(std::shared_ptr<Ren
         return result;
     });
 }
-pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::replaceText(std::shared_ptr<ReplaceTextRequest> request)
+pplx::task<AsposeResponse<ReplaceTextResponse>> WordsApi::replaceText(std::shared_ptr<ReplaceTextRequest> request)
 {
 
     // verify the required parameter 'replaceText' is set
@@ -21056,20 +21056,20 @@ pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::replaceText(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ReplaceTextResponse> result(new ReplaceTextResponse());
+		AsposeResponse<ReplaceTextResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ReplaceTextResponse>(new ReplaceTextResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -21084,7 +21084,7 @@ pplx::task<std::shared_ptr<ReplaceTextResponse>> WordsApi::replaceText(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::replaceWithText(std::shared_ptr<ReplaceWithTextRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shared_ptr<ReplaceWithTextRequest> request)
 {
 
     // verify the required parameter 'rangeText' is set
@@ -21224,20 +21224,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::replaceWithText(std::sha
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -21252,7 +21252,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::replaceWithText(std::sha
         return result;
     });
 }
-pplx::task<void> WordsApi::resetCache(std::shared_ptr<ResetCacheRequest> request)
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::resetCache(std::shared_ptr<ResetCacheRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -21335,14 +21335,14 @@ pplx::task<void> WordsApi::resetCache(std::shared_ptr<ResetCacheRequest> request
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        return void();
+        return std::make_shared<web::http::http_response>(response);
     });
 }
-pplx::task<std::shared_ptr<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAsRequest> request)
+pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAsRequest> request)
 {
 
     // verify the required parameter 'saveOptionsData' is set
@@ -21478,20 +21478,20 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveA
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SaveResponse> result(new SaveResponse());
+		AsposeResponse<SaveResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SaveResponse>(new SaveResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -21506,7 +21506,7 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveA
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::saveAsRange(std::shared_ptr<SaveAsRangeRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_ptr<SaveAsRangeRequest> request)
 {
 
     // verify the required parameter 'documentParameters' is set
@@ -21640,20 +21640,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::saveAsRange(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -21668,7 +21668,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::saveAsRange(std::shared_
         return result;
     });
 }
-pplx::task<std::shared_ptr<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<SaveAsTiffRequest> request)
+pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<SaveAsTiffRequest> request)
 {
 
     // verify the required parameter 'saveOptions' is set
@@ -21906,20 +21906,20 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<S
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SaveResponse> result(new SaveResponse());
+		AsposeResponse<SaveResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SaveResponse>(new SaveResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -21934,7 +21934,7 @@ pplx::task<std::shared_ptr<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<S
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<SearchRequest> request)
+pplx::task<AsposeResponse<SearchResponse>> WordsApi::search(std::shared_ptr<SearchRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -22048,20 +22048,20 @@ pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<Sea
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SearchResponse> result(new SearchResponse());
+		AsposeResponse<SearchResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SearchResponse>(new SearchResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -22076,7 +22076,7 @@ pplx::task<std::shared_ptr<SearchResponse>> WordsApi::search(std::shared_ptr<Sea
         return result;
     });
 }
-pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::splitDocument(std::shared_ptr<SplitDocumentRequest> request)
+pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::shared_ptr<SplitDocumentRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -22221,20 +22221,20 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::splitDocument(std::
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SplitDocumentResponse> result(new SplitDocumentResponse());
+		AsposeResponse<SplitDocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SplitDocumentResponse>(new SplitDocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -22249,7 +22249,7 @@ pplx::task<std::shared_ptr<SplitDocumentResponse>> WordsApi::splitDocument(std::
         return result;
     });
 }
-pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::unprotectDocument(std::shared_ptr<UnprotectDocumentRequest> request)
+pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::unprotectDocument(std::shared_ptr<UnprotectDocumentRequest> request)
 {
 
     // verify the required parameter 'protectionRequest' is set
@@ -22385,20 +22385,20 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::unprotectDocument(
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ProtectionDataResponse> result(new ProtectionDataResponse());
+		AsposeResponse<ProtectionDataResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ProtectionDataResponse>(new ProtectionDataResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -22413,7 +22413,7 @@ pplx::task<std::shared_ptr<ProtectionDataResponse>> WordsApi::unprotectDocument(
         return result;
     });
 }
-pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::updateBookmark(std::shared_ptr<UpdateBookmarkRequest> request)
+pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::updateBookmark(std::shared_ptr<UpdateBookmarkRequest> request)
 {
 
     // verify the required parameter 'bookmarkData' is set
@@ -22563,20 +22563,20 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::updateBookmark(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BookmarkResponse> result(new BookmarkResponse());
+		AsposeResponse<BookmarkResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BookmarkResponse>(new BookmarkResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -22591,7 +22591,7 @@ pplx::task<std::shared_ptr<BookmarkResponse>> WordsApi::updateBookmark(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<BorderResponse>> WordsApi::updateBorder(std::shared_ptr<UpdateBorderRequest> request)
+pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_ptr<UpdateBorderRequest> request)
 {
 
     // verify the required parameter 'borderProperties' is set
@@ -22743,20 +22743,20 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::updateBorder(std::shared_p
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<BorderResponse> result(new BorderResponse());
+		AsposeResponse<BorderResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<BorderResponse>(new BorderResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -22771,7 +22771,7 @@ pplx::task<std::shared_ptr<BorderResponse>> WordsApi::updateBorder(std::shared_p
         return result;
     });
 }
-pplx::task<std::shared_ptr<CommentResponse>> WordsApi::updateComment(std::shared_ptr<UpdateCommentRequest> request)
+pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_ptr<UpdateCommentRequest> request)
 {
 
     // verify the required parameter 'comment' is set
@@ -22921,20 +22921,20 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::updateComment(std::shared
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<CommentResponse> result(new CommentResponse());
+		AsposeResponse<CommentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<CommentResponse>(new CommentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -22949,7 +22949,7 @@ pplx::task<std::shared_ptr<CommentResponse>> WordsApi::updateComment(std::shared
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::updateDrawingObject(std::shared_ptr<UpdateDrawingObjectRequest> request)
+pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(std::shared_ptr<UpdateDrawingObjectRequest> request)
 {
 
     // verify the required parameter 'imageFile' is set
@@ -23094,20 +23094,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::updateDrawingObject
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectResponse> result(new DrawingObjectResponse());
+		AsposeResponse<DrawingObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectResponse>(new DrawingObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -23122,7 +23122,7 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::updateDrawingObject
         return result;
     });
 }
-pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::updateDrawingObjectWithoutNodePath(std::shared_ptr<UpdateDrawingObjectWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectWithoutNodePath(std::shared_ptr<UpdateDrawingObjectWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'imageFile' is set
@@ -23265,20 +23265,20 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::updateDrawingObject
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DrawingObjectResponse> result(new DrawingObjectResponse());
+		AsposeResponse<DrawingObjectResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DrawingObjectResponse>(new DrawingObjectResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -23293,7 +23293,7 @@ pplx::task<std::shared_ptr<DrawingObjectResponse>> WordsApi::updateDrawingObject
         return result;
     });
 }
-pplx::task<std::shared_ptr<FieldResponse>> WordsApi::updateField(std::shared_ptr<UpdateFieldRequest> request)
+pplx::task<AsposeResponse<FieldResponse>> WordsApi::updateField(std::shared_ptr<UpdateFieldRequest> request)
 {
 
     // verify the required parameter 'field' is set
@@ -23445,20 +23445,20 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::updateField(std::shared_ptr
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FieldResponse> result(new FieldResponse());
+		AsposeResponse<FieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FieldResponse>(new FieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -23473,7 +23473,7 @@ pplx::task<std::shared_ptr<FieldResponse>> WordsApi::updateField(std::shared_ptr
         return result;
     });
 }
-pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::updateFields(std::shared_ptr<UpdateFieldsRequest> request)
+pplx::task<AsposeResponse<DocumentResponse>> WordsApi::updateFields(std::shared_ptr<UpdateFieldsRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -23588,20 +23588,20 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::updateFields(std::shared
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<DocumentResponse> result(new DocumentResponse());
+		AsposeResponse<DocumentResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<DocumentResponse>(new DocumentResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -23616,7 +23616,7 @@ pplx::task<std::shared_ptr<DocumentResponse>> WordsApi::updateFields(std::shared
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::updateFootnote(std::shared_ptr<UpdateFootnoteRequest> request)
+pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnote(std::shared_ptr<UpdateFootnoteRequest> request)
 {
 
     // verify the required parameter 'footnoteDto' is set
@@ -23768,20 +23768,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::updateFootnote(std::shar
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnoteResponse> result(new FootnoteResponse());
+		AsposeResponse<FootnoteResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnoteResponse>(new FootnoteResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -23796,7 +23796,7 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::updateFootnote(std::shar
         return result;
     });
 }
-pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::updateFootnoteWithoutNodePath(std::shared_ptr<UpdateFootnoteWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnoteWithoutNodePath(std::shared_ptr<UpdateFootnoteWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'footnoteDto' is set
@@ -23946,20 +23946,20 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::updateFootnoteWithoutNod
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FootnoteResponse> result(new FootnoteResponse());
+		AsposeResponse<FootnoteResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FootnoteResponse>(new FootnoteResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -23974,7 +23974,7 @@ pplx::task<std::shared_ptr<FootnoteResponse>> WordsApi::updateFootnoteWithoutNod
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::updateFormField(std::shared_ptr<UpdateFormFieldRequest> request)
+pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormField(std::shared_ptr<UpdateFormFieldRequest> request)
 {
 
     // verify the required parameter 'formField' is set
@@ -24126,20 +24126,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::updateFormField(std::sh
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldResponse> result(new FormFieldResponse());
+		AsposeResponse<FormFieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldResponse>(new FormFieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -24154,7 +24154,7 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::updateFormField(std::sh
         return result;
     });
 }
-pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::updateFormFieldWithoutNodePath(std::shared_ptr<UpdateFormFieldWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormFieldWithoutNodePath(std::shared_ptr<UpdateFormFieldWithoutNodePathRequest> request)
 {
 
     // verify the required parameter 'formField' is set
@@ -24304,20 +24304,20 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::updateFormFieldWithoutN
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FormFieldResponse> result(new FormFieldResponse());
+		AsposeResponse<FormFieldResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FormFieldResponse>(new FormFieldResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -24332,7 +24332,7 @@ pplx::task<std::shared_ptr<FormFieldResponse>> WordsApi::updateFormFieldWithoutN
         return result;
     });
 }
-pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::updateParagraphFormat(std::shared_ptr<UpdateParagraphFormatRequest> request)
+pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFormat(std::shared_ptr<UpdateParagraphFormatRequest> request)
 {
 
     // verify the required parameter 'dto' is set
@@ -24484,20 +24484,20 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::updateParagraphFo
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<ParagraphFormatResponse> result(new ParagraphFormatResponse());
+		AsposeResponse<ParagraphFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphFormatResponse>(new ParagraphFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -24512,7 +24512,7 @@ pplx::task<std::shared_ptr<ParagraphFormatResponse>> WordsApi::updateParagraphFo
         return result;
     });
 }
-pplx::task<std::shared_ptr<RunResponse>> WordsApi::updateRun(std::shared_ptr<UpdateRunRequest> request)
+pplx::task<AsposeResponse<RunResponse>> WordsApi::updateRun(std::shared_ptr<UpdateRunRequest> request)
 {
 
     // verify the required parameter 'run' is set
@@ -24664,20 +24664,20 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upd
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<RunResponse> result(new RunResponse());
+		AsposeResponse<RunResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<RunResponse>(new RunResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -24692,7 +24692,7 @@ pplx::task<std::shared_ptr<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upd
         return result;
     });
 }
-pplx::task<std::shared_ptr<FontResponse>> WordsApi::updateRunFont(std::shared_ptr<UpdateRunFontRequest> request)
+pplx::task<AsposeResponse<FontResponse>> WordsApi::updateRunFont(std::shared_ptr<UpdateRunFontRequest> request)
 {
 
     // verify the required parameter 'fontDto' is set
@@ -24844,20 +24844,20 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::updateRunFont(std::shared_pt
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FontResponse> result(new FontResponse());
+		AsposeResponse<FontResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FontResponse>(new FontResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -24872,7 +24872,7 @@ pplx::task<std::shared_ptr<FontResponse>> WordsApi::updateRunFont(std::shared_pt
         return result;
     });
 }
-pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::updateSectionPageSetup(std::shared_ptr<UpdateSectionPageSetupRequest> request)
+pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPageSetup(std::shared_ptr<UpdateSectionPageSetupRequest> request)
 {
 
     // verify the required parameter 'pageSetup' is set
@@ -25022,20 +25022,20 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::updateSectionPag
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<SectionPageSetupResponse> result(new SectionPageSetupResponse());
+		AsposeResponse<SectionPageSetupResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<SectionPageSetupResponse>(new SectionPageSetupResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -25050,7 +25050,7 @@ pplx::task<std::shared_ptr<SectionPageSetupResponse>> WordsApi::updateSectionPag
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::updateTableCellFormat(std::shared_ptr<UpdateTableCellFormatRequest> request)
+pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFormat(std::shared_ptr<UpdateTableCellFormatRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -25196,20 +25196,20 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::updateTableCellFo
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableCellFormatResponse> result(new TableCellFormatResponse());
+		AsposeResponse<TableCellFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableCellFormatResponse>(new TableCellFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -25224,7 +25224,7 @@ pplx::task<std::shared_ptr<TableCellFormatResponse>> WordsApi::updateTableCellFo
         return result;
     });
 }
-pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProperties(std::shared_ptr<UpdateTablePropertiesRequest> request)
+pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTableProperties(std::shared_ptr<UpdateTablePropertiesRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -25370,20 +25370,20 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProper
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TablePropertiesResponse> result(new TablePropertiesResponse());
+		AsposeResponse<TablePropertiesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TablePropertiesResponse>(new TablePropertiesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -25398,7 +25398,7 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProper
         return result;
     });
 }
-pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTablePropertiesWithoutNodePath(std::shared_ptr<UpdateTablePropertiesWithoutNodePathRequest> request)
+pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropertiesWithoutNodePath(std::shared_ptr<UpdateTablePropertiesWithoutNodePathRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -25542,20 +25542,20 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProper
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TablePropertiesResponse> result(new TablePropertiesResponse());
+		AsposeResponse<TablePropertiesResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TablePropertiesResponse>(new TablePropertiesResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -25570,7 +25570,7 @@ pplx::task<std::shared_ptr<TablePropertiesResponse>> WordsApi::updateTableProper
         return result;
     });
 }
-pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::updateTableRowFormat(std::shared_ptr<UpdateTableRowFormatRequest> request)
+pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowFormat(std::shared_ptr<UpdateTableRowFormatRequest> request)
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -25716,20 +25716,20 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::updateTableRowForm
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<TableRowFormatResponse> result(new TableRowFormatResponse());
+		AsposeResponse<TableRowFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TableRowFormatResponse>(new TableRowFormatResponse())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {
@@ -25744,7 +25744,7 @@ pplx::task<std::shared_ptr<TableRowFormatResponse>> WordsApi::updateTableRowForm
         return result;
     });
 }
-pplx::task<std::shared_ptr<FilesUploadResult>> WordsApi::uploadFile(std::shared_ptr<UploadFileRequest> request)
+pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_ptr<UploadFileRequest> request)
 {
 
     // verify the required parameter 'file' is set
@@ -25844,20 +25844,20 @@ pplx::task<std::shared_ptr<FilesUploadResult>> WordsApi::uploadFile(std::shared_
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
-        return response.extract_string();
+        return response;
     })
-    .then([=](utility::string_t response)
+    .then([=](web::http::http_response response)
     {
-        std::shared_ptr<FilesUploadResult> result(new FilesUploadResult());
+		AsposeResponse<FilesUploadResult> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<FilesUploadResult>(new FilesUploadResult())
+		};
 
         if (responseHttpContentType == _XPLATSTR("application/json"))
         {
-            web::json::value json = web::json::value::parse(response);
-
-            
-            result->fromJson(json);
-            postInitializeResponse(json, result.get());
-            
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
         }
         // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
         // {

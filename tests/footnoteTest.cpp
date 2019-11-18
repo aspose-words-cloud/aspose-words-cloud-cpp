@@ -36,7 +36,7 @@ protected:
 /// <summary>
 /// Test for adding footnote
 /// </summary>
-TEST_F(FootnoteTest, TestPutFootnote) {
+TEST_F(FootnoteTest, TestPostFootnote) {
 	utility::string_t
 		localName = STCONVERT("Footnote.doc"),
 		remoteName = STCONVERT("TestPutFootnote.docx"),
@@ -49,12 +49,12 @@ TEST_F(FootnoteTest, TestPutFootnote) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutFootnoteRequest> request= std::make_shared<PutFootnoteRequest>(remoteName, footnote, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	std::shared_ptr<InsertFootnoteRequest> request= std::make_shared<InsertFootnoteRequest>(remoteName, footnote, STCONVERT(""), boost::none, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FootnoteResponse> actual = get_api()->putFootnote(request).get();
+	AsposeResponse<FootnoteResponse> actual = get_api()->insertFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -72,12 +72,12 @@ TEST_F(FootnoteTest, TestDeleteFootnote) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFootnoteRequest> request=
-			std::make_shared<DeleteFootnoteRequest>(remoteName, index, dataFolder, boost::none,
+			std::make_shared<DeleteFootnoteRequest>(remoteName, STCONVERT(""), index, dataFolder,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFootnote(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -93,12 +93,12 @@ TEST_F(FootnoteTest, TestGetFootnotes) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetFootnotesRequest> request=
-			std::make_shared<GetFootnotesRequest>(remoteName, dataFolder, boost::none,
+			std::make_shared<GetFootnotesRequest>(remoteName, dataFolder, STCONVERT(""),
 		boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FootnotesResponse> actual = get_api()->getFootnotes(request).get();
+	AsposeResponse<FootnotesResponse> actual = get_api()->getFootnotes(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -115,18 +115,18 @@ TEST_F(FootnoteTest, TestGetFootnote) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetFootnoteRequest> request=
-			std::make_shared<GetFootnoteRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none);
+			std::make_shared<GetFootnoteRequest>(remoteName, STCONVERT(""), index, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<FootnoteResponse> actual = get_api()->getFootnote(request).get();
+	AsposeResponse<FootnoteResponse> actual = get_api()->getFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
 /// Test for updating footnote
 /// </summary>
-TEST_F(FootnoteTest, TestPostFootnote) {
+TEST_F(FootnoteTest, TestPutFootnote) {
 	utility::string_t
 		localName = STCONVERT("Footnote.doc"),
 		remoteName = STCONVERT("TestPostFootnote.docx"),
@@ -138,10 +138,10 @@ TEST_F(FootnoteTest, TestPostFootnote) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostFootnoteRequest> request= std::make_shared<PostFootnoteRequest>(remoteName, footnote, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	std::shared_ptr<UpdateFootnoteRequest> request= std::make_shared<UpdateFootnoteRequest>(remoteName, footnote, STCONVERT(""), index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FootnoteResponse> actual = get_api()->postFootnote(request).get();
+	AsposeResponse<FootnoteResponse> actual = get_api()->updateFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

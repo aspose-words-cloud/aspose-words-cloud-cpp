@@ -48,9 +48,9 @@ TEST_F(CommentTest, TestGetComment) {
 			std::make_shared<GetCommentRequest>(remoteName, commentIndex, get_data_folder(),
 		boost::none, boost::none, boost::none);
 	auto requestTask = get_api()->getComment(request);
-	std::shared_ptr<CommentResponse> actual = requestTask.get();
+	AsposeResponse<CommentResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -68,15 +68,15 @@ TEST_F(CommentTest, TestGetComments) {
 			std::make_shared<GetCommentsRequest>(remoteName, get_data_folder(),
 		boost::none, boost::none, boost::none);
 	auto requestTask = get_api()->getComments(request);
-	std::shared_ptr<CommentsResponse> actual = requestTask.get();
+	AsposeResponse<CommentsResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
 /// Test for adding comment
 /// </summary>
-TEST_F(CommentTest, TestPutComment) {
+TEST_F(CommentTest, TestPostComment) {
 	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
 		remoteName = STCONVERT("TestPutComment.docx"),
 		fullName = path_combine(get_data_folder(), remoteName),
@@ -89,8 +89,6 @@ TEST_F(CommentTest, TestPutComment) {
 	position->setNode(nodeLink);
 	position->setOffset(0);
 
-
-
 	std::shared_ptr<Comment> body= std::make_shared<Comment>();
 	body->setRangeStart(position);
 	body->setRangeEnd(position);
@@ -100,20 +98,20 @@ TEST_F(CommentTest, TestPutComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutCommentRequest> request=
-			std::make_shared<PutCommentRequest>(remoteName, body, get_data_folder(),
+	std::shared_ptr<InsertCommentRequest> request=
+			std::make_shared<InsertCommentRequest>(remoteName, body, get_data_folder(),
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	auto requestTask = get_api()->putComment(request);
-	std::shared_ptr<CommentResponse> actual = requestTask.get();
+	auto requestTask = get_api()->insertComment(request);
+	AsposeResponse<CommentResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
-/// Test for adding comment
+/// Test for updating comment
 /// </summary>
-TEST_F(CommentTest, TestPostComment) {
+TEST_F(CommentTest, TestPutComment) {
 	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
 		remoteName = STCONVERT("TestPostComment.docx"),
 		fullName = path_combine(get_data_folder(), remoteName),
@@ -127,8 +125,6 @@ TEST_F(CommentTest, TestPostComment) {
 	position->setNode(nodeLink);
 	position->setOffset(0);
 
-
-
 	std::shared_ptr<Comment> body= std::make_shared<Comment>();
 	body->setRangeStart(position);
 	body->setRangeEnd(position);
@@ -138,14 +134,14 @@ TEST_F(CommentTest, TestPostComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostCommentRequest> request=
-			std::make_shared<PostCommentRequest>(remoteName, commentIndex, body, get_data_folder(),
+	std::shared_ptr<UpdateCommentRequest> request=
+			std::make_shared<UpdateCommentRequest>(remoteName, commentIndex, body, get_data_folder(),
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	auto requestTask = get_api()->postComment(request);
-	std::shared_ptr<CommentResponse> actual = requestTask.get();
+	auto requestTask = get_api()->updateComment(request);
+	AsposeResponse<CommentResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -165,7 +161,7 @@ TEST_F(CommentTest, TestDeleteComment) {
 			std::make_shared<DeleteCommentRequest>(remoteName, commentIndex, get_data_folder(),
 		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 	auto requestTask = get_api()->deleteComment(request);
-	std::shared_ptr<AsposeResponse> actual = requestTask.get();
+	std::shared_ptr<web::http::http_response> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }

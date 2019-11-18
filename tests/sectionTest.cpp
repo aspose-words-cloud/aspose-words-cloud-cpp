@@ -49,9 +49,9 @@ TEST_F(SectionTest, TestGetSection) {
 	        std::make_shared<GetSectionRequest>(remoteName, index, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<SectionResponse> actual = get_api()->getSection(request).get();
+	AsposeResponse<SectionResponse> actual = get_api()->getSection(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -70,7 +70,7 @@ TEST_F(SectionTest, TestGetSections) {
 	        std::make_shared<GetSectionsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<SectionLinkCollectionResponse> actual = get_api()->getSections(request).get();
+	AsposeResponse<SectionLinkCollectionResponse> actual = get_api()->getSections(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

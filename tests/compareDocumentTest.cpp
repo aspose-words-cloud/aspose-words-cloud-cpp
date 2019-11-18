@@ -54,11 +54,11 @@ TEST_F(CompareDocumentTest, TestCompareDocument) {
 	UploadFileToStorage(fullName1, filePath1);
 	UploadFileToStorage(fullName2, filePath2);
 
-	std::shared_ptr<PostCompareDocumentRequest> request=
-			std::make_shared<PostCompareDocumentRequest>(remoteName1, compareData, get_data_folder(),
+	std::shared_ptr<CompareDocumentRequest> request=
+			std::make_shared<CompareDocumentRequest>(remoteName1, compareData, get_data_folder(),
 					boost::none, boost::none, boost::none, destFileName);
-	auto requestTask = get_api()->postCompareDocument(request);
+	auto requestTask = get_api()->compareDocument(request);
 
-	std::shared_ptr<DocumentResponse> actual = requestTask.get();
-	ASSERT_EQ(200, actual->getCode());
+	AsposeResponse<DocumentResponse> actual = requestTask.get();
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

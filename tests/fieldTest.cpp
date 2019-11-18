@@ -50,9 +50,9 @@ TEST_F(FieldTest, TestGetFields) {
 			std::make_shared<GetFieldsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, STCONVERT("sections/0"));
 
-	std::shared_ptr<FieldsResponse> actual = get_api()->getFields(request).get();
+	AsposeResponse<FieldsResponse> actual = get_api()->getFields(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -70,12 +70,12 @@ TEST_F(FieldTest, TestGetField) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetFieldRequest> request=
-			std::make_shared<GetFieldRequest>(remoteName, fieldIndex, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0/paragraphs/0"));
+			std::make_shared<GetFieldRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"), fieldIndex, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<FieldResponse> actual = get_api()->getField(request).get();
+	AsposeResponse<FieldResponse> actual = get_api()->getField(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -96,14 +96,13 @@ TEST_F(FieldTest, TestPutField) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutFieldRequest> request=
-			std::make_shared<PutFieldRequest>(remoteName, body, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none,
-		STCONVERT("sections/0/paragraphs/0"), boost::none);
+	std::shared_ptr<UpdateFieldRequest> request=
+			std::make_shared<UpdateFieldRequest>(remoteName, body, STCONVERT("sections/0/paragraphs/0"), 0, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FieldResponse> actual = get_api()->putField(request).get();
+	AsposeResponse<FieldResponse> actual = get_api()->updateField(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -127,14 +126,13 @@ TEST_F(FieldTest, TestPostField) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostFieldRequest> request=
-			std::make_shared<PostFieldRequest>(remoteName, body, fieldIndex, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none,
-		STCONVERT("sections/0/paragraphs/0"));
+	std::shared_ptr<InsertFieldRequest> request=
+			std::make_shared<InsertFieldRequest>(remoteName, body, STCONVERT("sections/0/paragraphs/0"), dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FieldResponse> actual = get_api()->postField(request).get();
+	AsposeResponse<FieldResponse> actual = get_api()->insertField(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -154,13 +152,13 @@ TEST_F(FieldTest, TestPostInsertPageNumbers) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostInsertPageNumbersRequest> request=
-			std::make_shared<PostInsertPageNumbersRequest>(remoteName, body, dataFolder, boost::none,
+	std::shared_ptr<InsertPageNumbersRequest> request=
+			std::make_shared<InsertPageNumbersRequest>(remoteName, body, dataFolder, boost::none,
 		boost::none, boost::none, destFileName, boost::none, boost::none);
 
-	std::shared_ptr<DocumentResponse> actual = get_api()->postInsertPageNumbers(request).get();
+	AsposeResponse<DocumentResponse> actual = get_api()->insertPageNumbers(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -178,13 +176,12 @@ TEST_F(FieldTest, TestDeleteField) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFieldRequest> request=
-			std::make_shared<DeleteFieldRequest>(remoteName, fieldIndex, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none,
-		STCONVERT("sections/0/paragraphs/0"));
+			std::make_shared<DeleteFieldRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"), fieldIndex, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteField(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteField(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -203,9 +200,9 @@ TEST_F(FieldTest, TestDeleteParagraphFields) {
 			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none, STCONVERT("paragraphs/0"));
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFields(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -225,9 +222,9 @@ TEST_F(FieldTest, TestDeleteSectionParagraphFields) {
 		boost::none, boost::none, boost::none, boost::none, boost::none,
 		STCONVERT("sections/0/paragraphs/0"));
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFields(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -246,9 +243,9 @@ TEST_F(FieldTest, TestDeleteSectionFields) {
 			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none, STCONVERT("sections/0"));
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFields(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -267,9 +264,9 @@ TEST_F(FieldTest, TestDeleteDocumentFields) {
 			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFields(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -284,11 +281,11 @@ TEST_F(FieldTest, TestPostUpdateDocumentFields) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostUpdateDocumentFieldsRequest> request=
-			std::make_shared<PostUpdateDocumentFieldsRequest>(remoteName, dataFolder, boost::none,
+	std::shared_ptr<UpdateFieldsRequest> request=
+			std::make_shared<UpdateFieldsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none);
 
-	std::shared_ptr<DocumentResponse> actual = get_api()->postUpdateDocumentFields(request).get();
+	AsposeResponse<DocumentResponse> actual = get_api()->updateFields(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

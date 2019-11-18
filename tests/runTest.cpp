@@ -48,17 +48,17 @@ TEST_F(RunTest, TestPostRun) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostRunRequest> request=
-			std::make_shared<PostRunRequest>(remoteName, run, STCONVERT("paragraphs/1"), 0, dataFolder, boost::none,
+	std::shared_ptr<UpdateRunRequest> request=
+			std::make_shared<UpdateRunRequest>(remoteName, run, STCONVERT("paragraphs/1"), 0, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<RunResponse> actual = get_api()->postRun(request).get();
+	AsposeResponse<RunResponse> actual = get_api()->updateRun(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
-/// Test for adding run
+/// Test for inserting run
 /// </summary>
 TEST_F(RunTest, TestPutRun) {
 	utility::string_t
@@ -72,12 +72,12 @@ TEST_F(RunTest, TestPutRun) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutRunRequest> request= std::make_shared<PutRunRequest>(remoteName, STCONVERT("paragraphs/1"), run, dataFolder, boost::none,
+	std::shared_ptr<InsertRunRequest> request= std::make_shared<InsertRunRequest>(remoteName, STCONVERT("paragraphs/1"), run, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<RunResponse> actual = get_api()->putRun(request).get();
+	AsposeResponse<RunResponse> actual = get_api()->insertRun(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -96,7 +96,7 @@ TEST_F(RunTest, TestDeleteRun) {
 	std::shared_ptr<DeleteRunRequest> request= std::make_shared<DeleteRunRequest>(remoteName, STCONVERT("paragraphs/1"), index, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteRun(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteRun(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }

@@ -49,9 +49,9 @@ TEST_F(HeadersFooterTest, TestGetHeadersFooters) {
 			std::make_shared<GetHeaderFootersRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<HeaderFootersResponse> actual = get_api()->getHeaderFooters(request).get();
+	AsposeResponse<HeaderFootersResponse> actual = get_api()->getHeaderFooters(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -72,9 +72,9 @@ TEST_F(HeadersFooterTest, TestGetHeaderFooter) {
 			std::make_shared<GetHeaderFooterRequest>(remoteName, index, dataFolder, boost::none,
 		boost::none, boost::none, boost::none);
 
-	std::shared_ptr<HeaderFooterResponse> actual = get_api()->getHeaderFooter(request).get();
+	AsposeResponse<HeaderFooterResponse> actual = get_api()->getHeaderFooter(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -96,9 +96,9 @@ TEST_F(HeadersFooterTest, TestGetHeaderFooterOfSection) {
 			std::make_shared<GetHeaderFooterOfSectionRequest>(remoteName, index, sectionIndex, dataFolder,
 					boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<HeaderFooterResponse> actual = get_api()->getHeaderFooterOfSection(request).get();
+	AsposeResponse<HeaderFooterResponse> actual = get_api()->getHeaderFooterOfSection(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -116,12 +116,12 @@ TEST_F(HeadersFooterTest, TestDeleteHeaderFooter) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteHeaderFooterRequest> request=
-			std::make_shared<DeleteHeaderFooterRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<DeleteHeaderFooterRequest>(remoteName, STCONVERT(""), index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteHeaderFooter(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteHeaderFooter(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -137,12 +137,12 @@ TEST_F(HeadersFooterTest, TestDeleteHeaderFooters) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteHeadersFootersRequest> request=
-			std::make_shared<DeleteHeadersFootersRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<DeleteHeadersFootersRequest>(remoteName, STCONVERT(""), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteHeadersFooters(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteHeadersFooters(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -157,11 +157,11 @@ TEST_F(HeadersFooterTest, TestPutHeaderFooter) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutHeaderFooterRequest> request=
-			std::make_shared<PutHeaderFooterRequest>(remoteName, STCONVERT("FooterEven"), dataFolder, boost::none,
+	std::shared_ptr<InsertHeaderFooterRequest> request=
+			std::make_shared<InsertHeaderFooterRequest>(remoteName, STCONVERT("FooterEven"), dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->putHeaderFooter(request).get();
+	AsposeResponse<HeaderFooterResponse> actual = get_api()->insertHeaderFooter(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

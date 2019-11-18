@@ -66,7 +66,7 @@ pplx::task<void> ApiClient::requestToken()
 }
 
 utility::string_t ApiClient::getTokenUrl() const {
-	return m_Configuration->getBaseUrl() + _XPLATSTR("/connect/token");            
+	return m_Configuration->getBaseUrl() + _XPLATSTR("/oauth2/token");            
 }
 
 void ApiClient::setAccessToken(utility::string_t token){

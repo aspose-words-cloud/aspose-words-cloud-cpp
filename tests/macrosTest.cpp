@@ -44,11 +44,11 @@ TEST_F(MacrosTest, TestDeleteDocumentMacros) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteDocumentMacrosRequest> request=
-			std::make_shared<DeleteDocumentMacrosRequest>(remoteName, dataFolder, boost::none,
+	std::shared_ptr<DeleteMacrosRequest> request=
+			std::make_shared<DeleteMacrosRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteDocumentMacros(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteMacros(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }

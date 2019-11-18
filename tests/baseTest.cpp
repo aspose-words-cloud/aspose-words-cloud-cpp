@@ -60,7 +60,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
     auto outbuf = ucout.rdbuf(ss.rdbuf());
     client->setConfiguration(newConfig);
 
-	std::shared_ptr<AsposeResponse> response;
+	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
 
 	utility::string_t res = ss.str(),
@@ -73,7 +73,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
     ucout.rdbuf(outbuf);
 
 	EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
-	EXPECT_EQ(200, response->getCode());
+	EXPECT_EQ(200, response->status_code());
 }
 
 ///Checks that API version is properly applied to path building
@@ -100,7 +100,7 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 	streambuf_t* outbuf = ucout.rdbuf(ss.rdbuf());
     client->setConfiguration(newConfig);
 	
-	std::shared_ptr<AsposeResponse> response;
+	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
 
 	utility::string_t res = ss.str(),
@@ -112,7 +112,7 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
     ucout.rdbuf(outbuf);
 
     EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
-	EXPECT_EQ(200, response->getCode());
+	EXPECT_EQ(200, response->status_code());
 }
 
 class BaseApiTest : public InfrastructureTest {
