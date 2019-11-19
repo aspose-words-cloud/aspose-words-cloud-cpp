@@ -64,7 +64,6 @@ std::shared_ptr<ApiConfiguration> get_config()
 	newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
 	newConfig->setAppSid(fileJson[_XPLATSTR("AppSid")].as_string());
 	newConfig->setUserAgent(_XPLATSTR("CppAsposeClient"));
-	newConfig->setApiVersion(_XPLATSTR("v1"));
 	newConfig->setHttpConfig(conf);
 
 	return newConfig;

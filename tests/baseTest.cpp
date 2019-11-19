@@ -87,7 +87,6 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
     auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
-	newConfig->setApiVersion(_XPLATSTR("v2"));
 
     std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
 
