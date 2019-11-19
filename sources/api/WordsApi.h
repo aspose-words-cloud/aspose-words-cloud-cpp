@@ -28,6 +28,7 @@
 
 
 #include "../ApiClient.h"
+#include "../model/WordsApiErrorResponse.h"
 
 #include "FormFieldTextInput.h"
 #include "FormFieldCheckbox.h"

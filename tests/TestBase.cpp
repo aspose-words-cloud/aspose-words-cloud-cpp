@@ -155,8 +155,13 @@ void InfrastructureTest::UploadFileToStorage(const utility::string_t& path, cons
         _XPLATSTR("PUT"), queryParams, nullptr, {}, {}, fileParams, _XPLATSTR("multipart/form-data"))
 		.then([](const web::http::http_response& response) {
 
-            if (response.status_code() >= 400)
-			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), errorResponse);
+		}
 	})
 		.wait();
 	//else
@@ -176,8 +181,14 @@ bool InfrastructureTest::GetIsExists(const utility::string_t& path)
 	return (client->callApi(client->getConfiguration()->getBaseUrl() + _XPLATSTR("/v1.1/storage/exist"),
         _XPLATSTR("GET"), queryParams, nullptr, {}, {}, {}, _XPLATSTR("application/json"))
 		.then([](const web::http::http_response& response) {
-		if (response.status_code() >= 400)
-			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+			if (response.status_code() >= 400)
+			{
+				std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+				errorResponse->fromJson(response.extract_json().get());
+
+				throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), errorResponse);
+			}
+			
 		return response.extract_json();
 	}).then([=](web::json::value ans) {
 		

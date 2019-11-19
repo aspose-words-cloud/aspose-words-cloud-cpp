@@ -126,15 +126,13 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 
 	try {
 		auto request= std::make_shared<GetSectionsRequest>(name, boost::none, boost::none, boost::none, boost::none);
-		auto response = get_api()->getSections(request).wait();
+		auto response = get_api()->getSections(request).get();
 		FAIL() << "Expected exception has not been thrown";
 	}
 	catch (ApiException& exception) {
 		ASSERT_EQ(400, exception.error_code().value()) << "Exception code is not equals to 400";
-		std::string message((std::istreambuf_iterator<char>(*(exception.getContent()))), std::istreambuf_iterator<char>());
-		web::json::value actual = web::json::value::parse(STCONVERT(message));
-		ASSERT_TRUE(actual.has_field(_XPLATSTR("Message")));
-		EXPECT_THAT(actual[_XPLATSTR("Message")].as_string(), HasSubstr(_XPLATSTR("Error while loading file 'noFileWithThisName.docx' from storage:")));
+		auto response = exception.getResponse();
+		EXPECT_THAT(response->getError()->getMessage(), HasSubstr(_XPLATSTR("Error while loading file 'noFileWithThisName.docx' from storage:")));
 	}
 }
 

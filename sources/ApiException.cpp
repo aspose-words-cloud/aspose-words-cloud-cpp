@@ -31,24 +31,24 @@ namespace api {
 
 ApiException::ApiException( int errorCode
     , const utility::string_t& message
-    , std::shared_ptr<std::istream> content /*= nullptr*/ )
+    , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response )
     : web::http::http_exception( errorCode, message )
-    , m_Content(content)
+    , m_Response(response)
 {
 }
 ApiException::ApiException( int errorCode
     , const utility::string_t& message
     , std::map<utility::string_t, utility::string_t>& headers
-    , std::shared_ptr<std::istream> content /*= nullptr*/ )
+    , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response)
     : web::http::http_exception( errorCode, message )
-    , m_Content(content)
+    , m_Response(response)
     , m_Headers(headers)
 {
 }
 
-std::shared_ptr<std::istream> ApiException::getContent() const
+std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> ApiException::getResponse() const
 {
-    return m_Content;
+    return m_Response;
 }
 
 std::map<utility::string_t, utility::string_t>& ApiException::getHeaders()
