@@ -31,7 +31,7 @@ namespace api {
 
 ApiException::ApiException( int errorCode
     , const utility::string_t& message
-    , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response )
+	, std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response )
     : web::http::http_exception( errorCode, message )
     , m_Response(response)
 {
@@ -39,7 +39,7 @@ ApiException::ApiException( int errorCode
 ApiException::ApiException( int errorCode
     , const utility::string_t& message
     , std::map<utility::string_t, utility::string_t>& headers
-    , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response)
+    , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response )
     : web::http::http_exception( errorCode, message )
     , m_Response(response)
     , m_Headers(headers)

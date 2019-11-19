@@ -235,12 +235,15 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::acceptAllRev
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling acceptAllRevisions: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -411,12 +414,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling appendDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -540,12 +546,15 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classify(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling classify: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -689,12 +698,15 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classifyDocument(st
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling classifyDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -853,12 +865,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::compareDocument(std::shar
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling compareDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1003,12 +1018,15 @@ pplx::task<HttpContent> WordsApi::convertDocument(std::shared_ptr<ConvertDocumen
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling convertDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -1121,12 +1139,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFile(std::sh
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling copyFile: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1230,12 +1251,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFolder(std::
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling copyFolder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1338,12 +1362,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::createDocument(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling createDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1457,12 +1484,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::createFolder(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling createFolder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1614,12 +1644,15 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::createOrUpdateDoc
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling createOrUpdateDocumentProperty: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1773,12 +1806,15 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_pt
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteBorder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -1930,12 +1966,15 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::deleteBorders(std::shared_
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteBorders: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2087,12 +2126,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteComment(st
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteComment: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2223,12 +2265,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDocumentPr
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteDocumentProperty: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2361,12 +2406,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteDrawingObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2497,12 +2545,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteDrawingObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2635,12 +2686,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteField(std:
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2771,12 +2825,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldWitho
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -2907,18 +2964,21 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFields(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFields: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
     .then([=](web::http::http_response response)
     {
-			return std::make_shared<web::http::http_response>(response);
+        return std::make_shared<web::http::http_response>(response);
     });
 }
 pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWithoutNodePath(std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request)
@@ -3041,12 +3101,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWith
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFieldsWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3145,12 +3208,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFile(std::
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFile: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3249,12 +3315,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFolder(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFolder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3387,12 +3456,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnote(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFootnote: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3523,12 +3595,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnoteWi
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFootnoteWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3661,12 +3736,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormField(
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFormField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3797,12 +3875,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormFieldW
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteFormFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -3935,12 +4016,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeaderFoot
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteHeaderFooter: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4077,12 +4161,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeadersFoo
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteHeadersFooters: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4211,12 +4298,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteMacros(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteMacros: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4349,12 +4439,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteOfficeMathObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4485,12 +4578,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteOfficeMathObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4623,12 +4719,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraph(
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteParagraph: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4759,12 +4858,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraphW
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteParagraphWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -4897,12 +4999,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteRun(std::s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteRun: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5033,12 +5138,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteSection(st
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteSection: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5171,12 +5279,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTable(std:
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteTable: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5309,12 +5420,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableCell(
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteTableCell: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5447,12 +5561,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableRow(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteTableRow: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5583,12 +5700,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableWitho
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteTableWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5717,12 +5837,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::deleteWatermark(std::shar
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling deleteWatermark: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -5843,12 +5966,15 @@ pplx::task<HttpContent> WordsApi::downloadFile(std::shared_ptr<DownloadFileReque
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling downloadFile: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -5997,12 +6123,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::executeMailMerge(std::sha
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling executeMailMerge: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -6146,12 +6275,15 @@ pplx::task<HttpContent> WordsApi::executeMailMergeOnline(std::shared_ptr<Execute
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling executeMailMergeOnline: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -6245,12 +6377,15 @@ pplx::task<AsposeResponse<AvailableFontsResponse>> WordsApi::getAvailableFonts(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getAvailableFonts: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -6384,12 +6519,15 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::getBookmarkByName(std::sh
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getBookmarkByName: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -6521,12 +6659,15 @@ pplx::task<AsposeResponse<BookmarksResponse>> WordsApi::getBookmarks(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getBookmarks: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -6662,12 +6803,15 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<G
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getBorder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -6801,12 +6945,15 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::getBorders(std::shared_ptr
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getBorders: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -6940,12 +7087,15 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::getComment(std::shared_ptr
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getComment: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -7077,12 +7227,15 @@ pplx::task<AsposeResponse<CommentsResponse>> WordsApi::getComments(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getComments: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -7214,12 +7367,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::getDocument(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -7355,12 +7511,15 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectByIndex: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -7494,12 +7653,15 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectByIndexWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -7636,12 +7798,15 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageData(std::shared_
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectImageData: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -7758,12 +7923,15 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageDataWithoutNodePa
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectImageDataWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -7882,12 +8050,15 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleData(std::shared_pt
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectOleData: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -8004,12 +8175,15 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleDataWithoutNodePath
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectOleDataWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -8125,12 +8299,15 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjects: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -8262,12 +8439,15 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentDrawingObjectsWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -8405,12 +8585,15 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNames(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentFieldNames: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -8531,12 +8714,15 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOn
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentFieldNamesOnline: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -8670,12 +8856,15 @@ pplx::task<AsposeResponse<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIn
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentHyperlinkByIndex: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -8807,12 +8996,15 @@ pplx::task<AsposeResponse<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentHyperlinks: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -8944,12 +9136,15 @@ pplx::task<AsposeResponse<DocumentPropertiesResponse>> WordsApi::getDocumentProp
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentProperties: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -9083,12 +9278,15 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::getDocumentProper
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentProperty: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -9220,12 +9418,15 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::getDocumentProtecti
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentProtection: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -9375,12 +9576,15 @@ pplx::task<AsposeResponse<StatDataResponse>> WordsApi::getDocumentStatistics(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentStatistics: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -9530,12 +9734,15 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getDocumentWithFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -9653,12 +9860,15 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getField(std::shared_ptr<Get
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -9792,12 +10002,15 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getFieldWithoutNodePath(std:
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -9931,12 +10144,15 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFields(std::shared_ptr<G
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFields: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10068,12 +10284,15 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(st
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFieldsWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10187,12 +10406,15 @@ pplx::task<AsposeResponse<FilesList>> WordsApi::getFilesList(std::shared_ptr<Get
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFilesList: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10328,12 +10550,15 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnote(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFootnote: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10467,12 +10692,15 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePat
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFootnoteWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10606,12 +10834,15 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotes(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFootnotes: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10743,12 +10974,15 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotesWithoutNodeP
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFootnotesWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -10884,12 +11118,15 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormField(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFormField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11023,12 +11260,15 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormFieldWithoutNodeP
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFormFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11162,12 +11402,15 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFields(std::shar
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFormFields: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11299,12 +11542,15 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNod
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getFormFieldsWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11444,12 +11690,15 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getHeaderFooter: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11591,12 +11840,15 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSect
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getHeaderFooterOfSection: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11736,12 +11988,15 @@ pplx::task<AsposeResponse<HeaderFootersResponse>> WordsApi::getHeaderFooters(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getHeaderFooters: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -11877,12 +12132,15 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getOfficeMathObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12016,12 +12274,15 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getOfficeMathObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12155,12 +12416,15 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getOfficeMathObjects: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12292,12 +12556,15 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getOfficeMathObjectsWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12433,12 +12700,15 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraph(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getParagraph: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12574,12 +12844,15 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getParagraphFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12713,12 +12986,15 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getParagraphFormatWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12852,12 +13128,15 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodeP
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getParagraphWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -12991,12 +13270,15 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getParagraphs: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13128,12 +13410,15 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getParagraphsWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13269,12 +13554,15 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getRangeText: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13410,12 +13698,15 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunR
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getRun: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13551,12 +13842,15 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::getRunFont(std::shared_ptr<Ge
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getRunFont: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13690,12 +13984,15 @@ pplx::task<AsposeResponse<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRu
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getRuns: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13829,12 +14126,15 @@ pplx::task<AsposeResponse<SectionResponse>> WordsApi::getSection(std::shared_ptr
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getSection: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -13968,12 +14268,15 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::getSectionPageSet
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getSectionPageSetup: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14105,12 +14408,15 @@ pplx::task<AsposeResponse<SectionLinkCollectionResponse>> WordsApi::getSections(
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getSections: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14246,12 +14552,15 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTable(std::shared_ptr<Get
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTable: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14387,12 +14696,15 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::getTableCell(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTableCell: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14528,12 +14840,15 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::getTableCellFormat
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTableCellFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14669,12 +14984,15 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTableProperties: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14808,12 +15126,15 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTablePropertiesWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -14949,12 +15270,15 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::getTableRow(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTableRow: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -15090,12 +15414,15 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::getTableRowFormat(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTableRowFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -15229,12 +15556,15 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTableWithoutNodePath(std:
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTableWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -15368,12 +15698,15 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTables(std:
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTables: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -15505,12 +15838,15 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTablesWitho
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling getTablesWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -15681,12 +16017,15 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertComment: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -15852,12 +16191,15 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertDrawingObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -16021,12 +16363,15 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectW
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertDrawingObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -16205,12 +16550,15 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertField(std::shared_ptr<
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -16387,12 +16735,15 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertFieldWithoutNodePath(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -16565,12 +16916,15 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnote(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertFootnote: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -16741,12 +17095,15 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnoteWithoutNode
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertFootnoteWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -16925,12 +17282,15 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormField(std::sha
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertFormField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -17107,12 +17467,15 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormFieldWithoutNo
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertFormFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -17276,12 +17639,15 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::insertHeaderFooter(st
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertHeaderFooter: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -17452,12 +17818,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::sh
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertPageNumbers: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -17636,12 +18005,15 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::sha
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertParagraph: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -17820,12 +18192,15 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<Inse
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertRun: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -17992,12 +18367,15 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertTable: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -18164,12 +18542,15 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertTableCell: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -18336,12 +18717,15 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertTableRow: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -18506,12 +18890,15 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertTableWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -18676,12 +19063,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkImage(std:
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertWatermarkImage: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -18852,12 +19242,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkText(std::
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling insertWatermarkText: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -18990,12 +19383,15 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::loadWebDocument(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling loadWebDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -19126,12 +19522,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFile(std::sh
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling moveFile: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -19235,12 +19634,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling moveFolder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -19378,12 +19780,15 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling protectDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -19521,12 +19926,15 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::rejectAllRev
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling rejectAllRevisions: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -19668,12 +20076,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling removeRange: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -19821,12 +20232,15 @@ pplx::task<HttpContent> WordsApi::renderDrawingObject(std::shared_ptr<RenderDraw
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderDrawingObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -19954,12 +20368,15 @@ pplx::task<HttpContent> WordsApi::renderDrawingObjectWithoutNodePath(std::shared
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderDrawingObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20089,12 +20506,15 @@ pplx::task<HttpContent> WordsApi::renderMathObject(std::shared_ptr<RenderMathObj
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderMathObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20222,12 +20642,15 @@ pplx::task<HttpContent> WordsApi::renderMathObjectWithoutNodePath(std::shared_pt
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderMathObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20355,12 +20778,15 @@ pplx::task<HttpContent> WordsApi::renderPage(std::shared_ptr<RenderPageRequest> 
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderPage: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20490,12 +20916,15 @@ pplx::task<HttpContent> WordsApi::renderParagraph(std::shared_ptr<RenderParagrap
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderParagraph: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20623,12 +21052,15 @@ pplx::task<HttpContent> WordsApi::renderParagraphWithoutNodePath(std::shared_ptr
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderParagraphWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20758,12 +21190,15 @@ pplx::task<HttpContent> WordsApi::renderTable(std::shared_ptr<RenderTableRequest
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderTable: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -20891,12 +21326,15 @@ pplx::task<HttpContent> WordsApi::renderTableWithoutNodePath(std::shared_ptr<Ren
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling renderTableWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response.extract_vector();
     })
@@ -21049,12 +21487,15 @@ pplx::task<AsposeResponse<ReplaceTextResponse>> WordsApi::replaceText(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling replaceText: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -21217,12 +21658,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling replaceWithText: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -21328,12 +21772,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::resetCache(std::
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling resetCache: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -21471,12 +21918,15 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAs
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling saveAs: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -21633,12 +22083,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling saveAsRange: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -21899,12 +22352,15 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<Sa
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling saveAsTiff: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -22041,12 +22497,15 @@ pplx::task<AsposeResponse<SearchResponse>> WordsApi::search(std::shared_ptr<Sear
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling search: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -22214,12 +22673,15 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling splitDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -22378,12 +22840,15 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::unprotectDocument(s
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling unprotectDocument: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -22556,12 +23021,15 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::updateBookmark(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateBookmark: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -22736,12 +23204,15 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_pt
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateBorder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -22914,12 +23385,15 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateComment: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -23087,12 +23561,15 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateDrawingObject: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -23258,12 +23735,15 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectW
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateDrawingObjectWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -23438,12 +23918,15 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::updateField(std::shared_ptr<
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -23581,12 +24064,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::updateFields(std::shared_
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateFields: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -23761,12 +24247,15 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnote(std::share
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateFootnote: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -23939,12 +24428,15 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnoteWithoutNode
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateFootnoteWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -24119,12 +24611,15 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormField(std::sha
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateFormField: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -24297,12 +24792,15 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormFieldWithoutNo
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateFormFieldWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -24477,12 +24975,15 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFor
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateParagraphFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -24657,12 +25158,15 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upda
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateRun: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -24837,12 +25341,15 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::updateRunFont(std::shared_ptr
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateRunFont: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -25015,12 +25522,15 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPage
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateSectionPageSetup: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -25189,12 +25699,15 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateTableCellFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -25363,12 +25876,15 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateTableProperties: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -25535,12 +26051,15 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateTablePropertiesWithoutNodePath: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -25709,12 +26228,15 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling updateTableRowFormat: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
@@ -25837,12 +26359,15 @@ pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_p
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , _XPLATSTR("error calling uploadFile: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			errorResponse->fromJson(response.extract_json().get());
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, errorResponse);
+		}
 
         return response;
     })
