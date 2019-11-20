@@ -29,7 +29,7 @@
 /// </summary>
 class RunTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Runs")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Runs")),
 		runFolder = STCONVERT("DocumentElements/Runs");
 };
 
@@ -99,4 +99,70 @@ TEST_F(RunTest, TestDeleteRun) {
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteRun(request).get();
 
 	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for getting run
+/// </summary>
+TEST_F(RunTest, TestGetRun) {
+	utility::string_t
+		localName = STCONVERT("Run.doc"),
+		remoteName = STCONVERT("TestGetRun.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(runFolder), localName);
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetRunRequest> request = std::make_shared<GetRunRequest>(remoteName, STCONVERT("paragraphs/1"), index, dataFolder,
+		boost::none, boost::none, boost::none);
+
+	AsposeResponse<RunResponse> actual = get_api()->getRun(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting run font
+/// </summary>
+TEST_F(RunTest, TestGetRunFont) {
+	utility::string_t
+		localName = STCONVERT("Run.doc"),
+		remoteName = STCONVERT("TestGetRunFont.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(runFolder), localName);
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetRunFontRequest> request = std::make_shared<GetRunFontRequest>(remoteName, STCONVERT("paragraphs/1"), index, dataFolder,
+		boost::none, boost::none, boost::none);
+
+	AsposeResponse<FontResponse> actual = get_api()->getRunFont(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for updating run font
+/// </summary>
+TEST_F(RunTest, TestUpdateRunFont) {
+	utility::string_t
+		localName = STCONVERT("Run.doc"),
+		remoteName = STCONVERT("TestPostRunFont.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(runFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<Font> font = std::shared_ptr<Font>(new Font());
+	font->setBold(true);
+
+	std::shared_ptr<UpdateRunFontRequest> request =
+		std::make_shared<UpdateRunFontRequest>(remoteName, font, STCONVERT("paragraphs/1"), 0, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<FontResponse> actual = get_api()->updateRunFont(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

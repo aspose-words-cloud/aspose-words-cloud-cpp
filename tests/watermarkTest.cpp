@@ -29,7 +29,7 @@
 /// </summary>
 class WatermarkTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\Watermark"));
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Watermark"));
 };
 
 /// <summary>
@@ -51,7 +51,7 @@ TEST_F(WatermarkTest, TestPostInsertDocumentWatermarkImage) {
 
 	std::shared_ptr<InsertWatermarkImageRequest> request=
 			std::make_shared<InsertWatermarkImageRequest>(remoteName, file,
-		dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none, rotationAngle, boost::none);
+		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, rotationAngle, boost::none);
 
 	AsposeResponse<DocumentResponse> actual = get_api()->insertWatermarkImage(request).get();
 
@@ -81,7 +81,7 @@ TEST_F(WatermarkTest, TestPostInsertWatermarkImage) {
 
 	std::shared_ptr<InsertWatermarkImageRequest> request=
 			std::make_shared<InsertWatermarkImageRequest>(remoteName, boost::none, dataFolder,
-		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none, rotationAngle, fullImagePath);
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, rotationAngle, fullImagePath);
 
 	AsposeResponse<DocumentResponse> actual = get_api()->insertWatermarkImage(request).get();
 

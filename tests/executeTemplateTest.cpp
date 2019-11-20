@@ -29,7 +29,7 @@
 /// </summary>
 class ExecuteTemplateTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\MailMerge")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/MailMerge")),
 		mailMergeFolder = STCONVERT("DocumentActions/MailMerge");
 };
 

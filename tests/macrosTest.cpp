@@ -29,7 +29,7 @@
 /// </summary>
 class MacrosTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Macros"));
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Macros"));
 };
 
 /// <summary>

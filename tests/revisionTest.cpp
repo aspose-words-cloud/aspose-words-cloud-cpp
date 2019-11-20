@@ -29,7 +29,7 @@
 /// </summary>
 class RevisionTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\Revisions"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Revisions"));
 };
 
 /// <summary>

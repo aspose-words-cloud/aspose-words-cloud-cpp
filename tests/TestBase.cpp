@@ -86,7 +86,7 @@ utility::string_t InfrastructureTest::path_combine(const fs::path& base, const u
 
 utility::string_t InfrastructureTest::path_combine_url(const utility::string_t& base, const utility::string_t& stringToAdd)
 {
-	return base + _XPLATSTR("\\") + stringToAdd;
+	return base + _XPLATSTR("/") + stringToAdd;
 }
 
 utility::string_t InfrastructureTest::cutFileExtension(const boost::filesystem::path& filename)
@@ -146,7 +146,7 @@ void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName
 }
 
 
-bool InfrastructureTest::GetIsExists(const utility::string_t& remoteName)
+bool InfrastructureTest::DoesFileExist(const utility::string_t& remoteName)
 {
 	try
 	{

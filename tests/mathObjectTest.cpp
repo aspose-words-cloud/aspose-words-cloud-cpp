@@ -29,7 +29,7 @@
 /// </summary>
 class MathObjectTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\MathObjects")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/MathObjects")),
 		mathObjectFolder = STCONVERT("DocumentElements/MathObjects");
 };
 
@@ -119,6 +119,96 @@ TEST_F(MathObjectTest, TestDeleteMathObject) {
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteOfficeMathObject(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for getting mathObjects
+/// </summary>
+TEST_F(MathObjectTest, TestGetOfficeMathObjectsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("MathObjects.docx"),
+		remoteName = STCONVERT("TestGetOfficeMathObjectsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(mathObjectFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetOfficeMathObjectsWithoutNodePathRequest> request =
+		std::make_shared<GetOfficeMathObjectsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<OfficeMathObjectsResponse> actual = get_api()->getOfficeMathObjectsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting mathObject
+/// </summary>
+TEST_F(MathObjectTest, TestGetOfficeMathObjectWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("MathObjects.docx"),
+		remoteName = STCONVERT("TestGetOfficeMathObjectWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(mathObjectFolder), localName);
+
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetOfficeMathObjectWithoutNodePathRequest> request =
+		std::make_shared<GetOfficeMathObjectWithoutNodePathRequest>(remoteName, index, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<OfficeMathObjectResponse> actual = get_api()->getOfficeMathObjectWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for rendering mathObject
+/// </summary>
+TEST_F(MathObjectTest, TestRenderMathObjectWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("MathObjects.docx"),
+		remoteName = STCONVERT("TestRenderMathObjectWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(mathObjectFolder), localName);
+
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<RenderMathObjectWithoutNodePathRequest> request =
+		std::make_shared<RenderMathObjectWithoutNodePathRequest>(remoteName, STCONVERT("png"), index, dataFolder,
+			boost::none, boost::none, boost::none, boost::none);
+
+	HttpContent result = get_api()->renderMathObjectWithoutNodePath(request).get();
+
+	ASSERT_TRUE(result.getData()->peek());
+}
+
+/// <summary>
+/// Test for deleting mathObject
+/// </summary>
+TEST_F(MathObjectTest, TestDeleteMathObjectWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("MathObjects.docx"),
+		remoteName = STCONVERT("TestDeleteMathObjectWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(mathObjectFolder), localName);
+
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteOfficeMathObjectWithoutNodePathRequest> request =
+		std::make_shared<DeleteOfficeMathObjectWithoutNodePathRequest>(remoteName, index, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteOfficeMathObjectWithoutNodePath(request).get();
 
 	ASSERT_EQ(200, actual->status_code());
 }

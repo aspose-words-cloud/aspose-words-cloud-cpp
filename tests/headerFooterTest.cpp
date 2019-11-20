@@ -29,7 +29,7 @@
 /// </summary>
 class HeaderFooterTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\HeaderFooter"));
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/HeaderFooter"));
 };
 
 /// <summary>

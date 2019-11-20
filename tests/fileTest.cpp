@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="sectionTest.cpp">
+* <copyright company="Aspose" file="fileTest.cpp">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -9,10 +9,10 @@
 *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 *  copies of the Software, and to permit persons to whom the Software is
 *  furnished to do so, subject to the following conditions:
-* 
+*
 *  The above copyright notice and this permission notice shall be included in all
 *  copies or substantial portions of the Software.
-* 
+*
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,78 +20,79 @@
 *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 *  SOFTWARE.
-* </summary> 
+* </summary>
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "TestBase.h"
 
 /// <summary>
-/// Example of how to work with sections
+/// Example of how to work with a file
 /// </summary>
-class SectionTest : public InfrastructureTest {
+class FileTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Section"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
 };
 
 /// <summary>
-/// Test for getting section by index
+/// Test for copying file
 /// </summary>
-TEST_F(SectionTest, TestGetSection) {
+TEST_F(FileTest, TestCopyFile) {
 	utility::string_t
 		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetSection.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-	int32_t index = 0;
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<GetSectionRequest> request=
-	        std::make_shared<GetSectionRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none);
-
-	AsposeResponse<SectionResponse> actual = get_api()->getSection(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for getting sections
-/// </summary>
-TEST_F(SectionTest, TestGetSections) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetSections.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
+		remoteSrcName = STCONVERT("TestCopyFileSrc.docx"),
+		remoteDestName = STCONVERT("TestCopyFileDest.docx"),
+		fullSrcName = path_combine_url(dataFolder, remoteSrcName),
+		fullDestName = path_combine_url(dataFolder, remoteDestName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	UploadFileToStorage(fullName, filePath);
+	UploadFileToStorage(fullSrcName, filePath);
 
-	std::shared_ptr<GetSectionsRequest> request=
-	        std::make_shared<GetSectionsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none);
-
-	AsposeResponse<SectionLinkCollectionResponse> actual = get_api()->getSections(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for deleting sections
-/// </summary>
-TEST_F(SectionTest, TestDeleteSection) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestDeleteSections.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<DeleteSectionRequest> request =
-		std::make_shared<DeleteSectionRequest>(remoteName, 0, dataFolder, boost::none,
-			boost::none, boost::none, boost::none, boost::none, boost::none);
-
-	std::shared_ptr<web::http::http_response> actual = get_api()->deleteSection(request).get();
+	std::shared_ptr<CopyFileRequest> request = std::make_shared<CopyFileRequest>(fullDestName, fullSrcName, boost::none, boost::none, boost::none);
+	std::shared_ptr<web::http::http_response> actual = get_api()->copyFile(request).get();
 
 	ASSERT_EQ(200, actual->status_code());
+
+	ASSERT_TRUE(DoesFileExist(fullSrcName));
+	ASSERT_TRUE(DoesFileExist(fullDestName));
+}
+
+/// <summary>
+/// Test for deleting file
+/// </summary>
+TEST_F(FileTest, TestDeleteFile) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteFile.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFileRequest> request = std::make_shared<DeleteFileRequest>(fullName, boost::none, boost::none);
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFile(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+	ASSERT_FALSE(DoesFileExist(fullName));
+}
+
+/// <summary>
+/// Test for moving file
+/// </summary>
+TEST_F(FileTest, TestMoveFile) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteSrcName = STCONVERT("TestMoveFileSrc.docx"),
+		remoteDestName = STCONVERT("TestMoveFileDest.docx"),
+		fullSrcName = path_combine_url(dataFolder, remoteSrcName),
+		fullDestName = path_combine_url(dataFolder, remoteDestName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullSrcName, filePath);
+
+	std::shared_ptr<MoveFileRequest> request = std::make_shared<MoveFileRequest>(fullDestName, fullSrcName, boost::none, boost::none, boost::none);
+	std::shared_ptr<web::http::http_response> actual = get_api()->moveFile(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+
+	ASSERT_FALSE(DoesFileExist(fullSrcName));
+	ASSERT_TRUE(DoesFileExist(fullDestName));
 }

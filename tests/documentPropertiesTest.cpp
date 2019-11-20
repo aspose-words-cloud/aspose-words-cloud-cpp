@@ -26,7 +26,7 @@
 
 class DocumentPropertiesTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\DocumentProperties"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/DocumentProperties"));
 };
 
 /// <summary>

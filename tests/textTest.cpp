@@ -46,7 +46,7 @@ TEST_F(TextTest, TestGetDocumentTextItems) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetRunsRequest> request=
-			std::make_shared<GetRunsRequest>(remoteName, STCONVERT(""), remoteTextFolder, boost::none,
+			std::make_shared<GetRunsRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"), remoteTextFolder, boost::none,
 		boost::none, boost::none);
 
 	AsposeResponse<RunsResponse> actual = get_api()->getRuns(request).get();

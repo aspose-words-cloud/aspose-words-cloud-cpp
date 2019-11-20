@@ -26,7 +26,7 @@
 
 class DocumentProtectionTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\DocumentProtection")),
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/DocumentProtection")),
 		protectionFolder = STCONVERT("DocumentActions/DocumentProtection");
 };
 

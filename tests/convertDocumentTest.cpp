@@ -26,7 +26,7 @@
 
 class ConvertDocumentTest : public InfrastructureTest {
 protected:
-	const utility::string_t baseFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\ConvertDocument")),
+	const utility::string_t baseFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/ConvertDocument")),
 		convertFolder = STCONVERT("DocumentActions/ConvertDocument");
 };
 
@@ -86,10 +86,13 @@ TEST_F(ConvertDocumentTest, TestPostDocumentSaveAsFromPdfToDoc) {
 /// A test for PutConvertDocument
 /// </summary>
 TEST_F(ConvertDocumentTest, TestPutConvertDocument) {
-	utility::string_t format = STCONVERT("pdf");
-	std::shared_ptr<ConvertDocumentRequest> request(
-		new ConvertDocumentRequest(generate_http_content_from_file(path_combine(get_data_dir(convertFolder), STCONVERT("test_uploadfile.docx"))),
-			format, boost::none, boost::none, boost::none, boost::none));
+	utility::string_t
+		format = STCONVERT("pdf"),
+		localName = STCONVERT("test_uploadFile.docx"),
+		filePath = path_combine(get_data_dir(convertFolder), localName);
+
+	std::shared_ptr<ConvertDocumentRequest> request = std::make_shared<ConvertDocumentRequest>(
+		generate_http_content_from_file(filePath), format, boost::none, boost::none, boost::none, boost::none);
 
 	auto result = get_api()->convertDocument(request).get();
 	ASSERT_TRUE(result.getData()->peek());

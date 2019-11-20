@@ -30,7 +30,7 @@
 /// </summary>
 class FormFieldTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\FormFields")),
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/FormFields")),
 		fieldFolder = STCONVERT("DocumentElements/FormFields");
 };
 
@@ -107,8 +107,8 @@ TEST_F(FormFieldTest, TestGetFormFields)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetFormFieldsRequest> request= std::make_shared<GetFormFieldsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0"));
+	std::shared_ptr<GetFormFieldsRequest> request= std::make_shared<GetFormFieldsRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none);
 
 	AsposeResponse<FormFieldsResponse> actual = get_api()->getFormFields(request).get();
 
@@ -156,9 +156,8 @@ TEST_F(FormFieldTest, TestPostFormField)
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<InsertFormFieldRequest> request=
-			std::make_shared<InsertFormFieldRequest>(remoteName, body, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none,
-		STCONVERT("sections/0/paragraphs/0"), boost::none);
+			std::make_shared<InsertFormFieldRequest>(remoteName, body, STCONVERT("sections/0/paragraphs/0"), dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none, boost::none);
 
 	AsposeResponse<FormFieldResponse> actual = get_api()->insertFormField(request).get();
 
@@ -184,5 +183,157 @@ TEST_F(FormFieldTest, TestDeleteFormField)
 		boost::none, boost::none, destFileName, boost::none, boost::none);
 
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFormField(request).get();
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for updating form field
+/// </summary>
+TEST_F(FormFieldTest, TestPutFormFieldWithoutNodePath)
+{
+	utility::string_t
+		localName = STCONVERT("FormFilled.docx"),
+		remoteName = STCONVERT("TestPostFormFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName),
+		destFileName = path_combine_url(baseTestOutPath, remoteName);
+	int32_t index = 0;
+
+	std::shared_ptr<FormFieldTextInput> body = std::make_shared<FormFieldTextInput>();
+	body->setName(STCONVERT("FullName"));
+	body->setEnabled(true);
+	body->setCalculateOnExit(true);
+	body->setStatusText(STCONVERT(""));
+	body->setTextInputType(STCONVERT("Regular"));
+	body->setTextInputDefault(STCONVERT(""));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<UpdateFormFieldWithoutNodePathRequest> request = std::make_shared<UpdateFormFieldWithoutNodePathRequest>(remoteName, body, index, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none);
+
+	AsposeResponse<FormFieldResponse> actual = get_api()->updateFormFieldWithoutNodePath(request).get();
+	std::shared_ptr<FormField> formField = actual.body->getFormField();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+	ASSERT_EQ(STCONVERT("FullName"), formField->getName());
+	ASSERT_TRUE(formField->isEnabled());
+	body = std::static_pointer_cast<FormFieldTextInput>(formField);
+	ASSERT_TRUE(body != nullptr);
+	ASSERT_EQ(STCONVERT("Regular"), body->getTextInputType());
+}
+
+/// <summary>
+/// Test for getting form field
+/// </summary>
+TEST_F(FormFieldTest, TestGetFormFieldWithoutNodePath)
+{
+	utility::string_t
+		localName = STCONVERT("FormFilled.docx"),
+		remoteName = STCONVERT("TestGetFormFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName);
+
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetFormFieldWithoutNodePathRequest> request = std::make_shared<GetFormFieldWithoutNodePathRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none);
+
+	AsposeResponse<FormFieldResponse> actual = get_api()->getFormFieldWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+///  Test for getting form fields
+/// </summary>        
+TEST_F(FormFieldTest, TestGetFormFieldsWithoutNodePath)
+{
+	utility::string_t
+		localName = STCONVERT("FormFilled.docx"),
+		remoteName = STCONVERT("TestGetFormFieldsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetFormFieldsWithoutNodePathRequest> request = std::make_shared<GetFormFieldsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none);
+
+	AsposeResponse<FormFieldsResponse> actual = get_api()->getFormFieldsWithoutNodePath(request).get();
+
+	auto formFields = actual.body->getFormFields()->getList();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+
+
+	std::shared_ptr<FormFieldTextInput> input1 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(0)),
+		input2 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(1)),
+		input3 = std::static_pointer_cast<FormFieldTextInput>(formFields.at(2));
+
+	ASSERT_EQ(STCONVERT("Regular"), input1->getTextInputType());
+	ASSERT_EQ(STCONVERT("Date"), input2->getTextInputType());
+	ASSERT_EQ(STCONVERT("Number"), input3->getTextInputType());
+
+	std::shared_ptr<FormFieldCheckbox> checkbox = std::static_pointer_cast<FormFieldCheckbox>(formFields.at(3));
+	ASSERT_EQ(10, checkbox->getCheckBoxSize());
+
+	std::shared_ptr<FormFieldDropDown> dropDown = std::static_pointer_cast<FormFieldDropDown>(formFields.at(4));
+	ASSERT_TRUE(dropDown->getDropDownItems().size() > 0);
+}
+
+/// <summary>
+/// Test for inserting form field
+/// </summary>
+TEST_F(FormFieldTest, TestPostFormFieldWithoutNodePath)
+{
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestPutFormFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName),
+		destFileName = path_combine_url(baseTestOutPath, remoteName);
+
+	std::shared_ptr<FormFieldTextInput> body = std::make_shared<FormFieldTextInput>();
+	body->setName(STCONVERT("FullName"));
+	body->setEnabled(true);
+	body->setCalculateOnExit(true);
+	body->setStatusText(STCONVERT(""));
+	body->setTextInputType(STCONVERT("Regular"));
+	body->setTextInputDefault(STCONVERT("123"));
+	body->setTextInputFormat(STCONVERT("UPPERCASE"));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<InsertFormFieldWithoutNodePathRequest> request =
+		std::make_shared<InsertFormFieldWithoutNodePathRequest>(remoteName, body, dataFolder, boost::none,
+			boost::none, boost::none, destFileName, boost::none, boost::none, boost::none);
+
+	AsposeResponse<FormFieldResponse> actual = get_api()->insertFormFieldWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting form field
+/// </summary>
+TEST_F(FormFieldTest, TestDeleteFormFieldWithoutNodePath)
+{
+	utility::string_t
+		localName = STCONVERT("FormFilled.docx"),
+		remoteName = STCONVERT("TestDeleteFormFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName),
+		destFileName = path_combine_url(baseTestOutPath, remoteName);
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFormFieldWithoutNodePathRequest> request = std::make_shared<DeleteFormFieldWithoutNodePathRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFormFieldWithoutNodePath(request).get();
 	ASSERT_EQ(200, actual->status_code());
 }

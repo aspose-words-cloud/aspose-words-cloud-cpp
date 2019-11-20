@@ -29,7 +29,7 @@
 /// </summary>
 class FieldTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Fields")),
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Fields")),
 		textFolder = STCONVERT("DocumentElements/Text"),
 		fieldFolder = STCONVERT("DocumentElements/Fields");
 };
@@ -47,8 +47,8 @@ TEST_F(FieldTest, TestGetFields) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetFieldsRequest> request=
-			std::make_shared<GetFieldsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0"));
+			std::make_shared<GetFieldsRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none);
 
 	AsposeResponse<FieldsResponse> actual = get_api()->getFields(request).get();
 
@@ -83,20 +83,17 @@ TEST_F(FieldTest, TestGetField) {
 /// </summary>
 TEST_F(FieldTest, TestPutField) {
 	utility::string_t
-		localName = STCONVERT("SampleWordDocument.docx"),
+		localName = STCONVERT("GetField.docx"),
 		remoteName = STCONVERT("TestPutField.docx"),
 		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(textFolder), localName);
+		filePath = path_combine(get_data_dir(fieldFolder), localName);
 
-	std::shared_ptr<Field> body= std::make_shared<Field>();
-	body->setResult(STCONVERT("3"));
+	std::shared_ptr<Field> body= std::shared_ptr<Field>(new Field());
 	body->setFieldCode(STCONVERT("{ NUMPAGES }"));
-	body->setNodeId(STCONVERT("0.0.3"));
-
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<UpdateFieldRequest> request=
+	std::shared_ptr<UpdateFieldRequest> request =
 			std::make_shared<UpdateFieldRequest>(remoteName, body, STCONVERT("sections/0/paragraphs/0"), 0, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
@@ -197,8 +194,8 @@ TEST_F(FieldTest, TestDeleteParagraphFields) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFieldsRequest> request=
-			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, STCONVERT("paragraphs/0"));
+			std::make_shared<DeleteFieldsRequest>(remoteName, STCONVERT("paragraphs/0"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
@@ -218,9 +215,8 @@ TEST_F(FieldTest, TestDeleteSectionParagraphFields) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFieldsRequest> request=
-			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none,
-		STCONVERT("sections/0/paragraphs/0"));
+			std::make_shared<DeleteFieldsRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
@@ -240,8 +236,8 @@ TEST_F(FieldTest, TestDeleteSectionFields) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFieldsRequest> request=
-			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, STCONVERT("sections/0"));
+			std::make_shared<DeleteFieldsRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
 
@@ -261,7 +257,7 @@ TEST_F(FieldTest, TestDeleteDocumentFields) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFieldsRequest> request=
-			std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none,
+			std::make_shared<DeleteFieldsRequest>(remoteName, STCONVERT("sections/0"), dataFolder,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFields(request).get();
@@ -288,4 +284,185 @@ TEST_F(FieldTest, TestPostUpdateDocumentFields) {
 	AsposeResponse<DocumentResponse> actual = get_api()->updateFields(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting fields
+/// </summary>
+TEST_F(FieldTest, TestGetFieldsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("GetField.docx"),
+		remoteName = STCONVERT("TestGetFieldsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetFieldsWithoutNodePathRequest> request =
+		std::make_shared<GetFieldsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<FieldsResponse> actual = get_api()->getFieldsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting field by index
+/// </summary>
+TEST_F(FieldTest, TestGetFieldWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("GetField.docx"),
+		remoteName = STCONVERT("TestGetFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName);
+
+	int32_t fieldIndex = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetFieldWithoutNodePathRequest> request =
+		std::make_shared<GetFieldWithoutNodePathRequest>(remoteName, fieldIndex, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<FieldResponse> actual = get_api()->getFieldWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for posting field
+/// </summary>
+TEST_F(FieldTest, TestPostFieldWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("GetField.docx"),
+		remoteName = STCONVERT("TestPostFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName),
+		destFileName = path_combine_url(baseTestOutPath, remoteName);
+
+	int32_t fieldIndex = 0;
+
+	std::shared_ptr<Field> body = std::make_shared<Field>();
+	body->setResult(STCONVERT("3"));
+	body->setFieldCode(STCONVERT("{ NUMPAGES }"));
+	body->setNodeId(STCONVERT("0.0.3"));
+
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<InsertFieldWithoutNodePathRequest> request =
+		std::make_shared<InsertFieldWithoutNodePathRequest>(remoteName, body, dataFolder, boost::none,
+			boost::none, boost::none, destFileName, boost::none, boost::none, boost::none);
+
+	AsposeResponse<FieldResponse> actual = get_api()->insertFieldWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting field
+/// </summary>
+TEST_F(FieldTest, TestDeleteFieldWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("GetField.docx"),
+		remoteName = STCONVERT("TestDeleteFieldWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(fieldFolder), localName);
+
+	int32_t fieldIndex = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFieldWithoutNodePathRequest> request =
+		std::make_shared<DeleteFieldWithoutNodePathRequest>(remoteName, fieldIndex, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFieldWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph fields
+/// </summary>
+TEST_F(FieldTest, TestDeleteParagraphFieldsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteParagraphFieldsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request =
+		std::make_shared<DeleteFieldsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFieldsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for deleting sections fields
+/// </summary>
+TEST_F(FieldTest, TestDeleteSectionParagraphFieldsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteSectionParagraphFieldsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request =
+		std::make_shared<DeleteFieldsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFieldsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph fields in section
+/// </summary>
+TEST_F(FieldTest, TestDeleteSectionFieldsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteSectionFieldsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request =
+		std::make_shared<DeleteFieldsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFieldsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for deleting fields
+/// </summary>
+TEST_F(FieldTest, TestDeleteDocumentFieldsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteDocumentFieldsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFieldsWithoutNodePathRequest> request =
+		std::make_shared<DeleteFieldsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFieldsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
 }

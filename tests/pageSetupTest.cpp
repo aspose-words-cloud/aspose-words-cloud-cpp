@@ -29,7 +29,7 @@
 /// </summary>
 class PageSetupTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\PageSetup")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/PageSetup")),
 		textFolder = STCONVERT("DocumentElements/Text");
 };
 

@@ -29,7 +29,7 @@
 /// </summary>
 class HyperlinkTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Hyperlink"));
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Hyperlink"));
 };
 
 /// <summary>

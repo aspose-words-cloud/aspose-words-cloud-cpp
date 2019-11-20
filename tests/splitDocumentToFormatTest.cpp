@@ -29,7 +29,7 @@
 /// </summary>
 class SplitDocumentToFormatTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\SplitDocument"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/SplitDocument"));
 };
 
 /// <summary>

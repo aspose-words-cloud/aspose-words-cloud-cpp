@@ -27,7 +27,7 @@ class CommentTest : public InfrastructureTest
 {
 protected:
 	utility::string_t get_data_folder() override {
-		return path_combine_url(STCONVERT("Temp\\SdkTests\\TestData"), STCONVERT("DocumentElements\\Comments"));
+		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentElements/Comments"));
 	}
 };
 
@@ -83,7 +83,7 @@ TEST_F(CommentTest, TestPostComment) {
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
-	nodeLink->setNodeId(STCONVERT("0.0.3"));
+	nodeLink->setNodeId(STCONVERT("0.3.0.3"));
 
 	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
 	position->setNode(nodeLink);
@@ -119,7 +119,7 @@ TEST_F(CommentTest, TestPutComment) {
 	int32_t commentIndex = 0;
 
 	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
-	nodeLink->setNodeId(STCONVERT("0.0.3"));
+	nodeLink->setNodeId(STCONVERT("0.3.0"));
 
 	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
 	position->setNode(nodeLink);

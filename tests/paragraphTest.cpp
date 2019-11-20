@@ -29,7 +29,7 @@
 /// </summary>
 class ParagraphTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Paragraphs")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Paragraphs")),
 		fieldFolder = STCONVERT("DocumentElements/Fields");
 };
 
@@ -68,8 +68,8 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphs) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetParagraphsRequest> request=
-			std::make_shared<GetParagraphsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0"));
+			std::make_shared<GetParagraphsRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none);
 
 	AsposeResponse<ParagraphLinkCollectionResponse> actual = get_api()->getParagraphs(request).get();
 
@@ -79,7 +79,7 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphs) {
 /// <summary>
 /// Test for getting first paragraph
 /// </summary>
-TEST_F(ParagraphTest, TestGetDocumentParagraphWithoutNodePath) {
+TEST_F(ParagraphTest, TestGetParagraphWithoutNodePath) {
 	utility::string_t
 		localName = STCONVERT("test_multi_pages.docx"),
 		remoteName = STCONVERT("TestGetDocumentParagraphWithoutNodePath.docx"),
@@ -186,4 +186,115 @@ TEST_F(ParagraphTest, TestUpdateParagraphFormat) {
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
+
+/// <summary>
+/// Test for inserting  paragraph
+/// </summary>
+TEST_F(ParagraphTest, TestInsertParagraph) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestInsertParagraph.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	std::shared_ptr<ParagraphInsert> body = std::shared_ptr<ParagraphInsert>(new ParagraphInsert());
+	body->setText(STCONVERT("text"));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<InsertParagraphRequest> request =
+		std::make_shared<InsertParagraphRequest>(remoteName, body, STCONVERT(""), dataFolder, 
+			boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<ParagraphResponse> actual = get_api()->insertParagraph(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting all paragraphs
+/// </summary>
+TEST_F(ParagraphTest, TestGetDocumentParagraphsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestGetDocumentParagraphsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetParagraphsWithoutNodePathRequest> request =
+		std::make_shared<GetParagraphsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<ParagraphLinkCollectionResponse> actual = get_api()->getParagraphsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph
+/// </summary>
+TEST_F(ParagraphTest, TestDeleteParagraphWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteParagraphWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteParagraphWithoutNodePathRequest> request =
+		std::make_shared<DeleteParagraphWithoutNodePathRequest>(remoteName, 0, dataFolder, boost::none, boost::none,
+			boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteParagraphWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for paragraph rendering
+/// </summary>
+TEST_F(ParagraphTest, TestRenderParagraphWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestRenderParagraphWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName),
+		format = STCONVERT("png");
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<RenderParagraphWithoutNodePathRequest> request =
+		std::make_shared<RenderParagraphWithoutNodePathRequest>(remoteName, format, index,
+			dataFolder, boost::none, boost::none, boost::none, boost::none);
+
+	HttpContent result = get_api()->renderParagraphWithoutNodePath(request).get();
+
+	ASSERT_TRUE(result.getData()->peek());
+}
+
+/// <summary>
+/// Test for getting paragraph format settings
+/// </summary>
+TEST_F(ParagraphTest, TestGetParagraphFormatWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestGetDocumentParagraphsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetParagraphFormatWithoutNodePathRequest> request =
+		std::make_shared<GetParagraphFormatWithoutNodePathRequest>(remoteName, 0,
+			dataFolder, boost::none, boost::none, boost::none);
+
+	AsposeResponse<ParagraphFormatResponse> actual = get_api()->getParagraphFormatWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
 

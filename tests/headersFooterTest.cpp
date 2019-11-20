@@ -29,7 +29,7 @@
 /// </summary>
 class HeadersFooterTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Footnotes")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Footnotes")),
 		headerFooterFolder = STCONVERT("DocumentElements/HeaderFooters");
 };
 
@@ -46,7 +46,7 @@ TEST_F(HeadersFooterTest, TestGetHeadersFooters) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetHeaderFootersRequest> request=
-			std::make_shared<GetHeaderFootersRequest>(remoteName, dataFolder, boost::none,
+			std::make_shared<GetHeaderFootersRequest>(remoteName, STCONVERT("sections/0"), dataFolder,
 		boost::none, boost::none, boost::none, boost::none);
 
 	AsposeResponse<HeaderFootersResponse> actual = get_api()->getHeaderFooters(request).get();
@@ -158,8 +158,8 @@ TEST_F(HeadersFooterTest, TestPutHeaderFooter) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<InsertHeaderFooterRequest> request=
-			std::make_shared<InsertHeaderFooterRequest>(remoteName, STCONVERT("FooterEven"), dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<InsertHeaderFooterRequest>(remoteName, STCONVERT("FooterEven"), STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	AsposeResponse<HeaderFooterResponse> actual = get_api()->insertHeaderFooter(request).get();
 
