@@ -135,16 +135,6 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::acceptAllRev
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -183,23 +173,23 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::acceptAllRev
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -241,7 +231,7 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::acceptAllRev
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -287,20 +277,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::share
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -339,31 +315,31 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -420,7 +396,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -458,10 +434,6 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classify(std::share
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/classify"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("text"),
-        ApiClient::parameterToString(request->getText()));
-    path = replacePathParameter(path, _XPLATSTR("bestClassesCount"), 
-        extractOptional(request->getBestClassesCount()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -500,7 +472,7 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classify(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getBestClassesCount() && bPath.find(_XPLATSTR("bestClassesCount")) == std::string::npos)
+    if (request->getBestClassesCount())
     {
         queryParams[_XPLATSTR("BestClassesCount")] = ApiClient::parameterToString(*(request->getBestClassesCount()));
     }
@@ -552,7 +524,7 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classify(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -592,18 +564,6 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classifyDocument(st
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("documentName"),
         ApiClient::parameterToString(request->getDocumentName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("bestClassesCount"), 
-        extractOptional(request->getBestClassesCount()));
-    path = replacePathParameter(path, _XPLATSTR("taxonomy"), 
-        extractOptional(request->getTaxonomy()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -642,27 +602,27 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classifyDocument(st
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getBestClassesCount() && bPath.find(_XPLATSTR("bestClassesCount")) == std::string::npos)
+    if (request->getBestClassesCount())
     {
         queryParams[_XPLATSTR("BestClassesCount")] = ApiClient::parameterToString(*(request->getBestClassesCount()));
     }
-    if (request->getTaxonomy() && bPath.find(_XPLATSTR("taxonomy")) == std::string::npos)
+    if (request->getTaxonomy())
     {
         queryParams[_XPLATSTR("Taxonomy")] = ApiClient::parameterToString(*(request->getTaxonomy()));
     }
@@ -704,7 +664,7 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classifyDocument(st
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -750,16 +710,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::compareDocument(std::shar
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -798,23 +748,23 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::compareDocument(std::shar
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -871,7 +821,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::compareDocument(std::shar
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -915,16 +865,6 @@ pplx::task<HttpContent> WordsApi::convertDocument(std::shared_ptr<ConvertDocumen
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/convert"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("outPath"), 
-        extractOptional(request->getOutPath()));
-    path = replacePathParameter(path, _XPLATSTR("fileNameFieldValue"), 
-        extractOptional(request->getFileNameFieldValue()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -970,19 +910,19 @@ pplx::task<HttpContent> WordsApi::convertDocument(std::shared_ptr<ConvertDocumen
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getOutPath() && bPath.find(_XPLATSTR("outPath")) == std::string::npos)
+    if (request->getOutPath())
     {
         queryParams[_XPLATSTR("OutPath")] = ApiClient::parameterToString(*(request->getOutPath()));
     }
-    if (request->getFileNameFieldValue() && bPath.find(_XPLATSTR("fileNameFieldValue")) == std::string::npos)
+    if (request->getFileNameFieldValue())
     {
         queryParams[_XPLATSTR("FileNameFieldValue")] = ApiClient::parameterToString(*(request->getFileNameFieldValue()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -1024,7 +964,7 @@ pplx::task<HttpContent> WordsApi::convertDocument(std::shared_ptr<ConvertDocumen
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1044,16 +984,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFile(std::sh
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/storage/file/copy/{srcPath}"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("destPath"),
-        ApiClient::parameterToString(request->getDestPath()));
     path = replacePathParameter(path, _XPLATSTR("srcPath"),
         ApiClient::parameterToString(request->getSrcPath()));
-    path = replacePathParameter(path, _XPLATSTR("srcStorageName"), 
-        extractOptional(request->getSrcStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("destStorageName"), 
-        extractOptional(request->getDestStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("versionId"), 
-        extractOptional(request->getVersionId()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1095,15 +1027,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFile(std::sh
     {
         queryParams[_XPLATSTR("DestPath")] = ApiClient::parameterToString((request->getDestPath()));
     }
-    if (request->getSrcStorageName() && bPath.find(_XPLATSTR("srcStorageName")) == std::string::npos)
+    if (request->getSrcStorageName())
     {
         queryParams[_XPLATSTR("SrcStorageName")] = ApiClient::parameterToString(*(request->getSrcStorageName()));
     }
-    if (request->getDestStorageName() && bPath.find(_XPLATSTR("destStorageName")) == std::string::npos)
+    if (request->getDestStorageName())
     {
         queryParams[_XPLATSTR("DestStorageName")] = ApiClient::parameterToString(*(request->getDestStorageName()));
     }
-    if (request->getVersionId() && bPath.find(_XPLATSTR("versionId")) == std::string::npos)
+    if (request->getVersionId())
     {
         queryParams[_XPLATSTR("VersionId")] = ApiClient::parameterToString(*(request->getVersionId()));
     }
@@ -1145,7 +1077,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFile(std::sh
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1162,14 +1094,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFolder(std::
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/storage/folder/copy/{srcPath}"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("destPath"),
-        ApiClient::parameterToString(request->getDestPath()));
     path = replacePathParameter(path, _XPLATSTR("srcPath"),
         ApiClient::parameterToString(request->getSrcPath()));
-    path = replacePathParameter(path, _XPLATSTR("srcStorageName"), 
-        extractOptional(request->getSrcStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("destStorageName"), 
-        extractOptional(request->getDestStorageName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1211,11 +1137,11 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFolder(std::
     {
         queryParams[_XPLATSTR("DestPath")] = ApiClient::parameterToString((request->getDestPath()));
     }
-    if (request->getSrcStorageName() && bPath.find(_XPLATSTR("srcStorageName")) == std::string::npos)
+    if (request->getSrcStorageName())
     {
         queryParams[_XPLATSTR("SrcStorageName")] = ApiClient::parameterToString(*(request->getSrcStorageName()));
     }
-    if (request->getDestStorageName() && bPath.find(_XPLATSTR("destStorageName")) == std::string::npos)
+    if (request->getDestStorageName())
     {
         queryParams[_XPLATSTR("DestStorageName")] = ApiClient::parameterToString(*(request->getDestStorageName()));
     }
@@ -1257,7 +1183,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFolder(std::
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1274,12 +1200,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::createDocument(std::share
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/create"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("fileName"), 
-        extractOptional(request->getFileName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1318,15 +1238,15 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::createDocument(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getFileName() && bPath.find(_XPLATSTR("fileName")) == std::string::npos)
+    if (request->getFileName())
     {
         queryParams[_XPLATSTR("FileName")] = ApiClient::parameterToString(*(request->getFileName()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
@@ -1368,7 +1288,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::createDocument(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1408,8 +1328,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::createFolder(std
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("path"),
         ApiClient::parameterToString(request->getPath()));
-    path = replacePathParameter(path, _XPLATSTR("storageName"), 
-        extractOptional(request->getStorageName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1448,7 +1366,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::createFolder(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorageName() && bPath.find(_XPLATSTR("storageName")) == std::string::npos)
+    if (request->getStorageName())
     {
         queryParams[_XPLATSTR("StorageName")] = ApiClient::parameterToString(*(request->getStorageName()));
     }
@@ -1490,7 +1408,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::createFolder(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1517,20 +1435,6 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::createOrUpdateDoc
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("propertyName"),
         ApiClient::parameterToString(request->getPropertyName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1569,31 +1473,31 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::createOrUpdateDoc
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -1650,7 +1554,7 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::createOrUpdateDoc
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1694,20 +1598,6 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_pt
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1746,31 +1636,31 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_pt
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -1812,7 +1702,7 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_pt
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -1854,20 +1744,6 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::deleteBorders(std::shared_
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -1906,31 +1782,31 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::deleteBorders(std::shared_
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -1972,7 +1848,7 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::deleteBorders(std::shared_
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2014,20 +1890,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteComment(st
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("commentIndex"),
         ApiClient::parameterToString(request->getCommentIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2066,31 +1928,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteComment(st
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2132,7 +1994,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteComment(st
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2153,20 +2015,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDocumentPr
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("propertyName"),
         ApiClient::parameterToString(request->getPropertyName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2205,31 +2053,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDocumentPr
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2271,7 +2119,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDocumentPr
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2294,20 +2142,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2346,31 +2180,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2412,7 +2246,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2433,20 +2267,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2485,31 +2305,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2551,7 +2371,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2574,20 +2394,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteField(std:
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2626,31 +2432,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteField(std:
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2692,7 +2498,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteField(std:
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2713,20 +2519,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldWitho
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2765,31 +2557,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldWitho
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2831,7 +2623,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldWitho
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2852,20 +2644,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFields(std
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -2904,31 +2682,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFields(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -2970,7 +2748,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFields(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -2989,20 +2767,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWith
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3041,31 +2805,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWith
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -3107,7 +2871,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWith
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3126,10 +2890,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFile(std::
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("path"),
         ApiClient::parameterToString(request->getPath()));
-    path = replacePathParameter(path, _XPLATSTR("storageName"), 
-        extractOptional(request->getStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("versionId"), 
-        extractOptional(request->getVersionId()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3168,11 +2928,11 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFile(std::
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorageName() && bPath.find(_XPLATSTR("storageName")) == std::string::npos)
+    if (request->getStorageName())
     {
         queryParams[_XPLATSTR("StorageName")] = ApiClient::parameterToString(*(request->getStorageName()));
     }
-    if (request->getVersionId() && bPath.find(_XPLATSTR("versionId")) == std::string::npos)
+    if (request->getVersionId())
     {
         queryParams[_XPLATSTR("VersionId")] = ApiClient::parameterToString(*(request->getVersionId()));
     }
@@ -3214,7 +2974,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFile(std::
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3233,10 +2993,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFolder(std
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("path"),
         ApiClient::parameterToString(request->getPath()));
-    path = replacePathParameter(path, _XPLATSTR("storageName"), 
-        extractOptional(request->getStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("recursive"), 
-        extractOptional(request->getRecursive()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3275,11 +3031,11 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFolder(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorageName() && bPath.find(_XPLATSTR("storageName")) == std::string::npos)
+    if (request->getStorageName())
     {
         queryParams[_XPLATSTR("StorageName")] = ApiClient::parameterToString(*(request->getStorageName()));
     }
-    if (request->getRecursive() && bPath.find(_XPLATSTR("recursive")) == std::string::npos)
+    if (request->getRecursive())
     {
         queryParams[_XPLATSTR("Recursive")] = ApiClient::parameterToString(*(request->getRecursive()));
     }
@@ -3321,7 +3077,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFolder(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3344,20 +3100,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnote(s
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3396,31 +3138,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnote(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -3462,7 +3204,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnote(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3483,20 +3225,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnoteWi
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3535,31 +3263,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnoteWi
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -3601,7 +3329,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnoteWi
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3624,20 +3352,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormField(
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3676,31 +3390,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormField(
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -3742,7 +3456,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormField(
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3763,20 +3477,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormFieldW
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3815,31 +3515,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormFieldW
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -3881,7 +3581,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormFieldW
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -3904,20 +3604,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeaderFoot
         ApiClient::parameterToString(request->getSectionPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -3956,31 +3642,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeaderFoot
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -4022,7 +3708,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeaderFoot
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4043,22 +3729,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeadersFoo
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("headersFootersTypes"), 
-        extractOptional(request->getHeadersFootersTypes()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4097,35 +3767,35 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeadersFoo
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getHeadersFootersTypes() && bPath.find(_XPLATSTR("headersFootersTypes")) == std::string::npos)
+    if (request->getHeadersFootersTypes())
     {
         queryParams[_XPLATSTR("HeadersFootersTypes")] = ApiClient::parameterToString(*(request->getHeadersFootersTypes()));
     }
@@ -4167,7 +3837,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeadersFoo
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4186,20 +3856,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteMacros(std
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4238,31 +3894,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteMacros(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -4304,7 +3960,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteMacros(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4327,20 +3983,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4379,31 +4021,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -4445,7 +4087,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4466,20 +4108,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4518,31 +4146,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -4584,7 +4212,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4607,20 +4235,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraph(
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4659,31 +4273,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraph(
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -4725,7 +4339,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraph(
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4746,20 +4360,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraphW
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4798,31 +4398,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraphW
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -4864,7 +4464,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraphW
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -4887,20 +4487,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteRun(std::s
         ApiClient::parameterToString(request->getParagraphPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -4939,31 +4525,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteRun(std::s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5005,7 +4591,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteRun(std::s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5026,20 +4612,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteSection(st
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("sectionIndex"),
         ApiClient::parameterToString(request->getSectionIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5078,31 +4650,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteSection(st
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5144,7 +4716,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteSection(st
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5167,20 +4739,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTable(std:
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5219,31 +4777,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTable(std:
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5285,7 +4843,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTable(std:
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5308,20 +4866,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableCell(
         ApiClient::parameterToString(request->getTableRowPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5360,31 +4904,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableCell(
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5426,7 +4970,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableCell(
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5449,20 +4993,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableRow(s
         ApiClient::parameterToString(request->getTablePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5501,31 +5031,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableRow(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5567,7 +5097,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableRow(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5588,20 +5118,6 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableWitho
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5640,31 +5156,31 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableWitho
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5706,7 +5222,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableWitho
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5725,20 +5241,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::deleteWatermark(std::shar
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5777,31 +5279,31 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::deleteWatermark(std::shar
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -5843,7 +5345,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::deleteWatermark(std::shar
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5883,10 +5385,6 @@ pplx::task<HttpContent> WordsApi::downloadFile(std::shared_ptr<DownloadFileReque
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("path"),
         ApiClient::parameterToString(request->getPath()));
-    path = replacePathParameter(path, _XPLATSTR("storageName"), 
-        extractOptional(request->getStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("versionId"), 
-        extractOptional(request->getVersionId()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -5926,11 +5424,11 @@ pplx::task<HttpContent> WordsApi::downloadFile(std::shared_ptr<DownloadFileReque
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorageName() && bPath.find(_XPLATSTR("storageName")) == std::string::npos)
+    if (request->getStorageName())
     {
         queryParams[_XPLATSTR("StorageName")] = ApiClient::parameterToString(*(request->getStorageName()));
     }
-    if (request->getVersionId() && bPath.find(_XPLATSTR("versionId")) == std::string::npos)
+    if (request->getVersionId())
     {
         queryParams[_XPLATSTR("VersionId")] = ApiClient::parameterToString(*(request->getVersionId()));
     }
@@ -5972,7 +5470,7 @@ pplx::task<HttpContent> WordsApi::downloadFile(std::shared_ptr<DownloadFileReque
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -5994,26 +5492,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::executeMailMerge(std::sha
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("data"), 
-        extractOptional(request->getData()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("withRegions"), 
-        extractOptional(request->getWithRegions()));
-    path = replacePathParameter(path, _XPLATSTR("mailMergeDataFile"), 
-        extractOptional(request->getMailMergeDataFile()));
-    path = replacePathParameter(path, _XPLATSTR("cleanup"), 
-        extractOptional(request->getCleanup()));
-    path = replacePathParameter(path, _XPLATSTR("useWholeParagraphAsRegion"), 
-        extractOptional(request->getUseWholeParagraphAsRegion()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6051,43 +5529,43 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::executeMailMerge(std::sha
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert(_XPLATSTR("multipart/form-data"));
 
-    if (request->getData() && bPath.find(_XPLATSTR("data")) == std::string::npos)
+    if (request->getData())
     {
         formParams[_XPLATSTR("Data")] = ApiClient::parameterToString(*(request->getData()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getWithRegions() && bPath.find(_XPLATSTR("withRegions")) == std::string::npos)
+    if (request->getWithRegions())
     {
         queryParams[_XPLATSTR("WithRegions")] = ApiClient::parameterToString(*(request->getWithRegions()));
     }
-    if (request->getMailMergeDataFile() && bPath.find(_XPLATSTR("mailMergeDataFile")) == std::string::npos)
+    if (request->getMailMergeDataFile())
     {
         queryParams[_XPLATSTR("MailMergeDataFile")] = ApiClient::parameterToString(*(request->getMailMergeDataFile()));
     }
-    if (request->getCleanup() && bPath.find(_XPLATSTR("cleanup")) == std::string::npos)
+    if (request->getCleanup())
     {
         queryParams[_XPLATSTR("Cleanup")] = ApiClient::parameterToString(*(request->getCleanup()));
     }
-    if (request->getUseWholeParagraphAsRegion() && bPath.find(_XPLATSTR("useWholeParagraphAsRegion")) == std::string::npos)
+    if (request->getUseWholeParagraphAsRegion())
     {
         queryParams[_XPLATSTR("UseWholeParagraphAsRegion")] = ApiClient::parameterToString(*(request->getUseWholeParagraphAsRegion()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -6129,7 +5607,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::executeMailMerge(std::sha
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6179,12 +5657,6 @@ pplx::task<HttpContent> WordsApi::executeMailMergeOnline(std::shared_ptr<Execute
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/MailMerge"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("withRegions"), 
-        extractOptional(request->getWithRegions()));
-    path = replacePathParameter(path, _XPLATSTR("cleanup"), 
-        extractOptional(request->getCleanup()));
-    path = replacePathParameter(path, _XPLATSTR("documentFileName"), 
-        extractOptional(request->getDocumentFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6231,15 +5703,15 @@ pplx::task<HttpContent> WordsApi::executeMailMergeOnline(std::shared_ptr<Execute
     {
         fileParams.push_back(make_pair(_XPLATSTR("Data"), (request->getData())));
     }
-    if (request->getWithRegions() && bPath.find(_XPLATSTR("withRegions")) == std::string::npos)
+    if (request->getWithRegions())
     {
         queryParams[_XPLATSTR("WithRegions")] = ApiClient::parameterToString(*(request->getWithRegions()));
     }
-    if (request->getCleanup() && bPath.find(_XPLATSTR("cleanup")) == std::string::npos)
+    if (request->getCleanup())
     {
         queryParams[_XPLATSTR("Cleanup")] = ApiClient::parameterToString(*(request->getCleanup()));
     }
-    if (request->getDocumentFileName() && bPath.find(_XPLATSTR("documentFileName")) == std::string::npos)
+    if (request->getDocumentFileName())
     {
         queryParams[_XPLATSTR("DocumentFileName")] = ApiClient::parameterToString(*(request->getDocumentFileName()));
     }
@@ -6281,7 +5753,7 @@ pplx::task<HttpContent> WordsApi::executeMailMergeOnline(std::shared_ptr<Execute
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6301,8 +5773,6 @@ pplx::task<AsposeResponse<AvailableFontsResponse>> WordsApi::getAvailableFonts(s
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/fonts/available"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6341,7 +5811,7 @@ pplx::task<AsposeResponse<AvailableFontsResponse>> WordsApi::getAvailableFonts(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -6383,7 +5853,7 @@ pplx::task<AsposeResponse<AvailableFontsResponse>> WordsApi::getAvailableFonts(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6425,14 +5895,6 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::getBookmarkByName(std::sh
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("bookmarkName"),
         ApiClient::parameterToString(request->getBookmarkName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6471,19 +5933,19 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::getBookmarkByName(std::sh
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -6525,7 +5987,7 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::getBookmarkByName(std::sh
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6565,14 +6027,6 @@ pplx::task<AsposeResponse<BookmarksResponse>> WordsApi::getBookmarks(std::shared
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6611,19 +6065,19 @@ pplx::task<AsposeResponse<BookmarksResponse>> WordsApi::getBookmarks(std::shared
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -6665,7 +6119,7 @@ pplx::task<AsposeResponse<BookmarksResponse>> WordsApi::getBookmarks(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6709,14 +6163,6 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<G
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6755,19 +6201,19 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<G
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -6809,7 +6255,7 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<G
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6851,14 +6297,6 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::getBorders(std::shared_ptr
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6897,19 +6335,19 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::getBorders(std::shared_ptr
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -6951,7 +6389,7 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::getBorders(std::shared_ptr
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -6993,14 +6431,6 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::getComment(std::shared_ptr
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("commentIndex"),
         ApiClient::parameterToString(request->getCommentIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7039,19 +6469,19 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::getComment(std::shared_ptr
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7093,7 +6523,7 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::getComment(std::shared_ptr
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7133,14 +6563,6 @@ pplx::task<AsposeResponse<CommentsResponse>> WordsApi::getComments(std::shared_p
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7179,19 +6601,19 @@ pplx::task<AsposeResponse<CommentsResponse>> WordsApi::getComments(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7233,7 +6655,7 @@ pplx::task<AsposeResponse<CommentsResponse>> WordsApi::getComments(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7273,14 +6695,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::getDocument(std::shared_p
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("documentName"),
         ApiClient::parameterToString(request->getDocumentName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7319,19 +6733,19 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::getDocument(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7373,7 +6787,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::getDocument(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7417,14 +6831,6 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7463,19 +6869,19 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7517,7 +6923,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7559,14 +6965,6 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7605,19 +7003,19 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7659,7 +7057,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7703,14 +7101,6 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageData(std::shared_
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7750,19 +7140,19 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageData(std::shared_
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7804,7 +7194,7 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageData(std::shared_
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7828,14 +7218,6 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageDataWithoutNodePa
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -7875,19 +7257,19 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageDataWithoutNodePa
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -7929,7 +7311,7 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageDataWithoutNodePa
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -7955,14 +7337,6 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleData(std::shared_pt
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8002,19 +7376,19 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleData(std::shared_pt
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -8056,7 +7430,7 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleData(std::shared_pt
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8080,14 +7454,6 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleDataWithoutNodePath
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8127,19 +7493,19 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleDataWithoutNodePath
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -8181,7 +7547,7 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleDataWithoutNodePath
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8205,14 +7571,6 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8251,19 +7609,19 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -8305,7 +7663,7 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8345,14 +7703,6 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8391,19 +7741,19 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -8445,7 +7795,7 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8485,16 +7835,6 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNames(s
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("useNonMergeFields"), 
-        extractOptional(request->getUseNonMergeFields()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8533,23 +7873,23 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNames(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getUseNonMergeFields() && bPath.find(_XPLATSTR("useNonMergeFields")) == std::string::npos)
+    if (request->getUseNonMergeFields())
     {
         queryParams[_XPLATSTR("UseNonMergeFields")] = ApiClient::parameterToString(*(request->getUseNonMergeFields()));
     }
@@ -8591,7 +7931,7 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNames(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8635,8 +7975,6 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOn
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/mailMerge/FieldNames"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("useNonMergeFields"), 
-        extractOptional(request->getUseNonMergeFields()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8678,7 +8016,7 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOn
     {
         fileParams.push_back(make_pair(_XPLATSTR("Template"), (request->getTemplate())));
     }
-    if (request->getUseNonMergeFields() && bPath.find(_XPLATSTR("useNonMergeFields")) == std::string::npos)
+    if (request->getUseNonMergeFields())
     {
         queryParams[_XPLATSTR("UseNonMergeFields")] = ApiClient::parameterToString(*(request->getUseNonMergeFields()));
     }
@@ -8720,7 +8058,7 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOn
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8762,14 +8100,6 @@ pplx::task<AsposeResponse<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIn
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("hyperlinkIndex"),
         ApiClient::parameterToString(request->getHyperlinkIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8808,19 +8138,19 @@ pplx::task<AsposeResponse<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIn
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -8862,7 +8192,7 @@ pplx::task<AsposeResponse<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIn
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -8902,14 +8232,6 @@ pplx::task<AsposeResponse<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(s
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -8948,19 +8270,19 @@ pplx::task<AsposeResponse<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -9002,7 +8324,7 @@ pplx::task<AsposeResponse<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9042,14 +8364,6 @@ pplx::task<AsposeResponse<DocumentPropertiesResponse>> WordsApi::getDocumentProp
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9088,19 +8402,19 @@ pplx::task<AsposeResponse<DocumentPropertiesResponse>> WordsApi::getDocumentProp
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -9142,7 +8456,7 @@ pplx::task<AsposeResponse<DocumentPropertiesResponse>> WordsApi::getDocumentProp
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9184,14 +8498,6 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::getDocumentProper
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("propertyName"),
         ApiClient::parameterToString(request->getPropertyName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9230,19 +8536,19 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::getDocumentProper
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -9284,7 +8590,7 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::getDocumentProper
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9324,14 +8630,6 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::getDocumentProtecti
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9370,19 +8668,19 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::getDocumentProtecti
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -9424,7 +8722,7 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::getDocumentProtecti
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9464,20 +8762,6 @@ pplx::task<AsposeResponse<StatDataResponse>> WordsApi::getDocumentStatistics(std
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("includeComments"), 
-        extractOptional(request->getIncludeComments()));
-    path = replacePathParameter(path, _XPLATSTR("includeFootnotes"), 
-        extractOptional(request->getIncludeFootnotes()));
-    path = replacePathParameter(path, _XPLATSTR("includeTextInShapes"), 
-        extractOptional(request->getIncludeTextInShapes()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9516,31 +8800,31 @@ pplx::task<AsposeResponse<StatDataResponse>> WordsApi::getDocumentStatistics(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getIncludeComments() && bPath.find(_XPLATSTR("includeComments")) == std::string::npos)
+    if (request->getIncludeComments())
     {
         queryParams[_XPLATSTR("IncludeComments")] = ApiClient::parameterToString(*(request->getIncludeComments()));
     }
-    if (request->getIncludeFootnotes() && bPath.find(_XPLATSTR("includeFootnotes")) == std::string::npos)
+    if (request->getIncludeFootnotes())
     {
         queryParams[_XPLATSTR("IncludeFootnotes")] = ApiClient::parameterToString(*(request->getIncludeFootnotes()));
     }
-    if (request->getIncludeTextInShapes() && bPath.find(_XPLATSTR("includeTextInShapes")) == std::string::npos)
+    if (request->getIncludeTextInShapes())
     {
         queryParams[_XPLATSTR("IncludeTextInShapes")] = ApiClient::parameterToString(*(request->getIncludeTextInShapes()));
     }
@@ -9582,7 +8866,7 @@ pplx::task<AsposeResponse<StatDataResponse>> WordsApi::getDocumentStatistics(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9622,20 +8906,6 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("outPath"), 
-        extractOptional(request->getOutPath()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9678,27 +8948,27 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getOutPath() && bPath.find(_XPLATSTR("outPath")) == std::string::npos)
+    if (request->getOutPath())
     {
         queryParams[_XPLATSTR("OutPath")] = ApiClient::parameterToString(*(request->getOutPath()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -9740,7 +9010,7 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9766,14 +9036,6 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getField(std::shared_ptr<Get
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9812,19 +9074,19 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getField(std::shared_ptr<Get
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -9866,7 +9128,7 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getField(std::shared_ptr<Get
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -9908,14 +9170,6 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getFieldWithoutNodePath(std:
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -9954,19 +9208,19 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getFieldWithoutNodePath(std:
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10008,7 +9262,7 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getFieldWithoutNodePath(std:
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10050,14 +9304,6 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFields(std::shared_ptr<G
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10096,19 +9342,19 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFields(std::shared_ptr<G
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10150,7 +9396,7 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFields(std::shared_ptr<G
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10190,14 +9436,6 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(st
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10236,19 +9474,19 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(st
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10290,7 +9528,7 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(st
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10330,8 +9568,6 @@ pplx::task<AsposeResponse<FilesList>> WordsApi::getFilesList(std::shared_ptr<Get
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("path"),
         ApiClient::parameterToString(request->getPath()));
-    path = replacePathParameter(path, _XPLATSTR("storageName"), 
-        extractOptional(request->getStorageName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10370,7 +9606,7 @@ pplx::task<AsposeResponse<FilesList>> WordsApi::getFilesList(std::shared_ptr<Get
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorageName() && bPath.find(_XPLATSTR("storageName")) == std::string::npos)
+    if (request->getStorageName())
     {
         queryParams[_XPLATSTR("StorageName")] = ApiClient::parameterToString(*(request->getStorageName()));
     }
@@ -10412,7 +9648,7 @@ pplx::task<AsposeResponse<FilesList>> WordsApi::getFilesList(std::shared_ptr<Get
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10456,14 +9692,6 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnote(std::shared_p
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10502,19 +9730,19 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnote(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10556,7 +9784,7 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnote(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10598,14 +9826,6 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePat
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10644,19 +9864,19 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePat
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10698,7 +9918,7 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePat
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10740,14 +9960,6 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotes(std::shared
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10786,19 +9998,19 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotes(std::shared
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10840,7 +10052,7 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotes(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -10880,14 +10092,6 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotesWithoutNodeP
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -10926,19 +10130,19 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotesWithoutNodeP
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -10980,7 +10184,7 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotesWithoutNodeP
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11024,14 +10228,6 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormField(std::shared
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11070,19 +10266,19 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormField(std::shared
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -11124,7 +10320,7 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormField(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11166,14 +10362,6 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormFieldWithoutNodeP
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11212,19 +10400,19 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormFieldWithoutNodeP
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -11266,7 +10454,7 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormFieldWithoutNodeP
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11308,14 +10496,6 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFields(std::shar
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11354,19 +10534,19 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFields(std::shar
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -11408,7 +10588,7 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFields(std::shar
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11448,14 +10628,6 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNod
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11494,19 +10666,19 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNod
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -11548,7 +10720,7 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNod
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11590,16 +10762,6 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("headerFooterIndex"),
         ApiClient::parameterToString(request->getHeaderFooterIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("filterByType"), 
-        extractOptional(request->getFilterByType()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11638,23 +10800,23 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFilterByType() && bPath.find(_XPLATSTR("filterByType")) == std::string::npos)
+    if (request->getFilterByType())
     {
         queryParams[_XPLATSTR("FilterByType")] = ApiClient::parameterToString(*(request->getFilterByType()));
     }
@@ -11696,7 +10858,7 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11740,16 +10902,6 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSect
         ApiClient::parameterToString(request->getHeaderFooterIndex()));
     path = replacePathParameter(path, _XPLATSTR("sectionIndex"),
         ApiClient::parameterToString(request->getSectionIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("filterByType"), 
-        extractOptional(request->getFilterByType()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11788,23 +10940,23 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSect
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFilterByType() && bPath.find(_XPLATSTR("filterByType")) == std::string::npos)
+    if (request->getFilterByType())
     {
         queryParams[_XPLATSTR("FilterByType")] = ApiClient::parameterToString(*(request->getFilterByType()));
     }
@@ -11846,7 +10998,7 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSect
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -11888,16 +11040,6 @@ pplx::task<AsposeResponse<HeaderFootersResponse>> WordsApi::getHeaderFooters(std
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("filterByType"), 
-        extractOptional(request->getFilterByType()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -11936,23 +11078,23 @@ pplx::task<AsposeResponse<HeaderFootersResponse>> WordsApi::getHeaderFooters(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFilterByType() && bPath.find(_XPLATSTR("filterByType")) == std::string::npos)
+    if (request->getFilterByType())
     {
         queryParams[_XPLATSTR("FilterByType")] = ApiClient::parameterToString(*(request->getFilterByType()));
     }
@@ -11994,7 +11136,7 @@ pplx::task<AsposeResponse<HeaderFootersResponse>> WordsApi::getHeaderFooters(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12038,14 +11180,6 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12084,19 +11218,19 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12138,7 +11272,7 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12180,14 +11314,6 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12226,19 +11352,19 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12280,7 +11406,7 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12322,14 +11448,6 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12368,19 +11486,19 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12422,7 +11540,7 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12462,14 +11580,6 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12508,19 +11618,19 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12562,7 +11672,7 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12606,14 +11716,6 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraph(std::shared
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12652,19 +11754,19 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraph(std::shared
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12706,7 +11808,7 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraph(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12750,14 +11852,6 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12796,19 +11890,19 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12850,7 +11944,7 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -12892,14 +11986,6 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -12938,19 +12024,19 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -12992,7 +12078,7 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13034,14 +12120,6 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodeP
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13080,19 +12158,19 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodeP
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13134,7 +12212,7 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodeP
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13176,14 +12254,6 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13222,19 +12292,19 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13276,7 +12346,7 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13316,14 +12386,6 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13362,19 +12424,19 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13416,7 +12478,7 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13460,14 +12522,6 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
     path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
         ApiClient::parameterToString(request->getRangeEndIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13506,19 +12560,19 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13560,7 +12614,7 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13604,14 +12658,6 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunR
         ApiClient::parameterToString(request->getParagraphPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13650,19 +12696,19 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunR
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13704,7 +12750,7 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunR
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13748,14 +12794,6 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::getRunFont(std::shared_ptr<Ge
         ApiClient::parameterToString(request->getParagraphPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13794,19 +12832,19 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::getRunFont(std::shared_ptr<Ge
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13848,7 +12886,7 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::getRunFont(std::shared_ptr<Ge
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -13890,14 +12928,6 @@ pplx::task<AsposeResponse<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRu
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -13936,19 +12966,19 @@ pplx::task<AsposeResponse<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRu
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -13990,7 +13020,7 @@ pplx::task<AsposeResponse<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRu
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14032,14 +13062,6 @@ pplx::task<AsposeResponse<SectionResponse>> WordsApi::getSection(std::shared_ptr
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("sectionIndex"),
         ApiClient::parameterToString(request->getSectionIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14078,19 +13100,19 @@ pplx::task<AsposeResponse<SectionResponse>> WordsApi::getSection(std::shared_ptr
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14132,7 +13154,7 @@ pplx::task<AsposeResponse<SectionResponse>> WordsApi::getSection(std::shared_ptr
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14174,14 +13196,6 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::getSectionPageSet
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("sectionIndex"),
         ApiClient::parameterToString(request->getSectionIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14220,19 +13234,19 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::getSectionPageSet
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14274,7 +13288,7 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::getSectionPageSet
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14314,14 +13328,6 @@ pplx::task<AsposeResponse<SectionLinkCollectionResponse>> WordsApi::getSections(
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14360,19 +13366,19 @@ pplx::task<AsposeResponse<SectionLinkCollectionResponse>> WordsApi::getSections(
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14414,7 +13420,7 @@ pplx::task<AsposeResponse<SectionLinkCollectionResponse>> WordsApi::getSections(
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14458,14 +13464,6 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTable(std::shared_ptr<Get
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14504,19 +13502,19 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTable(std::shared_ptr<Get
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14558,7 +13556,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTable(std::shared_ptr<Get
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14602,14 +13600,6 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::getTableCell(std::shared
         ApiClient::parameterToString(request->getTableRowPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14648,19 +13638,19 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::getTableCell(std::shared
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14702,7 +13692,7 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::getTableCell(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14746,14 +13736,6 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::getTableCellFormat
         ApiClient::parameterToString(request->getTableRowPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14792,19 +13774,19 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::getTableCellFormat
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14846,7 +13828,7 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::getTableCellFormat
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -14890,14 +13872,6 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -14936,19 +13910,19 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -14990,7 +13964,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15032,14 +14006,6 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15078,19 +14044,19 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -15132,7 +14098,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15176,14 +14142,6 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::getTableRow(std::shared_p
         ApiClient::parameterToString(request->getTablePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15222,19 +14180,19 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::getTableRow(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -15276,7 +14234,7 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::getTableRow(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15320,14 +14278,6 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::getTableRowFormat(s
         ApiClient::parameterToString(request->getTablePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15366,19 +14316,19 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::getTableRowFormat(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -15420,7 +14370,7 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::getTableRowFormat(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15462,14 +14412,6 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTableWithoutNodePath(std:
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15508,19 +14450,19 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTableWithoutNodePath(std:
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -15562,7 +14504,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTableWithoutNodePath(std:
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15604,14 +14546,6 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTables(std:
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15650,19 +14584,19 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTables(std:
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -15704,7 +14638,7 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTables(std:
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15744,14 +14678,6 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTablesWitho
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15790,19 +14716,19 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTablesWitho
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -15844,7 +14770,7 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTablesWitho
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -15890,20 +14816,6 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -15942,31 +14854,31 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -16023,7 +14935,7 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -16069,24 +14981,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("drawingObject"),
-        ApiClient::parameterToString(request->getDrawingObject()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -16131,31 +15027,31 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
     {
         fileParams.push_back(make_pair(_XPLATSTR("ImageFile"), (request->getImageFile())));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -16197,7 +15093,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -16243,22 +15139,6 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectW
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("drawingObject"),
-        ApiClient::parameterToString(request->getDrawingObject()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -16303,31 +15183,31 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectW
     {
         fileParams.push_back(make_pair(_XPLATSTR("ImageFile"), (request->getImageFile())));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -16369,7 +15249,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectW
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -16417,22 +15297,6 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertField(std::shared_ptr<
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("insertBeforeNode"), 
-        extractOptional(request->getInsertBeforeNode()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -16471,35 +15335,35 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertField(std::shared_ptr<
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getInsertBeforeNode() && bPath.find(_XPLATSTR("insertBeforeNode")) == std::string::npos)
+    if (request->getInsertBeforeNode())
     {
         queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
     }
@@ -16556,7 +15420,7 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertField(std::shared_ptr<
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -16602,22 +15466,6 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertFieldWithoutNodePath(s
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("insertBeforeNode"), 
-        extractOptional(request->getInsertBeforeNode()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -16656,35 +15504,35 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertFieldWithoutNodePath(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getInsertBeforeNode() && bPath.find(_XPLATSTR("insertBeforeNode")) == std::string::npos)
+    if (request->getInsertBeforeNode())
     {
         queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
     }
@@ -16741,7 +15589,7 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertFieldWithoutNodePath(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -16789,20 +15637,6 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnote(std::share
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -16841,31 +15675,31 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnote(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -16922,7 +15756,7 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnote(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -16968,20 +15802,6 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnoteWithoutNode
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17020,31 +15840,31 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnoteWithoutNode
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -17101,7 +15921,7 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnoteWithoutNode
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -17149,22 +15969,6 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormField(std::sha
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("insertBeforeNode"), 
-        extractOptional(request->getInsertBeforeNode()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17203,35 +16007,35 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormField(std::sha
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getInsertBeforeNode() && bPath.find(_XPLATSTR("insertBeforeNode")) == std::string::npos)
+    if (request->getInsertBeforeNode())
     {
         queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
     }
@@ -17288,7 +16092,7 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormField(std::sha
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -17334,22 +16138,6 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormFieldWithoutNo
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("insertBeforeNode"), 
-        extractOptional(request->getInsertBeforeNode()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17388,35 +16176,35 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormFieldWithoutNo
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getInsertBeforeNode() && bPath.find(_XPLATSTR("insertBeforeNode")) == std::string::npos)
+    if (request->getInsertBeforeNode())
     {
         queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
     }
@@ -17473,7 +16261,7 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormFieldWithoutNo
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -17513,24 +16301,8 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::insertHeaderFooter(st
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("headerFooterType"),
-        ApiClient::parameterToString(request->getHeaderFooterType()));
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17569,31 +16341,31 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::insertHeaderFooter(st
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -17645,7 +16417,7 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::insertHeaderFooter(st
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -17691,20 +16463,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::sh
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17743,31 +16501,31 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::sh
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -17824,7 +16582,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::sh
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -17872,22 +16630,6 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::sha
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("insertBeforeNode"), 
-        extractOptional(request->getInsertBeforeNode()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17926,35 +16668,35 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::sha
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getInsertBeforeNode() && bPath.find(_XPLATSTR("insertBeforeNode")) == std::string::npos)
+    if (request->getInsertBeforeNode())
     {
         queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
     }
@@ -18011,7 +16753,7 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::sha
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -18059,22 +16801,6 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<Inse
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("insertBeforeNode"), 
-        extractOptional(request->getInsertBeforeNode()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -18113,35 +16839,35 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<Inse
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getInsertBeforeNode() && bPath.find(_XPLATSTR("insertBeforeNode")) == std::string::npos)
+    if (request->getInsertBeforeNode())
     {
         queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
     }
@@ -18198,7 +16924,7 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<Inse
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -18240,20 +16966,6 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -18292,31 +17004,31 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -18373,7 +17085,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -18415,20 +17127,6 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("tableRowPath"),
         ApiClient::parameterToString(request->getTableRowPath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -18467,31 +17165,31 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -18548,7 +17246,7 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -18590,20 +17288,6 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("tablePath"),
         ApiClient::parameterToString(request->getTablePath()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -18642,31 +17326,31 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -18723,7 +17407,7 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -18763,20 +17447,6 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -18815,31 +17485,31 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -18896,7 +17566,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -18936,24 +17606,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkImage(std:
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
-    path = replacePathParameter(path, _XPLATSTR("rotationAngle"), 
-        extractOptional(request->getRotationAngle()));
-    path = replacePathParameter(path, _XPLATSTR("image"), 
-        extractOptional(request->getImage()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -18995,39 +17647,39 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkImage(std:
     {
         fileParams.push_back(make_pair(_XPLATSTR("ImageFile"), *(request->getImageFile())));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
-    if (request->getRotationAngle() && bPath.find(_XPLATSTR("rotationAngle")) == std::string::npos)
+    if (request->getRotationAngle())
     {
         queryParams[_XPLATSTR("RotationAngle")] = ApiClient::parameterToString(*(request->getRotationAngle()));
     }
-    if (request->getImage() && bPath.find(_XPLATSTR("image")) == std::string::npos)
+    if (request->getImage())
     {
         queryParams[_XPLATSTR("Image")] = ApiClient::parameterToString(*(request->getImage()));
     }
@@ -19069,7 +17721,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkImage(std:
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19115,20 +17767,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkText(std::
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -19167,31 +17805,31 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkText(std::
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -19248,7 +17886,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkText(std::
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19292,8 +17930,6 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::loadWebDocument(std::shared_p
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/loadWebDocument"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -19332,7 +17968,7 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::loadWebDocument(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
@@ -19389,7 +18025,7 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::loadWebDocument(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19427,16 +18063,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFile(std::sh
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/storage/file/move/{srcPath}"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("destPath"),
-        ApiClient::parameterToString(request->getDestPath()));
     path = replacePathParameter(path, _XPLATSTR("srcPath"),
         ApiClient::parameterToString(request->getSrcPath()));
-    path = replacePathParameter(path, _XPLATSTR("srcStorageName"), 
-        extractOptional(request->getSrcStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("destStorageName"), 
-        extractOptional(request->getDestStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("versionId"), 
-        extractOptional(request->getVersionId()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -19478,15 +18106,15 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFile(std::sh
     {
         queryParams[_XPLATSTR("DestPath")] = ApiClient::parameterToString((request->getDestPath()));
     }
-    if (request->getSrcStorageName() && bPath.find(_XPLATSTR("srcStorageName")) == std::string::npos)
+    if (request->getSrcStorageName())
     {
         queryParams[_XPLATSTR("SrcStorageName")] = ApiClient::parameterToString(*(request->getSrcStorageName()));
     }
-    if (request->getDestStorageName() && bPath.find(_XPLATSTR("destStorageName")) == std::string::npos)
+    if (request->getDestStorageName())
     {
         queryParams[_XPLATSTR("DestStorageName")] = ApiClient::parameterToString(*(request->getDestStorageName()));
     }
-    if (request->getVersionId() && bPath.find(_XPLATSTR("versionId")) == std::string::npos)
+    if (request->getVersionId())
     {
         queryParams[_XPLATSTR("VersionId")] = ApiClient::parameterToString(*(request->getVersionId()));
     }
@@ -19528,7 +18156,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFile(std::sh
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19545,14 +18173,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/storage/folder/move/{srcPath}"),
     path = bPath;
-    path = replacePathParameter(path, _XPLATSTR("destPath"),
-        ApiClient::parameterToString(request->getDestPath()));
     path = replacePathParameter(path, _XPLATSTR("srcPath"),
         ApiClient::parameterToString(request->getSrcPath()));
-    path = replacePathParameter(path, _XPLATSTR("srcStorageName"), 
-        extractOptional(request->getSrcStorageName()));
-    path = replacePathParameter(path, _XPLATSTR("destStorageName"), 
-        extractOptional(request->getDestStorageName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -19594,11 +18216,11 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::
     {
         queryParams[_XPLATSTR("DestPath")] = ApiClient::parameterToString((request->getDestPath()));
     }
-    if (request->getSrcStorageName() && bPath.find(_XPLATSTR("srcStorageName")) == std::string::npos)
+    if (request->getSrcStorageName())
     {
         queryParams[_XPLATSTR("SrcStorageName")] = ApiClient::parameterToString(*(request->getSrcStorageName()));
     }
-    if (request->getDestStorageName() && bPath.find(_XPLATSTR("destStorageName")) == std::string::npos)
+    if (request->getDestStorageName())
     {
         queryParams[_XPLATSTR("DestStorageName")] = ApiClient::parameterToString(*(request->getDestStorageName()));
     }
@@ -19640,7 +18262,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19665,16 +18287,6 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -19713,23 +18325,23 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -19786,7 +18398,7 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19826,16 +18438,6 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::rejectAllRev
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -19874,23 +18476,23 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::rejectAllRev
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -19932,7 +18534,7 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::rejectAllRev
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -19976,16 +18578,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
     path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
         ApiClient::parameterToString(request->getRangeEndIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20024,23 +18616,23 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -20082,7 +18674,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20122,22 +18714,10 @@ pplx::task<HttpContent> WordsApi::renderDrawingObject(std::shared_ptr<RenderDraw
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20180,23 +18760,23 @@ pplx::task<HttpContent> WordsApi::renderDrawingObject(std::shared_ptr<RenderDraw
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -20238,7 +18818,7 @@ pplx::task<HttpContent> WordsApi::renderDrawingObject(std::shared_ptr<RenderDraw
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20260,20 +18840,8 @@ pplx::task<HttpContent> WordsApi::renderDrawingObjectWithoutNodePath(std::shared
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20316,23 +18884,23 @@ pplx::task<HttpContent> WordsApi::renderDrawingObjectWithoutNodePath(std::shared
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -20374,7 +18942,7 @@ pplx::task<HttpContent> WordsApi::renderDrawingObjectWithoutNodePath(std::shared
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20396,22 +18964,10 @@ pplx::task<HttpContent> WordsApi::renderMathObject(std::shared_ptr<RenderMathObj
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20454,23 +19010,23 @@ pplx::task<HttpContent> WordsApi::renderMathObject(std::shared_ptr<RenderMathObj
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -20512,7 +19068,7 @@ pplx::task<HttpContent> WordsApi::renderMathObject(std::shared_ptr<RenderMathObj
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20534,20 +19090,8 @@ pplx::task<HttpContent> WordsApi::renderMathObjectWithoutNodePath(std::shared_pt
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20590,23 +19134,23 @@ pplx::task<HttpContent> WordsApi::renderMathObjectWithoutNodePath(std::shared_pt
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -20648,7 +19192,7 @@ pplx::task<HttpContent> WordsApi::renderMathObjectWithoutNodePath(std::shared_pt
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20672,18 +19216,6 @@ pplx::task<HttpContent> WordsApi::renderPage(std::shared_ptr<RenderPageRequest> 
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("pageIndex"),
         ApiClient::parameterToString(request->getPageIndex()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20726,23 +19258,23 @@ pplx::task<HttpContent> WordsApi::renderPage(std::shared_ptr<RenderPageRequest> 
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -20784,7 +19316,7 @@ pplx::task<HttpContent> WordsApi::renderPage(std::shared_ptr<RenderPageRequest> 
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20806,22 +19338,10 @@ pplx::task<HttpContent> WordsApi::renderParagraph(std::shared_ptr<RenderParagrap
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20864,23 +19384,23 @@ pplx::task<HttpContent> WordsApi::renderParagraph(std::shared_ptr<RenderParagrap
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -20922,7 +19442,7 @@ pplx::task<HttpContent> WordsApi::renderParagraph(std::shared_ptr<RenderParagrap
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -20944,20 +19464,8 @@ pplx::task<HttpContent> WordsApi::renderParagraphWithoutNodePath(std::shared_ptr
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21000,23 +19508,23 @@ pplx::task<HttpContent> WordsApi::renderParagraphWithoutNodePath(std::shared_ptr
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -21058,7 +19566,7 @@ pplx::task<HttpContent> WordsApi::renderParagraphWithoutNodePath(std::shared_ptr
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21080,22 +19588,10 @@ pplx::task<HttpContent> WordsApi::renderTable(std::shared_ptr<RenderTableRequest
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21138,23 +19634,23 @@ pplx::task<HttpContent> WordsApi::renderTable(std::shared_ptr<RenderTableRequest
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -21196,7 +19692,7 @@ pplx::task<HttpContent> WordsApi::renderTable(std::shared_ptr<RenderTableRequest
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21218,20 +19714,8 @@ pplx::task<HttpContent> WordsApi::renderTableWithoutNodePath(std::shared_ptr<Ren
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("format"),
-        ApiClient::parameterToString(request->getFormat()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21274,23 +19758,23 @@ pplx::task<HttpContent> WordsApi::renderTableWithoutNodePath(std::shared_ptr<Ren
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -21332,7 +19816,7 @@ pplx::task<HttpContent> WordsApi::renderTableWithoutNodePath(std::shared_ptr<Ren
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21360,20 +19844,6 @@ pplx::task<AsposeResponse<ReplaceTextResponse>> WordsApi::replaceText(std::share
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21412,31 +19882,31 @@ pplx::task<AsposeResponse<ReplaceTextResponse>> WordsApi::replaceText(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -21493,7 +19963,7 @@ pplx::task<AsposeResponse<ReplaceTextResponse>> WordsApi::replaceText(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21543,16 +20013,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
     path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
         ApiClient::parameterToString(request->getRangeEndIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21591,23 +20051,23 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -21664,7 +20124,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21778,7 +20238,7 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::resetCache(std::
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21803,16 +20263,6 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAs
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21851,23 +20301,23 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAs
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -21924,7 +20374,7 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAs
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -21974,14 +20424,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
     path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
         ApiClient::parameterToString(request->getRangeEndIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -22020,19 +20462,19 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -22089,7 +20531,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -22135,50 +20577,6 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<Sa
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("useAntiAliasing"), 
-        extractOptional(request->getUseAntiAliasing()));
-    path = replacePathParameter(path, _XPLATSTR("useHighQualityRendering"), 
-        extractOptional(request->getUseHighQualityRendering()));
-    path = replacePathParameter(path, _XPLATSTR("imageBrightness"), 
-        extractOptional(request->getImageBrightness()));
-    path = replacePathParameter(path, _XPLATSTR("imageColorMode"), 
-        extractOptional(request->getImageColorMode()));
-    path = replacePathParameter(path, _XPLATSTR("imageContrast"), 
-        extractOptional(request->getImageContrast()));
-    path = replacePathParameter(path, _XPLATSTR("numeralFormat"), 
-        extractOptional(request->getNumeralFormat()));
-    path = replacePathParameter(path, _XPLATSTR("pageCount"), 
-        extractOptional(request->getPageCount()));
-    path = replacePathParameter(path, _XPLATSTR("pageIndex"), 
-        extractOptional(request->getPageIndex()));
-    path = replacePathParameter(path, _XPLATSTR("paperColor"), 
-        extractOptional(request->getPaperColor()));
-    path = replacePathParameter(path, _XPLATSTR("pixelFormat"), 
-        extractOptional(request->getPixelFormat()));
-    path = replacePathParameter(path, _XPLATSTR("resolution"), 
-        extractOptional(request->getResolution()));
-    path = replacePathParameter(path, _XPLATSTR("scale"), 
-        extractOptional(request->getScale()));
-    path = replacePathParameter(path, _XPLATSTR("tiffCompression"), 
-        extractOptional(request->getTiffCompression()));
-    path = replacePathParameter(path, _XPLATSTR("dmlRenderingMode"), 
-        extractOptional(request->getDmlRenderingMode()));
-    path = replacePathParameter(path, _XPLATSTR("dmlEffectsRenderingMode"), 
-        extractOptional(request->getDmlEffectsRenderingMode()));
-    path = replacePathParameter(path, _XPLATSTR("tiffBinarizationMethod"), 
-        extractOptional(request->getTiffBinarizationMethod()));
-    path = replacePathParameter(path, _XPLATSTR("zipOutput"), 
-        extractOptional(request->getZipOutput()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -22217,91 +20615,91 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<Sa
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getUseAntiAliasing() && bPath.find(_XPLATSTR("useAntiAliasing")) == std::string::npos)
+    if (request->getUseAntiAliasing())
     {
         queryParams[_XPLATSTR("UseAntiAliasing")] = ApiClient::parameterToString(*(request->getUseAntiAliasing()));
     }
-    if (request->getUseHighQualityRendering() && bPath.find(_XPLATSTR("useHighQualityRendering")) == std::string::npos)
+    if (request->getUseHighQualityRendering())
     {
         queryParams[_XPLATSTR("UseHighQualityRendering")] = ApiClient::parameterToString(*(request->getUseHighQualityRendering()));
     }
-    if (request->getImageBrightness() && bPath.find(_XPLATSTR("imageBrightness")) == std::string::npos)
+    if (request->getImageBrightness())
     {
         queryParams[_XPLATSTR("ImageBrightness")] = ApiClient::parameterToString(*(request->getImageBrightness()));
     }
-    if (request->getImageColorMode() && bPath.find(_XPLATSTR("imageColorMode")) == std::string::npos)
+    if (request->getImageColorMode())
     {
         queryParams[_XPLATSTR("ImageColorMode")] = ApiClient::parameterToString(*(request->getImageColorMode()));
     }
-    if (request->getImageContrast() && bPath.find(_XPLATSTR("imageContrast")) == std::string::npos)
+    if (request->getImageContrast())
     {
         queryParams[_XPLATSTR("ImageContrast")] = ApiClient::parameterToString(*(request->getImageContrast()));
     }
-    if (request->getNumeralFormat() && bPath.find(_XPLATSTR("numeralFormat")) == std::string::npos)
+    if (request->getNumeralFormat())
     {
         queryParams[_XPLATSTR("NumeralFormat")] = ApiClient::parameterToString(*(request->getNumeralFormat()));
     }
-    if (request->getPageCount() && bPath.find(_XPLATSTR("pageCount")) == std::string::npos)
+    if (request->getPageCount())
     {
         queryParams[_XPLATSTR("PageCount")] = ApiClient::parameterToString(*(request->getPageCount()));
     }
-    if (request->getPageIndex() && bPath.find(_XPLATSTR("pageIndex")) == std::string::npos)
+    if (request->getPageIndex())
     {
         queryParams[_XPLATSTR("PageIndex")] = ApiClient::parameterToString(*(request->getPageIndex()));
     }
-    if (request->getPaperColor() && bPath.find(_XPLATSTR("paperColor")) == std::string::npos)
+    if (request->getPaperColor())
     {
         queryParams[_XPLATSTR("PaperColor")] = ApiClient::parameterToString(*(request->getPaperColor()));
     }
-    if (request->getPixelFormat() && bPath.find(_XPLATSTR("pixelFormat")) == std::string::npos)
+    if (request->getPixelFormat())
     {
         queryParams[_XPLATSTR("PixelFormat")] = ApiClient::parameterToString(*(request->getPixelFormat()));
     }
-    if (request->getResolution() && bPath.find(_XPLATSTR("resolution")) == std::string::npos)
+    if (request->getResolution())
     {
         queryParams[_XPLATSTR("Resolution")] = ApiClient::parameterToString(*(request->getResolution()));
     }
-    if (request->getScale() && bPath.find(_XPLATSTR("scale")) == std::string::npos)
+    if (request->getScale())
     {
         queryParams[_XPLATSTR("Scale")] = ApiClient::parameterToString(*(request->getScale()));
     }
-    if (request->getTiffCompression() && bPath.find(_XPLATSTR("tiffCompression")) == std::string::npos)
+    if (request->getTiffCompression())
     {
         queryParams[_XPLATSTR("TiffCompression")] = ApiClient::parameterToString(*(request->getTiffCompression()));
     }
-    if (request->getDmlRenderingMode() && bPath.find(_XPLATSTR("dmlRenderingMode")) == std::string::npos)
+    if (request->getDmlRenderingMode())
     {
         queryParams[_XPLATSTR("DmlRenderingMode")] = ApiClient::parameterToString(*(request->getDmlRenderingMode()));
     }
-    if (request->getDmlEffectsRenderingMode() && bPath.find(_XPLATSTR("dmlEffectsRenderingMode")) == std::string::npos)
+    if (request->getDmlEffectsRenderingMode())
     {
         queryParams[_XPLATSTR("DmlEffectsRenderingMode")] = ApiClient::parameterToString(*(request->getDmlEffectsRenderingMode()));
     }
-    if (request->getTiffBinarizationMethod() && bPath.find(_XPLATSTR("tiffBinarizationMethod")) == std::string::npos)
+    if (request->getTiffBinarizationMethod())
     {
         queryParams[_XPLATSTR("TiffBinarizationMethod")] = ApiClient::parameterToString(*(request->getTiffBinarizationMethod()));
     }
-    if (request->getZipOutput() && bPath.find(_XPLATSTR("zipOutput")) == std::string::npos)
+    if (request->getZipOutput())
     {
         queryParams[_XPLATSTR("ZipOutput")] = ApiClient::parameterToString(*(request->getZipOutput()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -22358,7 +20756,7 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<Sa
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -22398,16 +20796,6 @@ pplx::task<AsposeResponse<SearchResponse>> WordsApi::search(std::shared_ptr<Sear
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("pattern"),
-        ApiClient::parameterToString(request->getPattern()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -22449,19 +20837,19 @@ pplx::task<AsposeResponse<SearchResponse>> WordsApi::search(std::shared_ptr<Sear
     {
         queryParams[_XPLATSTR("Pattern")] = ApiClient::parameterToString((request->getPattern()));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
@@ -22503,7 +20891,7 @@ pplx::task<AsposeResponse<SearchResponse>> WordsApi::search(std::shared_ptr<Sear
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -22543,26 +20931,6 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("format"), 
-        extractOptional(request->getFormat()));
-    path = replacePathParameter(path, _XPLATSTR("from"), 
-        extractOptional(request->getFrom()));
-    path = replacePathParameter(path, _XPLATSTR("to"), 
-        extractOptional(request->getTo()));
-    path = replacePathParameter(path, _XPLATSTR("zipOutput"), 
-        extractOptional(request->getZipOutput()));
-    path = replacePathParameter(path, _XPLATSTR("fontsLocation"), 
-        extractOptional(request->getFontsLocation()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -22601,43 +20969,43 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getFormat() && bPath.find(_XPLATSTR("format")) == std::string::npos)
+    if (request->getFormat())
     {
         queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString(*(request->getFormat()));
     }
-    if (request->getFrom() && bPath.find(_XPLATSTR("from")) == std::string::npos)
+    if (request->getFrom())
     {
         queryParams[_XPLATSTR("From")] = ApiClient::parameterToString(*(request->getFrom()));
     }
-    if (request->getTo() && bPath.find(_XPLATSTR("to")) == std::string::npos)
+    if (request->getTo())
     {
         queryParams[_XPLATSTR("To")] = ApiClient::parameterToString(*(request->getTo()));
     }
-    if (request->getZipOutput() && bPath.find(_XPLATSTR("zipOutput")) == std::string::npos)
+    if (request->getZipOutput())
     {
         queryParams[_XPLATSTR("ZipOutput")] = ApiClient::parameterToString(*(request->getZipOutput()));
     }
-    if (request->getFontsLocation() && bPath.find(_XPLATSTR("fontsLocation")) == std::string::npos)
+    if (request->getFontsLocation())
     {
         queryParams[_XPLATSTR("FontsLocation")] = ApiClient::parameterToString(*(request->getFontsLocation()));
     }
@@ -22679,7 +21047,7 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -22725,16 +21093,6 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::unprotectDocument(s
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -22773,23 +21131,23 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::unprotectDocument(s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -22846,7 +21204,7 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::unprotectDocument(s
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -22894,20 +21252,6 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::updateBookmark(std::share
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("bookmarkName"),
         ApiClient::parameterToString(request->getBookmarkName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -22946,31 +21290,31 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::updateBookmark(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -23027,7 +21371,7 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::updateBookmark(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -23077,20 +21421,6 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_pt
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -23129,31 +21459,31 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_pt
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -23210,7 +21540,7 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_pt
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -23258,20 +21588,6 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("commentIndex"),
         ApiClient::parameterToString(request->getCommentIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -23310,31 +21626,31 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -23391,7 +21707,7 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -23437,26 +21753,10 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("drawingObject"),
-        ApiClient::parameterToString(request->getDrawingObject()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -23501,31 +21801,31 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
     {
         fileParams.push_back(make_pair(_XPLATSTR("ImageFile"), (request->getImageFile())));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -23567,7 +21867,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -23613,24 +21913,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectW
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("drawingObject"),
-        ApiClient::parameterToString(request->getDrawingObject()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -23675,31 +21959,31 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectW
     {
         fileParams.push_back(make_pair(_XPLATSTR("ImageFile"), (request->getImageFile())));
     }
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -23741,7 +22025,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectW
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -23791,20 +22075,6 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::updateField(std::shared_ptr<
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -23843,31 +22113,31 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::updateField(std::shared_ptr<
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -23924,7 +22194,7 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::updateField(std::shared_ptr<
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -23964,16 +22234,6 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::updateFields(std::shared_
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24012,23 +22272,23 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::updateFields(std::shared_
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
@@ -24070,7 +22330,7 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::updateFields(std::shared_
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -24120,20 +22380,6 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnote(std::share
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24172,31 +22418,31 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnote(std::share
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -24253,7 +22499,7 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnote(std::share
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -24301,20 +22547,6 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnoteWithoutNode
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24353,31 +22585,31 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnoteWithoutNode
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -24434,7 +22666,7 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnoteWithoutNode
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -24484,20 +22716,6 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormField(std::sha
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24536,31 +22754,31 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormField(std::sha
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -24617,7 +22835,7 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormField(std::sha
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -24665,20 +22883,6 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormFieldWithoutNo
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24717,31 +22921,31 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormFieldWithoutNo
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -24798,7 +23002,7 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormFieldWithoutNo
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -24848,20 +23052,6 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFor
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24900,31 +23090,31 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFor
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -24981,7 +23171,7 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFor
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -25031,20 +23221,6 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upda
         ApiClient::parameterToString(request->getParagraphPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -25083,31 +23259,31 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upda
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -25164,7 +23340,7 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upda
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -25214,20 +23390,6 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::updateRunFont(std::shared_ptr
         ApiClient::parameterToString(request->getParagraphPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -25266,31 +23428,31 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::updateRunFont(std::shared_ptr
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -25347,7 +23509,7 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::updateRunFont(std::shared_ptr
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -25395,20 +23557,6 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPage
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("sectionIndex"),
         ApiClient::parameterToString(request->getSectionIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -25447,31 +23595,31 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPage
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -25528,7 +23676,7 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPage
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -25572,20 +23720,6 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
         ApiClient::parameterToString(request->getTableRowPath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -25624,31 +23758,31 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -25705,7 +23839,7 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -25749,20 +23883,6 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         ApiClient::parameterToString(request->getNodePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -25801,31 +23921,31 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -25882,7 +24002,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -25924,20 +24044,6 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -25976,31 +24082,31 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -26057,7 +24163,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -26101,20 +24207,6 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
         ApiClient::parameterToString(request->getTablePath()));
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
-    path = replacePathParameter(path, _XPLATSTR("folder"), 
-        extractOptional(request->getFolder()));
-    path = replacePathParameter(path, _XPLATSTR("storage"), 
-        extractOptional(request->getStorage()));
-    path = replacePathParameter(path, _XPLATSTR("loadEncoding"), 
-        extractOptional(request->getLoadEncoding()));
-    path = replacePathParameter(path, _XPLATSTR("password"), 
-        extractOptional(request->getPassword()));
-    path = replacePathParameter(path, _XPLATSTR("destFileName"), 
-        extractOptional(request->getDestFileName()));
-    path = replacePathParameter(path, _XPLATSTR("revisionAuthor"), 
-        extractOptional(request->getRevisionAuthor()));
-    path = replacePathParameter(path, _XPLATSTR("revisionDateTime"), 
-        extractOptional(request->getRevisionDateTime()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -26153,31 +24245,31 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
-    if (request->getFolder() && bPath.find(_XPLATSTR("folder")) == std::string::npos)
+    if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
     }
-    if (request->getStorage() && bPath.find(_XPLATSTR("storage")) == std::string::npos)
+    if (request->getStorage())
     {
         queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
     }
-    if (request->getLoadEncoding() && bPath.find(_XPLATSTR("loadEncoding")) == std::string::npos)
+    if (request->getLoadEncoding())
     {
         queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
     }
-    if (request->getPassword() && bPath.find(_XPLATSTR("password")) == std::string::npos)
+    if (request->getPassword())
     {
         queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
     }
-    if (request->getDestFileName() && bPath.find(_XPLATSTR("destFileName")) == std::string::npos)
+    if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
     }
-    if (request->getRevisionAuthor() && bPath.find(_XPLATSTR("revisionAuthor")) == std::string::npos)
+    if (request->getRevisionAuthor())
     {
         queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
     }
-    if (request->getRevisionDateTime() && bPath.find(_XPLATSTR("revisionDateTime")) == std::string::npos)
+    if (request->getRevisionDateTime())
     {
         queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
     }
@@ -26234,7 +24326,7 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
@@ -26280,8 +24372,6 @@ pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_p
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("path"),
         ApiClient::parameterToString(request->getPath()));
-    path = replacePathParameter(path, _XPLATSTR("storageName"), 
-        extractOptional(request->getStorageName()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -26323,7 +24413,7 @@ pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_p
     {
         fileParams.push_back(make_pair(_XPLATSTR("File"), (request->getFile())));
     }
-    if (request->getStorageName() && bPath.find(_XPLATSTR("storageName")) == std::string::npos)
+    if (request->getStorageName())
     {
         queryParams[_XPLATSTR("StorageName")] = ApiClient::parameterToString(*(request->getStorageName()));
     }
@@ -26365,7 +24455,7 @@ pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_p
 			errorResponse->fromJson(response.extract_json().get());
 
 			throw ApiException(response.status_code()
-				, _XPLATSTR("error requesting token: ") + response.reason_phrase()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
 				, errorResponse);
 		}
 
