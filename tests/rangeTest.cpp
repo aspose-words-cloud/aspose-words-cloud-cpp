@@ -38,7 +38,7 @@ protected:
 /// </summary>
 TEST_F(RangeTest, TestGetRangeText) {
 	utility::string_t
-		localName = STCONVERT("RangeGet.docx"),
+		localName = STCONVERT("RangeGet.doc"),
 		remoteName = STCONVERT("TestGetRangeText.docx"),
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(tableFolder), localName);
@@ -60,7 +60,7 @@ TEST_F(RangeTest, TestGetRangeText) {
 /// </summary>
 TEST_F(RangeTest, TestRemoveRange) {
 	utility::string_t
-		localName = STCONVERT("RangeGet.docx"),
+		localName = STCONVERT("RangeGet.doc"),
 		remoteName = STCONVERT("TestRemoveRange.docx"),
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(tableFolder), localName);
@@ -81,7 +81,7 @@ TEST_F(RangeTest, TestRemoveRange) {
 /// </summary>
 TEST_F(RangeTest, TestSaveAsRange) {
 	utility::string_t
-		localName = STCONVERT("RangeGet.docx"),
+		localName = STCONVERT("RangeGet.doc"),
 		remoteName = STCONVERT("TestSaveAsRange.docx"),
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(tableFolder), localName);
@@ -105,7 +105,7 @@ TEST_F(RangeTest, TestSaveAsRange) {
 /// </summary>
 TEST_F(RangeTest, TestReplaceWithText) {
 	utility::string_t
-		localName = STCONVERT("RangeGet.docx"),
+		localName = STCONVERT("RangeGet.doc"),
 		remoteName = STCONVERT("TestReplacingWithText.docx"),
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(tableFolder), localName);

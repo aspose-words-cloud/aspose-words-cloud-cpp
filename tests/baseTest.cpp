@@ -220,4 +220,33 @@ TEST_F(StorageApiTest, TestIsExists) {
 TEST_F(StorageApiTest, TestIsNotExists) {
 	ASSERT_FALSE(DoesFileExist(STCONVERT("NoSuchFile.ext")));
 }
+
+TEST_F(StorageApiTest, TestConfiguration) {
+
+	utility::string_t
+		remoteName = STCONVERT("TestConfiguration.docx"),
+		dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
+
+	std::shared_ptr<CreateDocumentRequest> request =
+		std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
+
+	auto config = std::make_shared<ApiConfiguration>();
+	auto client = std::make_shared<ApiClient>(config);
+	auto api = std::make_shared<WordsApi>(client);
+
+	ASSERT_THROW(api->createDocument(request).get(), std::exception);
+
+	config->setAppKey(get_client()->getConfiguration()->getAppKey());
+
+	ASSERT_THROW(api->createDocument(request).get(), std::exception);
+
+	config->setAppSid(get_client()->getConfiguration()->getAppSid());
+
+	ASSERT_THROW(api->createDocument(request).get(), std::exception);
+
+	config->setBaseUrl(get_client()->getConfiguration()->getBaseUrl());
+
+	ASSERT_NO_THROW(api->createDocument(request).get());
+}
+
 #pragma endregion

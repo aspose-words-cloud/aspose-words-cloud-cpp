@@ -74,8 +74,6 @@ TEST_F(WatermarkTest, TestPostInsertWatermarkImage) {
 		localImagePath = path_combine(get_data_dir(commonFolder), image);
 	double rotationAngle = 0;
 
-	auto file = generate_http_content_from_file(path_combine(get_data_dir(commonFolder), image));
-
 	UploadFileToStorage(fullName, filePath);
 	UploadFileToStorage(fullImagePath, localImagePath);
 

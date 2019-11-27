@@ -33,6 +33,24 @@ protected:
 };
 
 /// <summary>
+/// Test for uploading file
+/// </summary>
+TEST_F(FileTest, TestUploadFile) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestCopyFileSrc.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(
+		generate_http_content_from_file(filePath), fullName, boost::none);
+
+	auto actual = get_api()->uploadFile(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for copying file
 /// </summary>
 TEST_F(FileTest, TestCopyFile) {
