@@ -111,7 +111,7 @@ private:
     utility::string_t getTokenUrl() const;
     void logRequest(web::http::http_request request) const;
 	void logResponse(web::http::http_response response) const;
-	utility::string_t copyDataFromStream(const Concurrency::streams::istream& stream) const;
+	void logDataFromStream(const Concurrency::streams::istream& stream) const;
 };
 
 }
