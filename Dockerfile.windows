@@ -1,5 +1,5 @@
 # FROM compulim/msbuild
-FROM microsoft/windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 # Visual Studio
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe vs_buildtools.exe
