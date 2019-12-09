@@ -27,7 +27,7 @@ class ClassificationTests : public InfrastructureTest
 {
 protected:
 	utility::string_t get_data_folder() override {
-		return path_combine_url(STCONVERT("Temp\\SdkTests\\TestData"), STCONVERT(commonFolder.generic_string()));
+		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT(commonFolder.generic_string()));
 	}
 };
 

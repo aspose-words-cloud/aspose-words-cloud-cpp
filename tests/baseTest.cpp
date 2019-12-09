@@ -234,15 +234,36 @@ TEST_F(StorageApiTest, TestConfiguration) {
 	auto client = std::make_shared<ApiClient>(config);
 	auto api = std::make_shared<WordsApi>(client);
 
-	ASSERT_THROW(api->createDocument(request).get(), std::exception);
+	try
+	{
+		api->createDocument(request).get();
+		FAIL() << "Exception was expected";
+	}
+	catch (...)
+	{
+	}
 
 	config->setAppKey(get_client()->getConfiguration()->getAppKey());
 
-	ASSERT_THROW(api->createDocument(request).get(), std::exception);
+	try
+	{
+		api->createDocument(request).get();
+		FAIL() << "Exception was expected";
+	}
+	catch (...)
+	{
+	}
 
 	config->setAppSid(get_client()->getConfiguration()->getAppSid());
 
-	ASSERT_THROW(api->createDocument(request).get(), std::exception);
+	try
+	{
+		api->createDocument(request).get();
+		FAIL() << "Exception was expected";
+	}
+	catch (...)
+	{
+	}
 
 	config->setBaseUrl(get_client()->getConfiguration()->getBaseUrl());
 

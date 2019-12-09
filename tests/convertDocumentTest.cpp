@@ -88,7 +88,7 @@ TEST_F(ConvertDocumentTest, TestPostDocumentSaveAsFromPdfToDoc) {
 TEST_F(ConvertDocumentTest, TestPutConvertDocument) {
 	utility::string_t
 		format = STCONVERT("pdf"),
-		localName = STCONVERT("test_uploadFile.docx"),
+		localName = STCONVERT("test_uploadfile.docx"),
 		filePath = path_combine(get_data_dir(convertFolder), localName);
 
 	std::shared_ptr<ConvertDocumentRequest> request = std::make_shared<ConvertDocumentRequest>(
