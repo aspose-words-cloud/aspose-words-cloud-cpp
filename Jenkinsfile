@@ -3,7 +3,7 @@ properties([
 	parameters([string(defaultValue: 'refs/heads/master', description: 'the branch to build', name: 'branch', trim: true)])
 ])
 
-node('windows2019') {
+node('windows2016') {
 	try {
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){
