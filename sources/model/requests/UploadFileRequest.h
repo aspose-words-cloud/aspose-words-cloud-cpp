@@ -39,13 +39,13 @@ namespace models {
 class UploadFileRequest{
     public: 
      UploadFileRequest(
-        std::shared_ptr<HttpContent> fileContent,
+        std::shared_ptr<HttpContent> file,
                 utility::string_t path,
                 boost::optional<utility::string_t> storageName
         );
 
-        std::shared_ptr<HttpContent> getFileContent() const;
-        void setFileContent(std::shared_ptr<HttpContent> fileContent);
+        std::shared_ptr<HttpContent> getFile() const;
+        void setFile(std::shared_ptr<HttpContent> file);
 
         utility::string_t getPath() const;
         void setPath(utility::string_t path);
@@ -53,7 +53,7 @@ class UploadFileRequest{
         boost::optional<utility::string_t> getStorageName() const;
         void setStorageName(boost::optional<utility::string_t> storageName);
     private:
-        std::shared_ptr<HttpContent> m_fileContent;
+        std::shared_ptr<HttpContent> m_file;
         utility::string_t m_path;
         boost::optional<utility::string_t> m_storageName;
 };

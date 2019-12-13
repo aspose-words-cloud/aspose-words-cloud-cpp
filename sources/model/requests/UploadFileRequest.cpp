@@ -29,23 +29,23 @@ namespace cloud{
 namespace api{
 namespace models{
 UploadFileRequest::UploadFileRequest(
-        std::shared_ptr<HttpContent> fileContent,
+        std::shared_ptr<HttpContent> file,
                 utility::string_t path,
                 boost::optional<utility::string_t> storageName
         ) : 
-            m_fileContent(std::move(fileContent)),
+            m_file(std::move(file)),
             m_path(std::move(path)),
             m_storageName(std::move(storageName))
         {
             
         }
 
-        std::shared_ptr<HttpContent> UploadFileRequest::getFileContent() const
+        std::shared_ptr<HttpContent> UploadFileRequest::getFile() const
         {
-            return m_fileContent;
+            return m_file;
         }
-        void UploadFileRequest::setFileContent(std::shared_ptr<HttpContent> fileContent){
-            m_fileContent = std::move(fileContent);
+        void UploadFileRequest::setFile(std::shared_ptr<HttpContent> file){
+            m_file = std::move(file);
         }
         utility::string_t UploadFileRequest::getPath() const
         {
