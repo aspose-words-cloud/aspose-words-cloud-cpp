@@ -36,7 +36,7 @@ ErrorDetails::ErrorDetails()
 {
     m_RequestId = utility::conversions::to_string_t("");
     m_RequestIdIsSet = false;
-    m_ErrorDateTime = utility::datetime();
+    m_Date = utility::datetime();
 }
 
 ErrorDetails::~ErrorDetails()
@@ -56,7 +56,7 @@ web::json::value ErrorDetails::toJson() const
     {
         val[_XPLATSTR("RequestId")] = ModelBase::toJson(m_RequestId);
     }
-    val[_XPLATSTR("ErrorDateTime")] = ModelBase::toJson(m_ErrorDateTime);
+    val[_XPLATSTR("Date")] = ModelBase::toJson(m_Date);
 
     return val;
 }
@@ -71,8 +71,8 @@ void ErrorDetails::fromJson(web::json::value& val)
             setRequestId(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setErrorDateTime
-    (ModelBase::dateFromJson(val[_XPLATSTR("ErrorDateTime")]));
+    setDate
+    (ModelBase::dateFromJson(val[_XPLATSTR("Date")]));
 }
 
 void ErrorDetails::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
@@ -84,7 +84,7 @@ void ErrorDetails::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ErrorDateTime"), m_ErrorDateTime));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Date"), m_Date));
 }
 
 void ErrorDetails::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
@@ -93,7 +93,7 @@ void ErrorDetails::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    setErrorDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ErrorDateTime"))));
+    setDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("Date"))));
 }
 
 utility::string_t ErrorDetails::getRequestId() const
@@ -117,15 +117,15 @@ void ErrorDetails::unsetRequestId()
     m_RequestIdIsSet = false;
 }
 
-utility::datetime ErrorDetails::getErrorDateTime() const
+utility::datetime ErrorDetails::getDate() const
 {
-    return m_ErrorDateTime;
+    return m_Date;
 }
 
 
-void ErrorDetails::setErrorDateTime(utility::datetime value)
+void ErrorDetails::setDate(utility::datetime value)
 {
-    m_ErrorDateTime = value;
+    m_Date = value;
     
 }
 }
