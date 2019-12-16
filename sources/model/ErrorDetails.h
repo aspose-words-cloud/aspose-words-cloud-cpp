@@ -63,22 +63,22 @@ public:
     /// ErrorDetails members
 
     /// <summary>
-    /// The request id
+    /// The request id.
     /// </summary>
     utility::string_t getRequestId() const;
     bool requestIdIsSet() const;
     void unsetRequestId();
     void setRequestId(utility::string_t value);
     /// <summary>
-    /// Date
+    /// Error datetime.
     /// </summary>
-    utility::datetime getDate() const;
-        void setDate(utility::datetime value);
+    utility::datetime getErrorDateTime() const;
+        void setErrorDateTime(utility::datetime value);
 
 protected:
     utility::string_t m_RequestId;
     bool m_RequestIdIsSet;
-    utility::datetime m_Date;
+    utility::datetime m_ErrorDateTime;
     };
 
 }
