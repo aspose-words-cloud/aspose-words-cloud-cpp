@@ -32,7 +32,7 @@ UpdateBorderRequest::UpdateBorderRequest(
         utility::string_t name,
                 std::shared_ptr<Border> borderProperties,
                 utility::string_t nodePath,
-                int32_t index,
+                utility::string_t borderType,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -44,7 +44,7 @@ UpdateBorderRequest::UpdateBorderRequest(
             m_name(std::move(name)),
             m_borderProperties(std::move(borderProperties)),
             m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
+            m_borderType(std::move(borderType)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
@@ -77,12 +77,12 @@ UpdateBorderRequest::UpdateBorderRequest(
         void UpdateBorderRequest::setNodePath(utility::string_t nodePath){
             m_nodePath = std::move(nodePath);
         }
-        int32_t UpdateBorderRequest::getIndex() const
+        utility::string_t UpdateBorderRequest::getBorderType() const
         {
-            return m_index;
+            return m_borderType;
         }
-        void UpdateBorderRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void UpdateBorderRequest::setBorderType(utility::string_t borderType){
+            m_borderType = std::move(borderType);
         }
         boost::optional<utility::string_t> UpdateBorderRequest::getFolder() const
         {
