@@ -30,6 +30,7 @@ option(BUILD_TESTS "Build tests" ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 include(thirdparty/cotire.cmake)
 add_subdirectory(sources Words.Cloud)
