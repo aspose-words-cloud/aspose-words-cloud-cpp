@@ -1,3 +1,4 @@
+if exist out rmdir out /s /q
 mkdir out
 
 docker build -f Dockerfile.tests.windows -t aspose-words-cloud-cpp-tests:windows .
