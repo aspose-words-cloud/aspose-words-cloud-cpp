@@ -31,7 +31,6 @@ add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(words-cloud-test PRIVATE gtest Aspose::Words.Cloud)
 
 target_compile_definitions(words-cloud-test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /INCREMENTAL:NO" )
 
 if (COMMAND cotire)
   cotire(words-cloud-test)
