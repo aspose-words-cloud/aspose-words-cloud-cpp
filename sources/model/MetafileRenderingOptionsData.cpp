@@ -61,23 +61,23 @@ web::json::value MetafileRenderingOptionsData::toJson() const
 
     if(m_EmfPlusDualRenderingModeIsSet)
     {
-        val[_XPLATSTR("EmfPlusDualRenderingMode")] = ModelBase::toJson(m_EmfPlusDualRenderingMode);
+        val[_XPLATSTR("emfPlusDualRenderingMode")] = ModelBase::toJson(m_EmfPlusDualRenderingMode);
     }
     if(m_EmulateRasterOperationsIsSet)
     {
-        val[_XPLATSTR("EmulateRasterOperations")] = ModelBase::toJson(m_EmulateRasterOperations);
+        val[_XPLATSTR("emulateRasterOperations")] = ModelBase::toJson(m_EmulateRasterOperations);
     }
     if(m_RenderingModeIsSet)
     {
-        val[_XPLATSTR("RenderingMode")] = ModelBase::toJson(m_RenderingMode);
+        val[_XPLATSTR("renderingMode")] = ModelBase::toJson(m_RenderingMode);
     }
     if(m_UseEmfEmbeddedToWmfIsSet)
     {
-        val[_XPLATSTR("UseEmfEmbeddedToWmf")] = ModelBase::toJson(m_UseEmfEmbeddedToWmf);
+        val[_XPLATSTR("useEmfEmbeddedToWmf")] = ModelBase::toJson(m_UseEmfEmbeddedToWmf);
     }
     if(m_ScaleWmfFontsToMetafileSizeIsSet)
     {
-        val[_XPLATSTR("ScaleWmfFontsToMetafileSize")] = ModelBase::toJson(m_ScaleWmfFontsToMetafileSize);
+        val[_XPLATSTR("scaleWmfFontsToMetafileSize")] = ModelBase::toJson(m_ScaleWmfFontsToMetafileSize);
     }
 
     return val;
@@ -85,41 +85,41 @@ web::json::value MetafileRenderingOptionsData::toJson() const
 
 void MetafileRenderingOptionsData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("EmfPlusDualRenderingMode")))
+    if(val.has_field(_XPLATSTR("emfPlusDualRenderingMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("EmfPlusDualRenderingMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("emfPlusDualRenderingMode")];
         if(!fieldValue.is_null())
         {
             setEmfPlusDualRenderingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("EmulateRasterOperations")))
+    if(val.has_field(_XPLATSTR("emulateRasterOperations")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("EmulateRasterOperations")];
+        web::json::value& fieldValue = val[_XPLATSTR("emulateRasterOperations")];
         if(!fieldValue.is_null())
         {
             setEmulateRasterOperations(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("RenderingMode")))
+    if(val.has_field(_XPLATSTR("renderingMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RenderingMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("renderingMode")];
         if(!fieldValue.is_null())
         {
             setRenderingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("UseEmfEmbeddedToWmf")))
+    if(val.has_field(_XPLATSTR("useEmfEmbeddedToWmf")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("UseEmfEmbeddedToWmf")];
+        web::json::value& fieldValue = val[_XPLATSTR("useEmfEmbeddedToWmf")];
         if(!fieldValue.is_null())
         {
             setUseEmfEmbeddedToWmf(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ScaleWmfFontsToMetafileSize")))
+    if(val.has_field(_XPLATSTR("scaleWmfFontsToMetafileSize")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ScaleWmfFontsToMetafileSize")];
+        web::json::value& fieldValue = val[_XPLATSTR("scaleWmfFontsToMetafileSize")];
         if(!fieldValue.is_null())
         {
             setScaleWmfFontsToMetafileSize(ModelBase::boolFromJson(fieldValue));
@@ -133,49 +133,49 @@ void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFo
 
     if(m_EmfPlusDualRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EmfPlusDualRenderingMode"), m_EmfPlusDualRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("emfPlusDualRenderingMode"), m_EmfPlusDualRenderingMode));
         
     }
     if(m_EmulateRasterOperationsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EmulateRasterOperations"), m_EmulateRasterOperations));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("emulateRasterOperations"), m_EmulateRasterOperations));
     }
     if(m_RenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RenderingMode"), m_RenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("renderingMode"), m_RenderingMode));
         
     }
     if(m_UseEmfEmbeddedToWmfIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseEmfEmbeddedToWmf"), m_UseEmfEmbeddedToWmf));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("useEmfEmbeddedToWmf"), m_UseEmfEmbeddedToWmf));
     }
     if(m_ScaleWmfFontsToMetafileSizeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ScaleWmfFontsToMetafileSize"), m_ScaleWmfFontsToMetafileSize));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("scaleWmfFontsToMetafileSize"), m_ScaleWmfFontsToMetafileSize));
     }
 }
 
 void MetafileRenderingOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("EmfPlusDualRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("emfPlusDualRenderingMode")))
     {
-        setEmfPlusDualRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EmfPlusDualRenderingMode"))));
+        setEmfPlusDualRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("emfPlusDualRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("EmulateRasterOperations")))
+    if(multipart->hasContent(_XPLATSTR("emulateRasterOperations")))
     {
-        setEmulateRasterOperations(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("EmulateRasterOperations"))));
+        setEmulateRasterOperations(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("emulateRasterOperations"))));
     }
-    if(multipart->hasContent(_XPLATSTR("RenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("renderingMode")))
     {
-        setRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RenderingMode"))));
+        setRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("renderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UseEmfEmbeddedToWmf")))
+    if(multipart->hasContent(_XPLATSTR("useEmfEmbeddedToWmf")))
     {
-        setUseEmfEmbeddedToWmf(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseEmfEmbeddedToWmf"))));
+        setUseEmfEmbeddedToWmf(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("useEmfEmbeddedToWmf"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ScaleWmfFontsToMetafileSize")))
+    if(multipart->hasContent(_XPLATSTR("scaleWmfFontsToMetafileSize")))
     {
-        setScaleWmfFontsToMetafileSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ScaleWmfFontsToMetafileSize"))));
+        setScaleWmfFontsToMetafileSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("scaleWmfFontsToMetafileSize"))));
     }
 }
 

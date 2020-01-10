@@ -54,7 +54,7 @@ web::json::value SplitDocumentResult::toJson() const
 
     if(m_SourceDocumentIsSet)
     {
-        val[_XPLATSTR("SourceDocument")] = ModelBase::toJson(m_SourceDocument);
+        val[_XPLATSTR("sourceDocument")] = ModelBase::toJson(m_SourceDocument);
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -65,12 +65,12 @@ web::json::value SplitDocumentResult::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("Pages")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("pages")] = web::json::value::array(jsonArray);
         }
     }
     if(m_ZippedPagesIsSet)
     {
-        val[_XPLATSTR("ZippedPages")] = ModelBase::toJson(m_ZippedPages);
+        val[_XPLATSTR("zippedPages")] = ModelBase::toJson(m_ZippedPages);
     }
 
     return val;
@@ -78,9 +78,9 @@ web::json::value SplitDocumentResult::toJson() const
 
 void SplitDocumentResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("SourceDocument")))
+    if(val.has_field(_XPLATSTR("sourceDocument")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SourceDocument")];
+        web::json::value& fieldValue = val[_XPLATSTR("sourceDocument")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -90,10 +90,10 @@ void SplitDocumentResult::fromJson(web::json::value& val)
     }
     {
         m_Pages.clear();
-        if(val.has_field(_XPLATSTR("Pages")) 
-                            && !val[_XPLATSTR("Pages")].is_null())
+        if(val.has_field(_XPLATSTR("pages")) 
+                            && !val[_XPLATSTR("pages")].is_null())
         {
-        auto arr = val[_XPLATSTR("Pages")].as_array();
+        auto arr = val[_XPLATSTR("pages")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Pages), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -109,9 +109,9 @@ void SplitDocumentResult::fromJson(web::json::value& val)
 
         }
     }
-    if(val.has_field(_XPLATSTR("ZippedPages")))
+    if(val.has_field(_XPLATSTR("zippedPages")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ZippedPages")];
+        web::json::value& fieldValue = val[_XPLATSTR("zippedPages")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -129,7 +129,7 @@ void SplitDocumentResult::toMultipart(const std::shared_ptr<MultipartFormData>& 
     {
         if (m_SourceDocument.get())
         {
-            m_SourceDocument->toMultipart(multipart, _XPLATSTR("SourceDocument."));
+            m_SourceDocument->toMultipart(multipart, _XPLATSTR("sourceDocument."));
         }
         
     }
@@ -141,14 +141,14 @@ void SplitDocumentResult::toMultipart(const std::shared_ptr<MultipartFormData>& 
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Pages"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("pages"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     if(m_ZippedPagesIsSet)
     {
         if (m_ZippedPages.get())
         {
-            m_ZippedPages->toMultipart(multipart, _XPLATSTR("ZippedPages."));
+            m_ZippedPages->toMultipart(multipart, _XPLATSTR("zippedPages."));
         }
         
     }
@@ -156,21 +156,21 @@ void SplitDocumentResult::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void SplitDocumentResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("SourceDocument")))
+    if(multipart->hasContent(_XPLATSTR("sourceDocument")))
     {
-        if(multipart->hasContent(_XPLATSTR("SourceDocument")))
+        if(multipart->hasContent(_XPLATSTR("sourceDocument")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SourceDocument."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("sourceDocument."));
             setSourceDocument( newItem );
         }
     }
     {
         m_Pages.clear();
-        if(multipart->hasContent(_XPLATSTR("Pages")))
+        if(multipart->hasContent(_XPLATSTR("pages")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Pages")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("pages")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Pages), [&](web::json::value item) {
             if(item.is_null())
             {
@@ -185,12 +185,12 @@ void SplitDocumentResult::fromMultiPart(const std::shared_ptr<MultipartFormData>
         });
         }
     }
-    if(multipart->hasContent(_XPLATSTR("ZippedPages")))
+    if(multipart->hasContent(_XPLATSTR("zippedPages")))
     {
-        if(multipart->hasContent(_XPLATSTR("ZippedPages")))
+        if(multipart->hasContent(_XPLATSTR("zippedPages")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ZippedPages."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("zippedPages."));
             setZippedPages( newItem );
         }
     }

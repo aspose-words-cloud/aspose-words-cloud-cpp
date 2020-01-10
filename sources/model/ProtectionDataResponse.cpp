@@ -53,11 +53,11 @@ web::json::value ProtectionDataResponse::toJson() const
 
     if(m_DocumentLinkIsSet)
     {
-        val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
+        val[_XPLATSTR("documentLink")] = ModelBase::toJson(m_DocumentLink);
     }
     if(m_ProtectionDataIsSet)
     {
-        val[_XPLATSTR("ProtectionData")] = ModelBase::toJson(m_ProtectionData);
+        val[_XPLATSTR("protectionData")] = ModelBase::toJson(m_ProtectionData);
     }
 
     return val;
@@ -67,9 +67,9 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("DocumentLink")))
+    if(val.has_field(_XPLATSTR("documentLink")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
+        web::json::value& fieldValue = val[_XPLATSTR("documentLink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -77,9 +77,9 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("ProtectionData")))
+    if(val.has_field(_XPLATSTR("protectionData")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ProtectionData")];
+        web::json::value& fieldValue = val[_XPLATSTR("protectionData")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ProtectionData> newItem(new ProtectionData());
@@ -95,14 +95,14 @@ void ProtectionDataResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
-            m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
+            m_DocumentLink->toMultipart(multipart, _XPLATSTR("documentLink."));
         }
         
     }
@@ -110,7 +110,7 @@ void ProtectionDataResponse::toMultipart(const std::shared_ptr<MultipartFormData
     {
         if (m_ProtectionData.get())
         {
-            m_ProtectionData->toMultipart(multipart, _XPLATSTR("ProtectionData."));
+            m_ProtectionData->toMultipart(multipart, _XPLATSTR("protectionData."));
         }
         
     }
@@ -118,25 +118,25 @@ void ProtectionDataResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
 void ProtectionDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
+    if(multipart->hasContent(_XPLATSTR("documentLink")))
     {
-        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
+        if(multipart->hasContent(_XPLATSTR("documentLink")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("documentLink."));
             setDocumentLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("ProtectionData")))
+    if(multipart->hasContent(_XPLATSTR("protectionData")))
     {
-        if(multipart->hasContent(_XPLATSTR("ProtectionData")))
+        if(multipart->hasContent(_XPLATSTR("protectionData")))
         {
             std::shared_ptr<ProtectionData> newItem(new ProtectionData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ProtectionData."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("protectionData."));
             setProtectionData( newItem );
         }
     }

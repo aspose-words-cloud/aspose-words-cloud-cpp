@@ -30,6 +30,7 @@ namespace api{
 namespace models{
 UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
         utility::string_t name,
+                std::shared_ptr<TableProperties> properties,
                 utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
@@ -38,10 +39,10 @@ UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableProperties>> properties
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_properties(std::move(properties)),
             m_nodePath(std::move(nodePath)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
@@ -50,8 +51,7 @@ UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_properties(std::move(properties))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -62,6 +62,13 @@ UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
         }
         void UpdateTablePropertiesRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        std::shared_ptr<TableProperties> UpdateTablePropertiesRequest::getProperties() const
+        {
+            return m_properties;
+        }
+        void UpdateTablePropertiesRequest::setProperties(std::shared_ptr<TableProperties> properties){
+            m_properties = std::move(properties);
         }
         utility::string_t UpdateTablePropertiesRequest::getNodePath() const
         {
@@ -125,13 +132,6 @@ UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
         }
         void UpdateTablePropertiesRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<std::shared_ptr<TableProperties>> UpdateTablePropertiesRequest::getProperties() const
-        {
-            return m_properties;
-        }
-        void UpdateTablePropertiesRequest::setProperties(boost::optional<std::shared_ptr<TableProperties>> properties){
-            m_properties = std::move(properties);
         }
 
 }

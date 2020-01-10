@@ -68,7 +68,7 @@ public:
     utility::string_t getType() const;
         void setType(utility::string_t value);
     /// <summary>
-    /// Gets or sets the preferred width value. The unit of measure is specified in the  property.
+    /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
     /// </summary>
     double getValue() const;
     bool valueIsSet() const;

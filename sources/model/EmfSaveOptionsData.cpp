@@ -65,258 +65,258 @@ void EmfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("colorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("saveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("zipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateFields"), m_UpdateFields));
     }
     if(m_JpegQualityIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("JpegQuality"), m_JpegQuality));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("jpegQuality"), m_JpegQuality));
     }
     if(m_MetafileRenderingOptionsIsSet)
     {
         if (m_MetafileRenderingOptions.get())
         {
-            m_MetafileRenderingOptions->toMultipart(multipart, _XPLATSTR("MetafileRenderingOptions."));
+            m_MetafileRenderingOptions->toMultipart(multipart, _XPLATSTR("metafileRenderingOptions."));
         }
         
     }
     if(m_NumeralFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NumeralFormat"), m_NumeralFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("numeralFormat"), m_NumeralFormat));
         
     }
     if(m_OptimizeOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OptimizeOutput"), m_OptimizeOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("optimizeOutput"), m_OptimizeOutput));
     }
     if(m_PageCountIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageCount"), m_PageCount));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("pageCount"), m_PageCount));
     }
     if(m_PageIndexIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageIndex"), m_PageIndex));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("pageIndex"), m_PageIndex));
     }
     if(m_GraphicsQualityOptionsIsSet)
     {
         if (m_GraphicsQualityOptions.get())
         {
-            m_GraphicsQualityOptions->toMultipart(multipart, _XPLATSTR("GraphicsQualityOptions."));
+            m_GraphicsQualityOptions->toMultipart(multipart, _XPLATSTR("graphicsQualityOptions."));
         }
         
     }
     if(m_HorizontalResolutionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HorizontalResolution"), m_HorizontalResolution));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("horizontalResolution"), m_HorizontalResolution));
     }
     if(m_ImageBrightnessIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImageBrightness"), m_ImageBrightness));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("imageBrightness"), m_ImageBrightness));
     }
     if(m_ImageColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImageColorMode"), m_ImageColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("imageColorMode"), m_ImageColorMode));
         
     }
     if(m_ImageContrastIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImageContrast"), m_ImageContrast));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("imageContrast"), m_ImageContrast));
     }
     if(m_PaperColorIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PaperColor"), m_PaperColor));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("paperColor"), m_PaperColor));
         
     }
     if(m_PixelFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PixelFormat"), m_PixelFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("pixelFormat"), m_PixelFormat));
         
     }
     if(m_ResolutionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Resolution"), m_Resolution));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("resolution"), m_Resolution));
     }
     if(m_ScaleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Scale"), m_Scale));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("scale"), m_Scale));
     }
     if(m_UseAntiAliasingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseAntiAliasing"), m_UseAntiAliasing));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("useAntiAliasing"), m_UseAntiAliasing));
     }
     if(m_UseGdiEmfRendererIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseGdiEmfRenderer"), m_UseGdiEmfRenderer));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("useGdiEmfRenderer"), m_UseGdiEmfRenderer));
     }
     if(m_UseHighQualityRenderingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseHighQualityRendering"), m_UseHighQualityRendering));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("useHighQualityRendering"), m_UseHighQualityRendering));
     }
     if(m_VerticalResolutionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("VerticalResolution"), m_VerticalResolution));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("verticalResolution"), m_VerticalResolution));
     }
 }
 
 void EmfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
+    if(multipart->hasContent(_XPLATSTR("colorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("colorMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
+    if(multipart->hasContent(_XPLATSTR("saveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("saveFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FileName")))
+    if(multipart->hasContent(_XPLATSTR("fileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fileName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("dmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dmlRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("dmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
+    if(multipart->hasContent(_XPLATSTR("zipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("zipOutput"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("updateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("updateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateSdtContent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
+    if(multipart->hasContent(_XPLATSTR("updateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateFields"))));
     }
-    if(multipart->hasContent(_XPLATSTR("JpegQuality")))
+    if(multipart->hasContent(_XPLATSTR("jpegQuality")))
     {
-        setJpegQuality(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("JpegQuality"))));
+        setJpegQuality(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("jpegQuality"))));
     }
-    if(multipart->hasContent(_XPLATSTR("MetafileRenderingOptions")))
+    if(multipart->hasContent(_XPLATSTR("metafileRenderingOptions")))
     {
-        if(multipart->hasContent(_XPLATSTR("MetafileRenderingOptions")))
+        if(multipart->hasContent(_XPLATSTR("metafileRenderingOptions")))
         {
             std::shared_ptr<MetafileRenderingOptionsData> newItem(new MetafileRenderingOptionsData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("MetafileRenderingOptions."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("metafileRenderingOptions."));
             setMetafileRenderingOptions( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("NumeralFormat")))
+    if(multipart->hasContent(_XPLATSTR("numeralFormat")))
     {
-        setNumeralFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NumeralFormat"))));
+        setNumeralFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("numeralFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("OptimizeOutput")))
+    if(multipart->hasContent(_XPLATSTR("optimizeOutput")))
     {
-        setOptimizeOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OptimizeOutput"))));
+        setOptimizeOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("optimizeOutput"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PageCount")))
+    if(multipart->hasContent(_XPLATSTR("pageCount")))
     {
-        setPageCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageCount"))));
+        setPageCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("pageCount"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PageIndex")))
+    if(multipart->hasContent(_XPLATSTR("pageIndex")))
     {
-        setPageIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageIndex"))));
+        setPageIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("pageIndex"))));
     }
-    if(multipart->hasContent(_XPLATSTR("GraphicsQualityOptions")))
+    if(multipart->hasContent(_XPLATSTR("graphicsQualityOptions")))
     {
-        if(multipart->hasContent(_XPLATSTR("GraphicsQualityOptions")))
+        if(multipart->hasContent(_XPLATSTR("graphicsQualityOptions")))
         {
             std::shared_ptr<GraphicsQualityOptionsData> newItem(new GraphicsQualityOptionsData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("GraphicsQualityOptions."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("graphicsQualityOptions."));
             setGraphicsQualityOptions( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("HorizontalResolution")))
+    if(multipart->hasContent(_XPLATSTR("horizontalResolution")))
     {
-        setHorizontalResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("HorizontalResolution"))));
+        setHorizontalResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("horizontalResolution"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ImageBrightness")))
+    if(multipart->hasContent(_XPLATSTR("imageBrightness")))
     {
-        setImageBrightness(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ImageBrightness"))));
+        setImageBrightness(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("imageBrightness"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ImageColorMode")))
+    if(multipart->hasContent(_XPLATSTR("imageColorMode")))
     {
-        setImageColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImageColorMode"))));
+        setImageColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("imageColorMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ImageContrast")))
+    if(multipart->hasContent(_XPLATSTR("imageContrast")))
     {
-        setImageContrast(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ImageContrast"))));
+        setImageContrast(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("imageContrast"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PaperColor")))
+    if(multipart->hasContent(_XPLATSTR("paperColor")))
     {
-        setPaperColor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("PaperColor"))));
+        setPaperColor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("paperColor"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PixelFormat")))
+    if(multipart->hasContent(_XPLATSTR("pixelFormat")))
     {
-        setPixelFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("PixelFormat"))));
+        setPixelFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("pixelFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Resolution")))
+    if(multipart->hasContent(_XPLATSTR("resolution")))
     {
-        setResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Resolution"))));
+        setResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("resolution"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Scale")))
+    if(multipart->hasContent(_XPLATSTR("scale")))
     {
-        setScale(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Scale"))));
+        setScale(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("scale"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UseAntiAliasing")))
+    if(multipart->hasContent(_XPLATSTR("useAntiAliasing")))
     {
-        setUseAntiAliasing(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseAntiAliasing"))));
+        setUseAntiAliasing(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("useAntiAliasing"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UseGdiEmfRenderer")))
+    if(multipart->hasContent(_XPLATSTR("useGdiEmfRenderer")))
     {
-        setUseGdiEmfRenderer(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseGdiEmfRenderer"))));
+        setUseGdiEmfRenderer(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("useGdiEmfRenderer"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UseHighQualityRendering")))
+    if(multipart->hasContent(_XPLATSTR("useHighQualityRendering")))
     {
-        setUseHighQualityRendering(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseHighQualityRendering"))));
+        setUseHighQualityRendering(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("useHighQualityRendering"))));
     }
-    if(multipart->hasContent(_XPLATSTR("VerticalResolution")))
+    if(multipart->hasContent(_XPLATSTR("verticalResolution")))
     {
-        setVerticalResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("VerticalResolution"))));
+        setVerticalResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("verticalResolution"))));
     }
 }
 

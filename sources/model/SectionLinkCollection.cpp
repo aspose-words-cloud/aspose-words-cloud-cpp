@@ -59,7 +59,7 @@ web::json::value SectionLinkCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("SectionLinkList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("sectionLinkList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void SectionLinkCollection::fromJson(web::json::value& val)
 
     {
         m_SectionLinkList.clear();
-        if(val.has_field(_XPLATSTR("SectionLinkList")) 
-                            && !val[_XPLATSTR("SectionLinkList")].is_null())
+        if(val.has_field(_XPLATSTR("sectionLinkList")) 
+                            && !val[_XPLATSTR("sectionLinkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("SectionLinkList")].as_array();
+        auto arr = val[_XPLATSTR("sectionLinkList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_SectionLinkList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void SectionLinkCollection::toMultipart(const std::shared_ptr<MultipartFormData>
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SectionLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("sectionLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void SectionLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormDat
     }
     {
         m_SectionLinkList.clear();
-        if(multipart->hasContent(_XPLATSTR("SectionLinkList")))
+        if(multipart->hasContent(_XPLATSTR("sectionLinkList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SectionLinkList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("sectionLinkList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_SectionLinkList), [&](web::json::value item) {
             if(item.is_null())
             {

@@ -52,7 +52,7 @@ web::json::value WordsApiErrorResponse::toJson() const
 
     if(m_ErrorIsSet)
     {
-        val[_XPLATSTR("Error")] = ModelBase::toJson(m_Error);
+        val[_XPLATSTR("error")] = ModelBase::toJson(m_Error);
     }
 
     return val;
@@ -62,9 +62,9 @@ void WordsApiErrorResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Error")))
+    if(val.has_field(_XPLATSTR("error")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Error")];
+        web::json::value& fieldValue = val[_XPLATSTR("error")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ApiError> newItem(new ApiError());
@@ -80,14 +80,14 @@ void WordsApiErrorResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_ErrorIsSet)
     {
         if (m_Error.get())
         {
-            m_Error->toMultipart(multipart, _XPLATSTR("Error."));
+            m_Error->toMultipart(multipart, _XPLATSTR("error."));
         }
         
     }
@@ -95,16 +95,16 @@ void WordsApiErrorResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
 void WordsApiErrorResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Error")))
+    if(multipart->hasContent(_XPLATSTR("error")))
     {
-        if(multipart->hasContent(_XPLATSTR("Error")))
+        if(multipart->hasContent(_XPLATSTR("error")))
         {
             std::shared_ptr<ApiError> newItem(new ApiError());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Error."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("error."));
             setError( newItem );
         }
     }

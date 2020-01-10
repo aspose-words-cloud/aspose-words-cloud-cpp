@@ -103,107 +103,107 @@ web::json::value ParagraphFormat::toJson() const
 
     if(m_AddSpaceBetweenFarEastAndAlphaIsSet)
     {
-        val[_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")] = ModelBase::toJson(m_AddSpaceBetweenFarEastAndAlpha);
+        val[_XPLATSTR("addSpaceBetweenFarEastAndAlpha")] = ModelBase::toJson(m_AddSpaceBetweenFarEastAndAlpha);
     }
     if(m_AddSpaceBetweenFarEastAndDigitIsSet)
     {
-        val[_XPLATSTR("AddSpaceBetweenFarEastAndDigit")] = ModelBase::toJson(m_AddSpaceBetweenFarEastAndDigit);
+        val[_XPLATSTR("addSpaceBetweenFarEastAndDigit")] = ModelBase::toJson(m_AddSpaceBetweenFarEastAndDigit);
     }
     if(m_AlignmentIsSet)
     {
-        val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
+        val[_XPLATSTR("alignment")] = ModelBase::toJson(m_Alignment);
     }
     if(m_BidiIsSet)
     {
-        val[_XPLATSTR("Bidi")] = ModelBase::toJson(m_Bidi);
+        val[_XPLATSTR("bidi")] = ModelBase::toJson(m_Bidi);
     }
     if(m_DropCapPositionIsSet)
     {
-        val[_XPLATSTR("DropCapPosition")] = ModelBase::toJson(m_DropCapPosition);
+        val[_XPLATSTR("dropCapPosition")] = ModelBase::toJson(m_DropCapPosition);
     }
     if(m_FirstLineIndentIsSet)
     {
-        val[_XPLATSTR("FirstLineIndent")] = ModelBase::toJson(m_FirstLineIndent);
+        val[_XPLATSTR("firstLineIndent")] = ModelBase::toJson(m_FirstLineIndent);
     }
     if(m_IsListItemIsSet)
     {
-        val[_XPLATSTR("IsListItem")] = ModelBase::toJson(m_IsListItem);
+        val[_XPLATSTR("isListItem")] = ModelBase::toJson(m_IsListItem);
     }
     if(m_KeepTogetherIsSet)
     {
-        val[_XPLATSTR("KeepTogether")] = ModelBase::toJson(m_KeepTogether);
+        val[_XPLATSTR("keepTogether")] = ModelBase::toJson(m_KeepTogether);
     }
     if(m_KeepWithNextIsSet)
     {
-        val[_XPLATSTR("KeepWithNext")] = ModelBase::toJson(m_KeepWithNext);
+        val[_XPLATSTR("keepWithNext")] = ModelBase::toJson(m_KeepWithNext);
     }
     if(m_LeftIndentIsSet)
     {
-        val[_XPLATSTR("LeftIndent")] = ModelBase::toJson(m_LeftIndent);
+        val[_XPLATSTR("leftIndent")] = ModelBase::toJson(m_LeftIndent);
     }
     if(m_LineSpacingIsSet)
     {
-        val[_XPLATSTR("LineSpacing")] = ModelBase::toJson(m_LineSpacing);
+        val[_XPLATSTR("lineSpacing")] = ModelBase::toJson(m_LineSpacing);
     }
     if(m_LineSpacingRuleIsSet)
     {
-        val[_XPLATSTR("LineSpacingRule")] = ModelBase::toJson(m_LineSpacingRule);
+        val[_XPLATSTR("lineSpacingRule")] = ModelBase::toJson(m_LineSpacingRule);
     }
     if(m_LinesToDropIsSet)
     {
-        val[_XPLATSTR("LinesToDrop")] = ModelBase::toJson(m_LinesToDrop);
+        val[_XPLATSTR("linesToDrop")] = ModelBase::toJson(m_LinesToDrop);
     }
     if(m_NoSpaceBetweenParagraphsOfSameStyleIsSet)
     {
-        val[_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")] = ModelBase::toJson(m_NoSpaceBetweenParagraphsOfSameStyle);
+        val[_XPLATSTR("noSpaceBetweenParagraphsOfSameStyle")] = ModelBase::toJson(m_NoSpaceBetweenParagraphsOfSameStyle);
     }
     if(m_OutlineLevelIsSet)
     {
-        val[_XPLATSTR("OutlineLevel")] = ModelBase::toJson(m_OutlineLevel);
+        val[_XPLATSTR("outlineLevel")] = ModelBase::toJson(m_OutlineLevel);
     }
     if(m_PageBreakBeforeIsSet)
     {
-        val[_XPLATSTR("PageBreakBefore")] = ModelBase::toJson(m_PageBreakBefore);
+        val[_XPLATSTR("pageBreakBefore")] = ModelBase::toJson(m_PageBreakBefore);
     }
     if(m_RightIndentIsSet)
     {
-        val[_XPLATSTR("RightIndent")] = ModelBase::toJson(m_RightIndent);
+        val[_XPLATSTR("rightIndent")] = ModelBase::toJson(m_RightIndent);
     }
     if(m_SpaceAfterIsSet)
     {
-        val[_XPLATSTR("SpaceAfter")] = ModelBase::toJson(m_SpaceAfter);
+        val[_XPLATSTR("spaceAfter")] = ModelBase::toJson(m_SpaceAfter);
     }
     if(m_SpaceAfterAutoIsSet)
     {
-        val[_XPLATSTR("SpaceAfterAuto")] = ModelBase::toJson(m_SpaceAfterAuto);
+        val[_XPLATSTR("spaceAfterAuto")] = ModelBase::toJson(m_SpaceAfterAuto);
     }
     if(m_SpaceBeforeIsSet)
     {
-        val[_XPLATSTR("SpaceBefore")] = ModelBase::toJson(m_SpaceBefore);
+        val[_XPLATSTR("spaceBefore")] = ModelBase::toJson(m_SpaceBefore);
     }
     if(m_SpaceBeforeAutoIsSet)
     {
-        val[_XPLATSTR("SpaceBeforeAuto")] = ModelBase::toJson(m_SpaceBeforeAuto);
+        val[_XPLATSTR("spaceBeforeAuto")] = ModelBase::toJson(m_SpaceBeforeAuto);
     }
     if(m_StyleIdentifierIsSet)
     {
-        val[_XPLATSTR("StyleIdentifier")] = ModelBase::toJson(m_StyleIdentifier);
+        val[_XPLATSTR("styleIdentifier")] = ModelBase::toJson(m_StyleIdentifier);
     }
     if(m_StyleNameIsSet)
     {
-        val[_XPLATSTR("StyleName")] = ModelBase::toJson(m_StyleName);
+        val[_XPLATSTR("styleName")] = ModelBase::toJson(m_StyleName);
     }
     if(m_SuppressAutoHyphensIsSet)
     {
-        val[_XPLATSTR("SuppressAutoHyphens")] = ModelBase::toJson(m_SuppressAutoHyphens);
+        val[_XPLATSTR("suppressAutoHyphens")] = ModelBase::toJson(m_SuppressAutoHyphens);
     }
     if(m_SuppressLineNumbersIsSet)
     {
-        val[_XPLATSTR("SuppressLineNumbers")] = ModelBase::toJson(m_SuppressLineNumbers);
+        val[_XPLATSTR("suppressLineNumbers")] = ModelBase::toJson(m_SuppressLineNumbers);
     }
     if(m_WidowControlIsSet)
     {
-        val[_XPLATSTR("WidowControl")] = ModelBase::toJson(m_WidowControl);
+        val[_XPLATSTR("widowControl")] = ModelBase::toJson(m_WidowControl);
     }
 
     return val;
@@ -213,209 +213,209 @@ void ParagraphFormat::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")))
+    if(val.has_field(_XPLATSTR("addSpaceBetweenFarEastAndAlpha")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")];
+        web::json::value& fieldValue = val[_XPLATSTR("addSpaceBetweenFarEastAndAlpha")];
         if(!fieldValue.is_null())
         {
             setAddSpaceBetweenFarEastAndAlpha(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("AddSpaceBetweenFarEastAndDigit")))
+    if(val.has_field(_XPLATSTR("addSpaceBetweenFarEastAndDigit")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("AddSpaceBetweenFarEastAndDigit")];
+        web::json::value& fieldValue = val[_XPLATSTR("addSpaceBetweenFarEastAndDigit")];
         if(!fieldValue.is_null())
         {
             setAddSpaceBetweenFarEastAndDigit(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Alignment")))
+    if(val.has_field(_XPLATSTR("alignment")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
+        web::json::value& fieldValue = val[_XPLATSTR("alignment")];
         if(!fieldValue.is_null())
         {
             setAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Bidi")))
+    if(val.has_field(_XPLATSTR("bidi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
+        web::json::value& fieldValue = val[_XPLATSTR("bidi")];
         if(!fieldValue.is_null())
         {
             setBidi(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("DropCapPosition")))
+    if(val.has_field(_XPLATSTR("dropCapPosition")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("DropCapPosition")];
+        web::json::value& fieldValue = val[_XPLATSTR("dropCapPosition")];
         if(!fieldValue.is_null())
         {
             setDropCapPosition(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("FirstLineIndent")))
+    if(val.has_field(_XPLATSTR("firstLineIndent")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("FirstLineIndent")];
+        web::json::value& fieldValue = val[_XPLATSTR("firstLineIndent")];
         if(!fieldValue.is_null())
         {
             setFirstLineIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("IsListItem")))
+    if(val.has_field(_XPLATSTR("isListItem")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("IsListItem")];
+        web::json::value& fieldValue = val[_XPLATSTR("isListItem")];
         if(!fieldValue.is_null())
         {
             setIsListItem(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("KeepTogether")))
+    if(val.has_field(_XPLATSTR("keepTogether")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("KeepTogether")];
+        web::json::value& fieldValue = val[_XPLATSTR("keepTogether")];
         if(!fieldValue.is_null())
         {
             setKeepTogether(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("KeepWithNext")))
+    if(val.has_field(_XPLATSTR("keepWithNext")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("KeepWithNext")];
+        web::json::value& fieldValue = val[_XPLATSTR("keepWithNext")];
         if(!fieldValue.is_null())
         {
             setKeepWithNext(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("LeftIndent")))
+    if(val.has_field(_XPLATSTR("leftIndent")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LeftIndent")];
+        web::json::value& fieldValue = val[_XPLATSTR("leftIndent")];
         if(!fieldValue.is_null())
         {
             setLeftIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("LineSpacing")))
+    if(val.has_field(_XPLATSTR("lineSpacing")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LineSpacing")];
+        web::json::value& fieldValue = val[_XPLATSTR("lineSpacing")];
         if(!fieldValue.is_null())
         {
             setLineSpacing(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("LineSpacingRule")))
+    if(val.has_field(_XPLATSTR("lineSpacingRule")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LineSpacingRule")];
+        web::json::value& fieldValue = val[_XPLATSTR("lineSpacingRule")];
         if(!fieldValue.is_null())
         {
             setLineSpacingRule(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("LinesToDrop")))
+    if(val.has_field(_XPLATSTR("linesToDrop")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LinesToDrop")];
+        web::json::value& fieldValue = val[_XPLATSTR("linesToDrop")];
         if(!fieldValue.is_null())
         {
             setLinesToDrop(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")))
+    if(val.has_field(_XPLATSTR("noSpaceBetweenParagraphsOfSameStyle")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")];
+        web::json::value& fieldValue = val[_XPLATSTR("noSpaceBetweenParagraphsOfSameStyle")];
         if(!fieldValue.is_null())
         {
             setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("OutlineLevel")))
+    if(val.has_field(_XPLATSTR("outlineLevel")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("OutlineLevel")];
+        web::json::value& fieldValue = val[_XPLATSTR("outlineLevel")];
         if(!fieldValue.is_null())
         {
             setOutlineLevel(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("PageBreakBefore")))
+    if(val.has_field(_XPLATSTR("pageBreakBefore")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("PageBreakBefore")];
+        web::json::value& fieldValue = val[_XPLATSTR("pageBreakBefore")];
         if(!fieldValue.is_null())
         {
             setPageBreakBefore(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("RightIndent")))
+    if(val.has_field(_XPLATSTR("rightIndent")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RightIndent")];
+        web::json::value& fieldValue = val[_XPLATSTR("rightIndent")];
         if(!fieldValue.is_null())
         {
             setRightIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SpaceAfter")))
+    if(val.has_field(_XPLATSTR("spaceAfter")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SpaceAfter")];
+        web::json::value& fieldValue = val[_XPLATSTR("spaceAfter")];
         if(!fieldValue.is_null())
         {
             setSpaceAfter(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SpaceAfterAuto")))
+    if(val.has_field(_XPLATSTR("spaceAfterAuto")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SpaceAfterAuto")];
+        web::json::value& fieldValue = val[_XPLATSTR("spaceAfterAuto")];
         if(!fieldValue.is_null())
         {
             setSpaceAfterAuto(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SpaceBefore")))
+    if(val.has_field(_XPLATSTR("spaceBefore")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SpaceBefore")];
+        web::json::value& fieldValue = val[_XPLATSTR("spaceBefore")];
         if(!fieldValue.is_null())
         {
             setSpaceBefore(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SpaceBeforeAuto")))
+    if(val.has_field(_XPLATSTR("spaceBeforeAuto")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SpaceBeforeAuto")];
+        web::json::value& fieldValue = val[_XPLATSTR("spaceBeforeAuto")];
         if(!fieldValue.is_null())
         {
             setSpaceBeforeAuto(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("StyleIdentifier")))
+    if(val.has_field(_XPLATSTR("styleIdentifier")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("StyleIdentifier")];
+        web::json::value& fieldValue = val[_XPLATSTR("styleIdentifier")];
         if(!fieldValue.is_null())
         {
             setStyleIdentifier(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("StyleName")))
+    if(val.has_field(_XPLATSTR("styleName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("StyleName")];
+        web::json::value& fieldValue = val[_XPLATSTR("styleName")];
         if(!fieldValue.is_null())
         {
             setStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SuppressAutoHyphens")))
+    if(val.has_field(_XPLATSTR("suppressAutoHyphens")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SuppressAutoHyphens")];
+        web::json::value& fieldValue = val[_XPLATSTR("suppressAutoHyphens")];
         if(!fieldValue.is_null())
         {
             setSuppressAutoHyphens(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SuppressLineNumbers")))
+    if(val.has_field(_XPLATSTR("suppressLineNumbers")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SuppressLineNumbers")];
+        web::json::value& fieldValue = val[_XPLATSTR("suppressLineNumbers")];
         if(!fieldValue.is_null())
         {
             setSuppressLineNumbers(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("WidowControl")))
+    if(val.has_field(_XPLATSTR("widowControl")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("WidowControl")];
+        web::json::value& fieldValue = val[_XPLATSTR("widowControl")];
         if(!fieldValue.is_null())
         {
             setWidowControl(ModelBase::boolFromJson(fieldValue));
@@ -437,113 +437,113 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     }
     if(m_AddSpaceBetweenFarEastAndAlphaIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AddSpaceBetweenFarEastAndAlpha"), m_AddSpaceBetweenFarEastAndAlpha));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("addSpaceBetweenFarEastAndAlpha"), m_AddSpaceBetweenFarEastAndAlpha));
     }
     if(m_AddSpaceBetweenFarEastAndDigitIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AddSpaceBetweenFarEastAndDigit"), m_AddSpaceBetweenFarEastAndDigit));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("addSpaceBetweenFarEastAndDigit"), m_AddSpaceBetweenFarEastAndDigit));
     }
     if(m_AlignmentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("alignment"), m_Alignment));
         
     }
     if(m_BidiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bidi"), m_Bidi));
     }
     if(m_DropCapPositionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DropCapPosition"), m_DropCapPosition));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dropCapPosition"), m_DropCapPosition));
         
     }
     if(m_FirstLineIndentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FirstLineIndent"), m_FirstLineIndent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("firstLineIndent"), m_FirstLineIndent));
     }
     if(m_IsListItemIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsListItem"), m_IsListItem));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isListItem"), m_IsListItem));
     }
     if(m_KeepTogetherIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("KeepTogether"), m_KeepTogether));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("keepTogether"), m_KeepTogether));
     }
     if(m_KeepWithNextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("KeepWithNext"), m_KeepWithNext));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("keepWithNext"), m_KeepWithNext));
     }
     if(m_LeftIndentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftIndent"), m_LeftIndent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("leftIndent"), m_LeftIndent));
     }
     if(m_LineSpacingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineSpacing"), m_LineSpacing));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("lineSpacing"), m_LineSpacing));
     }
     if(m_LineSpacingRuleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineSpacingRule"), m_LineSpacingRule));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("lineSpacingRule"), m_LineSpacingRule));
         
     }
     if(m_LinesToDropIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LinesToDrop"), m_LinesToDrop));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("linesToDrop"), m_LinesToDrop));
     }
     if(m_NoSpaceBetweenParagraphsOfSameStyleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle"), m_NoSpaceBetweenParagraphsOfSameStyle));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("noSpaceBetweenParagraphsOfSameStyle"), m_NoSpaceBetweenParagraphsOfSameStyle));
     }
     if(m_OutlineLevelIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OutlineLevel"), m_OutlineLevel));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("outlineLevel"), m_OutlineLevel));
         
     }
     if(m_PageBreakBeforeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageBreakBefore"), m_PageBreakBefore));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("pageBreakBefore"), m_PageBreakBefore));
     }
     if(m_RightIndentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightIndent"), m_RightIndent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("rightIndent"), m_RightIndent));
     }
     if(m_SpaceAfterIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceAfter"), m_SpaceAfter));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("spaceAfter"), m_SpaceAfter));
     }
     if(m_SpaceAfterAutoIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceAfterAuto"), m_SpaceAfterAuto));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("spaceAfterAuto"), m_SpaceAfterAuto));
     }
     if(m_SpaceBeforeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceBefore"), m_SpaceBefore));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("spaceBefore"), m_SpaceBefore));
     }
     if(m_SpaceBeforeAutoIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceBeforeAuto"), m_SpaceBeforeAuto));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("spaceBeforeAuto"), m_SpaceBeforeAuto));
     }
     if(m_StyleIdentifierIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleIdentifier"), m_StyleIdentifier));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleIdentifier"), m_StyleIdentifier));
         
     }
     if(m_StyleNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleName"), m_StyleName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleName"), m_StyleName));
         
     }
     if(m_SuppressAutoHyphensIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SuppressAutoHyphens"), m_SuppressAutoHyphens));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("suppressAutoHyphens"), m_SuppressAutoHyphens));
     }
     if(m_SuppressLineNumbersIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SuppressLineNumbers"), m_SuppressLineNumbers));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("suppressLineNumbers"), m_SuppressLineNumbers));
     }
     if(m_WidowControlIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WidowControl"), m_WidowControl));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("widowControl"), m_WidowControl));
     }
 }
 
@@ -558,109 +558,109 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")))
+    if(multipart->hasContent(_XPLATSTR("addSpaceBetweenFarEastAndAlpha")))
     {
-        setAddSpaceBetweenFarEastAndAlpha(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha"))));
+        setAddSpaceBetweenFarEastAndAlpha(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("addSpaceBetweenFarEastAndAlpha"))));
     }
-    if(multipart->hasContent(_XPLATSTR("AddSpaceBetweenFarEastAndDigit")))
+    if(multipart->hasContent(_XPLATSTR("addSpaceBetweenFarEastAndDigit")))
     {
-        setAddSpaceBetweenFarEastAndDigit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndDigit"))));
+        setAddSpaceBetweenFarEastAndDigit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("addSpaceBetweenFarEastAndDigit"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
+    if(multipart->hasContent(_XPLATSTR("alignment")))
     {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
+        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("alignment"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Bidi")))
+    if(multipart->hasContent(_XPLATSTR("bidi")))
     {
-        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
+        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("bidi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DropCapPosition")))
+    if(multipart->hasContent(_XPLATSTR("dropCapPosition")))
     {
-        setDropCapPosition(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DropCapPosition"))));
+        setDropCapPosition(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dropCapPosition"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FirstLineIndent")))
+    if(multipart->hasContent(_XPLATSTR("firstLineIndent")))
     {
-        setFirstLineIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("FirstLineIndent"))));
+        setFirstLineIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("firstLineIndent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("IsListItem")))
+    if(multipart->hasContent(_XPLATSTR("isListItem")))
     {
-        setIsListItem(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
+        setIsListItem(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isListItem"))));
     }
-    if(multipart->hasContent(_XPLATSTR("KeepTogether")))
+    if(multipart->hasContent(_XPLATSTR("keepTogether")))
     {
-        setKeepTogether(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("KeepTogether"))));
+        setKeepTogether(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("keepTogether"))));
     }
-    if(multipart->hasContent(_XPLATSTR("KeepWithNext")))
+    if(multipart->hasContent(_XPLATSTR("keepWithNext")))
     {
-        setKeepWithNext(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("KeepWithNext"))));
+        setKeepWithNext(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("keepWithNext"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LeftIndent")))
+    if(multipart->hasContent(_XPLATSTR("leftIndent")))
     {
-        setLeftIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftIndent"))));
+        setLeftIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("leftIndent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LineSpacing")))
+    if(multipart->hasContent(_XPLATSTR("lineSpacing")))
     {
-        setLineSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LineSpacing"))));
+        setLineSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("lineSpacing"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LineSpacingRule")))
+    if(multipart->hasContent(_XPLATSTR("lineSpacingRule")))
     {
-        setLineSpacingRule(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LineSpacingRule"))));
+        setLineSpacingRule(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("lineSpacingRule"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LinesToDrop")))
+    if(multipart->hasContent(_XPLATSTR("linesToDrop")))
     {
-        setLinesToDrop(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LinesToDrop"))));
+        setLinesToDrop(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("linesToDrop"))));
     }
-    if(multipart->hasContent(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")))
+    if(multipart->hasContent(_XPLATSTR("noSpaceBetweenParagraphsOfSameStyle")))
     {
-        setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle"))));
+        setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("noSpaceBetweenParagraphsOfSameStyle"))));
     }
-    if(multipart->hasContent(_XPLATSTR("OutlineLevel")))
+    if(multipart->hasContent(_XPLATSTR("outlineLevel")))
     {
-        setOutlineLevel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("OutlineLevel"))));
+        setOutlineLevel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("outlineLevel"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PageBreakBefore")))
+    if(multipart->hasContent(_XPLATSTR("pageBreakBefore")))
     {
-        setPageBreakBefore(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PageBreakBefore"))));
+        setPageBreakBefore(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("pageBreakBefore"))));
     }
-    if(multipart->hasContent(_XPLATSTR("RightIndent")))
+    if(multipart->hasContent(_XPLATSTR("rightIndent")))
     {
-        setRightIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightIndent"))));
+        setRightIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("rightIndent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SpaceAfter")))
+    if(multipart->hasContent(_XPLATSTR("spaceAfter")))
     {
-        setSpaceAfter(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("SpaceAfter"))));
+        setSpaceAfter(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("spaceAfter"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SpaceAfterAuto")))
+    if(multipart->hasContent(_XPLATSTR("spaceAfterAuto")))
     {
-        setSpaceAfterAuto(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SpaceAfterAuto"))));
+        setSpaceAfterAuto(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("spaceAfterAuto"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SpaceBefore")))
+    if(multipart->hasContent(_XPLATSTR("spaceBefore")))
     {
-        setSpaceBefore(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("SpaceBefore"))));
+        setSpaceBefore(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("spaceBefore"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SpaceBeforeAuto")))
+    if(multipart->hasContent(_XPLATSTR("spaceBeforeAuto")))
     {
-        setSpaceBeforeAuto(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SpaceBeforeAuto"))));
+        setSpaceBeforeAuto(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("spaceBeforeAuto"))));
     }
-    if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
+    if(multipart->hasContent(_XPLATSTR("styleIdentifier")))
     {
-        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleIdentifier"))));
+        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleIdentifier"))));
     }
-    if(multipart->hasContent(_XPLATSTR("StyleName")))
+    if(multipart->hasContent(_XPLATSTR("styleName")))
     {
-        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleName"))));
+        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SuppressAutoHyphens")))
+    if(multipart->hasContent(_XPLATSTR("suppressAutoHyphens")))
     {
-        setSuppressAutoHyphens(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SuppressAutoHyphens"))));
+        setSuppressAutoHyphens(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("suppressAutoHyphens"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SuppressLineNumbers")))
+    if(multipart->hasContent(_XPLATSTR("suppressLineNumbers")))
     {
-        setSuppressLineNumbers(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SuppressLineNumbers"))));
+        setSuppressLineNumbers(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("suppressLineNumbers"))));
     }
-    if(multipart->hasContent(_XPLATSTR("WidowControl")))
+    if(multipart->hasContent(_XPLATSTR("widowControl")))
     {
-        setWidowControl(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("WidowControl"))));
+        setWidowControl(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("widowControl"))));
     }
 }
 

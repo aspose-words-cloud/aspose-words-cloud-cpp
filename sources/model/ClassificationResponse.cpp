@@ -56,11 +56,11 @@ web::json::value ClassificationResponse::toJson() const
 
     if(m_BestClassNameIsSet)
     {
-        val[_XPLATSTR("BestClassName")] = ModelBase::toJson(m_BestClassName);
+        val[_XPLATSTR("bestClassName")] = ModelBase::toJson(m_BestClassName);
     }
     if(m_BestClassProbabilityIsSet)
     {
-        val[_XPLATSTR("BestClassProbability")] = ModelBase::toJson(m_BestClassProbability);
+        val[_XPLATSTR("bestClassProbability")] = ModelBase::toJson(m_BestClassProbability);
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -71,7 +71,7 @@ web::json::value ClassificationResponse::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("BestResults")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("bestResults")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -82,17 +82,17 @@ void ClassificationResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("BestClassName")))
+    if(val.has_field(_XPLATSTR("bestClassName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("BestClassName")];
+        web::json::value& fieldValue = val[_XPLATSTR("bestClassName")];
         if(!fieldValue.is_null())
         {
             setBestClassName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("BestClassProbability")))
+    if(val.has_field(_XPLATSTR("bestClassProbability")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("BestClassProbability")];
+        web::json::value& fieldValue = val[_XPLATSTR("bestClassProbability")];
         if(!fieldValue.is_null())
         {
             setBestClassProbability(ModelBase::doubleFromJson(fieldValue));
@@ -100,10 +100,10 @@ void ClassificationResponse::fromJson(web::json::value& val)
     }
     {
         m_BestResults.clear();
-        if(val.has_field(_XPLATSTR("BestResults")) 
-                            && !val[_XPLATSTR("BestResults")].is_null())
+        if(val.has_field(_XPLATSTR("bestResults")) 
+                            && !val[_XPLATSTR("bestResults")].is_null())
         {
-        auto arr = val[_XPLATSTR("BestResults")].as_array();
+        auto arr = val[_XPLATSTR("bestResults")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -127,17 +127,17 @@ void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_BestClassNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestClassName"), m_BestClassName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bestClassName"), m_BestClassName));
         
     }
     if(m_BestClassProbabilityIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestClassProbability"), m_BestClassProbability));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bestClassProbability"), m_BestClassProbability));
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -147,31 +147,31 @@ void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestResults"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bestResults"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
 
 void ClassificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("BestClassName")))
+    if(multipart->hasContent(_XPLATSTR("bestClassName")))
     {
-        setBestClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BestClassName"))));
+        setBestClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("bestClassName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("BestClassProbability")))
+    if(multipart->hasContent(_XPLATSTR("bestClassProbability")))
     {
-        setBestClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BestClassProbability"))));
+        setBestClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("bestClassProbability"))));
     }
     {
         m_BestResults.clear();
-        if(multipart->hasContent(_XPLATSTR("BestResults")))
+        if(multipart->hasContent(_XPLATSTR("bestResults")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BestResults")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("bestResults")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BestResults), [&](web::json::value item) {
             if(item.is_null())
             {

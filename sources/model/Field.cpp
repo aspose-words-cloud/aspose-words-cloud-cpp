@@ -55,11 +55,11 @@ web::json::value Field::toJson() const
 
     if(m_LocaleIdIsSet)
     {
-        val[_XPLATSTR("LocaleId")] = ModelBase::toJson(m_LocaleId);
+        val[_XPLATSTR("localeId")] = ModelBase::toJson(m_LocaleId);
     }
     if(m_ResultIsSet)
     {
-        val[_XPLATSTR("Result")] = ModelBase::toJson(m_Result);
+        val[_XPLATSTR("result")] = ModelBase::toJson(m_Result);
     }
 
     return val;
@@ -69,17 +69,17 @@ void Field::fromJson(web::json::value& val)
 {
     this->FieldLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("LocaleId")))
+    if(val.has_field(_XPLATSTR("localeId")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LocaleId")];
+        web::json::value& fieldValue = val[_XPLATSTR("localeId")];
         if(!fieldValue.is_null())
         {
             setLocaleId(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Result")))
+    if(val.has_field(_XPLATSTR("result")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Result")];
+        web::json::value& fieldValue = val[_XPLATSTR("result")];
         if(!fieldValue.is_null())
         {
             setResult(ModelBase::stringFromJson(fieldValue));
@@ -101,22 +101,22 @@ void Field::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
         
     }
     if(m_FieldCodeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FieldCode"), m_FieldCode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fieldCode"), m_FieldCode));
         
     }
     if(m_LocaleIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleId"), m_LocaleId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("localeId"), m_LocaleId));
         
     }
     if(m_ResultIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Result"), m_Result));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("result"), m_Result));
         
     }
 }
@@ -132,21 +132,21 @@ void Field::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("nodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FieldCode")))
+    if(multipart->hasContent(_XPLATSTR("fieldCode")))
     {
-        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FieldCode"))));
+        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fieldCode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LocaleId")))
+    if(multipart->hasContent(_XPLATSTR("localeId")))
     {
-        setLocaleId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LocaleId"))));
+        setLocaleId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("localeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Result")))
+    if(multipart->hasContent(_XPLATSTR("result")))
     {
-        setResult(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Result"))));
+        setResult(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("result"))));
     }
 }
 

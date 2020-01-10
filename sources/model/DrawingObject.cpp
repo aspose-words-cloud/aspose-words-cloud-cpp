@@ -68,27 +68,27 @@ web::json::value DrawingObject::toJson() const
 
     if(m_HeightIsSet)
     {
-        val[_XPLATSTR("Height")] = ModelBase::toJson(m_Height);
+        val[_XPLATSTR("height")] = ModelBase::toJson(m_Height);
     }
     if(m_ImageDataLinkIsSet)
     {
-        val[_XPLATSTR("ImageDataLink")] = ModelBase::toJson(m_ImageDataLink);
+        val[_XPLATSTR("imageDataLink")] = ModelBase::toJson(m_ImageDataLink);
     }
     if(m_LeftIsSet)
     {
-        val[_XPLATSTR("Left")] = ModelBase::toJson(m_Left);
+        val[_XPLATSTR("left")] = ModelBase::toJson(m_Left);
     }
     if(m_OleDataLinkIsSet)
     {
-        val[_XPLATSTR("OleDataLink")] = ModelBase::toJson(m_OleDataLink);
+        val[_XPLATSTR("oleDataLink")] = ModelBase::toJson(m_OleDataLink);
     }
     if(m_RelativeHorizontalPositionIsSet)
     {
-        val[_XPLATSTR("RelativeHorizontalPosition")] = ModelBase::toJson(m_RelativeHorizontalPosition);
+        val[_XPLATSTR("relativeHorizontalPosition")] = ModelBase::toJson(m_RelativeHorizontalPosition);
     }
     if(m_RelativeVerticalPositionIsSet)
     {
-        val[_XPLATSTR("RelativeVerticalPosition")] = ModelBase::toJson(m_RelativeVerticalPosition);
+        val[_XPLATSTR("relativeVerticalPosition")] = ModelBase::toJson(m_RelativeVerticalPosition);
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -99,20 +99,20 @@ web::json::value DrawingObject::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("RenderLinks")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("renderLinks")] = web::json::value::array(jsonArray);
         }
     }
     if(m_TopIsSet)
     {
-        val[_XPLATSTR("Top")] = ModelBase::toJson(m_Top);
+        val[_XPLATSTR("top")] = ModelBase::toJson(m_Top);
     }
     if(m_WidthIsSet)
     {
-        val[_XPLATSTR("Width")] = ModelBase::toJson(m_Width);
+        val[_XPLATSTR("width")] = ModelBase::toJson(m_Width);
     }
     if(m_WrapTypeIsSet)
     {
-        val[_XPLATSTR("WrapType")] = ModelBase::toJson(m_WrapType);
+        val[_XPLATSTR("wrapType")] = ModelBase::toJson(m_WrapType);
     }
 
     return val;
@@ -122,17 +122,17 @@ void DrawingObject::fromJson(web::json::value& val)
 {
     this->DrawingObjectLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Height")))
+    if(val.has_field(_XPLATSTR("height")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Height")];
+        web::json::value& fieldValue = val[_XPLATSTR("height")];
         if(!fieldValue.is_null())
         {
             setHeight(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ImageDataLink")))
+    if(val.has_field(_XPLATSTR("imageDataLink")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ImageDataLink")];
+        web::json::value& fieldValue = val[_XPLATSTR("imageDataLink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
@@ -140,17 +140,17 @@ void DrawingObject::fromJson(web::json::value& val)
             setImageDataLink( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("Left")))
+    if(val.has_field(_XPLATSTR("left")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Left")];
+        web::json::value& fieldValue = val[_XPLATSTR("left")];
         if(!fieldValue.is_null())
         {
             setLeft(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("OleDataLink")))
+    if(val.has_field(_XPLATSTR("oleDataLink")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("OleDataLink")];
+        web::json::value& fieldValue = val[_XPLATSTR("oleDataLink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
@@ -158,17 +158,17 @@ void DrawingObject::fromJson(web::json::value& val)
             setOleDataLink( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("RelativeHorizontalPosition")))
+    if(val.has_field(_XPLATSTR("relativeHorizontalPosition")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RelativeHorizontalPosition")];
+        web::json::value& fieldValue = val[_XPLATSTR("relativeHorizontalPosition")];
         if(!fieldValue.is_null())
         {
             setRelativeHorizontalPosition(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("RelativeVerticalPosition")))
+    if(val.has_field(_XPLATSTR("relativeVerticalPosition")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RelativeVerticalPosition")];
+        web::json::value& fieldValue = val[_XPLATSTR("relativeVerticalPosition")];
         if(!fieldValue.is_null())
         {
             setRelativeVerticalPosition(ModelBase::stringFromJson(fieldValue));
@@ -176,10 +176,10 @@ void DrawingObject::fromJson(web::json::value& val)
     }
     {
         m_RenderLinks.clear();
-        if(val.has_field(_XPLATSTR("RenderLinks")) 
-                            && !val[_XPLATSTR("RenderLinks")].is_null())
+        if(val.has_field(_XPLATSTR("renderLinks")) 
+                            && !val[_XPLATSTR("renderLinks")].is_null())
         {
-        auto arr = val[_XPLATSTR("RenderLinks")].as_array();
+        auto arr = val[_XPLATSTR("renderLinks")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_RenderLinks), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -195,25 +195,25 @@ void DrawingObject::fromJson(web::json::value& val)
 
         }
     }
-    if(val.has_field(_XPLATSTR("Top")))
+    if(val.has_field(_XPLATSTR("top")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Top")];
+        web::json::value& fieldValue = val[_XPLATSTR("top")];
         if(!fieldValue.is_null())
         {
             setTop(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Width")))
+    if(val.has_field(_XPLATSTR("width")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Width")];
+        web::json::value& fieldValue = val[_XPLATSTR("width")];
         if(!fieldValue.is_null())
         {
             setWidth(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("WrapType")))
+    if(val.has_field(_XPLATSTR("wrapType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("WrapType")];
+        web::json::value& fieldValue = val[_XPLATSTR("wrapType")];
         if(!fieldValue.is_null())
         {
             setWrapType(ModelBase::stringFromJson(fieldValue));
@@ -235,41 +235,41 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
         
     }
     if(m_HeightIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Height"), m_Height));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("height"), m_Height));
     }
     if(m_ImageDataLinkIsSet)
     {
         if (m_ImageDataLink.get())
         {
-            m_ImageDataLink->toMultipart(multipart, _XPLATSTR("ImageDataLink."));
+            m_ImageDataLink->toMultipart(multipart, _XPLATSTR("imageDataLink."));
         }
         
     }
     if(m_LeftIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Left"), m_Left));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("left"), m_Left));
     }
     if(m_OleDataLinkIsSet)
     {
         if (m_OleDataLink.get())
         {
-            m_OleDataLink->toMultipart(multipart, _XPLATSTR("OleDataLink."));
+            m_OleDataLink->toMultipart(multipart, _XPLATSTR("oleDataLink."));
         }
         
     }
     if(m_RelativeHorizontalPositionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RelativeHorizontalPosition"), m_RelativeHorizontalPosition));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("relativeHorizontalPosition"), m_RelativeHorizontalPosition));
         
     }
     if(m_RelativeVerticalPositionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RelativeVerticalPosition"), m_RelativeVerticalPosition));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("relativeVerticalPosition"), m_RelativeVerticalPosition));
         
     }
     {
@@ -280,20 +280,20 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RenderLinks"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("renderLinks"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     if(m_TopIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Top"), m_Top));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("top"), m_Top));
     }
     if(m_WidthIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Width"), m_Width));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("width"), m_Width));
     }
     if(m_WrapTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WrapType"), m_WrapType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("wrapType"), m_WrapType));
         
     }
 }
@@ -309,50 +309,50 @@ void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("nodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Height")))
+    if(multipart->hasContent(_XPLATSTR("height")))
     {
-        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
+        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("height"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ImageDataLink")))
+    if(multipart->hasContent(_XPLATSTR("imageDataLink")))
     {
-        if(multipart->hasContent(_XPLATSTR("ImageDataLink")))
+        if(multipart->hasContent(_XPLATSTR("imageDataLink")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ImageDataLink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("imageDataLink."));
             setImageDataLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("Left")))
+    if(multipart->hasContent(_XPLATSTR("left")))
     {
-        setLeft(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Left"))));
+        setLeft(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("left"))));
     }
-    if(multipart->hasContent(_XPLATSTR("OleDataLink")))
+    if(multipart->hasContent(_XPLATSTR("oleDataLink")))
     {
-        if(multipart->hasContent(_XPLATSTR("OleDataLink")))
+        if(multipart->hasContent(_XPLATSTR("oleDataLink")))
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("OleDataLink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("oleDataLink."));
             setOleDataLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("RelativeHorizontalPosition")))
+    if(multipart->hasContent(_XPLATSTR("relativeHorizontalPosition")))
     {
-        setRelativeHorizontalPosition(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RelativeHorizontalPosition"))));
+        setRelativeHorizontalPosition(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("relativeHorizontalPosition"))));
     }
-    if(multipart->hasContent(_XPLATSTR("RelativeVerticalPosition")))
+    if(multipart->hasContent(_XPLATSTR("relativeVerticalPosition")))
     {
-        setRelativeVerticalPosition(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RelativeVerticalPosition"))));
+        setRelativeVerticalPosition(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("relativeVerticalPosition"))));
     }
     {
         m_RenderLinks.clear();
-        if(multipart->hasContent(_XPLATSTR("RenderLinks")))
+        if(multipart->hasContent(_XPLATSTR("renderLinks")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RenderLinks")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("renderLinks")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_RenderLinks), [&](web::json::value item) {
             if(item.is_null())
             {
@@ -367,17 +367,17 @@ void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
         });
         }
     }
-    if(multipart->hasContent(_XPLATSTR("Top")))
+    if(multipart->hasContent(_XPLATSTR("top")))
     {
-        setTop(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Top"))));
+        setTop(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("top"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Width")))
+    if(multipart->hasContent(_XPLATSTR("width")))
     {
-        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
+        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("width"))));
     }
-    if(multipart->hasContent(_XPLATSTR("WrapType")))
+    if(multipart->hasContent(_XPLATSTR("wrapType")))
     {
-        setWrapType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("WrapType"))));
+        setWrapType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("wrapType"))));
     }
 }
 

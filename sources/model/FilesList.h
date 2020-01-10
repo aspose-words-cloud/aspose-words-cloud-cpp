@@ -64,7 +64,7 @@ public:
     /// FilesList members
 
     /// <summary>
-    /// Files and folders contained by folder .
+    /// Files and folders contained by folder StorageFile.
     /// </summary>
     std::vector<std::shared_ptr<StorageFile>>& getValue();
     bool valueIsSet() const;

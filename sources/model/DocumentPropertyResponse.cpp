@@ -52,7 +52,7 @@ web::json::value DocumentPropertyResponse::toJson() const
 
     if(m_DocumentPropertyIsSet)
     {
-        val[_XPLATSTR("DocumentProperty")] = ModelBase::toJson(m_DocumentProperty);
+        val[_XPLATSTR("documentProperty")] = ModelBase::toJson(m_DocumentProperty);
     }
 
     return val;
@@ -62,9 +62,9 @@ void DocumentPropertyResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("DocumentProperty")))
+    if(val.has_field(_XPLATSTR("documentProperty")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("DocumentProperty")];
+        web::json::value& fieldValue = val[_XPLATSTR("documentProperty")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
@@ -80,14 +80,14 @@ void DocumentPropertyResponse::toMultipart(const std::shared_ptr<MultipartFormDa
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_DocumentPropertyIsSet)
     {
         if (m_DocumentProperty.get())
         {
-            m_DocumentProperty->toMultipart(multipart, _XPLATSTR("DocumentProperty."));
+            m_DocumentProperty->toMultipart(multipart, _XPLATSTR("documentProperty."));
         }
         
     }
@@ -95,16 +95,16 @@ void DocumentPropertyResponse::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void DocumentPropertyResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DocumentProperty")))
+    if(multipart->hasContent(_XPLATSTR("documentProperty")))
     {
-        if(multipart->hasContent(_XPLATSTR("DocumentProperty")))
+        if(multipart->hasContent(_XPLATSTR("documentProperty")))
         {
             std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentProperty."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("documentProperty."));
             setDocumentProperty( newItem );
         }
     }

@@ -59,19 +59,19 @@ web::json::value Link::toJson() const
 
     if(m_HrefIsSet)
     {
-        val[_XPLATSTR("Href")] = ModelBase::toJson(m_Href);
+        val[_XPLATSTR("href")] = ModelBase::toJson(m_Href);
     }
     if(m_RelIsSet)
     {
-        val[_XPLATSTR("Rel")] = ModelBase::toJson(m_Rel);
+        val[_XPLATSTR("rel")] = ModelBase::toJson(m_Rel);
     }
     if(m_TypeIsSet)
     {
-        val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
+        val[_XPLATSTR("type")] = ModelBase::toJson(m_Type);
     }
     if(m_TitleIsSet)
     {
-        val[_XPLATSTR("Title")] = ModelBase::toJson(m_Title);
+        val[_XPLATSTR("title")] = ModelBase::toJson(m_Title);
     }
 
     return val;
@@ -79,33 +79,33 @@ web::json::value Link::toJson() const
 
 void Link::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Href")))
+    if(val.has_field(_XPLATSTR("href")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Href")];
+        web::json::value& fieldValue = val[_XPLATSTR("href")];
         if(!fieldValue.is_null())
         {
             setHref(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Rel")))
+    if(val.has_field(_XPLATSTR("rel")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Rel")];
+        web::json::value& fieldValue = val[_XPLATSTR("rel")];
         if(!fieldValue.is_null())
         {
             setRel(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Type")))
+    if(val.has_field(_XPLATSTR("type")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Type")];
+        web::json::value& fieldValue = val[_XPLATSTR("type")];
         if(!fieldValue.is_null())
         {
             setType(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Title")))
+    if(val.has_field(_XPLATSTR("title")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Title")];
+        web::json::value& fieldValue = val[_XPLATSTR("title")];
         if(!fieldValue.is_null())
         {
             setTitle(ModelBase::stringFromJson(fieldValue));
@@ -119,43 +119,43 @@ void Link::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
 
     if(m_HrefIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("href"), m_Href));
         
     }
     if(m_RelIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Rel"), m_Rel));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("rel"), m_Rel));
         
     }
     if(m_TypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("type"), m_Type));
         
     }
     if(m_TitleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Title"), m_Title));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("title"), m_Title));
         
     }
 }
 
 void Link::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Href")))
+    if(multipart->hasContent(_XPLATSTR("href")))
     {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
+        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("href"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Rel")))
+    if(multipart->hasContent(_XPLATSTR("rel")))
     {
-        setRel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Rel"))));
+        setRel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("rel"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Type")))
+    if(multipart->hasContent(_XPLATSTR("type")))
     {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
+        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("type"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Title")))
+    if(multipart->hasContent(_XPLATSTR("title")))
     {
-        setTitle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Title"))));
+        setTitle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("title"))));
     }
 }
 

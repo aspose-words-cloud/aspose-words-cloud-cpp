@@ -52,7 +52,7 @@ web::json::value BookmarksResponse::toJson() const
 
     if(m_BookmarksIsSet)
     {
-        val[_XPLATSTR("Bookmarks")] = ModelBase::toJson(m_Bookmarks);
+        val[_XPLATSTR("bookmarks")] = ModelBase::toJson(m_Bookmarks);
     }
 
     return val;
@@ -62,9 +62,9 @@ void BookmarksResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Bookmarks")))
+    if(val.has_field(_XPLATSTR("bookmarks")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Bookmarks")];
+        web::json::value& fieldValue = val[_XPLATSTR("bookmarks")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Bookmarks> newItem(new Bookmarks());
@@ -80,14 +80,14 @@ void BookmarksResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_BookmarksIsSet)
     {
         if (m_Bookmarks.get())
         {
-            m_Bookmarks->toMultipart(multipart, _XPLATSTR("Bookmarks."));
+            m_Bookmarks->toMultipart(multipart, _XPLATSTR("bookmarks."));
         }
         
     }
@@ -95,16 +95,16 @@ void BookmarksResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
 void BookmarksResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Bookmarks")))
+    if(multipart->hasContent(_XPLATSTR("bookmarks")))
     {
-        if(multipart->hasContent(_XPLATSTR("Bookmarks")))
+        if(multipart->hasContent(_XPLATSTR("bookmarks")))
         {
             std::shared_ptr<Bookmarks> newItem(new Bookmarks());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Bookmarks."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("bookmarks."));
             setBookmarks( newItem );
         }
     }

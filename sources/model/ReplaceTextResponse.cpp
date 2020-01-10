@@ -54,11 +54,11 @@ web::json::value ReplaceTextResponse::toJson() const
 
     if(m_DocumentLinkIsSet)
     {
-        val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
+        val[_XPLATSTR("documentLink")] = ModelBase::toJson(m_DocumentLink);
     }
     if(m_MatchesIsSet)
     {
-        val[_XPLATSTR("Matches")] = ModelBase::toJson(m_Matches);
+        val[_XPLATSTR("matches")] = ModelBase::toJson(m_Matches);
     }
 
     return val;
@@ -68,9 +68,9 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("DocumentLink")))
+    if(val.has_field(_XPLATSTR("documentLink")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
+        web::json::value& fieldValue = val[_XPLATSTR("documentLink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -78,9 +78,9 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("Matches")))
+    if(val.has_field(_XPLATSTR("matches")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Matches")];
+        web::json::value& fieldValue = val[_XPLATSTR("matches")];
         if(!fieldValue.is_null())
         {
             setMatches(ModelBase::int32_tFromJson(fieldValue));
@@ -94,41 +94,41 @@ void ReplaceTextResponse::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
-            m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
+            m_DocumentLink->toMultipart(multipart, _XPLATSTR("documentLink."));
         }
         
     }
     if(m_MatchesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Matches"), m_Matches));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("matches"), m_Matches));
     }
 }
 
 void ReplaceTextResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
+    if(multipart->hasContent(_XPLATSTR("documentLink")))
     {
-        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
+        if(multipart->hasContent(_XPLATSTR("documentLink")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("documentLink."));
             setDocumentLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("Matches")))
+    if(multipart->hasContent(_XPLATSTR("matches")))
     {
-        setMatches(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Matches"))));
+        setMatches(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("matches"))));
     }
 }
 

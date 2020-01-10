@@ -52,7 +52,7 @@ web::json::value RunsResponse::toJson() const
 
     if(m_RunsIsSet)
     {
-        val[_XPLATSTR("Runs")] = ModelBase::toJson(m_Runs);
+        val[_XPLATSTR("runs")] = ModelBase::toJson(m_Runs);
     }
 
     return val;
@@ -62,9 +62,9 @@ void RunsResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Runs")))
+    if(val.has_field(_XPLATSTR("runs")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Runs")];
+        web::json::value& fieldValue = val[_XPLATSTR("runs")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Runs> newItem(new Runs());
@@ -80,14 +80,14 @@ void RunsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_RunsIsSet)
     {
         if (m_Runs.get())
         {
-            m_Runs->toMultipart(multipart, _XPLATSTR("Runs."));
+            m_Runs->toMultipart(multipart, _XPLATSTR("runs."));
         }
         
     }
@@ -95,16 +95,16 @@ void RunsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void RunsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Runs")))
+    if(multipart->hasContent(_XPLATSTR("runs")))
     {
-        if(multipart->hasContent(_XPLATSTR("Runs")))
+        if(multipart->hasContent(_XPLATSTR("runs")))
         {
             std::shared_ptr<Runs> newItem(new Runs());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Runs."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("runs."));
             setRuns( newItem );
         }
     }

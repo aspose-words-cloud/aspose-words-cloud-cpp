@@ -52,7 +52,7 @@ web::json::value TableLinkCollectionResponse::toJson() const
 
     if(m_TablesIsSet)
     {
-        val[_XPLATSTR("Tables")] = ModelBase::toJson(m_Tables);
+        val[_XPLATSTR("tables")] = ModelBase::toJson(m_Tables);
     }
 
     return val;
@@ -62,9 +62,9 @@ void TableLinkCollectionResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Tables")))
+    if(val.has_field(_XPLATSTR("tables")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Tables")];
+        web::json::value& fieldValue = val[_XPLATSTR("tables")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
@@ -80,14 +80,14 @@ void TableLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFor
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_TablesIsSet)
     {
         if (m_Tables.get())
         {
-            m_Tables->toMultipart(multipart, _XPLATSTR("Tables."));
+            m_Tables->toMultipart(multipart, _XPLATSTR("tables."));
         }
         
     }
@@ -95,16 +95,16 @@ void TableLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFor
 
 void TableLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Tables")))
+    if(multipart->hasContent(_XPLATSTR("tables")))
     {
-        if(multipart->hasContent(_XPLATSTR("Tables")))
+        if(multipart->hasContent(_XPLATSTR("tables")))
         {
             std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Tables."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("tables."));
             setTables( newItem );
         }
     }

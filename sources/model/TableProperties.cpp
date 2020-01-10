@@ -78,59 +78,59 @@ web::json::value TableProperties::toJson() const
 
     if(m_AlignmentIsSet)
     {
-        val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
+        val[_XPLATSTR("alignment")] = ModelBase::toJson(m_Alignment);
     }
     if(m_AllowAutoFitIsSet)
     {
-        val[_XPLATSTR("AllowAutoFit")] = ModelBase::toJson(m_AllowAutoFit);
+        val[_XPLATSTR("allowAutoFit")] = ModelBase::toJson(m_AllowAutoFit);
     }
     if(m_BidiIsSet)
     {
-        val[_XPLATSTR("Bidi")] = ModelBase::toJson(m_Bidi);
+        val[_XPLATSTR("bidi")] = ModelBase::toJson(m_Bidi);
     }
     if(m_BottomPaddingIsSet)
     {
-        val[_XPLATSTR("BottomPadding")] = ModelBase::toJson(m_BottomPadding);
+        val[_XPLATSTR("bottomPadding")] = ModelBase::toJson(m_BottomPadding);
     }
     if(m_CellSpacingIsSet)
     {
-        val[_XPLATSTR("CellSpacing")] = ModelBase::toJson(m_CellSpacing);
+        val[_XPLATSTR("cellSpacing")] = ModelBase::toJson(m_CellSpacing);
     }
     if(m_LeftIndentIsSet)
     {
-        val[_XPLATSTR("LeftIndent")] = ModelBase::toJson(m_LeftIndent);
+        val[_XPLATSTR("leftIndent")] = ModelBase::toJson(m_LeftIndent);
     }
     if(m_LeftPaddingIsSet)
     {
-        val[_XPLATSTR("LeftPadding")] = ModelBase::toJson(m_LeftPadding);
+        val[_XPLATSTR("leftPadding")] = ModelBase::toJson(m_LeftPadding);
     }
     if(m_PreferredWidthIsSet)
     {
-        val[_XPLATSTR("PreferredWidth")] = ModelBase::toJson(m_PreferredWidth);
+        val[_XPLATSTR("preferredWidth")] = ModelBase::toJson(m_PreferredWidth);
     }
     if(m_RightPaddingIsSet)
     {
-        val[_XPLATSTR("RightPadding")] = ModelBase::toJson(m_RightPadding);
+        val[_XPLATSTR("rightPadding")] = ModelBase::toJson(m_RightPadding);
     }
     if(m_StyleIdentifierIsSet)
     {
-        val[_XPLATSTR("StyleIdentifier")] = ModelBase::toJson(m_StyleIdentifier);
+        val[_XPLATSTR("styleIdentifier")] = ModelBase::toJson(m_StyleIdentifier);
     }
     if(m_StyleNameIsSet)
     {
-        val[_XPLATSTR("StyleName")] = ModelBase::toJson(m_StyleName);
+        val[_XPLATSTR("styleName")] = ModelBase::toJson(m_StyleName);
     }
     if(m_StyleOptionsIsSet)
     {
-        val[_XPLATSTR("StyleOptions")] = ModelBase::toJson(m_StyleOptions);
+        val[_XPLATSTR("styleOptions")] = ModelBase::toJson(m_StyleOptions);
     }
     if(m_TextWrappingIsSet)
     {
-        val[_XPLATSTR("TextWrapping")] = ModelBase::toJson(m_TextWrapping);
+        val[_XPLATSTR("textWrapping")] = ModelBase::toJson(m_TextWrapping);
     }
     if(m_TopPaddingIsSet)
     {
-        val[_XPLATSTR("TopPadding")] = ModelBase::toJson(m_TopPadding);
+        val[_XPLATSTR("topPadding")] = ModelBase::toJson(m_TopPadding);
     }
 
     return val;
@@ -140,65 +140,65 @@ void TableProperties::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Alignment")))
+    if(val.has_field(_XPLATSTR("alignment")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
+        web::json::value& fieldValue = val[_XPLATSTR("alignment")];
         if(!fieldValue.is_null())
         {
             setAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("AllowAutoFit")))
+    if(val.has_field(_XPLATSTR("allowAutoFit")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("AllowAutoFit")];
+        web::json::value& fieldValue = val[_XPLATSTR("allowAutoFit")];
         if(!fieldValue.is_null())
         {
             setAllowAutoFit(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Bidi")))
+    if(val.has_field(_XPLATSTR("bidi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
+        web::json::value& fieldValue = val[_XPLATSTR("bidi")];
         if(!fieldValue.is_null())
         {
             setBidi(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("BottomPadding")))
+    if(val.has_field(_XPLATSTR("bottomPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("BottomPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("bottomPadding")];
         if(!fieldValue.is_null())
         {
             setBottomPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("CellSpacing")))
+    if(val.has_field(_XPLATSTR("cellSpacing")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("CellSpacing")];
+        web::json::value& fieldValue = val[_XPLATSTR("cellSpacing")];
         if(!fieldValue.is_null())
         {
             setCellSpacing(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("LeftIndent")))
+    if(val.has_field(_XPLATSTR("leftIndent")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LeftIndent")];
+        web::json::value& fieldValue = val[_XPLATSTR("leftIndent")];
         if(!fieldValue.is_null())
         {
             setLeftIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("LeftPadding")))
+    if(val.has_field(_XPLATSTR("leftPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LeftPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("leftPadding")];
         if(!fieldValue.is_null())
         {
             setLeftPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("PreferredWidth")))
+    if(val.has_field(_XPLATSTR("preferredWidth")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("PreferredWidth")];
+        web::json::value& fieldValue = val[_XPLATSTR("preferredWidth")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
@@ -206,49 +206,49 @@ void TableProperties::fromJson(web::json::value& val)
             setPreferredWidth( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("RightPadding")))
+    if(val.has_field(_XPLATSTR("rightPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RightPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("rightPadding")];
         if(!fieldValue.is_null())
         {
             setRightPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("StyleIdentifier")))
+    if(val.has_field(_XPLATSTR("styleIdentifier")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("StyleIdentifier")];
+        web::json::value& fieldValue = val[_XPLATSTR("styleIdentifier")];
         if(!fieldValue.is_null())
         {
             setStyleIdentifier(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("StyleName")))
+    if(val.has_field(_XPLATSTR("styleName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("StyleName")];
+        web::json::value& fieldValue = val[_XPLATSTR("styleName")];
         if(!fieldValue.is_null())
         {
             setStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("StyleOptions")))
+    if(val.has_field(_XPLATSTR("styleOptions")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("StyleOptions")];
+        web::json::value& fieldValue = val[_XPLATSTR("styleOptions")];
         if(!fieldValue.is_null())
         {
             setStyleOptions(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("TextWrapping")))
+    if(val.has_field(_XPLATSTR("textWrapping")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("TextWrapping")];
+        web::json::value& fieldValue = val[_XPLATSTR("textWrapping")];
         if(!fieldValue.is_null())
         {
             setTextWrapping(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("TopPadding")))
+    if(val.has_field(_XPLATSTR("topPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("TopPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("topPadding")];
         if(!fieldValue.is_null())
         {
             setTopPadding(ModelBase::doubleFromJson(fieldValue));
@@ -270,68 +270,68 @@ void TableProperties::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     }
     if(m_AlignmentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("alignment"), m_Alignment));
         
     }
     if(m_AllowAutoFitIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllowAutoFit"), m_AllowAutoFit));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("allowAutoFit"), m_AllowAutoFit));
     }
     if(m_BidiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bidi"), m_Bidi));
     }
     if(m_BottomPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BottomPadding"), m_BottomPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bottomPadding"), m_BottomPadding));
     }
     if(m_CellSpacingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CellSpacing"), m_CellSpacing));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("cellSpacing"), m_CellSpacing));
     }
     if(m_LeftIndentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftIndent"), m_LeftIndent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("leftIndent"), m_LeftIndent));
     }
     if(m_LeftPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftPadding"), m_LeftPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("leftPadding"), m_LeftPadding));
     }
     if(m_PreferredWidthIsSet)
     {
         if (m_PreferredWidth.get())
         {
-            m_PreferredWidth->toMultipart(multipart, _XPLATSTR("PreferredWidth."));
+            m_PreferredWidth->toMultipart(multipart, _XPLATSTR("preferredWidth."));
         }
         
     }
     if(m_RightPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightPadding"), m_RightPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("rightPadding"), m_RightPadding));
     }
     if(m_StyleIdentifierIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleIdentifier"), m_StyleIdentifier));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleIdentifier"), m_StyleIdentifier));
         
     }
     if(m_StyleNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleName"), m_StyleName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleName"), m_StyleName));
         
     }
     if(m_StyleOptionsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleOptions"), m_StyleOptions));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleOptions"), m_StyleOptions));
         
     }
     if(m_TextWrappingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextWrapping"), m_TextWrapping));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textWrapping"), m_TextWrapping));
         
     }
     if(m_TopPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TopPadding"), m_TopPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("topPadding"), m_TopPadding));
     }
 }
 
@@ -346,66 +346,66 @@ void TableProperties::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
+    if(multipart->hasContent(_XPLATSTR("alignment")))
     {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
+        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("alignment"))));
     }
-    if(multipart->hasContent(_XPLATSTR("AllowAutoFit")))
+    if(multipart->hasContent(_XPLATSTR("allowAutoFit")))
     {
-        setAllowAutoFit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowAutoFit"))));
+        setAllowAutoFit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("allowAutoFit"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Bidi")))
+    if(multipart->hasContent(_XPLATSTR("bidi")))
     {
-        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
+        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("bidi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("BottomPadding")))
+    if(multipart->hasContent(_XPLATSTR("bottomPadding")))
     {
-        setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BottomPadding"))));
+        setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("bottomPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("CellSpacing")))
+    if(multipart->hasContent(_XPLATSTR("cellSpacing")))
     {
-        setCellSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("CellSpacing"))));
+        setCellSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("cellSpacing"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LeftIndent")))
+    if(multipart->hasContent(_XPLATSTR("leftIndent")))
     {
-        setLeftIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftIndent"))));
+        setLeftIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("leftIndent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("LeftPadding")))
+    if(multipart->hasContent(_XPLATSTR("leftPadding")))
     {
-        setLeftPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftPadding"))));
+        setLeftPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("leftPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
+    if(multipart->hasContent(_XPLATSTR("preferredWidth")))
     {
-        if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
+        if(multipart->hasContent(_XPLATSTR("preferredWidth")))
         {
             std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
-            newItem->fromMultiPart(multipart, _XPLATSTR("PreferredWidth."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("preferredWidth."));
             setPreferredWidth( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("RightPadding")))
+    if(multipart->hasContent(_XPLATSTR("rightPadding")))
     {
-        setRightPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightPadding"))));
+        setRightPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("rightPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
+    if(multipart->hasContent(_XPLATSTR("styleIdentifier")))
     {
-        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleIdentifier"))));
+        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleIdentifier"))));
     }
-    if(multipart->hasContent(_XPLATSTR("StyleName")))
+    if(multipart->hasContent(_XPLATSTR("styleName")))
     {
-        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleName"))));
+        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("StyleOptions")))
+    if(multipart->hasContent(_XPLATSTR("styleOptions")))
     {
-        setStyleOptions(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleOptions"))));
+        setStyleOptions(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleOptions"))));
     }
-    if(multipart->hasContent(_XPLATSTR("TextWrapping")))
+    if(multipart->hasContent(_XPLATSTR("textWrapping")))
     {
-        setTextWrapping(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextWrapping"))));
+        setTextWrapping(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textWrapping"))));
     }
-    if(multipart->hasContent(_XPLATSTR("TopPadding")))
+    if(multipart->hasContent(_XPLATSTR("topPadding")))
     {
-        setTopPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TopPadding"))));
+        setTopPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("topPadding"))));
     }
 }
 

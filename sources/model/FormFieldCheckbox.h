@@ -63,7 +63,7 @@ public:
     /// FormFieldCheckbox members
 
     /// <summary>
-    /// Gets or sets the size of the checkbox in points. Has effect only when  is true.
+    /// Gets or sets the size of the checkbox in points. Has effect only when IsCheckBoxExactSize is true.
     /// </summary>
     double getCheckBoxSize() const;
     bool checkBoxSizeIsSet() const;

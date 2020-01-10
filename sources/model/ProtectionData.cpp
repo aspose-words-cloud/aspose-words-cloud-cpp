@@ -53,7 +53,7 @@ web::json::value ProtectionData::toJson() const
 
     if(m_ProtectionTypeIsSet)
     {
-        val[_XPLATSTR("ProtectionType")] = ModelBase::toJson(m_ProtectionType);
+        val[_XPLATSTR("protectionType")] = ModelBase::toJson(m_ProtectionType);
     }
 
     return val;
@@ -61,9 +61,9 @@ web::json::value ProtectionData::toJson() const
 
 void ProtectionData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("ProtectionType")))
+    if(val.has_field(_XPLATSTR("protectionType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ProtectionType")];
+        web::json::value& fieldValue = val[_XPLATSTR("protectionType")];
         if(!fieldValue.is_null())
         {
             setProtectionType(ModelBase::stringFromJson(fieldValue));
@@ -77,16 +77,16 @@ void ProtectionData::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
     if(m_ProtectionTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ProtectionType"), m_ProtectionType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("protectionType"), m_ProtectionType));
         
     }
 }
 
 void ProtectionData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ProtectionType")))
+    if(multipart->hasContent(_XPLATSTR("protectionType")))
     {
-        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ProtectionType"))));
+        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("protectionType"))));
     }
 }
 

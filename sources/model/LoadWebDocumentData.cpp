@@ -54,11 +54,11 @@ web::json::value LoadWebDocumentData::toJson() const
 
     if(m_LoadingDocumentUrlIsSet)
     {
-        val[_XPLATSTR("LoadingDocumentUrl")] = ModelBase::toJson(m_LoadingDocumentUrl);
+        val[_XPLATSTR("loadingDocumentUrl")] = ModelBase::toJson(m_LoadingDocumentUrl);
     }
     if(m_SaveOptionsIsSet)
     {
-        val[_XPLATSTR("SaveOptions")] = ModelBase::toJson(m_SaveOptions);
+        val[_XPLATSTR("saveOptions")] = ModelBase::toJson(m_SaveOptions);
     }
 
     return val;
@@ -66,17 +66,17 @@ web::json::value LoadWebDocumentData::toJson() const
 
 void LoadWebDocumentData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("LoadingDocumentUrl")))
+    if(val.has_field(_XPLATSTR("loadingDocumentUrl")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("LoadingDocumentUrl")];
+        web::json::value& fieldValue = val[_XPLATSTR("loadingDocumentUrl")];
         if(!fieldValue.is_null())
         {
             setLoadingDocumentUrl(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SaveOptions")))
+    if(val.has_field(_XPLATSTR("saveOptions")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SaveOptions")];
+        web::json::value& fieldValue = val[_XPLATSTR("saveOptions")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
@@ -92,14 +92,14 @@ void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
     if(m_LoadingDocumentUrlIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LoadingDocumentUrl"), m_LoadingDocumentUrl));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("loadingDocumentUrl"), m_LoadingDocumentUrl));
         
     }
     if(m_SaveOptionsIsSet)
     {
         if (m_SaveOptions.get())
         {
-            m_SaveOptions->toMultipart(multipart, _XPLATSTR("SaveOptions."));
+            m_SaveOptions->toMultipart(multipart, _XPLATSTR("saveOptions."));
         }
         
     }
@@ -107,16 +107,16 @@ void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void LoadWebDocumentData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("LoadingDocumentUrl")))
+    if(multipart->hasContent(_XPLATSTR("loadingDocumentUrl")))
     {
-        setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LoadingDocumentUrl"))));
+        setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("loadingDocumentUrl"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SaveOptions")))
+    if(multipart->hasContent(_XPLATSTR("saveOptions")))
     {
-        if(multipart->hasContent(_XPLATSTR("SaveOptions")))
+        if(multipart->hasContent(_XPLATSTR("saveOptions")))
         {
             std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SaveOptions."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("saveOptions."));
             setSaveOptions( newItem );
         }
     }

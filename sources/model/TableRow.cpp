@@ -53,7 +53,7 @@ web::json::value TableRow::toJson() const
 
     if(m_RowFormatIsSet)
     {
-        val[_XPLATSTR("RowFormat")] = ModelBase::toJson(m_RowFormat);
+        val[_XPLATSTR("rowFormat")] = ModelBase::toJson(m_RowFormat);
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -64,7 +64,7 @@ web::json::value TableRow::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("TableCellList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("tableCellList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -75,9 +75,9 @@ void TableRow::fromJson(web::json::value& val)
 {
     this->NodeLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("RowFormat")))
+    if(val.has_field(_XPLATSTR("rowFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RowFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("rowFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
@@ -87,10 +87,10 @@ void TableRow::fromJson(web::json::value& val)
     }
     {
         m_TableCellList.clear();
-        if(val.has_field(_XPLATSTR("TableCellList")) 
-                            && !val[_XPLATSTR("TableCellList")].is_null())
+        if(val.has_field(_XPLATSTR("tableCellList")) 
+                            && !val[_XPLATSTR("tableCellList")].is_null())
         {
-        auto arr = val[_XPLATSTR("TableCellList")].as_array();
+        auto arr = val[_XPLATSTR("tableCellList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableCellList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -122,14 +122,14 @@ void TableRow::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
         
     }
     if(m_RowFormatIsSet)
     {
         if (m_RowFormat.get())
         {
-            m_RowFormat->toMultipart(multipart, _XPLATSTR("RowFormat."));
+            m_RowFormat->toMultipart(multipart, _XPLATSTR("rowFormat."));
         }
         
     }
@@ -141,7 +141,7 @@ void TableRow::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TableCellList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("tableCellList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -157,25 +157,25 @@ void TableRow::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("nodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("RowFormat")))
+    if(multipart->hasContent(_XPLATSTR("rowFormat")))
     {
-        if(multipart->hasContent(_XPLATSTR("RowFormat")))
+        if(multipart->hasContent(_XPLATSTR("rowFormat")))
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RowFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("rowFormat."));
             setRowFormat( newItem );
         }
     }
     {
         m_TableCellList.clear();
-        if(multipart->hasContent(_XPLATSTR("TableCellList")))
+        if(multipart->hasContent(_XPLATSTR("tableCellList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TableCellList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("tableCellList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableCellList), [&](web::json::value item) {
             if(item.is_null())
             {

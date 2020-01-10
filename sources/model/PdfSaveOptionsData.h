@@ -81,7 +81,7 @@ public:
     void unsetCreateNoteHyperlinks();
     void setCreateNoteHyperlinks(bool value);
     /// <summary>
-    /// Gets or sets a value determining the way  are exported to PDF file. Default value is .
+    /// Gets or sets a value determining the way CustomDocumentProperties are exported to PDF file. Default value is None.
     /// </summary>
     utility::string_t getCustomPropertiesExport() const;
     bool customPropertiesExportIsSet() const;

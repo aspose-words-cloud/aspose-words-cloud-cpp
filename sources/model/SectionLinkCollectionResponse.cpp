@@ -52,7 +52,7 @@ web::json::value SectionLinkCollectionResponse::toJson() const
 
     if(m_SectionsIsSet)
     {
-        val[_XPLATSTR("Sections")] = ModelBase::toJson(m_Sections);
+        val[_XPLATSTR("sections")] = ModelBase::toJson(m_Sections);
     }
 
     return val;
@@ -62,9 +62,9 @@ void SectionLinkCollectionResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Sections")))
+    if(val.has_field(_XPLATSTR("sections")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Sections")];
+        web::json::value& fieldValue = val[_XPLATSTR("sections")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
@@ -80,14 +80,14 @@ void SectionLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartF
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_SectionsIsSet)
     {
         if (m_Sections.get())
         {
-            m_Sections->toMultipart(multipart, _XPLATSTR("Sections."));
+            m_Sections->toMultipart(multipart, _XPLATSTR("sections."));
         }
         
     }
@@ -95,16 +95,16 @@ void SectionLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartF
 
 void SectionLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Sections")))
+    if(multipart->hasContent(_XPLATSTR("sections")))
     {
-        if(multipart->hasContent(_XPLATSTR("Sections")))
+        if(multipart->hasContent(_XPLATSTR("sections")))
         {
             std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Sections."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("sections."));
             setSections( newItem );
         }
     }

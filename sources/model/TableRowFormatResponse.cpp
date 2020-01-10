@@ -52,7 +52,7 @@ web::json::value TableRowFormatResponse::toJson() const
 
     if(m_RowFormatIsSet)
     {
-        val[_XPLATSTR("RowFormat")] = ModelBase::toJson(m_RowFormat);
+        val[_XPLATSTR("rowFormat")] = ModelBase::toJson(m_RowFormat);
     }
 
     return val;
@@ -62,9 +62,9 @@ void TableRowFormatResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("RowFormat")))
+    if(val.has_field(_XPLATSTR("rowFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RowFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("rowFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
@@ -80,14 +80,14 @@ void TableRowFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_RowFormatIsSet)
     {
         if (m_RowFormat.get())
         {
-            m_RowFormat->toMultipart(multipart, _XPLATSTR("RowFormat."));
+            m_RowFormat->toMultipart(multipart, _XPLATSTR("rowFormat."));
         }
         
     }
@@ -95,16 +95,16 @@ void TableRowFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
 void TableRowFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("RowFormat")))
+    if(multipart->hasContent(_XPLATSTR("rowFormat")))
     {
-        if(multipart->hasContent(_XPLATSTR("RowFormat")))
+        if(multipart->hasContent(_XPLATSTR("rowFormat")))
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RowFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("rowFormat."));
             setRowFormat( newItem );
         }
     }

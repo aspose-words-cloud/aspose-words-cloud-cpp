@@ -148,7 +148,7 @@ public:
     void unsetStyleOptions();
     void setStyleOptions(utility::string_t value);
     /// <summary>
-    /// Gets or sets get or sets TextWrapping  for table.
+    /// Gets or sets get or sets TextWrapping for table.
     /// </summary>
     utility::string_t getTextWrapping() const;
     bool textWrappingIsSet() const;

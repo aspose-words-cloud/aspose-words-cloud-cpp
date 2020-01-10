@@ -57,47 +57,47 @@ web::json::value PageNumber::toJson() const
 
     if(m_FormatIsSet)
     {
-        val[_XPLATSTR("Format")] = ModelBase::toJson(m_Format);
+        val[_XPLATSTR("format")] = ModelBase::toJson(m_Format);
     }
     if(m_AlignmentIsSet)
     {
-        val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
+        val[_XPLATSTR("alignment")] = ModelBase::toJson(m_Alignment);
     }
-    val[_XPLATSTR("IsTop")] = ModelBase::toJson(m_IsTop);
-    val[_XPLATSTR("SetPageNumberOnFirstPage")] = ModelBase::toJson(m_SetPageNumberOnFirstPage);
+    val[_XPLATSTR("isTop")] = ModelBase::toJson(m_IsTop);
+    val[_XPLATSTR("setPageNumberOnFirstPage")] = ModelBase::toJson(m_SetPageNumberOnFirstPage);
 
     return val;
 }
 
 void PageNumber::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Format")))
+    if(val.has_field(_XPLATSTR("format")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Format")];
+        web::json::value& fieldValue = val[_XPLATSTR("format")];
         if(!fieldValue.is_null())
         {
             setFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Alignment")))
+    if(val.has_field(_XPLATSTR("alignment")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
+        web::json::value& fieldValue = val[_XPLATSTR("alignment")];
         if(!fieldValue.is_null())
         {
             setAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("IsTop")))
+    if(val.has_field(_XPLATSTR("isTop")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("IsTop")];
+        web::json::value& fieldValue = val[_XPLATSTR("isTop")];
         if(!fieldValue.is_null())
         {
             setIsTop(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SetPageNumberOnFirstPage")))
+    if(val.has_field(_XPLATSTR("setPageNumberOnFirstPage")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SetPageNumberOnFirstPage")];
+        web::json::value& fieldValue = val[_XPLATSTR("setPageNumberOnFirstPage")];
         if(!fieldValue.is_null())
         {
             setSetPageNumberOnFirstPage(ModelBase::boolFromJson(fieldValue));
@@ -111,30 +111,30 @@ void PageNumber::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
 
     if(m_FormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Format"), m_Format));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("format"), m_Format));
         
     }
     if(m_AlignmentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("alignment"), m_Alignment));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsTop"), m_IsTop));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SetPageNumberOnFirstPage"), m_SetPageNumberOnFirstPage));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isTop"), m_IsTop));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("setPageNumberOnFirstPage"), m_SetPageNumberOnFirstPage));
 }
 
 void PageNumber::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Format")))
+    if(multipart->hasContent(_XPLATSTR("format")))
     {
-        setFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Format"))));
+        setFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("format"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
+    if(multipart->hasContent(_XPLATSTR("alignment")))
     {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
+        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("alignment"))));
     }
-    setIsTop(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsTop"))));
-    setSetPageNumberOnFirstPage(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SetPageNumberOnFirstPage"))));
+    setIsTop(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isTop"))));
+    setSetPageNumberOnFirstPage(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("setPageNumberOnFirstPage"))));
 }
 
 utility::string_t PageNumber::getFormat() const

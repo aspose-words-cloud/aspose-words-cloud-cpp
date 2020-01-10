@@ -59,7 +59,7 @@ web::json::value DrawingObjectCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("List")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("list")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void DrawingObjectCollection::fromJson(web::json::value& val)
 
     {
         m_List.clear();
-        if(val.has_field(_XPLATSTR("List")) 
-                            && !val[_XPLATSTR("List")].is_null())
+        if(val.has_field(_XPLATSTR("list")) 
+                            && !val[_XPLATSTR("list")].is_null())
         {
-        auto arr = val[_XPLATSTR("List")].as_array();
+        auto arr = val[_XPLATSTR("list")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void DrawingObjectCollection::toMultipart(const std::shared_ptr<MultipartFormDat
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("List"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("list"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void DrawingObjectCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
     {
         m_List.clear();
-        if(multipart->hasContent(_XPLATSTR("List")))
+        if(multipart->hasContent(_XPLATSTR("list")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("List")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("list")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {

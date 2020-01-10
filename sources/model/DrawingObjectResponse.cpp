@@ -52,7 +52,7 @@ web::json::value DrawingObjectResponse::toJson() const
 
     if(m_DrawingObjectIsSet)
     {
-        val[_XPLATSTR("DrawingObject")] = ModelBase::toJson(m_DrawingObject);
+        val[_XPLATSTR("drawingObject")] = ModelBase::toJson(m_DrawingObject);
     }
 
     return val;
@@ -62,9 +62,9 @@ void DrawingObjectResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("DrawingObject")))
+    if(val.has_field(_XPLATSTR("drawingObject")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("DrawingObject")];
+        web::json::value& fieldValue = val[_XPLATSTR("drawingObject")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DrawingObject> newItem(new DrawingObject());
@@ -80,14 +80,14 @@ void DrawingObjectResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_DrawingObjectIsSet)
     {
         if (m_DrawingObject.get())
         {
-            m_DrawingObject->toMultipart(multipart, _XPLATSTR("DrawingObject."));
+            m_DrawingObject->toMultipart(multipart, _XPLATSTR("drawingObject."));
         }
         
     }
@@ -95,16 +95,16 @@ void DrawingObjectResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
 void DrawingObjectResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DrawingObject")))
+    if(multipart->hasContent(_XPLATSTR("drawingObject")))
     {
-        if(multipart->hasContent(_XPLATSTR("DrawingObject")))
+        if(multipart->hasContent(_XPLATSTR("drawingObject")))
         {
             std::shared_ptr<DrawingObject> newItem(new DrawingObject());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObject."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("drawingObject."));
             setDrawingObject( newItem );
         }
     }

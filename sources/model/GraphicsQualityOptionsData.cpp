@@ -62,27 +62,27 @@ web::json::value GraphicsQualityOptionsData::toJson() const
 
     if(m_CompositingModeIsSet)
     {
-        val[_XPLATSTR("CompositingMode")] = ModelBase::toJson(m_CompositingMode);
+        val[_XPLATSTR("compositingMode")] = ModelBase::toJson(m_CompositingMode);
     }
     if(m_CompositingQualityIsSet)
     {
-        val[_XPLATSTR("CompositingQuality")] = ModelBase::toJson(m_CompositingQuality);
+        val[_XPLATSTR("compositingQuality")] = ModelBase::toJson(m_CompositingQuality);
     }
     if(m_InterpolationModeIsSet)
     {
-        val[_XPLATSTR("InterpolationMode")] = ModelBase::toJson(m_InterpolationMode);
+        val[_XPLATSTR("interpolationMode")] = ModelBase::toJson(m_InterpolationMode);
     }
     if(m_SmoothingModeIsSet)
     {
-        val[_XPLATSTR("SmoothingMode")] = ModelBase::toJson(m_SmoothingMode);
+        val[_XPLATSTR("smoothingMode")] = ModelBase::toJson(m_SmoothingMode);
     }
     if(m_StringFormatIsSet)
     {
-        val[_XPLATSTR("StringFormat")] = ModelBase::toJson(m_StringFormat);
+        val[_XPLATSTR("stringFormat")] = ModelBase::toJson(m_StringFormat);
     }
     if(m_TextRenderingHintIsSet)
     {
-        val[_XPLATSTR("TextRenderingHint")] = ModelBase::toJson(m_TextRenderingHint);
+        val[_XPLATSTR("textRenderingHint")] = ModelBase::toJson(m_TextRenderingHint);
     }
 
     return val;
@@ -90,41 +90,41 @@ web::json::value GraphicsQualityOptionsData::toJson() const
 
 void GraphicsQualityOptionsData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("CompositingMode")))
+    if(val.has_field(_XPLATSTR("compositingMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("CompositingMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("compositingMode")];
         if(!fieldValue.is_null())
         {
             setCompositingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("CompositingQuality")))
+    if(val.has_field(_XPLATSTR("compositingQuality")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("CompositingQuality")];
+        web::json::value& fieldValue = val[_XPLATSTR("compositingQuality")];
         if(!fieldValue.is_null())
         {
             setCompositingQuality(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("InterpolationMode")))
+    if(val.has_field(_XPLATSTR("interpolationMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("InterpolationMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("interpolationMode")];
         if(!fieldValue.is_null())
         {
             setInterpolationMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("SmoothingMode")))
+    if(val.has_field(_XPLATSTR("smoothingMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SmoothingMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("smoothingMode")];
         if(!fieldValue.is_null())
         {
             setSmoothingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("StringFormat")))
+    if(val.has_field(_XPLATSTR("stringFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("StringFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("stringFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<StringFormatData> newItem(new StringFormatData());
@@ -132,9 +132,9 @@ void GraphicsQualityOptionsData::fromJson(web::json::value& val)
             setStringFormat( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("TextRenderingHint")))
+    if(val.has_field(_XPLATSTR("textRenderingHint")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("TextRenderingHint")];
+        web::json::value& fieldValue = val[_XPLATSTR("textRenderingHint")];
         if(!fieldValue.is_null())
         {
             setTextRenderingHint(ModelBase::stringFromJson(fieldValue));
@@ -148,69 +148,69 @@ void GraphicsQualityOptionsData::toMultipart(const std::shared_ptr<MultipartForm
 
     if(m_CompositingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CompositingMode"), m_CompositingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("compositingMode"), m_CompositingMode));
         
     }
     if(m_CompositingQualityIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CompositingQuality"), m_CompositingQuality));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("compositingQuality"), m_CompositingQuality));
         
     }
     if(m_InterpolationModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InterpolationMode"), m_InterpolationMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("interpolationMode"), m_InterpolationMode));
         
     }
     if(m_SmoothingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SmoothingMode"), m_SmoothingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("smoothingMode"), m_SmoothingMode));
         
     }
     if(m_StringFormatIsSet)
     {
         if (m_StringFormat.get())
         {
-            m_StringFormat->toMultipart(multipart, _XPLATSTR("StringFormat."));
+            m_StringFormat->toMultipart(multipart, _XPLATSTR("stringFormat."));
         }
         
     }
     if(m_TextRenderingHintIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextRenderingHint"), m_TextRenderingHint));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textRenderingHint"), m_TextRenderingHint));
         
     }
 }
 
 void GraphicsQualityOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("CompositingMode")))
+    if(multipart->hasContent(_XPLATSTR("compositingMode")))
     {
-        setCompositingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CompositingMode"))));
+        setCompositingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("compositingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("CompositingQuality")))
+    if(multipart->hasContent(_XPLATSTR("compositingQuality")))
     {
-        setCompositingQuality(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CompositingQuality"))));
+        setCompositingQuality(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("compositingQuality"))));
     }
-    if(multipart->hasContent(_XPLATSTR("InterpolationMode")))
+    if(multipart->hasContent(_XPLATSTR("interpolationMode")))
     {
-        setInterpolationMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("InterpolationMode"))));
+        setInterpolationMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("interpolationMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SmoothingMode")))
+    if(multipart->hasContent(_XPLATSTR("smoothingMode")))
     {
-        setSmoothingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SmoothingMode"))));
+        setSmoothingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("smoothingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("StringFormat")))
+    if(multipart->hasContent(_XPLATSTR("stringFormat")))
     {
-        if(multipart->hasContent(_XPLATSTR("StringFormat")))
+        if(multipart->hasContent(_XPLATSTR("stringFormat")))
         {
             std::shared_ptr<StringFormatData> newItem(new StringFormatData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("StringFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("stringFormat."));
             setStringFormat( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("TextRenderingHint")))
+    if(multipart->hasContent(_XPLATSTR("textRenderingHint")))
     {
-        setTextRenderingHint(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextRenderingHint"))));
+        setTextRenderingHint(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textRenderingHint"))));
     }
 }
 

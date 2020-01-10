@@ -65,43 +65,43 @@ void WordsApiLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(m_HrefIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("href"), m_Href));
         
     }
     if(m_RelIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Rel"), m_Rel));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("rel"), m_Rel));
         
     }
     if(m_TypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("type"), m_Type));
         
     }
     if(m_TitleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Title"), m_Title));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("title"), m_Title));
         
     }
 }
 
 void WordsApiLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Href")))
+    if(multipart->hasContent(_XPLATSTR("href")))
     {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
+        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("href"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Rel")))
+    if(multipart->hasContent(_XPLATSTR("rel")))
     {
-        setRel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Rel"))));
+        setRel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("rel"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Type")))
+    if(multipart->hasContent(_XPLATSTR("type")))
     {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
+        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("type"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Title")))
+    if(multipart->hasContent(_XPLATSTR("title")))
     {
-        setTitle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Title"))));
+        setTitle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("title"))));
     }
 }
 

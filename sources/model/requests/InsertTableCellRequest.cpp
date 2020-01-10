@@ -30,6 +30,7 @@ namespace api{
 namespace models{
 InsertTableCellRequest::InsertTableCellRequest(
         utility::string_t name,
+                std::shared_ptr<TableCellInsert> cell,
                 utility::string_t tableRowPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -37,10 +38,10 @@ InsertTableCellRequest::InsertTableCellRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableCellInsert>> cell
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_cell(std::move(cell)),
             m_tableRowPath(std::move(tableRowPath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
@@ -48,8 +49,7 @@ InsertTableCellRequest::InsertTableCellRequest(
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_cell(std::move(cell))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -60,6 +60,13 @@ InsertTableCellRequest::InsertTableCellRequest(
         }
         void InsertTableCellRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        std::shared_ptr<TableCellInsert> InsertTableCellRequest::getCell() const
+        {
+            return m_cell;
+        }
+        void InsertTableCellRequest::setCell(std::shared_ptr<TableCellInsert> cell){
+            m_cell = std::move(cell);
         }
         utility::string_t InsertTableCellRequest::getTableRowPath() const
         {
@@ -116,13 +123,6 @@ InsertTableCellRequest::InsertTableCellRequest(
         }
         void InsertTableCellRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<std::shared_ptr<TableCellInsert>> InsertTableCellRequest::getCell() const
-        {
-            return m_cell;
-        }
-        void InsertTableCellRequest::setCell(boost::optional<std::shared_ptr<TableCellInsert>> cell){
-            m_cell = std::move(cell);
         }
 
 }

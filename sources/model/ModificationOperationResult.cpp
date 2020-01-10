@@ -53,11 +53,11 @@ web::json::value ModificationOperationResult::toJson() const
 
     if(m_SourceIsSet)
     {
-        val[_XPLATSTR("Source")] = ModelBase::toJson(m_Source);
+        val[_XPLATSTR("source")] = ModelBase::toJson(m_Source);
     }
     if(m_DestIsSet)
     {
-        val[_XPLATSTR("Dest")] = ModelBase::toJson(m_Dest);
+        val[_XPLATSTR("dest")] = ModelBase::toJson(m_Dest);
     }
 
     return val;
@@ -65,9 +65,9 @@ web::json::value ModificationOperationResult::toJson() const
 
 void ModificationOperationResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Source")))
+    if(val.has_field(_XPLATSTR("source")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Source")];
+        web::json::value& fieldValue = val[_XPLATSTR("source")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -75,9 +75,9 @@ void ModificationOperationResult::fromJson(web::json::value& val)
             setSource( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("Dest")))
+    if(val.has_field(_XPLATSTR("dest")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Dest")];
+        web::json::value& fieldValue = val[_XPLATSTR("dest")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -95,7 +95,7 @@ void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFor
     {
         if (m_Source.get())
         {
-            m_Source->toMultipart(multipart, _XPLATSTR("Source."));
+            m_Source->toMultipart(multipart, _XPLATSTR("source."));
         }
         
     }
@@ -103,7 +103,7 @@ void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFor
     {
         if (m_Dest.get())
         {
-            m_Dest->toMultipart(multipart, _XPLATSTR("Dest."));
+            m_Dest->toMultipart(multipart, _XPLATSTR("dest."));
         }
         
     }
@@ -111,21 +111,21 @@ void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFor
 
 void ModificationOperationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Source")))
+    if(multipart->hasContent(_XPLATSTR("source")))
     {
-        if(multipart->hasContent(_XPLATSTR("Source")))
+        if(multipart->hasContent(_XPLATSTR("source")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Source."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("source."));
             setSource( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("Dest")))
+    if(multipart->hasContent(_XPLATSTR("dest")))
     {
-        if(multipart->hasContent(_XPLATSTR("Dest")))
+        if(multipart->hasContent(_XPLATSTR("dest")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Dest."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("dest."));
             setDest( newItem );
         }
     }

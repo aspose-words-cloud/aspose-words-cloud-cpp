@@ -106,7 +106,7 @@ public:
     void unsetRelativeVerticalPosition();
     void setRelativeVerticalPosition(utility::string_t value);
     /// <summary>
-    /// Gets or sets a list of links that originate from this .
+    /// Gets or sets a list of links that originate from this DrawingObjectDto.
     /// </summary>
     std::vector<std::shared_ptr<WordsApiLink>>& getRenderLinks();
     bool renderLinksIsSet() const;

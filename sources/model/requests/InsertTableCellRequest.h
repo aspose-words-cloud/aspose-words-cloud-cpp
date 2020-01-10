@@ -40,6 +40,7 @@ class InsertTableCellRequest{
     public: 
      InsertTableCellRequest(
         utility::string_t name,
+                std::shared_ptr<TableCellInsert> cell,
                 utility::string_t tableRowPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -47,12 +48,14 @@ class InsertTableCellRequest{
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableCellInsert>> cell
+                boost::optional<utility::string_t> revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        std::shared_ptr<TableCellInsert> getCell() const;
+        void setCell(std::shared_ptr<TableCellInsert> cell);
 
         utility::string_t getTableRowPath() const;
         void setTableRowPath(utility::string_t tableRowPath);
@@ -77,11 +80,9 @@ class InsertTableCellRequest{
 
         boost::optional<utility::string_t> getRevisionDateTime() const;
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
-
-        boost::optional<std::shared_ptr<TableCellInsert>> getCell() const;
-        void setCell(boost::optional<std::shared_ptr<TableCellInsert>> cell);
     private:
         utility::string_t m_name;
+        std::shared_ptr<TableCellInsert> m_cell;
         utility::string_t m_tableRowPath;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
@@ -90,7 +91,6 @@ class InsertTableCellRequest{
         boost::optional<utility::string_t> m_destFileName;
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<std::shared_ptr<TableCellInsert>> m_cell;
 };
 
 }

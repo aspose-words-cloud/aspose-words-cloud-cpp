@@ -58,56 +58,56 @@ web::json::value ReplaceTextParameters::toJson() const
 
     if(m_OldValueIsSet)
     {
-        val[_XPLATSTR("OldValue")] = ModelBase::toJson(m_OldValue);
+        val[_XPLATSTR("oldValue")] = ModelBase::toJson(m_OldValue);
     }
     if(m_NewValueIsSet)
     {
-        val[_XPLATSTR("NewValue")] = ModelBase::toJson(m_NewValue);
+        val[_XPLATSTR("newValue")] = ModelBase::toJson(m_NewValue);
     }
-    val[_XPLATSTR("IsMatchCase")] = ModelBase::toJson(m_IsMatchCase);
-    val[_XPLATSTR("IsMatchWholeWord")] = ModelBase::toJson(m_IsMatchWholeWord);
-    val[_XPLATSTR("IsOldValueRegex")] = ModelBase::toJson(m_IsOldValueRegex);
+    val[_XPLATSTR("isMatchCase")] = ModelBase::toJson(m_IsMatchCase);
+    val[_XPLATSTR("isMatchWholeWord")] = ModelBase::toJson(m_IsMatchWholeWord);
+    val[_XPLATSTR("isOldValueRegex")] = ModelBase::toJson(m_IsOldValueRegex);
 
     return val;
 }
 
 void ReplaceTextParameters::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("OldValue")))
+    if(val.has_field(_XPLATSTR("oldValue")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("OldValue")];
+        web::json::value& fieldValue = val[_XPLATSTR("oldValue")];
         if(!fieldValue.is_null())
         {
             setOldValue(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("NewValue")))
+    if(val.has_field(_XPLATSTR("newValue")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("NewValue")];
+        web::json::value& fieldValue = val[_XPLATSTR("newValue")];
         if(!fieldValue.is_null())
         {
             setNewValue(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("IsMatchCase")))
+    if(val.has_field(_XPLATSTR("isMatchCase")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("IsMatchCase")];
+        web::json::value& fieldValue = val[_XPLATSTR("isMatchCase")];
         if(!fieldValue.is_null())
         {
             setIsMatchCase(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("IsMatchWholeWord")))
+    if(val.has_field(_XPLATSTR("isMatchWholeWord")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("IsMatchWholeWord")];
+        web::json::value& fieldValue = val[_XPLATSTR("isMatchWholeWord")];
         if(!fieldValue.is_null())
         {
             setIsMatchWholeWord(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("IsOldValueRegex")))
+    if(val.has_field(_XPLATSTR("isOldValueRegex")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("IsOldValueRegex")];
+        web::json::value& fieldValue = val[_XPLATSTR("isOldValueRegex")];
         if(!fieldValue.is_null())
         {
             setIsOldValueRegex(ModelBase::boolFromJson(fieldValue));
@@ -121,32 +121,32 @@ void ReplaceTextParameters::toMultipart(const std::shared_ptr<MultipartFormData>
 
     if(m_OldValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OldValue"), m_OldValue));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("oldValue"), m_OldValue));
         
     }
     if(m_NewValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NewValue"), m_NewValue));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("newValue"), m_NewValue));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsMatchCase"), m_IsMatchCase));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsMatchWholeWord"), m_IsMatchWholeWord));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsOldValueRegex"), m_IsOldValueRegex));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isMatchCase"), m_IsMatchCase));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isMatchWholeWord"), m_IsMatchWholeWord));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isOldValueRegex"), m_IsOldValueRegex));
 }
 
 void ReplaceTextParameters::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("OldValue")))
+    if(multipart->hasContent(_XPLATSTR("oldValue")))
     {
-        setOldValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("OldValue"))));
+        setOldValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("oldValue"))));
     }
-    if(multipart->hasContent(_XPLATSTR("NewValue")))
+    if(multipart->hasContent(_XPLATSTR("newValue")))
     {
-        setNewValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NewValue"))));
+        setNewValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("newValue"))));
     }
-    setIsMatchCase(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsMatchCase"))));
-    setIsMatchWholeWord(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsMatchWholeWord"))));
-    setIsOldValueRegex(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsOldValueRegex"))));
+    setIsMatchCase(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isMatchCase"))));
+    setIsMatchWholeWord(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isMatchWholeWord"))));
+    setIsOldValueRegex(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isOldValueRegex"))));
 }
 
 utility::string_t ReplaceTextParameters::getOldValue() const

@@ -52,7 +52,7 @@ web::json::value SplitDocumentResponse::toJson() const
 
     if(m_SplitResultIsSet)
     {
-        val[_XPLATSTR("SplitResult")] = ModelBase::toJson(m_SplitResult);
+        val[_XPLATSTR("splitResult")] = ModelBase::toJson(m_SplitResult);
     }
 
     return val;
@@ -62,9 +62,9 @@ void SplitDocumentResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("SplitResult")))
+    if(val.has_field(_XPLATSTR("splitResult")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SplitResult")];
+        web::json::value& fieldValue = val[_XPLATSTR("splitResult")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SplitDocumentResult> newItem(new SplitDocumentResult());
@@ -80,14 +80,14 @@ void SplitDocumentResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_SplitResultIsSet)
     {
         if (m_SplitResult.get())
         {
-            m_SplitResult->toMultipart(multipart, _XPLATSTR("SplitResult."));
+            m_SplitResult->toMultipart(multipart, _XPLATSTR("splitResult."));
         }
         
     }
@@ -95,16 +95,16 @@ void SplitDocumentResponse::toMultipart(const std::shared_ptr<MultipartFormData>
 
 void SplitDocumentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SplitResult")))
+    if(multipart->hasContent(_XPLATSTR("splitResult")))
     {
-        if(multipart->hasContent(_XPLATSTR("SplitResult")))
+        if(multipart->hasContent(_XPLATSTR("splitResult")))
         {
             std::shared_ptr<SplitDocumentResult> newItem(new SplitDocumentResult());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SplitResult."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("splitResult."));
             setSplitResult( newItem );
         }
     }

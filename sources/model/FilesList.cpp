@@ -59,7 +59,7 @@ web::json::value FilesList::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("Value")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("value")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -70,10 +70,10 @@ void FilesList::fromJson(web::json::value& val)
 {
     {
         m_Value.clear();
-        if(val.has_field(_XPLATSTR("Value")) 
-                            && !val[_XPLATSTR("Value")].is_null())
+        if(val.has_field(_XPLATSTR("value")) 
+                            && !val[_XPLATSTR("value")].is_null())
         {
-        auto arr = val[_XPLATSTR("Value")].as_array();
+        auto arr = val[_XPLATSTR("value")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Value), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -103,7 +103,7 @@ void FilesList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("value"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -112,10 +112,10 @@ void FilesList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
 {
     {
         m_Value.clear();
-        if(multipart->hasContent(_XPLATSTR("Value")))
+        if(multipart->hasContent(_XPLATSTR("value")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("value")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Value), [&](web::json::value item) {
             if(item.is_null())
             {

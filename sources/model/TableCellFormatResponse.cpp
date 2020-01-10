@@ -52,7 +52,7 @@ web::json::value TableCellFormatResponse::toJson() const
 
     if(m_CellFormatIsSet)
     {
-        val[_XPLATSTR("CellFormat")] = ModelBase::toJson(m_CellFormat);
+        val[_XPLATSTR("cellFormat")] = ModelBase::toJson(m_CellFormat);
     }
 
     return val;
@@ -62,9 +62,9 @@ void TableCellFormatResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("CellFormat")))
+    if(val.has_field(_XPLATSTR("cellFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("CellFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("cellFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
@@ -80,14 +80,14 @@ void TableCellFormatResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_CellFormatIsSet)
     {
         if (m_CellFormat.get())
         {
-            m_CellFormat->toMultipart(multipart, _XPLATSTR("CellFormat."));
+            m_CellFormat->toMultipart(multipart, _XPLATSTR("cellFormat."));
         }
         
     }
@@ -95,16 +95,16 @@ void TableCellFormatResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void TableCellFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("CellFormat")))
+    if(multipart->hasContent(_XPLATSTR("cellFormat")))
     {
-        if(multipart->hasContent(_XPLATSTR("CellFormat")))
+        if(multipart->hasContent(_XPLATSTR("cellFormat")))
         {
             std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("CellFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("cellFormat."));
             setCellFormat( newItem );
         }
     }

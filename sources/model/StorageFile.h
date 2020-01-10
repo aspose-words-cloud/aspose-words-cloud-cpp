@@ -75,7 +75,7 @@ public:
     bool isIsFolder() const;
         void setIsFolder(bool value);
     /// <summary>
-    /// File or folder last modified .
+    /// File or folder last modified DateTime.
     /// </summary>
     utility::datetime getModifiedDate() const;
     bool modifiedDateIsSet() const;

@@ -55,11 +55,11 @@ web::json::value BookmarkData::toJson() const
 
     if(m_NameIsSet)
     {
-        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("name")] = ModelBase::toJson(m_Name);
     }
     if(m_TextIsSet)
     {
-        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -67,17 +67,17 @@ web::json::value BookmarkData::toJson() const
 
 void BookmarkData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Name")))
+    if(val.has_field(_XPLATSTR("name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Name")];
+        web::json::value& fieldValue = val[_XPLATSTR("name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Text")))
+    if(val.has_field(_XPLATSTR("text")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Text")];
+        web::json::value& fieldValue = val[_XPLATSTR("text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -91,25 +91,25 @@ void BookmarkData::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
         
     }
 }
 
 void BookmarkData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Name")))
+    if(multipart->hasContent(_XPLATSTR("name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Text")))
+    if(multipart->hasContent(_XPLATSTR("text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
     }
 }
 

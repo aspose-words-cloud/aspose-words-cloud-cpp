@@ -59,19 +59,19 @@ web::json::value FontInfo::toJson() const
 
     if(m_FontFamilyNameIsSet)
     {
-        val[_XPLATSTR("FontFamilyName")] = ModelBase::toJson(m_FontFamilyName);
+        val[_XPLATSTR("fontFamilyName")] = ModelBase::toJson(m_FontFamilyName);
     }
     if(m_FullFontNameIsSet)
     {
-        val[_XPLATSTR("FullFontName")] = ModelBase::toJson(m_FullFontName);
+        val[_XPLATSTR("fullFontName")] = ModelBase::toJson(m_FullFontName);
     }
     if(m_VersionIsSet)
     {
-        val[_XPLATSTR("Version")] = ModelBase::toJson(m_Version);
+        val[_XPLATSTR("version")] = ModelBase::toJson(m_Version);
     }
     if(m_FilePathIsSet)
     {
-        val[_XPLATSTR("FilePath")] = ModelBase::toJson(m_FilePath);
+        val[_XPLATSTR("filePath")] = ModelBase::toJson(m_FilePath);
     }
 
     return val;
@@ -79,33 +79,33 @@ web::json::value FontInfo::toJson() const
 
 void FontInfo::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("FontFamilyName")))
+    if(val.has_field(_XPLATSTR("fontFamilyName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("FontFamilyName")];
+        web::json::value& fieldValue = val[_XPLATSTR("fontFamilyName")];
         if(!fieldValue.is_null())
         {
             setFontFamilyName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("FullFontName")))
+    if(val.has_field(_XPLATSTR("fullFontName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("FullFontName")];
+        web::json::value& fieldValue = val[_XPLATSTR("fullFontName")];
         if(!fieldValue.is_null())
         {
             setFullFontName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Version")))
+    if(val.has_field(_XPLATSTR("version")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Version")];
+        web::json::value& fieldValue = val[_XPLATSTR("version")];
         if(!fieldValue.is_null())
         {
             setVersion(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("FilePath")))
+    if(val.has_field(_XPLATSTR("filePath")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("FilePath")];
+        web::json::value& fieldValue = val[_XPLATSTR("filePath")];
         if(!fieldValue.is_null())
         {
             setFilePath(ModelBase::stringFromJson(fieldValue));
@@ -119,43 +119,43 @@ void FontInfo::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
     if(m_FontFamilyNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FontFamilyName"), m_FontFamilyName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fontFamilyName"), m_FontFamilyName));
         
     }
     if(m_FullFontNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FullFontName"), m_FullFontName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fullFontName"), m_FullFontName));
         
     }
     if(m_VersionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Version"), m_Version));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("version"), m_Version));
         
     }
     if(m_FilePathIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FilePath"), m_FilePath));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("filePath"), m_FilePath));
         
     }
 }
 
 void FontInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("FontFamilyName")))
+    if(multipart->hasContent(_XPLATSTR("fontFamilyName")))
     {
-        setFontFamilyName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FontFamilyName"))));
+        setFontFamilyName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fontFamilyName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FullFontName")))
+    if(multipart->hasContent(_XPLATSTR("fullFontName")))
     {
-        setFullFontName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FullFontName"))));
+        setFullFontName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fullFontName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Version")))
+    if(multipart->hasContent(_XPLATSTR("version")))
     {
-        setVersion(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Version"))));
+        setVersion(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("version"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FilePath")))
+    if(multipart->hasContent(_XPLATSTR("filePath")))
     {
-        setFilePath(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FilePath"))));
+        setFilePath(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("filePath"))));
     }
 }
 

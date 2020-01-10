@@ -52,7 +52,7 @@ web::json::value ParagraphFormatResponse::toJson() const
 
     if(m_ParagraphFormatIsSet)
     {
-        val[_XPLATSTR("ParagraphFormat")] = ModelBase::toJson(m_ParagraphFormat);
+        val[_XPLATSTR("paragraphFormat")] = ModelBase::toJson(m_ParagraphFormat);
     }
 
     return val;
@@ -62,9 +62,9 @@ void ParagraphFormatResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("ParagraphFormat")))
+    if(val.has_field(_XPLATSTR("paragraphFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ParagraphFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("paragraphFormat")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ParagraphFormat> newItem(new ParagraphFormat());
@@ -80,14 +80,14 @@ void ParagraphFormatResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_ParagraphFormatIsSet)
     {
         if (m_ParagraphFormat.get())
         {
-            m_ParagraphFormat->toMultipart(multipart, _XPLATSTR("ParagraphFormat."));
+            m_ParagraphFormat->toMultipart(multipart, _XPLATSTR("paragraphFormat."));
         }
         
     }
@@ -95,16 +95,16 @@ void ParagraphFormatResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void ParagraphFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
+    if(multipart->hasContent(_XPLATSTR("paragraphFormat")))
     {
-        if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
+        if(multipart->hasContent(_XPLATSTR("paragraphFormat")))
         {
             std::shared_ptr<ParagraphFormat> newItem(new ParagraphFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ParagraphFormat."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("paragraphFormat."));
             setParagraphFormat( newItem );
         }
     }

@@ -57,15 +57,15 @@ web::json::value OdtSaveOptionsData::toJson() const
 
     if(m_IsStrictSchema11IsSet)
     {
-        val[_XPLATSTR("IsStrictSchema11")] = ModelBase::toJson(m_IsStrictSchema11);
+        val[_XPLATSTR("isStrictSchema11")] = ModelBase::toJson(m_IsStrictSchema11);
     }
     if(m_MeasureUnitIsSet)
     {
-        val[_XPLATSTR("MeasureUnit")] = ModelBase::toJson(m_MeasureUnit);
+        val[_XPLATSTR("measureUnit")] = ModelBase::toJson(m_MeasureUnit);
     }
     if(m_PrettyFormatIsSet)
     {
-        val[_XPLATSTR("PrettyFormat")] = ModelBase::toJson(m_PrettyFormat);
+        val[_XPLATSTR("prettyFormat")] = ModelBase::toJson(m_PrettyFormat);
     }
 
     return val;
@@ -75,25 +75,25 @@ void OdtSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("IsStrictSchema11")))
+    if(val.has_field(_XPLATSTR("isStrictSchema11")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("IsStrictSchema11")];
+        web::json::value& fieldValue = val[_XPLATSTR("isStrictSchema11")];
         if(!fieldValue.is_null())
         {
             setIsStrictSchema11(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("MeasureUnit")))
+    if(val.has_field(_XPLATSTR("measureUnit")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("MeasureUnit")];
+        web::json::value& fieldValue = val[_XPLATSTR("measureUnit")];
         if(!fieldValue.is_null())
         {
             setMeasureUnit(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("PrettyFormat")))
+    if(val.has_field(_XPLATSTR("prettyFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("prettyFormat")];
         if(!fieldValue.is_null())
         {
             setPrettyFormat(ModelBase::boolFromJson(fieldValue));
@@ -107,109 +107,109 @@ void OdtSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("colorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("saveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("zipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateFields"), m_UpdateFields));
     }
     if(m_IsStrictSchema11IsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsStrictSchema11"), m_IsStrictSchema11));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isStrictSchema11"), m_IsStrictSchema11));
     }
     if(m_MeasureUnitIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MeasureUnit"), m_MeasureUnit));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("measureUnit"), m_MeasureUnit));
         
     }
     if(m_PrettyFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("prettyFormat"), m_PrettyFormat));
     }
 }
 
 void OdtSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
+    if(multipart->hasContent(_XPLATSTR("colorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("colorMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
+    if(multipart->hasContent(_XPLATSTR("saveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("saveFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FileName")))
+    if(multipart->hasContent(_XPLATSTR("fileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fileName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("dmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dmlRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("dmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
+    if(multipart->hasContent(_XPLATSTR("zipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("zipOutput"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("updateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("updateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateSdtContent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
+    if(multipart->hasContent(_XPLATSTR("updateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateFields"))));
     }
-    if(multipart->hasContent(_XPLATSTR("IsStrictSchema11")))
+    if(multipart->hasContent(_XPLATSTR("isStrictSchema11")))
     {
-        setIsStrictSchema11(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsStrictSchema11"))));
+        setIsStrictSchema11(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isStrictSchema11"))));
     }
-    if(multipart->hasContent(_XPLATSTR("MeasureUnit")))
+    if(multipart->hasContent(_XPLATSTR("measureUnit")))
     {
-        setMeasureUnit(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("MeasureUnit"))));
+        setMeasureUnit(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("measureUnit"))));
     }
-    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
+    if(multipart->hasContent(_XPLATSTR("prettyFormat")))
     {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("prettyFormat"))));
     }
 }
 

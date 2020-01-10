@@ -86,7 +86,7 @@ public:
     void unsetPosition();
     void setPosition(std::shared_ptr<DocumentPosition> value);
     /// <summary>
-    /// Gets or sets /sets custom reference mark to be used for this footnote. Default value is , meaning auto-numbered footnotes are used.
+    /// Gets or sets /sets custom reference mark to be used for this footnote. Default value is Empty, meaning auto-numbered footnotes are used.
     /// </summary>
     utility::string_t getReferenceMark() const;
     bool referenceMarkIsSet() const;

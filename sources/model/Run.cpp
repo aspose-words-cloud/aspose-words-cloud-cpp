@@ -73,12 +73,12 @@ void Run::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
         
     }
 }
@@ -94,13 +94,13 @@ void Run::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, con
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
+    if(multipart->hasContent(_XPLATSTR("nodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Text")))
+    if(multipart->hasContent(_XPLATSTR("text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
     }
 }
 

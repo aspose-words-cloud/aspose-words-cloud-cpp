@@ -53,11 +53,11 @@ web::json::value SearchResult::toJson() const
 
     if(m_RangeStartIsSet)
     {
-        val[_XPLATSTR("RangeStart")] = ModelBase::toJson(m_RangeStart);
+        val[_XPLATSTR("rangeStart")] = ModelBase::toJson(m_RangeStart);
     }
     if(m_RangeEndIsSet)
     {
-        val[_XPLATSTR("RangeEnd")] = ModelBase::toJson(m_RangeEnd);
+        val[_XPLATSTR("rangeEnd")] = ModelBase::toJson(m_RangeEnd);
     }
 
     return val;
@@ -65,9 +65,9 @@ web::json::value SearchResult::toJson() const
 
 void SearchResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("RangeStart")))
+    if(val.has_field(_XPLATSTR("rangeStart")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
+        web::json::value& fieldValue = val[_XPLATSTR("rangeStart")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -75,9 +75,9 @@ void SearchResult::fromJson(web::json::value& val)
             setRangeStart( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("RangeEnd")))
+    if(val.has_field(_XPLATSTR("rangeEnd")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
+        web::json::value& fieldValue = val[_XPLATSTR("rangeEnd")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -95,7 +95,7 @@ void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
     {
         if (m_RangeStart.get())
         {
-            m_RangeStart->toMultipart(multipart, _XPLATSTR("RangeStart."));
+            m_RangeStart->toMultipart(multipart, _XPLATSTR("rangeStart."));
         }
         
     }
@@ -103,7 +103,7 @@ void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
     {
         if (m_RangeEnd.get())
         {
-            m_RangeEnd->toMultipart(multipart, _XPLATSTR("RangeEnd."));
+            m_RangeEnd->toMultipart(multipart, _XPLATSTR("rangeEnd."));
         }
         
     }
@@ -111,21 +111,21 @@ void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RangeStart")))
+    if(multipart->hasContent(_XPLATSTR("rangeStart")))
     {
-        if(multipart->hasContent(_XPLATSTR("RangeStart")))
+        if(multipart->hasContent(_XPLATSTR("rangeStart")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("rangeStart."));
             setRangeStart( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("RangeEnd")))
+    if(multipart->hasContent(_XPLATSTR("rangeEnd")))
     {
-        if(multipart->hasContent(_XPLATSTR("RangeEnd")))
+        if(multipart->hasContent(_XPLATSTR("rangeEnd")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("rangeEnd."));
             setRangeEnd( newItem );
         }
     }

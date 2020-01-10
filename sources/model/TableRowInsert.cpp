@@ -54,26 +54,26 @@ web::json::value TableRowInsert::toJson() const
 
     if(m_InsertAfterIsSet)
     {
-        val[_XPLATSTR("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
+        val[_XPLATSTR("insertAfter")] = ModelBase::toJson(m_InsertAfter);
     }
-    val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
+    val[_XPLATSTR("columnsCount")] = ModelBase::toJson(m_ColumnsCount);
 
     return val;
 }
 
 void TableRowInsert::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("InsertAfter")))
+    if(val.has_field(_XPLATSTR("insertAfter")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
+        web::json::value& fieldValue = val[_XPLATSTR("insertAfter")];
         if(!fieldValue.is_null())
         {
             setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ColumnsCount")))
+    if(val.has_field(_XPLATSTR("columnsCount")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ColumnsCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("columnsCount")];
         if(!fieldValue.is_null())
         {
             setColumnsCount(ModelBase::int32_tFromJson(fieldValue));
@@ -87,18 +87,18 @@ void TableRowInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
     if(m_InsertAfterIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InsertAfter"), m_InsertAfter));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("insertAfter"), m_InsertAfter));
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("columnsCount"), m_ColumnsCount));
 }
 
 void TableRowInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("InsertAfter")))
+    if(multipart->hasContent(_XPLATSTR("insertAfter")))
     {
-        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
+        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("insertAfter"))));
     }
-    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
+    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("columnsCount"))));
 }
 
 int32_t TableRowInsert::getInsertAfter() const

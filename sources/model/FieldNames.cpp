@@ -59,7 +59,7 @@ web::json::value FieldNames::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("Names")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("names")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void FieldNames::fromJson(web::json::value& val)
 
     {
         m_Names.clear();
-        if(val.has_field(_XPLATSTR("Names")) 
-                            && !val[_XPLATSTR("Names")].is_null())
+        if(val.has_field(_XPLATSTR("names")) 
+                            && !val[_XPLATSTR("names")].is_null())
         {
-        auto arr = val[_XPLATSTR("Names")].as_array();
+        auto arr = val[_XPLATSTR("names")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Names), [&](web::json::value& item){
             return ModelBase::stringFromJson(item);
         });
@@ -104,7 +104,7 @@ void FieldNames::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Names"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("names"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -122,10 +122,10 @@ void FieldNames::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
     {
         m_Names.clear();
-        if(multipart->hasContent(_XPLATSTR("Names")))
+        if(multipart->hasContent(_XPLATSTR("names")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Names")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("names")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Names), [&](web::json::value item) {
             return ModelBase::stringFromJson(item);
         });

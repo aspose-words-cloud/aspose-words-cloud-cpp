@@ -154,7 +154,7 @@ public:
     void unsetLinesToDrop();
     void setLinesToDrop(int32_t value);
     /// <summary>
-    /// Gets or sets when true,  and  will be ignored between the paragraphs of the same style.             
+    /// Gets or sets when true, SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.             
     /// </summary>
     bool isNoSpaceBetweenParagraphsOfSameStyle() const;
     bool noSpaceBetweenParagraphsOfSameStyleIsSet() const;

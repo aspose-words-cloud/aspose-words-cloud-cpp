@@ -52,7 +52,7 @@ web::json::value FormFieldResponse::toJson() const
 
     if(m_FormFieldIsSet)
     {
-        val[_XPLATSTR("FormField")] = ModelBase::toJson(m_FormField);
+        val[_XPLATSTR("formField")] = ModelBase::toJson(m_FormField);
     }
 
     return val;
@@ -62,9 +62,9 @@ void FormFieldResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("FormField")))
+    if(val.has_field(_XPLATSTR("formField")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("FormField")];
+        web::json::value& fieldValue = val[_XPLATSTR("formField")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FormField> newItem(new FormField());
@@ -80,14 +80,14 @@ void FormFieldResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_FormFieldIsSet)
     {
         if (m_FormField.get())
         {
-            m_FormField->toMultipart(multipart, _XPLATSTR("FormField."));
+            m_FormField->toMultipart(multipart, _XPLATSTR("formField."));
         }
         
     }
@@ -95,16 +95,16 @@ void FormFieldResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
 void FormFieldResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("FormField")))
+    if(multipart->hasContent(_XPLATSTR("formField")))
     {
-        if(multipart->hasContent(_XPLATSTR("FormField")))
+        if(multipart->hasContent(_XPLATSTR("formField")))
         {
             std::shared_ptr<FormField> newItem(new FormField());
-            newItem->fromMultiPart(multipart, _XPLATSTR("FormField."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("formField."));
             setFormField( newItem );
         }
     }

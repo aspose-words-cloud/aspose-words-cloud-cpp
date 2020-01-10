@@ -52,7 +52,7 @@ web::json::value RevisionsModificationResponse::toJson() const
 
     if(m_ResultIsSet)
     {
-        val[_XPLATSTR("Result")] = ModelBase::toJson(m_Result);
+        val[_XPLATSTR("result")] = ModelBase::toJson(m_Result);
     }
 
     return val;
@@ -62,9 +62,9 @@ void RevisionsModificationResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Result")))
+    if(val.has_field(_XPLATSTR("result")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Result")];
+        web::json::value& fieldValue = val[_XPLATSTR("result")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
@@ -80,14 +80,14 @@ void RevisionsModificationResponse::toMultipart(const std::shared_ptr<MultipartF
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_ResultIsSet)
     {
         if (m_Result.get())
         {
-            m_Result->toMultipart(multipart, _XPLATSTR("Result."));
+            m_Result->toMultipart(multipart, _XPLATSTR("result."));
         }
         
     }
@@ -95,16 +95,16 @@ void RevisionsModificationResponse::toMultipart(const std::shared_ptr<MultipartF
 
 void RevisionsModificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Result")))
+    if(multipart->hasContent(_XPLATSTR("result")))
     {
-        if(multipart->hasContent(_XPLATSTR("Result")))
+        if(multipart->hasContent(_XPLATSTR("result")))
         {
             std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Result."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("result."));
             setResult( newItem );
         }
     }

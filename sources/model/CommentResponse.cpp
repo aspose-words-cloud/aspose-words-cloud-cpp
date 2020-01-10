@@ -52,7 +52,7 @@ web::json::value CommentResponse::toJson() const
 
     if(m_CommentIsSet)
     {
-        val[_XPLATSTR("Comment")] = ModelBase::toJson(m_Comment);
+        val[_XPLATSTR("comment")] = ModelBase::toJson(m_Comment);
     }
 
     return val;
@@ -62,9 +62,9 @@ void CommentResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Comment")))
+    if(val.has_field(_XPLATSTR("comment")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Comment")];
+        web::json::value& fieldValue = val[_XPLATSTR("comment")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Comment> newItem(new Comment());
@@ -80,14 +80,14 @@ void CommentResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_CommentIsSet)
     {
         if (m_Comment.get())
         {
-            m_Comment->toMultipart(multipart, _XPLATSTR("Comment."));
+            m_Comment->toMultipart(multipart, _XPLATSTR("comment."));
         }
         
     }
@@ -95,16 +95,16 @@ void CommentResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void CommentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Comment")))
+    if(multipart->hasContent(_XPLATSTR("comment")))
     {
-        if(multipart->hasContent(_XPLATSTR("Comment")))
+        if(multipart->hasContent(_XPLATSTR("comment")))
         {
             std::shared_ptr<Comment> newItem(new Comment());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Comment."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("comment."));
             setComment( newItem );
         }
     }

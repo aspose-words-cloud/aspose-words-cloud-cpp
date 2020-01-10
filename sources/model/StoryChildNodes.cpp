@@ -59,7 +59,7 @@ web::json::value StoryChildNodes::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("ChildNodes")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("childNodes")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -70,10 +70,10 @@ void StoryChildNodes::fromJson(web::json::value& val)
 {
     {
         m_ChildNodes.clear();
-        if(val.has_field(_XPLATSTR("ChildNodes")) 
-                            && !val[_XPLATSTR("ChildNodes")].is_null())
+        if(val.has_field(_XPLATSTR("childNodes")) 
+                            && !val[_XPLATSTR("childNodes")].is_null())
         {
-        auto arr = val[_XPLATSTR("ChildNodes")].as_array();
+        auto arr = val[_XPLATSTR("childNodes")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -103,7 +103,7 @@ void StoryChildNodes::toMultipart(const std::shared_ptr<MultipartFormData>& mult
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ChildNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("childNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -112,10 +112,10 @@ void StoryChildNodes::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
 {
     {
         m_ChildNodes.clear();
-        if(multipart->hasContent(_XPLATSTR("ChildNodes")))
+        if(multipart->hasContent(_XPLATSTR("childNodes")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ChildNodes")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("childNodes")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
             if(item.is_null())
             {

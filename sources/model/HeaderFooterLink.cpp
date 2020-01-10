@@ -53,7 +53,7 @@ web::json::value HeaderFooterLink::toJson() const
 
     if(m_TypeIsSet)
     {
-        val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
+        val[_XPLATSTR("type")] = ModelBase::toJson(m_Type);
     }
 
     return val;
@@ -63,9 +63,9 @@ void HeaderFooterLink::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Type")))
+    if(val.has_field(_XPLATSTR("type")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Type")];
+        web::json::value& fieldValue = val[_XPLATSTR("type")];
         if(!fieldValue.is_null())
         {
             setType(ModelBase::stringFromJson(fieldValue));
@@ -87,7 +87,7 @@ void HeaderFooterLink::toMultipart(const std::shared_ptr<MultipartFormData>& mul
     }
     if(m_TypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("type"), m_Type));
         
     }
 }
@@ -103,9 +103,9 @@ void HeaderFooterLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("Type")))
+    if(multipart->hasContent(_XPLATSTR("type")))
     {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
+        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("type"))));
     }
 }
 

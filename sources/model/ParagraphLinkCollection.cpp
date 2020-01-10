@@ -59,7 +59,7 @@ web::json::value ParagraphLinkCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("ParagraphLinkList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("paragraphLinkList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void ParagraphLinkCollection::fromJson(web::json::value& val)
 
     {
         m_ParagraphLinkList.clear();
-        if(val.has_field(_XPLATSTR("ParagraphLinkList")) 
-                            && !val[_XPLATSTR("ParagraphLinkList")].is_null())
+        if(val.has_field(_XPLATSTR("paragraphLinkList")) 
+                            && !val[_XPLATSTR("paragraphLinkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("ParagraphLinkList")].as_array();
+        auto arr = val[_XPLATSTR("paragraphLinkList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void ParagraphLinkCollection::toMultipart(const std::shared_ptr<MultipartFormDat
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("paragraphLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void ParagraphLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
     {
         m_ParagraphLinkList.clear();
-        if(multipart->hasContent(_XPLATSTR("ParagraphLinkList")))
+        if(multipart->hasContent(_XPLATSTR("paragraphLinkList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphLinkList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("paragraphLinkList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value item) {
             if(item.is_null())
             {

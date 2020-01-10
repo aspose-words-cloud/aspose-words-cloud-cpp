@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Child nodes of  or .
+/// Child nodes of Story or InlineStory.
 /// </summary>
 class  StoryChildNodes
     : public ModelBase

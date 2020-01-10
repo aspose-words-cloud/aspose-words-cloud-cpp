@@ -60,7 +60,7 @@ web::json::value FilesUploadResult::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("Uploaded")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("uploaded")] = web::json::value::array(jsonArray);
         }
     }
     {
@@ -72,7 +72,7 @@ web::json::value FilesUploadResult::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("Errors")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("errors")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -83,10 +83,10 @@ void FilesUploadResult::fromJson(web::json::value& val)
 {
     {
         m_Uploaded.clear();
-        if(val.has_field(_XPLATSTR("Uploaded")) 
-                            && !val[_XPLATSTR("Uploaded")].is_null())
+        if(val.has_field(_XPLATSTR("uploaded")) 
+                            && !val[_XPLATSTR("uploaded")].is_null())
         {
-        auto arr = val[_XPLATSTR("Uploaded")].as_array();
+        auto arr = val[_XPLATSTR("uploaded")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Uploaded), [&](web::json::value& item){
             return ModelBase::stringFromJson(item);
         });
@@ -95,10 +95,10 @@ void FilesUploadResult::fromJson(web::json::value& val)
     }
     {
         m_Errors.clear();
-        if(val.has_field(_XPLATSTR("Errors")) 
-                            && !val[_XPLATSTR("Errors")].is_null())
+        if(val.has_field(_XPLATSTR("errors")) 
+                            && !val[_XPLATSTR("errors")].is_null())
         {
-        auto arr = val[_XPLATSTR("Errors")].as_array();
+        auto arr = val[_XPLATSTR("errors")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Errors), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -128,7 +128,7 @@ void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& mu
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Uploaded"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("uploaded"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     {
@@ -139,7 +139,7 @@ void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& mu
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Errors"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("errors"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -148,10 +148,10 @@ void FilesUploadResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
 {
     {
         m_Uploaded.clear();
-        if(multipart->hasContent(_XPLATSTR("Uploaded")))
+        if(multipart->hasContent(_XPLATSTR("uploaded")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Uploaded")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("uploaded")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Uploaded), [&](web::json::value item) {
             return ModelBase::stringFromJson(item);
         });
@@ -159,10 +159,10 @@ void FilesUploadResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
     {
         m_Errors.clear();
-        if(multipart->hasContent(_XPLATSTR("Errors")))
+        if(multipart->hasContent(_XPLATSTR("errors")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Errors")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("errors")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Errors), [&](web::json::value item) {
             if(item.is_null())
             {

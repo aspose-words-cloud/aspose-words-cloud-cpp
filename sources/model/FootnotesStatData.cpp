@@ -51,25 +51,25 @@ web::json::value FootnotesStatData::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[_XPLATSTR("WordCount")] = ModelBase::toJson(m_WordCount);
-    val[_XPLATSTR("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
+    val[_XPLATSTR("wordCount")] = ModelBase::toJson(m_WordCount);
+    val[_XPLATSTR("paragraphCount")] = ModelBase::toJson(m_ParagraphCount);
 
     return val;
 }
 
 void FootnotesStatData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("WordCount")))
+    if(val.has_field(_XPLATSTR("wordCount")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("WordCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("wordCount")];
         if(!fieldValue.is_null())
         {
             setWordCount(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ParagraphCount")))
+    if(val.has_field(_XPLATSTR("paragraphCount")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ParagraphCount")];
+        web::json::value& fieldValue = val[_XPLATSTR("paragraphCount")];
         if(!fieldValue.is_null())
         {
             setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
@@ -81,14 +81,14 @@ void FootnotesStatData::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WordCount"), m_WordCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphCount"), m_ParagraphCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("wordCount"), m_WordCount));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("paragraphCount"), m_ParagraphCount));
 }
 
 void FootnotesStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
-    setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+    setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("wordCount"))));
+    setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("paragraphCount"))));
 }
 
 int32_t FootnotesStatData::getWordCount() const

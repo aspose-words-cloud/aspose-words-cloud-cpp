@@ -52,7 +52,7 @@ web::json::value FieldResponse::toJson() const
 
     if(m_FieldIsSet)
     {
-        val[_XPLATSTR("Field")] = ModelBase::toJson(m_Field);
+        val[_XPLATSTR("field")] = ModelBase::toJson(m_Field);
     }
 
     return val;
@@ -62,9 +62,9 @@ void FieldResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("Field")))
+    if(val.has_field(_XPLATSTR("field")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Field")];
+        web::json::value& fieldValue = val[_XPLATSTR("field")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Field> newItem(new Field());
@@ -80,14 +80,14 @@ void FieldResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
         
     }
     if(m_FieldIsSet)
     {
         if (m_Field.get())
         {
-            m_Field->toMultipart(multipart, _XPLATSTR("Field."));
+            m_Field->toMultipart(multipart, _XPLATSTR("field."));
         }
         
     }
@@ -95,16 +95,16 @@ void FieldResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void FieldResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
+    if(multipart->hasContent(_XPLATSTR("requestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Field")))
+    if(multipart->hasContent(_XPLATSTR("field")))
     {
-        if(multipart->hasContent(_XPLATSTR("Field")))
+        if(multipart->hasContent(_XPLATSTR("field")))
         {
             std::shared_ptr<Field> newItem(new Field());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Field."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("field."));
             setField( newItem );
         }
     }

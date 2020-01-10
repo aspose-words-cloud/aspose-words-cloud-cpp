@@ -52,10 +52,10 @@ web::json::value PreferredWidth::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
+    val[_XPLATSTR("type")] = ModelBase::toJson(m_Type);
     if(m_ValueIsSet)
     {
-        val[_XPLATSTR("Value")] = ModelBase::toJson(m_Value);
+        val[_XPLATSTR("value")] = ModelBase::toJson(m_Value);
     }
 
     return val;
@@ -63,10 +63,10 @@ web::json::value PreferredWidth::toJson() const
 
 void PreferredWidth::fromJson(web::json::value& val)
 {
-    setType(ModelBase::stringFromJson(val[_XPLATSTR("Type")]));
-    if(val.has_field(_XPLATSTR("Value")))
+    setType(ModelBase::stringFromJson(val[_XPLATSTR("type")]));
+    if(val.has_field(_XPLATSTR("value")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Value")];
+        web::json::value& fieldValue = val[_XPLATSTR("value")];
         if(!fieldValue.is_null())
         {
             setValue(ModelBase::doubleFromJson(fieldValue));
@@ -78,19 +78,19 @@ void PreferredWidth::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("type"), m_Type));
     if(m_ValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("value"), m_Value));
     }
 }
 
 void PreferredWidth::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
-    if(multipart->hasContent(_XPLATSTR("Value")))
+    setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("type"))));
+    if(multipart->hasContent(_XPLATSTR("value")))
     {
-        setValue(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
+        setValue(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("value"))));
     }
 }
 

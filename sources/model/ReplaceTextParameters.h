@@ -63,7 +63,7 @@ public:
     /// ReplaceTextParameters members
 
     /// <summary>
-    /// Gets or sets old text value (or regex pattern ) to replace.
+    /// Gets or sets old text value (or regex pattern IsOldValueRegex) to replace.
     /// </summary>
     utility::string_t getOldValue() const;
     bool oldValueIsSet() const;
@@ -87,7 +87,7 @@ public:
     bool isIsMatchWholeWord() const;
         void setIsMatchWholeWord(bool value);
     /// <summary>
-    /// Gets or sets a value indicating whether flag, means that  contains regex expression.
+    /// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
     /// </summary>
     bool isIsOldValueRegex() const;
         void setIsOldValueRegex(bool value);

@@ -333,7 +333,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">Original document name.</param>
-        /// <param name="documentList">with a list of documents to append.            </param>
+        /// <param name="documentList">DocumentEntryList with a list of documents to append.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -378,7 +378,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">Original document name.</param>
-        /// <param name="compareData">with a document to compare.            </param>
+        /// <param name="compareData">CompareData with a document to compare.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2273,7 +2273,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">A document name.</param>
-        /// <param name="pageNumber">with the page numbers settings.</param>
+        /// <param name="pageNumber">PageNumber with the page numbers settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2331,6 +2331,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="table">Table parameters/.</param>
         /// <param name="nodePath">Path to the node, which contains tables.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -2339,7 +2340,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="table">Table parameters/. (optional)</param>
     	pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(
 		std::shared_ptr<InsertTableRequest> request
 	);
@@ -2350,6 +2350,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="cell">Table cell parameters/.</param>
         /// <param name="tableRowPath">Path to table row.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -2358,7 +2359,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="cell">Table cell parameters/. (optional)</param>
     	pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(
 		std::shared_ptr<InsertTableCellRequest> request
 	);
@@ -2369,6 +2369,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="row">Table row parameters/.</param>
         /// <param name="tablePath">Path to table.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -2377,7 +2378,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="row">Table row parameters/. (optional)</param>
     	pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(
 		std::shared_ptr<InsertTableRowRequest> request
 	);
@@ -2388,6 +2388,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="table">Table parameters/.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2395,7 +2396,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="table">Table parameters/. (optional)</param>
     	pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(
 		std::shared_ptr<InsertTableWithoutNodePathRequest> request
 	);
@@ -2426,7 +2426,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="watermarkText">with the watermark data.            </param>
+        /// <param name="watermarkText">WatermarkText with the watermark data.             </param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2482,7 +2482,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="protectionRequest">with protection settings.            </param>
+        /// <param name="protectionRequest">ProtectionRequest with protection settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2687,7 +2687,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="replaceText">with the replace operation settings.            </param>
+        /// <param name="replaceText">ReplaceTextResponse with the replace operation settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2833,7 +2833,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="protectionRequest">with protection settings.            </param>
+        /// <param name="protectionRequest">ProtectionRequest with protection settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2849,7 +2849,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="bookmarkData">with new bookmark data.            </param>
+        /// <param name="bookmarkData">BookmarkData with new bookmark data.</param>
         /// <param name="bookmarkName">The bookmark name.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -3140,6 +3140,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="format">The properties.</param>
         /// <param name="tableRowPath">Path to table row.</param>
         /// <param name="index">Object index.</param>
         /// <param name="folder">Original document folder. (optional)</param>
@@ -3149,7 +3150,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="format">The properties. (optional)</param>
     	pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFormat(
 		std::shared_ptr<UpdateTableCellFormatRequest> request
 	);
@@ -3160,6 +3160,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="properties">The properties.</param>
         /// <param name="nodePath">Path to the node, which contains tables.</param>
         /// <param name="index">Object index.</param>
         /// <param name="folder">Original document folder. (optional)</param>
@@ -3169,7 +3170,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="properties">The properties. (optional)</param>
     	pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTableProperties(
 		std::shared_ptr<UpdateTablePropertiesRequest> request
 	);
@@ -3180,6 +3180,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="properties">The properties.</param>
         /// <param name="index">Object index.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -3188,7 +3189,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="properties">The properties. (optional)</param>
     	pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropertiesWithoutNodePath(
 		std::shared_ptr<UpdateTablePropertiesWithoutNodePathRequest> request
 	);
@@ -3199,6 +3199,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
+        /// <param name="format">Table row format.</param>
         /// <param name="tablePath">Path to table.</param>
         /// <param name="index">Object index.</param>
         /// <param name="folder">Original document folder. (optional)</param>
@@ -3208,7 +3209,6 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="format">Table row format. (optional)</param>
     	pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowFormat(
 		std::shared_ptr<UpdateTableRowFormatRequest> request
 	);

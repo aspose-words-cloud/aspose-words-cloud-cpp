@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Utility class for  serialization.
+/// Utility class for Color serialization.
 /// </summary>
 class  XmlColor
     : public ModelBase

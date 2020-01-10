@@ -30,6 +30,7 @@ namespace api{
 namespace models{
 InsertTableRowRequest::InsertTableRowRequest(
         utility::string_t name,
+                std::shared_ptr<TableRowInsert> row,
                 utility::string_t tablePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -37,10 +38,10 @@ InsertTableRowRequest::InsertTableRowRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableRowInsert>> row
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_row(std::move(row)),
             m_tablePath(std::move(tablePath)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
@@ -48,8 +49,7 @@ InsertTableRowRequest::InsertTableRowRequest(
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_row(std::move(row))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -60,6 +60,13 @@ InsertTableRowRequest::InsertTableRowRequest(
         }
         void InsertTableRowRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        std::shared_ptr<TableRowInsert> InsertTableRowRequest::getRow() const
+        {
+            return m_row;
+        }
+        void InsertTableRowRequest::setRow(std::shared_ptr<TableRowInsert> row){
+            m_row = std::move(row);
         }
         utility::string_t InsertTableRowRequest::getTablePath() const
         {
@@ -116,13 +123,6 @@ InsertTableRowRequest::InsertTableRowRequest(
         }
         void InsertTableRowRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<std::shared_ptr<TableRowInsert>> InsertTableRowRequest::getRow() const
-        {
-            return m_row;
-        }
-        void InsertTableRowRequest::setRow(boost::optional<std::shared_ptr<TableRowInsert>> row){
-            m_row = std::move(row);
         }
 
 }

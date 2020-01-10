@@ -245,7 +245,7 @@ public:
     void unsetSectionStart();
     void setSectionStart(utility::string_t value);
     /// <summary>
-    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes.                 Suppressed endnotes are printed before the endnotes in that section.             
+    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.             
     /// </summary>
     bool isSuppressEndnotes() const;
     bool suppressEndnotesIsSet() const;

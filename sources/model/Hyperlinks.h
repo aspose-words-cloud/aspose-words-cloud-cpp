@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of .
+/// Collection of Hyperlink.
 /// </summary>
 class  Hyperlinks
     : public LinkElement
@@ -64,7 +64,7 @@ public:
     /// Hyperlinks members
 
     /// <summary>
-    /// Gets or sets array of .
+    /// Gets or sets array of Hyperlink.
     /// </summary>
     std::vector<std::shared_ptr<Hyperlink>>& getHyperlinkList();
     bool hyperlinkListIsSet() const;

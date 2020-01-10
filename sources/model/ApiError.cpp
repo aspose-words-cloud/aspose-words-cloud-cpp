@@ -60,23 +60,23 @@ web::json::value ApiError::toJson() const
 
     if(m_CodeIsSet)
     {
-        val[_XPLATSTR("Code")] = ModelBase::toJson(m_Code);
+        val[_XPLATSTR("code")] = ModelBase::toJson(m_Code);
     }
     if(m_MessageIsSet)
     {
-        val[_XPLATSTR("Message")] = ModelBase::toJson(m_Message);
+        val[_XPLATSTR("message")] = ModelBase::toJson(m_Message);
     }
     if(m_DescriptionIsSet)
     {
-        val[_XPLATSTR("Description")] = ModelBase::toJson(m_Description);
+        val[_XPLATSTR("description")] = ModelBase::toJson(m_Description);
     }
     if(m_DateTimeIsSet)
     {
-        val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
+        val[_XPLATSTR("dateTime")] = ModelBase::toJson(m_DateTime);
     }
     if(m_InnerErrorIsSet)
     {
-        val[_XPLATSTR("InnerError")] = ModelBase::toJson(m_InnerError);
+        val[_XPLATSTR("innerError")] = ModelBase::toJson(m_InnerError);
     }
 
     return val;
@@ -84,41 +84,41 @@ web::json::value ApiError::toJson() const
 
 void ApiError::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Code")))
+    if(val.has_field(_XPLATSTR("code")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Code")];
+        web::json::value& fieldValue = val[_XPLATSTR("code")];
         if(!fieldValue.is_null())
         {
             setCode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Message")))
+    if(val.has_field(_XPLATSTR("message")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Message")];
+        web::json::value& fieldValue = val[_XPLATSTR("message")];
         if(!fieldValue.is_null())
         {
             setMessage(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Description")))
+    if(val.has_field(_XPLATSTR("description")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Description")];
+        web::json::value& fieldValue = val[_XPLATSTR("description")];
         if(!fieldValue.is_null())
         {
             setDescription(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("DateTime")))
+    if(val.has_field(_XPLATSTR("dateTime")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
+        web::json::value& fieldValue = val[_XPLATSTR("dateTime")];
         if(!fieldValue.is_null())
         {
             setDateTime(ModelBase::dateFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("InnerError")))
+    if(val.has_field(_XPLATSTR("innerError")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("InnerError")];
+        web::json::value& fieldValue = val[_XPLATSTR("innerError")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ApiError> newItem(new ApiError());
@@ -134,29 +134,29 @@ void ApiError::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
     if(m_CodeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("code"), m_Code));
         
     }
     if(m_MessageIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Message"), m_Message));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("message"), m_Message));
         
     }
     if(m_DescriptionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Description"), m_Description));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("description"), m_Description));
         
     }
     if(m_DateTimeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dateTime"), m_DateTime));
         
     }
     if(m_InnerErrorIsSet)
     {
         if (m_InnerError.get())
         {
-            m_InnerError->toMultipart(multipart, _XPLATSTR("InnerError."));
+            m_InnerError->toMultipart(multipart, _XPLATSTR("innerError."));
         }
         
     }
@@ -164,28 +164,28 @@ void ApiError::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void ApiError::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Code")))
+    if(multipart->hasContent(_XPLATSTR("code")))
     {
-        setCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
+        setCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("code"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Message")))
+    if(multipart->hasContent(_XPLATSTR("message")))
     {
-        setMessage(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Message"))));
+        setMessage(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("message"))));
     }
-    if(multipart->hasContent(_XPLATSTR("Description")))
+    if(multipart->hasContent(_XPLATSTR("description")))
     {
-        setDescription(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Description"))));
+        setDescription(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("description"))));
     }
-    if(multipart->hasContent(_XPLATSTR("DateTime")))
+    if(multipart->hasContent(_XPLATSTR("dateTime")))
     {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("dateTime"))));
     }
-    if(multipart->hasContent(_XPLATSTR("InnerError")))
+    if(multipart->hasContent(_XPLATSTR("innerError")))
     {
-        if(multipart->hasContent(_XPLATSTR("InnerError")))
+        if(multipart->hasContent(_XPLATSTR("innerError")))
         {
             std::shared_ptr<ApiError> newItem(new ApiError());
-            newItem->fromMultiPart(multipart, _XPLATSTR("InnerError."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("innerError."));
             setInnerError( newItem );
         }
     }
