@@ -4,3 +4,4 @@ install/*
 .gitignore
 */servercreds.json
 out/*
+.vs/*
