@@ -59,7 +59,7 @@ web::json::value DocumentEntryList::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("documentEntries")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("DocumentEntries")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -70,10 +70,10 @@ void DocumentEntryList::fromJson(web::json::value& val)
 {
     {
         m_DocumentEntries.clear();
-        if(val.has_field(_XPLATSTR("documentEntries")) 
-                            && !val[_XPLATSTR("documentEntries")].is_null())
+        if(val.has_field(_XPLATSTR("DocumentEntries")) 
+                            && !val[_XPLATSTR("DocumentEntries")].is_null())
         {
-        auto arr = val[_XPLATSTR("documentEntries")].as_array();
+        auto arr = val[_XPLATSTR("DocumentEntries")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -103,7 +103,7 @@ void DocumentEntryList::toMultipart(const std::shared_ptr<MultipartFormData>& mu
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("documentEntries"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentEntries"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -112,10 +112,10 @@ void DocumentEntryList::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
 {
     {
         m_DocumentEntries.clear();
-        if(multipart->hasContent(_XPLATSTR("documentEntries")))
+        if(multipart->hasContent(_XPLATSTR("DocumentEntries")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("documentEntries")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DocumentEntries")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value item) {
             if(item.is_null())
             {

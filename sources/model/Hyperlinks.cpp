@@ -59,7 +59,7 @@ web::json::value Hyperlinks::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("hyperlinkList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("HyperlinkList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void Hyperlinks::fromJson(web::json::value& val)
 
     {
         m_HyperlinkList.clear();
-        if(val.has_field(_XPLATSTR("hyperlinkList")) 
-                            && !val[_XPLATSTR("hyperlinkList")].is_null())
+        if(val.has_field(_XPLATSTR("HyperlinkList")) 
+                            && !val[_XPLATSTR("HyperlinkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("hyperlinkList")].as_array();
+        auto arr = val[_XPLATSTR("HyperlinkList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void Hyperlinks::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("hyperlinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HyperlinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void Hyperlinks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
     {
         m_HyperlinkList.clear();
-        if(multipart->hasContent(_XPLATSTR("hyperlinkList")))
+        if(multipart->hasContent(_XPLATSTR("HyperlinkList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("hyperlinkList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HyperlinkList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value item) {
             if(item.is_null())
             {

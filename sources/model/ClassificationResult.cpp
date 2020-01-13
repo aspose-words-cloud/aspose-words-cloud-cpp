@@ -54,26 +54,26 @@ web::json::value ClassificationResult::toJson() const
 
     if(m_ClassNameIsSet)
     {
-        val[_XPLATSTR("className")] = ModelBase::toJson(m_ClassName);
+        val[_XPLATSTR("ClassName")] = ModelBase::toJson(m_ClassName);
     }
-    val[_XPLATSTR("classProbability")] = ModelBase::toJson(m_ClassProbability);
+    val[_XPLATSTR("ClassProbability")] = ModelBase::toJson(m_ClassProbability);
 
     return val;
 }
 
 void ClassificationResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("className")))
+    if(val.has_field(_XPLATSTR("ClassName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("className")];
+        web::json::value& fieldValue = val[_XPLATSTR("ClassName")];
         if(!fieldValue.is_null())
         {
             setClassName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("classProbability")))
+    if(val.has_field(_XPLATSTR("ClassProbability")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("classProbability")];
+        web::json::value& fieldValue = val[_XPLATSTR("ClassProbability")];
         if(!fieldValue.is_null())
         {
             setClassProbability(ModelBase::doubleFromJson(fieldValue));
@@ -87,19 +87,19 @@ void ClassificationResult::toMultipart(const std::shared_ptr<MultipartFormData>&
 
     if(m_ClassNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("className"), m_ClassName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassName"), m_ClassName));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("classProbability"), m_ClassProbability));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassProbability"), m_ClassProbability));
 }
 
 void ClassificationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("className")))
+    if(multipart->hasContent(_XPLATSTR("ClassName")))
     {
-        setClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("className"))));
+        setClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ClassName"))));
     }
-    setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("classProbability"))));
+    setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
 }
 
 utility::string_t ClassificationResult::getClassName() const

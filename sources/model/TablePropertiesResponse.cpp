@@ -52,7 +52,7 @@ web::json::value TablePropertiesResponse::toJson() const
 
     if(m_PropertiesIsSet)
     {
-        val[_XPLATSTR("properties")] = ModelBase::toJson(m_Properties);
+        val[_XPLATSTR("Properties")] = ModelBase::toJson(m_Properties);
     }
 
     return val;
@@ -62,9 +62,9 @@ void TablePropertiesResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("properties")))
+    if(val.has_field(_XPLATSTR("Properties")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("properties")];
+        web::json::value& fieldValue = val[_XPLATSTR("Properties")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableProperties> newItem(new TableProperties());
@@ -80,14 +80,14 @@ void TablePropertiesResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_PropertiesIsSet)
     {
         if (m_Properties.get())
         {
-            m_Properties->toMultipart(multipart, _XPLATSTR("properties."));
+            m_Properties->toMultipart(multipart, _XPLATSTR("Properties."));
         }
         
     }
@@ -95,16 +95,16 @@ void TablePropertiesResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void TablePropertiesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("properties")))
+    if(multipart->hasContent(_XPLATSTR("Properties")))
     {
-        if(multipart->hasContent(_XPLATSTR("properties")))
+        if(multipart->hasContent(_XPLATSTR("Properties")))
         {
             std::shared_ptr<TableProperties> newItem(new TableProperties());
-            newItem->fromMultiPart(multipart, _XPLATSTR("properties."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Properties."));
             setProperties( newItem );
         }
     }

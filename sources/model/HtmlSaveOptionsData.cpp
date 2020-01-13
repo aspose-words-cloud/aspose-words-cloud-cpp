@@ -129,159 +129,159 @@ web::json::value HtmlSaveOptionsData::toJson() const
 
     if(m_AllowNegativeIndentIsSet)
     {
-        val[_XPLATSTR("allowNegativeIndent")] = ModelBase::toJson(m_AllowNegativeIndent);
+        val[_XPLATSTR("AllowNegativeIndent")] = ModelBase::toJson(m_AllowNegativeIndent);
     }
     if(m_CssClassNamePrefixIsSet)
     {
-        val[_XPLATSTR("cssClassNamePrefix")] = ModelBase::toJson(m_CssClassNamePrefix);
+        val[_XPLATSTR("CssClassNamePrefix")] = ModelBase::toJson(m_CssClassNamePrefix);
     }
     if(m_CssStyleSheetFileNameIsSet)
     {
-        val[_XPLATSTR("cssStyleSheetFileName")] = ModelBase::toJson(m_CssStyleSheetFileName);
+        val[_XPLATSTR("CssStyleSheetFileName")] = ModelBase::toJson(m_CssStyleSheetFileName);
     }
     if(m_CssStyleSheetTypeIsSet)
     {
-        val[_XPLATSTR("cssStyleSheetType")] = ModelBase::toJson(m_CssStyleSheetType);
+        val[_XPLATSTR("CssStyleSheetType")] = ModelBase::toJson(m_CssStyleSheetType);
     }
     if(m_DocumentSplitCriteriaIsSet)
     {
-        val[_XPLATSTR("documentSplitCriteria")] = ModelBase::toJson(m_DocumentSplitCriteria);
+        val[_XPLATSTR("DocumentSplitCriteria")] = ModelBase::toJson(m_DocumentSplitCriteria);
     }
     if(m_DocumentSplitHeadingLevelIsSet)
     {
-        val[_XPLATSTR("documentSplitHeadingLevel")] = ModelBase::toJson(m_DocumentSplitHeadingLevel);
+        val[_XPLATSTR("DocumentSplitHeadingLevel")] = ModelBase::toJson(m_DocumentSplitHeadingLevel);
     }
     if(m_EncodingIsSet)
     {
-        val[_XPLATSTR("encoding")] = ModelBase::toJson(m_Encoding);
+        val[_XPLATSTR("Encoding")] = ModelBase::toJson(m_Encoding);
     }
     if(m_ExportDocumentPropertiesIsSet)
     {
-        val[_XPLATSTR("exportDocumentProperties")] = ModelBase::toJson(m_ExportDocumentProperties);
+        val[_XPLATSTR("ExportDocumentProperties")] = ModelBase::toJson(m_ExportDocumentProperties);
     }
     if(m_ExportDropDownFormFieldAsTextIsSet)
     {
-        val[_XPLATSTR("exportDropDownFormFieldAsText")] = ModelBase::toJson(m_ExportDropDownFormFieldAsText);
+        val[_XPLATSTR("ExportDropDownFormFieldAsText")] = ModelBase::toJson(m_ExportDropDownFormFieldAsText);
     }
     if(m_ExportFontResourcesIsSet)
     {
-        val[_XPLATSTR("exportFontResources")] = ModelBase::toJson(m_ExportFontResources);
+        val[_XPLATSTR("ExportFontResources")] = ModelBase::toJson(m_ExportFontResources);
     }
     if(m_ExportFontsAsBase64IsSet)
     {
-        val[_XPLATSTR("exportFontsAsBase64")] = ModelBase::toJson(m_ExportFontsAsBase64);
+        val[_XPLATSTR("ExportFontsAsBase64")] = ModelBase::toJson(m_ExportFontsAsBase64);
     }
     if(m_ExportHeadersFootersModeIsSet)
     {
-        val[_XPLATSTR("exportHeadersFootersMode")] = ModelBase::toJson(m_ExportHeadersFootersMode);
+        val[_XPLATSTR("ExportHeadersFootersMode")] = ModelBase::toJson(m_ExportHeadersFootersMode);
     }
     if(m_ExportImagesAsBase64IsSet)
     {
-        val[_XPLATSTR("exportImagesAsBase64")] = ModelBase::toJson(m_ExportImagesAsBase64);
+        val[_XPLATSTR("ExportImagesAsBase64")] = ModelBase::toJson(m_ExportImagesAsBase64);
     }
     if(m_ExportLanguageInformationIsSet)
     {
-        val[_XPLATSTR("exportLanguageInformation")] = ModelBase::toJson(m_ExportLanguageInformation);
+        val[_XPLATSTR("ExportLanguageInformation")] = ModelBase::toJson(m_ExportLanguageInformation);
     }
     if(m_ExportListLabelsIsSet)
     {
-        val[_XPLATSTR("exportListLabels")] = ModelBase::toJson(m_ExportListLabels);
+        val[_XPLATSTR("ExportListLabels")] = ModelBase::toJson(m_ExportListLabels);
     }
     if(m_ExportOriginalUrlForLinkedImagesIsSet)
     {
-        val[_XPLATSTR("exportOriginalUrlForLinkedImages")] = ModelBase::toJson(m_ExportOriginalUrlForLinkedImages);
+        val[_XPLATSTR("ExportOriginalUrlForLinkedImages")] = ModelBase::toJson(m_ExportOriginalUrlForLinkedImages);
     }
     if(m_ExportPageMarginsIsSet)
     {
-        val[_XPLATSTR("exportPageMargins")] = ModelBase::toJson(m_ExportPageMargins);
+        val[_XPLATSTR("ExportPageMargins")] = ModelBase::toJson(m_ExportPageMargins);
     }
     if(m_ExportPageSetupIsSet)
     {
-        val[_XPLATSTR("exportPageSetup")] = ModelBase::toJson(m_ExportPageSetup);
+        val[_XPLATSTR("ExportPageSetup")] = ModelBase::toJson(m_ExportPageSetup);
     }
     if(m_ExportRelativeFontSizeIsSet)
     {
-        val[_XPLATSTR("exportRelativeFontSize")] = ModelBase::toJson(m_ExportRelativeFontSize);
+        val[_XPLATSTR("ExportRelativeFontSize")] = ModelBase::toJson(m_ExportRelativeFontSize);
     }
     if(m_ExportRoundtripInformationIsSet)
     {
-        val[_XPLATSTR("exportRoundtripInformation")] = ModelBase::toJson(m_ExportRoundtripInformation);
+        val[_XPLATSTR("ExportRoundtripInformation")] = ModelBase::toJson(m_ExportRoundtripInformation);
     }
     if(m_ExportTextBoxAsSvgIsSet)
     {
-        val[_XPLATSTR("exportTextBoxAsSvg")] = ModelBase::toJson(m_ExportTextBoxAsSvg);
+        val[_XPLATSTR("ExportTextBoxAsSvg")] = ModelBase::toJson(m_ExportTextBoxAsSvg);
     }
     if(m_ExportTextInputFormFieldAsTextIsSet)
     {
-        val[_XPLATSTR("exportTextInputFormFieldAsText")] = ModelBase::toJson(m_ExportTextInputFormFieldAsText);
+        val[_XPLATSTR("ExportTextInputFormFieldAsText")] = ModelBase::toJson(m_ExportTextInputFormFieldAsText);
     }
     if(m_ExportTocPageNumbersIsSet)
     {
-        val[_XPLATSTR("exportTocPageNumbers")] = ModelBase::toJson(m_ExportTocPageNumbers);
+        val[_XPLATSTR("ExportTocPageNumbers")] = ModelBase::toJson(m_ExportTocPageNumbers);
     }
     if(m_ExportXhtmlTransitionalIsSet)
     {
-        val[_XPLATSTR("exportXhtmlTransitional")] = ModelBase::toJson(m_ExportXhtmlTransitional);
+        val[_XPLATSTR("ExportXhtmlTransitional")] = ModelBase::toJson(m_ExportXhtmlTransitional);
     }
     if(m_FontResourcesSubsettingSizeThresholdIsSet)
     {
-        val[_XPLATSTR("fontResourcesSubsettingSizeThreshold")] = ModelBase::toJson(m_FontResourcesSubsettingSizeThreshold);
+        val[_XPLATSTR("FontResourcesSubsettingSizeThreshold")] = ModelBase::toJson(m_FontResourcesSubsettingSizeThreshold);
     }
     if(m_FontsFolderIsSet)
     {
-        val[_XPLATSTR("fontsFolder")] = ModelBase::toJson(m_FontsFolder);
+        val[_XPLATSTR("FontsFolder")] = ModelBase::toJson(m_FontsFolder);
     }
     if(m_FontsFolderAliasIsSet)
     {
-        val[_XPLATSTR("fontsFolderAlias")] = ModelBase::toJson(m_FontsFolderAlias);
+        val[_XPLATSTR("FontsFolderAlias")] = ModelBase::toJson(m_FontsFolderAlias);
     }
     if(m_HtmlVersionIsSet)
     {
-        val[_XPLATSTR("htmlVersion")] = ModelBase::toJson(m_HtmlVersion);
+        val[_XPLATSTR("HtmlVersion")] = ModelBase::toJson(m_HtmlVersion);
     }
     if(m_ImageResolutionIsSet)
     {
-        val[_XPLATSTR("imageResolution")] = ModelBase::toJson(m_ImageResolution);
+        val[_XPLATSTR("ImageResolution")] = ModelBase::toJson(m_ImageResolution);
     }
     if(m_ImagesFolderIsSet)
     {
-        val[_XPLATSTR("imagesFolder")] = ModelBase::toJson(m_ImagesFolder);
+        val[_XPLATSTR("ImagesFolder")] = ModelBase::toJson(m_ImagesFolder);
     }
     if(m_ImagesFolderAliasIsSet)
     {
-        val[_XPLATSTR("imagesFolderAlias")] = ModelBase::toJson(m_ImagesFolderAlias);
+        val[_XPLATSTR("ImagesFolderAlias")] = ModelBase::toJson(m_ImagesFolderAlias);
     }
     if(m_MetafileFormatIsSet)
     {
-        val[_XPLATSTR("metafileFormat")] = ModelBase::toJson(m_MetafileFormat);
+        val[_XPLATSTR("MetafileFormat")] = ModelBase::toJson(m_MetafileFormat);
     }
     if(m_OfficeMathOutputModeIsSet)
     {
-        val[_XPLATSTR("officeMathOutputMode")] = ModelBase::toJson(m_OfficeMathOutputMode);
+        val[_XPLATSTR("OfficeMathOutputMode")] = ModelBase::toJson(m_OfficeMathOutputMode);
     }
     if(m_PrettyFormatIsSet)
     {
-        val[_XPLATSTR("prettyFormat")] = ModelBase::toJson(m_PrettyFormat);
+        val[_XPLATSTR("PrettyFormat")] = ModelBase::toJson(m_PrettyFormat);
     }
     if(m_ResolveFontNamesIsSet)
     {
-        val[_XPLATSTR("resolveFontNames")] = ModelBase::toJson(m_ResolveFontNames);
+        val[_XPLATSTR("ResolveFontNames")] = ModelBase::toJson(m_ResolveFontNames);
     }
     if(m_ResourceFolderIsSet)
     {
-        val[_XPLATSTR("resourceFolder")] = ModelBase::toJson(m_ResourceFolder);
+        val[_XPLATSTR("ResourceFolder")] = ModelBase::toJson(m_ResourceFolder);
     }
     if(m_ResourceFolderAliasIsSet)
     {
-        val[_XPLATSTR("resourceFolderAlias")] = ModelBase::toJson(m_ResourceFolderAlias);
+        val[_XPLATSTR("ResourceFolderAlias")] = ModelBase::toJson(m_ResourceFolderAlias);
     }
     if(m_ScaleImageToShapeSizeIsSet)
     {
-        val[_XPLATSTR("scaleImageToShapeSize")] = ModelBase::toJson(m_ScaleImageToShapeSize);
+        val[_XPLATSTR("ScaleImageToShapeSize")] = ModelBase::toJson(m_ScaleImageToShapeSize);
     }
     if(m_TableWidthOutputModeIsSet)
     {
-        val[_XPLATSTR("tableWidthOutputMode")] = ModelBase::toJson(m_TableWidthOutputMode);
+        val[_XPLATSTR("TableWidthOutputMode")] = ModelBase::toJson(m_TableWidthOutputMode);
     }
 
     return val;
@@ -291,313 +291,313 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("allowNegativeIndent")))
+    if(val.has_field(_XPLATSTR("AllowNegativeIndent")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("allowNegativeIndent")];
+        web::json::value& fieldValue = val[_XPLATSTR("AllowNegativeIndent")];
         if(!fieldValue.is_null())
         {
             setAllowNegativeIndent(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("cssClassNamePrefix")))
+    if(val.has_field(_XPLATSTR("CssClassNamePrefix")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("cssClassNamePrefix")];
+        web::json::value& fieldValue = val[_XPLATSTR("CssClassNamePrefix")];
         if(!fieldValue.is_null())
         {
             setCssClassNamePrefix(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("cssStyleSheetFileName")))
+    if(val.has_field(_XPLATSTR("CssStyleSheetFileName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("cssStyleSheetFileName")];
+        web::json::value& fieldValue = val[_XPLATSTR("CssStyleSheetFileName")];
         if(!fieldValue.is_null())
         {
             setCssStyleSheetFileName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("cssStyleSheetType")))
+    if(val.has_field(_XPLATSTR("CssStyleSheetType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("cssStyleSheetType")];
+        web::json::value& fieldValue = val[_XPLATSTR("CssStyleSheetType")];
         if(!fieldValue.is_null())
         {
             setCssStyleSheetType(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("documentSplitCriteria")))
+    if(val.has_field(_XPLATSTR("DocumentSplitCriteria")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("documentSplitCriteria")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentSplitCriteria")];
         if(!fieldValue.is_null())
         {
             setDocumentSplitCriteria(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("documentSplitHeadingLevel")))
+    if(val.has_field(_XPLATSTR("DocumentSplitHeadingLevel")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("documentSplitHeadingLevel")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentSplitHeadingLevel")];
         if(!fieldValue.is_null())
         {
             setDocumentSplitHeadingLevel(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("encoding")))
+    if(val.has_field(_XPLATSTR("Encoding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("encoding")];
+        web::json::value& fieldValue = val[_XPLATSTR("Encoding")];
         if(!fieldValue.is_null())
         {
             setEncoding(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportDocumentProperties")))
+    if(val.has_field(_XPLATSTR("ExportDocumentProperties")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportDocumentProperties")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportDocumentProperties")];
         if(!fieldValue.is_null())
         {
             setExportDocumentProperties(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportDropDownFormFieldAsText")))
+    if(val.has_field(_XPLATSTR("ExportDropDownFormFieldAsText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportDropDownFormFieldAsText")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportDropDownFormFieldAsText")];
         if(!fieldValue.is_null())
         {
             setExportDropDownFormFieldAsText(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportFontResources")))
+    if(val.has_field(_XPLATSTR("ExportFontResources")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportFontResources")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportFontResources")];
         if(!fieldValue.is_null())
         {
             setExportFontResources(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportFontsAsBase64")))
+    if(val.has_field(_XPLATSTR("ExportFontsAsBase64")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportFontsAsBase64")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportFontsAsBase64")];
         if(!fieldValue.is_null())
         {
             setExportFontsAsBase64(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportHeadersFootersMode")))
+    if(val.has_field(_XPLATSTR("ExportHeadersFootersMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportHeadersFootersMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportHeadersFootersMode")];
         if(!fieldValue.is_null())
         {
             setExportHeadersFootersMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportImagesAsBase64")))
+    if(val.has_field(_XPLATSTR("ExportImagesAsBase64")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportImagesAsBase64")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportImagesAsBase64")];
         if(!fieldValue.is_null())
         {
             setExportImagesAsBase64(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportLanguageInformation")))
+    if(val.has_field(_XPLATSTR("ExportLanguageInformation")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportLanguageInformation")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportLanguageInformation")];
         if(!fieldValue.is_null())
         {
             setExportLanguageInformation(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportListLabels")))
+    if(val.has_field(_XPLATSTR("ExportListLabels")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportListLabels")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportListLabels")];
         if(!fieldValue.is_null())
         {
             setExportListLabels(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportOriginalUrlForLinkedImages")))
+    if(val.has_field(_XPLATSTR("ExportOriginalUrlForLinkedImages")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportOriginalUrlForLinkedImages")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportOriginalUrlForLinkedImages")];
         if(!fieldValue.is_null())
         {
             setExportOriginalUrlForLinkedImages(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportPageMargins")))
+    if(val.has_field(_XPLATSTR("ExportPageMargins")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportPageMargins")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportPageMargins")];
         if(!fieldValue.is_null())
         {
             setExportPageMargins(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportPageSetup")))
+    if(val.has_field(_XPLATSTR("ExportPageSetup")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportPageSetup")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportPageSetup")];
         if(!fieldValue.is_null())
         {
             setExportPageSetup(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportRelativeFontSize")))
+    if(val.has_field(_XPLATSTR("ExportRelativeFontSize")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportRelativeFontSize")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportRelativeFontSize")];
         if(!fieldValue.is_null())
         {
             setExportRelativeFontSize(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportRoundtripInformation")))
+    if(val.has_field(_XPLATSTR("ExportRoundtripInformation")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportRoundtripInformation")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportRoundtripInformation")];
         if(!fieldValue.is_null())
         {
             setExportRoundtripInformation(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportTextBoxAsSvg")))
+    if(val.has_field(_XPLATSTR("ExportTextBoxAsSvg")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportTextBoxAsSvg")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportTextBoxAsSvg")];
         if(!fieldValue.is_null())
         {
             setExportTextBoxAsSvg(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportTextInputFormFieldAsText")))
+    if(val.has_field(_XPLATSTR("ExportTextInputFormFieldAsText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportTextInputFormFieldAsText")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportTextInputFormFieldAsText")];
         if(!fieldValue.is_null())
         {
             setExportTextInputFormFieldAsText(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportTocPageNumbers")))
+    if(val.has_field(_XPLATSTR("ExportTocPageNumbers")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportTocPageNumbers")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportTocPageNumbers")];
         if(!fieldValue.is_null())
         {
             setExportTocPageNumbers(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exportXhtmlTransitional")))
+    if(val.has_field(_XPLATSTR("ExportXhtmlTransitional")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exportXhtmlTransitional")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExportXhtmlTransitional")];
         if(!fieldValue.is_null())
         {
             setExportXhtmlTransitional(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("fontResourcesSubsettingSizeThreshold")))
+    if(val.has_field(_XPLATSTR("FontResourcesSubsettingSizeThreshold")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("fontResourcesSubsettingSizeThreshold")];
+        web::json::value& fieldValue = val[_XPLATSTR("FontResourcesSubsettingSizeThreshold")];
         if(!fieldValue.is_null())
         {
             setFontResourcesSubsettingSizeThreshold(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("fontsFolder")))
+    if(val.has_field(_XPLATSTR("FontsFolder")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("fontsFolder")];
+        web::json::value& fieldValue = val[_XPLATSTR("FontsFolder")];
         if(!fieldValue.is_null())
         {
             setFontsFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("fontsFolderAlias")))
+    if(val.has_field(_XPLATSTR("FontsFolderAlias")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("fontsFolderAlias")];
+        web::json::value& fieldValue = val[_XPLATSTR("FontsFolderAlias")];
         if(!fieldValue.is_null())
         {
             setFontsFolderAlias(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("htmlVersion")))
+    if(val.has_field(_XPLATSTR("HtmlVersion")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("htmlVersion")];
+        web::json::value& fieldValue = val[_XPLATSTR("HtmlVersion")];
         if(!fieldValue.is_null())
         {
             setHtmlVersion(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("imageResolution")))
+    if(val.has_field(_XPLATSTR("ImageResolution")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("imageResolution")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImageResolution")];
         if(!fieldValue.is_null())
         {
             setImageResolution(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("imagesFolder")))
+    if(val.has_field(_XPLATSTR("ImagesFolder")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("imagesFolder")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImagesFolder")];
         if(!fieldValue.is_null())
         {
             setImagesFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("imagesFolderAlias")))
+    if(val.has_field(_XPLATSTR("ImagesFolderAlias")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("imagesFolderAlias")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImagesFolderAlias")];
         if(!fieldValue.is_null())
         {
             setImagesFolderAlias(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("metafileFormat")))
+    if(val.has_field(_XPLATSTR("MetafileFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("metafileFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("MetafileFormat")];
         if(!fieldValue.is_null())
         {
             setMetafileFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("officeMathOutputMode")))
+    if(val.has_field(_XPLATSTR("OfficeMathOutputMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("officeMathOutputMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("OfficeMathOutputMode")];
         if(!fieldValue.is_null())
         {
             setOfficeMathOutputMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("prettyFormat")))
+    if(val.has_field(_XPLATSTR("PrettyFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("prettyFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
             setPrettyFormat(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("resolveFontNames")))
+    if(val.has_field(_XPLATSTR("ResolveFontNames")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("resolveFontNames")];
+        web::json::value& fieldValue = val[_XPLATSTR("ResolveFontNames")];
         if(!fieldValue.is_null())
         {
             setResolveFontNames(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("resourceFolder")))
+    if(val.has_field(_XPLATSTR("ResourceFolder")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("resourceFolder")];
+        web::json::value& fieldValue = val[_XPLATSTR("ResourceFolder")];
         if(!fieldValue.is_null())
         {
             setResourceFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("resourceFolderAlias")))
+    if(val.has_field(_XPLATSTR("ResourceFolderAlias")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("resourceFolderAlias")];
+        web::json::value& fieldValue = val[_XPLATSTR("ResourceFolderAlias")];
         if(!fieldValue.is_null())
         {
             setResourceFolderAlias(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("scaleImageToShapeSize")))
+    if(val.has_field(_XPLATSTR("ScaleImageToShapeSize")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("scaleImageToShapeSize")];
+        web::json::value& fieldValue = val[_XPLATSTR("ScaleImageToShapeSize")];
         if(!fieldValue.is_null())
         {
             setScaleImageToShapeSize(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("tableWidthOutputMode")))
+    if(val.has_field(_XPLATSTR("TableWidthOutputMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("tableWidthOutputMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("TableWidthOutputMode")];
         if(!fieldValue.is_null())
         {
             setTableWidthOutputMode(ModelBase::stringFromJson(fieldValue));
@@ -611,413 +611,413 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
     if(m_ColorModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("colorMode"), m_ColorMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
         
     }
     if(m_SaveFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("saveFormat"), m_SaveFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
         
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
     if(m_DmlRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dmlRenderingMode"), m_DmlRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
         
     }
     if(m_DmlEffectsRenderingModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
         
     }
     if(m_ZipOutputIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("zipOutput"), m_ZipOutput));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
     }
     if(m_UpdateSdtContentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateSdtContent"), m_UpdateSdtContent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
     }
     if(m_UpdateFieldsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("updateFields"), m_UpdateFields));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
     if(m_AllowNegativeIndentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("allowNegativeIndent"), m_AllowNegativeIndent));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllowNegativeIndent"), m_AllowNegativeIndent));
     }
     if(m_CssClassNamePrefixIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("cssClassNamePrefix"), m_CssClassNamePrefix));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CssClassNamePrefix"), m_CssClassNamePrefix));
         
     }
     if(m_CssStyleSheetFileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("cssStyleSheetFileName"), m_CssStyleSheetFileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CssStyleSheetFileName"), m_CssStyleSheetFileName));
         
     }
     if(m_CssStyleSheetTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("cssStyleSheetType"), m_CssStyleSheetType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CssStyleSheetType"), m_CssStyleSheetType));
         
     }
     if(m_DocumentSplitCriteriaIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("documentSplitCriteria"), m_DocumentSplitCriteria));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentSplitCriteria"), m_DocumentSplitCriteria));
         
     }
     if(m_DocumentSplitHeadingLevelIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("documentSplitHeadingLevel"), m_DocumentSplitHeadingLevel));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentSplitHeadingLevel"), m_DocumentSplitHeadingLevel));
     }
     if(m_EncodingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("encoding"), m_Encoding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Encoding"), m_Encoding));
         
     }
     if(m_ExportDocumentPropertiesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportDocumentProperties"), m_ExportDocumentProperties));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportDocumentProperties"), m_ExportDocumentProperties));
     }
     if(m_ExportDropDownFormFieldAsTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportDropDownFormFieldAsText"), m_ExportDropDownFormFieldAsText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportDropDownFormFieldAsText"), m_ExportDropDownFormFieldAsText));
     }
     if(m_ExportFontResourcesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportFontResources"), m_ExportFontResources));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportFontResources"), m_ExportFontResources));
     }
     if(m_ExportFontsAsBase64IsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportFontsAsBase64"), m_ExportFontsAsBase64));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportFontsAsBase64"), m_ExportFontsAsBase64));
     }
     if(m_ExportHeadersFootersModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportHeadersFootersMode"), m_ExportHeadersFootersMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportHeadersFootersMode"), m_ExportHeadersFootersMode));
         
     }
     if(m_ExportImagesAsBase64IsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportImagesAsBase64"), m_ExportImagesAsBase64));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportImagesAsBase64"), m_ExportImagesAsBase64));
     }
     if(m_ExportLanguageInformationIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportLanguageInformation"), m_ExportLanguageInformation));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportLanguageInformation"), m_ExportLanguageInformation));
     }
     if(m_ExportListLabelsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportListLabels"), m_ExportListLabels));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportListLabels"), m_ExportListLabels));
         
     }
     if(m_ExportOriginalUrlForLinkedImagesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportOriginalUrlForLinkedImages"), m_ExportOriginalUrlForLinkedImages));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportOriginalUrlForLinkedImages"), m_ExportOriginalUrlForLinkedImages));
     }
     if(m_ExportPageMarginsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportPageMargins"), m_ExportPageMargins));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportPageMargins"), m_ExportPageMargins));
     }
     if(m_ExportPageSetupIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportPageSetup"), m_ExportPageSetup));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportPageSetup"), m_ExportPageSetup));
     }
     if(m_ExportRelativeFontSizeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportRelativeFontSize"), m_ExportRelativeFontSize));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportRelativeFontSize"), m_ExportRelativeFontSize));
     }
     if(m_ExportRoundtripInformationIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportRoundtripInformation"), m_ExportRoundtripInformation));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportRoundtripInformation"), m_ExportRoundtripInformation));
     }
     if(m_ExportTextBoxAsSvgIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportTextBoxAsSvg"), m_ExportTextBoxAsSvg));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportTextBoxAsSvg"), m_ExportTextBoxAsSvg));
     }
     if(m_ExportTextInputFormFieldAsTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportTextInputFormFieldAsText"), m_ExportTextInputFormFieldAsText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportTextInputFormFieldAsText"), m_ExportTextInputFormFieldAsText));
     }
     if(m_ExportTocPageNumbersIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportTocPageNumbers"), m_ExportTocPageNumbers));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportTocPageNumbers"), m_ExportTocPageNumbers));
     }
     if(m_ExportXhtmlTransitionalIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exportXhtmlTransitional"), m_ExportXhtmlTransitional));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportXhtmlTransitional"), m_ExportXhtmlTransitional));
     }
     if(m_FontResourcesSubsettingSizeThresholdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fontResourcesSubsettingSizeThreshold"), m_FontResourcesSubsettingSizeThreshold));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FontResourcesSubsettingSizeThreshold"), m_FontResourcesSubsettingSizeThreshold));
     }
     if(m_FontsFolderIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fontsFolder"), m_FontsFolder));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FontsFolder"), m_FontsFolder));
         
     }
     if(m_FontsFolderAliasIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fontsFolderAlias"), m_FontsFolderAlias));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FontsFolderAlias"), m_FontsFolderAlias));
         
     }
     if(m_HtmlVersionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("htmlVersion"), m_HtmlVersion));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HtmlVersion"), m_HtmlVersion));
         
     }
     if(m_ImageResolutionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("imageResolution"), m_ImageResolution));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImageResolution"), m_ImageResolution));
     }
     if(m_ImagesFolderIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("imagesFolder"), m_ImagesFolder));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImagesFolder"), m_ImagesFolder));
         
     }
     if(m_ImagesFolderAliasIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("imagesFolderAlias"), m_ImagesFolderAlias));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImagesFolderAlias"), m_ImagesFolderAlias));
         
     }
     if(m_MetafileFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("metafileFormat"), m_MetafileFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MetafileFormat"), m_MetafileFormat));
         
     }
     if(m_OfficeMathOutputModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("officeMathOutputMode"), m_OfficeMathOutputMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OfficeMathOutputMode"), m_OfficeMathOutputMode));
         
     }
     if(m_PrettyFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("prettyFormat"), m_PrettyFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
     }
     if(m_ResolveFontNamesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("resolveFontNames"), m_ResolveFontNames));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResolveFontNames"), m_ResolveFontNames));
     }
     if(m_ResourceFolderIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("resourceFolder"), m_ResourceFolder));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourceFolder"), m_ResourceFolder));
         
     }
     if(m_ResourceFolderAliasIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("resourceFolderAlias"), m_ResourceFolderAlias));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourceFolderAlias"), m_ResourceFolderAlias));
         
     }
     if(m_ScaleImageToShapeSizeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("scaleImageToShapeSize"), m_ScaleImageToShapeSize));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ScaleImageToShapeSize"), m_ScaleImageToShapeSize));
     }
     if(m_TableWidthOutputModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("tableWidthOutputMode"), m_TableWidthOutputMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TableWidthOutputMode"), m_TableWidthOutputMode));
         
     }
 }
 
 void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("colorMode")))
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("colorMode"))));
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("saveFormat")))
+    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("saveFormat"))));
+        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("fileName")))
+    if(multipart->hasContent(_XPLATSTR("FileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("dmlRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
     {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dmlRenderingMode"))));
+        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("dmlEffectsRenderingMode")))
+    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
     {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dmlEffectsRenderingMode"))));
+        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("zipOutput")))
+    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
     {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("zipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
     }
-    if(multipart->hasContent(_XPLATSTR("updateLastSavedTimeProperty")))
+    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
     }
-    if(multipart->hasContent(_XPLATSTR("updateSdtContent")))
+    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("updateFields")))
+    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("updateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
-    if(multipart->hasContent(_XPLATSTR("allowNegativeIndent")))
+    if(multipart->hasContent(_XPLATSTR("AllowNegativeIndent")))
     {
-        setAllowNegativeIndent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("allowNegativeIndent"))));
+        setAllowNegativeIndent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowNegativeIndent"))));
     }
-    if(multipart->hasContent(_XPLATSTR("cssClassNamePrefix")))
+    if(multipart->hasContent(_XPLATSTR("CssClassNamePrefix")))
     {
-        setCssClassNamePrefix(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("cssClassNamePrefix"))));
+        setCssClassNamePrefix(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CssClassNamePrefix"))));
     }
-    if(multipart->hasContent(_XPLATSTR("cssStyleSheetFileName")))
+    if(multipart->hasContent(_XPLATSTR("CssStyleSheetFileName")))
     {
-        setCssStyleSheetFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("cssStyleSheetFileName"))));
+        setCssStyleSheetFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CssStyleSheetFileName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("cssStyleSheetType")))
+    if(multipart->hasContent(_XPLATSTR("CssStyleSheetType")))
     {
-        setCssStyleSheetType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("cssStyleSheetType"))));
+        setCssStyleSheetType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CssStyleSheetType"))));
     }
-    if(multipart->hasContent(_XPLATSTR("documentSplitCriteria")))
+    if(multipart->hasContent(_XPLATSTR("DocumentSplitCriteria")))
     {
-        setDocumentSplitCriteria(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("documentSplitCriteria"))));
+        setDocumentSplitCriteria(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DocumentSplitCriteria"))));
     }
-    if(multipart->hasContent(_XPLATSTR("documentSplitHeadingLevel")))
+    if(multipart->hasContent(_XPLATSTR("DocumentSplitHeadingLevel")))
     {
-        setDocumentSplitHeadingLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("documentSplitHeadingLevel"))));
+        setDocumentSplitHeadingLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("DocumentSplitHeadingLevel"))));
     }
-    if(multipart->hasContent(_XPLATSTR("encoding")))
+    if(multipart->hasContent(_XPLATSTR("Encoding")))
     {
-        setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("encoding"))));
+        setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Encoding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportDocumentProperties")))
+    if(multipart->hasContent(_XPLATSTR("ExportDocumentProperties")))
     {
-        setExportDocumentProperties(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportDocumentProperties"))));
+        setExportDocumentProperties(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportDocumentProperties"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportDropDownFormFieldAsText")))
+    if(multipart->hasContent(_XPLATSTR("ExportDropDownFormFieldAsText")))
     {
-        setExportDropDownFormFieldAsText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportDropDownFormFieldAsText"))));
+        setExportDropDownFormFieldAsText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportDropDownFormFieldAsText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportFontResources")))
+    if(multipart->hasContent(_XPLATSTR("ExportFontResources")))
     {
-        setExportFontResources(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportFontResources"))));
+        setExportFontResources(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportFontResources"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportFontsAsBase64")))
+    if(multipart->hasContent(_XPLATSTR("ExportFontsAsBase64")))
     {
-        setExportFontsAsBase64(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportFontsAsBase64"))));
+        setExportFontsAsBase64(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportFontsAsBase64"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportHeadersFootersMode")))
+    if(multipart->hasContent(_XPLATSTR("ExportHeadersFootersMode")))
     {
-        setExportHeadersFootersMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("exportHeadersFootersMode"))));
+        setExportHeadersFootersMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExportHeadersFootersMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportImagesAsBase64")))
+    if(multipart->hasContent(_XPLATSTR("ExportImagesAsBase64")))
     {
-        setExportImagesAsBase64(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportImagesAsBase64"))));
+        setExportImagesAsBase64(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportImagesAsBase64"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportLanguageInformation")))
+    if(multipart->hasContent(_XPLATSTR("ExportLanguageInformation")))
     {
-        setExportLanguageInformation(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportLanguageInformation"))));
+        setExportLanguageInformation(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportLanguageInformation"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportListLabels")))
+    if(multipart->hasContent(_XPLATSTR("ExportListLabels")))
     {
-        setExportListLabels(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("exportListLabels"))));
+        setExportListLabels(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExportListLabels"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportOriginalUrlForLinkedImages")))
+    if(multipart->hasContent(_XPLATSTR("ExportOriginalUrlForLinkedImages")))
     {
-        setExportOriginalUrlForLinkedImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportOriginalUrlForLinkedImages"))));
+        setExportOriginalUrlForLinkedImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportOriginalUrlForLinkedImages"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportPageMargins")))
+    if(multipart->hasContent(_XPLATSTR("ExportPageMargins")))
     {
-        setExportPageMargins(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportPageMargins"))));
+        setExportPageMargins(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportPageMargins"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportPageSetup")))
+    if(multipart->hasContent(_XPLATSTR("ExportPageSetup")))
     {
-        setExportPageSetup(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportPageSetup"))));
+        setExportPageSetup(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportPageSetup"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportRelativeFontSize")))
+    if(multipart->hasContent(_XPLATSTR("ExportRelativeFontSize")))
     {
-        setExportRelativeFontSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportRelativeFontSize"))));
+        setExportRelativeFontSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportRelativeFontSize"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportRoundtripInformation")))
+    if(multipart->hasContent(_XPLATSTR("ExportRoundtripInformation")))
     {
-        setExportRoundtripInformation(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportRoundtripInformation"))));
+        setExportRoundtripInformation(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportRoundtripInformation"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportTextBoxAsSvg")))
+    if(multipart->hasContent(_XPLATSTR("ExportTextBoxAsSvg")))
     {
-        setExportTextBoxAsSvg(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportTextBoxAsSvg"))));
+        setExportTextBoxAsSvg(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportTextBoxAsSvg"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportTextInputFormFieldAsText")))
+    if(multipart->hasContent(_XPLATSTR("ExportTextInputFormFieldAsText")))
     {
-        setExportTextInputFormFieldAsText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportTextInputFormFieldAsText"))));
+        setExportTextInputFormFieldAsText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportTextInputFormFieldAsText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportTocPageNumbers")))
+    if(multipart->hasContent(_XPLATSTR("ExportTocPageNumbers")))
     {
-        setExportTocPageNumbers(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportTocPageNumbers"))));
+        setExportTocPageNumbers(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportTocPageNumbers"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exportXhtmlTransitional")))
+    if(multipart->hasContent(_XPLATSTR("ExportXhtmlTransitional")))
     {
-        setExportXhtmlTransitional(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("exportXhtmlTransitional"))));
+        setExportXhtmlTransitional(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportXhtmlTransitional"))));
     }
-    if(multipart->hasContent(_XPLATSTR("fontResourcesSubsettingSizeThreshold")))
+    if(multipart->hasContent(_XPLATSTR("FontResourcesSubsettingSizeThreshold")))
     {
-        setFontResourcesSubsettingSizeThreshold(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("fontResourcesSubsettingSizeThreshold"))));
+        setFontResourcesSubsettingSizeThreshold(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("FontResourcesSubsettingSizeThreshold"))));
     }
-    if(multipart->hasContent(_XPLATSTR("fontsFolder")))
+    if(multipart->hasContent(_XPLATSTR("FontsFolder")))
     {
-        setFontsFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fontsFolder"))));
+        setFontsFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FontsFolder"))));
     }
-    if(multipart->hasContent(_XPLATSTR("fontsFolderAlias")))
+    if(multipart->hasContent(_XPLATSTR("FontsFolderAlias")))
     {
-        setFontsFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fontsFolderAlias"))));
+        setFontsFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FontsFolderAlias"))));
     }
-    if(multipart->hasContent(_XPLATSTR("htmlVersion")))
+    if(multipart->hasContent(_XPLATSTR("HtmlVersion")))
     {
-        setHtmlVersion(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("htmlVersion"))));
+        setHtmlVersion(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HtmlVersion"))));
     }
-    if(multipart->hasContent(_XPLATSTR("imageResolution")))
+    if(multipart->hasContent(_XPLATSTR("ImageResolution")))
     {
-        setImageResolution(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("imageResolution"))));
+        setImageResolution(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ImageResolution"))));
     }
-    if(multipart->hasContent(_XPLATSTR("imagesFolder")))
+    if(multipart->hasContent(_XPLATSTR("ImagesFolder")))
     {
-        setImagesFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("imagesFolder"))));
+        setImagesFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImagesFolder"))));
     }
-    if(multipart->hasContent(_XPLATSTR("imagesFolderAlias")))
+    if(multipart->hasContent(_XPLATSTR("ImagesFolderAlias")))
     {
-        setImagesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("imagesFolderAlias"))));
+        setImagesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImagesFolderAlias"))));
     }
-    if(multipart->hasContent(_XPLATSTR("metafileFormat")))
+    if(multipart->hasContent(_XPLATSTR("MetafileFormat")))
     {
-        setMetafileFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("metafileFormat"))));
+        setMetafileFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("MetafileFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("officeMathOutputMode")))
+    if(multipart->hasContent(_XPLATSTR("OfficeMathOutputMode")))
     {
-        setOfficeMathOutputMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("officeMathOutputMode"))));
+        setOfficeMathOutputMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("OfficeMathOutputMode"))));
     }
-    if(multipart->hasContent(_XPLATSTR("prettyFormat")))
+    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("prettyFormat"))));
+        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("resolveFontNames")))
+    if(multipart->hasContent(_XPLATSTR("ResolveFontNames")))
     {
-        setResolveFontNames(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("resolveFontNames"))));
+        setResolveFontNames(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ResolveFontNames"))));
     }
-    if(multipart->hasContent(_XPLATSTR("resourceFolder")))
+    if(multipart->hasContent(_XPLATSTR("ResourceFolder")))
     {
-        setResourceFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("resourceFolder"))));
+        setResourceFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResourceFolder"))));
     }
-    if(multipart->hasContent(_XPLATSTR("resourceFolderAlias")))
+    if(multipart->hasContent(_XPLATSTR("ResourceFolderAlias")))
     {
-        setResourceFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("resourceFolderAlias"))));
+        setResourceFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResourceFolderAlias"))));
     }
-    if(multipart->hasContent(_XPLATSTR("scaleImageToShapeSize")))
+    if(multipart->hasContent(_XPLATSTR("ScaleImageToShapeSize")))
     {
-        setScaleImageToShapeSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("scaleImageToShapeSize"))));
+        setScaleImageToShapeSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ScaleImageToShapeSize"))));
     }
-    if(multipart->hasContent(_XPLATSTR("tableWidthOutputMode")))
+    if(multipart->hasContent(_XPLATSTR("TableWidthOutputMode")))
     {
-        setTableWidthOutputMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("tableWidthOutputMode"))));
+        setTableWidthOutputMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TableWidthOutputMode"))));
     }
 }
 

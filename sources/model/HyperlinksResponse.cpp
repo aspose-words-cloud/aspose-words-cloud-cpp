@@ -52,7 +52,7 @@ web::json::value HyperlinksResponse::toJson() const
 
     if(m_HyperlinksIsSet)
     {
-        val[_XPLATSTR("hyperlinks")] = ModelBase::toJson(m_Hyperlinks);
+        val[_XPLATSTR("Hyperlinks")] = ModelBase::toJson(m_Hyperlinks);
     }
 
     return val;
@@ -62,9 +62,9 @@ void HyperlinksResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("hyperlinks")))
+    if(val.has_field(_XPLATSTR("Hyperlinks")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("hyperlinks")];
+        web::json::value& fieldValue = val[_XPLATSTR("Hyperlinks")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Hyperlinks> newItem(new Hyperlinks());
@@ -80,14 +80,14 @@ void HyperlinksResponse::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_HyperlinksIsSet)
     {
         if (m_Hyperlinks.get())
         {
-            m_Hyperlinks->toMultipart(multipart, _XPLATSTR("hyperlinks."));
+            m_Hyperlinks->toMultipart(multipart, _XPLATSTR("Hyperlinks."));
         }
         
     }
@@ -95,16 +95,16 @@ void HyperlinksResponse::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void HyperlinksResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("hyperlinks")))
+    if(multipart->hasContent(_XPLATSTR("Hyperlinks")))
     {
-        if(multipart->hasContent(_XPLATSTR("hyperlinks")))
+        if(multipart->hasContent(_XPLATSTR("Hyperlinks")))
         {
             std::shared_ptr<Hyperlinks> newItem(new Hyperlinks());
-            newItem->fromMultiPart(multipart, _XPLATSTR("hyperlinks."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Hyperlinks."));
             setHyperlinks( newItem );
         }
     }

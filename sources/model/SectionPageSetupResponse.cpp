@@ -52,7 +52,7 @@ web::json::value SectionPageSetupResponse::toJson() const
 
     if(m_PageSetupIsSet)
     {
-        val[_XPLATSTR("pageSetup")] = ModelBase::toJson(m_PageSetup);
+        val[_XPLATSTR("PageSetup")] = ModelBase::toJson(m_PageSetup);
     }
 
     return val;
@@ -62,9 +62,9 @@ void SectionPageSetupResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("pageSetup")))
+    if(val.has_field(_XPLATSTR("PageSetup")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("pageSetup")];
+        web::json::value& fieldValue = val[_XPLATSTR("PageSetup")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<PageSetup> newItem(new PageSetup());
@@ -80,14 +80,14 @@ void SectionPageSetupResponse::toMultipart(const std::shared_ptr<MultipartFormDa
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_PageSetupIsSet)
     {
         if (m_PageSetup.get())
         {
-            m_PageSetup->toMultipart(multipart, _XPLATSTR("pageSetup."));
+            m_PageSetup->toMultipart(multipart, _XPLATSTR("PageSetup."));
         }
         
     }
@@ -95,16 +95,16 @@ void SectionPageSetupResponse::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void SectionPageSetupResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("pageSetup")))
+    if(multipart->hasContent(_XPLATSTR("PageSetup")))
     {
-        if(multipart->hasContent(_XPLATSTR("pageSetup")))
+        if(multipart->hasContent(_XPLATSTR("PageSetup")))
         {
             std::shared_ptr<PageSetup> newItem(new PageSetup());
-            newItem->fromMultiPart(multipart, _XPLATSTR("pageSetup."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("PageSetup."));
             setPageSetup( newItem );
         }
     }

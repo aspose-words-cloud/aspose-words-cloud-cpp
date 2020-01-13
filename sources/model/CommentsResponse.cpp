@@ -52,7 +52,7 @@ web::json::value CommentsResponse::toJson() const
 
     if(m_CommentsIsSet)
     {
-        val[_XPLATSTR("comments")] = ModelBase::toJson(m_Comments);
+        val[_XPLATSTR("Comments")] = ModelBase::toJson(m_Comments);
     }
 
     return val;
@@ -62,9 +62,9 @@ void CommentsResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("comments")))
+    if(val.has_field(_XPLATSTR("Comments")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("comments")];
+        web::json::value& fieldValue = val[_XPLATSTR("Comments")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<CommentsCollection> newItem(new CommentsCollection());
@@ -80,14 +80,14 @@ void CommentsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_CommentsIsSet)
     {
         if (m_Comments.get())
         {
-            m_Comments->toMultipart(multipart, _XPLATSTR("comments."));
+            m_Comments->toMultipart(multipart, _XPLATSTR("Comments."));
         }
         
     }
@@ -95,16 +95,16 @@ void CommentsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void CommentsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("comments")))
+    if(multipart->hasContent(_XPLATSTR("Comments")))
     {
-        if(multipart->hasContent(_XPLATSTR("comments")))
+        if(multipart->hasContent(_XPLATSTR("Comments")))
         {
             std::shared_ptr<CommentsCollection> newItem(new CommentsCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("comments."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Comments."));
             setComments( newItem );
         }
     }

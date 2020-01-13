@@ -74,51 +74,51 @@ web::json::value TableCellFormat::toJson() const
 
     if(m_BottomPaddingIsSet)
     {
-        val[_XPLATSTR("bottomPadding")] = ModelBase::toJson(m_BottomPadding);
+        val[_XPLATSTR("BottomPadding")] = ModelBase::toJson(m_BottomPadding);
     }
     if(m_FitTextIsSet)
     {
-        val[_XPLATSTR("fitText")] = ModelBase::toJson(m_FitText);
+        val[_XPLATSTR("FitText")] = ModelBase::toJson(m_FitText);
     }
     if(m_HorizontalMergeIsSet)
     {
-        val[_XPLATSTR("horizontalMerge")] = ModelBase::toJson(m_HorizontalMerge);
+        val[_XPLATSTR("HorizontalMerge")] = ModelBase::toJson(m_HorizontalMerge);
     }
     if(m_LeftPaddingIsSet)
     {
-        val[_XPLATSTR("leftPadding")] = ModelBase::toJson(m_LeftPadding);
+        val[_XPLATSTR("LeftPadding")] = ModelBase::toJson(m_LeftPadding);
     }
     if(m_OrientationIsSet)
     {
-        val[_XPLATSTR("orientation")] = ModelBase::toJson(m_Orientation);
+        val[_XPLATSTR("Orientation")] = ModelBase::toJson(m_Orientation);
     }
     if(m_PreferredWidthIsSet)
     {
-        val[_XPLATSTR("preferredWidth")] = ModelBase::toJson(m_PreferredWidth);
+        val[_XPLATSTR("PreferredWidth")] = ModelBase::toJson(m_PreferredWidth);
     }
     if(m_RightPaddingIsSet)
     {
-        val[_XPLATSTR("rightPadding")] = ModelBase::toJson(m_RightPadding);
+        val[_XPLATSTR("RightPadding")] = ModelBase::toJson(m_RightPadding);
     }
     if(m_TopPaddingIsSet)
     {
-        val[_XPLATSTR("topPadding")] = ModelBase::toJson(m_TopPadding);
+        val[_XPLATSTR("TopPadding")] = ModelBase::toJson(m_TopPadding);
     }
     if(m_VerticalAlignmentIsSet)
     {
-        val[_XPLATSTR("verticalAlignment")] = ModelBase::toJson(m_VerticalAlignment);
+        val[_XPLATSTR("VerticalAlignment")] = ModelBase::toJson(m_VerticalAlignment);
     }
     if(m_VerticalMergeIsSet)
     {
-        val[_XPLATSTR("verticalMerge")] = ModelBase::toJson(m_VerticalMerge);
+        val[_XPLATSTR("VerticalMerge")] = ModelBase::toJson(m_VerticalMerge);
     }
     if(m_WidthIsSet)
     {
-        val[_XPLATSTR("width")] = ModelBase::toJson(m_Width);
+        val[_XPLATSTR("Width")] = ModelBase::toJson(m_Width);
     }
     if(m_WrapTextIsSet)
     {
-        val[_XPLATSTR("wrapText")] = ModelBase::toJson(m_WrapText);
+        val[_XPLATSTR("WrapText")] = ModelBase::toJson(m_WrapText);
     }
 
     return val;
@@ -128,49 +128,49 @@ void TableCellFormat::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("bottomPadding")))
+    if(val.has_field(_XPLATSTR("BottomPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("bottomPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("BottomPadding")];
         if(!fieldValue.is_null())
         {
             setBottomPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("fitText")))
+    if(val.has_field(_XPLATSTR("FitText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("fitText")];
+        web::json::value& fieldValue = val[_XPLATSTR("FitText")];
         if(!fieldValue.is_null())
         {
             setFitText(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("horizontalMerge")))
+    if(val.has_field(_XPLATSTR("HorizontalMerge")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("horizontalMerge")];
+        web::json::value& fieldValue = val[_XPLATSTR("HorizontalMerge")];
         if(!fieldValue.is_null())
         {
             setHorizontalMerge(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("leftPadding")))
+    if(val.has_field(_XPLATSTR("LeftPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("leftPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("LeftPadding")];
         if(!fieldValue.is_null())
         {
             setLeftPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("orientation")))
+    if(val.has_field(_XPLATSTR("Orientation")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("orientation")];
+        web::json::value& fieldValue = val[_XPLATSTR("Orientation")];
         if(!fieldValue.is_null())
         {
             setOrientation(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("preferredWidth")))
+    if(val.has_field(_XPLATSTR("PreferredWidth")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("preferredWidth")];
+        web::json::value& fieldValue = val[_XPLATSTR("PreferredWidth")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
@@ -178,49 +178,49 @@ void TableCellFormat::fromJson(web::json::value& val)
             setPreferredWidth( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("rightPadding")))
+    if(val.has_field(_XPLATSTR("RightPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("rightPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("RightPadding")];
         if(!fieldValue.is_null())
         {
             setRightPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("topPadding")))
+    if(val.has_field(_XPLATSTR("TopPadding")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("topPadding")];
+        web::json::value& fieldValue = val[_XPLATSTR("TopPadding")];
         if(!fieldValue.is_null())
         {
             setTopPadding(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("verticalAlignment")))
+    if(val.has_field(_XPLATSTR("VerticalAlignment")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("verticalAlignment")];
+        web::json::value& fieldValue = val[_XPLATSTR("VerticalAlignment")];
         if(!fieldValue.is_null())
         {
             setVerticalAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("verticalMerge")))
+    if(val.has_field(_XPLATSTR("VerticalMerge")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("verticalMerge")];
+        web::json::value& fieldValue = val[_XPLATSTR("VerticalMerge")];
         if(!fieldValue.is_null())
         {
             setVerticalMerge(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("width")))
+    if(val.has_field(_XPLATSTR("Width")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("width")];
+        web::json::value& fieldValue = val[_XPLATSTR("Width")];
         if(!fieldValue.is_null())
         {
             setWidth(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("wrapText")))
+    if(val.has_field(_XPLATSTR("WrapText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("wrapText")];
+        web::json::value& fieldValue = val[_XPLATSTR("WrapText")];
         if(!fieldValue.is_null())
         {
             setWrapText(ModelBase::boolFromJson(fieldValue));
@@ -242,59 +242,59 @@ void TableCellFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     }
     if(m_BottomPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bottomPadding"), m_BottomPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BottomPadding"), m_BottomPadding));
     }
     if(m_FitTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fitText"), m_FitText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FitText"), m_FitText));
     }
     if(m_HorizontalMergeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("horizontalMerge"), m_HorizontalMerge));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HorizontalMerge"), m_HorizontalMerge));
         
     }
     if(m_LeftPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("leftPadding"), m_LeftPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftPadding"), m_LeftPadding));
     }
     if(m_OrientationIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("orientation"), m_Orientation));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Orientation"), m_Orientation));
         
     }
     if(m_PreferredWidthIsSet)
     {
         if (m_PreferredWidth.get())
         {
-            m_PreferredWidth->toMultipart(multipart, _XPLATSTR("preferredWidth."));
+            m_PreferredWidth->toMultipart(multipart, _XPLATSTR("PreferredWidth."));
         }
         
     }
     if(m_RightPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("rightPadding"), m_RightPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightPadding"), m_RightPadding));
     }
     if(m_TopPaddingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("topPadding"), m_TopPadding));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TopPadding"), m_TopPadding));
     }
     if(m_VerticalAlignmentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("verticalAlignment"), m_VerticalAlignment));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("VerticalAlignment"), m_VerticalAlignment));
         
     }
     if(m_VerticalMergeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("verticalMerge"), m_VerticalMerge));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("VerticalMerge"), m_VerticalMerge));
         
     }
     if(m_WidthIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("width"), m_Width));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Width"), m_Width));
     }
     if(m_WrapTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("wrapText"), m_WrapText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WrapText"), m_WrapText));
     }
 }
 
@@ -309,58 +309,58 @@ void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("bottomPadding")))
+    if(multipart->hasContent(_XPLATSTR("BottomPadding")))
     {
-        setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("bottomPadding"))));
+        setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BottomPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("fitText")))
+    if(multipart->hasContent(_XPLATSTR("FitText")))
     {
-        setFitText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("fitText"))));
+        setFitText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("FitText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("horizontalMerge")))
+    if(multipart->hasContent(_XPLATSTR("HorizontalMerge")))
     {
-        setHorizontalMerge(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("horizontalMerge"))));
+        setHorizontalMerge(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HorizontalMerge"))));
     }
-    if(multipart->hasContent(_XPLATSTR("leftPadding")))
+    if(multipart->hasContent(_XPLATSTR("LeftPadding")))
     {
-        setLeftPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("leftPadding"))));
+        setLeftPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("orientation")))
+    if(multipart->hasContent(_XPLATSTR("Orientation")))
     {
-        setOrientation(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("orientation"))));
+        setOrientation(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Orientation"))));
     }
-    if(multipart->hasContent(_XPLATSTR("preferredWidth")))
+    if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
     {
-        if(multipart->hasContent(_XPLATSTR("preferredWidth")))
+        if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
         {
             std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
-            newItem->fromMultiPart(multipart, _XPLATSTR("preferredWidth."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("PreferredWidth."));
             setPreferredWidth( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("rightPadding")))
+    if(multipart->hasContent(_XPLATSTR("RightPadding")))
     {
-        setRightPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("rightPadding"))));
+        setRightPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("topPadding")))
+    if(multipart->hasContent(_XPLATSTR("TopPadding")))
     {
-        setTopPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("topPadding"))));
+        setTopPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TopPadding"))));
     }
-    if(multipart->hasContent(_XPLATSTR("verticalAlignment")))
+    if(multipart->hasContent(_XPLATSTR("VerticalAlignment")))
     {
-        setVerticalAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("verticalAlignment"))));
+        setVerticalAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("VerticalAlignment"))));
     }
-    if(multipart->hasContent(_XPLATSTR("verticalMerge")))
+    if(multipart->hasContent(_XPLATSTR("VerticalMerge")))
     {
-        setVerticalMerge(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("verticalMerge"))));
+        setVerticalMerge(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("VerticalMerge"))));
     }
-    if(multipart->hasContent(_XPLATSTR("width")))
+    if(multipart->hasContent(_XPLATSTR("Width")))
     {
-        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("width"))));
+        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
     }
-    if(multipart->hasContent(_XPLATSTR("wrapText")))
+    if(multipart->hasContent(_XPLATSTR("WrapText")))
     {
-        setWrapText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("wrapText"))));
+        setWrapText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("WrapText"))));
     }
 }
 

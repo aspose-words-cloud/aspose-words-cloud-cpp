@@ -53,7 +53,7 @@ web::json::value RunLink::toJson() const
 
     if(m_TextIsSet)
     {
-        val[_XPLATSTR("text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -63,9 +63,9 @@ void RunLink::fromJson(web::json::value& val)
 {
     this->NodeLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -87,12 +87,12 @@ void RunLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
 }
@@ -108,13 +108,13 @@ void RunLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
 }
 

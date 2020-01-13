@@ -59,19 +59,19 @@ web::json::value FormFieldTextInput::toJson() const
 
     if(m_MaxLengthIsSet)
     {
-        val[_XPLATSTR("maxLength")] = ModelBase::toJson(m_MaxLength);
+        val[_XPLATSTR("MaxLength")] = ModelBase::toJson(m_MaxLength);
     }
     if(m_TextInputDefaultIsSet)
     {
-        val[_XPLATSTR("textInputDefault")] = ModelBase::toJson(m_TextInputDefault);
+        val[_XPLATSTR("TextInputDefault")] = ModelBase::toJson(m_TextInputDefault);
     }
     if(m_TextInputFormatIsSet)
     {
-        val[_XPLATSTR("textInputFormat")] = ModelBase::toJson(m_TextInputFormat);
+        val[_XPLATSTR("TextInputFormat")] = ModelBase::toJson(m_TextInputFormat);
     }
     if(m_TextInputTypeIsSet)
     {
-        val[_XPLATSTR("textInputType")] = ModelBase::toJson(m_TextInputType);
+        val[_XPLATSTR("TextInputType")] = ModelBase::toJson(m_TextInputType);
     }
 
     return val;
@@ -81,33 +81,33 @@ void FormFieldTextInput::fromJson(web::json::value& val)
 {
     this->FormField::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("maxLength")))
+    if(val.has_field(_XPLATSTR("MaxLength")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("maxLength")];
+        web::json::value& fieldValue = val[_XPLATSTR("MaxLength")];
         if(!fieldValue.is_null())
         {
             setMaxLength(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("textInputDefault")))
+    if(val.has_field(_XPLATSTR("TextInputDefault")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("textInputDefault")];
+        web::json::value& fieldValue = val[_XPLATSTR("TextInputDefault")];
         if(!fieldValue.is_null())
         {
             setTextInputDefault(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("textInputFormat")))
+    if(val.has_field(_XPLATSTR("TextInputFormat")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("textInputFormat")];
+        web::json::value& fieldValue = val[_XPLATSTR("TextInputFormat")];
         if(!fieldValue.is_null())
         {
             setTextInputFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("textInputType")))
+    if(val.has_field(_XPLATSTR("TextInputType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("textInputType")];
+        web::json::value& fieldValue = val[_XPLATSTR("TextInputType")];
         if(!fieldValue.is_null())
         {
             setTextInputType(ModelBase::stringFromJson(fieldValue));
@@ -129,67 +129,67 @@ void FormFieldTextInput::toMultipart(const std::shared_ptr<MultipartFormData>& m
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_CalculateOnExitIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("calculateOnExit"), m_CalculateOnExit));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CalculateOnExit"), m_CalculateOnExit));
     }
     if(m_EnabledIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("enabled"), m_Enabled));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Enabled"), m_Enabled));
     }
     if(m_EntryMacroIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("entryMacro"), m_EntryMacro));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EntryMacro"), m_EntryMacro));
         
     }
     if(m_ExitMacroIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exitMacro"), m_ExitMacro));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExitMacro"), m_ExitMacro));
         
     }
     if(m_HelpTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("helpText"), m_HelpText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HelpText"), m_HelpText));
         
     }
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
     if(m_OwnHelpIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ownHelp"), m_OwnHelp));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnHelp"), m_OwnHelp));
     }
     if(m_OwnStatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ownStatus"), m_OwnStatus));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnStatus"), m_OwnStatus));
     }
     if(m_StatusTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("statusText"), m_StatusText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StatusText"), m_StatusText));
         
     }
     if(m_MaxLengthIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("maxLength"), m_MaxLength));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MaxLength"), m_MaxLength));
     }
     if(m_TextInputDefaultIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textInputDefault"), m_TextInputDefault));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextInputDefault"), m_TextInputDefault));
         
     }
     if(m_TextInputFormatIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textInputFormat"), m_TextInputFormat));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextInputFormat"), m_TextInputFormat));
         
     }
     if(m_TextInputTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textInputType"), m_TextInputType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextInputType"), m_TextInputType));
         
     }
 }
@@ -205,61 +205,61 @@ void FormFieldTextInput::fromMultiPart(const std::shared_ptr<MultipartFormData>&
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("calculateOnExit")))
+    if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
     {
-        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("calculateOnExit"))));
+        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
     }
-    if(multipart->hasContent(_XPLATSTR("enabled")))
+    if(multipart->hasContent(_XPLATSTR("Enabled")))
     {
-        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("enabled"))));
+        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
     }
-    if(multipart->hasContent(_XPLATSTR("entryMacro")))
+    if(multipart->hasContent(_XPLATSTR("EntryMacro")))
     {
-        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("entryMacro"))));
+        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EntryMacro"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exitMacro")))
+    if(multipart->hasContent(_XPLATSTR("ExitMacro")))
     {
-        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("exitMacro"))));
+        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExitMacro"))));
     }
-    if(multipart->hasContent(_XPLATSTR("helpText")))
+    if(multipart->hasContent(_XPLATSTR("HelpText")))
     {
-        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("helpText"))));
+        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HelpText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ownHelp")))
+    if(multipart->hasContent(_XPLATSTR("OwnHelp")))
     {
-        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ownHelp"))));
+        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ownStatus")))
+    if(multipart->hasContent(_XPLATSTR("OwnStatus")))
     {
-        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ownStatus"))));
+        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
     }
-    if(multipart->hasContent(_XPLATSTR("statusText")))
+    if(multipart->hasContent(_XPLATSTR("StatusText")))
     {
-        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("statusText"))));
+        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StatusText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("maxLength")))
+    if(multipart->hasContent(_XPLATSTR("MaxLength")))
     {
-        setMaxLength(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("maxLength"))));
+        setMaxLength(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("MaxLength"))));
     }
-    if(multipart->hasContent(_XPLATSTR("textInputDefault")))
+    if(multipart->hasContent(_XPLATSTR("TextInputDefault")))
     {
-        setTextInputDefault(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textInputDefault"))));
+        setTextInputDefault(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextInputDefault"))));
     }
-    if(multipart->hasContent(_XPLATSTR("textInputFormat")))
+    if(multipart->hasContent(_XPLATSTR("TextInputFormat")))
     {
-        setTextInputFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textInputFormat"))));
+        setTextInputFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextInputFormat"))));
     }
-    if(multipart->hasContent(_XPLATSTR("textInputType")))
+    if(multipart->hasContent(_XPLATSTR("TextInputType")))
     {
-        setTextInputType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textInputType"))));
+        setTextInputType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextInputType"))));
     }
 }
 

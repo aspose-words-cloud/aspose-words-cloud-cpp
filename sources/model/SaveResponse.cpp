@@ -52,7 +52,7 @@ web::json::value SaveResponse::toJson() const
 
     if(m_SaveResultIsSet)
     {
-        val[_XPLATSTR("saveResult")] = ModelBase::toJson(m_SaveResult);
+        val[_XPLATSTR("SaveResult")] = ModelBase::toJson(m_SaveResult);
     }
 
     return val;
@@ -62,9 +62,9 @@ void SaveResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("saveResult")))
+    if(val.has_field(_XPLATSTR("SaveResult")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("saveResult")];
+        web::json::value& fieldValue = val[_XPLATSTR("SaveResult")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SaveResult> newItem(new SaveResult());
@@ -80,14 +80,14 @@ void SaveResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_SaveResultIsSet)
     {
         if (m_SaveResult.get())
         {
-            m_SaveResult->toMultipart(multipart, _XPLATSTR("saveResult."));
+            m_SaveResult->toMultipart(multipart, _XPLATSTR("SaveResult."));
         }
         
     }
@@ -95,16 +95,16 @@ void SaveResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void SaveResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("saveResult")))
+    if(multipart->hasContent(_XPLATSTR("SaveResult")))
     {
-        if(multipart->hasContent(_XPLATSTR("saveResult")))
+        if(multipart->hasContent(_XPLATSTR("SaveResult")))
         {
             std::shared_ptr<SaveResult> newItem(new SaveResult());
-            newItem->fromMultiPart(multipart, _XPLATSTR("saveResult."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("SaveResult."));
             setSaveResult( newItem );
         }
     }

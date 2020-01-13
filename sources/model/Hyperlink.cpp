@@ -55,11 +55,11 @@ web::json::value Hyperlink::toJson() const
 
     if(m_DisplayTextIsSet)
     {
-        val[_XPLATSTR("displayText")] = ModelBase::toJson(m_DisplayText);
+        val[_XPLATSTR("DisplayText")] = ModelBase::toJson(m_DisplayText);
     }
     if(m_ValueIsSet)
     {
-        val[_XPLATSTR("value")] = ModelBase::toJson(m_Value);
+        val[_XPLATSTR("Value")] = ModelBase::toJson(m_Value);
     }
 
     return val;
@@ -69,17 +69,17 @@ void Hyperlink::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("displayText")))
+    if(val.has_field(_XPLATSTR("DisplayText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("displayText")];
+        web::json::value& fieldValue = val[_XPLATSTR("DisplayText")];
         if(!fieldValue.is_null())
         {
             setDisplayText(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("value")))
+    if(val.has_field(_XPLATSTR("Value")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("value")];
+        web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
             setValue(ModelBase::stringFromJson(fieldValue));
@@ -101,12 +101,12 @@ void Hyperlink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     }
     if(m_DisplayTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("displayText"), m_DisplayText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DisplayText"), m_DisplayText));
         
     }
     if(m_ValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("value"), m_Value));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
         
     }
 }
@@ -122,13 +122,13 @@ void Hyperlink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("displayText")))
+    if(multipart->hasContent(_XPLATSTR("DisplayText")))
     {
-        setDisplayText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("displayText"))));
+        setDisplayText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DisplayText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("value")))
+    if(multipart->hasContent(_XPLATSTR("Value")))
     {
-        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("value"))));
+        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
     }
 }
 

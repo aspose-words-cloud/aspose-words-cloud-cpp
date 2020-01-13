@@ -54,11 +54,11 @@ web::json::value SaveResult::toJson() const
 
     if(m_SourceDocumentIsSet)
     {
-        val[_XPLATSTR("sourceDocument")] = ModelBase::toJson(m_SourceDocument);
+        val[_XPLATSTR("SourceDocument")] = ModelBase::toJson(m_SourceDocument);
     }
     if(m_DestDocumentIsSet)
     {
-        val[_XPLATSTR("destDocument")] = ModelBase::toJson(m_DestDocument);
+        val[_XPLATSTR("DestDocument")] = ModelBase::toJson(m_DestDocument);
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -69,7 +69,7 @@ web::json::value SaveResult::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("additionalItems")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("AdditionalItems")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -78,9 +78,9 @@ web::json::value SaveResult::toJson() const
 
 void SaveResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("sourceDocument")))
+    if(val.has_field(_XPLATSTR("SourceDocument")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("sourceDocument")];
+        web::json::value& fieldValue = val[_XPLATSTR("SourceDocument")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -88,9 +88,9 @@ void SaveResult::fromJson(web::json::value& val)
             setSourceDocument( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("destDocument")))
+    if(val.has_field(_XPLATSTR("DestDocument")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("destDocument")];
+        web::json::value& fieldValue = val[_XPLATSTR("DestDocument")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -100,10 +100,10 @@ void SaveResult::fromJson(web::json::value& val)
     }
     {
         m_AdditionalItems.clear();
-        if(val.has_field(_XPLATSTR("additionalItems")) 
-                            && !val[_XPLATSTR("additionalItems")].is_null())
+        if(val.has_field(_XPLATSTR("AdditionalItems")) 
+                            && !val[_XPLATSTR("AdditionalItems")].is_null())
         {
-        auto arr = val[_XPLATSTR("additionalItems")].as_array();
+        auto arr = val[_XPLATSTR("AdditionalItems")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -129,7 +129,7 @@ void SaveResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
     {
         if (m_SourceDocument.get())
         {
-            m_SourceDocument->toMultipart(multipart, _XPLATSTR("sourceDocument."));
+            m_SourceDocument->toMultipart(multipart, _XPLATSTR("SourceDocument."));
         }
         
     }
@@ -137,7 +137,7 @@ void SaveResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
     {
         if (m_DestDocument.get())
         {
-            m_DestDocument->toMultipart(multipart, _XPLATSTR("destDocument."));
+            m_DestDocument->toMultipart(multipart, _XPLATSTR("DestDocument."));
         }
         
     }
@@ -149,37 +149,37 @@ void SaveResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("additionalItems"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AdditionalItems"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
 
 void SaveResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("sourceDocument")))
+    if(multipart->hasContent(_XPLATSTR("SourceDocument")))
     {
-        if(multipart->hasContent(_XPLATSTR("sourceDocument")))
+        if(multipart->hasContent(_XPLATSTR("SourceDocument")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("sourceDocument."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("SourceDocument."));
             setSourceDocument( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("destDocument")))
+    if(multipart->hasContent(_XPLATSTR("DestDocument")))
     {
-        if(multipart->hasContent(_XPLATSTR("destDocument")))
+        if(multipart->hasContent(_XPLATSTR("DestDocument")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("destDocument."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DestDocument."));
             setDestDocument( newItem );
         }
     }
     {
         m_AdditionalItems.clear();
-        if(multipart->hasContent(_XPLATSTR("additionalItems")))
+        if(multipart->hasContent(_XPLATSTR("AdditionalItems")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("additionalItems")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("AdditionalItems")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value item) {
             if(item.is_null())
             {

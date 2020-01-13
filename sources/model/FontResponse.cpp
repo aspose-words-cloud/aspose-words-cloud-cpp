@@ -52,7 +52,7 @@ web::json::value FontResponse::toJson() const
 
     if(m_FontIsSet)
     {
-        val[_XPLATSTR("font")] = ModelBase::toJson(m_Font);
+        val[_XPLATSTR("Font")] = ModelBase::toJson(m_Font);
     }
 
     return val;
@@ -62,9 +62,9 @@ void FontResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("font")))
+    if(val.has_field(_XPLATSTR("Font")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("font")];
+        web::json::value& fieldValue = val[_XPLATSTR("Font")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Font> newItem(new Font());
@@ -80,14 +80,14 @@ void FontResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_FontIsSet)
     {
         if (m_Font.get())
         {
-            m_Font->toMultipart(multipart, _XPLATSTR("font."));
+            m_Font->toMultipart(multipart, _XPLATSTR("Font."));
         }
         
     }
@@ -95,16 +95,16 @@ void FontResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void FontResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("font")))
+    if(multipart->hasContent(_XPLATSTR("Font")))
     {
-        if(multipart->hasContent(_XPLATSTR("font")))
+        if(multipart->hasContent(_XPLATSTR("Font")))
         {
             std::shared_ptr<Font> newItem(new Font());
-            newItem->fromMultiPart(multipart, _XPLATSTR("font."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
             setFont( newItem );
         }
     }

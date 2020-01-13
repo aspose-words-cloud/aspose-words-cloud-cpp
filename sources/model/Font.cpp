@@ -127,163 +127,163 @@ web::json::value Font::toJson() const
 
     if(m_AllCapsIsSet)
     {
-        val[_XPLATSTR("allCaps")] = ModelBase::toJson(m_AllCaps);
+        val[_XPLATSTR("AllCaps")] = ModelBase::toJson(m_AllCaps);
     }
     if(m_BidiIsSet)
     {
-        val[_XPLATSTR("bidi")] = ModelBase::toJson(m_Bidi);
+        val[_XPLATSTR("Bidi")] = ModelBase::toJson(m_Bidi);
     }
     if(m_BoldIsSet)
     {
-        val[_XPLATSTR("bold")] = ModelBase::toJson(m_Bold);
+        val[_XPLATSTR("Bold")] = ModelBase::toJson(m_Bold);
     }
     if(m_BoldBiIsSet)
     {
-        val[_XPLATSTR("boldBi")] = ModelBase::toJson(m_BoldBi);
+        val[_XPLATSTR("BoldBi")] = ModelBase::toJson(m_BoldBi);
     }
     if(m_BorderIsSet)
     {
-        val[_XPLATSTR("border")] = ModelBase::toJson(m_Border);
+        val[_XPLATSTR("Border")] = ModelBase::toJson(m_Border);
     }
     if(m_ColorIsSet)
     {
-        val[_XPLATSTR("color")] = ModelBase::toJson(m_Color);
+        val[_XPLATSTR("Color")] = ModelBase::toJson(m_Color);
     }
     if(m_ComplexScriptIsSet)
     {
-        val[_XPLATSTR("complexScript")] = ModelBase::toJson(m_ComplexScript);
+        val[_XPLATSTR("ComplexScript")] = ModelBase::toJson(m_ComplexScript);
     }
     if(m_DoubleStrikeThroughIsSet)
     {
-        val[_XPLATSTR("doubleStrikeThrough")] = ModelBase::toJson(m_DoubleStrikeThrough);
+        val[_XPLATSTR("DoubleStrikeThrough")] = ModelBase::toJson(m_DoubleStrikeThrough);
     }
     if(m_EmbossIsSet)
     {
-        val[_XPLATSTR("emboss")] = ModelBase::toJson(m_Emboss);
+        val[_XPLATSTR("Emboss")] = ModelBase::toJson(m_Emboss);
     }
     if(m_EngraveIsSet)
     {
-        val[_XPLATSTR("engrave")] = ModelBase::toJson(m_Engrave);
+        val[_XPLATSTR("Engrave")] = ModelBase::toJson(m_Engrave);
     }
     if(m_HiddenIsSet)
     {
-        val[_XPLATSTR("hidden")] = ModelBase::toJson(m_Hidden);
+        val[_XPLATSTR("Hidden")] = ModelBase::toJson(m_Hidden);
     }
     if(m_HighlightColorIsSet)
     {
-        val[_XPLATSTR("highlightColor")] = ModelBase::toJson(m_HighlightColor);
+        val[_XPLATSTR("HighlightColor")] = ModelBase::toJson(m_HighlightColor);
     }
     if(m_ItalicIsSet)
     {
-        val[_XPLATSTR("italic")] = ModelBase::toJson(m_Italic);
+        val[_XPLATSTR("Italic")] = ModelBase::toJson(m_Italic);
     }
     if(m_ItalicBiIsSet)
     {
-        val[_XPLATSTR("italicBi")] = ModelBase::toJson(m_ItalicBi);
+        val[_XPLATSTR("ItalicBi")] = ModelBase::toJson(m_ItalicBi);
     }
     if(m_KerningIsSet)
     {
-        val[_XPLATSTR("kerning")] = ModelBase::toJson(m_Kerning);
+        val[_XPLATSTR("Kerning")] = ModelBase::toJson(m_Kerning);
     }
     if(m_LocaleIdIsSet)
     {
-        val[_XPLATSTR("localeId")] = ModelBase::toJson(m_LocaleId);
+        val[_XPLATSTR("LocaleId")] = ModelBase::toJson(m_LocaleId);
     }
     if(m_LocaleIdBiIsSet)
     {
-        val[_XPLATSTR("localeIdBi")] = ModelBase::toJson(m_LocaleIdBi);
+        val[_XPLATSTR("LocaleIdBi")] = ModelBase::toJson(m_LocaleIdBi);
     }
     if(m_LocaleIdFarEastIsSet)
     {
-        val[_XPLATSTR("localeIdFarEast")] = ModelBase::toJson(m_LocaleIdFarEast);
+        val[_XPLATSTR("LocaleIdFarEast")] = ModelBase::toJson(m_LocaleIdFarEast);
     }
     if(m_NameIsSet)
     {
-        val[_XPLATSTR("name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
     if(m_NameAsciiIsSet)
     {
-        val[_XPLATSTR("nameAscii")] = ModelBase::toJson(m_NameAscii);
+        val[_XPLATSTR("NameAscii")] = ModelBase::toJson(m_NameAscii);
     }
     if(m_NameBiIsSet)
     {
-        val[_XPLATSTR("nameBi")] = ModelBase::toJson(m_NameBi);
+        val[_XPLATSTR("NameBi")] = ModelBase::toJson(m_NameBi);
     }
     if(m_NameFarEastIsSet)
     {
-        val[_XPLATSTR("nameFarEast")] = ModelBase::toJson(m_NameFarEast);
+        val[_XPLATSTR("NameFarEast")] = ModelBase::toJson(m_NameFarEast);
     }
     if(m_NameOtherIsSet)
     {
-        val[_XPLATSTR("nameOther")] = ModelBase::toJson(m_NameOther);
+        val[_XPLATSTR("NameOther")] = ModelBase::toJson(m_NameOther);
     }
     if(m_NoProofingIsSet)
     {
-        val[_XPLATSTR("noProofing")] = ModelBase::toJson(m_NoProofing);
+        val[_XPLATSTR("NoProofing")] = ModelBase::toJson(m_NoProofing);
     }
     if(m_OutlineIsSet)
     {
-        val[_XPLATSTR("outline")] = ModelBase::toJson(m_Outline);
+        val[_XPLATSTR("Outline")] = ModelBase::toJson(m_Outline);
     }
     if(m_PositionIsSet)
     {
-        val[_XPLATSTR("position")] = ModelBase::toJson(m_Position);
+        val[_XPLATSTR("Position")] = ModelBase::toJson(m_Position);
     }
     if(m_ScalingIsSet)
     {
-        val[_XPLATSTR("scaling")] = ModelBase::toJson(m_Scaling);
+        val[_XPLATSTR("Scaling")] = ModelBase::toJson(m_Scaling);
     }
     if(m_ShadowIsSet)
     {
-        val[_XPLATSTR("shadow")] = ModelBase::toJson(m_Shadow);
+        val[_XPLATSTR("Shadow")] = ModelBase::toJson(m_Shadow);
     }
     if(m_SizeIsSet)
     {
-        val[_XPLATSTR("size")] = ModelBase::toJson(m_Size);
+        val[_XPLATSTR("Size")] = ModelBase::toJson(m_Size);
     }
     if(m_SizeBiIsSet)
     {
-        val[_XPLATSTR("sizeBi")] = ModelBase::toJson(m_SizeBi);
+        val[_XPLATSTR("SizeBi")] = ModelBase::toJson(m_SizeBi);
     }
     if(m_SmallCapsIsSet)
     {
-        val[_XPLATSTR("smallCaps")] = ModelBase::toJson(m_SmallCaps);
+        val[_XPLATSTR("SmallCaps")] = ModelBase::toJson(m_SmallCaps);
     }
     if(m_SpacingIsSet)
     {
-        val[_XPLATSTR("spacing")] = ModelBase::toJson(m_Spacing);
+        val[_XPLATSTR("Spacing")] = ModelBase::toJson(m_Spacing);
     }
     if(m_StrikeThroughIsSet)
     {
-        val[_XPLATSTR("strikeThrough")] = ModelBase::toJson(m_StrikeThrough);
+        val[_XPLATSTR("StrikeThrough")] = ModelBase::toJson(m_StrikeThrough);
     }
     if(m_StyleIdentifierIsSet)
     {
-        val[_XPLATSTR("styleIdentifier")] = ModelBase::toJson(m_StyleIdentifier);
+        val[_XPLATSTR("StyleIdentifier")] = ModelBase::toJson(m_StyleIdentifier);
     }
     if(m_StyleNameIsSet)
     {
-        val[_XPLATSTR("styleName")] = ModelBase::toJson(m_StyleName);
+        val[_XPLATSTR("StyleName")] = ModelBase::toJson(m_StyleName);
     }
     if(m_SubscriptIsSet)
     {
-        val[_XPLATSTR("subscript")] = ModelBase::toJson(m_Subscript);
+        val[_XPLATSTR("Subscript")] = ModelBase::toJson(m_Subscript);
     }
     if(m_SuperscriptIsSet)
     {
-        val[_XPLATSTR("superscript")] = ModelBase::toJson(m_Superscript);
+        val[_XPLATSTR("Superscript")] = ModelBase::toJson(m_Superscript);
     }
     if(m_TextEffectIsSet)
     {
-        val[_XPLATSTR("textEffect")] = ModelBase::toJson(m_TextEffect);
+        val[_XPLATSTR("TextEffect")] = ModelBase::toJson(m_TextEffect);
     }
     if(m_UnderlineIsSet)
     {
-        val[_XPLATSTR("underline")] = ModelBase::toJson(m_Underline);
+        val[_XPLATSTR("Underline")] = ModelBase::toJson(m_Underline);
     }
     if(m_UnderlineColorIsSet)
     {
-        val[_XPLATSTR("underlineColor")] = ModelBase::toJson(m_UnderlineColor);
+        val[_XPLATSTR("UnderlineColor")] = ModelBase::toJson(m_UnderlineColor);
     }
 
     return val;
@@ -293,41 +293,41 @@ void Font::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("allCaps")))
+    if(val.has_field(_XPLATSTR("AllCaps")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("allCaps")];
+        web::json::value& fieldValue = val[_XPLATSTR("AllCaps")];
         if(!fieldValue.is_null())
         {
             setAllCaps(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("bidi")))
+    if(val.has_field(_XPLATSTR("Bidi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("bidi")];
+        web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
         if(!fieldValue.is_null())
         {
             setBidi(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("bold")))
+    if(val.has_field(_XPLATSTR("Bold")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("bold")];
+        web::json::value& fieldValue = val[_XPLATSTR("Bold")];
         if(!fieldValue.is_null())
         {
             setBold(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("boldBi")))
+    if(val.has_field(_XPLATSTR("BoldBi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("boldBi")];
+        web::json::value& fieldValue = val[_XPLATSTR("BoldBi")];
         if(!fieldValue.is_null())
         {
             setBoldBi(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("border")))
+    if(val.has_field(_XPLATSTR("Border")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("border")];
+        web::json::value& fieldValue = val[_XPLATSTR("Border")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Border> newItem(new Border());
@@ -335,9 +335,9 @@ void Font::fromJson(web::json::value& val)
             setBorder( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("color")))
+    if(val.has_field(_XPLATSTR("Color")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("color")];
+        web::json::value& fieldValue = val[_XPLATSTR("Color")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
@@ -345,49 +345,49 @@ void Font::fromJson(web::json::value& val)
             setColor( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("complexScript")))
+    if(val.has_field(_XPLATSTR("ComplexScript")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("complexScript")];
+        web::json::value& fieldValue = val[_XPLATSTR("ComplexScript")];
         if(!fieldValue.is_null())
         {
             setComplexScript(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("doubleStrikeThrough")))
+    if(val.has_field(_XPLATSTR("DoubleStrikeThrough")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("doubleStrikeThrough")];
+        web::json::value& fieldValue = val[_XPLATSTR("DoubleStrikeThrough")];
         if(!fieldValue.is_null())
         {
             setDoubleStrikeThrough(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("emboss")))
+    if(val.has_field(_XPLATSTR("Emboss")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("emboss")];
+        web::json::value& fieldValue = val[_XPLATSTR("Emboss")];
         if(!fieldValue.is_null())
         {
             setEmboss(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("engrave")))
+    if(val.has_field(_XPLATSTR("Engrave")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("engrave")];
+        web::json::value& fieldValue = val[_XPLATSTR("Engrave")];
         if(!fieldValue.is_null())
         {
             setEngrave(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("hidden")))
+    if(val.has_field(_XPLATSTR("Hidden")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("hidden")];
+        web::json::value& fieldValue = val[_XPLATSTR("Hidden")];
         if(!fieldValue.is_null())
         {
             setHidden(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("highlightColor")))
+    if(val.has_field(_XPLATSTR("HighlightColor")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("highlightColor")];
+        web::json::value& fieldValue = val[_XPLATSTR("HighlightColor")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
@@ -395,225 +395,225 @@ void Font::fromJson(web::json::value& val)
             setHighlightColor( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("italic")))
+    if(val.has_field(_XPLATSTR("Italic")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("italic")];
+        web::json::value& fieldValue = val[_XPLATSTR("Italic")];
         if(!fieldValue.is_null())
         {
             setItalic(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("italicBi")))
+    if(val.has_field(_XPLATSTR("ItalicBi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("italicBi")];
+        web::json::value& fieldValue = val[_XPLATSTR("ItalicBi")];
         if(!fieldValue.is_null())
         {
             setItalicBi(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("kerning")))
+    if(val.has_field(_XPLATSTR("Kerning")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("kerning")];
+        web::json::value& fieldValue = val[_XPLATSTR("Kerning")];
         if(!fieldValue.is_null())
         {
             setKerning(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("localeId")))
+    if(val.has_field(_XPLATSTR("LocaleId")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("localeId")];
+        web::json::value& fieldValue = val[_XPLATSTR("LocaleId")];
         if(!fieldValue.is_null())
         {
             setLocaleId(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("localeIdBi")))
+    if(val.has_field(_XPLATSTR("LocaleIdBi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("localeIdBi")];
+        web::json::value& fieldValue = val[_XPLATSTR("LocaleIdBi")];
         if(!fieldValue.is_null())
         {
             setLocaleIdBi(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("localeIdFarEast")))
+    if(val.has_field(_XPLATSTR("LocaleIdFarEast")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("localeIdFarEast")];
+        web::json::value& fieldValue = val[_XPLATSTR("LocaleIdFarEast")];
         if(!fieldValue.is_null())
         {
             setLocaleIdFarEast(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("nameAscii")))
+    if(val.has_field(_XPLATSTR("NameAscii")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("nameAscii")];
+        web::json::value& fieldValue = val[_XPLATSTR("NameAscii")];
         if(!fieldValue.is_null())
         {
             setNameAscii(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("nameBi")))
+    if(val.has_field(_XPLATSTR("NameBi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("nameBi")];
+        web::json::value& fieldValue = val[_XPLATSTR("NameBi")];
         if(!fieldValue.is_null())
         {
             setNameBi(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("nameFarEast")))
+    if(val.has_field(_XPLATSTR("NameFarEast")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("nameFarEast")];
+        web::json::value& fieldValue = val[_XPLATSTR("NameFarEast")];
         if(!fieldValue.is_null())
         {
             setNameFarEast(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("nameOther")))
+    if(val.has_field(_XPLATSTR("NameOther")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("nameOther")];
+        web::json::value& fieldValue = val[_XPLATSTR("NameOther")];
         if(!fieldValue.is_null())
         {
             setNameOther(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("noProofing")))
+    if(val.has_field(_XPLATSTR("NoProofing")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("noProofing")];
+        web::json::value& fieldValue = val[_XPLATSTR("NoProofing")];
         if(!fieldValue.is_null())
         {
             setNoProofing(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("outline")))
+    if(val.has_field(_XPLATSTR("Outline")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("outline")];
+        web::json::value& fieldValue = val[_XPLATSTR("Outline")];
         if(!fieldValue.is_null())
         {
             setOutline(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("position")))
+    if(val.has_field(_XPLATSTR("Position")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("position")];
+        web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
             setPosition(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("scaling")))
+    if(val.has_field(_XPLATSTR("Scaling")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("scaling")];
+        web::json::value& fieldValue = val[_XPLATSTR("Scaling")];
         if(!fieldValue.is_null())
         {
             setScaling(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("shadow")))
+    if(val.has_field(_XPLATSTR("Shadow")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("shadow")];
+        web::json::value& fieldValue = val[_XPLATSTR("Shadow")];
         if(!fieldValue.is_null())
         {
             setShadow(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("size")))
+    if(val.has_field(_XPLATSTR("Size")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("size")];
+        web::json::value& fieldValue = val[_XPLATSTR("Size")];
         if(!fieldValue.is_null())
         {
             setSize(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("sizeBi")))
+    if(val.has_field(_XPLATSTR("SizeBi")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("sizeBi")];
+        web::json::value& fieldValue = val[_XPLATSTR("SizeBi")];
         if(!fieldValue.is_null())
         {
             setSizeBi(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("smallCaps")))
+    if(val.has_field(_XPLATSTR("SmallCaps")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("smallCaps")];
+        web::json::value& fieldValue = val[_XPLATSTR("SmallCaps")];
         if(!fieldValue.is_null())
         {
             setSmallCaps(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("spacing")))
+    if(val.has_field(_XPLATSTR("Spacing")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("spacing")];
+        web::json::value& fieldValue = val[_XPLATSTR("Spacing")];
         if(!fieldValue.is_null())
         {
             setSpacing(ModelBase::doubleFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("strikeThrough")))
+    if(val.has_field(_XPLATSTR("StrikeThrough")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("strikeThrough")];
+        web::json::value& fieldValue = val[_XPLATSTR("StrikeThrough")];
         if(!fieldValue.is_null())
         {
             setStrikeThrough(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("styleIdentifier")))
+    if(val.has_field(_XPLATSTR("StyleIdentifier")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("styleIdentifier")];
+        web::json::value& fieldValue = val[_XPLATSTR("StyleIdentifier")];
         if(!fieldValue.is_null())
         {
             setStyleIdentifier(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("styleName")))
+    if(val.has_field(_XPLATSTR("StyleName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("styleName")];
+        web::json::value& fieldValue = val[_XPLATSTR("StyleName")];
         if(!fieldValue.is_null())
         {
             setStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("subscript")))
+    if(val.has_field(_XPLATSTR("Subscript")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("subscript")];
+        web::json::value& fieldValue = val[_XPLATSTR("Subscript")];
         if(!fieldValue.is_null())
         {
             setSubscript(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("superscript")))
+    if(val.has_field(_XPLATSTR("Superscript")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("superscript")];
+        web::json::value& fieldValue = val[_XPLATSTR("Superscript")];
         if(!fieldValue.is_null())
         {
             setSuperscript(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("textEffect")))
+    if(val.has_field(_XPLATSTR("TextEffect")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("textEffect")];
+        web::json::value& fieldValue = val[_XPLATSTR("TextEffect")];
         if(!fieldValue.is_null())
         {
             setTextEffect(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("underline")))
+    if(val.has_field(_XPLATSTR("Underline")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("underline")];
+        web::json::value& fieldValue = val[_XPLATSTR("Underline")];
         if(!fieldValue.is_null())
         {
             setUnderline(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("underlineColor")))
+    if(val.has_field(_XPLATSTR("UnderlineColor")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("underlineColor")];
+        web::json::value& fieldValue = val[_XPLATSTR("UnderlineColor")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
@@ -637,25 +637,25 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
     }
     if(m_AllCapsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("allCaps"), m_AllCaps));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllCaps"), m_AllCaps));
     }
     if(m_BidiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bidi"), m_Bidi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
     }
     if(m_BoldIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bold"), m_Bold));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bold"), m_Bold));
     }
     if(m_BoldBiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("boldBi"), m_BoldBi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BoldBi"), m_BoldBi));
     }
     if(m_BorderIsSet)
     {
         if (m_Border.get())
         {
-            m_Border->toMultipart(multipart, _XPLATSTR("border."));
+            m_Border->toMultipart(multipart, _XPLATSTR("Border."));
         }
         
     }
@@ -663,160 +663,160 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
     {
         if (m_Color.get())
         {
-            m_Color->toMultipart(multipart, _XPLATSTR("color."));
+            m_Color->toMultipart(multipart, _XPLATSTR("Color."));
         }
         
     }
     if(m_ComplexScriptIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("complexScript"), m_ComplexScript));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ComplexScript"), m_ComplexScript));
     }
     if(m_DoubleStrikeThroughIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("doubleStrikeThrough"), m_DoubleStrikeThrough));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DoubleStrikeThrough"), m_DoubleStrikeThrough));
     }
     if(m_EmbossIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("emboss"), m_Emboss));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Emboss"), m_Emboss));
     }
     if(m_EngraveIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("engrave"), m_Engrave));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Engrave"), m_Engrave));
     }
     if(m_HiddenIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("hidden"), m_Hidden));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Hidden"), m_Hidden));
     }
     if(m_HighlightColorIsSet)
     {
         if (m_HighlightColor.get())
         {
-            m_HighlightColor->toMultipart(multipart, _XPLATSTR("highlightColor."));
+            m_HighlightColor->toMultipart(multipart, _XPLATSTR("HighlightColor."));
         }
         
     }
     if(m_ItalicIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("italic"), m_Italic));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Italic"), m_Italic));
     }
     if(m_ItalicBiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("italicBi"), m_ItalicBi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ItalicBi"), m_ItalicBi));
     }
     if(m_KerningIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("kerning"), m_Kerning));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Kerning"), m_Kerning));
     }
     if(m_LocaleIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("localeId"), m_LocaleId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleId"), m_LocaleId));
     }
     if(m_LocaleIdBiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("localeIdBi"), m_LocaleIdBi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleIdBi"), m_LocaleIdBi));
     }
     if(m_LocaleIdFarEastIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("localeIdFarEast"), m_LocaleIdFarEast));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleIdFarEast"), m_LocaleIdFarEast));
     }
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
     if(m_NameAsciiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nameAscii"), m_NameAscii));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NameAscii"), m_NameAscii));
         
     }
     if(m_NameBiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nameBi"), m_NameBi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NameBi"), m_NameBi));
         
     }
     if(m_NameFarEastIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nameFarEast"), m_NameFarEast));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NameFarEast"), m_NameFarEast));
         
     }
     if(m_NameOtherIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nameOther"), m_NameOther));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NameOther"), m_NameOther));
         
     }
     if(m_NoProofingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("noProofing"), m_NoProofing));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NoProofing"), m_NoProofing));
     }
     if(m_OutlineIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("outline"), m_Outline));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Outline"), m_Outline));
     }
     if(m_PositionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("position"), m_Position));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Position"), m_Position));
     }
     if(m_ScalingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("scaling"), m_Scaling));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Scaling"), m_Scaling));
     }
     if(m_ShadowIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("shadow"), m_Shadow));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Shadow"), m_Shadow));
     }
     if(m_SizeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("size"), m_Size));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Size"), m_Size));
     }
     if(m_SizeBiIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("sizeBi"), m_SizeBi));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SizeBi"), m_SizeBi));
     }
     if(m_SmallCapsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("smallCaps"), m_SmallCaps));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SmallCaps"), m_SmallCaps));
     }
     if(m_SpacingIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("spacing"), m_Spacing));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Spacing"), m_Spacing));
     }
     if(m_StrikeThroughIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("strikeThrough"), m_StrikeThrough));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StrikeThrough"), m_StrikeThrough));
     }
     if(m_StyleIdentifierIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleIdentifier"), m_StyleIdentifier));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleIdentifier"), m_StyleIdentifier));
         
     }
     if(m_StyleNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("styleName"), m_StyleName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleName"), m_StyleName));
         
     }
     if(m_SubscriptIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("subscript"), m_Subscript));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Subscript"), m_Subscript));
     }
     if(m_SuperscriptIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("superscript"), m_Superscript));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Superscript"), m_Superscript));
     }
     if(m_TextEffectIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textEffect"), m_TextEffect));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextEffect"), m_TextEffect));
         
     }
     if(m_UnderlineIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("underline"), m_Underline));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Underline"), m_Underline));
         
     }
     if(m_UnderlineColorIsSet)
     {
         if (m_UnderlineColor.get())
         {
-            m_UnderlineColor->toMultipart(multipart, _XPLATSTR("underlineColor."));
+            m_UnderlineColor->toMultipart(multipart, _XPLATSTR("UnderlineColor."));
         }
         
     }
@@ -833,183 +833,183 @@ void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("allCaps")))
+    if(multipart->hasContent(_XPLATSTR("AllCaps")))
     {
-        setAllCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("allCaps"))));
+        setAllCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllCaps"))));
     }
-    if(multipart->hasContent(_XPLATSTR("bidi")))
+    if(multipart->hasContent(_XPLATSTR("Bidi")))
     {
-        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("bidi"))));
+        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("bold")))
+    if(multipart->hasContent(_XPLATSTR("Bold")))
     {
-        setBold(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("bold"))));
+        setBold(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bold"))));
     }
-    if(multipart->hasContent(_XPLATSTR("boldBi")))
+    if(multipart->hasContent(_XPLATSTR("BoldBi")))
     {
-        setBoldBi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("boldBi"))));
+        setBoldBi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BoldBi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("border")))
+    if(multipart->hasContent(_XPLATSTR("Border")))
     {
-        if(multipart->hasContent(_XPLATSTR("border")))
+        if(multipart->hasContent(_XPLATSTR("Border")))
         {
             std::shared_ptr<Border> newItem(new Border());
-            newItem->fromMultiPart(multipart, _XPLATSTR("border."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Border."));
             setBorder( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("color")))
+    if(multipart->hasContent(_XPLATSTR("Color")))
     {
-        if(multipart->hasContent(_XPLATSTR("color")))
+        if(multipart->hasContent(_XPLATSTR("Color")))
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, _XPLATSTR("color."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Color."));
             setColor( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("complexScript")))
+    if(multipart->hasContent(_XPLATSTR("ComplexScript")))
     {
-        setComplexScript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("complexScript"))));
+        setComplexScript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ComplexScript"))));
     }
-    if(multipart->hasContent(_XPLATSTR("doubleStrikeThrough")))
+    if(multipart->hasContent(_XPLATSTR("DoubleStrikeThrough")))
     {
-        setDoubleStrikeThrough(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("doubleStrikeThrough"))));
+        setDoubleStrikeThrough(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DoubleStrikeThrough"))));
     }
-    if(multipart->hasContent(_XPLATSTR("emboss")))
+    if(multipart->hasContent(_XPLATSTR("Emboss")))
     {
-        setEmboss(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("emboss"))));
+        setEmboss(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Emboss"))));
     }
-    if(multipart->hasContent(_XPLATSTR("engrave")))
+    if(multipart->hasContent(_XPLATSTR("Engrave")))
     {
-        setEngrave(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("engrave"))));
+        setEngrave(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Engrave"))));
     }
-    if(multipart->hasContent(_XPLATSTR("hidden")))
+    if(multipart->hasContent(_XPLATSTR("Hidden")))
     {
-        setHidden(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("hidden"))));
+        setHidden(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Hidden"))));
     }
-    if(multipart->hasContent(_XPLATSTR("highlightColor")))
+    if(multipart->hasContent(_XPLATSTR("HighlightColor")))
     {
-        if(multipart->hasContent(_XPLATSTR("highlightColor")))
+        if(multipart->hasContent(_XPLATSTR("HighlightColor")))
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, _XPLATSTR("highlightColor."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("HighlightColor."));
             setHighlightColor( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("italic")))
+    if(multipart->hasContent(_XPLATSTR("Italic")))
     {
-        setItalic(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("italic"))));
+        setItalic(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Italic"))));
     }
-    if(multipart->hasContent(_XPLATSTR("italicBi")))
+    if(multipart->hasContent(_XPLATSTR("ItalicBi")))
     {
-        setItalicBi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("italicBi"))));
+        setItalicBi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ItalicBi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("kerning")))
+    if(multipart->hasContent(_XPLATSTR("Kerning")))
     {
-        setKerning(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("kerning"))));
+        setKerning(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Kerning"))));
     }
-    if(multipart->hasContent(_XPLATSTR("localeId")))
+    if(multipart->hasContent(_XPLATSTR("LocaleId")))
     {
-        setLocaleId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("localeId"))));
+        setLocaleId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LocaleId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("localeIdBi")))
+    if(multipart->hasContent(_XPLATSTR("LocaleIdBi")))
     {
-        setLocaleIdBi(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("localeIdBi"))));
+        setLocaleIdBi(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LocaleIdBi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("localeIdFarEast")))
+    if(multipart->hasContent(_XPLATSTR("LocaleIdFarEast")))
     {
-        setLocaleIdFarEast(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("localeIdFarEast"))));
+        setLocaleIdFarEast(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LocaleIdFarEast"))));
     }
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    if(multipart->hasContent(_XPLATSTR("nameAscii")))
+    if(multipart->hasContent(_XPLATSTR("NameAscii")))
     {
-        setNameAscii(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nameAscii"))));
+        setNameAscii(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NameAscii"))));
     }
-    if(multipart->hasContent(_XPLATSTR("nameBi")))
+    if(multipart->hasContent(_XPLATSTR("NameBi")))
     {
-        setNameBi(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nameBi"))));
+        setNameBi(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NameBi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("nameFarEast")))
+    if(multipart->hasContent(_XPLATSTR("NameFarEast")))
     {
-        setNameFarEast(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nameFarEast"))));
+        setNameFarEast(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NameFarEast"))));
     }
-    if(multipart->hasContent(_XPLATSTR("nameOther")))
+    if(multipart->hasContent(_XPLATSTR("NameOther")))
     {
-        setNameOther(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nameOther"))));
+        setNameOther(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NameOther"))));
     }
-    if(multipart->hasContent(_XPLATSTR("noProofing")))
+    if(multipart->hasContent(_XPLATSTR("NoProofing")))
     {
-        setNoProofing(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("noProofing"))));
+        setNoProofing(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("NoProofing"))));
     }
-    if(multipart->hasContent(_XPLATSTR("outline")))
+    if(multipart->hasContent(_XPLATSTR("Outline")))
     {
-        setOutline(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("outline"))));
+        setOutline(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Outline"))));
     }
-    if(multipart->hasContent(_XPLATSTR("position")))
+    if(multipart->hasContent(_XPLATSTR("Position")))
     {
-        setPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("position"))));
+        setPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Position"))));
     }
-    if(multipart->hasContent(_XPLATSTR("scaling")))
+    if(multipart->hasContent(_XPLATSTR("Scaling")))
     {
-        setScaling(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("scaling"))));
+        setScaling(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Scaling"))));
     }
-    if(multipart->hasContent(_XPLATSTR("shadow")))
+    if(multipart->hasContent(_XPLATSTR("Shadow")))
     {
-        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("shadow"))));
+        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
     }
-    if(multipart->hasContent(_XPLATSTR("size")))
+    if(multipart->hasContent(_XPLATSTR("Size")))
     {
-        setSize(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("size"))));
+        setSize(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
     }
-    if(multipart->hasContent(_XPLATSTR("sizeBi")))
+    if(multipart->hasContent(_XPLATSTR("SizeBi")))
     {
-        setSizeBi(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("sizeBi"))));
+        setSizeBi(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("SizeBi"))));
     }
-    if(multipart->hasContent(_XPLATSTR("smallCaps")))
+    if(multipart->hasContent(_XPLATSTR("SmallCaps")))
     {
-        setSmallCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("smallCaps"))));
+        setSmallCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SmallCaps"))));
     }
-    if(multipart->hasContent(_XPLATSTR("spacing")))
+    if(multipart->hasContent(_XPLATSTR("Spacing")))
     {
-        setSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("spacing"))));
+        setSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Spacing"))));
     }
-    if(multipart->hasContent(_XPLATSTR("strikeThrough")))
+    if(multipart->hasContent(_XPLATSTR("StrikeThrough")))
     {
-        setStrikeThrough(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("strikeThrough"))));
+        setStrikeThrough(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("StrikeThrough"))));
     }
-    if(multipart->hasContent(_XPLATSTR("styleIdentifier")))
+    if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
     {
-        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleIdentifier"))));
+        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleIdentifier"))));
     }
-    if(multipart->hasContent(_XPLATSTR("styleName")))
+    if(multipart->hasContent(_XPLATSTR("StyleName")))
     {
-        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("styleName"))));
+        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleName"))));
     }
-    if(multipart->hasContent(_XPLATSTR("subscript")))
+    if(multipart->hasContent(_XPLATSTR("Subscript")))
     {
-        setSubscript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("subscript"))));
+        setSubscript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Subscript"))));
     }
-    if(multipart->hasContent(_XPLATSTR("superscript")))
+    if(multipart->hasContent(_XPLATSTR("Superscript")))
     {
-        setSuperscript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("superscript"))));
+        setSuperscript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Superscript"))));
     }
-    if(multipart->hasContent(_XPLATSTR("textEffect")))
+    if(multipart->hasContent(_XPLATSTR("TextEffect")))
     {
-        setTextEffect(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textEffect"))));
+        setTextEffect(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextEffect"))));
     }
-    if(multipart->hasContent(_XPLATSTR("underline")))
+    if(multipart->hasContent(_XPLATSTR("Underline")))
     {
-        setUnderline(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("underline"))));
+        setUnderline(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Underline"))));
     }
-    if(multipart->hasContent(_XPLATSTR("underlineColor")))
+    if(multipart->hasContent(_XPLATSTR("UnderlineColor")))
     {
-        if(multipart->hasContent(_XPLATSTR("underlineColor")))
+        if(multipart->hasContent(_XPLATSTR("UnderlineColor")))
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, _XPLATSTR("underlineColor."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("UnderlineColor."));
             setUnderlineColor( newItem );
         }
     }

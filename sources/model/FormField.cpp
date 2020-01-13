@@ -69,39 +69,39 @@ web::json::value FormField::toJson() const
 
     if(m_CalculateOnExitIsSet)
     {
-        val[_XPLATSTR("calculateOnExit")] = ModelBase::toJson(m_CalculateOnExit);
+        val[_XPLATSTR("CalculateOnExit")] = ModelBase::toJson(m_CalculateOnExit);
     }
     if(m_EnabledIsSet)
     {
-        val[_XPLATSTR("enabled")] = ModelBase::toJson(m_Enabled);
+        val[_XPLATSTR("Enabled")] = ModelBase::toJson(m_Enabled);
     }
     if(m_EntryMacroIsSet)
     {
-        val[_XPLATSTR("entryMacro")] = ModelBase::toJson(m_EntryMacro);
+        val[_XPLATSTR("EntryMacro")] = ModelBase::toJson(m_EntryMacro);
     }
     if(m_ExitMacroIsSet)
     {
-        val[_XPLATSTR("exitMacro")] = ModelBase::toJson(m_ExitMacro);
+        val[_XPLATSTR("ExitMacro")] = ModelBase::toJson(m_ExitMacro);
     }
     if(m_HelpTextIsSet)
     {
-        val[_XPLATSTR("helpText")] = ModelBase::toJson(m_HelpText);
+        val[_XPLATSTR("HelpText")] = ModelBase::toJson(m_HelpText);
     }
     if(m_NameIsSet)
     {
-        val[_XPLATSTR("name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
     if(m_OwnHelpIsSet)
     {
-        val[_XPLATSTR("ownHelp")] = ModelBase::toJson(m_OwnHelp);
+        val[_XPLATSTR("OwnHelp")] = ModelBase::toJson(m_OwnHelp);
     }
     if(m_OwnStatusIsSet)
     {
-        val[_XPLATSTR("ownStatus")] = ModelBase::toJson(m_OwnStatus);
+        val[_XPLATSTR("OwnStatus")] = ModelBase::toJson(m_OwnStatus);
     }
     if(m_StatusTextIsSet)
     {
-        val[_XPLATSTR("statusText")] = ModelBase::toJson(m_StatusText);
+        val[_XPLATSTR("StatusText")] = ModelBase::toJson(m_StatusText);
     }
 
     return val;
@@ -111,73 +111,73 @@ void FormField::fromJson(web::json::value& val)
 {
     this->NodeLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("calculateOnExit")))
+    if(val.has_field(_XPLATSTR("CalculateOnExit")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("calculateOnExit")];
+        web::json::value& fieldValue = val[_XPLATSTR("CalculateOnExit")];
         if(!fieldValue.is_null())
         {
             setCalculateOnExit(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("enabled")))
+    if(val.has_field(_XPLATSTR("Enabled")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("enabled")];
+        web::json::value& fieldValue = val[_XPLATSTR("Enabled")];
         if(!fieldValue.is_null())
         {
             setEnabled(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("entryMacro")))
+    if(val.has_field(_XPLATSTR("EntryMacro")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("entryMacro")];
+        web::json::value& fieldValue = val[_XPLATSTR("EntryMacro")];
         if(!fieldValue.is_null())
         {
             setEntryMacro(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("exitMacro")))
+    if(val.has_field(_XPLATSTR("ExitMacro")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("exitMacro")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExitMacro")];
         if(!fieldValue.is_null())
         {
             setExitMacro(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("helpText")))
+    if(val.has_field(_XPLATSTR("HelpText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("helpText")];
+        web::json::value& fieldValue = val[_XPLATSTR("HelpText")];
         if(!fieldValue.is_null())
         {
             setHelpText(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ownHelp")))
+    if(val.has_field(_XPLATSTR("OwnHelp")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ownHelp")];
+        web::json::value& fieldValue = val[_XPLATSTR("OwnHelp")];
         if(!fieldValue.is_null())
         {
             setOwnHelp(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("ownStatus")))
+    if(val.has_field(_XPLATSTR("OwnStatus")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("ownStatus")];
+        web::json::value& fieldValue = val[_XPLATSTR("OwnStatus")];
         if(!fieldValue.is_null())
         {
             setOwnStatus(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("statusText")))
+    if(val.has_field(_XPLATSTR("StatusText")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("statusText")];
+        web::json::value& fieldValue = val[_XPLATSTR("StatusText")];
         if(!fieldValue.is_null())
         {
             setStatusText(ModelBase::stringFromJson(fieldValue));
@@ -199,48 +199,48 @@ void FormField::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_CalculateOnExitIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("calculateOnExit"), m_CalculateOnExit));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CalculateOnExit"), m_CalculateOnExit));
     }
     if(m_EnabledIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("enabled"), m_Enabled));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Enabled"), m_Enabled));
     }
     if(m_EntryMacroIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("entryMacro"), m_EntryMacro));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EntryMacro"), m_EntryMacro));
         
     }
     if(m_ExitMacroIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exitMacro"), m_ExitMacro));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExitMacro"), m_ExitMacro));
         
     }
     if(m_HelpTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("helpText"), m_HelpText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HelpText"), m_HelpText));
         
     }
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
     if(m_OwnHelpIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ownHelp"), m_OwnHelp));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnHelp"), m_OwnHelp));
     }
     if(m_OwnStatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ownStatus"), m_OwnStatus));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnStatus"), m_OwnStatus));
     }
     if(m_StatusTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("statusText"), m_StatusText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StatusText"), m_StatusText));
         
     }
 }
@@ -256,45 +256,45 @@ void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("calculateOnExit")))
+    if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
     {
-        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("calculateOnExit"))));
+        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
     }
-    if(multipart->hasContent(_XPLATSTR("enabled")))
+    if(multipart->hasContent(_XPLATSTR("Enabled")))
     {
-        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("enabled"))));
+        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
     }
-    if(multipart->hasContent(_XPLATSTR("entryMacro")))
+    if(multipart->hasContent(_XPLATSTR("EntryMacro")))
     {
-        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("entryMacro"))));
+        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EntryMacro"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exitMacro")))
+    if(multipart->hasContent(_XPLATSTR("ExitMacro")))
     {
-        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("exitMacro"))));
+        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExitMacro"))));
     }
-    if(multipart->hasContent(_XPLATSTR("helpText")))
+    if(multipart->hasContent(_XPLATSTR("HelpText")))
     {
-        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("helpText"))));
+        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HelpText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ownHelp")))
+    if(multipart->hasContent(_XPLATSTR("OwnHelp")))
     {
-        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ownHelp"))));
+        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ownStatus")))
+    if(multipart->hasContent(_XPLATSTR("OwnStatus")))
     {
-        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ownStatus"))));
+        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
     }
-    if(multipart->hasContent(_XPLATSTR("statusText")))
+    if(multipart->hasContent(_XPLATSTR("StatusText")))
     {
-        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("statusText"))));
+        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StatusText"))));
     }
 }
 

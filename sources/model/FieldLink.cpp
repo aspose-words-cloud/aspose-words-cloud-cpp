@@ -53,7 +53,7 @@ web::json::value FieldLink::toJson() const
 
     if(m_FieldCodeIsSet)
     {
-        val[_XPLATSTR("fieldCode")] = ModelBase::toJson(m_FieldCode);
+        val[_XPLATSTR("FieldCode")] = ModelBase::toJson(m_FieldCode);
     }
 
     return val;
@@ -63,9 +63,9 @@ void FieldLink::fromJson(web::json::value& val)
 {
     this->NodeLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("fieldCode")))
+    if(val.has_field(_XPLATSTR("FieldCode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("fieldCode")];
+        web::json::value& fieldValue = val[_XPLATSTR("FieldCode")];
         if(!fieldValue.is_null())
         {
             setFieldCode(ModelBase::stringFromJson(fieldValue));
@@ -87,12 +87,12 @@ void FieldLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_FieldCodeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fieldCode"), m_FieldCode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FieldCode"), m_FieldCode));
         
     }
 }
@@ -108,13 +108,13 @@ void FieldLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("fieldCode")))
+    if(multipart->hasContent(_XPLATSTR("FieldCode")))
     {
-        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fieldCode"))));
+        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FieldCode"))));
     }
 }
 

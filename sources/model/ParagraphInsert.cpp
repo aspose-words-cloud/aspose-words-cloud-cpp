@@ -53,7 +53,7 @@ web::json::value ParagraphInsert::toJson() const
 
     if(m_TextIsSet)
     {
-        val[_XPLATSTR("text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -61,9 +61,9 @@ web::json::value ParagraphInsert::toJson() const
 
 void ParagraphInsert::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -77,16 +77,16 @@ void ParagraphInsert::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
 }
 
 void ParagraphInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
 }
 

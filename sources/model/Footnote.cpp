@@ -59,23 +59,23 @@ web::json::value Footnote::toJson() const
 
     if(m_ContentIsSet)
     {
-        val[_XPLATSTR("content")] = ModelBase::toJson(m_Content);
+        val[_XPLATSTR("Content")] = ModelBase::toJson(m_Content);
     }
     if(m_FootnoteTypeIsSet)
     {
-        val[_XPLATSTR("footnoteType")] = ModelBase::toJson(m_FootnoteType);
+        val[_XPLATSTR("FootnoteType")] = ModelBase::toJson(m_FootnoteType);
     }
     if(m_PositionIsSet)
     {
-        val[_XPLATSTR("position")] = ModelBase::toJson(m_Position);
+        val[_XPLATSTR("Position")] = ModelBase::toJson(m_Position);
     }
     if(m_ReferenceMarkIsSet)
     {
-        val[_XPLATSTR("referenceMark")] = ModelBase::toJson(m_ReferenceMark);
+        val[_XPLATSTR("ReferenceMark")] = ModelBase::toJson(m_ReferenceMark);
     }
     if(m_TextIsSet)
     {
-        val[_XPLATSTR("text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -85,9 +85,9 @@ void Footnote::fromJson(web::json::value& val)
 {
     this->FootnoteLink::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("content")))
+    if(val.has_field(_XPLATSTR("Content")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("content")];
+        web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
@@ -95,17 +95,17 @@ void Footnote::fromJson(web::json::value& val)
             setContent( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("footnoteType")))
+    if(val.has_field(_XPLATSTR("FootnoteType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("footnoteType")];
+        web::json::value& fieldValue = val[_XPLATSTR("FootnoteType")];
         if(!fieldValue.is_null())
         {
             setFootnoteType(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("position")))
+    if(val.has_field(_XPLATSTR("Position")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("position")];
+        web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
@@ -113,17 +113,17 @@ void Footnote::fromJson(web::json::value& val)
             setPosition( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("referenceMark")))
+    if(val.has_field(_XPLATSTR("ReferenceMark")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("referenceMark")];
+        web::json::value& fieldValue = val[_XPLATSTR("ReferenceMark")];
         if(!fieldValue.is_null())
         {
             setReferenceMark(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
@@ -145,38 +145,38 @@ void Footnote::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_ContentIsSet)
     {
         if (m_Content.get())
         {
-            m_Content->toMultipart(multipart, _XPLATSTR("content."));
+            m_Content->toMultipart(multipart, _XPLATSTR("Content."));
         }
         
     }
     if(m_FootnoteTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("footnoteType"), m_FootnoteType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FootnoteType"), m_FootnoteType));
         
     }
     if(m_PositionIsSet)
     {
         if (m_Position.get())
         {
-            m_Position->toMultipart(multipart, _XPLATSTR("position."));
+            m_Position->toMultipart(multipart, _XPLATSTR("Position."));
         }
         
     }
     if(m_ReferenceMarkIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("referenceMark"), m_ReferenceMark));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ReferenceMark"), m_ReferenceMark));
         
     }
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
 }
@@ -192,39 +192,39 @@ void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("content")))
+    if(multipart->hasContent(_XPLATSTR("Content")))
     {
-        if(multipart->hasContent(_XPLATSTR("content")))
+        if(multipart->hasContent(_XPLATSTR("Content")))
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
-            newItem->fromMultiPart(multipart, _XPLATSTR("content."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("footnoteType")))
+    if(multipart->hasContent(_XPLATSTR("FootnoteType")))
     {
-        setFootnoteType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("footnoteType"))));
+        setFootnoteType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FootnoteType"))));
     }
-    if(multipart->hasContent(_XPLATSTR("position")))
+    if(multipart->hasContent(_XPLATSTR("Position")))
     {
-        if(multipart->hasContent(_XPLATSTR("position")))
+        if(multipart->hasContent(_XPLATSTR("Position")))
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("position."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Position."));
             setPosition( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("referenceMark")))
+    if(multipart->hasContent(_XPLATSTR("ReferenceMark")))
     {
-        setReferenceMark(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("referenceMark"))));
+        setReferenceMark(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ReferenceMark"))));
     }
-    if(multipart->hasContent(_XPLATSTR("text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
 }
 

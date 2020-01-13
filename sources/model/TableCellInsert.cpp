@@ -53,7 +53,7 @@ web::json::value TableCellInsert::toJson() const
 
     if(m_InsertAfterIsSet)
     {
-        val[_XPLATSTR("insertAfter")] = ModelBase::toJson(m_InsertAfter);
+        val[_XPLATSTR("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
     }
 
     return val;
@@ -61,9 +61,9 @@ web::json::value TableCellInsert::toJson() const
 
 void TableCellInsert::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("insertAfter")))
+    if(val.has_field(_XPLATSTR("InsertAfter")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("insertAfter")];
+        web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
         if(!fieldValue.is_null())
         {
             setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
@@ -77,15 +77,15 @@ void TableCellInsert::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
     if(m_InsertAfterIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("insertAfter"), m_InsertAfter));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InsertAfter"), m_InsertAfter));
     }
 }
 
 void TableCellInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("insertAfter")))
+    if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
-        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("insertAfter"))));
+        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
     }
 }
 

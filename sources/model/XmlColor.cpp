@@ -54,26 +54,26 @@ web::json::value XmlColor::toJson() const
 
     if(m_WebIsSet)
     {
-        val[_XPLATSTR("web")] = ModelBase::toJson(m_Web);
+        val[_XPLATSTR("Web")] = ModelBase::toJson(m_Web);
     }
-    val[_XPLATSTR("alpha")] = ModelBase::toJson(m_Alpha);
+    val[_XPLATSTR("Alpha")] = ModelBase::toJson(m_Alpha);
 
     return val;
 }
 
 void XmlColor::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("web")))
+    if(val.has_field(_XPLATSTR("Web")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("web")];
+        web::json::value& fieldValue = val[_XPLATSTR("Web")];
         if(!fieldValue.is_null())
         {
             setWeb(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("alpha")))
+    if(val.has_field(_XPLATSTR("Alpha")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("alpha")];
+        web::json::value& fieldValue = val[_XPLATSTR("Alpha")];
         if(!fieldValue.is_null())
         {
             setAlpha(ModelBase::int32_tFromJson(fieldValue));
@@ -87,19 +87,19 @@ void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
     if(m_WebIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("web"), m_Web));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Web"), m_Web));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("alpha"), m_Alpha));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alpha"), m_Alpha));
 }
 
 void XmlColor::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("web")))
+    if(multipart->hasContent(_XPLATSTR("Web")))
     {
-        setWeb(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("web"))));
+        setWeb(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Web"))));
     }
-    setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("alpha"))));
+    setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Alpha"))));
 }
 
 utility::string_t XmlColor::getWeb() const

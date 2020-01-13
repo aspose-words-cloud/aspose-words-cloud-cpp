@@ -57,15 +57,15 @@ web::json::value CompareData::toJson() const
 
     if(m_ComparingWithDocumentIsSet)
     {
-        val[_XPLATSTR("comparingWithDocument")] = ModelBase::toJson(m_ComparingWithDocument);
+        val[_XPLATSTR("ComparingWithDocument")] = ModelBase::toJson(m_ComparingWithDocument);
     }
     if(m_AuthorIsSet)
     {
-        val[_XPLATSTR("author")] = ModelBase::toJson(m_Author);
+        val[_XPLATSTR("Author")] = ModelBase::toJson(m_Author);
     }
     if(m_DateTimeIsSet)
     {
-        val[_XPLATSTR("dateTime")] = ModelBase::toJson(m_DateTime);
+        val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
     }
 
     return val;
@@ -73,25 +73,25 @@ web::json::value CompareData::toJson() const
 
 void CompareData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("comparingWithDocument")))
+    if(val.has_field(_XPLATSTR("ComparingWithDocument")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("comparingWithDocument")];
+        web::json::value& fieldValue = val[_XPLATSTR("ComparingWithDocument")];
         if(!fieldValue.is_null())
         {
             setComparingWithDocument(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("author")))
+    if(val.has_field(_XPLATSTR("Author")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("author")];
+        web::json::value& fieldValue = val[_XPLATSTR("Author")];
         if(!fieldValue.is_null())
         {
             setAuthor(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("dateTime")))
+    if(val.has_field(_XPLATSTR("DateTime")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("dateTime")];
+        web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
             setDateTime(ModelBase::dateFromJson(fieldValue));
@@ -105,34 +105,34 @@ void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
     if(m_ComparingWithDocumentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("comparingWithDocument"), m_ComparingWithDocument));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ComparingWithDocument"), m_ComparingWithDocument));
         
     }
     if(m_AuthorIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("author"), m_Author));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Author"), m_Author));
         
     }
     if(m_DateTimeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dateTime"), m_DateTime));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
         
     }
 }
 
 void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("comparingWithDocument")))
+    if(multipart->hasContent(_XPLATSTR("ComparingWithDocument")))
     {
-        setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("comparingWithDocument"))));
+        setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ComparingWithDocument"))));
     }
-    if(multipart->hasContent(_XPLATSTR("author")))
+    if(multipart->hasContent(_XPLATSTR("Author")))
     {
-        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("author"))));
+        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Author"))));
     }
-    if(multipart->hasContent(_XPLATSTR("dateTime")))
+    if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("dateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
 }
 

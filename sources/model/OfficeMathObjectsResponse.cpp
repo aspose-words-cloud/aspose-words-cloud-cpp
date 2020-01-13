@@ -52,7 +52,7 @@ web::json::value OfficeMathObjectsResponse::toJson() const
 
     if(m_OfficeMathObjectsIsSet)
     {
-        val[_XPLATSTR("officeMathObjects")] = ModelBase::toJson(m_OfficeMathObjects);
+        val[_XPLATSTR("OfficeMathObjects")] = ModelBase::toJson(m_OfficeMathObjects);
     }
 
     return val;
@@ -62,9 +62,9 @@ void OfficeMathObjectsResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("officeMathObjects")))
+    if(val.has_field(_XPLATSTR("OfficeMathObjects")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("officeMathObjects")];
+        web::json::value& fieldValue = val[_XPLATSTR("OfficeMathObjects")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<OfficeMathObjectsCollection> newItem(new OfficeMathObjectsCollection());
@@ -80,14 +80,14 @@ void OfficeMathObjectsResponse::toMultipart(const std::shared_ptr<MultipartFormD
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_OfficeMathObjectsIsSet)
     {
         if (m_OfficeMathObjects.get())
         {
-            m_OfficeMathObjects->toMultipart(multipart, _XPLATSTR("officeMathObjects."));
+            m_OfficeMathObjects->toMultipart(multipart, _XPLATSTR("OfficeMathObjects."));
         }
         
     }
@@ -95,16 +95,16 @@ void OfficeMathObjectsResponse::toMultipart(const std::shared_ptr<MultipartFormD
 
 void OfficeMathObjectsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("officeMathObjects")))
+    if(multipart->hasContent(_XPLATSTR("OfficeMathObjects")))
     {
-        if(multipart->hasContent(_XPLATSTR("officeMathObjects")))
+        if(multipart->hasContent(_XPLATSTR("OfficeMathObjects")))
         {
             std::shared_ptr<OfficeMathObjectsCollection> newItem(new OfficeMathObjectsCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("officeMathObjects."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("OfficeMathObjects."));
             setOfficeMathObjects( newItem );
         }
     }

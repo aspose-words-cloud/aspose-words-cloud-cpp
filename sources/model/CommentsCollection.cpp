@@ -59,7 +59,7 @@ web::json::value CommentsCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("commentList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("CommentList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void CommentsCollection::fromJson(web::json::value& val)
 
     {
         m_CommentList.clear();
-        if(val.has_field(_XPLATSTR("commentList")) 
-                            && !val[_XPLATSTR("commentList")].is_null())
+        if(val.has_field(_XPLATSTR("CommentList")) 
+                            && !val[_XPLATSTR("CommentList")].is_null())
         {
-        auto arr = val[_XPLATSTR("commentList")].as_array();
+        auto arr = val[_XPLATSTR("CommentList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_CommentList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void CommentsCollection::toMultipart(const std::shared_ptr<MultipartFormData>& m
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("commentList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CommentList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void CommentsCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     {
         m_CommentList.clear();
-        if(multipart->hasContent(_XPLATSTR("commentList")))
+        if(multipart->hasContent(_XPLATSTR("CommentList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("commentList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CommentList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CommentList), [&](web::json::value item) {
             if(item.is_null())
             {

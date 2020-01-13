@@ -53,7 +53,7 @@ web::json::value RangeDocument::toJson() const
 
     if(m_DocumentNameIsSet)
     {
-        val[_XPLATSTR("documentName")] = ModelBase::toJson(m_DocumentName);
+        val[_XPLATSTR("DocumentName")] = ModelBase::toJson(m_DocumentName);
     }
 
     return val;
@@ -61,9 +61,9 @@ web::json::value RangeDocument::toJson() const
 
 void RangeDocument::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("documentName")))
+    if(val.has_field(_XPLATSTR("DocumentName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("documentName")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentName")];
         if(!fieldValue.is_null())
         {
             setDocumentName(ModelBase::stringFromJson(fieldValue));
@@ -77,16 +77,16 @@ void RangeDocument::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
     if(m_DocumentNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("documentName"), m_DocumentName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentName"), m_DocumentName));
         
     }
 }
 
 void RangeDocument::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("documentName")))
+    if(multipart->hasContent(_XPLATSTR("DocumentName")))
     {
-        setDocumentName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("documentName"))));
+        setDocumentName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DocumentName"))));
     }
 }
 

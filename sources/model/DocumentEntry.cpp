@@ -55,11 +55,11 @@ web::json::value DocumentEntry::toJson() const
 
     if(m_HrefIsSet)
     {
-        val[_XPLATSTR("href")] = ModelBase::toJson(m_Href);
+        val[_XPLATSTR("Href")] = ModelBase::toJson(m_Href);
     }
     if(m_ImportFormatModeIsSet)
     {
-        val[_XPLATSTR("importFormatMode")] = ModelBase::toJson(m_ImportFormatMode);
+        val[_XPLATSTR("ImportFormatMode")] = ModelBase::toJson(m_ImportFormatMode);
     }
 
     return val;
@@ -67,17 +67,17 @@ web::json::value DocumentEntry::toJson() const
 
 void DocumentEntry::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("href")))
+    if(val.has_field(_XPLATSTR("Href")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("href")];
+        web::json::value& fieldValue = val[_XPLATSTR("Href")];
         if(!fieldValue.is_null())
         {
             setHref(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("importFormatMode")))
+    if(val.has_field(_XPLATSTR("ImportFormatMode")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("importFormatMode")];
+        web::json::value& fieldValue = val[_XPLATSTR("ImportFormatMode")];
         if(!fieldValue.is_null())
         {
             setImportFormatMode(ModelBase::stringFromJson(fieldValue));
@@ -91,25 +91,25 @@ void DocumentEntry::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
     if(m_HrefIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("href"), m_Href));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
         
     }
     if(m_ImportFormatModeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("importFormatMode"), m_ImportFormatMode));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImportFormatMode"), m_ImportFormatMode));
         
     }
 }
 
 void DocumentEntry::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("href")))
+    if(multipart->hasContent(_XPLATSTR("Href")))
     {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("href"))));
+        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
     }
-    if(multipart->hasContent(_XPLATSTR("importFormatMode")))
+    if(multipart->hasContent(_XPLATSTR("ImportFormatMode")))
     {
-        setImportFormatMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("importFormatMode"))));
+        setImportFormatMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImportFormatMode"))));
     }
 }
 

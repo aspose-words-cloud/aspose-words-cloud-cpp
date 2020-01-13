@@ -53,11 +53,11 @@ web::json::value StatDataResponse::toJson() const
 
     if(m_DocumentLinkIsSet)
     {
-        val[_XPLATSTR("documentLink")] = ModelBase::toJson(m_DocumentLink);
+        val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
     }
     if(m_StatDataIsSet)
     {
-        val[_XPLATSTR("statData")] = ModelBase::toJson(m_StatData);
+        val[_XPLATSTR("StatData")] = ModelBase::toJson(m_StatData);
     }
 
     return val;
@@ -67,9 +67,9 @@ void StatDataResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("documentLink")))
+    if(val.has_field(_XPLATSTR("DocumentLink")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("documentLink")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
@@ -77,9 +77,9 @@ void StatDataResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("statData")))
+    if(val.has_field(_XPLATSTR("StatData")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("statData")];
+        web::json::value& fieldValue = val[_XPLATSTR("StatData")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
@@ -95,14 +95,14 @@ void StatDataResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
-            m_DocumentLink->toMultipart(multipart, _XPLATSTR("documentLink."));
+            m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
         }
         
     }
@@ -110,7 +110,7 @@ void StatDataResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
     {
         if (m_StatData.get())
         {
-            m_StatData->toMultipart(multipart, _XPLATSTR("statData."));
+            m_StatData->toMultipart(multipart, _XPLATSTR("StatData."));
         }
         
     }
@@ -118,25 +118,25 @@ void StatDataResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void StatDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("documentLink")))
+    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
     {
-        if(multipart->hasContent(_XPLATSTR("documentLink")))
+        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("documentLink."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
             setDocumentLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("statData")))
+    if(multipart->hasContent(_XPLATSTR("StatData")))
     {
-        if(multipart->hasContent(_XPLATSTR("statData")))
+        if(multipart->hasContent(_XPLATSTR("StatData")))
         {
             std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("statData."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("StatData."));
             setStatData( newItem );
         }
     }

@@ -53,7 +53,7 @@ web::json::value WordsResponse::toJson() const
 
     if(m_RequestIdIsSet)
     {
-        val[_XPLATSTR("requestId")] = ModelBase::toJson(m_RequestId);
+        val[_XPLATSTR("RequestId")] = ModelBase::toJson(m_RequestId);
     }
 
     return val;
@@ -61,9 +61,9 @@ web::json::value WordsResponse::toJson() const
 
 void WordsResponse::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("requestId")))
+    if(val.has_field(_XPLATSTR("RequestId")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("requestId")];
+        web::json::value& fieldValue = val[_XPLATSTR("RequestId")];
         if(!fieldValue.is_null())
         {
             setRequestId(ModelBase::stringFromJson(fieldValue));
@@ -77,16 +77,16 @@ void WordsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
 }
 
 void WordsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
 }
 

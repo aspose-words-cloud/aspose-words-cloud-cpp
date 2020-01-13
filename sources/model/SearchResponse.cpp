@@ -54,11 +54,11 @@ web::json::value SearchResponse::toJson() const
 
     if(m_SearchingPatternIsSet)
     {
-        val[_XPLATSTR("searchingPattern")] = ModelBase::toJson(m_SearchingPattern);
+        val[_XPLATSTR("SearchingPattern")] = ModelBase::toJson(m_SearchingPattern);
     }
     if(m_SearchResultsIsSet)
     {
-        val[_XPLATSTR("searchResults")] = ModelBase::toJson(m_SearchResults);
+        val[_XPLATSTR("SearchResults")] = ModelBase::toJson(m_SearchResults);
     }
 
     return val;
@@ -68,17 +68,17 @@ void SearchResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("searchingPattern")))
+    if(val.has_field(_XPLATSTR("SearchingPattern")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("searchingPattern")];
+        web::json::value& fieldValue = val[_XPLATSTR("SearchingPattern")];
         if(!fieldValue.is_null())
         {
             setSearchingPattern(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("searchResults")))
+    if(val.has_field(_XPLATSTR("SearchResults")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("searchResults")];
+        web::json::value& fieldValue = val[_XPLATSTR("SearchResults")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
@@ -94,19 +94,19 @@ void SearchResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_SearchingPatternIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("searchingPattern"), m_SearchingPattern));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SearchingPattern"), m_SearchingPattern));
         
     }
     if(m_SearchResultsIsSet)
     {
         if (m_SearchResults.get())
         {
-            m_SearchResults->toMultipart(multipart, _XPLATSTR("searchResults."));
+            m_SearchResults->toMultipart(multipart, _XPLATSTR("SearchResults."));
         }
         
     }
@@ -114,20 +114,20 @@ void SearchResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void SearchResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("searchingPattern")))
+    if(multipart->hasContent(_XPLATSTR("SearchingPattern")))
     {
-        setSearchingPattern(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("searchingPattern"))));
+        setSearchingPattern(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SearchingPattern"))));
     }
-    if(multipart->hasContent(_XPLATSTR("searchResults")))
+    if(multipart->hasContent(_XPLATSTR("SearchResults")))
     {
-        if(multipart->hasContent(_XPLATSTR("searchResults")))
+        if(multipart->hasContent(_XPLATSTR("SearchResults")))
         {
             std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("searchResults."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("SearchResults."));
             setSearchResults( newItem );
         }
     }

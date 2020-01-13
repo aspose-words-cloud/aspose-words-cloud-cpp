@@ -58,19 +58,19 @@ web::json::value Error::toJson() const
 
     if(m_CodeIsSet)
     {
-        val[_XPLATSTR("code")] = ModelBase::toJson(m_Code);
+        val[_XPLATSTR("Code")] = ModelBase::toJson(m_Code);
     }
     if(m_MessageIsSet)
     {
-        val[_XPLATSTR("message")] = ModelBase::toJson(m_Message);
+        val[_XPLATSTR("Message")] = ModelBase::toJson(m_Message);
     }
     if(m_DescriptionIsSet)
     {
-        val[_XPLATSTR("description")] = ModelBase::toJson(m_Description);
+        val[_XPLATSTR("Description")] = ModelBase::toJson(m_Description);
     }
     if(m_InnerErrorIsSet)
     {
-        val[_XPLATSTR("innerError")] = ModelBase::toJson(m_InnerError);
+        val[_XPLATSTR("InnerError")] = ModelBase::toJson(m_InnerError);
     }
 
     return val;
@@ -78,33 +78,33 @@ web::json::value Error::toJson() const
 
 void Error::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("code")))
+    if(val.has_field(_XPLATSTR("Code")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("code")];
+        web::json::value& fieldValue = val[_XPLATSTR("Code")];
         if(!fieldValue.is_null())
         {
             setCode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("message")))
+    if(val.has_field(_XPLATSTR("Message")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("message")];
+        web::json::value& fieldValue = val[_XPLATSTR("Message")];
         if(!fieldValue.is_null())
         {
             setMessage(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("description")))
+    if(val.has_field(_XPLATSTR("Description")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("description")];
+        web::json::value& fieldValue = val[_XPLATSTR("Description")];
         if(!fieldValue.is_null())
         {
             setDescription(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("innerError")))
+    if(val.has_field(_XPLATSTR("InnerError")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("innerError")];
+        web::json::value& fieldValue = val[_XPLATSTR("InnerError")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ErrorDetails> newItem(new ErrorDetails());
@@ -120,24 +120,24 @@ void Error::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
     if(m_CodeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("code"), m_Code));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
         
     }
     if(m_MessageIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("message"), m_Message));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Message"), m_Message));
         
     }
     if(m_DescriptionIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("description"), m_Description));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Description"), m_Description));
         
     }
     if(m_InnerErrorIsSet)
     {
         if (m_InnerError.get())
         {
-            m_InnerError->toMultipart(multipart, _XPLATSTR("innerError."));
+            m_InnerError->toMultipart(multipart, _XPLATSTR("InnerError."));
         }
         
     }
@@ -145,24 +145,24 @@ void Error::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
 void Error::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("code")))
+    if(multipart->hasContent(_XPLATSTR("Code")))
     {
-        setCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("code"))));
+        setCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
     }
-    if(multipart->hasContent(_XPLATSTR("message")))
+    if(multipart->hasContent(_XPLATSTR("Message")))
     {
-        setMessage(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("message"))));
+        setMessage(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Message"))));
     }
-    if(multipart->hasContent(_XPLATSTR("description")))
+    if(multipart->hasContent(_XPLATSTR("Description")))
     {
-        setDescription(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("description"))));
+        setDescription(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Description"))));
     }
-    if(multipart->hasContent(_XPLATSTR("innerError")))
+    if(multipart->hasContent(_XPLATSTR("InnerError")))
     {
-        if(multipart->hasContent(_XPLATSTR("innerError")))
+        if(multipart->hasContent(_XPLATSTR("InnerError")))
         {
             std::shared_ptr<ErrorDetails> newItem(new ErrorDetails());
-            newItem->fromMultiPart(multipart, _XPLATSTR("innerError."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("InnerError."));
             setInnerError( newItem );
         }
     }

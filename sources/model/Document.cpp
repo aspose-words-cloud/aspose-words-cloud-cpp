@@ -65,19 +65,19 @@ web::json::value Document::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("links")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("Links")] = web::json::value::array(jsonArray);
         }
     }
     if(m_FileNameIsSet)
     {
-        val[_XPLATSTR("fileName")] = ModelBase::toJson(m_FileName);
+        val[_XPLATSTR("FileName")] = ModelBase::toJson(m_FileName);
     }
-    val[_XPLATSTR("sourceFormat")] = ModelBase::toJson(m_SourceFormat);
-    val[_XPLATSTR("isEncrypted")] = ModelBase::toJson(m_IsEncrypted);
-    val[_XPLATSTR("isSigned")] = ModelBase::toJson(m_IsSigned);
+    val[_XPLATSTR("SourceFormat")] = ModelBase::toJson(m_SourceFormat);
+    val[_XPLATSTR("IsEncrypted")] = ModelBase::toJson(m_IsEncrypted);
+    val[_XPLATSTR("IsSigned")] = ModelBase::toJson(m_IsSigned);
     if(m_DocumentPropertiesIsSet)
     {
-        val[_XPLATSTR("documentProperties")] = ModelBase::toJson(m_DocumentProperties);
+        val[_XPLATSTR("DocumentProperties")] = ModelBase::toJson(m_DocumentProperties);
     }
 
     return val;
@@ -87,10 +87,10 @@ void Document::fromJson(web::json::value& val)
 {
     {
         m_Links.clear();
-        if(val.has_field(_XPLATSTR("links")) 
-                            && !val[_XPLATSTR("links")].is_null())
+        if(val.has_field(_XPLATSTR("Links")) 
+                            && !val[_XPLATSTR("Links")].is_null())
         {
-        auto arr = val[_XPLATSTR("links")].as_array();
+        auto arr = val[_XPLATSTR("Links")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Links), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -106,34 +106,34 @@ void Document::fromJson(web::json::value& val)
 
         }
     }
-    if(val.has_field(_XPLATSTR("fileName")))
+    if(val.has_field(_XPLATSTR("FileName")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("fileName")];
+        web::json::value& fieldValue = val[_XPLATSTR("FileName")];
         if(!fieldValue.is_null())
         {
             setFileName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setSourceFormat(ModelBase::stringFromJson(val[_XPLATSTR("sourceFormat")]));
-    if(val.has_field(_XPLATSTR("isEncrypted")))
+    setSourceFormat(ModelBase::stringFromJson(val[_XPLATSTR("SourceFormat")]));
+    if(val.has_field(_XPLATSTR("IsEncrypted")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("isEncrypted")];
+        web::json::value& fieldValue = val[_XPLATSTR("IsEncrypted")];
         if(!fieldValue.is_null())
         {
             setIsEncrypted(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("isSigned")))
+    if(val.has_field(_XPLATSTR("IsSigned")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("isSigned")];
+        web::json::value& fieldValue = val[_XPLATSTR("IsSigned")];
         if(!fieldValue.is_null())
         {
             setIsSigned(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("documentProperties")))
+    if(val.has_field(_XPLATSTR("DocumentProperties")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("documentProperties")];
+        web::json::value& fieldValue = val[_XPLATSTR("DocumentProperties")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<DocumentProperties> newItem(new DocumentProperties());
@@ -155,22 +155,22 @@ void Document::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("links"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Links"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     if(m_FileNameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("fileName"), m_FileName));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("sourceFormat"), m_SourceFormat));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isEncrypted"), m_IsEncrypted));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isSigned"), m_IsSigned));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SourceFormat"), m_SourceFormat));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsEncrypted"), m_IsEncrypted));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsSigned"), m_IsSigned));
     if(m_DocumentPropertiesIsSet)
     {
         if (m_DocumentProperties.get())
         {
-            m_DocumentProperties->toMultipart(multipart, _XPLATSTR("documentProperties."));
+            m_DocumentProperties->toMultipart(multipart, _XPLATSTR("DocumentProperties."));
         }
         
     }
@@ -180,10 +180,10 @@ void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
 {
     {
         m_Links.clear();
-        if(multipart->hasContent(_XPLATSTR("links")))
+        if(multipart->hasContent(_XPLATSTR("Links")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("links")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Links")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Links), [&](web::json::value item) {
             if(item.is_null())
             {
@@ -198,19 +198,19 @@ void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
         });
         }
     }
-    if(multipart->hasContent(_XPLATSTR("fileName")))
+    if(multipart->hasContent(_XPLATSTR("FileName")))
     {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("fileName"))));
+        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    setSourceFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("sourceFormat"))));
-    setIsEncrypted(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isEncrypted"))));
-    setIsSigned(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isSigned"))));
-    if(multipart->hasContent(_XPLATSTR("documentProperties")))
+    setSourceFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SourceFormat"))));
+    setIsEncrypted(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsEncrypted"))));
+    setIsSigned(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsSigned"))));
+    if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
     {
-        if(multipart->hasContent(_XPLATSTR("documentProperties")))
+        if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
         {
             std::shared_ptr<DocumentProperties> newItem(new DocumentProperties());
-            newItem->fromMultiPart(multipart, _XPLATSTR("documentProperties."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentProperties."));
             setDocumentProperties( newItem );
         }
     }

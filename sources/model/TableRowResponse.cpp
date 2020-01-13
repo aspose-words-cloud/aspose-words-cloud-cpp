@@ -52,7 +52,7 @@ web::json::value TableRowResponse::toJson() const
 
     if(m_RowIsSet)
     {
-        val[_XPLATSTR("row")] = ModelBase::toJson(m_Row);
+        val[_XPLATSTR("Row")] = ModelBase::toJson(m_Row);
     }
 
     return val;
@@ -62,9 +62,9 @@ void TableRowResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("row")))
+    if(val.has_field(_XPLATSTR("Row")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("row")];
+        web::json::value& fieldValue = val[_XPLATSTR("Row")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<TableRow> newItem(new TableRow());
@@ -80,14 +80,14 @@ void TableRowResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_RowIsSet)
     {
         if (m_Row.get())
         {
-            m_Row->toMultipart(multipart, _XPLATSTR("row."));
+            m_Row->toMultipart(multipart, _XPLATSTR("Row."));
         }
         
     }
@@ -95,16 +95,16 @@ void TableRowResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void TableRowResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("row")))
+    if(multipart->hasContent(_XPLATSTR("Row")))
     {
-        if(multipart->hasContent(_XPLATSTR("row")))
+        if(multipart->hasContent(_XPLATSTR("Row")))
         {
             std::shared_ptr<TableRow> newItem(new TableRow());
-            newItem->fromMultiPart(multipart, _XPLATSTR("row."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Row."));
             setRow( newItem );
         }
     }

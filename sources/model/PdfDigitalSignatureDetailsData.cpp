@@ -61,23 +61,23 @@ web::json::value PdfDigitalSignatureDetailsData::toJson() const
 
     if(m_CertificateFilenameIsSet)
     {
-        val[_XPLATSTR("certificateFilename")] = ModelBase::toJson(m_CertificateFilename);
+        val[_XPLATSTR("CertificateFilename")] = ModelBase::toJson(m_CertificateFilename);
     }
     if(m_HashAlgorithmIsSet)
     {
-        val[_XPLATSTR("hashAlgorithm")] = ModelBase::toJson(m_HashAlgorithm);
+        val[_XPLATSTR("HashAlgorithm")] = ModelBase::toJson(m_HashAlgorithm);
     }
     if(m_LocationIsSet)
     {
-        val[_XPLATSTR("location")] = ModelBase::toJson(m_Location);
+        val[_XPLATSTR("Location")] = ModelBase::toJson(m_Location);
     }
     if(m_ReasonIsSet)
     {
-        val[_XPLATSTR("reason")] = ModelBase::toJson(m_Reason);
+        val[_XPLATSTR("Reason")] = ModelBase::toJson(m_Reason);
     }
     if(m_SignatureDateIsSet)
     {
-        val[_XPLATSTR("signatureDate")] = ModelBase::toJson(m_SignatureDate);
+        val[_XPLATSTR("SignatureDate")] = ModelBase::toJson(m_SignatureDate);
     }
 
     return val;
@@ -85,41 +85,41 @@ web::json::value PdfDigitalSignatureDetailsData::toJson() const
 
 void PdfDigitalSignatureDetailsData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("certificateFilename")))
+    if(val.has_field(_XPLATSTR("CertificateFilename")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("certificateFilename")];
+        web::json::value& fieldValue = val[_XPLATSTR("CertificateFilename")];
         if(!fieldValue.is_null())
         {
             setCertificateFilename(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("hashAlgorithm")))
+    if(val.has_field(_XPLATSTR("HashAlgorithm")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("hashAlgorithm")];
+        web::json::value& fieldValue = val[_XPLATSTR("HashAlgorithm")];
         if(!fieldValue.is_null())
         {
             setHashAlgorithm(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("location")))
+    if(val.has_field(_XPLATSTR("Location")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("location")];
+        web::json::value& fieldValue = val[_XPLATSTR("Location")];
         if(!fieldValue.is_null())
         {
             setLocation(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("reason")))
+    if(val.has_field(_XPLATSTR("Reason")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("reason")];
+        web::json::value& fieldValue = val[_XPLATSTR("Reason")];
         if(!fieldValue.is_null())
         {
             setReason(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("signatureDate")))
+    if(val.has_field(_XPLATSTR("SignatureDate")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("signatureDate")];
+        web::json::value& fieldValue = val[_XPLATSTR("SignatureDate")];
         if(!fieldValue.is_null())
         {
             setSignatureDate(ModelBase::dateFromJson(fieldValue));
@@ -133,52 +133,52 @@ void PdfDigitalSignatureDetailsData::toMultipart(const std::shared_ptr<Multipart
 
     if(m_CertificateFilenameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("certificateFilename"), m_CertificateFilename));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CertificateFilename"), m_CertificateFilename));
         
     }
     if(m_HashAlgorithmIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("hashAlgorithm"), m_HashAlgorithm));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HashAlgorithm"), m_HashAlgorithm));
         
     }
     if(m_LocationIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("location"), m_Location));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Location"), m_Location));
         
     }
     if(m_ReasonIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("reason"), m_Reason));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Reason"), m_Reason));
         
     }
     if(m_SignatureDateIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("signatureDate"), m_SignatureDate));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SignatureDate"), m_SignatureDate));
         
     }
 }
 
 void PdfDigitalSignatureDetailsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("certificateFilename")))
+    if(multipart->hasContent(_XPLATSTR("CertificateFilename")))
     {
-        setCertificateFilename(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("certificateFilename"))));
+        setCertificateFilename(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CertificateFilename"))));
     }
-    if(multipart->hasContent(_XPLATSTR("hashAlgorithm")))
+    if(multipart->hasContent(_XPLATSTR("HashAlgorithm")))
     {
-        setHashAlgorithm(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("hashAlgorithm"))));
+        setHashAlgorithm(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HashAlgorithm"))));
     }
-    if(multipart->hasContent(_XPLATSTR("location")))
+    if(multipart->hasContent(_XPLATSTR("Location")))
     {
-        setLocation(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("location"))));
+        setLocation(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Location"))));
     }
-    if(multipart->hasContent(_XPLATSTR("reason")))
+    if(multipart->hasContent(_XPLATSTR("Reason")))
     {
-        setReason(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("reason"))));
+        setReason(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Reason"))));
     }
-    if(multipart->hasContent(_XPLATSTR("signatureDate")))
+    if(multipart->hasContent(_XPLATSTR("SignatureDate")))
     {
-        setSignatureDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("signatureDate"))));
+        setSignatureDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("SignatureDate"))));
     }
 }
 

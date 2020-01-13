@@ -52,7 +52,7 @@ web::json::value BorderResponse::toJson() const
 
     if(m_BorderIsSet)
     {
-        val[_XPLATSTR("border")] = ModelBase::toJson(m_Border);
+        val[_XPLATSTR("Border")] = ModelBase::toJson(m_Border);
     }
 
     return val;
@@ -62,9 +62,9 @@ void BorderResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("border")))
+    if(val.has_field(_XPLATSTR("Border")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("border")];
+        web::json::value& fieldValue = val[_XPLATSTR("Border")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Border> newItem(new Border());
@@ -80,14 +80,14 @@ void BorderResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_BorderIsSet)
     {
         if (m_Border.get())
         {
-            m_Border->toMultipart(multipart, _XPLATSTR("border."));
+            m_Border->toMultipart(multipart, _XPLATSTR("Border."));
         }
         
     }
@@ -95,16 +95,16 @@ void BorderResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void BorderResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("border")))
+    if(multipart->hasContent(_XPLATSTR("Border")))
     {
-        if(multipart->hasContent(_XPLATSTR("border")))
+        if(multipart->hasContent(_XPLATSTR("Border")))
         {
             std::shared_ptr<Border> newItem(new Border());
-            newItem->fromMultiPart(multipart, _XPLATSTR("border."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Border."));
             setBorder( newItem );
         }
     }

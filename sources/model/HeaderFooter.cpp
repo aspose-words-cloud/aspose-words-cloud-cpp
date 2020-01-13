@@ -61,16 +61,16 @@ web::json::value HeaderFooter::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("childNodes")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("ChildNodes")] = web::json::value::array(jsonArray);
         }
     }
     if(m_DrawingObjectsIsSet)
     {
-        val[_XPLATSTR("drawingObjects")] = ModelBase::toJson(m_DrawingObjects);
+        val[_XPLATSTR("DrawingObjects")] = ModelBase::toJson(m_DrawingObjects);
     }
     if(m_ParagraphsIsSet)
     {
-        val[_XPLATSTR("paragraphs")] = ModelBase::toJson(m_Paragraphs);
+        val[_XPLATSTR("Paragraphs")] = ModelBase::toJson(m_Paragraphs);
     }
 
     return val;
@@ -82,10 +82,10 @@ void HeaderFooter::fromJson(web::json::value& val)
 
     {
         m_ChildNodes.clear();
-        if(val.has_field(_XPLATSTR("childNodes")) 
-                            && !val[_XPLATSTR("childNodes")].is_null())
+        if(val.has_field(_XPLATSTR("ChildNodes")) 
+                            && !val[_XPLATSTR("ChildNodes")].is_null())
         {
-        auto arr = val[_XPLATSTR("childNodes")].as_array();
+        auto arr = val[_XPLATSTR("ChildNodes")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -101,9 +101,9 @@ void HeaderFooter::fromJson(web::json::value& val)
 
         }
     }
-    if(val.has_field(_XPLATSTR("drawingObjects")))
+    if(val.has_field(_XPLATSTR("DrawingObjects")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("drawingObjects")];
+        web::json::value& fieldValue = val[_XPLATSTR("DrawingObjects")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
@@ -111,9 +111,9 @@ void HeaderFooter::fromJson(web::json::value& val)
             setDrawingObjects( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("paragraphs")))
+    if(val.has_field(_XPLATSTR("Paragraphs")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("paragraphs")];
+        web::json::value& fieldValue = val[_XPLATSTR("Paragraphs")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
@@ -137,7 +137,7 @@ void HeaderFooter::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
     }
     if(m_TypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("type"), m_Type));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
         
     }
     {
@@ -148,14 +148,14 @@ void HeaderFooter::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("childNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ChildNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     if(m_DrawingObjectsIsSet)
     {
         if (m_DrawingObjects.get())
         {
-            m_DrawingObjects->toMultipart(multipart, _XPLATSTR("drawingObjects."));
+            m_DrawingObjects->toMultipart(multipart, _XPLATSTR("DrawingObjects."));
         }
         
     }
@@ -163,7 +163,7 @@ void HeaderFooter::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
     {
         if (m_Paragraphs.get())
         {
-            m_Paragraphs->toMultipart(multipart, _XPLATSTR("paragraphs."));
+            m_Paragraphs->toMultipart(multipart, _XPLATSTR("Paragraphs."));
         }
         
     }
@@ -180,16 +180,16 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("type")))
+    if(multipart->hasContent(_XPLATSTR("Type")))
     {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("type"))));
+        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
     }
     {
         m_ChildNodes.clear();
-        if(multipart->hasContent(_XPLATSTR("childNodes")))
+        if(multipart->hasContent(_XPLATSTR("ChildNodes")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("childNodes")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ChildNodes")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
             if(item.is_null())
             {
@@ -204,21 +204,21 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
         });
         }
     }
-    if(multipart->hasContent(_XPLATSTR("drawingObjects")))
+    if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
     {
-        if(multipart->hasContent(_XPLATSTR("drawingObjects")))
+        if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
-            newItem->fromMultiPart(multipart, _XPLATSTR("drawingObjects."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObjects."));
             setDrawingObjects( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("paragraphs")))
+    if(multipart->hasContent(_XPLATSTR("Paragraphs")))
     {
-        if(multipart->hasContent(_XPLATSTR("paragraphs")))
+        if(multipart->hasContent(_XPLATSTR("Paragraphs")))
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
-            newItem->fromMultiPart(multipart, _XPLATSTR("paragraphs."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
             setParagraphs( newItem );
         }
     }

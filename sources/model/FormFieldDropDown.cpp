@@ -61,12 +61,12 @@ web::json::value FormFieldDropDown::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("dropDownItems")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("DropDownItems")] = web::json::value::array(jsonArray);
         }
     }
     if(m_DropDownSelectedIndexIsSet)
     {
-        val[_XPLATSTR("dropDownSelectedIndex")] = ModelBase::toJson(m_DropDownSelectedIndex);
+        val[_XPLATSTR("DropDownSelectedIndex")] = ModelBase::toJson(m_DropDownSelectedIndex);
     }
 
     return val;
@@ -78,19 +78,19 @@ void FormFieldDropDown::fromJson(web::json::value& val)
 
     {
         m_DropDownItems.clear();
-        if(val.has_field(_XPLATSTR("dropDownItems")) 
-                            && !val[_XPLATSTR("dropDownItems")].is_null())
+        if(val.has_field(_XPLATSTR("DropDownItems")) 
+                            && !val[_XPLATSTR("DropDownItems")].is_null())
         {
-        auto arr = val[_XPLATSTR("dropDownItems")].as_array();
+        auto arr = val[_XPLATSTR("DropDownItems")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_DropDownItems), [&](web::json::value& item){
             return ModelBase::stringFromJson(item);
         });
 
         }
     }
-    if(val.has_field(_XPLATSTR("dropDownSelectedIndex")))
+    if(val.has_field(_XPLATSTR("DropDownSelectedIndex")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("dropDownSelectedIndex")];
+        web::json::value& fieldValue = val[_XPLATSTR("DropDownSelectedIndex")];
         if(!fieldValue.is_null())
         {
             setDropDownSelectedIndex(ModelBase::int32_tFromJson(fieldValue));
@@ -112,48 +112,48 @@ void FormFieldDropDown::toMultipart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     if(m_CalculateOnExitIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("calculateOnExit"), m_CalculateOnExit));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CalculateOnExit"), m_CalculateOnExit));
     }
     if(m_EnabledIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("enabled"), m_Enabled));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Enabled"), m_Enabled));
     }
     if(m_EntryMacroIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("entryMacro"), m_EntryMacro));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EntryMacro"), m_EntryMacro));
         
     }
     if(m_ExitMacroIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("exitMacro"), m_ExitMacro));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExitMacro"), m_ExitMacro));
         
     }
     if(m_HelpTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("helpText"), m_HelpText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HelpText"), m_HelpText));
         
     }
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
     if(m_OwnHelpIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ownHelp"), m_OwnHelp));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnHelp"), m_OwnHelp));
     }
     if(m_OwnStatusIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ownStatus"), m_OwnStatus));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnStatus"), m_OwnStatus));
     }
     if(m_StatusTextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("statusText"), m_StatusText));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StatusText"), m_StatusText));
         
     }
     {
@@ -164,12 +164,12 @@ void FormFieldDropDown::toMultipart(const std::shared_ptr<MultipartFormData>& mu
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dropDownItems"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DropDownItems"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     if(m_DropDownSelectedIndexIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("dropDownSelectedIndex"), m_DropDownSelectedIndex));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DropDownSelectedIndex"), m_DropDownSelectedIndex));
     }
 }
 
@@ -184,60 +184,60 @@ void FormFieldDropDown::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("calculateOnExit")))
+    if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
     {
-        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("calculateOnExit"))));
+        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
     }
-    if(multipart->hasContent(_XPLATSTR("enabled")))
+    if(multipart->hasContent(_XPLATSTR("Enabled")))
     {
-        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("enabled"))));
+        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
     }
-    if(multipart->hasContent(_XPLATSTR("entryMacro")))
+    if(multipart->hasContent(_XPLATSTR("EntryMacro")))
     {
-        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("entryMacro"))));
+        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EntryMacro"))));
     }
-    if(multipart->hasContent(_XPLATSTR("exitMacro")))
+    if(multipart->hasContent(_XPLATSTR("ExitMacro")))
     {
-        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("exitMacro"))));
+        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExitMacro"))));
     }
-    if(multipart->hasContent(_XPLATSTR("helpText")))
+    if(multipart->hasContent(_XPLATSTR("HelpText")))
     {
-        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("helpText"))));
+        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HelpText"))));
     }
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ownHelp")))
+    if(multipart->hasContent(_XPLATSTR("OwnHelp")))
     {
-        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ownHelp"))));
+        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
     }
-    if(multipart->hasContent(_XPLATSTR("ownStatus")))
+    if(multipart->hasContent(_XPLATSTR("OwnStatus")))
     {
-        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ownStatus"))));
+        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
     }
-    if(multipart->hasContent(_XPLATSTR("statusText")))
+    if(multipart->hasContent(_XPLATSTR("StatusText")))
     {
-        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("statusText"))));
+        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StatusText"))));
     }
     {
         m_DropDownItems.clear();
-        if(multipart->hasContent(_XPLATSTR("dropDownItems")))
+        if(multipart->hasContent(_XPLATSTR("DropDownItems")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("dropDownItems")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DropDownItems")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DropDownItems), [&](web::json::value item) {
             return ModelBase::stringFromJson(item);
         });
         }
     }
-    if(multipart->hasContent(_XPLATSTR("dropDownSelectedIndex")))
+    if(multipart->hasContent(_XPLATSTR("DropDownSelectedIndex")))
     {
-        setDropDownSelectedIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("dropDownSelectedIndex"))));
+        setDropDownSelectedIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("DropDownSelectedIndex"))));
     }
 }
 

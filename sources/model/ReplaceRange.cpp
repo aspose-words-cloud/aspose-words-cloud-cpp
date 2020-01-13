@@ -55,11 +55,11 @@ web::json::value ReplaceRange::toJson() const
 
     if(m_TextIsSet)
     {
-        val[_XPLATSTR("text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
     if(m_TextTypeIsSet)
     {
-        val[_XPLATSTR("textType")] = ModelBase::toJson(m_TextType);
+        val[_XPLATSTR("TextType")] = ModelBase::toJson(m_TextType);
     }
 
     return val;
@@ -67,17 +67,17 @@ web::json::value ReplaceRange::toJson() const
 
 void ReplaceRange::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("textType")))
+    if(val.has_field(_XPLATSTR("TextType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("textType")];
+        web::json::value& fieldValue = val[_XPLATSTR("TextType")];
         if(!fieldValue.is_null())
         {
             setTextType(ModelBase::stringFromJson(fieldValue));
@@ -91,25 +91,25 @@ void ReplaceRange::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
     if(m_TextTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("textType"), m_TextType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextType"), m_TextType));
         
     }
 }
 
 void ReplaceRange::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
-    if(multipart->hasContent(_XPLATSTR("textType")))
+    if(multipart->hasContent(_XPLATSTR("TextType")))
     {
-        setTextType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("textType"))));
+        setTextType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextType"))));
     }
 }
 

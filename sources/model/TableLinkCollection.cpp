@@ -59,7 +59,7 @@ web::json::value TableLinkCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("tableLinkList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("TableLinkList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void TableLinkCollection::fromJson(web::json::value& val)
 
     {
         m_TableLinkList.clear();
-        if(val.has_field(_XPLATSTR("tableLinkList")) 
-                            && !val[_XPLATSTR("tableLinkList")].is_null())
+        if(val.has_field(_XPLATSTR("TableLinkList")) 
+                            && !val[_XPLATSTR("TableLinkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("tableLinkList")].as_array();
+        auto arr = val[_XPLATSTR("TableLinkList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableLinkList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void TableLinkCollection::toMultipart(const std::shared_ptr<MultipartFormData>& 
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("tableLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TableLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void TableLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     {
         m_TableLinkList.clear();
-        if(multipart->hasContent(_XPLATSTR("tableLinkList")))
+        if(multipart->hasContent(_XPLATSTR("TableLinkList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("tableLinkList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TableLinkList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableLinkList), [&](web::json::value item) {
             if(item.is_null())
             {

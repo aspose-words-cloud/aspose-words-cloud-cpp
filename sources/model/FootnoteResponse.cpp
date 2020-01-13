@@ -52,7 +52,7 @@ web::json::value FootnoteResponse::toJson() const
 
     if(m_FootnoteIsSet)
     {
-        val[_XPLATSTR("footnote")] = ModelBase::toJson(m_Footnote);
+        val[_XPLATSTR("Footnote")] = ModelBase::toJson(m_Footnote);
     }
 
     return val;
@@ -62,9 +62,9 @@ void FootnoteResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("footnote")))
+    if(val.has_field(_XPLATSTR("Footnote")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("footnote")];
+        web::json::value& fieldValue = val[_XPLATSTR("Footnote")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Footnote> newItem(new Footnote());
@@ -80,14 +80,14 @@ void FootnoteResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_FootnoteIsSet)
     {
         if (m_Footnote.get())
         {
-            m_Footnote->toMultipart(multipart, _XPLATSTR("footnote."));
+            m_Footnote->toMultipart(multipart, _XPLATSTR("Footnote."));
         }
         
     }
@@ -95,16 +95,16 @@ void FootnoteResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void FootnoteResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("footnote")))
+    if(multipart->hasContent(_XPLATSTR("Footnote")))
     {
-        if(multipart->hasContent(_XPLATSTR("footnote")))
+        if(multipart->hasContent(_XPLATSTR("Footnote")))
         {
             std::shared_ptr<Footnote> newItem(new Footnote());
-            newItem->fromMultiPart(multipart, _XPLATSTR("footnote."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Footnote."));
             setFootnote( newItem );
         }
     }

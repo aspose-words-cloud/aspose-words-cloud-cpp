@@ -59,7 +59,7 @@ web::json::value Bookmarks::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("bookmarkList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("BookmarkList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void Bookmarks::fromJson(web::json::value& val)
 
     {
         m_BookmarkList.clear();
-        if(val.has_field(_XPLATSTR("bookmarkList")) 
-                            && !val[_XPLATSTR("bookmarkList")].is_null())
+        if(val.has_field(_XPLATSTR("BookmarkList")) 
+                            && !val[_XPLATSTR("BookmarkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("bookmarkList")].as_array();
+        auto arr = val[_XPLATSTR("BookmarkList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarkList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void Bookmarks::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bookmarkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BookmarkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void Bookmarks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
     {
         m_BookmarkList.clear();
-        if(multipart->hasContent(_XPLATSTR("bookmarkList")))
+        if(multipart->hasContent(_XPLATSTR("BookmarkList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("bookmarkList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BookmarkList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BookmarkList), [&](web::json::value item) {
             if(item.is_null())
             {

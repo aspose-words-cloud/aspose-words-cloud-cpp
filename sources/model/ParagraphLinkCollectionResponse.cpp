@@ -52,7 +52,7 @@ web::json::value ParagraphLinkCollectionResponse::toJson() const
 
     if(m_ParagraphsIsSet)
     {
-        val[_XPLATSTR("paragraphs")] = ModelBase::toJson(m_Paragraphs);
+        val[_XPLATSTR("Paragraphs")] = ModelBase::toJson(m_Paragraphs);
     }
 
     return val;
@@ -62,9 +62,9 @@ void ParagraphLinkCollectionResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("paragraphs")))
+    if(val.has_field(_XPLATSTR("Paragraphs")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("paragraphs")];
+        web::json::value& fieldValue = val[_XPLATSTR("Paragraphs")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
@@ -80,14 +80,14 @@ void ParagraphLinkCollectionResponse::toMultipart(const std::shared_ptr<Multipar
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_ParagraphsIsSet)
     {
         if (m_Paragraphs.get())
         {
-            m_Paragraphs->toMultipart(multipart, _XPLATSTR("paragraphs."));
+            m_Paragraphs->toMultipart(multipart, _XPLATSTR("Paragraphs."));
         }
         
     }
@@ -95,16 +95,16 @@ void ParagraphLinkCollectionResponse::toMultipart(const std::shared_ptr<Multipar
 
 void ParagraphLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("paragraphs")))
+    if(multipart->hasContent(_XPLATSTR("Paragraphs")))
     {
-        if(multipart->hasContent(_XPLATSTR("paragraphs")))
+        if(multipart->hasContent(_XPLATSTR("Paragraphs")))
         {
             std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("paragraphs."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
             setParagraphs( newItem );
         }
     }

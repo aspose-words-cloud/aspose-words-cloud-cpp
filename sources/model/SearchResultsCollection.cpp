@@ -59,7 +59,7 @@ web::json::value SearchResultsCollection::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("resultsList")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("ResultsList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void SearchResultsCollection::fromJson(web::json::value& val)
 
     {
         m_ResultsList.clear();
-        if(val.has_field(_XPLATSTR("resultsList")) 
-                            && !val[_XPLATSTR("resultsList")].is_null())
+        if(val.has_field(_XPLATSTR("ResultsList")) 
+                            && !val[_XPLATSTR("ResultsList")].is_null())
         {
-        auto arr = val[_XPLATSTR("resultsList")].as_array();
+        auto arr = val[_XPLATSTR("ResultsList")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -113,7 +113,7 @@ void SearchResultsCollection::toMultipart(const std::shared_ptr<MultipartFormDat
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("resultsList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResultsList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -131,10 +131,10 @@ void SearchResultsCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
     {
         m_ResultsList.clear();
-        if(multipart->hasContent(_XPLATSTR("resultsList")))
+        if(multipart->hasContent(_XPLATSTR("ResultsList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("resultsList")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResultsList")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](web::json::value item) {
             if(item.is_null())
             {

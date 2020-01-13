@@ -54,26 +54,26 @@ web::json::value BookmarksOutlineLevelData::toJson() const
 
     if(m_NameIsSet)
     {
-        val[_XPLATSTR("name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
-    val[_XPLATSTR("bookmarksOutlineLevel")] = ModelBase::toJson(m_BookmarksOutlineLevel);
+    val[_XPLATSTR("BookmarksOutlineLevel")] = ModelBase::toJson(m_BookmarksOutlineLevel);
 
     return val;
 }
 
 void BookmarksOutlineLevelData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("bookmarksOutlineLevel")))
+    if(val.has_field(_XPLATSTR("BookmarksOutlineLevel")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("bookmarksOutlineLevel")];
+        web::json::value& fieldValue = val[_XPLATSTR("BookmarksOutlineLevel")];
         if(!fieldValue.is_null())
         {
             setBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
@@ -87,19 +87,19 @@ void BookmarksOutlineLevelData::toMultipart(const std::shared_ptr<MultipartFormD
 
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bookmarksOutlineLevel"), m_BookmarksOutlineLevel));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BookmarksOutlineLevel"), m_BookmarksOutlineLevel));
 }
 
 void BookmarksOutlineLevelData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    setBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("bookmarksOutlineLevel"))));
+    setBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevel"))));
 }
 
 utility::string_t BookmarksOutlineLevelData::getName() const

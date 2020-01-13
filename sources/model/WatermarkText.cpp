@@ -54,26 +54,26 @@ web::json::value WatermarkText::toJson() const
 
     if(m_TextIsSet)
     {
-        val[_XPLATSTR("text")] = ModelBase::toJson(m_Text);
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
-    val[_XPLATSTR("rotationAngle")] = ModelBase::toJson(m_RotationAngle);
+    val[_XPLATSTR("RotationAngle")] = ModelBase::toJson(m_RotationAngle);
 
     return val;
 }
 
 void WatermarkText::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("text")))
+    if(val.has_field(_XPLATSTR("Text")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("text")];
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
             setText(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("rotationAngle")))
+    if(val.has_field(_XPLATSTR("RotationAngle")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("rotationAngle")];
+        web::json::value& fieldValue = val[_XPLATSTR("RotationAngle")];
         if(!fieldValue.is_null())
         {
             setRotationAngle(ModelBase::doubleFromJson(fieldValue));
@@ -87,19 +87,19 @@ void WatermarkText::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
     if(m_TextIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("text"), m_Text));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("rotationAngle"), m_RotationAngle));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RotationAngle"), m_RotationAngle));
 }
 
 void WatermarkText::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("text")))
+    if(multipart->hasContent(_XPLATSTR("Text")))
     {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("text"))));
+        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
-    setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("rotationAngle"))));
+    setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
 }
 
 utility::string_t WatermarkText::getText() const

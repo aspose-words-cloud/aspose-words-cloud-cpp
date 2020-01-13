@@ -59,17 +59,17 @@ web::json::value StorageFile::toJson() const
 
     if(m_NameIsSet)
     {
-        val[_XPLATSTR("name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
-    val[_XPLATSTR("isFolder")] = ModelBase::toJson(m_IsFolder);
+    val[_XPLATSTR("IsFolder")] = ModelBase::toJson(m_IsFolder);
     if(m_ModifiedDateIsSet)
     {
-        val[_XPLATSTR("modifiedDate")] = ModelBase::toJson(m_ModifiedDate);
+        val[_XPLATSTR("ModifiedDate")] = ModelBase::toJson(m_ModifiedDate);
     }
-    val[_XPLATSTR("size")] = ModelBase::toJson(m_Size);
+    val[_XPLATSTR("Size")] = ModelBase::toJson(m_Size);
     if(m_PathIsSet)
     {
-        val[_XPLATSTR("path")] = ModelBase::toJson(m_Path);
+        val[_XPLATSTR("Path")] = ModelBase::toJson(m_Path);
     }
 
     return val;
@@ -77,41 +77,41 @@ web::json::value StorageFile::toJson() const
 
 void StorageFile::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("isFolder")))
+    if(val.has_field(_XPLATSTR("IsFolder")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("isFolder")];
+        web::json::value& fieldValue = val[_XPLATSTR("IsFolder")];
         if(!fieldValue.is_null())
         {
             setIsFolder(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("modifiedDate")))
+    if(val.has_field(_XPLATSTR("ModifiedDate")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("modifiedDate")];
+        web::json::value& fieldValue = val[_XPLATSTR("ModifiedDate")];
         if(!fieldValue.is_null())
         {
             setModifiedDate(ModelBase::dateFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("size")))
+    if(val.has_field(_XPLATSTR("Size")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("size")];
+        web::json::value& fieldValue = val[_XPLATSTR("Size")];
         if(!fieldValue.is_null())
         {
             setSize(ModelBase::int64_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("path")))
+    if(val.has_field(_XPLATSTR("Path")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("path")];
+        web::json::value& fieldValue = val[_XPLATSTR("Path")];
         if(!fieldValue.is_null())
         {
             setPath(ModelBase::stringFromJson(fieldValue));
@@ -125,38 +125,38 @@ void StorageFile::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("isFolder"), m_IsFolder));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsFolder"), m_IsFolder));
     if(m_ModifiedDateIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("modifiedDate"), m_ModifiedDate));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ModifiedDate"), m_ModifiedDate));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("size"), m_Size));
+    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Size"), m_Size));
     if(m_PathIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("path"), m_Path));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Path"), m_Path));
         
     }
 }
 
 void StorageFile::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("isFolder"))));
-    if(multipart->hasContent(_XPLATSTR("modifiedDate")))
+    setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsFolder"))));
+    if(multipart->hasContent(_XPLATSTR("ModifiedDate")))
     {
-        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("modifiedDate"))));
+        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ModifiedDate"))));
     }
-    setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(_XPLATSTR("size"))));
-    if(multipart->hasContent(_XPLATSTR("path")))
+    setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
+    if(multipart->hasContent(_XPLATSTR("Path")))
     {
-        setPath(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("path"))));
+        setPath(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Path"))));
     }
 }
 

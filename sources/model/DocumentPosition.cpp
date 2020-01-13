@@ -54,11 +54,11 @@ web::json::value DocumentPosition::toJson() const
 
     if(m_NodeIsSet)
     {
-        val[_XPLATSTR("node")] = ModelBase::toJson(m_Node);
+        val[_XPLATSTR("Node")] = ModelBase::toJson(m_Node);
     }
     if(m_OffsetIsSet)
     {
-        val[_XPLATSTR("offset")] = ModelBase::toJson(m_Offset);
+        val[_XPLATSTR("Offset")] = ModelBase::toJson(m_Offset);
     }
 
     return val;
@@ -66,9 +66,9 @@ web::json::value DocumentPosition::toJson() const
 
 void DocumentPosition::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("node")))
+    if(val.has_field(_XPLATSTR("Node")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("node")];
+        web::json::value& fieldValue = val[_XPLATSTR("Node")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<NodeLink> newItem(new NodeLink());
@@ -76,9 +76,9 @@ void DocumentPosition::fromJson(web::json::value& val)
             setNode( newItem );
         }
     }
-    if(val.has_field(_XPLATSTR("offset")))
+    if(val.has_field(_XPLATSTR("Offset")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("offset")];
+        web::json::value& fieldValue = val[_XPLATSTR("Offset")];
         if(!fieldValue.is_null())
         {
             setOffset(ModelBase::int32_tFromJson(fieldValue));
@@ -94,30 +94,30 @@ void DocumentPosition::toMultipart(const std::shared_ptr<MultipartFormData>& mul
     {
         if (m_Node.get())
         {
-            m_Node->toMultipart(multipart, _XPLATSTR("node."));
+            m_Node->toMultipart(multipart, _XPLATSTR("Node."));
         }
         
     }
     if(m_OffsetIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("offset"), m_Offset));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Offset"), m_Offset));
     }
 }
 
 void DocumentPosition::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("node")))
+    if(multipart->hasContent(_XPLATSTR("Node")))
     {
-        if(multipart->hasContent(_XPLATSTR("node")))
+        if(multipart->hasContent(_XPLATSTR("Node")))
         {
             std::shared_ptr<NodeLink> newItem(new NodeLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("node."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Node."));
             setNode( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("offset")))
+    if(multipart->hasContent(_XPLATSTR("Offset")))
     {
-        setOffset(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("offset"))));
+        setOffset(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Offset"))));
     }
 }
 

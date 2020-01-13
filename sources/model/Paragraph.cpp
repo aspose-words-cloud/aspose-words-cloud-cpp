@@ -59,7 +59,7 @@ web::json::value Paragraph::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("childNodes")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("ChildNodes")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -72,10 +72,10 @@ void Paragraph::fromJson(web::json::value& val)
 
     {
         m_ChildNodes.clear();
-        if(val.has_field(_XPLATSTR("childNodes")) 
-                            && !val[_XPLATSTR("childNodes")].is_null())
+        if(val.has_field(_XPLATSTR("ChildNodes")) 
+                            && !val[_XPLATSTR("ChildNodes")].is_null())
         {
-        auto arr = val[_XPLATSTR("childNodes")].as_array();
+        auto arr = val[_XPLATSTR("ChildNodes")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -107,7 +107,7 @@ void Paragraph::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     }
     if(m_NodeIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("nodeId"), m_NodeId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
         
     }
     {
@@ -118,7 +118,7 @@ void Paragraph::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("childNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ChildNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -134,16 +134,16 @@ void Paragraph::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("nodeId")))
+    if(multipart->hasContent(_XPLATSTR("NodeId")))
     {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("nodeId"))));
+        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
     }
     {
         m_ChildNodes.clear();
-        if(multipart->hasContent(_XPLATSTR("childNodes")))
+        if(multipart->hasContent(_XPLATSTR("ChildNodes")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("childNodes")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ChildNodes")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
             if(item.is_null())
             {

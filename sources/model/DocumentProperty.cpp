@@ -57,15 +57,15 @@ web::json::value DocumentProperty::toJson() const
 
     if(m_BuiltInIsSet)
     {
-        val[_XPLATSTR("builtIn")] = ModelBase::toJson(m_BuiltIn);
+        val[_XPLATSTR("BuiltIn")] = ModelBase::toJson(m_BuiltIn);
     }
     if(m_NameIsSet)
     {
-        val[_XPLATSTR("name")] = ModelBase::toJson(m_Name);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
     if(m_ValueIsSet)
     {
-        val[_XPLATSTR("value")] = ModelBase::toJson(m_Value);
+        val[_XPLATSTR("Value")] = ModelBase::toJson(m_Value);
     }
 
     return val;
@@ -75,25 +75,25 @@ void DocumentProperty::fromJson(web::json::value& val)
 {
     this->LinkElement::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("builtIn")))
+    if(val.has_field(_XPLATSTR("BuiltIn")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("builtIn")];
+        web::json::value& fieldValue = val[_XPLATSTR("BuiltIn")];
         if(!fieldValue.is_null())
         {
             setBuiltIn(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("name")))
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("name")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
             setName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("value")))
+    if(val.has_field(_XPLATSTR("Value")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("value")];
+        web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
             setValue(ModelBase::stringFromJson(fieldValue));
@@ -115,16 +115,16 @@ void DocumentProperty::toMultipart(const std::shared_ptr<MultipartFormData>& mul
     }
     if(m_BuiltInIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("builtIn"), m_BuiltIn));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BuiltIn"), m_BuiltIn));
     }
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
         
     }
     if(m_ValueIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("value"), m_Value));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
         
     }
 }
@@ -140,17 +140,17 @@ void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
             setLink( newItem );
         }
     }
-    if(multipart->hasContent(_XPLATSTR("builtIn")))
+    if(multipart->hasContent(_XPLATSTR("BuiltIn")))
     {
-        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("builtIn"))));
+        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
     }
-    if(multipart->hasContent(_XPLATSTR("name")))
+    if(multipart->hasContent(_XPLATSTR("Name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
     }
-    if(multipart->hasContent(_XPLATSTR("value")))
+    if(multipart->hasContent(_XPLATSTR("Value")))
     {
-        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("value"))));
+        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
     }
 }
 

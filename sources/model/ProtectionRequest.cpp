@@ -57,15 +57,15 @@ web::json::value ProtectionRequest::toJson() const
 
     if(m_PasswordIsSet)
     {
-        val[_XPLATSTR("password")] = ModelBase::toJson(m_Password);
+        val[_XPLATSTR("Password")] = ModelBase::toJson(m_Password);
     }
     if(m_NewPasswordIsSet)
     {
-        val[_XPLATSTR("newPassword")] = ModelBase::toJson(m_NewPassword);
+        val[_XPLATSTR("NewPassword")] = ModelBase::toJson(m_NewPassword);
     }
     if(m_ProtectionTypeIsSet)
     {
-        val[_XPLATSTR("protectionType")] = ModelBase::toJson(m_ProtectionType);
+        val[_XPLATSTR("ProtectionType")] = ModelBase::toJson(m_ProtectionType);
     }
 
     return val;
@@ -73,25 +73,25 @@ web::json::value ProtectionRequest::toJson() const
 
 void ProtectionRequest::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("password")))
+    if(val.has_field(_XPLATSTR("Password")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("password")];
+        web::json::value& fieldValue = val[_XPLATSTR("Password")];
         if(!fieldValue.is_null())
         {
             setPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("newPassword")))
+    if(val.has_field(_XPLATSTR("NewPassword")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("newPassword")];
+        web::json::value& fieldValue = val[_XPLATSTR("NewPassword")];
         if(!fieldValue.is_null())
         {
             setNewPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("protectionType")))
+    if(val.has_field(_XPLATSTR("ProtectionType")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("protectionType")];
+        web::json::value& fieldValue = val[_XPLATSTR("ProtectionType")];
         if(!fieldValue.is_null())
         {
             setProtectionType(ModelBase::stringFromJson(fieldValue));
@@ -105,34 +105,34 @@ void ProtectionRequest::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     if(m_PasswordIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("password"), m_Password));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Password"), m_Password));
         
     }
     if(m_NewPasswordIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("newPassword"), m_NewPassword));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NewPassword"), m_NewPassword));
         
     }
     if(m_ProtectionTypeIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("protectionType"), m_ProtectionType));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ProtectionType"), m_ProtectionType));
         
     }
 }
 
 void ProtectionRequest::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("password")))
+    if(multipart->hasContent(_XPLATSTR("Password")))
     {
-        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("password"))));
+        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));
     }
-    if(multipart->hasContent(_XPLATSTR("newPassword")))
+    if(multipart->hasContent(_XPLATSTR("NewPassword")))
     {
-        setNewPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("newPassword"))));
+        setNewPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NewPassword"))));
     }
-    if(multipart->hasContent(_XPLATSTR("protectionType")))
+    if(multipart->hasContent(_XPLATSTR("ProtectionType")))
     {
-        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("protectionType"))));
+        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ProtectionType"))));
     }
 }
 

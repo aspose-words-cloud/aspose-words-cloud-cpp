@@ -52,7 +52,7 @@ web::json::value HeaderFooterResponse::toJson() const
 
     if(m_HeaderFooterIsSet)
     {
-        val[_XPLATSTR("headerFooter")] = ModelBase::toJson(m_HeaderFooter);
+        val[_XPLATSTR("HeaderFooter")] = ModelBase::toJson(m_HeaderFooter);
     }
 
     return val;
@@ -62,9 +62,9 @@ void HeaderFooterResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("headerFooter")))
+    if(val.has_field(_XPLATSTR("HeaderFooter")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("headerFooter")];
+        web::json::value& fieldValue = val[_XPLATSTR("HeaderFooter")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<HeaderFooter> newItem(new HeaderFooter());
@@ -80,14 +80,14 @@ void HeaderFooterResponse::toMultipart(const std::shared_ptr<MultipartFormData>&
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_HeaderFooterIsSet)
     {
         if (m_HeaderFooter.get())
         {
-            m_HeaderFooter->toMultipart(multipart, _XPLATSTR("headerFooter."));
+            m_HeaderFooter->toMultipart(multipart, _XPLATSTR("HeaderFooter."));
         }
         
     }
@@ -95,16 +95,16 @@ void HeaderFooterResponse::toMultipart(const std::shared_ptr<MultipartFormData>&
 
 void HeaderFooterResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("headerFooter")))
+    if(multipart->hasContent(_XPLATSTR("HeaderFooter")))
     {
-        if(multipart->hasContent(_XPLATSTR("headerFooter")))
+        if(multipart->hasContent(_XPLATSTR("HeaderFooter")))
         {
             std::shared_ptr<HeaderFooter> newItem(new HeaderFooter());
-            newItem->fromMultiPart(multipart, _XPLATSTR("headerFooter."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("HeaderFooter."));
             setHeaderFooter( newItem );
         }
     }

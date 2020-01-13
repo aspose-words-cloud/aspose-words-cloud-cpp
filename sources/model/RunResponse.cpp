@@ -52,7 +52,7 @@ web::json::value RunResponse::toJson() const
 
     if(m_RunIsSet)
     {
-        val[_XPLATSTR("run")] = ModelBase::toJson(m_Run);
+        val[_XPLATSTR("Run")] = ModelBase::toJson(m_Run);
     }
 
     return val;
@@ -62,9 +62,9 @@ void RunResponse::fromJson(web::json::value& val)
 {
     this->WordsResponse::fromJson(val);
 
-    if(val.has_field(_XPLATSTR("run")))
+    if(val.has_field(_XPLATSTR("Run")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("run")];
+        web::json::value& fieldValue = val[_XPLATSTR("Run")];
         if(!fieldValue.is_null())
         {
             std::shared_ptr<Run> newItem(new Run());
@@ -80,14 +80,14 @@ void RunResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
     if(m_RequestIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("requestId"), m_RequestId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
     if(m_RunIsSet)
     {
         if (m_Run.get())
         {
-            m_Run->toMultipart(multipart, _XPLATSTR("run."));
+            m_Run->toMultipart(multipart, _XPLATSTR("Run."));
         }
         
     }
@@ -95,16 +95,16 @@ void RunResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
 void RunResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("requestId")))
+    if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("requestId"))));
+        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    if(multipart->hasContent(_XPLATSTR("run")))
+    if(multipart->hasContent(_XPLATSTR("Run")))
     {
-        if(multipart->hasContent(_XPLATSTR("run")))
+        if(multipart->hasContent(_XPLATSTR("Run")))
         {
             std::shared_ptr<Run> newItem(new Run());
-            newItem->fromMultiPart(multipart, _XPLATSTR("run."));
+            newItem->fromMultiPart(multipart, _XPLATSTR("Run."));
             setRun( newItem );
         }
     }

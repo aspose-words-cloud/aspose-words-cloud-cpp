@@ -69,28 +69,28 @@ web::json::value OutlineOptionsData::toJson() const
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("bookmarksOutlineLevels")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("BookmarksOutlineLevels")] = web::json::value::array(jsonArray);
         }
     }
     if(m_DefaultBookmarksOutlineLevelIsSet)
     {
-        val[_XPLATSTR("defaultBookmarksOutlineLevel")] = ModelBase::toJson(m_DefaultBookmarksOutlineLevel);
+        val[_XPLATSTR("DefaultBookmarksOutlineLevel")] = ModelBase::toJson(m_DefaultBookmarksOutlineLevel);
     }
     if(m_CreateMissingOutlineLevelsIsSet)
     {
-        val[_XPLATSTR("createMissingOutlineLevels")] = ModelBase::toJson(m_CreateMissingOutlineLevels);
+        val[_XPLATSTR("CreateMissingOutlineLevels")] = ModelBase::toJson(m_CreateMissingOutlineLevels);
     }
     if(m_CreateOutlinesForHeadingsInTablesIsSet)
     {
-        val[_XPLATSTR("createOutlinesForHeadingsInTables")] = ModelBase::toJson(m_CreateOutlinesForHeadingsInTables);
+        val[_XPLATSTR("CreateOutlinesForHeadingsInTables")] = ModelBase::toJson(m_CreateOutlinesForHeadingsInTables);
     }
     if(m_ExpandedOutlineLevelsIsSet)
     {
-        val[_XPLATSTR("expandedOutlineLevels")] = ModelBase::toJson(m_ExpandedOutlineLevels);
+        val[_XPLATSTR("ExpandedOutlineLevels")] = ModelBase::toJson(m_ExpandedOutlineLevels);
     }
     if(m_HeadingsOutlineLevelsIsSet)
     {
-        val[_XPLATSTR("headingsOutlineLevels")] = ModelBase::toJson(m_HeadingsOutlineLevels);
+        val[_XPLATSTR("HeadingsOutlineLevels")] = ModelBase::toJson(m_HeadingsOutlineLevels);
     }
 
     return val;
@@ -100,10 +100,10 @@ void OutlineOptionsData::fromJson(web::json::value& val)
 {
     {
         m_BookmarksOutlineLevels.clear();
-        if(val.has_field(_XPLATSTR("bookmarksOutlineLevels")) 
-                            && !val[_XPLATSTR("bookmarksOutlineLevels")].is_null())
+        if(val.has_field(_XPLATSTR("BookmarksOutlineLevels")) 
+                            && !val[_XPLATSTR("BookmarksOutlineLevels")].is_null())
         {
-        auto arr = val[_XPLATSTR("bookmarksOutlineLevels")].as_array();
+        auto arr = val[_XPLATSTR("BookmarksOutlineLevels")].as_array();
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](web::json::value& item){
             if(item.is_null())
             {
@@ -119,41 +119,41 @@ void OutlineOptionsData::fromJson(web::json::value& val)
 
         }
     }
-    if(val.has_field(_XPLATSTR("defaultBookmarksOutlineLevel")))
+    if(val.has_field(_XPLATSTR("DefaultBookmarksOutlineLevel")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("defaultBookmarksOutlineLevel")];
+        web::json::value& fieldValue = val[_XPLATSTR("DefaultBookmarksOutlineLevel")];
         if(!fieldValue.is_null())
         {
             setDefaultBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("createMissingOutlineLevels")))
+    if(val.has_field(_XPLATSTR("CreateMissingOutlineLevels")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("createMissingOutlineLevels")];
+        web::json::value& fieldValue = val[_XPLATSTR("CreateMissingOutlineLevels")];
         if(!fieldValue.is_null())
         {
             setCreateMissingOutlineLevels(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("createOutlinesForHeadingsInTables")))
+    if(val.has_field(_XPLATSTR("CreateOutlinesForHeadingsInTables")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("createOutlinesForHeadingsInTables")];
+        web::json::value& fieldValue = val[_XPLATSTR("CreateOutlinesForHeadingsInTables")];
         if(!fieldValue.is_null())
         {
             setCreateOutlinesForHeadingsInTables(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("expandedOutlineLevels")))
+    if(val.has_field(_XPLATSTR("ExpandedOutlineLevels")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("expandedOutlineLevels")];
+        web::json::value& fieldValue = val[_XPLATSTR("ExpandedOutlineLevels")];
         if(!fieldValue.is_null())
         {
             setExpandedOutlineLevels(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("headingsOutlineLevels")))
+    if(val.has_field(_XPLATSTR("HeadingsOutlineLevels")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("headingsOutlineLevels")];
+        web::json::value& fieldValue = val[_XPLATSTR("HeadingsOutlineLevels")];
         if(!fieldValue.is_null())
         {
             setHeadingsOutlineLevels(ModelBase::int32_tFromJson(fieldValue));
@@ -173,28 +173,28 @@ void OutlineOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("bookmarksOutlineLevels"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BookmarksOutlineLevels"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
     if(m_DefaultBookmarksOutlineLevelIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("defaultBookmarksOutlineLevel"), m_DefaultBookmarksOutlineLevel));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DefaultBookmarksOutlineLevel"), m_DefaultBookmarksOutlineLevel));
     }
     if(m_CreateMissingOutlineLevelsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("createMissingOutlineLevels"), m_CreateMissingOutlineLevels));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateMissingOutlineLevels"), m_CreateMissingOutlineLevels));
     }
     if(m_CreateOutlinesForHeadingsInTablesIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("createOutlinesForHeadingsInTables"), m_CreateOutlinesForHeadingsInTables));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateOutlinesForHeadingsInTables"), m_CreateOutlinesForHeadingsInTables));
     }
     if(m_ExpandedOutlineLevelsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("expandedOutlineLevels"), m_ExpandedOutlineLevels));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExpandedOutlineLevels"), m_ExpandedOutlineLevels));
     }
     if(m_HeadingsOutlineLevelsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("headingsOutlineLevels"), m_HeadingsOutlineLevels));
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeadingsOutlineLevels"), m_HeadingsOutlineLevels));
     }
 }
 
@@ -202,10 +202,10 @@ void OutlineOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 {
     {
         m_BookmarksOutlineLevels.clear();
-        if(multipart->hasContent(_XPLATSTR("bookmarksOutlineLevels")))
+        if(multipart->hasContent(_XPLATSTR("BookmarksOutlineLevels")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("bookmarksOutlineLevels")))).as_array();
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevels")))).as_array();
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](web::json::value item) {
             if(item.is_null())
             {
@@ -220,25 +220,25 @@ void OutlineOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
         });
         }
     }
-    if(multipart->hasContent(_XPLATSTR("defaultBookmarksOutlineLevel")))
+    if(multipart->hasContent(_XPLATSTR("DefaultBookmarksOutlineLevel")))
     {
-        setDefaultBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("defaultBookmarksOutlineLevel"))));
+        setDefaultBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("DefaultBookmarksOutlineLevel"))));
     }
-    if(multipart->hasContent(_XPLATSTR("createMissingOutlineLevels")))
+    if(multipart->hasContent(_XPLATSTR("CreateMissingOutlineLevels")))
     {
-        setCreateMissingOutlineLevels(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("createMissingOutlineLevels"))));
+        setCreateMissingOutlineLevels(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CreateMissingOutlineLevels"))));
     }
-    if(multipart->hasContent(_XPLATSTR("createOutlinesForHeadingsInTables")))
+    if(multipart->hasContent(_XPLATSTR("CreateOutlinesForHeadingsInTables")))
     {
-        setCreateOutlinesForHeadingsInTables(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("createOutlinesForHeadingsInTables"))));
+        setCreateOutlinesForHeadingsInTables(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CreateOutlinesForHeadingsInTables"))));
     }
-    if(multipart->hasContent(_XPLATSTR("expandedOutlineLevels")))
+    if(multipart->hasContent(_XPLATSTR("ExpandedOutlineLevels")))
     {
-        setExpandedOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("expandedOutlineLevels"))));
+        setExpandedOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ExpandedOutlineLevels"))));
     }
-    if(multipart->hasContent(_XPLATSTR("headingsOutlineLevels")))
+    if(multipart->hasContent(_XPLATSTR("HeadingsOutlineLevels")))
     {
-        setHeadingsOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("headingsOutlineLevels"))));
+        setHeadingsOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("HeadingsOutlineLevels"))));
     }
 }
 
