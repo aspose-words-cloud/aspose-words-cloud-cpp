@@ -25,7 +25,7 @@ node('windows2019') {
 	}
 }
 
-node('words-lonux') {
+node('words-linux') {
 	try {
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){
