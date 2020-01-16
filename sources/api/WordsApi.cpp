@@ -1601,14 +1601,14 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_pt
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/borders/{index}"),
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/borders/{borderType}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("index"),
-        ApiClient::parameterToString(request->getIndex()));
+    path = replacePathParameter(path, _XPLATSTR("borderType"),
+        ApiClient::parameterToString(request->getBorderType()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -6202,14 +6202,14 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<G
 {
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/borders/{index}"),
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/borders/{borderType}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("index"),
-        ApiClient::parameterToString(request->getIndex()));
+    path = replacePathParameter(path, _XPLATSTR("borderType"),
+        ApiClient::parameterToString(request->getBorderType()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -21569,14 +21569,14 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_pt
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/borders/{index}"),
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/borders/{borderType}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("nodePath"),
         ApiClient::parameterToString(request->getNodePath()));
-    path = replacePathParameter(path, _XPLATSTR("index"),
-        ApiClient::parameterToString(request->getIndex()));
+    path = replacePathParameter(path, _XPLATSTR("borderType"),
+        ApiClient::parameterToString(request->getBorderType()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24535,10 +24535,10 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
 pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_ptr<UploadFileRequest> request)
 {
 
-    // verify the required parameter 'file' is set
-    if (request->getFile() == nullptr)
+    // verify the required parameter 'fileContent' is set
+    if (request->getFileContent() == nullptr)
     {
-        throw ApiException(400, _XPLATSTR("Missing required parameter 'file' when calling WordsApi->uploadFile"));
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'fileContent' when calling WordsApi->uploadFile"));
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -24583,9 +24583,9 @@ pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_p
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert(_XPLATSTR("multipart/form-data"));
 
-    if (request->getFile() != nullptr)
+    if (request->getFileContent() != nullptr)
     {
-        fileParams.push_back(make_pair(_XPLATSTR("File"), (request->getFile())));
+        fileParams.push_back(make_pair(_XPLATSTR("FileContent"), (request->getFileContent())));
     }
     if (request->getStorageName())
     {

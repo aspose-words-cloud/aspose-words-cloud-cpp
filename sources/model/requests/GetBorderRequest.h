@@ -40,7 +40,7 @@ class GetBorderRequest{
      GetBorderRequest(
         utility::string_t name,
                 utility::string_t nodePath,
-                int32_t index,
+                utility::string_t borderType,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -53,8 +53,8 @@ class GetBorderRequest{
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
 
-        int32_t getIndex() const;
-        void setIndex(int32_t index);
+        utility::string_t getBorderType() const;
+        void setBorderType(utility::string_t borderType);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -70,7 +70,7 @@ class GetBorderRequest{
     private:
         utility::string_t m_name;
         utility::string_t m_nodePath;
-        int32_t m_index;
+        utility::string_t m_borderType;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

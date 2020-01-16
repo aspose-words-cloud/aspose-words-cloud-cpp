@@ -479,7 +479,7 @@ public:
     ///</remarks>
     /// <param name="name">The document name.</param>
         /// <param name="nodePath">Path to the node with border(node should be paragraph, cell or row).</param>
-        /// <param name="index">Object index.</param>
+        /// <param name="borderType">Border type.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -1102,7 +1102,7 @@ public:
     ///</remarks>
     /// <param name="name">The document name.</param>
         /// <param name="nodePath">Path to the node with border(node should be paragraph, cell or row).</param>
-        /// <param name="index">Object index.</param>
+        /// <param name="borderType">Border type.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2870,7 +2870,7 @@ public:
     /// <param name="name">The document name.</param>
         /// <param name="borderProperties">Border properties.</param>
         /// <param name="nodePath">Path to the node with border(node should be paragraph, cell or row).</param>
-        /// <param name="index">Object index.</param>
+        /// <param name="borderType">Border type.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -3218,7 +3218,7 @@ public:
     ///<remarks>
     ///
     ///</remarks>
-    /// <param name="file">File to upload</param>
+    /// <param name="fileContent">File to upload</param>
         /// <param name="path">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
         /// <param name="storageName">Storage name (optional)</param>
     	pplx::task<AsposeResponse<FilesUploadResult>> uploadFile(

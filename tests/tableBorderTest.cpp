@@ -68,7 +68,7 @@ TEST_F(TableBorderTest, TestGetTableBorder) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetBorderRequest> request=
-			std::make_shared<GetBorderRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0"), 0, dataFolder, boost::none,
+			std::make_shared<GetBorderRequest>(remoteName, STCONVERT("tables/1/rows/0/cells/0"), STCONVERT("left"), dataFolder, boost::none,
 		boost::none, boost::none);
 
 	AsposeResponse<BorderResponse> actual = get_api()->getBorder(request).get();
@@ -109,7 +109,7 @@ TEST_F(TableBorderTest, TestDeleteTableBorder) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteBorderRequest> request= std::make_shared<DeleteBorderRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), 0, dataFolder, boost::none,
+	std::shared_ptr<DeleteBorderRequest> request= std::make_shared<DeleteBorderRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), STCONVERT("left"), dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	AsposeResponse<BorderResponse> actual = get_api()->deleteBorder(request).get();
@@ -141,7 +141,7 @@ TEST_F(TableBorderTest, TestUpdateTableBorder) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<UpdateBorderRequest> request=
-			std::make_shared<UpdateBorderRequest>(remoteName, border, STCONVERT("sections/0/tables/2/rows/0"), 0, dataFolder, boost::none,
+			std::make_shared<UpdateBorderRequest>(remoteName, border, STCONVERT("sections/0/tables/2/rows/0"), STCONVERT("left"), dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	AsposeResponse<BorderResponse> actual = get_api()->updateBorder(request).get();
