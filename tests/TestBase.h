@@ -65,7 +65,7 @@ protected:
 
 public:
 	void UploadFileToStorage(const utility::string_t& path, const boost::filesystem::path& filePath);
-	bool GetIsExists(const utility::string_t& path);
+	bool DoesFileExist(const utility::string_t& path);
 
 public:
 	std::shared_ptr<ApiConfiguration> get_configuration() const;

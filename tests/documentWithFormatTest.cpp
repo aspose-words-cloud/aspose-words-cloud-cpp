@@ -29,7 +29,7 @@
 /// </summary>
 class DocumentWithFormatTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\DocumentWithFormat"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/DocumentWithFormat"));
 };
 
 /// <summary>
@@ -73,7 +73,7 @@ TEST_F(DocumentWithFormatTest, TestGetDocumentWithFormatAndOutPath) {
 					boost::none, boost::none, destFileName, boost::none);
 
 	get_api()->getDocumentWithFormat(request).get();
-	bool result = GetIsExists(destFileName);
+	bool result = DoesFileExist(destFileName);
 
 	ASSERT_TRUE(result) << "File doesn't exist on storage";
 }

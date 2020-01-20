@@ -49,10 +49,10 @@ TEST_F(LoadWebDocumentTest, TestPostLoadWebDocument) {
 	body->setLoadingDocumentUrl(STCONVERT("http://google.com"));
 	body->setSaveOptions(saveOptions);
 
-	std::shared_ptr<PostLoadWebDocumentRequest> request=
-			std::make_shared<PostLoadWebDocumentRequest>(body, boost::none);
-	std::shared_ptr<SaveResponse> actual = get_api()->postLoadWebDocument(request).get();
+	std::shared_ptr<LoadWebDocumentRequest> request=
+			std::make_shared<LoadWebDocumentRequest>(body, boost::none);
+	AsposeResponse<SaveResponse> actual = get_api()->loadWebDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 

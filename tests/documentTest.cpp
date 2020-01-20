@@ -29,7 +29,7 @@
 /// </summary>
 class DocumentTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\Document"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
 };
 
 /// <summary>
@@ -48,9 +48,9 @@ TEST_F(DocumentTest, TestGetDocument) {
 			std::make_shared<GetDocumentRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<DocumentResponse> actual = get_api()->getDocument(request).get();
+	AsposeResponse<DocumentResponse> actual = get_api()->getDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -60,10 +60,10 @@ TEST_F(DocumentTest, TestPutCreateDocument) {
 	utility::string_t
 		remoteName = STCONVERT("TestPutCreateDocument.docx");
 
-	std::shared_ptr<PutCreateDocumentRequest> request=
-			std::make_shared<PutCreateDocumentRequest>(boost::none, remoteName, dataFolder);
+	std::shared_ptr<CreateDocumentRequest> request=
+			std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
 
-	std::shared_ptr<DocumentResponse> actual = get_api()->putCreateDocument(request).get();
+	AsposeResponse<DocumentResponse> actual = get_api()->createDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

@@ -29,7 +29,7 @@
 /// </summary>
 class SectionTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Section"));
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Section"));
 };
 
 /// <summary>
@@ -49,9 +49,9 @@ TEST_F(SectionTest, TestGetSection) {
 	        std::make_shared<GetSectionRequest>(remoteName, index, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<SectionResponse> actual = get_api()->getSection(request).get();
+	AsposeResponse<SectionResponse> actual = get_api()->getSection(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -70,7 +70,28 @@ TEST_F(SectionTest, TestGetSections) {
 	        std::make_shared<GetSectionsRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<SectionLinkCollectionResponse> actual = get_api()->getSections(request).get();
+	AsposeResponse<SectionLinkCollectionResponse> actual = get_api()->getSections(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting sections
+/// </summary>
+TEST_F(SectionTest, TestDeleteSection) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteSections.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteSectionRequest> request =
+		std::make_shared<DeleteSectionRequest>(remoteName, 0, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteSection(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
 }

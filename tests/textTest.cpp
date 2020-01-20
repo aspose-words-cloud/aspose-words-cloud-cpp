@@ -45,13 +45,13 @@ TEST_F(TextTest, TestGetDocumentTextItems) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentTextItemsRequest> request=
-			std::make_shared<GetDocumentTextItemsRequest>(remoteName, remoteTextFolder, boost::none,
+	std::shared_ptr<GetRunsRequest> request=
+			std::make_shared<GetRunsRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"), remoteTextFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<TextItemsResponse> actual = get_api()->getDocumentTextItems(request).get();
+	AsposeResponse<RunsResponse> actual = get_api()->getRuns(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -65,18 +65,18 @@ TEST_F(TextTest, TestPostReplaceText) {
 		filePath = path_combine(get_data_dir(commonFolder), localName),
 		destFileName = path_combine_url(baseTestOutPath, remoteName);
 
-	std::shared_ptr<ReplaceTextRequest> body = std::make_shared<ReplaceTextRequest>();
+	std::shared_ptr<ReplaceTextParameters> body = std::make_shared<ReplaceTextParameters>();
 	body->setOldValue(STCONVERT("aspose"));
 	body->setNewValue(STCONVERT("aspose new"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostReplaceTextRequest> request= std::make_shared<PostReplaceTextRequest>(remoteName, body, remoteTextFolder, boost::none,
+	std::shared_ptr<ReplaceTextRequest> request= std::make_shared<ReplaceTextRequest>(remoteName, body, remoteTextFolder, boost::none,
 		boost::none, boost::none, destFileName, boost::none, boost::none);
 
-	std::shared_ptr<ReplaceTextResponse> actual = get_api()->postReplaceText(request).get();
+	AsposeResponse<ReplaceTextResponse> actual = get_api()->replaceText(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -96,7 +96,7 @@ TEST_F(TextTest, TestSearch) {
 			std::make_shared<SearchRequest>(remoteName, pattern, remoteTextFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<SearchResponse> actual = get_api()->search(request).get();
+	AsposeResponse<SearchResponse> actual = get_api()->search(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

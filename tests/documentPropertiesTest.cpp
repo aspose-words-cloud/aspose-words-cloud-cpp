@@ -26,7 +26,7 @@
 
 class DocumentPropertiesTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\DocumentProperties"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/DocumentProperties"));
 };
 
 /// <summary>
@@ -46,9 +46,9 @@ TEST_F(DocumentPropertiesTest, TestGetDocumentProperties)
 			std::make_shared<GetDocumentPropertiesRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<DocumentPropertiesResponse> actual = get_api()->getDocumentProperties(request).get();
+	AsposeResponse<DocumentPropertiesResponse> actual = get_api()->getDocumentProperties(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -69,9 +69,9 @@ TEST_F(DocumentPropertiesTest, TestGetDocumentProperty)
 			std::make_shared<GetDocumentPropertyRequest>(remoteName, propertyName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->getDocumentProperty(request).get();
+	AsposeResponse<DocumentPropertyResponse> actual = get_api()->getDocumentProperty(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -92,9 +92,9 @@ TEST_F(DocumentPropertiesTest, TestDeleteDocumentProperty) {
 			std::make_shared<DeleteDocumentPropertyRequest>(remoteName, propertyName, dataFolder,
 					boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteDocumentProperty(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteDocumentProperty(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -120,7 +120,7 @@ TEST_F(DocumentPropertiesTest, TestPutUpdateDocumentProperty) {
 		remoteName, propertyName, body, dataFolder, boost::none,
 		boost::none, boost::none, destFileName, boost::none, boost::none);
 
-	std::shared_ptr<DocumentPropertyResponse> actual = get_api()->createOrUpdateDocumentProperty(request).get();
+	AsposeResponse<DocumentPropertyResponse> actual = get_api()->createOrUpdateDocumentProperty(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

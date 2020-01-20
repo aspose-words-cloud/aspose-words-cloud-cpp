@@ -29,14 +29,14 @@
 /// </summary>
 class FootnoteTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Footnotes")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Footnotes")),
 		footnoteFolder = STCONVERT("DocumentElements/Footnotes");
 };
 
 /// <summary>
 /// Test for adding footnote
 /// </summary>
-TEST_F(FootnoteTest, TestPutFootnote) {
+TEST_F(FootnoteTest, TestPostFootnote) {
 	utility::string_t
 		localName = STCONVERT("Footnote.doc"),
 		remoteName = STCONVERT("TestPutFootnote.docx"),
@@ -44,17 +44,16 @@ TEST_F(FootnoteTest, TestPutFootnote) {
 		filePath = path_combine(get_data_dir(footnoteFolder), localName);
 
 	std::shared_ptr<Footnote> footnote= std::make_shared<Footnote>();
-	footnote->setFootnoteType(STCONVERT("Endnote"));
-	footnote->setText(STCONVERT("test endnote"));
+	footnote->setText(STCONVERT("new text"));
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutFootnoteRequest> request= std::make_shared<PutFootnoteRequest>(remoteName, footnote, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	std::shared_ptr<InsertFootnoteRequest> request= std::make_shared<InsertFootnoteRequest>(remoteName, footnote, STCONVERT("sections/0"), dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FootnoteResponse> actual = get_api()->putFootnote(request).get();
+	AsposeResponse<FootnoteResponse> actual = get_api()->insertFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -72,12 +71,12 @@ TEST_F(FootnoteTest, TestDeleteFootnote) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteFootnoteRequest> request=
-			std::make_shared<DeleteFootnoteRequest>(remoteName, index, dataFolder, boost::none,
+			std::make_shared<DeleteFootnoteRequest>(remoteName, STCONVERT(""), index, dataFolder,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteFootnote(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -93,12 +92,12 @@ TEST_F(FootnoteTest, TestGetFootnotes) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetFootnotesRequest> request=
-			std::make_shared<GetFootnotesRequest>(remoteName, dataFolder, boost::none,
+			std::make_shared<GetFootnotesRequest>(remoteName, STCONVERT("sections/0"), dataFolder,
 		boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FootnotesResponse> actual = get_api()->getFootnotes(request).get();
+	AsposeResponse<FootnotesResponse> actual = get_api()->getFootnotes(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -115,18 +114,18 @@ TEST_F(FootnoteTest, TestGetFootnote) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetFootnoteRequest> request=
-			std::make_shared<GetFootnoteRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none);
+			std::make_shared<GetFootnoteRequest>(remoteName, STCONVERT(""), index, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<FootnoteResponse> actual = get_api()->getFootnote(request).get();
+	AsposeResponse<FootnoteResponse> actual = get_api()->getFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
 /// Test for updating footnote
 /// </summary>
-TEST_F(FootnoteTest, TestPostFootnote) {
+TEST_F(FootnoteTest, TestPutFootnote) {
 	utility::string_t
 		localName = STCONVERT("Footnote.doc"),
 		remoteName = STCONVERT("TestPostFootnote.docx"),
@@ -138,10 +137,123 @@ TEST_F(FootnoteTest, TestPostFootnote) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostFootnoteRequest> request= std::make_shared<PostFootnoteRequest>(remoteName, footnote, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	std::shared_ptr<UpdateFootnoteRequest> request= std::make_shared<UpdateFootnoteRequest>(remoteName, footnote, STCONVERT("sections/0"), index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FootnoteResponse> actual = get_api()->postFootnote(request).get();
+	AsposeResponse<FootnoteResponse> actual = get_api()->updateFootnote(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for adding footnote
+/// </summary>
+TEST_F(FootnoteTest, TestPostFootnoteWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("Footnote.doc"),
+		remoteName = STCONVERT("TestPutFootnoteWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(footnoteFolder), localName);
+
+	std::shared_ptr<Footnote> footnote = std::make_shared<Footnote>();
+	footnote->setFootnoteType(STCONVERT("Endnote"));
+	footnote->setText(STCONVERT("test endnote"));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<InsertFootnoteWithoutNodePathRequest> request = std::make_shared<InsertFootnoteWithoutNodePathRequest>(remoteName, footnote, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<FootnoteResponse> actual = get_api()->insertFootnoteWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting footnote
+/// </summary>
+TEST_F(FootnoteTest, TestDeleteFootnoteWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("Footnote.doc"),
+		remoteName = STCONVERT("TestDeleteFootnoteWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(footnoteFolder), localName);
+
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteFootnoteWithoutNodePathRequest> request =
+		std::make_shared<DeleteFootnoteWithoutNodePathRequest>(remoteName, index, dataFolder,
+			boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteFootnoteWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for getting footnotes
+/// </summary>
+TEST_F(FootnoteTest, TestGetFootnotesWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("Footnote.doc"),
+		remoteName = STCONVERT("TestGetFootnotesWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(footnoteFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetFootnotesWithoutNodePathRequest> request =
+		std::make_shared<GetFootnotesWithoutNodePathRequest>(remoteName, dataFolder,
+			boost::none, boost::none, boost::none);
+
+	AsposeResponse<FootnotesResponse> actual = get_api()->getFootnotesWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting footnote
+/// </summary>
+TEST_F(FootnoteTest, TestGetFootnoteWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("Footnote.doc"),
+		remoteName = STCONVERT("TestGetFootnoteWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(footnoteFolder), localName);
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetFootnoteWithoutNodePathRequest> request =
+		std::make_shared<GetFootnoteWithoutNodePathRequest>(remoteName, index, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<FootnoteResponse> actual = get_api()->getFootnoteWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for updating footnote
+/// </summary>
+TEST_F(FootnoteTest, TestPutFootnoteWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("Footnote.doc"),
+		remoteName = STCONVERT("TestPostFootnote.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(footnoteFolder), localName);
+	int32_t index = 0;
+	std::shared_ptr<Footnote> footnote = std::make_shared<Footnote>();
+	footnote->setText(STCONVERT("new text is here"));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<UpdateFootnoteWithoutNodePathRequest> request = std::make_shared<UpdateFootnoteWithoutNodePathRequest>(remoteName, footnote, index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<FootnoteResponse> actual = get_api()->updateFootnoteWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

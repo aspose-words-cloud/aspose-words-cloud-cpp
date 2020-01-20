@@ -64,7 +64,6 @@ std::shared_ptr<ApiConfiguration> get_config()
 	newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
 	newConfig->setAppSid(fileJson[_XPLATSTR("AppSid")].as_string());
 	newConfig->setUserAgent(_XPLATSTR("CppAsposeClient"));
-	newConfig->setApiVersion(_XPLATSTR("v1"));
 	newConfig->setHttpConfig(conf);
 
 	return newConfig;
@@ -87,7 +86,7 @@ utility::string_t InfrastructureTest::path_combine(const fs::path& base, const u
 
 utility::string_t InfrastructureTest::path_combine_url(const utility::string_t& base, const utility::string_t& stringToAdd)
 {
-	return base + _XPLATSTR("\\") + stringToAdd;
+	return base + _XPLATSTR("/") + stringToAdd;
 }
 
 utility::string_t InfrastructureTest::cutFileExtension(const boost::filesystem::path& filename)
@@ -140,50 +139,32 @@ std::vector<fs::path> InfrastructureTest::get_directory_files(const boost::files
     return result;
 }
 
-void InfrastructureTest::UploadFileToStorage(const utility::string_t& path, const fs::path& filePath)
+void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName, const fs::path& filePath)
 {
+	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, boost::none);
 
+	auto client = get_client();
+	auto newConfig = get_config();
+	newConfig->setDebugMode(true);
+	std::shared_ptr<WordsApi> api = std::make_shared<WordsApi>(client);
 
-	std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
-    fileParams.emplace_back(_XPLATSTR("file"), generate_http_content_from_file(filePath));
-
-    std::map<utility::string_t, utility::string_t> queryParams{{_XPLATSTR("path"), path}};
-
-	std::shared_ptr<ApiClient> client = get_client();
-
-    client->callApi(client->getConfiguration()->getBaseUrl() + _XPLATSTR("/v1.1/storage/file"),
-        _XPLATSTR("PUT"), queryParams, nullptr, {}, {}, fileParams, _XPLATSTR("multipart/form-data"))
-		.then([](const web::http::http_response& response) {
-
-            if (response.status_code() >= 400)
-			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-	})
-		.wait();
-	//else
-	//{
-	//cout << "Unable to open file";
-	//throw L"Unable to find " + filePath;
-	//}
+	auto result = api->uploadFile(request).get();
 }
 
 
-bool InfrastructureTest::GetIsExists(const utility::string_t& path)
+bool InfrastructureTest::DoesFileExist(const utility::string_t& remoteName)
 {
-    std::map<utility::string_t, utility::string_t> queryParams{{_XPLATSTR("path"), path}};
-
-	std::shared_ptr<ApiClient> client = get_client();
-
-	return (client->callApi(client->getConfiguration()->getBaseUrl() + _XPLATSTR("/v1.1/storage/exist"),
-        _XPLATSTR("GET"), queryParams, nullptr, {}, {}, {}, _XPLATSTR("application/json"))
-		.then([](const web::http::http_response& response) {
-		if (response.status_code() >= 400)
-			throw ApiException(response.status_code(), _XPLATSTR("error requesting token: ") + response.reason_phrase(), std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-		return response.extract_json();
-	}).then([=](web::json::value ans) {
-		
-		return ans.has_field(_XPLATSTR("FileExist")) && 
-			ans[_XPLATSTR("FileExist")][_XPLATSTR("IsExist")].as_bool();
-	}).get());
+	try
+	{
+		std::shared_ptr<DownloadFileRequest> request = std::make_shared<DownloadFileRequest>(remoteName, boost::none, boost::none);
+		get_api()->downloadFile(request).get();
+	}
+	catch (ApiException& exception)
+	{
+		if (exception.error_code().value() == 404)
+			return false;
+		throw;
+	}
 }
 
 std::shared_ptr<ApiConfiguration> InfrastructureTest::get_configuration() const

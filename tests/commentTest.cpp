@@ -27,7 +27,7 @@ class CommentTest : public InfrastructureTest
 {
 protected:
 	utility::string_t get_data_folder() override {
-		return path_combine_url(STCONVERT("Temp\\SdkTests\\TestData"), STCONVERT("DocumentElements\\Comments"));
+		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentElements/Comments"));
 	}
 };
 
@@ -48,9 +48,9 @@ TEST_F(CommentTest, TestGetComment) {
 			std::make_shared<GetCommentRequest>(remoteName, commentIndex, get_data_folder(),
 		boost::none, boost::none, boost::none);
 	auto requestTask = get_api()->getComment(request);
-	std::shared_ptr<CommentResponse> actual = requestTask.get();
+	AsposeResponse<CommentResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -68,46 +68,9 @@ TEST_F(CommentTest, TestGetComments) {
 			std::make_shared<GetCommentsRequest>(remoteName, get_data_folder(),
 		boost::none, boost::none, boost::none);
 	auto requestTask = get_api()->getComments(request);
-	std::shared_ptr<CommentsResponse> actual = requestTask.get();
+	AsposeResponse<CommentsResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
-}
-
-/// <summary>
-/// Test for adding comment
-/// </summary>
-TEST_F(CommentTest, TestPutComment) {
-	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestPutComment.docx"),
-		fullName = path_combine(get_data_folder(), remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-
-	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
-	nodeLink->setNodeId(STCONVERT("0.0.3"));
-
-	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
-	position->setNode(nodeLink);
-	position->setOffset(0);
-
-
-
-	std::shared_ptr<Comment> body= std::make_shared<Comment>();
-	body->setRangeStart(position);
-	body->setRangeEnd(position);
-	body->setInitial(STCONVERT("IA"));
-	body->setAuthor(STCONVERT("Imran Anwar"));
-	body->setText(STCONVERT("A new Comment"));
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<PutCommentRequest> request=
-			std::make_shared<PutCommentRequest>(remoteName, body, get_data_folder(),
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
-
-	auto requestTask = get_api()->putComment(request);
-	std::shared_ptr<CommentResponse> actual = requestTask.get();
-
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -115,19 +78,16 @@ TEST_F(CommentTest, TestPutComment) {
 /// </summary>
 TEST_F(CommentTest, TestPostComment) {
 	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestPostComment.docx"),
+		remoteName = STCONVERT("TestPutComment.docx"),
 		fullName = path_combine(get_data_folder(), remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
-	int32_t commentIndex = 0;
 
 	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
-	nodeLink->setNodeId(STCONVERT("0.0.3"));
+	nodeLink->setNodeId(STCONVERT("0.3.0.3"));
 
 	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
 	position->setNode(nodeLink);
 	position->setOffset(0);
-
-
 
 	std::shared_ptr<Comment> body= std::make_shared<Comment>();
 	body->setRangeStart(position);
@@ -138,14 +98,50 @@ TEST_F(CommentTest, TestPostComment) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostCommentRequest> request=
-			std::make_shared<PostCommentRequest>(remoteName, commentIndex, body, get_data_folder(),
+	std::shared_ptr<InsertCommentRequest> request=
+			std::make_shared<InsertCommentRequest>(remoteName, body, get_data_folder(),
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	auto requestTask = get_api()->postComment(request);
-	std::shared_ptr<CommentResponse> actual = requestTask.get();
+	auto requestTask = get_api()->insertComment(request);
+	AsposeResponse<CommentResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for updating comment
+/// </summary>
+TEST_F(CommentTest, TestPutComment) {
+	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestPostComment.docx"),
+		fullName = path_combine(get_data_folder(), remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+	int32_t commentIndex = 0;
+
+	std::shared_ptr<NodeLink> nodeLink= std::make_shared<NodeLink>();
+	nodeLink->setNodeId(STCONVERT("0.3.0"));
+
+	std::shared_ptr<DocumentPosition> position= std::make_shared<DocumentPosition>();
+	position->setNode(nodeLink);
+	position->setOffset(0);
+
+	std::shared_ptr<Comment> body= std::make_shared<Comment>();
+	body->setRangeStart(position);
+	body->setRangeEnd(position);
+	body->setInitial(STCONVERT("IA"));
+	body->setAuthor(STCONVERT("Imran Anwar"));
+	body->setText(STCONVERT("A new Comment"));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<UpdateCommentRequest> request=
+			std::make_shared<UpdateCommentRequest>(remoteName, commentIndex, body, get_data_folder(),
+		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	auto requestTask = get_api()->updateComment(request);
+	AsposeResponse<CommentResponse> actual = requestTask.get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -165,7 +161,7 @@ TEST_F(CommentTest, TestDeleteComment) {
 			std::make_shared<DeleteCommentRequest>(remoteName, commentIndex, get_data_folder(),
 		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
 	auto requestTask = get_api()->deleteComment(request);
-	std::shared_ptr<AsposeResponse> actual = requestTask.get();
+	std::shared_ptr<web::http::http_response> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
