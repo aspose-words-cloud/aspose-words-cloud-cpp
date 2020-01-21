@@ -34,6 +34,8 @@ namespace models {
 
 FixedPageSaveOptionsData::FixedPageSaveOptionsData()
 {
+    m_ColorMode = utility::conversions::to_string_t("");
+    m_ColorModeIsSet = false;
     m_JpegQuality = 0;
     m_JpegQualityIsSet = false;
     m_MetafileRenderingOptionsIsSet = false;
@@ -60,6 +62,10 @@ web::json::value FixedPageSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
 
+    if(m_ColorModeIsSet)
+    {
+        val[_XPLATSTR("ColorMode")] = ModelBase::toJson(m_ColorMode);
+    }
     if(m_JpegQualityIsSet)
     {
         val[_XPLATSTR("JpegQuality")] = ModelBase::toJson(m_JpegQuality);
@@ -92,6 +98,14 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
 {
     this->SaveOptionsData::fromJson(val);
 
+    if(val.has_field(_XPLATSTR("ColorMode")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("ColorMode")];
+        if(!fieldValue.is_null())
+        {
+            setColorMode(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(_XPLATSTR("JpegQuality")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("JpegQuality")];
@@ -148,11 +162,6 @@ void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_ColorModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
-        
-    }
     if(m_SaveFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
@@ -189,6 +198,11 @@ void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
     }
+    if(m_ColorModeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
+        
+    }
     if(m_JpegQualityIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("JpegQuality"), m_JpegQuality));
@@ -222,10 +236,6 @@ void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
 
 void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
-    {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
-    }
     if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
         setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
@@ -258,6 +268,10 @@ void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartForm
     {
         setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
+    {
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
+    }
     if(multipart->hasContent(_XPLATSTR("JpegQuality")))
     {
         setJpegQuality(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("JpegQuality"))));
@@ -287,6 +301,27 @@ void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartForm
     {
         setPageIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageIndex"))));
     }
+}
+
+utility::string_t FixedPageSaveOptionsData::getColorMode() const
+{
+    return m_ColorMode;
+}
+
+
+void FixedPageSaveOptionsData::setColorMode(utility::string_t value)
+{
+    m_ColorMode = value;
+    m_ColorModeIsSet = true;
+}
+bool FixedPageSaveOptionsData::colorModeIsSet() const
+{
+    return m_ColorModeIsSet;
+}
+
+void FixedPageSaveOptionsData::unsetColorMode()
+{
+    m_ColorModeIsSet = false;
 }
 
 int32_t FixedPageSaveOptionsData::getJpegQuality() const

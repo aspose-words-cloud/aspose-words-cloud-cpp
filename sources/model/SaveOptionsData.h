@@ -63,13 +63,6 @@ public:
     /// SaveOptionsData members
 
     /// <summary>
-    /// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-    /// </summary>
-    utility::string_t getColorMode() const;
-    bool colorModeIsSet() const;
-    void unsetColorMode();
-    void setColorMode(utility::string_t value);
-    /// <summary>
     /// Gets or sets format of save.
     /// </summary>
     utility::string_t getSaveFormat() const;
@@ -127,8 +120,6 @@ public:
     void setUpdateFields(bool value);
 
 protected:
-    utility::string_t m_ColorMode;
-    bool m_ColorModeIsSet;
     utility::string_t m_SaveFormat;
     bool m_SaveFormatIsSet;
     utility::string_t m_FileName;

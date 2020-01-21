@@ -41,16 +41,7 @@ ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
 pplx::task<void> ApiClient::requestToken()
 {
     if (m_Configuration == nullptr)
-        throw "Configuration must be set before calling an api methods";
-
-	if(m_Configuration->getAppSid().empty())
-		throw "Configuration parameter AppSid must be set before calling an api methods";
-
-	if (m_Configuration->getAppKey().empty())
-		throw "Configuration parameter AppKey must be set before calling an api methods";
-
-	if (m_Configuration->getBaseUrl().empty())
-		throw "Configuration parameter BaseUrl must be set before calling an api methods";
+            throw "Configuration must be set before calling an api methods";
 
 	if(m_Configuration->getAppSid().empty())
 		throw "Configuration parameter AppSid must be set before calling an api methods";

@@ -63,6 +63,13 @@ public:
     /// FixedPageSaveOptionsData members
 
     /// <summary>
+    /// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
+    /// </summary>
+    utility::string_t getColorMode() const;
+    bool colorModeIsSet() const;
+    void unsetColorMode();
+    void setColorMode(utility::string_t value);
+    /// <summary>
     /// Gets or sets determines the quality of the JPEG images inside PDF document.
     /// </summary>
     int32_t getJpegQuality() const;
@@ -106,6 +113,8 @@ public:
     void setPageIndex(int32_t value);
 
 protected:
+    utility::string_t m_ColorMode;
+    bool m_ColorModeIsSet;
     int32_t m_JpegQuality;
     bool m_JpegQualityIsSet;
     std::shared_ptr<MetafileRenderingOptionsData> m_MetafileRenderingOptions;
