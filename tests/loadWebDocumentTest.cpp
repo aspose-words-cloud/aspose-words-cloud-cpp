@@ -39,8 +39,7 @@ TEST_F(LoadWebDocumentTest, TestPostLoadWebDocument) {
 	std::shared_ptr<LoadWebDocumentData> body = std::make_shared<LoadWebDocumentData>();
 	std::shared_ptr<SaveOptionsData> saveOptions = std::make_shared<SaveOptionsData>();
 	saveOptions->setFileName(STCONVERT("google.doc"));
-	saveOptions->setSaveFormat(STCONVERT("doc"));
-	saveOptions->setColorMode(STCONVERT("1"));
+	saveOptions->setSaveFormat(STCONVERT("doc"));	
 	saveOptions->setDmlEffectsRenderingMode(STCONVERT("1"));
 	saveOptions->setDmlRenderingMode(STCONVERT("1"));
 	saveOptions->setUpdateSdtContent(false);
