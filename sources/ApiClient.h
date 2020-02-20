@@ -104,7 +104,7 @@ private:
     std::array<std::pair<utility::string_t, utility::string_t>, 2> defaultHeaders =
     {
         std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("19.3")),
-        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client"), _XPLATSTR("C++ SDK"))
+        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client"), _XPLATSTR("c++ sdk"))
     };
 
 private:
