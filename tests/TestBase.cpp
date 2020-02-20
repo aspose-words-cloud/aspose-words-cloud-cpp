@@ -158,6 +158,7 @@ bool InfrastructureTest::DoesFileExist(const utility::string_t& remoteName)
 	{
 		std::shared_ptr<DownloadFileRequest> request = std::make_shared<DownloadFileRequest>(remoteName, boost::none, boost::none);
 		get_api()->downloadFile(request).get();
+		return true;
 	}
 	catch (ApiException& exception)
 	{
