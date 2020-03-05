@@ -30,7 +30,6 @@ namespace api{
 namespace models{
 UpdateTablePropertiesWithoutNodePathRequest::UpdateTablePropertiesWithoutNodePathRequest(
         utility::string_t name,
-                std::shared_ptr<TableProperties> properties,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -38,10 +37,10 @@ UpdateTablePropertiesWithoutNodePathRequest::UpdateTablePropertiesWithoutNodePat
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+                boost::optional<utility::string_t> revisionDateTime,
+                boost::optional<std::shared_ptr<TableProperties>> properties
         ) : 
             m_name(std::move(name)),
-            m_properties(std::move(properties)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
@@ -49,7 +48,8 @@ UpdateTablePropertiesWithoutNodePathRequest::UpdateTablePropertiesWithoutNodePat
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_properties(std::move(properties))
         {
             
         }
@@ -60,13 +60,6 @@ UpdateTablePropertiesWithoutNodePathRequest::UpdateTablePropertiesWithoutNodePat
         }
         void UpdateTablePropertiesWithoutNodePathRequest::setName(utility::string_t name){
             m_name = std::move(name);
-        }
-        std::shared_ptr<TableProperties> UpdateTablePropertiesWithoutNodePathRequest::getProperties() const
-        {
-            return m_properties;
-        }
-        void UpdateTablePropertiesWithoutNodePathRequest::setProperties(std::shared_ptr<TableProperties> properties){
-            m_properties = std::move(properties);
         }
         int32_t UpdateTablePropertiesWithoutNodePathRequest::getIndex() const
         {
@@ -123,6 +116,13 @@ UpdateTablePropertiesWithoutNodePathRequest::UpdateTablePropertiesWithoutNodePat
         }
         void UpdateTablePropertiesWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
+        }
+        boost::optional<std::shared_ptr<TableProperties>> UpdateTablePropertiesWithoutNodePathRequest::getProperties() const
+        {
+            return m_properties;
+        }
+        void UpdateTablePropertiesWithoutNodePathRequest::setProperties(boost::optional<std::shared_ptr<TableProperties>> properties){
+            m_properties = std::move(properties);
         }
 
 }

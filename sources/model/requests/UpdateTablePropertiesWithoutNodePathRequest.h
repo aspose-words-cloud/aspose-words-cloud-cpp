@@ -40,7 +40,6 @@ class UpdateTablePropertiesWithoutNodePathRequest{
     public: 
      UpdateTablePropertiesWithoutNodePathRequest(
         utility::string_t name,
-                std::shared_ptr<TableProperties> properties,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -48,14 +47,12 @@ class UpdateTablePropertiesWithoutNodePathRequest{
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+                boost::optional<utility::string_t> revisionDateTime,
+                boost::optional<std::shared_ptr<TableProperties>> properties
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
-
-        std::shared_ptr<TableProperties> getProperties() const;
-        void setProperties(std::shared_ptr<TableProperties> properties);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -80,9 +77,11 @@ class UpdateTablePropertiesWithoutNodePathRequest{
 
         boost::optional<utility::string_t> getRevisionDateTime() const;
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+
+        boost::optional<std::shared_ptr<TableProperties>> getProperties() const;
+        void setProperties(boost::optional<std::shared_ptr<TableProperties>> properties);
     private:
         utility::string_t m_name;
-        std::shared_ptr<TableProperties> m_properties;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
@@ -91,6 +90,7 @@ class UpdateTablePropertiesWithoutNodePathRequest{
         boost::optional<utility::string_t> m_destFileName;
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
+        boost::optional<std::shared_ptr<TableProperties>> m_properties;
 };
 
 }

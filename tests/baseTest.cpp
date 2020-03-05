@@ -46,13 +46,14 @@ TEST_F(ConfigurationTest, TestDebugMode) {
     fs::path filePath = get_data_dir(commonFolder) / "test_multi_pages.docx";
     auto remoteName = STCONVERT("TestDebugMode.docx");
     utility::string_t fullName = path_combine(dataFolder, remoteName);
+	utility::string_t nodePath = STCONVERT("paragraphs/0");
 
 	auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
     std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
-    std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none);
+    std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, nodePath, dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none);
 
 	UploadFileToStorage(fullName, filePath);
 
@@ -60,20 +61,20 @@ TEST_F(ConfigurationTest, TestDebugMode) {
     auto outbuf = ucout.rdbuf(ss.rdbuf());
     client->setConfiguration(newConfig);
 
-	std::shared_ptr<AsposeResponse> response;
+	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
 
 	utility::string_t res = ss.str(),
 		fwSlash = _XPLATSTR("/"),
 		expectedUri = _XPLATSTR("DELETE: ") +
 						fwSlash + newConfig->getApiVersion() + fwSlash + _XPLATSTR("words") +
-						fwSlash + remoteName + fwSlash + _XPLATSTR("fields"),
+						fwSlash + remoteName + fwSlash  + nodePath + fwSlash + _XPLATSTR("fields"),
 		expectedResponseHeader = _XPLATSTR("Response 200: OK");
 
     ucout.rdbuf(outbuf);
 
 	EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
-	EXPECT_EQ(200, response->getCode());
+	EXPECT_EQ(200, response->status_code());
 }
 
 ///Checks that API version is properly applied to path building
@@ -82,17 +83,16 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
     utility::string_t remoteName = _XPLATSTR("TestVersionIsUsing.docx");
     utility::string_t fullName = path_combine(dataFolder, remoteName);
     utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
-
+	utility::string_t nodePath = STCONVERT("paragraphs/0");
 
     auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
-	newConfig->setApiVersion(_XPLATSTR("v2"));
 
     std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
 
-    std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, dataFolder, boost::none, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none);
+    std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, nodePath, dataFolder, boost::none, boost::none,
+		boost::none, boost::none, boost::none, boost::none);
 	ucout << "Uploading";
 	UploadFileToStorage(fullName, filePath);
 
@@ -100,19 +100,19 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 	streambuf_t* outbuf = ucout.rdbuf(ss.rdbuf());
     client->setConfiguration(newConfig);
 	
-	std::shared_ptr<AsposeResponse> response;
+	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
 
 	utility::string_t res = ss.str(),
 		fwSlash = _XPLATSTR("/"),
 		expectedUri = _XPLATSTR("DELETE: ") +
 		fwSlash + newConfig->getApiVersion() + fwSlash + _XPLATSTR("words") +
-		fwSlash + remoteName + fwSlash + _XPLATSTR("fields"),
+		fwSlash + remoteName + fwSlash + nodePath + fwSlash + _XPLATSTR("fields"),
 		expectedResponseHeader = _XPLATSTR("Response 200: OK");
     ucout.rdbuf(outbuf);
 
     EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
-	EXPECT_EQ(200, response->getCode());
+	EXPECT_EQ(200, response->status_code());
 }
 
 class BaseApiTest : public InfrastructureTest {
@@ -126,15 +126,13 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 
 	try {
 		auto request= std::make_shared<GetSectionsRequest>(name, boost::none, boost::none, boost::none, boost::none);
-		auto response = get_api()->getSections(request).wait();
+		auto response = get_api()->getSections(request).get();
 		FAIL() << "Expected exception has not been thrown";
 	}
 	catch (ApiException& exception) {
-		ASSERT_EQ(400, exception.error_code().value()) << "Exception code is not equals to 400";
-		std::string message((std::istreambuf_iterator<char>(*(exception.getContent()))), std::istreambuf_iterator<char>());
-		web::json::value actual = web::json::value::parse(STCONVERT(message));
-		ASSERT_TRUE(actual.has_field(_XPLATSTR("Message")));
-		EXPECT_THAT(actual[_XPLATSTR("Message")].as_string(), HasSubstr(_XPLATSTR("Error while loading file 'noFileWithThisName.docx' from storage:")));
+		ASSERT_EQ(404, exception.error_code().value()) << "Exception code is not equals to 404";
+		auto response = exception.getResponse();
+		EXPECT_THAT(response->getError()->getMessage(), HasSubstr(_XPLATSTR("Error while loading file 'noFileWithThisName.docx' from storage:")));
 	}
 }
 
@@ -153,7 +151,7 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 		std::string apiCode_str(apiCode.begin(), apiCode.end());
 		std::vector<std::string> apiMethods;
 		std::smatch match;
-		std::regex regEx(">> (.*)\\(");
+		std::regex regEx("> WordsApi::(.*)\\(");
 		while (std::regex_search(apiCode_str, match, regEx)) {
 			apiMethods.push_back(match[1].str());
 			apiCode_str = match.suffix().str();
@@ -170,7 +168,8 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 		}
 
 		for (const auto& method : apiMethods) {
-			EXPECT_THAT(testsCode, HasSubstr(STCONVERT("->") + STCONVERT(method) + _XPLATSTR('('))) << " Uncovered method";
+			auto covered = testsCode.find(STCONVERT("get_api()->") + STCONVERT(method) + _XPLATSTR('(')) != std::string::npos;
+			EXPECT_TRUE(covered) << "Uncovered method: " << method;
 		}
 	}
 }
@@ -185,7 +184,7 @@ TEST_F(InfrastructureTest, OAuthTest)
 class StorageApiTest : public InfrastructureTest {
 protected:
 	utility::string_t get_data_folder() override {
-        return _XPLATSTR("Temp\\SdkTests\\TestData\\DocumentElements\\Bookmarks");
+        return _XPLATSTR("Temp/SdkTests/TestData/DocumentElements/Bookmarks");
 	}
 };
 
@@ -215,10 +214,60 @@ TEST_F(StorageApiTest, TestIsExists) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	ASSERT_TRUE(GetIsExists(fullName));
+	ASSERT_TRUE(DoesFileExist(fullName));
 }
 
 TEST_F(StorageApiTest, TestIsNotExists) {
-	ASSERT_FALSE(GetIsExists(STCONVERT("NoSuchFile.ext")));
+	ASSERT_FALSE(DoesFileExist(STCONVERT("NoSuchFile.ext")));
 }
+
+TEST_F(StorageApiTest, TestConfiguration) {
+
+	utility::string_t
+		remoteName = STCONVERT("TestConfiguration.docx"),
+		dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
+
+	std::shared_ptr<CreateDocumentRequest> request =
+		std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
+
+	auto config = std::make_shared<ApiConfiguration>();
+	auto client = std::make_shared<ApiClient>(config);
+	auto api = std::make_shared<WordsApi>(client);
+
+	try
+	{
+		api->createDocument(request).get();
+		FAIL() << "Exception was expected";
+	}
+	catch (...)
+	{
+	}
+
+	config->setAppKey(get_client()->getConfiguration()->getAppKey());
+
+	try
+	{
+		api->createDocument(request).get();
+		FAIL() << "Exception was expected";
+	}
+	catch (...)
+	{
+	}
+
+	config->setAppSid(get_client()->getConfiguration()->getAppSid());
+
+	try
+	{
+		api->createDocument(request).get();
+		FAIL() << "Exception was expected";
+	}
+	catch (...)
+	{
+	}
+
+	config->setBaseUrl(get_client()->getConfiguration()->getBaseUrl());
+
+	ASSERT_NO_THROW(api->createDocument(request).get());
+}
+
 #pragma endregion

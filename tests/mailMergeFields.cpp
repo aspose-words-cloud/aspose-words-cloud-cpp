@@ -29,7 +29,7 @@
 /// </summary>
 class MailMergeFiledsTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\MailMerge")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/MailMerge")),
 		mailMergeFolder = STCONVERT("DocumentActions/MailMerge");
 };
 
@@ -49,23 +49,23 @@ TEST_F(MailMergeFiledsTest, TestGetDocumentFieldNames) {
 			std::make_shared<GetDocumentFieldNamesRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none, boost::none);
 
-	std::shared_ptr<FieldNamesResponse> actual = get_api()->getDocumentFieldNames(request).get();
+	AsposeResponse<FieldNamesResponse> actual = get_api()->getDocumentFieldNames(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 
 }
 
 /// <summary>
-/// Test for putting new fileds
+/// Test for getting mailmerge fields online
 /// </summary>
-TEST_F(MailMergeFiledsTest, TestPutDocumentFieldNames) {
+TEST_F(MailMergeFiledsTest, TestGetDocumentFieldNamesOnline) {
 	std::shared_ptr<HttpContent> file = generate_http_content_from_file(path_combine(get_data_dir(mailMergeFolder), STCONVERT("SampleExecuteTemplate.docx")));
 
-	std::shared_ptr<PutDocumentFieldNamesRequest> request=
-			std::make_shared<PutDocumentFieldNamesRequest>(file, boost::none);
+	std::shared_ptr<GetDocumentFieldNamesOnlineRequest> request=
+			std::make_shared<GetDocumentFieldNamesOnlineRequest>(file, true);
 
-	std::shared_ptr<FieldNamesResponse> actual = get_api()->putDocumentFieldNames(request).get();
+	AsposeResponse<FieldNamesResponse> actual = get_api()->getDocumentFieldNamesOnline(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 
 }

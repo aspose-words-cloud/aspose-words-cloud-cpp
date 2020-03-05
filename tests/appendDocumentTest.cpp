@@ -28,7 +28,7 @@ class AppendDocumentTest : public InfrastructureTest
 {
 protected:
 	utility::string_t get_data_folder() override {
-		return path_combine_url(STCONVERT("Temp\\SdkTests\\TestData"), STCONVERT("DocumentActions\\AppendDocument"));
+		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentActions/AppendDocument"));
 	}
 };
 
@@ -52,10 +52,10 @@ TEST_F(AppendDocumentTest, TestPostAppendDocument) {
 
 	UploadFileToStorage(fullName, filePath);
 
-    std::shared_ptr<PostAppendDocumentRequest> request= std::make_shared<PostAppendDocumentRequest>(remoteName, body, get_data_folder(), boost::none,
+    std::shared_ptr<AppendDocumentRequest> request= std::make_shared<AppendDocumentRequest>(remoteName, body, get_data_folder(), boost::none,
 		boost::none, boost::none, destFileName, boost::none, boost::none);
-	auto requestTask = get_api()->postAppendDocument(request);
-	std::shared_ptr<DocumentResponse> actual = requestTask.get();
+	auto requestTask = get_api()->appendDocument(request);
+	AsposeResponse<DocumentResponse> actual = requestTask.get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

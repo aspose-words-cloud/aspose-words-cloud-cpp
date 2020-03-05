@@ -3,3 +3,5 @@ CppBuild-cppcheck-build-dir/*
 install/*
 .gitignore
 */servercreds.json
+out/*
+.vs/*

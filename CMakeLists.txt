@@ -1,6 +1,6 @@
 #[[
 <copyright company="Aspose" file="CMakeLists.h">
-  Copyright (c) 2018 Aspose.Words for Cloud
+  Copyright (c) 2019 Aspose.Words for Cloud
 </copyright>
 <summary>
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,6 +30,7 @@ option(BUILD_TESTS "Build tests" ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 include(thirdparty/cotire.cmake)
 add_subdirectory(sources Words.Cloud)

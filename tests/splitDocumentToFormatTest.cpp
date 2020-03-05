@@ -29,7 +29,7 @@
 /// </summary>
 class SplitDocumentToFormatTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\SplitDocument"));
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/SplitDocument"));
 };
 
 /// <summary>
@@ -50,11 +50,11 @@ TEST_F(SplitDocumentToFormatTest, TestPostSplitDocument)
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostSplitDocumentRequest> request=
-			std::make_shared<PostSplitDocumentRequest>(remoteName, dataFolder, boost::none, boost::none,
+	std::shared_ptr<SplitDocumentRequest> request=
+			std::make_shared<SplitDocumentRequest>(remoteName, dataFolder, boost::none, boost::none,
 		boost::none, destFileName, format, from, to, boost::none, boost::none);
 
-	std::shared_ptr<SplitDocumentResponse> actual = get_api()->postSplitDocument(request).get();
+	AsposeResponse<SplitDocumentResponse> actual = get_api()->splitDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

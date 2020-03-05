@@ -29,7 +29,7 @@
 /// </summary>
 class HeaderFooterTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\HeaderFooter"));
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/HeaderFooter"));
 };
 
 /// <summary>
@@ -46,12 +46,11 @@ TEST_F(HeaderFooterTest, TestDeleteHeadersFooters) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteHeadersFootersRequest> request=
-			std::make_shared<DeleteHeadersFootersRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, destFileName, boost::none, boost::none, STCONVERT("sections/0"),
-		boost::none);
+			std::make_shared<DeleteHeadersFootersRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none, destFileName, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteHeadersFooters(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteHeadersFooters(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 
 }

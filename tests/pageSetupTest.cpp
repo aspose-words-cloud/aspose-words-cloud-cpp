@@ -29,7 +29,7 @@
 /// </summary>
 class PageSetupTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\PageSetup")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/PageSetup")),
 		textFolder = STCONVERT("DocumentElements/Text");
 };
 
@@ -51,9 +51,9 @@ TEST_F(PageSetupTest, TestGetSectionPageSetup) {
 			std::make_shared<GetSectionPageSetupRequest>(remoteName, index, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<SectionPageSetupResponse> actual = get_api()->getSectionPageSetup(request).get();
+	AsposeResponse<SectionPageSetupResponse> actual = get_api()->getSectionPageSetup(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -80,9 +80,9 @@ TEST_F(PageSetupTest, TestUpdateSectionPageSetup) {
 			std::make_shared<UpdateSectionPageSetupRequest>(remoteName, index, body, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<SectionPageSetupResponse> actual = get_api()->updateSectionPageSetup(request).get();
+	AsposeResponse<SectionPageSetupResponse> actual = get_api()->updateSectionPageSetup(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>

@@ -228,7 +228,8 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::acceptAllRev
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -393,7 +394,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -521,7 +523,8 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classify(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -661,7 +664,8 @@ pplx::task<AsposeResponse<ClassificationResponse>> WordsApi::classifyDocument(st
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -818,7 +822,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::compareDocument(std::shar
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -961,7 +966,8 @@ pplx::task<HttpContent> WordsApi::convertDocument(std::shared_ptr<ConvertDocumen
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1074,7 +1080,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFile(std::sh
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1180,7 +1187,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::copyFolder(std::
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1285,7 +1293,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::createDocument(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1405,7 +1414,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::createFolder(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1551,7 +1561,8 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::createOrUpdateDoc
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1699,7 +1710,8 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_pt
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1845,7 +1857,8 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::deleteBorders(std::shared_
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -1991,7 +2004,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteComment(st
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2116,7 +2130,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDocumentPr
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2243,7 +2258,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2368,7 +2384,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteDrawingObj
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2495,7 +2512,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteField(std:
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2620,7 +2638,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldWitho
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2745,7 +2764,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFields(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2868,7 +2888,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFieldsWith
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -2971,7 +2992,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFile(std::
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3074,7 +3096,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFolder(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3201,7 +3224,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnote(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3326,7 +3350,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFootnoteWi
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3453,7 +3478,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormField(
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3578,7 +3604,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteFormFieldW
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3705,7 +3732,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeaderFoot
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3834,7 +3862,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteHeadersFoo
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -3957,7 +3986,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteMacros(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4084,7 +4114,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4209,7 +4240,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteOfficeMath
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4336,7 +4368,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraph(
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4461,7 +4494,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteParagraphW
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4588,7 +4622,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteRun(std::s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4713,7 +4748,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteSection(st
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4840,7 +4876,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTable(std:
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -4967,7 +5004,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableCell(
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5094,7 +5132,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableRow(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5219,7 +5258,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::deleteTableWitho
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5342,7 +5382,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::deleteWatermark(std::shar
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5467,7 +5508,8 @@ pplx::task<HttpContent> WordsApi::downloadFile(std::shared_ptr<DownloadFileReque
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5604,7 +5646,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::executeMailMerge(std::sha
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5750,7 +5793,8 @@ pplx::task<HttpContent> WordsApi::executeMailMergeOnline(std::shared_ptr<Execute
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5850,7 +5894,8 @@ pplx::task<AsposeResponse<AvailableFontsResponse>> WordsApi::getAvailableFonts(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -5984,7 +6029,8 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::getBookmarkByName(std::sh
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6116,7 +6162,8 @@ pplx::task<AsposeResponse<BookmarksResponse>> WordsApi::getBookmarks(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6252,7 +6299,8 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::getBorder(std::shared_ptr<G
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6386,7 +6434,8 @@ pplx::task<AsposeResponse<BordersResponse>> WordsApi::getBorders(std::shared_ptr
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6520,7 +6569,8 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::getComment(std::shared_ptr
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6652,7 +6702,8 @@ pplx::task<AsposeResponse<CommentsResponse>> WordsApi::getComments(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6784,7 +6835,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::getDocument(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -6920,7 +6972,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7054,7 +7107,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::getDocumentDrawingOb
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7191,7 +7245,8 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageData(std::shared_
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7308,7 +7363,8 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectImageDataWithoutNodePa
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7427,7 +7483,8 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleData(std::shared_pt
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7544,7 +7601,8 @@ pplx::task<HttpContent> WordsApi::getDocumentDrawingObjectOleDataWithoutNodePath
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7660,7 +7718,8 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7792,7 +7851,8 @@ pplx::task<AsposeResponse<DrawingObjectsResponse>> WordsApi::getDocumentDrawingO
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -7928,7 +7988,8 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNames(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8055,7 +8116,8 @@ pplx::task<AsposeResponse<FieldNamesResponse>> WordsApi::getDocumentFieldNamesOn
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8189,7 +8251,8 @@ pplx::task<AsposeResponse<HyperlinkResponse>> WordsApi::getDocumentHyperlinkByIn
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8321,7 +8384,8 @@ pplx::task<AsposeResponse<HyperlinksResponse>> WordsApi::getDocumentHyperlinks(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8453,7 +8517,8 @@ pplx::task<AsposeResponse<DocumentPropertiesResponse>> WordsApi::getDocumentProp
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8587,7 +8652,8 @@ pplx::task<AsposeResponse<DocumentPropertyResponse>> WordsApi::getDocumentProper
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8719,7 +8785,8 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::getDocumentProtecti
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -8863,7 +8930,8 @@ pplx::task<AsposeResponse<StatDataResponse>> WordsApi::getDocumentStatistics(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9007,7 +9075,8 @@ pplx::task<HttpContent> WordsApi::getDocumentWithFormat(std::shared_ptr<GetDocum
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9125,7 +9194,8 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getField(std::shared_ptr<Get
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9259,7 +9329,8 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::getFieldWithoutNodePath(std:
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9393,7 +9464,8 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFields(std::shared_ptr<G
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9525,7 +9597,8 @@ pplx::task<AsposeResponse<FieldsResponse>> WordsApi::getFieldsWithoutNodePath(st
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9645,7 +9718,8 @@ pplx::task<AsposeResponse<FilesList>> WordsApi::getFilesList(std::shared_ptr<Get
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9781,7 +9855,8 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnote(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -9915,7 +9990,8 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::getFootnoteWithoutNodePat
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10049,7 +10125,8 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotes(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10181,7 +10258,8 @@ pplx::task<AsposeResponse<FootnotesResponse>> WordsApi::getFootnotesWithoutNodeP
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10317,7 +10395,8 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormField(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10451,7 +10530,8 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::getFormFieldWithoutNodeP
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10585,7 +10665,8 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFields(std::shar
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10717,7 +10798,8 @@ pplx::task<AsposeResponse<FormFieldsResponse>> WordsApi::getFormFieldsWithoutNod
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10855,7 +10937,8 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooter(std::
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -10995,7 +11078,8 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::getHeaderFooterOfSect
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11133,7 +11217,8 @@ pplx::task<AsposeResponse<HeaderFootersResponse>> WordsApi::getHeaderFooters(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11269,7 +11354,8 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11403,7 +11489,8 @@ pplx::task<AsposeResponse<OfficeMathObjectResponse>> WordsApi::getOfficeMathObje
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11537,7 +11624,8 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11669,7 +11757,8 @@ pplx::task<AsposeResponse<OfficeMathObjectsResponse>> WordsApi::getOfficeMathObj
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11805,7 +11894,8 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraph(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -11941,7 +12031,8 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12075,7 +12166,8 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::getParagraphFormat
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12209,7 +12301,8 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodeP
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12343,7 +12436,8 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12475,7 +12569,8 @@ pplx::task<AsposeResponse<ParagraphLinkCollectionResponse>> WordsApi::getParagra
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12611,7 +12706,8 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12747,7 +12843,8 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::getRun(std::shared_ptr<GetRunR
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -12883,7 +12980,8 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::getRunFont(std::shared_ptr<Ge
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13017,7 +13115,8 @@ pplx::task<AsposeResponse<RunsResponse>> WordsApi::getRuns(std::shared_ptr<GetRu
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13151,7 +13250,8 @@ pplx::task<AsposeResponse<SectionResponse>> WordsApi::getSection(std::shared_ptr
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13285,7 +13385,8 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::getSectionPageSet
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13417,7 +13518,8 @@ pplx::task<AsposeResponse<SectionLinkCollectionResponse>> WordsApi::getSections(
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13553,7 +13655,8 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTable(std::shared_ptr<Get
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13689,7 +13792,8 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::getTableCell(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13825,7 +13929,8 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::getTableCellFormat
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -13961,7 +14066,8 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14095,7 +14201,8 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::getTableProperties
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14231,7 +14338,8 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::getTableRow(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14367,7 +14475,8 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::getTableRowFormat(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14501,7 +14610,8 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::getTableWithoutNodePath(std:
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14635,7 +14745,8 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTables(std:
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14767,7 +14878,8 @@ pplx::task<AsposeResponse<TableLinkCollectionResponse>> WordsApi::getTablesWitho
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -14932,7 +15044,8 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -15090,7 +15203,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -15246,7 +15360,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectW
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -15417,7 +15532,8 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertField(std::shared_ptr<
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -15586,7 +15702,8 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::insertFieldWithoutNodePath(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -15753,7 +15870,8 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnote(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -15918,7 +16036,8 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::insertFootnoteWithoutNode
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -16089,7 +16208,8 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormField(std::sha
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -16258,7 +16378,8 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::insertFormFieldWithoutNo
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -16414,7 +16535,8 @@ pplx::task<AsposeResponse<HeaderFooterResponse>> WordsApi::insertHeaderFooter(st
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -16579,7 +16701,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::sh
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -16750,7 +16873,8 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::sha
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -16921,7 +17045,8 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<Inse
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -17088,7 +17213,8 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -17255,7 +17381,8 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -17422,7 +17549,8 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -17461,7 +17589,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
 {
 
     // verify the required parameter 'table' is set
-    if (request->getTable() == nullptr)
+    if (!request->getTable().has_value())
     {
         throw ApiException(400, _XPLATSTR("Missing required parameter 'table' when calling WordsApi->insertTableWithoutNodePath"));
     }
@@ -17548,7 +17676,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        json = ModelBase::toJson(request->getTable());
+        json = ModelBase::toJson(*request->getTable());
         
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
@@ -17561,7 +17689,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
 
         if (request->getTable().get())
         {
-            (request->getTable())->toMultipart(multipart, _XPLATSTR("table"));
+            (*request->getTable())->toMultipart(multipart, _XPLATSTR("table"));
         }
 
         httpBody = multipart;
@@ -17587,7 +17715,8 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -17742,7 +17871,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkImage(std:
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -17907,7 +18037,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertWatermarkText(std::
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18046,7 +18177,8 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::loadWebDocument(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18177,7 +18309,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFile(std::sh
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18283,7 +18416,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18419,7 +18553,8 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18555,7 +18690,8 @@ pplx::task<AsposeResponse<RevisionsModificationResponse>> WordsApi::rejectAllRev
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18695,7 +18831,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18839,7 +18976,8 @@ pplx::task<HttpContent> WordsApi::renderDrawingObject(std::shared_ptr<RenderDraw
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -18963,7 +19101,8 @@ pplx::task<HttpContent> WordsApi::renderDrawingObjectWithoutNodePath(std::shared
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19089,7 +19228,8 @@ pplx::task<HttpContent> WordsApi::renderMathObject(std::shared_ptr<RenderMathObj
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19213,7 +19353,8 @@ pplx::task<HttpContent> WordsApi::renderMathObjectWithoutNodePath(std::shared_pt
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19337,7 +19478,8 @@ pplx::task<HttpContent> WordsApi::renderPage(std::shared_ptr<RenderPageRequest> 
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19463,7 +19605,8 @@ pplx::task<HttpContent> WordsApi::renderParagraph(std::shared_ptr<RenderParagrap
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19587,7 +19730,8 @@ pplx::task<HttpContent> WordsApi::renderParagraphWithoutNodePath(std::shared_ptr
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19713,7 +19857,8 @@ pplx::task<HttpContent> WordsApi::renderTable(std::shared_ptr<RenderTableRequest
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19837,7 +19982,8 @@ pplx::task<HttpContent> WordsApi::renderTableWithoutNodePath(std::shared_ptr<Ren
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -19984,7 +20130,8 @@ pplx::task<AsposeResponse<ReplaceTextResponse>> WordsApi::replaceText(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -20145,7 +20292,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -20259,7 +20407,8 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::resetCache(std::
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -20395,7 +20544,8 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAs(std::shared_ptr<SaveAs
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -20552,7 +20702,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -20777,7 +20928,8 @@ pplx::task<AsposeResponse<SaveResponse>> WordsApi::saveAsTiff(std::shared_ptr<Sa
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -20912,7 +21064,8 @@ pplx::task<AsposeResponse<SearchResponse>> WordsApi::search(std::shared_ptr<Sear
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -21068,7 +21221,8 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -21225,7 +21379,8 @@ pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::unprotectDocument(s
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -21392,7 +21547,8 @@ pplx::task<AsposeResponse<BookmarkResponse>> WordsApi::updateBookmark(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -21561,7 +21717,8 @@ pplx::task<AsposeResponse<BorderResponse>> WordsApi::updateBorder(std::shared_pt
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -21728,7 +21885,8 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -21888,7 +22046,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -22046,7 +22205,8 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectW
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -22215,7 +22375,8 @@ pplx::task<AsposeResponse<FieldResponse>> WordsApi::updateField(std::shared_ptr<
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -22351,7 +22512,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::updateFields(std::shared_
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -22520,7 +22682,8 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnote(std::share
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -22687,7 +22850,8 @@ pplx::task<AsposeResponse<FootnoteResponse>> WordsApi::updateFootnoteWithoutNode
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -22856,7 +23020,8 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormField(std::sha
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -23023,7 +23188,8 @@ pplx::task<AsposeResponse<FormFieldResponse>> WordsApi::updateFormFieldWithoutNo
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -23192,7 +23358,8 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFor
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -23361,7 +23528,8 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::updateRun(std::shared_ptr<Upda
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -23530,7 +23698,8 @@ pplx::task<AsposeResponse<FontResponse>> WordsApi::updateRunFont(std::shared_ptr
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -23697,7 +23866,8 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPage
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -23866,7 +24036,8 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -24035,7 +24206,8 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -24074,7 +24246,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 {
 
     // verify the required parameter 'properties' is set
-    if (request->getProperties() == nullptr)
+    if (!request->getProperties().has_value())
     {
         throw ApiException(400, _XPLATSTR("Missing required parameter 'properties' when calling WordsApi->updateTablePropertiesWithoutNodePath"));
     }
@@ -24163,7 +24335,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        json = ModelBase::toJson(request->getProperties());
+        json = ModelBase::toJson(*request->getProperties());
         
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
@@ -24176,7 +24348,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 
         if (request->getProperties().get())
         {
-            (request->getProperties())->toMultipart(multipart, _XPLATSTR("properties"));
+            (*request->getProperties())->toMultipart(multipart, _XPLATSTR("properties"));
         }
 
         httpBody = multipart;
@@ -24202,7 +24374,8 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -24371,7 +24544,8 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()
@@ -24500,7 +24674,8 @@ pplx::task<AsposeResponse<FilesUploadResult>> WordsApi::uploadFile(std::shared_p
 		if (response.status_code() >= 400)
 		{
 			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
-			errorResponse->fromJson(response.extract_json().get());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
 
 			throw ApiException(response.status_code()
 				, _XPLATSTR("request error: ") + response.reason_phrase()

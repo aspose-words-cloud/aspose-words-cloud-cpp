@@ -30,24 +30,24 @@ namespace api{
 namespace models{
 InsertTableWithoutNodePathRequest::InsertTableWithoutNodePathRequest(
         utility::string_t name,
-                std::shared_ptr<TableInsert> table,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+                boost::optional<utility::string_t> revisionDateTime,
+                boost::optional<std::shared_ptr<TableInsert>> table
         ) : 
             m_name(std::move(name)),
-            m_table(std::move(table)),
             m_folder(std::move(folder)),
             m_storage(std::move(storage)),
             m_loadEncoding(std::move(loadEncoding)),
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_table(std::move(table))
         {
             
         }
@@ -58,13 +58,6 @@ InsertTableWithoutNodePathRequest::InsertTableWithoutNodePathRequest(
         }
         void InsertTableWithoutNodePathRequest::setName(utility::string_t name){
             m_name = std::move(name);
-        }
-        std::shared_ptr<TableInsert> InsertTableWithoutNodePathRequest::getTable() const
-        {
-            return m_table;
-        }
-        void InsertTableWithoutNodePathRequest::setTable(std::shared_ptr<TableInsert> table){
-            m_table = std::move(table);
         }
         boost::optional<utility::string_t> InsertTableWithoutNodePathRequest::getFolder() const
         {
@@ -114,6 +107,13 @@ InsertTableWithoutNodePathRequest::InsertTableWithoutNodePathRequest(
         }
         void InsertTableWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
+        }
+        boost::optional<std::shared_ptr<TableInsert>> InsertTableWithoutNodePathRequest::getTable() const
+        {
+            return m_table;
+        }
+        void InsertTableWithoutNodePathRequest::setTable(boost::optional<std::shared_ptr<TableInsert>> table){
+            m_table = std::move(table);
         }
 
 }

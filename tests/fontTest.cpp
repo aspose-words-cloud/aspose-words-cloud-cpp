@@ -34,9 +34,9 @@ class FontTest : public InfrastructureTest {
 /// </summary>
 TEST_F(FontTest, TestResetCache) {
 	std::shared_ptr< ResetCacheRequest> request= std::make_shared<ResetCacheRequest>();
-	std::shared_ptr<AsposeResponse> actual = get_api()->resetCache(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->resetCache(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -45,7 +45,7 @@ TEST_F(FontTest, TestResetCache) {
 TEST_F(FontTest, TestGetAvailableFonts) {
 	std::shared_ptr<GetAvailableFontsRequest> request=
 			std::make_shared<GetAvailableFontsRequest>(boost::none);
-	std::shared_ptr<AvailableFontsResponse> actual = get_api()->getAvailableFonts(request).get();
+	AsposeResponse<AvailableFontsResponse> actual = get_api()->getAvailableFonts(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

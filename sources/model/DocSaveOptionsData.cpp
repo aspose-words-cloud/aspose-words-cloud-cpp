@@ -119,11 +119,6 @@ void DocSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_ColorModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
-        
-    }
     if(m_SaveFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
@@ -181,10 +176,6 @@ void DocSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
 void DocSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
-    {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
-    }
     if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
         setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));

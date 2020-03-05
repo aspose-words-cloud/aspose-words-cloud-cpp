@@ -29,7 +29,7 @@
 /// </summary>
 class ParagraphTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Paragraphs")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Paragraphs")),
 		fieldFolder = STCONVERT("DocumentElements/Fields");
 };
 
@@ -46,13 +46,13 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphByIndex) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRequest> request=
-			std::make_shared<GetDocumentParagraphRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0"));
+	std::shared_ptr<GetParagraphRequest> request=
+			std::make_shared<GetParagraphRequest>(remoteName, STCONVERT("sections/0"), index, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<ParagraphResponse> actual = get_api()->getDocumentParagraph(request).get();
+	AsposeResponse<ParagraphResponse> actual = get_api()->getParagraph(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -67,19 +67,19 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphs) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphsRequest> request=
-			std::make_shared<GetDocumentParagraphsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, STCONVERT("sections/0"));
+	std::shared_ptr<GetParagraphsRequest> request=
+			std::make_shared<GetParagraphsRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<ParagraphLinkCollectionResponse> actual = get_api()->getDocumentParagraphs(request).get();
+	AsposeResponse<ParagraphLinkCollectionResponse> actual = get_api()->getParagraphs(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
 /// Test for getting first paragraph
 /// </summary>
-TEST_F(ParagraphTest, TestGetDocumentParagraphWithoutNodePath) {
+TEST_F(ParagraphTest, TestGetParagraphWithoutNodePath) {
 	utility::string_t
 		localName = STCONVERT("test_multi_pages.docx"),
 		remoteName = STCONVERT("TestGetDocumentParagraphWithoutNodePath.docx"),
@@ -89,128 +89,13 @@ TEST_F(ParagraphTest, TestGetDocumentParagraphWithoutNodePath) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphRequest> request=
-			std::make_shared<GetDocumentParagraphRequest>(remoteName, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none);
+	std::shared_ptr<GetParagraphWithoutNodePathRequest> request=
+			std::make_shared<GetParagraphWithoutNodePathRequest>(remoteName, index, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<ParagraphResponse> actual = get_api()->getDocumentParagraph(request).get();
+	AsposeResponse<ParagraphResponse> actual = get_api()->getParagraphWithoutNodePath(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
-}
-
-/// <summary>
-/// Test for getting paragraph run
-/// </summary>
-TEST_F(ParagraphTest, TestGetDocumentParagraphRun) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetDocumentParagraphRun.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-	int32_t index = 0;
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<GetDocumentParagraphRunRequest> request=
-			std::make_shared<GetDocumentParagraphRunRequest>(remoteName, STCONVERT("paragraphs/0"), index, dataFolder,
-		boost::none, boost::none, boost::none);
-
-	std::shared_ptr<RunResponse> actual = get_api()->getDocumentParagraphRun(request).get();
-
-	ASSERT_EQ(200, actual->getCode());
-}
-
-/// <summary>
-/// Test for getting paragraph run font
-/// </summary>
-TEST_F(ParagraphTest, TestGetDocumentParagraphRunFont) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetDocumentParagraphRunFont.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-	int32_t index = 0;
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<GetDocumentParagraphRunFontRequest> request=
-			std::make_shared<GetDocumentParagraphRunFontRequest>(remoteName, STCONVERT("paragraphs/0"),
-		index, dataFolder, boost::none, boost::none, boost::none);
-
-	std::shared_ptr<FontResponse> actual = get_api()->getDocumentParagraphRunFont(request).get();
-
-	ASSERT_EQ(200, actual->getCode());
-}
-
-/// <summary>
-/// Test for getting paragraph run
-/// </summary>
-TEST_F(ParagraphTest, TestGetParagraphRuns) {
-	utility::string_t
-		localName = STCONVERT("GetField.docx"),
-		remoteName = STCONVERT("TestGetParagraphRuns.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(fieldFolder), localName);
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<GetDocumentParagraphRunsRequest> request=
-			std::make_shared<GetDocumentParagraphRunsRequest>(remoteName, STCONVERT("sections/0/paragraphs/0"),
-		dataFolder, boost::none, boost::none, boost::none);
-
-	std::shared_ptr<RunsResponse> actual = get_api()->getDocumentParagraphRuns(request).get();
-
-	ASSERT_EQ(200, actual->getCode());
-}
-
-/// <summary>
-/// Test for updating paragraph run fon
-/// </summary>
-TEST_F(ParagraphTest, TestPostDocumentParagraphRunFont) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestPostDocumentParagraphRunFont.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName),
-		destFileName = path_combine_url(baseTestOutPath, remoteName);
-	int32_t index = 0;
-
-	std::shared_ptr<Font> fontDto= std::make_shared<Font>();
-	fontDto->setBold(true);
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<PostDocumentParagraphRunFontRequest> request=
-			std::make_shared<PostDocumentParagraphRunFontRequest>(remoteName, fontDto, STCONVERT("paragraphs/0"),
-		index, dataFolder, boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
-
-	std::shared_ptr<FontResponse> actual = get_api()->postDocumentParagraphRunFont(request).get();
-
-	ASSERT_EQ(200, actual->getCode());
-}
-
-/// <summary>
-/// Test for adding paragraph
-/// </summary>
-TEST_F(ParagraphTest, TestPutParagraph) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestPutParagraph.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-
-	std::shared_ptr<ParagraphInsert> paragraph= std::make_shared<ParagraphInsert>();
-	paragraph->setText(STCONVERT("This is a new paragraph for your document"));
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<PutParagraphRequest> request=
-			std::make_shared<PutParagraphRequest>(remoteName, paragraph, dataFolder, boost::none, boost::none,
-					boost::none, boost::none, boost::none, boost::none, STCONVERT("sections/0"), boost::none);
-
-	std::shared_ptr<ParagraphResponse> actual = get_api()->putParagraph(request).get();
-
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -226,12 +111,12 @@ TEST_F(ParagraphTest, TestDeleteParagraph) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteParagraphRequest> request=
-			std::make_shared<DeleteParagraphRequest>(remoteName,0, dataFolder, boost::none, boost::none,
-					boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<DeleteParagraphRequest>(remoteName, STCONVERT(""), 0, dataFolder, boost::none, boost::none,
+					boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteParagraph(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteParagraph(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -249,8 +134,8 @@ TEST_F(ParagraphTest, TestRenderParagraph) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<RenderParagraphRequest> request=
-			std::make_shared<RenderParagraphRequest>(remoteName, format, index,
-		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<RenderParagraphRequest>(remoteName, format, STCONVERT(""), index,
+		dataFolder, boost::none, boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->renderParagraph(request).get();
 
@@ -269,13 +154,13 @@ TEST_F(ParagraphTest, TestGetParagraphFormat) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetDocumentParagraphFormatRequest> request=
-			std::make_shared<GetDocumentParagraphFormatRequest>(remoteName, 0,
-		dataFolder, boost::none, boost::none, boost::none, boost::none);
+	std::shared_ptr<GetParagraphFormatRequest> request=
+			std::make_shared<GetParagraphFormatRequest>(remoteName, STCONVERT(""), 0,
+		dataFolder, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<ParagraphFormatResponse> actual = get_api()->getDocumentParagraphFormat(request).get();
+	AsposeResponse<ParagraphFormatResponse> actual = get_api()->getParagraphFormat(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -293,12 +178,123 @@ TEST_F(ParagraphTest, TestUpdateParagraphFormat) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostDocumentParagraphFormatRequest> request=
-			std::make_shared<PostDocumentParagraphFormatRequest>(remoteName, body, STCONVERT(""), 0,
+	std::shared_ptr<UpdateParagraphFormatRequest> request=
+			std::make_shared<UpdateParagraphFormatRequest>(remoteName, body, STCONVERT(""), 0,
 		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<ParagraphFormatResponse> actual = get_api()->postDocumentParagraphFormat(request).get();
+	AsposeResponse<ParagraphFormatResponse> actual = get_api()->updateParagraphFormat(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
+
+/// <summary>
+/// Test for inserting  paragraph
+/// </summary>
+TEST_F(ParagraphTest, TestInsertParagraph) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestInsertParagraph.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	std::shared_ptr<ParagraphInsert> body = std::shared_ptr<ParagraphInsert>(new ParagraphInsert());
+	body->setText(STCONVERT("text"));
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<InsertParagraphRequest> request =
+		std::make_shared<InsertParagraphRequest>(remoteName, body, STCONVERT(""), dataFolder, 
+			boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<ParagraphResponse> actual = get_api()->insertParagraph(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting all paragraphs
+/// </summary>
+TEST_F(ParagraphTest, TestGetDocumentParagraphsWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestGetDocumentParagraphsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetParagraphsWithoutNodePathRequest> request =
+		std::make_shared<GetParagraphsWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<ParagraphLinkCollectionResponse> actual = get_api()->getParagraphsWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph
+/// </summary>
+TEST_F(ParagraphTest, TestDeleteParagraphWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestDeleteParagraphWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteParagraphWithoutNodePathRequest> request =
+		std::make_shared<DeleteParagraphWithoutNodePathRequest>(remoteName, 0, dataFolder, boost::none, boost::none,
+			boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteParagraphWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for paragraph rendering
+/// </summary>
+TEST_F(ParagraphTest, TestRenderParagraphWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestRenderParagraphWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName),
+		format = STCONVERT("png");
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<RenderParagraphWithoutNodePathRequest> request =
+		std::make_shared<RenderParagraphWithoutNodePathRequest>(remoteName, format, index,
+			dataFolder, boost::none, boost::none, boost::none, boost::none);
+
+	HttpContent result = get_api()->renderParagraphWithoutNodePath(request).get();
+
+	ASSERT_TRUE(result.getData()->peek());
+}
+
+/// <summary>
+/// Test for getting paragraph format settings
+/// </summary>
+TEST_F(ParagraphTest, TestGetParagraphFormatWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = STCONVERT("TestGetDocumentParagraphsWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(commonFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetParagraphFormatWithoutNodePathRequest> request =
+		std::make_shared<GetParagraphFormatWithoutNodePathRequest>(remoteName, 0,
+			dataFolder, boost::none, boost::none, boost::none);
+
+	AsposeResponse<ParagraphFormatResponse> actual = get_api()->getParagraphFormatWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
 

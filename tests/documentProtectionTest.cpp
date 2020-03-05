@@ -26,7 +26,7 @@
 
 class DocumentProtectionTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions\\DocumentProtection")),
+	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/DocumentProtection")),
 		protectionFolder = STCONVERT("DocumentActions/DocumentProtection");
 };
 
@@ -46,13 +46,13 @@ TEST_F(DocumentProtectionTest, TestPutProtectDocument) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PutProtectDocumentRequest> request=
-			std::make_shared<PutProtectDocumentRequest>(remoteName, body, dataFolder, boost::none,
+	std::shared_ptr<ProtectDocumentRequest> request=
+			std::make_shared<ProtectDocumentRequest>(remoteName, body, dataFolder, boost::none,
 		boost::none, boost::none, destFileName);
 
-	std::shared_ptr<ProtectionDataResponse> actual = get_api()->putProtectDocument(request).get();
+	AsposeResponse<ProtectionDataResponse> actual = get_api()->protectDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -71,9 +71,9 @@ TEST_F(DocumentProtectionTest, TestGetDocumentProtection) {
 			std::make_shared<GetDocumentProtectionRequest>(remoteName, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<ProtectionDataResponse> actual = get_api()->getDocumentProtection(request).get();
+	AsposeResponse<ProtectionDataResponse> actual = get_api()->getDocumentProtection(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -91,13 +91,13 @@ TEST_F(DocumentProtectionTest, TestPostChangeDocumentProtection) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostChangeDocumentProtectionRequest> request=
-			std::make_shared<PostChangeDocumentProtectionRequest>(remoteName, body, dataFolder,
+	std::shared_ptr<ProtectDocumentRequest> request=
+			std::make_shared<ProtectDocumentRequest>(remoteName, body, dataFolder,
 					boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<ProtectionDataResponse> actual = get_api()->postChangeDocumentProtection(request).get();
+	AsposeResponse<ProtectionDataResponse> actual = get_api()->protectDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -115,11 +115,11 @@ TEST_F(DocumentProtectionTest, TestDeleteUnprotectDocument) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<DeleteUnprotectDocumentRequest> request=
-			std::make_shared<DeleteUnprotectDocumentRequest>(remoteName, body, dataFolder, boost::none,
+	std::shared_ptr<UnprotectDocumentRequest> request=
+			std::make_shared<UnprotectDocumentRequest>(remoteName, body, dataFolder, boost::none,
 		boost::none, boost::none, boost::none);
 
-	std::shared_ptr<ProtectionDataResponse> actual = get_api()->deleteUnprotectDocument(request).get();
+	AsposeResponse<ProtectionDataResponse> actual = get_api()->unprotectDocument(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }

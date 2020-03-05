@@ -29,7 +29,7 @@
 /// </summary>
 class TableTest : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements\\Tables")),
+	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Tables")),
 		tableFolder = STCONVERT("DocumentElements/Tables");
 };
 
@@ -46,12 +46,12 @@ TEST_F(TableTest, TestGetTables) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetTablesRequest> request=
-			std::make_shared<GetTablesRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none);
+			std::make_shared<GetTablesRequest>(remoteName, STCONVERT("sections/0"), dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<TableLinkCollectionResponse> actual = get_api()->getTables(request).get();
+	AsposeResponse<TableLinkCollectionResponse> actual = get_api()->getTables(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -67,12 +67,12 @@ TEST_F(TableTest, TestGetTable) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<GetTableRequest> request=
-			std::make_shared<GetTableRequest>(remoteName, 1, dataFolder, boost::none,
-		boost::none, boost::none, boost::none);
+			std::make_shared<GetTableRequest>(remoteName, STCONVERT(""), 1, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<TableResponse> actual = get_api()->getTable(request).get();
+	AsposeResponse<TableResponse> actual = get_api()->getTable(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -88,12 +88,12 @@ TEST_F(TableTest, TestDeleteTable) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<DeleteTableRequest> request=
-			std::make_shared<DeleteTableRequest>(remoteName, 1, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<DeleteTableRequest>(remoteName, STCONVERT(""), 1, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteTable(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteTable(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -111,12 +111,12 @@ TEST_F(TableTest, TestInsertTable) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<InsertTableRequest> request= std::make_shared<InsertTableRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, tableDto, boost::none);
+	std::shared_ptr<InsertTableRequest> request= std::make_shared<InsertTableRequest>(remoteName, tableDto, STCONVERT(""), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<TableResponse> actual = get_api()->insertTable(request).get();
+	AsposeResponse<TableResponse> actual = get_api()->insertTable(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -131,12 +131,12 @@ TEST_F(TableTest, TestGetTableProperties) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<GetTablePropertiesRequest> request= std::make_shared<GetTablePropertiesRequest>(remoteName, 1, dataFolder, boost::none,
-		boost::none, boost::none, boost::none);
+	std::shared_ptr<GetTablePropertiesRequest> request= std::make_shared<GetTablePropertiesRequest>(remoteName, STCONVERT(""), 1, dataFolder, boost::none,
+		boost::none, boost::none);
 
-	std::shared_ptr<TablePropertiesResponse> actual = get_api()->getTableProperties(request).get();
+	AsposeResponse<TablePropertiesResponse> actual = get_api()->getTableProperties(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -164,12 +164,12 @@ TEST_F(TableTest, TestUpdateTableProperties) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<UpdateTablePropertiesRequest> request=
-			std::make_shared<UpdateTablePropertiesRequest>(remoteName, 1, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, newProperties, boost::none);
+			std::make_shared<UpdateTablePropertiesRequest>(remoteName, newProperties, STCONVERT(""), 1, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<TablePropertiesResponse> actual = get_api()->updateTableProperties(request).get();
+	AsposeResponse<TablePropertiesResponse> actual = get_api()->updateTableProperties(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -187,9 +187,9 @@ TEST_F(TableTest, TestGetTableRow) {
 	std::shared_ptr<GetTableRowRequest> request= std::make_shared<GetTableRowRequest>(remoteName, STCONVERT("tables/1"), 0, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<TableRowResponse> actual = get_api()->getTableRow(request).get();
+	AsposeResponse<TableRowResponse> actual = get_api()->getTableRow(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -208,9 +208,9 @@ TEST_F(TableTest, TestDeleteTableRow) {
 			std::make_shared<DeleteTableRowRequest>(remoteName, STCONVERT("tables/1"), 0, dataFolder, boost::none,
 		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteTableRow(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteTableRow(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -228,12 +228,12 @@ TEST_F(TableTest, TestInsertTableRow) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<InsertTableRowRequest> request=
-			std::make_shared<InsertTableRowRequest>(remoteName, STCONVERT("sections/0/tables/2"), dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, row);
+			std::make_shared<InsertTableRowRequest>(remoteName, row, STCONVERT("sections/0/tables/2"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<TableRowResponse> actual = get_api()->insertTableRow(request).get();
+	AsposeResponse<TableRowResponse> actual = get_api()->insertTableRow(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -252,9 +252,9 @@ TEST_F(TableTest, TestGetTableRowFormat) {
 			std::make_shared<GetTableRowFormatRequest>(remoteName, STCONVERT("sections/0/tables/2"), 0, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<TableRowFormatResponse> actual = get_api()->getTableRowFormat(request).get();
+	AsposeResponse<TableRowFormatResponse> actual = get_api()->getTableRowFormat(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -274,12 +274,12 @@ TEST_F(TableTest, TestUpdateTableRowFormat) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<UpdateTableRowFormatRequest> request= std::make_shared<UpdateTableRowFormatRequest>(remoteName, STCONVERT("sections/0/tables/2"), 0, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, rowFormat);
+	std::shared_ptr<UpdateTableRowFormatRequest> request= std::make_shared<UpdateTableRowFormatRequest>(remoteName, rowFormat, STCONVERT("sections/0/tables/2"), 0, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<TableRowFormatResponse> actual = get_api()->updateTableRowFormat(request).get();
+	AsposeResponse<TableRowFormatResponse> actual = get_api()->updateTableRowFormat(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -297,9 +297,9 @@ TEST_F(TableTest, TestGetTableCell) {
 	std::shared_ptr<GetTableCellRequest> request= std::make_shared<GetTableCellRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), 0, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<TableCellResponse> actual = get_api()->getTableCell(request).get();
+	AsposeResponse<TableCellResponse> actual = get_api()->getTableCell(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -318,9 +318,9 @@ TEST_F(TableTest, TestDeleteCell) {
 			std::make_shared<DeleteTableCellRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), 0,
 		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<AsposeResponse> actual = get_api()->deleteTableCell(request).get();
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteTableCell(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual->status_code());
 }
 
 /// <summary>
@@ -337,12 +337,12 @@ TEST_F(TableTest, TestInsertTableCell) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<InsertTableCellRequest> request=
-			std::make_shared<InsertTableCellRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, cell);
+			std::make_shared<InsertTableCellRequest>(remoteName, cell, STCONVERT("sections/0/tables/2/rows/0"), dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<TableCellResponse> actual = get_api()->insertTableCell(request).get();
+	AsposeResponse<TableCellResponse> actual = get_api()->insertTableCell(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -361,9 +361,9 @@ TEST_F(TableTest, TestGetTableCellFormat) {
 			std::make_shared<GetTableCellFormatRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), 0, dataFolder, boost::none,
 		boost::none, boost::none);
 
-	std::shared_ptr<TableCellFormatResponse> actual = get_api()->getTableCellFormat(request).get();
+	AsposeResponse<TableCellFormatResponse> actual = get_api()->getTableCellFormat(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -384,12 +384,12 @@ TEST_F(TableTest, TestUpdateTableCellFormat) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<UpdateTableCellFormatRequest> request=
-			std::make_shared<UpdateTableCellFormatRequest>(remoteName, STCONVERT("sections/0/tables/2/rows/0"), 0, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none, cellFormat);
+			std::make_shared<UpdateTableCellFormatRequest>(remoteName, cellFormat, STCONVERT("sections/0/tables/2/rows/0"), 0, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none);
 
-	std::shared_ptr<TableCellFormatResponse> actual = get_api()->updateTableCellFormat(request).get();
+	AsposeResponse<TableCellFormatResponse> actual = get_api()->updateTableCellFormat(request).get();
 
-	ASSERT_EQ(200, actual->getCode());
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -407,10 +407,172 @@ TEST_F(TableTest, TestRenderTable) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<RenderTableRequest> request=
-			std::make_shared<RenderTableRequest>(remoteName, format, index, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none);
+			std::make_shared<RenderTableRequest>(remoteName, format, STCONVERT(""), index, dataFolder, boost::none,
+		boost::none, boost::none, boost::none);
 
 	HttpContent result = get_api()->renderTable(request).get();
+
+	ASSERT_TRUE(result.getData()->peek());
+}
+
+/// <summary>
+/// Test for getting tables
+/// </summary>
+TEST_F(TableTest, TestGetTablesWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestGetTablesWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetTablesWithoutNodePathRequest> request =
+		std::make_shared<GetTablesWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<TableLinkCollectionResponse> actual = get_api()->getTablesWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting table
+/// </summary>
+TEST_F(TableTest, TestGetTableWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestGetTableWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetTableWithoutNodePathRequest> request =
+		std::make_shared<GetTableWithoutNodePathRequest>(remoteName, 1, dataFolder, boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<TableResponse> actual = get_api()->getTableWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting table
+/// </summary>
+TEST_F(TableTest, TestDeleteTableWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestDeleteTableWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteTableWithoutNodePathRequest> request =
+		std::make_shared<DeleteTableWithoutNodePathRequest>(remoteName, 1, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	std::shared_ptr<web::http::http_response> actual = get_api()->deleteTableWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual->status_code());
+}
+
+/// <summary>
+/// Test for adding table
+/// </summary>
+TEST_F(TableTest, TestInsertTableWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestInsertTableWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName);
+	std::shared_ptr<TableInsert> tableDto = std::make_shared<TableInsert>();
+	tableDto->setColumnsCount(5);
+	tableDto->setRowsCount(4);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<InsertTableWithoutNodePathRequest> request = std::make_shared<InsertTableWithoutNodePathRequest>(remoteName, dataFolder, boost::none,
+		boost::none, boost::none, boost::none, boost::none, boost::none, tableDto);
+
+	AsposeResponse<TableResponse> actual = get_api()->insertTableWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting document properties
+/// </summary>
+TEST_F(TableTest, TestGetTablePropertiesWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestGetTablePropertiesWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetTablePropertiesWithoutNodePathRequest> request = std::make_shared<GetTablePropertiesWithoutNodePathRequest>(remoteName, 1, dataFolder, boost::none,
+		boost::none, boost::none);
+
+	AsposeResponse<TablePropertiesResponse> actual = get_api()->getTablePropertiesWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for updating table properties
+/// </summary>
+TEST_F(TableTest, TestUpdateTablePropertiesWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestUpdateTablePropertiesWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName);
+
+	std::shared_ptr<TableProperties> newProperties = std::make_shared<TableProperties>();
+	newProperties->setAlignment(STCONVERT("Right"));
+	newProperties->setAllowAutoFit(false);
+	newProperties->setBidi(true);
+	newProperties->setBottomPadding(1);
+	newProperties->setCellSpacing(2);
+	newProperties->setLeftIndent(3);
+	newProperties->setLeftPadding(4);
+	newProperties->setRightPadding(5);
+	newProperties->setStyleOptions(STCONVERT("ColumnBands"));
+	newProperties->setTopPadding(6);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<UpdateTablePropertiesWithoutNodePathRequest> request =
+		std::make_shared<UpdateTablePropertiesWithoutNodePathRequest>(remoteName, 1, dataFolder, boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none, newProperties);
+
+	AsposeResponse<TablePropertiesResponse> actual = get_api()->updateTablePropertiesWithoutNodePath(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for table rendering
+/// </summary>
+TEST_F(TableTest, TestRenderTableWithoutNodePath) {
+	utility::string_t
+		localName = STCONVERT("TablesGet.docx"),
+		remoteName = STCONVERT("TestRenderTableWithoutNodePath.docx"),
+		fullName = path_combine_url(dataFolder, remoteName),
+		filePath = path_combine(get_data_dir(tableFolder), localName),
+		format = STCONVERT("png");
+	int32_t index = 0;
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<RenderTableWithoutNodePathRequest> request =
+		std::make_shared<RenderTableWithoutNodePathRequest>(remoteName, format, index, dataFolder, boost::none,
+			boost::none, boost::none, boost::none);
+
+	HttpContent result = get_api()->renderTableWithoutNodePath(request).get();
 
 	ASSERT_TRUE(result.getData()->peek());
 }

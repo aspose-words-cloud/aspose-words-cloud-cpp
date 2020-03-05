@@ -34,8 +34,6 @@ namespace models {
 
 SaveOptionsData::SaveOptionsData()
 {
-    m_ColorMode = utility::conversions::to_string_t("");
-    m_ColorModeIsSet = false;
     m_SaveFormat = utility::conversions::to_string_t("");
     m_SaveFormatIsSet = false;
     m_FileName = utility::conversions::to_string_t("");
@@ -67,10 +65,6 @@ web::json::value SaveOptionsData::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    if(m_ColorModeIsSet)
-    {
-        val[_XPLATSTR("ColorMode")] = ModelBase::toJson(m_ColorMode);
-    }
     if(m_SaveFormatIsSet)
     {
         val[_XPLATSTR("SaveFormat")] = ModelBase::toJson(m_SaveFormat);
@@ -109,14 +103,6 @@ web::json::value SaveOptionsData::toJson() const
 
 void SaveOptionsData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("ColorMode")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("ColorMode")];
-        if(!fieldValue.is_null())
-        {
-            setColorMode(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("SaveFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SaveFormat")];
@@ -187,11 +173,6 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_ColorModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
-        
-    }
     if(m_SaveFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
@@ -232,10 +213,6 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
-    {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
-    }
     if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
         setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
@@ -268,27 +245,6 @@ void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     {
         setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
-}
-
-utility::string_t SaveOptionsData::getColorMode() const
-{
-    return m_ColorMode;
-}
-
-
-void SaveOptionsData::setColorMode(utility::string_t value)
-{
-    m_ColorMode = value;
-    m_ColorModeIsSet = true;
-}
-bool SaveOptionsData::colorModeIsSet() const
-{
-    return m_ColorModeIsSet;
-}
-
-void SaveOptionsData::unsetColorMode()
-{
-    m_ColorModeIsSet = false;
 }
 
 utility::string_t SaveOptionsData::getSaveFormat() const

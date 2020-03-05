@@ -63,11 +63,6 @@ void JpegSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_ColorModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
-        
-    }
     if(m_SaveFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
@@ -103,6 +98,11 @@ void JpegSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_UpdateFieldsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
+    }
+    if(m_ColorModeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
+        
     }
     if(m_JpegQualityIsSet)
     {
@@ -196,10 +196,6 @@ void JpegSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void JpegSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
-    {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
-    }
     if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
         setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
@@ -231,6 +227,10 @@ void JpegSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
         setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("ColorMode")))
+    {
+        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
     }
     if(multipart->hasContent(_XPLATSTR("JpegQuality")))
     {

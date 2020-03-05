@@ -26,7 +26,7 @@
 class BookmarkTest : public InfrastructureTest {
 protected:
 	utility::string_t get_data_folder() override {
-		return path_combine_url(STCONVERT("Temp\\SdkTests\\TestData"), STCONVERT("DocumentElements\\Bookmarks"));
+		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentElements/Bookmarks"));
 	}
 };
 
@@ -40,14 +40,14 @@ TEST_F(BookmarkTest, TestGetDocumentBookmarks) {
 	utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	UploadFileToStorage(fullName, filePath);
-	std::shared_ptr<GetDocumentBookmarksRequest> req=
-			std::make_shared<GetDocumentBookmarksRequest>(remoteName, get_data_folder(), boost::none,
+	std::shared_ptr<GetBookmarksRequest> req=
+			std::make_shared<GetBookmarksRequest>(remoteName, get_data_folder(), boost::none,
 					boost::none, boost::none);
 
-	auto requestTask = get_api()->getDocumentBookmarks(req);
+	auto requestTask = get_api()->getBookmarks(req);
 
-	std::shared_ptr<BookmarksResponse> actual = requestTask.get();
-	ASSERT_EQ(200, actual->getCode());
+	AsposeResponse<BookmarksResponse> actual = requestTask.get();
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -61,14 +61,14 @@ TEST_F(BookmarkTest, TestGetDocumentBookmarkByName) {
 		bookmark = STCONVERT("aspose");
 
 	UploadFileToStorage(fullName, filePath);
-	std::shared_ptr<GetDocumentBookmarkByNameRequest> req=
-			std::make_shared<GetDocumentBookmarkByNameRequest>(remoteName, bookmark, get_data_folder(),
+	std::shared_ptr<GetBookmarkByNameRequest> req=
+			std::make_shared<GetBookmarkByNameRequest>(remoteName, bookmark, get_data_folder(),
 					boost::none, boost::none, boost::none);
 
-	auto requestTask = get_api()->getDocumentBookmarkByName(req);
+	auto requestTask = get_api()->getBookmarkByName(req);
 
-	std::shared_ptr<BookmarkResponse> actual = requestTask.get();
-	ASSERT_EQ(200, actual->getCode());
+	AsposeResponse<BookmarkResponse> actual = requestTask.get();
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -88,10 +88,10 @@ TEST_F(BookmarkTest, TestPostUpdateDocumentBookmark) {
 
 	UploadFileToStorage(fullName, filePath);
 
-	std::shared_ptr<PostUpdateDocumentBookmarkRequest> request=
-			std::make_shared<PostUpdateDocumentBookmarkRequest>(remoteName, body, bookmarkName, this->get_data_folder(),
+	std::shared_ptr<UpdateBookmarkRequest> request=
+			std::make_shared<UpdateBookmarkRequest>(remoteName, body, bookmarkName, this->get_data_folder(),
 		boost::none, boost::none, boost::none, destFileName, boost::none, boost::none);
-	auto requestTask = get_api()->postUpdateDocumentBookmark(request);
-	std::shared_ptr<BookmarkResponse> actual = requestTask.get();
-	ASSERT_EQ(200, actual->getCode());
+	auto requestTask = get_api()->updateBookmark(request);
+	AsposeResponse<BookmarkResponse> actual = requestTask.get();
+	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
