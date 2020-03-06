@@ -39,7 +39,7 @@ namespace models {
 class UpdateFootnoteRequest{
     public: 
      UpdateFootnoteRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Footnote> footnoteDto,
                 utility::string_t nodePath,
                 int32_t index,

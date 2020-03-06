@@ -37,6 +37,7 @@ XmlColor::XmlColor()
     m_Web = utility::conversions::to_string_t("");
     m_WebIsSet = false;
     m_Alpha = 0;
+    m_AlphaIsSet = false;
 }
 
 XmlColor::~XmlColor()
@@ -56,7 +57,10 @@ web::json::value XmlColor::toJson() const
     {
         val[_XPLATSTR("Web")] = ModelBase::toJson(m_Web);
     }
-    val[_XPLATSTR("Alpha")] = ModelBase::toJson(m_Alpha);
+    if(m_AlphaIsSet)
+    {
+        val[_XPLATSTR("Alpha")] = ModelBase::toJson(m_Alpha);
+    }
 
     return val;
 }
@@ -83,6 +87,7 @@ void XmlColor::fromJson(web::json::value& val)
 
 void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_WebIsSet)
@@ -90,16 +95,25 @@ void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Web"), m_Web));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alpha"), m_Alpha));
+    if(m_AlphaIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alpha"), m_Alpha));
+        
+    }
 }
 
 void XmlColor::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Web")))
     {
         setWeb(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Web"))));
     }
-    setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Alpha"))));
+    if(multipart->hasContent(_XPLATSTR("Alpha")))
+    {
+        setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Alpha"))));
+    }
 }
 
 utility::string_t XmlColor::getWeb() const
@@ -132,8 +146,18 @@ int32_t XmlColor::getAlpha() const
 void XmlColor::setAlpha(int32_t value)
 {
     m_Alpha = value;
-    
+    m_AlphaIsSet = true;
 }
+bool XmlColor::alphaIsSet() const
+{
+    return m_AlphaIsSet;
+}
+
+void XmlColor::unsetAlpha()
+{
+    m_AlphaIsSet = false;
+}
+
 }
 }
 }

@@ -39,7 +39,7 @@ namespace models {
 class InsertDrawingObjectWithoutNodePathRequest{
     public: 
      InsertDrawingObjectWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t drawingObject,
                 std::shared_ptr<HttpContent> imageFile,
                 boost::optional<utility::string_t> folder,

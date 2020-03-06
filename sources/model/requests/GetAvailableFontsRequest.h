@@ -38,7 +38,7 @@ namespace models {
 class GetAvailableFontsRequest{
     public: 
     explicit GetAvailableFontsRequest(
-        boost::optional<utility::string_t> fontsLocation
+                boost::optional<utility::string_t> fontsLocation
         );
 
         boost::optional<utility::string_t> getFontsLocation() const;

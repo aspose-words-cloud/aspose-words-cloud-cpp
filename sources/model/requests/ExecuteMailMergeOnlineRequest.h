@@ -39,7 +39,7 @@ namespace models {
 class ExecuteMailMergeOnlineRequest{
     public: 
      ExecuteMailMergeOnlineRequest(
-        std::shared_ptr<HttpContent> _template,
+                std::shared_ptr<HttpContent> _template,
                 std::shared_ptr<HttpContent> data,
                 boost::optional<bool> withRegions,
                 boost::optional<utility::string_t> cleanup,

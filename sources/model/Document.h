@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Document.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,10 +29,9 @@
 
 #include "../ModelBase.h"
 
-#include <cpprest/details/basic_types.h>
-#include "Link.h"
 #include "DocumentProperties.h"
-#include <vector>
+#include "Link.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -83,19 +81,25 @@ public:
     /// Gets or sets the original format of the document.
     /// </summary>
     utility::string_t getSourceFormat() const;
-        void setSourceFormat(utility::string_t value);
+    bool sourceFormatIsSet() const;
+    void unsetSourceFormat();
+    void setSourceFormat(utility::string_t value);
     /// <summary>
     /// Gets or sets a value indicating whether returns true if the document is encrypted and requires a password to open.
     /// </summary>
     bool isIsEncrypted() const;
-        void setIsEncrypted(bool value);
+    bool isEncryptedIsSet() const;
+    void unsetIsEncrypted();
+    void setIsEncrypted(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
     /// </summary>
     bool isIsSigned() const;
-        void setIsSigned(bool value);
+    bool isSignedIsSet() const;
+    void unsetIsSigned();
+    void setIsSigned(bool value);
     /// <summary>
-    /// Gets or sets returns document properties.
+    /// Gets or sets DocumentProperties.
     /// </summary>
     std::shared_ptr<DocumentProperties> getDocumentProperties() const;
     bool documentPropertiesIsSet() const;
@@ -108,9 +112,12 @@ protected:
     utility::string_t m_FileName;
     bool m_FileNameIsSet;
     utility::string_t m_SourceFormat;
-        bool m_IsEncrypted;
-        bool m_IsSigned;
-        std::shared_ptr<DocumentProperties> m_DocumentProperties;
+    bool m_SourceFormatIsSet;
+    bool m_IsEncrypted;
+    bool m_IsEncryptedIsSet;
+    bool m_IsSigned;
+    bool m_IsSignedIsSet;
+    std::shared_ptr<DocumentProperties> m_DocumentProperties;
     bool m_DocumentPropertiesIsSet;
 };
 

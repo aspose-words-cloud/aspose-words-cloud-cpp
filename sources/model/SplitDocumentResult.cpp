@@ -123,6 +123,7 @@ void SplitDocumentResult::fromJson(web::json::value& val)
 
 void SplitDocumentResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_SourceDocumentIsSet)
@@ -156,6 +157,8 @@ void SplitDocumentResult::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void SplitDocumentResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("SourceDocument")))
     {
         if(multipart->hasContent(_XPLATSTR("SourceDocument")))

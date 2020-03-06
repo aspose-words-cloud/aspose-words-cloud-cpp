@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// SectionResponse members
 
     /// <summary>
-    /// Gets or sets section.
+    /// Gets or sets Section.
     /// </summary>
     std::shared_ptr<Section> getSection() const;
     bool sectionIsSet() const;

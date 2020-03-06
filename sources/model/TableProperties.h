@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableProperties.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableProperties_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
-#include "WordsApiLink.h"
 #include "PreferredWidth.h"
+#include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -113,7 +112,7 @@ public:
     void unsetLeftPadding();
     void setLeftPadding(double value);
     /// <summary>
-    /// Gets or sets the table preferred width. Preferred width can be specified as a percentage, number of points or a special \&quot;auto\&quot; value.
+    /// Gets or sets PreferredWidth.
     /// </summary>
     std::shared_ptr<PreferredWidth> getPreferredWidth() const;
     bool preferredWidthIsSet() const;

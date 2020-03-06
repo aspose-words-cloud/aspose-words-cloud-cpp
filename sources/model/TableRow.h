@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRow.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -29,11 +28,9 @@
 
 
 #include "NodeLink.h"
+#include "TableCell.h"
 #include "TableRowFormat.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
-#include "WordsApiLink.h"
-#include "TableCell.h"
 
 namespace aspose {
 namespace words {
@@ -66,7 +63,7 @@ public:
     /// TableRow members
 
     /// <summary>
-    /// Gets or sets provides access to the formatting properties of the row.
+    /// Gets or sets RowFormat.
     /// </summary>
     std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;

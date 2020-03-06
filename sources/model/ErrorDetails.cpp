@@ -37,6 +37,7 @@ ErrorDetails::ErrorDetails()
     m_RequestId = utility::conversions::to_string_t("");
     m_RequestIdIsSet = false;
     m_ErrorDateTime = utility::datetime();
+    m_ErrorDateTimeIsSet = false;
 }
 
 ErrorDetails::~ErrorDetails()
@@ -56,7 +57,10 @@ web::json::value ErrorDetails::toJson() const
     {
         val[_XPLATSTR("RequestId")] = ModelBase::toJson(m_RequestId);
     }
-    val[_XPLATSTR("ErrorDateTime")] = ModelBase::toJson(m_ErrorDateTime);
+    if(m_ErrorDateTimeIsSet)
+    {
+        val[_XPLATSTR("ErrorDateTime")] = ModelBase::toJson(m_ErrorDateTime);
+    }
 
     return val;
 }
@@ -71,12 +75,19 @@ void ErrorDetails::fromJson(web::json::value& val)
             setRequestId(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setErrorDateTime
-    (ModelBase::dateFromJson(val[_XPLATSTR("ErrorDateTime")]));
+    if(val.has_field(_XPLATSTR("ErrorDateTime")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("ErrorDateTime")];
+        if(!fieldValue.is_null())
+        {
+            setErrorDateTime(ModelBase::dateFromJson(fieldValue));
+        }
+    }
 }
 
 void ErrorDetails::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_RequestIdIsSet)
@@ -84,16 +95,25 @@ void ErrorDetails::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ErrorDateTime"), m_ErrorDateTime));
+    if(m_ErrorDateTimeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ErrorDateTime"), m_ErrorDateTime));
+        
+    }
 }
 
 void ErrorDetails::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("RequestId")))
     {
         setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
     }
-    setErrorDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ErrorDateTime"))));
+    if(multipart->hasContent(_XPLATSTR("ErrorDateTime")))
+    {
+        setErrorDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ErrorDateTime"))));
+    }
 }
 
 utility::string_t ErrorDetails::getRequestId() const
@@ -126,8 +146,18 @@ utility::datetime ErrorDetails::getErrorDateTime() const
 void ErrorDetails::setErrorDateTime(utility::datetime value)
 {
     m_ErrorDateTime = value;
-    
+    m_ErrorDateTimeIsSet = true;
 }
+bool ErrorDetails::errorDateTimeIsSet() const
+{
+    return m_ErrorDateTimeIsSet;
+}
+
+void ErrorDetails::unsetErrorDateTime()
+{
+    m_ErrorDateTimeIsSet = false;
+}
+
 }
 }
 }

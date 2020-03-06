@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HeaderFooterResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// HeaderFooterResponse members
 
     /// <summary>
-    /// Gets or sets headerFooter.
+    /// Gets or sets HeaderFooter.
     /// </summary>
     std::shared_ptr<HeaderFooter> getHeaderFooter() const;
     bool headerFooterIsSet() const;

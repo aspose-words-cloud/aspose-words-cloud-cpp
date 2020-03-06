@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldCheckbox.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,7 +29,6 @@
 
 #include "FormField.h"
 #include <cpprest/details/basic_types.h>
-#include "WordsApiLink.h"
 
 namespace aspose {
 namespace words {
@@ -73,7 +71,7 @@ public:
     /// Gets or sets the checked status of the check box form field.
     /// </summary>
     bool isChecked() const;
-    bool checkedIsSet() const;
+    bool _checkedIsSet() const;
     void unsetChecked();
     void setChecked(bool value);
     /// <summary>

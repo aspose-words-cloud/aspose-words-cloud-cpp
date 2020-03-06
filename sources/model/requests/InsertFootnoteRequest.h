@@ -39,7 +39,7 @@ namespace models {
 class InsertFootnoteRequest{
     public: 
      InsertFootnoteRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Footnote> footnoteDto,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,

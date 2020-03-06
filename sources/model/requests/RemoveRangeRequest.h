@@ -38,9 +38,9 @@ namespace models {
 class RemoveRangeRequest{
     public: 
      RemoveRangeRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t rangeStartIdentifier,
-                utility::string_t rangeEndIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -54,8 +54,8 @@ class RemoveRangeRequest{
         utility::string_t getRangeStartIdentifier() const;
         void setRangeStartIdentifier(utility::string_t rangeStartIdentifier);
 
-        utility::string_t getRangeEndIdentifier() const;
-        void setRangeEndIdentifier(utility::string_t rangeEndIdentifier);
+        boost::optional<utility::string_t> getRangeEndIdentifier() const;
+        void setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -74,7 +74,7 @@ class RemoveRangeRequest{
     private:
         utility::string_t m_name;
         utility::string_t m_rangeStartIdentifier;
-        utility::string_t m_rangeEndIdentifier;
+        boost::optional<utility::string_t> m_rangeEndIdentifier;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

@@ -30,8 +30,8 @@ namespace api{
 namespace models{
 UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
         utility::string_t name,
-                std::shared_ptr<TableRowFormat> format,
-                utility::string_t tablePath,
+        std::shared_ptr<TableRowFormat> format,
+        utility::string_t tablePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

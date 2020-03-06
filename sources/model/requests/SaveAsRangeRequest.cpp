@@ -32,7 +32,7 @@ SaveAsRangeRequest::SaveAsRangeRequest(
         utility::string_t name,
                 utility::string_t rangeStartIdentifier,
                 std::shared_ptr<RangeDocument> documentParameters,
-                utility::string_t rangeEndIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -71,11 +71,11 @@ SaveAsRangeRequest::SaveAsRangeRequest(
         void SaveAsRangeRequest::setDocumentParameters(std::shared_ptr<RangeDocument> documentParameters){
             m_documentParameters = std::move(documentParameters);
         }
-        utility::string_t SaveAsRangeRequest::getRangeEndIdentifier() const
+        boost::optional<utility::string_t> SaveAsRangeRequest::getRangeEndIdentifier() const
         {
             return m_rangeEndIdentifier;
         }
-        void SaveAsRangeRequest::setRangeEndIdentifier(utility::string_t rangeEndIdentifier){
+        void SaveAsRangeRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
             m_rangeEndIdentifier = std::move(rangeEndIdentifier);
         }
         boost::optional<utility::string_t> SaveAsRangeRequest::getFolder() const

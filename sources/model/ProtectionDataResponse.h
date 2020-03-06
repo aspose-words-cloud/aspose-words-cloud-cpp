@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ProtectionDataResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ProtectionDataResponse_H_
 
 
-#include "WordsResponse.h"
-#include <cpprest/details/basic_types.h>
 #include "FileLink.h"
 #include "ProtectionData.h"
+#include "WordsResponse.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -64,14 +63,14 @@ public:
     /// ProtectionDataResponse members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets DocumentLink.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Gets or sets protection&#39;s data of the document.
+    /// Gets or sets ProtectionData.
     /// </summary>
     std::shared_ptr<ProtectionData> getProtectionData() const;
     bool protectionDataIsSet() const;

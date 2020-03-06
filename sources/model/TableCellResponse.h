@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCellResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableCellResponse_H_
 
 
+#include "TableCell.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "TableCell.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// TableCellResponse members
 
     /// <summary>
-    /// Gets or sets table cell.
+    /// Gets or sets Cell.
     /// </summary>
     std::shared_ptr<TableCell> getCell() const;
     bool cellIsSet() const;

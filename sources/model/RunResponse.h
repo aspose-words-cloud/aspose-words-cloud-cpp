@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RunResponse_H_
 
 
+#include "Run.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "Run.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// RunResponse members
 
     /// <summary>
-    /// Gets or sets run.
+    /// Gets or sets Run.
     /// </summary>
     std::shared_ptr<Run> getRun() const;
     bool runIsSet() const;

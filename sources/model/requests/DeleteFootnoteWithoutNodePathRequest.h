@@ -38,7 +38,7 @@ namespace models {
 class DeleteFootnoteWithoutNodePathRequest{
     public: 
      DeleteFootnoteWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

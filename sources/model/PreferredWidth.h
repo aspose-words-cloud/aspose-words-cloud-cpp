@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PreferredWidth.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -66,7 +65,9 @@ public:
     /// Gets or sets the unit of measure used for this preferred width value.
     /// </summary>
     utility::string_t getType() const;
-        void setType(utility::string_t value);
+    bool typeIsSet() const;
+    void unsetType();
+    void setType(utility::string_t value);
     /// <summary>
     /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
     /// </summary>
@@ -77,7 +78,8 @@ public:
 
 protected:
     utility::string_t m_Type;
-        double m_Value;
+    bool m_TypeIsSet;
+    double m_Value;
     bool m_ValueIsSet;
 };
 

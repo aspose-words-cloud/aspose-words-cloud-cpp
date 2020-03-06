@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPosition.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,6 +30,7 @@
 #include "../ModelBase.h"
 
 #include "NodeLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -63,7 +63,7 @@ public:
     /// DocumentPosition members
 
     /// <summary>
-    /// Gets or sets link to  node.
+    /// Gets or sets Node.
     /// </summary>
     std::shared_ptr<NodeLink> getNode() const;
     bool nodeIsSet() const;

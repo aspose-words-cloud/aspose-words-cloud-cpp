@@ -73,6 +73,7 @@ void ProtectionData::fromJson(web::json::value& val)
 
 void ProtectionData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ProtectionTypeIsSet)
@@ -84,6 +85,8 @@ void ProtectionData::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
 void ProtectionData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("ProtectionType")))
     {
         setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ProtectionType"))));

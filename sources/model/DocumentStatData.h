@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentStatData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,9 +29,9 @@
 
 #include "../ModelBase.h"
 
-#include "PageStatData.h"
 #include "FootnotesStatData.h"
-#include <vector>
+#include "PageStatData.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -68,19 +67,25 @@ public:
     /// Gets or sets total count of words in the document.
     /// </summary>
     int32_t getWordCount() const;
-        void setWordCount(int32_t value);
+    bool wordCountIsSet() const;
+    void unsetWordCount();
+    void setWordCount(int32_t value);
     /// <summary>
     /// Gets or sets total count of paragraphs in the document.
     /// </summary>
     int32_t getParagraphCount() const;
-        void setParagraphCount(int32_t value);
+    bool paragraphCountIsSet() const;
+    void unsetParagraphCount();
+    void setParagraphCount(int32_t value);
     /// <summary>
     /// Gets or sets total count of pages in the document.
     /// </summary>
     int32_t getPageCount() const;
-        void setPageCount(int32_t value);
+    bool pageCountIsSet() const;
+    void unsetPageCount();
+    void setPageCount(int32_t value);
     /// <summary>
-    /// Gets or sets detailed statistics of footnotes.
+    /// Gets or sets FootnotesStatData.
     /// </summary>
     std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
@@ -96,9 +101,12 @@ public:
 
 protected:
     int32_t m_WordCount;
-        int32_t m_ParagraphCount;
-        int32_t m_PageCount;
-        std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
+    bool m_WordCountIsSet;
+    int32_t m_ParagraphCount;
+    bool m_ParagraphCountIsSet;
+    int32_t m_PageCount;
+    bool m_PageCountIsSet;
+    std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
     bool m_FootnotesStatDataIsSet;
     std::vector<std::shared_ptr<PageStatData>> m_PageStatData;
     bool m_PageStatDataIsSet;

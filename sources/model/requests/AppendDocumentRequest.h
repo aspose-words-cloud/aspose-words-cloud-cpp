@@ -39,7 +39,7 @@ namespace models {
 class AppendDocumentRequest{
     public: 
      AppendDocumentRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<DocumentEntryList> documentList,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

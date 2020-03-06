@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FilesUploadResult.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,9 +29,8 @@
 
 #include "../ModelBase.h"
 
-#include <cpprest/details/basic_types.h>
 #include "Error.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

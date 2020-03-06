@@ -30,8 +30,8 @@ namespace api{
 namespace models{
 InsertTableCellRequest::InsertTableCellRequest(
         utility::string_t name,
-                std::shared_ptr<TableCellInsert> cell,
-                utility::string_t tableRowPath,
+        std::shared_ptr<TableCellInsert> cell,
+        utility::string_t tableRowPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,

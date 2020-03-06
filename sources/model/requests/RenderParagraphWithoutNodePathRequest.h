@@ -38,7 +38,7 @@ namespace models {
 class RenderParagraphWithoutNodePathRequest{
     public: 
      RenderParagraphWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t format,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

@@ -39,7 +39,7 @@ namespace models {
 class UpdateFormFieldWithoutNodePathRequest{
     public: 
      UpdateFormFieldWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<FormField> formField,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

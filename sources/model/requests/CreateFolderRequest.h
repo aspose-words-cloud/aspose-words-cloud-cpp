@@ -38,7 +38,7 @@ namespace models {
 class CreateFolderRequest{
     public: 
      CreateFolderRequest(
-        utility::string_t path,
+                utility::string_t path,
                 boost::optional<utility::string_t> storageName
         );
 

@@ -625,31 +625,28 @@ void Font::fromJson(web::json::value& val)
 
 void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_AllCapsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllCaps"), m_AllCaps));
+        
     }
     if(m_BidiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
+        
     }
     if(m_BoldIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bold"), m_Bold));
+        
     }
     if(m_BoldBiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BoldBi"), m_BoldBi));
+        
     }
     if(m_BorderIsSet)
     {
@@ -670,22 +667,27 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
     if(m_ComplexScriptIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ComplexScript"), m_ComplexScript));
+        
     }
     if(m_DoubleStrikeThroughIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DoubleStrikeThrough"), m_DoubleStrikeThrough));
+        
     }
     if(m_EmbossIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Emboss"), m_Emboss));
+        
     }
     if(m_EngraveIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Engrave"), m_Engrave));
+        
     }
     if(m_HiddenIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Hidden"), m_Hidden));
+        
     }
     if(m_HighlightColorIsSet)
     {
@@ -698,26 +700,32 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
     if(m_ItalicIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Italic"), m_Italic));
+        
     }
     if(m_ItalicBiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ItalicBi"), m_ItalicBi));
+        
     }
     if(m_KerningIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Kerning"), m_Kerning));
+        
     }
     if(m_LocaleIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleId"), m_LocaleId));
+        
     }
     if(m_LocaleIdBiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleIdBi"), m_LocaleIdBi));
+        
     }
     if(m_LocaleIdFarEastIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleIdFarEast"), m_LocaleIdFarEast));
+        
     }
     if(m_NameIsSet)
     {
@@ -747,42 +755,52 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
     if(m_NoProofingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NoProofing"), m_NoProofing));
+        
     }
     if(m_OutlineIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Outline"), m_Outline));
+        
     }
     if(m_PositionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Position"), m_Position));
+        
     }
     if(m_ScalingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Scaling"), m_Scaling));
+        
     }
     if(m_ShadowIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Shadow"), m_Shadow));
+        
     }
     if(m_SizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Size"), m_Size));
+        
     }
     if(m_SizeBiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SizeBi"), m_SizeBi));
+        
     }
     if(m_SmallCapsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SmallCaps"), m_SmallCaps));
+        
     }
     if(m_SpacingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Spacing"), m_Spacing));
+        
     }
     if(m_StrikeThroughIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StrikeThrough"), m_StrikeThrough));
+        
     }
     if(m_StyleIdentifierIsSet)
     {
@@ -797,10 +815,12 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
     if(m_SubscriptIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Subscript"), m_Subscript));
+        
     }
     if(m_SuperscriptIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Superscript"), m_Superscript));
+        
     }
     if(m_TextEffectIsSet)
     {
@@ -824,15 +844,8 @@ void Font::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
 
 void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("AllCaps")))
     {
         setAllCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllCaps"))));

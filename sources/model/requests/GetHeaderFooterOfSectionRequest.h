@@ -38,7 +38,7 @@ namespace models {
 class GetHeaderFooterOfSectionRequest{
     public: 
      GetHeaderFooterOfSectionRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t headerFooterIndex,
                 int32_t sectionIndex,
                 boost::optional<utility::string_t> folder,

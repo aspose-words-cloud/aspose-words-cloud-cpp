@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnotesStatData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,6 +29,7 @@
 
 #include "../ModelBase.h"
 
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -65,17 +65,23 @@ public:
     /// Gets or sets total count of words in footnotes.
     /// </summary>
     int32_t getWordCount() const;
-        void setWordCount(int32_t value);
+    bool wordCountIsSet() const;
+    void unsetWordCount();
+    void setWordCount(int32_t value);
     /// <summary>
     /// Gets or sets total count of paragraphs in footnotes.
     /// </summary>
     int32_t getParagraphCount() const;
-        void setParagraphCount(int32_t value);
+    bool paragraphCountIsSet() const;
+    void unsetParagraphCount();
+    void setParagraphCount(int32_t value);
 
 protected:
     int32_t m_WordCount;
-        int32_t m_ParagraphCount;
-    };
+    bool m_WordCountIsSet;
+    int32_t m_ParagraphCount;
+    bool m_ParagraphCountIsSet;
+};
 
 }
 }

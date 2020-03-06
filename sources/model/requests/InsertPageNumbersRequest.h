@@ -39,7 +39,7 @@ namespace models {
 class InsertPageNumbersRequest{
     public: 
      InsertPageNumbersRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<PageNumber> pageNumber,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

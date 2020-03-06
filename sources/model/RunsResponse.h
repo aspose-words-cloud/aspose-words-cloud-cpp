@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// RunsResponse members
 
     /// <summary>
-    /// Gets or sets collection of runs.
+    /// Gets or sets Runs.
     /// </summary>
     std::shared_ptr<Runs> getRuns() const;
     bool runsIsSet() const;

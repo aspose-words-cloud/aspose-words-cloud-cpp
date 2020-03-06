@@ -39,7 +39,7 @@ namespace models {
 class SaveAsRequest{
     public: 
      SaveAsRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<SaveOptionsData> saveOptionsData,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

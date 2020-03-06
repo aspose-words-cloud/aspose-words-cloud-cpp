@@ -30,8 +30,8 @@ namespace api{
 namespace models{
 UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
         utility::string_t name,
-                std::shared_ptr<TableProperties> properties,
-                utility::string_t nodePath,
+        std::shared_ptr<TableProperties> properties,
+        utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

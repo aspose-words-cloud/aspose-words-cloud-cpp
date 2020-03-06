@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// FieldResponse members
 
     /// <summary>
-    /// Gets or sets field information.
+    /// Gets or sets Field.
     /// </summary>
     std::shared_ptr<Field> getField() const;
     bool fieldIsSet() const;

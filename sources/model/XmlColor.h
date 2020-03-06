@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XmlColor.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -73,13 +72,16 @@ public:
     /// Gets or sets alpha component of color structure.
     /// </summary>
     int32_t getAlpha() const;
-        void setAlpha(int32_t value);
+    bool alphaIsSet() const;
+    void unsetAlpha();
+    void setAlpha(int32_t value);
 
 protected:
     utility::string_t m_Web;
     bool m_WebIsSet;
     int32_t m_Alpha;
-    };
+    bool m_AlphaIsSet;
+};
 
 }
 }

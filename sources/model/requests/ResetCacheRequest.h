@@ -38,7 +38,8 @@ namespace models {
 class ResetCacheRequest{
     public: 
     explicit ResetCacheRequest(
-);
+
+        );
     private:
 };
 

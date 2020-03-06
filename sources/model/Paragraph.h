@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Paragraph.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,8 +29,6 @@
 
 #include "NodeLink.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
-#include "WordsApiLink.h"
 
 namespace aspose {
 namespace words {

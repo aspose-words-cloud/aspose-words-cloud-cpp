@@ -87,6 +87,7 @@ void ReplaceRange::fromJson(web::json::value& val)
 
 void ReplaceRange::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_TextIsSet)
@@ -103,6 +104,8 @@ void ReplaceRange::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void ReplaceRange::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Text")))
     {
         setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));

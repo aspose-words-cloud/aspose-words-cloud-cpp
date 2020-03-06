@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ModificationOperationResult.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,6 +30,7 @@
 #include "../ModelBase.h"
 
 #include "FileLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -63,14 +63,14 @@ public:
     /// ModificationOperationResult members
 
     /// <summary>
-    /// Gets or sets link to the source document (source for the modification operation).
+    /// Gets or sets Source.
     /// </summary>
     std::shared_ptr<FileLink> getSource() const;
     bool sourceIsSet() const;
     void unsetSource();
     void setSource(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Gets or sets link to the dest document (result of the modification operation).
+    /// Gets or sets Dest.
     /// </summary>
     std::shared_ptr<FileLink> getDest() const;
     bool destIsSet() const;

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassificationResult.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -73,13 +72,16 @@ public:
     /// Gets or sets the probability of class.
     /// </summary>
     double getClassProbability() const;
-        void setClassProbability(double value);
+    bool classProbabilityIsSet() const;
+    void unsetClassProbability();
+    void setClassProbability(double value);
 
 protected:
     utility::string_t m_ClassName;
     bool m_ClassNameIsSet;
     double m_ClassProbability;
-    };
+    bool m_ClassProbabilityIsSet;
+};
 
 }
 }

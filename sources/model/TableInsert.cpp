@@ -36,7 +36,9 @@ TableInsert::TableInsert()
 {
     m_PositionIsSet = false;
     m_ColumnsCount = 0;
+    m_ColumnsCountIsSet = false;
     m_RowsCount = 0;
+    m_RowsCountIsSet = false;
 }
 
 TableInsert::~TableInsert()
@@ -56,8 +58,14 @@ web::json::value TableInsert::toJson() const
     {
         val[_XPLATSTR("Position")] = ModelBase::toJson(m_Position);
     }
-    val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
-    val[_XPLATSTR("RowsCount")] = ModelBase::toJson(m_RowsCount);
+    if(m_ColumnsCountIsSet)
+    {
+        val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
+    }
+    if(m_RowsCountIsSet)
+    {
+        val[_XPLATSTR("RowsCount")] = ModelBase::toJson(m_RowsCount);
+    }
 
     return val;
 }
@@ -94,6 +102,7 @@ void TableInsert::fromJson(web::json::value& val)
 
 void TableInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_PositionIsSet)
@@ -104,12 +113,22 @@ void TableInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
         }
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RowsCount"), m_RowsCount));
+    if(m_ColumnsCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
+        
+    }
+    if(m_RowsCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RowsCount"), m_RowsCount));
+        
+    }
 }
 
 void TableInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Position")))
     {
         if(multipart->hasContent(_XPLATSTR("Position")))
@@ -119,8 +138,14 @@ void TableInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
             setPosition( newItem );
         }
     }
-    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
-    setRowsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("RowsCount"))));
+    if(multipart->hasContent(_XPLATSTR("ColumnsCount")))
+    {
+        setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("RowsCount")))
+    {
+        setRowsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("RowsCount"))));
+    }
 }
 
 std::shared_ptr<DocumentPosition> TableInsert::getPosition() const
@@ -153,8 +178,18 @@ int32_t TableInsert::getColumnsCount() const
 void TableInsert::setColumnsCount(int32_t value)
 {
     m_ColumnsCount = value;
-    
+    m_ColumnsCountIsSet = true;
 }
+bool TableInsert::columnsCountIsSet() const
+{
+    return m_ColumnsCountIsSet;
+}
+
+void TableInsert::unsetColumnsCount()
+{
+    m_ColumnsCountIsSet = false;
+}
+
 int32_t TableInsert::getRowsCount() const
 {
     return m_RowsCount;
@@ -164,8 +199,18 @@ int32_t TableInsert::getRowsCount() const
 void TableInsert::setRowsCount(int32_t value)
 {
     m_RowsCount = value;
-    
+    m_RowsCountIsSet = true;
 }
+bool TableInsert::rowsCountIsSet() const
+{
+    return m_RowsCountIsSet;
+}
+
+void TableInsert::unsetRowsCount()
+{
+    m_RowsCountIsSet = false;
+}
+
 }
 }
 }

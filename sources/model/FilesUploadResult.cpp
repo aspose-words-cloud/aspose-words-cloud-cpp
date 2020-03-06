@@ -118,6 +118,7 @@ void FilesUploadResult::fromJson(web::json::value& val)
 
 void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -146,6 +147,8 @@ void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
 void FilesUploadResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     {
         m_Uploaded.clear();
         if(multipart->hasContent(_XPLATSTR("Uploaded")))

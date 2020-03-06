@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XpsSaveOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_XpsSaveOptionsData_H_
 
 
-#include "MetafileRenderingOptionsData.h"
 #include "FixedPageSaveOptionsData.h"
-#include <cpprest/details/basic_types.h>
+#include "MetafileRenderingOptionsData.h"
 #include "OutlineOptionsData.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -78,7 +77,7 @@ public:
     void unsetHeadingsOutlineLevels();
     void setHeadingsOutlineLevels(int32_t value);
     /// <summary>
-    /// Gets or sets allows to specify outline options.
+    /// Gets or sets OutlineOptions.
     /// </summary>
     std::shared_ptr<OutlineOptionsData> getOutlineOptions() const;
     bool outlineOptionsIsSet() const;

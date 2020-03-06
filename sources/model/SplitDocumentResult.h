@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SplitDocumentResult.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,7 +30,7 @@
 #include "../ModelBase.h"
 
 #include "FileLink.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -64,7 +63,7 @@ public:
     /// SplitDocumentResult members
 
     /// <summary>
-    /// Gets or sets linkt to the source document.
+    /// Gets or sets SourceDocument.
     /// </summary>
     std::shared_ptr<FileLink> getSourceDocument() const;
     bool sourceDocumentIsSet() const;
@@ -78,7 +77,7 @@ public:
     void unsetPages();
     void setPages(std::vector<std::shared_ptr<FileLink>> const& value);
     /// <summary>
-    /// Gets or sets link to the file archive with pages.
+    /// Gets or sets ZippedPages.
     /// </summary>
     std::shared_ptr<FileLink> getZippedPages() const;
     bool zippedPagesIsSet() const;

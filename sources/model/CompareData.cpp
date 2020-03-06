@@ -101,6 +101,7 @@ void CompareData::fromJson(web::json::value& val)
 
 void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ComparingWithDocumentIsSet)
@@ -122,6 +123,8 @@ void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
 void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("ComparingWithDocument")))
     {
         setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ComparingWithDocument"))));

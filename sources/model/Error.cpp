@@ -116,6 +116,7 @@ void Error::fromJson(web::json::value& val)
 
 void Error::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_CodeIsSet)
@@ -145,6 +146,8 @@ void Error::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
 void Error::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Code")))
     {
         setCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));

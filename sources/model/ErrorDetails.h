@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ErrorDetails.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -73,13 +72,16 @@ public:
     /// Error datetime.
     /// </summary>
     utility::datetime getErrorDateTime() const;
-        void setErrorDateTime(utility::datetime value);
+    bool errorDateTimeIsSet() const;
+    void unsetErrorDateTime();
+    void setErrorDateTime(utility::datetime value);
 
 protected:
     utility::string_t m_RequestId;
     bool m_RequestIdIsSet;
     utility::datetime m_ErrorDateTime;
-    };
+    bool m_ErrorDateTimeIsSet;
+};
 
 }
 }

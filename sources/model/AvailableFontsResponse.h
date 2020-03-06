@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="AvailableFontsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_AvailableFontsResponse_H_
 
 
+#include "FontInfo.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
-#include "FontInfo.h"
 
 namespace aspose {
 namespace words {

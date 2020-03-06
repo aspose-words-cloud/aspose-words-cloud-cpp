@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WatermarkText.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -73,13 +72,16 @@ public:
     /// Gets or sets the watermark rotation angle.
     /// </summary>
     double getRotationAngle() const;
-        void setRotationAngle(double value);
+    bool rotationAngleIsSet() const;
+    void unsetRotationAngle();
+    void setRotationAngle(double value);
 
 protected:
     utility::string_t m_Text;
     bool m_TextIsSet;
     double m_RotationAngle;
-    };
+    bool m_RotationAngleIsSet;
+};
 
 }
 }

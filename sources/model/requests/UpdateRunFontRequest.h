@@ -39,7 +39,7 @@ namespace models {
 class UpdateRunFontRequest{
     public: 
      UpdateRunFontRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Font> fontDto,
                 utility::string_t paragraphPath,
                 int32_t index,

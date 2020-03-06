@@ -39,7 +39,7 @@ namespace models {
 class UpdateCommentRequest{
     public: 
      UpdateCommentRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t commentIndex,
                 std::shared_ptr<Comment> comment,
                 boost::optional<utility::string_t> folder,

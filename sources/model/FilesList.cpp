@@ -93,6 +93,7 @@ void FilesList::fromJson(web::json::value& val)
 
 void FilesList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -110,6 +111,8 @@ void FilesList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void FilesList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     {
         m_Value.clear();
         if(multipart->hasContent(_XPLATSTR("Value")))

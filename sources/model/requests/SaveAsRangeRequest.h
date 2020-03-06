@@ -39,10 +39,10 @@ namespace models {
 class SaveAsRangeRequest{
     public: 
      SaveAsRangeRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t rangeStartIdentifier,
                 std::shared_ptr<RangeDocument> documentParameters,
-                utility::string_t rangeEndIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -58,8 +58,8 @@ class SaveAsRangeRequest{
         std::shared_ptr<RangeDocument> getDocumentParameters() const;
         void setDocumentParameters(std::shared_ptr<RangeDocument> documentParameters);
 
-        utility::string_t getRangeEndIdentifier() const;
-        void setRangeEndIdentifier(utility::string_t rangeEndIdentifier);
+        boost::optional<utility::string_t> getRangeEndIdentifier() const;
+        void setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -76,7 +76,7 @@ class SaveAsRangeRequest{
         utility::string_t m_name;
         utility::string_t m_rangeStartIdentifier;
         std::shared_ptr<RangeDocument> m_documentParameters;
-        utility::string_t m_rangeEndIdentifier;
+        boost::optional<utility::string_t> m_rangeEndIdentifier;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

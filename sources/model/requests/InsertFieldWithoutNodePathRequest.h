@@ -39,7 +39,7 @@ namespace models {
 class InsertFieldWithoutNodePathRequest{
     public: 
      InsertFieldWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Field> field,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

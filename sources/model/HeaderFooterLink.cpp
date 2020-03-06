@@ -75,16 +75,9 @@ void HeaderFooterLink::fromJson(web::json::value& val)
 
 void HeaderFooterLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_TypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
@@ -94,15 +87,8 @@ void HeaderFooterLink::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void HeaderFooterLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Type")))
     {
         setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));

@@ -38,7 +38,7 @@ namespace models {
 class ExecuteMailMergeRequest{
     public: 
      ExecuteMailMergeRequest(
-        utility::string_t name,
+                utility::string_t name,
                 boost::optional<utility::string_t> data,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

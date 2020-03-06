@@ -12615,8 +12615,8 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17589,7 +17589,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
 {
 
     // verify the required parameter 'table' is set
-    if (!request->getTable().has_value())
+    if (request->getTable() == nullptr)
     {
         throw ApiException(400, _XPLATSTR("Missing required parameter 'table' when calling WordsApi->insertTableWithoutNodePath"));
     }
@@ -17676,7 +17676,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        json = ModelBase::toJson(*request->getTable());
+        json = ModelBase::toJson(request->getTable());
         
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
@@ -17689,7 +17689,7 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
 
         if (request->getTable().get())
         {
-            (*request->getTable())->toMultipart(multipart, _XPLATSTR("table"));
+            (request->getTable())->toMultipart(multipart, _XPLATSTR("table"));
         }
 
         httpBody = multipart;
@@ -18736,8 +18736,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20182,8 +20182,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20596,8 +20596,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -24246,7 +24246,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 {
 
     // verify the required parameter 'properties' is set
-    if (!request->getProperties().has_value())
+    if (request->getProperties() == nullptr)
     {
         throw ApiException(400, _XPLATSTR("Missing required parameter 'properties' when calling WordsApi->updateTablePropertiesWithoutNodePath"));
     }
@@ -24335,7 +24335,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        json = ModelBase::toJson(*request->getProperties());
+        json = ModelBase::toJson(request->getProperties());
         
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
@@ -24348,7 +24348,7 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 
         if (request->getProperties().get())
         {
-            (*request->getProperties())->toMultipart(multipart, _XPLATSTR("properties"));
+            (request->getProperties())->toMultipart(multipart, _XPLATSTR("properties"));
         }
 
         httpBody = multipart;

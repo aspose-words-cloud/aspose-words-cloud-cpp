@@ -39,10 +39,10 @@ namespace models {
 class ReplaceWithTextRequest{
     public: 
      ReplaceWithTextRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t rangeStartIdentifier,
                 std::shared_ptr<ReplaceRange> rangeText,
-                utility::string_t rangeEndIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -59,8 +59,8 @@ class ReplaceWithTextRequest{
         std::shared_ptr<ReplaceRange> getRangeText() const;
         void setRangeText(std::shared_ptr<ReplaceRange> rangeText);
 
-        utility::string_t getRangeEndIdentifier() const;
-        void setRangeEndIdentifier(utility::string_t rangeEndIdentifier);
+        boost::optional<utility::string_t> getRangeEndIdentifier() const;
+        void setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -80,7 +80,7 @@ class ReplaceWithTextRequest{
         utility::string_t m_name;
         utility::string_t m_rangeStartIdentifier;
         std::shared_ptr<ReplaceRange> m_rangeText;
-        utility::string_t m_rangeEndIdentifier;
+        boost::optional<utility::string_t> m_rangeEndIdentifier;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

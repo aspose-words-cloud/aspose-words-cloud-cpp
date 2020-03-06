@@ -37,6 +37,7 @@ WatermarkText::WatermarkText()
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
     m_RotationAngle = 0.0;
+    m_RotationAngleIsSet = false;
 }
 
 WatermarkText::~WatermarkText()
@@ -56,7 +57,10 @@ web::json::value WatermarkText::toJson() const
     {
         val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
-    val[_XPLATSTR("RotationAngle")] = ModelBase::toJson(m_RotationAngle);
+    if(m_RotationAngleIsSet)
+    {
+        val[_XPLATSTR("RotationAngle")] = ModelBase::toJson(m_RotationAngle);
+    }
 
     return val;
 }
@@ -83,6 +87,7 @@ void WatermarkText::fromJson(web::json::value& val)
 
 void WatermarkText::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_TextIsSet)
@@ -90,16 +95,25 @@ void WatermarkText::toMultipart(const std::shared_ptr<MultipartFormData>& multip
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RotationAngle"), m_RotationAngle));
+    if(m_RotationAngleIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RotationAngle"), m_RotationAngle));
+        
+    }
 }
 
 void WatermarkText::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Text")))
     {
         setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
     }
-    setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
+    if(multipart->hasContent(_XPLATSTR("RotationAngle")))
+    {
+        setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
+    }
 }
 
 utility::string_t WatermarkText::getText() const
@@ -132,8 +146,18 @@ double WatermarkText::getRotationAngle() const
 void WatermarkText::setRotationAngle(double value)
 {
     m_RotationAngle = value;
-    
+    m_RotationAngleIsSet = true;
 }
+bool WatermarkText::rotationAngleIsSet() const
+{
+    return m_RotationAngleIsSet;
+}
+
+void WatermarkText::unsetRotationAngle()
+{
+    m_RotationAngleIsSet = false;
+}
+
 }
 }
 }

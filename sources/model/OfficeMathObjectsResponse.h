@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OfficeMathObjectsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_OfficeMathObjectsResponse_H_
 
 
+#include "OfficeMathObjectsCollection.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "OfficeMathObjectsCollection.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// OfficeMathObjectsResponse members
 
     /// <summary>
-    /// Gets or sets collection of OfficeMath objects.
+    /// Gets or sets OfficeMathObjects.
     /// </summary>
     std::shared_ptr<OfficeMathObjectsCollection> getOfficeMathObjects() const;
     bool officeMathObjectsIsSet() const;

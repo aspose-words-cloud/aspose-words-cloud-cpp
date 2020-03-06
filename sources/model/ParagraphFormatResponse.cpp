@@ -76,13 +76,9 @@ void ParagraphFormatResponse::fromJson(web::json::value& val)
 
 void ParagraphFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_ParagraphFormatIsSet)
     {
         if (m_ParagraphFormat.get())
@@ -95,10 +91,8 @@ void ParagraphFormatResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void ParagraphFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
     {
         if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))

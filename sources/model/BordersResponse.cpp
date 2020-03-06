@@ -76,13 +76,9 @@ void BordersResponse::fromJson(web::json::value& val)
 
 void BordersResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_BordersIsSet)
     {
         if (m_Borders.get())
@@ -95,10 +91,8 @@ void BordersResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void BordersResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Borders")))
     {
         if(multipart->hasContent(_XPLATSTR("Borders")))

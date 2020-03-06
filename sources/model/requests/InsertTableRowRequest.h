@@ -40,7 +40,7 @@ class InsertTableRowRequest{
     public: 
      InsertTableRowRequest(
         utility::string_t name,
-                std::shared_ptr<TableRowInsert> row,
+        std::shared_ptr<TableRowInsert> row,
                 utility::string_t tablePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

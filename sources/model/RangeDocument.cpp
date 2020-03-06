@@ -73,6 +73,7 @@ void RangeDocument::fromJson(web::json::value& val)
 
 void RangeDocument::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_DocumentNameIsSet)
@@ -84,6 +85,8 @@ void RangeDocument::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void RangeDocument::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("DocumentName")))
     {
         setDocumentName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DocumentName"))));

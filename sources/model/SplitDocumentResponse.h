@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SplitDocumentResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// SplitDocumentResponse members
 
     /// <summary>
-    /// Gets or sets resylt of splitting document.
+    /// Gets or sets SplitResult.
     /// </summary>
     std::shared_ptr<SplitDocumentResult> getSplitResult() const;
     bool splitResultIsSet() const;

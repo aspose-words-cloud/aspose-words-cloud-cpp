@@ -146,16 +146,9 @@ void Border::fromJson(web::json::value& val)
 
 void Border::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_BorderTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderType"), m_BorderType));
@@ -172,6 +165,7 @@ void Border::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, co
     if(m_DistanceFromTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DistanceFromText"), m_DistanceFromText));
+        
     }
     if(m_LineStyleIsSet)
     {
@@ -181,24 +175,19 @@ void Border::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, co
     if(m_LineWidthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineWidth"), m_LineWidth));
+        
     }
     if(m_ShadowIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Shadow"), m_Shadow));
+        
     }
 }
 
 void Border::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("BorderType")))
     {
         setBorderType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BorderType"))));

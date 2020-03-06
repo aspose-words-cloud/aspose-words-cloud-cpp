@@ -37,6 +37,7 @@ TableRowInsert::TableRowInsert()
     m_InsertAfter = 0;
     m_InsertAfterIsSet = false;
     m_ColumnsCount = 0;
+    m_ColumnsCountIsSet = false;
 }
 
 TableRowInsert::~TableRowInsert()
@@ -56,7 +57,10 @@ web::json::value TableRowInsert::toJson() const
     {
         val[_XPLATSTR("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
     }
-    val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
+    if(m_ColumnsCountIsSet)
+    {
+        val[_XPLATSTR("ColumnsCount")] = ModelBase::toJson(m_ColumnsCount);
+    }
 
     return val;
 }
@@ -83,22 +87,33 @@ void TableRowInsert::fromJson(web::json::value& val)
 
 void TableRowInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_InsertAfterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InsertAfter"), m_InsertAfter));
+        
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
+    if(m_ColumnsCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColumnsCount"), m_ColumnsCount));
+        
+    }
 }
 
 void TableRowInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
         setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
     }
-    setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
+    if(multipart->hasContent(_XPLATSTR("ColumnsCount")))
+    {
+        setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
+    }
 }
 
 int32_t TableRowInsert::getInsertAfter() const
@@ -131,8 +146,18 @@ int32_t TableRowInsert::getColumnsCount() const
 void TableRowInsert::setColumnsCount(int32_t value)
 {
     m_ColumnsCount = value;
-    
+    m_ColumnsCountIsSet = true;
 }
+bool TableRowInsert::columnsCountIsSet() const
+{
+    return m_ColumnsCountIsSet;
+}
+
+void TableRowInsert::unsetColumnsCount()
+{
+    m_ColumnsCountIsSet = false;
+}
+
 }
 }
 }

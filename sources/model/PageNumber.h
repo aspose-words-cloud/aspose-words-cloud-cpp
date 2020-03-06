@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageNumber.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -80,12 +79,16 @@ public:
     /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
     /// </summary>
     bool isIsTop() const;
-        void setIsTop(bool value);
+    bool isTopIsSet() const;
+    void unsetIsTop();
+    void setIsTop(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether if true the page number is added on first page too.
     /// </summary>
     bool isSetPageNumberOnFirstPage() const;
-        void setSetPageNumberOnFirstPage(bool value);
+    bool setPageNumberOnFirstPageIsSet() const;
+    void unsetSetPageNumberOnFirstPage();
+    void setSetPageNumberOnFirstPage(bool value);
 
 protected:
     utility::string_t m_Format;
@@ -93,8 +96,10 @@ protected:
     utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
     bool m_IsTop;
-        bool m_SetPageNumberOnFirstPage;
-    };
+    bool m_IsTopIsSet;
+    bool m_SetPageNumberOnFirstPage;
+    bool m_SetPageNumberOnFirstPageIsSet;
+};
 
 }
 }

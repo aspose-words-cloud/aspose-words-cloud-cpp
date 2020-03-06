@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRowFormatResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// TableRowFormatResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets RowFormat.
     /// </summary>
     std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;

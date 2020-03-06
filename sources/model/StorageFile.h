@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageFile.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -73,7 +72,9 @@ public:
     /// True if it is a folder.
     /// </summary>
     bool isIsFolder() const;
-        void setIsFolder(bool value);
+    bool isFolderIsSet() const;
+    void unsetIsFolder();
+    void setIsFolder(bool value);
     /// <summary>
     /// File or folder last modified DateTime.
     /// </summary>
@@ -85,7 +86,9 @@ public:
     /// File or folder size.
     /// </summary>
     int64_t getSize() const;
-        void setSize(int64_t value);
+    bool sizeIsSet() const;
+    void unsetSize();
+    void setSize(int64_t value);
     /// <summary>
     /// File or folder path.
     /// </summary>
@@ -98,10 +101,12 @@ protected:
     utility::string_t m_Name;
     bool m_NameIsSet;
     bool m_IsFolder;
-        utility::datetime m_ModifiedDate;
+    bool m_IsFolderIsSet;
+    utility::datetime m_ModifiedDate;
     bool m_ModifiedDateIsSet;
     int64_t m_Size;
-        utility::string_t m_Path;
+    bool m_SizeIsSet;
+    utility::string_t m_Path;
     bool m_PathIsSet;
 };
 

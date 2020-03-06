@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MetafileRenderingOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud

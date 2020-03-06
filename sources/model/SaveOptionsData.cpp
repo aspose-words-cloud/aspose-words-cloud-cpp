@@ -171,6 +171,7 @@ void SaveOptionsData::fromJson(web::json::value& val)
 
 void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_SaveFormatIsSet)
@@ -196,23 +197,29 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_ZipOutputIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
+        
     }
     if(m_UpdateLastSavedTimePropertyIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
+        
     }
     if(m_UpdateSdtContentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
+        
     }
     if(m_UpdateFieldsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
+        
     }
 }
 
 void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("SaveFormat")))
     {
         setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FixedPageSaveOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -77,7 +76,7 @@ public:
     void unsetJpegQuality();
     void setJpegQuality(int32_t value);
     /// <summary>
-    /// Gets or sets allows to specify metafile rendering options.
+    /// Gets or sets MetafileRenderingOptions.
     /// </summary>
     std::shared_ptr<MetafileRenderingOptionsData> getMetafileRenderingOptions() const;
     bool metafileRenderingOptionsIsSet() const;

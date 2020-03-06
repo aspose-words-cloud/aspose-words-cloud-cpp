@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentProperties.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentProperties_H_
 
 
-#include "LinkElement.h"
 #include "DocumentProperty.h"
-#include <vector>
+#include "LinkElement.h"
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

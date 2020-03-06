@@ -40,7 +40,7 @@ class UpdateTableCellFormatRequest{
     public: 
      UpdateTableCellFormatRequest(
         utility::string_t name,
-                std::shared_ptr<TableCellFormat> format,
+        std::shared_ptr<TableCellFormat> format,
                 utility::string_t tableRowPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

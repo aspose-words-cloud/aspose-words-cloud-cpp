@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// TableResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets Table.
     /// </summary>
     std::shared_ptr<Table> getTable() const;
     bool tableIsSet() const;

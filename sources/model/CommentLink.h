@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CommentLink.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,6 +29,7 @@
 
 #include "LinkElement.h"
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

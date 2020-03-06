@@ -35,7 +35,9 @@ namespace models {
 FootnotesStatData::FootnotesStatData()
 {
     m_WordCount = 0;
+    m_WordCountIsSet = false;
     m_ParagraphCount = 0;
+    m_ParagraphCountIsSet = false;
 }
 
 FootnotesStatData::~FootnotesStatData()
@@ -51,8 +53,14 @@ web::json::value FootnotesStatData::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[_XPLATSTR("WordCount")] = ModelBase::toJson(m_WordCount);
-    val[_XPLATSTR("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
+    if(m_WordCountIsSet)
+    {
+        val[_XPLATSTR("WordCount")] = ModelBase::toJson(m_WordCount);
+    }
+    if(m_ParagraphCountIsSet)
+    {
+        val[_XPLATSTR("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
+    }
 
     return val;
 }
@@ -79,16 +87,33 @@ void FootnotesStatData::fromJson(web::json::value& val)
 
 void FootnotesStatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WordCount"), m_WordCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphCount"), m_ParagraphCount));
+    if(m_WordCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WordCount"), m_WordCount));
+        
+    }
+    if(m_ParagraphCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphCount"), m_ParagraphCount));
+        
+    }
 }
 
 void FootnotesStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
-    setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+    
+
+    if(multipart->hasContent(_XPLATSTR("WordCount")))
+    {
+        setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("ParagraphCount")))
+    {
+        setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+    }
 }
 
 int32_t FootnotesStatData::getWordCount() const
@@ -100,8 +125,18 @@ int32_t FootnotesStatData::getWordCount() const
 void FootnotesStatData::setWordCount(int32_t value)
 {
     m_WordCount = value;
-    
+    m_WordCountIsSet = true;
 }
+bool FootnotesStatData::wordCountIsSet() const
+{
+    return m_WordCountIsSet;
+}
+
+void FootnotesStatData::unsetWordCount()
+{
+    m_WordCountIsSet = false;
+}
+
 int32_t FootnotesStatData::getParagraphCount() const
 {
     return m_ParagraphCount;
@@ -111,8 +146,18 @@ int32_t FootnotesStatData::getParagraphCount() const
 void FootnotesStatData::setParagraphCount(int32_t value)
 {
     m_ParagraphCount = value;
-    
+    m_ParagraphCountIsSet = true;
 }
+bool FootnotesStatData::paragraphCountIsSet() const
+{
+    return m_ParagraphCountIsSet;
+}
+
+void FootnotesStatData::unsetParagraphCount()
+{
+    m_ParagraphCountIsSet = false;
+}
+
 }
 }
 }

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObjectsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// DrawingObjectsResponse members
 
     /// <summary>
-    /// Gets or sets collection of drawing objects.
+    /// Gets or sets DrawingObjects.
     /// </summary>
     std::shared_ptr<DrawingObjectCollection> getDrawingObjects() const;
     bool drawingObjectsIsSet() const;

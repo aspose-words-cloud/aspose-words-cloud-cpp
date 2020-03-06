@@ -31,7 +31,7 @@ namespace models{
 GetRangeTextRequest::GetRangeTextRequest(
         utility::string_t name,
                 utility::string_t rangeStartIdentifier,
-                utility::string_t rangeEndIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -62,11 +62,11 @@ GetRangeTextRequest::GetRangeTextRequest(
         void GetRangeTextRequest::setRangeStartIdentifier(utility::string_t rangeStartIdentifier){
             m_rangeStartIdentifier = std::move(rangeStartIdentifier);
         }
-        utility::string_t GetRangeTextRequest::getRangeEndIdentifier() const
+        boost::optional<utility::string_t> GetRangeTextRequest::getRangeEndIdentifier() const
         {
             return m_rangeEndIdentifier;
         }
-        void GetRangeTextRequest::setRangeEndIdentifier(utility::string_t rangeEndIdentifier){
+        void GetRangeTextRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
             m_rangeEndIdentifier = std::move(rangeEndIdentifier);
         }
         boost::optional<utility::string_t> GetRangeTextRequest::getFolder() const

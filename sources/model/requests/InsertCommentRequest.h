@@ -39,7 +39,7 @@ namespace models {
 class InsertCommentRequest{
     public: 
      InsertCommentRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Comment> comment,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

@@ -39,7 +39,7 @@ namespace models {
 class GetDocumentFieldNamesOnlineRequest{
     public: 
      GetDocumentFieldNamesOnlineRequest(
-        std::shared_ptr<HttpContent> _template,
+                std::shared_ptr<HttpContent> _template,
                 boost::optional<bool> useNonMergeFields
         );
 

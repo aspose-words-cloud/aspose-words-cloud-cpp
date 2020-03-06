@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SearchResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -70,7 +69,7 @@ public:
     void unsetSearchingPattern();
     void setSearchingPattern(utility::string_t value);
     /// <summary>
-    /// Gets or sets collection of search results.
+    /// Gets or sets SearchResults.
     /// </summary>
     std::shared_ptr<SearchResultsCollection> getSearchResults() const;
     bool searchResultsIsSet() const;

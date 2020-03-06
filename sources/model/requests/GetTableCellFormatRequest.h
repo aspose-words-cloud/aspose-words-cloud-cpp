@@ -38,7 +38,7 @@ namespace models {
 class GetTableCellFormatRequest{
     public: 
      GetTableCellFormatRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t tableRowPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

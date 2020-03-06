@@ -39,7 +39,7 @@ namespace models {
 class InsertFieldRequest{
     public: 
      InsertFieldRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Field> field,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,

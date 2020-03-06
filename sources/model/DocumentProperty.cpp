@@ -103,19 +103,13 @@ void DocumentProperty::fromJson(web::json::value& val)
 
 void DocumentProperty::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_BuiltInIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BuiltIn"), m_BuiltIn));
+        
     }
     if(m_NameIsSet)
     {
@@ -131,15 +125,8 @@ void DocumentProperty::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("BuiltIn")))
     {
         setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));

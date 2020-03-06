@@ -39,7 +39,7 @@ namespace models {
 class UpdateDrawingObjectWithoutNodePathRequest{
     public: 
      UpdateDrawingObjectWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t drawingObject,
                 std::shared_ptr<HttpContent> imageFile,
                 int32_t index,

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Border.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Border_H_
 
 
-#include "XmlColor.h"
-#include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
 #include "WordsApiLink.h"
+#include "XmlColor.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -71,7 +70,7 @@ public:
     void unsetBorderType();
     void setBorderType(utility::string_t value);
     /// <summary>
-    /// Gets or sets the border color.             
+    /// Gets or sets Color.
     /// </summary>
     std::shared_ptr<XmlColor> getColor() const;
     bool colorIsSet() const;

@@ -39,7 +39,7 @@ namespace models {
 class UploadFileRequest{
     public: 
      UploadFileRequest(
-        std::shared_ptr<HttpContent> fileContent,
+                std::shared_ptr<HttpContent> fileContent,
                 utility::string_t path,
                 boost::optional<utility::string_t> storageName
         );

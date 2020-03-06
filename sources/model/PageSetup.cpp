@@ -467,23 +467,18 @@ void PageSetup::fromJson(web::json::value& val)
 
 void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_BidiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
+        
     }
     if(m_BorderAlwaysInFrontIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderAlwaysInFront"), m_BorderAlwaysInFront));
+        
     }
     if(m_BorderAppliesToIsSet)
     {
@@ -498,38 +493,47 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_BottomMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BottomMargin"), m_BottomMargin));
+        
     }
     if(m_DifferentFirstPageHeaderFooterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DifferentFirstPageHeaderFooter"), m_DifferentFirstPageHeaderFooter));
+        
     }
     if(m_FirstPageTrayIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FirstPageTray"), m_FirstPageTray));
+        
     }
     if(m_FooterDistanceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FooterDistance"), m_FooterDistance));
+        
     }
     if(m_GutterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Gutter"), m_Gutter));
+        
     }
     if(m_HeaderDistanceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeaderDistance"), m_HeaderDistance));
+        
     }
     if(m_LeftMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftMargin"), m_LeftMargin));
+        
     }
     if(m_LineNumberCountByIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineNumberCountBy"), m_LineNumberCountBy));
+        
     }
     if(m_LineNumberDistanceFromTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineNumberDistanceFromText"), m_LineNumberDistanceFromText));
+        
     }
     if(m_LineNumberRestartModeIsSet)
     {
@@ -539,6 +543,7 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_LineStartingNumberIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineStartingNumber"), m_LineStartingNumber));
+        
     }
     if(m_OrientationIsSet)
     {
@@ -548,10 +553,12 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_OtherPagesTrayIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OtherPagesTray"), m_OtherPagesTray));
+        
     }
     if(m_PageHeightIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageHeight"), m_PageHeight));
+        
     }
     if(m_PageNumberStyleIsSet)
     {
@@ -561,10 +568,12 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_PageStartingNumberIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageStartingNumber"), m_PageStartingNumber));
+        
     }
     if(m_PageWidthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageWidth"), m_PageWidth));
+        
     }
     if(m_PaperSizeIsSet)
     {
@@ -574,14 +583,17 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_RestartPageNumberingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RestartPageNumbering"), m_RestartPageNumbering));
+        
     }
     if(m_RightMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightMargin"), m_RightMargin));
+        
     }
     if(m_RtlGutterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RtlGutter"), m_RtlGutter));
+        
     }
     if(m_SectionStartIsSet)
     {
@@ -591,10 +603,12 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_SuppressEndnotesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SuppressEndnotes"), m_SuppressEndnotes));
+        
     }
     if(m_TopMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TopMargin"), m_TopMargin));
+        
     }
     if(m_VerticalAlignmentIsSet)
     {
@@ -605,15 +619,8 @@ void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void PageSetup::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Bidi")))
     {
         setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));

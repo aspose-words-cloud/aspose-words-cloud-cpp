@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceTextParameters.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -80,17 +79,23 @@ public:
     /// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
     /// </summary>
     bool isIsMatchCase() const;
-        void setIsMatchCase(bool value);
+    bool isMatchCaseIsSet() const;
+    void unsetIsMatchCase();
+    void setIsMatchCase(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether flag, means that only whole word matched are replaced.
     /// </summary>
     bool isIsMatchWholeWord() const;
-        void setIsMatchWholeWord(bool value);
+    bool isMatchWholeWordIsSet() const;
+    void unsetIsMatchWholeWord();
+    void setIsMatchWholeWord(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
     /// </summary>
     bool isIsOldValueRegex() const;
-        void setIsOldValueRegex(bool value);
+    bool isOldValueRegexIsSet() const;
+    void unsetIsOldValueRegex();
+    void setIsOldValueRegex(bool value);
 
 protected:
     utility::string_t m_OldValue;
@@ -98,9 +103,12 @@ protected:
     utility::string_t m_NewValue;
     bool m_NewValueIsSet;
     bool m_IsMatchCase;
-        bool m_IsMatchWholeWord;
-        bool m_IsOldValueRegex;
-    };
+    bool m_IsMatchCaseIsSet;
+    bool m_IsMatchWholeWord;
+    bool m_IsMatchWholeWordIsSet;
+    bool m_IsOldValueRegex;
+    bool m_IsOldValueRegexIsSet;
+};
 
 }
 }

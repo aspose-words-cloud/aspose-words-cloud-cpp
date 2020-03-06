@@ -39,7 +39,7 @@ namespace models {
 class InsertFootnoteWithoutNodePathRequest{
     public: 
      InsertFootnoteWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Footnote> footnoteDto,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

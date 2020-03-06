@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BorderResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// BorderResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets Border.
     /// </summary>
     std::shared_ptr<Border> getBorder() const;
     bool borderIsSet() const;

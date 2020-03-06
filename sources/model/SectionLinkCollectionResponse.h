@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionLinkCollectionResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SectionLinkCollectionResponse_H_
 
 
+#include "SectionLinkCollection.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "SectionLinkCollection.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// SectionLinkCollectionResponse members
 
     /// <summary>
-    /// Gets or sets collection of sections.
+    /// Gets or sets Sections.
     /// </summary>
     std::shared_ptr<SectionLinkCollection> getSections() const;
     bool sectionsIsSet() const;

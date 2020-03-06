@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StatDataResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StatDataResponse_H_
 
 
+#include "DocumentStatData.h"
+#include "FileLink.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "FileLink.h"
-#include "DocumentStatData.h"
 
 namespace aspose {
 namespace words {
@@ -64,14 +63,14 @@ public:
     /// StatDataResponse members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets DocumentLink.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Gets or sets statistical data of the document.
+    /// Gets or sets StatData.
     /// </summary>
     std::shared_ptr<DocumentStatData> getStatData() const;
     bool statDataIsSet() const;

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Bookmarks.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,8 +29,8 @@
 
 #include "Bookmark.h"
 #include "LinkElement.h"
-#include <vector>
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

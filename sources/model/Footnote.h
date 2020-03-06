@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Footnote.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,9 +29,8 @@
 
 #include "DocumentPosition.h"
 #include "FootnoteLink.h"
-#include <cpprest/details/basic_types.h>
 #include "StoryChildNodes.h"
-#include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -65,7 +63,7 @@ public:
     /// Footnote members
 
     /// <summary>
-    /// Gets or sets content of footnote.
+    /// Gets or sets Content.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
@@ -79,7 +77,7 @@ public:
     void unsetFootnoteType();
     void setFootnoteType(utility::string_t value);
     /// <summary>
-    /// Gets or sets link to comment range start node.
+    /// Gets or sets Position.
     /// </summary>
     std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Run.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Run_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "RunLink.h"
-#include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

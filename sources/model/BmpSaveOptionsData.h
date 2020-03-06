@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BmpSaveOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_BmpSaveOptionsData_H_
 
 
-#include "MetafileRenderingOptionsData.h"
+#include "GraphicsQualityOptionsData.h"
 #include "ImageSaveOptionsData.h"
 #include <cpprest/details/basic_types.h>
-#include "GraphicsQualityOptionsData.h"
 
 namespace aspose {
 namespace words {

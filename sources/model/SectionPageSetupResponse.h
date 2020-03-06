@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionPageSetupResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// SectionPageSetupResponse members
 
     /// <summary>
-    /// Gets or sets section.
+    /// Gets or sets PageSetup.
     /// </summary>
     std::shared_ptr<PageSetup> getPageSetup() const;
     bool pageSetupIsSet() const;

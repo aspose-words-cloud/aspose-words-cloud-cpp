@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// FormFieldResponse members
 
     /// <summary>
-    /// Gets or sets field information.
+    /// Gets or sets FormField.
     /// </summary>
     std::shared_ptr<FormField> getFormField() const;
     bool formFieldIsSet() const;

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResult.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,7 +30,7 @@
 #include "../ModelBase.h"
 
 #include "FileLink.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -64,14 +63,14 @@ public:
     /// SaveResult members
 
     /// <summary>
-    /// Gets or sets link to source document.
+    /// Gets or sets SourceDocument.
     /// </summary>
     std::shared_ptr<FileLink> getSourceDocument() const;
     bool sourceDocumentIsSet() const;
     void unsetSourceDocument();
     void setSourceDocument(std::shared_ptr<FileLink> value);
     /// <summary>
-    /// Gets or sets link to destination document.
+    /// Gets or sets DestDocument.
     /// </summary>
     std::shared_ptr<FileLink> getDestDocument() const;
     bool destDocumentIsSet() const;

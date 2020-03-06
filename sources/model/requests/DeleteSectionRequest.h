@@ -38,7 +38,7 @@ namespace models {
 class DeleteSectionRequest{
     public: 
      DeleteSectionRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t sectionIndex,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

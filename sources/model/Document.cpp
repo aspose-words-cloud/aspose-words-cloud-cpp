@@ -38,8 +38,11 @@ Document::Document()
     m_FileName = utility::conversions::to_string_t("");
     m_FileNameIsSet = false;
     m_SourceFormat = utility::conversions::to_string_t("");
+    m_SourceFormatIsSet = false;
     m_IsEncrypted = false;
+    m_IsEncryptedIsSet = false;
     m_IsSigned = false;
+    m_IsSignedIsSet = false;
     m_DocumentPropertiesIsSet = false;
 }
 
@@ -72,9 +75,18 @@ web::json::value Document::toJson() const
     {
         val[_XPLATSTR("FileName")] = ModelBase::toJson(m_FileName);
     }
-    val[_XPLATSTR("SourceFormat")] = ModelBase::toJson(m_SourceFormat);
-    val[_XPLATSTR("IsEncrypted")] = ModelBase::toJson(m_IsEncrypted);
-    val[_XPLATSTR("IsSigned")] = ModelBase::toJson(m_IsSigned);
+    if(m_SourceFormatIsSet)
+    {
+        val[_XPLATSTR("SourceFormat")] = ModelBase::toJson(m_SourceFormat);
+    }
+    if(m_IsEncryptedIsSet)
+    {
+        val[_XPLATSTR("IsEncrypted")] = ModelBase::toJson(m_IsEncrypted);
+    }
+    if(m_IsSignedIsSet)
+    {
+        val[_XPLATSTR("IsSigned")] = ModelBase::toJson(m_IsSigned);
+    }
     if(m_DocumentPropertiesIsSet)
     {
         val[_XPLATSTR("DocumentProperties")] = ModelBase::toJson(m_DocumentProperties);
@@ -114,7 +126,14 @@ void Document::fromJson(web::json::value& val)
             setFileName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setSourceFormat(ModelBase::stringFromJson(val[_XPLATSTR("SourceFormat")]));
+    if(val.has_field(_XPLATSTR("SourceFormat")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("SourceFormat")];
+        if(!fieldValue.is_null())
+        {
+            setSourceFormat(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(_XPLATSTR("IsEncrypted")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsEncrypted")];
@@ -145,6 +164,7 @@ void Document::fromJson(web::json::value& val)
 
 void Document::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -163,9 +183,21 @@ void Document::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SourceFormat"), m_SourceFormat));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsEncrypted"), m_IsEncrypted));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsSigned"), m_IsSigned));
+    if(m_SourceFormatIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SourceFormat"), m_SourceFormat));
+        
+    }
+    if(m_IsEncryptedIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsEncrypted"), m_IsEncrypted));
+        
+    }
+    if(m_IsSignedIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsSigned"), m_IsSigned));
+        
+    }
     if(m_DocumentPropertiesIsSet)
     {
         if (m_DocumentProperties.get())
@@ -178,6 +210,8 @@ void Document::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     {
         m_Links.clear();
         if(multipart->hasContent(_XPLATSTR("Links")))
@@ -202,9 +236,18 @@ void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     {
         setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
     }
-    setSourceFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SourceFormat"))));
-    setIsEncrypted(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsEncrypted"))));
-    setIsSigned(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsSigned"))));
+    if(multipart->hasContent(_XPLATSTR("SourceFormat")))
+    {
+        setSourceFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SourceFormat"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("IsEncrypted")))
+    {
+        setIsEncrypted(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsEncrypted"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("IsSigned")))
+    {
+        setIsSigned(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsSigned"))));
+    }
     if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
     {
         if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
@@ -266,8 +309,18 @@ utility::string_t Document::getSourceFormat() const
 void Document::setSourceFormat(utility::string_t value)
 {
     m_SourceFormat = value;
-    
+    m_SourceFormatIsSet = true;
 }
+bool Document::sourceFormatIsSet() const
+{
+    return m_SourceFormatIsSet;
+}
+
+void Document::unsetSourceFormat()
+{
+    m_SourceFormatIsSet = false;
+}
+
 bool Document::isIsEncrypted() const
 {
     return m_IsEncrypted;
@@ -277,8 +330,18 @@ bool Document::isIsEncrypted() const
 void Document::setIsEncrypted(bool value)
 {
     m_IsEncrypted = value;
-    
+    m_IsEncryptedIsSet = true;
 }
+bool Document::isEncryptedIsSet() const
+{
+    return m_IsEncryptedIsSet;
+}
+
+void Document::unsetIsEncrypted()
+{
+    m_IsEncryptedIsSet = false;
+}
+
 bool Document::isIsSigned() const
 {
     return m_IsSigned;
@@ -288,8 +351,18 @@ bool Document::isIsSigned() const
 void Document::setIsSigned(bool value)
 {
     m_IsSigned = value;
-    
+    m_IsSignedIsSet = true;
 }
+bool Document::isSignedIsSet() const
+{
+    return m_IsSignedIsSet;
+}
+
+void Document::unsetIsSigned()
+{
+    m_IsSignedIsSet = false;
+}
+
 std::shared_ptr<DocumentProperties> Document::getDocumentProperties() const
 {
     return m_DocumentProperties;

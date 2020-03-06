@@ -39,7 +39,7 @@ namespace models {
 class UpdateBookmarkRequest{
     public: 
      UpdateBookmarkRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<BookmarkData> bookmarkData,
                 utility::string_t bookmarkName,
                 boost::optional<utility::string_t> folder,

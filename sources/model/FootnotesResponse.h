@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnotesResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// FootnotesResponse members
 
     /// <summary>
-    /// Gets or sets collection of footnotes.
+    /// Gets or sets Footnotes.
     /// </summary>
     std::shared_ptr<FootnoteCollection> getFootnotes() const;
     bool footnotesIsSet() const;

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="LoadWebDocumentData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -71,7 +70,7 @@ public:
     void unsetLoadingDocumentUrl();
     void setLoadingDocumentUrl(utility::string_t value);
     /// <summary>
-    /// Gets or sets save options.
+    /// Gets or sets SaveOptions.
     /// </summary>
     std::shared_ptr<SaveOptionsData> getSaveOptions() const;
     bool saveOptionsIsSet() const;

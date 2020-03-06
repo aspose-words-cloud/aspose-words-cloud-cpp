@@ -40,7 +40,7 @@ class InsertTableCellRequest{
     public: 
      InsertTableCellRequest(
         utility::string_t name,
-                std::shared_ptr<TableCellInsert> cell,
+        std::shared_ptr<TableCellInsert> cell,
                 utility::string_t tableRowPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

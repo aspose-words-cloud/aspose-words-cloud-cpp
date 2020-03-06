@@ -38,7 +38,7 @@ namespace models {
 class DeleteTableRowRequest{
     public: 
      DeleteTableRowRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t tablePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

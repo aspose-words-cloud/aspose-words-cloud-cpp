@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RevisionsModificationResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// RevisionsModificationResponse members
 
     /// <summary>
-    /// Gets or sets result of the modification operations for the revisions collection.
+    /// Gets or sets Result.
     /// </summary>
     std::shared_ptr<ModificationOperationResult> getResult() const;
     bool resultIsSet() const;

@@ -38,7 +38,7 @@ namespace models {
 class InsertHeaderFooterRequest{
     public: 
      InsertHeaderFooterRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t headerFooterType,
                 utility::string_t sectionPath,
                 boost::optional<utility::string_t> folder,
