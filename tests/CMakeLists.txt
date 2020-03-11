@@ -30,6 +30,10 @@ add_executable(words-cloud-test ${TEST_SOURCES})
 add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(words-cloud-test PRIVATE gtest Aspose::Words.Cloud)
 
+if (NOT MSVC)
+  link_libraries(-lcrypto -lssl)
+endif()
+
 target_compile_definitions(words-cloud-test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
 if (COMMAND cotire)
