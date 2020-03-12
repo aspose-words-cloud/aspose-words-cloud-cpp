@@ -122,8 +122,8 @@ utility::string_t extractOptional(const boost::optional<T>& parameter)
 }
 using namespace aspose::words::cloud::api::models;
 
-WordsApi::WordsApi(std::shared_ptr<ApiClient> apiClient)
-    : m_ApiClient(std::move(apiClient))
+WordsApi::WordsApi(std::shared_ptr<ApiConfiguration> configuration)
+    : m_ApiClient(std::make_shared<ApiClient>(configuration))
 {
 }
 

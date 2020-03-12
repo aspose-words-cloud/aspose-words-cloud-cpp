@@ -37,9 +37,13 @@ namespace words {
 namespace cloud {
 namespace api {
 
+#define STCONVERT(s) utility::conversions::to_string_t(s)
+
 class  ApiConfiguration
 {
 public:
+    ApiConfiguration() = default;
+    ApiConfiguration(utility::string_t appKey, utility::string_t appSid);
     virtual ~ApiConfiguration() = default;
 
     web::http::client::http_client_config& getHttpConfig();
@@ -69,7 +73,7 @@ public:
 
 protected:
     bool m_DebugMode = false;
-    utility::string_t m_BaseUrl;
+    utility::string_t m_BaseUrl = STCONVERT("https://api.aspose.cloud");
     std::map<utility::string_t, utility::string_t> m_DefaultHeaders;
     std::unordered_map<utility::string_t, utility::string_t> m_ApiKeys;
 

@@ -61,9 +61,13 @@ std::shared_ptr<ApiConfiguration> get_config()
 
 	auto newConfig = std::make_shared<ApiConfiguration>();
 	newConfig->setAppKey(fileJson[_XPLATSTR("AppKey")].as_string());
-	newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
 	newConfig->setAppSid(fileJson[_XPLATSTR("AppSid")].as_string());
+
+	if (fileJson.has_string_field(_XPLATSTR("BaseUrl"))) {
+		newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
+	}
 	newConfig->setUserAgent(_XPLATSTR("CppAsposeClient"));
+
 	newConfig->setHttpConfig(conf);
 
 	return newConfig;
@@ -143,10 +147,7 @@ void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName
 {
 	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, boost::none);
 
-	auto client = get_client();
-	auto newConfig = get_config();
-	newConfig->setDebugMode(true);
-	std::shared_ptr<WordsApi> api = std::make_shared<WordsApi>(client);
+	std::shared_ptr<WordsApi> api = get_api();
 
 	auto result = api->uploadFile(request).get();
 }
@@ -173,20 +174,11 @@ std::shared_ptr<ApiConfiguration> InfrastructureTest::get_configuration() const
 	return m_Config;
 }
 
-std::shared_ptr<ApiClient> InfrastructureTest::get_client()
-{
-	if (!client) {
-		client = std::make_shared<ApiClient>();
-		client->setConfiguration(get_configuration());
-	}
-	return client;
-}
-
 std::shared_ptr<WordsApi> InfrastructureTest::get_api()
 {
 	if (!api)
 	{
-		api = std::make_shared<WordsApi>(get_client());
+		api = std::make_shared<WordsApi>(get_configuration());
 	}
 	return api;
 }
