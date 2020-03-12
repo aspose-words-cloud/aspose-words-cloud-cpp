@@ -119,7 +119,6 @@ Typical usage of the SDK in code follows this template:
 	config->setAppKey(yourApiKey);
 	config->setAppSid(yourApiSecret);
 	config->setBaseUrl(apiBaseUrl);
-	config->setApiVersion(apiVersion);
 	web::http::client::http_client_config httpConfig;
 	httpConfig.set_timeout(std::chrono::seconds(timeout));
 	config->setHttpConfig(httpConfig);
