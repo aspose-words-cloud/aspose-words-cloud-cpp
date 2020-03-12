@@ -3226,7 +3226,7 @@ public:
 	);
 
 public:
-    explicit WordsApi(std::shared_ptr<ApiClient> apiClient );
+    explicit WordsApi(std::shared_ptr<ApiConfiguration> configuration);
     virtual ~WordsApi() = default;
     
 protected:

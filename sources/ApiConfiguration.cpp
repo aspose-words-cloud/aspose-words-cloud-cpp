@@ -29,6 +29,11 @@ namespace words {
 namespace cloud {
 namespace api {
 
+ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t appSid) :
+    m_AppKey(appKey), m_AppSid(appSid)
+{
+}
+
 void ApiConfiguration::setAppKey( utility::string_t appKey){
     m_AppKey = std::move(appKey);
 }
