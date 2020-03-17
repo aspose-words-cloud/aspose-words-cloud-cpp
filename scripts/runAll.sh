@@ -1,13 +1,12 @@
-git clone https://github.com/Microsoft/cpprestsdk.git
-
 # Compile cppcheck
 cd /usr/bin/cppcheck-sources
 make SRCBUILD=build CFGDIR=/usr/bin/cppcheck-sources
 make install CFGDIR=/usr/bin/cppcheck-sources
-cp cppcheck /usr/bin/cppcheck./
+cp cppcheck /usr/bin/cppcheck
 
 # Compile cpprestsdk
 cd /
+git clone https://github.com/Microsoft/cpprestsdk.git
 mkdir build
 mkdir install
 cmake -DCPPREST_EXCLUDE_WEBSOCKETS=ON -DCPPREST_EXCLUDE_COMPRESSION=ON -DCPPREST_EXCLUDE_BROTLI=ON -DBUILD_TESTS=OFF -DBUILD_SAMPLES=OFF -DCMAKE_INSTALL_PREFIX=install/cpprestsdk -S cpprestsdk -B build
@@ -20,6 +19,8 @@ mkdir -p aspose-words-cloud-cpp/build
 # start test section
 set -e
 
+export CC=gcc 
+export CXX=g++
 cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Debug -S aspose-words-cloud-cpp -B aspose-words-cloud-cpp/build 
 cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- VERBOSE=1
 
