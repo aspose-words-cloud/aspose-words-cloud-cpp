@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef executeMailMergeOnline_H
+#define executeMailMergeOnline_H 
 
 #include "cpprest/details/basic_types.h"
+#include "HttpContent.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -38,29 +39,33 @@ namespace models {
 class ExecuteMailMergeOnlineRequest{
     public: 
      ExecuteMailMergeOnlineRequest(
-                                                  boost::optional<>                 boost::optional<>                 boost::optional<> 
+                std::shared_ptr<HttpContent> _template,
+                std::shared_ptr<HttpContent> data,
+                boost::optional<bool> withRegions,
+                boost::optional<utility::string_t> cleanup,
+                boost::optional<utility::string_t> documentFileName
         );
 
-         getTemplate() const;
-        void setTemplate( );
+        std::shared_ptr<HttpContent> getTemplate() const;
+        void setTemplate(std::shared_ptr<HttpContent> _template);
 
-         getData() const;
-        void setData( );
+        std::shared_ptr<HttpContent> getData() const;
+        void setData(std::shared_ptr<HttpContent> data);
 
-        boost::optional<> getWithRegions() const;
-        void setWithRegions(boost::optional<> );
+        boost::optional<bool> getWithRegions() const;
+        void setWithRegions(boost::optional<bool> withRegions);
 
-        boost::optional<> getCleanup() const;
-        void setCleanup(boost::optional<> );
+        boost::optional<utility::string_t> getCleanup() const;
+        void setCleanup(boost::optional<utility::string_t> cleanup);
 
-        boost::optional<> getDocumentFileName() const;
-        void setDocumentFileName(boost::optional<> );
+        boost::optional<utility::string_t> getDocumentFileName() const;
+        void setDocumentFileName(boost::optional<utility::string_t> documentFileName);
     private:
-         m_;
-         m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
+        std::shared_ptr<HttpContent> m__template;
+        std::shared_ptr<HttpContent> m_data;
+        boost::optional<bool> m_withRegions;
+        boost::optional<utility::string_t> m_cleanup;
+        boost::optional<utility::string_t> m_documentFileName;
 };
 
 }

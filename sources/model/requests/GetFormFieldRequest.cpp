@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFormFieldRequest::GetFormFieldRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetFormFieldRequest::getName() const
+        utility::string_t GetFormFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetFormFieldRequest::setName( ){
-            m_ = std::move();
+        void GetFormFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetFormFieldRequest::getNodePath() const
+        utility::string_t GetFormFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetFormFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void GetFormFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         GetFormFieldRequest::getIndex() const
+        int32_t GetFormFieldRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetFormFieldRequest::setIndex( ){
-            m_ = std::move();
+        void GetFormFieldRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetFormFieldRequest::getFolder() const
+        boost::optional<utility::string_t> GetFormFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetFormFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetFormFieldRequest::getStorage() const
+        boost::optional<utility::string_t> GetFormFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetFormFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetFormFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetFormFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetFormFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetFormFieldRequest::getPassword() const
+        boost::optional<utility::string_t> GetFormFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetFormFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

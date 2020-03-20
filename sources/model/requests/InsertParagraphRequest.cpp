@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertParagraphRequest::InsertParagraphRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<ParagraphInsert> paragraph,
+                utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime,
+                boost::optional<utility::string_t> insertBeforeNode
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_paragraph(std::move(paragraph)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_insertBeforeNode(std::move(insertBeforeNode))
         {
             
         }
 
-         InsertParagraphRequest::getName() const
+        utility::string_t InsertParagraphRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void InsertParagraphRequest::setName( ){
-            m_ = std::move();
+        void InsertParagraphRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         InsertParagraphRequest::getParagraph() const
+        std::shared_ptr<ParagraphInsert> InsertParagraphRequest::getParagraph() const
         {
-            return m_;
+            return m_paragraph;
         }
-        void InsertParagraphRequest::setParagraph( ){
-            m_ = std::move();
+        void InsertParagraphRequest::setParagraph(std::shared_ptr<ParagraphInsert> paragraph){
+            m_paragraph = std::move(paragraph);
         }
-         InsertParagraphRequest::getNodePath() const
+        utility::string_t InsertParagraphRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void InsertParagraphRequest::setNodePath( ){
-            m_ = std::move();
+        void InsertParagraphRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> InsertParagraphRequest::getFolder() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void InsertParagraphRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> InsertParagraphRequest::getStorage() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void InsertParagraphRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> InsertParagraphRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void InsertParagraphRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> InsertParagraphRequest::getPassword() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void InsertParagraphRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> InsertParagraphRequest::getDestFileName() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void InsertParagraphRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> InsertParagraphRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void InsertParagraphRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> InsertParagraphRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void InsertParagraphRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
-        boost::optional<> InsertParagraphRequest::getInsertBeforeNode() const
+        boost::optional<utility::string_t> InsertParagraphRequest::getInsertBeforeNode() const
         {
-            return m_;
+            return m_insertBeforeNode;
         }
-        void InsertParagraphRequest::setInsertBeforeNode(boost::optional<> ){
-            m_ = std::move();
+        void InsertParagraphRequest::setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode){
+            m_insertBeforeNode = std::move(insertBeforeNode);
         }
 
 }

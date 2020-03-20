@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteMacrosRequest::DeleteMacrosRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         DeleteMacrosRequest::getName() const
+        utility::string_t DeleteMacrosRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void DeleteMacrosRequest::setName( ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> DeleteMacrosRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void DeleteMacrosRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> DeleteMacrosRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void DeleteMacrosRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> DeleteMacrosRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void DeleteMacrosRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> DeleteMacrosRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void DeleteMacrosRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> DeleteMacrosRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void DeleteMacrosRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> DeleteMacrosRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void DeleteMacrosRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> DeleteMacrosRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> DeleteMacrosRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void DeleteMacrosRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void DeleteMacrosRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

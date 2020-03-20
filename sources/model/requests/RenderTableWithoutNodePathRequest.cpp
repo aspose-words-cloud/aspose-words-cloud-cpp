@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 RenderTableWithoutNodePathRequest::RenderTableWithoutNodePathRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t format,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_format(std::move(format)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         RenderTableWithoutNodePathRequest::getName() const
+        utility::string_t RenderTableWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void RenderTableWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         RenderTableWithoutNodePathRequest::getFormat() const
+        utility::string_t RenderTableWithoutNodePathRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void RenderTableWithoutNodePathRequest::setFormat( ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setFormat(utility::string_t format){
+            m_format = std::move(format);
         }
-         RenderTableWithoutNodePathRequest::getIndex() const
+        int32_t RenderTableWithoutNodePathRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void RenderTableWithoutNodePathRequest::setIndex( ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> RenderTableWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void RenderTableWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> RenderTableWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void RenderTableWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> RenderTableWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void RenderTableWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> RenderTableWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void RenderTableWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> RenderTableWithoutNodePathRequest::getFontsLocation() const
+        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void RenderTableWithoutNodePathRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void RenderTableWithoutNodePathRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

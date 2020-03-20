@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFieldRequest::GetFieldRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetFieldRequest::getName() const
+        utility::string_t GetFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetFieldRequest::setName( ){
-            m_ = std::move();
+        void GetFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetFieldRequest::getNodePath() const
+        utility::string_t GetFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void GetFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         GetFieldRequest::getIndex() const
+        int32_t GetFieldRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetFieldRequest::setIndex( ){
-            m_ = std::move();
+        void GetFieldRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetFieldRequest::getFolder() const
+        boost::optional<utility::string_t> GetFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetFieldRequest::getStorage() const
+        boost::optional<utility::string_t> GetFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetFieldRequest::getPassword() const
+        boost::optional<utility::string_t> GetFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

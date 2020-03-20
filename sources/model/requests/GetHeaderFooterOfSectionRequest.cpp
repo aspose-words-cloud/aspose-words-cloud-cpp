@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 GetHeaderFooterOfSectionRequest::GetHeaderFooterOfSectionRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                int32_t headerFooterIndex,
+                int32_t sectionIndex,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> filterByType
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_headerFooterIndex(std::move(headerFooterIndex)),
+            m_sectionIndex(std::move(sectionIndex)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_filterByType(std::move(filterByType))
         {
             
         }
 
-         GetHeaderFooterOfSectionRequest::getName() const
+        utility::string_t GetHeaderFooterOfSectionRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetHeaderFooterOfSectionRequest::setName( ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetHeaderFooterOfSectionRequest::getHeaderFooterIndex() const
+        int32_t GetHeaderFooterOfSectionRequest::getHeaderFooterIndex() const
         {
-            return m_;
+            return m_headerFooterIndex;
         }
-        void GetHeaderFooterOfSectionRequest::setHeaderFooterIndex( ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setHeaderFooterIndex(int32_t headerFooterIndex){
+            m_headerFooterIndex = std::move(headerFooterIndex);
         }
-         GetHeaderFooterOfSectionRequest::getSectionIndex() const
+        int32_t GetHeaderFooterOfSectionRequest::getSectionIndex() const
         {
-            return m_;
+            return m_sectionIndex;
         }
-        void GetHeaderFooterOfSectionRequest::setSectionIndex( ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setSectionIndex(int32_t sectionIndex){
+            m_sectionIndex = std::move(sectionIndex);
         }
-        boost::optional<> GetHeaderFooterOfSectionRequest::getFolder() const
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetHeaderFooterOfSectionRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetHeaderFooterOfSectionRequest::getStorage() const
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetHeaderFooterOfSectionRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetHeaderFooterOfSectionRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetHeaderFooterOfSectionRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetHeaderFooterOfSectionRequest::getPassword() const
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetHeaderFooterOfSectionRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> GetHeaderFooterOfSectionRequest::getFilterByType() const
+        boost::optional<utility::string_t> GetHeaderFooterOfSectionRequest::getFilterByType() const
         {
-            return m_;
+            return m_filterByType;
         }
-        void GetHeaderFooterOfSectionRequest::setFilterByType(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFooterOfSectionRequest::setFilterByType(boost::optional<utility::string_t> filterByType){
+            m_filterByType = std::move(filterByType);
         }
 
 }

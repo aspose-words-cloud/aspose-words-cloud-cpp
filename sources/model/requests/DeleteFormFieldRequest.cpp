@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteFormFieldRequest::DeleteFormFieldRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         DeleteFormFieldRequest::getName() const
+        utility::string_t DeleteFormFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void DeleteFormFieldRequest::setName( ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         DeleteFormFieldRequest::getNodePath() const
+        utility::string_t DeleteFormFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void DeleteFormFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         DeleteFormFieldRequest::getIndex() const
+        int32_t DeleteFormFieldRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void DeleteFormFieldRequest::setIndex( ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> DeleteFormFieldRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void DeleteFormFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> DeleteFormFieldRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void DeleteFormFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> DeleteFormFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void DeleteFormFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> DeleteFormFieldRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void DeleteFormFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> DeleteFormFieldRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void DeleteFormFieldRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> DeleteFormFieldRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void DeleteFormFieldRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> DeleteFormFieldRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> DeleteFormFieldRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void DeleteFormFieldRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFormFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

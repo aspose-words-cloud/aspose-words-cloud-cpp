@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 RenderMathObjectWithoutNodePathRequest::RenderMathObjectWithoutNodePathRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t format,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_format(std::move(format)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         RenderMathObjectWithoutNodePathRequest::getName() const
+        utility::string_t RenderMathObjectWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void RenderMathObjectWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         RenderMathObjectWithoutNodePathRequest::getFormat() const
+        utility::string_t RenderMathObjectWithoutNodePathRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void RenderMathObjectWithoutNodePathRequest::setFormat( ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setFormat(utility::string_t format){
+            m_format = std::move(format);
         }
-         RenderMathObjectWithoutNodePathRequest::getIndex() const
+        int32_t RenderMathObjectWithoutNodePathRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void RenderMathObjectWithoutNodePathRequest::setIndex( ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> RenderMathObjectWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> RenderMathObjectWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void RenderMathObjectWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> RenderMathObjectWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> RenderMathObjectWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void RenderMathObjectWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> RenderMathObjectWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> RenderMathObjectWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void RenderMathObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> RenderMathObjectWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> RenderMathObjectWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void RenderMathObjectWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> RenderMathObjectWithoutNodePathRequest::getFontsLocation() const
+        boost::optional<utility::string_t> RenderMathObjectWithoutNodePathRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void RenderMathObjectWithoutNodePathRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void RenderMathObjectWithoutNodePathRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

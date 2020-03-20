@@ -29,37 +29,37 @@ namespace cloud{
 namespace api{
 namespace models{
 CreateDocumentRequest::CreateDocumentRequest(
-        boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> fileName,
+                boost::optional<utility::string_t> folder
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_storage(std::move(storage)),
+            m_fileName(std::move(fileName)),
+            m_folder(std::move(folder))
         {
             
         }
 
-        boost::optional<> CreateDocumentRequest::getStorage() const
+        boost::optional<utility::string_t> CreateDocumentRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void CreateDocumentRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void CreateDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> CreateDocumentRequest::getFileName() const
+        boost::optional<utility::string_t> CreateDocumentRequest::getFileName() const
         {
-            return m_;
+            return m_fileName;
         }
-        void CreateDocumentRequest::setFileName(boost::optional<> ){
-            m_ = std::move();
+        void CreateDocumentRequest::setFileName(boost::optional<utility::string_t> fileName){
+            m_fileName = std::move(fileName);
         }
-        boost::optional<> CreateDocumentRequest::getFolder() const
+        boost::optional<utility::string_t> CreateDocumentRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void CreateDocumentRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void CreateDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
 
 }

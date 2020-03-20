@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetOfficeMathObjectsRequest::GetOfficeMathObjectsRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetOfficeMathObjectsRequest::getName() const
+        utility::string_t GetOfficeMathObjectsRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetOfficeMathObjectsRequest::setName( ){
-            m_ = std::move();
+        void GetOfficeMathObjectsRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetOfficeMathObjectsRequest::getNodePath() const
+        utility::string_t GetOfficeMathObjectsRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetOfficeMathObjectsRequest::setNodePath( ){
-            m_ = std::move();
+        void GetOfficeMathObjectsRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> GetOfficeMathObjectsRequest::getFolder() const
+        boost::optional<utility::string_t> GetOfficeMathObjectsRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetOfficeMathObjectsRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetOfficeMathObjectsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetOfficeMathObjectsRequest::getStorage() const
+        boost::optional<utility::string_t> GetOfficeMathObjectsRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetOfficeMathObjectsRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetOfficeMathObjectsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetOfficeMathObjectsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetOfficeMathObjectsRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetOfficeMathObjectsRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetOfficeMathObjectsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetOfficeMathObjectsRequest::getPassword() const
+        boost::optional<utility::string_t> GetOfficeMathObjectsRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetOfficeMathObjectsRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetOfficeMathObjectsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 RenderDrawingObjectRequest::RenderDrawingObjectRequest(
-         
-                 
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t format,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_format(std::move(format)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         RenderDrawingObjectRequest::getName() const
+        utility::string_t RenderDrawingObjectRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void RenderDrawingObjectRequest::setName( ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         RenderDrawingObjectRequest::getFormat() const
+        utility::string_t RenderDrawingObjectRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void RenderDrawingObjectRequest::setFormat( ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setFormat(utility::string_t format){
+            m_format = std::move(format);
         }
-         RenderDrawingObjectRequest::getNodePath() const
+        utility::string_t RenderDrawingObjectRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void RenderDrawingObjectRequest::setNodePath( ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         RenderDrawingObjectRequest::getIndex() const
+        int32_t RenderDrawingObjectRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void RenderDrawingObjectRequest::setIndex( ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> RenderDrawingObjectRequest::getFolder() const
+        boost::optional<utility::string_t> RenderDrawingObjectRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void RenderDrawingObjectRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> RenderDrawingObjectRequest::getStorage() const
+        boost::optional<utility::string_t> RenderDrawingObjectRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void RenderDrawingObjectRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> RenderDrawingObjectRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> RenderDrawingObjectRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void RenderDrawingObjectRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> RenderDrawingObjectRequest::getPassword() const
+        boost::optional<utility::string_t> RenderDrawingObjectRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void RenderDrawingObjectRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> RenderDrawingObjectRequest::getFontsLocation() const
+        boost::optional<utility::string_t> RenderDrawingObjectRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void RenderDrawingObjectRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

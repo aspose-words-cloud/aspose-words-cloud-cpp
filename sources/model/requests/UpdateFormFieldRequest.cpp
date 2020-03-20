@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateFormFieldRequest::UpdateFormFieldRequest(
-         
-                 
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<FormField> formField,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_formField(std::move(formField)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         UpdateFormFieldRequest::getName() const
+        utility::string_t UpdateFormFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UpdateFormFieldRequest::setName( ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UpdateFormFieldRequest::getFormField() const
+        std::shared_ptr<FormField> UpdateFormFieldRequest::getFormField() const
         {
-            return m_;
+            return m_formField;
         }
-        void UpdateFormFieldRequest::setFormField( ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setFormField(std::shared_ptr<FormField> formField){
+            m_formField = std::move(formField);
         }
-         UpdateFormFieldRequest::getNodePath() const
+        utility::string_t UpdateFormFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void UpdateFormFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         UpdateFormFieldRequest::getIndex() const
+        int32_t UpdateFormFieldRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void UpdateFormFieldRequest::setIndex( ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> UpdateFormFieldRequest::getFolder() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UpdateFormFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UpdateFormFieldRequest::getStorage() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UpdateFormFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UpdateFormFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UpdateFormFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UpdateFormFieldRequest::getPassword() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UpdateFormFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UpdateFormFieldRequest::getDestFileName() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UpdateFormFieldRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> UpdateFormFieldRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void UpdateFormFieldRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> UpdateFormFieldRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> UpdateFormFieldRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void UpdateFormFieldRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFormFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

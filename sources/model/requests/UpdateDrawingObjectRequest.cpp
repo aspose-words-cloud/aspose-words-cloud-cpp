@@ -29,118 +29,118 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateDrawingObjectRequest::UpdateDrawingObjectRequest(
-         
-                 
-                 
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t drawingObject,
+                std::shared_ptr<HttpContent> imageFile,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_drawingObject(std::move(drawingObject)),
+            m_imageFile(std::move(imageFile)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         UpdateDrawingObjectRequest::getName() const
+        utility::string_t UpdateDrawingObjectRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UpdateDrawingObjectRequest::setName( ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UpdateDrawingObjectRequest::getDrawingObject() const
+        utility::string_t UpdateDrawingObjectRequest::getDrawingObject() const
         {
-            return m_;
+            return m_drawingObject;
         }
-        void UpdateDrawingObjectRequest::setDrawingObject( ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setDrawingObject(utility::string_t drawingObject){
+            m_drawingObject = std::move(drawingObject);
         }
-         UpdateDrawingObjectRequest::getImageFile() const
+        std::shared_ptr<HttpContent> UpdateDrawingObjectRequest::getImageFile() const
         {
-            return m_;
+            return m_imageFile;
         }
-        void UpdateDrawingObjectRequest::setImageFile( ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setImageFile(std::shared_ptr<HttpContent> imageFile){
+            m_imageFile = std::move(imageFile);
         }
-         UpdateDrawingObjectRequest::getNodePath() const
+        utility::string_t UpdateDrawingObjectRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void UpdateDrawingObjectRequest::setNodePath( ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         UpdateDrawingObjectRequest::getIndex() const
+        int32_t UpdateDrawingObjectRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void UpdateDrawingObjectRequest::setIndex( ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getFolder() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UpdateDrawingObjectRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getStorage() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UpdateDrawingObjectRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UpdateDrawingObjectRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getPassword() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UpdateDrawingObjectRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getDestFileName() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UpdateDrawingObjectRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void UpdateDrawingObjectRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> UpdateDrawingObjectRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> UpdateDrawingObjectRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void UpdateDrawingObjectRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void UpdateDrawingObjectRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

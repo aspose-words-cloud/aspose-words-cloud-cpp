@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
-         
-                 
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+        std::shared_ptr<TableRowFormat> format,
+        utility::string_t tablePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_format(std::move(format)),
+            m_tablePath(std::move(tablePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         UpdateTableRowFormatRequest::getName() const
+        utility::string_t UpdateTableRowFormatRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UpdateTableRowFormatRequest::setName( ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UpdateTableRowFormatRequest::getFormat() const
+        std::shared_ptr<TableRowFormat> UpdateTableRowFormatRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void UpdateTableRowFormatRequest::setFormat( ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setFormat(std::shared_ptr<TableRowFormat> format){
+            m_format = std::move(format);
         }
-         UpdateTableRowFormatRequest::getTablePath() const
+        utility::string_t UpdateTableRowFormatRequest::getTablePath() const
         {
-            return m_;
+            return m_tablePath;
         }
-        void UpdateTableRowFormatRequest::setTablePath( ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setTablePath(utility::string_t tablePath){
+            m_tablePath = std::move(tablePath);
         }
-         UpdateTableRowFormatRequest::getIndex() const
+        int32_t UpdateTableRowFormatRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void UpdateTableRowFormatRequest::setIndex( ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getFolder() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UpdateTableRowFormatRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getStorage() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UpdateTableRowFormatRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UpdateTableRowFormatRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getPassword() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UpdateTableRowFormatRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getDestFileName() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UpdateTableRowFormatRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void UpdateTableRowFormatRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> UpdateTableRowFormatRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> UpdateTableRowFormatRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void UpdateTableRowFormatRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void UpdateTableRowFormatRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

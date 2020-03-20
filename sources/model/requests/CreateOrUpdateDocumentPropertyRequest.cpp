@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 CreateOrUpdateDocumentPropertyRequest::CreateOrUpdateDocumentPropertyRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t propertyName,
+                std::shared_ptr<DocumentProperty> property,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_propertyName(std::move(propertyName)),
+            m_property(std::move(property)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         CreateOrUpdateDocumentPropertyRequest::getName() const
+        utility::string_t CreateOrUpdateDocumentPropertyRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setName( ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         CreateOrUpdateDocumentPropertyRequest::getPropertyName() const
+        utility::string_t CreateOrUpdateDocumentPropertyRequest::getPropertyName() const
         {
-            return m_;
+            return m_propertyName;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setPropertyName( ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setPropertyName(utility::string_t propertyName){
+            m_propertyName = std::move(propertyName);
         }
-         CreateOrUpdateDocumentPropertyRequest::getProperty() const
+        std::shared_ptr<DocumentProperty> CreateOrUpdateDocumentPropertyRequest::getProperty() const
         {
-            return m_;
+            return m_property;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setProperty( ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setProperty(std::shared_ptr<DocumentProperty> property){
+            m_property = std::move(property);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getFolder() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getStorage() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getPassword() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getDestFileName() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> CreateOrUpdateDocumentPropertyRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void CreateOrUpdateDocumentPropertyRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

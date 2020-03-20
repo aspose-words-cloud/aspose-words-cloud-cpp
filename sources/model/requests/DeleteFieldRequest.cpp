@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteFieldRequest::DeleteFieldRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         DeleteFieldRequest::getName() const
+        utility::string_t DeleteFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void DeleteFieldRequest::setName( ){
-            m_ = std::move();
+        void DeleteFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         DeleteFieldRequest::getNodePath() const
+        utility::string_t DeleteFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void DeleteFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void DeleteFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         DeleteFieldRequest::getIndex() const
+        int32_t DeleteFieldRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void DeleteFieldRequest::setIndex( ){
-            m_ = std::move();
+        void DeleteFieldRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> DeleteFieldRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void DeleteFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> DeleteFieldRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void DeleteFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> DeleteFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void DeleteFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> DeleteFieldRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void DeleteFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> DeleteFieldRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void DeleteFieldRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> DeleteFieldRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void DeleteFieldRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> DeleteFieldRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> DeleteFieldRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void DeleteFieldRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetRunFontRequest::GetRunFontRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t paragraphPath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_paragraphPath(std::move(paragraphPath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetRunFontRequest::getName() const
+        utility::string_t GetRunFontRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetRunFontRequest::setName( ){
-            m_ = std::move();
+        void GetRunFontRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetRunFontRequest::getParagraphPath() const
+        utility::string_t GetRunFontRequest::getParagraphPath() const
         {
-            return m_;
+            return m_paragraphPath;
         }
-        void GetRunFontRequest::setParagraphPath( ){
-            m_ = std::move();
+        void GetRunFontRequest::setParagraphPath(utility::string_t paragraphPath){
+            m_paragraphPath = std::move(paragraphPath);
         }
-         GetRunFontRequest::getIndex() const
+        int32_t GetRunFontRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetRunFontRequest::setIndex( ){
-            m_ = std::move();
+        void GetRunFontRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetRunFontRequest::getFolder() const
+        boost::optional<utility::string_t> GetRunFontRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetRunFontRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetRunFontRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetRunFontRequest::getStorage() const
+        boost::optional<utility::string_t> GetRunFontRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetRunFontRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetRunFontRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetRunFontRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetRunFontRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetRunFontRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetRunFontRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetRunFontRequest::getPassword() const
+        boost::optional<utility::string_t> GetRunFontRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetRunFontRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetRunFontRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentDrawingObjectOleDataRequest::GetDocumentDrawingObjectOleDataRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetDocumentDrawingObjectOleDataRequest::getName() const
+        utility::string_t GetDocumentDrawingObjectOleDataRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setName( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetDocumentDrawingObjectOleDataRequest::getNodePath() const
+        utility::string_t GetDocumentDrawingObjectOleDataRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setNodePath( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         GetDocumentDrawingObjectOleDataRequest::getIndex() const
+        int32_t GetDocumentDrawingObjectOleDataRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setIndex( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetDocumentDrawingObjectOleDataRequest::getFolder() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectOleDataRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetDocumentDrawingObjectOleDataRequest::getStorage() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectOleDataRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetDocumentDrawingObjectOleDataRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectOleDataRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetDocumentDrawingObjectOleDataRequest::getPassword() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectOleDataRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetDocumentDrawingObjectOleDataRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectOleDataRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

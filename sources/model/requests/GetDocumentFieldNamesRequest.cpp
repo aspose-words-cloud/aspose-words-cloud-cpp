@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentFieldNamesRequest::GetDocumentFieldNamesRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<bool> useNonMergeFields
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_useNonMergeFields(std::move(useNonMergeFields))
         {
             
         }
 
-         GetDocumentFieldNamesRequest::getName() const
+        utility::string_t GetDocumentFieldNamesRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetDocumentFieldNamesRequest::setName( ){
-            m_ = std::move();
+        void GetDocumentFieldNamesRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetDocumentFieldNamesRequest::getFolder() const
+        boost::optional<utility::string_t> GetDocumentFieldNamesRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetDocumentFieldNamesRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentFieldNamesRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetDocumentFieldNamesRequest::getStorage() const
+        boost::optional<utility::string_t> GetDocumentFieldNamesRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetDocumentFieldNamesRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentFieldNamesRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetDocumentFieldNamesRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetDocumentFieldNamesRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetDocumentFieldNamesRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentFieldNamesRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetDocumentFieldNamesRequest::getPassword() const
+        boost::optional<utility::string_t> GetDocumentFieldNamesRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetDocumentFieldNamesRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentFieldNamesRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> GetDocumentFieldNamesRequest::getUseNonMergeFields() const
+        boost::optional<bool> GetDocumentFieldNamesRequest::getUseNonMergeFields() const
         {
-            return m_;
+            return m_useNonMergeFields;
         }
-        void GetDocumentFieldNamesRequest::setUseNonMergeFields(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentFieldNamesRequest::setUseNonMergeFields(boost::optional<bool> useNonMergeFields){
+            m_useNonMergeFields = std::move(useNonMergeFields);
         }
 
 }

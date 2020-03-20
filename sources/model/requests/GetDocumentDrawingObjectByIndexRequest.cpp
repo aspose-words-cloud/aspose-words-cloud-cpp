@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentDrawingObjectByIndexRequest::GetDocumentDrawingObjectByIndexRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetDocumentDrawingObjectByIndexRequest::getName() const
+        utility::string_t GetDocumentDrawingObjectByIndexRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setName( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetDocumentDrawingObjectByIndexRequest::getNodePath() const
+        utility::string_t GetDocumentDrawingObjectByIndexRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setNodePath( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         GetDocumentDrawingObjectByIndexRequest::getIndex() const
+        int32_t GetDocumentDrawingObjectByIndexRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setIndex( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetDocumentDrawingObjectByIndexRequest::getFolder() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectByIndexRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetDocumentDrawingObjectByIndexRequest::getStorage() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectByIndexRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetDocumentDrawingObjectByIndexRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectByIndexRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetDocumentDrawingObjectByIndexRequest::getPassword() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectByIndexRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetDocumentDrawingObjectByIndexRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectByIndexRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

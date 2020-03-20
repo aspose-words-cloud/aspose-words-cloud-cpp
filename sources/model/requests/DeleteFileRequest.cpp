@@ -29,37 +29,37 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteFileRequest::DeleteFileRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t path,
+                boost::optional<utility::string_t> storageName,
+                boost::optional<utility::string_t> versionId
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_path(std::move(path)),
+            m_storageName(std::move(storageName)),
+            m_versionId(std::move(versionId))
         {
             
         }
 
-         DeleteFileRequest::getPath() const
+        utility::string_t DeleteFileRequest::getPath() const
         {
-            return m_;
+            return m_path;
         }
-        void DeleteFileRequest::setPath( ){
-            m_ = std::move();
+        void DeleteFileRequest::setPath(utility::string_t path){
+            m_path = std::move(path);
         }
-        boost::optional<> DeleteFileRequest::getStorageName() const
+        boost::optional<utility::string_t> DeleteFileRequest::getStorageName() const
         {
-            return m_;
+            return m_storageName;
         }
-        void DeleteFileRequest::setStorageName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFileRequest::setStorageName(boost::optional<utility::string_t> storageName){
+            m_storageName = std::move(storageName);
         }
-        boost::optional<> DeleteFileRequest::getVersionId() const
+        boost::optional<utility::string_t> DeleteFileRequest::getVersionId() const
         {
-            return m_;
+            return m_versionId;
         }
-        void DeleteFileRequest::setVersionId(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFileRequest::setVersionId(boost::optional<utility::string_t> versionId){
+            m_versionId = std::move(versionId);
         }
 
 }

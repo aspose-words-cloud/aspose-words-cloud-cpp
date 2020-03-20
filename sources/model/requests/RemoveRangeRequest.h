@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef removeRange_H
+#define removeRange_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,41 +38,48 @@ namespace models {
 class RemoveRangeRequest{
     public: 
      RemoveRangeRequest(
-                                                  boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
+                utility::string_t name,
+                utility::string_t rangeStartIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName
         );
 
-         getName() const;
-        void setName( );
+        utility::string_t getName() const;
+        void setName(utility::string_t name);
 
-         getRangeStartIdentifier() const;
-        void setRangeStartIdentifier( );
+        utility::string_t getRangeStartIdentifier() const;
+        void setRangeStartIdentifier(utility::string_t rangeStartIdentifier);
 
-        boost::optional<> getRangeEndIdentifier() const;
-        void setRangeEndIdentifier(boost::optional<> );
+        boost::optional<utility::string_t> getRangeEndIdentifier() const;
+        void setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier);
 
-        boost::optional<> getFolder() const;
-        void setFolder(boost::optional<> );
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
 
-        boost::optional<> getStorage() const;
-        void setStorage(boost::optional<> );
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
 
-        boost::optional<> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<> );
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
 
-        boost::optional<> getPassword() const;
-        void setPassword(boost::optional<> );
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
 
-        boost::optional<> getDestFileName() const;
-        void setDestFileName(boost::optional<> );
+        boost::optional<utility::string_t> getDestFileName() const;
+        void setDestFileName(boost::optional<utility::string_t> destFileName);
     private:
-         m_;
-         m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
+        utility::string_t m_name;
+        utility::string_t m_rangeStartIdentifier;
+        boost::optional<utility::string_t> m_rangeEndIdentifier;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_destFileName;
 };
 
 }

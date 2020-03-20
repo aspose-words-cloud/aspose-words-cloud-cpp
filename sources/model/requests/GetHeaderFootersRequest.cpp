@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetHeaderFootersRequest::GetHeaderFootersRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t sectionPath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> filterByType
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_sectionPath(std::move(sectionPath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_filterByType(std::move(filterByType))
         {
             
         }
 
-         GetHeaderFootersRequest::getName() const
+        utility::string_t GetHeaderFootersRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetHeaderFootersRequest::setName( ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetHeaderFootersRequest::getSectionPath() const
+        utility::string_t GetHeaderFootersRequest::getSectionPath() const
         {
-            return m_;
+            return m_sectionPath;
         }
-        void GetHeaderFootersRequest::setSectionPath( ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setSectionPath(utility::string_t sectionPath){
+            m_sectionPath = std::move(sectionPath);
         }
-        boost::optional<> GetHeaderFootersRequest::getFolder() const
+        boost::optional<utility::string_t> GetHeaderFootersRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetHeaderFootersRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetHeaderFootersRequest::getStorage() const
+        boost::optional<utility::string_t> GetHeaderFootersRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetHeaderFootersRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetHeaderFootersRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetHeaderFootersRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetHeaderFootersRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetHeaderFootersRequest::getPassword() const
+        boost::optional<utility::string_t> GetHeaderFootersRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetHeaderFootersRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> GetHeaderFootersRequest::getFilterByType() const
+        boost::optional<utility::string_t> GetHeaderFootersRequest::getFilterByType() const
         {
-            return m_;
+            return m_filterByType;
         }
-        void GetHeaderFootersRequest::setFilterByType(boost::optional<> ){
-            m_ = std::move();
+        void GetHeaderFootersRequest::setFilterByType(boost::optional<utility::string_t> filterByType){
+            m_filterByType = std::move(filterByType);
         }
 
 }

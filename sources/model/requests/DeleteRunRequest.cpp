@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteRunRequest::DeleteRunRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t paragraphPath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_paragraphPath(std::move(paragraphPath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         DeleteRunRequest::getName() const
+        utility::string_t DeleteRunRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void DeleteRunRequest::setName( ){
-            m_ = std::move();
+        void DeleteRunRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         DeleteRunRequest::getParagraphPath() const
+        utility::string_t DeleteRunRequest::getParagraphPath() const
         {
-            return m_;
+            return m_paragraphPath;
         }
-        void DeleteRunRequest::setParagraphPath( ){
-            m_ = std::move();
+        void DeleteRunRequest::setParagraphPath(utility::string_t paragraphPath){
+            m_paragraphPath = std::move(paragraphPath);
         }
-         DeleteRunRequest::getIndex() const
+        int32_t DeleteRunRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void DeleteRunRequest::setIndex( ){
-            m_ = std::move();
+        void DeleteRunRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> DeleteRunRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteRunRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void DeleteRunRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> DeleteRunRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteRunRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void DeleteRunRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> DeleteRunRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteRunRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void DeleteRunRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> DeleteRunRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteRunRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void DeleteRunRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> DeleteRunRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteRunRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void DeleteRunRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> DeleteRunRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> DeleteRunRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void DeleteRunRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> DeleteRunRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> DeleteRunRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void DeleteRunRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void DeleteRunRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

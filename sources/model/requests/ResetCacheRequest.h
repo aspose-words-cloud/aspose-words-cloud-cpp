@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef resetCache_H
+#define resetCache_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>

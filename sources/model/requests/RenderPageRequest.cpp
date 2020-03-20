@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 RenderPageRequest::RenderPageRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                int32_t pageIndex,
+                utility::string_t format,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_pageIndex(std::move(pageIndex)),
+            m_format(std::move(format)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         RenderPageRequest::getName() const
+        utility::string_t RenderPageRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void RenderPageRequest::setName( ){
-            m_ = std::move();
+        void RenderPageRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         RenderPageRequest::getPageIndex() const
+        int32_t RenderPageRequest::getPageIndex() const
         {
-            return m_;
+            return m_pageIndex;
         }
-        void RenderPageRequest::setPageIndex( ){
-            m_ = std::move();
+        void RenderPageRequest::setPageIndex(int32_t pageIndex){
+            m_pageIndex = std::move(pageIndex);
         }
-         RenderPageRequest::getFormat() const
+        utility::string_t RenderPageRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void RenderPageRequest::setFormat( ){
-            m_ = std::move();
+        void RenderPageRequest::setFormat(utility::string_t format){
+            m_format = std::move(format);
         }
-        boost::optional<> RenderPageRequest::getFolder() const
+        boost::optional<utility::string_t> RenderPageRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void RenderPageRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void RenderPageRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> RenderPageRequest::getStorage() const
+        boost::optional<utility::string_t> RenderPageRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void RenderPageRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void RenderPageRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> RenderPageRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> RenderPageRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void RenderPageRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void RenderPageRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> RenderPageRequest::getPassword() const
+        boost::optional<utility::string_t> RenderPageRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void RenderPageRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void RenderPageRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> RenderPageRequest::getFontsLocation() const
+        boost::optional<utility::string_t> RenderPageRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void RenderPageRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void RenderPageRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

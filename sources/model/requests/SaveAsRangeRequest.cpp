@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 SaveAsRangeRequest::SaveAsRangeRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t rangeStartIdentifier,
+                std::shared_ptr<RangeDocument> documentParameters,
+                boost::optional<utility::string_t> rangeEndIdentifier,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_rangeStartIdentifier(std::move(rangeStartIdentifier)),
+            m_documentParameters(std::move(documentParameters)),
+            m_rangeEndIdentifier(std::move(rangeEndIdentifier)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         SaveAsRangeRequest::getName() const
+        utility::string_t SaveAsRangeRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void SaveAsRangeRequest::setName( ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         SaveAsRangeRequest::getRangeStartIdentifier() const
+        utility::string_t SaveAsRangeRequest::getRangeStartIdentifier() const
         {
-            return m_;
+            return m_rangeStartIdentifier;
         }
-        void SaveAsRangeRequest::setRangeStartIdentifier( ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setRangeStartIdentifier(utility::string_t rangeStartIdentifier){
+            m_rangeStartIdentifier = std::move(rangeStartIdentifier);
         }
-         SaveAsRangeRequest::getDocumentParameters() const
+        std::shared_ptr<RangeDocument> SaveAsRangeRequest::getDocumentParameters() const
         {
-            return m_;
+            return m_documentParameters;
         }
-        void SaveAsRangeRequest::setDocumentParameters( ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setDocumentParameters(std::shared_ptr<RangeDocument> documentParameters){
+            m_documentParameters = std::move(documentParameters);
         }
-        boost::optional<> SaveAsRangeRequest::getRangeEndIdentifier() const
+        boost::optional<utility::string_t> SaveAsRangeRequest::getRangeEndIdentifier() const
         {
-            return m_;
+            return m_rangeEndIdentifier;
         }
-        void SaveAsRangeRequest::setRangeEndIdentifier(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
+            m_rangeEndIdentifier = std::move(rangeEndIdentifier);
         }
-        boost::optional<> SaveAsRangeRequest::getFolder() const
+        boost::optional<utility::string_t> SaveAsRangeRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void SaveAsRangeRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> SaveAsRangeRequest::getStorage() const
+        boost::optional<utility::string_t> SaveAsRangeRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void SaveAsRangeRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> SaveAsRangeRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> SaveAsRangeRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void SaveAsRangeRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> SaveAsRangeRequest::getPassword() const
+        boost::optional<utility::string_t> SaveAsRangeRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void SaveAsRangeRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRangeRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

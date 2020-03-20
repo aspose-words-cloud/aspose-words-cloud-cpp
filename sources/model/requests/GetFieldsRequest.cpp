@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFieldsRequest::GetFieldsRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetFieldsRequest::getName() const
+        utility::string_t GetFieldsRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetFieldsRequest::setName( ){
-            m_ = std::move();
+        void GetFieldsRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetFieldsRequest::getNodePath() const
+        utility::string_t GetFieldsRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetFieldsRequest::setNodePath( ){
-            m_ = std::move();
+        void GetFieldsRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> GetFieldsRequest::getFolder() const
+        boost::optional<utility::string_t> GetFieldsRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetFieldsRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetFieldsRequest::getStorage() const
+        boost::optional<utility::string_t> GetFieldsRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetFieldsRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetFieldsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetFieldsRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetFieldsRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetFieldsRequest::getPassword() const
+        boost::optional<utility::string_t> GetFieldsRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetFieldsRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetFieldsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

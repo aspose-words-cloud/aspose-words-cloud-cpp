@@ -29,37 +29,37 @@ namespace cloud{
 namespace api{
 namespace models{
 DownloadFileRequest::DownloadFileRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t path,
+                boost::optional<utility::string_t> storageName,
+                boost::optional<utility::string_t> versionId
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_path(std::move(path)),
+            m_storageName(std::move(storageName)),
+            m_versionId(std::move(versionId))
         {
             
         }
 
-         DownloadFileRequest::getPath() const
+        utility::string_t DownloadFileRequest::getPath() const
         {
-            return m_;
+            return m_path;
         }
-        void DownloadFileRequest::setPath( ){
-            m_ = std::move();
+        void DownloadFileRequest::setPath(utility::string_t path){
+            m_path = std::move(path);
         }
-        boost::optional<> DownloadFileRequest::getStorageName() const
+        boost::optional<utility::string_t> DownloadFileRequest::getStorageName() const
         {
-            return m_;
+            return m_storageName;
         }
-        void DownloadFileRequest::setStorageName(boost::optional<> ){
-            m_ = std::move();
+        void DownloadFileRequest::setStorageName(boost::optional<utility::string_t> storageName){
+            m_storageName = std::move(storageName);
         }
-        boost::optional<> DownloadFileRequest::getVersionId() const
+        boost::optional<utility::string_t> DownloadFileRequest::getVersionId() const
         {
-            return m_;
+            return m_versionId;
         }
-        void DownloadFileRequest::setVersionId(boost::optional<> ){
-            m_ = std::move();
+        void DownloadFileRequest::setVersionId(boost::optional<utility::string_t> versionId){
+            m_versionId = std::move(versionId);
         }
 
 }

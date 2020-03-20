@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetTablesRequest::GetTablesRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetTablesRequest::getName() const
+        utility::string_t GetTablesRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetTablesRequest::setName( ){
-            m_ = std::move();
+        void GetTablesRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetTablesRequest::getNodePath() const
+        utility::string_t GetTablesRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetTablesRequest::setNodePath( ){
-            m_ = std::move();
+        void GetTablesRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> GetTablesRequest::getFolder() const
+        boost::optional<utility::string_t> GetTablesRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetTablesRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetTablesRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetTablesRequest::getStorage() const
+        boost::optional<utility::string_t> GetTablesRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetTablesRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetTablesRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetTablesRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetTablesRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetTablesRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetTablesRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetTablesRequest::getPassword() const
+        boost::optional<utility::string_t> GetTablesRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetTablesRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetTablesRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

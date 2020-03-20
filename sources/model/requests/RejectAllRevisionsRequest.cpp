@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 RejectAllRevisionsRequest::RejectAllRevisionsRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
 
-         RejectAllRevisionsRequest::getName() const
+        utility::string_t RejectAllRevisionsRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void RejectAllRevisionsRequest::setName( ){
-            m_ = std::move();
+        void RejectAllRevisionsRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> RejectAllRevisionsRequest::getFolder() const
+        boost::optional<utility::string_t> RejectAllRevisionsRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void RejectAllRevisionsRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void RejectAllRevisionsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> RejectAllRevisionsRequest::getStorage() const
+        boost::optional<utility::string_t> RejectAllRevisionsRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void RejectAllRevisionsRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void RejectAllRevisionsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> RejectAllRevisionsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> RejectAllRevisionsRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void RejectAllRevisionsRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void RejectAllRevisionsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> RejectAllRevisionsRequest::getPassword() const
+        boost::optional<utility::string_t> RejectAllRevisionsRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void RejectAllRevisionsRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void RejectAllRevisionsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> RejectAllRevisionsRequest::getDestFileName() const
+        boost::optional<utility::string_t> RejectAllRevisionsRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void RejectAllRevisionsRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void RejectAllRevisionsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
 
 }

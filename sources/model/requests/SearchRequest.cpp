@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 SearchRequest::SearchRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t pattern,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_pattern(std::move(pattern)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         SearchRequest::getName() const
+        utility::string_t SearchRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void SearchRequest::setName( ){
-            m_ = std::move();
+        void SearchRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         SearchRequest::getPattern() const
+        utility::string_t SearchRequest::getPattern() const
         {
-            return m_;
+            return m_pattern;
         }
-        void SearchRequest::setPattern( ){
-            m_ = std::move();
+        void SearchRequest::setPattern(utility::string_t pattern){
+            m_pattern = std::move(pattern);
         }
-        boost::optional<> SearchRequest::getFolder() const
+        boost::optional<utility::string_t> SearchRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void SearchRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void SearchRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> SearchRequest::getStorage() const
+        boost::optional<utility::string_t> SearchRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void SearchRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void SearchRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> SearchRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> SearchRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void SearchRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void SearchRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> SearchRequest::getPassword() const
+        boost::optional<utility::string_t> SearchRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void SearchRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void SearchRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

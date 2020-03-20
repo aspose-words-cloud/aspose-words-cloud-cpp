@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertFieldRequest::InsertFieldRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<Field> field,
+                utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime,
+                boost::optional<utility::string_t> insertBeforeNode
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_field(std::move(field)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime)),
+            m_insertBeforeNode(std::move(insertBeforeNode))
         {
             
         }
 
-         InsertFieldRequest::getName() const
+        utility::string_t InsertFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void InsertFieldRequest::setName( ){
-            m_ = std::move();
+        void InsertFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         InsertFieldRequest::getField() const
+        std::shared_ptr<Field> InsertFieldRequest::getField() const
         {
-            return m_;
+            return m_field;
         }
-        void InsertFieldRequest::setField( ){
-            m_ = std::move();
+        void InsertFieldRequest::setField(std::shared_ptr<Field> field){
+            m_field = std::move(field);
         }
-         InsertFieldRequest::getNodePath() const
+        utility::string_t InsertFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void InsertFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void InsertFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> InsertFieldRequest::getFolder() const
+        boost::optional<utility::string_t> InsertFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void InsertFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> InsertFieldRequest::getStorage() const
+        boost::optional<utility::string_t> InsertFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void InsertFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> InsertFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> InsertFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void InsertFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> InsertFieldRequest::getPassword() const
+        boost::optional<utility::string_t> InsertFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void InsertFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> InsertFieldRequest::getDestFileName() const
+        boost::optional<utility::string_t> InsertFieldRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void InsertFieldRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> InsertFieldRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> InsertFieldRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void InsertFieldRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> InsertFieldRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> InsertFieldRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void InsertFieldRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
-        boost::optional<> InsertFieldRequest::getInsertBeforeNode() const
+        boost::optional<utility::string_t> InsertFieldRequest::getInsertBeforeNode() const
         {
-            return m_;
+            return m_insertBeforeNode;
         }
-        void InsertFieldRequest::setInsertBeforeNode(boost::optional<> ){
-            m_ = std::move();
+        void InsertFieldRequest::setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode){
+            m_insertBeforeNode = std::move(insertBeforeNode);
         }
 
 }

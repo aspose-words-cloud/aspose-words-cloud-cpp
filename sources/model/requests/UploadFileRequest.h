@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef uploadFile_H
+#define uploadFile_H 
 
 #include "cpprest/details/basic_types.h"
+#include "HttpContent.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -38,21 +39,23 @@ namespace models {
 class UploadFileRequest{
     public: 
      UploadFileRequest(
-                                                  boost::optional<> 
+                std::shared_ptr<HttpContent> fileContent,
+                utility::string_t path,
+                boost::optional<utility::string_t> storageName
         );
 
-         getFileContent() const;
-        void setFileContent( );
+        std::shared_ptr<HttpContent> getFileContent() const;
+        void setFileContent(std::shared_ptr<HttpContent> fileContent);
 
-         getPath() const;
-        void setPath( );
+        utility::string_t getPath() const;
+        void setPath(utility::string_t path);
 
-        boost::optional<> getStorageName() const;
-        void setStorageName(boost::optional<> );
+        boost::optional<utility::string_t> getStorageName() const;
+        void setStorageName(boost::optional<utility::string_t> storageName);
     private:
-         m_;
-         m_;
-        boost::optional<> m_;
+        std::shared_ptr<HttpContent> m_fileContent;
+        utility::string_t m_path;
+        boost::optional<utility::string_t> m_storageName;
 };
 
 }

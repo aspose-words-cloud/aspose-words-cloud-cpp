@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef copyFolder_H
+#define copyFolder_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,25 +38,28 @@ namespace models {
 class CopyFolderRequest{
     public: 
      CopyFolderRequest(
-                                                  boost::optional<>                 boost::optional<> 
+                utility::string_t destPath,
+                utility::string_t srcPath,
+                boost::optional<utility::string_t> srcStorageName,
+                boost::optional<utility::string_t> destStorageName
         );
 
-         getDestPath() const;
-        void setDestPath( );
+        utility::string_t getDestPath() const;
+        void setDestPath(utility::string_t destPath);
 
-         getSrcPath() const;
-        void setSrcPath( );
+        utility::string_t getSrcPath() const;
+        void setSrcPath(utility::string_t srcPath);
 
-        boost::optional<> getSrcStorageName() const;
-        void setSrcStorageName(boost::optional<> );
+        boost::optional<utility::string_t> getSrcStorageName() const;
+        void setSrcStorageName(boost::optional<utility::string_t> srcStorageName);
 
-        boost::optional<> getDestStorageName() const;
-        void setDestStorageName(boost::optional<> );
+        boost::optional<utility::string_t> getDestStorageName() const;
+        void setDestStorageName(boost::optional<utility::string_t> destStorageName);
     private:
-         m_;
-         m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
+        utility::string_t m_destPath;
+        utility::string_t m_srcPath;
+        boost::optional<utility::string_t> m_srcStorageName;
+        boost::optional<utility::string_t> m_destStorageName;
 };
 
 }

@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetCommentsRequest::GetCommentsRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetCommentsRequest::getName() const
+        utility::string_t GetCommentsRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetCommentsRequest::setName( ){
-            m_ = std::move();
+        void GetCommentsRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetCommentsRequest::getFolder() const
+        boost::optional<utility::string_t> GetCommentsRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetCommentsRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetCommentsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetCommentsRequest::getStorage() const
+        boost::optional<utility::string_t> GetCommentsRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetCommentsRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetCommentsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetCommentsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetCommentsRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetCommentsRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetCommentsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetCommentsRequest::getPassword() const
+        boost::optional<utility::string_t> GetCommentsRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetCommentsRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetCommentsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

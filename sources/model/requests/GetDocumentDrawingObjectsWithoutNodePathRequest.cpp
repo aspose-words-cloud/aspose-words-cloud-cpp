@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentDrawingObjectsWithoutNodePathRequest::GetDocumentDrawingObjectsWithoutNodePathRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetDocumentDrawingObjectsWithoutNodePathRequest::getName() const
+        utility::string_t GetDocumentDrawingObjectsWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetDocumentDrawingObjectsWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectsWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetDocumentDrawingObjectsWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectsWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetDocumentDrawingObjectsWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectsWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetDocumentDrawingObjectsWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectsWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetDocumentDrawingObjectsWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectsWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetDocumentDrawingObjectsWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectsWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetDocumentDrawingObjectsWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectsWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetDocumentDrawingObjectsWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> GetDocumentDrawingObjectsWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetDocumentDrawingObjectsWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentDrawingObjectsWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef downloadFile_H
+#define downloadFile_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,21 +38,23 @@ namespace models {
 class DownloadFileRequest{
     public: 
      DownloadFileRequest(
-                                 boost::optional<>                 boost::optional<> 
+                utility::string_t path,
+                boost::optional<utility::string_t> storageName,
+                boost::optional<utility::string_t> versionId
         );
 
-         getPath() const;
-        void setPath( );
+        utility::string_t getPath() const;
+        void setPath(utility::string_t path);
 
-        boost::optional<> getStorageName() const;
-        void setStorageName(boost::optional<> );
+        boost::optional<utility::string_t> getStorageName() const;
+        void setStorageName(boost::optional<utility::string_t> storageName);
 
-        boost::optional<> getVersionId() const;
-        void setVersionId(boost::optional<> );
+        boost::optional<utility::string_t> getVersionId() const;
+        void setVersionId(boost::optional<utility::string_t> versionId);
     private:
-         m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
+        utility::string_t m_path;
+        boost::optional<utility::string_t> m_storageName;
+        boost::optional<utility::string_t> m_versionId;
 };
 
 }

@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef getDocumentFieldNamesOnline_H
+#define getDocumentFieldNamesOnline_H 
 
 #include "cpprest/details/basic_types.h"
+#include "HttpContent.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -38,17 +39,18 @@ namespace models {
 class GetDocumentFieldNamesOnlineRequest{
     public: 
      GetDocumentFieldNamesOnlineRequest(
-                                 boost::optional<> 
+                std::shared_ptr<HttpContent> _template,
+                boost::optional<bool> useNonMergeFields
         );
 
-         getTemplate() const;
-        void setTemplate( );
+        std::shared_ptr<HttpContent> getTemplate() const;
+        void setTemplate(std::shared_ptr<HttpContent> _template);
 
-        boost::optional<> getUseNonMergeFields() const;
-        void setUseNonMergeFields(boost::optional<> );
+        boost::optional<bool> getUseNonMergeFields() const;
+        void setUseNonMergeFields(boost::optional<bool> useNonMergeFields);
     private:
-         m_;
-        boost::optional<> m_;
+        std::shared_ptr<HttpContent> m__template;
+        boost::optional<bool> m_useNonMergeFields;
 };
 
 }

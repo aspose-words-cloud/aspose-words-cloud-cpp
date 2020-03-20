@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 AppendDocumentRequest::AppendDocumentRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<DocumentEntryList> documentList,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_documentList(std::move(documentList)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         AppendDocumentRequest::getName() const
+        utility::string_t AppendDocumentRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void AppendDocumentRequest::setName( ){
-            m_ = std::move();
+        void AppendDocumentRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         AppendDocumentRequest::getDocumentList() const
+        std::shared_ptr<DocumentEntryList> AppendDocumentRequest::getDocumentList() const
         {
-            return m_;
+            return m_documentList;
         }
-        void AppendDocumentRequest::setDocumentList( ){
-            m_ = std::move();
+        void AppendDocumentRequest::setDocumentList(std::shared_ptr<DocumentEntryList> documentList){
+            m_documentList = std::move(documentList);
         }
-        boost::optional<> AppendDocumentRequest::getFolder() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void AppendDocumentRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> AppendDocumentRequest::getStorage() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void AppendDocumentRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> AppendDocumentRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void AppendDocumentRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> AppendDocumentRequest::getPassword() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void AppendDocumentRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> AppendDocumentRequest::getDestFileName() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void AppendDocumentRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> AppendDocumentRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void AppendDocumentRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> AppendDocumentRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> AppendDocumentRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void AppendDocumentRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void AppendDocumentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetTableRowRequest::GetTableRowRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t tablePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_tablePath(std::move(tablePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetTableRowRequest::getName() const
+        utility::string_t GetTableRowRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetTableRowRequest::setName( ){
-            m_ = std::move();
+        void GetTableRowRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetTableRowRequest::getTablePath() const
+        utility::string_t GetTableRowRequest::getTablePath() const
         {
-            return m_;
+            return m_tablePath;
         }
-        void GetTableRowRequest::setTablePath( ){
-            m_ = std::move();
+        void GetTableRowRequest::setTablePath(utility::string_t tablePath){
+            m_tablePath = std::move(tablePath);
         }
-         GetTableRowRequest::getIndex() const
+        int32_t GetTableRowRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetTableRowRequest::setIndex( ){
-            m_ = std::move();
+        void GetTableRowRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetTableRowRequest::getFolder() const
+        boost::optional<utility::string_t> GetTableRowRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetTableRowRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetTableRowRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetTableRowRequest::getStorage() const
+        boost::optional<utility::string_t> GetTableRowRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetTableRowRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetTableRowRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetTableRowRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetTableRowRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetTableRowRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetTableRowRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetTableRowRequest::getPassword() const
+        boost::optional<utility::string_t> GetTableRowRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetTableRowRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetTableRowRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

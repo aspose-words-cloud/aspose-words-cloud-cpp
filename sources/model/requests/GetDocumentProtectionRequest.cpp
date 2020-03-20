@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentProtectionRequest::GetDocumentProtectionRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetDocumentProtectionRequest::getName() const
+        utility::string_t GetDocumentProtectionRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetDocumentProtectionRequest::setName( ){
-            m_ = std::move();
+        void GetDocumentProtectionRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetDocumentProtectionRequest::getFolder() const
+        boost::optional<utility::string_t> GetDocumentProtectionRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetDocumentProtectionRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentProtectionRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetDocumentProtectionRequest::getStorage() const
+        boost::optional<utility::string_t> GetDocumentProtectionRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetDocumentProtectionRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentProtectionRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetDocumentProtectionRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetDocumentProtectionRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetDocumentProtectionRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentProtectionRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetDocumentProtectionRequest::getPassword() const
+        boost::optional<utility::string_t> GetDocumentProtectionRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetDocumentProtectionRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentProtectionRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

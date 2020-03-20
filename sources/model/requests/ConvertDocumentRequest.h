@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef convertDocument_H
+#define convertDocument_H 
 
 #include "cpprest/details/basic_types.h"
+#include "HttpContent.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -38,33 +39,38 @@ namespace models {
 class ConvertDocumentRequest{
     public: 
      ConvertDocumentRequest(
-                                                  boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
+                std::shared_ptr<HttpContent> document,
+                utility::string_t format,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> outPath,
+                boost::optional<utility::string_t> fileNameFieldValue,
+                boost::optional<utility::string_t> fontsLocation
         );
 
-         getDocument() const;
-        void setDocument( );
+        std::shared_ptr<HttpContent> getDocument() const;
+        void setDocument(std::shared_ptr<HttpContent> document);
 
-         getFormat() const;
-        void setFormat( );
+        utility::string_t getFormat() const;
+        void setFormat(utility::string_t format);
 
-        boost::optional<> getStorage() const;
-        void setStorage(boost::optional<> );
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
 
-        boost::optional<> getOutPath() const;
-        void setOutPath(boost::optional<> );
+        boost::optional<utility::string_t> getOutPath() const;
+        void setOutPath(boost::optional<utility::string_t> outPath);
 
-        boost::optional<> getFileNameFieldValue() const;
-        void setFileNameFieldValue(boost::optional<> );
+        boost::optional<utility::string_t> getFileNameFieldValue() const;
+        void setFileNameFieldValue(boost::optional<utility::string_t> fileNameFieldValue);
 
-        boost::optional<> getFontsLocation() const;
-        void setFontsLocation(boost::optional<> );
+        boost::optional<utility::string_t> getFontsLocation() const;
+        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
     private:
-         m_;
-         m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
+        std::shared_ptr<HttpContent> m_document;
+        utility::string_t m_format;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_outPath;
+        boost::optional<utility::string_t> m_fileNameFieldValue;
+        boost::optional<utility::string_t> m_fontsLocation;
 };
 
 }

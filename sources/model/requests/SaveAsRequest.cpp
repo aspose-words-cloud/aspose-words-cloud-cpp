@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 SaveAsRequest::SaveAsRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<SaveOptionsData> saveOptionsData,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_saveOptionsData(std::move(saveOptionsData)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         SaveAsRequest::getName() const
+        utility::string_t SaveAsRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void SaveAsRequest::setName( ){
-            m_ = std::move();
+        void SaveAsRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         SaveAsRequest::getSaveOptionsData() const
+        std::shared_ptr<SaveOptionsData> SaveAsRequest::getSaveOptionsData() const
         {
-            return m_;
+            return m_saveOptionsData;
         }
-        void SaveAsRequest::setSaveOptionsData( ){
-            m_ = std::move();
+        void SaveAsRequest::setSaveOptionsData(std::shared_ptr<SaveOptionsData> saveOptionsData){
+            m_saveOptionsData = std::move(saveOptionsData);
         }
-        boost::optional<> SaveAsRequest::getFolder() const
+        boost::optional<utility::string_t> SaveAsRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void SaveAsRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> SaveAsRequest::getStorage() const
+        boost::optional<utility::string_t> SaveAsRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void SaveAsRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> SaveAsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> SaveAsRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void SaveAsRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> SaveAsRequest::getPassword() const
+        boost::optional<utility::string_t> SaveAsRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void SaveAsRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> SaveAsRequest::getFontsLocation() const
+        boost::optional<utility::string_t> SaveAsRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void SaveAsRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void SaveAsRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

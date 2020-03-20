@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteWatermarkRequest::DeleteWatermarkRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         DeleteWatermarkRequest::getName() const
+        utility::string_t DeleteWatermarkRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void DeleteWatermarkRequest::setName( ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> DeleteWatermarkRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void DeleteWatermarkRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> DeleteWatermarkRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void DeleteWatermarkRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> DeleteWatermarkRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void DeleteWatermarkRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> DeleteWatermarkRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void DeleteWatermarkRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> DeleteWatermarkRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void DeleteWatermarkRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> DeleteWatermarkRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void DeleteWatermarkRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> DeleteWatermarkRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> DeleteWatermarkRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void DeleteWatermarkRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void DeleteWatermarkRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

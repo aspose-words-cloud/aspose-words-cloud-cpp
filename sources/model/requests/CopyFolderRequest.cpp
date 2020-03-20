@@ -29,46 +29,46 @@ namespace cloud{
 namespace api{
 namespace models{
 CopyFolderRequest::CopyFolderRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t destPath,
+                utility::string_t srcPath,
+                boost::optional<utility::string_t> srcStorageName,
+                boost::optional<utility::string_t> destStorageName
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_destPath(std::move(destPath)),
+            m_srcPath(std::move(srcPath)),
+            m_srcStorageName(std::move(srcStorageName)),
+            m_destStorageName(std::move(destStorageName))
         {
             
         }
 
-         CopyFolderRequest::getDestPath() const
+        utility::string_t CopyFolderRequest::getDestPath() const
         {
-            return m_;
+            return m_destPath;
         }
-        void CopyFolderRequest::setDestPath( ){
-            m_ = std::move();
+        void CopyFolderRequest::setDestPath(utility::string_t destPath){
+            m_destPath = std::move(destPath);
         }
-         CopyFolderRequest::getSrcPath() const
+        utility::string_t CopyFolderRequest::getSrcPath() const
         {
-            return m_;
+            return m_srcPath;
         }
-        void CopyFolderRequest::setSrcPath( ){
-            m_ = std::move();
+        void CopyFolderRequest::setSrcPath(utility::string_t srcPath){
+            m_srcPath = std::move(srcPath);
         }
-        boost::optional<> CopyFolderRequest::getSrcStorageName() const
+        boost::optional<utility::string_t> CopyFolderRequest::getSrcStorageName() const
         {
-            return m_;
+            return m_srcStorageName;
         }
-        void CopyFolderRequest::setSrcStorageName(boost::optional<> ){
-            m_ = std::move();
+        void CopyFolderRequest::setSrcStorageName(boost::optional<utility::string_t> srcStorageName){
+            m_srcStorageName = std::move(srcStorageName);
         }
-        boost::optional<> CopyFolderRequest::getDestStorageName() const
+        boost::optional<utility::string_t> CopyFolderRequest::getDestStorageName() const
         {
-            return m_;
+            return m_destStorageName;
         }
-        void CopyFolderRequest::setDestStorageName(boost::optional<> ){
-            m_ = std::move();
+        void CopyFolderRequest::setDestStorageName(boost::optional<utility::string_t> destStorageName){
+            m_destStorageName = std::move(destStorageName);
         }
 
 }

@@ -29,28 +29,28 @@ namespace cloud{
 namespace api{
 namespace models{
 ClassifyRequest::ClassifyRequest(
-         
-                boost::optional<> 
+        utility::string_t text,
+                boost::optional<utility::string_t> bestClassesCount
         ) : 
-            m_(std::move())
-            m_(std::move())
+            m_text(std::move(text)),
+            m_bestClassesCount(std::move(bestClassesCount))
         {
             
         }
 
-         ClassifyRequest::getText() const
+        utility::string_t ClassifyRequest::getText() const
         {
-            return m_;
+            return m_text;
         }
-        void ClassifyRequest::setText( ){
-            m_ = std::move();
+        void ClassifyRequest::setText(utility::string_t text){
+            m_text = std::move(text);
         }
-        boost::optional<> ClassifyRequest::getBestClassesCount() const
+        boost::optional<utility::string_t> ClassifyRequest::getBestClassesCount() const
         {
-            return m_;
+            return m_bestClassesCount;
         }
-        void ClassifyRequest::setBestClassesCount(boost::optional<> ){
-            m_ = std::move();
+        void ClassifyRequest::setBestClassesCount(boost::optional<utility::string_t> bestClassesCount){
+            m_bestClassesCount = std::move(bestClassesCount);
         }
 
 }

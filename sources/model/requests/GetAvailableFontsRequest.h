@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef getAvailableFonts_H
+#define getAvailableFonts_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,13 +38,13 @@ namespace models {
 class GetAvailableFontsRequest{
     public: 
     explicit GetAvailableFontsRequest(
-                boost::optional<> 
+                boost::optional<utility::string_t> fontsLocation
         );
 
-        boost::optional<> getFontsLocation() const;
-        void setFontsLocation(boost::optional<> );
+        boost::optional<utility::string_t> getFontsLocation() const;
+        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
     private:
-        boost::optional<> m_;
+        boost::optional<utility::string_t> m_fontsLocation;
 };
 
 }

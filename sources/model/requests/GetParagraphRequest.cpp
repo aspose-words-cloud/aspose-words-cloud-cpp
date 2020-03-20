@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetParagraphRequest::GetParagraphRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetParagraphRequest::getName() const
+        utility::string_t GetParagraphRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetParagraphRequest::setName( ){
-            m_ = std::move();
+        void GetParagraphRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetParagraphRequest::getNodePath() const
+        utility::string_t GetParagraphRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetParagraphRequest::setNodePath( ){
-            m_ = std::move();
+        void GetParagraphRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         GetParagraphRequest::getIndex() const
+        int32_t GetParagraphRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetParagraphRequest::setIndex( ){
-            m_ = std::move();
+        void GetParagraphRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetParagraphRequest::getFolder() const
+        boost::optional<utility::string_t> GetParagraphRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetParagraphRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetParagraphRequest::getStorage() const
+        boost::optional<utility::string_t> GetParagraphRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetParagraphRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetParagraphRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetParagraphRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetParagraphRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetParagraphRequest::getPassword() const
+        boost::optional<utility::string_t> GetParagraphRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetParagraphRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

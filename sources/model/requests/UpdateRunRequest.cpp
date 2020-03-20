@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateRunRequest::UpdateRunRequest(
-         
-                 
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<Run> run,
+                utility::string_t paragraphPath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_run(std::move(run)),
+            m_paragraphPath(std::move(paragraphPath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         UpdateRunRequest::getName() const
+        utility::string_t UpdateRunRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UpdateRunRequest::setName( ){
-            m_ = std::move();
+        void UpdateRunRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UpdateRunRequest::getRun() const
+        std::shared_ptr<Run> UpdateRunRequest::getRun() const
         {
-            return m_;
+            return m_run;
         }
-        void UpdateRunRequest::setRun( ){
-            m_ = std::move();
+        void UpdateRunRequest::setRun(std::shared_ptr<Run> run){
+            m_run = std::move(run);
         }
-         UpdateRunRequest::getParagraphPath() const
+        utility::string_t UpdateRunRequest::getParagraphPath() const
         {
-            return m_;
+            return m_paragraphPath;
         }
-        void UpdateRunRequest::setParagraphPath( ){
-            m_ = std::move();
+        void UpdateRunRequest::setParagraphPath(utility::string_t paragraphPath){
+            m_paragraphPath = std::move(paragraphPath);
         }
-         UpdateRunRequest::getIndex() const
+        int32_t UpdateRunRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void UpdateRunRequest::setIndex( ){
-            m_ = std::move();
+        void UpdateRunRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> UpdateRunRequest::getFolder() const
+        boost::optional<utility::string_t> UpdateRunRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UpdateRunRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UpdateRunRequest::getStorage() const
+        boost::optional<utility::string_t> UpdateRunRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UpdateRunRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UpdateRunRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UpdateRunRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UpdateRunRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UpdateRunRequest::getPassword() const
+        boost::optional<utility::string_t> UpdateRunRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UpdateRunRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UpdateRunRequest::getDestFileName() const
+        boost::optional<utility::string_t> UpdateRunRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UpdateRunRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> UpdateRunRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> UpdateRunRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void UpdateRunRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> UpdateRunRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> UpdateRunRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void UpdateRunRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void UpdateRunRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 UnprotectDocumentRequest::UnprotectDocumentRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<ProtectionRequest> protectionRequest,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_protectionRequest(std::move(protectionRequest)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
 
-         UnprotectDocumentRequest::getName() const
+        utility::string_t UnprotectDocumentRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UnprotectDocumentRequest::setName( ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UnprotectDocumentRequest::getProtectionRequest() const
+        std::shared_ptr<ProtectionRequest> UnprotectDocumentRequest::getProtectionRequest() const
         {
-            return m_;
+            return m_protectionRequest;
         }
-        void UnprotectDocumentRequest::setProtectionRequest( ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setProtectionRequest(std::shared_ptr<ProtectionRequest> protectionRequest){
+            m_protectionRequest = std::move(protectionRequest);
         }
-        boost::optional<> UnprotectDocumentRequest::getFolder() const
+        boost::optional<utility::string_t> UnprotectDocumentRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UnprotectDocumentRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UnprotectDocumentRequest::getStorage() const
+        boost::optional<utility::string_t> UnprotectDocumentRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UnprotectDocumentRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UnprotectDocumentRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UnprotectDocumentRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UnprotectDocumentRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UnprotectDocumentRequest::getPassword() const
+        boost::optional<utility::string_t> UnprotectDocumentRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UnprotectDocumentRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UnprotectDocumentRequest::getDestFileName() const
+        boost::optional<utility::string_t> UnprotectDocumentRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UnprotectDocumentRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UnprotectDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
 
 }

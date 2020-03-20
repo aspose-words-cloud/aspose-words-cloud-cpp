@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef classifyDocument_H
+#define classifyDocument_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,37 +38,43 @@ namespace models {
 class ClassifyDocumentRequest{
     public: 
      ClassifyDocumentRequest(
-                                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
+                utility::string_t documentName,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> bestClassesCount,
+                boost::optional<utility::string_t> taxonomy
         );
 
-         getDocumentName() const;
-        void setDocumentName( );
+        utility::string_t getDocumentName() const;
+        void setDocumentName(utility::string_t documentName);
 
-        boost::optional<> getFolder() const;
-        void setFolder(boost::optional<> );
+        boost::optional<utility::string_t> getFolder() const;
+        void setFolder(boost::optional<utility::string_t> folder);
 
-        boost::optional<> getStorage() const;
-        void setStorage(boost::optional<> );
+        boost::optional<utility::string_t> getStorage() const;
+        void setStorage(boost::optional<utility::string_t> storage);
 
-        boost::optional<> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<> );
+        boost::optional<utility::string_t> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
 
-        boost::optional<> getPassword() const;
-        void setPassword(boost::optional<> );
+        boost::optional<utility::string_t> getPassword() const;
+        void setPassword(boost::optional<utility::string_t> password);
 
-        boost::optional<> getBestClassesCount() const;
-        void setBestClassesCount(boost::optional<> );
+        boost::optional<utility::string_t> getBestClassesCount() const;
+        void setBestClassesCount(boost::optional<utility::string_t> bestClassesCount);
 
-        boost::optional<> getTaxonomy() const;
-        void setTaxonomy(boost::optional<> );
+        boost::optional<utility::string_t> getTaxonomy() const;
+        void setTaxonomy(boost::optional<utility::string_t> taxonomy);
     private:
-         m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
-        boost::optional<> m_;
+        utility::string_t m_documentName;
+        boost::optional<utility::string_t> m_folder;
+        boost::optional<utility::string_t> m_storage;
+        boost::optional<utility::string_t> m_loadEncoding;
+        boost::optional<utility::string_t> m_password;
+        boost::optional<utility::string_t> m_bestClassesCount;
+        boost::optional<utility::string_t> m_taxonomy;
 };
 
 }

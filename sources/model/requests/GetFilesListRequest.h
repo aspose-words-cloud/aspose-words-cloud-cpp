@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef getFilesList_H
+#define getFilesList_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,17 +38,18 @@ namespace models {
 class GetFilesListRequest{
     public: 
      GetFilesListRequest(
-                                 boost::optional<> 
+                utility::string_t path,
+                boost::optional<utility::string_t> storageName
         );
 
-         getPath() const;
-        void setPath( );
+        utility::string_t getPath() const;
+        void setPath(utility::string_t path);
 
-        boost::optional<> getStorageName() const;
-        void setStorageName(boost::optional<> );
+        boost::optional<utility::string_t> getStorageName() const;
+        void setStorageName(boost::optional<utility::string_t> storageName);
     private:
-         m_;
-        boost::optional<> m_;
+        utility::string_t m_path;
+        boost::optional<utility::string_t> m_storageName;
 };
 
 }

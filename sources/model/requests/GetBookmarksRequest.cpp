@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetBookmarksRequest::GetBookmarksRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetBookmarksRequest::getName() const
+        utility::string_t GetBookmarksRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetBookmarksRequest::setName( ){
-            m_ = std::move();
+        void GetBookmarksRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetBookmarksRequest::getFolder() const
+        boost::optional<utility::string_t> GetBookmarksRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetBookmarksRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetBookmarksRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetBookmarksRequest::getStorage() const
+        boost::optional<utility::string_t> GetBookmarksRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetBookmarksRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetBookmarksRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetBookmarksRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetBookmarksRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetBookmarksRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetBookmarksRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetBookmarksRequest::getPassword() const
+        boost::optional<utility::string_t> GetBookmarksRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetBookmarksRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetBookmarksRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

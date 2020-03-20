@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateCommentRequest::UpdateCommentRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                int32_t commentIndex,
+                std::shared_ptr<Comment> comment,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_commentIndex(std::move(commentIndex)),
+            m_comment(std::move(comment)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         UpdateCommentRequest::getName() const
+        utility::string_t UpdateCommentRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UpdateCommentRequest::setName( ){
-            m_ = std::move();
+        void UpdateCommentRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UpdateCommentRequest::getCommentIndex() const
+        int32_t UpdateCommentRequest::getCommentIndex() const
         {
-            return m_;
+            return m_commentIndex;
         }
-        void UpdateCommentRequest::setCommentIndex( ){
-            m_ = std::move();
+        void UpdateCommentRequest::setCommentIndex(int32_t commentIndex){
+            m_commentIndex = std::move(commentIndex);
         }
-         UpdateCommentRequest::getComment() const
+        std::shared_ptr<Comment> UpdateCommentRequest::getComment() const
         {
-            return m_;
+            return m_comment;
         }
-        void UpdateCommentRequest::setComment( ){
-            m_ = std::move();
+        void UpdateCommentRequest::setComment(std::shared_ptr<Comment> comment){
+            m_comment = std::move(comment);
         }
-        boost::optional<> UpdateCommentRequest::getFolder() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UpdateCommentRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UpdateCommentRequest::getStorage() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UpdateCommentRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UpdateCommentRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UpdateCommentRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UpdateCommentRequest::getPassword() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UpdateCommentRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UpdateCommentRequest::getDestFileName() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UpdateCommentRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> UpdateCommentRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void UpdateCommentRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> UpdateCommentRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> UpdateCommentRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void UpdateCommentRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void UpdateCommentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

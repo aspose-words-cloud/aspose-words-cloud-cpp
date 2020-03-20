@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFormFieldWithoutNodePathRequest::GetFormFieldWithoutNodePathRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetFormFieldWithoutNodePathRequest::getName() const
+        utility::string_t GetFormFieldWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetFormFieldWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void GetFormFieldWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetFormFieldWithoutNodePathRequest::getIndex() const
+        int32_t GetFormFieldWithoutNodePathRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetFormFieldWithoutNodePathRequest::setIndex( ){
-            m_ = std::move();
+        void GetFormFieldWithoutNodePathRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetFormFieldWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetFormFieldWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetFormFieldWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetFormFieldWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetFormFieldWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetFormFieldWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetFormFieldWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetFormFieldWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

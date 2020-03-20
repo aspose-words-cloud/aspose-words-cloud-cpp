@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFootnotesRequest::GetFootnotesRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetFootnotesRequest::getName() const
+        utility::string_t GetFootnotesRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetFootnotesRequest::setName( ){
-            m_ = std::move();
+        void GetFootnotesRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetFootnotesRequest::getNodePath() const
+        utility::string_t GetFootnotesRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void GetFootnotesRequest::setNodePath( ){
-            m_ = std::move();
+        void GetFootnotesRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> GetFootnotesRequest::getFolder() const
+        boost::optional<utility::string_t> GetFootnotesRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetFootnotesRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetFootnotesRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetFootnotesRequest::getStorage() const
+        boost::optional<utility::string_t> GetFootnotesRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetFootnotesRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetFootnotesRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetFootnotesRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetFootnotesRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetFootnotesRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetFootnotesRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetFootnotesRequest::getPassword() const
+        boost::optional<utility::string_t> GetFootnotesRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetFootnotesRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetFootnotesRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

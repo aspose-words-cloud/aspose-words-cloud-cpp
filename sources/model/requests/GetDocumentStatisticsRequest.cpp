@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentStatisticsRequest::GetDocumentStatisticsRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<bool> includeComments,
+                boost::optional<bool> includeFootnotes,
+                boost::optional<bool> includeTextInShapes
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_includeComments(std::move(includeComments)),
+            m_includeFootnotes(std::move(includeFootnotes)),
+            m_includeTextInShapes(std::move(includeTextInShapes))
         {
             
         }
 
-         GetDocumentStatisticsRequest::getName() const
+        utility::string_t GetDocumentStatisticsRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetDocumentStatisticsRequest::setName( ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getFolder() const
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetDocumentStatisticsRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getStorage() const
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetDocumentStatisticsRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetDocumentStatisticsRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getPassword() const
+        boost::optional<utility::string_t> GetDocumentStatisticsRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetDocumentStatisticsRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getIncludeComments() const
+        boost::optional<bool> GetDocumentStatisticsRequest::getIncludeComments() const
         {
-            return m_;
+            return m_includeComments;
         }
-        void GetDocumentStatisticsRequest::setIncludeComments(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setIncludeComments(boost::optional<bool> includeComments){
+            m_includeComments = std::move(includeComments);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getIncludeFootnotes() const
+        boost::optional<bool> GetDocumentStatisticsRequest::getIncludeFootnotes() const
         {
-            return m_;
+            return m_includeFootnotes;
         }
-        void GetDocumentStatisticsRequest::setIncludeFootnotes(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setIncludeFootnotes(boost::optional<bool> includeFootnotes){
+            m_includeFootnotes = std::move(includeFootnotes);
         }
-        boost::optional<> GetDocumentStatisticsRequest::getIncludeTextInShapes() const
+        boost::optional<bool> GetDocumentStatisticsRequest::getIncludeTextInShapes() const
         {
-            return m_;
+            return m_includeTextInShapes;
         }
-        void GetDocumentStatisticsRequest::setIncludeTextInShapes(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentStatisticsRequest::setIncludeTextInShapes(boost::optional<bool> includeTextInShapes){
+            m_includeTextInShapes = std::move(includeTextInShapes);
         }
 
 }

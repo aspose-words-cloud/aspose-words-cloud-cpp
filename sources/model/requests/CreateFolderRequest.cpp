@@ -29,28 +29,28 @@ namespace cloud{
 namespace api{
 namespace models{
 CreateFolderRequest::CreateFolderRequest(
-         
-                boost::optional<> 
+        utility::string_t path,
+                boost::optional<utility::string_t> storageName
         ) : 
-            m_(std::move())
-            m_(std::move())
+            m_path(std::move(path)),
+            m_storageName(std::move(storageName))
         {
             
         }
 
-         CreateFolderRequest::getPath() const
+        utility::string_t CreateFolderRequest::getPath() const
         {
-            return m_;
+            return m_path;
         }
-        void CreateFolderRequest::setPath( ){
-            m_ = std::move();
+        void CreateFolderRequest::setPath(utility::string_t path){
+            m_path = std::move(path);
         }
-        boost::optional<> CreateFolderRequest::getStorageName() const
+        boost::optional<utility::string_t> CreateFolderRequest::getStorageName() const
         {
-            return m_;
+            return m_storageName;
         }
-        void CreateFolderRequest::setStorageName(boost::optional<> ){
-            m_ = std::move();
+        void CreateFolderRequest::setStorageName(boost::optional<utility::string_t> storageName){
+            m_storageName = std::move(storageName);
         }
 
 }

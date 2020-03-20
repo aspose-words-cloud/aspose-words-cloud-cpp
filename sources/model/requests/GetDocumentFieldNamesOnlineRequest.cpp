@@ -29,28 +29,28 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentFieldNamesOnlineRequest::GetDocumentFieldNamesOnlineRequest(
-         
-                boost::optional<> 
+        std::shared_ptr<HttpContent> _template,
+                boost::optional<bool> useNonMergeFields
         ) : 
-            m_(std::move())
-            m_(std::move())
+            m__template(std::move(_template)),
+            m_useNonMergeFields(std::move(useNonMergeFields))
         {
             
         }
 
-         GetDocumentFieldNamesOnlineRequest::getTemplate() const
+        std::shared_ptr<HttpContent> GetDocumentFieldNamesOnlineRequest::getTemplate() const
         {
-            return m_;
+            return m__template;
         }
-        void GetDocumentFieldNamesOnlineRequest::setTemplate( ){
-            m_ = std::move();
+        void GetDocumentFieldNamesOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template){
+            m__template = std::move(_template);
         }
-        boost::optional<> GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const
+        boost::optional<bool> GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const
         {
-            return m_;
+            return m_useNonMergeFields;
         }
-        void GetDocumentFieldNamesOnlineRequest::setUseNonMergeFields(boost::optional<> ){
-            m_ = std::move();
+        void GetDocumentFieldNamesOnlineRequest::setUseNonMergeFields(boost::optional<bool> useNonMergeFields){
+            m_useNonMergeFields = std::move(useNonMergeFields);
         }
 
 }

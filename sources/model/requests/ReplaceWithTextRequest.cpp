@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 ReplaceWithTextRequest::ReplaceWithTextRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t rangeStartIdentifier,
+                std::shared_ptr<ReplaceRange> rangeText,
+                boost::optional<utility::string_t> rangeEndIdentifier,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_rangeStartIdentifier(std::move(rangeStartIdentifier)),
+            m_rangeText(std::move(rangeText)),
+            m_rangeEndIdentifier(std::move(rangeEndIdentifier)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName))
         {
             
         }
 
-         ReplaceWithTextRequest::getName() const
+        utility::string_t ReplaceWithTextRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void ReplaceWithTextRequest::setName( ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         ReplaceWithTextRequest::getRangeStartIdentifier() const
+        utility::string_t ReplaceWithTextRequest::getRangeStartIdentifier() const
         {
-            return m_;
+            return m_rangeStartIdentifier;
         }
-        void ReplaceWithTextRequest::setRangeStartIdentifier( ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setRangeStartIdentifier(utility::string_t rangeStartIdentifier){
+            m_rangeStartIdentifier = std::move(rangeStartIdentifier);
         }
-         ReplaceWithTextRequest::getRangeText() const
+        std::shared_ptr<ReplaceRange> ReplaceWithTextRequest::getRangeText() const
         {
-            return m_;
+            return m_rangeText;
         }
-        void ReplaceWithTextRequest::setRangeText( ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setRangeText(std::shared_ptr<ReplaceRange> rangeText){
+            m_rangeText = std::move(rangeText);
         }
-        boost::optional<> ReplaceWithTextRequest::getRangeEndIdentifier() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getRangeEndIdentifier() const
         {
-            return m_;
+            return m_rangeEndIdentifier;
         }
-        void ReplaceWithTextRequest::setRangeEndIdentifier(boost::optional<> ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
+            m_rangeEndIdentifier = std::move(rangeEndIdentifier);
         }
-        boost::optional<> ReplaceWithTextRequest::getFolder() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void ReplaceWithTextRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> ReplaceWithTextRequest::getStorage() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void ReplaceWithTextRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> ReplaceWithTextRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void ReplaceWithTextRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> ReplaceWithTextRequest::getPassword() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void ReplaceWithTextRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> ReplaceWithTextRequest::getDestFileName() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void ReplaceWithTextRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void ReplaceWithTextRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
 
 }

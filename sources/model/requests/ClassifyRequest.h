@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef _H
-#define _H 
+#ifndef classify_H
+#define classify_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,17 +38,18 @@ namespace models {
 class ClassifyRequest{
     public: 
      ClassifyRequest(
-                                 boost::optional<> 
+                utility::string_t text,
+                boost::optional<utility::string_t> bestClassesCount
         );
 
-         getText() const;
-        void setText( );
+        utility::string_t getText() const;
+        void setText(utility::string_t text);
 
-        boost::optional<> getBestClassesCount() const;
-        void setBestClassesCount(boost::optional<> );
+        boost::optional<utility::string_t> getBestClassesCount() const;
+        void setBestClassesCount(boost::optional<utility::string_t> bestClassesCount);
     private:
-         m_;
-        boost::optional<> m_;
+        utility::string_t m_text;
+        boost::optional<utility::string_t> m_bestClassesCount;
 };
 
 }

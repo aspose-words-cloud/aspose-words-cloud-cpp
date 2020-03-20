@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFormFieldsWithoutNodePathRequest::GetFormFieldsWithoutNodePathRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetFormFieldsWithoutNodePathRequest::getName() const
+        utility::string_t GetFormFieldsWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetFormFieldsWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void GetFormFieldsWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> GetFormFieldsWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> GetFormFieldsWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetFormFieldsWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldsWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetFormFieldsWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> GetFormFieldsWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetFormFieldsWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldsWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetFormFieldsWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetFormFieldsWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetFormFieldsWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldsWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetFormFieldsWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> GetFormFieldsWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetFormFieldsWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetFormFieldsWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertTableRequest::InsertTableRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+        std::shared_ptr<TableInsert> table,
+        utility::string_t nodePath,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_table(std::move(table)),
+            m_nodePath(std::move(nodePath)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         InsertTableRequest::getName() const
+        utility::string_t InsertTableRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void InsertTableRequest::setName( ){
-            m_ = std::move();
+        void InsertTableRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         InsertTableRequest::getTable() const
+        std::shared_ptr<TableInsert> InsertTableRequest::getTable() const
         {
-            return m_;
+            return m_table;
         }
-        void InsertTableRequest::setTable( ){
-            m_ = std::move();
+        void InsertTableRequest::setTable(std::shared_ptr<TableInsert> table){
+            m_table = std::move(table);
         }
-         InsertTableRequest::getNodePath() const
+        utility::string_t InsertTableRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void InsertTableRequest::setNodePath( ){
-            m_ = std::move();
+        void InsertTableRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-        boost::optional<> InsertTableRequest::getFolder() const
+        boost::optional<utility::string_t> InsertTableRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void InsertTableRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> InsertTableRequest::getStorage() const
+        boost::optional<utility::string_t> InsertTableRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void InsertTableRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> InsertTableRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> InsertTableRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void InsertTableRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> InsertTableRequest::getPassword() const
+        boost::optional<utility::string_t> InsertTableRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void InsertTableRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> InsertTableRequest::getDestFileName() const
+        boost::optional<utility::string_t> InsertTableRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void InsertTableRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> InsertTableRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> InsertTableRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void InsertTableRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> InsertTableRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> InsertTableRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void InsertTableRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void InsertTableRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

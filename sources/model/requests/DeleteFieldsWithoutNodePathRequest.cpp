@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteFieldsWithoutNodePathRequest::DeleteFieldsWithoutNodePathRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         DeleteFieldsWithoutNodePathRequest::getName() const
+        utility::string_t DeleteFieldsWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void DeleteFieldsWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void DeleteFieldsWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void DeleteFieldsWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void DeleteFieldsWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void DeleteFieldsWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void DeleteFieldsWithoutNodePathRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void DeleteFieldsWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> DeleteFieldsWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> DeleteFieldsWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void DeleteFieldsWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFieldsWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

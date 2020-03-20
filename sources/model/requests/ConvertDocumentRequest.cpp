@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 ConvertDocumentRequest::ConvertDocumentRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        std::shared_ptr<HttpContent> document,
+                utility::string_t format,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> outPath,
+                boost::optional<utility::string_t> fileNameFieldValue,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_document(std::move(document)),
+            m_format(std::move(format)),
+            m_storage(std::move(storage)),
+            m_outPath(std::move(outPath)),
+            m_fileNameFieldValue(std::move(fileNameFieldValue)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         ConvertDocumentRequest::getDocument() const
+        std::shared_ptr<HttpContent> ConvertDocumentRequest::getDocument() const
         {
-            return m_;
+            return m_document;
         }
-        void ConvertDocumentRequest::setDocument( ){
-            m_ = std::move();
+        void ConvertDocumentRequest::setDocument(std::shared_ptr<HttpContent> document){
+            m_document = std::move(document);
         }
-         ConvertDocumentRequest::getFormat() const
+        utility::string_t ConvertDocumentRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void ConvertDocumentRequest::setFormat( ){
-            m_ = std::move();
+        void ConvertDocumentRequest::setFormat(utility::string_t format){
+            m_format = std::move(format);
         }
-        boost::optional<> ConvertDocumentRequest::getStorage() const
+        boost::optional<utility::string_t> ConvertDocumentRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void ConvertDocumentRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void ConvertDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> ConvertDocumentRequest::getOutPath() const
+        boost::optional<utility::string_t> ConvertDocumentRequest::getOutPath() const
         {
-            return m_;
+            return m_outPath;
         }
-        void ConvertDocumentRequest::setOutPath(boost::optional<> ){
-            m_ = std::move();
+        void ConvertDocumentRequest::setOutPath(boost::optional<utility::string_t> outPath){
+            m_outPath = std::move(outPath);
         }
-        boost::optional<> ConvertDocumentRequest::getFileNameFieldValue() const
+        boost::optional<utility::string_t> ConvertDocumentRequest::getFileNameFieldValue() const
         {
-            return m_;
+            return m_fileNameFieldValue;
         }
-        void ConvertDocumentRequest::setFileNameFieldValue(boost::optional<> ){
-            m_ = std::move();
+        void ConvertDocumentRequest::setFileNameFieldValue(boost::optional<utility::string_t> fileNameFieldValue){
+            m_fileNameFieldValue = std::move(fileNameFieldValue);
         }
-        boost::optional<> ConvertDocumentRequest::getFontsLocation() const
+        boost::optional<utility::string_t> ConvertDocumentRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void ConvertDocumentRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void ConvertDocumentRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetParagraphFormatWithoutNodePathRequest::GetParagraphFormatWithoutNodePathRequest(
-         
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetParagraphFormatWithoutNodePathRequest::getName() const
+        utility::string_t GetParagraphFormatWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetParagraphFormatWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void GetParagraphFormatWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetParagraphFormatWithoutNodePathRequest::getIndex() const
+        int32_t GetParagraphFormatWithoutNodePathRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetParagraphFormatWithoutNodePathRequest::setIndex( ){
-            m_ = std::move();
+        void GetParagraphFormatWithoutNodePathRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetParagraphFormatWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> GetParagraphFormatWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetParagraphFormatWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphFormatWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetParagraphFormatWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> GetParagraphFormatWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetParagraphFormatWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphFormatWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetParagraphFormatWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetParagraphFormatWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetParagraphFormatWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphFormatWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetParagraphFormatWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> GetParagraphFormatWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetParagraphFormatWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetParagraphFormatWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetRunRequest::GetRunRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t paragraphPath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_paragraphPath(std::move(paragraphPath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password))
         {
             
         }
 
-         GetRunRequest::getName() const
+        utility::string_t GetRunRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void GetRunRequest::setName( ){
-            m_ = std::move();
+        void GetRunRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         GetRunRequest::getParagraphPath() const
+        utility::string_t GetRunRequest::getParagraphPath() const
         {
-            return m_;
+            return m_paragraphPath;
         }
-        void GetRunRequest::setParagraphPath( ){
-            m_ = std::move();
+        void GetRunRequest::setParagraphPath(utility::string_t paragraphPath){
+            m_paragraphPath = std::move(paragraphPath);
         }
-         GetRunRequest::getIndex() const
+        int32_t GetRunRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void GetRunRequest::setIndex( ){
-            m_ = std::move();
+        void GetRunRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> GetRunRequest::getFolder() const
+        boost::optional<utility::string_t> GetRunRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void GetRunRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void GetRunRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> GetRunRequest::getStorage() const
+        boost::optional<utility::string_t> GetRunRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void GetRunRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void GetRunRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> GetRunRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> GetRunRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void GetRunRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void GetRunRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> GetRunRequest::getPassword() const
+        boost::optional<utility::string_t> GetRunRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void GetRunRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void GetRunRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
 
 }

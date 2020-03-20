@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 RenderDrawingObjectWithoutNodePathRequest::RenderDrawingObjectWithoutNodePathRequest(
-         
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                utility::string_t format,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> fontsLocation
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_format(std::move(format)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_fontsLocation(std::move(fontsLocation))
         {
             
         }
 
-         RenderDrawingObjectWithoutNodePathRequest::getName() const
+        utility::string_t RenderDrawingObjectWithoutNodePathRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setName( ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         RenderDrawingObjectWithoutNodePathRequest::getFormat() const
+        utility::string_t RenderDrawingObjectWithoutNodePathRequest::getFormat() const
         {
-            return m_;
+            return m_format;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setFormat( ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setFormat(utility::string_t format){
+            m_format = std::move(format);
         }
-         RenderDrawingObjectWithoutNodePathRequest::getIndex() const
+        int32_t RenderDrawingObjectWithoutNodePathRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setIndex( ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> RenderDrawingObjectWithoutNodePathRequest::getFolder() const
+        boost::optional<utility::string_t> RenderDrawingObjectWithoutNodePathRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> RenderDrawingObjectWithoutNodePathRequest::getStorage() const
+        boost::optional<utility::string_t> RenderDrawingObjectWithoutNodePathRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> RenderDrawingObjectWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> RenderDrawingObjectWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> RenderDrawingObjectWithoutNodePathRequest::getPassword() const
+        boost::optional<utility::string_t> RenderDrawingObjectWithoutNodePathRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> RenderDrawingObjectWithoutNodePathRequest::getFontsLocation() const
+        boost::optional<utility::string_t> RenderDrawingObjectWithoutNodePathRequest::getFontsLocation() const
         {
-            return m_;
+            return m_fontsLocation;
         }
-        void RenderDrawingObjectWithoutNodePathRequest::setFontsLocation(boost::optional<> ){
-            m_ = std::move();
+        void RenderDrawingObjectWithoutNodePathRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
+            m_fontsLocation = std::move(fontsLocation);
         }
 
 }

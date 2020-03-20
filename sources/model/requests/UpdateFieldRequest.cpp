@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateFieldRequest::UpdateFieldRequest(
-         
-                 
-                 
-                 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t name,
+                std::shared_ptr<Field> field,
+                utility::string_t nodePath,
+                int32_t index,
+                boost::optional<utility::string_t> folder,
+                boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> loadEncoding,
+                boost::optional<utility::string_t> password,
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_name(std::move(name)),
+            m_field(std::move(field)),
+            m_nodePath(std::move(nodePath)),
+            m_index(std::move(index)),
+            m_folder(std::move(folder)),
+            m_storage(std::move(storage)),
+            m_loadEncoding(std::move(loadEncoding)),
+            m_password(std::move(password)),
+            m_destFileName(std::move(destFileName)),
+            m_revisionAuthor(std::move(revisionAuthor)),
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
 
-         UpdateFieldRequest::getName() const
+        utility::string_t UpdateFieldRequest::getName() const
         {
-            return m_;
+            return m_name;
         }
-        void UpdateFieldRequest::setName( ){
-            m_ = std::move();
+        void UpdateFieldRequest::setName(utility::string_t name){
+            m_name = std::move(name);
         }
-         UpdateFieldRequest::getField() const
+        std::shared_ptr<Field> UpdateFieldRequest::getField() const
         {
-            return m_;
+            return m_field;
         }
-        void UpdateFieldRequest::setField( ){
-            m_ = std::move();
+        void UpdateFieldRequest::setField(std::shared_ptr<Field> field){
+            m_field = std::move(field);
         }
-         UpdateFieldRequest::getNodePath() const
+        utility::string_t UpdateFieldRequest::getNodePath() const
         {
-            return m_;
+            return m_nodePath;
         }
-        void UpdateFieldRequest::setNodePath( ){
-            m_ = std::move();
+        void UpdateFieldRequest::setNodePath(utility::string_t nodePath){
+            m_nodePath = std::move(nodePath);
         }
-         UpdateFieldRequest::getIndex() const
+        int32_t UpdateFieldRequest::getIndex() const
         {
-            return m_;
+            return m_index;
         }
-        void UpdateFieldRequest::setIndex( ){
-            m_ = std::move();
+        void UpdateFieldRequest::setIndex(int32_t index){
+            m_index = std::move(index);
         }
-        boost::optional<> UpdateFieldRequest::getFolder() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getFolder() const
         {
-            return m_;
+            return m_folder;
         }
-        void UpdateFieldRequest::setFolder(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setFolder(boost::optional<utility::string_t> folder){
+            m_folder = std::move(folder);
         }
-        boost::optional<> UpdateFieldRequest::getStorage() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getStorage() const
         {
-            return m_;
+            return m_storage;
         }
-        void UpdateFieldRequest::setStorage(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setStorage(boost::optional<utility::string_t> storage){
+            m_storage = std::move(storage);
         }
-        boost::optional<> UpdateFieldRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getLoadEncoding() const
         {
-            return m_;
+            return m_loadEncoding;
         }
-        void UpdateFieldRequest::setLoadEncoding(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+            m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<> UpdateFieldRequest::getPassword() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getPassword() const
         {
-            return m_;
+            return m_password;
         }
-        void UpdateFieldRequest::setPassword(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setPassword(boost::optional<utility::string_t> password){
+            m_password = std::move(password);
         }
-        boost::optional<> UpdateFieldRequest::getDestFileName() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getDestFileName() const
         {
-            return m_;
+            return m_destFileName;
         }
-        void UpdateFieldRequest::setDestFileName(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+            m_destFileName = std::move(destFileName);
         }
-        boost::optional<> UpdateFieldRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getRevisionAuthor() const
         {
-            return m_;
+            return m_revisionAuthor;
         }
-        void UpdateFieldRequest::setRevisionAuthor(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+            m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<> UpdateFieldRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> UpdateFieldRequest::getRevisionDateTime() const
         {
-            return m_;
+            return m_revisionDateTime;
         }
-        void UpdateFieldRequest::setRevisionDateTime(boost::optional<> ){
-            m_ = std::move();
+        void UpdateFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+            m_revisionDateTime = std::move(revisionDateTime);
         }
 
 }

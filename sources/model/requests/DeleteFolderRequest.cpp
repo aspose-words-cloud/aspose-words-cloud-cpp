@@ -29,37 +29,37 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteFolderRequest::DeleteFolderRequest(
-         
-                boost::optional<> 
-                boost::optional<> 
+        utility::string_t path,
+                boost::optional<utility::string_t> storageName,
+                boost::optional<bool> recursive
         ) : 
-            m_(std::move())
-            m_(std::move())
-            m_(std::move())
+            m_path(std::move(path)),
+            m_storageName(std::move(storageName)),
+            m_recursive(std::move(recursive))
         {
             
         }
 
-         DeleteFolderRequest::getPath() const
+        utility::string_t DeleteFolderRequest::getPath() const
         {
-            return m_;
+            return m_path;
         }
-        void DeleteFolderRequest::setPath( ){
-            m_ = std::move();
+        void DeleteFolderRequest::setPath(utility::string_t path){
+            m_path = std::move(path);
         }
-        boost::optional<> DeleteFolderRequest::getStorageName() const
+        boost::optional<utility::string_t> DeleteFolderRequest::getStorageName() const
         {
-            return m_;
+            return m_storageName;
         }
-        void DeleteFolderRequest::setStorageName(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFolderRequest::setStorageName(boost::optional<utility::string_t> storageName){
+            m_storageName = std::move(storageName);
         }
-        boost::optional<> DeleteFolderRequest::getRecursive() const
+        boost::optional<bool> DeleteFolderRequest::getRecursive() const
         {
-            return m_;
+            return m_recursive;
         }
-        void DeleteFolderRequest::setRecursive(boost::optional<> ){
-            m_ = std::move();
+        void DeleteFolderRequest::setRecursive(boost::optional<bool> recursive){
+            m_recursive = std::move(recursive);
         }
 
 }
