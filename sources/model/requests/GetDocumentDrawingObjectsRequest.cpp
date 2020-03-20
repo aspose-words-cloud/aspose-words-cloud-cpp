@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentDrawingObjectsRequest::GetDocumentDrawingObjectsRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetDocumentDrawingObjectsRequest::getName() const
+         GetDocumentDrawingObjectsRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetDocumentDrawingObjectsRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetDocumentDrawingObjectsRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetDocumentDrawingObjectsRequest::getNodePath() const
+         GetDocumentDrawingObjectsRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void GetDocumentDrawingObjectsRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void GetDocumentDrawingObjectsRequest::setNodePath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectsRequest::getFolder() const
+        boost::optional<> GetDocumentDrawingObjectsRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetDocumentDrawingObjectsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetDocumentDrawingObjectsRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectsRequest::getStorage() const
+        boost::optional<> GetDocumentDrawingObjectsRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetDocumentDrawingObjectsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetDocumentDrawingObjectsRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectsRequest::getLoadEncoding() const
+        boost::optional<> GetDocumentDrawingObjectsRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetDocumentDrawingObjectsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetDocumentDrawingObjectsRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectsRequest::getPassword() const
+        boost::optional<> GetDocumentDrawingObjectsRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetDocumentDrawingObjectsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetDocumentDrawingObjectsRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteDrawingObjectRequest::DeleteDrawingObjectRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteDrawingObjectRequest::getName() const
+         DeleteDrawingObjectRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteDrawingObjectRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t DeleteDrawingObjectRequest::getNodePath() const
+         DeleteDrawingObjectRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void DeleteDrawingObjectRequest::setNodePath( ){
+            m_ = std::move();
         }
-        int32_t DeleteDrawingObjectRequest::getIndex() const
+         DeleteDrawingObjectRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void DeleteDrawingObjectRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getFolder() const
+        boost::optional<> DeleteDrawingObjectRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteDrawingObjectRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getStorage() const
+        boost::optional<> DeleteDrawingObjectRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteDrawingObjectRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getLoadEncoding() const
+        boost::optional<> DeleteDrawingObjectRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteDrawingObjectRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getPassword() const
+        boost::optional<> DeleteDrawingObjectRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteDrawingObjectRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getDestFileName() const
+        boost::optional<> DeleteDrawingObjectRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteDrawingObjectRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getRevisionAuthor() const
+        boost::optional<> DeleteDrawingObjectRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteDrawingObjectRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectRequest::getRevisionDateTime() const
+        boost::optional<> DeleteDrawingObjectRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteDrawingObjectRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteDrawingObjectRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

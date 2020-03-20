@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 AppendDocumentRequest::AppendDocumentRequest(
-        utility::string_t name,
-                std::shared_ptr<DocumentEntryList> documentList,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_documentList(std::move(documentList)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t AppendDocumentRequest::getName() const
+         AppendDocumentRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void AppendDocumentRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void AppendDocumentRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<DocumentEntryList> AppendDocumentRequest::getDocumentList() const
+         AppendDocumentRequest::getDocumentList() const
         {
-            return m_documentList;
+            return m_;
         }
-        void AppendDocumentRequest::setDocumentList(std::shared_ptr<DocumentEntryList> documentList){
-            m_documentList = std::move(documentList);
+        void AppendDocumentRequest::setDocumentList( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getFolder() const
+        boost::optional<> AppendDocumentRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void AppendDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void AppendDocumentRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getStorage() const
+        boost::optional<> AppendDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void AppendDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void AppendDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getLoadEncoding() const
+        boost::optional<> AppendDocumentRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void AppendDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void AppendDocumentRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getPassword() const
+        boost::optional<> AppendDocumentRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void AppendDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void AppendDocumentRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getDestFileName() const
+        boost::optional<> AppendDocumentRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void AppendDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void AppendDocumentRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getRevisionAuthor() const
+        boost::optional<> AppendDocumentRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void AppendDocumentRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void AppendDocumentRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> AppendDocumentRequest::getRevisionDateTime() const
+        boost::optional<> AppendDocumentRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void AppendDocumentRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void AppendDocumentRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

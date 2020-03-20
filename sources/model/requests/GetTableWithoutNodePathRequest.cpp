@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetTableWithoutNodePathRequest::GetTableWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetTableWithoutNodePathRequest::getName() const
+         GetTableWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetTableWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetTableWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t GetTableWithoutNodePathRequest::getIndex() const
+         GetTableWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetTableWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetTableWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableWithoutNodePathRequest::getFolder() const
+        boost::optional<> GetTableWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetTableWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetTableWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableWithoutNodePathRequest::getStorage() const
+        boost::optional<> GetTableWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetTableWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetTableWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> GetTableWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetTableWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetTableWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableWithoutNodePathRequest::getPassword() const
+        boost::optional<> GetTableWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetTableWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetTableWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

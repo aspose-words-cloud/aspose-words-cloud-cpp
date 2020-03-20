@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertHeaderFooterRequest::InsertHeaderFooterRequest(
-        utility::string_t name,
-                utility::string_t headerFooterType,
-                utility::string_t sectionPath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_headerFooterType(std::move(headerFooterType)),
-            m_sectionPath(std::move(sectionPath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t InsertHeaderFooterRequest::getName() const
+         InsertHeaderFooterRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void InsertHeaderFooterRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t InsertHeaderFooterRequest::getHeaderFooterType() const
+         InsertHeaderFooterRequest::getHeaderFooterType() const
         {
-            return m_headerFooterType;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setHeaderFooterType(utility::string_t headerFooterType){
-            m_headerFooterType = std::move(headerFooterType);
+        void InsertHeaderFooterRequest::setHeaderFooterType( ){
+            m_ = std::move();
         }
-        utility::string_t InsertHeaderFooterRequest::getSectionPath() const
+         InsertHeaderFooterRequest::getSectionPath() const
         {
-            return m_sectionPath;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setSectionPath(utility::string_t sectionPath){
-            m_sectionPath = std::move(sectionPath);
+        void InsertHeaderFooterRequest::setSectionPath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getFolder() const
+        boost::optional<> InsertHeaderFooterRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void InsertHeaderFooterRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getStorage() const
+        boost::optional<> InsertHeaderFooterRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void InsertHeaderFooterRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getLoadEncoding() const
+        boost::optional<> InsertHeaderFooterRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void InsertHeaderFooterRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getPassword() const
+        boost::optional<> InsertHeaderFooterRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void InsertHeaderFooterRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getDestFileName() const
+        boost::optional<> InsertHeaderFooterRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void InsertHeaderFooterRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getRevisionAuthor() const
+        boost::optional<> InsertHeaderFooterRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void InsertHeaderFooterRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertHeaderFooterRequest::getRevisionDateTime() const
+        boost::optional<> InsertHeaderFooterRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void InsertHeaderFooterRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void InsertHeaderFooterRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

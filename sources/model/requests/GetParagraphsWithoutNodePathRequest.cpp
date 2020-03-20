@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetParagraphsWithoutNodePathRequest::GetParagraphsWithoutNodePathRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetParagraphsWithoutNodePathRequest::getName() const
+         GetParagraphsWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetParagraphsWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetParagraphsWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsWithoutNodePathRequest::getFolder() const
+        boost::optional<> GetParagraphsWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetParagraphsWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetParagraphsWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsWithoutNodePathRequest::getStorage() const
+        boost::optional<> GetParagraphsWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetParagraphsWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetParagraphsWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> GetParagraphsWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetParagraphsWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetParagraphsWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsWithoutNodePathRequest::getPassword() const
+        boost::optional<> GetParagraphsWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetParagraphsWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetParagraphsWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

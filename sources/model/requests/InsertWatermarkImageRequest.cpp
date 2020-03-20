@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertWatermarkImageRequest::InsertWatermarkImageRequest(
-        utility::string_t name,
-                boost::optional<std::shared_ptr<HttpContent>> imageFile,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<double> rotationAngle,
-                boost::optional<utility::string_t> image
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_imageFile(std::move(imageFile)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_rotationAngle(std::move(rotationAngle)),
-            m_image(std::move(image))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t InsertWatermarkImageRequest::getName() const
+         InsertWatermarkImageRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void InsertWatermarkImageRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<std::shared_ptr<HttpContent>> InsertWatermarkImageRequest::getImageFile() const
+        boost::optional<> InsertWatermarkImageRequest::getImageFile() const
         {
-            return m_imageFile;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setImageFile(boost::optional<std::shared_ptr<HttpContent>> imageFile){
-            m_imageFile = std::move(imageFile);
+        void InsertWatermarkImageRequest::setImageFile(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getFolder() const
+        boost::optional<> InsertWatermarkImageRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void InsertWatermarkImageRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getStorage() const
+        boost::optional<> InsertWatermarkImageRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void InsertWatermarkImageRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getLoadEncoding() const
+        boost::optional<> InsertWatermarkImageRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void InsertWatermarkImageRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getPassword() const
+        boost::optional<> InsertWatermarkImageRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void InsertWatermarkImageRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getDestFileName() const
+        boost::optional<> InsertWatermarkImageRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void InsertWatermarkImageRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getRevisionAuthor() const
+        boost::optional<> InsertWatermarkImageRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void InsertWatermarkImageRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getRevisionDateTime() const
+        boost::optional<> InsertWatermarkImageRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void InsertWatermarkImageRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<double> InsertWatermarkImageRequest::getRotationAngle() const
+        boost::optional<> InsertWatermarkImageRequest::getRotationAngle() const
         {
-            return m_rotationAngle;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setRotationAngle(boost::optional<double> rotationAngle){
-            m_rotationAngle = std::move(rotationAngle);
+        void InsertWatermarkImageRequest::setRotationAngle(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkImageRequest::getImage() const
+        boost::optional<> InsertWatermarkImageRequest::getImage() const
         {
-            return m_image;
+            return m_;
         }
-        void InsertWatermarkImageRequest::setImage(boost::optional<utility::string_t> image){
-            m_image = std::move(image);
+        void InsertWatermarkImageRequest::setImage(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

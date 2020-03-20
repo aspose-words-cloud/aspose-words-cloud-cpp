@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetRangeTextRequest::GetRangeTextRequest(
-        utility::string_t name,
-                utility::string_t rangeStartIdentifier,
-                boost::optional<utility::string_t> rangeEndIdentifier,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_rangeStartIdentifier(std::move(rangeStartIdentifier)),
-            m_rangeEndIdentifier(std::move(rangeEndIdentifier)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetRangeTextRequest::getName() const
+         GetRangeTextRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetRangeTextRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetRangeTextRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetRangeTextRequest::getRangeStartIdentifier() const
+         GetRangeTextRequest::getRangeStartIdentifier() const
         {
-            return m_rangeStartIdentifier;
+            return m_;
         }
-        void GetRangeTextRequest::setRangeStartIdentifier(utility::string_t rangeStartIdentifier){
-            m_rangeStartIdentifier = std::move(rangeStartIdentifier);
+        void GetRangeTextRequest::setRangeStartIdentifier( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetRangeTextRequest::getRangeEndIdentifier() const
+        boost::optional<> GetRangeTextRequest::getRangeEndIdentifier() const
         {
-            return m_rangeEndIdentifier;
+            return m_;
         }
-        void GetRangeTextRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
-            m_rangeEndIdentifier = std::move(rangeEndIdentifier);
+        void GetRangeTextRequest::setRangeEndIdentifier(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetRangeTextRequest::getFolder() const
+        boost::optional<> GetRangeTextRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetRangeTextRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetRangeTextRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetRangeTextRequest::getStorage() const
+        boost::optional<> GetRangeTextRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetRangeTextRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetRangeTextRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetRangeTextRequest::getLoadEncoding() const
+        boost::optional<> GetRangeTextRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetRangeTextRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetRangeTextRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetRangeTextRequest::getPassword() const
+        boost::optional<> GetRangeTextRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetRangeTextRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetRangeTextRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

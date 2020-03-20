@@ -29,37 +29,37 @@ namespace cloud{
 namespace api{
 namespace models{
 CreateDocumentRequest::CreateDocumentRequest(
-        boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> fileName,
-                boost::optional<utility::string_t> folder
+        boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_storage(std::move(storage)),
-            m_fileName(std::move(fileName)),
-            m_folder(std::move(folder))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        boost::optional<utility::string_t> CreateDocumentRequest::getStorage() const
+        boost::optional<> CreateDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void CreateDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void CreateDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CreateDocumentRequest::getFileName() const
+        boost::optional<> CreateDocumentRequest::getFileName() const
         {
-            return m_fileName;
+            return m_;
         }
-        void CreateDocumentRequest::setFileName(boost::optional<utility::string_t> fileName){
-            m_fileName = std::move(fileName);
+        void CreateDocumentRequest::setFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CreateDocumentRequest::getFolder() const
+        boost::optional<> CreateDocumentRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void CreateDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void CreateDocumentRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

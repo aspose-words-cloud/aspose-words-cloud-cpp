@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertRunRequest::InsertRunRequest(
-        utility::string_t name,
-                utility::string_t paragraphPath,
-                std::shared_ptr<Run> run,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> insertBeforeNode
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_paragraphPath(std::move(paragraphPath)),
-            m_run(std::move(run)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_insertBeforeNode(std::move(insertBeforeNode))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t InsertRunRequest::getName() const
+         InsertRunRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void InsertRunRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void InsertRunRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t InsertRunRequest::getParagraphPath() const
+         InsertRunRequest::getParagraphPath() const
         {
-            return m_paragraphPath;
+            return m_;
         }
-        void InsertRunRequest::setParagraphPath(utility::string_t paragraphPath){
-            m_paragraphPath = std::move(paragraphPath);
+        void InsertRunRequest::setParagraphPath( ){
+            m_ = std::move();
         }
-        std::shared_ptr<Run> InsertRunRequest::getRun() const
+         InsertRunRequest::getRun() const
         {
-            return m_run;
+            return m_;
         }
-        void InsertRunRequest::setRun(std::shared_ptr<Run> run){
-            m_run = std::move(run);
+        void InsertRunRequest::setRun( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getFolder() const
+        boost::optional<> InsertRunRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void InsertRunRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void InsertRunRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getStorage() const
+        boost::optional<> InsertRunRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void InsertRunRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void InsertRunRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getLoadEncoding() const
+        boost::optional<> InsertRunRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void InsertRunRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void InsertRunRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getPassword() const
+        boost::optional<> InsertRunRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void InsertRunRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void InsertRunRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getDestFileName() const
+        boost::optional<> InsertRunRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void InsertRunRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void InsertRunRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getRevisionAuthor() const
+        boost::optional<> InsertRunRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void InsertRunRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void InsertRunRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getRevisionDateTime() const
+        boost::optional<> InsertRunRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void InsertRunRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void InsertRunRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertRunRequest::getInsertBeforeNode() const
+        boost::optional<> InsertRunRequest::getInsertBeforeNode() const
         {
-            return m_insertBeforeNode;
+            return m_;
         }
-        void InsertRunRequest::setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode){
-            m_insertBeforeNode = std::move(insertBeforeNode);
+        void InsertRunRequest::setInsertBeforeNode(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

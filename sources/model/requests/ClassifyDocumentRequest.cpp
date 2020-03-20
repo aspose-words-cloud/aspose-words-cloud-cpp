@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 ClassifyDocumentRequest::ClassifyDocumentRequest(
-        utility::string_t documentName,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> bestClassesCount,
-                boost::optional<utility::string_t> taxonomy
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_documentName(std::move(documentName)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_bestClassesCount(std::move(bestClassesCount)),
-            m_taxonomy(std::move(taxonomy))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t ClassifyDocumentRequest::getDocumentName() const
+         ClassifyDocumentRequest::getDocumentName() const
         {
-            return m_documentName;
+            return m_;
         }
-        void ClassifyDocumentRequest::setDocumentName(utility::string_t documentName){
-            m_documentName = std::move(documentName);
+        void ClassifyDocumentRequest::setDocumentName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ClassifyDocumentRequest::getFolder() const
+        boost::optional<> ClassifyDocumentRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void ClassifyDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void ClassifyDocumentRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ClassifyDocumentRequest::getStorage() const
+        boost::optional<> ClassifyDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void ClassifyDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void ClassifyDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ClassifyDocumentRequest::getLoadEncoding() const
+        boost::optional<> ClassifyDocumentRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void ClassifyDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void ClassifyDocumentRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ClassifyDocumentRequest::getPassword() const
+        boost::optional<> ClassifyDocumentRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void ClassifyDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void ClassifyDocumentRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ClassifyDocumentRequest::getBestClassesCount() const
+        boost::optional<> ClassifyDocumentRequest::getBestClassesCount() const
         {
-            return m_bestClassesCount;
+            return m_;
         }
-        void ClassifyDocumentRequest::setBestClassesCount(boost::optional<utility::string_t> bestClassesCount){
-            m_bestClassesCount = std::move(bestClassesCount);
+        void ClassifyDocumentRequest::setBestClassesCount(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ClassifyDocumentRequest::getTaxonomy() const
+        boost::optional<> ClassifyDocumentRequest::getTaxonomy() const
         {
-            return m_taxonomy;
+            return m_;
         }
-        void ClassifyDocumentRequest::setTaxonomy(boost::optional<utility::string_t> taxonomy){
-            m_taxonomy = std::move(taxonomy);
+        void ClassifyDocumentRequest::setTaxonomy(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

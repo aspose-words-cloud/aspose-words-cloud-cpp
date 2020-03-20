@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertWatermarkTextRequest::InsertWatermarkTextRequest(
-        utility::string_t name,
-                std::shared_ptr<WatermarkText> watermarkText,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_watermarkText(std::move(watermarkText)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t InsertWatermarkTextRequest::getName() const
+         InsertWatermarkTextRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void InsertWatermarkTextRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<WatermarkText> InsertWatermarkTextRequest::getWatermarkText() const
+         InsertWatermarkTextRequest::getWatermarkText() const
         {
-            return m_watermarkText;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setWatermarkText(std::shared_ptr<WatermarkText> watermarkText){
-            m_watermarkText = std::move(watermarkText);
+        void InsertWatermarkTextRequest::setWatermarkText( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getFolder() const
+        boost::optional<> InsertWatermarkTextRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void InsertWatermarkTextRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getStorage() const
+        boost::optional<> InsertWatermarkTextRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void InsertWatermarkTextRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getLoadEncoding() const
+        boost::optional<> InsertWatermarkTextRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void InsertWatermarkTextRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getPassword() const
+        boost::optional<> InsertWatermarkTextRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void InsertWatermarkTextRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getDestFileName() const
+        boost::optional<> InsertWatermarkTextRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void InsertWatermarkTextRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getRevisionAuthor() const
+        boost::optional<> InsertWatermarkTextRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void InsertWatermarkTextRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertWatermarkTextRequest::getRevisionDateTime() const
+        boost::optional<> InsertWatermarkTextRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void InsertWatermarkTextRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void InsertWatermarkTextRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

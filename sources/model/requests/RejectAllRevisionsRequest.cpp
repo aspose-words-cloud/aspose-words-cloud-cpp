@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 RejectAllRevisionsRequest::RejectAllRevisionsRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t RejectAllRevisionsRequest::getName() const
+         RejectAllRevisionsRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void RejectAllRevisionsRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void RejectAllRevisionsRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RejectAllRevisionsRequest::getFolder() const
+        boost::optional<> RejectAllRevisionsRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void RejectAllRevisionsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void RejectAllRevisionsRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RejectAllRevisionsRequest::getStorage() const
+        boost::optional<> RejectAllRevisionsRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void RejectAllRevisionsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void RejectAllRevisionsRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RejectAllRevisionsRequest::getLoadEncoding() const
+        boost::optional<> RejectAllRevisionsRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void RejectAllRevisionsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void RejectAllRevisionsRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RejectAllRevisionsRequest::getPassword() const
+        boost::optional<> RejectAllRevisionsRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void RejectAllRevisionsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void RejectAllRevisionsRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RejectAllRevisionsRequest::getDestFileName() const
+        boost::optional<> RejectAllRevisionsRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void RejectAllRevisionsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void RejectAllRevisionsRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteParagraphWithoutNodePathRequest::DeleteParagraphWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteParagraphWithoutNodePathRequest::getName() const
+         DeleteParagraphWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteParagraphWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t DeleteParagraphWithoutNodePathRequest::getIndex() const
+         DeleteParagraphWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void DeleteParagraphWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getFolder() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteParagraphWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getStorage() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteParagraphWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteParagraphWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getPassword() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteParagraphWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getDestFileName() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteParagraphWithoutNodePathRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteParagraphWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteParagraphWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<> DeleteParagraphWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteParagraphWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteParagraphWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

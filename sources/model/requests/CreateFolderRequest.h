@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef createFolder_H
-#define createFolder_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,18 +38,17 @@ namespace models {
 class CreateFolderRequest{
     public: 
      CreateFolderRequest(
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName
+                                 boost::optional<> 
         );
 
-        utility::string_t getPath() const;
-        void setPath(utility::string_t path);
+         getPath() const;
+        void setPath( );
 
-        boost::optional<utility::string_t> getStorageName() const;
-        void setStorageName(boost::optional<utility::string_t> storageName);
+        boost::optional<> getStorageName() const;
+        void setStorageName(boost::optional<> );
     private:
-        utility::string_t m_path;
-        boost::optional<utility::string_t> m_storageName;
+         m_;
+        boost::optional<> m_;
 };
 
 }

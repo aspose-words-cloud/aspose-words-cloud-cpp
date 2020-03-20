@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertFootnoteWithoutNodePathRequest::InsertFootnoteWithoutNodePathRequest(
-        utility::string_t name,
-                std::shared_ptr<Footnote> footnoteDto,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_footnoteDto(std::move(footnoteDto)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t InsertFootnoteWithoutNodePathRequest::getName() const
+         InsertFootnoteWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void InsertFootnoteWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<Footnote> InsertFootnoteWithoutNodePathRequest::getFootnoteDto() const
+         InsertFootnoteWithoutNodePathRequest::getFootnoteDto() const
         {
-            return m_footnoteDto;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setFootnoteDto(std::shared_ptr<Footnote> footnoteDto){
-            m_footnoteDto = std::move(footnoteDto);
+        void InsertFootnoteWithoutNodePathRequest::setFootnoteDto( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getFolder() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void InsertFootnoteWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getStorage() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void InsertFootnoteWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void InsertFootnoteWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getPassword() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void InsertFootnoteWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getDestFileName() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void InsertFootnoteWithoutNodePathRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void InsertFootnoteWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<> InsertFootnoteWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void InsertFootnoteWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void InsertFootnoteWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

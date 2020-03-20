@@ -23,11 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef replaceWithText_H
-#define replaceWithText_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
-#include "ReplaceRange.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -39,53 +38,45 @@ namespace models {
 class ReplaceWithTextRequest{
     public: 
      ReplaceWithTextRequest(
-                utility::string_t name,
-                utility::string_t rangeStartIdentifier,
-                std::shared_ptr<ReplaceRange> rangeText,
-                boost::optional<utility::string_t> rangeEndIdentifier,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+                                                                   boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+         getName() const;
+        void setName( );
 
-        utility::string_t getRangeStartIdentifier() const;
-        void setRangeStartIdentifier(utility::string_t rangeStartIdentifier);
+         getRangeStartIdentifier() const;
+        void setRangeStartIdentifier( );
 
-        std::shared_ptr<ReplaceRange> getRangeText() const;
-        void setRangeText(std::shared_ptr<ReplaceRange> rangeText);
+         getRangeText() const;
+        void setRangeText( );
 
-        boost::optional<utility::string_t> getRangeEndIdentifier() const;
-        void setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier);
+        boost::optional<> getRangeEndIdentifier() const;
+        void setRangeEndIdentifier(boost::optional<> );
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional<> getFolder() const;
+        void setFolder(boost::optional<> );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional<> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<> );
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional<> getPassword() const;
+        void setPassword(boost::optional<> );
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional<> getDestFileName() const;
+        void setDestFileName(boost::optional<> );
     private:
-        utility::string_t m_name;
-        utility::string_t m_rangeStartIdentifier;
-        std::shared_ptr<ReplaceRange> m_rangeText;
-        boost::optional<utility::string_t> m_rangeEndIdentifier;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
+         m_;
+         m_;
+         m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 ExecuteMailMergeRequest::ExecuteMailMergeRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> data,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<bool> withRegions,
-                boost::optional<utility::string_t> mailMergeDataFile,
-                boost::optional<utility::string_t> cleanup,
-                boost::optional<bool> useWholeParagraphAsRegion,
-                boost::optional<utility::string_t> destFileName
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_data(std::move(data)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_withRegions(std::move(withRegions)),
-            m_mailMergeDataFile(std::move(mailMergeDataFile)),
-            m_cleanup(std::move(cleanup)),
-            m_useWholeParagraphAsRegion(std::move(useWholeParagraphAsRegion)),
-            m_destFileName(std::move(destFileName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t ExecuteMailMergeRequest::getName() const
+         ExecuteMailMergeRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void ExecuteMailMergeRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getData() const
+        boost::optional<> ExecuteMailMergeRequest::getData() const
         {
-            return m_data;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setData(boost::optional<utility::string_t> data){
-            m_data = std::move(data);
+        void ExecuteMailMergeRequest::setData(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getFolder() const
+        boost::optional<> ExecuteMailMergeRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void ExecuteMailMergeRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getStorage() const
+        boost::optional<> ExecuteMailMergeRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void ExecuteMailMergeRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getLoadEncoding() const
+        boost::optional<> ExecuteMailMergeRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void ExecuteMailMergeRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getPassword() const
+        boost::optional<> ExecuteMailMergeRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void ExecuteMailMergeRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<bool> ExecuteMailMergeRequest::getWithRegions() const
+        boost::optional<> ExecuteMailMergeRequest::getWithRegions() const
         {
-            return m_withRegions;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setWithRegions(boost::optional<bool> withRegions){
-            m_withRegions = std::move(withRegions);
+        void ExecuteMailMergeRequest::setWithRegions(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getMailMergeDataFile() const
+        boost::optional<> ExecuteMailMergeRequest::getMailMergeDataFile() const
         {
-            return m_mailMergeDataFile;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setMailMergeDataFile(boost::optional<utility::string_t> mailMergeDataFile){
-            m_mailMergeDataFile = std::move(mailMergeDataFile);
+        void ExecuteMailMergeRequest::setMailMergeDataFile(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getCleanup() const
+        boost::optional<> ExecuteMailMergeRequest::getCleanup() const
         {
-            return m_cleanup;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setCleanup(boost::optional<utility::string_t> cleanup){
-            m_cleanup = std::move(cleanup);
+        void ExecuteMailMergeRequest::setCleanup(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<bool> ExecuteMailMergeRequest::getUseWholeParagraphAsRegion() const
+        boost::optional<> ExecuteMailMergeRequest::getUseWholeParagraphAsRegion() const
         {
-            return m_useWholeParagraphAsRegion;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion){
-            m_useWholeParagraphAsRegion = std::move(useWholeParagraphAsRegion);
+        void ExecuteMailMergeRequest::setUseWholeParagraphAsRegion(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ExecuteMailMergeRequest::getDestFileName() const
+        boost::optional<> ExecuteMailMergeRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void ExecuteMailMergeRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void ExecuteMailMergeRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

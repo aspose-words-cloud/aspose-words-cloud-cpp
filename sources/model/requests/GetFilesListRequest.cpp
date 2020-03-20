@@ -29,28 +29,28 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFilesListRequest::GetFilesListRequest(
-        utility::string_t path,
-                boost::optional<utility::string_t> storageName
+         
+                boost::optional<> 
         ) : 
-            m_path(std::move(path)),
-            m_storageName(std::move(storageName))
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetFilesListRequest::getPath() const
+         GetFilesListRequest::getPath() const
         {
-            return m_path;
+            return m_;
         }
-        void GetFilesListRequest::setPath(utility::string_t path){
-            m_path = std::move(path);
+        void GetFilesListRequest::setPath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFilesListRequest::getStorageName() const
+        boost::optional<> GetFilesListRequest::getStorageName() const
         {
-            return m_storageName;
+            return m_;
         }
-        void GetFilesListRequest::setStorageName(boost::optional<utility::string_t> storageName){
-            m_storageName = std::move(storageName);
+        void GetFilesListRequest::setStorageName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

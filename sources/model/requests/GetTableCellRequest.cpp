@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetTableCellRequest::GetTableCellRequest(
-        utility::string_t name,
-                utility::string_t tableRowPath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_tableRowPath(std::move(tableRowPath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetTableCellRequest::getName() const
+         GetTableCellRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetTableCellRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetTableCellRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetTableCellRequest::getTableRowPath() const
+         GetTableCellRequest::getTableRowPath() const
         {
-            return m_tableRowPath;
+            return m_;
         }
-        void GetTableCellRequest::setTableRowPath(utility::string_t tableRowPath){
-            m_tableRowPath = std::move(tableRowPath);
+        void GetTableCellRequest::setTableRowPath( ){
+            m_ = std::move();
         }
-        int32_t GetTableCellRequest::getIndex() const
+         GetTableCellRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetTableCellRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetTableCellRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableCellRequest::getFolder() const
+        boost::optional<> GetTableCellRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetTableCellRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetTableCellRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableCellRequest::getStorage() const
+        boost::optional<> GetTableCellRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetTableCellRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetTableCellRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableCellRequest::getLoadEncoding() const
+        boost::optional<> GetTableCellRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetTableCellRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetTableCellRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetTableCellRequest::getPassword() const
+        boost::optional<> GetTableCellRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetTableCellRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetTableCellRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

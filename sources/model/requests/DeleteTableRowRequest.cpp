@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteTableRowRequest::DeleteTableRowRequest(
-        utility::string_t name,
-                utility::string_t tablePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_tablePath(std::move(tablePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteTableRowRequest::getName() const
+         DeleteTableRowRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteTableRowRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteTableRowRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t DeleteTableRowRequest::getTablePath() const
+         DeleteTableRowRequest::getTablePath() const
         {
-            return m_tablePath;
+            return m_;
         }
-        void DeleteTableRowRequest::setTablePath(utility::string_t tablePath){
-            m_tablePath = std::move(tablePath);
+        void DeleteTableRowRequest::setTablePath( ){
+            m_ = std::move();
         }
-        int32_t DeleteTableRowRequest::getIndex() const
+         DeleteTableRowRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void DeleteTableRowRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void DeleteTableRowRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getFolder() const
+        boost::optional<> DeleteTableRowRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteTableRowRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteTableRowRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getStorage() const
+        boost::optional<> DeleteTableRowRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteTableRowRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteTableRowRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getLoadEncoding() const
+        boost::optional<> DeleteTableRowRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteTableRowRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteTableRowRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getPassword() const
+        boost::optional<> DeleteTableRowRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteTableRowRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteTableRowRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getDestFileName() const
+        boost::optional<> DeleteTableRowRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteTableRowRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteTableRowRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getRevisionAuthor() const
+        boost::optional<> DeleteTableRowRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteTableRowRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteTableRowRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteTableRowRequest::getRevisionDateTime() const
+        boost::optional<> DeleteTableRowRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteTableRowRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteTableRowRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

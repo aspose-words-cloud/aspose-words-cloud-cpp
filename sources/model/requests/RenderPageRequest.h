@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef renderPage_H
-#define renderPage_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,48 +38,41 @@ namespace models {
 class RenderPageRequest{
     public: 
      RenderPageRequest(
-                utility::string_t name,
-                int32_t pageIndex,
-                utility::string_t format,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> fontsLocation
+                                                                   boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+         getName() const;
+        void setName( );
 
-        int32_t getPageIndex() const;
-        void setPageIndex(int32_t pageIndex);
+         getPageIndex() const;
+        void setPageIndex( );
 
-        utility::string_t getFormat() const;
-        void setFormat(utility::string_t format);
+         getFormat() const;
+        void setFormat( );
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional<> getFolder() const;
+        void setFolder(boost::optional<> );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional<> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<> );
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional<> getPassword() const;
+        void setPassword(boost::optional<> );
 
-        boost::optional<utility::string_t> getFontsLocation() const;
-        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+        boost::optional<> getFontsLocation() const;
+        void setFontsLocation(boost::optional<> );
     private:
-        utility::string_t m_name;
-        int32_t m_pageIndex;
-        utility::string_t m_format;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_fontsLocation;
+         m_;
+         m_;
+         m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

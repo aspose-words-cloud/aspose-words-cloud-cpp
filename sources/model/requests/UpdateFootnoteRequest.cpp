@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateFootnoteRequest::UpdateFootnoteRequest(
-        utility::string_t name,
-                std::shared_ptr<Footnote> footnoteDto,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_footnoteDto(std::move(footnoteDto)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateFootnoteRequest::getName() const
+         UpdateFootnoteRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateFootnoteRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateFootnoteRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<Footnote> UpdateFootnoteRequest::getFootnoteDto() const
+         UpdateFootnoteRequest::getFootnoteDto() const
         {
-            return m_footnoteDto;
+            return m_;
         }
-        void UpdateFootnoteRequest::setFootnoteDto(std::shared_ptr<Footnote> footnoteDto){
-            m_footnoteDto = std::move(footnoteDto);
+        void UpdateFootnoteRequest::setFootnoteDto( ){
+            m_ = std::move();
         }
-        utility::string_t UpdateFootnoteRequest::getNodePath() const
+         UpdateFootnoteRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void UpdateFootnoteRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void UpdateFootnoteRequest::setNodePath( ){
+            m_ = std::move();
         }
-        int32_t UpdateFootnoteRequest::getIndex() const
+         UpdateFootnoteRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void UpdateFootnoteRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void UpdateFootnoteRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getFolder() const
+        boost::optional<> UpdateFootnoteRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateFootnoteRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateFootnoteRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getStorage() const
+        boost::optional<> UpdateFootnoteRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateFootnoteRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateFootnoteRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getLoadEncoding() const
+        boost::optional<> UpdateFootnoteRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateFootnoteRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateFootnoteRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getPassword() const
+        boost::optional<> UpdateFootnoteRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateFootnoteRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateFootnoteRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getDestFileName() const
+        boost::optional<> UpdateFootnoteRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateFootnoteRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateFootnoteRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getRevisionAuthor() const
+        boost::optional<> UpdateFootnoteRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void UpdateFootnoteRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void UpdateFootnoteRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFootnoteRequest::getRevisionDateTime() const
+        boost::optional<> UpdateFootnoteRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void UpdateFootnoteRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void UpdateFootnoteRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

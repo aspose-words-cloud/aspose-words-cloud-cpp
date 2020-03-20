@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 RemoveRangeRequest::RemoveRangeRequest(
-        utility::string_t name,
-                utility::string_t rangeStartIdentifier,
-                boost::optional<utility::string_t> rangeEndIdentifier,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_rangeStartIdentifier(std::move(rangeStartIdentifier)),
-            m_rangeEndIdentifier(std::move(rangeEndIdentifier)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t RemoveRangeRequest::getName() const
+         RemoveRangeRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void RemoveRangeRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void RemoveRangeRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t RemoveRangeRequest::getRangeStartIdentifier() const
+         RemoveRangeRequest::getRangeStartIdentifier() const
         {
-            return m_rangeStartIdentifier;
+            return m_;
         }
-        void RemoveRangeRequest::setRangeStartIdentifier(utility::string_t rangeStartIdentifier){
-            m_rangeStartIdentifier = std::move(rangeStartIdentifier);
+        void RemoveRangeRequest::setRangeStartIdentifier( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RemoveRangeRequest::getRangeEndIdentifier() const
+        boost::optional<> RemoveRangeRequest::getRangeEndIdentifier() const
         {
-            return m_rangeEndIdentifier;
+            return m_;
         }
-        void RemoveRangeRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
-            m_rangeEndIdentifier = std::move(rangeEndIdentifier);
+        void RemoveRangeRequest::setRangeEndIdentifier(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RemoveRangeRequest::getFolder() const
+        boost::optional<> RemoveRangeRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void RemoveRangeRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void RemoveRangeRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RemoveRangeRequest::getStorage() const
+        boost::optional<> RemoveRangeRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void RemoveRangeRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void RemoveRangeRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RemoveRangeRequest::getLoadEncoding() const
+        boost::optional<> RemoveRangeRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void RemoveRangeRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void RemoveRangeRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RemoveRangeRequest::getPassword() const
+        boost::optional<> RemoveRangeRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void RemoveRangeRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void RemoveRangeRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RemoveRangeRequest::getDestFileName() const
+        boost::optional<> RemoveRangeRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void RemoveRangeRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void RemoveRangeRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

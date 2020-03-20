@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef deleteFolder_H
-#define deleteFolder_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,23 +38,21 @@ namespace models {
 class DeleteFolderRequest{
     public: 
      DeleteFolderRequest(
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName,
-                boost::optional<bool> recursive
+                                 boost::optional<>                 boost::optional<> 
         );
 
-        utility::string_t getPath() const;
-        void setPath(utility::string_t path);
+         getPath() const;
+        void setPath( );
 
-        boost::optional<utility::string_t> getStorageName() const;
-        void setStorageName(boost::optional<utility::string_t> storageName);
+        boost::optional<> getStorageName() const;
+        void setStorageName(boost::optional<> );
 
-        boost::optional<bool> getRecursive() const;
-        void setRecursive(boost::optional<bool> recursive);
+        boost::optional<> getRecursive() const;
+        void setRecursive(boost::optional<> );
     private:
-        utility::string_t m_path;
-        boost::optional<utility::string_t> m_storageName;
-        boost::optional<bool> m_recursive;
+         m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

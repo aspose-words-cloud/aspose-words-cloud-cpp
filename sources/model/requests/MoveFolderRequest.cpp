@@ -29,46 +29,46 @@ namespace cloud{
 namespace api{
 namespace models{
 MoveFolderRequest::MoveFolderRequest(
-        utility::string_t destPath,
-                utility::string_t srcPath,
-                boost::optional<utility::string_t> srcStorageName,
-                boost::optional<utility::string_t> destStorageName
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_destPath(std::move(destPath)),
-            m_srcPath(std::move(srcPath)),
-            m_srcStorageName(std::move(srcStorageName)),
-            m_destStorageName(std::move(destStorageName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t MoveFolderRequest::getDestPath() const
+         MoveFolderRequest::getDestPath() const
         {
-            return m_destPath;
+            return m_;
         }
-        void MoveFolderRequest::setDestPath(utility::string_t destPath){
-            m_destPath = std::move(destPath);
+        void MoveFolderRequest::setDestPath( ){
+            m_ = std::move();
         }
-        utility::string_t MoveFolderRequest::getSrcPath() const
+         MoveFolderRequest::getSrcPath() const
         {
-            return m_srcPath;
+            return m_;
         }
-        void MoveFolderRequest::setSrcPath(utility::string_t srcPath){
-            m_srcPath = std::move(srcPath);
+        void MoveFolderRequest::setSrcPath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> MoveFolderRequest::getSrcStorageName() const
+        boost::optional<> MoveFolderRequest::getSrcStorageName() const
         {
-            return m_srcStorageName;
+            return m_;
         }
-        void MoveFolderRequest::setSrcStorageName(boost::optional<utility::string_t> srcStorageName){
-            m_srcStorageName = std::move(srcStorageName);
+        void MoveFolderRequest::setSrcStorageName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> MoveFolderRequest::getDestStorageName() const
+        boost::optional<> MoveFolderRequest::getDestStorageName() const
         {
-            return m_destStorageName;
+            return m_;
         }
-        void MoveFolderRequest::setDestStorageName(boost::optional<utility::string_t> destStorageName){
-            m_destStorageName = std::move(destStorageName);
+        void MoveFolderRequest::setDestStorageName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

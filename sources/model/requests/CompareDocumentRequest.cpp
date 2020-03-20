@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 CompareDocumentRequest::CompareDocumentRequest(
-        utility::string_t name,
-                std::shared_ptr<CompareData> compareData,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_compareData(std::move(compareData)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t CompareDocumentRequest::getName() const
+         CompareDocumentRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void CompareDocumentRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void CompareDocumentRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<CompareData> CompareDocumentRequest::getCompareData() const
+         CompareDocumentRequest::getCompareData() const
         {
-            return m_compareData;
+            return m_;
         }
-        void CompareDocumentRequest::setCompareData(std::shared_ptr<CompareData> compareData){
-            m_compareData = std::move(compareData);
+        void CompareDocumentRequest::setCompareData( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CompareDocumentRequest::getFolder() const
+        boost::optional<> CompareDocumentRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void CompareDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void CompareDocumentRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CompareDocumentRequest::getStorage() const
+        boost::optional<> CompareDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void CompareDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void CompareDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CompareDocumentRequest::getLoadEncoding() const
+        boost::optional<> CompareDocumentRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void CompareDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void CompareDocumentRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CompareDocumentRequest::getPassword() const
+        boost::optional<> CompareDocumentRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void CompareDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void CompareDocumentRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> CompareDocumentRequest::getDestFileName() const
+        boost::optional<> CompareDocumentRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void CompareDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void CompareDocumentRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

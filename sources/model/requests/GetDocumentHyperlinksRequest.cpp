@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentHyperlinksRequest::GetDocumentHyperlinksRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetDocumentHyperlinksRequest::getName() const
+         GetDocumentHyperlinksRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetDocumentHyperlinksRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetDocumentHyperlinksRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentHyperlinksRequest::getFolder() const
+        boost::optional<> GetDocumentHyperlinksRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetDocumentHyperlinksRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetDocumentHyperlinksRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentHyperlinksRequest::getStorage() const
+        boost::optional<> GetDocumentHyperlinksRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetDocumentHyperlinksRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetDocumentHyperlinksRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentHyperlinksRequest::getLoadEncoding() const
+        boost::optional<> GetDocumentHyperlinksRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetDocumentHyperlinksRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetDocumentHyperlinksRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentHyperlinksRequest::getPassword() const
+        boost::optional<> GetDocumentHyperlinksRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetDocumentHyperlinksRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetDocumentHyperlinksRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

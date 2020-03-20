@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateBorderRequest::UpdateBorderRequest(
-        utility::string_t name,
-                std::shared_ptr<Border> borderProperties,
-                utility::string_t nodePath,
-                utility::string_t borderType,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_borderProperties(std::move(borderProperties)),
-            m_nodePath(std::move(nodePath)),
-            m_borderType(std::move(borderType)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateBorderRequest::getName() const
+         UpdateBorderRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateBorderRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateBorderRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<Border> UpdateBorderRequest::getBorderProperties() const
+         UpdateBorderRequest::getBorderProperties() const
         {
-            return m_borderProperties;
+            return m_;
         }
-        void UpdateBorderRequest::setBorderProperties(std::shared_ptr<Border> borderProperties){
-            m_borderProperties = std::move(borderProperties);
+        void UpdateBorderRequest::setBorderProperties( ){
+            m_ = std::move();
         }
-        utility::string_t UpdateBorderRequest::getNodePath() const
+         UpdateBorderRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void UpdateBorderRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void UpdateBorderRequest::setNodePath( ){
+            m_ = std::move();
         }
-        utility::string_t UpdateBorderRequest::getBorderType() const
+         UpdateBorderRequest::getBorderType() const
         {
-            return m_borderType;
+            return m_;
         }
-        void UpdateBorderRequest::setBorderType(utility::string_t borderType){
-            m_borderType = std::move(borderType);
+        void UpdateBorderRequest::setBorderType( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getFolder() const
+        boost::optional<> UpdateBorderRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateBorderRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateBorderRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getStorage() const
+        boost::optional<> UpdateBorderRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateBorderRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateBorderRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getLoadEncoding() const
+        boost::optional<> UpdateBorderRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateBorderRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateBorderRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getPassword() const
+        boost::optional<> UpdateBorderRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateBorderRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateBorderRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getDestFileName() const
+        boost::optional<> UpdateBorderRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateBorderRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateBorderRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getRevisionAuthor() const
+        boost::optional<> UpdateBorderRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void UpdateBorderRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void UpdateBorderRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBorderRequest::getRevisionDateTime() const
+        boost::optional<> UpdateBorderRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void UpdateBorderRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void UpdateBorderRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

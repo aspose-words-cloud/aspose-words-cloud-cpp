@@ -29,37 +29,37 @@ namespace cloud{
 namespace api{
 namespace models{
 UploadFileRequest::UploadFileRequest(
-        std::shared_ptr<HttpContent> fileContent,
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName
+         
+                 
+                boost::optional<> 
         ) : 
-            m_fileContent(std::move(fileContent)),
-            m_path(std::move(path)),
-            m_storageName(std::move(storageName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        std::shared_ptr<HttpContent> UploadFileRequest::getFileContent() const
+         UploadFileRequest::getFileContent() const
         {
-            return m_fileContent;
+            return m_;
         }
-        void UploadFileRequest::setFileContent(std::shared_ptr<HttpContent> fileContent){
-            m_fileContent = std::move(fileContent);
+        void UploadFileRequest::setFileContent( ){
+            m_ = std::move();
         }
-        utility::string_t UploadFileRequest::getPath() const
+         UploadFileRequest::getPath() const
         {
-            return m_path;
+            return m_;
         }
-        void UploadFileRequest::setPath(utility::string_t path){
-            m_path = std::move(path);
+        void UploadFileRequest::setPath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UploadFileRequest::getStorageName() const
+        boost::optional<> UploadFileRequest::getStorageName() const
         {
-            return m_storageName;
+            return m_;
         }
-        void UploadFileRequest::setStorageName(boost::optional<utility::string_t> storageName){
-            m_storageName = std::move(storageName);
+        void UploadFileRequest::setStorageName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

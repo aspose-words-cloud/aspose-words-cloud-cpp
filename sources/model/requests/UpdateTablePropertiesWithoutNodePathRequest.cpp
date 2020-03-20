@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateTablePropertiesWithoutNodePathRequest::UpdateTablePropertiesWithoutNodePathRequest(
-        utility::string_t name,
-        std::shared_ptr<TableProperties> properties,
-        int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_properties(std::move(properties)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateTablePropertiesWithoutNodePathRequest::getName() const
+         UpdateTablePropertiesWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateTablePropertiesWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<TableProperties> UpdateTablePropertiesWithoutNodePathRequest::getProperties() const
+         UpdateTablePropertiesWithoutNodePathRequest::getProperties() const
         {
-            return m_properties;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setProperties(std::shared_ptr<TableProperties> properties){
-            m_properties = std::move(properties);
+        void UpdateTablePropertiesWithoutNodePathRequest::setProperties( ){
+            m_ = std::move();
         }
-        int32_t UpdateTablePropertiesWithoutNodePathRequest::getIndex() const
+         UpdateTablePropertiesWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void UpdateTablePropertiesWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getFolder() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateTablePropertiesWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getStorage() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateTablePropertiesWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateTablePropertiesWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getPassword() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateTablePropertiesWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getDestFileName() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateTablePropertiesWithoutNodePathRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void UpdateTablePropertiesWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateTablePropertiesWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<> UpdateTablePropertiesWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void UpdateTablePropertiesWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void UpdateTablePropertiesWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

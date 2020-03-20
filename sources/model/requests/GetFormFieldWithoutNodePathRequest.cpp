@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFormFieldWithoutNodePathRequest::GetFormFieldWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetFormFieldWithoutNodePathRequest::getName() const
+         GetFormFieldWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetFormFieldWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetFormFieldWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t GetFormFieldWithoutNodePathRequest::getIndex() const
+         GetFormFieldWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetFormFieldWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetFormFieldWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getFolder() const
+        boost::optional<> GetFormFieldWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetFormFieldWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetFormFieldWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getStorage() const
+        boost::optional<> GetFormFieldWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetFormFieldWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetFormFieldWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> GetFormFieldWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetFormFieldWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetFormFieldWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFormFieldWithoutNodePathRequest::getPassword() const
+        boost::optional<> GetFormFieldWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetFormFieldWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetFormFieldWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

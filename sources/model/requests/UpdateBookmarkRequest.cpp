@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateBookmarkRequest::UpdateBookmarkRequest(
-        utility::string_t name,
-                std::shared_ptr<BookmarkData> bookmarkData,
-                utility::string_t bookmarkName,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_bookmarkData(std::move(bookmarkData)),
-            m_bookmarkName(std::move(bookmarkName)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateBookmarkRequest::getName() const
+         UpdateBookmarkRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateBookmarkRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateBookmarkRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<BookmarkData> UpdateBookmarkRequest::getBookmarkData() const
+         UpdateBookmarkRequest::getBookmarkData() const
         {
-            return m_bookmarkData;
+            return m_;
         }
-        void UpdateBookmarkRequest::setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData){
-            m_bookmarkData = std::move(bookmarkData);
+        void UpdateBookmarkRequest::setBookmarkData( ){
+            m_ = std::move();
         }
-        utility::string_t UpdateBookmarkRequest::getBookmarkName() const
+         UpdateBookmarkRequest::getBookmarkName() const
         {
-            return m_bookmarkName;
+            return m_;
         }
-        void UpdateBookmarkRequest::setBookmarkName(utility::string_t bookmarkName){
-            m_bookmarkName = std::move(bookmarkName);
+        void UpdateBookmarkRequest::setBookmarkName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getFolder() const
+        boost::optional<> UpdateBookmarkRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateBookmarkRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateBookmarkRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getStorage() const
+        boost::optional<> UpdateBookmarkRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateBookmarkRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateBookmarkRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getLoadEncoding() const
+        boost::optional<> UpdateBookmarkRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateBookmarkRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateBookmarkRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getPassword() const
+        boost::optional<> UpdateBookmarkRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateBookmarkRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateBookmarkRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getDestFileName() const
+        boost::optional<> UpdateBookmarkRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateBookmarkRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateBookmarkRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getRevisionAuthor() const
+        boost::optional<> UpdateBookmarkRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void UpdateBookmarkRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void UpdateBookmarkRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateBookmarkRequest::getRevisionDateTime() const
+        boost::optional<> UpdateBookmarkRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void UpdateBookmarkRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void UpdateBookmarkRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

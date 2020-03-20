@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteDrawingObjectWithoutNodePathRequest::DeleteDrawingObjectWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteDrawingObjectWithoutNodePathRequest::getName() const
+         DeleteDrawingObjectWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteDrawingObjectWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t DeleteDrawingObjectWithoutNodePathRequest::getIndex() const
+         DeleteDrawingObjectWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void DeleteDrawingObjectWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getFolder() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteDrawingObjectWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getStorage() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteDrawingObjectWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteDrawingObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getPassword() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteDrawingObjectWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getDestFileName() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteDrawingObjectWithoutNodePathRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteDrawingObjectWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteDrawingObjectWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<> DeleteDrawingObjectWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteDrawingObjectWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteDrawingObjectWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

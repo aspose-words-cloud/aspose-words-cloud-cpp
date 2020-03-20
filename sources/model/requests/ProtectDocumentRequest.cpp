@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 ProtectDocumentRequest::ProtectDocumentRequest(
-        utility::string_t name,
-                std::shared_ptr<ProtectionRequest> protectionRequest,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_protectionRequest(std::move(protectionRequest)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t ProtectDocumentRequest::getName() const
+         ProtectDocumentRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void ProtectDocumentRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void ProtectDocumentRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<ProtectionRequest> ProtectDocumentRequest::getProtectionRequest() const
+         ProtectDocumentRequest::getProtectionRequest() const
         {
-            return m_protectionRequest;
+            return m_;
         }
-        void ProtectDocumentRequest::setProtectionRequest(std::shared_ptr<ProtectionRequest> protectionRequest){
-            m_protectionRequest = std::move(protectionRequest);
+        void ProtectDocumentRequest::setProtectionRequest( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ProtectDocumentRequest::getFolder() const
+        boost::optional<> ProtectDocumentRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void ProtectDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void ProtectDocumentRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ProtectDocumentRequest::getStorage() const
+        boost::optional<> ProtectDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void ProtectDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void ProtectDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ProtectDocumentRequest::getLoadEncoding() const
+        boost::optional<> ProtectDocumentRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void ProtectDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void ProtectDocumentRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ProtectDocumentRequest::getPassword() const
+        boost::optional<> ProtectDocumentRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void ProtectDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void ProtectDocumentRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ProtectDocumentRequest::getDestFileName() const
+        boost::optional<> ProtectDocumentRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void ProtectDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void ProtectDocumentRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

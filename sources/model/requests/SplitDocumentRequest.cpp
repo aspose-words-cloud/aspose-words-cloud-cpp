@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 SplitDocumentRequest::SplitDocumentRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> format,
-                boost::optional<int32_t> from,
-                boost::optional<int32_t> to,
-                boost::optional<bool> zipOutput,
-                boost::optional<utility::string_t> fontsLocation
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_format(std::move(format)),
-            m_from(std::move(from)),
-            m_to(std::move(to)),
-            m_zipOutput(std::move(zipOutput)),
-            m_fontsLocation(std::move(fontsLocation))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t SplitDocumentRequest::getName() const
+         SplitDocumentRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void SplitDocumentRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void SplitDocumentRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getFolder() const
+        boost::optional<> SplitDocumentRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void SplitDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void SplitDocumentRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getStorage() const
+        boost::optional<> SplitDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void SplitDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void SplitDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getLoadEncoding() const
+        boost::optional<> SplitDocumentRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void SplitDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void SplitDocumentRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getPassword() const
+        boost::optional<> SplitDocumentRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void SplitDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void SplitDocumentRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getDestFileName() const
+        boost::optional<> SplitDocumentRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void SplitDocumentRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void SplitDocumentRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getFormat() const
+        boost::optional<> SplitDocumentRequest::getFormat() const
         {
-            return m_format;
+            return m_;
         }
-        void SplitDocumentRequest::setFormat(boost::optional<utility::string_t> format){
-            m_format = std::move(format);
+        void SplitDocumentRequest::setFormat(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<int32_t> SplitDocumentRequest::getFrom() const
+        boost::optional<> SplitDocumentRequest::getFrom() const
         {
-            return m_from;
+            return m_;
         }
-        void SplitDocumentRequest::setFrom(boost::optional<int32_t> from){
-            m_from = std::move(from);
+        void SplitDocumentRequest::setFrom(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<int32_t> SplitDocumentRequest::getTo() const
+        boost::optional<> SplitDocumentRequest::getTo() const
         {
-            return m_to;
+            return m_;
         }
-        void SplitDocumentRequest::setTo(boost::optional<int32_t> to){
-            m_to = std::move(to);
+        void SplitDocumentRequest::setTo(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<bool> SplitDocumentRequest::getZipOutput() const
+        boost::optional<> SplitDocumentRequest::getZipOutput() const
         {
-            return m_zipOutput;
+            return m_;
         }
-        void SplitDocumentRequest::setZipOutput(boost::optional<bool> zipOutput){
-            m_zipOutput = std::move(zipOutput);
+        void SplitDocumentRequest::setZipOutput(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SplitDocumentRequest::getFontsLocation() const
+        boost::optional<> SplitDocumentRequest::getFontsLocation() const
         {
-            return m_fontsLocation;
+            return m_;
         }
-        void SplitDocumentRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
+        void SplitDocumentRequest::setFontsLocation(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

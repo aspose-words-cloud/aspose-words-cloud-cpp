@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 InsertDrawingObjectWithoutNodePathRequest::InsertDrawingObjectWithoutNodePathRequest(
-        utility::string_t name,
-                utility::string_t drawingObject,
-                std::shared_ptr<HttpContent> imageFile,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_drawingObject(std::move(drawingObject)),
-            m_imageFile(std::move(imageFile)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t InsertDrawingObjectWithoutNodePathRequest::getName() const
+         InsertDrawingObjectWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void InsertDrawingObjectWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t InsertDrawingObjectWithoutNodePathRequest::getDrawingObject() const
+         InsertDrawingObjectWithoutNodePathRequest::getDrawingObject() const
         {
-            return m_drawingObject;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setDrawingObject(utility::string_t drawingObject){
-            m_drawingObject = std::move(drawingObject);
+        void InsertDrawingObjectWithoutNodePathRequest::setDrawingObject( ){
+            m_ = std::move();
         }
-        std::shared_ptr<HttpContent> InsertDrawingObjectWithoutNodePathRequest::getImageFile() const
+         InsertDrawingObjectWithoutNodePathRequest::getImageFile() const
         {
-            return m_imageFile;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setImageFile(std::shared_ptr<HttpContent> imageFile){
-            m_imageFile = std::move(imageFile);
+        void InsertDrawingObjectWithoutNodePathRequest::setImageFile( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getFolder() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void InsertDrawingObjectWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getStorage() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void InsertDrawingObjectWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void InsertDrawingObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getPassword() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void InsertDrawingObjectWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getDestFileName() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void InsertDrawingObjectWithoutNodePathRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void InsertDrawingObjectWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> InsertDrawingObjectWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<> InsertDrawingObjectWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void InsertDrawingObjectWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void InsertDrawingObjectWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

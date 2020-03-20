@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentPropertiesRequest::GetDocumentPropertiesRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetDocumentPropertiesRequest::getName() const
+         GetDocumentPropertiesRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetDocumentPropertiesRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetDocumentPropertiesRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentPropertiesRequest::getFolder() const
+        boost::optional<> GetDocumentPropertiesRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetDocumentPropertiesRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetDocumentPropertiesRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentPropertiesRequest::getStorage() const
+        boost::optional<> GetDocumentPropertiesRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetDocumentPropertiesRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetDocumentPropertiesRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentPropertiesRequest::getLoadEncoding() const
+        boost::optional<> GetDocumentPropertiesRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetDocumentPropertiesRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetDocumentPropertiesRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentPropertiesRequest::getPassword() const
+        boost::optional<> GetDocumentPropertiesRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetDocumentPropertiesRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetDocumentPropertiesRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

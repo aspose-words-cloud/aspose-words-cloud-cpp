@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateFieldsRequest::UpdateFieldsRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateFieldsRequest::getName() const
+         UpdateFieldsRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateFieldsRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateFieldsRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFieldsRequest::getFolder() const
+        boost::optional<> UpdateFieldsRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateFieldsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateFieldsRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFieldsRequest::getStorage() const
+        boost::optional<> UpdateFieldsRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateFieldsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateFieldsRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFieldsRequest::getLoadEncoding() const
+        boost::optional<> UpdateFieldsRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateFieldsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateFieldsRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFieldsRequest::getPassword() const
+        boost::optional<> UpdateFieldsRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateFieldsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateFieldsRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateFieldsRequest::getDestFileName() const
+        boost::optional<> UpdateFieldsRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateFieldsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateFieldsRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

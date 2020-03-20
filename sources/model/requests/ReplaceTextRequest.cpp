@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 ReplaceTextRequest::ReplaceTextRequest(
-        utility::string_t name,
-                std::shared_ptr<ReplaceTextParameters> replaceText,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_replaceText(std::move(replaceText)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t ReplaceTextRequest::getName() const
+         ReplaceTextRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void ReplaceTextRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void ReplaceTextRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<ReplaceTextParameters> ReplaceTextRequest::getReplaceText() const
+         ReplaceTextRequest::getReplaceText() const
         {
-            return m_replaceText;
+            return m_;
         }
-        void ReplaceTextRequest::setReplaceText(std::shared_ptr<ReplaceTextParameters> replaceText){
-            m_replaceText = std::move(replaceText);
+        void ReplaceTextRequest::setReplaceText( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getFolder() const
+        boost::optional<> ReplaceTextRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void ReplaceTextRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void ReplaceTextRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getStorage() const
+        boost::optional<> ReplaceTextRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void ReplaceTextRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void ReplaceTextRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getLoadEncoding() const
+        boost::optional<> ReplaceTextRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void ReplaceTextRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void ReplaceTextRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getPassword() const
+        boost::optional<> ReplaceTextRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void ReplaceTextRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void ReplaceTextRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getDestFileName() const
+        boost::optional<> ReplaceTextRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void ReplaceTextRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void ReplaceTextRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getRevisionAuthor() const
+        boost::optional<> ReplaceTextRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void ReplaceTextRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void ReplaceTextRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> ReplaceTextRequest::getRevisionDateTime() const
+        boost::optional<> ReplaceTextRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void ReplaceTextRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void ReplaceTextRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

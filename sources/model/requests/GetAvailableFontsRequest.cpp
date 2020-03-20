@@ -29,19 +29,19 @@ namespace cloud{
 namespace api{
 namespace models{
 GetAvailableFontsRequest::GetAvailableFontsRequest(
-        boost::optional<utility::string_t> fontsLocation
+        boost::optional<> 
         ) : 
-            m_fontsLocation(std::move(fontsLocation))
+            m_(std::move())
         {
             
         }
 
-        boost::optional<utility::string_t> GetAvailableFontsRequest::getFontsLocation() const
+        boost::optional<> GetAvailableFontsRequest::getFontsLocation() const
         {
-            return m_fontsLocation;
+            return m_;
         }
-        void GetAvailableFontsRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
+        void GetAvailableFontsRequest::setFontsLocation(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef deleteRun_H
-#define deleteRun_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,58 +38,49 @@ namespace models {
 class DeleteRunRequest{
     public: 
      DeleteRunRequest(
-                utility::string_t name,
-                utility::string_t paragraphPath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+                                                                   boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+         getName() const;
+        void setName( );
 
-        utility::string_t getParagraphPath() const;
-        void setParagraphPath(utility::string_t paragraphPath);
+         getParagraphPath() const;
+        void setParagraphPath( );
 
-        int32_t getIndex() const;
-        void setIndex(int32_t index);
+         getIndex() const;
+        void setIndex( );
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional<> getFolder() const;
+        void setFolder(boost::optional<> );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional<> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<> );
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional<> getPassword() const;
+        void setPassword(boost::optional<> );
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional<> getDestFileName() const;
+        void setDestFileName(boost::optional<> );
 
-        boost::optional<utility::string_t> getRevisionAuthor() const;
-        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+        boost::optional<> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<> );
 
-        boost::optional<utility::string_t> getRevisionDateTime() const;
-        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+        boost::optional<> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<> );
     private:
-        utility::string_t m_name;
-        utility::string_t m_paragraphPath;
-        int32_t m_index;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_revisionAuthor;
-        boost::optional<utility::string_t> m_revisionDateTime;
+         m_;
+         m_;
+         m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

@@ -29,28 +29,28 @@ namespace cloud{
 namespace api{
 namespace models{
 LoadWebDocumentRequest::LoadWebDocumentRequest(
-        std::shared_ptr<LoadWebDocumentData> data,
-                boost::optional<utility::string_t> storage
+         
+                boost::optional<> 
         ) : 
-            m_data(std::move(data)),
-            m_storage(std::move(storage))
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        std::shared_ptr<LoadWebDocumentData> LoadWebDocumentRequest::getData() const
+         LoadWebDocumentRequest::getData() const
         {
-            return m_data;
+            return m_;
         }
-        void LoadWebDocumentRequest::setData(std::shared_ptr<LoadWebDocumentData> data){
-            m_data = std::move(data);
+        void LoadWebDocumentRequest::setData( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> LoadWebDocumentRequest::getStorage() const
+        boost::optional<> LoadWebDocumentRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void LoadWebDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void LoadWebDocumentRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

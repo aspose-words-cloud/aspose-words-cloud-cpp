@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetBordersRequest::GetBordersRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetBordersRequest::getName() const
+         GetBordersRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetBordersRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetBordersRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetBordersRequest::getNodePath() const
+         GetBordersRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void GetBordersRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void GetBordersRequest::setNodePath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBordersRequest::getFolder() const
+        boost::optional<> GetBordersRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetBordersRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetBordersRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBordersRequest::getStorage() const
+        boost::optional<> GetBordersRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetBordersRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetBordersRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBordersRequest::getLoadEncoding() const
+        boost::optional<> GetBordersRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetBordersRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetBordersRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBordersRequest::getPassword() const
+        boost::optional<> GetBordersRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetBordersRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetBordersRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

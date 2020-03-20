@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFieldRequest::GetFieldRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetFieldRequest::getName() const
+         GetFieldRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetFieldRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetFieldRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetFieldRequest::getNodePath() const
+         GetFieldRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void GetFieldRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void GetFieldRequest::setNodePath( ){
+            m_ = std::move();
         }
-        int32_t GetFieldRequest::getIndex() const
+         GetFieldRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetFieldRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetFieldRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldRequest::getFolder() const
+        boost::optional<> GetFieldRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetFieldRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetFieldRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldRequest::getStorage() const
+        boost::optional<> GetFieldRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetFieldRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetFieldRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldRequest::getLoadEncoding() const
+        boost::optional<> GetFieldRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetFieldRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldRequest::getPassword() const
+        boost::optional<> GetFieldRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetFieldRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetFieldRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

@@ -29,226 +29,226 @@ namespace cloud{
 namespace api{
 namespace models{
 SaveAsTiffRequest::SaveAsTiffRequest(
-        utility::string_t name,
-                std::shared_ptr<TiffSaveOptionsData> saveOptions,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<bool> useAntiAliasing,
-                boost::optional<bool> useHighQualityRendering,
-                boost::optional<double> imageBrightness,
-                boost::optional<utility::string_t> imageColorMode,
-                boost::optional<double> imageContrast,
-                boost::optional<utility::string_t> numeralFormat,
-                boost::optional<int32_t> pageCount,
-                boost::optional<int32_t> pageIndex,
-                boost::optional<utility::string_t> paperColor,
-                boost::optional<utility::string_t> pixelFormat,
-                boost::optional<double> resolution,
-                boost::optional<double> scale,
-                boost::optional<utility::string_t> tiffCompression,
-                boost::optional<utility::string_t> dmlRenderingMode,
-                boost::optional<utility::string_t> dmlEffectsRenderingMode,
-                boost::optional<utility::string_t> tiffBinarizationMethod,
-                boost::optional<bool> zipOutput,
-                boost::optional<utility::string_t> fontsLocation
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_saveOptions(std::move(saveOptions)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_useAntiAliasing(std::move(useAntiAliasing)),
-            m_useHighQualityRendering(std::move(useHighQualityRendering)),
-            m_imageBrightness(std::move(imageBrightness)),
-            m_imageColorMode(std::move(imageColorMode)),
-            m_imageContrast(std::move(imageContrast)),
-            m_numeralFormat(std::move(numeralFormat)),
-            m_pageCount(std::move(pageCount)),
-            m_pageIndex(std::move(pageIndex)),
-            m_paperColor(std::move(paperColor)),
-            m_pixelFormat(std::move(pixelFormat)),
-            m_resolution(std::move(resolution)),
-            m_scale(std::move(scale)),
-            m_tiffCompression(std::move(tiffCompression)),
-            m_dmlRenderingMode(std::move(dmlRenderingMode)),
-            m_dmlEffectsRenderingMode(std::move(dmlEffectsRenderingMode)),
-            m_tiffBinarizationMethod(std::move(tiffBinarizationMethod)),
-            m_zipOutput(std::move(zipOutput)),
-            m_fontsLocation(std::move(fontsLocation))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t SaveAsTiffRequest::getName() const
+         SaveAsTiffRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void SaveAsTiffRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void SaveAsTiffRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<TiffSaveOptionsData> SaveAsTiffRequest::getSaveOptions() const
+         SaveAsTiffRequest::getSaveOptions() const
         {
-            return m_saveOptions;
+            return m_;
         }
-        void SaveAsTiffRequest::setSaveOptions(std::shared_ptr<TiffSaveOptionsData> saveOptions){
-            m_saveOptions = std::move(saveOptions);
+        void SaveAsTiffRequest::setSaveOptions( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getFolder() const
+        boost::optional<> SaveAsTiffRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void SaveAsTiffRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void SaveAsTiffRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getStorage() const
+        boost::optional<> SaveAsTiffRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void SaveAsTiffRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void SaveAsTiffRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getLoadEncoding() const
+        boost::optional<> SaveAsTiffRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void SaveAsTiffRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void SaveAsTiffRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getPassword() const
+        boost::optional<> SaveAsTiffRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void SaveAsTiffRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void SaveAsTiffRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<bool> SaveAsTiffRequest::getUseAntiAliasing() const
+        boost::optional<> SaveAsTiffRequest::getUseAntiAliasing() const
         {
-            return m_useAntiAliasing;
+            return m_;
         }
-        void SaveAsTiffRequest::setUseAntiAliasing(boost::optional<bool> useAntiAliasing){
-            m_useAntiAliasing = std::move(useAntiAliasing);
+        void SaveAsTiffRequest::setUseAntiAliasing(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<bool> SaveAsTiffRequest::getUseHighQualityRendering() const
+        boost::optional<> SaveAsTiffRequest::getUseHighQualityRendering() const
         {
-            return m_useHighQualityRendering;
+            return m_;
         }
-        void SaveAsTiffRequest::setUseHighQualityRendering(boost::optional<bool> useHighQualityRendering){
-            m_useHighQualityRendering = std::move(useHighQualityRendering);
+        void SaveAsTiffRequest::setUseHighQualityRendering(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<double> SaveAsTiffRequest::getImageBrightness() const
+        boost::optional<> SaveAsTiffRequest::getImageBrightness() const
         {
-            return m_imageBrightness;
+            return m_;
         }
-        void SaveAsTiffRequest::setImageBrightness(boost::optional<double> imageBrightness){
-            m_imageBrightness = std::move(imageBrightness);
+        void SaveAsTiffRequest::setImageBrightness(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getImageColorMode() const
+        boost::optional<> SaveAsTiffRequest::getImageColorMode() const
         {
-            return m_imageColorMode;
+            return m_;
         }
-        void SaveAsTiffRequest::setImageColorMode(boost::optional<utility::string_t> imageColorMode){
-            m_imageColorMode = std::move(imageColorMode);
+        void SaveAsTiffRequest::setImageColorMode(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<double> SaveAsTiffRequest::getImageContrast() const
+        boost::optional<> SaveAsTiffRequest::getImageContrast() const
         {
-            return m_imageContrast;
+            return m_;
         }
-        void SaveAsTiffRequest::setImageContrast(boost::optional<double> imageContrast){
-            m_imageContrast = std::move(imageContrast);
+        void SaveAsTiffRequest::setImageContrast(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getNumeralFormat() const
+        boost::optional<> SaveAsTiffRequest::getNumeralFormat() const
         {
-            return m_numeralFormat;
+            return m_;
         }
-        void SaveAsTiffRequest::setNumeralFormat(boost::optional<utility::string_t> numeralFormat){
-            m_numeralFormat = std::move(numeralFormat);
+        void SaveAsTiffRequest::setNumeralFormat(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<int32_t> SaveAsTiffRequest::getPageCount() const
+        boost::optional<> SaveAsTiffRequest::getPageCount() const
         {
-            return m_pageCount;
+            return m_;
         }
-        void SaveAsTiffRequest::setPageCount(boost::optional<int32_t> pageCount){
-            m_pageCount = std::move(pageCount);
+        void SaveAsTiffRequest::setPageCount(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<int32_t> SaveAsTiffRequest::getPageIndex() const
+        boost::optional<> SaveAsTiffRequest::getPageIndex() const
         {
-            return m_pageIndex;
+            return m_;
         }
-        void SaveAsTiffRequest::setPageIndex(boost::optional<int32_t> pageIndex){
-            m_pageIndex = std::move(pageIndex);
+        void SaveAsTiffRequest::setPageIndex(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getPaperColor() const
+        boost::optional<> SaveAsTiffRequest::getPaperColor() const
         {
-            return m_paperColor;
+            return m_;
         }
-        void SaveAsTiffRequest::setPaperColor(boost::optional<utility::string_t> paperColor){
-            m_paperColor = std::move(paperColor);
+        void SaveAsTiffRequest::setPaperColor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getPixelFormat() const
+        boost::optional<> SaveAsTiffRequest::getPixelFormat() const
         {
-            return m_pixelFormat;
+            return m_;
         }
-        void SaveAsTiffRequest::setPixelFormat(boost::optional<utility::string_t> pixelFormat){
-            m_pixelFormat = std::move(pixelFormat);
+        void SaveAsTiffRequest::setPixelFormat(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<double> SaveAsTiffRequest::getResolution() const
+        boost::optional<> SaveAsTiffRequest::getResolution() const
         {
-            return m_resolution;
+            return m_;
         }
-        void SaveAsTiffRequest::setResolution(boost::optional<double> resolution){
-            m_resolution = std::move(resolution);
+        void SaveAsTiffRequest::setResolution(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<double> SaveAsTiffRequest::getScale() const
+        boost::optional<> SaveAsTiffRequest::getScale() const
         {
-            return m_scale;
+            return m_;
         }
-        void SaveAsTiffRequest::setScale(boost::optional<double> scale){
-            m_scale = std::move(scale);
+        void SaveAsTiffRequest::setScale(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getTiffCompression() const
+        boost::optional<> SaveAsTiffRequest::getTiffCompression() const
         {
-            return m_tiffCompression;
+            return m_;
         }
-        void SaveAsTiffRequest::setTiffCompression(boost::optional<utility::string_t> tiffCompression){
-            m_tiffCompression = std::move(tiffCompression);
+        void SaveAsTiffRequest::setTiffCompression(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getDmlRenderingMode() const
+        boost::optional<> SaveAsTiffRequest::getDmlRenderingMode() const
         {
-            return m_dmlRenderingMode;
+            return m_;
         }
-        void SaveAsTiffRequest::setDmlRenderingMode(boost::optional<utility::string_t> dmlRenderingMode){
-            m_dmlRenderingMode = std::move(dmlRenderingMode);
+        void SaveAsTiffRequest::setDmlRenderingMode(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getDmlEffectsRenderingMode() const
+        boost::optional<> SaveAsTiffRequest::getDmlEffectsRenderingMode() const
         {
-            return m_dmlEffectsRenderingMode;
+            return m_;
         }
-        void SaveAsTiffRequest::setDmlEffectsRenderingMode(boost::optional<utility::string_t> dmlEffectsRenderingMode){
-            m_dmlEffectsRenderingMode = std::move(dmlEffectsRenderingMode);
+        void SaveAsTiffRequest::setDmlEffectsRenderingMode(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getTiffBinarizationMethod() const
+        boost::optional<> SaveAsTiffRequest::getTiffBinarizationMethod() const
         {
-            return m_tiffBinarizationMethod;
+            return m_;
         }
-        void SaveAsTiffRequest::setTiffBinarizationMethod(boost::optional<utility::string_t> tiffBinarizationMethod){
-            m_tiffBinarizationMethod = std::move(tiffBinarizationMethod);
+        void SaveAsTiffRequest::setTiffBinarizationMethod(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<bool> SaveAsTiffRequest::getZipOutput() const
+        boost::optional<> SaveAsTiffRequest::getZipOutput() const
         {
-            return m_zipOutput;
+            return m_;
         }
-        void SaveAsTiffRequest::setZipOutput(boost::optional<bool> zipOutput){
-            m_zipOutput = std::move(zipOutput);
+        void SaveAsTiffRequest::setZipOutput(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> SaveAsTiffRequest::getFontsLocation() const
+        boost::optional<> SaveAsTiffRequest::getFontsLocation() const
         {
-            return m_fontsLocation;
+            return m_;
         }
-        void SaveAsTiffRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
+        void SaveAsTiffRequest::setFontsLocation(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

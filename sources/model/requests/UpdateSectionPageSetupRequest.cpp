@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateSectionPageSetupRequest::UpdateSectionPageSetupRequest(
-        utility::string_t name,
-                int32_t sectionIndex,
-                std::shared_ptr<PageSetup> pageSetup,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_sectionIndex(std::move(sectionIndex)),
-            m_pageSetup(std::move(pageSetup)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateSectionPageSetupRequest::getName() const
+         UpdateSectionPageSetupRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateSectionPageSetupRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t UpdateSectionPageSetupRequest::getSectionIndex() const
+         UpdateSectionPageSetupRequest::getSectionIndex() const
         {
-            return m_sectionIndex;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setSectionIndex(int32_t sectionIndex){
-            m_sectionIndex = std::move(sectionIndex);
+        void UpdateSectionPageSetupRequest::setSectionIndex( ){
+            m_ = std::move();
         }
-        std::shared_ptr<PageSetup> UpdateSectionPageSetupRequest::getPageSetup() const
+         UpdateSectionPageSetupRequest::getPageSetup() const
         {
-            return m_pageSetup;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setPageSetup(std::shared_ptr<PageSetup> pageSetup){
-            m_pageSetup = std::move(pageSetup);
+        void UpdateSectionPageSetupRequest::setPageSetup( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getFolder() const
+        boost::optional<> UpdateSectionPageSetupRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateSectionPageSetupRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getStorage() const
+        boost::optional<> UpdateSectionPageSetupRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateSectionPageSetupRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getLoadEncoding() const
+        boost::optional<> UpdateSectionPageSetupRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateSectionPageSetupRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getPassword() const
+        boost::optional<> UpdateSectionPageSetupRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateSectionPageSetupRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getDestFileName() const
+        boost::optional<> UpdateSectionPageSetupRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateSectionPageSetupRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getRevisionAuthor() const
+        boost::optional<> UpdateSectionPageSetupRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void UpdateSectionPageSetupRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateSectionPageSetupRequest::getRevisionDateTime() const
+        boost::optional<> UpdateSectionPageSetupRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void UpdateSectionPageSetupRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void UpdateSectionPageSetupRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

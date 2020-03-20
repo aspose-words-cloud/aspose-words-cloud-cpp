@@ -23,11 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef createOrUpdateDocumentProperty_H
-#define createOrUpdateDocumentProperty_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
-#include "DocumentProperty.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -39,58 +38,49 @@ namespace models {
 class CreateOrUpdateDocumentPropertyRequest{
     public: 
      CreateOrUpdateDocumentPropertyRequest(
-                utility::string_t name,
-                utility::string_t propertyName,
-                std::shared_ptr<DocumentProperty> property,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+                                                                   boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+         getName() const;
+        void setName( );
 
-        utility::string_t getPropertyName() const;
-        void setPropertyName(utility::string_t propertyName);
+         getPropertyName() const;
+        void setPropertyName( );
 
-        std::shared_ptr<DocumentProperty> getProperty() const;
-        void setProperty(std::shared_ptr<DocumentProperty> property);
+         getProperty() const;
+        void setProperty( );
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional<> getFolder() const;
+        void setFolder(boost::optional<> );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional<> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<> );
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional<> getPassword() const;
+        void setPassword(boost::optional<> );
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional<> getDestFileName() const;
+        void setDestFileName(boost::optional<> );
 
-        boost::optional<utility::string_t> getRevisionAuthor() const;
-        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+        boost::optional<> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<> );
 
-        boost::optional<utility::string_t> getRevisionDateTime() const;
-        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+        boost::optional<> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<> );
     private:
-        utility::string_t m_name;
-        utility::string_t m_propertyName;
-        std::shared_ptr<DocumentProperty> m_property;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_revisionAuthor;
-        boost::optional<utility::string_t> m_revisionDateTime;
+         m_;
+         m_;
+         m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

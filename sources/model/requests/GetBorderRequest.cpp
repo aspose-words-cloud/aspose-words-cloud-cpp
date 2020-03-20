@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetBorderRequest::GetBorderRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                utility::string_t borderType,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_borderType(std::move(borderType)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetBorderRequest::getName() const
+         GetBorderRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetBorderRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetBorderRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetBorderRequest::getNodePath() const
+         GetBorderRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void GetBorderRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void GetBorderRequest::setNodePath( ){
+            m_ = std::move();
         }
-        utility::string_t GetBorderRequest::getBorderType() const
+         GetBorderRequest::getBorderType() const
         {
-            return m_borderType;
+            return m_;
         }
-        void GetBorderRequest::setBorderType(utility::string_t borderType){
-            m_borderType = std::move(borderType);
+        void GetBorderRequest::setBorderType( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBorderRequest::getFolder() const
+        boost::optional<> GetBorderRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetBorderRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetBorderRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBorderRequest::getStorage() const
+        boost::optional<> GetBorderRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetBorderRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetBorderRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBorderRequest::getLoadEncoding() const
+        boost::optional<> GetBorderRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetBorderRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetBorderRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetBorderRequest::getPassword() const
+        boost::optional<> GetBorderRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetBorderRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetBorderRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

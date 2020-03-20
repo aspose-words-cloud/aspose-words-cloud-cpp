@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFootnoteWithoutNodePathRequest::GetFootnoteWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetFootnoteWithoutNodePathRequest::getName() const
+         GetFootnoteWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetFootnoteWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetFootnoteWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t GetFootnoteWithoutNodePathRequest::getIndex() const
+         GetFootnoteWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetFootnoteWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetFootnoteWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFootnoteWithoutNodePathRequest::getFolder() const
+        boost::optional<> GetFootnoteWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetFootnoteWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetFootnoteWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFootnoteWithoutNodePathRequest::getStorage() const
+        boost::optional<> GetFootnoteWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetFootnoteWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetFootnoteWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFootnoteWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> GetFootnoteWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetFootnoteWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetFootnoteWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFootnoteWithoutNodePathRequest::getPassword() const
+        boost::optional<> GetFootnoteWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetFootnoteWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetFootnoteWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

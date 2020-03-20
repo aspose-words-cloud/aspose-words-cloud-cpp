@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef createDocument_H
-#define createDocument_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,23 +38,21 @@ namespace models {
 class CreateDocumentRequest{
     public: 
      CreateDocumentRequest(
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> fileName,
-                boost::optional<utility::string_t> folder
+                boost::optional<>                 boost::optional<>                 boost::optional<> 
         );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
 
-        boost::optional<utility::string_t> getFileName() const;
-        void setFileName(boost::optional<utility::string_t> fileName);
+        boost::optional<> getFileName() const;
+        void setFileName(boost::optional<> );
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional<> getFolder() const;
+        void setFolder(boost::optional<> );
     private:
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_fileName;
-        boost::optional<utility::string_t> m_folder;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

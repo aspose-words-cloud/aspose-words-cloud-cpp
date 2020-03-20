@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetParagraphsRequest::GetParagraphsRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetParagraphsRequest::getName() const
+         GetParagraphsRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetParagraphsRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetParagraphsRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetParagraphsRequest::getNodePath() const
+         GetParagraphsRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void GetParagraphsRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void GetParagraphsRequest::setNodePath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsRequest::getFolder() const
+        boost::optional<> GetParagraphsRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetParagraphsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetParagraphsRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsRequest::getStorage() const
+        boost::optional<> GetParagraphsRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetParagraphsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetParagraphsRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsRequest::getLoadEncoding() const
+        boost::optional<> GetParagraphsRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetParagraphsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetParagraphsRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphsRequest::getPassword() const
+        boost::optional<> GetParagraphsRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetParagraphsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetParagraphsRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

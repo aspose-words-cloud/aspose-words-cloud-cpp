@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetSectionPageSetupRequest::GetSectionPageSetupRequest(
-        utility::string_t name,
-                int32_t sectionIndex,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_sectionIndex(std::move(sectionIndex)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetSectionPageSetupRequest::getName() const
+         GetSectionPageSetupRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetSectionPageSetupRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetSectionPageSetupRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t GetSectionPageSetupRequest::getSectionIndex() const
+         GetSectionPageSetupRequest::getSectionIndex() const
         {
-            return m_sectionIndex;
+            return m_;
         }
-        void GetSectionPageSetupRequest::setSectionIndex(int32_t sectionIndex){
-            m_sectionIndex = std::move(sectionIndex);
+        void GetSectionPageSetupRequest::setSectionIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionPageSetupRequest::getFolder() const
+        boost::optional<> GetSectionPageSetupRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetSectionPageSetupRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetSectionPageSetupRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionPageSetupRequest::getStorage() const
+        boost::optional<> GetSectionPageSetupRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetSectionPageSetupRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetSectionPageSetupRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionPageSetupRequest::getLoadEncoding() const
+        boost::optional<> GetSectionPageSetupRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetSectionPageSetupRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetSectionPageSetupRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionPageSetupRequest::getPassword() const
+        boost::optional<> GetSectionPageSetupRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetSectionPageSetupRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetSectionPageSetupRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

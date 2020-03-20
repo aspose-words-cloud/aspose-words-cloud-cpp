@@ -29,73 +29,73 @@ namespace cloud{
 namespace api{
 namespace models{
 GetDocumentDrawingObjectImageDataRequest::GetDocumentDrawingObjectImageDataRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetDocumentDrawingObjectImageDataRequest::getName() const
+         GetDocumentDrawingObjectImageDataRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetDocumentDrawingObjectImageDataRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t GetDocumentDrawingObjectImageDataRequest::getNodePath() const
+         GetDocumentDrawingObjectImageDataRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void GetDocumentDrawingObjectImageDataRequest::setNodePath( ){
+            m_ = std::move();
         }
-        int32_t GetDocumentDrawingObjectImageDataRequest::getIndex() const
+         GetDocumentDrawingObjectImageDataRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetDocumentDrawingObjectImageDataRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectImageDataRequest::getFolder() const
+        boost::optional<> GetDocumentDrawingObjectImageDataRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetDocumentDrawingObjectImageDataRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectImageDataRequest::getStorage() const
+        boost::optional<> GetDocumentDrawingObjectImageDataRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetDocumentDrawingObjectImageDataRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectImageDataRequest::getLoadEncoding() const
+        boost::optional<> GetDocumentDrawingObjectImageDataRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetDocumentDrawingObjectImageDataRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetDocumentDrawingObjectImageDataRequest::getPassword() const
+        boost::optional<> GetDocumentDrawingObjectImageDataRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetDocumentDrawingObjectImageDataRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetDocumentDrawingObjectImageDataRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

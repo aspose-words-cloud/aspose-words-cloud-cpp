@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetParagraphWithoutNodePathRequest::GetParagraphWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetParagraphWithoutNodePathRequest::getName() const
+         GetParagraphWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetParagraphWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetParagraphWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t GetParagraphWithoutNodePathRequest::getIndex() const
+         GetParagraphWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetParagraphWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetParagraphWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphWithoutNodePathRequest::getFolder() const
+        boost::optional<> GetParagraphWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetParagraphWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetParagraphWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphWithoutNodePathRequest::getStorage() const
+        boost::optional<> GetParagraphWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetParagraphWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetParagraphWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> GetParagraphWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetParagraphWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetParagraphWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetParagraphWithoutNodePathRequest::getPassword() const
+        boost::optional<> GetParagraphWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetParagraphWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetParagraphWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

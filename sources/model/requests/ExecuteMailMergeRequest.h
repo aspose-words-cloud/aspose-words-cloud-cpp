@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef executeMailMerge_H
-#define executeMailMerge_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -38,63 +38,53 @@ namespace models {
 class ExecuteMailMergeRequest{
     public: 
      ExecuteMailMergeRequest(
-                utility::string_t name,
-                boost::optional<utility::string_t> data,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<bool> withRegions,
-                boost::optional<utility::string_t> mailMergeDataFile,
-                boost::optional<utility::string_t> cleanup,
-                boost::optional<bool> useWholeParagraphAsRegion,
-                boost::optional<utility::string_t> destFileName
+                                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<>                 boost::optional<> 
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+         getName() const;
+        void setName( );
 
-        boost::optional<utility::string_t> getData() const;
-        void setData(boost::optional<utility::string_t> data);
+        boost::optional<> getData() const;
+        void setData(boost::optional<> );
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional<> getFolder() const;
+        void setFolder(boost::optional<> );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional<> getLoadEncoding() const;
+        void setLoadEncoding(boost::optional<> );
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional<> getPassword() const;
+        void setPassword(boost::optional<> );
 
-        boost::optional<bool> getWithRegions() const;
-        void setWithRegions(boost::optional<bool> withRegions);
+        boost::optional<> getWithRegions() const;
+        void setWithRegions(boost::optional<> );
 
-        boost::optional<utility::string_t> getMailMergeDataFile() const;
-        void setMailMergeDataFile(boost::optional<utility::string_t> mailMergeDataFile);
+        boost::optional<> getMailMergeDataFile() const;
+        void setMailMergeDataFile(boost::optional<> );
 
-        boost::optional<utility::string_t> getCleanup() const;
-        void setCleanup(boost::optional<utility::string_t> cleanup);
+        boost::optional<> getCleanup() const;
+        void setCleanup(boost::optional<> );
 
-        boost::optional<bool> getUseWholeParagraphAsRegion() const;
-        void setUseWholeParagraphAsRegion(boost::optional<bool> useWholeParagraphAsRegion);
+        boost::optional<> getUseWholeParagraphAsRegion() const;
+        void setUseWholeParagraphAsRegion(boost::optional<> );
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional<> getDestFileName() const;
+        void setDestFileName(boost::optional<> );
     private:
-        utility::string_t m_name;
-        boost::optional<utility::string_t> m_data;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<bool> m_withRegions;
-        boost::optional<utility::string_t> m_mailMergeDataFile;
-        boost::optional<utility::string_t> m_cleanup;
-        boost::optional<bool> m_useWholeParagraphAsRegion;
-        boost::optional<utility::string_t> m_destFileName;
+         m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
+        boost::optional<> m_;
 };
 
 }

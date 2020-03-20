@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteHeadersFootersRequest::DeleteHeadersFootersRequest(
-        utility::string_t name,
-                utility::string_t sectionPath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> headersFootersTypes
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_sectionPath(std::move(sectionPath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_headersFootersTypes(std::move(headersFootersTypes))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteHeadersFootersRequest::getName() const
+         DeleteHeadersFootersRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteHeadersFootersRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t DeleteHeadersFootersRequest::getSectionPath() const
+         DeleteHeadersFootersRequest::getSectionPath() const
         {
-            return m_sectionPath;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setSectionPath(utility::string_t sectionPath){
-            m_sectionPath = std::move(sectionPath);
+        void DeleteHeadersFootersRequest::setSectionPath( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getFolder() const
+        boost::optional<> DeleteHeadersFootersRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteHeadersFootersRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getStorage() const
+        boost::optional<> DeleteHeadersFootersRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteHeadersFootersRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getLoadEncoding() const
+        boost::optional<> DeleteHeadersFootersRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteHeadersFootersRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getPassword() const
+        boost::optional<> DeleteHeadersFootersRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteHeadersFootersRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getDestFileName() const
+        boost::optional<> DeleteHeadersFootersRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteHeadersFootersRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getRevisionAuthor() const
+        boost::optional<> DeleteHeadersFootersRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteHeadersFootersRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getRevisionDateTime() const
+        boost::optional<> DeleteHeadersFootersRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteHeadersFootersRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteHeadersFootersRequest::getHeadersFootersTypes() const
+        boost::optional<> DeleteHeadersFootersRequest::getHeadersFootersTypes() const
         {
-            return m_headersFootersTypes;
+            return m_;
         }
-        void DeleteHeadersFootersRequest::setHeadersFootersTypes(boost::optional<utility::string_t> headersFootersTypes){
-            m_headersFootersTypes = std::move(headersFootersTypes);
+        void DeleteHeadersFootersRequest::setHeadersFootersTypes(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

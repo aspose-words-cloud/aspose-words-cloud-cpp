@@ -29,109 +29,109 @@ namespace cloud{
 namespace api{
 namespace models{
 UpdateRunFontRequest::UpdateRunFontRequest(
-        utility::string_t name,
-                std::shared_ptr<Font> fontDto,
-                utility::string_t paragraphPath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_fontDto(std::move(fontDto)),
-            m_paragraphPath(std::move(paragraphPath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t UpdateRunFontRequest::getName() const
+         UpdateRunFontRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void UpdateRunFontRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void UpdateRunFontRequest::setName( ){
+            m_ = std::move();
         }
-        std::shared_ptr<Font> UpdateRunFontRequest::getFontDto() const
+         UpdateRunFontRequest::getFontDto() const
         {
-            return m_fontDto;
+            return m_;
         }
-        void UpdateRunFontRequest::setFontDto(std::shared_ptr<Font> fontDto){
-            m_fontDto = std::move(fontDto);
+        void UpdateRunFontRequest::setFontDto( ){
+            m_ = std::move();
         }
-        utility::string_t UpdateRunFontRequest::getParagraphPath() const
+         UpdateRunFontRequest::getParagraphPath() const
         {
-            return m_paragraphPath;
+            return m_;
         }
-        void UpdateRunFontRequest::setParagraphPath(utility::string_t paragraphPath){
-            m_paragraphPath = std::move(paragraphPath);
+        void UpdateRunFontRequest::setParagraphPath( ){
+            m_ = std::move();
         }
-        int32_t UpdateRunFontRequest::getIndex() const
+         UpdateRunFontRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void UpdateRunFontRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void UpdateRunFontRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getFolder() const
+        boost::optional<> UpdateRunFontRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void UpdateRunFontRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void UpdateRunFontRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getStorage() const
+        boost::optional<> UpdateRunFontRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void UpdateRunFontRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void UpdateRunFontRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getLoadEncoding() const
+        boost::optional<> UpdateRunFontRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void UpdateRunFontRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void UpdateRunFontRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getPassword() const
+        boost::optional<> UpdateRunFontRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void UpdateRunFontRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void UpdateRunFontRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getDestFileName() const
+        boost::optional<> UpdateRunFontRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void UpdateRunFontRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void UpdateRunFontRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getRevisionAuthor() const
+        boost::optional<> UpdateRunFontRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void UpdateRunFontRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void UpdateRunFontRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> UpdateRunFontRequest::getRevisionDateTime() const
+        boost::optional<> UpdateRunFontRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void UpdateRunFontRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void UpdateRunFontRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

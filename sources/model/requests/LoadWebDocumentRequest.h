@@ -23,11 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef loadWebDocument_H
-#define loadWebDocument_H 
+#ifndef _H
+#define _H 
 
 #include "cpprest/details/basic_types.h"
-#include "LoadWebDocumentData.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -39,18 +38,17 @@ namespace models {
 class LoadWebDocumentRequest{
     public: 
      LoadWebDocumentRequest(
-                std::shared_ptr<LoadWebDocumentData> data,
-                boost::optional<utility::string_t> storage
+                                 boost::optional<> 
         );
 
-        std::shared_ptr<LoadWebDocumentData> getData() const;
-        void setData(std::shared_ptr<LoadWebDocumentData> data);
+         getData() const;
+        void setData( );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional<> getStorage() const;
+        void setStorage(boost::optional<> );
     private:
-        std::shared_ptr<LoadWebDocumentData> m_data;
-        boost::optional<utility::string_t> m_storage;
+         m_;
+        boost::optional<> m_;
 };
 
 }

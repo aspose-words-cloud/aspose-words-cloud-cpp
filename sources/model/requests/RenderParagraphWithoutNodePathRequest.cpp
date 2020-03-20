@@ -29,82 +29,82 @@ namespace cloud{
 namespace api{
 namespace models{
 RenderParagraphWithoutNodePathRequest::RenderParagraphWithoutNodePathRequest(
-        utility::string_t name,
-                utility::string_t format,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> fontsLocation
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_format(std::move(format)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_fontsLocation(std::move(fontsLocation))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t RenderParagraphWithoutNodePathRequest::getName() const
+         RenderParagraphWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void RenderParagraphWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t RenderParagraphWithoutNodePathRequest::getFormat() const
+         RenderParagraphWithoutNodePathRequest::getFormat() const
         {
-            return m_format;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setFormat(utility::string_t format){
-            m_format = std::move(format);
+        void RenderParagraphWithoutNodePathRequest::setFormat( ){
+            m_ = std::move();
         }
-        int32_t RenderParagraphWithoutNodePathRequest::getIndex() const
+         RenderParagraphWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void RenderParagraphWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RenderParagraphWithoutNodePathRequest::getFolder() const
+        boost::optional<> RenderParagraphWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void RenderParagraphWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RenderParagraphWithoutNodePathRequest::getStorage() const
+        boost::optional<> RenderParagraphWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void RenderParagraphWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RenderParagraphWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> RenderParagraphWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void RenderParagraphWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RenderParagraphWithoutNodePathRequest::getPassword() const
+        boost::optional<> RenderParagraphWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void RenderParagraphWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> RenderParagraphWithoutNodePathRequest::getFontsLocation() const
+        boost::optional<> RenderParagraphWithoutNodePathRequest::getFontsLocation() const
         {
-            return m_fontsLocation;
+            return m_;
         }
-        void RenderParagraphWithoutNodePathRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
+        void RenderParagraphWithoutNodePathRequest::setFontsLocation(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

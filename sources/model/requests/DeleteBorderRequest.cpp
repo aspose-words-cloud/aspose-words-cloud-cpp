@@ -29,100 +29,100 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteBorderRequest::DeleteBorderRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                utility::string_t borderType,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_borderType(std::move(borderType)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteBorderRequest::getName() const
+         DeleteBorderRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteBorderRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteBorderRequest::setName( ){
+            m_ = std::move();
         }
-        utility::string_t DeleteBorderRequest::getNodePath() const
+         DeleteBorderRequest::getNodePath() const
         {
-            return m_nodePath;
+            return m_;
         }
-        void DeleteBorderRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
+        void DeleteBorderRequest::setNodePath( ){
+            m_ = std::move();
         }
-        utility::string_t DeleteBorderRequest::getBorderType() const
+         DeleteBorderRequest::getBorderType() const
         {
-            return m_borderType;
+            return m_;
         }
-        void DeleteBorderRequest::setBorderType(utility::string_t borderType){
-            m_borderType = std::move(borderType);
+        void DeleteBorderRequest::setBorderType( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getFolder() const
+        boost::optional<> DeleteBorderRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteBorderRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteBorderRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getStorage() const
+        boost::optional<> DeleteBorderRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteBorderRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteBorderRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getLoadEncoding() const
+        boost::optional<> DeleteBorderRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteBorderRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteBorderRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getPassword() const
+        boost::optional<> DeleteBorderRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteBorderRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteBorderRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getDestFileName() const
+        boost::optional<> DeleteBorderRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteBorderRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteBorderRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getRevisionAuthor() const
+        boost::optional<> DeleteBorderRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteBorderRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteBorderRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteBorderRequest::getRevisionDateTime() const
+        boost::optional<> DeleteBorderRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteBorderRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteBorderRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

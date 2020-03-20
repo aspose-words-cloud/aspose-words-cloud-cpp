@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteSectionRequest::DeleteSectionRequest(
-        utility::string_t name,
-                int32_t sectionIndex,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_sectionIndex(std::move(sectionIndex)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteSectionRequest::getName() const
+         DeleteSectionRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteSectionRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteSectionRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t DeleteSectionRequest::getSectionIndex() const
+         DeleteSectionRequest::getSectionIndex() const
         {
-            return m_sectionIndex;
+            return m_;
         }
-        void DeleteSectionRequest::setSectionIndex(int32_t sectionIndex){
-            m_sectionIndex = std::move(sectionIndex);
+        void DeleteSectionRequest::setSectionIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getFolder() const
+        boost::optional<> DeleteSectionRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteSectionRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteSectionRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getStorage() const
+        boost::optional<> DeleteSectionRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteSectionRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteSectionRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getLoadEncoding() const
+        boost::optional<> DeleteSectionRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteSectionRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteSectionRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getPassword() const
+        boost::optional<> DeleteSectionRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteSectionRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteSectionRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getDestFileName() const
+        boost::optional<> DeleteSectionRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteSectionRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteSectionRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getRevisionAuthor() const
+        boost::optional<> DeleteSectionRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteSectionRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteSectionRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteSectionRequest::getRevisionDateTime() const
+        boost::optional<> DeleteSectionRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteSectionRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteSectionRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

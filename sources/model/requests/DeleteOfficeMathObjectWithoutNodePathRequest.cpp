@@ -29,91 +29,91 @@ namespace cloud{
 namespace api{
 namespace models{
 DeleteOfficeMathObjectWithoutNodePathRequest::DeleteOfficeMathObjectWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t DeleteOfficeMathObjectWithoutNodePathRequest::getName() const
+         DeleteOfficeMathObjectWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t DeleteOfficeMathObjectWithoutNodePathRequest::getIndex() const
+         DeleteOfficeMathObjectWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getFolder() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getStorage() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getPassword() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getDestFileName() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getDestFileName() const
         {
-            return m_destFileName;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setDestFileName(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getRevisionAuthor() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getRevisionAuthor() const
         {
-            return m_revisionAuthor;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setRevisionAuthor(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> DeleteOfficeMathObjectWithoutNodePathRequest::getRevisionDateTime() const
+        boost::optional<> DeleteOfficeMathObjectWithoutNodePathRequest::getRevisionDateTime() const
         {
-            return m_revisionDateTime;
+            return m_;
         }
-        void DeleteOfficeMathObjectWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
+        void DeleteOfficeMathObjectWithoutNodePathRequest::setRevisionDateTime(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

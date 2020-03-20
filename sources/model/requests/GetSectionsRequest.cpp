@@ -29,55 +29,55 @@ namespace cloud{
 namespace api{
 namespace models{
 GetSectionsRequest::GetSectionsRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetSectionsRequest::getName() const
+         GetSectionsRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetSectionsRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetSectionsRequest::setName( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionsRequest::getFolder() const
+        boost::optional<> GetSectionsRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetSectionsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetSectionsRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionsRequest::getStorage() const
+        boost::optional<> GetSectionsRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetSectionsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetSectionsRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionsRequest::getLoadEncoding() const
+        boost::optional<> GetSectionsRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetSectionsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetSectionsRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetSectionsRequest::getPassword() const
+        boost::optional<> GetSectionsRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetSectionsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetSectionsRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }

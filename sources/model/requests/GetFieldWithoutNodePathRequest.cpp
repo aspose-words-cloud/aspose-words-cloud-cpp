@@ -29,64 +29,64 @@ namespace cloud{
 namespace api{
 namespace models{
 GetFieldWithoutNodePathRequest::GetFieldWithoutNodePathRequest(
-        utility::string_t name,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+         
+                 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
+                boost::optional<> 
         ) : 
-            m_name(std::move(name)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
+            m_(std::move())
         {
             
         }
 
-        utility::string_t GetFieldWithoutNodePathRequest::getName() const
+         GetFieldWithoutNodePathRequest::getName() const
         {
-            return m_name;
+            return m_;
         }
-        void GetFieldWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
+        void GetFieldWithoutNodePathRequest::setName( ){
+            m_ = std::move();
         }
-        int32_t GetFieldWithoutNodePathRequest::getIndex() const
+         GetFieldWithoutNodePathRequest::getIndex() const
         {
-            return m_index;
+            return m_;
         }
-        void GetFieldWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
+        void GetFieldWithoutNodePathRequest::setIndex( ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldWithoutNodePathRequest::getFolder() const
+        boost::optional<> GetFieldWithoutNodePathRequest::getFolder() const
         {
-            return m_folder;
+            return m_;
         }
-        void GetFieldWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
+        void GetFieldWithoutNodePathRequest::setFolder(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldWithoutNodePathRequest::getStorage() const
+        boost::optional<> GetFieldWithoutNodePathRequest::getStorage() const
         {
-            return m_storage;
+            return m_;
         }
-        void GetFieldWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
+        void GetFieldWithoutNodePathRequest::setStorage(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldWithoutNodePathRequest::getLoadEncoding() const
+        boost::optional<> GetFieldWithoutNodePathRequest::getLoadEncoding() const
         {
-            return m_loadEncoding;
+            return m_;
         }
-        void GetFieldWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
+        void GetFieldWithoutNodePathRequest::setLoadEncoding(boost::optional<> ){
+            m_ = std::move();
         }
-        boost::optional<utility::string_t> GetFieldWithoutNodePathRequest::getPassword() const
+        boost::optional<> GetFieldWithoutNodePathRequest::getPassword() const
         {
-            return m_password;
+            return m_;
         }
-        void GetFieldWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
+        void GetFieldWithoutNodePathRequest::setPassword(boost::optional<> ){
+            m_ = std::move();
         }
 
 }
