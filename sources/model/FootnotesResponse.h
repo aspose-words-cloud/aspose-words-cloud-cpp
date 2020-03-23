@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/footnotes.
+/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes.
 /// </summary>
 class  FootnotesResponse
     : public WordsResponse

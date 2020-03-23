@@ -81,6 +81,13 @@ public:
     bool prettyFormatIsSet() const;
     void unsetPrettyFormat();
     void setPrettyFormat(bool value);
+    /// <summary>
+    /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
+    /// </summary>
+    bool isSaveImagesAsWmf() const;
+    bool saveImagesAsWmfIsSet() const;
+    void unsetSaveImagesAsWmf();
+    void setSaveImagesAsWmf(bool value);
 
 protected:
     bool m_ExportCompactSize;
@@ -89,6 +96,8 @@ protected:
     bool m_ExportImagesForOldReadersIsSet;
     bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
+    bool m_SaveImagesAsWmf;
+    bool m_SaveImagesAsWmfIsSet;
 };
 
 }
