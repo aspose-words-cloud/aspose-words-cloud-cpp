@@ -144,7 +144,6 @@ void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName
 	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, boost::none);
 
 	auto newConfig = get_config();
-	newConfig->setDebugMode(true);
 	std::shared_ptr<WordsApi> api = std::make_shared<WordsApi>(newConfig);
 
 	auto result = api->uploadFile(request).get();
