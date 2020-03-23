@@ -48,10 +48,9 @@ TEST_F(ConfigurationTest, TestDebugMode) {
     utility::string_t fullName = path_combine(dataFolder, remoteName);
 	utility::string_t nodePath = STCONVERT("paragraphs/0");
 
-	auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
-    std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
+    std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(newConfig);
     std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, nodePath, dataFolder, boost::none, boost::none,
 		boost::none, boost::none, boost::none, boost::none);
 
@@ -59,7 +58,6 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 
 	utility::stringstream_t ss;
     auto outbuf = ucout.rdbuf(ss.rdbuf());
-    client->setConfiguration(newConfig);
 
 	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
@@ -85,11 +83,10 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
     utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
 	utility::string_t nodePath = STCONVERT("paragraphs/0");
 
-    auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
 
-    std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(client);
+    std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(newConfig);
 
     std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, nodePath, dataFolder, boost::none, boost::none,
 		boost::none, boost::none, boost::none, boost::none);
@@ -98,7 +95,6 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 
 	utility::stringstream_t ss;
 	streambuf_t* outbuf = ucout.rdbuf(ss.rdbuf());
-    client->setConfiguration(newConfig);
 	
 	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
@@ -231,8 +227,7 @@ TEST_F(StorageApiTest, TestConfiguration) {
 		std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
 
 	auto config = std::make_shared<ApiConfiguration>();
-	auto client = std::make_shared<ApiClient>(config);
-	auto api = std::make_shared<WordsApi>(client);
+	auto api = std::make_shared<WordsApi>(config);
 
 	try
 	{

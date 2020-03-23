@@ -143,10 +143,9 @@ void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName
 {
 	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, boost::none);
 
-	auto client = get_client();
 	auto newConfig = get_config();
 	newConfig->setDebugMode(true);
-	std::shared_ptr<WordsApi> api = std::make_shared<WordsApi>(client);
+	std::shared_ptr<WordsApi> api = std::make_shared<WordsApi>(newConfig);
 
 	auto result = api->uploadFile(request).get();
 }
@@ -158,6 +157,7 @@ bool InfrastructureTest::DoesFileExist(const utility::string_t& remoteName)
 	{
 		std::shared_ptr<DownloadFileRequest> request = std::make_shared<DownloadFileRequest>(remoteName, boost::none, boost::none);
 		get_api()->downloadFile(request).get();
+		return true;
 	}
 	catch (ApiException& exception)
 	{
@@ -185,7 +185,7 @@ std::shared_ptr<WordsApi> InfrastructureTest::get_api()
 {
 	if (!api)
 	{
-		api = std::make_shared<WordsApi>(get_client());
+		api = std::make_shared<WordsApi>(get_configuration());
 	}
 	return api;
 }
