@@ -140,10 +140,6 @@ void RtfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveImagesAsWmf"), m_SaveImagesAsWmf));
         
     }
-    if(m_SaveImagesAsWmfIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveImagesAsWmf"), m_SaveImagesAsWmf));
-    }
 }
 
 void RtfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
