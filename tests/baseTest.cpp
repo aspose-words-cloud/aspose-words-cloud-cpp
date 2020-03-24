@@ -172,7 +172,7 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 
 TEST_F(InfrastructureTest, OAuthTest)
 {
-	std::shared_ptr<ApiClient> client = get_client();
+	std::shared_ptr<ApiClient> client = std::make_shared<ApiClient>(get_configuration());
 	client->requestToken().wait();	 	// ApiException will be thrown if something goes wrong
 }
 
@@ -238,7 +238,7 @@ TEST_F(StorageApiTest, TestConfiguration) {
 	{
 	}
 
-	config->setAppKey(get_client()->getConfiguration()->getAppKey());
+	config->setAppKey(get_configuration()->getAppKey());
 
 	try
 	{
@@ -249,18 +249,7 @@ TEST_F(StorageApiTest, TestConfiguration) {
 	{
 	}
 
-	config->setAppSid(get_client()->getConfiguration()->getAppSid());
-
-	try
-	{
-		api->createDocument(request).get();
-		FAIL() << "Exception was expected";
-	}
-	catch (...)
-	{
-	}
-
-	config->setBaseUrl(get_client()->getConfiguration()->getBaseUrl());
+	config->setAppSid(get_configuration()->getAppSid());
 
 	ASSERT_NO_THROW(api->createDocument(request).get());
 }

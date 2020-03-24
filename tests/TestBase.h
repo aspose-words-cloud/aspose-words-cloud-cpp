@@ -69,7 +69,6 @@ public:
 
 public:
 	std::shared_ptr<ApiConfiguration> get_configuration() const;
-	std::shared_ptr<ApiClient> get_client();
 	std::shared_ptr<WordsApi> get_api();
 
 protected:

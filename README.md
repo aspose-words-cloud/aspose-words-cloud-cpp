@@ -115,21 +115,10 @@ target_link_libraries(your_app_target PRIVATE Aspose::Words.Cloud)
 Typical usage of the SDK in code follows this template:
 ```
 	//  create client configuration
-	auto config = std::make_shared<ApiConfiguration>();
-	config->setAppKey(yourApiKey);
-	config->setAppSid(yourApiSecret);
-	config->setBaseUrl(apiBaseUrl);
-	config->setApiVersion(apiVersion);
-	web::http::client::http_client_config httpConfig;
-	httpConfig.set_timeout(std::chrono::seconds(timeout));
-	config->setHttpConfig(httpConfig);
-
-	// create API client
-	auto client = std::make_shared<ApiClient>();
-	client->setConfiguration(config);
+	auto config = std::make_shared<ApiConfiguration>(yourApiKey, yourApiSid);
 
 	// create API
-	auto api = std::make_shared<WordsApi>(client);
+	auto api = std::make_shared<WordsApi>(config);
 
 	try
 	{

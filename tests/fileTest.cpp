@@ -23,6 +23,9 @@
 * </summary>
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "TestBase.h"
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 /// <summary>
 /// Example of how to work with a file
@@ -96,10 +99,13 @@ TEST_F(FileTest, TestDeleteFile) {
 /// Test for moving file
 /// </summary>
 TEST_F(FileTest, TestMoveFile) {
+	boost::uuids::uuid uuid = boost::uuids::random_generator()();
+	const std::string uuid_string = boost::uuids::to_string(uuid);
+
 	utility::string_t
 		localName = STCONVERT("test_multi_pages.docx"),
 		remoteSrcName = STCONVERT("TestMoveFileSrc.docx"),
-		remoteDestName = STCONVERT("TestMoveFileDest.docx"),
+		remoteDestName = STCONVERT("TestMoveFileDest" + uuid_string + ".docx"),
 		fullSrcName = path_combine_url(dataFolder, remoteSrcName),
 		fullDestName = path_combine_url(dataFolder, remoteDestName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
