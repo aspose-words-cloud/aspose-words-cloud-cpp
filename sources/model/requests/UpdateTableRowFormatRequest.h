@@ -40,6 +40,7 @@ class UpdateTableRowFormatRequest{
     public: 
      UpdateTableRowFormatRequest(
         utility::string_t name,
+        std::shared_ptr<TableRowFormat> format,
                 utility::string_t tablePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
@@ -48,12 +49,14 @@ class UpdateTableRowFormatRequest{
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableRowFormat>> format
+                boost::optional<utility::string_t> revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        std::shared_ptr<TableRowFormat> getFormat() const;
+        void setFormat(std::shared_ptr<TableRowFormat> format);
 
         utility::string_t getTablePath() const;
         void setTablePath(utility::string_t tablePath);
@@ -81,11 +84,9 @@ class UpdateTableRowFormatRequest{
 
         boost::optional<utility::string_t> getRevisionDateTime() const;
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
-
-        boost::optional<std::shared_ptr<TableRowFormat>> getFormat() const;
-        void setFormat(boost::optional<std::shared_ptr<TableRowFormat>> format);
     private:
         utility::string_t m_name;
+        std::shared_ptr<TableRowFormat> m_format;
         utility::string_t m_tablePath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
@@ -95,7 +96,6 @@ class UpdateTableRowFormatRequest{
         boost::optional<utility::string_t> m_destFileName;
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<std::shared_ptr<TableRowFormat>> m_format;
 };
 
 }

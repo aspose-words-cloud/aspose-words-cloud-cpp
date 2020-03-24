@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Comment.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,11 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Comment_H_
 
 
-#include "DocumentPosition.h"
 #include "CommentLink.h"
-#include <cpprest/details/basic_types.h>
+#include "DocumentPosition.h"
 #include "StoryChildNodes.h"
-#include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -72,7 +70,7 @@ public:
     void unsetAuthor();
     void setAuthor(utility::string_t value);
     /// <summary>
-    /// Gets or sets content of comment.
+    /// Gets or sets Content.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
@@ -93,14 +91,14 @@ public:
     void unsetInitial();
     void setInitial(utility::string_t value);
     /// <summary>
-    /// Gets or sets link to comment range end node.
+    /// Gets or sets RangeEnd.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeEnd() const;
     bool rangeEndIsSet() const;
     void unsetRangeEnd();
     void setRangeEnd(std::shared_ptr<DocumentPosition> value);
     /// <summary>
-    /// Gets or sets link to comment range start node.
+    /// Gets or sets RangeStart.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeStart() const;
     bool rangeStartIsSet() const;

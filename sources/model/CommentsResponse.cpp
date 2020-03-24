@@ -76,13 +76,9 @@ void CommentsResponse::fromJson(web::json::value& val)
 
 void CommentsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_CommentsIsSet)
     {
         if (m_Comments.get())
@@ -95,10 +91,8 @@ void CommentsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void CommentsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Comments")))
     {
         if(multipart->hasContent(_XPLATSTR("Comments")))

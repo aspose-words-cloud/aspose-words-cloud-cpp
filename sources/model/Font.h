@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Font.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -29,10 +28,10 @@
 
 
 #include "Border.h"
-#include "XmlColor.h"
-#include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
 #include "WordsApiLink.h"
+#include "XmlColor.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -93,14 +92,14 @@ public:
     void unsetBoldBi();
     void setBoldBi(bool value);
     /// <summary>
-    /// Gets or sets border object that specifies border for the font.
+    /// Gets or sets Border.
     /// </summary>
     std::shared_ptr<Border> getBorder() const;
     bool borderIsSet() const;
     void unsetBorder();
     void setBorder(std::shared_ptr<Border> value);
     /// <summary>
-    /// Gets or sets the color of the font.             
+    /// Gets or sets Color.
     /// </summary>
     std::shared_ptr<XmlColor> getColor() const;
     bool colorIsSet() const;
@@ -142,7 +141,7 @@ public:
     void unsetHidden();
     void setHidden(bool value);
     /// <summary>
-    /// Gets or sets the highlight (marker) color.             
+    /// Gets or sets HighlightColor.
     /// </summary>
     std::shared_ptr<XmlColor> getHighlightColor() const;
     bool highlightColorIsSet() const;
@@ -338,7 +337,7 @@ public:
     void unsetUnderline();
     void setUnderline(utility::string_t value);
     /// <summary>
-    /// Gets or sets the color of the underline applied to the font.
+    /// Gets or sets UnderlineColor.
     /// </summary>
     std::shared_ptr<XmlColor> getUnderlineColor() const;
     bool underlineColorIsSet() const;

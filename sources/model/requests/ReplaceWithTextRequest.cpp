@@ -32,7 +32,7 @@ ReplaceWithTextRequest::ReplaceWithTextRequest(
         utility::string_t name,
                 utility::string_t rangeStartIdentifier,
                 std::shared_ptr<ReplaceRange> rangeText,
-                utility::string_t rangeEndIdentifier,
+                boost::optional<utility::string_t> rangeEndIdentifier,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -73,11 +73,11 @@ ReplaceWithTextRequest::ReplaceWithTextRequest(
         void ReplaceWithTextRequest::setRangeText(std::shared_ptr<ReplaceRange> rangeText){
             m_rangeText = std::move(rangeText);
         }
-        utility::string_t ReplaceWithTextRequest::getRangeEndIdentifier() const
+        boost::optional<utility::string_t> ReplaceWithTextRequest::getRangeEndIdentifier() const
         {
             return m_rangeEndIdentifier;
         }
-        void ReplaceWithTextRequest::setRangeEndIdentifier(utility::string_t rangeEndIdentifier){
+        void ReplaceWithTextRequest::setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier){
             m_rangeEndIdentifier = std::move(rangeEndIdentifier);
         }
         boost::optional<utility::string_t> ReplaceWithTextRequest::getFolder() const

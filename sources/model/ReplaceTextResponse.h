@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceTextResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceTextResponse_H_
 
 
+#include "FileLink.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "FileLink.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// ReplaceTextResponse members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets DocumentLink.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;

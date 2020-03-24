@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObject.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObject_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "DrawingObjectLink.h"
-#include <vector>
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -71,7 +69,7 @@ public:
     void unsetHeight();
     void setHeight(double value);
     /// <summary>
-    /// Gets or sets link to image data. Can be null if shape does not have an image.
+    /// Gets or sets ImageDataLink.
     /// </summary>
     std::shared_ptr<WordsApiLink> getImageDataLink() const;
     bool imageDataLinkIsSet() const;
@@ -85,7 +83,7 @@ public:
     void unsetLeft();
     void setLeft(double value);
     /// <summary>
-    /// Gets or sets link to ole object. Can be null if shape does not have ole data.
+    /// Gets or sets OleDataLink.
     /// </summary>
     std::shared_ptr<WordsApiLink> getOleDataLink() const;
     bool oleDataLinkIsSet() const;
@@ -106,7 +104,7 @@ public:
     void unsetRelativeVerticalPosition();
     void setRelativeVerticalPosition(utility::string_t value);
     /// <summary>
-    /// Gets or sets a list of links that originate from this .
+    /// Gets or sets a list of links that originate from this DrawingObjectDto.
     /// </summary>
     std::vector<std::shared_ptr<WordsApiLink>>& getRenderLinks();
     bool renderLinksIsSet() const;

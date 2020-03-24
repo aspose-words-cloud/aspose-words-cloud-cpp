@@ -12615,8 +12615,8 @@ pplx::task<AsposeResponse<RangeTextResponse>> WordsApi::getRangeText(std::shared
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -17084,6 +17084,12 @@ pplx::task<AsposeResponse<RunResponse>> WordsApi::insertRun(std::shared_ptr<Inse
 pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<InsertTableRequest> request)
 {
 
+    // verify the required parameter 'table' is set
+    if (request->getTable() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'table' when calling WordsApi->insertTable"));
+    }
+
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/tables"),
     path = bPath;
@@ -17168,8 +17174,8 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getTable())
-            json = ModelBase::toJson(*(request->getTable()));
+        json = ModelBase::toJson(request->getTable());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -17179,9 +17185,9 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getTable() && (*(request->getTable())).get())
+        if (request->getTable().get())
         {
-            (*(request->getTable()))->toMultipart(multipart, _XPLATSTR("table"));
+            (request->getTable())->toMultipart(multipart, _XPLATSTR("table"));
         }
 
         httpBody = multipart;
@@ -17245,6 +17251,12 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTable(std::shared_ptr<
 }
 pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::shared_ptr<InsertTableCellRequest> request)
 {
+
+    // verify the required parameter 'cell' is set
+    if (request->getCell() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'cell' when calling WordsApi->insertTableCell"));
+    }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{tableRowPath}/cells"),
@@ -17330,8 +17342,8 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getCell())
-            json = ModelBase::toJson(*(request->getCell()));
+        json = ModelBase::toJson(request->getCell());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -17341,9 +17353,9 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getCell() && (*(request->getCell())).get())
+        if (request->getCell().get())
         {
-            (*(request->getCell()))->toMultipart(multipart, _XPLATSTR("cell"));
+            (request->getCell())->toMultipart(multipart, _XPLATSTR("cell"));
         }
 
         httpBody = multipart;
@@ -17407,6 +17419,12 @@ pplx::task<AsposeResponse<TableCellResponse>> WordsApi::insertTableCell(std::sha
 }
 pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::shared_ptr<InsertTableRowRequest> request)
 {
+
+    // verify the required parameter 'row' is set
+    if (request->getRow() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'row' when calling WordsApi->insertTableRow"));
+    }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{tablePath}/rows"),
@@ -17492,8 +17510,8 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getRow())
-            json = ModelBase::toJson(*(request->getRow()));
+        json = ModelBase::toJson(request->getRow());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -17503,9 +17521,9 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getRow() && (*(request->getRow())).get())
+        if (request->getRow().get())
         {
-            (*(request->getRow()))->toMultipart(multipart, _XPLATSTR("row"));
+            (request->getRow())->toMultipart(multipart, _XPLATSTR("row"));
         }
 
         httpBody = multipart;
@@ -17569,6 +17587,12 @@ pplx::task<AsposeResponse<TableRowResponse>> WordsApi::insertTableRow(std::share
 }
 pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(std::shared_ptr<InsertTableWithoutNodePathRequest> request)
 {
+
+    // verify the required parameter 'table' is set
+    if (request->getTable() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'table' when calling WordsApi->insertTableWithoutNodePath"));
+    }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/tables"),
@@ -17652,8 +17676,8 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getTable())
-            json = ModelBase::toJson(*(request->getTable()));
+        json = ModelBase::toJson(request->getTable());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -17663,9 +17687,9 @@ pplx::task<AsposeResponse<TableResponse>> WordsApi::insertTableWithoutNodePath(s
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getTable() && (*(request->getTable())).get())
+        if (request->getTable().get())
         {
-            (*(request->getTable()))->toMultipart(multipart, _XPLATSTR("table"));
+            (request->getTable())->toMultipart(multipart, _XPLATSTR("table"));
         }
 
         httpBody = multipart;
@@ -18712,8 +18736,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::removeRange(std::shared_p
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20158,8 +20182,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::replaceWithText(std::shar
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -20572,8 +20596,8 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::saveAsRange(std::shared_p
         ApiClient::parameterToString(request->getName()));
     path = replacePathParameter(path, _XPLATSTR("rangeStartIdentifier"),
         ApiClient::parameterToString(request->getRangeStartIdentifier()));
-    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"),
-        ApiClient::parameterToString(request->getRangeEndIdentifier()));
+    path = replacePathParameter(path, _XPLATSTR("rangeEndIdentifier"), 
+        extractOptional(request->getRangeEndIdentifier()));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
@@ -23881,6 +23905,12 @@ pplx::task<AsposeResponse<SectionPageSetupResponse>> WordsApi::updateSectionPage
 pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFormat(std::shared_ptr<UpdateTableCellFormatRequest> request)
 {
 
+    // verify the required parameter 'format' is set
+    if (request->getFormat() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'format' when calling WordsApi->updateTableCellFormat"));
+    }
+
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{tableRowPath}/cells/{index}/cellformat"),
     path = bPath;
@@ -23967,8 +23997,8 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getFormat())
-            json = ModelBase::toJson(*(request->getFormat()));
+        json = ModelBase::toJson(request->getFormat());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -23978,9 +24008,9 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getFormat() && (*(request->getFormat())).get())
+        if (request->getFormat().get())
         {
-            (*(request->getFormat()))->toMultipart(multipart, _XPLATSTR("format"));
+            (request->getFormat())->toMultipart(multipart, _XPLATSTR("format"));
         }
 
         httpBody = multipart;
@@ -24044,6 +24074,12 @@ pplx::task<AsposeResponse<TableCellFormatResponse>> WordsApi::updateTableCellFor
 }
 pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTableProperties(std::shared_ptr<UpdateTablePropertiesRequest> request)
 {
+
+    // verify the required parameter 'properties' is set
+    if (request->getProperties() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'properties' when calling WordsApi->updateTableProperties"));
+    }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{nodePath}/tables/{index}/properties"),
@@ -24131,8 +24167,8 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getProperties())
-            json = ModelBase::toJson(*(request->getProperties()));
+        json = ModelBase::toJson(request->getProperties());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -24142,9 +24178,9 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getProperties() && (*(request->getProperties())).get())
+        if (request->getProperties().get())
         {
-            (*(request->getProperties()))->toMultipart(multipart, _XPLATSTR("properties"));
+            (request->getProperties())->toMultipart(multipart, _XPLATSTR("properties"));
         }
 
         httpBody = multipart;
@@ -24208,6 +24244,12 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 }
 pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropertiesWithoutNodePath(std::shared_ptr<UpdateTablePropertiesWithoutNodePathRequest> request)
 {
+
+    // verify the required parameter 'properties' is set
+    if (request->getProperties() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'properties' when calling WordsApi->updateTablePropertiesWithoutNodePath"));
+    }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/tables/{index}/properties"),
@@ -24293,8 +24335,8 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getProperties())
-            json = ModelBase::toJson(*(request->getProperties()));
+        json = ModelBase::toJson(request->getProperties());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -24304,9 +24346,9 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getProperties() && (*(request->getProperties())).get())
+        if (request->getProperties().get())
         {
-            (*(request->getProperties()))->toMultipart(multipart, _XPLATSTR("properties"));
+            (request->getProperties())->toMultipart(multipart, _XPLATSTR("properties"));
         }
 
         httpBody = multipart;
@@ -24370,6 +24412,12 @@ pplx::task<AsposeResponse<TablePropertiesResponse>> WordsApi::updateTablePropert
 }
 pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowFormat(std::shared_ptr<UpdateTableRowFormatRequest> request)
 {
+
+    // verify the required parameter 'format' is set
+    if (request->getFormat() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'format' when calling WordsApi->updateTableRowFormat"));
+    }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/{tablePath}/rows/{index}/rowformat"),
@@ -24457,8 +24505,8 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
         requestHttpContentType = _XPLATSTR("application/json");
         web::json::value json;
 
-        if (request->getFormat())
-            json = ModelBase::toJson(*(request->getFormat()));
+        json = ModelBase::toJson(request->getFormat());
+        
 
         httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
     }
@@ -24468,9 +24516,9 @@ pplx::task<AsposeResponse<TableRowFormatResponse>> WordsApi::updateTableRowForma
         requestHttpContentType = _XPLATSTR("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
 
-        if (request->getFormat() && (*(request->getFormat())).get())
+        if (request->getFormat().get())
         {
-            (*(request->getFormat()))->toMultipart(multipart, _XPLATSTR("format"));
+            (request->getFormat())->toMultipart(multipart, _XPLATSTR("format"));
         }
 
         httpBody = multipart;

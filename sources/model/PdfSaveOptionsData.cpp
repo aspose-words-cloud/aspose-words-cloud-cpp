@@ -401,78 +401,9 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
 
 void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    FixedPageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_SaveFormatIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
-        
-    }
-    if(m_FileNameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
-        
-    }
-    if(m_DmlRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
-        
-    }
-    if(m_DmlEffectsRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
-        
-    }
-    if(m_ZipOutputIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
-    }
-    if(m_UpdateLastSavedTimePropertyIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
-    }
-    if(m_UpdateSdtContentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
-    }
-    if(m_UpdateFieldsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
-    }
-    if(m_ColorModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
-        
-    }
-    if(m_JpegQualityIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("JpegQuality"), m_JpegQuality));
-    }
-    if(m_MetafileRenderingOptionsIsSet)
-    {
-        if (m_MetafileRenderingOptions.get())
-        {
-            m_MetafileRenderingOptions->toMultipart(multipart, _XPLATSTR("MetafileRenderingOptions."));
-        }
-        
-    }
-    if(m_NumeralFormatIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NumeralFormat"), m_NumeralFormat));
-        
-    }
-    if(m_OptimizeOutputIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OptimizeOutput"), m_OptimizeOutput));
-    }
-    if(m_PageCountIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageCount"), m_PageCount));
-    }
-    if(m_PageIndexIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageIndex"), m_PageIndex));
-    }
     if(m_ComplianceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Compliance"), m_Compliance));
@@ -481,6 +412,7 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_CreateNoteHyperlinksIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateNoteHyperlinks"), m_CreateNoteHyperlinks));
+        
     }
     if(m_CustomPropertiesExportIsSet)
     {
@@ -498,6 +430,7 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_DisplayDocTitleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DisplayDocTitle"), m_DisplayDocTitle));
+        
     }
     if(m_DownsampleOptionsIsSet)
     {
@@ -510,6 +443,7 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_EmbedFullFontsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EmbedFullFonts"), m_EmbedFullFonts));
+        
     }
     if(m_EncryptionDetailsIsSet)
     {
@@ -522,10 +456,12 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_EscapeUriIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EscapeUri"), m_EscapeUri));
+        
     }
     if(m_ExportDocumentStructureIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportDocumentStructure"), m_ExportDocumentStructure));
+        
     }
     if(m_FontEmbeddingModeIsSet)
     {
@@ -550,6 +486,7 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_OpenHyperlinksInNewWindowIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OpenHyperlinksInNewWindow"), m_OpenHyperlinksInNewWindow));
+        
     }
     if(m_OutlineOptionsIsSet)
     {
@@ -567,10 +504,12 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_PreblendImagesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PreblendImages"), m_PreblendImages));
+        
     }
     if(m_PreserveFormFieldsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PreserveFormFields"), m_PreserveFormFields));
+        
     }
     if(m_TextCompressionIsSet)
     {
@@ -580,10 +519,12 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_UseBookFoldPrintingSettingsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseBookFoldPrintingSettings"), m_UseBookFoldPrintingSettings));
+        
     }
     if(m_UseCoreFontsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseCoreFonts"), m_UseCoreFonts));
+        
     }
     if(m_ZoomBehaviorIsSet)
     {
@@ -593,76 +534,14 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_ZoomFactorIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZoomFactor"), m_ZoomFactor));
+        
     }
 }
 
 void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
-    {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FileName")))
-    {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
-    {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
-    {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
-    {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
-    {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
-    {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
-    {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ColorMode")))
-    {
-        setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("JpegQuality")))
-    {
-        setJpegQuality(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("JpegQuality"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("MetafileRenderingOptions")))
-    {
-        if(multipart->hasContent(_XPLATSTR("MetafileRenderingOptions")))
-        {
-            std::shared_ptr<MetafileRenderingOptionsData> newItem(new MetafileRenderingOptionsData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("MetafileRenderingOptions."));
-            setMetafileRenderingOptions( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("NumeralFormat")))
-    {
-        setNumeralFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NumeralFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OptimizeOutput")))
-    {
-        setOptimizeOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OptimizeOutput"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageCount")))
-    {
-        setPageCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageCount"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageIndex")))
-    {
-        setPageIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageIndex"))));
-    }
+    FixedPageSaveOptionsData::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Compliance")))
     {
         setCompliance(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Compliance"))));

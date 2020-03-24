@@ -162,16 +162,9 @@ void Comment::fromJson(web::json::value& val)
 
 void Comment::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    CommentLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_AuthorIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Author"), m_Author));
@@ -220,15 +213,8 @@ void Comment::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, c
 
 void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    CommentLink::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Author")))
     {
         setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Author"))));

@@ -163,13 +163,9 @@ void AvailableFontsResponse::fromJson(web::json::value& val)
 
 void AvailableFontsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_AdditionalFonts.begin(), m_AdditionalFonts.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FontInfo> item){
@@ -207,10 +203,8 @@ void AvailableFontsResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
 void AvailableFontsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     {
         m_AdditionalFonts.clear();
         if(multipart->hasContent(_XPLATSTR("AdditionalFonts")))

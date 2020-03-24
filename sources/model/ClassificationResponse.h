@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassificationResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,7 +30,6 @@
 #include "ClassificationResult.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
 
 namespace aspose {
 namespace words {

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CommentsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// CommentsResponse members
 
     /// <summary>
-    /// Gets or sets collection of comments.
+    /// Gets or sets Comments.
     /// </summary>
     std::shared_ptr<CommentsCollection> getComments() const;
     bool commentsIsSet() const;

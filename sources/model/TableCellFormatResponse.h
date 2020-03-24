@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCellFormatResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// TableCellFormatResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets CellFormat.
     /// </summary>
     std::shared_ptr<TableCellFormat> getCellFormat() const;
     bool cellFormatIsSet() const;

@@ -187,28 +187,18 @@ void FormField::fromJson(web::json::value& val)
 
 void FormField::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
-    if(m_NodeIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
-        
-    }
     if(m_CalculateOnExitIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CalculateOnExit"), m_CalculateOnExit));
+        
     }
     if(m_EnabledIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Enabled"), m_Enabled));
+        
     }
     if(m_EntryMacroIsSet)
     {
@@ -233,10 +223,12 @@ void FormField::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
     if(m_OwnHelpIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnHelp"), m_OwnHelp));
+        
     }
     if(m_OwnStatusIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnStatus"), m_OwnStatus));
+        
     }
     if(m_StatusTextIsSet)
     {
@@ -247,19 +239,8 @@ void FormField::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
-    {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
-    }
+    NodeLink::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
     {
         setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));

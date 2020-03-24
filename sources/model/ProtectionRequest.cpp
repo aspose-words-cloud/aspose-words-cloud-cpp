@@ -101,6 +101,7 @@ void ProtectionRequest::fromJson(web::json::value& val)
 
 void ProtectionRequest::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_PasswordIsSet)
@@ -122,6 +123,8 @@ void ProtectionRequest::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
 void ProtectionRequest::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Password")))
     {
         setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));

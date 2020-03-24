@@ -607,47 +607,13 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
 
 void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_SaveFormatIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
-        
-    }
-    if(m_FileNameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
-        
-    }
-    if(m_DmlRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
-        
-    }
-    if(m_DmlEffectsRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
-        
-    }
-    if(m_ZipOutputIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
-    }
-    if(m_UpdateLastSavedTimePropertyIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
-    }
-    if(m_UpdateSdtContentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
-    }
-    if(m_UpdateFieldsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
-    }
     if(m_AllowNegativeIndentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllowNegativeIndent"), m_AllowNegativeIndent));
+        
     }
     if(m_CssClassNamePrefixIsSet)
     {
@@ -672,6 +638,7 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_DocumentSplitHeadingLevelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentSplitHeadingLevel"), m_DocumentSplitHeadingLevel));
+        
     }
     if(m_EncodingIsSet)
     {
@@ -681,18 +648,22 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_ExportDocumentPropertiesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportDocumentProperties"), m_ExportDocumentProperties));
+        
     }
     if(m_ExportDropDownFormFieldAsTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportDropDownFormFieldAsText"), m_ExportDropDownFormFieldAsText));
+        
     }
     if(m_ExportFontResourcesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportFontResources"), m_ExportFontResources));
+        
     }
     if(m_ExportFontsAsBase64IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportFontsAsBase64"), m_ExportFontsAsBase64));
+        
     }
     if(m_ExportHeadersFootersModeIsSet)
     {
@@ -702,10 +673,12 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_ExportImagesAsBase64IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportImagesAsBase64"), m_ExportImagesAsBase64));
+        
     }
     if(m_ExportLanguageInformationIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportLanguageInformation"), m_ExportLanguageInformation));
+        
     }
     if(m_ExportListLabelsIsSet)
     {
@@ -715,42 +688,52 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_ExportOriginalUrlForLinkedImagesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportOriginalUrlForLinkedImages"), m_ExportOriginalUrlForLinkedImages));
+        
     }
     if(m_ExportPageMarginsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportPageMargins"), m_ExportPageMargins));
+        
     }
     if(m_ExportPageSetupIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportPageSetup"), m_ExportPageSetup));
+        
     }
     if(m_ExportRelativeFontSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportRelativeFontSize"), m_ExportRelativeFontSize));
+        
     }
     if(m_ExportRoundtripInformationIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportRoundtripInformation"), m_ExportRoundtripInformation));
+        
     }
     if(m_ExportTextBoxAsSvgIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportTextBoxAsSvg"), m_ExportTextBoxAsSvg));
+        
     }
     if(m_ExportTextInputFormFieldAsTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportTextInputFormFieldAsText"), m_ExportTextInputFormFieldAsText));
+        
     }
     if(m_ExportTocPageNumbersIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportTocPageNumbers"), m_ExportTocPageNumbers));
+        
     }
     if(m_ExportXhtmlTransitionalIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportXhtmlTransitional"), m_ExportXhtmlTransitional));
+        
     }
     if(m_FontResourcesSubsettingSizeThresholdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FontResourcesSubsettingSizeThreshold"), m_FontResourcesSubsettingSizeThreshold));
+        
     }
     if(m_FontsFolderIsSet)
     {
@@ -770,6 +753,7 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_ImageResolutionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImageResolution"), m_ImageResolution));
+        
     }
     if(m_ImagesFolderIsSet)
     {
@@ -794,10 +778,12 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_PrettyFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
+        
     }
     if(m_ResolveFontNamesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResolveFontNames"), m_ResolveFontNames));
+        
     }
     if(m_ResourceFolderIsSet)
     {
@@ -812,6 +798,7 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_ScaleImageToShapeSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ScaleImageToShapeSize"), m_ScaleImageToShapeSize));
+        
     }
     if(m_TableWidthOutputModeIsSet)
     {
@@ -822,38 +809,8 @@ void HtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
-    {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FileName")))
-    {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
-    {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
-    {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
-    {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
-    {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
-    {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
-    {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
-    }
+    SaveOptionsData::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("AllowNegativeIndent")))
     {
         setAllowNegativeIndent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowNegativeIndent"))));

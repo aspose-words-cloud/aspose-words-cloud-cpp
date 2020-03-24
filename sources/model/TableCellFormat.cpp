@@ -230,23 +230,18 @@ void TableCellFormat::fromJson(web::json::value& val)
 
 void TableCellFormat::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_BottomPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BottomPadding"), m_BottomPadding));
+        
     }
     if(m_FitTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FitText"), m_FitText));
+        
     }
     if(m_HorizontalMergeIsSet)
     {
@@ -256,6 +251,7 @@ void TableCellFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_LeftPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftPadding"), m_LeftPadding));
+        
     }
     if(m_OrientationIsSet)
     {
@@ -273,10 +269,12 @@ void TableCellFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_RightPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightPadding"), m_RightPadding));
+        
     }
     if(m_TopPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TopPadding"), m_TopPadding));
+        
     }
     if(m_VerticalAlignmentIsSet)
     {
@@ -291,24 +289,19 @@ void TableCellFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_WidthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Width"), m_Width));
+        
     }
     if(m_WrapTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WrapText"), m_WrapText));
+        
     }
 }
 
 void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("BottomPadding")))
     {
         setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BottomPadding"))));

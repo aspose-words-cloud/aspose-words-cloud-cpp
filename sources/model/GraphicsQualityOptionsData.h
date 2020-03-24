@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GraphicsQualityOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -92,7 +91,7 @@ public:
     void unsetSmoothingMode();
     void setSmoothingMode(utility::string_t value);
     /// <summary>
-    /// Gets or sets text layout information (such as alignment, orientation and tab stops) display manipulations (such as ellipsis insertion and national digit substitution) and OpenType features.
+    /// Gets or sets StringFormat.
     /// </summary>
     std::shared_ptr<StringFormatData> getStringFormat() const;
     bool stringFormatIsSet() const;

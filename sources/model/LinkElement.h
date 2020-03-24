@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="LinkElement.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,6 +30,7 @@
 #include "../ModelBase.h"
 
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -63,7 +63,7 @@ public:
     /// LinkElement members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets link.
     /// </summary>
     std::shared_ptr<WordsApiLink> getLink() const;
     bool linkIsSet() const;

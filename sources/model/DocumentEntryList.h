@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentEntryList.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,7 +30,7 @@
 #include "../ModelBase.h"
 
 #include "DocumentEntry.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

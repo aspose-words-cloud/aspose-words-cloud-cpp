@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnoteResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FootnoteResponse_H_
 
 
+#include "Footnote.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "Footnote.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// FootnoteResponse members
 
     /// <summary>
-    /// Gets or sets footnote information.
+    /// Gets or sets Footnote.
     /// </summary>
     std::shared_ptr<Footnote> getFootnote() const;
     bool footnoteIsSet() const;

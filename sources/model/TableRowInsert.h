@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRowInsert.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -30,6 +29,7 @@
 
 #include "../ModelBase.h"
 
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -72,13 +72,16 @@ public:
     /// Gets or sets count of columns. Default is 1.
     /// </summary>
     int32_t getColumnsCount() const;
-        void setColumnsCount(int32_t value);
+    bool columnsCountIsSet() const;
+    void unsetColumnsCount();
+    void setColumnsCount(int32_t value);
 
 protected:
     int32_t m_InsertAfter;
     bool m_InsertAfterIsSet;
     int32_t m_ColumnsCount;
-    };
+    bool m_ColumnsCountIsSet;
+};
 
 }
 }

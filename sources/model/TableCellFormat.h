@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCellFormat.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableCellFormat_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
-#include "WordsApiLink.h"
 #include "PreferredWidth.h"
+#include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -99,7 +98,7 @@ public:
     void unsetOrientation();
     void setOrientation(utility::string_t value);
     /// <summary>
-    /// Gets or sets returns or sets the preferred width of the cell.
+    /// Gets or sets PreferredWidth.
     /// </summary>
     std::shared_ptr<PreferredWidth> getPreferredWidth() const;
     bool preferredWidthIsSet() const;

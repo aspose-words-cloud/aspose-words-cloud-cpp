@@ -40,18 +40,21 @@ class InsertTableWithoutNodePathRequest{
     public: 
      InsertTableWithoutNodePathRequest(
         utility::string_t name,
+        std::shared_ptr<TableInsert> table,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableInsert>> table
+                boost::optional<utility::string_t> revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        std::shared_ptr<TableInsert> getTable() const;
+        void setTable(std::shared_ptr<TableInsert> table);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -73,11 +76,9 @@ class InsertTableWithoutNodePathRequest{
 
         boost::optional<utility::string_t> getRevisionDateTime() const;
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
-
-        boost::optional<std::shared_ptr<TableInsert>> getTable() const;
-        void setTable(boost::optional<std::shared_ptr<TableInsert>> table);
     private:
         utility::string_t m_name;
+        std::shared_ptr<TableInsert> m_table;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;
@@ -85,7 +86,6 @@ class InsertTableWithoutNodePathRequest{
         boost::optional<utility::string_t> m_destFileName;
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<std::shared_ptr<TableInsert>> m_table;
 };
 
 }

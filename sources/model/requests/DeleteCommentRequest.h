@@ -38,7 +38,7 @@ namespace models {
 class DeleteCommentRequest{
     public: 
      DeleteCommentRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t commentIndex,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

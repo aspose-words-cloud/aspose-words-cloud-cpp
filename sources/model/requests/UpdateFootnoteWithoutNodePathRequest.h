@@ -39,7 +39,7 @@ namespace models {
 class UpdateFootnoteWithoutNodePathRequest{
     public: 
      UpdateFootnoteWithoutNodePathRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<Footnote> footnoteDto,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

@@ -74,6 +74,7 @@ void LinkElement::fromJson(web::json::value& val)
 
 void LinkElement::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LinkIsSet)
@@ -88,6 +89,8 @@ void LinkElement::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 
 void LinkElement::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("link")))
     {
         if(multipart->hasContent(_XPLATSTR("link")))

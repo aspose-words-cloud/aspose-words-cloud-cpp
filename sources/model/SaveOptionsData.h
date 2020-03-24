@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -105,7 +104,7 @@ public:
     void unsetUpdateLastSavedTimeProperty();
     void setUpdateLastSavedTimeProperty(bool value);
     /// <summary>
-    /// Gets or sets value determining whether content of  is updated before saving.
+    /// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
     /// </summary>
     bool isUpdateSdtContent() const;
     bool updateSdtContentIsSet() const;

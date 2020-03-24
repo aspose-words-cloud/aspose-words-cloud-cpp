@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FileLink.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,8 +27,8 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FileLink_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "Link.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

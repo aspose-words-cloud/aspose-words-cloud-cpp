@@ -87,6 +87,7 @@ void XmlColor::fromJson(web::json::value& val)
 
 void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_WebIsSet)
@@ -97,11 +98,14 @@ void XmlColor::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
     if(m_AlphaIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alpha"), m_Alpha));
+        
     }
 }
 
 void XmlColor::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Web")))
     {
         setWeb(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Web"))));

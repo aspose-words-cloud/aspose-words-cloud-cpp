@@ -117,47 +117,13 @@ void DocSaveOptionsData::fromJson(web::json::value& val)
 
 void DocSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_SaveFormatIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
-        
-    }
-    if(m_FileNameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
-        
-    }
-    if(m_DmlRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
-        
-    }
-    if(m_DmlEffectsRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
-        
-    }
-    if(m_ZipOutputIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
-    }
-    if(m_UpdateLastSavedTimePropertyIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
-    }
-    if(m_UpdateSdtContentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
-    }
-    if(m_UpdateFieldsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
-    }
     if(m_AlwaysCompressMetafilesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AlwaysCompressMetafiles"), m_AlwaysCompressMetafiles));
+        
     }
     if(m_PasswordIsSet)
     {
@@ -167,47 +133,19 @@ void DocSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_SavePictureBulletIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SavePictureBullet"), m_SavePictureBullet));
+        
     }
     if(m_SaveRoutingSlipIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveRoutingSlip"), m_SaveRoutingSlip));
+        
     }
 }
 
 void DocSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
-    {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FileName")))
-    {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
-    {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
-    {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
-    {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
-    {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
-    {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
-    {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
-    }
+    SaveOptionsData::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("AlwaysCompressMetafiles")))
     {
         setAlwaysCompressMetafiles(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AlwaysCompressMetafiles"))));

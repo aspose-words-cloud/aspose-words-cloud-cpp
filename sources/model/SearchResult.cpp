@@ -89,6 +89,7 @@ void SearchResult::fromJson(web::json::value& val)
 
 void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_RangeStartIsSet)
@@ -111,6 +112,8 @@ void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("RangeStart")))
     {
         if(multipart->hasContent(_XPLATSTR("RangeStart")))

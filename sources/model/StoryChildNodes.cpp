@@ -93,6 +93,7 @@ void StoryChildNodes::fromJson(web::json::value& val)
 
 void StoryChildNodes::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -110,6 +111,8 @@ void StoryChildNodes::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 
 void StoryChildNodes::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     {
         m_ChildNodes.clear();
         if(multipart->hasContent(_XPLATSTR("ChildNodes")))

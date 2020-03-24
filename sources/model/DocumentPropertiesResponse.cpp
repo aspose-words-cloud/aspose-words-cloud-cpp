@@ -76,13 +76,9 @@ void DocumentPropertiesResponse::fromJson(web::json::value& val)
 
 void DocumentPropertiesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_DocumentPropertiesIsSet)
     {
         if (m_DocumentProperties.get())
@@ -95,10 +91,8 @@ void DocumentPropertiesResponse::toMultipart(const std::shared_ptr<MultipartForm
 
 void DocumentPropertiesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
     {
         if(multipart->hasContent(_XPLATSTR("DocumentProperties")))

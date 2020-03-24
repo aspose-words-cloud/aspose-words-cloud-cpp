@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageSetup.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PageSetup_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -245,7 +244,7 @@ public:
     void unsetSectionStart();
     void setSectionStart(utility::string_t value);
     /// <summary>
-    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes.                 Suppressed endnotes are printed before the endnotes in that section.             
+    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.             
     /// </summary>
     bool isSuppressEndnotes() const;
     bool suppressEndnotesIsSet() const;

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImageSaveOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ImageSaveOptionsData_H_
 
 
-#include "MetafileRenderingOptionsData.h"
 #include "FixedPageSaveOptionsData.h"
-#include <cpprest/details/basic_types.h>
 #include "GraphicsQualityOptionsData.h"
+#include "MetafileRenderingOptionsData.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -64,7 +63,7 @@ public:
     /// ImageSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets allows to specify additional System.Drawing.Graphics quality options.
+    /// Gets or sets GraphicsQualityOptions.
     /// </summary>
     std::shared_ptr<GraphicsQualityOptionsData> getGraphicsQualityOptions() const;
     bool graphicsQualityOptionsIsSet() const;

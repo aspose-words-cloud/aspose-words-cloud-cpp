@@ -129,6 +129,7 @@ void MetafileRenderingOptionsData::fromJson(web::json::value& val)
 
 void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_EmfPlusDualRenderingModeIsSet)
@@ -139,6 +140,7 @@ void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFo
     if(m_EmulateRasterOperationsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EmulateRasterOperations"), m_EmulateRasterOperations));
+        
     }
     if(m_RenderingModeIsSet)
     {
@@ -148,15 +150,19 @@ void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFo
     if(m_UseEmfEmbeddedToWmfIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseEmfEmbeddedToWmf"), m_UseEmfEmbeddedToWmf));
+        
     }
     if(m_ScaleWmfFontsToMetafileSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ScaleWmfFontsToMetafileSize"), m_ScaleWmfFontsToMetafileSize));
+        
     }
 }
 
 void MetafileRenderingOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("EmfPlusDualRenderingMode")))
     {
         setEmfPlusDualRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EmfPlusDualRenderingMode"))));

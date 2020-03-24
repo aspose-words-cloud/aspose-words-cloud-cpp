@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PdfSaveOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,13 +27,13 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PdfSaveOptionsData_H_
 
 
-#include "MetafileRenderingOptionsData.h"
-#include "FixedPageSaveOptionsData.h"
 #include "DownsampleOptionsData.h"
+#include "FixedPageSaveOptionsData.h"
+#include "MetafileRenderingOptionsData.h"
+#include "OutlineOptionsData.h"
+#include "PdfDigitalSignatureDetailsData.h"
 #include "PdfEncryptionDetailsData.h"
 #include <cpprest/details/basic_types.h>
-#include "PdfDigitalSignatureDetailsData.h"
-#include "OutlineOptionsData.h"
 
 namespace aspose {
 namespace words {
@@ -81,14 +80,14 @@ public:
     void unsetCreateNoteHyperlinks();
     void setCreateNoteHyperlinks(bool value);
     /// <summary>
-    /// Gets or sets a value determining the way  are exported to PDF file. Default value is .
+    /// Gets or sets a value determining the way CustomDocumentProperties are exported to PDF file. Default value is None.
     /// </summary>
     utility::string_t getCustomPropertiesExport() const;
     bool customPropertiesExportIsSet() const;
     void unsetCustomPropertiesExport();
     void setCustomPropertiesExport(utility::string_t value);
     /// <summary>
-    /// Gets or sets specifies the details for signing the output PDF document.
+    /// Gets or sets DigitalSignatureDetails.
     /// </summary>
     std::shared_ptr<PdfDigitalSignatureDetailsData> getDigitalSignatureDetails() const;
     bool digitalSignatureDetailsIsSet() const;
@@ -102,7 +101,7 @@ public:
     void unsetDisplayDocTitle();
     void setDisplayDocTitle(bool value);
     /// <summary>
-    /// Gets or sets allows to specify downsample options.
+    /// Gets or sets DownsampleOptions.
     /// </summary>
     std::shared_ptr<DownsampleOptionsData> getDownsampleOptions() const;
     bool downsampleOptionsIsSet() const;
@@ -116,7 +115,7 @@ public:
     void unsetEmbedFullFonts();
     void setEmbedFullFonts(bool value);
     /// <summary>
-    /// Gets or sets specifies the details for encrypting the output PDF document.
+    /// Gets or sets EncryptionDetails.
     /// </summary>
     std::shared_ptr<PdfEncryptionDetailsData> getEncryptionDetails() const;
     bool encryptionDetailsIsSet() const;
@@ -172,7 +171,7 @@ public:
     void unsetOpenHyperlinksInNewWindow();
     void setOpenHyperlinksInNewWindow(bool value);
     /// <summary>
-    /// Gets or sets allows to specify outline options.
+    /// Gets or sets OutlineOptions.
     /// </summary>
     std::shared_ptr<OutlineOptionsData> getOutlineOptions() const;
     bool outlineOptionsIsSet() const;

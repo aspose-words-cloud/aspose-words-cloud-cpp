@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphFormatResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// ParagraphFormatResponse members
 
     /// <summary>
-    /// Gets or sets represents all the formatting for a paragraph.
+    /// Gets or sets ParagraphFormat.
     /// </summary>
     std::shared_ptr<ParagraphFormat> getParagraphFormat() const;
     bool paragraphFormatIsSet() const;

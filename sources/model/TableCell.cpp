@@ -95,21 +95,9 @@ void TableCell::fromJson(web::json::value& val)
 
 void TableCell::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
-    if(m_NodeIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
-        
-    }
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
@@ -125,19 +113,8 @@ void TableCell::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
 void TableCell::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
-    {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
-    }
+    NodeLink::fromMultiPart(multipart, prefix);
+
     {
         m_ChildNodes.clear();
         if(multipart->hasContent(_XPLATSTR("ChildNodes")))

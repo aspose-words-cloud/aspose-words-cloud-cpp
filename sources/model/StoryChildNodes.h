@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StoryChildNodes.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,7 +30,7 @@
 #include "../ModelBase.h"
 
 #include "NodeLink.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -40,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Child nodes of  or .
+/// Child nodes of Story or InlineStory.
 /// </summary>
 class  StoryChildNodes
     : public ModelBase

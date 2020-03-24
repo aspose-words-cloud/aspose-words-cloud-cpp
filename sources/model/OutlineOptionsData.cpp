@@ -163,6 +163,7 @@ void OutlineOptionsData::fromJson(web::json::value& val)
 
 void OutlineOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -179,27 +180,34 @@ void OutlineOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
     if(m_DefaultBookmarksOutlineLevelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DefaultBookmarksOutlineLevel"), m_DefaultBookmarksOutlineLevel));
+        
     }
     if(m_CreateMissingOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateMissingOutlineLevels"), m_CreateMissingOutlineLevels));
+        
     }
     if(m_CreateOutlinesForHeadingsInTablesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateOutlinesForHeadingsInTables"), m_CreateOutlinesForHeadingsInTables));
+        
     }
     if(m_ExpandedOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExpandedOutlineLevels"), m_ExpandedOutlineLevels));
+        
     }
     if(m_HeadingsOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeadingsOutlineLevels"), m_HeadingsOutlineLevels));
+        
     }
 }
 
 void OutlineOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     {
         m_BookmarksOutlineLevels.clear();
         if(multipart->hasContent(_XPLATSTR("BookmarksOutlineLevels")))

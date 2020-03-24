@@ -95,16 +95,9 @@ void ParagraphLinkCollection::fromJson(web::json::value& val)
 
 void ParagraphLinkCollection::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ParagraphLink> item){
@@ -120,15 +113,8 @@ void ParagraphLinkCollection::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void ParagraphLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     {
         m_ParagraphLinkList.clear();
         if(multipart->hasContent(_XPLATSTR("ParagraphLinkList")))

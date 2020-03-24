@@ -146,9 +146,7 @@ std::vector<fs::path> InfrastructureTest::get_directory_files(const boost::files
 void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName, const fs::path& filePath)
 {
 	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, boost::none);
-
 	std::shared_ptr<WordsApi> api = get_api();
-
 	auto result = api->uploadFile(request).get();
 }
 

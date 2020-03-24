@@ -123,13 +123,9 @@ void ClassificationResponse::fromJson(web::json::value& val)
 
 void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_BestClassNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestClassName"), m_BestClassName));
@@ -138,6 +134,7 @@ void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData
     if(m_BestClassProbabilityIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestClassProbability"), m_BestClassProbability));
+        
     }
     {
         std::vector<web::json::value> jsonArray;
@@ -154,10 +151,8 @@ void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData
 
 void ClassificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("BestClassName")))
     {
         setBestClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BestClassName"))));

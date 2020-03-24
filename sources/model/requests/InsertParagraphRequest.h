@@ -39,7 +39,7 @@ namespace models {
 class InsertParagraphRequest{
     public: 
      InsertParagraphRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<ParagraphInsert> paragraph,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,

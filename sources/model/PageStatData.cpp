@@ -35,8 +35,11 @@ namespace models {
 PageStatData::PageStatData()
 {
     m_PageNumber = 0;
+    m_PageNumberIsSet = false;
     m_WordCount = 0;
+    m_WordCountIsSet = false;
     m_ParagraphCount = 0;
+    m_ParagraphCountIsSet = false;
     m_FootnotesStatDataIsSet = false;
 }
 
@@ -53,9 +56,18 @@ web::json::value PageStatData::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[_XPLATSTR("PageNumber")] = ModelBase::toJson(m_PageNumber);
-    val[_XPLATSTR("WordCount")] = ModelBase::toJson(m_WordCount);
-    val[_XPLATSTR("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
+    if(m_PageNumberIsSet)
+    {
+        val[_XPLATSTR("PageNumber")] = ModelBase::toJson(m_PageNumber);
+    }
+    if(m_WordCountIsSet)
+    {
+        val[_XPLATSTR("WordCount")] = ModelBase::toJson(m_WordCount);
+    }
+    if(m_ParagraphCountIsSet)
+    {
+        val[_XPLATSTR("ParagraphCount")] = ModelBase::toJson(m_ParagraphCount);
+    }
     if(m_FootnotesStatDataIsSet)
     {
         val[_XPLATSTR("FootnotesStatData")] = ModelBase::toJson(m_FootnotesStatData);
@@ -104,11 +116,24 @@ void PageStatData::fromJson(web::json::value& val)
 
 void PageStatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageNumber"), m_PageNumber));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WordCount"), m_WordCount));
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphCount"), m_ParagraphCount));
+    if(m_PageNumberIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageNumber"), m_PageNumber));
+        
+    }
+    if(m_WordCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WordCount"), m_WordCount));
+        
+    }
+    if(m_ParagraphCountIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphCount"), m_ParagraphCount));
+        
+    }
     if(m_FootnotesStatDataIsSet)
     {
         if (m_FootnotesStatData.get())
@@ -121,9 +146,20 @@ void PageStatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void PageStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    setPageNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageNumber"))));
-    setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
-    setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+    
+
+    if(multipart->hasContent(_XPLATSTR("PageNumber")))
+    {
+        setPageNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageNumber"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("WordCount")))
+    {
+        setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("ParagraphCount")))
+    {
+        setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+    }
     if(multipart->hasContent(_XPLATSTR("FootnotesStatData")))
     {
         if(multipart->hasContent(_XPLATSTR("FootnotesStatData")))
@@ -144,8 +180,18 @@ int32_t PageStatData::getPageNumber() const
 void PageStatData::setPageNumber(int32_t value)
 {
     m_PageNumber = value;
-    
+    m_PageNumberIsSet = true;
 }
+bool PageStatData::pageNumberIsSet() const
+{
+    return m_PageNumberIsSet;
+}
+
+void PageStatData::unsetPageNumber()
+{
+    m_PageNumberIsSet = false;
+}
+
 int32_t PageStatData::getWordCount() const
 {
     return m_WordCount;
@@ -155,8 +201,18 @@ int32_t PageStatData::getWordCount() const
 void PageStatData::setWordCount(int32_t value)
 {
     m_WordCount = value;
-    
+    m_WordCountIsSet = true;
 }
+bool PageStatData::wordCountIsSet() const
+{
+    return m_WordCountIsSet;
+}
+
+void PageStatData::unsetWordCount()
+{
+    m_WordCountIsSet = false;
+}
+
 int32_t PageStatData::getParagraphCount() const
 {
     return m_ParagraphCount;
@@ -166,8 +222,18 @@ int32_t PageStatData::getParagraphCount() const
 void PageStatData::setParagraphCount(int32_t value)
 {
     m_ParagraphCount = value;
-    
+    m_ParagraphCountIsSet = true;
 }
+bool PageStatData::paragraphCountIsSet() const
+{
+    return m_ParagraphCountIsSet;
+}
+
+void PageStatData::unsetParagraphCount()
+{
+    m_ParagraphCountIsSet = false;
+}
+
 std::shared_ptr<FootnotesStatData> PageStatData::getFootnotesStatData() const
 {
     return m_FootnotesStatData;

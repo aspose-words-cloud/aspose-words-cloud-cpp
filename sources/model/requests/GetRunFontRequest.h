@@ -38,7 +38,7 @@ namespace models {
 class GetRunFontRequest{
     public: 
      GetRunFontRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t paragraphPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

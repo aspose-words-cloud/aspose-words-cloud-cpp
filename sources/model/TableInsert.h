@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableInsert.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,6 +30,7 @@
 #include "../ModelBase.h"
 
 #include "DocumentPosition.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -63,7 +63,7 @@ public:
     /// TableInsert members
 
     /// <summary>
-    /// Gets or sets table will be inserted before specified position.
+    /// Gets or sets Position.
     /// </summary>
     std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
@@ -73,19 +73,25 @@ public:
     /// Gets or sets count of columns. Default is 2.
     /// </summary>
     int32_t getColumnsCount() const;
-        void setColumnsCount(int32_t value);
+    bool columnsCountIsSet() const;
+    void unsetColumnsCount();
+    void setColumnsCount(int32_t value);
     /// <summary>
     /// Gets or sets count of rows. Default is 2.
     /// </summary>
     int32_t getRowsCount() const;
-        void setRowsCount(int32_t value);
+    bool rowsCountIsSet() const;
+    void unsetRowsCount();
+    void setRowsCount(int32_t value);
 
 protected:
     std::shared_ptr<DocumentPosition> m_Position;
     bool m_PositionIsSet;
     int32_t m_ColumnsCount;
-        int32_t m_RowsCount;
-    };
+    bool m_ColumnsCountIsSet;
+    int32_t m_RowsCount;
+    bool m_RowsCountIsSet;
+};
 
 }
 }

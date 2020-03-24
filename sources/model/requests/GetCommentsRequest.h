@@ -38,7 +38,7 @@ namespace models {
 class GetCommentsRequest{
     public: 
      GetCommentsRequest(
-        utility::string_t name,
+                utility::string_t name,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,

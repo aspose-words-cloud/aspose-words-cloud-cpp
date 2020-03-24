@@ -38,7 +38,7 @@ namespace models {
 class GetFieldRequest{
     public: 
      GetFieldRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,

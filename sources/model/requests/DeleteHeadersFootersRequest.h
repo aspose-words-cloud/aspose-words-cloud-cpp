@@ -38,7 +38,7 @@ namespace models {
 class DeleteHeadersFootersRequest{
     public: 
      DeleteHeadersFootersRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t sectionPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

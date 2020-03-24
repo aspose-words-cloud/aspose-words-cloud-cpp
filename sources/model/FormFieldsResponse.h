@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// FormFieldsResponse members
 
     /// <summary>
-    /// Gets or sets collection of form fields.
+    /// Gets or sets FormFields.
     /// </summary>
     std::shared_ptr<FormFieldCollection> getFormFields() const;
     bool formFieldsIsSet() const;

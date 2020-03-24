@@ -90,13 +90,9 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
 
 void ReplaceTextResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
@@ -108,15 +104,14 @@ void ReplaceTextResponse::toMultipart(const std::shared_ptr<MultipartFormData>& 
     if(m_MatchesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Matches"), m_Matches));
+        
     }
 }
 
 void ReplaceTextResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("DocumentLink")))
     {
         if(multipart->hasContent(_XPLATSTR("DocumentLink")))

@@ -39,7 +39,7 @@ namespace models {
 class UpdateDrawingObjectRequest{
     public: 
      UpdateDrawingObjectRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t drawingObject,
                 std::shared_ptr<HttpContent> imageFile,
                 utility::string_t nodePath,

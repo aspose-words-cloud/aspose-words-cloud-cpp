@@ -245,7 +245,6 @@
 #include "FormFieldsResponse.h"
 #include "HeaderFooterResponse.h"
 #include "HeaderFootersResponse.h"
-#include "HttpContent.h"
 #include "HyperlinkResponse.h"
 #include "HyperlinksResponse.h"
 #include "LoadWebDocumentData.h"
@@ -292,6 +291,7 @@
 #include "TableRowResponse.h"
 #include "TiffSaveOptionsData.h"
 #include "WatermarkText.h"
+#include "HttpContent.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 namespace aspose {
@@ -333,7 +333,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">Original document name.</param>
-        /// <param name="documentList">with a list of documents to append.            </param>
+        /// <param name="documentList">DocumentEntryList with a list of documents to append.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -378,7 +378,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">Original document name.</param>
-        /// <param name="compareData">with a document to compare.            </param>
+        /// <param name="compareData">CompareData with a document to compare.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -397,7 +397,7 @@ public:
         /// <param name="format">Format to convert.</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="outPath">Path for saving operation result to the local storage. (optional)</param>
-        /// <param name="fileNameFieldValue">This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not set, \&quot;sourceFilename\&quot; will be used instead.  (optional, default to sourceFilename)</param>
+        /// <param name="fileNameFieldValue">This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not set, &quot;sourceFilename&quot; will be used instead.  (optional, default to sourceFilename)</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts. (optional)</param>
     	pplx::task<HttpContent> convertDocument(
 		std::shared_ptr<ConvertDocumentRequest> request
@@ -673,7 +673,7 @@ public:
     ///</remarks>
     /// <param name="path">Folder path e.g. /Folder1s</param>
         /// <param name="storageName">Storage name (optional)</param>
-        /// <param name="recursive">Enable to delete folders, subfolders and files (optional, default to false)</param>
+        /// <param name="recursive">Enable to delete folders, subfolders and files (optional)</param>
     	pplx::task<std::shared_ptr<web::http::http_response>> deleteFolder(
 		std::shared_ptr<DeleteFolderRequest> request
 	);
@@ -1033,10 +1033,10 @@ public:
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
         /// <param name="password">Password for opening an encrypted document. (optional)</param>
-        /// <param name="withRegions">With regions flag. (optional, default to false)</param>
+        /// <param name="withRegions">With regions flag. (optional)</param>
         /// <param name="mailMergeDataFile">Mail merge data. (optional)</param>
         /// <param name="cleanup">Clean up options. (optional)</param>
-        /// <param name="useWholeParagraphAsRegion">Gets or sets a value indicating whether paragraph with TableStart or             TableEnd field should be fully included into mail merge region or particular range between TableStart and TableEnd fields.             The default value is true. (optional, default to true)</param>
+        /// <param name="useWholeParagraphAsRegion">Gets or sets a value indicating whether paragraph with TableStart or             TableEnd field should be fully included into mail merge region or particular range between TableStart and TableEnd fields.             The default value is true. (optional, default to {paramName&#x3D;useWholeParagraphAsRegion, baseName&#x3D;UseWholeParagraphAsRegion, snakeName&#x3D;use_whole_paragraph_as_region, phpName&#x3D;use_whole_paragraph_as_region, cppName&#x3D;useWholeParagraphAsRegion, rubyName&#x3D;use_whole_paragraph_as_region, position&#x3D;null, description&#x3D;Gets or sets a value indicating whether paragraph with TableStart or             TableEnd field should be fully included into mail merge region or particular range between TableStart and TableEnd fields.             The default value is true., dataType&#x3D;{isPrimitive&#x3D;true, net&#x3D;bool?, java&#x3D;Boolean, node&#x3D;boolean, python&#x3D;bool, php&#x3D;bool, cpp&#x3D;bool, ruby&#x3D;Boolean, swift&#x3D;Bool, go&#x3D;bool}, required&#x3D;false, nullable&#x3D;false, isFile&#x3D;false, defaultValue&#x3D;true, isPath&#x3D;false, isQuery&#x3D;true, isHeader&#x3D;false, isBody&#x3D;false, isForm&#x3D;false, hasMore&#x3D;true, hasMoreByPosition&#x3D;true})</param>
         /// <param name="destFileName">Result name of the document after the operation. If this parameter is omitted then result of the operation will be saved with autogenerated name. (optional)</param>
     	pplx::task<AsposeResponse<DocumentResponse>> executeMailMerge(
 		std::shared_ptr<ExecuteMailMergeRequest> request
@@ -1047,11 +1047,11 @@ public:
     ///<remarks>
     ///
     ///</remarks>
-    /// <param name="_template">File with template</param>
+    /// <param name="template">File with template</param>
         /// <param name="data">File with mailmerge data</param>
-        /// <param name="withRegions">With regions flag. (optional, default to false)</param>
+        /// <param name="withRegions">With regions flag. (optional)</param>
         /// <param name="cleanup">Clean up options. (optional)</param>
-        /// <param name="documentFileName">This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, \&quot;template\&quot; will be used instead.  (optional, default to template)</param>
+        /// <param name="documentFileName">This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, &quot;template&quot; will be used instead.  (optional, default to template)</param>
     	pplx::task<HttpContent> executeMailMergeOnline(
 		std::shared_ptr<ExecuteMailMergeOnlineRequest> request
 	);
@@ -1301,7 +1301,7 @@ public:
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
         /// <param name="password">Password for opening an encrypted document. (optional)</param>
-        /// <param name="useNonMergeFields">If true, result includes \&quot;mustache\&quot; field names. (optional, default to false)</param>
+        /// <param name="useNonMergeFields">If true, result includes &quot;mustache&quot; field names. (optional)</param>
     	pplx::task<AsposeResponse<FieldNamesResponse>> getDocumentFieldNames(
 		std::shared_ptr<GetDocumentFieldNamesRequest> request
 	);
@@ -1311,8 +1311,8 @@ public:
     ///<remarks>
     ///
     ///</remarks>
-    /// <param name="_template">File with template</param>
-        /// <param name="useNonMergeFields">Use non merge fields or not. (optional, default to false)</param>
+    /// <param name="template">File with template</param>
+        /// <param name="useNonMergeFields">Use non merge fields or not. (optional)</param>
     	pplx::task<AsposeResponse<FieldNamesResponse>> getDocumentFieldNamesOnline(
 		std::shared_ptr<GetDocumentFieldNamesOnlineRequest> request
 	);
@@ -1399,9 +1399,9 @@ public:
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
         /// <param name="password">Password for opening an encrypted document. (optional)</param>
-        /// <param name="includeComments">Support including/excluding comments from the WordCount. Default value is \&quot;false\&quot;. (optional, default to false)</param>
-        /// <param name="includeFootnotes">Support including/excluding footnotes from the WordCount. Default value is \&quot;false\&quot;. (optional, default to false)</param>
-        /// <param name="includeTextInShapes">Support including/excluding shape&#39;s text from the WordCount. Default value is \&quot;false\&quot;. (optional, default to false)</param>
+        /// <param name="includeComments">Support including/excluding comments from the WordCount. Default value is &quot;false&quot;. (optional)</param>
+        /// <param name="includeFootnotes">Support including/excluding footnotes from the WordCount. Default value is &quot;false&quot;. (optional)</param>
+        /// <param name="includeTextInShapes">Support including/excluding shape&#39;s text from the WordCount. Default value is &quot;false&quot;. (optional)</param>
     	pplx::task<AsposeResponse<StatDataResponse>> getDocumentStatistics(
 		std::shared_ptr<GetDocumentStatisticsRequest> request
 	);
@@ -1820,8 +1820,8 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document.</param>
-        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
-        /// <param name="rangeEndIdentifier">The range end identifier.</param>
+        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
+        /// <param name="rangeEndIdentifier">The range end identifier. (optional)</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2148,7 +2148,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="insertBeforeNode">Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;. (optional)</param>
+        /// <param name="insertBeforeNode">Field will be inserted before node with id&#x3D;&quot;nodeId&quot;. (optional)</param>
     	pplx::task<AsposeResponse<FieldResponse>> insertField(
 		std::shared_ptr<InsertFieldRequest> request
 	);
@@ -2167,7 +2167,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="insertBeforeNode">Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;. (optional)</param>
+        /// <param name="insertBeforeNode">Field will be inserted before node with id&#x3D;&quot;nodeId&quot;. (optional)</param>
     	pplx::task<AsposeResponse<FieldResponse>> insertFieldWithoutNodePath(
 		std::shared_ptr<InsertFieldWithoutNodePathRequest> request
 	);
@@ -2273,7 +2273,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">A document name.</param>
-        /// <param name="pageNumber">with the page numbers settings.</param>
+        /// <param name="pageNumber">PageNumber with the page numbers settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2339,7 +2339,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="table">Table parameters/. (optional)</param>
+        /// <param name="table">Table parameters/.</param>
     	pplx::task<AsposeResponse<TableResponse>> insertTable(
 		std::shared_ptr<InsertTableRequest> request
 	);
@@ -2358,7 +2358,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="cell">Table cell parameters/. (optional)</param>
+        /// <param name="cell">Table cell parameters/.</param>
     	pplx::task<AsposeResponse<TableCellResponse>> insertTableCell(
 		std::shared_ptr<InsertTableCellRequest> request
 	);
@@ -2377,7 +2377,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="row">Table row parameters/. (optional)</param>
+        /// <param name="row">Table row parameters/.</param>
     	pplx::task<AsposeResponse<TableRowResponse>> insertTableRow(
 		std::shared_ptr<InsertTableRowRequest> request
 	);
@@ -2395,7 +2395,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="table">Table parameters/. (optional)</param>
+        /// <param name="table">Table parameters/.</param>
     	pplx::task<AsposeResponse<TableResponse>> insertTableWithoutNodePath(
 		std::shared_ptr<InsertTableWithoutNodePathRequest> request
 	);
@@ -2414,7 +2414,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="rotationAngle">The watermark rotation angle. (optional, default to 0.0)</param>
+        /// <param name="rotationAngle">The watermark rotation angle. (optional)</param>
         /// <param name="image">The image file server full name. If the name is empty the image is expected in request content. (optional)</param>
     	pplx::task<AsposeResponse<DocumentResponse>> insertWatermarkImage(
 		std::shared_ptr<InsertWatermarkImageRequest> request
@@ -2426,7 +2426,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="watermarkText">with the watermark data.            </param>
+        /// <param name="watermarkText">WatermarkText with the watermark data.             </param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2482,7 +2482,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="protectionRequest">with protection settings.            </param>
+        /// <param name="protectionRequest">ProtectionRequest with protection settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2513,8 +2513,8 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document.</param>
-        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
-        /// <param name="rangeEndIdentifier">The range end identifier.</param>
+        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
+        /// <param name="rangeEndIdentifier">The range end identifier. (optional)</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2687,7 +2687,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="replaceText">with the replace operation settings.            </param>
+        /// <param name="replaceText">ReplaceTextResponse with the replace operation settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2705,9 +2705,9 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document.</param>
-        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
+        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
         /// <param name="rangeText">Model with text for replacement.</param>
-        /// <param name="rangeEndIdentifier">The range end identifier.</param>
+        /// <param name="rangeEndIdentifier">The range end identifier. (optional)</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2748,9 +2748,9 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document.</param>
-        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
+        /// <param name="rangeStartIdentifier">The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.</param>
         /// <param name="documentParameters">Parameters of a new document.</param>
-        /// <param name="rangeEndIdentifier">The range end identifier.</param>
+        /// <param name="rangeEndIdentifier">The range end identifier. (optional)</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2821,7 +2821,7 @@ public:
         /// <param name="format">Format to split. (optional)</param>
         /// <param name="from">Start page. (optional)</param>
         /// <param name="to">End page. (optional)</param>
-        /// <param name="zipOutput">ZipOutput or not. (optional, default to false)</param>
+        /// <param name="zipOutput">ZipOutput or not. (optional)</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts. (optional)</param>
     	pplx::task<AsposeResponse<SplitDocumentResponse>> splitDocument(
 		std::shared_ptr<SplitDocumentRequest> request
@@ -2833,7 +2833,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="protectionRequest">with protection settings.            </param>
+        /// <param name="protectionRequest">ProtectionRequest with protection settings.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -2849,7 +2849,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="bookmarkData">with new bookmark data.            </param>
+        /// <param name="bookmarkData">BookmarkData with new bookmark data.</param>
         /// <param name="bookmarkName">The bookmark name.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -3149,7 +3149,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="format">The properties. (optional)</param>
+        /// <param name="format">The properties.</param>
     	pplx::task<AsposeResponse<TableCellFormatResponse>> updateTableCellFormat(
 		std::shared_ptr<UpdateTableCellFormatRequest> request
 	);
@@ -3169,7 +3169,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="properties">The properties. (optional)</param>
+        /// <param name="properties">The properties.</param>
     	pplx::task<AsposeResponse<TablePropertiesResponse>> updateTableProperties(
 		std::shared_ptr<UpdateTablePropertiesRequest> request
 	);
@@ -3188,7 +3188,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="properties">The properties. (optional)</param>
+        /// <param name="properties">The properties.</param>
     	pplx::task<AsposeResponse<TablePropertiesResponse>> updateTablePropertiesWithoutNodePath(
 		std::shared_ptr<UpdateTablePropertiesWithoutNodePathRequest> request
 	);
@@ -3208,7 +3208,7 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-        /// <param name="format">Table row format. (optional)</param>
+        /// <param name="format">Table row format.</param>
     	pplx::task<AsposeResponse<TableRowFormatResponse>> updateTableRowFormat(
 		std::shared_ptr<UpdateTableRowFormatRequest> request
 	);
@@ -3219,7 +3219,7 @@ public:
     ///
     ///</remarks>
     /// <param name="fileContent">File to upload</param>
-        /// <param name="path">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
+        /// <param name="path">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.</param>
         /// <param name="storageName">Storage name (optional)</param>
     	pplx::task<AsposeResponse<FilesUploadResult>> uploadFile(
 		std::shared_ptr<UploadFileRequest> request

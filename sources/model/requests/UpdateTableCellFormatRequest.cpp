@@ -30,7 +30,8 @@ namespace api{
 namespace models{
 UpdateTableCellFormatRequest::UpdateTableCellFormatRequest(
         utility::string_t name,
-                utility::string_t tableRowPath,
+        std::shared_ptr<TableCellFormat> format,
+        utility::string_t tableRowPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -38,10 +39,10 @@ UpdateTableCellFormatRequest::UpdateTableCellFormatRequest(
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableCellFormat>> format
+                boost::optional<utility::string_t> revisionDateTime
         ) : 
             m_name(std::move(name)),
+            m_format(std::move(format)),
             m_tableRowPath(std::move(tableRowPath)),
             m_index(std::move(index)),
             m_folder(std::move(folder)),
@@ -50,8 +51,7 @@ UpdateTableCellFormatRequest::UpdateTableCellFormatRequest(
             m_password(std::move(password)),
             m_destFileName(std::move(destFileName)),
             m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_format(std::move(format))
+            m_revisionDateTime(std::move(revisionDateTime))
         {
             
         }
@@ -62,6 +62,13 @@ UpdateTableCellFormatRequest::UpdateTableCellFormatRequest(
         }
         void UpdateTableCellFormatRequest::setName(utility::string_t name){
             m_name = std::move(name);
+        }
+        std::shared_ptr<TableCellFormat> UpdateTableCellFormatRequest::getFormat() const
+        {
+            return m_format;
+        }
+        void UpdateTableCellFormatRequest::setFormat(std::shared_ptr<TableCellFormat> format){
+            m_format = std::move(format);
         }
         utility::string_t UpdateTableCellFormatRequest::getTableRowPath() const
         {
@@ -125,13 +132,6 @@ UpdateTableCellFormatRequest::UpdateTableCellFormatRequest(
         }
         void UpdateTableCellFormatRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<std::shared_ptr<TableCellFormat>> UpdateTableCellFormatRequest::getFormat() const
-        {
-            return m_format;
-        }
-        void UpdateTableCellFormatRequest::setFormat(boost::optional<std::shared_ptr<TableCellFormat>> format){
-            m_format = std::move(format);
         }
 
 }

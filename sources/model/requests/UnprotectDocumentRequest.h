@@ -39,7 +39,7 @@ namespace models {
 class UnprotectDocumentRequest{
     public: 
      UnprotectDocumentRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<ProtectionRequest> protectionRequest,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

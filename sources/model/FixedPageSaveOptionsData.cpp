@@ -160,44 +160,9 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
 
 void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_SaveFormatIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
-        
-    }
-    if(m_FileNameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FileName"), m_FileName));
-        
-    }
-    if(m_DmlRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlRenderingMode"), m_DmlRenderingMode));
-        
-    }
-    if(m_DmlEffectsRenderingModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DmlEffectsRenderingMode"), m_DmlEffectsRenderingMode));
-        
-    }
-    if(m_ZipOutputIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ZipOutput"), m_ZipOutput));
-    }
-    if(m_UpdateLastSavedTimePropertyIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastSavedTimeProperty"), m_UpdateLastSavedTimeProperty));
-    }
-    if(m_UpdateSdtContentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateSdtContent"), m_UpdateSdtContent));
-    }
-    if(m_UpdateFieldsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
-    }
     if(m_ColorModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ColorMode"), m_ColorMode));
@@ -206,6 +171,7 @@ void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
     if(m_JpegQualityIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("JpegQuality"), m_JpegQuality));
+        
     }
     if(m_MetafileRenderingOptionsIsSet)
     {
@@ -223,51 +189,24 @@ void FixedPageSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
     if(m_OptimizeOutputIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OptimizeOutput"), m_OptimizeOutput));
+        
     }
     if(m_PageCountIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageCount"), m_PageCount));
+        
     }
     if(m_PageIndexIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageIndex"), m_PageIndex));
+        
     }
 }
 
 void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("SaveFormat")))
-    {
-        setSaveFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SaveFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FileName")))
-    {
-        setFileName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FileName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlRenderingMode")))
-    {
-        setDmlRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DmlEffectsRenderingMode")))
-    {
-        setDmlEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DmlEffectsRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ZipOutput")))
-    {
-        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
-    {
-        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
-    {
-        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UpdateFields")))
-    {
-        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
-    }
+    SaveOptionsData::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("ColorMode")))
     {
         setColorMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ColorMode"))));

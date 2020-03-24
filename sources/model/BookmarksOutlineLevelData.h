@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BookmarksOutlineLevelData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -73,13 +72,16 @@ public:
     /// Gets or sets specify the bookmark&#39;s level.
     /// </summary>
     int32_t getBookmarksOutlineLevel() const;
-        void setBookmarksOutlineLevel(int32_t value);
+    bool bookmarksOutlineLevelIsSet() const;
+    void unsetBookmarksOutlineLevel();
+    void setBookmarksOutlineLevel(int32_t value);
 
 protected:
     utility::string_t m_Name;
     bool m_NameIsSet;
     int32_t m_BookmarksOutlineLevel;
-    };
+    bool m_BookmarksOutlineLevelIsSet;
+};
 
 }
 }

@@ -38,7 +38,7 @@ namespace models {
 class GetBookmarkByNameRequest{
     public: 
      GetBookmarkByNameRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t bookmarkName,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

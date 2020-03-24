@@ -40,6 +40,7 @@ class InsertTableRequest{
     public: 
      InsertTableRequest(
         utility::string_t name,
+        std::shared_ptr<TableInsert> table,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -47,12 +48,14 @@ class InsertTableRequest{
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
                 boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<std::shared_ptr<TableInsert>> table
+                boost::optional<utility::string_t> revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        std::shared_ptr<TableInsert> getTable() const;
+        void setTable(std::shared_ptr<TableInsert> table);
 
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
@@ -77,11 +80,9 @@ class InsertTableRequest{
 
         boost::optional<utility::string_t> getRevisionDateTime() const;
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
-
-        boost::optional<std::shared_ptr<TableInsert>> getTable() const;
-        void setTable(boost::optional<std::shared_ptr<TableInsert>> table);
     private:
         utility::string_t m_name;
+        std::shared_ptr<TableInsert> m_table;
         utility::string_t m_nodePath;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
@@ -90,7 +91,6 @@ class InsertTableRequest{
         boost::optional<utility::string_t> m_destFileName;
         boost::optional<utility::string_t> m_revisionAuthor;
         boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<std::shared_ptr<TableInsert>> m_table;
 };
 
 }

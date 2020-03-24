@@ -101,24 +101,30 @@ void DownsampleOptionsData::fromJson(web::json::value& val)
 
 void DownsampleOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_DownsampleImagesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DownsampleImages"), m_DownsampleImages));
+        
     }
     if(m_ResolutionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Resolution"), m_Resolution));
+        
     }
     if(m_ResolutionThresholdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResolutionThreshold"), m_ResolutionThreshold));
+        
     }
 }
 
 void DownsampleOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("DownsampleImages")))
     {
         setDownsampleImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DownsampleImages"))));

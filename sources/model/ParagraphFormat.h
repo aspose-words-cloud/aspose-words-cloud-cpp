@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphFormat.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
 
 
-#include <cpprest/details/basic_types.h>
 #include "LinkElement.h"
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -154,7 +153,7 @@ public:
     void unsetLinesToDrop();
     void setLinesToDrop(int32_t value);
     /// <summary>
-    /// Gets or sets when true,  and  will be ignored between the paragraphs of the same style.             
+    /// Gets or sets when true, SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.             
     /// </summary>
     bool isNoSpaceBetweenParagraphsOfSameStyle() const;
     bool noSpaceBetweenParagraphsOfSameStyleIsSet() const;

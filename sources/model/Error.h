@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Error.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -85,7 +84,7 @@ public:
     void unsetDescription();
     void setDescription(utility::string_t value);
     /// <summary>
-    /// Inner Error             
+    /// Gets or sets InnerError.
     /// </summary>
     std::shared_ptr<ErrorDetails> getInnerError() const;
     bool innerErrorIsSet() const;

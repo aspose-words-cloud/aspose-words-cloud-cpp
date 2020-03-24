@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HeaderFooter.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -29,11 +28,9 @@
 
 
 #include "HeaderFooterLink.h"
+#include "LinkElement.h"
 #include "NodeLink.h"
 #include <cpprest/details/basic_types.h>
-#include "LinkElement.h"
-#include <vector>
-#include "WordsApiLink.h"
 
 namespace aspose {
 namespace words {
@@ -73,14 +70,14 @@ public:
     void unsetChildNodes();
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
     /// <summary>
-    /// Gets or sets link to DrawingObjects resource.
+    /// Gets or sets DrawingObjects.
     /// </summary>
     std::shared_ptr<LinkElement> getDrawingObjects() const;
     bool drawingObjectsIsSet() const;
     void unsetDrawingObjects();
     void setDrawingObjects(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Gets or sets link to Paragraphs resource.
+    /// Gets or sets Paragraphs.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;

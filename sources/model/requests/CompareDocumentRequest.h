@@ -39,7 +39,7 @@ namespace models {
 class CompareDocumentRequest{
     public: 
      CompareDocumentRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<CompareData> compareData,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

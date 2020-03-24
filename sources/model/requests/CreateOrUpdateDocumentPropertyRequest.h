@@ -39,7 +39,7 @@ namespace models {
 class CreateOrUpdateDocumentPropertyRequest{
     public: 
      CreateOrUpdateDocumentPropertyRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t propertyName,
                 std::shared_ptr<DocumentProperty> property,
                 boost::optional<utility::string_t> folder,

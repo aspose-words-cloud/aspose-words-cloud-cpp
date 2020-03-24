@@ -129,6 +129,7 @@ void PdfDigitalSignatureDetailsData::fromJson(web::json::value& val)
 
 void PdfDigitalSignatureDetailsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_CertificateFilenameIsSet)
@@ -160,6 +161,8 @@ void PdfDigitalSignatureDetailsData::toMultipart(const std::shared_ptr<Multipart
 
 void PdfDigitalSignatureDetailsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("CertificateFilename")))
     {
         setCertificateFilename(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CertificateFilename"))));

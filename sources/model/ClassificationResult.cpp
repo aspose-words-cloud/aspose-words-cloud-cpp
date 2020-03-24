@@ -37,6 +37,7 @@ ClassificationResult::ClassificationResult()
     m_ClassName = utility::conversions::to_string_t("");
     m_ClassNameIsSet = false;
     m_ClassProbability = 0.0;
+    m_ClassProbabilityIsSet = false;
 }
 
 ClassificationResult::~ClassificationResult()
@@ -56,7 +57,10 @@ web::json::value ClassificationResult::toJson() const
     {
         val[_XPLATSTR("ClassName")] = ModelBase::toJson(m_ClassName);
     }
-    val[_XPLATSTR("ClassProbability")] = ModelBase::toJson(m_ClassProbability);
+    if(m_ClassProbabilityIsSet)
+    {
+        val[_XPLATSTR("ClassProbability")] = ModelBase::toJson(m_ClassProbability);
+    }
 
     return val;
 }
@@ -83,6 +87,7 @@ void ClassificationResult::fromJson(web::json::value& val)
 
 void ClassificationResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_ClassNameIsSet)
@@ -90,16 +95,25 @@ void ClassificationResult::toMultipart(const std::shared_ptr<MultipartFormData>&
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassName"), m_ClassName));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassProbability"), m_ClassProbability));
+    if(m_ClassProbabilityIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassProbability"), m_ClassProbability));
+        
+    }
 }
 
 void ClassificationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("ClassName")))
     {
         setClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ClassName"))));
     }
-    setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
+    if(multipart->hasContent(_XPLATSTR("ClassProbability")))
+    {
+        setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
+    }
 }
 
 utility::string_t ClassificationResult::getClassName() const
@@ -132,8 +146,18 @@ double ClassificationResult::getClassProbability() const
 void ClassificationResult::setClassProbability(double value)
 {
     m_ClassProbability = value;
-    
+    m_ClassProbabilityIsSet = true;
 }
+bool ClassificationResult::classProbabilityIsSet() const
+{
+    return m_ClassProbabilityIsSet;
+}
+
+void ClassificationResult::unsetClassProbability()
+{
+    m_ClassProbabilityIsSet = false;
+}
+
 }
 }
 }

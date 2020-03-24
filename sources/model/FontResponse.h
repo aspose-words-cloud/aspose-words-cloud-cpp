@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FontResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FontResponse_H_
 
 
+#include "Font.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "Font.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// FontResponse members
 
     /// <summary>
-    /// Gets or sets font.
+    /// Gets or sets Font.
     /// </summary>
     std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;

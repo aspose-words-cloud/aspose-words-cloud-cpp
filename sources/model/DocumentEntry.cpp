@@ -87,6 +87,7 @@ void DocumentEntry::fromJson(web::json::value& val)
 
 void DocumentEntry::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_HrefIsSet)
@@ -103,6 +104,8 @@ void DocumentEntry::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void DocumentEntry::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Href")))
     {
         setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));

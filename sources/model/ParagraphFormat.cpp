@@ -425,23 +425,18 @@ void ParagraphFormat::fromJson(web::json::value& val)
 
 void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
     if(m_AddSpaceBetweenFarEastAndAlphaIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AddSpaceBetweenFarEastAndAlpha"), m_AddSpaceBetweenFarEastAndAlpha));
+        
     }
     if(m_AddSpaceBetweenFarEastAndDigitIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AddSpaceBetweenFarEastAndDigit"), m_AddSpaceBetweenFarEastAndDigit));
+        
     }
     if(m_AlignmentIsSet)
     {
@@ -451,6 +446,7 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_BidiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
+        
     }
     if(m_DropCapPositionIsSet)
     {
@@ -460,26 +456,32 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_FirstLineIndentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FirstLineIndent"), m_FirstLineIndent));
+        
     }
     if(m_IsListItemIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsListItem"), m_IsListItem));
+        
     }
     if(m_KeepTogetherIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("KeepTogether"), m_KeepTogether));
+        
     }
     if(m_KeepWithNextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("KeepWithNext"), m_KeepWithNext));
+        
     }
     if(m_LeftIndentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftIndent"), m_LeftIndent));
+        
     }
     if(m_LineSpacingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineSpacing"), m_LineSpacing));
+        
     }
     if(m_LineSpacingRuleIsSet)
     {
@@ -489,10 +491,12 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_LinesToDropIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LinesToDrop"), m_LinesToDrop));
+        
     }
     if(m_NoSpaceBetweenParagraphsOfSameStyleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle"), m_NoSpaceBetweenParagraphsOfSameStyle));
+        
     }
     if(m_OutlineLevelIsSet)
     {
@@ -502,26 +506,32 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_PageBreakBeforeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageBreakBefore"), m_PageBreakBefore));
+        
     }
     if(m_RightIndentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightIndent"), m_RightIndent));
+        
     }
     if(m_SpaceAfterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceAfter"), m_SpaceAfter));
+        
     }
     if(m_SpaceAfterAutoIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceAfterAuto"), m_SpaceAfterAuto));
+        
     }
     if(m_SpaceBeforeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceBefore"), m_SpaceBefore));
+        
     }
     if(m_SpaceBeforeAutoIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceBeforeAuto"), m_SpaceBeforeAuto));
+        
     }
     if(m_StyleIdentifierIsSet)
     {
@@ -536,28 +546,24 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_SuppressAutoHyphensIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SuppressAutoHyphens"), m_SuppressAutoHyphens));
+        
     }
     if(m_SuppressLineNumbersIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SuppressLineNumbers"), m_SuppressLineNumbers));
+        
     }
     if(m_WidowControlIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("WidowControl"), m_WidowControl));
+        
     }
 }
 
 void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
+    LinkElement::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")))
     {
         setAddSpaceBetweenFarEastAndAlpha(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha"))));

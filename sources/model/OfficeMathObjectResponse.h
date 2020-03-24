@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OfficeMathObjectResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// OfficeMathObjectResponse members
 
     /// <summary>
-    /// Gets or sets officeMathObject information.
+    /// Gets or sets OfficeMathObject.
     /// </summary>
     std::shared_ptr<OfficeMathObject> getOfficeMathObject() const;
     bool officeMathObjectIsSet() const;

@@ -103,127 +103,30 @@ void FormFieldCheckbox::fromJson(web::json::value& val)
 
 void FormFieldCheckbox::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    FormField::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
-    if(m_NodeIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
-        
-    }
-    if(m_CalculateOnExitIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CalculateOnExit"), m_CalculateOnExit));
-    }
-    if(m_EnabledIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Enabled"), m_Enabled));
-    }
-    if(m_EntryMacroIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EntryMacro"), m_EntryMacro));
-        
-    }
-    if(m_ExitMacroIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExitMacro"), m_ExitMacro));
-        
-    }
-    if(m_HelpTextIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HelpText"), m_HelpText));
-        
-    }
-    if(m_NameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
-        
-    }
-    if(m_OwnHelpIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnHelp"), m_OwnHelp));
-    }
-    if(m_OwnStatusIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnStatus"), m_OwnStatus));
-    }
-    if(m_StatusTextIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StatusText"), m_StatusText));
-        
-    }
     if(m_CheckBoxSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CheckBoxSize"), m_CheckBoxSize));
+        
     }
     if(m_CheckedIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Checked"), m_Checked));
+        
     }
     if(m_IsCheckBoxExactSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsCheckBoxExactSize"), m_IsCheckBoxExactSize));
+        
     }
 }
 
 void FormFieldCheckbox::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
-    {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
-    {
-        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Enabled")))
-    {
-        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("EntryMacro")))
-    {
-        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EntryMacro"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExitMacro")))
-    {
-        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExitMacro"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HelpText")))
-    {
-        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HelpText"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Name")))
-    {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OwnHelp")))
-    {
-        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OwnStatus")))
-    {
-        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StatusText")))
-    {
-        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StatusText"))));
-    }
+    FormField::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("CheckBoxSize")))
     {
         setCheckBoxSize(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("CheckBoxSize"))));
@@ -270,7 +173,7 @@ void FormFieldCheckbox::setChecked(bool value)
     m_Checked = value;
     m_CheckedIsSet = true;
 }
-bool FormFieldCheckbox::checkedIsSet() const
+bool FormFieldCheckbox::_checkedIsSet() const
 {
     return m_CheckedIsSet;
 }

@@ -76,13 +76,9 @@ void HeaderFooterResponse::fromJson(web::json::value& val)
 
 void HeaderFooterResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_HeaderFooterIsSet)
     {
         if (m_HeaderFooter.get())
@@ -95,10 +91,8 @@ void HeaderFooterResponse::toMultipart(const std::shared_ptr<MultipartFormData>&
 
 void HeaderFooterResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("HeaderFooter")))
     {
         if(multipart->hasContent(_XPLATSTR("HeaderFooter")))

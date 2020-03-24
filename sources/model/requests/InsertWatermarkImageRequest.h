@@ -39,7 +39,7 @@ namespace models {
 class InsertWatermarkImageRequest{
     public: 
      InsertWatermarkImageRequest(
-        utility::string_t name,
+                utility::string_t name,
                 boost::optional<std::shared_ptr<HttpContent>> imageFile,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

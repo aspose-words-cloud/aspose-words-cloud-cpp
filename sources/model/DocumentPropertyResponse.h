@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPropertyResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentPropertyResponse_H_
 
 
+#include "DocumentProperty.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "DocumentProperty.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// DocumentPropertyResponse members
 
     /// <summary>
-    /// Gets or sets document property.
+    /// Gets or sets DocumentProperty.
     /// </summary>
     std::shared_ptr<DocumentProperty> getDocumentProperty() const;
     bool documentPropertyIsSet() const;

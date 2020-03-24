@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldNamesResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// FieldNamesResponse members
 
     /// <summary>
-    /// Gets or sets collection of mail merge fields.
+    /// Gets or sets FieldNames.
     /// </summary>
     std::shared_ptr<FieldNames> getFieldNames() const;
     bool fieldNamesIsSet() const;

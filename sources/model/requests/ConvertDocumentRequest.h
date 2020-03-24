@@ -39,7 +39,7 @@ namespace models {
 class ConvertDocumentRequest{
     public: 
      ConvertDocumentRequest(
-        std::shared_ptr<HttpContent> document,
+                std::shared_ptr<HttpContent> document,
                 utility::string_t format,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> outPath,

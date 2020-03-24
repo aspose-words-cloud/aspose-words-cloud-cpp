@@ -38,7 +38,7 @@ namespace models {
 class GetRunsRequest{
     public: 
      GetRunsRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t paragraphPath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,

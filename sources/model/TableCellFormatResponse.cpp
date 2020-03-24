@@ -76,13 +76,9 @@ void TableCellFormatResponse::fromJson(web::json::value& val)
 
 void TableCellFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_RequestIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
-    }
     if(m_CellFormatIsSet)
     {
         if (m_CellFormat.get())
@@ -95,10 +91,8 @@ void TableCellFormatResponse::toMultipart(const std::shared_ptr<MultipartFormDat
 
 void TableCellFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    WordsResponse::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("CellFormat")))
     {
         if(multipart->hasContent(_XPLATSTR("CellFormat")))

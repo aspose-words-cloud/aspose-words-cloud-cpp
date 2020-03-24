@@ -38,7 +38,7 @@ namespace models {
 class MoveFileRequest{
     public: 
      MoveFileRequest(
-        utility::string_t destPath,
+                utility::string_t destPath,
                 utility::string_t srcPath,
                 boost::optional<utility::string_t> srcStorageName,
                 boost::optional<utility::string_t> destStorageName,

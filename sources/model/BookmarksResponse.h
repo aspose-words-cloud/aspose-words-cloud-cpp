@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BookmarksResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// BookmarksResponse members
 
     /// <summary>
-    /// Gets or sets bookmarks which are contained in document.
+    /// Gets or sets Bookmarks.
     /// </summary>
     std::shared_ptr<Bookmarks> getBookmarks() const;
     bool bookmarksIsSet() const;

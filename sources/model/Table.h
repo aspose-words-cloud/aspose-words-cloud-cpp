@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Table.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,12 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Table_H_
 
 
+#include "NodeLink.h"
 #include "TableProperties.h"
 #include "TableRow.h"
-#include "NodeLink.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
-#include "WordsApiLink.h"
 
 namespace aspose {
 namespace words {
@@ -66,7 +63,7 @@ public:
     /// Table members
 
     /// <summary>
-    /// Gets or sets table properties.
+    /// Gets or sets TableProperties.
     /// </summary>
     std::shared_ptr<TableProperties> getTableProperties() const;
     bool tablePropertiesIsSet() const;

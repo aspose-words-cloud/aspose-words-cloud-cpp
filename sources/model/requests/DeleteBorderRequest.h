@@ -38,7 +38,7 @@ namespace models {
 class DeleteBorderRequest{
     public: 
      DeleteBorderRequest(
-        utility::string_t name,
+                utility::string_t name,
                 utility::string_t nodePath,
                 utility::string_t borderType,
                 boost::optional<utility::string_t> folder,

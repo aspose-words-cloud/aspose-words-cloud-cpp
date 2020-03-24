@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiError.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -92,7 +91,7 @@ public:
     void unsetDateTime();
     void setDateTime(utility::datetime value);
     /// <summary>
-    /// Gets or sets inner error.
+    /// Gets or sets InnerError.
     /// </summary>
     std::shared_ptr<ApiError> getInnerError() const;
     bool innerErrorIsSet() const;

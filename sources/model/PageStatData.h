@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageStatData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,6 +30,7 @@
 #include "../ModelBase.h"
 
 #include "FootnotesStatData.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -66,19 +66,25 @@ public:
     /// Gets or sets page number.
     /// </summary>
     int32_t getPageNumber() const;
-        void setPageNumber(int32_t value);
+    bool pageNumberIsSet() const;
+    void unsetPageNumber();
+    void setPageNumber(int32_t value);
     /// <summary>
     /// Gets or sets total count of words in the page.
     /// </summary>
     int32_t getWordCount() const;
-        void setWordCount(int32_t value);
+    bool wordCountIsSet() const;
+    void unsetWordCount();
+    void setWordCount(int32_t value);
     /// <summary>
     /// Gets or sets total count of paragraphs in the page.
     /// </summary>
     int32_t getParagraphCount() const;
-        void setParagraphCount(int32_t value);
+    bool paragraphCountIsSet() const;
+    void unsetParagraphCount();
+    void setParagraphCount(int32_t value);
     /// <summary>
-    /// Gets or sets detailed statistics of footnotes.
+    /// Gets or sets FootnotesStatData.
     /// </summary>
     std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
@@ -87,9 +93,12 @@ public:
 
 protected:
     int32_t m_PageNumber;
-        int32_t m_WordCount;
-        int32_t m_ParagraphCount;
-        std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
+    bool m_PageNumberIsSet;
+    int32_t m_WordCount;
+    bool m_WordCountIsSet;
+    int32_t m_ParagraphCount;
+    bool m_ParagraphCountIsSet;
+    std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
     bool m_FootnotesStatDataIsSet;
 };
 

@@ -38,7 +38,7 @@ namespace models {
 class GetFilesListRequest{
     public: 
      GetFilesListRequest(
-        utility::string_t path,
+                utility::string_t path,
                 boost::optional<utility::string_t> storageName
         );
 

@@ -39,7 +39,7 @@ namespace models {
 class UpdateParagraphFormatRequest{
     public: 
      UpdateParagraphFormatRequest(
-        utility::string_t name,
+                utility::string_t name,
                 std::shared_ptr<ParagraphFormat> dto,
                 utility::string_t nodePath,
                 int32_t index,

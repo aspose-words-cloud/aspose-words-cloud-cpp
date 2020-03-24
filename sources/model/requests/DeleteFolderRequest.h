@@ -38,7 +38,7 @@ namespace models {
 class DeleteFolderRequest{
     public: 
      DeleteFolderRequest(
-        utility::string_t path,
+                utility::string_t path,
                 boost::optional<utility::string_t> storageName,
                 boost::optional<bool> recursive
         );

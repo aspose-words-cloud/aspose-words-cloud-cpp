@@ -129,6 +129,7 @@ void StringFormatData::fromJson(web::json::value& val)
 
 void StringFormatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_AlignmentIsSet)
@@ -160,6 +161,8 @@ void StringFormatData::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
 void StringFormatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Alignment")))
     {
         setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));

@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Section.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,10 +27,10 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Section_H_
 
 
-#include "NodeLink.h"
 #include "LinkElement.h"
-#include <vector>
+#include "NodeLink.h"
 #include "WordsApiLink.h"
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -71,28 +70,28 @@ public:
     void unsetChildNodes();
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
     /// <summary>
-    /// Gets or sets link to HeaderFooters resource.
+    /// Gets or sets HeaderFooters.
     /// </summary>
     std::shared_ptr<LinkElement> getHeaderFooters() const;
     bool headerFootersIsSet() const;
     void unsetHeaderFooters();
     void setHeaderFooters(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Gets or sets link to PageSetup resource.
+    /// Gets or sets PageSetup.
     /// </summary>
     std::shared_ptr<LinkElement> getPageSetup() const;
     bool pageSetupIsSet() const;
     void unsetPageSetup();
     void setPageSetup(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Gets or sets link to Paragraphs resource.
+    /// Gets or sets Paragraphs.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
     void unsetParagraphs();
     void setParagraphs(std::shared_ptr<LinkElement> value);
     /// <summary>
-    /// Gets or sets link to Tables resource.
+    /// Gets or sets Tables.
     /// </summary>
     std::shared_ptr<LinkElement> getTables() const;
     bool tablesIsSet() const;

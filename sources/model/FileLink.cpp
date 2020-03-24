@@ -61,48 +61,15 @@ void FileLink::fromJson(web::json::value& val)
 
 void FileLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    Link::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_HrefIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
-        
-    }
-    if(m_RelIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Rel"), m_Rel));
-        
-    }
-    if(m_TypeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
-        
-    }
-    if(m_TitleIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Title"), m_Title));
-        
-    }
 }
 
 void FileLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("Href")))
-    {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Rel")))
-    {
-        setRel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Rel"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Type")))
-    {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Title")))
-    {
-        setTitle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Title"))));
-    }
+    Link::fromMultiPart(multipart, prefix);
+
 }
 
 }

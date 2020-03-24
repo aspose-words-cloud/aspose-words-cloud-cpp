@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XmlColor.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -39,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Utility class for  serialization.
+/// Utility class for Color serialization.
 /// </summary>
 class  XmlColor
     : public ModelBase

@@ -38,7 +38,7 @@ namespace models {
 class CreateDocumentRequest{
     public: 
      CreateDocumentRequest(
-        boost::optional<utility::string_t> storage,
+                boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> fileName,
                 boost::optional<utility::string_t> folder
         );

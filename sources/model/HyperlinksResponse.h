@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HyperlinksResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// HyperlinksResponse members
 
     /// <summary>
-    /// Gets or sets collection of hyperlinks.
+    /// Gets or sets Hyperlinks.
     /// </summary>
     std::shared_ptr<Hyperlinks> getHyperlinks() const;
     bool hyperlinksIsSet() const;

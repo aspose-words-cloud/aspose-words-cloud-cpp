@@ -39,7 +39,7 @@ namespace models {
 class UpdateSectionPageSetupRequest{
     public: 
      UpdateSectionPageSetupRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t sectionIndex,
                 std::shared_ptr<PageSetup> pageSetup,
                 boost::optional<utility::string_t> folder,

@@ -88,6 +88,7 @@ void LoadWebDocumentData::fromJson(web::json::value& val)
 
 void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_LoadingDocumentUrlIsSet)
@@ -107,6 +108,8 @@ void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
 void LoadWebDocumentData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("LoadingDocumentUrl")))
     {
         setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LoadingDocumentUrl"))));

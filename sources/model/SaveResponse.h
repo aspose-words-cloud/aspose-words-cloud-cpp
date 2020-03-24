@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -63,7 +62,7 @@ public:
     /// SaveResponse members
 
     /// <summary>
-    /// Gets or sets save result.
+    /// Gets or sets SaveResult.
     /// </summary>
     std::shared_ptr<SaveResult> getSaveResult() const;
     bool saveResultIsSet() const;

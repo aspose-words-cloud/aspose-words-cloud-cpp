@@ -38,7 +38,7 @@ namespace models {
 class RenderPageRequest{
     public: 
      RenderPageRequest(
-        utility::string_t name,
+                utility::string_t name,
                 int32_t pageIndex,
                 utility::string_t format,
                 boost::optional<utility::string_t> folder,

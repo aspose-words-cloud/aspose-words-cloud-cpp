@@ -223,24 +223,13 @@ void DrawingObject::fromJson(web::json::value& val)
 
 void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    DrawingObjectLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
-    if(m_LinkIsSet)
-    {
-        if (m_Link.get())
-        {
-            m_Link->toMultipart(multipart, _XPLATSTR("link."));
-        }
-        
-    }
-    if(m_NodeIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
-        
-    }
     if(m_HeightIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Height"), m_Height));
+        
     }
     if(m_ImageDataLinkIsSet)
     {
@@ -253,6 +242,7 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
     if(m_LeftIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Left"), m_Left));
+        
     }
     if(m_OleDataLinkIsSet)
     {
@@ -286,10 +276,12 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
     if(m_TopIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Top"), m_Top));
+        
     }
     if(m_WidthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Width"), m_Width));
+        
     }
     if(m_WrapTypeIsSet)
     {
@@ -300,19 +292,8 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
 
 void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    if(multipart->hasContent(_XPLATSTR("link")))
-    {
-        if(multipart->hasContent(_XPLATSTR("link")))
-        {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("link."));
-            setLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
-    {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
-    }
+    DrawingObjectLink::fromMultiPart(multipart, prefix);
+
     if(multipart->hasContent(_XPLATSTR("Height")))
     {
         setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Height"))));

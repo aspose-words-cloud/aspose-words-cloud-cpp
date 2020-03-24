@@ -87,6 +87,7 @@ void BookmarkData::fromJson(web::json::value& val)
 
 void BookmarkData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
+    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     if(m_NameIsSet)
@@ -103,6 +104,8 @@ void BookmarkData::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
 void BookmarkData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
+    
+
     if(multipart->hasContent(_XPLATSTR("Name")))
     {
         setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));

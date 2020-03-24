@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -28,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphResponse_H_
 
 
+#include "Paragraph.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
-#include "Paragraph.h"
 
 namespace aspose {
 namespace words {
@@ -63,7 +62,7 @@ public:
     /// ParagraphResponse members
 
     /// <summary>
-    /// Gets or sets paragraph.
+    /// Gets or sets Paragraph.
     /// </summary>
     std::shared_ptr<Paragraph> getParagraph() const;
     bool paragraphIsSet() const;

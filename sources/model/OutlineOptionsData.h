@@ -1,4 +1,3 @@
-
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OutlineOptionsData.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
@@ -31,7 +30,7 @@
 #include "../ModelBase.h"
 
 #include "BookmarksOutlineLevelData.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {

@@ -264,6 +264,8 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 
 void ApiClient::logDataFromStream(const Concurrency::streams::istream& stream) const
 {
+	if (!m_Configuration->isDebugMode()) return;
+
 	if (!stream.is_valid())
 	{
 		ucout << _XPLATSTR("EMPTY");
