@@ -29,9 +29,15 @@ namespace words {
 namespace cloud {
 namespace api {
 
-ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t appSid) :
-    m_AppKey(appKey), m_AppSid(appSid)
+ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t appSid)
 {
+    if (appSid == nullptr || appSid.empty()) {
+        throw _XPLATSTR("appSid could not be an empty string.")
+    }
+    
+    if (appKey == nullptr || appKey.empty()) {
+        throw _XPLATSTR("appKey could not be an empty string.")
+    }
 }
 
 void ApiConfiguration::setAppKey( utility::string_t appKey){

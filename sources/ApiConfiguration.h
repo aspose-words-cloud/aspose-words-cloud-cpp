@@ -32,6 +32,7 @@
 
 #include <cpprest/details/basic_types.h>
 #include <cpprest/http_client.h>
+#include "../model/WordsApiErrorResponse.h"
 namespace aspose {
 namespace words {
 namespace cloud {
