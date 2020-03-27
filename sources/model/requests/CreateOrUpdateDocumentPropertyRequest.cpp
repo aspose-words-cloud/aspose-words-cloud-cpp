@@ -31,7 +31,7 @@ namespace models{
 CreateOrUpdateDocumentPropertyRequest::CreateOrUpdateDocumentPropertyRequest(
         utility::string_t name,
                 utility::string_t propertyName,
-                std::shared_ptr<DocumentProperty> property,
+                std::shared_ptr<DocumentPropertyCreateOrUpdate> property,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -68,11 +68,11 @@ CreateOrUpdateDocumentPropertyRequest::CreateOrUpdateDocumentPropertyRequest(
         void CreateOrUpdateDocumentPropertyRequest::setPropertyName(utility::string_t propertyName){
             m_propertyName = std::move(propertyName);
         }
-        std::shared_ptr<DocumentProperty> CreateOrUpdateDocumentPropertyRequest::getProperty() const
+        std::shared_ptr<DocumentPropertyCreateOrUpdate> CreateOrUpdateDocumentPropertyRequest::getProperty() const
         {
             return m_property;
         }
-        void CreateOrUpdateDocumentPropertyRequest::setProperty(std::shared_ptr<DocumentProperty> property){
+        void CreateOrUpdateDocumentPropertyRequest::setProperty(std::shared_ptr<DocumentPropertyCreateOrUpdate> property){
             m_property = std::move(property);
         }
         boost::optional<utility::string_t> CreateOrUpdateDocumentPropertyRequest::getFolder() const

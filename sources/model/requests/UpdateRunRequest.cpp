@@ -30,7 +30,7 @@ namespace api{
 namespace models{
 UpdateRunRequest::UpdateRunRequest(
         utility::string_t name,
-                std::shared_ptr<Run> run,
+                std::shared_ptr<RunUpdate> run,
                 utility::string_t paragraphPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
@@ -63,11 +63,11 @@ UpdateRunRequest::UpdateRunRequest(
         void UpdateRunRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<Run> UpdateRunRequest::getRun() const
+        std::shared_ptr<RunUpdate> UpdateRunRequest::getRun() const
         {
             return m_run;
         }
-        void UpdateRunRequest::setRun(std::shared_ptr<Run> run){
+        void UpdateRunRequest::setRun(std::shared_ptr<RunUpdate> run){
             m_run = std::move(run);
         }
         utility::string_t UpdateRunRequest::getParagraphPath() const

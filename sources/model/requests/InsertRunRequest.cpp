@@ -31,7 +31,7 @@ namespace models{
 InsertRunRequest::InsertRunRequest(
         utility::string_t name,
                 utility::string_t paragraphPath,
-                std::shared_ptr<Run> run,
+                std::shared_ptr<RunInsert> run,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -70,11 +70,11 @@ InsertRunRequest::InsertRunRequest(
         void InsertRunRequest::setParagraphPath(utility::string_t paragraphPath){
             m_paragraphPath = std::move(paragraphPath);
         }
-        std::shared_ptr<Run> InsertRunRequest::getRun() const
+        std::shared_ptr<RunInsert> InsertRunRequest::getRun() const
         {
             return m_run;
         }
-        void InsertRunRequest::setRun(std::shared_ptr<Run> run){
+        void InsertRunRequest::setRun(std::shared_ptr<RunInsert> run){
             m_run = std::move(run);
         }
         boost::optional<utility::string_t> InsertRunRequest::getFolder() const

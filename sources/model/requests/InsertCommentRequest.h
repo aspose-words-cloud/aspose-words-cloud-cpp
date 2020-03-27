@@ -27,7 +27,7 @@
 #define insertComment_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Comment.h"
+#include "CommentInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +40,7 @@ class InsertCommentRequest{
     public: 
      InsertCommentRequest(
                 utility::string_t name,
-                std::shared_ptr<Comment> comment,
+                std::shared_ptr<CommentInsert> comment,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -53,8 +53,8 @@ class InsertCommentRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Comment> getComment() const;
-        void setComment(std::shared_ptr<Comment> comment);
+        std::shared_ptr<CommentInsert> getComment() const;
+        void setComment(std::shared_ptr<CommentInsert> comment);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -78,7 +78,7 @@ class InsertCommentRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        std::shared_ptr<Comment> m_comment;
+        std::shared_ptr<CommentInsert> m_comment;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

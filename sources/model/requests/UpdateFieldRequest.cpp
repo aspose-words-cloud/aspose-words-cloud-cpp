@@ -30,7 +30,7 @@ namespace api{
 namespace models{
 UpdateFieldRequest::UpdateFieldRequest(
         utility::string_t name,
-                std::shared_ptr<Field> field,
+                std::shared_ptr<FieldUpdate> field,
                 utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
@@ -63,11 +63,11 @@ UpdateFieldRequest::UpdateFieldRequest(
         void UpdateFieldRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<Field> UpdateFieldRequest::getField() const
+        std::shared_ptr<FieldUpdate> UpdateFieldRequest::getField() const
         {
             return m_field;
         }
-        void UpdateFieldRequest::setField(std::shared_ptr<Field> field){
+        void UpdateFieldRequest::setField(std::shared_ptr<FieldUpdate> field){
             m_field = std::move(field);
         }
         utility::string_t UpdateFieldRequest::getNodePath() const

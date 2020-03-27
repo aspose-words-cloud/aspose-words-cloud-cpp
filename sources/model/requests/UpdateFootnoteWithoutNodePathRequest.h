@@ -27,7 +27,7 @@
 #define updateFootnoteWithoutNodePath_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Footnote.h"
+#include "FootnoteUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +40,7 @@ class UpdateFootnoteWithoutNodePathRequest{
     public: 
      UpdateFootnoteWithoutNodePathRequest(
                 utility::string_t name,
-                std::shared_ptr<Footnote> footnoteDto,
+                std::shared_ptr<FootnoteUpdate> footnoteDto,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -54,8 +54,8 @@ class UpdateFootnoteWithoutNodePathRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Footnote> getFootnoteDto() const;
-        void setFootnoteDto(std::shared_ptr<Footnote> footnoteDto);
+        std::shared_ptr<FootnoteUpdate> getFootnoteDto() const;
+        void setFootnoteDto(std::shared_ptr<FootnoteUpdate> footnoteDto);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -82,7 +82,7 @@ class UpdateFootnoteWithoutNodePathRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        std::shared_ptr<Footnote> m_footnoteDto;
+        std::shared_ptr<FootnoteUpdate> m_footnoteDto;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;

@@ -30,7 +30,7 @@ namespace api{
 namespace models{
 InsertFieldWithoutNodePathRequest::InsertFieldWithoutNodePathRequest(
         utility::string_t name,
-                std::shared_ptr<Field> field,
+                std::shared_ptr<FieldInsert> field,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -61,11 +61,11 @@ InsertFieldWithoutNodePathRequest::InsertFieldWithoutNodePathRequest(
         void InsertFieldWithoutNodePathRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<Field> InsertFieldWithoutNodePathRequest::getField() const
+        std::shared_ptr<FieldInsert> InsertFieldWithoutNodePathRequest::getField() const
         {
             return m_field;
         }
-        void InsertFieldWithoutNodePathRequest::setField(std::shared_ptr<Field> field){
+        void InsertFieldWithoutNodePathRequest::setField(std::shared_ptr<FieldInsert> field){
             m_field = std::move(field);
         }
         boost::optional<utility::string_t> InsertFieldWithoutNodePathRequest::getFolder() const
