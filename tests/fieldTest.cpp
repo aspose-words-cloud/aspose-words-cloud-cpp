@@ -88,7 +88,7 @@ TEST_F(FieldTest, TestPutField) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(fieldFolder), localName);
 
-	std::shared_ptr<FieldUpdate> body= std::shared_ptr<Field>(new FieldUpdate());
+	std::shared_ptr<FieldUpdate> body= std::shared_ptr<FieldUpdate>(new FieldUpdate());
 	body->setFieldCode(STCONVERT("{ NUMPAGES }"));
 
 	UploadFileToStorage(fullName, filePath);
