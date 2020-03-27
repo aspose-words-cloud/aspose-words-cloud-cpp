@@ -109,8 +109,7 @@ TEST_F(DocumentPropertiesTest, TestPutUpdateDocumentProperty) {
 		destFileName = path_combine_url(baseTestOutPath, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<DocumentProperty> body= std::make_shared<DocumentProperty>();
-	body->setName(STCONVERT("Author"));
+	std::shared_ptr<DocumentPropertyCreateOrUpdate> body= std::make_shared<DocumentPropertyCreateOrUpdate>();
 	body->setValue(STCONVERT("Imran Anwar"));
 
 	UploadFileToStorage(fullName, filePath);

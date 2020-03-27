@@ -43,7 +43,7 @@ TEST_F(FootnoteTest, TestPostFootnote) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(footnoteFolder), localName);
 
-	std::shared_ptr<Footnote> footnote= std::make_shared<Footnote>();
+	std::shared_ptr<FootnoteInsert> footnote= std::make_shared<FootnoteInsert>();
 	footnote->setText(STCONVERT("new text"));
 
 	UploadFileToStorage(fullName, filePath);
@@ -132,7 +132,7 @@ TEST_F(FootnoteTest, TestPutFootnote) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(footnoteFolder), localName);
 	int32_t index = 0;
-	std::shared_ptr<Footnote> footnote= std::make_shared<Footnote>();
+	std::shared_ptr<FootnoteUpdate> footnote= std::make_shared<FootnoteUpdate>();
 	footnote->setText(STCONVERT("new text is here"));
 
 	UploadFileToStorage(fullName, filePath);
@@ -155,7 +155,7 @@ TEST_F(FootnoteTest, TestPostFootnoteWithoutNodePath) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(footnoteFolder), localName);
 
-	std::shared_ptr<Footnote> footnote = std::make_shared<Footnote>();
+	std::shared_ptr<FootnoteInsert> footnote = std::make_shared<FootnoteInsert>();
 	footnote->setFootnoteType(STCONVERT("Endnote"));
 	footnote->setText(STCONVERT("test endnote"));
 
@@ -245,7 +245,7 @@ TEST_F(FootnoteTest, TestPutFootnoteWithoutNodePath) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(footnoteFolder), localName);
 	int32_t index = 0;
-	std::shared_ptr<Footnote> footnote = std::make_shared<Footnote>();
+	std::shared_ptr<FootnoteUpdate> footnote = std::make_shared<FootnoteUpdate>();
 	footnote->setText(STCONVERT("new text is here"));
 
 	UploadFileToStorage(fullName, filePath);

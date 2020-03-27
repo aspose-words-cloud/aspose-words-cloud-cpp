@@ -89,7 +89,7 @@ TEST_F(CommentTest, TestPostComment) {
 	position->setNode(nodeLink);
 	position->setOffset(0);
 
-	std::shared_ptr<Comment> body= std::make_shared<Comment>();
+	std::shared_ptr<CommentInsert> body= std::make_shared<CommentInsert>();
 	body->setRangeStart(position);
 	body->setRangeEnd(position);
 	body->setInitial(STCONVERT("IA"));
@@ -125,7 +125,7 @@ TEST_F(CommentTest, TestPutComment) {
 	position->setNode(nodeLink);
 	position->setOffset(0);
 
-	std::shared_ptr<Comment> body= std::make_shared<Comment>();
+	std::shared_ptr<CommentUpdate> body= std::make_shared<CommentUpdate>();
 	body->setRangeStart(position);
 	body->setRangeEnd(position);
 	body->setInitial(STCONVERT("IA"));
