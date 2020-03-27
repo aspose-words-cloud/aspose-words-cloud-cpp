@@ -29,6 +29,7 @@
 
 #include "../ModelBase.h"
 
+#include "CompareOptions.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -82,6 +83,13 @@ public:
     bool dateTimeIsSet() const;
     void unsetDateTime();
     void setDateTime(utility::datetime value);
+    /// <summary>
+    /// Gets or sets CompareOptions.
+    /// </summary>
+    std::shared_ptr<CompareOptions> getCompareOptions() const;
+    bool compareOptionsIsSet() const;
+    void unsetCompareOptions();
+    void setCompareOptions(std::shared_ptr<CompareOptions> value);
 
 protected:
     utility::string_t m_ComparingWithDocument;
@@ -90,6 +98,8 @@ protected:
     bool m_AuthorIsSet;
     utility::datetime m_DateTime;
     bool m_DateTimeIsSet;
+    std::shared_ptr<CompareOptions> m_CompareOptions;
+    bool m_CompareOptionsIsSet;
 };
 
 }

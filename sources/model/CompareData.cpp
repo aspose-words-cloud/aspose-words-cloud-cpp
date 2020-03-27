@@ -40,6 +40,7 @@ CompareData::CompareData()
     m_AuthorIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
+    m_CompareOptionsIsSet = false;
 }
 
 CompareData::~CompareData()
@@ -66,6 +67,10 @@ web::json::value CompareData::toJson() const
     if(m_DateTimeIsSet)
     {
         val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
+    }
+    if(m_CompareOptionsIsSet)
+    {
+        val[_XPLATSTR("CompareOptions")] = ModelBase::toJson(m_CompareOptions);
     }
 
     return val;
@@ -97,6 +102,16 @@ void CompareData::fromJson(web::json::value& val)
             setDateTime(ModelBase::dateFromJson(fieldValue));
         }
     }
+    if(val.has_field(_XPLATSTR("CompareOptions")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("CompareOptions")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<CompareOptions> newItem(new CompareOptions());
+            newItem->fromJson(fieldValue);
+            setCompareOptions( newItem );
+        }
+    }
 }
 
 void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
@@ -119,6 +134,14 @@ void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
         
     }
+    if(m_CompareOptionsIsSet)
+    {
+        if (m_CompareOptions.get())
+        {
+            m_CompareOptions->toMultipart(multipart, _XPLATSTR("CompareOptions."));
+        }
+        
+    }
 }
 
 void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
@@ -136,6 +159,15 @@ void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
         setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("CompareOptions")))
+    {
+        if(multipart->hasContent(_XPLATSTR("CompareOptions")))
+        {
+            std::shared_ptr<CompareOptions> newItem(new CompareOptions());
+            newItem->fromMultiPart(multipart, _XPLATSTR("CompareOptions."));
+            setCompareOptions( newItem );
+        }
     }
 }
 
@@ -200,6 +232,27 @@ bool CompareData::dateTimeIsSet() const
 void CompareData::unsetDateTime()
 {
     m_DateTimeIsSet = false;
+}
+
+std::shared_ptr<CompareOptions> CompareData::getCompareOptions() const
+{
+    return m_CompareOptions;
+}
+
+
+void CompareData::setCompareOptions(std::shared_ptr<CompareOptions> value)
+{
+    m_CompareOptions = value;
+    m_CompareOptionsIsSet = true;
+}
+bool CompareData::compareOptionsIsSet() const
+{
+    return m_CompareOptionsIsSet;
+}
+
+void CompareData::unsetCompareOptions()
+{
+    m_CompareOptionsIsSet = false;
 }
 
 }
