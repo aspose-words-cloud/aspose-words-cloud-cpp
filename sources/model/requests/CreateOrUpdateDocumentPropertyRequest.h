@@ -27,7 +27,7 @@
 #define createOrUpdateDocumentProperty_H 
 
 #include "cpprest/details/basic_types.h"
-#include "DocumentProperty.h"
+#include "DocumentPropertyCreateOrUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -41,7 +41,7 @@ class CreateOrUpdateDocumentPropertyRequest{
      CreateOrUpdateDocumentPropertyRequest(
                 utility::string_t name,
                 utility::string_t propertyName,
-                std::shared_ptr<DocumentProperty> property,
+                std::shared_ptr<DocumentPropertyCreateOrUpdate> property,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -57,8 +57,8 @@ class CreateOrUpdateDocumentPropertyRequest{
         utility::string_t getPropertyName() const;
         void setPropertyName(utility::string_t propertyName);
 
-        std::shared_ptr<DocumentProperty> getProperty() const;
-        void setProperty(std::shared_ptr<DocumentProperty> property);
+        std::shared_ptr<DocumentPropertyCreateOrUpdate> getProperty() const;
+        void setProperty(std::shared_ptr<DocumentPropertyCreateOrUpdate> property);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -83,7 +83,7 @@ class CreateOrUpdateDocumentPropertyRequest{
     private:
         utility::string_t m_name;
         utility::string_t m_propertyName;
-        std::shared_ptr<DocumentProperty> m_property;
+        std::shared_ptr<DocumentPropertyCreateOrUpdate> m_property;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

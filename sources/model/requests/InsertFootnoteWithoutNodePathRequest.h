@@ -27,7 +27,7 @@
 #define insertFootnoteWithoutNodePath_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Footnote.h"
+#include "FootnoteInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +40,7 @@ class InsertFootnoteWithoutNodePathRequest{
     public: 
      InsertFootnoteWithoutNodePathRequest(
                 utility::string_t name,
-                std::shared_ptr<Footnote> footnoteDto,
+                std::shared_ptr<FootnoteInsert> footnoteDto,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -53,8 +53,8 @@ class InsertFootnoteWithoutNodePathRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Footnote> getFootnoteDto() const;
-        void setFootnoteDto(std::shared_ptr<Footnote> footnoteDto);
+        std::shared_ptr<FootnoteInsert> getFootnoteDto() const;
+        void setFootnoteDto(std::shared_ptr<FootnoteInsert> footnoteDto);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -78,7 +78,7 @@ class InsertFootnoteWithoutNodePathRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        std::shared_ptr<Footnote> m_footnoteDto;
+        std::shared_ptr<FootnoteInsert> m_footnoteDto;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

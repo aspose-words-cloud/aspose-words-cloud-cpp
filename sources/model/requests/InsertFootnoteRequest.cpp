@@ -30,7 +30,7 @@ namespace api{
 namespace models{
 InsertFootnoteRequest::InsertFootnoteRequest(
         utility::string_t name,
-                std::shared_ptr<Footnote> footnoteDto,
+                std::shared_ptr<FootnoteInsert> footnoteDto,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -61,11 +61,11 @@ InsertFootnoteRequest::InsertFootnoteRequest(
         void InsertFootnoteRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<Footnote> InsertFootnoteRequest::getFootnoteDto() const
+        std::shared_ptr<FootnoteInsert> InsertFootnoteRequest::getFootnoteDto() const
         {
             return m_footnoteDto;
         }
-        void InsertFootnoteRequest::setFootnoteDto(std::shared_ptr<Footnote> footnoteDto){
+        void InsertFootnoteRequest::setFootnoteDto(std::shared_ptr<FootnoteInsert> footnoteDto){
             m_footnoteDto = std::move(footnoteDto);
         }
         utility::string_t InsertFootnoteRequest::getNodePath() const

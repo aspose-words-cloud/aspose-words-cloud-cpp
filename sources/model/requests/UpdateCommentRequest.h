@@ -27,7 +27,7 @@
 #define updateComment_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Comment.h"
+#include "CommentUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -41,7 +41,7 @@ class UpdateCommentRequest{
      UpdateCommentRequest(
                 utility::string_t name,
                 int32_t commentIndex,
-                std::shared_ptr<Comment> comment,
+                std::shared_ptr<CommentUpdate> comment,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -57,8 +57,8 @@ class UpdateCommentRequest{
         int32_t getCommentIndex() const;
         void setCommentIndex(int32_t commentIndex);
 
-        std::shared_ptr<Comment> getComment() const;
-        void setComment(std::shared_ptr<Comment> comment);
+        std::shared_ptr<CommentUpdate> getComment() const;
+        void setComment(std::shared_ptr<CommentUpdate> comment);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -83,7 +83,7 @@ class UpdateCommentRequest{
     private:
         utility::string_t m_name;
         int32_t m_commentIndex;
-        std::shared_ptr<Comment> m_comment;
+        std::shared_ptr<CommentUpdate> m_comment;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

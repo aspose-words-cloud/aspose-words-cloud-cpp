@@ -31,7 +31,7 @@ namespace models{
 UpdateCommentRequest::UpdateCommentRequest(
         utility::string_t name,
                 int32_t commentIndex,
-                std::shared_ptr<Comment> comment,
+                std::shared_ptr<CommentUpdate> comment,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -68,11 +68,11 @@ UpdateCommentRequest::UpdateCommentRequest(
         void UpdateCommentRequest::setCommentIndex(int32_t commentIndex){
             m_commentIndex = std::move(commentIndex);
         }
-        std::shared_ptr<Comment> UpdateCommentRequest::getComment() const
+        std::shared_ptr<CommentUpdate> UpdateCommentRequest::getComment() const
         {
             return m_comment;
         }
-        void UpdateCommentRequest::setComment(std::shared_ptr<Comment> comment){
+        void UpdateCommentRequest::setComment(std::shared_ptr<CommentUpdate> comment){
             m_comment = std::move(comment);
         }
         boost::optional<utility::string_t> UpdateCommentRequest::getFolder() const

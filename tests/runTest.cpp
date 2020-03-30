@@ -43,7 +43,7 @@ TEST_F(RunTest, TestPostRun) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(runFolder), localName);
 
-	std::shared_ptr<aspose::words::cloud::api::Run > run = std::make_shared<aspose::words::cloud::api::Run>();
+	std::shared_ptr<aspose::words::cloud::api::RunUpdate > run = std::make_shared<aspose::words::cloud::api::RunUpdate>();
 	run->setText(STCONVERT("run with text"));
 
 	UploadFileToStorage(fullName, filePath);
@@ -67,7 +67,7 @@ TEST_F(RunTest, TestPutRun) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(runFolder), localName);
 
-	std::shared_ptr<aspose::words::cloud::api::Run > run = std::make_shared<aspose::words::cloud::api::Run>();
+	std::shared_ptr<aspose::words::cloud::api::RunInsert > run = std::make_shared<aspose::words::cloud::api::RunInsert>();
 	run->setText(STCONVERT("run with text"));
 
 	UploadFileToStorage(fullName, filePath);

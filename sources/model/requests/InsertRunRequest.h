@@ -27,7 +27,7 @@
 #define insertRun_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Run.h"
+#include "RunInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -41,7 +41,7 @@ class InsertRunRequest{
      InsertRunRequest(
                 utility::string_t name,
                 utility::string_t paragraphPath,
-                std::shared_ptr<Run> run,
+                std::shared_ptr<RunInsert> run,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -58,8 +58,8 @@ class InsertRunRequest{
         utility::string_t getParagraphPath() const;
         void setParagraphPath(utility::string_t paragraphPath);
 
-        std::shared_ptr<Run> getRun() const;
-        void setRun(std::shared_ptr<Run> run);
+        std::shared_ptr<RunInsert> getRun() const;
+        void setRun(std::shared_ptr<RunInsert> run);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -87,7 +87,7 @@ class InsertRunRequest{
     private:
         utility::string_t m_name;
         utility::string_t m_paragraphPath;
-        std::shared_ptr<Run> m_run;
+        std::shared_ptr<RunInsert> m_run;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;

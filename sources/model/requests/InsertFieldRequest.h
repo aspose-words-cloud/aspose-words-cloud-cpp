@@ -27,7 +27,7 @@
 #define insertField_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Field.h"
+#include "FieldInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +40,7 @@ class InsertFieldRequest{
     public: 
      InsertFieldRequest(
                 utility::string_t name,
-                std::shared_ptr<Field> field,
+                std::shared_ptr<FieldInsert> field,
                 utility::string_t nodePath,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -55,8 +55,8 @@ class InsertFieldRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Field> getField() const;
-        void setField(std::shared_ptr<Field> field);
+        std::shared_ptr<FieldInsert> getField() const;
+        void setField(std::shared_ptr<FieldInsert> field);
 
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
@@ -86,7 +86,7 @@ class InsertFieldRequest{
         void setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode);
     private:
         utility::string_t m_name;
-        std::shared_ptr<Field> m_field;
+        std::shared_ptr<FieldInsert> m_field;
         utility::string_t m_nodePath;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;

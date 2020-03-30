@@ -30,7 +30,7 @@ namespace api{
 namespace models{
 InsertCommentRequest::InsertCommentRequest(
         utility::string_t name,
-                std::shared_ptr<Comment> comment,
+                std::shared_ptr<CommentInsert> comment,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -59,11 +59,11 @@ InsertCommentRequest::InsertCommentRequest(
         void InsertCommentRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<Comment> InsertCommentRequest::getComment() const
+        std::shared_ptr<CommentInsert> InsertCommentRequest::getComment() const
         {
             return m_comment;
         }
-        void InsertCommentRequest::setComment(std::shared_ptr<Comment> comment){
+        void InsertCommentRequest::setComment(std::shared_ptr<CommentInsert> comment){
             m_comment = std::move(comment);
         }
         boost::optional<utility::string_t> InsertCommentRequest::getFolder() const

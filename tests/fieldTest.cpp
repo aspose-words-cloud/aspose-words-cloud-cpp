@@ -88,7 +88,7 @@ TEST_F(FieldTest, TestPutField) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(fieldFolder), localName);
 
-	std::shared_ptr<Field> body= std::shared_ptr<Field>(new Field());
+	std::shared_ptr<FieldUpdate> body= std::shared_ptr<FieldUpdate>(new FieldUpdate());
 	body->setFieldCode(STCONVERT("{ NUMPAGES }"));
 
 	UploadFileToStorage(fullName, filePath);
@@ -115,10 +115,8 @@ TEST_F(FieldTest, TestPostField) {
 
 	int32_t fieldIndex = 0;
 
-	std::shared_ptr<Field> body= std::make_shared<Field>();
-	body->setResult(STCONVERT("3"));
+	std::shared_ptr<FieldInsert> body= std::make_shared<FieldInsert>();
 	body->setFieldCode(STCONVERT("{ NUMPAGES }"));
-	body->setNodeId(STCONVERT("0.0.3"));
 
 
 	UploadFileToStorage(fullName, filePath);
@@ -343,10 +341,8 @@ TEST_F(FieldTest, TestPostFieldWithoutNodePath) {
 
 	int32_t fieldIndex = 0;
 
-	std::shared_ptr<Field> body = std::make_shared<Field>();
-	body->setResult(STCONVERT("3"));
+	std::shared_ptr<FieldInsert> body = std::make_shared<FieldInsert>();
 	body->setFieldCode(STCONVERT("{ NUMPAGES }"));
-	body->setNodeId(STCONVERT("0.0.3"));
 
 
 	UploadFileToStorage(fullName, filePath);

@@ -30,7 +30,7 @@ namespace api{
 namespace models{
 InsertFootnoteWithoutNodePathRequest::InsertFootnoteWithoutNodePathRequest(
         utility::string_t name,
-                std::shared_ptr<Footnote> footnoteDto,
+                std::shared_ptr<FootnoteInsert> footnoteDto,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
@@ -59,11 +59,11 @@ InsertFootnoteWithoutNodePathRequest::InsertFootnoteWithoutNodePathRequest(
         void InsertFootnoteWithoutNodePathRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<Footnote> InsertFootnoteWithoutNodePathRequest::getFootnoteDto() const
+        std::shared_ptr<FootnoteInsert> InsertFootnoteWithoutNodePathRequest::getFootnoteDto() const
         {
             return m_footnoteDto;
         }
-        void InsertFootnoteWithoutNodePathRequest::setFootnoteDto(std::shared_ptr<Footnote> footnoteDto){
+        void InsertFootnoteWithoutNodePathRequest::setFootnoteDto(std::shared_ptr<FootnoteInsert> footnoteDto){
             m_footnoteDto = std::move(footnoteDto);
         }
         boost::optional<utility::string_t> InsertFootnoteWithoutNodePathRequest::getFolder() const

@@ -27,7 +27,7 @@
 #define updateRun_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Run.h"
+#include "RunUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +40,7 @@ class UpdateRunRequest{
     public: 
      UpdateRunRequest(
                 utility::string_t name,
-                std::shared_ptr<Run> run,
+                std::shared_ptr<RunUpdate> run,
                 utility::string_t paragraphPath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
@@ -55,8 +55,8 @@ class UpdateRunRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Run> getRun() const;
-        void setRun(std::shared_ptr<Run> run);
+        std::shared_ptr<RunUpdate> getRun() const;
+        void setRun(std::shared_ptr<RunUpdate> run);
 
         utility::string_t getParagraphPath() const;
         void setParagraphPath(utility::string_t paragraphPath);
@@ -86,7 +86,7 @@ class UpdateRunRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        std::shared_ptr<Run> m_run;
+        std::shared_ptr<RunUpdate> m_run;
         utility::string_t m_paragraphPath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;

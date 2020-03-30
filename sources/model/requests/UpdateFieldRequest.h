@@ -27,7 +27,7 @@
 #define updateField_H 
 
 #include "cpprest/details/basic_types.h"
-#include "Field.h"
+#include "FieldUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +40,7 @@ class UpdateFieldRequest{
     public: 
      UpdateFieldRequest(
                 utility::string_t name,
-                std::shared_ptr<Field> field,
+                std::shared_ptr<FieldUpdate> field,
                 utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
@@ -55,8 +55,8 @@ class UpdateFieldRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Field> getField() const;
-        void setField(std::shared_ptr<Field> field);
+        std::shared_ptr<FieldUpdate> getField() const;
+        void setField(std::shared_ptr<FieldUpdate> field);
 
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
@@ -86,7 +86,7 @@ class UpdateFieldRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        std::shared_ptr<Field> m_field;
+        std::shared_ptr<FieldUpdate> m_field;
         utility::string_t m_nodePath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
