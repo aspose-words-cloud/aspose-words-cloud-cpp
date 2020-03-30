@@ -51,8 +51,8 @@ TEST_F(SplitDocumentToFormatTest, TestPostSplitDocument)
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<SplitDocumentRequest> request=
-			std::make_shared<SplitDocumentRequest>(remoteName, dataFolder, boost::none, boost::none,
-		boost::none, destFileName, format, from, to, boost::none, boost::none);
+			std::make_shared<SplitDocumentRequest>(remoteName, format, dataFolder, boost::none, boost::none,
+		boost::none, destFileName, from, to, boost::none, boost::none);
 
 	AsposeResponse<SplitDocumentResponse> actual = get_api()->splitDocument(request).get();
 
