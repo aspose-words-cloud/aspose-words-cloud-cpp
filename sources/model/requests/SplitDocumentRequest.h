@@ -39,12 +39,12 @@ class SplitDocumentRequest{
     public: 
      SplitDocumentRequest(
                 utility::string_t name,
+                utility::string_t format,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
                 boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> format,
                 boost::optional<int32_t> from,
                 boost::optional<int32_t> to,
                 boost::optional<bool> zipOutput,
@@ -53,6 +53,9 @@ class SplitDocumentRequest{
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
+
+        utility::string_t getFormat() const;
+        void setFormat(utility::string_t format);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -69,9 +72,6 @@ class SplitDocumentRequest{
         boost::optional<utility::string_t> getDestFileName() const;
         void setDestFileName(boost::optional<utility::string_t> destFileName);
 
-        boost::optional<utility::string_t> getFormat() const;
-        void setFormat(boost::optional<utility::string_t> format);
-
         boost::optional<int32_t> getFrom() const;
         void setFrom(boost::optional<int32_t> from);
 
@@ -85,12 +85,12 @@ class SplitDocumentRequest{
         void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
     private:
         utility::string_t m_name;
+        utility::string_t m_format;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;
         boost::optional<utility::string_t> m_password;
         boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_format;
         boost::optional<int32_t> m_from;
         boost::optional<int32_t> m_to;
         boost::optional<bool> m_zipOutput;

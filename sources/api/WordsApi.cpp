@@ -21146,6 +21146,9 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
     consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
     consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
 
+    {
+        queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString((request->getFormat()));
+    }
     if (request->getFolder())
     {
         queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
@@ -21165,10 +21168,6 @@ pplx::task<AsposeResponse<SplitDocumentResponse>> WordsApi::splitDocument(std::s
     if (request->getDestFileName())
     {
         queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
-    }
-    if (request->getFormat())
-    {
-        queryParams[_XPLATSTR("Format")] = ApiClient::parameterToString(*(request->getFormat()));
     }
     if (request->getFrom())
     {
