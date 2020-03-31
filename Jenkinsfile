@@ -8,7 +8,7 @@ properties([
 	]
 ])
 
-node('windows2019') {
+node('windows2016') {
 	try {
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){
@@ -19,7 +19,7 @@ node('windows2019') {
 		gitlabCommitStatus("windows_tests") {
 			stage('windows_tests'){
 				withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
-					bat 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows --isolation=hyperv .'
+					bat 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
 					def apiUrl = params.apiUrl
 					bat 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %apiUrl%'
 				}
