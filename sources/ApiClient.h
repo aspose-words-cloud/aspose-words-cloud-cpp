@@ -81,6 +81,13 @@ public:
         return result;
     }
 
+	template<class T>
+	static utility::string_t parameterToString(std::shared_ptr<T> value)
+	{
+		ModelBase* modelPtr = static_cast<ModelBase*>(value.get());
+		return modelPtr->toJson().serialize();
+	}
+
 
     pplx::task<web::http::http_response> callApi(
         const utility::string_t& path,

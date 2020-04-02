@@ -32,13 +32,34 @@ namespace cloud {
 namespace api {
 namespace models {
 
-ReportBuildOptions::ReportBuildOptions()
+ReportBuildOptions::ReportBuildOptions(const utility::string_t& value) : m_value(value)
 {
+
+}
+
+ReportBuildOptions::ReportBuildOptions() : m_value(_XPLATSTR(""))
+{
+
 }
 
 ReportBuildOptions::~ReportBuildOptions()
 {
+
 }
+
+const utility::string_t& ReportBuildOptions::getValue() const
+{
+    return m_value;
+}
+
+const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::None = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("None")));
+
+const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::AllowMissingMembers = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("AllowMissingMembers")));
+
+const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::RemoveEmptyParagraphs = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("RemoveEmptyParagraphs")));
+
+const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::InlineErrorMessages = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("InlineErrorMessages")));
+
 
 void ReportBuildOptions::validate()
 {
@@ -47,27 +68,22 @@ void ReportBuildOptions::validate()
 
 web::json::value ReportBuildOptions::toJson() const
 {
-    web::json::value val = web::json::value::object();
-
-
-    return val;
+    return ModelBase::toJson(m_value);
 }
 
 void ReportBuildOptions::fromJson(web::json::value& val)
 {
+    // TODO: not implemented
 }
 
 void ReportBuildOptions::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
+    // TODO: not implemented
 }
 
 void ReportBuildOptions::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
+    // TODO: not implemented
 }
 
 }

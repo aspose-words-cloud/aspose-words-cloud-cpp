@@ -43,9 +43,14 @@ namespace models {
 class  ReportBuildOptions
     : public ModelBase
 {
+private:
+    ReportBuildOptions(const utility::string_t& value);
+    
 public:
     ReportBuildOptions();
     virtual ~ReportBuildOptions();
+    
+    const utility::string_t& getValue() const;
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -58,11 +63,29 @@ public:
     void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const override;
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
-    /////////////////////////////////////////////
-    /// ReportBuildOptions members
+    /// <summary>
+    /// Enum value "None"
+    /// </summary>
+    static const std::shared_ptr<ReportBuildOptions> None;
 
+    /// <summary>
+    /// Enum value "AllowMissingMembers"
+    /// </summary>
+    static const std::shared_ptr<ReportBuildOptions> AllowMissingMembers;
 
+    /// <summary>
+    /// Enum value "RemoveEmptyParagraphs"
+    /// </summary>
+    static const std::shared_ptr<ReportBuildOptions> RemoveEmptyParagraphs;
+
+    /// <summary>
+    /// Enum value "InlineErrorMessages"
+    /// </summary>
+    static const std::shared_ptr<ReportBuildOptions> InlineErrorMessages;
+
+    
 protected:
+    const utility::string_t m_value;
 };
 
 }

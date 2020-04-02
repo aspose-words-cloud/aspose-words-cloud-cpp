@@ -160,7 +160,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         request_header.add(kvp.first, kvp.second);
     }
 
-    if (!fileParams.empty())
+    if (!formParams.empty() || !fileParams.empty())
     {
         MultipartFormData uploadData;
         for (auto& kvp : formParams)
