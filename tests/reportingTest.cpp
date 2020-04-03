@@ -39,6 +39,7 @@ protected:
 TEST_F(ReportingTest, TestBuildReportOnline) {
 	std::shared_ptr<ReportEngineSettings> settings = std::make_shared<ReportEngineSettings>();
 	settings->setDataSourceType(STCONVERT("Json"));
+    settings->setDataSourceName(STCONVERT("persons"));
 
 	std::shared_ptr<BuildReportOnlineRequest> request =
 			std::make_shared<BuildReportOnlineRequest>(
