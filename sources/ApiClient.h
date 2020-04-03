@@ -51,6 +51,27 @@ using namespace aspose::words::cloud::api::models;
 class  ApiClient
 {
 public:
+	class FormParamContainer
+	{
+	private:
+		const utility::string_t m_name;
+		const utility::string_t m_text;
+		const std::shared_ptr<HttpContent> m_file;
+		const bool m_isFile;
+
+	public:
+		FormParamContainer(const utility::string_t& name, const utility::string_t& text)
+			: m_name(name), m_text(text), m_isFile(false) { }
+
+		FormParamContainer(const utility::string_t& name, const std::shared_ptr<HttpContent> file)
+			: m_name(name), m_file(file), m_isFile(true) { }
+
+		bool isFile() const { return m_isFile; }
+		const utility::string_t& getName() const { return m_name; }
+		const utility::string_t& getText() const { return m_text; }
+		const std::shared_ptr<HttpContent> getFile() const { return m_file; }
+	};
+
     explicit ApiClient( std::shared_ptr<ApiConfiguration> configuration = nullptr );
 
     std::shared_ptr<ApiConfiguration> getConfiguration() const;
@@ -95,8 +116,7 @@ public:
         const std::map<utility::string_t, utility::string_t>& queryParams,
         const std::shared_ptr<IHttpBody> postBody,
         const std::map<utility::string_t, utility::string_t>& headerParams,
-        const std::map<utility::string_t, utility::string_t>& formParams,
-        const std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>>& fileParams,
+        const std::vector<FormParamContainer>& formParams,
         const utility::string_t& contentType
     );
 

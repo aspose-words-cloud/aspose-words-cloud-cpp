@@ -54,13 +54,13 @@ pplx::task<void> ApiClient::requestToken()
 
     std::map<utility::string_t, utility::string_t> queryParams, headerParams;
 
-    std::map<utility::string_t, utility::string_t> formParams = {
-        {_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")},
-        {_XPLATSTR("client_id"), m_Configuration->getAppSid()},
-        {_XPLATSTR("client_secret"), m_Configuration->getAppKey()}
+    std::vector<FormParamContainer> formParams = {
+		FormParamContainer(_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")),
+		FormParamContainer(_XPLATSTR("client_id"), m_Configuration->getAppSid()),
+		FormParamContainer(_XPLATSTR("client_secret"), m_Configuration->getAppKey())
     };
 
-    return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams, nullptr, headerParams, formParams, {}, 
+    return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams, nullptr, headerParams, formParams, 
 		_XPLATSTR("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
 		
 		if (response.status_code() >= 400)
@@ -130,8 +130,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     const std::map<utility::string_t, utility::string_t>& queryParams,
     const std::shared_ptr<IHttpBody> postBody,
     const std::map<utility::string_t, utility::string_t>& headerParams,
-    const std::map<utility::string_t, utility::string_t>& formParams,
-    const std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>>& fileParams,
+    const std::vector<FormParamContainer>& formParams,
     const utility::string_t& contentType
 )
 {
@@ -140,14 +139,9 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         throw ApiException(400, _XPLATSTR("Cannot have body and form params"));
     }
 
-    if (postBody && !fileParams.empty())
+    if (!formParams.empty() && (contentType != _XPLATSTR("multipart/form-data") && contentType != _XPLATSTR("application/x-www-form-urlencoded")))
     {
-        throw ApiException(400, _XPLATSTR("Cannot have body and file params"));
-    }
-
-    if (!fileParams.empty() && contentType != _XPLATSTR("multipart/form-data"))
-    {
-        throw ApiException(400, _XPLATSTR("Operations with file parameters must be called with multipart/form-data"));
+        throw ApiException(400, _XPLATSTR("Operations with form parameters must be called with multipart/form-data or application/x-www-form-urlencoded"));
     }
 
     web::http::client::http_client client(m_Configuration->getBaseUrl(), m_Configuration->getHttpConfig());
@@ -160,23 +154,26 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         request_header.add(kvp.first, kvp.second);
     }
 
-    if (!formParams.empty() || !fileParams.empty())
+    if (!formParams.empty())
     {
         MultipartFormData uploadData;
-        for (auto& kvp : formParams)
-        {
-            uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
-        }
-        for (auto& kvp : fileParams)
-        {
-            uploadData.add(ModelBase::toHttpContent(kvp.first, kvp.second));
-        }
+		for (auto& kvp : formParams)
+		{
+			if (kvp.isFile())
+			{
+				uploadData.add(ModelBase::toHttpContent(kvp.getName(), kvp.getFile()));
+			}
+			else
+			{
+				uploadData.add(ModelBase::toHttpContent(kvp.getName(), kvp.getText()));
+			}
+		}
         std::ostringstream data;
         uploadData.writeTo(data);
         auto bodyString = data.str();
         auto length = bodyString.size();
 
-        if (fileParams.size() + formParams.size() > 1)
+        if (formParams.size() > 1)
         {
 			request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, 
 				_XPLATSTR("multipart/form-data; boundary = ") + uploadData.getBoundary());
@@ -186,52 +183,14 @@ pplx::task<web::http::http_response> ApiClient::callApi(
             request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length);
         }
     }
-    else
-    {
-        if (postBody)
-        {
-            std::ostringstream data;
-            postBody->writeTo(data);
-            auto bodyString = data.str();
-            auto length = bodyString.size();
-            request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, contentType);
-        }
-        else
-        {
-            if (contentType == _XPLATSTR("application/json"))
-            {
-                web::json::value body_data = web::json::value::object();
-                for (auto& kvp : formParams)
-                {
-                    body_data[kvp.first] = ModelBase::toJson(kvp.second);
-                }
-                if (!formParams.empty())
-                {
-                    request.set_body(body_data);
-		}
-            }
-            else
-            {
-                web::http::uri_builder formData;
-                for (auto& kvp : formParams)
-                {
-                    if (contentType == _XPLATSTR("multipart/form-data"))
-                    {
-                        formData.append_query(kvp.second);
-                    }
-                    else
-                    {
-                        formData.append_query(kvp.first, kvp.second);
-                    }
-                }
-
-                if (!formParams.empty())
-                {
-                    request.set_body(formData.query(), contentType == _XPLATSTR("multipart/form-data") ? _XPLATSTR("application/x-www-form-urlencoded") : contentType);
-                }
-            }
-        }
-    }
+    else if (postBody)
+	{
+		std::ostringstream data;
+		postBody->writeTo(data);
+		auto bodyString = data.str();
+		auto length = bodyString.size();
+		request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, contentType);
+	}
 
     web::http::uri_builder builder(path);
     for (auto& kvp : queryParams)
