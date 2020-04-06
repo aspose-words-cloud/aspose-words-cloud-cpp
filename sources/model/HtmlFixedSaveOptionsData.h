@@ -152,6 +152,13 @@ public:
     bool showPageBorderIsSet() const;
     void unsetShowPageBorder();
     void setShowPageBorder(bool value);
+    /// <summary>
+    /// Gets or sets flag indicates whether fonts from target machine must be used to display the document. If this flag is set to true, Aspose.Words.Saving.HtmlFixedSaveOptions.FontFormat and Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedFonts properties do not have effect, also Aspose.Words.Saving.HtmlFixedSaveOptions.ResourceSavingCallback is not fired for fonts. Default is false.
+    /// </summary>
+    bool isUseTargetMachineFonts() const;
+    bool useTargetMachineFontsIsSet() const;
+    void unsetUseTargetMachineFonts();
+    void setUseTargetMachineFonts(bool value);
 
 protected:
     utility::string_t m_CssClassNamesPrefix;
@@ -180,6 +187,8 @@ protected:
     bool m_SaveFontFaceCssSeparatelyIsSet;
     bool m_ShowPageBorder;
     bool m_ShowPageBorderIsSet;
+    bool m_UseTargetMachineFonts;
+    bool m_UseTargetMachineFontsIsSet;
 };
 
 }

@@ -60,6 +60,8 @@ HtmlFixedSaveOptionsData::HtmlFixedSaveOptionsData()
     m_SaveFontFaceCssSeparatelyIsSet = false;
     m_ShowPageBorder = false;
     m_ShowPageBorderIsSet = false;
+    m_UseTargetMachineFonts = false;
+    m_UseTargetMachineFontsIsSet = false;
 }
 
 HtmlFixedSaveOptionsData::~HtmlFixedSaveOptionsData()
@@ -126,6 +128,10 @@ web::json::value HtmlFixedSaveOptionsData::toJson() const
     if(m_ShowPageBorderIsSet)
     {
         val[_XPLATSTR("ShowPageBorder")] = ModelBase::toJson(m_ShowPageBorder);
+    }
+    if(m_UseTargetMachineFontsIsSet)
+    {
+        val[_XPLATSTR("UseTargetMachineFonts")] = ModelBase::toJson(m_UseTargetMachineFonts);
     }
 
     return val;
@@ -239,6 +245,14 @@ void HtmlFixedSaveOptionsData::fromJson(web::json::value& val)
             setShowPageBorder(ModelBase::boolFromJson(fieldValue));
         }
     }
+    if(val.has_field(_XPLATSTR("UseTargetMachineFonts")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("UseTargetMachineFonts")];
+        if(!fieldValue.is_null())
+        {
+            setUseTargetMachineFonts(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void HtmlFixedSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
@@ -311,6 +325,11 @@ void HtmlFixedSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormDa
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ShowPageBorder"), m_ShowPageBorder));
         
     }
+    if(m_UseTargetMachineFontsIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseTargetMachineFonts"), m_UseTargetMachineFonts));
+        
+    }
 }
 
 void HtmlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
@@ -368,6 +387,10 @@ void HtmlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartForm
     if(multipart->hasContent(_XPLATSTR("ShowPageBorder")))
     {
         setShowPageBorder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ShowPageBorder"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("UseTargetMachineFonts")))
+    {
+        setUseTargetMachineFonts(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseTargetMachineFonts"))));
     }
 }
 
@@ -642,6 +665,27 @@ bool HtmlFixedSaveOptionsData::showPageBorderIsSet() const
 void HtmlFixedSaveOptionsData::unsetShowPageBorder()
 {
     m_ShowPageBorderIsSet = false;
+}
+
+bool HtmlFixedSaveOptionsData::isUseTargetMachineFonts() const
+{
+    return m_UseTargetMachineFonts;
+}
+
+
+void HtmlFixedSaveOptionsData::setUseTargetMachineFonts(bool value)
+{
+    m_UseTargetMachineFonts = value;
+    m_UseTargetMachineFontsIsSet = true;
+}
+bool HtmlFixedSaveOptionsData::useTargetMachineFontsIsSet() const
+{
+    return m_UseTargetMachineFontsIsSet;
+}
+
+void HtmlFixedSaveOptionsData::unsetUseTargetMachineFonts()
+{
+    m_UseTargetMachineFontsIsSet = false;
 }
 
 }
