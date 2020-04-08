@@ -17,8 +17,6 @@ node('windows2019') {
 				bat "git config user.email 'jenkins.aspose@gmail.com'"
 				bat "git config user.name 'jenkins'"
 				
-				bat "git remote set-url origin %gitRepoUrl%"
-				bat 'git reset --hard origin/master'
 				bat "git tag -a %SDK_VERSION% -m \"version %SDK_VERSION%\""
 				
 				withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', usernameVariable: 'gitUsername', passwordVariable: 'gitPass')]) {
