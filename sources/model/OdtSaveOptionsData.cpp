@@ -38,8 +38,6 @@ OdtSaveOptionsData::OdtSaveOptionsData()
     m_IsStrictSchema11IsSet = false;
     m_MeasureUnit = utility::conversions::to_string_t("");
     m_MeasureUnitIsSet = false;
-    m_Password = utility::conversions::to_string_t("");
-    m_PasswordIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
 }
@@ -64,10 +62,6 @@ web::json::value OdtSaveOptionsData::toJson() const
     if(m_MeasureUnitIsSet)
     {
         val[_XPLATSTR("MeasureUnit")] = ModelBase::toJson(m_MeasureUnit);
-    }
-    if(m_PasswordIsSet)
-    {
-        val[_XPLATSTR("Password")] = ModelBase::toJson(m_Password);
     }
     if(m_PrettyFormatIsSet)
     {
@@ -97,14 +91,6 @@ void OdtSaveOptionsData::fromJson(web::json::value& val)
             setMeasureUnit(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Password")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Password")];
-        if(!fieldValue.is_null())
-        {
-            setPassword(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("PrettyFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
@@ -130,11 +116,6 @@ void OdtSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MeasureUnit"), m_MeasureUnit));
         
     }
-    if(m_PasswordIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Password"), m_Password));
-        
-    }
     if(m_PrettyFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
@@ -153,10 +134,6 @@ void OdtSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     if(multipart->hasContent(_XPLATSTR("MeasureUnit")))
     {
         setMeasureUnit(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("MeasureUnit"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Password")))
-    {
-        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));
     }
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
@@ -204,27 +181,6 @@ bool OdtSaveOptionsData::measureUnitIsSet() const
 void OdtSaveOptionsData::unsetMeasureUnit()
 {
     m_MeasureUnitIsSet = false;
-}
-
-utility::string_t OdtSaveOptionsData::getPassword() const
-{
-    return m_Password;
-}
-
-
-void OdtSaveOptionsData::setPassword(utility::string_t value)
-{
-    m_Password = value;
-    m_PasswordIsSet = true;
-}
-bool OdtSaveOptionsData::passwordIsSet() const
-{
-    return m_PasswordIsSet;
-}
-
-void OdtSaveOptionsData::unsetPassword()
-{
-    m_PasswordIsSet = false;
 }
 
 bool OdtSaveOptionsData::isPrettyFormat() const

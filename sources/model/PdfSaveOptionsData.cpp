@@ -59,8 +59,6 @@ PdfSaveOptionsData::PdfSaveOptionsData()
     m_ImageColorSpaceExportModeIsSet = false;
     m_ImageCompression = utility::conversions::to_string_t("");
     m_ImageCompressionIsSet = false;
-    m_InterpolateImages = false;
-    m_InterpolateImagesIsSet = false;
     m_OpenHyperlinksInNewWindow = false;
     m_OpenHyperlinksInNewWindowIsSet = false;
     m_OutlineOptionsIsSet = false;
@@ -150,10 +148,6 @@ web::json::value PdfSaveOptionsData::toJson() const
     if(m_ImageCompressionIsSet)
     {
         val[_XPLATSTR("ImageCompression")] = ModelBase::toJson(m_ImageCompression);
-    }
-    if(m_InterpolateImagesIsSet)
-    {
-        val[_XPLATSTR("InterpolateImages")] = ModelBase::toJson(m_InterpolateImages);
     }
     if(m_OpenHyperlinksInNewWindowIsSet)
     {
@@ -319,14 +313,6 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setImageCompression(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(_XPLATSTR("InterpolateImages")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("InterpolateImages")];
-        if(!fieldValue.is_null())
-        {
-            setInterpolateImages(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("OpenHyperlinksInNewWindow")))
@@ -497,11 +483,6 @@ void PdfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImageCompression"), m_ImageCompression));
         
     }
-    if(m_InterpolateImagesIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InterpolateImages"), m_InterpolateImages));
-        
-    }
     if(m_OpenHyperlinksInNewWindowIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OpenHyperlinksInNewWindow"), m_OpenHyperlinksInNewWindow));
@@ -631,10 +612,6 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     if(multipart->hasContent(_XPLATSTR("ImageCompression")))
     {
         setImageCompression(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImageCompression"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("InterpolateImages")))
-    {
-        setInterpolateImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("InterpolateImages"))));
     }
     if(multipart->hasContent(_XPLATSTR("OpenHyperlinksInNewWindow")))
     {
@@ -975,27 +952,6 @@ bool PdfSaveOptionsData::imageCompressionIsSet() const
 void PdfSaveOptionsData::unsetImageCompression()
 {
     m_ImageCompressionIsSet = false;
-}
-
-bool PdfSaveOptionsData::isInterpolateImages() const
-{
-    return m_InterpolateImages;
-}
-
-
-void PdfSaveOptionsData::setInterpolateImages(bool value)
-{
-    m_InterpolateImages = value;
-    m_InterpolateImagesIsSet = true;
-}
-bool PdfSaveOptionsData::interpolateImagesIsSet() const
-{
-    return m_InterpolateImagesIsSet;
-}
-
-void PdfSaveOptionsData::unsetInterpolateImages()
-{
-    m_InterpolateImagesIsSet = false;
 }
 
 bool PdfSaveOptionsData::isOpenHyperlinksInNewWindow() const

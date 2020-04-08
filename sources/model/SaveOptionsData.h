@@ -117,20 +117,6 @@ public:
     bool updateFieldsIsSet() const;
     void unsetUpdateFields();
     void setUpdateFields(bool value);
-    /// <summary>
-    /// Gets or sets a value determining how 3D effects are rendered.
-    /// </summary>
-    utility::string_t getDml3DEffectsRenderingMode() const;
-    bool dml3DEffectsRenderingModeIsSet() const;
-    void unsetDml3DEffectsRenderingMode();
-    void setDml3DEffectsRenderingMode(utility::string_t value);
-    /// <summary>
-    /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
-    /// </summary>
-    bool isUpdateLastPrintedProperty() const;
-    bool updateLastPrintedPropertyIsSet() const;
-    void unsetUpdateLastPrintedProperty();
-    void setUpdateLastPrintedProperty(bool value);
 
 protected:
     utility::string_t m_SaveFormat;
@@ -149,10 +135,6 @@ protected:
     bool m_UpdateSdtContentIsSet;
     bool m_UpdateFields;
     bool m_UpdateFieldsIsSet;
-    utility::string_t m_Dml3DEffectsRenderingMode;
-    bool m_Dml3DEffectsRenderingModeIsSet;
-    bool m_UpdateLastPrintedProperty;
-    bool m_UpdateLastPrintedPropertyIsSet;
 };
 
 }
