@@ -38,12 +38,13 @@ protected:
 TEST_F(ListsTest, TestGetLists) {
 	utility::string_t
 		remoteName = STCONVERT("TestGetLists.doc"),
-		fullName = path_combine_url(path_combine_url(remoteBaseTestDataFolder, testPath), remoteName),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
 		filePath = path_combine(get_data_dir(testPath), localName);
 
 	UploadFileToStorage(fullName, filePath);
 
-	auto request = std::make_shared<GetListsRequest>(remoteName, boost::none, boost::none, boost::none, boost::none);
+	auto request = std::make_shared<GetListsRequest>(remoteName, remoteFolder, boost::none, boost::none, boost::none);
 	AsposeResponse<ListsResponse> actual = get_api()->getLists(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
@@ -56,12 +57,13 @@ TEST_F(ListsTest, TestGetLists) {
 TEST_F(ListsTest, TestGetList) {
 	utility::string_t
 		remoteName = STCONVERT("TestGetList.doc"),
-		fullName = path_combine_url(path_combine_url(remoteBaseTestDataFolder, testPath), remoteName),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
 		filePath = path_combine(get_data_dir(testPath), localName);
 
 	UploadFileToStorage(fullName, filePath);
 
-	auto request = std::make_shared<GetListRequest>(remoteName, 1, boost::none, boost::none, boost::none, boost::none);
+	auto request = std::make_shared<GetListRequest>(remoteName, 1, remoteFolder, boost::none, boost::none, boost::none);
 	AsposeResponse<ListResponse> actual = get_api()->getList(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
@@ -73,7 +75,8 @@ TEST_F(ListsTest, TestGetList) {
 TEST_F(ListsTest, TestUpdateList) {
 	utility::string_t
 		remoteName = STCONVERT("TestUpdateList.doc"),
-		fullName = path_combine_url(path_combine_url(remoteBaseTestDataFolder, testPath), remoteName),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
 		filePath = path_combine(get_data_dir(testPath), localName);
 
 	UploadFileToStorage(fullName, filePath);
@@ -81,7 +84,7 @@ TEST_F(ListsTest, TestUpdateList) {
 	auto listUpdate = std::make_shared<ListUpdate>();
 	listUpdate->setIsRestartAtEachSection(true);
 
-	auto request = std::make_shared<UpdateListRequest>(remoteName, listUpdate, 1, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	auto request = std::make_shared<UpdateListRequest>(remoteName, listUpdate, 1, remoteFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 	AsposeResponse<ListResponse> actual = get_api()->updateList(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
@@ -93,7 +96,8 @@ TEST_F(ListsTest, TestUpdateList) {
 TEST_F(ListsTest, TestUpdateListLevel) {
 	utility::string_t
 		remoteName = STCONVERT("TestUpdateListLevel.doc"),
-		fullName = path_combine_url(path_combine_url(remoteBaseTestDataFolder, testPath), remoteName),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
 		filePath = path_combine(get_data_dir(testPath), localName);
 
 	UploadFileToStorage(fullName, filePath);
@@ -101,7 +105,7 @@ TEST_F(ListsTest, TestUpdateListLevel) {
 	auto listUpdate = std::make_shared<ListLevelUpdate>();
 	listUpdate->setAlignment(STCONVERT("Right"));
 
-	auto request = std::make_shared<UpdateListLevelRequest>(remoteName, listUpdate, 1, 1, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	auto request = std::make_shared<UpdateListLevelRequest>(remoteName, listUpdate, 1, 1, remoteFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 	AsposeResponse<ListResponse> actual = get_api()->updateListLevel(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
@@ -113,7 +117,8 @@ TEST_F(ListsTest, TestUpdateListLevel) {
 TEST_F(ListsTest, TestInsertList) {
 	utility::string_t
 		remoteName = STCONVERT("TestInsertList.doc"),
-		fullName = path_combine_url(path_combine_url(remoteBaseTestDataFolder, testPath), remoteName),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
 		filePath = path_combine(get_data_dir(testPath), localName);
 
 	UploadFileToStorage(fullName, filePath);
@@ -121,7 +126,7 @@ TEST_F(ListsTest, TestInsertList) {
 	auto listInsert = std::make_shared<ListInsert>();
 	listInsert->setTemplate(STCONVERT("OutlineLegal"));
 
-	auto request = std::make_shared<InsertListRequest>(remoteName, listInsert, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	auto request = std::make_shared<InsertListRequest>(remoteName, listInsert, remoteFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 	AsposeResponse<ListResponse> actual = get_api()->insertList(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
