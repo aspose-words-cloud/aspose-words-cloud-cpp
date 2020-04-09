@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="OdtSaveOptionsData.h">
+* <copyright company="Aspose" file="ListsResponse.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,11 +23,12 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_OdtSaveOptionsData_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_OdtSaveOptionsData_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListsResponse_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ListsResponse_H_
 
 
-#include "SaveOptionsData.h"
+#include "Lists.h"
+#include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -37,14 +38,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for odt/ott save options.
+/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/lists.
 /// </summary>
-class  OdtSaveOptionsData
-    : public SaveOptionsData
+class  ListsResponse
+    : public WordsResponse
 {
 public:
-    OdtSaveOptionsData();
-    virtual ~OdtSaveOptionsData();
+    ListsResponse();
+    virtual ~ListsResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -58,46 +59,19 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// OdtSaveOptionsData members
+    /// ListsResponse members
 
     /// <summary>
-    /// Gets or sets specifies whether export should correspond to ODT specification 1.1 strictly.
+    /// Gets or sets Lists.
     /// </summary>
-    bool isIsStrictSchema11() const;
-    bool isStrictSchema11IsSet() const;
-    void unsetIsStrictSchema11();
-    void setIsStrictSchema11(bool value);
-    /// <summary>
-    /// Gets or sets allows to specify units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.  Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
-    /// </summary>
-    utility::string_t getMeasureUnit() const;
-    bool measureUnitIsSet() const;
-    void unsetMeasureUnit();
-    void setMeasureUnit(utility::string_t value);
-    /// <summary>
-    /// Gets or sets a password to encrypt document.
-    /// </summary>
-    utility::string_t getPassword() const;
-    bool passwordIsSet() const;
-    void unsetPassword();
-    void setPassword(utility::string_t value);
-    /// <summary>
-    /// Gets or sets specifies whether or not use pretty formats output.
-    /// </summary>
-    bool isPrettyFormat() const;
-    bool prettyFormatIsSet() const;
-    void unsetPrettyFormat();
-    void setPrettyFormat(bool value);
+    std::shared_ptr<Lists> getLists() const;
+    bool listsIsSet() const;
+    void unsetLists();
+    void setLists(std::shared_ptr<Lists> value);
 
 protected:
-    bool m_IsStrictSchema11;
-    bool m_IsStrictSchema11IsSet;
-    utility::string_t m_MeasureUnit;
-    bool m_MeasureUnitIsSet;
-    utility::string_t m_Password;
-    bool m_PasswordIsSet;
-    bool m_PrettyFormat;
-    bool m_PrettyFormatIsSet;
+    std::shared_ptr<Lists> m_Lists;
+    bool m_ListsIsSet;
 };
 
 }
@@ -106,4 +80,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_OdtSaveOptionsData_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ListsResponse_H_ */

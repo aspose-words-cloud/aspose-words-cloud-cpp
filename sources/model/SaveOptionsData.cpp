@@ -50,6 +50,10 @@ SaveOptionsData::SaveOptionsData()
     m_UpdateSdtContentIsSet = false;
     m_UpdateFields = false;
     m_UpdateFieldsIsSet = false;
+    m_Dml3DEffectsRenderingMode = utility::conversions::to_string_t("");
+    m_Dml3DEffectsRenderingModeIsSet = false;
+    m_UpdateLastPrintedProperty = false;
+    m_UpdateLastPrintedPropertyIsSet = false;
 }
 
 SaveOptionsData::~SaveOptionsData()
@@ -96,6 +100,14 @@ web::json::value SaveOptionsData::toJson() const
     if(m_UpdateFieldsIsSet)
     {
         val[_XPLATSTR("UpdateFields")] = ModelBase::toJson(m_UpdateFields);
+    }
+    if(m_Dml3DEffectsRenderingModeIsSet)
+    {
+        val[_XPLATSTR("Dml3DEffectsRenderingMode")] = ModelBase::toJson(m_Dml3DEffectsRenderingMode);
+    }
+    if(m_UpdateLastPrintedPropertyIsSet)
+    {
+        val[_XPLATSTR("UpdateLastPrintedProperty")] = ModelBase::toJson(m_UpdateLastPrintedProperty);
     }
 
     return val;
@@ -167,6 +179,22 @@ void SaveOptionsData::fromJson(web::json::value& val)
             setUpdateFields(ModelBase::boolFromJson(fieldValue));
         }
     }
+    if(val.has_field(_XPLATSTR("Dml3DEffectsRenderingMode")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Dml3DEffectsRenderingMode")];
+        if(!fieldValue.is_null())
+        {
+            setDml3DEffectsRenderingMode(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(_XPLATSTR("UpdateLastPrintedProperty")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("UpdateLastPrintedProperty")];
+        if(!fieldValue.is_null())
+        {
+            setUpdateLastPrintedProperty(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
@@ -214,6 +242,16 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateFields"), m_UpdateFields));
         
     }
+    if(m_Dml3DEffectsRenderingModeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Dml3DEffectsRenderingMode"), m_Dml3DEffectsRenderingMode));
+        
+    }
+    if(m_UpdateLastPrintedPropertyIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateLastPrintedProperty"), m_UpdateLastPrintedProperty));
+        
+    }
 }
 
 void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
@@ -251,6 +289,14 @@ void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
         setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("Dml3DEffectsRenderingMode")))
+    {
+        setDml3DEffectsRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Dml3DEffectsRenderingMode"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("UpdateLastPrintedProperty")))
+    {
+        setUpdateLastPrintedProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastPrintedProperty"))));
     }
 }
 
@@ -420,6 +466,48 @@ bool SaveOptionsData::updateFieldsIsSet() const
 void SaveOptionsData::unsetUpdateFields()
 {
     m_UpdateFieldsIsSet = false;
+}
+
+utility::string_t SaveOptionsData::getDml3DEffectsRenderingMode() const
+{
+    return m_Dml3DEffectsRenderingMode;
+}
+
+
+void SaveOptionsData::setDml3DEffectsRenderingMode(utility::string_t value)
+{
+    m_Dml3DEffectsRenderingMode = value;
+    m_Dml3DEffectsRenderingModeIsSet = true;
+}
+bool SaveOptionsData::dml3DEffectsRenderingModeIsSet() const
+{
+    return m_Dml3DEffectsRenderingModeIsSet;
+}
+
+void SaveOptionsData::unsetDml3DEffectsRenderingMode()
+{
+    m_Dml3DEffectsRenderingModeIsSet = false;
+}
+
+bool SaveOptionsData::isUpdateLastPrintedProperty() const
+{
+    return m_UpdateLastPrintedProperty;
+}
+
+
+void SaveOptionsData::setUpdateLastPrintedProperty(bool value)
+{
+    m_UpdateLastPrintedProperty = value;
+    m_UpdateLastPrintedPropertyIsSet = true;
+}
+bool SaveOptionsData::updateLastPrintedPropertyIsSet() const
+{
+    return m_UpdateLastPrintedPropertyIsSet;
+}
+
+void SaveOptionsData::unsetUpdateLastPrintedProperty()
+{
+    m_UpdateLastPrintedPropertyIsSet = false;
 }
 
 }

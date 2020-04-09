@@ -164,6 +164,13 @@ public:
     void unsetImageCompression();
     void setImageCompression(utility::string_t value);
     /// <summary>
+    /// Gets or sets a flag indicating whether image interpolation shall be performed by a conforming reader. When false is specified, the flag is not written to the output document and the default behaviour of reader is used instead.
+    /// </summary>
+    bool isInterpolateImages() const;
+    bool interpolateImagesIsSet() const;
+    void unsetInterpolateImages();
+    void setInterpolateImages(bool value);
+    /// <summary>
     /// Gets or sets determines whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
     /// </summary>
     bool isOpenHyperlinksInNewWindow() const;
@@ -263,6 +270,8 @@ protected:
     bool m_ImageColorSpaceExportModeIsSet;
     utility::string_t m_ImageCompression;
     bool m_ImageCompressionIsSet;
+    bool m_InterpolateImages;
+    bool m_InterpolateImagesIsSet;
     bool m_OpenHyperlinksInNewWindow;
     bool m_OpenHyperlinksInNewWindowIsSet;
     std::shared_ptr<OutlineOptionsData> m_OutlineOptions;
