@@ -121,6 +121,8 @@
 #include "requests/GetHeaderFooterRequest.h"
 #include "requests/GetHeaderFooterOfSectionRequest.h"
 #include "requests/GetHeaderFootersRequest.h"
+#include "requests/GetListRequest.h"
+#include "requests/GetListsRequest.h"
 #include "requests/GetOfficeMathObjectRequest.h"
 #include "requests/GetOfficeMathObjectWithoutNodePathRequest.h"
 #include "requests/GetOfficeMathObjectsRequest.h"
@@ -158,6 +160,7 @@
 #include "requests/InsertFormFieldRequest.h"
 #include "requests/InsertFormFieldWithoutNodePathRequest.h"
 #include "requests/InsertHeaderFooterRequest.h"
+#include "requests/InsertListRequest.h"
 #include "requests/InsertPageNumbersRequest.h"
 #include "requests/InsertParagraphRequest.h"
 #include "requests/InsertRunRequest.h"
@@ -202,6 +205,8 @@
 #include "requests/UpdateFootnoteWithoutNodePathRequest.h"
 #include "requests/UpdateFormFieldRequest.h"
 #include "requests/UpdateFormFieldWithoutNodePathRequest.h"
+#include "requests/UpdateListRequest.h"
+#include "requests/UpdateListLevelRequest.h"
 #include "requests/UpdateParagraphFormatRequest.h"
 #include "requests/UpdateRunRequest.h"
 #include "requests/UpdateRunFontRequest.h"
@@ -252,6 +257,11 @@
 #include "HeaderFootersResponse.h"
 #include "HyperlinkResponse.h"
 #include "HyperlinksResponse.h"
+#include "ListInsert.h"
+#include "ListLevelUpdate.h"
+#include "ListResponse.h"
+#include "ListUpdate.h"
+#include "ListsResponse.h"
 #include "LoadWebDocumentData.h"
 #include "OfficeMathObjectResponse.h"
 #include "OfficeMathObjectsResponse.h"
@@ -1700,6 +1710,35 @@ public:
 		std::shared_ptr<GetHeaderFootersRequest> request
 	);
     ///<summary>
+    ///This resource represents one of the lists contained in the document.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="listId">List unique identifier.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<ListResponse>> getList(
+		std::shared_ptr<GetListRequest> request
+	);
+    ///<summary>
+    ///Returns a list of lists that are contained in the document.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<ListsResponse>> getLists(
+		std::shared_ptr<GetListsRequest> request
+	);
+    ///<summary>
     ///Reads OfficeMath object by index.
     ///</summary>
     ///<remarks>
@@ -2302,6 +2341,24 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<AsposeResponse<HeaderFooterResponse>> insertHeaderFooter(
 		std::shared_ptr<InsertHeaderFooterRequest> request
+	);
+    ///<summary>
+    ///Adds list to document, returns added list&#39;s data.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="listInsert">List to insert.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<ListResponse>> insertList(
+		std::shared_ptr<InsertListRequest> request
 	);
     ///<summary>
     ///Inserts document page numbers.
@@ -3090,6 +3147,45 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<AsposeResponse<FormFieldResponse>> updateFormFieldWithoutNodePath(
 		std::shared_ptr<UpdateFormFieldWithoutNodePathRequest> request
+	);
+    ///<summary>
+    ///Updates list properties, returns updated list.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="listUpdate">List object.</param>
+        /// <param name="listId">List unique identifier.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<ListResponse>> updateList(
+		std::shared_ptr<UpdateListRequest> request
+	);
+    ///<summary>
+    ///Updates list level in document list, returns updated list.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="listUpdate">List object.</param>
+        /// <param name="listId">List unique identifier.</param>
+        /// <param name="listLevel">List level identifier.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<ListResponse>> updateListLevel(
+		std::shared_ptr<UpdateListLevelRequest> request
 	);
     ///<summary>
     ///Updates paragraph format properties, returns updated format properties.
