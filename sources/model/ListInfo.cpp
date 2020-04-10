@@ -85,17 +85,9 @@ web::json::value ListInfo::toJson() const
     {
         val[_XPLATSTR("Style")] = ModelBase::toJson(m_Style);
     }
+    if(m_ListLevelsIsSet)
     {
-        std::vector<web::json::value> jsonArray;
-        std::transform(m_ListLevels.begin(), m_ListLevels.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ListLevel> item) {
-			return ModelBase::toJson(item);
-		});
-        
-        if(jsonArray.size() > 0)
-        {
-            val[_XPLATSTR("ListLevels")] = web::json::value::array(jsonArray);
-        }
+        val[_XPLATSTR("ListLevels")] = ModelBase::toJson(m_ListLevels);
     }
 
     return val;
@@ -153,25 +145,14 @@ void ListInfo::fromJson(web::json::value& val)
             setStyle( newItem );
         }
     }
+    if(val.has_field(_XPLATSTR("ListLevels")))
     {
-        m_ListLevels.clear();
-        if(val.has_field(_XPLATSTR("ListLevels")) 
-                            && !val[_XPLATSTR("ListLevels")].is_null())
+        web::json::value& fieldValue = val[_XPLATSTR("ListLevels")];
+        if(!fieldValue.is_null())
         {
-        auto arr = val[_XPLATSTR("ListLevels")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListLevels), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<ListLevel>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<ListLevel> newItem(new ListLevel());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
-
+            std::shared_ptr<ListLevels> newItem(new ListLevels());
+            newItem->fromJson(fieldValue);
+            setListLevels( newItem );
         }
     }
 }
@@ -214,16 +195,13 @@ void ListInfo::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
         }
         
     }
+    if(m_ListLevelsIsSet)
     {
-        std::vector<web::json::value> jsonArray;
-        std::transform(m_ListLevels.begin(), m_ListLevels.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListLevel> item){
-            return ModelBase::toJson(item);
-        });
-        
-        if(jsonArray.size() > 0)
+        if (m_ListLevels.get())
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListLevels"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            m_ListLevels->toMultipart(multipart, _XPLATSTR("ListLevels."));
         }
+        
     }
 }
 
@@ -260,24 +238,13 @@ void ListInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
             setStyle( newItem );
         }
     }
+    if(multipart->hasContent(_XPLATSTR("ListLevels")))
     {
-        m_ListLevels.clear();
         if(multipart->hasContent(_XPLATSTR("ListLevels")))
         {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ListLevels")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListLevels), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<ListLevel>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<ListLevel> newItem(new ListLevel());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
+            std::shared_ptr<ListLevels> newItem(new ListLevels());
+            newItem->fromMultiPart(multipart, _XPLATSTR("ListLevels."));
+            setListLevels( newItem );
         }
     }
 }
@@ -408,12 +375,13 @@ void ListInfo::unsetStyle()
     m_StyleIsSet = false;
 }
 
-std::vector<std::shared_ptr<ListLevel>>& ListInfo::getListLevels()
+std::shared_ptr<ListLevels> ListInfo::getListLevels() const
 {
     return m_ListLevels;
 }
 
-void ListInfo::setListLevels(std::vector<std::shared_ptr<ListLevel>> const& value)
+
+void ListInfo::setListLevels(std::shared_ptr<ListLevels> value)
 {
     m_ListLevels = value;
     m_ListLevelsIsSet = true;

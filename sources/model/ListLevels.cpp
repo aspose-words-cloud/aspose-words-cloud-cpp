@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="Lists.cpp">
+* <copyright company="Aspose" file="ListLevels.cpp">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 
-#include "Lists.h"
+#include "ListLevels.h"
 
 namespace aspose {
 namespace words {
@@ -32,56 +32,56 @@ namespace cloud {
 namespace api {
 namespace models {
 
-Lists::Lists()
+ListLevels::ListLevels()
 {
-    m_ListInfoIsSet = false;
+    m_ListLevelIsSet = false;
 }
 
-Lists::~Lists()
+ListLevels::~ListLevels()
 {
 }
 
-void Lists::validate()
+void ListLevels::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value Lists::toJson() const
+web::json::value ListLevels::toJson() const
 {
     web::json::value val = web::json::value::object();
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ListInfo> item) {
+        std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray),
+			[&](std::shared_ptr<ListLevel> item) {
 			return ModelBase::toJson(item);
 		});
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("ListInfo")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("ListLevel")] = web::json::value::array(jsonArray);
         }
     }
 
     return val;
 }
 
-void Lists::fromJson(web::json::value& val)
+void ListLevels::fromJson(web::json::value& val)
 {
     {
-        m_ListInfo.clear();
-        if(val.has_field(_XPLATSTR("ListInfo")) 
-                            && !val[_XPLATSTR("ListInfo")].is_null())
+        m_ListLevel.clear();
+        if(val.has_field(_XPLATSTR("ListLevel")) 
+                            && !val[_XPLATSTR("ListLevel")].is_null())
         {
-        auto arr = val[_XPLATSTR("ListInfo")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListInfo), [&](web::json::value& item){
+        auto arr = val[_XPLATSTR("ListLevel")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListLevel), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<ListInfo>(nullptr);
+                return std::shared_ptr<ListLevel>(nullptr);
             }
             else
             {
-                std::shared_ptr<ListInfo> newItem(new ListInfo());
+                std::shared_ptr<ListLevel> newItem(new ListLevel());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -91,42 +91,42 @@ void Lists::fromJson(web::json::value& val)
     }
 }
 
-void Lists::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
+void ListLevels::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListInfo> item){
+        std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListLevel> item){
             return ModelBase::toJson(item);
         });
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListInfo"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListLevel"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
 
-void Lists::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
+void ListLevels::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
     
 
     {
-        m_ListInfo.clear();
-        if(multipart->hasContent(_XPLATSTR("ListInfo")))
+        m_ListLevel.clear();
+        if(multipart->hasContent(_XPLATSTR("ListLevel")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ListInfo")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListInfo), [&](web::json::value item) {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ListLevel")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListLevel), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<ListInfo>(nullptr) ;
+                return std::shared_ptr<ListLevel>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<ListInfo> newItem(new ListInfo());
+                std::shared_ptr<ListLevel> newItem(new ListLevel());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -135,24 +135,24 @@ void Lists::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
 }
 
-std::vector<std::shared_ptr<ListInfo>>& Lists::getListInfo()
+std::vector<std::shared_ptr<ListLevel>>& ListLevels::getListLevel()
 {
-    return m_ListInfo;
+    return m_ListLevel;
 }
 
-void Lists::setListInfo(std::vector<std::shared_ptr<ListInfo>> const& value)
+void ListLevels::setListLevel(std::vector<std::shared_ptr<ListLevel>> const& value)
 {
-    m_ListInfo = value;
-    m_ListInfoIsSet = true;
+    m_ListLevel = value;
+    m_ListLevelIsSet = true;
 }
-bool Lists::listInfoIsSet() const
+bool ListLevels::listLevelIsSet() const
 {
-    return m_ListInfoIsSet;
+    return m_ListLevelIsSet;
 }
 
-void Lists::unsetListInfo()
+void ListLevels::unsetListLevel()
 {
-    m_ListInfoIsSet = false;
+    m_ListLevelIsSet = false;
 }
 
 }

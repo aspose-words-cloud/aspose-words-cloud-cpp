@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="Lists.h">
+* <copyright company="Aspose" file="ListLevels.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,13 +23,13 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Lists_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_Lists_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListLevels_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ListLevels_H_
 
 
 #include "../ModelBase.h"
 
-#include "ListInfo.h"
+#include "ListLevel.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,14 +39,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents an array of document lists.
+/// Represents a single document list.
 /// </summary>
-class  Lists
+class  ListLevels
     : public ModelBase
 {
 public:
-    Lists();
-    virtual ~Lists();
+    ListLevels();
+    virtual ~ListLevels();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -60,19 +60,19 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Lists members
+    /// ListLevels members
 
     /// <summary>
-    /// Gets or sets array of document lists.
+    /// Gets or sets the collection of list levels for this list.
     /// </summary>
-    std::vector<std::shared_ptr<ListInfo>>& getListInfo();
-    bool listInfoIsSet() const;
-    void unsetListInfo();
-    void setListInfo(std::vector<std::shared_ptr<ListInfo>> const& value);
+    std::vector<std::shared_ptr<ListLevel>>& getListLevel();
+    bool listLevelIsSet() const;
+    void unsetListLevel();
+    void setListLevel(std::vector<std::shared_ptr<ListLevel>> const& value);
 
 protected:
-    std::vector<std::shared_ptr<ListInfo>> m_ListInfo;
-    bool m_ListInfoIsSet;
+    std::vector<std::shared_ptr<ListLevel>> m_ListLevel;
+    bool m_ListLevelIsSet;
 };
 
 }
@@ -81,4 +81,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_Lists_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ListLevels_H_ */

@@ -11452,8 +11452,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::getList(std::shared_ptr<GetLi
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
+    std::vector<ApiClient::FormParamContainer> formParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
@@ -11526,7 +11525,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::getList(std::shared_ptr<GetLi
     // authentication (JWT) required
     // oauth2 authentication is added automatically as part of the http_client_config
 
-    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams, fileParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -11585,8 +11584,7 @@ pplx::task<AsposeResponse<ListsResponse>> WordsApi::getLists(std::shared_ptr<Get
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
+    std::vector<ApiClient::FormParamContainer> formParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
@@ -11659,7 +11657,7 @@ pplx::task<AsposeResponse<ListsResponse>> WordsApi::getLists(std::shared_ptr<Get
     // authentication (JWT) required
     // oauth2 authentication is added automatically as part of the http_client_config
 
-    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams, fileParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -17005,8 +17003,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::insertList(std::shared_ptr<In
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
+    std::vector<ApiClient::FormParamContainer> formParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
@@ -17106,7 +17103,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::insertList(std::shared_ptr<In
     // authentication (JWT) required
     // oauth2 authentication is added automatically as part of the http_client_config
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams, fileParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -23781,8 +23778,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::updateList(std::shared_ptr<Up
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
+    std::vector<ApiClient::FormParamContainer> formParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
@@ -23882,7 +23878,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::updateList(std::shared_ptr<Up
     // authentication (JWT) required
     // oauth2 authentication is added automatically as part of the http_client_config
 
-    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams, fileParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -23951,8 +23947,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::updateListLevel(std::shared_p
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::vector<std::pair<utility::string_t, std::shared_ptr<HttpContent>>> fileParams;
+    std::vector<ApiClient::FormParamContainer> formParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
     responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
@@ -24052,7 +24047,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::updateListLevel(std::shared_p
     // authentication (JWT) required
     // oauth2 authentication is added automatically as part of the http_client_config
 
-    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams, fileParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {

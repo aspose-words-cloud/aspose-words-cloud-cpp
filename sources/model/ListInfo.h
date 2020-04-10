@@ -29,7 +29,7 @@
 
 #include "../ModelBase.h"
 
-#include "ListLevel.h"
+#include "ListLevels.h"
 #include "Style.h"
 #include <cpprest/details/basic_types.h>
 
@@ -106,12 +106,12 @@ public:
     void unsetStyle();
     void setStyle(std::shared_ptr<Style> value);
     /// <summary>
-    /// Gets or sets the collection of list levels for this list.
+    /// Gets or sets ListLevels.
     /// </summary>
-    std::vector<std::shared_ptr<ListLevel>>& getListLevels();
+    std::shared_ptr<ListLevels> getListLevels() const;
     bool listLevelsIsSet() const;
     void unsetListLevels();
-    void setListLevels(std::vector<std::shared_ptr<ListLevel>> const& value);
+    void setListLevels(std::shared_ptr<ListLevels> value);
 
 protected:
     int32_t m_ListId;
@@ -126,7 +126,7 @@ protected:
     bool m_IsListStyleReferenceIsSet;
     std::shared_ptr<Style> m_Style;
     bool m_StyleIsSet;
-    std::vector<std::shared_ptr<ListLevel>> m_ListLevels;
+    std::shared_ptr<ListLevels> m_ListLevels;
     bool m_ListLevelsIsSet;
 };
 
