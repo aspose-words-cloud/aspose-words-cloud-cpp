@@ -48,7 +48,7 @@ TEST_F(ListsTest, TestGetLists) {
 	AsposeResponse<ListsResponse> actual = get_api()->getLists(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
-	ASSERT_EQ(2, actual.body->getLists()->getListCollection().size());
+	ASSERT_EQ(2, actual.body->getLists()->getListInfo().size());
 }
 
 /// <summary>
