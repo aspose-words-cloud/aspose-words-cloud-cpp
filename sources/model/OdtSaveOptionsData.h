@@ -75,6 +75,13 @@ public:
     void unsetMeasureUnit();
     void setMeasureUnit(utility::string_t value);
     /// <summary>
+    /// Gets or sets a password to encrypt document.
+    /// </summary>
+    utility::string_t getPassword() const;
+    bool passwordIsSet() const;
+    void unsetPassword();
+    void setPassword(utility::string_t value);
+    /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
     bool isPrettyFormat() const;
@@ -87,6 +94,8 @@ protected:
     bool m_IsStrictSchema11IsSet;
     utility::string_t m_MeasureUnit;
     bool m_MeasureUnitIsSet;
+    utility::string_t m_Password;
+    bool m_PasswordIsSet;
     bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
 };
