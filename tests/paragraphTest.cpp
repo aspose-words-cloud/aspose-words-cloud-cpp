@@ -30,6 +30,7 @@
 class ParagraphTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Paragraphs")),
+		listFormatFolder = STCONVERT("DocumentElements/ParagraphListFormat"),
 		fieldFolder = STCONVERT("DocumentElements/Fields");
 };
 
@@ -297,4 +298,71 @@ TEST_F(ParagraphTest, TestGetParagraphFormatWithoutNodePath) {
 	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
+/// <summary>
+/// Test for getting paragraph list format
+/// </summary>
+TEST_F(ParagraphTest, TestGetParagraphListFormat) {
+	utility::string_t
+		localName = STCONVERT("ParagraphGetListFormat.doc"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(listFormatFolder, remoteName)),
+		filePath = path_combine(get_data_dir(listFormatFolder), localName);
 
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetParagraphListFormatRequest> request =
+		std::make_shared<GetParagraphListFormatRequest>(remoteName, STCONVERT(""), 0, 
+			path_combine_url(remoteBaseTestDataFolder, listFormatFolder), boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<ParagraphListFormatResponse> actual = get_api()->getParagraphListFormat(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for updating paragraph list format
+/// </summary>
+TEST_F(ParagraphTest, TestUpdateParagraphListFormat) {
+	utility::string_t
+		localName = STCONVERT("ParagraphUpdateListFormat.doc"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(listFormatFolder, remoteName)),
+		filePath = path_combine(get_data_dir(listFormatFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<ListFormatUpdate> dto = std::make_shared<ListFormatUpdate>();
+	dto->setListId(2);
+
+	std::shared_ptr<UpdateParagraphListFormatRequest> request =
+		std::make_shared<UpdateParagraphListFormatRequest>(remoteName, dto, STCONVERT(""), 0, 
+			path_combine_url(remoteBaseTestDataFolder, listFormatFolder), boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<ParagraphListFormatResponse> actual = get_api()->updateParagraphListFormat(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph list format
+/// </summary>
+TEST_F(ParagraphTest, TestDeleteParagraphListFormat) {
+	utility::string_t
+		localName = STCONVERT("ParagraphDeleteListFormat.doc"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(listFormatFolder, remoteName)),
+		filePath = path_combine(get_data_dir(listFormatFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteParagraphListFormatRequest> request =
+		std::make_shared<DeleteParagraphListFormatRequest>(remoteName, STCONVERT(""), 0, 
+			path_combine_url(remoteBaseTestDataFolder, listFormatFolder), boost::none,
+			boost::none, boost::none, boost::none, boost::none, boost::none);
+
+	AsposeResponse<ParagraphListFormatResponse> actual = get_api()->deleteParagraphListFormat(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
