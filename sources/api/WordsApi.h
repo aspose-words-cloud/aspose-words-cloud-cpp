@@ -69,6 +69,7 @@
 #include "requests/DeleteOfficeMathObjectRequest.h"
 #include "requests/DeleteOfficeMathObjectWithoutNodePathRequest.h"
 #include "requests/DeleteParagraphRequest.h"
+#include "requests/DeleteParagraphListFormatRequest.h"
 #include "requests/DeleteParagraphWithoutNodePathRequest.h"
 #include "requests/DeleteRunRequest.h"
 #include "requests/DeleteSectionRequest.h"
@@ -130,6 +131,8 @@
 #include "requests/GetParagraphRequest.h"
 #include "requests/GetParagraphFormatRequest.h"
 #include "requests/GetParagraphFormatWithoutNodePathRequest.h"
+#include "requests/GetParagraphListFormatRequest.h"
+#include "requests/GetParagraphListFormatWithoutNodePathRequest.h"
 #include "requests/GetParagraphWithoutNodePathRequest.h"
 #include "requests/GetParagraphsRequest.h"
 #include "requests/GetParagraphsWithoutNodePathRequest.h"
@@ -208,6 +211,7 @@
 #include "requests/UpdateListRequest.h"
 #include "requests/UpdateListLevelRequest.h"
 #include "requests/UpdateParagraphFormatRequest.h"
+#include "requests/UpdateParagraphListFormatRequest.h"
 #include "requests/UpdateRunRequest.h"
 #include "requests/UpdateRunFontRequest.h"
 #include "requests/UpdateSectionPageSetupRequest.h"
@@ -257,6 +261,7 @@
 #include "HeaderFootersResponse.h"
 #include "HyperlinkResponse.h"
 #include "HyperlinksResponse.h"
+#include "ListFormatUpdate.h"
 #include "ListInsert.h"
 #include "ListLevelUpdate.h"
 #include "ListResponse.h"
@@ -271,6 +276,7 @@
 #include "ParagraphFormatResponse.h"
 #include "ParagraphInsert.h"
 #include "ParagraphLinkCollectionResponse.h"
+#include "ParagraphListFormatResponse.h"
 #include "ParagraphResponse.h"
 #include "ProtectionDataResponse.h"
 #include "ProtectionRequest.h"
@@ -908,6 +914,25 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<std::shared_ptr<web::http::http_response>> deleteParagraph(
 		std::shared_ptr<DeleteParagraphRequest> request
+	);
+    ///<summary>
+    ///Delete paragraph list format, returns updated list format properties.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="nodePath">Path to the node which contains paragraphs.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<ParagraphListFormatResponse>> deleteParagraphListFormat(
+		std::shared_ptr<DeleteParagraphListFormatRequest> request
 	);
     ///<summary>
     ///Removes paragraph from section.
@@ -1844,6 +1869,37 @@ public:
         /// <param name="password">Password for opening an encrypted document. (optional)</param>
     	pplx::task<AsposeResponse<ParagraphFormatResponse>> getParagraphFormatWithoutNodePath(
 		std::shared_ptr<GetParagraphFormatWithoutNodePathRequest> request
+	);
+    ///<summary>
+    ///Represents list format for a paragraph.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="nodePath">Path to the node which contains paragraphs.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<ParagraphListFormatResponse>> getParagraphListFormat(
+		std::shared_ptr<GetParagraphListFormatRequest> request
+	);
+    ///<summary>
+    ///Represents list format for a paragraph.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<ParagraphListFormatResponse>> getParagraphListFormatWithoutNodePath(
+		std::shared_ptr<GetParagraphListFormatWithoutNodePathRequest> request
 	);
     ///<summary>
     ///This resource represents one of the paragraphs contained in the document.
@@ -3206,6 +3262,26 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<AsposeResponse<ParagraphFormatResponse>> updateParagraphFormat(
 		std::shared_ptr<UpdateParagraphFormatRequest> request
+	);
+    ///<summary>
+    ///Updates paragraph list format properties, returns updated list format properties.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="dto">Paragraph format object.</param>
+        /// <param name="nodePath">Path to the node which contains paragraphs.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<ParagraphListFormatResponse>> updateParagraphListFormat(
+		std::shared_ptr<UpdateParagraphListFormatRequest> request
 	);
     ///<summary>
     ///Updates run&#39;s properties, returns updated run&#39;s data.
