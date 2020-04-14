@@ -23,6 +23,9 @@
 * </summary>
 -------------------------------------------------------------------------------------------------------------------- **/
 #include "TestBase.h"
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 /// <summary>
 /// Example of how to work wtih range
@@ -80,6 +83,9 @@ TEST_F(RangeTest, TestRemoveRange) {
 /// Test for saving As range
 /// </summary>
 TEST_F(RangeTest, TestSaveAsRange) {
+	boost::uuids::uuid uuid = boost::uuids::random_generator()();
+	const std::string uuid_string = boost::uuids::to_string(uuid);
+
 	utility::string_t
 		localName = STCONVERT("RangeGet.doc"),
 		remoteName = STCONVERT("TestSaveAsRange.docx"),
@@ -89,7 +95,7 @@ TEST_F(RangeTest, TestSaveAsRange) {
 	UploadFileToStorage(fullName, filePath);
 
 	std::shared_ptr<RangeDocument> docParams = std::shared_ptr<RangeDocument>(new RangeDocument());
-	docParams->setDocumentName(path_combine_url(dataFolder, STCONVERT("newDoc.docx")));
+	docParams->setDocumentName(path_combine_url(dataFolder, STCONVERT("newDoc" + uuid_string + ".docx")));
 
 	std::shared_ptr<SaveAsRangeRequest> request =
 		std::make_shared<SaveAsRangeRequest>(remoteName, STCONVERT("id0.0.0"), docParams, STCONVERT("id0.0.1"), dataFolder,

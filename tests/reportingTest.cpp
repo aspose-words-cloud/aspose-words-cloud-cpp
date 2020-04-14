@@ -79,7 +79,7 @@ TEST_F(ReportingTest, TestBuildReport) {
 		remoteName,
 		data, 
 		settings,
-		boost::none,
+		dataFolder,
 		boost::none,
 		boost::none,
 		boost::none,
