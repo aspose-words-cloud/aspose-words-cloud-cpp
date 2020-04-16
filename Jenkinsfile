@@ -24,7 +24,7 @@ node('windows2016') {
                         def apiUrl = params.apiUrl
                         bat 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %apiUrl%'
                     } finally {
-                        junit '**\\aspose-words-cloud-cpp\\build\\tests\\test_result.xml'
+                        junit '**\\aspose-words-cloud-cpp\\out\\test_result.xml'
                     }
 				}
 			}
@@ -51,7 +51,7 @@ node('words-linux') {
                         sh 'docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .'
                         sh 'docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $apiUrl'
                     } finally {
-                        junit '**\\aspose-words-cloud-cpp\\build\\tests\\test_result.xml'
+                        junit '**\\aspose-words-cloud-cpp\\out\\test_result.xml'
                     }
 				}
 			}

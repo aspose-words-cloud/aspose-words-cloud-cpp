@@ -43,3 +43,7 @@ cppcheck aspose-words-cloud-cpp  --quiet --xml -iboost/ -iinstall/ -ithirdparty/
 # end test section
 set +e
 
+cp aspose-words-cloud-cpp/build/tests/test_result.xml /out
+cp checkResult.xml /out
+
+chmod 777 -R out
