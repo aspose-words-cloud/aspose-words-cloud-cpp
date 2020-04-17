@@ -32,7 +32,7 @@ echo "{
       }" > aspose-words-cloud-cpp/servercreds.json
 
 # Run tests
-cmake -E chdir aspose-words-cloud-cpp/build ctest -V -C Debug
+cmake -E chdir aspose-words-cloud-cpp/build ctest -V -C Debug --gtest_output=xml:test_result.xml
 
 # Run code check
 cppcheck aspose-words-cloud-cpp  --quiet --xml -iboost/ -iinstall/ -ithirdparty/ -iCMakeFiles/ \
@@ -47,4 +47,3 @@ cp aspose-words-cloud-cpp/build/tests/test_result.xml /out
 cp checkResult.xml /out
 
 chmod 777 -R out
-
