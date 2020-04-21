@@ -27,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Style_H_
 
 
-#include "../ModelBase.h"
-
 #include "Font.h"
+#include "LinkElement.h"
+#include "WordsApiLink.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,10 +39,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents a single document list.
+/// Represents a single document style.
 /// </summary>
 class  Style
-    : public ModelBase
+    : public LinkElement
 {
 public:
     Style();
@@ -63,12 +63,19 @@ public:
     /// Style members
 
     /// <summary>
-    /// Gets or sets Font.
+    /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
     /// </summary>
-    std::shared_ptr<Font> getFont() const;
-    bool fontIsSet() const;
-    void unsetFont();
-    void setFont(std::shared_ptr<Font> value);
+    std::vector<utility::string_t>& getAliases();
+    bool aliasesIsSet() const;
+    void unsetAliases();
+    void setAliases(std::vector<utility::string_t> const& value);
+    /// <summary>
+    /// Gets or sets /sets the name of the style this style is based on.
+    /// </summary>
+    utility::string_t getBaseStyleName() const;
+    bool baseStyleNameIsSet() const;
+    void unsetBaseStyleName();
+    void setBaseStyleName(utility::string_t value);
     /// <summary>
     /// Gets or sets a value indicating whether true if this style is one of the built-in styles in MS Word.
     /// </summary>
@@ -77,19 +84,19 @@ public:
     void unsetBuiltIn();
     void setBuiltIn(bool value);
     /// <summary>
-    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+    /// Gets or sets Font.
     /// </summary>
-    utility::string_t getNextParagraphStyleName() const;
-    bool nextParagraphStyleNameIsSet() const;
-    void unsetNextParagraphStyleName();
-    void setNextParagraphStyleName(utility::string_t value);
+    std::shared_ptr<Font> getFont() const;
+    bool fontIsSet() const;
+    void unsetFont();
+    void setFont(std::shared_ptr<Font> value);
     /// <summary>
-    /// Gets or sets /sets the name of the style this style is based on.
+    /// Gets or sets a value indicating whether true when the style is one of the built-in Heading styles.
     /// </summary>
-    utility::string_t getBaseStyleName() const;
-    bool baseStyleNameIsSet() const;
-    void unsetBaseStyleName();
-    void setBaseStyleName(utility::string_t value);
+    bool isIsHeading() const;
+    bool isHeadingIsSet() const;
+    void unsetIsHeading();
+    void setIsHeading(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
     /// </summary>
@@ -105,26 +112,19 @@ public:
     void unsetLinkedStyleName();
     void setLinkedStyleName(utility::string_t value);
     /// <summary>
-    /// Gets or sets the style type (paragraph or character).
+    /// Gets or sets the name of the style.
     /// </summary>
-    utility::string_t getType() const;
-    bool typeIsSet() const;
-    void unsetType();
-    void setType(utility::string_t value);
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
+    void setName(utility::string_t value);
     /// <summary>
-    /// Gets or sets a value indicating whether true when the style is one of the built-in Heading styles.
+    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
     /// </summary>
-    bool isIsHeading() const;
-    bool isHeadingIsSet() const;
-    void unsetIsHeading();
-    void setIsHeading(bool value);
-    /// <summary>
-    /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
-    /// </summary>
-    std::vector<utility::string_t>& getAliases();
-    bool aliasesIsSet() const;
-    void unsetAliases();
-    void setAliases(std::vector<utility::string_t> const& value);
+    utility::string_t getNextParagraphStyleName() const;
+    bool nextParagraphStyleNameIsSet() const;
+    void unsetNextParagraphStyleName();
+    void setNextParagraphStyleName(utility::string_t value);
     /// <summary>
     /// Gets or sets the locale independent style identifier for a built-in style.
     /// </summary>
@@ -133,36 +133,36 @@ public:
     void unsetStyleIdentifier();
     void setStyleIdentifier(utility::string_t value);
     /// <summary>
-    /// Gets or sets the name of the style.
+    /// Gets or sets the style type (paragraph or character).
     /// </summary>
-    utility::string_t getName() const;
-    bool nameIsSet() const;
-    void unsetName();
-    void setName(utility::string_t value);
+    utility::string_t getType() const;
+    bool typeIsSet() const;
+    void unsetType();
+    void setType(utility::string_t value);
 
 protected:
-    std::shared_ptr<Font> m_Font;
-    bool m_FontIsSet;
-    bool m_BuiltIn;
-    bool m_BuiltInIsSet;
-    utility::string_t m_NextParagraphStyleName;
-    bool m_NextParagraphStyleNameIsSet;
+    std::vector<utility::string_t> m_Aliases;
+    bool m_AliasesIsSet;
     utility::string_t m_BaseStyleName;
     bool m_BaseStyleNameIsSet;
+    bool m_BuiltIn;
+    bool m_BuiltInIsSet;
+    std::shared_ptr<Font> m_Font;
+    bool m_FontIsSet;
+    bool m_IsHeading;
+    bool m_IsHeadingIsSet;
     bool m_IsQuickStyle;
     bool m_IsQuickStyleIsSet;
     utility::string_t m_LinkedStyleName;
     bool m_LinkedStyleNameIsSet;
-    utility::string_t m_Type;
-    bool m_TypeIsSet;
-    bool m_IsHeading;
-    bool m_IsHeadingIsSet;
-    std::vector<utility::string_t> m_Aliases;
-    bool m_AliasesIsSet;
-    utility::string_t m_StyleIdentifier;
-    bool m_StyleIdentifierIsSet;
     utility::string_t m_Name;
     bool m_NameIsSet;
+    utility::string_t m_NextParagraphStyleName;
+    bool m_NextParagraphStyleNameIsSet;
+    utility::string_t m_StyleIdentifier;
+    bool m_StyleIdentifierIsSet;
+    utility::string_t m_Type;
+    bool m_TypeIsSet;
 };
 
 }

@@ -44,6 +44,7 @@
 #include "requests/ConvertDocumentRequest.h"
 #include "requests/CopyFileRequest.h"
 #include "requests/CopyFolderRequest.h"
+#include "requests/CopyStyleRequest.h"
 #include "requests/CreateDocumentRequest.h"
 #include "requests/CreateFolderRequest.h"
 #include "requests/CreateOrUpdateDocumentPropertyRequest.h"
@@ -143,6 +144,8 @@
 #include "requests/GetSectionRequest.h"
 #include "requests/GetSectionPageSetupRequest.h"
 #include "requests/GetSectionsRequest.h"
+#include "requests/GetStyleRequest.h"
+#include "requests/GetStylesRequest.h"
 #include "requests/GetTableRequest.h"
 #include "requests/GetTableCellRequest.h"
 #include "requests/GetTableCellFormatRequest.h"
@@ -167,6 +170,7 @@
 #include "requests/InsertPageNumbersRequest.h"
 #include "requests/InsertParagraphRequest.h"
 #include "requests/InsertRunRequest.h"
+#include "requests/InsertStyleRequest.h"
 #include "requests/InsertTableRequest.h"
 #include "requests/InsertTableCellRequest.h"
 #include "requests/InsertTableRowRequest.h"
@@ -215,6 +219,7 @@
 #include "requests/UpdateRunRequest.h"
 #include "requests/UpdateRunFontRequest.h"
 #include "requests/UpdateSectionPageSetupRequest.h"
+#include "requests/UpdateStyleRequest.h"
 #include "requests/UpdateTableCellFormatRequest.h"
 #include "requests/UpdateTablePropertiesRequest.h"
 #include "requests/UpdateTablePropertiesWithoutNodePathRequest.h"
@@ -299,6 +304,11 @@
 #include "SectionResponse.h"
 #include "SplitDocumentResponse.h"
 #include "StatDataResponse.h"
+#include "StyleCopy.h"
+#include "StyleInsert.h"
+#include "StyleResponse.h"
+#include "StyleUpdate.h"
+#include "StylesResponse.h"
 #include "TableCellFormat.h"
 #include "TableCellFormatResponse.h"
 #include "TableCellInsert.h"
@@ -481,6 +491,24 @@ public:
         /// <param name="destStorageName">Destination storage name (optional)</param>
     	pplx::task<std::shared_ptr<web::http::http_response>> copyFolder(
 		std::shared_ptr<CopyFolderRequest> request
+	);
+    ///<summary>
+    ///Copy and insert new style to document, returns copied style.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="styleCopy">Style to copy.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<StyleResponse>> copyStyle(
+		std::shared_ptr<CopyStyleRequest> request
 	);
     ///<summary>
     ///Creates new document. Document is created with format which is recognized from file extensions. Supported extensions: \&quot;.doc\&quot;, \&quot;.docx\&quot;, \&quot;.docm\&quot;, \&quot;.dot\&quot;, \&quot;.dotm\&quot;, \&quot;.dotx\&quot;, \&quot;.flatopc\&quot;, \&quot;.fopc\&quot;, \&quot;.flatopc_macro\&quot;, \&quot;.fopc_macro\&quot;, \&quot;.flatopc_template\&quot;, \&quot;.fopc_template\&quot;, \&quot;.flatopc_template_macro\&quot;, \&quot;.fopc_template_macro\&quot;, \&quot;.wordml\&quot;, \&quot;.wml\&quot;, \&quot;.rtf\&quot;.
@@ -2053,6 +2081,35 @@ public:
 		std::shared_ptr<GetSectionsRequest> request
 	);
     ///<summary>
+    ///This resource represents one of the styles contained in the document.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="styleName">Style name.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<StyleResponse>> getStyle(
+		std::shared_ptr<GetStyleRequest> request
+	);
+    ///<summary>
+    ///Returns a list of styles that are contained in the document.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<StylesResponse>> getStyles(
+		std::shared_ptr<GetStylesRequest> request
+	);
+    ///<summary>
     ///Returns a table.
     ///</summary>
     ///<remarks>
@@ -2473,6 +2530,24 @@ public:
         /// <param name="insertBeforeNode">Paragraph will be inserted before node with index. (optional)</param>
     	pplx::task<AsposeResponse<RunResponse>> insertRun(
 		std::shared_ptr<InsertRunRequest> request
+	);
+    ///<summary>
+    ///Adds style to document, returns added style.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="styleInsert">Style to insert.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<StyleResponse>> insertStyle(
+		std::shared_ptr<InsertStyleRequest> request
 	);
     ///<summary>
     ///Adds table to document, returns added table&#39;s data.             
@@ -3341,6 +3416,25 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<AsposeResponse<SectionPageSetupResponse>> updateSectionPageSetup(
 		std::shared_ptr<UpdateSectionPageSetupRequest> request
+	);
+    ///<summary>
+    ///Updates style properties, returns updated style.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="styleUpdate">Style properties to update.</param>
+        /// <param name="styleName">Style name.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<StyleResponse>> updateStyle(
+		std::shared_ptr<UpdateStyleRequest> request
 	);
     ///<summary>
     ///Updates a table cell format.
