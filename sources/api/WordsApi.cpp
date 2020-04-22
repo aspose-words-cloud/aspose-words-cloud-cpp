@@ -97,10 +97,18 @@ void postInitializeResponse(web::json::value json, void* response)
     }
 }
 
-utility::string_t replacePathParameter(utility::string_t path, const utility::string_t& paramName, const utility::string_t& value)
+utility::string_t replacePathParameter(utility::string_t path, const utility::string_t& paramName, utility::string_t value)
 {
     if (!value.empty())
     {
+		size_t pos = 0;
+		const utility::string_t search(_XPLATSTR(" "));
+		const utility::string_t replace(_XPLATSTR("%20"));
+		while ((pos = value.find(search, pos)) != utility::string_t::npos) {
+			value.replace(pos, search.length(), replace);
+			pos += replace.length();
+		}
+
         boost::replace_all(path, _XPLATSTR("{") + paramName + _XPLATSTR("}"),
             ApiClient::parameterToString(value));
     }
