@@ -48,7 +48,7 @@ void ListLevels::validate()
 
 web::json::value ListLevels::toJson() const
 {
-    web::json::value val = web::json::value::object();
+    web::json::value val = this->LinkElement::toJson();
 
     {
         std::vector<web::json::value> jsonArray;
@@ -68,6 +68,8 @@ web::json::value ListLevels::toJson() const
 
 void ListLevels::fromJson(web::json::value& val)
 {
+    this->LinkElement::fromJson(val);
+
     {
         m_ListLevel.clear();
         if(val.has_field(_XPLATSTR("ListLevel")) 
@@ -93,7 +95,7 @@ void ListLevels::fromJson(web::json::value& val)
 
 void ListLevels::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -111,7 +113,7 @@ void ListLevels::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
 
 void ListLevels::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
+    LinkElement::fromMultiPart(multipart, prefix);
 
     {
         m_ListLevel.clear();

@@ -48,7 +48,7 @@ void Lists::validate()
 
 web::json::value Lists::toJson() const
 {
-    web::json::value val = web::json::value::object();
+    web::json::value val = this->LinkElement::toJson();
 
     {
         std::vector<web::json::value> jsonArray;
@@ -68,6 +68,8 @@ web::json::value Lists::toJson() const
 
 void Lists::fromJson(web::json::value& val)
 {
+    this->LinkElement::fromJson(val);
+
     {
         m_ListInfo.clear();
         if(val.has_field(_XPLATSTR("ListInfo")) 
@@ -93,7 +95,7 @@ void Lists::fromJson(web::json::value& val)
 
 void Lists::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
+    LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
 
     {
@@ -111,7 +113,7 @@ void Lists::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
 void Lists::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
+    LinkElement::fromMultiPart(multipart, prefix);
 
     {
         m_ListInfo.clear();

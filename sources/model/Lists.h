@@ -27,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Lists_H_
 
 
-#include "../ModelBase.h"
-
+#include "LinkElement.h"
 #include "ListInfo.h"
+#include "WordsApiLink.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// Represents an array of document lists.
 /// </summary>
 class  Lists
-    : public ModelBase
+    : public LinkElement
 {
 public:
     Lists();

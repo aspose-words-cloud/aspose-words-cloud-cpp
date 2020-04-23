@@ -27,9 +27,9 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ListLevels_H_
 
 
-#include "../ModelBase.h"
-
+#include "LinkElement.h"
 #include "ListLevel.h"
+#include "WordsApiLink.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +42,7 @@ namespace models {
 /// Represents a single document list.
 /// </summary>
 class  ListLevels
-    : public ModelBase
+    : public LinkElement
 {
 public:
     ListLevels();

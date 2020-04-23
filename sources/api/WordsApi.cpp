@@ -101,14 +101,14 @@ utility::string_t replacePathParameter(utility::string_t path, const utility::st
 {
     if (!value.empty())
     {
-		size_t pos = 0;
+        size_t pos = 0;
 		const utility::string_t search(_XPLATSTR(" "));
 		const utility::string_t replace(_XPLATSTR("%20"));
 		while ((pos = value.find(search, pos)) != utility::string_t::npos) {
 			value.replace(pos, search.length(), replace);
 			pos += replace.length();
 		}
-
+    
         boost::replace_all(path, _XPLATSTR("{") + paramName + _XPLATSTR("}"),
             ApiClient::parameterToString(value));
     }
@@ -24958,7 +24958,7 @@ pplx::task<AsposeResponse<ListResponse>> WordsApi::updateListLevel(std::shared_p
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/lists/{listId}/{listLevel}"),
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/lists/{listId}/listLevels/{listLevel}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("name"),
         ApiClient::parameterToString(request->getName()));
