@@ -36,7 +36,7 @@
 
 #include "requests/AcceptAllRevisionsRequest.h"
 #include "requests/AppendDocumentRequest.h"
-#include "requests/ApplyStyleToDocmentElementRequest.h"
+#include "requests/ApplyStyleToDocumentElementRequest.h"
 #include "requests/BuildReportRequest.h"
 #include "requests/BuildReportOnlineRequest.h"
 #include "requests/ClassifyRequest.h"
@@ -397,8 +397,8 @@ public:
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
-    	pplx::task<AsposeResponse<WordsResponse>> applyStyleToDocmentElement(
-		std::shared_ptr<ApplyStyleToDocmentElementRequest> request
+    	pplx::task<AsposeResponse<WordsResponse>> applyStyleToDocumentElement(
+		std::shared_ptr<ApplyStyleToDocumentElementRequest> request
 	);
     ///<summary>
     ///Executes document \&quot;build report\&quot; operation.

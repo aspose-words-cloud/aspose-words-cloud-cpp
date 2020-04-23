@@ -436,13 +436,13 @@ pplx::task<AsposeResponse<DocumentResponse>> WordsApi::appendDocument(std::share
         return result;
     });
 }
-pplx::task<AsposeResponse<WordsResponse>> WordsApi::applyStyleToDocmentElement(std::shared_ptr<ApplyStyleToDocmentElementRequest> request)
+pplx::task<AsposeResponse<WordsResponse>> WordsApi::applyStyleToDocumentElement(std::shared_ptr<ApplyStyleToDocumentElementRequest> request)
 {
 
     // verify the required parameter 'styleApply' is set
     if (request->getStyleApply() == nullptr)
     {
-        throw ApiException(400, _XPLATSTR("Missing required parameter 'styleApply' when calling WordsApi->applyStyleToDocmentElement"));
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'styleApply' when calling WordsApi->applyStyleToDocumentElement"));
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -480,7 +480,7 @@ pplx::task<AsposeResponse<WordsResponse>> WordsApi::applyStyleToDocmentElement(s
     }
     else
     {
-        throw ApiException(400, _XPLATSTR("WordsApi->applyStyleToDocmentElement does not produce any supported media type"));
+        throw ApiException(400, _XPLATSTR("WordsApi->applyStyleToDocumentElement does not produce any supported media type"));
     }
 
     headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
@@ -549,7 +549,7 @@ pplx::task<AsposeResponse<WordsResponse>> WordsApi::applyStyleToDocmentElement(s
     }
     else
     {
-        throw ApiException(415, _XPLATSTR("WordsApi->applyStyleToDocmentElement does not consume any supported media type"));
+        throw ApiException(415, _XPLATSTR("WordsApi->applyStyleToDocumentElement does not consume any supported media type"));
     }
 
     // authentication (JWT) required
@@ -597,7 +597,7 @@ pplx::task<AsposeResponse<WordsResponse>> WordsApi::applyStyleToDocmentElement(s
         else
         {
             throw ApiException(500
-                , _XPLATSTR("error calling applyStyleToDocmentElement: unsupported response type"));
+                , _XPLATSTR("error calling applyStyleToDocumentElement: unsupported response type"));
         }
 
         return result;

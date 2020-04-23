@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ApplyStyleToDocmentElementRequest.cpp">
+* <copyright company="Aspose" file="ApplyStyleToDocumentElementRequest.cpp">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -22,13 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "ApplyStyleToDocmentElementRequest.h"
+#include "ApplyStyleToDocumentElementRequest.h"
 namespace aspose{
 namespace words{
 namespace cloud{
 namespace api{
 namespace models{
-ApplyStyleToDocmentElementRequest::ApplyStyleToDocmentElementRequest(
+ApplyStyleToDocumentElementRequest::ApplyStyleToDocumentElementRequest(
         utility::string_t name,
                 std::shared_ptr<StyleApply> styleApply,
                 utility::string_t styledNodePath,
@@ -54,74 +54,74 @@ ApplyStyleToDocmentElementRequest::ApplyStyleToDocmentElementRequest(
             
         }
 
-        utility::string_t ApplyStyleToDocmentElementRequest::getName() const
+        utility::string_t ApplyStyleToDocumentElementRequest::getName() const
         {
             return m_name;
         }
-        void ApplyStyleToDocmentElementRequest::setName(utility::string_t name){
+        void ApplyStyleToDocumentElementRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        std::shared_ptr<StyleApply> ApplyStyleToDocmentElementRequest::getStyleApply() const
+        std::shared_ptr<StyleApply> ApplyStyleToDocumentElementRequest::getStyleApply() const
         {
             return m_styleApply;
         }
-        void ApplyStyleToDocmentElementRequest::setStyleApply(std::shared_ptr<StyleApply> styleApply){
+        void ApplyStyleToDocumentElementRequest::setStyleApply(std::shared_ptr<StyleApply> styleApply){
             m_styleApply = std::move(styleApply);
         }
-        utility::string_t ApplyStyleToDocmentElementRequest::getStyledNodePath() const
+        utility::string_t ApplyStyleToDocumentElementRequest::getStyledNodePath() const
         {
             return m_styledNodePath;
         }
-        void ApplyStyleToDocmentElementRequest::setStyledNodePath(utility::string_t styledNodePath){
+        void ApplyStyleToDocumentElementRequest::setStyledNodePath(utility::string_t styledNodePath){
             m_styledNodePath = std::move(styledNodePath);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getFolder() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getFolder() const
         {
             return m_folder;
         }
-        void ApplyStyleToDocmentElementRequest::setFolder(boost::optional<utility::string_t> folder){
+        void ApplyStyleToDocumentElementRequest::setFolder(boost::optional<utility::string_t> folder){
             m_folder = std::move(folder);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getStorage() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getStorage() const
         {
             return m_storage;
         }
-        void ApplyStyleToDocmentElementRequest::setStorage(boost::optional<utility::string_t> storage){
+        void ApplyStyleToDocumentElementRequest::setStorage(boost::optional<utility::string_t> storage){
             m_storage = std::move(storage);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
-        void ApplyStyleToDocmentElementRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+        void ApplyStyleToDocumentElementRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
             m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getPassword() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getPassword() const
         {
             return m_password;
         }
-        void ApplyStyleToDocmentElementRequest::setPassword(boost::optional<utility::string_t> password){
+        void ApplyStyleToDocumentElementRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getDestFileName() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getDestFileName() const
         {
             return m_destFileName;
         }
-        void ApplyStyleToDocmentElementRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+        void ApplyStyleToDocumentElementRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
             m_destFileName = std::move(destFileName);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getRevisionAuthor() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getRevisionAuthor() const
         {
             return m_revisionAuthor;
         }
-        void ApplyStyleToDocmentElementRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
+        void ApplyStyleToDocumentElementRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
             m_revisionAuthor = std::move(revisionAuthor);
         }
-        boost::optional<utility::string_t> ApplyStyleToDocmentElementRequest::getRevisionDateTime() const
+        boost::optional<utility::string_t> ApplyStyleToDocumentElementRequest::getRevisionDateTime() const
         {
             return m_revisionDateTime;
         }
-        void ApplyStyleToDocmentElementRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
+        void ApplyStyleToDocumentElementRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
             m_revisionDateTime = std::move(revisionDateTime);
         }
 

@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ApplyStyleToDocmentElementRequest.h">
+* <copyright company="Aspose" file="ApplyStyleToDocumentElementRequest.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef applyStyleToDocmentElement_H
-#define applyStyleToDocmentElement_H 
+#ifndef applyStyleToDocumentElement_H
+#define applyStyleToDocumentElement_H 
 
 #include "cpprest/details/basic_types.h"
 #include "StyleApply.h"
@@ -36,9 +36,9 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class ApplyStyleToDocmentElementRequest{
+class ApplyStyleToDocumentElementRequest{
     public: 
-     ApplyStyleToDocmentElementRequest(
+     ApplyStyleToDocumentElementRequest(
                 utility::string_t name,
                 std::shared_ptr<StyleApply> styleApply,
                 utility::string_t styledNodePath,

@@ -165,8 +165,8 @@ TEST_F(StylesTest, TestApplyStyleForDocumentElement) {
 	auto styleApply = std::make_shared<StyleApply>();
 	styleApply->setStyleName(STCONVERT("Heading 1"));
 
-	auto request = std::make_shared<ApplyStyleToDocmentElementRequest>(remoteName, styleApply, STCONVERT("paragraphs/1/paragraphFormat"), remoteFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
-	AsposeResponse<WordsResponse> actual = get_api()->applyStyleToDocmentElement(request).get();
+	auto request = std::make_shared<ApplyStyleToDocumentElementRequest>(remoteName, styleApply, STCONVERT("paragraphs/1/paragraphFormat"), remoteFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	AsposeResponse<WordsResponse> actual = get_api()->applyStyleToDocumentElement(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
