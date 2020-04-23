@@ -131,3 +131,42 @@ TEST_F(StylesTest, TestCopyStyle) {
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
+
+/// <summary>
+/// Test for gets style from document element.
+/// </summary>
+TEST_F(StylesTest, TestGetStyleFromDocumentElement) {
+	utility::string_t
+		remoteName = STCONVERT("TestGetStyleFromDocumentElement.docx"),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
+		filePath = path_combine(get_data_dir(testPath), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	auto request = std::make_shared<GetStyleFromDocumentElementRequest>(remoteName, STCONVERT("paragraphs/1/paragraphFormat"), remoteFolder, boost::none, boost::none, boost::none);
+	AsposeResponse<StyleResponse> actual = get_api()->getStyleFromDocumentElement(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for apply style for document element
+/// </summary>
+TEST_F(StylesTest, TestApplyStyleForDocumentElement) {
+	utility::string_t
+		remoteName = STCONVERT("TestApplyStyleForDocumentElement.docx"),
+		remoteFolder = path_combine_url(remoteBaseTestDataFolder, testPath),
+		fullName = path_combine_url(remoteFolder, remoteName),
+		filePath = path_combine(get_data_dir(testPath), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	auto styleApply = std::make_shared<StyleApply>();
+	styleApply->setStyleName(STCONVERT("Heading 1"));
+
+	auto request = std::make_shared<ApplyStyleToDocmentElementRequest>(remoteName, styleApply, STCONVERT("paragraphs/1/paragraphFormat"), remoteFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
+	AsposeResponse<WordsResponse> actual = get_api()->applyStyleToDocmentElement(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
