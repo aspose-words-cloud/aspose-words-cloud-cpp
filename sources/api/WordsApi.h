@@ -36,6 +36,7 @@
 
 #include "requests/AcceptAllRevisionsRequest.h"
 #include "requests/AppendDocumentRequest.h"
+#include "requests/ApplyStyleToDocumentElementRequest.h"
 #include "requests/BuildReportRequest.h"
 #include "requests/BuildReportOnlineRequest.h"
 #include "requests/ClassifyRequest.h"
@@ -145,6 +146,7 @@
 #include "requests/GetSectionPageSetupRequest.h"
 #include "requests/GetSectionsRequest.h"
 #include "requests/GetStyleRequest.h"
+#include "requests/GetStyleFromDocumentElementRequest.h"
 #include "requests/GetStylesRequest.h"
 #include "requests/GetTableRequest.h"
 #include "requests/GetTableCellRequest.h"
@@ -304,6 +306,7 @@
 #include "SectionResponse.h"
 #include "SplitDocumentResponse.h"
 #include "StatDataResponse.h"
+#include "StyleApply.h"
 #include "StyleCopy.h"
 #include "StyleInsert.h"
 #include "StyleResponse.h"
@@ -324,6 +327,7 @@
 #include "TableRowResponse.h"
 #include "TiffSaveOptionsData.h"
 #include "WatermarkText.h"
+#include "WordsResponse.h"
 #include "HttpContent.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
@@ -376,6 +380,25 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<AsposeResponse<DocumentResponse>> appendDocument(
 		std::shared_ptr<AppendDocumentRequest> request
+	);
+    ///<summary>
+    ///Apply style to document node.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="styleApply">Style to apply.</param>
+        /// <param name="styledNodePath">Path to the node of IStyledDocumentElement.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    	pplx::task<AsposeResponse<WordsResponse>> applyStyleToDocumentElement(
+		std::shared_ptr<ApplyStyleToDocumentElementRequest> request
 	);
     ///<summary>
     ///Executes document \&quot;build report\&quot; operation.
@@ -2094,6 +2117,21 @@ public:
         /// <param name="password">Password for opening an encrypted document. (optional)</param>
     	pplx::task<AsposeResponse<StyleResponse>> getStyle(
 		std::shared_ptr<GetStyleRequest> request
+	);
+    ///<summary>
+    ///Gets style from document node.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="styledNodePath">Path to the node of IStyledDocumentElement.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    	pplx::task<AsposeResponse<StyleResponse>> getStyleFromDocumentElement(
+		std::shared_ptr<GetStyleFromDocumentElementRequest> request
 	);
     ///<summary>
     ///Returns a list of styles that are contained in the document.
