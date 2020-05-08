@@ -382,7 +382,7 @@ public:
 		std::shared_ptr<AppendDocumentRequest> request
 	);
     ///<summary>
-    ///Apply a style to the document node.
+    ///Apply a style to the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
     ///</summary>
     ///<remarks>
     ///
@@ -406,7 +406,7 @@ public:
     ///<remarks>
     ///
     ///</remarks>
-    /// <param name="name">The document name.</param>
+    /// <param name="name">The template name.</param>
         /// <param name="data">A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv</param>
         /// <param name="reportEngineSettings">An object providing a settings of report engine.</param>
         /// <param name="folder">Original document folder. (optional)</param>
@@ -2119,7 +2119,7 @@ public:
 		std::shared_ptr<GetStyleRequest> request
 	);
     ///<summary>
-    ///Gets a style from the document node.
+    ///Gets a style from the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
     ///</summary>
     ///<remarks>
     ///
