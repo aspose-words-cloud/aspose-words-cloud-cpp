@@ -34,7 +34,7 @@ namespace models {
 
 Styles::Styles()
 {
-    m_StyleIsSet = false;
+    m_StyleListIsSet = false;
 }
 
 Styles::~Styles()
@@ -52,14 +52,14 @@ web::json::value Styles::toJson() const
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Style.begin(), m_Style.end(), std::back_inserter(jsonArray),
+        std::transform(m_StyleList.begin(), m_StyleList.end(), std::back_inserter(jsonArray),
 			[&](std::shared_ptr<Style> item) {
 			return ModelBase::toJson(item);
 		});
         
         if(jsonArray.size() > 0)
         {
-            val[_XPLATSTR("Style")] = web::json::value::array(jsonArray);
+            val[_XPLATSTR("StyleList")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -71,12 +71,12 @@ void Styles::fromJson(web::json::value& val)
     this->LinkElement::fromJson(val);
 
     {
-        m_Style.clear();
-        if(val.has_field(_XPLATSTR("Style")) 
-                            && !val[_XPLATSTR("Style")].is_null())
+        m_StyleList.clear();
+        if(val.has_field(_XPLATSTR("StyleList")) 
+                            && !val[_XPLATSTR("StyleList")].is_null())
         {
-        auto arr = val[_XPLATSTR("Style")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Style), [&](web::json::value& item){
+        auto arr = val[_XPLATSTR("StyleList")].as_array();
+        std::transform(arr.begin(), arr.end(), std::back_inserter(m_StyleList), [&](web::json::value& item){
             if(item.is_null())
             {
                 return std::shared_ptr<Style>(nullptr);
@@ -100,13 +100,13 @@ void Styles::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, co
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Style.begin(), m_Style.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Style> item){
+        std::transform(m_StyleList.begin(), m_StyleList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Style> item){
             return ModelBase::toJson(item);
         });
         
         if(jsonArray.size() > 0)
         {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Style"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
 }
@@ -116,12 +116,12 @@ void Styles::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, 
     LinkElement::fromMultiPart(multipart, prefix);
 
     {
-        m_Style.clear();
-        if(multipart->hasContent(_XPLATSTR("Style")))
+        m_StyleList.clear();
+        if(multipart->hasContent(_XPLATSTR("StyleList")))
         {
 
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Style")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Style), [&](web::json::value item) {
+        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleList")))).as_array();
+        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_StyleList), [&](web::json::value item) {
             if(item.is_null())
             {
                 return std::shared_ptr<Style>(nullptr) ;
@@ -137,24 +137,24 @@ void Styles::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, 
     }
 }
 
-std::vector<std::shared_ptr<Style>>& Styles::getStyle()
+std::vector<std::shared_ptr<Style>>& Styles::getStyleList()
 {
-    return m_Style;
+    return m_StyleList;
 }
 
-void Styles::setStyle(std::vector<std::shared_ptr<Style>> const& value)
+void Styles::setStyleList(std::vector<std::shared_ptr<Style>> const& value)
 {
-    m_Style = value;
-    m_StyleIsSet = true;
+    m_StyleList = value;
+    m_StyleListIsSet = true;
 }
-bool Styles::styleIsSet() const
+bool Styles::styleListIsSet() const
 {
-    return m_StyleIsSet;
+    return m_StyleListIsSet;
 }
 
-void Styles::unsetStyle()
+void Styles::unsetStyleList()
 {
-    m_StyleIsSet = false;
+    m_StyleListIsSet = false;
 }
 
 }

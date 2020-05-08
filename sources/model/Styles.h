@@ -65,14 +65,14 @@ public:
     /// <summary>
     /// Gets or sets array of document styles.
     /// </summary>
-    std::vector<std::shared_ptr<Style>>& getStyle();
-    bool styleIsSet() const;
-    void unsetStyle();
-    void setStyle(std::vector<std::shared_ptr<Style>> const& value);
+    std::vector<std::shared_ptr<Style>>& getStyleList();
+    bool styleListIsSet() const;
+    void unsetStyleList();
+    void setStyleList(std::vector<std::shared_ptr<Style>> const& value);
 
 protected:
-    std::vector<std::shared_ptr<Style>> m_Style;
-    bool m_StyleIsSet;
+    std::vector<std::shared_ptr<Style>> m_StyleList;
+    bool m_StyleListIsSet;
 };
 
 }

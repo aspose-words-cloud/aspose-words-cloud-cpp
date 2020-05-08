@@ -382,7 +382,7 @@ public:
 		std::shared_ptr<AppendDocumentRequest> request
 	);
     ///<summary>
-    ///Apply style to document node.
+    ///Apply a style to the document node.
     ///</summary>
     ///<remarks>
     ///
@@ -516,7 +516,7 @@ public:
 		std::shared_ptr<CopyFolderRequest> request
 	);
     ///<summary>
-    ///Copy and insert new style to document, returns copied style.
+    ///Copy and insert a new style to the document, returns an copied style.
     ///</summary>
     ///<remarks>
     ///
@@ -2119,7 +2119,7 @@ public:
 		std::shared_ptr<GetStyleRequest> request
 	);
     ///<summary>
-    ///Gets style from document node.
+    ///Gets a style from the document node.
     ///</summary>
     ///<remarks>
     ///
@@ -2134,7 +2134,7 @@ public:
 		std::shared_ptr<GetStyleFromDocumentElementRequest> request
 	);
     ///<summary>
-    ///Returns a list of styles that are contained in the document.
+    ///Returns a list of styles contained in the document.
     ///</summary>
     ///<remarks>
     ///
@@ -2570,7 +2570,7 @@ public:
 		std::shared_ptr<InsertRunRequest> request
 	);
     ///<summary>
-    ///Adds style to document, returns added style.
+    ///Adds a style to the document, returns an added style.
     ///</summary>
     ///<remarks>
     ///
@@ -3456,7 +3456,7 @@ public:
 		std::shared_ptr<UpdateSectionPageSetupRequest> request
 	);
     ///<summary>
-    ///Updates style properties, returns updated style.
+    ///Updates a style properties, returns an updated style.
     ///</summary>
     ///<remarks>
     ///
