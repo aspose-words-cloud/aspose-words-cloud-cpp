@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteTabStopRequest.h">
+* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef deleteTabStop_H
-#define deleteTabStop_H 
+#ifndef deleteParagraphTabStop_H
+#define deleteParagraphTabStop_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -35,9 +35,9 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteTabStopRequest{
+class DeleteParagraphTabStopRequest{
     public: 
-     DeleteTabStopRequest(
+     DeleteParagraphTabStopRequest(
                 utility::string_t name,
                 utility::string_t nodePath,
                 double position,

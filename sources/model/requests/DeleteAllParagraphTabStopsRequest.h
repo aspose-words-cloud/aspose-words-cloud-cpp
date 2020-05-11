@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="InsertOrUpdateTabStopRequest.h">
+* <copyright company="Aspose" file="DeleteAllParagraphTabStopsRequest.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,11 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef insertOrUpdateTabStop_H
-#define insertOrUpdateTabStop_H 
+#ifndef deleteAllParagraphTabStops_H
+#define deleteAllParagraphTabStops_H 
 
 #include "cpprest/details/basic_types.h"
-#include "TabStopInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,12 +35,11 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class InsertOrUpdateTabStopRequest{
+class DeleteAllParagraphTabStopsRequest{
     public: 
-     InsertOrUpdateTabStopRequest(
+     DeleteAllParagraphTabStopsRequest(
                 utility::string_t name,
                 utility::string_t nodePath,
-                std::shared_ptr<TabStopInsert> dto,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -55,9 +53,6 @@ class InsertOrUpdateTabStopRequest{
 
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
-
-        std::shared_ptr<TabStopInsert> getDto() const;
-        void setDto(std::shared_ptr<TabStopInsert> dto);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -79,7 +74,6 @@ class InsertOrUpdateTabStopRequest{
     private:
         utility::string_t m_name;
         utility::string_t m_nodePath;
-        std::shared_ptr<TabStopInsert> m_dto;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;

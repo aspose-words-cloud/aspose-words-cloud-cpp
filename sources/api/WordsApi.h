@@ -49,6 +49,7 @@
 #include "requests/CreateDocumentRequest.h"
 #include "requests/CreateFolderRequest.h"
 #include "requests/CreateOrUpdateDocumentPropertyRequest.h"
+#include "requests/DeleteAllParagraphTabStopsRequest.h"
 #include "requests/DeleteBorderRequest.h"
 #include "requests/DeleteBordersRequest.h"
 #include "requests/DeleteCommentRequest.h"
@@ -72,11 +73,10 @@
 #include "requests/DeleteOfficeMathObjectWithoutNodePathRequest.h"
 #include "requests/DeleteParagraphRequest.h"
 #include "requests/DeleteParagraphListFormatRequest.h"
+#include "requests/DeleteParagraphTabStopRequest.h"
 #include "requests/DeleteParagraphWithoutNodePathRequest.h"
 #include "requests/DeleteRunRequest.h"
 #include "requests/DeleteSectionRequest.h"
-#include "requests/DeleteTabStopRequest.h"
-#include "requests/DeleteTabStopsRequest.h"
 #include "requests/DeleteTableRequest.h"
 #include "requests/DeleteTableCellRequest.h"
 #include "requests/DeleteTableRowRequest.h"
@@ -172,7 +172,7 @@
 #include "requests/InsertFormFieldWithoutNodePathRequest.h"
 #include "requests/InsertHeaderFooterRequest.h"
 #include "requests/InsertListRequest.h"
-#include "requests/InsertOrUpdateTabStopRequest.h"
+#include "requests/InsertOrUpdateParagraphTabStopRequest.h"
 #include "requests/InsertPageNumbersRequest.h"
 #include "requests/InsertParagraphRequest.h"
 #include "requests/InsertRunRequest.h"
@@ -580,6 +580,23 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<AsposeResponse<DocumentPropertyResponse>> createOrUpdateDocumentProperty(
 		std::shared_ptr<CreateOrUpdateDocumentPropertyRequest> request
+	);
+    ///<summary>
+    ///Remove all tab stops.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="nodePath">Path to the node which contains paragraph.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    	pplx::task<AsposeResponse<TabStopsResponse>> deleteAllParagraphTabStops(
+		std::shared_ptr<DeleteAllParagraphTabStopsRequest> request
 	);
     ///<summary>
     ///Resets border properties to default values.             
@@ -992,6 +1009,24 @@ public:
 		std::shared_ptr<DeleteParagraphListFormatRequest> request
 	);
     ///<summary>
+    ///Remove the i-th tab stop.
+    ///</summary>
+    ///<remarks>
+    ///
+    ///</remarks>
+    /// <param name="name">The document name.</param>
+        /// <param name="nodePath">Path to the node which contains paragraph.</param>
+        /// <param name="position">a tab stop position to remove.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    	pplx::task<AsposeResponse<TabStopsResponse>> deleteParagraphTabStop(
+		std::shared_ptr<DeleteParagraphTabStopRequest> request
+	);
+    ///<summary>
     ///Removes paragraph from section.
     ///</summary>
     ///<remarks>
@@ -1045,41 +1080,6 @@ public:
         /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     	pplx::task<std::shared_ptr<web::http::http_response>> deleteSection(
 		std::shared_ptr<DeleteSectionRequest> request
-	);
-    ///<summary>
-    ///Remove the i-th tab stop.
-    ///</summary>
-    ///<remarks>
-    ///
-    ///</remarks>
-    /// <param name="name">The document name.</param>
-        /// <param name="nodePath">Path to the node which contains paragraph.</param>
-        /// <param name="position">a tab stop position to remove.</param>
-        /// <param name="index">Object index.</param>
-        /// <param name="folder">Original document folder. (optional)</param>
-        /// <param name="storage">Original document storage. (optional)</param>
-        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
-        /// <param name="password">Password for opening an encrypted document. (optional)</param>
-        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
-    	pplx::task<AsposeResponse<TabStopsResponse>> deleteTabStop(
-		std::shared_ptr<DeleteTabStopRequest> request
-	);
-    ///<summary>
-    ///Remove all tab stops.
-    ///</summary>
-    ///<remarks>
-    ///
-    ///</remarks>
-    /// <param name="name">The document name.</param>
-        /// <param name="nodePath">Path to the node which contains paragraph.</param>
-        /// <param name="index">Object index.</param>
-        /// <param name="folder">Original document folder. (optional)</param>
-        /// <param name="storage">Original document storage. (optional)</param>
-        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
-        /// <param name="password">Password for opening an encrypted document. (optional)</param>
-        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
-    	pplx::task<AsposeResponse<TabStopsResponse>> deleteTabStops(
-		std::shared_ptr<DeleteTabStopsRequest> request
 	);
     ///<summary>
     ///Deletes a table.
@@ -2583,8 +2583,8 @@ public:
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
         /// <param name="password">Password for opening an encrypted document. (optional)</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
-    	pplx::task<AsposeResponse<TabStopsResponse>> insertOrUpdateTabStop(
-		std::shared_ptr<InsertOrUpdateTabStopRequest> request
+    	pplx::task<AsposeResponse<TabStopsResponse>> insertOrUpdateParagraphTabStop(
+		std::shared_ptr<InsertOrUpdateParagraphTabStopRequest> request
 	);
     ///<summary>
     ///Inserts document page numbers.

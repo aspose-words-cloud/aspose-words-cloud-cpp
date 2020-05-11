@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteTabStopsRequest.cpp">
+* <copyright company="Aspose" file="DeleteAllParagraphTabStopsRequest.cpp">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -22,13 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "DeleteTabStopsRequest.h"
+#include "DeleteAllParagraphTabStopsRequest.h"
 namespace aspose{
 namespace words{
 namespace cloud{
 namespace api{
 namespace models{
-DeleteTabStopsRequest::DeleteTabStopsRequest(
+DeleteAllParagraphTabStopsRequest::DeleteAllParagraphTabStopsRequest(
         utility::string_t name,
                 utility::string_t nodePath,
                 int32_t index,
@@ -50,60 +50,60 @@ DeleteTabStopsRequest::DeleteTabStopsRequest(
             
         }
 
-        utility::string_t DeleteTabStopsRequest::getName() const
+        utility::string_t DeleteAllParagraphTabStopsRequest::getName() const
         {
             return m_name;
         }
-        void DeleteTabStopsRequest::setName(utility::string_t name){
+        void DeleteAllParagraphTabStopsRequest::setName(utility::string_t name){
             m_name = std::move(name);
         }
-        utility::string_t DeleteTabStopsRequest::getNodePath() const
+        utility::string_t DeleteAllParagraphTabStopsRequest::getNodePath() const
         {
             return m_nodePath;
         }
-        void DeleteTabStopsRequest::setNodePath(utility::string_t nodePath){
+        void DeleteAllParagraphTabStopsRequest::setNodePath(utility::string_t nodePath){
             m_nodePath = std::move(nodePath);
         }
-        int32_t DeleteTabStopsRequest::getIndex() const
+        int32_t DeleteAllParagraphTabStopsRequest::getIndex() const
         {
             return m_index;
         }
-        void DeleteTabStopsRequest::setIndex(int32_t index){
+        void DeleteAllParagraphTabStopsRequest::setIndex(int32_t index){
             m_index = std::move(index);
         }
-        boost::optional<utility::string_t> DeleteTabStopsRequest::getFolder() const
+        boost::optional<utility::string_t> DeleteAllParagraphTabStopsRequest::getFolder() const
         {
             return m_folder;
         }
-        void DeleteTabStopsRequest::setFolder(boost::optional<utility::string_t> folder){
+        void DeleteAllParagraphTabStopsRequest::setFolder(boost::optional<utility::string_t> folder){
             m_folder = std::move(folder);
         }
-        boost::optional<utility::string_t> DeleteTabStopsRequest::getStorage() const
+        boost::optional<utility::string_t> DeleteAllParagraphTabStopsRequest::getStorage() const
         {
             return m_storage;
         }
-        void DeleteTabStopsRequest::setStorage(boost::optional<utility::string_t> storage){
+        void DeleteAllParagraphTabStopsRequest::setStorage(boost::optional<utility::string_t> storage){
             m_storage = std::move(storage);
         }
-        boost::optional<utility::string_t> DeleteTabStopsRequest::getLoadEncoding() const
+        boost::optional<utility::string_t> DeleteAllParagraphTabStopsRequest::getLoadEncoding() const
         {
             return m_loadEncoding;
         }
-        void DeleteTabStopsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
+        void DeleteAllParagraphTabStopsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
             m_loadEncoding = std::move(loadEncoding);
         }
-        boost::optional<utility::string_t> DeleteTabStopsRequest::getPassword() const
+        boost::optional<utility::string_t> DeleteAllParagraphTabStopsRequest::getPassword() const
         {
             return m_password;
         }
-        void DeleteTabStopsRequest::setPassword(boost::optional<utility::string_t> password){
+        void DeleteAllParagraphTabStopsRequest::setPassword(boost::optional<utility::string_t> password){
             m_password = std::move(password);
         }
-        boost::optional<utility::string_t> DeleteTabStopsRequest::getDestFileName() const
+        boost::optional<utility::string_t> DeleteAllParagraphTabStopsRequest::getDestFileName() const
         {
             return m_destFileName;
         }
-        void DeleteTabStopsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
+        void DeleteAllParagraphTabStopsRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
             m_destFileName = std::move(destFileName);
         }
 
