@@ -68,6 +68,7 @@ ParagraphFormat::ParagraphFormat()
     m_PageBreakBeforeIsSet = false;
     m_RightIndent = 0.0;
     m_RightIndentIsSet = false;
+    m_ShadingIsSet = false;
     m_SpaceAfter = 0.0;
     m_SpaceAfterIsSet = false;
     m_SpaceAfterAuto = false;
@@ -168,6 +169,10 @@ web::json::value ParagraphFormat::toJson() const
     if(m_RightIndentIsSet)
     {
         val[_XPLATSTR("RightIndent")] = ModelBase::toJson(m_RightIndent);
+    }
+    if(m_ShadingIsSet)
+    {
+        val[_XPLATSTR("Shading")] = ModelBase::toJson(m_Shading);
     }
     if(m_SpaceAfterIsSet)
     {
@@ -349,6 +354,16 @@ void ParagraphFormat::fromJson(web::json::value& val)
             setRightIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
+    if(val.has_field(_XPLATSTR("Shading")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Shading")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Shading> newItem(new Shading());
+            newItem->fromJson(fieldValue);
+            setShading( newItem );
+        }
+    }
     if(val.has_field(_XPLATSTR("SpaceAfter")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SpaceAfter")];
@@ -513,6 +528,14 @@ void ParagraphFormat::toMultipart(const std::shared_ptr<MultipartFormData>& mult
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightIndent"), m_RightIndent));
         
     }
+    if(m_ShadingIsSet)
+    {
+        if (m_Shading.get())
+        {
+            m_Shading->toMultipart(multipart, _XPLATSTR("Shading."));
+        }
+        
+    }
     if(m_SpaceAfterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SpaceAfter"), m_SpaceAfter));
@@ -631,6 +654,15 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     if(multipart->hasContent(_XPLATSTR("RightIndent")))
     {
         setRightIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightIndent"))));
+    }
+    if(multipart->hasContent(_XPLATSTR("Shading")))
+    {
+        if(multipart->hasContent(_XPLATSTR("Shading")))
+        {
+            std::shared_ptr<Shading> newItem(new Shading());
+            newItem->fromMultiPart(multipart, _XPLATSTR("Shading."));
+            setShading( newItem );
+        }
     }
     if(multipart->hasContent(_XPLATSTR("SpaceAfter")))
     {
@@ -1025,6 +1057,27 @@ bool ParagraphFormat::rightIndentIsSet() const
 void ParagraphFormat::unsetRightIndent()
 {
     m_RightIndentIsSet = false;
+}
+
+std::shared_ptr<Shading> ParagraphFormat::getShading() const
+{
+    return m_Shading;
+}
+
+
+void ParagraphFormat::setShading(std::shared_ptr<Shading> value)
+{
+    m_Shading = value;
+    m_ShadingIsSet = true;
+}
+bool ParagraphFormat::shadingIsSet() const
+{
+    return m_ShadingIsSet;
+}
+
+void ParagraphFormat::unsetShading()
+{
+    m_ShadingIsSet = false;
 }
 
 double ParagraphFormat::getSpaceAfter() const

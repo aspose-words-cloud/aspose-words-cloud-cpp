@@ -28,6 +28,7 @@
 
 
 #include "LinkElement.h"
+#include "Shading.h"
 #include "WordsApiLink.h"
 #include <cpprest/details/basic_types.h>
 
@@ -181,6 +182,13 @@ public:
     void unsetRightIndent();
     void setRightIndent(double value);
     /// <summary>
+    /// Gets or sets Shading.
+    /// </summary>
+    std::shared_ptr<Shading> getShading() const;
+    bool shadingIsSet() const;
+    void unsetShading();
+    void setShading(std::shared_ptr<Shading> value);
+    /// <summary>
     /// Gets or sets the amount of spacing (in points) after the paragraph.             
     /// </summary>
     double getSpaceAfter() const;
@@ -279,6 +287,8 @@ protected:
     bool m_PageBreakBeforeIsSet;
     double m_RightIndent;
     bool m_RightIndentIsSet;
+    std::shared_ptr<Shading> m_Shading;
+    bool m_ShadingIsSet;
     double m_SpaceAfter;
     bool m_SpaceAfterIsSet;
     bool m_SpaceAfterAuto;
