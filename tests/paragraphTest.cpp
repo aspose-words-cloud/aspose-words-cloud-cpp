@@ -31,7 +31,8 @@ class ParagraphTest : public InfrastructureTest {
 protected:
 	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Paragraphs")),
 		listFormatFolder = STCONVERT("DocumentElements/ParagraphListFormat"),
-		fieldFolder = STCONVERT("DocumentElements/Fields");
+		fieldFolder = STCONVERT("DocumentElements/Fields"),
+		tabStopFolder = STCONVERT("DocumentElements/Paragraphs");
 };
 
 /// <summary>
@@ -363,6 +364,99 @@ TEST_F(ParagraphTest, TestDeleteParagraphListFormat) {
 			boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	AsposeResponse<ParagraphListFormatResponse> actual = get_api()->deleteParagraphListFormat(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for getting paragraph tab stops
+/// </summary>
+TEST_F(ParagraphTest, TestGetParagraphTabStops) {
+	utility::string_t
+		localName = STCONVERT("ParagraphTabStops.docx"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(tabStopFolder, remoteName)),
+		filePath = path_combine(get_data_dir(tabStopFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<GetParagraphTabStopsRequest> request =
+		std::make_shared<GetParagraphTabStopsRequest>(remoteName, STCONVERT(""), 0,
+			path_combine_url(remoteBaseTestDataFolder, tabStopFolder), boost::none,
+			boost::none, boost::none);
+
+	AsposeResponse<TabStopsResponse> actual = get_api()->getParagraphTabStops(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for inserting paragraph tab stop
+/// </summary>
+TEST_F(ParagraphTest, TestInsertOrUpdateParagraphTabStop) {
+	utility::string_t
+		localName = STCONVERT("ParagraphTabStops.docx"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(tabStopFolder, remoteName)),
+		filePath = path_combine(get_data_dir(tabStopFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<TabStopInsert> dto = std::make_shared<TabStopInsert>();
+	dto->setAlignment(STCONVERT("Left"));
+	dto->setLeader(STCONVERT("None"));
+	dto->setPosition(72);
+
+	std::shared_ptr<InsertOrUpdateParagraphTabStopRequest> request =
+		std::make_shared<InsertOrUpdateParagraphTabStopRequest>(remoteName, STCONVERT(""), dto, 0,
+			path_combine_url(remoteBaseTestDataFolder, tabStopFolder), boost::none,
+			boost::none, boost::none, boost::none);
+
+	AsposeResponse<TabStopsResponse> actual = get_api()->insertOrUpdateParagraphTabStop(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph tab stops
+/// </summary>
+TEST_F(ParagraphTest, TestDeleteAllParagraphTabStops) {
+	utility::string_t
+		localName = STCONVERT("ParagraphTabStops.docx"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(tabStopFolder, remoteName)),
+		filePath = path_combine(get_data_dir(tabStopFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteAllParagraphTabStopsRequest> request =
+		std::make_shared<DeleteAllParagraphTabStopsRequest>(remoteName, STCONVERT(""), 0,
+			path_combine_url(remoteBaseTestDataFolder, tabStopFolder), boost::none,
+			boost::none, boost::none, boost::none);
+
+	AsposeResponse<TabStopsResponse> actual = get_api()->deleteAllParagraphTabStops(request).get();
+
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting a paragraph tab stop
+/// </summary>
+TEST_F(ParagraphTest, TestDeleteParagraphTabStop) {
+	utility::string_t
+		localName = STCONVERT("ParagraphTabStops.docx"),
+		remoteName = localName,
+		fullName = path_combine_url(remoteBaseTestDataFolder, path_combine_url(tabStopFolder, remoteName)),
+		filePath = path_combine(get_data_dir(tabStopFolder), localName);
+
+	UploadFileToStorage(fullName, filePath);
+
+	std::shared_ptr<DeleteParagraphTabStopRequest> request =
+		std::make_shared<DeleteParagraphTabStopRequest>(remoteName, STCONVERT(""), 72, 0,
+			path_combine_url(remoteBaseTestDataFolder, tabStopFolder), boost::none,
+			boost::none, boost::none, boost::none);
+
+	AsposeResponse<TabStopsResponse> actual = get_api()->deleteParagraphTabStop(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
