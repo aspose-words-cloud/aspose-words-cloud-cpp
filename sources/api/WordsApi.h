@@ -1191,7 +1191,7 @@ public:
     ///<remarks>
     ///
     ///</remarks>
-    /// <param name="name">The document name.</param>
+    /// <param name="name">The template name.</param>
         /// <param name="data">Mail merge data (optional)</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
@@ -1460,7 +1460,7 @@ public:
     ///<remarks>
     ///
     ///</remarks>
-    /// <param name="name">The document name.</param>
+    /// <param name="name">The template name.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
