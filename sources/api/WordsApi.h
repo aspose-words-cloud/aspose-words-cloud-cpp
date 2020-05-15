@@ -388,14 +388,14 @@ public:
 		std::shared_ptr<AppendDocumentRequest> request
 	);
     ///<summary>
-    ///Apply a style to the document node.
+    ///Apply a style to the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
     ///</summary>
     ///<remarks>
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
         /// <param name="styleApply">Style to apply.</param>
-        /// <param name="styledNodePath">The path to the node that supports a style. Supported node types: ParagraphFormat, List, ListLevel, Table.</param>
+        /// <param name="styledNodePath">Path to the node of IStyledDocumentElement.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -522,7 +522,7 @@ public:
 		std::shared_ptr<CopyFolderRequest> request
 	);
     ///<summary>
-    ///Copy and insert a new style to the document, returns a copied style.
+    ///Copy and insert a new style to the document, returns an copied style.
     ///</summary>
     ///<remarks>
     ///
@@ -2176,13 +2176,13 @@ public:
 		std::shared_ptr<GetStyleRequest> request
 	);
     ///<summary>
-    ///Gets a style from the document node.
+    ///Gets a style from the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
     ///</summary>
     ///<remarks>
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="styledNodePath">The path to the node that supports a style. Supported node types: ParagraphFormat, List, ListLevel, Table.</param>
+        /// <param name="styledNodePath">Path to the node of IStyledDocumentElement.</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
@@ -3531,7 +3531,7 @@ public:
 		std::shared_ptr<UpdateSectionPageSetupRequest> request
 	);
     ///<summary>
-    ///Updates style properties, returns an updated style.
+    ///Updates a style properties, returns an updated style.
     ///</summary>
     ///<remarks>
     ///
