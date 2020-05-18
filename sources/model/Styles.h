@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="StylesResponse.h">
+* <copyright company="Aspose" file="Styles.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,12 +23,13 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StylesResponse_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_StylesResponse_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Styles_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_Styles_H_
 
 
-#include "Styles.h"
-#include "WordsResponse.h"
+#include "LinkElement.h"
+#include "Style.h"
+#include "WordsApiLink.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,14 +39,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/styles.
+/// Represents an array of styles list.
 /// </summary>
-class  StylesResponse
-    : public WordsResponse
+class  Styles
+    : public LinkElement
 {
 public:
-    StylesResponse();
-    virtual ~StylesResponse();
+    Styles();
+    virtual ~Styles();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -59,19 +60,19 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// StylesResponse members
+    /// Styles members
 
     /// <summary>
-    /// Gets or sets Styles.
+    /// Gets or sets array of document styles.
     /// </summary>
-    std::shared_ptr<Styles> getStyles() const;
-    bool stylesIsSet() const;
-    void unsetStyles();
-    void setStyles(std::shared_ptr<Styles> value);
+    std::vector<std::shared_ptr<Style>>& getStyleList();
+    bool styleListIsSet() const;
+    void unsetStyleList();
+    void setStyleList(std::vector<std::shared_ptr<Style>> const& value);
 
 protected:
-    std::shared_ptr<Styles> m_Styles;
-    bool m_StylesIsSet;
+    std::vector<std::shared_ptr<Style>> m_StyleList;
+    bool m_StyleListIsSet;
 };
 
 }
@@ -80,4 +81,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_StylesResponse_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_Styles_H_ */
