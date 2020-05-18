@@ -27,7 +27,7 @@
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StylesResponse_H_
 
 
-#include "Styles.h"
+#include "Style.h"
 #include "WordsResponse.h"
 #include <cpprest/details/basic_types.h>
 
@@ -62,15 +62,15 @@ public:
     /// StylesResponse members
 
     /// <summary>
-    /// Gets or sets Styles.
+    /// Gets or sets styles which are contained in document.
     /// </summary>
-    std::shared_ptr<Styles> getStyles() const;
+    std::vector<std::shared_ptr<Style>>& getStyles();
     bool stylesIsSet() const;
     void unsetStyles();
-    void setStyles(std::shared_ptr<Styles> value);
+    void setStyles(std::vector<std::shared_ptr<Style>> const& value);
 
 protected:
-    std::shared_ptr<Styles> m_Styles;
+    std::vector<std::shared_ptr<Style>> m_Styles;
     bool m_StylesIsSet;
 };
 
