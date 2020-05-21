@@ -27,7 +27,7 @@ parallel windows: {
                     withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
                         try {
                             bat (script: "docker pull ${buildCacheImage}/win")
-                            bat (script: "docker build --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows . ")
+                            bat (script: "docker build -f Dockerfile.windows --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows . ")
                             bat (script: "docker push ${buildCacheImage}/win")
                             def apiUrl = params.apiUrl
                             bat 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %apiUrl%'
@@ -55,8 +55,10 @@ parallel windows: {
                 stage('linux_tests'){
                     withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
                         try {
-                            sh 'docker build -f Dockerfile.linux -t aspose-words-cloud-cpp:linux .'
-                            sh 'docker build -f Dockerfile.tests.linux -t aspose-words-cloud-cpp-tests:linux .'
+                            sh (script: "docker pull ${buildCacheImage}/linux")
+                            sh (script: "docker build -f Dockerfile.linux --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux .")
+                            sh (script: "docker push ${buildCacheImage}/linux")
+
                             sh 'docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $apiUrl'
                         } finally {
                             junit '**\\out\\test_result.xml'
