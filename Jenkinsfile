@@ -8,6 +8,8 @@ properties([
 	]
 ])
 
+def buildCacheImage = "registry.gitlab.com/ivanov.john/test/sdk/cpp"
+
 parallel windows: {
     node('windows2016') {
         try {
@@ -19,9 +21,14 @@ parallel windows: {
             
             gitlabCommitStatus("windows_tests") {
                 stage('windows_tests'){
+                    withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
+                        bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" registry.gitlab.com'
+                    }
                     withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
                         try {
-                            bat 'docker build -f Dockerfile.windows -t aspose-words-cloud-cpp:windows .'
+                            bat (script: "docker pull ${buildCacheImage}/win")
+                            bat (script: "docker build --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows . ")
+                            bat (script: "docker push ${buildCacheImage}/win")
                             def apiUrl = params.apiUrl
                             bat 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %apiUrl%'
                         } finally {
