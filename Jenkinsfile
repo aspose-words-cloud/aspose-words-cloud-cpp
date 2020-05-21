@@ -8,7 +8,7 @@ properties([
 	]
 ])
 
-def buildCacheImage = "registry.gitlab.com/ivanov.john/test/sdk/cpp"
+def buildCacheImage = "registry.gitlab.com/ivanov.john/test/cpp"
 
 parallel windows: {
     node('windows2016') {
