@@ -28,6 +28,7 @@
 
 #include "cpprest/details/basic_types.h"
 #include "HttpContent.h"
+#include "DrawingObjectInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +41,7 @@ class InsertDrawingObjectWithoutNodePathRequest{
     public: 
      InsertDrawingObjectWithoutNodePathRequest(
                 utility::string_t name,
-                utility::string_t drawingObject,
+                std::shared_ptr<DrawingObjectInsert> drawingObject,
                 std::shared_ptr<HttpContent> imageFile,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -54,8 +55,8 @@ class InsertDrawingObjectWithoutNodePathRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getDrawingObject() const;
-        void setDrawingObject(utility::string_t drawingObject);
+        std::shared_ptr<DrawingObjectInsert> getDrawingObject() const;
+        void setDrawingObject(std::shared_ptr<DrawingObjectInsert> drawingObject);
 
         std::shared_ptr<HttpContent> getImageFile() const;
         void setImageFile(std::shared_ptr<HttpContent> imageFile);
@@ -82,7 +83,7 @@ class InsertDrawingObjectWithoutNodePathRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        utility::string_t m_drawingObject;
+        std::shared_ptr<DrawingObjectInsert> m_drawingObject;
         std::shared_ptr<HttpContent> m_imageFile;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;

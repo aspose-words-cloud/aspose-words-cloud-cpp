@@ -17084,6 +17084,12 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::insertComment(std::shared_
 pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(std::shared_ptr<InsertDrawingObjectRequest> request)
 {
 
+    // verify the required parameter 'drawingObject' is set
+    if (request->getDrawingObject() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'drawingObject' when calling WordsApi->insertDrawingObject"));
+    }
+
     // verify the required parameter 'imageFile' is set
     if (request->getImageFile() == nullptr)
     {
@@ -17133,6 +17139,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert(_XPLATSTR("multipart/form-data"));
 
+    if (request->getDrawingObject() != nullptr)
     {
         formParams.push_back(ApiClient::FormParamContainer(_XPLATSTR("DrawingObject"), ApiClient::parameterToString((request->getDrawingObject()))));
     }
@@ -17242,6 +17249,12 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObject(
 pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectWithoutNodePath(std::shared_ptr<InsertDrawingObjectWithoutNodePathRequest> request)
 {
 
+    // verify the required parameter 'drawingObject' is set
+    if (request->getDrawingObject() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'drawingObject' when calling WordsApi->insertDrawingObjectWithoutNodePath"));
+    }
+
     // verify the required parameter 'imageFile' is set
     if (request->getImageFile() == nullptr)
     {
@@ -17289,6 +17302,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::insertDrawingObjectW
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert(_XPLATSTR("multipart/form-data"));
 
+    if (request->getDrawingObject() != nullptr)
     {
         formParams.push_back(ApiClient::FormParamContainer(_XPLATSTR("DrawingObject"), ApiClient::parameterToString((request->getDrawingObject()))));
     }
@@ -24370,6 +24384,12 @@ pplx::task<AsposeResponse<CommentResponse>> WordsApi::updateComment(std::shared_
 pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(std::shared_ptr<UpdateDrawingObjectRequest> request)
 {
 
+    // verify the required parameter 'drawingObject' is set
+    if (request->getDrawingObject() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'drawingObject' when calling WordsApi->updateDrawingObject"));
+    }
+
     // verify the required parameter 'imageFile' is set
     if (request->getImageFile() == nullptr)
     {
@@ -24421,6 +24441,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert(_XPLATSTR("multipart/form-data"));
 
+    if (request->getDrawingObject() != nullptr)
     {
         formParams.push_back(ApiClient::FormParamContainer(_XPLATSTR("DrawingObject"), ApiClient::parameterToString((request->getDrawingObject()))));
     }
@@ -24530,6 +24551,12 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObject(
 pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectWithoutNodePath(std::shared_ptr<UpdateDrawingObjectWithoutNodePathRequest> request)
 {
 
+    // verify the required parameter 'drawingObject' is set
+    if (request->getDrawingObject() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'drawingObject' when calling WordsApi->updateDrawingObjectWithoutNodePath"));
+    }
+
     // verify the required parameter 'imageFile' is set
     if (request->getImageFile() == nullptr)
     {
@@ -24579,6 +24606,7 @@ pplx::task<AsposeResponse<DrawingObjectResponse>> WordsApi::updateDrawingObjectW
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert(_XPLATSTR("multipart/form-data"));
 
+    if (request->getDrawingObject() != nullptr)
     {
         formParams.push_back(ApiClient::FormParamContainer(_XPLATSTR("DrawingObject"), ApiClient::parameterToString((request->getDrawingObject()))));
     }

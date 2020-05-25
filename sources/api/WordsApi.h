@@ -250,7 +250,9 @@
 #include "DocumentPropertyCreateOrUpdate.h"
 #include "DocumentPropertyResponse.h"
 #include "DocumentResponse.h"
+#include "DrawingObjectInsert.h"
 #include "DrawingObjectResponse.h"
+#include "DrawingObjectUpdate.h"
 #include "DrawingObjectsResponse.h"
 #include "FieldInsert.h"
 #include "FieldNamesResponse.h"
@@ -2384,7 +2386,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="drawingObject">Drawing object parameters</param>
+        /// <param name="drawingObject">Drawing object parameters.</param>
         /// <param name="imageFile">File with image</param>
         /// <param name="nodePath">Path to the node, which contains collection of drawing objects.</param>
         /// <param name="folder">Original document folder. (optional)</param>
@@ -2404,7 +2406,7 @@ public:
     ///
     ///</remarks>
     /// <param name="name">The document name.</param>
-        /// <param name="drawingObject">Drawing object parameters</param>
+        /// <param name="drawingObject">Drawing object parameters.</param>
         /// <param name="imageFile">File with image</param>
         /// <param name="folder">Original document folder. (optional)</param>
         /// <param name="storage">Original document storage. (optional)</param>
