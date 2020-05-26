@@ -148,7 +148,7 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjectImageData) {
 }
 
 /// <summary>
-/// Test for adding drawing object
+/// Test for updating drawing object
 /// </summary>
 TEST_F(DrawingObjectsTest, TestPutDrawingObject) {
 	utility::string_t
@@ -160,8 +160,9 @@ TEST_F(DrawingObjectsTest, TestPutDrawingObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
+	std::shared_ptr<DrawingObjectUpdate> body= std::make_shared<DrawingObjectUpdate>();
 	std::shared_ptr<UpdateDrawingObjectRequest> request=
-			std::make_shared<UpdateDrawingObjectRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
+			std::make_shared<UpdateDrawingObjectRequest>(remoteName, body,
 		generate_http_content_from_file(path_combine(get_data_dir(commonFolder), image)),
 		STCONVERT(""), 0, dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
@@ -192,7 +193,7 @@ TEST_F(DrawingObjectsTest, TestDeleteDrawingObject) {
 }
 
 /// <summary>
-/// Test for updating drawing object
+/// Test for adding drawing object
 /// </summary>
 TEST_F(DrawingObjectsTest, TestPostDrawingObject) {
 	utility::string_t
@@ -205,8 +206,9 @@ TEST_F(DrawingObjectsTest, TestPostDrawingObject) {
 
 	UploadFileToStorage(fullName, filePath);
 
+	std::shared_ptr<DrawingObjectInsert> body= std::make_shared<DrawingObjectInsert>();
 	std::shared_ptr<InsertDrawingObjectRequest> request=
-			std::make_shared<InsertDrawingObjectRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
+			std::make_shared<InsertDrawingObjectRequest>(remoteName, body,
 		generate_http_content_from_file(imagePath), STCONVERT(""), dataFolder,
 		boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
@@ -330,7 +332,7 @@ TEST_F(DrawingObjectsTest, TestGetDocumentDrawingObjectImageDataWithoutNodePath)
 }
 
 /// <summary>
-/// Test for adding drawing object
+/// Test for updating drawing object
 /// </summary>
 TEST_F(DrawingObjectsTest, TestPutDrawingObjectWithoutNodePath) {
 	utility::string_t
@@ -342,8 +344,9 @@ TEST_F(DrawingObjectsTest, TestPutDrawingObjectWithoutNodePath) {
 
 	UploadFileToStorage(fullName, filePath);
 
+	std::shared_ptr<DrawingObjectUpdate> body= std::make_shared<DrawingObjectUpdate>();
 	std::shared_ptr<UpdateDrawingObjectWithoutNodePathRequest> request =
-		std::make_shared<UpdateDrawingObjectWithoutNodePathRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
+		std::make_shared<UpdateDrawingObjectWithoutNodePathRequest>(remoteName, body,
 			generate_http_content_from_file(path_combine(get_data_dir(commonFolder), image)),
 			0, dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
@@ -374,7 +377,7 @@ TEST_F(DrawingObjectsTest, TestDeleteDrawingObjectWithoutNodePath) {
 }
 
 /// <summary>
-/// Test for updating drawing object
+/// Test for inserting drawing object
 /// </summary>
 TEST_F(DrawingObjectsTest, TestPostDrawingObjectWithoutNodePath) {
 	utility::string_t
@@ -386,9 +389,10 @@ TEST_F(DrawingObjectsTest, TestPostDrawingObjectWithoutNodePath) {
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	UploadFileToStorage(fullName, filePath);
-
+	
+	std::shared_ptr<DrawingObjectInsert> body= std::make_shared<DrawingObjectInsert>();
 	std::shared_ptr<InsertDrawingObjectWithoutNodePathRequest> request =
-		std::make_shared<InsertDrawingObjectWithoutNodePathRequest>(remoteName, STCONVERT("{\"Left\": 0}"),
+		std::make_shared<InsertDrawingObjectWithoutNodePathRequest>(remoteName, body,
 			generate_http_content_from_file(imagePath), dataFolder,
 			boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 

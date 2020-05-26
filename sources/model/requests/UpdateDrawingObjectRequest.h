@@ -28,6 +28,7 @@
 
 #include "cpprest/details/basic_types.h"
 #include "HttpContent.h"
+#include "DrawingObjectUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -40,7 +41,7 @@ class UpdateDrawingObjectRequest{
     public: 
      UpdateDrawingObjectRequest(
                 utility::string_t name,
-                utility::string_t drawingObject,
+                std::shared_ptr<DrawingObjectUpdate> drawingObject,
                 std::shared_ptr<HttpContent> imageFile,
                 utility::string_t nodePath,
                 int32_t index,
@@ -56,8 +57,8 @@ class UpdateDrawingObjectRequest{
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getDrawingObject() const;
-        void setDrawingObject(utility::string_t drawingObject);
+        std::shared_ptr<DrawingObjectUpdate> getDrawingObject() const;
+        void setDrawingObject(std::shared_ptr<DrawingObjectUpdate> drawingObject);
 
         std::shared_ptr<HttpContent> getImageFile() const;
         void setImageFile(std::shared_ptr<HttpContent> imageFile);
@@ -90,7 +91,7 @@ class UpdateDrawingObjectRequest{
         void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        utility::string_t m_drawingObject;
+        std::shared_ptr<DrawingObjectUpdate> m_drawingObject;
         std::shared_ptr<HttpContent> m_imageFile;
         utility::string_t m_nodePath;
         int32_t m_index;
