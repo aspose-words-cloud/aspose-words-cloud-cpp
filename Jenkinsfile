@@ -8,7 +8,7 @@ properties([
 	]
 ])
 
-def buildCacheImage = "registry.gitlab.com/ivanov.john/test/cpp"
+def buildCacheImage = "git.auckland.dynabic.com:4567/words-cloud/api/cpp"
 
 parallel windows: {
     node('windows2016') {
@@ -22,7 +22,7 @@ parallel windows: {
             gitlabCommitStatus("windows_tests") {
                 stage('windows_tests'){
                     withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
-                        bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" registry.gitlab.com'
+                        bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
                     }
                     withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
                         try {
@@ -54,7 +54,7 @@ parallel windows: {
             gitlabCommitStatus("linux_tests") {
                 stage('linux_tests'){
                     withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
-                        sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" registry.gitlab.com'
+                        sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
                     }
                     withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
                         try {
