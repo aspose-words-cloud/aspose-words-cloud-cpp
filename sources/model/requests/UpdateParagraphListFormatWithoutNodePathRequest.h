@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.h">
+* <copyright company="Aspose" file="UpdateParagraphListFormatWithoutNodePathRequest.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef deleteParagraphTabStop_H
-#define deleteParagraphTabStop_H 
+#ifndef updateParagraphListFormatWithoutNodePath_H
+#define updateParagraphListFormatWithoutNodePath_H 
 
 #include "cpprest/details/basic_types.h"
+#include "ListFormatUpdate.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -35,28 +36,26 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteParagraphTabStopRequest{
+class UpdateParagraphListFormatWithoutNodePathRequest{
     public: 
-     DeleteParagraphTabStopRequest(
+     UpdateParagraphListFormatWithoutNodePathRequest(
                 utility::string_t name,
-                double position,
-                utility::string_t nodePath,
+                std::shared_ptr<ListFormatUpdate> dto,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        double getPosition() const;
-        void setPosition(double position);
-
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
+        std::shared_ptr<ListFormatUpdate> getDto() const;
+        void setDto(std::shared_ptr<ListFormatUpdate> dto);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -75,16 +74,23 @@ class DeleteParagraphTabStopRequest{
 
         boost::optional<utility::string_t> getDestFileName() const;
         void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+
+        boost::optional<utility::string_t> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
     private:
         utility::string_t m_name;
-        double m_position;
-        utility::string_t m_nodePath;
+        std::shared_ptr<ListFormatUpdate> m_dto;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;
         boost::optional<utility::string_t> m_password;
         boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_revisionAuthor;
+        boost::optional<utility::string_t> m_revisionDateTime;
 };
 
 }

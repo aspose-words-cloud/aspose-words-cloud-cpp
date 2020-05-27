@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.h">
+* <copyright company="Aspose" file="InsertParagraphWithoutNodePathRequest.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,10 +23,11 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef deleteParagraphTabStop_H
-#define deleteParagraphTabStop_H 
+#ifndef insertParagraphWithoutNodePath_H
+#define insertParagraphWithoutNodePath_H 
 
 #include "cpprest/details/basic_types.h"
+#include "ParagraphInsert.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -35,31 +36,26 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteParagraphTabStopRequest{
+class InsertParagraphWithoutNodePathRequest{
     public: 
-     DeleteParagraphTabStopRequest(
+     InsertParagraphWithoutNodePathRequest(
                 utility::string_t name,
-                double position,
-                utility::string_t nodePath,
-                int32_t index,
+                std::shared_ptr<ParagraphInsert> paragraph,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
                 boost::optional<utility::string_t> loadEncoding,
                 boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+                boost::optional<utility::string_t> destFileName,
+                boost::optional<utility::string_t> revisionAuthor,
+                boost::optional<utility::string_t> revisionDateTime,
+                boost::optional<utility::string_t> insertBeforeNode
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        double getPosition() const;
-        void setPosition(double position);
-
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
-
-        int32_t getIndex() const;
-        void setIndex(int32_t index);
+        std::shared_ptr<ParagraphInsert> getParagraph() const;
+        void setParagraph(std::shared_ptr<ParagraphInsert> paragraph);
 
         boost::optional<utility::string_t> getFolder() const;
         void setFolder(boost::optional<utility::string_t> folder);
@@ -75,16 +71,26 @@ class DeleteParagraphTabStopRequest{
 
         boost::optional<utility::string_t> getDestFileName() const;
         void setDestFileName(boost::optional<utility::string_t> destFileName);
+
+        boost::optional<utility::string_t> getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+
+        boost::optional<utility::string_t> getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+
+        boost::optional<utility::string_t> getInsertBeforeNode() const;
+        void setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode);
     private:
         utility::string_t m_name;
-        double m_position;
-        utility::string_t m_nodePath;
-        int32_t m_index;
+        std::shared_ptr<ParagraphInsert> m_paragraph;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
         boost::optional<utility::string_t> m_loadEncoding;
         boost::optional<utility::string_t> m_password;
         boost::optional<utility::string_t> m_destFileName;
+        boost::optional<utility::string_t> m_revisionAuthor;
+        boost::optional<utility::string_t> m_revisionDateTime;
+        boost::optional<utility::string_t> m_insertBeforeNode;
 };
 
 }

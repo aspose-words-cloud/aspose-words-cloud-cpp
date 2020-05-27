@@ -2337,6 +2337,144 @@ pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::deleteAllParagraphTabStop
         return result;
     });
 }
+pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::deleteAllParagraphTabStopsWithoutNodePath(std::shared_ptr<DeleteAllParagraphTabStopsWithoutNodePathRequest> request)
+{
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/tabstops"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->deleteAllParagraphTabStopsWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->deleteAllParagraphTabStopsWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("DELETE"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<TabStopsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TabStopsResponse>(new TabStopsResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling deleteAllParagraphTabStopsWithoutNodePath: unsupported response type"));
+        }
+
+        return result;
+    });
+}
 pplx::task<AsposeResponse<BorderResponse>> WordsApi::deleteBorder(std::shared_ptr<DeleteBorderRequest> request)
 {
 
@@ -5249,6 +5387,152 @@ pplx::task<AsposeResponse<ParagraphListFormatResponse>> WordsApi::deleteParagrap
         return result;
     });
 }
+pplx::task<AsposeResponse<ParagraphListFormatResponse>> WordsApi::deleteParagraphListFormatWithoutNodePath(std::shared_ptr<DeleteParagraphListFormatWithoutNodePathRequest> request)
+{
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/listFormat"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->deleteParagraphListFormatWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+    if (request->getRevisionAuthor())
+    {
+        queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
+    }
+    if (request->getRevisionDateTime())
+    {
+        queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->deleteParagraphListFormatWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("DELETE"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<ParagraphListFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphListFormatResponse>(new ParagraphListFormatResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling deleteParagraphListFormatWithoutNodePath: unsupported response type"));
+        }
+
+        return result;
+    });
+}
 pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::deleteParagraphTabStop(std::shared_ptr<DeleteParagraphTabStopRequest> request)
 {
 
@@ -5387,6 +5671,147 @@ pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::deleteParagraphTabStop(st
         {
             throw ApiException(500
                 , _XPLATSTR("error calling deleteParagraphTabStop: unsupported response type"));
+        }
+
+        return result;
+    });
+}
+pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::deleteParagraphTabStopWithoutNodePath(std::shared_ptr<DeleteParagraphTabStopWithoutNodePathRequest> request)
+{
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/tabstop"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->deleteParagraphTabStopWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    {
+        queryParams[_XPLATSTR("Position")] = ApiClient::parameterToString((request->getPosition()));
+    }
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->deleteParagraphTabStopWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("DELETE"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<TabStopsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TabStopsResponse>(new TabStopsResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling deleteParagraphTabStopWithoutNodePath: unsupported response type"));
         }
 
         return result;
@@ -13824,6 +14249,140 @@ pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::getParagraphTabStops(std:
         return result;
     });
 }
+pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::getParagraphTabStopsWithoutNodePath(std::shared_ptr<GetParagraphTabStopsWithoutNodePathRequest> request)
+{
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/tabstops"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->getParagraphTabStopsWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->getParagraphTabStopsWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<TabStopsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TabStopsResponse>(new TabStopsResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling getParagraphTabStopsWithoutNodePath: unsupported response type"));
+        }
+
+        return result;
+    });
+}
 pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::getParagraphWithoutNodePath(std::shared_ptr<GetParagraphWithoutNodePathRequest> request)
 {
 
@@ -18903,6 +19462,165 @@ pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::insertOrUpdateParagraphTa
         return result;
     });
 }
+pplx::task<AsposeResponse<TabStopsResponse>> WordsApi::insertOrUpdateParagraphTabStopWithoutNodePath(std::shared_ptr<InsertOrUpdateParagraphTabStopWithoutNodePathRequest> request)
+{
+
+    // verify the required parameter 'dto' is set
+    if (request->getDto() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'dto' when calling WordsApi->insertOrUpdateParagraphTabStopWithoutNodePath"));
+    }
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/tabstops"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->insertOrUpdateParagraphTabStopWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+        web::json::value json;
+
+        json = ModelBase::toJson(request->getDto());
+        
+
+        httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
+
+        if (request->getDto().get())
+        {
+            (request->getDto())->toMultipart(multipart, _XPLATSTR("dto"));
+        }
+
+        httpBody = multipart;
+        requestHttpContentType += _XPLATSTR("; boundary=") + multipart->getBoundary();
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->insertOrUpdateParagraphTabStopWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<TabStopsResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<TabStopsResponse>(new TabStopsResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling insertOrUpdateParagraphTabStopWithoutNodePath: unsupported response type"));
+        }
+
+        return result;
+    });
+}
 pplx::task<AsposeResponse<DocumentResponse>> WordsApi::insertPageNumbers(std::shared_ptr<InsertPageNumbersRequest> request)
 {
 
@@ -19234,6 +19952,175 @@ pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraph(std::sha
         {
             throw ApiException(500
                 , _XPLATSTR("error calling insertParagraph: unsupported response type"));
+        }
+
+        return result;
+    });
+}
+pplx::task<AsposeResponse<ParagraphResponse>> WordsApi::insertParagraphWithoutNodePath(std::shared_ptr<InsertParagraphWithoutNodePathRequest> request)
+{
+
+    // verify the required parameter 'paragraph' is set
+    if (request->getParagraph() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'paragraph' when calling WordsApi->insertParagraphWithoutNodePath"));
+    }
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->insertParagraphWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+    if (request->getRevisionAuthor())
+    {
+        queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
+    }
+    if (request->getRevisionDateTime())
+    {
+        queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
+    }
+    if (request->getInsertBeforeNode())
+    {
+        queryParams[_XPLATSTR("InsertBeforeNode")] = ApiClient::parameterToString(*(request->getInsertBeforeNode()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+        web::json::value json;
+
+        json = ModelBase::toJson(request->getParagraph());
+        
+
+        httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
+
+        if (request->getParagraph().get())
+        {
+            (request->getParagraph())->toMultipart(multipart, _XPLATSTR("paragraph"));
+        }
+
+        httpBody = multipart;
+        requestHttpContentType += _XPLATSTR("; boundary=") + multipart->getBoundary();
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->insertParagraphWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<ParagraphResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphResponse>(new ParagraphResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling insertParagraphWithoutNodePath: unsupported response type"));
         }
 
         return result;
@@ -26195,6 +27082,173 @@ pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFor
         return result;
     });
 }
+pplx::task<AsposeResponse<ParagraphFormatResponse>> WordsApi::updateParagraphFormatWithoutNodePath(std::shared_ptr<UpdateParagraphFormatWithoutNodePathRequest> request)
+{
+
+    // verify the required parameter 'dto' is set
+    if (request->getDto() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'dto' when calling WordsApi->updateParagraphFormatWithoutNodePath"));
+    }
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/format"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->updateParagraphFormatWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+    if (request->getRevisionAuthor())
+    {
+        queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
+    }
+    if (request->getRevisionDateTime())
+    {
+        queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+        web::json::value json;
+
+        json = ModelBase::toJson(request->getDto());
+        
+
+        httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
+
+        if (request->getDto().get())
+        {
+            (request->getDto())->toMultipart(multipart, _XPLATSTR("dto"));
+        }
+
+        httpBody = multipart;
+        requestHttpContentType += _XPLATSTR("; boundary=") + multipart->getBoundary();
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->updateParagraphFormatWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<ParagraphFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphFormatResponse>(new ParagraphFormatResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling updateParagraphFormatWithoutNodePath: unsupported response type"));
+        }
+
+        return result;
+    });
+}
 pplx::task<AsposeResponse<ParagraphListFormatResponse>> WordsApi::updateParagraphListFormat(std::shared_ptr<UpdateParagraphListFormatRequest> request)
 {
 
@@ -26359,6 +27413,173 @@ pplx::task<AsposeResponse<ParagraphListFormatResponse>> WordsApi::updateParagrap
         {
             throw ApiException(500
                 , _XPLATSTR("error calling updateParagraphListFormat: unsupported response type"));
+        }
+
+        return result;
+    });
+}
+pplx::task<AsposeResponse<ParagraphListFormatResponse>> WordsApi::updateParagraphListFormatWithoutNodePath(std::shared_ptr<UpdateParagraphListFormatWithoutNodePathRequest> request)
+{
+
+    // verify the required parameter 'dto' is set
+    if (request->getDto() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'dto' when calling WordsApi->updateParagraphListFormatWithoutNodePath"));
+    }
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = _XPLATSTR("/") + apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/paragraphs/{index}/listFormat"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+    path = replacePathParameter(path, _XPLATSTR("index"),
+        ApiClient::parameterToString(request->getIndex()));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    responseHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.empty())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(_XPLATSTR("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = _XPLATSTR("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, _XPLATSTR("WordsApi->updateParagraphListFormatWithoutNodePath does not produce any supported media type"));
+    }
+
+    headerParams[_XPLATSTR("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+    if (request->getRevisionAuthor())
+    {
+        queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
+    }
+    if (request->getRevisionDateTime())
+    {
+        queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+        web::json::value json;
+
+        json = ModelBase::toJson(request->getDto());
+        
+
+        httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
+
+        if (request->getDto().get())
+        {
+            (request->getDto())->toMultipart(multipart, _XPLATSTR("dto"));
+        }
+
+        httpBody = multipart;
+        requestHttpContentType += _XPLATSTR("; boundary=") + multipart->getBoundary();
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->updateParagraphListFormatWithoutNodePath does not consume any supported media type"));
+    }
+
+    // authentication (JWT) required
+    // oauth2 authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+			web::json::value error_json = response.extract_json().get();
+			errorResponse->fromJson(error_json);
+
+			throw ApiException(response.status_code()
+				, _XPLATSTR("request error: ") + response.reason_phrase()
+				, errorResponse);
+		}
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+		AsposeResponse<ParagraphListFormatResponse> result = {
+			std::make_shared<web::http::http_response>(response),
+			std::shared_ptr<ParagraphListFormatResponse>(new ParagraphListFormatResponse())
+		};
+
+        if (responseHttpContentType == _XPLATSTR("application/json"))
+        {
+            web::json::value json = response.extract_json().get();
+            result.body->fromJson(json);
+            postInitializeResponse(json, result.body.get());
+        }
+        // else if (responseHttpContentType == _XPLATSTR("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , _XPLATSTR("error calling updateParagraphListFormatWithoutNodePath: unsupported response type"));
         }
 
         return result;

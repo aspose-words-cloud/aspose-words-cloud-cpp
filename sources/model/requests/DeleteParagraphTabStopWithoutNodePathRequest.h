@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.h">
+* <copyright company="Aspose" file="DeleteParagraphTabStopWithoutNodePathRequest.h">
 *   Copyright (c) 2019 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 #pragma once
-#ifndef deleteParagraphTabStop_H
-#define deleteParagraphTabStop_H 
+#ifndef deleteParagraphTabStopWithoutNodePath_H
+#define deleteParagraphTabStopWithoutNodePath_H 
 
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -35,12 +35,11 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteParagraphTabStopRequest{
+class DeleteParagraphTabStopWithoutNodePathRequest{
     public: 
-     DeleteParagraphTabStopRequest(
+     DeleteParagraphTabStopWithoutNodePathRequest(
                 utility::string_t name,
                 double position,
-                utility::string_t nodePath,
                 int32_t index,
                 boost::optional<utility::string_t> folder,
                 boost::optional<utility::string_t> storage,
@@ -54,9 +53,6 @@ class DeleteParagraphTabStopRequest{
 
         double getPosition() const;
         void setPosition(double position);
-
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -78,7 +74,6 @@ class DeleteParagraphTabStopRequest{
     private:
         utility::string_t m_name;
         double m_position;
-        utility::string_t m_nodePath;
         int32_t m_index;
         boost::optional<utility::string_t> m_folder;
         boost::optional<utility::string_t> m_storage;
