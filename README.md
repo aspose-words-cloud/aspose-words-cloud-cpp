@@ -169,23 +169,32 @@ target_link_libraries(your_app_target PRIVATE Aspose::Words.Cloud)
 
 Typical usage of the SDK in code follows this template:
 ```
+	// Start README example
+
 	//  create client configuration
 	auto config = std::make_shared<ApiConfiguration>(yourApiKey, yourApiSid);
+	// optional step, default value is https://api.aspose.cloud
+	config->setBaseUrl(baseUrl);
 
 	// create API
 	auto api = std::make_shared<WordsApi>(config);
 
-	try
-	{
-		// call one of API methods
-		auto request = std::make_shared<GetSectionsRequest>(docName, boost::none, boost::none, boost::none, boost::none);
-		auto response = api->getSections(request).get();
-		auto sections = response->getSections();
-	}
-	catch (ApiException& exception)
-	{
-		cout << "Error code: " << exception.error_code() << endl;
-	}
+	// read file content
+	auto content = std::make_shared<HttpContent>();
+	auto stream = std::make_shared<fs::ifstream>(localPath, std::ifstream::binary);
+	content->setData(stream);
+	content->setContentDisposition(_XPLATSTR("form-data"));
+
+	// upload file
+	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath, boost::none);
+	api->uploadFile(uploadRequest).get();
+
+	// call one of API methods
+	auto request = std::make_shared<GetSectionsRequest>(remoteName, dataFolder, boost::none, boost::none, boost::none);
+	auto response = api->getSections(request).get();
+	auto sections = response.body->getSections();
+
+	// End README example
 ```
 
 [Product Page](https://products.aspose.cloud/words/cpp) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
