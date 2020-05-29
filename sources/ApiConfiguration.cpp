@@ -29,18 +29,23 @@ namespace words {
 namespace cloud {
 namespace api {
 
-ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t appSid)
+ApiConfiguration::ApiConfiguration()
 {
-    if (appSid.empty()) {
-        throw _XPLATSTR("appSid could not be an empty string.");
-    }
-    
-    if (appKey.empty()) {
-        throw _XPLATSTR("appKey could not be an empty string.");
-    }
+    web::http::client::http_client_config httpConfig;
+    setHttpConfig(httpConfig);
+}
+
+ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t appSid) : ApiConfiguration()
+{
+    setAppKey(appKey);
+    setAppSid(appSid);
 }
 
 void ApiConfiguration::setAppKey( utility::string_t appKey){
+    if (appKey.empty()) {
+        throw _XPLATSTR("appKey could not be an empty string.");
+    }
+
     m_AppKey = std::move(appKey);
 }
 
@@ -49,6 +54,10 @@ utility::string_t ApiConfiguration::getAppKey() const {
 }
 
 void ApiConfiguration::setAppSid( utility::string_t appSid){
+    if (appSid.empty()) {
+        throw _XPLATSTR("appSid could not be an empty string.");
+    }
+
     m_AppSid = std::move(appSid);
 }
 

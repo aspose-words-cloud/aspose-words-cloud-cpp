@@ -56,9 +56,6 @@ std::shared_ptr<ApiConfiguration> get_config()
 	credentials = get_file_text_as_string({ fs::path{ TEST_ROOT }.parent_path() / "servercreds.json" });
 	web::json::value fileJson = web::json::value::parse(credentials);
 
-	web::http::client::http_client_config conf;
-	conf.set_timeout(std::chrono::seconds(60));
-
 	auto newConfig = std::make_shared<ApiConfiguration>();
 	newConfig->setAppKey(fileJson[_XPLATSTR("AppKey")].as_string());
 	newConfig->setAppSid(fileJson[_XPLATSTR("AppSid")].as_string());
@@ -66,9 +63,9 @@ std::shared_ptr<ApiConfiguration> get_config()
 	if (fileJson.has_string_field(_XPLATSTR("BaseUrl"))) {
 		newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
 	}
-	newConfig->setUserAgent(_XPLATSTR("CppAsposeClient"));
 
-	newConfig->setHttpConfig(conf);
+	auto httpConfig = newConfig->getHttpConfig();
+	httpConfig.set_timeout(std::chrono::seconds(60));
 
 	return newConfig;
 }

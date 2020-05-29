@@ -43,7 +43,7 @@ namespace api {
 class  ApiConfiguration
 {
 public:
-    ApiConfiguration() = default;
+    ApiConfiguration();
     ApiConfiguration(utility::string_t appKey, utility::string_t appSid);
     virtual ~ApiConfiguration() = default;
 
@@ -82,7 +82,7 @@ protected:
     utility::string_t m_AppSid;
 
     web::http::client::http_client_config m_HttpConfig;
-    utility::string_t m_UserAgent;
+    utility::string_t m_UserAgent = STCONVERT("CppAsposeClient");
 };
 
 }
