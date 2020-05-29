@@ -147,7 +147,7 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 		std::string apiCode_str(apiCode.begin(), apiCode.end());
 		std::vector<std::string> apiMethods;
 		std::smatch match;
-		std::regex regEx("> WordsApi::(.*)\\(");
+		std::regex regEx("pplx::task[^\\s]+\\s([^\\(]+)");
 		while (std::regex_search(apiCode_str, match, regEx)) {
 			apiMethods.push_back(match[1].str());
 			apiCode_str = match.suffix().str();
@@ -161,6 +161,11 @@ TEST_F(BaseApiTest, TestApiCoverage) {
 			{
 				testsCode += get_file_text(file);
 			}
+		}
+
+		if (apiMethods.empty())
+		{
+			throw STCONVERT("No API methos found");
 		}
 
 		for (const auto& method : apiMethods) {
