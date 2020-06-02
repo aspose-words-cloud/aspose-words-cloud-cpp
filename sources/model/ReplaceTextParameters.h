@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceTextParameters.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceTextParameters_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceTextParameters_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Class for document replace text request building.
 /// </summary>
-class  ReplaceTextParameters
+class ReplaceTextParameters
     : public ModelBase
 {
 public:
@@ -62,26 +60,13 @@ public:
     /// ReplaceTextParameters members
 
     /// <summary>
-    /// Gets or sets old text value (or regex pattern IsOldValueRegex) to replace.
-    /// </summary>
-    utility::string_t getOldValue() const;
-    bool oldValueIsSet() const;
-    void unsetOldValue();
-    void setOldValue(utility::string_t value);
-    /// <summary>
-    /// Gets or sets new text value to replace by.
-    /// </summary>
-    utility::string_t getNewValue() const;
-    bool newValueIsSet() const;
-    void unsetNewValue();
-    void setNewValue(utility::string_t value);
-    /// <summary>
     /// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
     /// </summary>
     bool isIsMatchCase() const;
     bool isMatchCaseIsSet() const;
     void unsetIsMatchCase();
     void setIsMatchCase(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether flag, means that only whole word matched are replaced.
     /// </summary>
@@ -89,6 +74,7 @@ public:
     bool isMatchWholeWordIsSet() const;
     void unsetIsMatchWholeWord();
     void setIsMatchWholeWord(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
     /// </summary>
@@ -97,17 +83,37 @@ public:
     void unsetIsOldValueRegex();
     void setIsOldValueRegex(bool value);
 
+    /// <summary>
+    /// Gets or sets new text value to replace by.
+    /// </summary>
+    utility::string_t getNewValue() const;
+    bool newValueIsSet() const;
+    void unsetNewValue();
+    void setNewValue(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets old text value (or regex pattern IsOldValueRegex) to replace.
+    /// </summary>
+    utility::string_t getOldValue() const;
+    bool oldValueIsSet() const;
+    void unsetOldValue();
+    void setOldValue(utility::string_t value);
+
 protected:
-    utility::string_t m_OldValue;
-    bool m_OldValueIsSet;
-    utility::string_t m_NewValue;
-    bool m_NewValueIsSet;
     bool m_IsMatchCase;
     bool m_IsMatchCaseIsSet;
+
     bool m_IsMatchWholeWord;
     bool m_IsMatchWholeWordIsSet;
+
     bool m_IsOldValueRegex;
     bool m_IsOldValueRegexIsSet;
+
+    utility::string_t m_NewValue;
+    bool m_NewValueIsSet;
+
+    utility::string_t m_OldValue;
+    bool m_OldValueIsSet;
 };
 
 }

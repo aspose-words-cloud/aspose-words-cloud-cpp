@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListInsert.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ListInsert.h"
 
 namespace aspose {
@@ -34,8 +33,8 @@ namespace models {
 
 ListInsert::ListInsert()
 {
-    m_Template = utility::conversions::to_string_t("");
     m_TemplateIsSet = false;
+
 }
 
 ListInsert::~ListInsert()
@@ -50,7 +49,6 @@ void ListInsert::validate()
 web::json::value ListInsert::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_TemplateIsSet)
     {
         val[_XPLATSTR("Template")] = ModelBase::toJson(m_Template);
@@ -66,31 +64,25 @@ void ListInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Template")];
         if(!fieldValue.is_null())
         {
-            setTemplate(ModelBase::stringFromJson(fieldValue));
+           setTemplate(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void ListInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TemplateIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Template"), m_Template));
-        
     }
+
 }
 
 void ListInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Template")))
-    {
-        setTemplate(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Template"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t ListInsert::getTemplate() const
@@ -104,7 +96,8 @@ void ListInsert::setTemplate(utility::string_t value)
     m_Template = value;
     m_TemplateIsSet = true;
 }
-bool ListInsert::templateIsSet() const
+
+bool ListInsert::_templateIsSet() const
 {
     return m_TemplateIsSet;
 }
@@ -119,4 +112,3 @@ void ListInsert::unsetTemplate()
 }
 }
 }
-

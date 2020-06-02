@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceTextResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceTextResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceTextResponse_H_
 
-
 #include "FileLink.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for \&quot;Replace text\&quot; action.
+/// Response for "Replace text" action.
 /// </summary>
-class  ReplaceTextResponse
+class ReplaceTextResponse
     : public WordsResponse
 {
 public:
@@ -62,12 +62,13 @@ public:
     /// ReplaceTextResponse members
 
     /// <summary>
-    /// Gets or sets DocumentLink.
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
+
     /// <summary>
     /// Gets or sets number of occurrences of the captured text in the document.
     /// </summary>
@@ -79,6 +80,7 @@ public:
 protected:
     std::shared_ptr<FileLink> m_DocumentLink;
     bool m_DocumentLinkIsSet;
+
     int32_t m_Matches;
     bool m_MatchesIsSet;
 };

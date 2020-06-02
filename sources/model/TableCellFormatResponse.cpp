@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCellFormatResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableCellFormatResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TableCellFormatResponse::TableCellFormatResponse()
 {
     m_CellFormatIsSet = false;
+
 }
 
 TableCellFormatResponse::~TableCellFormatResponse()
@@ -49,7 +49,6 @@ void TableCellFormatResponse::validate()
 web::json::value TableCellFormatResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_CellFormatIsSet)
     {
         val[_XPLATSTR("CellFormat")] = ModelBase::toJson(m_CellFormat);
@@ -69,39 +68,28 @@ void TableCellFormatResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
             newItem->fromJson(fieldValue);
-            setCellFormat( newItem );
         }
     }
+
 }
 
 void TableCellFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CellFormatIsSet)
     {
         if (m_CellFormat.get())
         {
             m_CellFormat->toMultipart(multipart, _XPLATSTR("CellFormat."));
         }
-        
     }
+
 }
 
 void TableCellFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("CellFormat")))
-    {
-        if(multipart->hasContent(_XPLATSTR("CellFormat")))
-        {
-            std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("CellFormat."));
-            setCellFormat( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<TableCellFormat> TableCellFormatResponse::getCellFormat() const
@@ -115,6 +103,7 @@ void TableCellFormatResponse::setCellFormat(std::shared_ptr<TableCellFormat> val
     m_CellFormat = value;
     m_CellFormatIsSet = true;
 }
+
 bool TableCellFormatResponse::cellFormatIsSet() const
 {
     return m_CellFormatIsSet;
@@ -130,4 +119,3 @@ void TableCellFormatResponse::unsetCellFormat()
 }
 }
 }
-

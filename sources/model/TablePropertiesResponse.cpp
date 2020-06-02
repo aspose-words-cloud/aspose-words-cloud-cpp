@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TablePropertiesResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TablePropertiesResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TablePropertiesResponse::TablePropertiesResponse()
 {
     m_PropertiesIsSet = false;
+
 }
 
 TablePropertiesResponse::~TablePropertiesResponse()
@@ -49,7 +49,6 @@ void TablePropertiesResponse::validate()
 web::json::value TablePropertiesResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_PropertiesIsSet)
     {
         val[_XPLATSTR("Properties")] = ModelBase::toJson(m_Properties);
@@ -69,39 +68,28 @@ void TablePropertiesResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<TableProperties> newItem(new TableProperties());
             newItem->fromJson(fieldValue);
-            setProperties( newItem );
         }
     }
+
 }
 
 void TablePropertiesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_PropertiesIsSet)
     {
         if (m_Properties.get())
         {
             m_Properties->toMultipart(multipart, _XPLATSTR("Properties."));
         }
-        
     }
+
 }
 
 void TablePropertiesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Properties")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Properties")))
-        {
-            std::shared_ptr<TableProperties> newItem(new TableProperties());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Properties."));
-            setProperties( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<TableProperties> TablePropertiesResponse::getProperties() const
@@ -115,6 +103,7 @@ void TablePropertiesResponse::setProperties(std::shared_ptr<TableProperties> val
     m_Properties = value;
     m_PropertiesIsSet = true;
 }
+
 bool TablePropertiesResponse::propertiesIsSet() const
 {
     return m_PropertiesIsSet;
@@ -130,4 +119,3 @@ void TablePropertiesResponse::unsetProperties()
 }
 }
 }
-

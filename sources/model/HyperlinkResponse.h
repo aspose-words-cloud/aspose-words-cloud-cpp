@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HyperlinkResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_HyperlinkResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_HyperlinkResponse_H_
 
-
 #include "Hyperlink.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} .
 /// </summary>
-class  HyperlinkResponse
+class HyperlinkResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// HyperlinkResponse members
 
     /// <summary>
-    /// Gets or sets Hyperlink.
+    /// Gets or sets hyperlink.
     /// </summary>
     std::shared_ptr<Hyperlink> getHyperlink() const;
     bool hyperlinkIsSet() const;

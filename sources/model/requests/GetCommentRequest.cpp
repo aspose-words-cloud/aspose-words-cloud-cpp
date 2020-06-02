@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetCommentRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,76 +22,91 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetCommentRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetCommentRequest::GetCommentRequest(
-        utility::string_t name,
-                int32_t commentIndex,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_commentIndex(std::move(commentIndex)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetCommentRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetCommentRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        int32_t GetCommentRequest::getCommentIndex() const
-        {
-            return m_commentIndex;
-        }
-        void GetCommentRequest::setCommentIndex(int32_t commentIndex){
-            m_commentIndex = std::move(commentIndex);
-        }
-        boost::optional<utility::string_t> GetCommentRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetCommentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetCommentRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetCommentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetCommentRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetCommentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetCommentRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetCommentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    int32_t commentIndex,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_CommentIndex(std::move(commentIndex)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetCommentRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetCommentRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+int32_t GetCommentRequest::getCommentIndex() const
+{
+    return m_CommentIndex;
+}
+
+void GetCommentRequest::setCommentIndex(int32_t commentIndex)
+{
+    m_CommentIndex = std::move(commentIndex);
+}
+
+boost::optional< utility::string_t > GetCommentRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetCommentRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetCommentRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetCommentRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetCommentRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetCommentRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetCommentRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetCommentRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

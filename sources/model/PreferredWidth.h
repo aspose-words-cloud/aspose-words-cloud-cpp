@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PreferredWidth.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_PreferredWidth_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PreferredWidth_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Preferred width.
 /// </summary>
-class  PreferredWidth
+class PreferredWidth
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool typeIsSet() const;
     void unsetType();
     void setType(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
     /// </summary>
@@ -79,6 +78,7 @@ public:
 protected:
     utility::string_t m_Type;
     bool m_TypeIsSet;
+
     double m_Value;
     bool m_ValueIsSet;
 };

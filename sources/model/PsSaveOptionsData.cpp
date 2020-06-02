@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PsSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PsSaveOptionsData.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ PsSaveOptionsData::PsSaveOptionsData()
 {
     m_UseBookFoldPrintingSettings = false;
     m_UseBookFoldPrintingSettingsIsSet = false;
+
 }
 
 PsSaveOptionsData::~PsSaveOptionsData()
@@ -50,7 +50,6 @@ void PsSaveOptionsData::validate()
 web::json::value PsSaveOptionsData::toJson() const
 {
     web::json::value val = this->FixedPageSaveOptionsData::toJson();
-
     if(m_UseBookFoldPrintingSettingsIsSet)
     {
         val[_XPLATSTR("UseBookFoldPrintingSettings")] = ModelBase::toJson(m_UseBookFoldPrintingSettings);
@@ -68,31 +67,26 @@ void PsSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseBookFoldPrintingSettings")];
         if(!fieldValue.is_null())
         {
-            setUseBookFoldPrintingSettings(ModelBase::boolFromJson(fieldValue));
+           setUseBookFoldPrintingSettings(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void PsSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FixedPageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_UseBookFoldPrintingSettingsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseBookFoldPrintingSettings"), m_UseBookFoldPrintingSettings));
-        
     }
+
 }
 
 void PsSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FixedPageSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("UseBookFoldPrintingSettings")))
-    {
-        setUseBookFoldPrintingSettings(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseBookFoldPrintingSettings"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool PsSaveOptionsData::isUseBookFoldPrintingSettings() const
@@ -106,6 +100,7 @@ void PsSaveOptionsData::setUseBookFoldPrintingSettings(bool value)
     m_UseBookFoldPrintingSettings = value;
     m_UseBookFoldPrintingSettingsIsSet = true;
 }
+
 bool PsSaveOptionsData::useBookFoldPrintingSettingsIsSet() const
 {
     return m_UseBookFoldPrintingSettingsIsSet;
@@ -121,4 +116,3 @@ void PsSaveOptionsData::unsetUseBookFoldPrintingSettings()
 }
 }
 }
-

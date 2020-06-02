@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BorderResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "BorderResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 BorderResponse::BorderResponse()
 {
     m_BorderIsSet = false;
+
 }
 
 BorderResponse::~BorderResponse()
@@ -49,7 +49,6 @@ void BorderResponse::validate()
 web::json::value BorderResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_BorderIsSet)
     {
         val[_XPLATSTR("Border")] = ModelBase::toJson(m_Border);
@@ -69,39 +68,28 @@ void BorderResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Border> newItem(new Border());
             newItem->fromJson(fieldValue);
-            setBorder( newItem );
         }
     }
+
 }
 
 void BorderResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BorderIsSet)
     {
         if (m_Border.get())
         {
             m_Border->toMultipart(multipart, _XPLATSTR("Border."));
         }
-        
     }
+
 }
 
 void BorderResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Border")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Border")))
-        {
-            std::shared_ptr<Border> newItem(new Border());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Border."));
-            setBorder( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Border> BorderResponse::getBorder() const
@@ -115,6 +103,7 @@ void BorderResponse::setBorder(std::shared_ptr<Border> value)
     m_Border = value;
     m_BorderIsSet = true;
 }
+
 bool BorderResponse::borderIsSet() const
 {
     return m_BorderIsSet;
@@ -130,4 +119,3 @@ void BorderResponse::unsetBorder()
 }
 }
 }
-

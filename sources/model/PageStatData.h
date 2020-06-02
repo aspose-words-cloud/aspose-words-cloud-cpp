@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageStatData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_PageStatData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PageStatData_H_
 
-
-#include "../ModelBase.h"
-
 #include "FootnotesStatData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,9 +37,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the page&#39;s statistical data.
+/// Container for the page's statistical data.
 /// </summary>
-class  PageStatData
+class PageStatData
     : public ModelBase
 {
 public:
@@ -63,19 +61,21 @@ public:
     /// PageStatData members
 
     /// <summary>
+    /// Gets or sets detailed statistics of footnotes.
+    /// </summary>
+    std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
+    bool footnotesStatDataIsSet() const;
+    void unsetFootnotesStatData();
+    void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
+
+    /// <summary>
     /// Gets or sets page number.
     /// </summary>
     int32_t getPageNumber() const;
     bool pageNumberIsSet() const;
     void unsetPageNumber();
     void setPageNumber(int32_t value);
-    /// <summary>
-    /// Gets or sets total count of words in the page.
-    /// </summary>
-    int32_t getWordCount() const;
-    bool wordCountIsSet() const;
-    void unsetWordCount();
-    void setWordCount(int32_t value);
+
     /// <summary>
     /// Gets or sets total count of paragraphs in the page.
     /// </summary>
@@ -83,23 +83,27 @@ public:
     bool paragraphCountIsSet() const;
     void unsetParagraphCount();
     void setParagraphCount(int32_t value);
+
     /// <summary>
-    /// Gets or sets FootnotesStatData.
+    /// Gets or sets total count of words in the page.
     /// </summary>
-    std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
-    bool footnotesStatDataIsSet() const;
-    void unsetFootnotesStatData();
-    void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
+    int32_t getWordCount() const;
+    bool wordCountIsSet() const;
+    void unsetWordCount();
+    void setWordCount(int32_t value);
 
 protected:
-    int32_t m_PageNumber;
-    bool m_PageNumberIsSet;
-    int32_t m_WordCount;
-    bool m_WordCountIsSet;
-    int32_t m_ParagraphCount;
-    bool m_ParagraphCountIsSet;
     std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
     bool m_FootnotesStatDataIsSet;
+
+    int32_t m_PageNumber;
+    bool m_PageNumberIsSet;
+
+    int32_t m_ParagraphCount;
+    bool m_ParagraphCountIsSet;
+
+    int32_t m_WordCount;
+    bool m_WordCountIsSet;
 };
 
 }

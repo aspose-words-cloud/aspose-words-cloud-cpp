@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DeleteTableRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,112 +22,139 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "DeleteTableRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 DeleteTableRequest::DeleteTableRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
-        ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
-        {
-            
-        }
-
-        utility::string_t DeleteTableRequest::getName() const
-        {
-            return m_name;
-        }
-        void DeleteTableRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t DeleteTableRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void DeleteTableRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
-        }
-        int32_t DeleteTableRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void DeleteTableRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void DeleteTableRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void DeleteTableRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void DeleteTableRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void DeleteTableRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void DeleteTableRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void DeleteTableRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> DeleteTableRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void DeleteTableRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t nodePath,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
+) : m_Name(std::move(name)),
+m_NodePath(std::move(nodePath)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
+{
 }
 
+utility::string_t DeleteTableRequest::getName() const
+{
+    return m_Name;
+}
+
+void DeleteTableRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t DeleteTableRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void DeleteTableRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
+int32_t DeleteTableRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void DeleteTableRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void DeleteTableRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void DeleteTableRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void DeleteTableRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void DeleteTableRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void DeleteTableRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void DeleteTableRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > DeleteTableRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void DeleteTableRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+}
+}
+}
+}
+}

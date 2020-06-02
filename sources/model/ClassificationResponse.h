@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassificationResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ClassificationResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ClassificationResponse_H_
 
-
 #include "ClassificationResult.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: PUT https://api.aspose.cloud/v4.0/words/classify.
+/// This response should be returned by the service when handling:
+/// PUT https://api.aspose.cloud/v4.0/words/classify.
 /// </summary>
-class  ClassificationResponse
+class ClassificationResponse
     : public WordsResponse
 {
 public:
@@ -68,6 +69,7 @@ public:
     bool bestClassNameIsSet() const;
     void unsetBestClassName();
     void setBestClassName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets best class probability.
     /// </summary>
@@ -75,6 +77,7 @@ public:
     bool bestClassProbabilityIsSet() const;
     void unsetBestClassProbability();
     void setBestClassProbability(double value);
+
     /// <summary>
     /// Gets or sets array of best classes results.
     /// </summary>
@@ -86,8 +89,10 @@ public:
 protected:
     utility::string_t m_BestClassName;
     bool m_BestClassNameIsSet;
+
     double m_BestClassProbability;
     bool m_BestClassProbabilityIsSet;
+
     std::vector<std::shared_ptr<ClassificationResult>> m_BestResults;
     bool m_BestResultsIsSet;
 };

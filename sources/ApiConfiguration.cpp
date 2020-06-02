@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiConfiguration.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,7 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "ApiConfiguration.h"
 
 namespace aspose {
@@ -41,7 +42,7 @@ ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t a
     setAppSid(appSid);
 }
 
-void ApiConfiguration::setAppKey( utility::string_t appKey){
+void ApiConfiguration::setAppKey(utility::string_t appKey){
     if (appKey.empty()) {
         throw _XPLATSTR("appKey could not be an empty string.");
     }
@@ -53,7 +54,7 @@ utility::string_t ApiConfiguration::getAppKey() const {
     return m_AppKey;
 }
 
-void ApiConfiguration::setAppSid( utility::string_t appSid){
+void ApiConfiguration::setAppSid(utility::string_t appSid){
     if (appSid.empty()) {
         throw _XPLATSTR("appSid could not be an empty string.");
     }
@@ -67,7 +68,7 @@ utility::string_t ApiConfiguration::getAppSid() const{
 
 utility::string_t ApiConfiguration::getApiVersion() const
 {
-	return utility::conversions::to_string_t("v4.0");
+    return utility::conversions::to_string_t("/v4.0");
 }
 
 bool ApiConfiguration::isDebugMode() const {

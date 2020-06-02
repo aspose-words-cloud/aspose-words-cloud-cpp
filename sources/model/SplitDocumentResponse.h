@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SplitDocumentResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentResponse_H_
 
-
 #include "SplitDocumentResult.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// This response should be returned by the service when handling:  POST /{name}/split .
 /// </summary>
-class  SplitDocumentResponse
+class SplitDocumentResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// SplitDocumentResponse members
 
     /// <summary>
-    /// Gets or sets SplitResult.
+    /// Gets or sets resylt of splitting document.
     /// </summary>
     std::shared_ptr<SplitDocumentResult> getSplitResult() const;
     bool splitResultIsSet() const;

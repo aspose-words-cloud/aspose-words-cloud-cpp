@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageFile.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StorageFile_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StorageFile_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +36,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// File or folder information
+/// File or folder information.
 /// </summary>
-class  StorageFile
+class StorageFile
     : public ModelBase
 {
 public:
@@ -62,19 +60,13 @@ public:
     /// StorageFile members
 
     /// <summary>
-    /// File or folder name.
-    /// </summary>
-    utility::string_t getName() const;
-    bool nameIsSet() const;
-    void unsetName();
-    void setName(utility::string_t value);
-    /// <summary>
     /// True if it is a folder.
     /// </summary>
     bool isIsFolder() const;
     bool isFolderIsSet() const;
     void unsetIsFolder();
     void setIsFolder(bool value);
+
     /// <summary>
     /// File or folder last modified DateTime.
     /// </summary>
@@ -82,13 +74,15 @@ public:
     bool modifiedDateIsSet() const;
     void unsetModifiedDate();
     void setModifiedDate(utility::datetime value);
+
     /// <summary>
-    /// File or folder size.
+    /// File or folder name.
     /// </summary>
-    int64_t getSize() const;
-    bool sizeIsSet() const;
-    void unsetSize();
-    void setSize(int64_t value);
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
+    void setName(utility::string_t value);
+
     /// <summary>
     /// File or folder path.
     /// </summary>
@@ -97,17 +91,29 @@ public:
     void unsetPath();
     void setPath(utility::string_t value);
 
+    /// <summary>
+    /// File or folder size.
+    /// </summary>
+    int32_t getSize() const;
+    bool sizeIsSet() const;
+    void unsetSize();
+    void setSize(int32_t value);
+
 protected:
-    utility::string_t m_Name;
-    bool m_NameIsSet;
     bool m_IsFolder;
     bool m_IsFolderIsSet;
+
     utility::datetime m_ModifiedDate;
     bool m_ModifiedDateIsSet;
-    int64_t m_Size;
-    bool m_SizeIsSet;
+
+    utility::string_t m_Name;
+    bool m_NameIsSet;
+
     utility::string_t m_Path;
     bool m_PathIsSet;
+
+    int32_t m_Size;
+    bool m_SizeIsSet;
 };
 
 }

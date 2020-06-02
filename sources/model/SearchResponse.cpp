@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SearchResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SearchResponse.h"
 
 namespace aspose {
@@ -36,7 +35,9 @@ SearchResponse::SearchResponse()
 {
     m_SearchingPattern = utility::conversions::to_string_t("");
     m_SearchingPatternIsSet = false;
+
     m_SearchResultsIsSet = false;
+
 }
 
 SearchResponse::~SearchResponse()
@@ -51,7 +52,6 @@ void SearchResponse::validate()
 web::json::value SearchResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_SearchingPatternIsSet)
     {
         val[_XPLATSTR("SearchingPattern")] = ModelBase::toJson(m_SearchingPattern);
@@ -73,9 +73,11 @@ void SearchResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SearchingPattern")];
         if(!fieldValue.is_null())
         {
-            setSearchingPattern(ModelBase::stringFromJson(fieldValue));
+           setSearchingPattern(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SearchResults")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SearchResults")];
@@ -83,48 +85,34 @@ void SearchResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
             newItem->fromJson(fieldValue);
-            setSearchResults( newItem );
         }
     }
+
 }
 
 void SearchResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_SearchingPatternIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SearchingPattern"), m_SearchingPattern));
-        
     }
+
+
     if(m_SearchResultsIsSet)
     {
         if (m_SearchResults.get())
         {
             m_SearchResults->toMultipart(multipart, _XPLATSTR("SearchResults."));
         }
-        
     }
+
 }
 
 void SearchResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("SearchingPattern")))
-    {
-        setSearchingPattern(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SearchingPattern"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SearchResults")))
-    {
-        if(multipart->hasContent(_XPLATSTR("SearchResults")))
-        {
-            std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SearchResults."));
-            setSearchResults( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t SearchResponse::getSearchingPattern() const
@@ -138,6 +126,7 @@ void SearchResponse::setSearchingPattern(utility::string_t value)
     m_SearchingPattern = value;
     m_SearchingPatternIsSet = true;
 }
+
 bool SearchResponse::searchingPatternIsSet() const
 {
     return m_SearchingPatternIsSet;
@@ -159,6 +148,7 @@ void SearchResponse::setSearchResults(std::shared_ptr<SearchResultsCollection> v
     m_SearchResults = value;
     m_SearchResultsIsSet = true;
 }
+
 bool SearchResponse::searchResultsIsSet() const
 {
     return m_SearchResultsIsSet;
@@ -174,4 +164,3 @@ void SearchResponse::unsetSearchResults()
 }
 }
 }
-

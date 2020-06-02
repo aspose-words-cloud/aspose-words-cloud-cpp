@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassifyRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef classify_H
-#define classify_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ClassifyRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ClassifyRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,21 +36,22 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class ClassifyRequest{
+class ClassifyRequest {
     public: 
-     ClassifyRequest(
-                utility::string_t text,
-                boost::optional<utility::string_t> bestClassesCount
+ ClassifyRequest(
+            utility::string_t text,
+            boost::optional< utility::string_t > bestClassesCount
         );
 
         utility::string_t getText() const;
         void setText(utility::string_t text);
 
-        boost::optional<utility::string_t> getBestClassesCount() const;
-        void setBestClassesCount(boost::optional<utility::string_t> bestClassesCount);
+        boost::optional< utility::string_t > getBestClassesCount() const;
+        void setBestClassesCount(boost::optional< utility::string_t > bestClassesCount);
+
     private:
-        utility::string_t m_text;
-        boost::optional<utility::string_t> m_bestClassesCount;
+        utility::string_t m_Text;
+        boost::optional< utility::string_t > m_BestClassesCount;
 };
 
 }
@@ -58,4 +60,4 @@ class ClassifyRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_ClassifyRequest_H_ */

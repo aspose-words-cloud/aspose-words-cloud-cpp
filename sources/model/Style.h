@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Style.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Style_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Style_H_
 
-
 #include "Font.h"
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Represents a single document style.
 /// </summary>
-class  Style
+class Style
     : public LinkElement
 {
 public:
@@ -63,12 +62,14 @@ public:
     /// Style members
 
     /// <summary>
-    /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
+    /// Gets or sets all aliases of this style. If style has no aliases then empty array of string
+    /// is returned.
     /// </summary>
     std::vector<utility::string_t>& getAliases();
     bool aliasesIsSet() const;
     void unsetAliases();
     void setAliases(std::vector<utility::string_t> const& value);
+
     /// <summary>
     /// Gets or sets /sets the name of the style this style is based on.
     /// </summary>
@@ -76,6 +77,7 @@ public:
     bool baseStyleNameIsSet() const;
     void unsetBaseStyleName();
     void setBaseStyleName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets a value indicating whether true if this style is one of the built-in styles in MS Word.
     /// </summary>
@@ -83,13 +85,15 @@ public:
     bool builtInIsSet() const;
     void unsetBuiltIn();
     void setBuiltIn(bool value);
+
     /// <summary>
-    /// Gets or sets Font.
+    /// Gets or sets the character formatting of the style.
     /// </summary>
     std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;
     void unsetFont();
     void setFont(std::shared_ptr<Font> value);
+
     /// <summary>
     /// Gets or sets a value indicating whether true when the style is one of the built-in Heading styles.
     /// </summary>
@@ -97,6 +101,7 @@ public:
     bool isHeadingIsSet() const;
     void unsetIsHeading();
     void setIsHeading(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
     /// </summary>
@@ -104,13 +109,16 @@ public:
     bool isQuickStyleIsSet() const;
     void unsetIsQuickStyle();
     void setIsQuickStyle(bool value);
+
     /// <summary>
-    /// Gets or sets the name of the Style linked to this one. Returns Empty string if no styles are linked.
+    /// Gets or sets the name of the Style linked to this one. Returns Empty string if no styles
+    /// are linked.
     /// </summary>
     utility::string_t getLinkedStyleName() const;
     bool linkedStyleNameIsSet() const;
     void unsetLinkedStyleName();
     void setLinkedStyleName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the name of the style.
     /// </summary>
@@ -118,13 +126,16 @@ public:
     bool nameIsSet() const;
     void unsetName();
     void setName(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph
+    /// inserted after a paragraph formatted with the specified style.
     /// </summary>
     utility::string_t getNextParagraphStyleName() const;
     bool nextParagraphStyleNameIsSet() const;
     void unsetNextParagraphStyleName();
     void setNextParagraphStyleName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the locale independent style identifier for a built-in style.
     /// </summary>
@@ -132,6 +143,7 @@ public:
     bool styleIdentifierIsSet() const;
     void unsetStyleIdentifier();
     void setStyleIdentifier(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the style type (paragraph or character).
     /// </summary>
@@ -143,24 +155,34 @@ public:
 protected:
     std::vector<utility::string_t> m_Aliases;
     bool m_AliasesIsSet;
+
     utility::string_t m_BaseStyleName;
     bool m_BaseStyleNameIsSet;
+
     bool m_BuiltIn;
     bool m_BuiltInIsSet;
+
     std::shared_ptr<Font> m_Font;
     bool m_FontIsSet;
+
     bool m_IsHeading;
     bool m_IsHeadingIsSet;
+
     bool m_IsQuickStyle;
     bool m_IsQuickStyleIsSet;
+
     utility::string_t m_LinkedStyleName;
     bool m_LinkedStyleNameIsSet;
+
     utility::string_t m_Name;
     bool m_NameIsSet;
+
     utility::string_t m_NextParagraphStyleName;
     bool m_NextParagraphStyleNameIsSet;
+
     utility::string_t m_StyleIdentifier;
     bool m_StyleIdentifierIsSet;
+
     utility::string_t m_Type;
     bool m_TypeIsSet;
 };

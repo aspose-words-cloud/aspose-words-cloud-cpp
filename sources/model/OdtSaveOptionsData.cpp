@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OdtSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "OdtSaveOptionsData.h"
 
 namespace aspose {
@@ -36,12 +35,13 @@ OdtSaveOptionsData::OdtSaveOptionsData()
 {
     m_IsStrictSchema11 = false;
     m_IsStrictSchema11IsSet = false;
-    m_MeasureUnit = utility::conversions::to_string_t("");
+
     m_MeasureUnitIsSet = false;
     m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
+
 }
 
 OdtSaveOptionsData::~OdtSaveOptionsData()
@@ -56,7 +56,6 @@ void OdtSaveOptionsData::validate()
 web::json::value OdtSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
-
     if(m_IsStrictSchema11IsSet)
     {
         val[_XPLATSTR("IsStrictSchema11")] = ModelBase::toJson(m_IsStrictSchema11);
@@ -86,82 +85,74 @@ void OdtSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsStrictSchema11")];
         if(!fieldValue.is_null())
         {
-            setIsStrictSchema11(ModelBase::boolFromJson(fieldValue));
+           setIsStrictSchema11(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("MeasureUnit")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("MeasureUnit")];
         if(!fieldValue.is_null())
         {
-            setMeasureUnit(ModelBase::stringFromJson(fieldValue));
+           setMeasureUnit(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Password")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Password")];
         if(!fieldValue.is_null())
         {
-            setPassword(ModelBase::stringFromJson(fieldValue));
+           setPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PrettyFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
+           setPrettyFormat(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void OdtSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_IsStrictSchema11IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsStrictSchema11"), m_IsStrictSchema11));
-        
     }
+
+
     if(m_MeasureUnitIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MeasureUnit"), m_MeasureUnit));
-        
     }
+
+
     if(m_PasswordIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Password"), m_Password));
-        
     }
+
+
     if(m_PrettyFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
-        
     }
+
 }
 
 void OdtSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    SaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("IsStrictSchema11")))
-    {
-        setIsStrictSchema11(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsStrictSchema11"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("MeasureUnit")))
-    {
-        setMeasureUnit(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("MeasureUnit"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Password")))
-    {
-        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
-    {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool OdtSaveOptionsData::isIsStrictSchema11() const
@@ -175,6 +166,7 @@ void OdtSaveOptionsData::setIsStrictSchema11(bool value)
     m_IsStrictSchema11 = value;
     m_IsStrictSchema11IsSet = true;
 }
+
 bool OdtSaveOptionsData::isStrictSchema11IsSet() const
 {
     return m_IsStrictSchema11IsSet;
@@ -196,6 +188,7 @@ void OdtSaveOptionsData::setMeasureUnit(utility::string_t value)
     m_MeasureUnit = value;
     m_MeasureUnitIsSet = true;
 }
+
 bool OdtSaveOptionsData::measureUnitIsSet() const
 {
     return m_MeasureUnitIsSet;
@@ -217,6 +210,7 @@ void OdtSaveOptionsData::setPassword(utility::string_t value)
     m_Password = value;
     m_PasswordIsSet = true;
 }
+
 bool OdtSaveOptionsData::passwordIsSet() const
 {
     return m_PasswordIsSet;
@@ -238,6 +232,7 @@ void OdtSaveOptionsData::setPrettyFormat(bool value)
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;
 }
+
 bool OdtSaveOptionsData::prettyFormatIsSet() const
 {
     return m_PrettyFormatIsSet;
@@ -253,4 +248,3 @@ void OdtSaveOptionsData::unsetPrettyFormat()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OoxmlSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_OoxmlSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_OoxmlSaveOptionsData_H_
 
-
 #include "SaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for docx/docm/dotx/dotm/flatopc save options.
 /// </summary>
-class  OoxmlSaveOptionsData
+class OoxmlSaveOptionsData
     : public SaveOptionsData
 {
 public:
@@ -67,13 +67,7 @@ public:
     bool complianceIsSet() const;
     void unsetCompliance();
     void setCompliance(utility::string_t value);
-    /// <summary>
-    /// Gets or sets compression level.
-    /// </summary>
-    utility::string_t getCompressionLevel() const;
-    bool compressionLevelIsSet() const;
-    void unsetCompressionLevel();
-    void setCompressionLevel(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies a password to encrypt document using ECMA376 Standard encryption algorithm.
     /// </summary>
@@ -81,6 +75,7 @@ public:
     bool passwordIsSet() const;
     void unsetPassword();
     void setPassword(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
@@ -92,10 +87,10 @@ public:
 protected:
     utility::string_t m_Compliance;
     bool m_ComplianceIsSet;
-    utility::string_t m_CompressionLevel;
-    bool m_CompressionLevelIsSet;
+
     utility::string_t m_Password;
     bool m_PasswordIsSet;
+
     bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
 };

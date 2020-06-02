@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FilesUploadResult.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FilesUploadResult_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FilesUploadResult_H_
 
-
-#include "../ModelBase.h"
-
 #include "Error.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,9 +37,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// File upload result
+/// File upload result.
 /// </summary>
-class  FilesUploadResult
+class FilesUploadResult
     : public ModelBase
 {
 public:
@@ -63,13 +61,6 @@ public:
     /// FilesUploadResult members
 
     /// <summary>
-    /// List of uploaded file names
-    /// </summary>
-    std::vector<utility::string_t>& getUploaded();
-    bool uploadedIsSet() const;
-    void unsetUploaded();
-    void setUploaded(std::vector<utility::string_t> const& value);
-    /// <summary>
     /// List of errors.
     /// </summary>
     std::vector<std::shared_ptr<Error>>& getErrors();
@@ -77,11 +68,20 @@ public:
     void unsetErrors();
     void setErrors(std::vector<std::shared_ptr<Error>> const& value);
 
+    /// <summary>
+    /// List of uploaded file names.
+    /// </summary>
+    std::vector<utility::string_t>& getUploaded();
+    bool uploadedIsSet() const;
+    void unsetUploaded();
+    void setUploaded(std::vector<utility::string_t> const& value);
+
 protected:
-    std::vector<utility::string_t> m_Uploaded;
-    bool m_UploadedIsSet;
     std::vector<std::shared_ptr<Error>> m_Errors;
     bool m_ErrorsIsSet;
+
+    std::vector<utility::string_t> m_Uploaded;
+    bool m_UploadedIsSet;
 };
 
 }

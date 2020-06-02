@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Bookmark.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Bookmark_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Bookmark_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Represents a single bookmark.
 /// </summary>
-class  Bookmark
+class Bookmark
     : public LinkElement
 {
 public:
@@ -68,6 +67,7 @@ public:
     bool nameIsSet() const;
     void unsetName();
     void setName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the text enclosed in the bookmark.
     /// </summary>
@@ -79,6 +79,7 @@ public:
 protected:
     utility::string_t m_Name;
     bool m_NameIsSet;
+
     utility::string_t m_Text;
     bool m_TextIsSet;
 };

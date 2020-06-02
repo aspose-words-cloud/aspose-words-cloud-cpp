@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldNames.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FieldNames_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FieldNames_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Represents a collection of merge fields within a document.
 /// </summary>
-class  FieldNames
+class FieldNames
     : public LinkElement
 {
 public:

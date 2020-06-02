@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleUpdate.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StyleUpdate.h"
 
 namespace aspose {
@@ -34,14 +33,15 @@ namespace models {
 
 StyleUpdate::StyleUpdate()
 {
-    m_NextParagraphStyleName = utility::conversions::to_string_t("");
-    m_NextParagraphStyleNameIsSet = false;
     m_BaseStyleName = utility::conversions::to_string_t("");
     m_BaseStyleNameIsSet = false;
     m_IsQuickStyle = false;
     m_IsQuickStyleIsSet = false;
     m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
+    m_NextParagraphStyleName = utility::conversions::to_string_t("");
+    m_NextParagraphStyleNameIsSet = false;
+
 }
 
 StyleUpdate::~StyleUpdate()
@@ -56,11 +56,6 @@ void StyleUpdate::validate()
 web::json::value StyleUpdate::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_NextParagraphStyleNameIsSet)
-    {
-        val[_XPLATSTR("NextParagraphStyleName")] = ModelBase::toJson(m_NextParagraphStyleName);
-    }
     if(m_BaseStyleNameIsSet)
     {
         val[_XPLATSTR("BaseStyleName")] = ModelBase::toJson(m_BaseStyleName);
@@ -73,114 +68,88 @@ web::json::value StyleUpdate::toJson() const
     {
         val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
+    if(m_NextParagraphStyleNameIsSet)
+    {
+        val[_XPLATSTR("NextParagraphStyleName")] = ModelBase::toJson(m_NextParagraphStyleName);
+    }
 
     return val;
 }
 
 void StyleUpdate::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("NextParagraphStyleName")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("NextParagraphStyleName")];
-        if(!fieldValue.is_null())
-        {
-            setNextParagraphStyleName(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("BaseStyleName")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BaseStyleName")];
         if(!fieldValue.is_null())
         {
-            setBaseStyleName(ModelBase::stringFromJson(fieldValue));
+           setBaseStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("IsQuickStyle")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsQuickStyle")];
         if(!fieldValue.is_null())
         {
-            setIsQuickStyle(ModelBase::boolFromJson(fieldValue));
+           setIsQuickStyle(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Name")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
-            setName(ModelBase::stringFromJson(fieldValue));
+           setName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("NextParagraphStyleName")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("NextParagraphStyleName")];
+        if(!fieldValue.is_null())
+        {
+           setNextParagraphStyleName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
 }
 
 void StyleUpdate::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_BaseStyleNameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BaseStyleName"), m_BaseStyleName));
+    }
+
+
+    if(m_IsQuickStyleIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsQuickStyle"), m_IsQuickStyle));
+    }
+
+
+    if(m_NameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
+    }
+
 
     if(m_NextParagraphStyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NextParagraphStyleName"), m_NextParagraphStyleName));
-        
     }
-    if(m_BaseStyleNameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BaseStyleName"), m_BaseStyleName));
-        
-    }
-    if(m_IsQuickStyleIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsQuickStyle"), m_IsQuickStyle));
-        
-    }
-    if(m_NameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
-        
-    }
+
 }
 
 void StyleUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("NextParagraphStyleName")))
-    {
-        setNextParagraphStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NextParagraphStyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BaseStyleName")))
-    {
-        setBaseStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BaseStyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsQuickStyle")))
-    {
-        setIsQuickStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsQuickStyle"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Name")))
-    {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
-    }
-}
-
-utility::string_t StyleUpdate::getNextParagraphStyleName() const
-{
-    return m_NextParagraphStyleName;
-}
-
-
-void StyleUpdate::setNextParagraphStyleName(utility::string_t value)
-{
-    m_NextParagraphStyleName = value;
-    m_NextParagraphStyleNameIsSet = true;
-}
-bool StyleUpdate::nextParagraphStyleNameIsSet() const
-{
-    return m_NextParagraphStyleNameIsSet;
-}
-
-void StyleUpdate::unsetNextParagraphStyleName()
-{
-    m_NextParagraphStyleNameIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t StyleUpdate::getBaseStyleName() const
@@ -194,6 +163,7 @@ void StyleUpdate::setBaseStyleName(utility::string_t value)
     m_BaseStyleName = value;
     m_BaseStyleNameIsSet = true;
 }
+
 bool StyleUpdate::baseStyleNameIsSet() const
 {
     return m_BaseStyleNameIsSet;
@@ -215,6 +185,7 @@ void StyleUpdate::setIsQuickStyle(bool value)
     m_IsQuickStyle = value;
     m_IsQuickStyleIsSet = true;
 }
+
 bool StyleUpdate::isQuickStyleIsSet() const
 {
     return m_IsQuickStyleIsSet;
@@ -236,6 +207,7 @@ void StyleUpdate::setName(utility::string_t value)
     m_Name = value;
     m_NameIsSet = true;
 }
+
 bool StyleUpdate::nameIsSet() const
 {
     return m_NameIsSet;
@@ -246,9 +218,30 @@ void StyleUpdate::unsetName()
     m_NameIsSet = false;
 }
 
-}
-}
-}
-}
+utility::string_t StyleUpdate::getNextParagraphStyleName() const
+{
+    return m_NextParagraphStyleName;
 }
 
+
+void StyleUpdate::setNextParagraphStyleName(utility::string_t value)
+{
+    m_NextParagraphStyleName = value;
+    m_NextParagraphStyleNameIsSet = true;
+}
+
+bool StyleUpdate::nextParagraphStyleNameIsSet() const
+{
+    return m_NextParagraphStyleNameIsSet;
+}
+
+void StyleUpdate::unsetNextParagraphStyleName()
+{
+    m_NextParagraphStyleNameIsSet = false;
+}
+
+}
+}
+}
+}
+}

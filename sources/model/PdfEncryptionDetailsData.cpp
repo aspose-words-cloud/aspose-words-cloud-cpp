@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PdfEncryptionDetailsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PdfEncryptionDetailsData.h"
 
 namespace aspose {
@@ -42,6 +41,7 @@ PdfEncryptionDetailsData::PdfEncryptionDetailsData()
     m_PermissionsIsSet = false;
     m_UserPassword = utility::conversions::to_string_t("");
     m_UserPasswordIsSet = false;
+
 }
 
 PdfEncryptionDetailsData::~PdfEncryptionDetailsData()
@@ -56,7 +56,6 @@ void PdfEncryptionDetailsData::validate()
 web::json::value PdfEncryptionDetailsData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_EncryptionAlgorithmIsSet)
     {
         val[_XPLATSTR("EncryptionAlgorithm")] = ModelBase::toJson(m_EncryptionAlgorithm);
@@ -84,82 +83,73 @@ void PdfEncryptionDetailsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EncryptionAlgorithm")];
         if(!fieldValue.is_null())
         {
-            setEncryptionAlgorithm(ModelBase::stringFromJson(fieldValue));
+           setEncryptionAlgorithm(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("OwnerPassword")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("OwnerPassword")];
         if(!fieldValue.is_null())
         {
-            setOwnerPassword(ModelBase::stringFromJson(fieldValue));
+           setOwnerPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Permissions")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Permissions")];
         if(!fieldValue.is_null())
         {
-            setPermissions(ModelBase::stringFromJson(fieldValue));
+           setPermissions(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("UserPassword")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("UserPassword")];
         if(!fieldValue.is_null())
         {
-            setUserPassword(ModelBase::stringFromJson(fieldValue));
+           setUserPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void PdfEncryptionDetailsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_EncryptionAlgorithmIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EncryptionAlgorithm"), m_EncryptionAlgorithm));
-        
     }
+
+
     if(m_OwnerPasswordIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnerPassword"), m_OwnerPassword));
-        
     }
+
+
     if(m_PermissionsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Permissions"), m_Permissions));
-        
     }
+
+
     if(m_UserPasswordIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UserPassword"), m_UserPassword));
-        
     }
+
 }
 
 void PdfEncryptionDetailsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("EncryptionAlgorithm")))
-    {
-        setEncryptionAlgorithm(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EncryptionAlgorithm"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OwnerPassword")))
-    {
-        setOwnerPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("OwnerPassword"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Permissions")))
-    {
-        setPermissions(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Permissions"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UserPassword")))
-    {
-        setUserPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("UserPassword"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t PdfEncryptionDetailsData::getEncryptionAlgorithm() const
@@ -173,6 +163,7 @@ void PdfEncryptionDetailsData::setEncryptionAlgorithm(utility::string_t value)
     m_EncryptionAlgorithm = value;
     m_EncryptionAlgorithmIsSet = true;
 }
+
 bool PdfEncryptionDetailsData::encryptionAlgorithmIsSet() const
 {
     return m_EncryptionAlgorithmIsSet;
@@ -194,6 +185,7 @@ void PdfEncryptionDetailsData::setOwnerPassword(utility::string_t value)
     m_OwnerPassword = value;
     m_OwnerPasswordIsSet = true;
 }
+
 bool PdfEncryptionDetailsData::ownerPasswordIsSet() const
 {
     return m_OwnerPasswordIsSet;
@@ -215,6 +207,7 @@ void PdfEncryptionDetailsData::setPermissions(utility::string_t value)
     m_Permissions = value;
     m_PermissionsIsSet = true;
 }
+
 bool PdfEncryptionDetailsData::permissionsIsSet() const
 {
     return m_PermissionsIsSet;
@@ -236,6 +229,7 @@ void PdfEncryptionDetailsData::setUserPassword(utility::string_t value)
     m_UserPassword = value;
     m_UserPasswordIsSet = true;
 }
+
 bool PdfEncryptionDetailsData::userPasswordIsSet() const
 {
     return m_UserPasswordIsSet;
@@ -251,4 +245,3 @@ void PdfEncryptionDetailsData::unsetUserPassword()
 }
 }
 }
-

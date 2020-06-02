@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPropertiesResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentPropertiesResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentPropertiesResponse_H_
 
-
 #include "DocumentProperties.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// This response should be returned by the service when handling:  GET /documentProperties.
 /// </summary>
-class  DocumentPropertiesResponse
+class DocumentPropertiesResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// DocumentPropertiesResponse members
 
     /// <summary>
-    /// Gets or sets DocumentProperties.
+    /// Gets or sets collection of document properties.
     /// </summary>
     std::shared_ptr<DocumentProperties> getDocumentProperties() const;
     bool documentPropertiesIsSet() const;

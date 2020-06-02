@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassificationResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ClassificationResponse.h"
 
 namespace aspose {
@@ -38,7 +37,9 @@ ClassificationResponse::ClassificationResponse()
     m_BestClassNameIsSet = false;
     m_BestClassProbability = 0.0;
     m_BestClassProbabilityIsSet = false;
+
     m_BestResultsIsSet = false;
+
 }
 
 ClassificationResponse::~ClassificationResponse()
@@ -53,7 +54,6 @@ void ClassificationResponse::validate()
 web::json::value ClassificationResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_BestClassNameIsSet)
     {
         val[_XPLATSTR("BestClassName")] = ModelBase::toJson(m_BestClassName);
@@ -62,13 +62,14 @@ web::json::value ClassificationResponse::toJson() const
     {
         val[_XPLATSTR("BestClassProbability")] = ModelBase::toJson(m_BestClassProbability);
     }
+    if(m_BestResultsIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ClassificationResult> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<ClassificationResult> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("BestResults")] = web::json::value::array(jsonArray);
@@ -87,100 +88,75 @@ void ClassificationResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BestClassName")];
         if(!fieldValue.is_null())
         {
-            setBestClassName(ModelBase::stringFromJson(fieldValue));
+           setBestClassName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BestClassProbability")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BestClassProbability")];
         if(!fieldValue.is_null())
         {
-            setBestClassProbability(ModelBase::doubleFromJson(fieldValue));
+           setBestClassProbability(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     {
         m_BestResults.clear();
         if(val.has_field(_XPLATSTR("BestResults")) 
                             && !val[_XPLATSTR("BestResults")].is_null())
         {
-        auto arr = val[_XPLATSTR("BestResults")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<ClassificationResult>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("BestResults")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<ClassificationResult>)nullptr;
+            });
         }
     }
+
 }
 
 void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BestClassNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestClassName"), m_BestClassName));
-        
     }
+
+
     if(m_BestClassProbabilityIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestClassProbability"), m_BestClassProbability));
-        
     }
+
+
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ClassificationResult> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BestResults"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void ClassificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("BestClassName")))
-    {
-        setBestClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BestClassName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BestClassProbability")))
-    {
-        setBestClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BestClassProbability"))));
-    }
-    {
-        m_BestResults.clear();
-        if(multipart->hasContent(_XPLATSTR("BestResults")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BestResults")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BestResults), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<ClassificationResult>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t ClassificationResponse::getBestClassName() const
@@ -194,6 +170,7 @@ void ClassificationResponse::setBestClassName(utility::string_t value)
     m_BestClassName = value;
     m_BestClassNameIsSet = true;
 }
+
 bool ClassificationResponse::bestClassNameIsSet() const
 {
     return m_BestClassNameIsSet;
@@ -215,6 +192,7 @@ void ClassificationResponse::setBestClassProbability(double value)
     m_BestClassProbability = value;
     m_BestClassProbabilityIsSet = true;
 }
+
 bool ClassificationResponse::bestClassProbabilityIsSet() const
 {
     return m_BestClassProbabilityIsSet;
@@ -230,11 +208,13 @@ std::vector<std::shared_ptr<ClassificationResult>>& ClassificationResponse::getB
     return m_BestResults;
 }
 
+
 void ClassificationResponse::setBestResults(std::vector<std::shared_ptr<ClassificationResult>> const& value)
 {
     m_BestResults = value;
     m_BestResultsIsSet = true;
 }
+
 bool ClassificationResponse::bestResultsIsSet() const
 {
     return m_BestResultsIsSet;
@@ -250,4 +230,3 @@ void ClassificationResponse::unsetBestResults()
 }
 }
 }
-

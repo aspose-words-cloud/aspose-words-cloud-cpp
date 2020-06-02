@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SaveResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 SaveResponse::SaveResponse()
 {
     m_SaveResultIsSet = false;
+
 }
 
 SaveResponse::~SaveResponse()
@@ -49,7 +49,6 @@ void SaveResponse::validate()
 web::json::value SaveResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_SaveResultIsSet)
     {
         val[_XPLATSTR("SaveResult")] = ModelBase::toJson(m_SaveResult);
@@ -69,39 +68,28 @@ void SaveResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<SaveResult> newItem(new SaveResult());
             newItem->fromJson(fieldValue);
-            setSaveResult( newItem );
         }
     }
+
 }
 
 void SaveResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_SaveResultIsSet)
     {
         if (m_SaveResult.get())
         {
             m_SaveResult->toMultipart(multipart, _XPLATSTR("SaveResult."));
         }
-        
     }
+
 }
 
 void SaveResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("SaveResult")))
-    {
-        if(multipart->hasContent(_XPLATSTR("SaveResult")))
-        {
-            std::shared_ptr<SaveResult> newItem(new SaveResult());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SaveResult."));
-            setSaveResult( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<SaveResult> SaveResponse::getSaveResult() const
@@ -115,6 +103,7 @@ void SaveResponse::setSaveResult(std::shared_ptr<SaveResult> value)
     m_SaveResult = value;
     m_SaveResultIsSet = true;
 }
+
 bool SaveResponse::saveResultIsSet() const
 {
     return m_SaveResultIsSet;
@@ -130,4 +119,3 @@ void SaveResponse::unsetSaveResult()
 }
 }
 }
-

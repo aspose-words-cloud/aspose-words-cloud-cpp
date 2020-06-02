@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Field.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Field.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ Field::Field()
     m_LocaleIdIsSet = false;
     m_Result = utility::conversions::to_string_t("");
     m_ResultIsSet = false;
+
 }
 
 Field::~Field()
@@ -52,7 +52,6 @@ void Field::validate()
 web::json::value Field::toJson() const
 {
     web::json::value val = this->FieldLink::toJson();
-
     if(m_LocaleIdIsSet)
     {
         val[_XPLATSTR("LocaleId")] = ModelBase::toJson(m_LocaleId);
@@ -74,48 +73,42 @@ void Field::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LocaleId")];
         if(!fieldValue.is_null())
         {
-            setLocaleId(ModelBase::stringFromJson(fieldValue));
+           setLocaleId(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Result")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Result")];
         if(!fieldValue.is_null())
         {
-            setResult(ModelBase::stringFromJson(fieldValue));
+           setResult(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void Field::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FieldLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_LocaleIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LocaleId"), m_LocaleId));
-        
     }
+
+
     if(m_ResultIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Result"), m_Result));
-        
     }
+
 }
 
 void Field::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FieldLink::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("LocaleId")))
-    {
-        setLocaleId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LocaleId"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Result")))
-    {
-        setResult(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Result"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t Field::getLocaleId() const
@@ -129,6 +122,7 @@ void Field::setLocaleId(utility::string_t value)
     m_LocaleId = value;
     m_LocaleIdIsSet = true;
 }
+
 bool Field::localeIdIsSet() const
 {
     return m_LocaleIdIsSet;
@@ -150,6 +144,7 @@ void Field::setResult(utility::string_t value)
     m_Result = value;
     m_ResultIsSet = true;
 }
+
 bool Field::resultIsSet() const
 {
     return m_ResultIsSet;
@@ -165,4 +160,3 @@ void Field::unsetResult()
 }
 }
 }
-

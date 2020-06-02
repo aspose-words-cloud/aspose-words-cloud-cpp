@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphInsert.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphInsert_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphInsert_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Paragraph element.
 /// </summary>
-class  ParagraphInsert
+class ParagraphInsert
     : public ModelBase
 {
 public:
@@ -62,7 +60,7 @@ public:
     /// ParagraphInsert members
 
     /// <summary>
-    /// Gets or sets paragraph&#39;s text.
+    /// Gets or sets paragraph's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

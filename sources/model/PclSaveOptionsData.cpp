@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PclSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PclSaveOptionsData.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ PclSaveOptionsData::PclSaveOptionsData()
     m_FalllbackFontNameIsSet = false;
     m_RasterizeTransformedElements = false;
     m_RasterizeTransformedElementsIsSet = false;
+
 }
 
 PclSaveOptionsData::~PclSaveOptionsData()
@@ -52,7 +52,6 @@ void PclSaveOptionsData::validate()
 web::json::value PclSaveOptionsData::toJson() const
 {
     web::json::value val = this->FixedPageSaveOptionsData::toJson();
-
     if(m_FalllbackFontNameIsSet)
     {
         val[_XPLATSTR("FalllbackFontName")] = ModelBase::toJson(m_FalllbackFontName);
@@ -74,48 +73,42 @@ void PclSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FalllbackFontName")];
         if(!fieldValue.is_null())
         {
-            setFalllbackFontName(ModelBase::stringFromJson(fieldValue));
+           setFalllbackFontName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RasterizeTransformedElements")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RasterizeTransformedElements")];
         if(!fieldValue.is_null())
         {
-            setRasterizeTransformedElements(ModelBase::boolFromJson(fieldValue));
+           setRasterizeTransformedElements(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void PclSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FixedPageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FalllbackFontNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FalllbackFontName"), m_FalllbackFontName));
-        
     }
+
+
     if(m_RasterizeTransformedElementsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RasterizeTransformedElements"), m_RasterizeTransformedElements));
-        
     }
+
 }
 
 void PclSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FixedPageSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("FalllbackFontName")))
-    {
-        setFalllbackFontName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FalllbackFontName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RasterizeTransformedElements")))
-    {
-        setRasterizeTransformedElements(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("RasterizeTransformedElements"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t PclSaveOptionsData::getFalllbackFontName() const
@@ -129,6 +122,7 @@ void PclSaveOptionsData::setFalllbackFontName(utility::string_t value)
     m_FalllbackFontName = value;
     m_FalllbackFontNameIsSet = true;
 }
+
 bool PclSaveOptionsData::falllbackFontNameIsSet() const
 {
     return m_FalllbackFontNameIsSet;
@@ -150,6 +144,7 @@ void PclSaveOptionsData::setRasterizeTransformedElements(bool value)
     m_RasterizeTransformedElements = value;
     m_RasterizeTransformedElementsIsSet = true;
 }
+
 bool PclSaveOptionsData::rasterizeTransformedElementsIsSet() const
 {
     return m_RasterizeTransformedElementsIsSet;
@@ -165,4 +160,3 @@ void PclSaveOptionsData::unsetRasterizeTransformedElements()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReportBuildOptions.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ReportBuildOptions_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReportBuildOptions_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,18 +38,17 @@ namespace models {
 /// <summary>
 /// Specifies options controlling behavior of ReportingEngine while building a report.
 /// </summary>
-class  ReportBuildOptions
+class ReportBuildOptions
     : public ModelBase
 {
 private:
     ReportBuildOptions(const utility::string_t& value);
-    
+
 public:
     ReportBuildOptions();
     virtual ~ReportBuildOptions();
-    
-    const utility::string_t& getValue() const;
 
+    const utility::string_t& getValue() const;
     /////////////////////////////////////////////
     /// ModelBase overrides
 
@@ -66,24 +63,23 @@ public:
     /// <summary>
     /// Enum value "None"
     /// </summary>
-    static const std::shared_ptr<ReportBuildOptions> None;
+    static const std::shared_ptr< ReportBuildOptions > None;
 
     /// <summary>
     /// Enum value "AllowMissingMembers"
     /// </summary>
-    static const std::shared_ptr<ReportBuildOptions> AllowMissingMembers;
+    static const std::shared_ptr< ReportBuildOptions > AllowMissingMembers;
 
     /// <summary>
     /// Enum value "RemoveEmptyParagraphs"
     /// </summary>
-    static const std::shared_ptr<ReportBuildOptions> RemoveEmptyParagraphs;
+    static const std::shared_ptr< ReportBuildOptions > RemoveEmptyParagraphs;
 
     /// <summary>
     /// Enum value "InlineErrorMessages"
     /// </summary>
-    static const std::shared_ptr<ReportBuildOptions> InlineErrorMessages;
+    static const std::shared_ptr< ReportBuildOptions > InlineErrorMessages;
 
-    
 protected:
     const utility::string_t m_value;
 };

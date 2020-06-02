@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceRange.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceRange_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReplaceRange_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Range element.
 /// </summary>
-class  ReplaceRange
+class ReplaceRange
     : public ModelBase
 {
 public:
@@ -62,14 +60,15 @@ public:
     /// ReplaceRange members
 
     /// <summary>
-    /// Gets or sets range&#39;s text.
+    /// Gets or sets range's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;
     void unsetText();
     void setText(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets range&#39;s text type.
+    /// Gets or sets range's text type.
     /// </summary>
     utility::string_t getTextType() const;
     bool textTypeIsSet() const;
@@ -79,6 +78,7 @@ public:
 protected:
     utility::string_t m_Text;
     bool m_TextIsSet;
+
     utility::string_t m_TextType;
     bool m_TextTypeIsSet;
 };

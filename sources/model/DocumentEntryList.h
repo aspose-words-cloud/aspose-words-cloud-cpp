@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentEntryList.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentEntryList_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentEntryList_H_
 
-
-#include "../ModelBase.h"
-
 #include "DocumentEntry.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Represents a list of documents which will be appended to the original resource document.
 /// </summary>
-class  DocumentEntryList
+class DocumentEntryList
     : public ModelBase
 {
 public:

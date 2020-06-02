@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Shading.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Shading.h"
 
 namespace aspose {
@@ -35,9 +34,11 @@ namespace models {
 Shading::Shading()
 {
     m_BackgroundPatternColorIsSet = false;
+
     m_ForegroundPatternColorIsSet = false;
-    m_Texture = utility::conversions::to_string_t("");
+
     m_TextureIsSet = false;
+
 }
 
 Shading::~Shading()
@@ -52,7 +53,6 @@ void Shading::validate()
 web::json::value Shading::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_BackgroundPatternColorIsSet)
     {
         val[_XPLATSTR("BackgroundPatternColor")] = ModelBase::toJson(m_BackgroundPatternColor);
@@ -78,9 +78,10 @@ void Shading::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
-            setBackgroundPatternColor( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ForegroundPatternColor")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ForegroundPatternColor")];
@@ -88,73 +89,52 @@ void Shading::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
-            setForegroundPatternColor( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Texture")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Texture")];
         if(!fieldValue.is_null())
         {
-            setTexture(ModelBase::stringFromJson(fieldValue));
+           setTexture(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void Shading::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BackgroundPatternColorIsSet)
     {
         if (m_BackgroundPatternColor.get())
         {
             m_BackgroundPatternColor->toMultipart(multipart, _XPLATSTR("BackgroundPatternColor."));
         }
-        
     }
+
+
     if(m_ForegroundPatternColorIsSet)
     {
         if (m_ForegroundPatternColor.get())
         {
             m_ForegroundPatternColor->toMultipart(multipart, _XPLATSTR("ForegroundPatternColor."));
         }
-        
     }
+
+
     if(m_TextureIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Texture"), m_Texture));
-        
     }
+
 }
 
 void Shading::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("BackgroundPatternColor")))
-    {
-        if(multipart->hasContent(_XPLATSTR("BackgroundPatternColor")))
-        {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, _XPLATSTR("BackgroundPatternColor."));
-            setBackgroundPatternColor( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("ForegroundPatternColor")))
-    {
-        if(multipart->hasContent(_XPLATSTR("ForegroundPatternColor")))
-        {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ForegroundPatternColor."));
-            setForegroundPatternColor( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("Texture")))
-    {
-        setTexture(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Texture"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<XmlColor> Shading::getBackgroundPatternColor() const
@@ -168,6 +148,7 @@ void Shading::setBackgroundPatternColor(std::shared_ptr<XmlColor> value)
     m_BackgroundPatternColor = value;
     m_BackgroundPatternColorIsSet = true;
 }
+
 bool Shading::backgroundPatternColorIsSet() const
 {
     return m_BackgroundPatternColorIsSet;
@@ -189,6 +170,7 @@ void Shading::setForegroundPatternColor(std::shared_ptr<XmlColor> value)
     m_ForegroundPatternColor = value;
     m_ForegroundPatternColorIsSet = true;
 }
+
 bool Shading::foregroundPatternColorIsSet() const
 {
     return m_ForegroundPatternColorIsSet;
@@ -210,6 +192,7 @@ void Shading::setTexture(utility::string_t value)
     m_Texture = value;
     m_TextureIsSet = true;
 }
+
 bool Shading::textureIsSet() const
 {
     return m_TextureIsSet;
@@ -225,4 +208,3 @@ void Shading::unsetTexture()
 }
 }
 }
-

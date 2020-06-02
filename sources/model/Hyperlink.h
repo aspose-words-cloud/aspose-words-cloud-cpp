@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Hyperlink.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Hyperlink_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Hyperlink_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Hyperlink element.
 /// </summary>
-class  Hyperlink
+class Hyperlink
     : public LinkElement
 {
 public:
@@ -62,12 +61,13 @@ public:
     /// Hyperlink members
 
     /// <summary>
-    /// Gets or sets hypelink&#39;s display text.
+    /// Gets or sets hypelink's display text.
     /// </summary>
     utility::string_t getDisplayText() const;
     bool displayTextIsSet() const;
     void unsetDisplayText();
     void setDisplayText(utility::string_t value);
+
     /// <summary>
     /// Gets or sets value.
     /// </summary>
@@ -79,6 +79,7 @@ public:
 protected:
     utility::string_t m_DisplayText;
     bool m_DisplayTextIsSet;
+
     utility::string_t m_Value;
     bool m_ValueIsSet;
 };

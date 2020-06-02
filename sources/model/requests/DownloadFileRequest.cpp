@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DownloadFileRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,49 +22,55 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "DownloadFileRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 DownloadFileRequest::DownloadFileRequest(
-        utility::string_t path,
-                boost::optional<utility::string_t> storageName,
-                boost::optional<utility::string_t> versionId
-        ) : 
-            m_path(std::move(path)),
-            m_storageName(std::move(storageName)),
-            m_versionId(std::move(versionId))
-        {
-            
-        }
-
-        utility::string_t DownloadFileRequest::getPath() const
-        {
-            return m_path;
-        }
-        void DownloadFileRequest::setPath(utility::string_t path){
-            m_path = std::move(path);
-        }
-        boost::optional<utility::string_t> DownloadFileRequest::getStorageName() const
-        {
-            return m_storageName;
-        }
-        void DownloadFileRequest::setStorageName(boost::optional<utility::string_t> storageName){
-            m_storageName = std::move(storageName);
-        }
-        boost::optional<utility::string_t> DownloadFileRequest::getVersionId() const
-        {
-            return m_versionId;
-        }
-        void DownloadFileRequest::setVersionId(boost::optional<utility::string_t> versionId){
-            m_versionId = std::move(versionId);
-        }
-
-}
-}
-}
-}
+    utility::string_t path,
+    boost::optional< utility::string_t > storageName,
+    boost::optional< utility::string_t > versionId
+) : m_Path(std::move(path)),
+m_StorageName(std::move(storageName)),
+m_VersionId(std::move(versionId))
+{
 }
 
+utility::string_t DownloadFileRequest::getPath() const
+{
+    return m_Path;
+}
+
+void DownloadFileRequest::setPath(utility::string_t path)
+{
+    m_Path = std::move(path);
+}
+
+boost::optional< utility::string_t > DownloadFileRequest::getStorageName() const
+{
+    return m_StorageName;
+}
+
+void DownloadFileRequest::setStorageName(boost::optional< utility::string_t > storageName)
+{
+    m_StorageName = std::move(storageName);
+}
+
+boost::optional< utility::string_t > DownloadFileRequest::getVersionId() const
+{
+    return m_VersionId;
+}
+
+void DownloadFileRequest::setVersionId(boost::optional< utility::string_t > versionId)
+{
+    m_VersionId = std::move(versionId);
+}
+
+}
+}
+}
+}
+}

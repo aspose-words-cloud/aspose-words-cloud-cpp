@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertFieldRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef insertField_H
-#define insertField_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_InsertFieldRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_InsertFieldRequest_H_
+
 #include "FieldInsert.h"
+#include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,20 +37,20 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class InsertFieldRequest{
+class InsertFieldRequest {
     public: 
-     InsertFieldRequest(
-                utility::string_t name,
-                std::shared_ptr<FieldInsert> field,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> insertBeforeNode
+ InsertFieldRequest(
+            utility::string_t name,
+            std::shared_ptr<FieldInsert> field,
+            utility::string_t nodePath,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime,
+            boost::optional< utility::string_t > insertBeforeNode
         );
 
         utility::string_t getName() const;
@@ -61,41 +62,42 @@ class InsertFieldRequest{
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
 
-        boost::optional<utility::string_t> getRevisionAuthor() const;
-        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
 
-        boost::optional<utility::string_t> getRevisionDateTime() const;
-        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
 
-        boost::optional<utility::string_t> getInsertBeforeNode() const;
-        void setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode);
+        boost::optional< utility::string_t > getInsertBeforeNode() const;
+        void setInsertBeforeNode(boost::optional< utility::string_t > insertBeforeNode);
+
     private:
-        utility::string_t m_name;
-        std::shared_ptr<FieldInsert> m_field;
-        utility::string_t m_nodePath;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_revisionAuthor;
-        boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<utility::string_t> m_insertBeforeNode;
+        utility::string_t m_Name;
+        std::shared_ptr<FieldInsert> m_Field;
+        utility::string_t m_NodePath;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
+        boost::optional< utility::string_t > m_InsertBeforeNode;
 };
 
 }
@@ -104,4 +106,4 @@ class InsertFieldRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_InsertFieldRequest_H_ */

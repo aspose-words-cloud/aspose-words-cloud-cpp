@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WordsApiLink.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_WordsApiLink_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_WordsApiLink_H_
 
-
 #include "Link.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// Provides information for the words api resource link.
 /// </summary>
-class  WordsApiLink
+class WordsApiLink
     : public Link
 {
 public:

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PngSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "PngSaveOptionsData.h"
 
@@ -49,7 +48,6 @@ web::json::value PngSaveOptionsData::toJson() const
 {
     web::json::value val = this->ImageSaveOptionsData::toJson();
 
-
     return val;
 }
 
@@ -63,18 +61,17 @@ void PngSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& m
 {
     ImageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
 }
 
 void PngSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    ImageSaveOptionsData::fromMultiPart(multipart, prefix);
-
+    // TODO: implement fromMultiPart
 }
 
-}
-}
-}
-}
-}
 
+
+}
+}
+}
+}
+}

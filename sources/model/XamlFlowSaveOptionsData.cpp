@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XamlFlowSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "XamlFlowSaveOptionsData.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ XamlFlowSaveOptionsData::XamlFlowSaveOptionsData()
     m_ImagesFolderIsSet = false;
     m_ImagesFolderAlias = utility::conversions::to_string_t("");
     m_ImagesFolderAliasIsSet = false;
+
 }
 
 XamlFlowSaveOptionsData::~XamlFlowSaveOptionsData()
@@ -52,7 +52,6 @@ void XamlFlowSaveOptionsData::validate()
 web::json::value XamlFlowSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
-
     if(m_ImagesFolderIsSet)
     {
         val[_XPLATSTR("ImagesFolder")] = ModelBase::toJson(m_ImagesFolder);
@@ -74,48 +73,42 @@ void XamlFlowSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ImagesFolder")];
         if(!fieldValue.is_null())
         {
-            setImagesFolder(ModelBase::stringFromJson(fieldValue));
+           setImagesFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ImagesFolderAlias")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ImagesFolderAlias")];
         if(!fieldValue.is_null())
         {
-            setImagesFolderAlias(ModelBase::stringFromJson(fieldValue));
+           setImagesFolderAlias(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void XamlFlowSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ImagesFolderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImagesFolder"), m_ImagesFolder));
-        
     }
+
+
     if(m_ImagesFolderAliasIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImagesFolderAlias"), m_ImagesFolderAlias));
-        
     }
+
 }
 
 void XamlFlowSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    SaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("ImagesFolder")))
-    {
-        setImagesFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImagesFolder"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ImagesFolderAlias")))
-    {
-        setImagesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImagesFolderAlias"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t XamlFlowSaveOptionsData::getImagesFolder() const
@@ -129,6 +122,7 @@ void XamlFlowSaveOptionsData::setImagesFolder(utility::string_t value)
     m_ImagesFolder = value;
     m_ImagesFolderIsSet = true;
 }
+
 bool XamlFlowSaveOptionsData::imagesFolderIsSet() const
 {
     return m_ImagesFolderIsSet;
@@ -150,6 +144,7 @@ void XamlFlowSaveOptionsData::setImagesFolderAlias(utility::string_t value)
     m_ImagesFolderAlias = value;
     m_ImagesFolderAliasIsSet = true;
 }
+
 bool XamlFlowSaveOptionsData::imagesFolderAliasIsSet() const
 {
     return m_ImagesFolderAliasIsSet;
@@ -165,4 +160,3 @@ void XamlFlowSaveOptionsData::unsetImagesFolderAlias()
 }
 }
 }
-

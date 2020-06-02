@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListInfo.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ListInfo.h"
 
 namespace aspose {
@@ -44,8 +43,11 @@ ListInfo::ListInfo()
     m_IsRestartAtEachSectionIsSet = false;
     m_ListId = 0;
     m_ListIdIsSet = false;
+
     m_ListLevelsIsSet = false;
+
     m_StyleIsSet = false;
+
 }
 
 ListInfo::~ListInfo()
@@ -60,7 +62,6 @@ void ListInfo::validate()
 web::json::value ListInfo::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_IsListStyleDefinitionIsSet)
     {
         val[_XPLATSTR("IsListStyleDefinition")] = ModelBase::toJson(m_IsListStyleDefinition);
@@ -102,41 +103,51 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsListStyleDefinition")];
         if(!fieldValue.is_null())
         {
-            setIsListStyleDefinition(ModelBase::boolFromJson(fieldValue));
+           setIsListStyleDefinition(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("IsListStyleReference")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsListStyleReference")];
         if(!fieldValue.is_null())
         {
-            setIsListStyleReference(ModelBase::boolFromJson(fieldValue));
+           setIsListStyleReference(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("IsMultiLevel")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsMultiLevel")];
         if(!fieldValue.is_null())
         {
-            setIsMultiLevel(ModelBase::boolFromJson(fieldValue));
+           setIsMultiLevel(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("IsRestartAtEachSection")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsRestartAtEachSection")];
         if(!fieldValue.is_null())
         {
-            setIsRestartAtEachSection(ModelBase::boolFromJson(fieldValue));
+           setIsRestartAtEachSection(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ListId")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ListId")];
         if(!fieldValue.is_null())
         {
-            setListId(ModelBase::int32_tFromJson(fieldValue));
+           setListId(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ListLevels")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ListLevels")];
@@ -144,9 +155,10 @@ void ListInfo::fromJson(web::json::value& val)
         {
             std::shared_ptr<ListLevels> newItem(new ListLevels());
             newItem->fromJson(fieldValue);
-            setListLevels( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Style")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Style")];
@@ -154,101 +166,67 @@ void ListInfo::fromJson(web::json::value& val)
         {
             std::shared_ptr<Style> newItem(new Style());
             newItem->fromJson(fieldValue);
-            setStyle( newItem );
         }
     }
+
 }
 
 void ListInfo::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_IsListStyleDefinitionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsListStyleDefinition"), m_IsListStyleDefinition));
-        
     }
+
+
     if(m_IsListStyleReferenceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsListStyleReference"), m_IsListStyleReference));
-        
     }
+
+
     if(m_IsMultiLevelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsMultiLevel"), m_IsMultiLevel));
-        
     }
+
+
     if(m_IsRestartAtEachSectionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsRestartAtEachSection"), m_IsRestartAtEachSection));
-        
     }
+
+
     if(m_ListIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListId"), m_ListId));
-        
     }
+
+
     if(m_ListLevelsIsSet)
     {
         if (m_ListLevels.get())
         {
             m_ListLevels->toMultipart(multipart, _XPLATSTR("ListLevels."));
         }
-        
     }
+
+
     if(m_StyleIsSet)
     {
         if (m_Style.get())
         {
             m_Style->toMultipart(multipart, _XPLATSTR("Style."));
         }
-        
     }
+
 }
 
 void ListInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("IsListStyleDefinition")))
-    {
-        setIsListStyleDefinition(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListStyleDefinition"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsListStyleReference")))
-    {
-        setIsListStyleReference(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListStyleReference"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsMultiLevel")))
-    {
-        setIsMultiLevel(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsMultiLevel"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsRestartAtEachSection")))
-    {
-        setIsRestartAtEachSection(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsRestartAtEachSection"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ListId")))
-    {
-        setListId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ListLevels")))
-    {
-        if(multipart->hasContent(_XPLATSTR("ListLevels")))
-        {
-            std::shared_ptr<ListLevels> newItem(new ListLevels());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ListLevels."));
-            setListLevels( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("Style")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Style")))
-        {
-            std::shared_ptr<Style> newItem(new Style());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Style."));
-            setStyle( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool ListInfo::isIsListStyleDefinition() const
@@ -262,6 +240,7 @@ void ListInfo::setIsListStyleDefinition(bool value)
     m_IsListStyleDefinition = value;
     m_IsListStyleDefinitionIsSet = true;
 }
+
 bool ListInfo::isListStyleDefinitionIsSet() const
 {
     return m_IsListStyleDefinitionIsSet;
@@ -283,6 +262,7 @@ void ListInfo::setIsListStyleReference(bool value)
     m_IsListStyleReference = value;
     m_IsListStyleReferenceIsSet = true;
 }
+
 bool ListInfo::isListStyleReferenceIsSet() const
 {
     return m_IsListStyleReferenceIsSet;
@@ -304,6 +284,7 @@ void ListInfo::setIsMultiLevel(bool value)
     m_IsMultiLevel = value;
     m_IsMultiLevelIsSet = true;
 }
+
 bool ListInfo::isMultiLevelIsSet() const
 {
     return m_IsMultiLevelIsSet;
@@ -325,6 +306,7 @@ void ListInfo::setIsRestartAtEachSection(bool value)
     m_IsRestartAtEachSection = value;
     m_IsRestartAtEachSectionIsSet = true;
 }
+
 bool ListInfo::isRestartAtEachSectionIsSet() const
 {
     return m_IsRestartAtEachSectionIsSet;
@@ -346,6 +328,7 @@ void ListInfo::setListId(int32_t value)
     m_ListId = value;
     m_ListIdIsSet = true;
 }
+
 bool ListInfo::listIdIsSet() const
 {
     return m_ListIdIsSet;
@@ -367,6 +350,7 @@ void ListInfo::setListLevels(std::shared_ptr<ListLevels> value)
     m_ListLevels = value;
     m_ListLevelsIsSet = true;
 }
+
 bool ListInfo::listLevelsIsSet() const
 {
     return m_ListLevelsIsSet;
@@ -388,6 +372,7 @@ void ListInfo::setStyle(std::shared_ptr<Style> value)
     m_Style = value;
     m_StyleIsSet = true;
 }
+
 bool ListInfo::styleIsSet() const
 {
     return m_StyleIsSet;
@@ -403,4 +388,3 @@ void ListInfo::unsetStyle()
 }
 }
 }
-

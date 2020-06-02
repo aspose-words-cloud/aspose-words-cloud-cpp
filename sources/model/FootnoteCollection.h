@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnoteCollection.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FootnoteCollection_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FootnoteCollection_H_
 
-
 #include "Footnote.h"
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Collection of footnotes.
 /// </summary>
-class  FootnoteCollection
+class FootnoteCollection
     : public LinkElement
 {
 public:

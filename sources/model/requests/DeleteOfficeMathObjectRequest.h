@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DeleteOfficeMathObjectRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef deleteOfficeMathObject_H
-#define deleteOfficeMathObject_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DeleteOfficeMathObjectRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_DeleteOfficeMathObjectRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,19 +36,19 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteOfficeMathObjectRequest{
+class DeleteOfficeMathObjectRequest {
     public: 
-     DeleteOfficeMathObjectRequest(
-                utility::string_t name,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+ DeleteOfficeMathObjectRequest(
+            utility::string_t name,
+            utility::string_t nodePath,
+            int32_t index,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime
         );
 
         utility::string_t getName() const;
@@ -59,37 +60,38 @@ class DeleteOfficeMathObjectRequest{
         int32_t getIndex() const;
         void setIndex(int32_t index);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
 
-        boost::optional<utility::string_t> getRevisionAuthor() const;
-        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
 
-        boost::optional<utility::string_t> getRevisionDateTime() const;
-        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
+
     private:
-        utility::string_t m_name;
-        utility::string_t m_nodePath;
-        int32_t m_index;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_revisionAuthor;
-        boost::optional<utility::string_t> m_revisionDateTime;
+        utility::string_t m_Name;
+        utility::string_t m_NodePath;
+        int32_t m_Index;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
 };
 
 }
@@ -98,4 +100,4 @@ class DeleteOfficeMathObjectRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_DeleteOfficeMathObjectRequest_H_ */

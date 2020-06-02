@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TiffSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TiffSaveOptionsData.h"
 
 namespace aspose {
@@ -40,6 +39,7 @@ TiffSaveOptionsData::TiffSaveOptionsData()
     m_TiffBinarizationMethodIsSet = false;
     m_TiffCompression = utility::conversions::to_string_t("");
     m_TiffCompressionIsSet = false;
+
 }
 
 TiffSaveOptionsData::~TiffSaveOptionsData()
@@ -54,7 +54,6 @@ void TiffSaveOptionsData::validate()
 web::json::value TiffSaveOptionsData::toJson() const
 {
     web::json::value val = this->ImageSaveOptionsData::toJson();
-
     if(m_ThresholdForFloydSteinbergDitheringIsSet)
     {
         val[_XPLATSTR("ThresholdForFloydSteinbergDithering")] = ModelBase::toJson(m_ThresholdForFloydSteinbergDithering);
@@ -80,65 +79,58 @@ void TiffSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ThresholdForFloydSteinbergDithering")];
         if(!fieldValue.is_null())
         {
-            setThresholdForFloydSteinbergDithering(ModelBase::int32_tFromJson(fieldValue));
+           setThresholdForFloydSteinbergDithering(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TiffBinarizationMethod")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TiffBinarizationMethod")];
         if(!fieldValue.is_null())
         {
-            setTiffBinarizationMethod(ModelBase::stringFromJson(fieldValue));
+           setTiffBinarizationMethod(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TiffCompression")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TiffCompression")];
         if(!fieldValue.is_null())
         {
-            setTiffCompression(ModelBase::stringFromJson(fieldValue));
+           setTiffCompression(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void TiffSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     ImageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ThresholdForFloydSteinbergDitheringIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ThresholdForFloydSteinbergDithering"), m_ThresholdForFloydSteinbergDithering));
-        
     }
+
+
     if(m_TiffBinarizationMethodIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TiffBinarizationMethod"), m_TiffBinarizationMethod));
-        
     }
+
+
     if(m_TiffCompressionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TiffCompression"), m_TiffCompression));
-        
     }
+
 }
 
 void TiffSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    ImageSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("ThresholdForFloydSteinbergDithering")))
-    {
-        setThresholdForFloydSteinbergDithering(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ThresholdForFloydSteinbergDithering"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TiffBinarizationMethod")))
-    {
-        setTiffBinarizationMethod(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TiffBinarizationMethod"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TiffCompression")))
-    {
-        setTiffCompression(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TiffCompression"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 int32_t TiffSaveOptionsData::getThresholdForFloydSteinbergDithering() const
@@ -152,6 +144,7 @@ void TiffSaveOptionsData::setThresholdForFloydSteinbergDithering(int32_t value)
     m_ThresholdForFloydSteinbergDithering = value;
     m_ThresholdForFloydSteinbergDitheringIsSet = true;
 }
+
 bool TiffSaveOptionsData::thresholdForFloydSteinbergDitheringIsSet() const
 {
     return m_ThresholdForFloydSteinbergDitheringIsSet;
@@ -173,6 +166,7 @@ void TiffSaveOptionsData::setTiffBinarizationMethod(utility::string_t value)
     m_TiffBinarizationMethod = value;
     m_TiffBinarizationMethodIsSet = true;
 }
+
 bool TiffSaveOptionsData::tiffBinarizationMethodIsSet() const
 {
     return m_TiffBinarizationMethodIsSet;
@@ -194,6 +188,7 @@ void TiffSaveOptionsData::setTiffCompression(utility::string_t value)
     m_TiffCompression = value;
     m_TiffCompressionIsSet = true;
 }
+
 bool TiffSaveOptionsData::tiffCompressionIsSet() const
 {
     return m_TiffCompressionIsSet;
@@ -209,4 +204,3 @@ void TiffSaveOptionsData::unsetTiffCompression()
 }
 }
 }
-

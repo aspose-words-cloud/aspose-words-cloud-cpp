@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetFormFieldsRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef getFormFields_H
-#define getFormFields_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_GetFormFieldsRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_GetFormFieldsRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,15 +36,15 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class GetFormFieldsRequest{
+class GetFormFieldsRequest {
     public: 
-     GetFormFieldsRequest(
-                utility::string_t name,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
+ GetFormFieldsRequest(
+            utility::string_t name,
+            utility::string_t nodePath,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password
         );
 
         utility::string_t getName() const;
@@ -52,24 +53,25 @@ class GetFormFieldsRequest{
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
+
     private:
-        utility::string_t m_name;
-        utility::string_t m_nodePath;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
+        utility::string_t m_Name;
+        utility::string_t m_NodePath;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
 };
 
 }
@@ -78,4 +80,4 @@ class GetFormFieldsRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_GetFormFieldsRequest_H_ */

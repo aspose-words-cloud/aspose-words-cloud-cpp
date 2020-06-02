@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XamlFlowSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_XamlFlowSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_XamlFlowSaveOptionsData_H_
 
-
 #include "SaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for xaml flow save options.
 /// </summary>
-class  XamlFlowSaveOptionsData
+class XamlFlowSaveOptionsData
     : public SaveOptionsData
 {
 public:
@@ -67,6 +67,7 @@ public:
     bool imagesFolderIsSet() const;
     void unsetImagesFolder();
     void setImagesFolder(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies the name of the folder used to construct image URIs.
     /// </summary>
@@ -78,6 +79,7 @@ public:
 protected:
     utility::string_t m_ImagesFolder;
     bool m_ImagesFolderIsSet;
+
     utility::string_t m_ImagesFolderAlias;
     bool m_ImagesFolderAliasIsSet;
 };

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FixedPageSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FixedPageSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FixedPageSaveOptionsData_H_
 
-
 #include "MetafileRenderingOptionsData.h"
 #include "SaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
 /// </summary>
-class  FixedPageSaveOptionsData
+class FixedPageSaveOptionsData
     : public SaveOptionsData
 {
 public:
@@ -62,12 +62,14 @@ public:
     /// FixedPageSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
+    /// Gets or sets a value determining how colors are rendered.
+    /// { Normal | Grayscale}.
     /// </summary>
     utility::string_t getColorMode() const;
     bool colorModeIsSet() const;
     void unsetColorMode();
     void setColorMode(utility::string_t value);
+
     /// <summary>
     /// Gets or sets determines the quality of the JPEG images inside PDF document.
     /// </summary>
@@ -75,13 +77,15 @@ public:
     bool jpegQualityIsSet() const;
     void unsetJpegQuality();
     void setJpegQuality(int32_t value);
+
     /// <summary>
-    /// Gets or sets MetafileRenderingOptions.
+    /// Gets or sets allows to specify metafile rendering options.
     /// </summary>
     std::shared_ptr<MetafileRenderingOptionsData> getMetafileRenderingOptions() const;
     bool metafileRenderingOptionsIsSet() const;
     void unsetMetafileRenderingOptions();
     void setMetafileRenderingOptions(std::shared_ptr<MetafileRenderingOptionsData> value);
+
     /// <summary>
     /// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
     /// </summary>
@@ -89,13 +93,17 @@ public:
     bool numeralFormatIsSet() const;
     void unsetNumeralFormat();
     void setNumeralFormat(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
+    /// Gets or sets flag indicates whether it is required to optimize output of XPS.
+    /// If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated.
+    /// Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
     /// </summary>
     bool isOptimizeOutput() const;
     bool optimizeOutputIsSet() const;
     void unsetOptimizeOutput();
     void setOptimizeOutput(bool value);
+
     /// <summary>
     /// Gets or sets determines number of pages to render.
     /// </summary>
@@ -103,6 +111,7 @@ public:
     bool pageCountIsSet() const;
     void unsetPageCount();
     void setPageCount(int32_t value);
+
     /// <summary>
     /// Gets or sets determines 0-based index of the first page to render.
     /// </summary>
@@ -114,16 +123,22 @@ public:
 protected:
     utility::string_t m_ColorMode;
     bool m_ColorModeIsSet;
+
     int32_t m_JpegQuality;
     bool m_JpegQualityIsSet;
+
     std::shared_ptr<MetafileRenderingOptionsData> m_MetafileRenderingOptions;
     bool m_MetafileRenderingOptionsIsSet;
+
     utility::string_t m_NumeralFormat;
     bool m_NumeralFormatIsSet;
+
     bool m_OptimizeOutput;
     bool m_OptimizeOutputIsSet;
+
     int32_t m_PageCount;
     bool m_PageCountIsSet;
+
     int32_t m_PageIndex;
     bool m_PageIndexIsSet;
 };

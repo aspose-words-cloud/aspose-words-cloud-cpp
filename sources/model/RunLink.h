@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunLink.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RunLink_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RunLink_H_
 
-
 #include "NodeLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// Run link element.
 /// </summary>
-class  RunLink
+class RunLink
     : public NodeLink
 {
 public:
@@ -61,7 +61,7 @@ public:
     /// RunLink members
 
     /// <summary>
-    /// Gets or sets run&#39;s text.
+    /// Gets or sets run's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

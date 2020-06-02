@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DownsampleOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DownsampleOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DownsampleOptionsData_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Container class for Downsample options.
 /// </summary>
-class  DownsampleOptionsData
+class DownsampleOptionsData
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool downsampleImagesIsSet() const;
     void unsetDownsampleImages();
     void setDownsampleImages(bool value);
+
     /// <summary>
     /// Gets or sets specifies the resolution in pixels per inch which the images should be downsampled to.
     /// </summary>
@@ -75,8 +74,12 @@ public:
     bool resolutionIsSet() const;
     void unsetResolution();
     void setResolution(int32_t value);
+
     /// <summary>
-    /// Gets or sets specifies the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
+    /// Gets or sets specifies the threshold resolution in pixels per inch.
+    /// If resolution of an image in the document is less than threshold value,
+    /// the downsampling algorithm will not be applied.
+    /// A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
     /// </summary>
     int32_t getResolutionThreshold() const;
     bool resolutionThresholdIsSet() const;
@@ -86,8 +89,10 @@ public:
 protected:
     bool m_DownsampleImages;
     bool m_DownsampleImagesIsSet;
+
     int32_t m_Resolution;
     bool m_ResolutionIsSet;
+
     int32_t m_ResolutionThreshold;
     bool m_ResolutionThresholdIsSet;
 };

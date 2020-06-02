@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CommentsCollection.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_CommentsCollection_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_CommentsCollection_H_
 
-
 #include "Comment.h"
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Collection of comments.
 /// </summary>
-class  CommentsCollection
+class CommentsCollection
     : public LinkElement
 {
 public:

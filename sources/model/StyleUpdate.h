@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleUpdate.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StyleUpdate_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StyleUpdate_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Represents a single document style properties to update.
 /// </summary>
-class  StyleUpdate
+class StyleUpdate
     : public ModelBase
 {
 public:
@@ -62,19 +60,13 @@ public:
     /// StyleUpdate members
 
     /// <summary>
-    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
-    /// </summary>
-    utility::string_t getNextParagraphStyleName() const;
-    bool nextParagraphStyleNameIsSet() const;
-    void unsetNextParagraphStyleName();
-    void setNextParagraphStyleName(utility::string_t value);
-    /// <summary>
     /// Gets or sets /sets the name of the style this style is based on.
     /// </summary>
     utility::string_t getBaseStyleName() const;
     bool baseStyleNameIsSet() const;
     void unsetBaseStyleName();
     void setBaseStyleName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
     /// </summary>
@@ -82,6 +74,7 @@ public:
     bool isQuickStyleIsSet() const;
     void unsetIsQuickStyle();
     void setIsQuickStyle(bool value);
+
     /// <summary>
     /// Gets or sets the name of the style.
     /// </summary>
@@ -90,15 +83,27 @@ public:
     void unsetName();
     void setName(utility::string_t value);
 
+    /// <summary>
+    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph
+    /// inserted after a paragraph formatted with the specified style.
+    /// </summary>
+    utility::string_t getNextParagraphStyleName() const;
+    bool nextParagraphStyleNameIsSet() const;
+    void unsetNextParagraphStyleName();
+    void setNextParagraphStyleName(utility::string_t value);
+
 protected:
-    utility::string_t m_NextParagraphStyleName;
-    bool m_NextParagraphStyleNameIsSet;
     utility::string_t m_BaseStyleName;
     bool m_BaseStyleNameIsSet;
+
     bool m_IsQuickStyle;
     bool m_IsQuickStyleIsSet;
+
     utility::string_t m_Name;
     bool m_NameIsSet;
+
+    utility::string_t m_NextParagraphStyleName;
+    bool m_NextParagraphStyleNameIsSet;
 };
 
 }

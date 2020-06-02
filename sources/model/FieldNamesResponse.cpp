@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldNamesResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FieldNamesResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FieldNamesResponse::FieldNamesResponse()
 {
     m_FieldNamesIsSet = false;
+
 }
 
 FieldNamesResponse::~FieldNamesResponse()
@@ -49,7 +49,6 @@ void FieldNamesResponse::validate()
 web::json::value FieldNamesResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_FieldNamesIsSet)
     {
         val[_XPLATSTR("FieldNames")] = ModelBase::toJson(m_FieldNames);
@@ -69,39 +68,28 @@ void FieldNamesResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<FieldNames> newItem(new FieldNames());
             newItem->fromJson(fieldValue);
-            setFieldNames( newItem );
         }
     }
+
 }
 
 void FieldNamesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FieldNamesIsSet)
     {
         if (m_FieldNames.get())
         {
             m_FieldNames->toMultipart(multipart, _XPLATSTR("FieldNames."));
         }
-        
     }
+
 }
 
 void FieldNamesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("FieldNames")))
-    {
-        if(multipart->hasContent(_XPLATSTR("FieldNames")))
-        {
-            std::shared_ptr<FieldNames> newItem(new FieldNames());
-            newItem->fromMultiPart(multipart, _XPLATSTR("FieldNames."));
-            setFieldNames( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<FieldNames> FieldNamesResponse::getFieldNames() const
@@ -115,6 +103,7 @@ void FieldNamesResponse::setFieldNames(std::shared_ptr<FieldNames> value)
     m_FieldNames = value;
     m_FieldNamesIsSet = true;
 }
+
 bool FieldNamesResponse::fieldNamesIsSet() const
 {
     return m_FieldNamesIsSet;
@@ -130,4 +119,3 @@ void FieldNamesResponse::unsetFieldNames()
 }
 }
 }
-

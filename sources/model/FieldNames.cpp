@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldNames.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FieldNames.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FieldNames::FieldNames()
 {
     m_NamesIsSet = false;
+
 }
 
 FieldNames::~FieldNames()
@@ -49,14 +49,14 @@ void FieldNames::validate()
 web::json::value FieldNames::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_NamesIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray),
-			[&](utility::string_t item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](utility::string_t item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("Names")] = web::json::value::array(jsonArray);
@@ -75,48 +75,36 @@ void FieldNames::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("Names")) 
                             && !val[_XPLATSTR("Names")].is_null())
         {
-        auto arr = val[_XPLATSTR("Names")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Names), [&](web::json::value& item){
-            return ModelBase::stringFromJson(item);
-        });
-
+            auto arr = val[_XPLATSTR("Names")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_Names), [&](web::json::value& item){
+                return ModelBase::stringFromJson(item);
+            });
         }
     }
+
 }
 
 void FieldNames::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Names"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void FieldNames::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_Names.clear();
-        if(multipart->hasContent(_XPLATSTR("Names")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Names")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Names), [&](web::json::value item) {
-            return ModelBase::stringFromJson(item);
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<utility::string_t>& FieldNames::getNames()
@@ -124,11 +112,13 @@ std::vector<utility::string_t>& FieldNames::getNames()
     return m_Names;
 }
 
+
 void FieldNames::setNames(std::vector<utility::string_t> const& value)
 {
     m_Names = value;
     m_NamesIsSet = true;
 }
+
 bool FieldNames::namesIsSet() const
 {
     return m_NamesIsSet;
@@ -144,4 +134,3 @@ void FieldNames::unsetNames()
 }
 }
 }
-

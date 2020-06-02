@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DownloadFileRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef downloadFile_H
-#define downloadFile_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DownloadFileRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_DownloadFileRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,26 +36,27 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DownloadFileRequest{
+class DownloadFileRequest {
     public: 
-     DownloadFileRequest(
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName,
-                boost::optional<utility::string_t> versionId
+ DownloadFileRequest(
+            utility::string_t path,
+            boost::optional< utility::string_t > storageName,
+            boost::optional< utility::string_t > versionId
         );
 
         utility::string_t getPath() const;
         void setPath(utility::string_t path);
 
-        boost::optional<utility::string_t> getStorageName() const;
-        void setStorageName(boost::optional<utility::string_t> storageName);
+        boost::optional< utility::string_t > getStorageName() const;
+        void setStorageName(boost::optional< utility::string_t > storageName);
 
-        boost::optional<utility::string_t> getVersionId() const;
-        void setVersionId(boost::optional<utility::string_t> versionId);
+        boost::optional< utility::string_t > getVersionId() const;
+        void setVersionId(boost::optional< utility::string_t > versionId);
+
     private:
-        utility::string_t m_path;
-        boost::optional<utility::string_t> m_storageName;
-        boost::optional<utility::string_t> m_versionId;
+        utility::string_t m_Path;
+        boost::optional< utility::string_t > m_StorageName;
+        boost::optional< utility::string_t > m_VersionId;
 };
 
 }
@@ -63,4 +65,4 @@ class DownloadFileRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_DownloadFileRequest_H_ */

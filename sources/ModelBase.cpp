@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ModelBase.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,7 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "ModelBase.h"
 
 namespace aspose {
@@ -199,15 +200,15 @@ utility::string_t ModelBase::fixNamePrefix(utility::string_t prefix)
     return prefix;
 }
 
-int64_t ModelBase::int64_tFromJson(web::json::value& val)
+int64_t ModelBase::longFromJson(web::json::value& val)
 {
     return val.as_number().to_int64();
 }
-int32_t ModelBase::int32_tFromJson(web::json::value& val)
+int32_t ModelBase::integerFromJson(web::json::value& val)
 {
     return val.as_integer();
 }
-float ModelBase::floatFromJson(web::json::value& val)
+float ModelBase::floatingFromJson(web::json::value& val)
 {
     return static_cast<float>(val.as_double());
 }
@@ -215,12 +216,15 @@ utility::string_t ModelBase::stringFromJson(web::json::value& val)
 {
     return val.is_string() ? val.as_string() : utility::string_t{};
 }
-
-utility::datetime ModelBase::dateFromJson(web::json::value& val)
+utility::string_t ModelBase::enumFromJson(web::json::value& val)
+{
+	return val.is_string() ? val.as_string() : utility::string_t{};
+}
+utility::datetime ModelBase::dateTimeFromJson(web::json::value& val)
 {
     return utility::datetime::from_string(val.as_string(), utility::datetime::ISO_8601);
 }
-bool ModelBase::boolFromJson(web::json::value& val)
+bool ModelBase::booleanFromJson(web::json::value& val)
 {
     return val.as_bool();
 }

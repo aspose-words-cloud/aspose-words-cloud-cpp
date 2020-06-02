@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetRunFontRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,85 +22,103 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetRunFontRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetRunFontRequest::GetRunFontRequest(
-        utility::string_t name,
-                utility::string_t paragraphPath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_paragraphPath(std::move(paragraphPath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetRunFontRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetRunFontRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t GetRunFontRequest::getParagraphPath() const
-        {
-            return m_paragraphPath;
-        }
-        void GetRunFontRequest::setParagraphPath(utility::string_t paragraphPath){
-            m_paragraphPath = std::move(paragraphPath);
-        }
-        int32_t GetRunFontRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void GetRunFontRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> GetRunFontRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetRunFontRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetRunFontRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetRunFontRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetRunFontRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetRunFontRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetRunFontRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetRunFontRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t paragraphPath,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_ParagraphPath(std::move(paragraphPath)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetRunFontRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetRunFontRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t GetRunFontRequest::getParagraphPath() const
+{
+    return m_ParagraphPath;
+}
+
+void GetRunFontRequest::setParagraphPath(utility::string_t paragraphPath)
+{
+    m_ParagraphPath = std::move(paragraphPath);
+}
+
+int32_t GetRunFontRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void GetRunFontRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > GetRunFontRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetRunFontRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetRunFontRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetRunFontRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetRunFontRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetRunFontRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetRunFontRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetRunFontRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

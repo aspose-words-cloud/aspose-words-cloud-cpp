@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TiffSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TiffSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TiffSaveOptionsData_H_
 
-
-#include "GraphicsQualityOptionsData.h"
 #include "ImageSaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Container class for tiff save options.
 /// </summary>
-class  TiffSaveOptionsData
+class TiffSaveOptionsData
     : public ImageSaveOptionsData
 {
 public:
@@ -62,12 +61,14 @@ public:
     /// TiffSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering. Default value is 128.
+    /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
+    /// Default value is 128.
     /// </summary>
     int32_t getThresholdForFloydSteinbergDithering() const;
     bool thresholdForFloydSteinbergDitheringIsSet() const;
     void unsetThresholdForFloydSteinbergDithering();
     void setThresholdForFloydSteinbergDithering(int32_t value);
+
     /// <summary>
     /// Gets or sets specifies method used while converting images to 1 bpp format.
     /// </summary>
@@ -75,6 +76,7 @@ public:
     bool tiffBinarizationMethodIsSet() const;
     void unsetTiffBinarizationMethod();
     void setTiffBinarizationMethod(utility::string_t value);
+
     /// <summary>
     /// Gets or sets type of compression.
     /// </summary>
@@ -86,8 +88,10 @@ public:
 protected:
     int32_t m_ThresholdForFloydSteinbergDithering;
     bool m_ThresholdForFloydSteinbergDitheringIsSet;
+
     utility::string_t m_TiffBinarizationMethod;
     bool m_TiffBinarizationMethodIsSet;
+
     utility::string_t m_TiffCompression;
     bool m_TiffCompressionIsSet;
 };

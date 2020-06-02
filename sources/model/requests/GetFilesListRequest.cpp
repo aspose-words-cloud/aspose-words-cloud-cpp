@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetFilesListRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,40 +22,43 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetFilesListRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetFilesListRequest::GetFilesListRequest(
-        utility::string_t path,
-                boost::optional<utility::string_t> storageName
-        ) : 
-            m_path(std::move(path)),
-            m_storageName(std::move(storageName))
-        {
-            
-        }
-
-        utility::string_t GetFilesListRequest::getPath() const
-        {
-            return m_path;
-        }
-        void GetFilesListRequest::setPath(utility::string_t path){
-            m_path = std::move(path);
-        }
-        boost::optional<utility::string_t> GetFilesListRequest::getStorageName() const
-        {
-            return m_storageName;
-        }
-        void GetFilesListRequest::setStorageName(boost::optional<utility::string_t> storageName){
-            m_storageName = std::move(storageName);
-        }
-
-}
-}
-}
-}
+    utility::string_t path,
+    boost::optional< utility::string_t > storageName
+) : m_Path(std::move(path)),
+m_StorageName(std::move(storageName))
+{
 }
 
+utility::string_t GetFilesListRequest::getPath() const
+{
+    return m_Path;
+}
+
+void GetFilesListRequest::setPath(utility::string_t path)
+{
+    m_Path = std::move(path);
+}
+
+boost::optional< utility::string_t > GetFilesListRequest::getStorageName() const
+{
+    return m_StorageName;
+}
+
+void GetFilesListRequest::setStorageName(boost::optional< utility::string_t > storageName)
+{
+    m_StorageName = std::move(storageName);
+}
+
+}
+}
+}
+}
+}

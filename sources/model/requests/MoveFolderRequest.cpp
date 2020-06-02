@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MoveFolderRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,58 +22,67 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "MoveFolderRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 MoveFolderRequest::MoveFolderRequest(
-        utility::string_t destPath,
-                utility::string_t srcPath,
-                boost::optional<utility::string_t> srcStorageName,
-                boost::optional<utility::string_t> destStorageName
-        ) : 
-            m_destPath(std::move(destPath)),
-            m_srcPath(std::move(srcPath)),
-            m_srcStorageName(std::move(srcStorageName)),
-            m_destStorageName(std::move(destStorageName))
-        {
-            
-        }
-
-        utility::string_t MoveFolderRequest::getDestPath() const
-        {
-            return m_destPath;
-        }
-        void MoveFolderRequest::setDestPath(utility::string_t destPath){
-            m_destPath = std::move(destPath);
-        }
-        utility::string_t MoveFolderRequest::getSrcPath() const
-        {
-            return m_srcPath;
-        }
-        void MoveFolderRequest::setSrcPath(utility::string_t srcPath){
-            m_srcPath = std::move(srcPath);
-        }
-        boost::optional<utility::string_t> MoveFolderRequest::getSrcStorageName() const
-        {
-            return m_srcStorageName;
-        }
-        void MoveFolderRequest::setSrcStorageName(boost::optional<utility::string_t> srcStorageName){
-            m_srcStorageName = std::move(srcStorageName);
-        }
-        boost::optional<utility::string_t> MoveFolderRequest::getDestStorageName() const
-        {
-            return m_destStorageName;
-        }
-        void MoveFolderRequest::setDestStorageName(boost::optional<utility::string_t> destStorageName){
-            m_destStorageName = std::move(destStorageName);
-        }
-
-}
-}
-}
-}
+    utility::string_t destPath,
+    utility::string_t srcPath,
+    boost::optional< utility::string_t > srcStorageName,
+    boost::optional< utility::string_t > destStorageName
+) : m_DestPath(std::move(destPath)),
+m_SrcPath(std::move(srcPath)),
+m_SrcStorageName(std::move(srcStorageName)),
+m_DestStorageName(std::move(destStorageName))
+{
 }
 
+utility::string_t MoveFolderRequest::getDestPath() const
+{
+    return m_DestPath;
+}
+
+void MoveFolderRequest::setDestPath(utility::string_t destPath)
+{
+    m_DestPath = std::move(destPath);
+}
+
+utility::string_t MoveFolderRequest::getSrcPath() const
+{
+    return m_SrcPath;
+}
+
+void MoveFolderRequest::setSrcPath(utility::string_t srcPath)
+{
+    m_SrcPath = std::move(srcPath);
+}
+
+boost::optional< utility::string_t > MoveFolderRequest::getSrcStorageName() const
+{
+    return m_SrcStorageName;
+}
+
+void MoveFolderRequest::setSrcStorageName(boost::optional< utility::string_t > srcStorageName)
+{
+    m_SrcStorageName = std::move(srcStorageName);
+}
+
+boost::optional< utility::string_t > MoveFolderRequest::getDestStorageName() const
+{
+    return m_DestStorageName;
+}
+
+void MoveFolderRequest::setDestStorageName(boost::optional< utility::string_t > destStorageName)
+{
+    m_DestStorageName = std::move(destStorageName);
+}
+
+}
+}
+}
+}
+}

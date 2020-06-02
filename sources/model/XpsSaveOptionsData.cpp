@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XpsSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "XpsSaveOptionsData.h"
 
 namespace aspose {
@@ -38,9 +37,11 @@ XpsSaveOptionsData::XpsSaveOptionsData()
     m_BookmarksOutlineLevelIsSet = false;
     m_HeadingsOutlineLevels = 0;
     m_HeadingsOutlineLevelsIsSet = false;
+
     m_OutlineOptionsIsSet = false;
     m_UseBookFoldPrintingSettings = false;
     m_UseBookFoldPrintingSettingsIsSet = false;
+
 }
 
 XpsSaveOptionsData::~XpsSaveOptionsData()
@@ -55,7 +56,6 @@ void XpsSaveOptionsData::validate()
 web::json::value XpsSaveOptionsData::toJson() const
 {
     web::json::value val = this->FixedPageSaveOptionsData::toJson();
-
     if(m_BookmarksOutlineLevelIsSet)
     {
         val[_XPLATSTR("BookmarksOutlineLevel")] = ModelBase::toJson(m_BookmarksOutlineLevel);
@@ -85,17 +85,21 @@ void XpsSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BookmarksOutlineLevel")];
         if(!fieldValue.is_null())
         {
-            setBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
+           setBookmarksOutlineLevel(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("HeadingsOutlineLevels")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("HeadingsOutlineLevels")];
         if(!fieldValue.is_null())
         {
-            setHeadingsOutlineLevels(ModelBase::int32_tFromJson(fieldValue));
+           setHeadingsOutlineLevels(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("OutlineOptions")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("OutlineOptions")];
@@ -103,74 +107,56 @@ void XpsSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<OutlineOptionsData> newItem(new OutlineOptionsData());
             newItem->fromJson(fieldValue);
-            setOutlineOptions( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("UseBookFoldPrintingSettings")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("UseBookFoldPrintingSettings")];
         if(!fieldValue.is_null())
         {
-            setUseBookFoldPrintingSettings(ModelBase::boolFromJson(fieldValue));
+           setUseBookFoldPrintingSettings(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void XpsSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FixedPageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BookmarksOutlineLevelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BookmarksOutlineLevel"), m_BookmarksOutlineLevel));
-        
     }
+
+
     if(m_HeadingsOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeadingsOutlineLevels"), m_HeadingsOutlineLevels));
-        
     }
+
+
     if(m_OutlineOptionsIsSet)
     {
         if (m_OutlineOptions.get())
         {
             m_OutlineOptions->toMultipart(multipart, _XPLATSTR("OutlineOptions."));
         }
-        
     }
+
+
     if(m_UseBookFoldPrintingSettingsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseBookFoldPrintingSettings"), m_UseBookFoldPrintingSettings));
-        
     }
+
 }
 
 void XpsSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FixedPageSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("BookmarksOutlineLevel")))
-    {
-        setBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevel"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HeadingsOutlineLevels")))
-    {
-        setHeadingsOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("HeadingsOutlineLevels"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OutlineOptions")))
-    {
-        if(multipart->hasContent(_XPLATSTR("OutlineOptions")))
-        {
-            std::shared_ptr<OutlineOptionsData> newItem(new OutlineOptionsData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("OutlineOptions."));
-            setOutlineOptions( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("UseBookFoldPrintingSettings")))
-    {
-        setUseBookFoldPrintingSettings(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseBookFoldPrintingSettings"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 int32_t XpsSaveOptionsData::getBookmarksOutlineLevel() const
@@ -184,6 +170,7 @@ void XpsSaveOptionsData::setBookmarksOutlineLevel(int32_t value)
     m_BookmarksOutlineLevel = value;
     m_BookmarksOutlineLevelIsSet = true;
 }
+
 bool XpsSaveOptionsData::bookmarksOutlineLevelIsSet() const
 {
     return m_BookmarksOutlineLevelIsSet;
@@ -205,6 +192,7 @@ void XpsSaveOptionsData::setHeadingsOutlineLevels(int32_t value)
     m_HeadingsOutlineLevels = value;
     m_HeadingsOutlineLevelsIsSet = true;
 }
+
 bool XpsSaveOptionsData::headingsOutlineLevelsIsSet() const
 {
     return m_HeadingsOutlineLevelsIsSet;
@@ -226,6 +214,7 @@ void XpsSaveOptionsData::setOutlineOptions(std::shared_ptr<OutlineOptionsData> v
     m_OutlineOptions = value;
     m_OutlineOptionsIsSet = true;
 }
+
 bool XpsSaveOptionsData::outlineOptionsIsSet() const
 {
     return m_OutlineOptionsIsSet;
@@ -247,6 +236,7 @@ void XpsSaveOptionsData::setUseBookFoldPrintingSettings(bool value)
     m_UseBookFoldPrintingSettings = value;
     m_UseBookFoldPrintingSettingsIsSet = true;
 }
+
 bool XpsSaveOptionsData::useBookFoldPrintingSettingsIsSet() const
 {
     return m_UseBookFoldPrintingSettingsIsSet;
@@ -262,4 +252,3 @@ void XpsSaveOptionsData::unsetUseBookFoldPrintingSettings()
 }
 }
 }
-

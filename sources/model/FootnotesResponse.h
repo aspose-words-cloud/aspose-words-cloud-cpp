@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnotesResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FootnotesResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FootnotesResponse_H_
 
-
 #include "FootnoteCollection.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes.
+/// This response should be returned by the service when handling:
+/// GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes.
 /// </summary>
-class  FootnotesResponse
+class FootnotesResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +63,7 @@ public:
     /// FootnotesResponse members
 
     /// <summary>
-    /// Gets or sets Footnotes.
+    /// Gets or sets collection of footnotes.
     /// </summary>
     std::shared_ptr<FootnoteCollection> getFootnotes() const;
     bool footnotesIsSet() const;

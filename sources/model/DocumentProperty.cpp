@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentProperty.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentProperty.h"
 
 namespace aspose {
@@ -40,6 +39,7 @@ DocumentProperty::DocumentProperty()
     m_NameIsSet = false;
     m_Value = utility::conversions::to_string_t("");
     m_ValueIsSet = false;
+
 }
 
 DocumentProperty::~DocumentProperty()
@@ -54,7 +54,6 @@ void DocumentProperty::validate()
 web::json::value DocumentProperty::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_BuiltInIsSet)
     {
         val[_XPLATSTR("BuiltIn")] = ModelBase::toJson(m_BuiltIn);
@@ -80,65 +79,58 @@ void DocumentProperty::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BuiltIn")];
         if(!fieldValue.is_null())
         {
-            setBuiltIn(ModelBase::boolFromJson(fieldValue));
+           setBuiltIn(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Name")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
-            setName(ModelBase::stringFromJson(fieldValue));
+           setName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Value")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
-            setValue(ModelBase::stringFromJson(fieldValue));
+           setValue(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void DocumentProperty::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BuiltInIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BuiltIn"), m_BuiltIn));
-        
     }
+
+
     if(m_NameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
-        
     }
+
+
     if(m_ValueIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
-        
     }
+
 }
 
 void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("BuiltIn")))
-    {
-        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Name")))
-    {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Value")))
-    {
-        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool DocumentProperty::isBuiltIn() const
@@ -152,6 +144,7 @@ void DocumentProperty::setBuiltIn(bool value)
     m_BuiltIn = value;
     m_BuiltInIsSet = true;
 }
+
 bool DocumentProperty::builtInIsSet() const
 {
     return m_BuiltInIsSet;
@@ -173,6 +166,7 @@ void DocumentProperty::setName(utility::string_t value)
     m_Name = value;
     m_NameIsSet = true;
 }
+
 bool DocumentProperty::nameIsSet() const
 {
     return m_NameIsSet;
@@ -194,6 +188,7 @@ void DocumentProperty::setValue(utility::string_t value)
     m_Value = value;
     m_ValueIsSet = true;
 }
+
 bool DocumentProperty::valueIsSet() const
 {
     return m_ValueIsSet;
@@ -209,4 +204,3 @@ void DocumentProperty::unsetValue()
 }
 }
 }
-

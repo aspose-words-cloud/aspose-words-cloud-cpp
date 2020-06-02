@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Hyperlinks.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Hyperlinks.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 Hyperlinks::Hyperlinks()
 {
     m_HyperlinkListIsSet = false;
+
 }
 
 Hyperlinks::~Hyperlinks()
@@ -49,14 +49,14 @@ void Hyperlinks::validate()
 web::json::value Hyperlinks::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_HyperlinkListIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Hyperlink> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<Hyperlink> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("HyperlinkList")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void Hyperlinks::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("HyperlinkList")) 
                             && !val[_XPLATSTR("HyperlinkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("HyperlinkList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<Hyperlink>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<Hyperlink> newItem(new Hyperlink());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("HyperlinkList")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<Hyperlink> newItem(new Hyperlink());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<Hyperlink>)nullptr;
+            });
         }
     }
+
 }
 
 void Hyperlinks::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Hyperlink> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HyperlinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void Hyperlinks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_HyperlinkList.clear();
-        if(multipart->hasContent(_XPLATSTR("HyperlinkList")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HyperlinkList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<Hyperlink>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<Hyperlink> newItem(new Hyperlink());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<Hyperlink>>& Hyperlinks::getHyperlinkList()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<Hyperlink>>& Hyperlinks::getHyperlinkList()
     return m_HyperlinkList;
 }
 
+
 void Hyperlinks::setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> const& value)
 {
     m_HyperlinkList = value;
     m_HyperlinkListIsSet = true;
 }
+
 bool Hyperlinks::hyperlinkListIsSet() const
 {
     return m_HyperlinkListIsSet;
@@ -162,4 +141,3 @@ void Hyperlinks::unsetHyperlinkList()
 }
 }
 }
-

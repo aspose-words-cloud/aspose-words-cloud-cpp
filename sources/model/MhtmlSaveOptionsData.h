@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MhtmlSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_MhtmlSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_MhtmlSaveOptionsData_H_
 
-
 #include "HtmlSaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// Container class for mhtml save options.
 /// </summary>
-class  MhtmlSaveOptionsData
+class MhtmlSaveOptionsData
     : public HtmlSaveOptionsData
 {
 public:
@@ -61,7 +61,8 @@ public:
     /// MhtmlSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents. Default value is false.             
+    /// Gets or sets specifies whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents.
+    /// Default value is false.
     /// </summary>
     bool isExportCidUrlsForMhtmlResources() const;
     bool exportCidUrlsForMhtmlResourcesIsSet() const;

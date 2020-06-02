@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateTablePropertiesRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,121 +22,151 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "UpdateTablePropertiesRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
-        utility::string_t name,
-        std::shared_ptr<TableProperties> properties,
-        utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
-        ) : 
-            m_name(std::move(name)),
-            m_properties(std::move(properties)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
-        {
-            
-        }
-
-        utility::string_t UpdateTablePropertiesRequest::getName() const
-        {
-            return m_name;
-        }
-        void UpdateTablePropertiesRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        std::shared_ptr<TableProperties> UpdateTablePropertiesRequest::getProperties() const
-        {
-            return m_properties;
-        }
-        void UpdateTablePropertiesRequest::setProperties(std::shared_ptr<TableProperties> properties){
-            m_properties = std::move(properties);
-        }
-        utility::string_t UpdateTablePropertiesRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void UpdateTablePropertiesRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
-        }
-        int32_t UpdateTablePropertiesRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void UpdateTablePropertiesRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void UpdateTablePropertiesRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void UpdateTablePropertiesRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void UpdateTablePropertiesRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void UpdateTablePropertiesRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void UpdateTablePropertiesRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void UpdateTablePropertiesRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> UpdateTablePropertiesRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void UpdateTablePropertiesRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    std::shared_ptr<TableProperties> properties,
+    utility::string_t nodePath,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
+) : m_Name(std::move(name)),
+m_Properties(std::move(properties)),
+m_NodePath(std::move(nodePath)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
+{
 }
 
+utility::string_t UpdateTablePropertiesRequest::getName() const
+{
+    return m_Name;
+}
+
+void UpdateTablePropertiesRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+std::shared_ptr<TableProperties> UpdateTablePropertiesRequest::getProperties() const
+{
+    return m_Properties;
+}
+
+void UpdateTablePropertiesRequest::setProperties(std::shared_ptr<TableProperties> properties)
+{
+    m_Properties = std::move(properties);
+}
+
+utility::string_t UpdateTablePropertiesRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void UpdateTablePropertiesRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
+int32_t UpdateTablePropertiesRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void UpdateTablePropertiesRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void UpdateTablePropertiesRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void UpdateTablePropertiesRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void UpdateTablePropertiesRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void UpdateTablePropertiesRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void UpdateTablePropertiesRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void UpdateTablePropertiesRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > UpdateTablePropertiesRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void UpdateTablePropertiesRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+}
+}
+}
+}
+}

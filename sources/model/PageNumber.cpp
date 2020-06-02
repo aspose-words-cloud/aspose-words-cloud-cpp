@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageNumber.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PageNumber.h"
 
 namespace aspose {
@@ -34,14 +33,15 @@ namespace models {
 
 PageNumber::PageNumber()
 {
-    m_Format = utility::conversions::to_string_t("");
-    m_FormatIsSet = false;
     m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
+    m_Format = utility::conversions::to_string_t("");
+    m_FormatIsSet = false;
     m_IsTop = false;
     m_IsTopIsSet = false;
     m_SetPageNumberOnFirstPage = false;
     m_SetPageNumberOnFirstPageIsSet = false;
+
 }
 
 PageNumber::~PageNumber()
@@ -56,14 +56,13 @@ void PageNumber::validate()
 web::json::value PageNumber::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_FormatIsSet)
-    {
-        val[_XPLATSTR("Format")] = ModelBase::toJson(m_Format);
-    }
     if(m_AlignmentIsSet)
     {
         val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
+    }
+    if(m_FormatIsSet)
+    {
+        val[_XPLATSTR("Format")] = ModelBase::toJson(m_Format);
     }
     if(m_IsTopIsSet)
     {
@@ -79,108 +78,78 @@ web::json::value PageNumber::toJson() const
 
 void PageNumber::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Format")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Format")];
-        if(!fieldValue.is_null())
-        {
-            setFormat(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("Alignment")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
         if(!fieldValue.is_null())
         {
-            setAlignment(ModelBase::stringFromJson(fieldValue));
+           setAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("Format")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Format")];
+        if(!fieldValue.is_null())
+        {
+           setFormat(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
+
     if(val.has_field(_XPLATSTR("IsTop")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsTop")];
         if(!fieldValue.is_null())
         {
-            setIsTop(ModelBase::boolFromJson(fieldValue));
+           setIsTop(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SetPageNumberOnFirstPage")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SetPageNumberOnFirstPage")];
         if(!fieldValue.is_null())
         {
-            setSetPageNumberOnFirstPage(ModelBase::boolFromJson(fieldValue));
+           setSetPageNumberOnFirstPage(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void PageNumber::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_AlignmentIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
+    }
+
 
     if(m_FormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Format"), m_Format));
-        
     }
-    if(m_AlignmentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
-        
-    }
+
+
     if(m_IsTopIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsTop"), m_IsTop));
-        
     }
+
+
     if(m_SetPageNumberOnFirstPageIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SetPageNumberOnFirstPage"), m_SetPageNumberOnFirstPage));
-        
     }
+
 }
 
 void PageNumber::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Format")))
-    {
-        setFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Format"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
-    {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsTop")))
-    {
-        setIsTop(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsTop"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SetPageNumberOnFirstPage")))
-    {
-        setSetPageNumberOnFirstPage(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SetPageNumberOnFirstPage"))));
-    }
-}
-
-utility::string_t PageNumber::getFormat() const
-{
-    return m_Format;
-}
-
-
-void PageNumber::setFormat(utility::string_t value)
-{
-    m_Format = value;
-    m_FormatIsSet = true;
-}
-bool PageNumber::formatIsSet() const
-{
-    return m_FormatIsSet;
-}
-
-void PageNumber::unsetFormat()
-{
-    m_FormatIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t PageNumber::getAlignment() const
@@ -194,6 +163,7 @@ void PageNumber::setAlignment(utility::string_t value)
     m_Alignment = value;
     m_AlignmentIsSet = true;
 }
+
 bool PageNumber::alignmentIsSet() const
 {
     return m_AlignmentIsSet;
@@ -202,6 +172,28 @@ bool PageNumber::alignmentIsSet() const
 void PageNumber::unsetAlignment()
 {
     m_AlignmentIsSet = false;
+}
+
+utility::string_t PageNumber::getFormat() const
+{
+    return m_Format;
+}
+
+
+void PageNumber::setFormat(utility::string_t value)
+{
+    m_Format = value;
+    m_FormatIsSet = true;
+}
+
+bool PageNumber::formatIsSet() const
+{
+    return m_FormatIsSet;
+}
+
+void PageNumber::unsetFormat()
+{
+    m_FormatIsSet = false;
 }
 
 bool PageNumber::isIsTop() const
@@ -215,6 +207,7 @@ void PageNumber::setIsTop(bool value)
     m_IsTop = value;
     m_IsTopIsSet = true;
 }
+
 bool PageNumber::isTopIsSet() const
 {
     return m_IsTopIsSet;
@@ -236,6 +229,7 @@ void PageNumber::setSetPageNumberOnFirstPage(bool value)
     m_SetPageNumberOnFirstPage = value;
     m_SetPageNumberOnFirstPageIsSet = true;
 }
+
 bool PageNumber::setPageNumberOnFirstPageIsSet() const
 {
     return m_SetPageNumberOnFirstPageIsSet;
@@ -251,4 +245,3 @@ void PageNumber::unsetSetPageNumberOnFirstPage()
 }
 }
 }
-

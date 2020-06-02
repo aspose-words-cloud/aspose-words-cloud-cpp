@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="LoadWebDocumentData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "LoadWebDocumentData.h"
 
 namespace aspose {
@@ -36,7 +35,9 @@ LoadWebDocumentData::LoadWebDocumentData()
 {
     m_LoadingDocumentUrl = utility::conversions::to_string_t("");
     m_LoadingDocumentUrlIsSet = false;
+
     m_SaveOptionsIsSet = false;
+
 }
 
 LoadWebDocumentData::~LoadWebDocumentData()
@@ -51,7 +52,6 @@ void LoadWebDocumentData::validate()
 web::json::value LoadWebDocumentData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_LoadingDocumentUrlIsSet)
     {
         val[_XPLATSTR("LoadingDocumentUrl")] = ModelBase::toJson(m_LoadingDocumentUrl);
@@ -71,9 +71,11 @@ void LoadWebDocumentData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LoadingDocumentUrl")];
         if(!fieldValue.is_null())
         {
-            setLoadingDocumentUrl(ModelBase::stringFromJson(fieldValue));
+           setLoadingDocumentUrl(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SaveOptions")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SaveOptions")];
@@ -81,48 +83,33 @@ void LoadWebDocumentData::fromJson(web::json::value& val)
         {
             std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
             newItem->fromJson(fieldValue);
-            setSaveOptions( newItem );
         }
     }
+
 }
 
 void LoadWebDocumentData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_LoadingDocumentUrlIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LoadingDocumentUrl"), m_LoadingDocumentUrl));
-        
     }
+
+
     if(m_SaveOptionsIsSet)
     {
         if (m_SaveOptions.get())
         {
             m_SaveOptions->toMultipart(multipart, _XPLATSTR("SaveOptions."));
         }
-        
     }
+
 }
 
 void LoadWebDocumentData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("LoadingDocumentUrl")))
-    {
-        setLoadingDocumentUrl(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LoadingDocumentUrl"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SaveOptions")))
-    {
-        if(multipart->hasContent(_XPLATSTR("SaveOptions")))
-        {
-            std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SaveOptions."));
-            setSaveOptions( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t LoadWebDocumentData::getLoadingDocumentUrl() const
@@ -136,6 +123,7 @@ void LoadWebDocumentData::setLoadingDocumentUrl(utility::string_t value)
     m_LoadingDocumentUrl = value;
     m_LoadingDocumentUrlIsSet = true;
 }
+
 bool LoadWebDocumentData::loadingDocumentUrlIsSet() const
 {
     return m_LoadingDocumentUrlIsSet;
@@ -157,6 +145,7 @@ void LoadWebDocumentData::setSaveOptions(std::shared_ptr<SaveOptionsData> value)
     m_SaveOptions = value;
     m_SaveOptionsIsSet = true;
 }
+
 bool LoadWebDocumentData::saveOptionsIsSet() const
 {
     return m_SaveOptionsIsSet;
@@ -172,4 +161,3 @@ void LoadWebDocumentData::unsetSaveOptions()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetTableRowFormatRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,85 +22,103 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetTableRowFormatRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetTableRowFormatRequest::GetTableRowFormatRequest(
-        utility::string_t name,
-                utility::string_t tablePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_tablePath(std::move(tablePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetTableRowFormatRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetTableRowFormatRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t GetTableRowFormatRequest::getTablePath() const
-        {
-            return m_tablePath;
-        }
-        void GetTableRowFormatRequest::setTablePath(utility::string_t tablePath){
-            m_tablePath = std::move(tablePath);
-        }
-        int32_t GetTableRowFormatRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void GetTableRowFormatRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> GetTableRowFormatRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetTableRowFormatRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetTableRowFormatRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetTableRowFormatRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetTableRowFormatRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetTableRowFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetTableRowFormatRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetTableRowFormatRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t tablePath,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_TablePath(std::move(tablePath)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetTableRowFormatRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetTableRowFormatRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t GetTableRowFormatRequest::getTablePath() const
+{
+    return m_TablePath;
+}
+
+void GetTableRowFormatRequest::setTablePath(utility::string_t tablePath)
+{
+    m_TablePath = std::move(tablePath);
+}
+
+int32_t GetTableRowFormatRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void GetTableRowFormatRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > GetTableRowFormatRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetTableRowFormatRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetTableRowFormatRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetTableRowFormatRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetTableRowFormatRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetTableRowFormatRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetTableRowFormatRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetTableRowFormatRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

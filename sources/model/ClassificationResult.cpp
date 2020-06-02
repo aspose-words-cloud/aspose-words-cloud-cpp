@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassificationResult.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ClassificationResult.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ ClassificationResult::ClassificationResult()
     m_ClassNameIsSet = false;
     m_ClassProbability = 0.0;
     m_ClassProbabilityIsSet = false;
+
 }
 
 ClassificationResult::~ClassificationResult()
@@ -52,7 +52,6 @@ void ClassificationResult::validate()
 web::json::value ClassificationResult::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_ClassNameIsSet)
     {
         val[_XPLATSTR("ClassName")] = ModelBase::toJson(m_ClassName);
@@ -72,48 +71,41 @@ void ClassificationResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ClassName")];
         if(!fieldValue.is_null())
         {
-            setClassName(ModelBase::stringFromJson(fieldValue));
+           setClassName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ClassProbability")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ClassProbability")];
         if(!fieldValue.is_null())
         {
-            setClassProbability(ModelBase::doubleFromJson(fieldValue));
+           setClassProbability(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
 }
 
 void ClassificationResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ClassNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassName"), m_ClassName));
-        
     }
+
+
     if(m_ClassProbabilityIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ClassProbability"), m_ClassProbability));
-        
     }
+
 }
 
 void ClassificationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("ClassName")))
-    {
-        setClassName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ClassName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ClassProbability")))
-    {
-        setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t ClassificationResult::getClassName() const
@@ -127,6 +119,7 @@ void ClassificationResult::setClassName(utility::string_t value)
     m_ClassName = value;
     m_ClassNameIsSet = true;
 }
+
 bool ClassificationResult::classNameIsSet() const
 {
     return m_ClassNameIsSet;
@@ -148,6 +141,7 @@ void ClassificationResult::setClassProbability(double value)
     m_ClassProbability = value;
     m_ClassProbabilityIsSet = true;
 }
+
 bool ClassificationResult::classProbabilityIsSet() const
 {
     return m_ClassProbabilityIsSet;
@@ -163,4 +157,3 @@ void ClassificationResult::unsetClassProbability()
 }
 }
 }
-

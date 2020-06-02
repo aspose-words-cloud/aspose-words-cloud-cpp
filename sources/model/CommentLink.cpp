@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CommentLink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "CommentLink.h"
 
@@ -49,7 +48,6 @@ web::json::value CommentLink::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
 
-
     return val;
 }
 
@@ -63,18 +61,17 @@ void CommentLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipar
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
 }
 
 void CommentLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
+    // TODO: implement fromMultiPart
 }
 
-}
-}
-}
-}
-}
 
+
+}
+}
+}
+}
+}

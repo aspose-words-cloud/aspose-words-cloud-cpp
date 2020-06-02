@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldResponse_H_
 
-
 #include "FormField.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
+/// This response should be returned by the service when handling:
+/// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
 /// </summary>
-class  FormFieldResponse
+class FormFieldResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +63,7 @@ public:
     /// FormFieldResponse members
 
     /// <summary>
-    /// Gets or sets FormField.
+    /// Gets or sets field information.
     /// </summary>
     std::shared_ptr<FormField> getFormField() const;
     bool formFieldIsSet() const;

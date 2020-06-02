@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StoryChildNodes.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StoryChildNodes.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 StoryChildNodes::StoryChildNodes()
 {
     m_ChildNodesIsSet = false;
+
 }
 
 StoryChildNodes::~StoryChildNodes()
@@ -49,14 +49,14 @@ void StoryChildNodes::validate()
 web::json::value StoryChildNodes::toJson() const
 {
     web::json::value val = web::json::value::object();
-
+    if(m_ChildNodesIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<NodeLink> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<NodeLink> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("ChildNodes")] = web::json::value::array(jsonArray);
@@ -73,66 +73,42 @@ void StoryChildNodes::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("ChildNodes")) 
                             && !val[_XPLATSTR("ChildNodes")].is_null())
         {
-        auto arr = val[_XPLATSTR("ChildNodes")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<NodeLink>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<NodeLink> newItem(new NodeLink());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("ChildNodes")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<NodeLink> newItem(new NodeLink());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<NodeLink>)nullptr;
+            });
         }
     }
+
 }
 
 void StoryChildNodes::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ChildNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void StoryChildNodes::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    {
-        m_ChildNodes.clear();
-        if(multipart->hasContent(_XPLATSTR("ChildNodes")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ChildNodes")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<NodeLink>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<NodeLink> newItem(new NodeLink());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<NodeLink>>& StoryChildNodes::getChildNodes()
@@ -140,11 +116,13 @@ std::vector<std::shared_ptr<NodeLink>>& StoryChildNodes::getChildNodes()
     return m_ChildNodes;
 }
 
+
 void StoryChildNodes::setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value)
 {
     m_ChildNodes = value;
     m_ChildNodesIsSet = true;
 }
+
 bool StoryChildNodes::childNodesIsSet() const
 {
     return m_ChildNodesIsSet;
@@ -160,4 +138,3 @@ void StoryChildNodes::unsetChildNodes()
 }
 }
 }
-

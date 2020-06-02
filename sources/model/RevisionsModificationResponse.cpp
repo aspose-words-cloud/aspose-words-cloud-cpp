@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RevisionsModificationResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "RevisionsModificationResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 RevisionsModificationResponse::RevisionsModificationResponse()
 {
     m_ResultIsSet = false;
+
 }
 
 RevisionsModificationResponse::~RevisionsModificationResponse()
@@ -49,7 +49,6 @@ void RevisionsModificationResponse::validate()
 web::json::value RevisionsModificationResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_ResultIsSet)
     {
         val[_XPLATSTR("Result")] = ModelBase::toJson(m_Result);
@@ -69,39 +68,28 @@ void RevisionsModificationResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
             newItem->fromJson(fieldValue);
-            setResult( newItem );
         }
     }
+
 }
 
 void RevisionsModificationResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ResultIsSet)
     {
         if (m_Result.get())
         {
             m_Result->toMultipart(multipart, _XPLATSTR("Result."));
         }
-        
     }
+
 }
 
 void RevisionsModificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Result")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Result")))
-        {
-            std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Result."));
-            setResult( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<ModificationOperationResult> RevisionsModificationResponse::getResult() const
@@ -115,6 +103,7 @@ void RevisionsModificationResponse::setResult(std::shared_ptr<ModificationOperat
     m_Result = value;
     m_ResultIsSet = true;
 }
+
 bool RevisionsModificationResponse::resultIsSet() const
 {
     return m_ResultIsSet;
@@ -130,4 +119,3 @@ void RevisionsModificationResponse::unsetResult()
 }
 }
 }
-

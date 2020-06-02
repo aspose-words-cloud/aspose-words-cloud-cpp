@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertWatermarkTextRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef insertWatermarkText_H
-#define insertWatermarkText_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_InsertWatermarkTextRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_InsertWatermarkTextRequest_H_
+
 #include "WatermarkText.h"
+#include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,18 +37,18 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class InsertWatermarkTextRequest{
+class InsertWatermarkTextRequest {
     public: 
-     InsertWatermarkTextRequest(
-                utility::string_t name,
-                std::shared_ptr<WatermarkText> watermarkText,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
+ InsertWatermarkTextRequest(
+            utility::string_t name,
+            std::shared_ptr<WatermarkText> watermarkText,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime
         );
 
         utility::string_t getName() const;
@@ -56,36 +57,37 @@ class InsertWatermarkTextRequest{
         std::shared_ptr<WatermarkText> getWatermarkText() const;
         void setWatermarkText(std::shared_ptr<WatermarkText> watermarkText);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
 
-        boost::optional<utility::string_t> getRevisionAuthor() const;
-        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
 
-        boost::optional<utility::string_t> getRevisionDateTime() const;
-        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
+
     private:
-        utility::string_t m_name;
-        std::shared_ptr<WatermarkText> m_watermarkText;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_revisionAuthor;
-        boost::optional<utility::string_t> m_revisionDateTime;
+        utility::string_t m_Name;
+        std::shared_ptr<WatermarkText> m_WatermarkText;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
 };
 
 }
@@ -94,4 +96,4 @@ class InsertWatermarkTextRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_InsertWatermarkTextRequest_H_ */

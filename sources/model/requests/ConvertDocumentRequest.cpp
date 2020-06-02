@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ConvertDocumentRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,76 +22,91 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "ConvertDocumentRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 ConvertDocumentRequest::ConvertDocumentRequest(
-        std::shared_ptr<HttpContent> document,
-                utility::string_t format,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> outPath,
-                boost::optional<utility::string_t> fileNameFieldValue,
-                boost::optional<utility::string_t> fontsLocation
-        ) : 
-            m_document(std::move(document)),
-            m_format(std::move(format)),
-            m_storage(std::move(storage)),
-            m_outPath(std::move(outPath)),
-            m_fileNameFieldValue(std::move(fileNameFieldValue)),
-            m_fontsLocation(std::move(fontsLocation))
-        {
-            
-        }
-
-        std::shared_ptr<HttpContent> ConvertDocumentRequest::getDocument() const
-        {
-            return m_document;
-        }
-        void ConvertDocumentRequest::setDocument(std::shared_ptr<HttpContent> document){
-            m_document = std::move(document);
-        }
-        utility::string_t ConvertDocumentRequest::getFormat() const
-        {
-            return m_format;
-        }
-        void ConvertDocumentRequest::setFormat(utility::string_t format){
-            m_format = std::move(format);
-        }
-        boost::optional<utility::string_t> ConvertDocumentRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void ConvertDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> ConvertDocumentRequest::getOutPath() const
-        {
-            return m_outPath;
-        }
-        void ConvertDocumentRequest::setOutPath(boost::optional<utility::string_t> outPath){
-            m_outPath = std::move(outPath);
-        }
-        boost::optional<utility::string_t> ConvertDocumentRequest::getFileNameFieldValue() const
-        {
-            return m_fileNameFieldValue;
-        }
-        void ConvertDocumentRequest::setFileNameFieldValue(boost::optional<utility::string_t> fileNameFieldValue){
-            m_fileNameFieldValue = std::move(fileNameFieldValue);
-        }
-        boost::optional<utility::string_t> ConvertDocumentRequest::getFontsLocation() const
-        {
-            return m_fontsLocation;
-        }
-        void ConvertDocumentRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
-        }
-
-}
-}
-}
-}
+    std::shared_ptr<HttpContent> document,
+    utility::string_t format,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > outPath,
+    boost::optional< utility::string_t > fileNameFieldValue,
+    boost::optional< utility::string_t > fontsLocation
+) : m_Document(std::move(document)),
+m_Format(std::move(format)),
+m_Storage(std::move(storage)),
+m_OutPath(std::move(outPath)),
+m_FileNameFieldValue(std::move(fileNameFieldValue)),
+m_FontsLocation(std::move(fontsLocation))
+{
 }
 
+std::shared_ptr<HttpContent> ConvertDocumentRequest::getDocument() const
+{
+    return m_Document;
+}
+
+void ConvertDocumentRequest::setDocument(std::shared_ptr<HttpContent> document)
+{
+    m_Document = std::move(document);
+}
+
+utility::string_t ConvertDocumentRequest::getFormat() const
+{
+    return m_Format;
+}
+
+void ConvertDocumentRequest::setFormat(utility::string_t format)
+{
+    m_Format = std::move(format);
+}
+
+boost::optional< utility::string_t > ConvertDocumentRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void ConvertDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > ConvertDocumentRequest::getOutPath() const
+{
+    return m_OutPath;
+}
+
+void ConvertDocumentRequest::setOutPath(boost::optional< utility::string_t > outPath)
+{
+    m_OutPath = std::move(outPath);
+}
+
+boost::optional< utility::string_t > ConvertDocumentRequest::getFileNameFieldValue() const
+{
+    return m_FileNameFieldValue;
+}
+
+void ConvertDocumentRequest::setFileNameFieldValue(boost::optional< utility::string_t > fileNameFieldValue)
+{
+    m_FileNameFieldValue = std::move(fileNameFieldValue);
+}
+
+boost::optional< utility::string_t > ConvertDocumentRequest::getFontsLocation() const
+{
+    return m_FontsLocation;
+}
+
+void ConvertDocumentRequest::setFontsLocation(boost::optional< utility::string_t > fontsLocation)
+{
+    m_FontsLocation = std::move(fontsLocation);
+}
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldDropDown.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldDropDown_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldDropDown_H_
 
-
 #include "FormField.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// FormField dropdownlist element.
 /// </summary>
-class  FormFieldDropDown
+class FormFieldDropDown
     : public FormField
 {
 public:
@@ -67,6 +67,7 @@ public:
     bool dropDownItemsIsSet() const;
     void unsetDropDownItems();
     void setDropDownItems(std::vector<utility::string_t> const& value);
+
     /// <summary>
     /// Gets or sets the index specifying the currently selected item in a dropdown form field.
     /// </summary>
@@ -78,6 +79,7 @@ public:
 protected:
     std::vector<utility::string_t> m_DropDownItems;
     bool m_DropDownItemsIsSet;
+
     int32_t m_DropDownSelectedIndex;
     bool m_DropDownSelectedIndexIsSet;
 };

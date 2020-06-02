@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UploadFileRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,12 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef uploadFile_H
-#define uploadFile_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_UploadFileRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_UploadFileRequest_H_
+
 #include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,12 +36,12 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class UploadFileRequest{
+class UploadFileRequest {
     public: 
-     UploadFileRequest(
-                std::shared_ptr<HttpContent> fileContent,
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName
+ UploadFileRequest(
+            std::shared_ptr<HttpContent> fileContent,
+            utility::string_t path,
+            boost::optional< utility::string_t > storageName
         );
 
         std::shared_ptr<HttpContent> getFileContent() const;
@@ -50,12 +50,13 @@ class UploadFileRequest{
         utility::string_t getPath() const;
         void setPath(utility::string_t path);
 
-        boost::optional<utility::string_t> getStorageName() const;
-        void setStorageName(boost::optional<utility::string_t> storageName);
+        boost::optional< utility::string_t > getStorageName() const;
+        void setStorageName(boost::optional< utility::string_t > storageName);
+
     private:
-        std::shared_ptr<HttpContent> m_fileContent;
-        utility::string_t m_path;
-        boost::optional<utility::string_t> m_storageName;
+        std::shared_ptr<HttpContent> m_FileContent;
+        utility::string_t m_Path;
+        boost::optional< utility::string_t > m_StorageName;
 };
 
 }
@@ -64,4 +65,4 @@ class UploadFileRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_UploadFileRequest_H_ */

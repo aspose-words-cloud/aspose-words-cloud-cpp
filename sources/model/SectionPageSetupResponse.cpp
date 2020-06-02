@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionPageSetupResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SectionPageSetupResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 SectionPageSetupResponse::SectionPageSetupResponse()
 {
     m_PageSetupIsSet = false;
+
 }
 
 SectionPageSetupResponse::~SectionPageSetupResponse()
@@ -49,7 +49,6 @@ void SectionPageSetupResponse::validate()
 web::json::value SectionPageSetupResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_PageSetupIsSet)
     {
         val[_XPLATSTR("PageSetup")] = ModelBase::toJson(m_PageSetup);
@@ -69,39 +68,28 @@ void SectionPageSetupResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<PageSetup> newItem(new PageSetup());
             newItem->fromJson(fieldValue);
-            setPageSetup( newItem );
         }
     }
+
 }
 
 void SectionPageSetupResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_PageSetupIsSet)
     {
         if (m_PageSetup.get())
         {
             m_PageSetup->toMultipart(multipart, _XPLATSTR("PageSetup."));
         }
-        
     }
+
 }
 
 void SectionPageSetupResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("PageSetup")))
-    {
-        if(multipart->hasContent(_XPLATSTR("PageSetup")))
-        {
-            std::shared_ptr<PageSetup> newItem(new PageSetup());
-            newItem->fromMultiPart(multipart, _XPLATSTR("PageSetup."));
-            setPageSetup( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<PageSetup> SectionPageSetupResponse::getPageSetup() const
@@ -115,6 +103,7 @@ void SectionPageSetupResponse::setPageSetup(std::shared_ptr<PageSetup> value)
     m_PageSetup = value;
     m_PageSetupIsSet = true;
 }
+
 bool SectionPageSetupResponse::pageSetupIsSet() const
 {
     return m_PageSetupIsSet;
@@ -130,4 +119,3 @@ void SectionPageSetupResponse::unsetPageSetup()
 }
 }
 }
-

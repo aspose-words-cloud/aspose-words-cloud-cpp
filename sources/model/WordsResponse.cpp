@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WordsResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "WordsResponse.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ WordsResponse::WordsResponse()
 {
     m_RequestId = utility::conversions::to_string_t("");
     m_RequestIdIsSet = false;
+
 }
 
 WordsResponse::~WordsResponse()
@@ -50,7 +50,6 @@ void WordsResponse::validate()
 web::json::value WordsResponse::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_RequestIdIsSet)
     {
         val[_XPLATSTR("RequestId")] = ModelBase::toJson(m_RequestId);
@@ -66,31 +65,25 @@ void WordsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RequestId")];
         if(!fieldValue.is_null())
         {
-            setRequestId(ModelBase::stringFromJson(fieldValue));
+           setRequestId(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void WordsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_RequestIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RequestId"), m_RequestId));
-        
     }
+
 }
 
 void WordsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("RequestId")))
-    {
-        setRequestId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RequestId"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t WordsResponse::getRequestId() const
@@ -104,6 +97,7 @@ void WordsResponse::setRequestId(utility::string_t value)
     m_RequestId = value;
     m_RequestIdIsSet = true;
 }
+
 bool WordsResponse::requestIdIsSet() const
 {
     return m_RequestIdIsSet;
@@ -119,4 +113,3 @@ void WordsResponse::unsetRequestId()
 }
 }
 }
-

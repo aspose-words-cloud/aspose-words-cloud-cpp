@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SvgSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SvgSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SvgSaveOptionsData_H_
 
-
 #include "FixedPageSaveOptionsData.h"
-#include "MetafileRenderingOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for svg save options.
 /// </summary>
-class  SvgSaveOptionsData
+class SvgSaveOptionsData
     : public FixedPageSaveOptionsData
 {
 public:
@@ -68,6 +67,7 @@ public:
     bool exportEmbeddedImagesIsSet() const;
     void unsetExportEmbeddedImages();
     void setExportEmbeddedImages(bool value);
+
     /// <summary>
     /// Gets or sets specifies if the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
     /// </summary>
@@ -75,6 +75,7 @@ public:
     bool fitToViewPortIsSet() const;
     void unsetFitToViewPort();
     void setFitToViewPort(bool value);
+
     /// <summary>
     /// Gets or sets specifies the physical folder where resources (images) are saved when exporting.
     /// </summary>
@@ -82,6 +83,7 @@ public:
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
     void setResourcesFolder(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies the name of the folder used to construct image URIs.
     /// </summary>
@@ -89,6 +91,7 @@ public:
     bool resourcesFolderAliasIsSet() const;
     void unsetResourcesFolderAlias();
     void setResourcesFolderAlias(utility::string_t value);
+
     /// <summary>
     /// Gets or sets show/hide page stepper.
     /// </summary>
@@ -96,6 +99,7 @@ public:
     bool showPageBorderIsSet() const;
     void unsetShowPageBorder();
     void setShowPageBorder(bool value);
+
     /// <summary>
     /// Gets or sets determines how text should be rendered.
     /// </summary>
@@ -107,14 +111,19 @@ public:
 protected:
     bool m_ExportEmbeddedImages;
     bool m_ExportEmbeddedImagesIsSet;
+
     bool m_FitToViewPort;
     bool m_FitToViewPortIsSet;
+
     utility::string_t m_ResourcesFolder;
     bool m_ResourcesFolderIsSet;
+
     utility::string_t m_ResourcesFolderAlias;
     bool m_ResourcesFolderAliasIsSet;
+
     bool m_ShowPageBorder;
     bool m_ShowPageBorderIsSet;
+
     utility::string_t m_TextOutputMode;
     bool m_TextOutputModeIsSet;
 };

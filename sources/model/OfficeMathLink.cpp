@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OfficeMathLink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "OfficeMathLink.h"
 
@@ -49,7 +48,6 @@ web::json::value OfficeMathLink::toJson() const
 {
     web::json::value val = this->NodeLink::toJson();
 
-
     return val;
 }
 
@@ -63,18 +61,17 @@ void OfficeMathLink::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 {
     NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
 }
 
 void OfficeMathLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    NodeLink::fromMultiPart(multipart, prefix);
-
+    // TODO: implement fromMultiPart
 }
 
-}
-}
-}
-}
-}
 
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FilesList.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FilesList.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FilesList::FilesList()
 {
     m_ValueIsSet = false;
+
 }
 
 FilesList::~FilesList()
@@ -49,14 +49,14 @@ void FilesList::validate()
 web::json::value FilesList::toJson() const
 {
     web::json::value val = web::json::value::object();
-
+    if(m_ValueIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Value.begin(), m_Value.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<StorageFile> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<StorageFile> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("Value")] = web::json::value::array(jsonArray);
@@ -73,66 +73,42 @@ void FilesList::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("Value")) 
                             && !val[_XPLATSTR("Value")].is_null())
         {
-        auto arr = val[_XPLATSTR("Value")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Value), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<StorageFile>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<StorageFile> newItem(new StorageFile());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("Value")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_Value), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<StorageFile> newItem(new StorageFile());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<StorageFile>)nullptr;
+            });
         }
     }
+
 }
 
 void FilesList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Value.begin(), m_Value.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<StorageFile> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void FilesList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    {
-        m_Value.clear();
-        if(multipart->hasContent(_XPLATSTR("Value")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Value), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<StorageFile>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<StorageFile> newItem(new StorageFile());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<StorageFile>>& FilesList::getValue()
@@ -140,11 +116,13 @@ std::vector<std::shared_ptr<StorageFile>>& FilesList::getValue()
     return m_Value;
 }
 
+
 void FilesList::setValue(std::vector<std::shared_ptr<StorageFile>> const& value)
 {
     m_Value = value;
     m_ValueIsSet = true;
 }
+
 bool FilesList::valueIsSet() const
 {
     return m_ValueIsSet;
@@ -160,4 +138,3 @@ void FilesList::unsetValue()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="AvailableFontsResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_AvailableFontsResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_AvailableFontsResponse_H_
 
-
 #include "FontInfo.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// The list of fonts, available for document processing.
 /// </summary>
-class  AvailableFontsResponse
+class AvailableFontsResponse
     : public WordsResponse
 {
 public:
@@ -68,13 +68,15 @@ public:
     bool additionalFontsIsSet() const;
     void unsetAdditionalFonts();
     void setAdditionalFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
+
     /// <summary>
-    /// Gets or sets custom user fonts (from user file storage). To use them, you should specify \&quot;fontsLocation\&quot; parameter in any request.
+    /// Gets or sets custom user fonts (from user file storage). To use them, you should specify "fontsLocation" parameter in any request.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getCustomFonts();
     bool customFontsIsSet() const;
     void unsetCustomFonts();
     void setCustomFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
+
     /// <summary>
     /// Gets or sets the list of system fonts, availiable on the server.
     /// </summary>
@@ -86,8 +88,10 @@ public:
 protected:
     std::vector<std::shared_ptr<FontInfo>> m_AdditionalFonts;
     bool m_AdditionalFontsIsSet;
+
     std::vector<std::shared_ptr<FontInfo>> m_CustomFonts;
     bool m_CustomFontsIsSet;
+
     std::vector<std::shared_ptr<FontInfo>> m_SystemFonts;
     bool m_SystemFontsIsSet;
 };

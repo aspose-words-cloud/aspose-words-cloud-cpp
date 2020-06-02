@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ErrorDetails.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ErrorDetails_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ErrorDetails_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +36,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// The error details
+/// The error details.
 /// </summary>
-class  ErrorDetails
+class ErrorDetails
     : public ModelBase
 {
 public:
@@ -62,13 +60,6 @@ public:
     /// ErrorDetails members
 
     /// <summary>
-    /// The request id.
-    /// </summary>
-    utility::string_t getRequestId() const;
-    bool requestIdIsSet() const;
-    void unsetRequestId();
-    void setRequestId(utility::string_t value);
-    /// <summary>
     /// Error datetime.
     /// </summary>
     utility::datetime getErrorDateTime() const;
@@ -76,11 +67,20 @@ public:
     void unsetErrorDateTime();
     void setErrorDateTime(utility::datetime value);
 
+    /// <summary>
+    /// The request id.
+    /// </summary>
+    utility::string_t getRequestId() const;
+    bool requestIdIsSet() const;
+    void unsetRequestId();
+    void setRequestId(utility::string_t value);
+
 protected:
-    utility::string_t m_RequestId;
-    bool m_RequestIdIsSet;
     utility::datetime m_ErrorDateTime;
     bool m_ErrorDateTimeIsSet;
+
+    utility::string_t m_RequestId;
+    bool m_RequestIdIsSet;
 };
 
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRowFormatResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableRowFormatResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TableRowFormatResponse::TableRowFormatResponse()
 {
     m_RowFormatIsSet = false;
+
 }
 
 TableRowFormatResponse::~TableRowFormatResponse()
@@ -49,7 +49,6 @@ void TableRowFormatResponse::validate()
 web::json::value TableRowFormatResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_RowFormatIsSet)
     {
         val[_XPLATSTR("RowFormat")] = ModelBase::toJson(m_RowFormat);
@@ -69,39 +68,28 @@ void TableRowFormatResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
             newItem->fromJson(fieldValue);
-            setRowFormat( newItem );
         }
     }
+
 }
 
 void TableRowFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_RowFormatIsSet)
     {
         if (m_RowFormat.get())
         {
             m_RowFormat->toMultipart(multipart, _XPLATSTR("RowFormat."));
         }
-        
     }
+
 }
 
 void TableRowFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("RowFormat")))
-    {
-        if(multipart->hasContent(_XPLATSTR("RowFormat")))
-        {
-            std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RowFormat."));
-            setRowFormat( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<TableRowFormat> TableRowFormatResponse::getRowFormat() const
@@ -115,6 +103,7 @@ void TableRowFormatResponse::setRowFormat(std::shared_ptr<TableRowFormat> value)
     m_RowFormat = value;
     m_RowFormatIsSet = true;
 }
+
 bool TableRowFormatResponse::rowFormatIsSet() const
 {
     return m_RowFormatIsSet;
@@ -130,4 +119,3 @@ void TableRowFormatResponse::unsetRowFormat()
 }
 }
 }
-

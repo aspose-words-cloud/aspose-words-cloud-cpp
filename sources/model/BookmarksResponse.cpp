@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BookmarksResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "BookmarksResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 BookmarksResponse::BookmarksResponse()
 {
     m_BookmarksIsSet = false;
+
 }
 
 BookmarksResponse::~BookmarksResponse()
@@ -49,7 +49,6 @@ void BookmarksResponse::validate()
 web::json::value BookmarksResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_BookmarksIsSet)
     {
         val[_XPLATSTR("Bookmarks")] = ModelBase::toJson(m_Bookmarks);
@@ -69,39 +68,28 @@ void BookmarksResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Bookmarks> newItem(new Bookmarks());
             newItem->fromJson(fieldValue);
-            setBookmarks( newItem );
         }
     }
+
 }
 
 void BookmarksResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BookmarksIsSet)
     {
         if (m_Bookmarks.get())
         {
             m_Bookmarks->toMultipart(multipart, _XPLATSTR("Bookmarks."));
         }
-        
     }
+
 }
 
 void BookmarksResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Bookmarks")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Bookmarks")))
-        {
-            std::shared_ptr<Bookmarks> newItem(new Bookmarks());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Bookmarks."));
-            setBookmarks( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Bookmarks> BookmarksResponse::getBookmarks() const
@@ -115,6 +103,7 @@ void BookmarksResponse::setBookmarks(std::shared_ptr<Bookmarks> value)
     m_Bookmarks = value;
     m_BookmarksIsSet = true;
 }
+
 bool BookmarksResponse::bookmarksIsSet() const
 {
     return m_BookmarksIsSet;
@@ -130,4 +119,3 @@ void BookmarksResponse::unsetBookmarks()
 }
 }
 }
-

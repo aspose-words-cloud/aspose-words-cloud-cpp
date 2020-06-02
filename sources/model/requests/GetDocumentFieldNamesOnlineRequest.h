@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,12 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef getDocumentFieldNamesOnline_H
-#define getDocumentFieldNamesOnline_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_GetDocumentFieldNamesOnlineRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_GetDocumentFieldNamesOnlineRequest_H_
+
 #include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,21 +36,22 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class GetDocumentFieldNamesOnlineRequest{
+class GetDocumentFieldNamesOnlineRequest {
     public: 
-     GetDocumentFieldNamesOnlineRequest(
-                std::shared_ptr<HttpContent> _template,
-                boost::optional<bool> useNonMergeFields
+ GetDocumentFieldNamesOnlineRequest(
+            std::shared_ptr<HttpContent> _template,
+            boost::optional< bool > useNonMergeFields
         );
 
         std::shared_ptr<HttpContent> getTemplate() const;
         void setTemplate(std::shared_ptr<HttpContent> _template);
 
-        boost::optional<bool> getUseNonMergeFields() const;
-        void setUseNonMergeFields(boost::optional<bool> useNonMergeFields);
+        boost::optional< bool > getUseNonMergeFields() const;
+        void setUseNonMergeFields(boost::optional< bool > useNonMergeFields);
+
     private:
-        std::shared_ptr<HttpContent> m__template;
-        boost::optional<bool> m_useNonMergeFields;
+        std::shared_ptr<HttpContent> m_Template;
+        boost::optional< bool > m_UseNonMergeFields;
 };
 
 }
@@ -59,4 +60,4 @@ class GetDocumentFieldNamesOnlineRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_GetDocumentFieldNamesOnlineRequest_H_ */

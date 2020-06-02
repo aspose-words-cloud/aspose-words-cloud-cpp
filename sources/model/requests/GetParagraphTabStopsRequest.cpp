@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetParagraphTabStopsRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,85 +22,103 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetParagraphTabStopsRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetParagraphTabStopsRequest::GetParagraphTabStopsRequest(
-        utility::string_t name,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetParagraphTabStopsRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetParagraphTabStopsRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t GetParagraphTabStopsRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void GetParagraphTabStopsRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
-        }
-        int32_t GetParagraphTabStopsRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void GetParagraphTabStopsRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> GetParagraphTabStopsRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetParagraphTabStopsRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetParagraphTabStopsRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetParagraphTabStopsRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetParagraphTabStopsRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetParagraphTabStopsRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetParagraphTabStopsRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetParagraphTabStopsRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t nodePath,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_NodePath(std::move(nodePath)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetParagraphTabStopsRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetParagraphTabStopsRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t GetParagraphTabStopsRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void GetParagraphTabStopsRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
+int32_t GetParagraphTabStopsRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void GetParagraphTabStopsRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > GetParagraphTabStopsRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetParagraphTabStopsRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetParagraphTabStopsRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetParagraphTabStopsRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetParagraphTabStopsRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetParagraphTabStopsRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetParagraphTabStopsRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetParagraphTabStopsRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

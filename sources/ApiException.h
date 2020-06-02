@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiException.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,6 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_ApiException_H_
 #define ASPOSE_WORDS_CLOUD_API_ApiException_H_
 
-
-
 #include <memory>
 #include <map>
 
@@ -47,17 +45,17 @@ class  ApiException
 public:
     ApiException( int errorCode
         , const utility::string_t& message
-        , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response = nullptr );
+        , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
     ApiException( int errorCode
         , const utility::string_t& message
         , std::map<utility::string_t, utility::string_t>& headers
-        , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response = nullptr );
+        , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
 
     std::map<utility::string_t, utility::string_t>& getHeaders();
-    std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> getResponse() const;
+    std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > getResponse() const;
 
 protected:
-    std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> m_Response;
+    std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > m_Response;
     std::map<utility::string_t, utility::string_t> m_Headers;
 };
 
@@ -66,4 +64,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_ApiBase_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_ApiException_H_ */

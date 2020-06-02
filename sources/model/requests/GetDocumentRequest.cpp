@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,67 +22,79 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetDocumentRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetDocumentRequest::GetDocumentRequest(
-        utility::string_t documentName,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_documentName(std::move(documentName)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetDocumentRequest::getDocumentName() const
-        {
-            return m_documentName;
-        }
-        void GetDocumentRequest::setDocumentName(utility::string_t documentName){
-            m_documentName = std::move(documentName);
-        }
-        boost::optional<utility::string_t> GetDocumentRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetDocumentRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetDocumentRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetDocumentRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetDocumentRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetDocumentRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetDocumentRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetDocumentRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t documentName,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_DocumentName(std::move(documentName)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetDocumentRequest::getDocumentName() const
+{
+    return m_DocumentName;
+}
+
+void GetDocumentRequest::setDocumentName(utility::string_t documentName)
+{
+    m_DocumentName = std::move(documentName);
+}
+
+boost::optional< utility::string_t > GetDocumentRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetDocumentRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetDocumentRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetDocumentRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetDocumentRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetDocumentRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetDocumentRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentWithFormatRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,94 +22,115 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetDocumentWithFormatRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetDocumentWithFormatRequest::GetDocumentWithFormatRequest(
-        utility::string_t name,
-                utility::string_t format,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> outPath,
-                boost::optional<utility::string_t> fontsLocation
-        ) : 
-            m_name(std::move(name)),
-            m_format(std::move(format)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_outPath(std::move(outPath)),
-            m_fontsLocation(std::move(fontsLocation))
-        {
-            
-        }
-
-        utility::string_t GetDocumentWithFormatRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetDocumentWithFormatRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t GetDocumentWithFormatRequest::getFormat() const
-        {
-            return m_format;
-        }
-        void GetDocumentWithFormatRequest::setFormat(utility::string_t format){
-            m_format = std::move(format);
-        }
-        boost::optional<utility::string_t> GetDocumentWithFormatRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetDocumentWithFormatRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetDocumentWithFormatRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetDocumentWithFormatRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetDocumentWithFormatRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetDocumentWithFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetDocumentWithFormatRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetDocumentWithFormatRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> GetDocumentWithFormatRequest::getOutPath() const
-        {
-            return m_outPath;
-        }
-        void GetDocumentWithFormatRequest::setOutPath(boost::optional<utility::string_t> outPath){
-            m_outPath = std::move(outPath);
-        }
-        boost::optional<utility::string_t> GetDocumentWithFormatRequest::getFontsLocation() const
-        {
-            return m_fontsLocation;
-        }
-        void GetDocumentWithFormatRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t format,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > outPath,
+    boost::optional< utility::string_t > fontsLocation
+) : m_Name(std::move(name)),
+m_Format(std::move(format)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_OutPath(std::move(outPath)),
+m_FontsLocation(std::move(fontsLocation))
+{
 }
 
+utility::string_t GetDocumentWithFormatRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetDocumentWithFormatRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t GetDocumentWithFormatRequest::getFormat() const
+{
+    return m_Format;
+}
+
+void GetDocumentWithFormatRequest::setFormat(utility::string_t format)
+{
+    m_Format = std::move(format);
+}
+
+boost::optional< utility::string_t > GetDocumentWithFormatRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetDocumentWithFormatRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetDocumentWithFormatRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetDocumentWithFormatRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetDocumentWithFormatRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetDocumentWithFormatRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetDocumentWithFormatRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetDocumentWithFormatRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > GetDocumentWithFormatRequest::getOutPath() const
+{
+    return m_OutPath;
+}
+
+void GetDocumentWithFormatRequest::setOutPath(boost::optional< utility::string_t > outPath)
+{
+    m_OutPath = std::move(outPath);
+}
+
+boost::optional< utility::string_t > GetDocumentWithFormatRequest::getFontsLocation() const
+{
+    return m_FontsLocation;
+}
+
+void GetDocumentWithFormatRequest::setFontsLocation(boost::optional< utility::string_t > fontsLocation)
+{
+    m_FontsLocation = std::move(fontsLocation);
+}
+
+}
+}
+}
+}
+}

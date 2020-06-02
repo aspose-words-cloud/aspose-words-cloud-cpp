@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiError.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ApiError_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ApiError_H_
 
-
 #include "../ModelBase.h"
-
-#include "ApiError.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +38,7 @@ namespace models {
 /// <summary>
 /// Api error.
 /// </summary>
-class  ApiError
+class ApiError
     : public ModelBase
 {
 public:
@@ -69,20 +66,7 @@ public:
     bool codeIsSet() const;
     void unsetCode();
     void setCode(utility::string_t value);
-    /// <summary>
-    /// Gets or sets error message.
-    /// </summary>
-    utility::string_t getMessage() const;
-    bool messageIsSet() const;
-    void unsetMessage();
-    void setMessage(utility::string_t value);
-    /// <summary>
-    /// Gets or sets error description.
-    /// </summary>
-    utility::string_t getDescription() const;
-    bool descriptionIsSet() const;
-    void unsetDescription();
-    void setDescription(utility::string_t value);
+
     /// <summary>
     /// Gets or sets server datetime.
     /// </summary>
@@ -90,25 +74,46 @@ public:
     bool dateTimeIsSet() const;
     void unsetDateTime();
     void setDateTime(utility::datetime value);
+
     /// <summary>
-    /// Gets or sets InnerError.
+    /// Gets or sets error description.
+    /// </summary>
+    utility::string_t getDescription() const;
+    bool descriptionIsSet() const;
+    void unsetDescription();
+    void setDescription(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets inner error.
     /// </summary>
     std::shared_ptr<ApiError> getInnerError() const;
     bool innerErrorIsSet() const;
     void unsetInnerError();
     void setInnerError(std::shared_ptr<ApiError> value);
 
+    /// <summary>
+    /// Gets or sets error message.
+    /// </summary>
+    utility::string_t getMessage() const;
+    bool messageIsSet() const;
+    void unsetMessage();
+    void setMessage(utility::string_t value);
+
 protected:
     utility::string_t m_Code;
     bool m_CodeIsSet;
-    utility::string_t m_Message;
-    bool m_MessageIsSet;
-    utility::string_t m_Description;
-    bool m_DescriptionIsSet;
+
     utility::datetime m_DateTime;
     bool m_DateTimeIsSet;
+
+    utility::string_t m_Description;
+    bool m_DescriptionIsSet;
+
     std::shared_ptr<ApiError> m_InnerError;
     bool m_InnerErrorIsSet;
+
+    utility::string_t m_Message;
+    bool m_MessageIsSet;
 };
 
 }

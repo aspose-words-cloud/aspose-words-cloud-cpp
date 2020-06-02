@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WordsApiErrorResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "WordsApiErrorResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 WordsApiErrorResponse::WordsApiErrorResponse()
 {
     m_ErrorIsSet = false;
+
 }
 
 WordsApiErrorResponse::~WordsApiErrorResponse()
@@ -49,7 +49,6 @@ void WordsApiErrorResponse::validate()
 web::json::value WordsApiErrorResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_ErrorIsSet)
     {
         val[_XPLATSTR("Error")] = ModelBase::toJson(m_Error);
@@ -69,39 +68,28 @@ void WordsApiErrorResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ApiError> newItem(new ApiError());
             newItem->fromJson(fieldValue);
-            setError( newItem );
         }
     }
+
 }
 
 void WordsApiErrorResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ErrorIsSet)
     {
         if (m_Error.get())
         {
             m_Error->toMultipart(multipart, _XPLATSTR("Error."));
         }
-        
     }
+
 }
 
 void WordsApiErrorResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Error")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Error")))
-        {
-            std::shared_ptr<ApiError> newItem(new ApiError());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Error."));
-            setError( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<ApiError> WordsApiErrorResponse::getError() const
@@ -115,6 +103,7 @@ void WordsApiErrorResponse::setError(std::shared_ptr<ApiError> value)
     m_Error = value;
     m_ErrorIsSet = true;
 }
+
 bool WordsApiErrorResponse::errorIsSet() const
 {
     return m_ErrorIsSet;
@@ -130,4 +119,3 @@ void WordsApiErrorResponse::unsetError()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Shading.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Shading_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Shading_H_
 
-
-#include "../ModelBase.h"
-
 #include "XmlColor.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,9 +37,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format shading element.             
+/// Paragraph format shading element.
 /// </summary>
-class  Shading
+class Shading
     : public ModelBase
 {
 public:
@@ -63,19 +61,21 @@ public:
     /// Shading members
 
     /// <summary>
-    /// Gets or sets BackgroundPatternColor.
+    /// Gets or sets the color that's applied to the background of the Shading object.
     /// </summary>
     std::shared_ptr<XmlColor> getBackgroundPatternColor() const;
     bool backgroundPatternColorIsSet() const;
     void unsetBackgroundPatternColor();
     void setBackgroundPatternColor(std::shared_ptr<XmlColor> value);
+
     /// <summary>
-    /// Gets or sets ForegroundPatternColor.
+    /// Gets or sets the color that's applied to the foreground of the Shading object.
     /// </summary>
     std::shared_ptr<XmlColor> getForegroundPatternColor() const;
     bool foregroundPatternColorIsSet() const;
     void unsetForegroundPatternColor();
     void setForegroundPatternColor(std::shared_ptr<XmlColor> value);
+
     /// <summary>
     /// Gets or sets the shading texture.
     /// </summary>
@@ -87,8 +87,10 @@ public:
 protected:
     std::shared_ptr<XmlColor> m_BackgroundPatternColor;
     bool m_BackgroundPatternColorIsSet;
+
     std::shared_ptr<XmlColor> m_ForegroundPatternColor;
     bool m_ForegroundPatternColorIsSet;
+
     utility::string_t m_Texture;
     bool m_TextureIsSet;
 };

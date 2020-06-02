@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPropertiesResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentPropertiesResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 DocumentPropertiesResponse::DocumentPropertiesResponse()
 {
     m_DocumentPropertiesIsSet = false;
+
 }
 
 DocumentPropertiesResponse::~DocumentPropertiesResponse()
@@ -49,7 +49,6 @@ void DocumentPropertiesResponse::validate()
 web::json::value DocumentPropertiesResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_DocumentPropertiesIsSet)
     {
         val[_XPLATSTR("DocumentProperties")] = ModelBase::toJson(m_DocumentProperties);
@@ -69,39 +68,28 @@ void DocumentPropertiesResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentProperties> newItem(new DocumentProperties());
             newItem->fromJson(fieldValue);
-            setDocumentProperties( newItem );
         }
     }
+
 }
 
 void DocumentPropertiesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DocumentPropertiesIsSet)
     {
         if (m_DocumentProperties.get())
         {
             m_DocumentProperties->toMultipart(multipart, _XPLATSTR("DocumentProperties."));
         }
-        
     }
+
 }
 
 void DocumentPropertiesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
-    {
-        if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
-        {
-            std::shared_ptr<DocumentProperties> newItem(new DocumentProperties());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentProperties."));
-            setDocumentProperties( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<DocumentProperties> DocumentPropertiesResponse::getDocumentProperties() const
@@ -115,6 +103,7 @@ void DocumentPropertiesResponse::setDocumentProperties(std::shared_ptr<DocumentP
     m_DocumentProperties = value;
     m_DocumentPropertiesIsSet = true;
 }
+
 bool DocumentPropertiesResponse::documentPropertiesIsSet() const
 {
     return m_DocumentPropertiesIsSet;
@@ -130,4 +119,3 @@ void DocumentPropertiesResponse::unsetDocumentProperties()
 }
 }
 }
-

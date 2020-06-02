@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HeaderFooterLink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "HeaderFooterLink.h"
 
 namespace aspose {
@@ -34,8 +33,8 @@ namespace models {
 
 HeaderFooterLink::HeaderFooterLink()
 {
-    m_Type = utility::conversions::to_string_t("");
     m_TypeIsSet = false;
+
 }
 
 HeaderFooterLink::~HeaderFooterLink()
@@ -50,7 +49,6 @@ void HeaderFooterLink::validate()
 web::json::value HeaderFooterLink::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_TypeIsSet)
     {
         val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
@@ -68,31 +66,26 @@ void HeaderFooterLink::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Type")];
         if(!fieldValue.is_null())
         {
-            setType(ModelBase::stringFromJson(fieldValue));
+           setType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void HeaderFooterLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
-        
     }
+
 }
 
 void HeaderFooterLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Type")))
-    {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t HeaderFooterLink::getType() const
@@ -106,6 +99,7 @@ void HeaderFooterLink::setType(utility::string_t value)
     m_Type = value;
     m_TypeIsSet = true;
 }
+
 bool HeaderFooterLink::typeIsSet() const
 {
     return m_TypeIsSet;
@@ -121,4 +115,3 @@ void HeaderFooterLink::unsetType()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListLevel.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,11 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListLevel_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ListLevel_H_
 
-
 #include "Font.h"
 #include "LinkElement.h"
 #include "Style.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +41,7 @@ namespace models {
 /// <summary>
 /// Represents a document list levels.
 /// </summary>
-class  ListLevel
+class ListLevel
     : public LinkElement
 {
 public:
@@ -70,27 +69,32 @@ public:
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets Font.
+    /// Gets or sets specifies character formatting used for the list label.
     /// </summary>
     std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;
     void unsetFont();
     void setFont(std::shared_ptr<Font> value);
+
     /// <summary>
-    /// Gets or sets a value indicating whether true if the level turns all inherited numbers to Arabic, false if it preserves their number style.
+    /// Gets or sets a value indicating whether true if the level turns all inherited numbers to Arabic, false if it preserves
+    /// their number style.
     /// </summary>
     bool isIsLegal() const;
     bool isLegalIsSet() const;
     void unsetIsLegal();
     void setIsLegal(bool value);
+
     /// <summary>
-    /// Gets or sets LinkedStyle.
+    /// Gets or sets the paragraph style that is linked to this list level.
     /// </summary>
     std::shared_ptr<Style> getLinkedStyle() const;
     bool linkedStyleIsSet() const;
     void unsetLinkedStyle();
     void setLinkedStyle(std::shared_ptr<Style> value);
+
     /// <summary>
     /// Gets or sets returns or sets the number format for the list level.
     /// </summary>
@@ -98,13 +102,16 @@ public:
     bool numberFormatIsSet() const;
     void unsetNumberFormat();
     void setNumberFormat(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets returns or sets the position (in points) of the number or bullet for the list level.
+    /// Gets or sets returns or sets the position (in points) of the number or bullet for the list
+    /// level.
     /// </summary>
     double getNumberPosition() const;
     bool numberPositionIsSet() const;
     void unsetNumberPosition();
     void setNumberPosition(double value);
+
     /// <summary>
     /// Gets or sets returns or sets the number style for this list level.
     /// </summary>
@@ -112,13 +119,16 @@ public:
     bool numberStyleIsSet() const;
     void unsetNumberStyle();
     void setNumberStyle(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets or returns the list level that must appear before the specified list level restarts numbering.
+    /// Gets or sets or returns the list level that must appear before the specified list level
+    /// restarts numbering.
     /// </summary>
     int32_t getRestartAfterLevel() const;
     bool restartAfterLevelIsSet() const;
     void unsetRestartAfterLevel();
     void setRestartAfterLevel(int32_t value);
+
     /// <summary>
     /// Gets or sets returns or sets the starting number for this list level.
     /// </summary>
@@ -126,6 +136,7 @@ public:
     bool startAtIsSet() const;
     void unsetStartAt();
     void setStartAt(int32_t value);
+
     /// <summary>
     /// Gets or sets returns or sets the tab position (in points) for the list level.
     /// </summary>
@@ -133,13 +144,16 @@ public:
     bool tabPositionIsSet() const;
     void unsetTabPosition();
     void setTabPosition(double value);
+
     /// <summary>
-    /// Gets or sets returns or sets the position (in points) for the second line of wrapping text for the list level.
+    /// Gets or sets returns or sets the position (in points) for the second line of wrapping text
+    /// for the list level.
     /// </summary>
     double getTextPosition() const;
     bool textPositionIsSet() const;
     void unsetTextPosition();
     void setTextPosition(double value);
+
     /// <summary>
     /// Gets or sets returns or sets the character inserted after the number for the list level.
     /// </summary>
@@ -151,26 +165,37 @@ public:
 protected:
     utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
+
     std::shared_ptr<Font> m_Font;
     bool m_FontIsSet;
+
     bool m_IsLegal;
     bool m_IsLegalIsSet;
+
     std::shared_ptr<Style> m_LinkedStyle;
     bool m_LinkedStyleIsSet;
+
     utility::string_t m_NumberFormat;
     bool m_NumberFormatIsSet;
+
     double m_NumberPosition;
     bool m_NumberPositionIsSet;
+
     utility::string_t m_NumberStyle;
     bool m_NumberStyleIsSet;
+
     int32_t m_RestartAfterLevel;
     bool m_RestartAfterLevelIsSet;
+
     int32_t m_StartAt;
     bool m_StartAtIsSet;
+
     double m_TabPosition;
     bool m_TabPositionIsSet;
+
     double m_TextPosition;
     bool m_TextPositionIsSet;
+
     utility::string_t m_TrailingCharacter;
     bool m_TrailingCharacterIsSet;
 };

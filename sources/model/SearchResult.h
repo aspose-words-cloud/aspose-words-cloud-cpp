@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SearchResult.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SearchResult_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SearchResult_H_
 
-
-#include "../ModelBase.h"
-
 #include "DocumentPosition.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Result of search operation.
 /// </summary>
-class  SearchResult
+class SearchResult
     : public ModelBase
 {
 public:
@@ -63,25 +61,27 @@ public:
     /// SearchResult members
 
     /// <summary>
-    /// Gets or sets RangeStart.
-    /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeStart() const;
-    bool rangeStartIsSet() const;
-    void unsetRangeStart();
-    void setRangeStart(std::shared_ptr<DocumentPosition> value);
-    /// <summary>
-    /// Gets or sets RangeEnd.
+    /// Gets or sets link to result range end node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeEnd() const;
     bool rangeEndIsSet() const;
     void unsetRangeEnd();
     void setRangeEnd(std::shared_ptr<DocumentPosition> value);
 
+    /// <summary>
+    /// Gets or sets link to result range start node.
+    /// </summary>
+    std::shared_ptr<DocumentPosition> getRangeStart() const;
+    bool rangeStartIsSet() const;
+    void unsetRangeStart();
+    void setRangeStart(std::shared_ptr<DocumentPosition> value);
+
 protected:
-    std::shared_ptr<DocumentPosition> m_RangeStart;
-    bool m_RangeStartIsSet;
     std::shared_ptr<DocumentPosition> m_RangeEnd;
     bool m_RangeEndIsSet;
+
+    std::shared_ptr<DocumentPosition> m_RangeStart;
+    bool m_RangeStartIsSet;
 };
 
 }

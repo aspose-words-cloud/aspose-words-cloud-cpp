@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPropertyBase.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentPropertyBase.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ DocumentPropertyBase::DocumentPropertyBase()
 {
     m_Value = utility::conversions::to_string_t("");
     m_ValueIsSet = false;
+
 }
 
 DocumentPropertyBase::~DocumentPropertyBase()
@@ -50,7 +50,6 @@ void DocumentPropertyBase::validate()
 web::json::value DocumentPropertyBase::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_ValueIsSet)
     {
         val[_XPLATSTR("Value")] = ModelBase::toJson(m_Value);
@@ -66,31 +65,25 @@ void DocumentPropertyBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
-            setValue(ModelBase::stringFromJson(fieldValue));
+           setValue(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void DocumentPropertyBase::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ValueIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
-        
     }
+
 }
 
 void DocumentPropertyBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Value")))
-    {
-        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t DocumentPropertyBase::getValue() const
@@ -104,6 +97,7 @@ void DocumentPropertyBase::setValue(utility::string_t value)
     m_Value = value;
     m_ValueIsSet = true;
 }
+
 bool DocumentPropertyBase::valueIsSet() const
 {
     return m_ValueIsSet;
@@ -119,4 +113,3 @@ void DocumentPropertyBase::unsetValue()
 }
 }
 }
-

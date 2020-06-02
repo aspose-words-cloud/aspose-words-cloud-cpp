@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XamlFixedSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_XamlFixedSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_XamlFixedSaveOptionsData_H_
 
-
 #include "FixedPageSaveOptionsData.h"
-#include "MetafileRenderingOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for xaml fixed save options.
 /// </summary>
-class  XamlFixedSaveOptionsData
+class XamlFixedSaveOptionsData
     : public FixedPageSaveOptionsData
 {
 public:
@@ -62,14 +61,17 @@ public:
     /// XamlFixedSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format. Default is null.
+    /// Gets or sets specifies the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format.
+    /// Default is null.
     /// </summary>
     utility::string_t getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
     void setResourcesFolder(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets specifies the name of the folder used to construct image URIs written into an fixed page Xaml document. Default is null.
+    /// Gets or sets specifies the name of the folder used to construct image URIs written into an fixed page Xaml document.
+    /// Default is null.
     /// </summary>
     utility::string_t getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;
@@ -79,6 +81,7 @@ public:
 protected:
     utility::string_t m_ResourcesFolder;
     bool m_ResourcesFolderIsSet;
+
     utility::string_t m_ResourcesFolderAlias;
     bool m_ResourcesFolderAliasIsSet;
 };

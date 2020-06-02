@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StylesResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StylesResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 StylesResponse::StylesResponse()
 {
     m_StylesIsSet = false;
+
 }
 
 StylesResponse::~StylesResponse()
@@ -49,14 +49,14 @@ void StylesResponse::validate()
 web::json::value StylesResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
+    if(m_StylesIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Styles.begin(), m_Styles.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Style> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<Style> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("Styles")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void StylesResponse::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("Styles")) 
                             && !val[_XPLATSTR("Styles")].is_null())
         {
-        auto arr = val[_XPLATSTR("Styles")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Styles), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<Style>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<Style> newItem(new Style());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("Styles")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_Styles), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<Style> newItem(new Style());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<Style>)nullptr;
+            });
         }
     }
+
 }
 
 void StylesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Styles.begin(), m_Styles.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Style> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Styles"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void StylesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    {
-        m_Styles.clear();
-        if(multipart->hasContent(_XPLATSTR("Styles")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Styles")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Styles), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<Style>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<Style> newItem(new Style());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<Style>>& StylesResponse::getStyles()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<Style>>& StylesResponse::getStyles()
     return m_Styles;
 }
 
+
 void StylesResponse::setStyles(std::vector<std::shared_ptr<Style>> const& value)
 {
     m_Styles = value;
     m_StylesIsSet = true;
 }
+
 bool StylesResponse::stylesIsSet() const
 {
     return m_StylesIsSet;
@@ -162,4 +141,3 @@ void StylesResponse::unsetStyles()
 }
 }
 }
-

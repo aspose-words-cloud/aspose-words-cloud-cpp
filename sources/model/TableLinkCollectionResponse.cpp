@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableLinkCollectionResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableLinkCollectionResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TableLinkCollectionResponse::TableLinkCollectionResponse()
 {
     m_TablesIsSet = false;
+
 }
 
 TableLinkCollectionResponse::~TableLinkCollectionResponse()
@@ -49,7 +49,6 @@ void TableLinkCollectionResponse::validate()
 web::json::value TableLinkCollectionResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_TablesIsSet)
     {
         val[_XPLATSTR("Tables")] = ModelBase::toJson(m_Tables);
@@ -69,39 +68,28 @@ void TableLinkCollectionResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
             newItem->fromJson(fieldValue);
-            setTables( newItem );
         }
     }
+
 }
 
 void TableLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TablesIsSet)
     {
         if (m_Tables.get())
         {
             m_Tables->toMultipart(multipart, _XPLATSTR("Tables."));
         }
-        
     }
+
 }
 
 void TableLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Tables")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Tables")))
-        {
-            std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Tables."));
-            setTables( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<TableLinkCollection> TableLinkCollectionResponse::getTables() const
@@ -115,6 +103,7 @@ void TableLinkCollectionResponse::setTables(std::shared_ptr<TableLinkCollection>
     m_Tables = value;
     m_TablesIsSet = true;
 }
+
 bool TableLinkCollectionResponse::tablesIsSet() const
 {
     return m_TablesIsSet;
@@ -130,4 +119,3 @@ void TableLinkCollectionResponse::unsetTables()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WatermarkText.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_WatermarkText_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_WatermarkText_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Class for insert watermark text request building.
 /// </summary>
-class  WatermarkText
+class WatermarkText
     : public ModelBase
 {
 public:
@@ -62,13 +60,6 @@ public:
     /// WatermarkText members
 
     /// <summary>
-    /// Gets or sets the watermark text.
-    /// </summary>
-    utility::string_t getText() const;
-    bool textIsSet() const;
-    void unsetText();
-    void setText(utility::string_t value);
-    /// <summary>
     /// Gets or sets the watermark rotation angle.
     /// </summary>
     double getRotationAngle() const;
@@ -76,11 +67,20 @@ public:
     void unsetRotationAngle();
     void setRotationAngle(double value);
 
+    /// <summary>
+    /// Gets or sets the watermark text.
+    /// </summary>
+    utility::string_t getText() const;
+    bool textIsSet() const;
+    void unsetText();
+    void setText(utility::string_t value);
+
 protected:
-    utility::string_t m_Text;
-    bool m_TextIsSet;
     double m_RotationAngle;
     bool m_RotationAngleIsSet;
+
+    utility::string_t m_Text;
+    bool m_TextIsSet;
 };
 
 }

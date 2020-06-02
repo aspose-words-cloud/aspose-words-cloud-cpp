@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentEntryList.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentEntryList.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 DocumentEntryList::DocumentEntryList()
 {
     m_DocumentEntriesIsSet = false;
+
 }
 
 DocumentEntryList::~DocumentEntryList()
@@ -49,14 +49,14 @@ void DocumentEntryList::validate()
 web::json::value DocumentEntryList::toJson() const
 {
     web::json::value val = web::json::value::object();
-
+    if(m_DocumentEntriesIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<DocumentEntry> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<DocumentEntry> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("DocumentEntries")] = web::json::value::array(jsonArray);
@@ -73,66 +73,42 @@ void DocumentEntryList::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("DocumentEntries")) 
                             && !val[_XPLATSTR("DocumentEntries")].is_null())
         {
-        auto arr = val[_XPLATSTR("DocumentEntries")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<DocumentEntry>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("DocumentEntries")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<DocumentEntry>)nullptr;
+            });
         }
     }
+
 }
 
 void DocumentEntryList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<DocumentEntry> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentEntries"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void DocumentEntryList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    {
-        m_DocumentEntries.clear();
-        if(multipart->hasContent(_XPLATSTR("DocumentEntries")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DocumentEntries")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<DocumentEntry>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<DocumentEntry>>& DocumentEntryList::getDocumentEntries()
@@ -140,11 +116,13 @@ std::vector<std::shared_ptr<DocumentEntry>>& DocumentEntryList::getDocumentEntri
     return m_DocumentEntries;
 }
 
+
 void DocumentEntryList::setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> const& value)
 {
     m_DocumentEntries = value;
     m_DocumentEntriesIsSet = true;
 }
+
 bool DocumentEntryList::documentEntriesIsSet() const
 {
     return m_DocumentEntriesIsSet;
@@ -160,4 +138,3 @@ void DocumentEntryList::unsetDocumentEntries()
 }
 }
 }
-

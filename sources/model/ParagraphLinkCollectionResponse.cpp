@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphLinkCollectionResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ParagraphLinkCollectionResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 ParagraphLinkCollectionResponse::ParagraphLinkCollectionResponse()
 {
     m_ParagraphsIsSet = false;
+
 }
 
 ParagraphLinkCollectionResponse::~ParagraphLinkCollectionResponse()
@@ -49,7 +49,6 @@ void ParagraphLinkCollectionResponse::validate()
 web::json::value ParagraphLinkCollectionResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_ParagraphsIsSet)
     {
         val[_XPLATSTR("Paragraphs")] = ModelBase::toJson(m_Paragraphs);
@@ -69,39 +68,28 @@ void ParagraphLinkCollectionResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
             newItem->fromJson(fieldValue);
-            setParagraphs( newItem );
         }
     }
+
 }
 
 void ParagraphLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ParagraphsIsSet)
     {
         if (m_Paragraphs.get())
         {
             m_Paragraphs->toMultipart(multipart, _XPLATSTR("Paragraphs."));
         }
-        
     }
+
 }
 
 void ParagraphLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Paragraphs")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Paragraphs")))
-        {
-            std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
-            setParagraphs( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<ParagraphLinkCollection> ParagraphLinkCollectionResponse::getParagraphs() const
@@ -115,6 +103,7 @@ void ParagraphLinkCollectionResponse::setParagraphs(std::shared_ptr<ParagraphLin
     m_Paragraphs = value;
     m_ParagraphsIsSet = true;
 }
+
 bool ParagraphLinkCollectionResponse::paragraphsIsSet() const
 {
     return m_ParagraphsIsSet;
@@ -130,4 +119,3 @@ void ParagraphLinkCollectionResponse::unsetParagraphs()
 }
 }
 }
-

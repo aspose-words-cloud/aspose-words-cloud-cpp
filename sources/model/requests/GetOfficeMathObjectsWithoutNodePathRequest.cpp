@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetOfficeMathObjectsWithoutNodePathRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,67 +22,79 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetOfficeMathObjectsWithoutNodePathRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetOfficeMathObjectsWithoutNodePathRequest::GetOfficeMathObjectsWithoutNodePathRequest(
-        utility::string_t name,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetOfficeMathObjectsWithoutNodePathRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetOfficeMathObjectsWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        boost::optional<utility::string_t> GetOfficeMathObjectsWithoutNodePathRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetOfficeMathObjectsWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetOfficeMathObjectsWithoutNodePathRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetOfficeMathObjectsWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetOfficeMathObjectsWithoutNodePathRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetOfficeMathObjectsWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetOfficeMathObjectsWithoutNodePathRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetOfficeMathObjectsWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetOfficeMathObjectsWithoutNodePathRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetOfficeMathObjectsWithoutNodePathRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+boost::optional< utility::string_t > GetOfficeMathObjectsWithoutNodePathRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetOfficeMathObjectsWithoutNodePathRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetOfficeMathObjectsWithoutNodePathRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetOfficeMathObjectsWithoutNodePathRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetOfficeMathObjectsWithoutNodePathRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetOfficeMathObjectsWithoutNodePathRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetOfficeMathObjectsWithoutNodePathRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetOfficeMathObjectsWithoutNodePathRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

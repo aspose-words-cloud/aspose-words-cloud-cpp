@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPosition.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentPosition_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentPosition_H_
 
-
-#include "../ModelBase.h"
-
 #include "NodeLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Represents a position in the document tree.
 /// </summary>
-class  DocumentPosition
+class DocumentPosition
     : public ModelBase
 {
 public:
@@ -63,12 +61,13 @@ public:
     /// DocumentPosition members
 
     /// <summary>
-    /// Gets or sets Node.
+    /// Gets or sets link to  node.
     /// </summary>
     std::shared_ptr<NodeLink> getNode() const;
     bool nodeIsSet() const;
     void unsetNode();
     void setNode(std::shared_ptr<NodeLink> value);
+
     /// <summary>
     /// Gets or sets offset into the node.
     /// </summary>
@@ -80,6 +79,7 @@ public:
 protected:
     std::shared_ptr<NodeLink> m_Node;
     bool m_NodeIsSet;
+
     int32_t m_Offset;
     bool m_OffsetIsSet;
 };

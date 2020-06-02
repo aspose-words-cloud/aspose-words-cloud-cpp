@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnoteInsert.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FootnoteInsert_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FootnoteInsert_H_
 
-
-#include "DocumentPosition.h"
 #include "FootnoteBase.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Footnote for insert.
 /// </summary>
-class  FootnoteInsert
+class FootnoteInsert
     : public FootnoteBase
 {
 public:

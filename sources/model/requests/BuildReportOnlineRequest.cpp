@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BuildReportOnlineRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,58 +22,67 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "BuildReportOnlineRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 BuildReportOnlineRequest::BuildReportOnlineRequest(
-        std::shared_ptr<HttpContent> _template,
-                utility::string_t data,
-                std::shared_ptr<ReportEngineSettings> reportEngineSettings,
-                boost::optional<utility::string_t> documentFileName
-        ) : 
-            m__template(std::move(_template)),
-            m_data(std::move(data)),
-            m_reportEngineSettings(std::move(reportEngineSettings)),
-            m_documentFileName(std::move(documentFileName))
-        {
-            
-        }
-
-        std::shared_ptr<HttpContent> BuildReportOnlineRequest::getTemplate() const
-        {
-            return m__template;
-        }
-        void BuildReportOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template){
-            m__template = std::move(_template);
-        }
-        utility::string_t BuildReportOnlineRequest::getData() const
-        {
-            return m_data;
-        }
-        void BuildReportOnlineRequest::setData(utility::string_t data){
-            m_data = std::move(data);
-        }
-        std::shared_ptr<ReportEngineSettings> BuildReportOnlineRequest::getReportEngineSettings() const
-        {
-            return m_reportEngineSettings;
-        }
-        void BuildReportOnlineRequest::setReportEngineSettings(std::shared_ptr<ReportEngineSettings> reportEngineSettings){
-            m_reportEngineSettings = std::move(reportEngineSettings);
-        }
-        boost::optional<utility::string_t> BuildReportOnlineRequest::getDocumentFileName() const
-        {
-            return m_documentFileName;
-        }
-        void BuildReportOnlineRequest::setDocumentFileName(boost::optional<utility::string_t> documentFileName){
-            m_documentFileName = std::move(documentFileName);
-        }
-
-}
-}
-}
-}
+    std::shared_ptr<HttpContent> _template,
+    utility::string_t data,
+    std::shared_ptr<ReportEngineSettings> reportEngineSettings,
+    boost::optional< utility::string_t > documentFileName
+) : m_Template(std::move(_template)),
+m_Data(std::move(data)),
+m_ReportEngineSettings(std::move(reportEngineSettings)),
+m_DocumentFileName(std::move(documentFileName))
+{
 }
 
+std::shared_ptr<HttpContent> BuildReportOnlineRequest::getTemplate() const
+{
+    return m_Template;
+}
+
+void BuildReportOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template)
+{
+    m_Template = std::move(_template);
+}
+
+utility::string_t BuildReportOnlineRequest::getData() const
+{
+    return m_Data;
+}
+
+void BuildReportOnlineRequest::setData(utility::string_t data)
+{
+    m_Data = std::move(data);
+}
+
+std::shared_ptr<ReportEngineSettings> BuildReportOnlineRequest::getReportEngineSettings() const
+{
+    return m_ReportEngineSettings;
+}
+
+void BuildReportOnlineRequest::setReportEngineSettings(std::shared_ptr<ReportEngineSettings> reportEngineSettings)
+{
+    m_ReportEngineSettings = std::move(reportEngineSettings);
+}
+
+boost::optional< utility::string_t > BuildReportOnlineRequest::getDocumentFileName() const
+{
+    return m_DocumentFileName;
+}
+
+void BuildReportOnlineRequest::setDocumentFileName(boost::optional< utility::string_t > documentFileName)
+{
+    m_DocumentFileName = std::move(documentFileName);
+}
+
+}
+}
+}
+}
+}

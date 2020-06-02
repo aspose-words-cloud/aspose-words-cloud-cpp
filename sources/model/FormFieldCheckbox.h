@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldCheckbox.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldCheckbox_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldCheckbox_H_
 
-
 #include "FormField.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// FormField checkbox element.
 /// </summary>
-class  FormFieldCheckbox
+class FormFieldCheckbox
     : public FormField
 {
 public:
@@ -67,13 +67,15 @@ public:
     bool checkBoxSizeIsSet() const;
     void unsetCheckBoxSize();
     void setCheckBoxSize(double value);
+
     /// <summary>
     /// Gets or sets the checked status of the check box form field.
     /// </summary>
     bool isChecked() const;
-    bool _checkedIsSet() const;
+    bool checkedIsSet() const;
     void unsetChecked();
     void setChecked(bool value);
+
     /// <summary>
     /// Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly.
     /// </summary>
@@ -85,8 +87,10 @@ public:
 protected:
     double m_CheckBoxSize;
     bool m_CheckBoxSizeIsSet;
+
     bool m_Checked;
     bool m_CheckedIsSet;
+
     bool m_IsCheckBoxExactSize;
     bool m_IsCheckBoxExactSizeIsSet;
 };

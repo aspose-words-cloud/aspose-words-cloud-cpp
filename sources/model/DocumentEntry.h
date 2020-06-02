@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentEntry.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentEntry_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentEntry_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Represents a document which will be appended to the original resource document.
 /// </summary>
-class  DocumentEntry
+class DocumentEntry
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool hrefIsSet() const;
     void unsetHref();
     void setHref(utility::string_t value);
+
     /// <summary>
     /// Gets or sets defines which formatting will be used: appended or destination document.Can be KeepSourceFormatting or UseDestinationStyles.
     /// </summary>
@@ -79,6 +78,7 @@ public:
 protected:
     utility::string_t m_Href;
     bool m_HrefIsSet;
+
     utility::string_t m_ImportFormatMode;
     bool m_ImportFormatModeIsSet;
 };

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnoteInsert.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "FootnoteInsert.h"
 
@@ -49,7 +48,6 @@ web::json::value FootnoteInsert::toJson() const
 {
     web::json::value val = this->FootnoteBase::toJson();
 
-
     return val;
 }
 
@@ -63,18 +61,17 @@ void FootnoteInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 {
     FootnoteBase::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
 }
 
 void FootnoteInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FootnoteBase::fromMultiPart(multipart, prefix);
-
+    // TODO: implement fromMultiPart
 }
 
-}
-}
-}
-}
-}
 
+
+}
+}
+}
+}
+}

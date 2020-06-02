@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WordMLSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "WordMLSaveOptionsData.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ WordMLSaveOptionsData::WordMLSaveOptionsData()
 {
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
+
 }
 
 WordMLSaveOptionsData::~WordMLSaveOptionsData()
@@ -50,7 +50,6 @@ void WordMLSaveOptionsData::validate()
 web::json::value WordMLSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
-
     if(m_PrettyFormatIsSet)
     {
         val[_XPLATSTR("PrettyFormat")] = ModelBase::toJson(m_PrettyFormat);
@@ -68,31 +67,26 @@ void WordMLSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
+           setPrettyFormat(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void WordMLSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_PrettyFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
-        
     }
+
 }
 
 void WordMLSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    SaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
-    {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool WordMLSaveOptionsData::isPrettyFormat() const
@@ -106,6 +100,7 @@ void WordMLSaveOptionsData::setPrettyFormat(bool value)
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;
 }
+
 bool WordMLSaveOptionsData::prettyFormatIsSet() const
 {
     return m_PrettyFormatIsSet;
@@ -121,4 +116,3 @@ void WordMLSaveOptionsData::unsetPrettyFormat()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Document.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,11 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Document_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Document_H_
 
-
-#include "../ModelBase.h"
-
 #include "DocumentProperties.h"
 #include "Link.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +40,7 @@ namespace models {
 /// <summary>
 /// Represents Words document DTO.
 /// </summary>
-class  Document
+class Document
     : public ModelBase
 {
 public:
@@ -64,12 +62,13 @@ public:
     /// Document members
 
     /// <summary>
-    /// Gets or sets a list of links that originate from this document.
+    /// Gets or sets returns document properties.
     /// </summary>
-    std::vector<std::shared_ptr<Link>>& getLinks();
-    bool linksIsSet() const;
-    void unsetLinks();
-    void setLinks(std::vector<std::shared_ptr<Link>> const& value);
+    std::shared_ptr<DocumentProperties> getDocumentProperties() const;
+    bool documentPropertiesIsSet() const;
+    void unsetDocumentProperties();
+    void setDocumentProperties(std::shared_ptr<DocumentProperties> value);
+
     /// <summary>
     /// Gets or sets the name of the file.
     /// </summary>
@@ -77,13 +76,7 @@ public:
     bool fileNameIsSet() const;
     void unsetFileName();
     void setFileName(utility::string_t value);
-    /// <summary>
-    /// Gets or sets the original format of the document.
-    /// </summary>
-    utility::string_t getSourceFormat() const;
-    bool sourceFormatIsSet() const;
-    void unsetSourceFormat();
-    void setSourceFormat(utility::string_t value);
+
     /// <summary>
     /// Gets or sets a value indicating whether returns true if the document is encrypted and requires a password to open.
     /// </summary>
@@ -91,34 +84,50 @@ public:
     bool isEncryptedIsSet() const;
     void unsetIsEncrypted();
     void setIsEncrypted(bool value);
+
     /// <summary>
-    /// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
+    /// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a
+    /// digital signature is present on a document, but it does not specify whether the signature is valid or not.
     /// </summary>
     bool isIsSigned() const;
     bool isSignedIsSet() const;
     void unsetIsSigned();
     void setIsSigned(bool value);
+
     /// <summary>
-    /// Gets or sets DocumentProperties.
+    /// Gets or sets a list of links that originate from this document.
     /// </summary>
-    std::shared_ptr<DocumentProperties> getDocumentProperties() const;
-    bool documentPropertiesIsSet() const;
-    void unsetDocumentProperties();
-    void setDocumentProperties(std::shared_ptr<DocumentProperties> value);
+    std::vector<std::shared_ptr<Link>>& getLinks();
+    bool linksIsSet() const;
+    void unsetLinks();
+    void setLinks(std::vector<std::shared_ptr<Link>> const& value);
+
+    /// <summary>
+    /// Gets or sets the original format of the document.
+    /// </summary>
+    utility::string_t getSourceFormat() const;
+    bool sourceFormatIsSet() const;
+    void unsetSourceFormat();
+    void setSourceFormat(utility::string_t value);
 
 protected:
-    std::vector<std::shared_ptr<Link>> m_Links;
-    bool m_LinksIsSet;
-    utility::string_t m_FileName;
-    bool m_FileNameIsSet;
-    utility::string_t m_SourceFormat;
-    bool m_SourceFormatIsSet;
-    bool m_IsEncrypted;
-    bool m_IsEncryptedIsSet;
-    bool m_IsSigned;
-    bool m_IsSignedIsSet;
     std::shared_ptr<DocumentProperties> m_DocumentProperties;
     bool m_DocumentPropertiesIsSet;
+
+    utility::string_t m_FileName;
+    bool m_FileNameIsSet;
+
+    bool m_IsEncrypted;
+    bool m_IsEncryptedIsSet;
+
+    bool m_IsSigned;
+    bool m_IsSignedIsSet;
+
+    std::vector<std::shared_ptr<Link>> m_Links;
+    bool m_LinksIsSet;
+
+    utility::string_t m_SourceFormat;
+    bool m_SourceFormatIsSet;
 };
 
 }

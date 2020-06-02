@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="LoadWebDocumentRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef loadWebDocument_H
-#define loadWebDocument_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_LoadWebDocumentRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_LoadWebDocumentRequest_H_
+
 #include "LoadWebDocumentData.h"
+#include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,21 +37,22 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class LoadWebDocumentRequest{
+class LoadWebDocumentRequest {
     public: 
-     LoadWebDocumentRequest(
-                std::shared_ptr<LoadWebDocumentData> data,
-                boost::optional<utility::string_t> storage
+ LoadWebDocumentRequest(
+            std::shared_ptr<LoadWebDocumentData> data,
+            boost::optional< utility::string_t > storage
         );
 
         std::shared_ptr<LoadWebDocumentData> getData() const;
         void setData(std::shared_ptr<LoadWebDocumentData> data);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
+
     private:
-        std::shared_ptr<LoadWebDocumentData> m_data;
-        boost::optional<utility::string_t> m_storage;
+        std::shared_ptr<LoadWebDocumentData> m_Data;
+        boost::optional< utility::string_t > m_Storage;
 };
 
 }
@@ -59,4 +61,4 @@ class LoadWebDocumentRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_LoadWebDocumentRequest_H_ */

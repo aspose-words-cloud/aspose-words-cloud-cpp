@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PsSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_PsSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PsSaveOptionsData_H_
 
-
 #include "FixedPageSaveOptionsData.h"
-#include "MetafileRenderingOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for ps save options.
 /// </summary>
-class  PsSaveOptionsData
+class PsSaveOptionsData
     : public FixedPageSaveOptionsData
 {
 public:

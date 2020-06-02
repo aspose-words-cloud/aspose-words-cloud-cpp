@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageSetup.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PageSetup.h"
 
 namespace aspose {
@@ -38,9 +37,9 @@ PageSetup::PageSetup()
     m_BidiIsSet = false;
     m_BorderAlwaysInFront = false;
     m_BorderAlwaysInFrontIsSet = false;
-    m_BorderAppliesTo = utility::conversions::to_string_t("");
+
     m_BorderAppliesToIsSet = false;
-    m_BorderDistanceFrom = utility::conversions::to_string_t("");
+
     m_BorderDistanceFromIsSet = false;
     m_BottomMargin = 0.0;
     m_BottomMarginIsSet = false;
@@ -60,23 +59,23 @@ PageSetup::PageSetup()
     m_LineNumberCountByIsSet = false;
     m_LineNumberDistanceFromText = 0.0;
     m_LineNumberDistanceFromTextIsSet = false;
-    m_LineNumberRestartMode = utility::conversions::to_string_t("");
+
     m_LineNumberRestartModeIsSet = false;
     m_LineStartingNumber = 0;
     m_LineStartingNumberIsSet = false;
-    m_Orientation = utility::conversions::to_string_t("");
+
     m_OrientationIsSet = false;
     m_OtherPagesTray = 0;
     m_OtherPagesTrayIsSet = false;
     m_PageHeight = 0.0;
     m_PageHeightIsSet = false;
-    m_PageNumberStyle = utility::conversions::to_string_t("");
+
     m_PageNumberStyleIsSet = false;
     m_PageStartingNumber = 0;
     m_PageStartingNumberIsSet = false;
     m_PageWidth = 0.0;
     m_PageWidthIsSet = false;
-    m_PaperSize = utility::conversions::to_string_t("");
+
     m_PaperSizeIsSet = false;
     m_RestartPageNumbering = false;
     m_RestartPageNumberingIsSet = false;
@@ -84,14 +83,15 @@ PageSetup::PageSetup()
     m_RightMarginIsSet = false;
     m_RtlGutter = false;
     m_RtlGutterIsSet = false;
-    m_SectionStart = utility::conversions::to_string_t("");
+
     m_SectionStartIsSet = false;
     m_SuppressEndnotes = false;
     m_SuppressEndnotesIsSet = false;
     m_TopMargin = 0.0;
     m_TopMarginIsSet = false;
-    m_VerticalAlignment = utility::conversions::to_string_t("");
+
     m_VerticalAlignmentIsSet = false;
+
 }
 
 PageSetup::~PageSetup()
@@ -106,7 +106,6 @@ void PageSetup::validate()
 web::json::value PageSetup::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_BidiIsSet)
     {
         val[_XPLATSTR("Bidi")] = ModelBase::toJson(m_Bidi);
@@ -236,507 +235,474 @@ void PageSetup::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
         if(!fieldValue.is_null())
         {
-            setBidi(ModelBase::boolFromJson(fieldValue));
+           setBidi(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BorderAlwaysInFront")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BorderAlwaysInFront")];
         if(!fieldValue.is_null())
         {
-            setBorderAlwaysInFront(ModelBase::boolFromJson(fieldValue));
+           setBorderAlwaysInFront(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BorderAppliesTo")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BorderAppliesTo")];
         if(!fieldValue.is_null())
         {
-            setBorderAppliesTo(ModelBase::stringFromJson(fieldValue));
+           setBorderAppliesTo(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BorderDistanceFrom")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BorderDistanceFrom")];
         if(!fieldValue.is_null())
         {
-            setBorderDistanceFrom(ModelBase::stringFromJson(fieldValue));
+           setBorderDistanceFrom(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BottomMargin")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BottomMargin")];
         if(!fieldValue.is_null())
         {
-            setBottomMargin(ModelBase::doubleFromJson(fieldValue));
+           setBottomMargin(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("DifferentFirstPageHeaderFooter")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("DifferentFirstPageHeaderFooter")];
         if(!fieldValue.is_null())
         {
-            setDifferentFirstPageHeaderFooter(ModelBase::boolFromJson(fieldValue));
+           setDifferentFirstPageHeaderFooter(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("FirstPageTray")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("FirstPageTray")];
         if(!fieldValue.is_null())
         {
-            setFirstPageTray(ModelBase::int32_tFromJson(fieldValue));
+           setFirstPageTray(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("FooterDistance")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("FooterDistance")];
         if(!fieldValue.is_null())
         {
-            setFooterDistance(ModelBase::doubleFromJson(fieldValue));
+           setFooterDistance(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Gutter")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Gutter")];
         if(!fieldValue.is_null())
         {
-            setGutter(ModelBase::doubleFromJson(fieldValue));
+           setGutter(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("HeaderDistance")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("HeaderDistance")];
         if(!fieldValue.is_null())
         {
-            setHeaderDistance(ModelBase::doubleFromJson(fieldValue));
+           setHeaderDistance(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LeftMargin")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LeftMargin")];
         if(!fieldValue.is_null())
         {
-            setLeftMargin(ModelBase::doubleFromJson(fieldValue));
+           setLeftMargin(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineNumberCountBy")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineNumberCountBy")];
         if(!fieldValue.is_null())
         {
-            setLineNumberCountBy(ModelBase::int32_tFromJson(fieldValue));
+           setLineNumberCountBy(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineNumberDistanceFromText")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineNumberDistanceFromText")];
         if(!fieldValue.is_null())
         {
-            setLineNumberDistanceFromText(ModelBase::doubleFromJson(fieldValue));
+           setLineNumberDistanceFromText(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineNumberRestartMode")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineNumberRestartMode")];
         if(!fieldValue.is_null())
         {
-            setLineNumberRestartMode(ModelBase::stringFromJson(fieldValue));
+           setLineNumberRestartMode(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineStartingNumber")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineStartingNumber")];
         if(!fieldValue.is_null())
         {
-            setLineStartingNumber(ModelBase::int32_tFromJson(fieldValue));
+           setLineStartingNumber(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Orientation")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Orientation")];
         if(!fieldValue.is_null())
         {
-            setOrientation(ModelBase::stringFromJson(fieldValue));
+           setOrientation(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("OtherPagesTray")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("OtherPagesTray")];
         if(!fieldValue.is_null())
         {
-            setOtherPagesTray(ModelBase::int32_tFromJson(fieldValue));
+           setOtherPagesTray(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PageHeight")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PageHeight")];
         if(!fieldValue.is_null())
         {
-            setPageHeight(ModelBase::doubleFromJson(fieldValue));
+           setPageHeight(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PageNumberStyle")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PageNumberStyle")];
         if(!fieldValue.is_null())
         {
-            setPageNumberStyle(ModelBase::stringFromJson(fieldValue));
+           setPageNumberStyle(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PageStartingNumber")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PageStartingNumber")];
         if(!fieldValue.is_null())
         {
-            setPageStartingNumber(ModelBase::int32_tFromJson(fieldValue));
+           setPageStartingNumber(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PageWidth")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PageWidth")];
         if(!fieldValue.is_null())
         {
-            setPageWidth(ModelBase::doubleFromJson(fieldValue));
+           setPageWidth(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PaperSize")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PaperSize")];
         if(!fieldValue.is_null())
         {
-            setPaperSize(ModelBase::stringFromJson(fieldValue));
+           setPaperSize(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RestartPageNumbering")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RestartPageNumbering")];
         if(!fieldValue.is_null())
         {
-            setRestartPageNumbering(ModelBase::boolFromJson(fieldValue));
+           setRestartPageNumbering(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RightMargin")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RightMargin")];
         if(!fieldValue.is_null())
         {
-            setRightMargin(ModelBase::doubleFromJson(fieldValue));
+           setRightMargin(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RtlGutter")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RtlGutter")];
         if(!fieldValue.is_null())
         {
-            setRtlGutter(ModelBase::boolFromJson(fieldValue));
+           setRtlGutter(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SectionStart")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SectionStart")];
         if(!fieldValue.is_null())
         {
-            setSectionStart(ModelBase::stringFromJson(fieldValue));
+           setSectionStart(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SuppressEndnotes")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SuppressEndnotes")];
         if(!fieldValue.is_null())
         {
-            setSuppressEndnotes(ModelBase::boolFromJson(fieldValue));
+           setSuppressEndnotes(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TopMargin")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TopMargin")];
         if(!fieldValue.is_null())
         {
-            setTopMargin(ModelBase::doubleFromJson(fieldValue));
+           setTopMargin(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("VerticalAlignment")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("VerticalAlignment")];
         if(!fieldValue.is_null())
         {
-            setVerticalAlignment(ModelBase::stringFromJson(fieldValue));
+           setVerticalAlignment(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void PageSetup::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BidiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
-        
     }
+
+
     if(m_BorderAlwaysInFrontIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderAlwaysInFront"), m_BorderAlwaysInFront));
-        
     }
+
+
     if(m_BorderAppliesToIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderAppliesTo"), m_BorderAppliesTo));
-        
     }
+
+
     if(m_BorderDistanceFromIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderDistanceFrom"), m_BorderDistanceFrom));
-        
     }
+
+
     if(m_BottomMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BottomMargin"), m_BottomMargin));
-        
     }
+
+
     if(m_DifferentFirstPageHeaderFooterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DifferentFirstPageHeaderFooter"), m_DifferentFirstPageHeaderFooter));
-        
     }
+
+
     if(m_FirstPageTrayIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FirstPageTray"), m_FirstPageTray));
-        
     }
+
+
     if(m_FooterDistanceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FooterDistance"), m_FooterDistance));
-        
     }
+
+
     if(m_GutterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Gutter"), m_Gutter));
-        
     }
+
+
     if(m_HeaderDistanceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeaderDistance"), m_HeaderDistance));
-        
     }
+
+
     if(m_LeftMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftMargin"), m_LeftMargin));
-        
     }
+
+
     if(m_LineNumberCountByIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineNumberCountBy"), m_LineNumberCountBy));
-        
     }
+
+
     if(m_LineNumberDistanceFromTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineNumberDistanceFromText"), m_LineNumberDistanceFromText));
-        
     }
+
+
     if(m_LineNumberRestartModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineNumberRestartMode"), m_LineNumberRestartMode));
-        
     }
+
+
     if(m_LineStartingNumberIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineStartingNumber"), m_LineStartingNumber));
-        
     }
+
+
     if(m_OrientationIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Orientation"), m_Orientation));
-        
     }
+
+
     if(m_OtherPagesTrayIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OtherPagesTray"), m_OtherPagesTray));
-        
     }
+
+
     if(m_PageHeightIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageHeight"), m_PageHeight));
-        
     }
+
+
     if(m_PageNumberStyleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageNumberStyle"), m_PageNumberStyle));
-        
     }
+
+
     if(m_PageStartingNumberIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageStartingNumber"), m_PageStartingNumber));
-        
     }
+
+
     if(m_PageWidthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageWidth"), m_PageWidth));
-        
     }
+
+
     if(m_PaperSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PaperSize"), m_PaperSize));
-        
     }
+
+
     if(m_RestartPageNumberingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RestartPageNumbering"), m_RestartPageNumbering));
-        
     }
+
+
     if(m_RightMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightMargin"), m_RightMargin));
-        
     }
+
+
     if(m_RtlGutterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RtlGutter"), m_RtlGutter));
-        
     }
+
+
     if(m_SectionStartIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SectionStart"), m_SectionStart));
-        
     }
+
+
     if(m_SuppressEndnotesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SuppressEndnotes"), m_SuppressEndnotes));
-        
     }
+
+
     if(m_TopMarginIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TopMargin"), m_TopMargin));
-        
     }
+
+
     if(m_VerticalAlignmentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("VerticalAlignment"), m_VerticalAlignment));
-        
     }
+
 }
 
 void PageSetup::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Bidi")))
-    {
-        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BorderAlwaysInFront")))
-    {
-        setBorderAlwaysInFront(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BorderAlwaysInFront"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BorderAppliesTo")))
-    {
-        setBorderAppliesTo(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BorderAppliesTo"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BorderDistanceFrom")))
-    {
-        setBorderDistanceFrom(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BorderDistanceFrom"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BottomMargin")))
-    {
-        setBottomMargin(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BottomMargin"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DifferentFirstPageHeaderFooter")))
-    {
-        setDifferentFirstPageHeaderFooter(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DifferentFirstPageHeaderFooter"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FirstPageTray")))
-    {
-        setFirstPageTray(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("FirstPageTray"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FooterDistance")))
-    {
-        setFooterDistance(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("FooterDistance"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Gutter")))
-    {
-        setGutter(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Gutter"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HeaderDistance")))
-    {
-        setHeaderDistance(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("HeaderDistance"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LeftMargin")))
-    {
-        setLeftMargin(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftMargin"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineNumberCountBy")))
-    {
-        setLineNumberCountBy(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LineNumberCountBy"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineNumberDistanceFromText")))
-    {
-        setLineNumberDistanceFromText(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LineNumberDistanceFromText"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineNumberRestartMode")))
-    {
-        setLineNumberRestartMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LineNumberRestartMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineStartingNumber")))
-    {
-        setLineStartingNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LineStartingNumber"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Orientation")))
-    {
-        setOrientation(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Orientation"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OtherPagesTray")))
-    {
-        setOtherPagesTray(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("OtherPagesTray"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageHeight")))
-    {
-        setPageHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("PageHeight"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageNumberStyle")))
-    {
-        setPageNumberStyle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("PageNumberStyle"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageStartingNumber")))
-    {
-        setPageStartingNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageStartingNumber"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageWidth")))
-    {
-        setPageWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("PageWidth"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PaperSize")))
-    {
-        setPaperSize(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("PaperSize"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RestartPageNumbering")))
-    {
-        setRestartPageNumbering(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("RestartPageNumbering"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RightMargin")))
-    {
-        setRightMargin(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightMargin"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RtlGutter")))
-    {
-        setRtlGutter(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("RtlGutter"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SectionStart")))
-    {
-        setSectionStart(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SectionStart"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SuppressEndnotes")))
-    {
-        setSuppressEndnotes(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SuppressEndnotes"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TopMargin")))
-    {
-        setTopMargin(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TopMargin"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("VerticalAlignment")))
-    {
-        setVerticalAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("VerticalAlignment"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool PageSetup::isBidi() const
@@ -750,6 +716,7 @@ void PageSetup::setBidi(bool value)
     m_Bidi = value;
     m_BidiIsSet = true;
 }
+
 bool PageSetup::bidiIsSet() const
 {
     return m_BidiIsSet;
@@ -771,6 +738,7 @@ void PageSetup::setBorderAlwaysInFront(bool value)
     m_BorderAlwaysInFront = value;
     m_BorderAlwaysInFrontIsSet = true;
 }
+
 bool PageSetup::borderAlwaysInFrontIsSet() const
 {
     return m_BorderAlwaysInFrontIsSet;
@@ -792,6 +760,7 @@ void PageSetup::setBorderAppliesTo(utility::string_t value)
     m_BorderAppliesTo = value;
     m_BorderAppliesToIsSet = true;
 }
+
 bool PageSetup::borderAppliesToIsSet() const
 {
     return m_BorderAppliesToIsSet;
@@ -813,6 +782,7 @@ void PageSetup::setBorderDistanceFrom(utility::string_t value)
     m_BorderDistanceFrom = value;
     m_BorderDistanceFromIsSet = true;
 }
+
 bool PageSetup::borderDistanceFromIsSet() const
 {
     return m_BorderDistanceFromIsSet;
@@ -834,6 +804,7 @@ void PageSetup::setBottomMargin(double value)
     m_BottomMargin = value;
     m_BottomMarginIsSet = true;
 }
+
 bool PageSetup::bottomMarginIsSet() const
 {
     return m_BottomMarginIsSet;
@@ -855,6 +826,7 @@ void PageSetup::setDifferentFirstPageHeaderFooter(bool value)
     m_DifferentFirstPageHeaderFooter = value;
     m_DifferentFirstPageHeaderFooterIsSet = true;
 }
+
 bool PageSetup::differentFirstPageHeaderFooterIsSet() const
 {
     return m_DifferentFirstPageHeaderFooterIsSet;
@@ -876,6 +848,7 @@ void PageSetup::setFirstPageTray(int32_t value)
     m_FirstPageTray = value;
     m_FirstPageTrayIsSet = true;
 }
+
 bool PageSetup::firstPageTrayIsSet() const
 {
     return m_FirstPageTrayIsSet;
@@ -897,6 +870,7 @@ void PageSetup::setFooterDistance(double value)
     m_FooterDistance = value;
     m_FooterDistanceIsSet = true;
 }
+
 bool PageSetup::footerDistanceIsSet() const
 {
     return m_FooterDistanceIsSet;
@@ -918,6 +892,7 @@ void PageSetup::setGutter(double value)
     m_Gutter = value;
     m_GutterIsSet = true;
 }
+
 bool PageSetup::gutterIsSet() const
 {
     return m_GutterIsSet;
@@ -939,6 +914,7 @@ void PageSetup::setHeaderDistance(double value)
     m_HeaderDistance = value;
     m_HeaderDistanceIsSet = true;
 }
+
 bool PageSetup::headerDistanceIsSet() const
 {
     return m_HeaderDistanceIsSet;
@@ -960,6 +936,7 @@ void PageSetup::setLeftMargin(double value)
     m_LeftMargin = value;
     m_LeftMarginIsSet = true;
 }
+
 bool PageSetup::leftMarginIsSet() const
 {
     return m_LeftMarginIsSet;
@@ -981,6 +958,7 @@ void PageSetup::setLineNumberCountBy(int32_t value)
     m_LineNumberCountBy = value;
     m_LineNumberCountByIsSet = true;
 }
+
 bool PageSetup::lineNumberCountByIsSet() const
 {
     return m_LineNumberCountByIsSet;
@@ -1002,6 +980,7 @@ void PageSetup::setLineNumberDistanceFromText(double value)
     m_LineNumberDistanceFromText = value;
     m_LineNumberDistanceFromTextIsSet = true;
 }
+
 bool PageSetup::lineNumberDistanceFromTextIsSet() const
 {
     return m_LineNumberDistanceFromTextIsSet;
@@ -1023,6 +1002,7 @@ void PageSetup::setLineNumberRestartMode(utility::string_t value)
     m_LineNumberRestartMode = value;
     m_LineNumberRestartModeIsSet = true;
 }
+
 bool PageSetup::lineNumberRestartModeIsSet() const
 {
     return m_LineNumberRestartModeIsSet;
@@ -1044,6 +1024,7 @@ void PageSetup::setLineStartingNumber(int32_t value)
     m_LineStartingNumber = value;
     m_LineStartingNumberIsSet = true;
 }
+
 bool PageSetup::lineStartingNumberIsSet() const
 {
     return m_LineStartingNumberIsSet;
@@ -1065,6 +1046,7 @@ void PageSetup::setOrientation(utility::string_t value)
     m_Orientation = value;
     m_OrientationIsSet = true;
 }
+
 bool PageSetup::orientationIsSet() const
 {
     return m_OrientationIsSet;
@@ -1086,6 +1068,7 @@ void PageSetup::setOtherPagesTray(int32_t value)
     m_OtherPagesTray = value;
     m_OtherPagesTrayIsSet = true;
 }
+
 bool PageSetup::otherPagesTrayIsSet() const
 {
     return m_OtherPagesTrayIsSet;
@@ -1107,6 +1090,7 @@ void PageSetup::setPageHeight(double value)
     m_PageHeight = value;
     m_PageHeightIsSet = true;
 }
+
 bool PageSetup::pageHeightIsSet() const
 {
     return m_PageHeightIsSet;
@@ -1128,6 +1112,7 @@ void PageSetup::setPageNumberStyle(utility::string_t value)
     m_PageNumberStyle = value;
     m_PageNumberStyleIsSet = true;
 }
+
 bool PageSetup::pageNumberStyleIsSet() const
 {
     return m_PageNumberStyleIsSet;
@@ -1149,6 +1134,7 @@ void PageSetup::setPageStartingNumber(int32_t value)
     m_PageStartingNumber = value;
     m_PageStartingNumberIsSet = true;
 }
+
 bool PageSetup::pageStartingNumberIsSet() const
 {
     return m_PageStartingNumberIsSet;
@@ -1170,6 +1156,7 @@ void PageSetup::setPageWidth(double value)
     m_PageWidth = value;
     m_PageWidthIsSet = true;
 }
+
 bool PageSetup::pageWidthIsSet() const
 {
     return m_PageWidthIsSet;
@@ -1191,6 +1178,7 @@ void PageSetup::setPaperSize(utility::string_t value)
     m_PaperSize = value;
     m_PaperSizeIsSet = true;
 }
+
 bool PageSetup::paperSizeIsSet() const
 {
     return m_PaperSizeIsSet;
@@ -1212,6 +1200,7 @@ void PageSetup::setRestartPageNumbering(bool value)
     m_RestartPageNumbering = value;
     m_RestartPageNumberingIsSet = true;
 }
+
 bool PageSetup::restartPageNumberingIsSet() const
 {
     return m_RestartPageNumberingIsSet;
@@ -1233,6 +1222,7 @@ void PageSetup::setRightMargin(double value)
     m_RightMargin = value;
     m_RightMarginIsSet = true;
 }
+
 bool PageSetup::rightMarginIsSet() const
 {
     return m_RightMarginIsSet;
@@ -1254,6 +1244,7 @@ void PageSetup::setRtlGutter(bool value)
     m_RtlGutter = value;
     m_RtlGutterIsSet = true;
 }
+
 bool PageSetup::rtlGutterIsSet() const
 {
     return m_RtlGutterIsSet;
@@ -1275,6 +1266,7 @@ void PageSetup::setSectionStart(utility::string_t value)
     m_SectionStart = value;
     m_SectionStartIsSet = true;
 }
+
 bool PageSetup::sectionStartIsSet() const
 {
     return m_SectionStartIsSet;
@@ -1296,6 +1288,7 @@ void PageSetup::setSuppressEndnotes(bool value)
     m_SuppressEndnotes = value;
     m_SuppressEndnotesIsSet = true;
 }
+
 bool PageSetup::suppressEndnotesIsSet() const
 {
     return m_SuppressEndnotesIsSet;
@@ -1317,6 +1310,7 @@ void PageSetup::setTopMargin(double value)
     m_TopMargin = value;
     m_TopMarginIsSet = true;
 }
+
 bool PageSetup::topMarginIsSet() const
 {
     return m_TopMarginIsSet;
@@ -1338,6 +1332,7 @@ void PageSetup::setVerticalAlignment(utility::string_t value)
     m_VerticalAlignment = value;
     m_VerticalAlignmentIsSet = true;
 }
+
 bool PageSetup::verticalAlignmentIsSet() const
 {
     return m_VerticalAlignmentIsSet;
@@ -1353,4 +1348,3 @@ void PageSetup::unsetVerticalAlignment()
 }
 }
 }
-

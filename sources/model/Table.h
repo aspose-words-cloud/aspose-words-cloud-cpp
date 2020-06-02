@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Table.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Table_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Table_H_
 
-
 #include "NodeLink.h"
 #include "TableProperties.h"
 #include "TableRow.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +41,7 @@ namespace models {
 /// <summary>
 /// Table element.
 /// </summary>
-class  Table
+class Table
     : public NodeLink
 {
 public:
@@ -63,14 +63,15 @@ public:
     /// Table members
 
     /// <summary>
-    /// Gets or sets TableProperties.
+    /// Gets or sets table properties.
     /// </summary>
     std::shared_ptr<TableProperties> getTableProperties() const;
     bool tablePropertiesIsSet() const;
     void unsetTableProperties();
     void setTableProperties(std::shared_ptr<TableProperties> value);
+
     /// <summary>
-    /// Gets or sets collection of table&#39;s rows.
+    /// Gets or sets collection of table's rows.
     /// </summary>
     std::vector<std::shared_ptr<TableRow>>& getTableRowList();
     bool tableRowListIsSet() const;
@@ -80,6 +81,7 @@ public:
 protected:
     std::shared_ptr<TableProperties> m_TableProperties;
     bool m_TablePropertiesIsSet;
+
     std::vector<std::shared_ptr<TableRow>> m_TableRowList;
     bool m_TableRowListIsSet;
 };

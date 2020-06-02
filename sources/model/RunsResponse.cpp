@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunsResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "RunsResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 RunsResponse::RunsResponse()
 {
     m_RunsIsSet = false;
+
 }
 
 RunsResponse::~RunsResponse()
@@ -49,7 +49,6 @@ void RunsResponse::validate()
 web::json::value RunsResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_RunsIsSet)
     {
         val[_XPLATSTR("Runs")] = ModelBase::toJson(m_Runs);
@@ -69,39 +68,28 @@ void RunsResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Runs> newItem(new Runs());
             newItem->fromJson(fieldValue);
-            setRuns( newItem );
         }
     }
+
 }
 
 void RunsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_RunsIsSet)
     {
         if (m_Runs.get())
         {
             m_Runs->toMultipart(multipart, _XPLATSTR("Runs."));
         }
-        
     }
+
 }
 
 void RunsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Runs")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Runs")))
-        {
-            std::shared_ptr<Runs> newItem(new Runs());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Runs."));
-            setRuns( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Runs> RunsResponse::getRuns() const
@@ -115,6 +103,7 @@ void RunsResponse::setRuns(std::shared_ptr<Runs> value)
     m_Runs = value;
     m_RunsIsSet = true;
 }
+
 bool RunsResponse::runsIsSet() const
 {
     return m_RunsIsSet;
@@ -130,4 +119,3 @@ void RunsResponse::unsetRuns()
 }
 }
 }
-

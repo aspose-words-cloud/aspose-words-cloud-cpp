@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRow.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TableRow_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableRow_H_
 
-
 #include "NodeLink.h"
 #include "TableCell.h"
 #include "TableRowFormat.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +41,7 @@ namespace models {
 /// <summary>
 /// Table row element.
 /// </summary>
-class  TableRow
+class TableRow
     : public NodeLink
 {
 public:
@@ -63,14 +63,15 @@ public:
     /// TableRow members
 
     /// <summary>
-    /// Gets or sets RowFormat.
+    /// Gets or sets provides access to the formatting properties of the row.
     /// </summary>
     std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;
     void unsetRowFormat();
     void setRowFormat(std::shared_ptr<TableRowFormat> value);
+
     /// <summary>
-    /// Gets or sets collection of table&#39;s rows.
+    /// Gets or sets collection of table's rows.
     /// </summary>
     std::vector<std::shared_ptr<TableCell>>& getTableCellList();
     bool tableCellListIsSet() const;
@@ -80,6 +81,7 @@ public:
 protected:
     std::shared_ptr<TableRowFormat> m_RowFormat;
     bool m_RowFormatIsSet;
+
     std::vector<std::shared_ptr<TableCell>> m_TableCellList;
     bool m_TableCellListIsSet;
 };

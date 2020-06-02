@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RangeDocument.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "RangeDocument.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ RangeDocument::RangeDocument()
 {
     m_DocumentName = utility::conversions::to_string_t("");
     m_DocumentNameIsSet = false;
+
 }
 
 RangeDocument::~RangeDocument()
@@ -50,7 +50,6 @@ void RangeDocument::validate()
 web::json::value RangeDocument::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_DocumentNameIsSet)
     {
         val[_XPLATSTR("DocumentName")] = ModelBase::toJson(m_DocumentName);
@@ -66,31 +65,25 @@ void RangeDocument::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DocumentName")];
         if(!fieldValue.is_null())
         {
-            setDocumentName(ModelBase::stringFromJson(fieldValue));
+           setDocumentName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void RangeDocument::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DocumentNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DocumentName"), m_DocumentName));
-        
     }
+
 }
 
 void RangeDocument::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("DocumentName")))
-    {
-        setDocumentName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DocumentName"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t RangeDocument::getDocumentName() const
@@ -104,6 +97,7 @@ void RangeDocument::setDocumentName(utility::string_t value)
     m_DocumentName = value;
     m_DocumentNameIsSet = true;
 }
+
 bool RangeDocument::documentNameIsSet() const
 {
     return m_DocumentNameIsSet;
@@ -119,4 +113,3 @@ void RangeDocument::unsetDocumentName()
 }
 }
 }
-

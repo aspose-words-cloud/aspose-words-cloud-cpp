@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleApply.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StyleApply.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ StyleApply::StyleApply()
 {
     m_StyleName = utility::conversions::to_string_t("");
     m_StyleNameIsSet = false;
+
 }
 
 StyleApply::~StyleApply()
@@ -50,7 +50,6 @@ void StyleApply::validate()
 web::json::value StyleApply::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_StyleNameIsSet)
     {
         val[_XPLATSTR("StyleName")] = ModelBase::toJson(m_StyleName);
@@ -66,31 +65,25 @@ void StyleApply::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("StyleName")];
         if(!fieldValue.is_null())
         {
-            setStyleName(ModelBase::stringFromJson(fieldValue));
+           setStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void StyleApply::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_StyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleName"), m_StyleName));
-        
     }
+
 }
 
 void StyleApply::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("StyleName")))
-    {
-        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleName"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t StyleApply::getStyleName() const
@@ -104,6 +97,7 @@ void StyleApply::setStyleName(utility::string_t value)
     m_StyleName = value;
     m_StyleNameIsSet = true;
 }
+
 bool StyleApply::styleNameIsSet() const
 {
     return m_StyleNameIsSet;
@@ -119,4 +113,3 @@ void StyleApply::unsetStyleName()
 }
 }
 }
-

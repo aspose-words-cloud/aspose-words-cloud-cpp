@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Footnote.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Footnote.h"
 
 namespace aspose {
@@ -35,13 +34,15 @@ namespace models {
 Footnote::Footnote()
 {
     m_ContentIsSet = false;
-    m_FootnoteType = utility::conversions::to_string_t("");
+
     m_FootnoteTypeIsSet = false;
+
     m_PositionIsSet = false;
     m_ReferenceMark = utility::conversions::to_string_t("");
     m_ReferenceMarkIsSet = false;
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
+
 }
 
 Footnote::~Footnote()
@@ -56,7 +57,6 @@ void Footnote::validate()
 web::json::value Footnote::toJson() const
 {
     web::json::value val = this->FootnoteLink::toJson();
-
     if(m_ContentIsSet)
     {
         val[_XPLATSTR("Content")] = ModelBase::toJson(m_Content);
@@ -92,17 +92,20 @@ void Footnote::fromJson(web::json::value& val)
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
             newItem->fromJson(fieldValue);
-            setContent( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("FootnoteType")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("FootnoteType")];
         if(!fieldValue.is_null())
         {
-            setFootnoteType(ModelBase::stringFromJson(fieldValue));
+           setFootnoteType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Position")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Position")];
@@ -110,99 +113,75 @@ void Footnote::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
-            setPosition( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ReferenceMark")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ReferenceMark")];
         if(!fieldValue.is_null())
         {
-            setReferenceMark(ModelBase::stringFromJson(fieldValue));
+           setReferenceMark(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Text")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
-            setText(ModelBase::stringFromJson(fieldValue));
+           setText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void Footnote::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FootnoteLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ContentIsSet)
     {
         if (m_Content.get())
         {
             m_Content->toMultipart(multipart, _XPLATSTR("Content."));
         }
-        
     }
+
+
     if(m_FootnoteTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FootnoteType"), m_FootnoteType));
-        
     }
+
+
     if(m_PositionIsSet)
     {
         if (m_Position.get())
         {
             m_Position->toMultipart(multipart, _XPLATSTR("Position."));
         }
-        
     }
+
+
     if(m_ReferenceMarkIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ReferenceMark"), m_ReferenceMark));
-        
     }
+
+
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
+
 }
 
 void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FootnoteLink::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Content")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Content")))
-        {
-            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
-            setContent( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("FootnoteType")))
-    {
-        setFootnoteType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FootnoteType"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Position")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Position")))
-        {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Position."));
-            setPosition( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("ReferenceMark")))
-    {
-        setReferenceMark(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ReferenceMark"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<StoryChildNodes> Footnote::getContent() const
@@ -216,6 +195,7 @@ void Footnote::setContent(std::shared_ptr<StoryChildNodes> value)
     m_Content = value;
     m_ContentIsSet = true;
 }
+
 bool Footnote::contentIsSet() const
 {
     return m_ContentIsSet;
@@ -237,6 +217,7 @@ void Footnote::setFootnoteType(utility::string_t value)
     m_FootnoteType = value;
     m_FootnoteTypeIsSet = true;
 }
+
 bool Footnote::footnoteTypeIsSet() const
 {
     return m_FootnoteTypeIsSet;
@@ -258,6 +239,7 @@ void Footnote::setPosition(std::shared_ptr<DocumentPosition> value)
     m_Position = value;
     m_PositionIsSet = true;
 }
+
 bool Footnote::positionIsSet() const
 {
     return m_PositionIsSet;
@@ -279,6 +261,7 @@ void Footnote::setReferenceMark(utility::string_t value)
     m_ReferenceMark = value;
     m_ReferenceMarkIsSet = true;
 }
+
 bool Footnote::referenceMarkIsSet() const
 {
     return m_ReferenceMarkIsSet;
@@ -300,6 +283,7 @@ void Footnote::setText(utility::string_t value)
     m_Text = value;
     m_TextIsSet = true;
 }
+
 bool Footnote::textIsSet() const
 {
     return m_TextIsSet;
@@ -315,4 +299,3 @@ void Footnote::unsetText()
 }
 }
 }
-

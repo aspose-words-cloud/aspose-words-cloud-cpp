@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunLink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "RunLink.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ RunLink::RunLink()
 {
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
+
 }
 
 RunLink::~RunLink()
@@ -50,7 +50,6 @@ void RunLink::validate()
 web::json::value RunLink::toJson() const
 {
     web::json::value val = this->NodeLink::toJson();
-
     if(m_TextIsSet)
     {
         val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
@@ -68,31 +67,26 @@ void RunLink::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
-            setText(ModelBase::stringFromJson(fieldValue));
+           setText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void RunLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
+
 }
 
 void RunLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    NodeLink::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t RunLink::getText() const
@@ -106,6 +100,7 @@ void RunLink::setText(utility::string_t value)
     m_Text = value;
     m_TextIsSet = true;
 }
+
 bool RunLink::textIsSet() const
 {
     return m_TextIsSet;
@@ -121,4 +116,3 @@ void RunLink::unsetText()
 }
 }
 }
-

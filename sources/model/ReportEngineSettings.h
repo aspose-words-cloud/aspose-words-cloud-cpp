@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReportEngineSettings.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,11 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ReportEngineSettings_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ReportEngineSettings_H_
 
-
-#include "../ModelBase.h"
-
 #include "CsvDataLoadOptions.h"
 #include "ReportBuildOptions.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +40,7 @@ namespace models {
 /// <summary>
 /// Report engine settings.
 /// </summary>
-class  ReportEngineSettings
+class ReportEngineSettings
     : public ModelBase
 {
 public:
@@ -64,19 +62,13 @@ public:
     /// ReportEngineSettings members
 
     /// <summary>
-    /// Gets or sets type of datasource.
+    /// Gets or sets options for parsing CSV data.
     /// </summary>
-    utility::string_t getDataSourceType() const;
-    bool dataSourceTypeIsSet() const;
-    void unsetDataSourceType();
-    void setDataSourceType(utility::string_t value);
-    /// <summary>
-    /// Gets or sets type of options to build report.
-    /// </summary>
-    std::vector<std::shared_ptr<ReportBuildOptions>>& getReportBuildOptions();
-    bool reportBuildOptionsIsSet() const;
-    void unsetReportBuildOptions();
-    void setReportBuildOptions(std::vector<std::shared_ptr<ReportBuildOptions>> const& value);
+    std::shared_ptr<CsvDataLoadOptions> getCsvDataLoadOptions() const;
+    bool csvDataLoadOptionsIsSet() const;
+    void unsetCsvDataLoadOptions();
+    void setCsvDataLoadOptions(std::shared_ptr<CsvDataLoadOptions> value);
+
     /// <summary>
     /// Gets or sets a name to reference the data source object in the template.
     /// </summary>
@@ -84,23 +76,35 @@ public:
     bool dataSourceNameIsSet() const;
     void unsetDataSourceName();
     void setDataSourceName(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets CsvDataLoadOptions.
+    /// Gets or sets type of datasource.
     /// </summary>
-    std::shared_ptr<CsvDataLoadOptions> getCsvDataLoadOptions() const;
-    bool csvDataLoadOptionsIsSet() const;
-    void unsetCsvDataLoadOptions();
-    void setCsvDataLoadOptions(std::shared_ptr<CsvDataLoadOptions> value);
+    utility::string_t getDataSourceType() const;
+    bool dataSourceTypeIsSet() const;
+    void unsetDataSourceType();
+    void setDataSourceType(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets type of options to build report.
+    /// </summary>
+    std::vector<utility::string_t>& getReportBuildOptions();
+    bool reportBuildOptionsIsSet() const;
+    void unsetReportBuildOptions();
+    void setReportBuildOptions(std::vector<utility::string_t> const& value);
 
 protected:
-    utility::string_t m_DataSourceType;
-    bool m_DataSourceTypeIsSet;
-    std::vector<std::shared_ptr<ReportBuildOptions>> m_ReportBuildOptions;
-    bool m_ReportBuildOptionsIsSet;
-    utility::string_t m_DataSourceName;
-    bool m_DataSourceNameIsSet;
     std::shared_ptr<CsvDataLoadOptions> m_CsvDataLoadOptions;
     bool m_CsvDataLoadOptionsIsSet;
+
+    utility::string_t m_DataSourceName;
+    bool m_DataSourceNameIsSet;
+
+    utility::string_t m_DataSourceType;
+    bool m_DataSourceTypeIsSet;
+
+    std::vector<utility::string_t> m_ReportBuildOptions;
+    bool m_ReportBuildOptionsIsSet;
 };
 
 }

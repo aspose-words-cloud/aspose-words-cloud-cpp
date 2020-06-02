@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CommentBase.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_CommentBase_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_CommentBase_H_
 
-
-#include "../ModelBase.h"
-
 #include "DocumentPosition.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Comment.
 /// </summary>
-class  CommentBase
+class CommentBase
     : public ModelBase
 {
 public:
@@ -63,33 +61,13 @@ public:
     /// CommentBase members
 
     /// <summary>
-    /// Gets or sets RangeStart.
-    /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeStart() const;
-    bool rangeStartIsSet() const;
-    void unsetRangeStart();
-    void setRangeStart(std::shared_ptr<DocumentPosition> value);
-    /// <summary>
-    /// Gets or sets RangeEnd.
-    /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeEnd() const;
-    bool rangeEndIsSet() const;
-    void unsetRangeEnd();
-    void setRangeEnd(std::shared_ptr<DocumentPosition> value);
-    /// <summary>
     /// Gets or sets returns or sets the author name for a comment.
     /// </summary>
     utility::string_t getAuthor() const;
     bool authorIsSet() const;
     void unsetAuthor();
     void setAuthor(utility::string_t value);
-    /// <summary>
-    /// Gets or sets returns or sets the initials of the user associated with a specific comment.
-    /// </summary>
-    utility::string_t getInitial() const;
-    bool initialIsSet() const;
-    void unsetInitial();
-    void setInitial(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the date and time that the comment was made.
     /// </summary>
@@ -97,6 +75,31 @@ public:
     bool dateTimeIsSet() const;
     void unsetDateTime();
     void setDateTime(utility::datetime value);
+
+    /// <summary>
+    /// Gets or sets returns or sets the initials of the user associated with a specific comment.
+    /// </summary>
+    utility::string_t getInitial() const;
+    bool initialIsSet() const;
+    void unsetInitial();
+    void setInitial(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets link to comment range end node.
+    /// </summary>
+    std::shared_ptr<DocumentPosition> getRangeEnd() const;
+    bool rangeEndIsSet() const;
+    void unsetRangeEnd();
+    void setRangeEnd(std::shared_ptr<DocumentPosition> value);
+
+    /// <summary>
+    /// Gets or sets link to comment range start node.
+    /// </summary>
+    std::shared_ptr<DocumentPosition> getRangeStart() const;
+    bool rangeStartIsSet() const;
+    void unsetRangeStart();
+    void setRangeStart(std::shared_ptr<DocumentPosition> value);
+
     /// <summary>
     /// Gets or sets this is a convenience property that allows to easily get or set text of the comment.
     /// </summary>
@@ -106,16 +109,21 @@ public:
     void setText(utility::string_t value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_RangeStart;
-    bool m_RangeStartIsSet;
-    std::shared_ptr<DocumentPosition> m_RangeEnd;
-    bool m_RangeEndIsSet;
     utility::string_t m_Author;
     bool m_AuthorIsSet;
-    utility::string_t m_Initial;
-    bool m_InitialIsSet;
+
     utility::datetime m_DateTime;
     bool m_DateTimeIsSet;
+
+    utility::string_t m_Initial;
+    bool m_InitialIsSet;
+
+    std::shared_ptr<DocumentPosition> m_RangeEnd;
+    bool m_RangeEndIsSet;
+
+    std::shared_ptr<DocumentPosition> m_RangeStart;
+    bool m_RangeStartIsSet;
+
     utility::string_t m_Text;
     bool m_TextIsSet;
 };

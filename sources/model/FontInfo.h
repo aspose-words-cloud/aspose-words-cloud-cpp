@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FontInfo.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FontInfo_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FontInfo_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Font info.
 /// </summary>
-class  FontInfo
+class FontInfo
     : public ModelBase
 {
 public:
@@ -62,27 +60,6 @@ public:
     /// FontInfo members
 
     /// <summary>
-    /// Gets or sets family name of the font.
-    /// </summary>
-    utility::string_t getFontFamilyName() const;
-    bool fontFamilyNameIsSet() const;
-    void unsetFontFamilyName();
-    void setFontFamilyName(utility::string_t value);
-    /// <summary>
-    /// Gets or sets full name of the font.
-    /// </summary>
-    utility::string_t getFullFontName() const;
-    bool fullFontNameIsSet() const;
-    void unsetFullFontName();
-    void setFullFontName(utility::string_t value);
-    /// <summary>
-    /// Gets or sets version string of the font.
-    /// </summary>
-    utility::string_t getVersion() const;
-    bool versionIsSet() const;
-    void unsetVersion();
-    void setVersion(utility::string_t value);
-    /// <summary>
     /// Gets or sets path to the font file if any.
     /// </summary>
     utility::string_t getFilePath() const;
@@ -90,15 +67,42 @@ public:
     void unsetFilePath();
     void setFilePath(utility::string_t value);
 
+    /// <summary>
+    /// Gets or sets family name of the font.
+    /// </summary>
+    utility::string_t getFontFamilyName() const;
+    bool fontFamilyNameIsSet() const;
+    void unsetFontFamilyName();
+    void setFontFamilyName(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets full name of the font.
+    /// </summary>
+    utility::string_t getFullFontName() const;
+    bool fullFontNameIsSet() const;
+    void unsetFullFontName();
+    void setFullFontName(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets version string of the font.
+    /// </summary>
+    utility::string_t getVersion() const;
+    bool versionIsSet() const;
+    void unsetVersion();
+    void setVersion(utility::string_t value);
+
 protected:
-    utility::string_t m_FontFamilyName;
-    bool m_FontFamilyNameIsSet;
-    utility::string_t m_FullFontName;
-    bool m_FullFontNameIsSet;
-    utility::string_t m_Version;
-    bool m_VersionIsSet;
     utility::string_t m_FilePath;
     bool m_FilePathIsSet;
+
+    utility::string_t m_FontFamilyName;
+    bool m_FontFamilyNameIsSet;
+
+    utility::string_t m_FullFontName;
+    bool m_FullFontNameIsSet;
+
+    utility::string_t m_Version;
+    bool m_VersionIsSet;
 };
 
 }

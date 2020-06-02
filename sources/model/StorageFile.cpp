@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageFile.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StorageFile.h"
 
 namespace aspose {
@@ -34,15 +33,17 @@ namespace models {
 
 StorageFile::StorageFile()
 {
-    m_Name = utility::conversions::to_string_t("");
-    m_NameIsSet = false;
     m_IsFolder = false;
     m_IsFolderIsSet = false;
     m_ModifiedDate = utility::datetime();
     m_ModifiedDateIsSet = false;
-    m_SizeIsSet = false;
+    m_Name = utility::conversions::to_string_t("");
+    m_NameIsSet = false;
     m_Path = utility::conversions::to_string_t("");
     m_PathIsSet = false;
+    m_Size = 0;
+    m_SizeIsSet = false;
+
 }
 
 StorageFile::~StorageFile()
@@ -57,11 +58,6 @@ void StorageFile::validate()
 web::json::value StorageFile::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_NameIsSet)
-    {
-        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
-    }
     if(m_IsFolderIsSet)
     {
         val[_XPLATSTR("IsFolder")] = ModelBase::toJson(m_IsFolder);
@@ -70,13 +66,17 @@ web::json::value StorageFile::toJson() const
     {
         val[_XPLATSTR("ModifiedDate")] = ModelBase::toJson(m_ModifiedDate);
     }
-    if(m_SizeIsSet)
+    if(m_NameIsSet)
     {
-        val[_XPLATSTR("Size")] = ModelBase::toJson(m_Size);
+        val[_XPLATSTR("Name")] = ModelBase::toJson(m_Name);
     }
     if(m_PathIsSet)
     {
         val[_XPLATSTR("Path")] = ModelBase::toJson(m_Path);
+    }
+    if(m_SizeIsSet)
+    {
+        val[_XPLATSTR("Size")] = ModelBase::toJson(m_Size);
     }
 
     return val;
@@ -84,125 +84,94 @@ web::json::value StorageFile::toJson() const
 
 void StorageFile::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Name")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Name")];
-        if(!fieldValue.is_null())
-        {
-            setName(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("IsFolder")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsFolder")];
         if(!fieldValue.is_null())
         {
-            setIsFolder(ModelBase::boolFromJson(fieldValue));
+           setIsFolder(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ModifiedDate")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ModifiedDate")];
         if(!fieldValue.is_null())
         {
-            setModifiedDate(ModelBase::dateFromJson(fieldValue));
+           setModifiedDate(ModelBase::dateTimeFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Size")))
+
+
+    if(val.has_field(_XPLATSTR("Name")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("Size")];
+        web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
-            setSize(ModelBase::int64_tFromJson(fieldValue));
+           setName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Path")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Path")];
         if(!fieldValue.is_null())
         {
-            setPath(ModelBase::stringFromJson(fieldValue));
+           setPath(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("Size")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Size")];
+        if(!fieldValue.is_null())
+        {
+           setSize(ModelBase::integerFromJson(fieldValue));
+        }
+    }
+
 }
 
 void StorageFile::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_IsFolderIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsFolder"), m_IsFolder));
+    }
+
+
+    if(m_ModifiedDateIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ModifiedDate"), m_ModifiedDate));
+    }
+
 
     if(m_NameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
-        
     }
-    if(m_IsFolderIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsFolder"), m_IsFolder));
-        
-    }
-    if(m_ModifiedDateIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ModifiedDate"), m_ModifiedDate));
-        
-    }
-    if(m_SizeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Size"), m_Size));
-        
-    }
+
+
     if(m_PathIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Path"), m_Path));
-        
     }
+
+
+    if(m_SizeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Size"), m_Size));
+    }
+
 }
 
 void StorageFile::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Name")))
-    {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsFolder")))
-    {
-        setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsFolder"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ModifiedDate")))
-    {
-        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ModifiedDate"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Size")))
-    {
-        setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Path")))
-    {
-        setPath(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Path"))));
-    }
-}
-
-utility::string_t StorageFile::getName() const
-{
-    return m_Name;
-}
-
-
-void StorageFile::setName(utility::string_t value)
-{
-    m_Name = value;
-    m_NameIsSet = true;
-}
-bool StorageFile::nameIsSet() const
-{
-    return m_NameIsSet;
-}
-
-void StorageFile::unsetName()
-{
-    m_NameIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 bool StorageFile::isIsFolder() const
@@ -216,6 +185,7 @@ void StorageFile::setIsFolder(bool value)
     m_IsFolder = value;
     m_IsFolderIsSet = true;
 }
+
 bool StorageFile::isFolderIsSet() const
 {
     return m_IsFolderIsSet;
@@ -237,6 +207,7 @@ void StorageFile::setModifiedDate(utility::datetime value)
     m_ModifiedDate = value;
     m_ModifiedDateIsSet = true;
 }
+
 bool StorageFile::modifiedDateIsSet() const
 {
     return m_ModifiedDateIsSet;
@@ -247,25 +218,26 @@ void StorageFile::unsetModifiedDate()
     m_ModifiedDateIsSet = false;
 }
 
-int64_t StorageFile::getSize() const
+utility::string_t StorageFile::getName() const
 {
-    return m_Size;
+    return m_Name;
 }
 
 
-void StorageFile::setSize(int64_t value)
+void StorageFile::setName(utility::string_t value)
 {
-    m_Size = value;
-    m_SizeIsSet = true;
-}
-bool StorageFile::sizeIsSet() const
-{
-    return m_SizeIsSet;
+    m_Name = value;
+    m_NameIsSet = true;
 }
 
-void StorageFile::unsetSize()
+bool StorageFile::nameIsSet() const
 {
-    m_SizeIsSet = false;
+    return m_NameIsSet;
+}
+
+void StorageFile::unsetName()
+{
+    m_NameIsSet = false;
 }
 
 utility::string_t StorageFile::getPath() const
@@ -279,6 +251,7 @@ void StorageFile::setPath(utility::string_t value)
     m_Path = value;
     m_PathIsSet = true;
 }
+
 bool StorageFile::pathIsSet() const
 {
     return m_PathIsSet;
@@ -289,9 +262,30 @@ void StorageFile::unsetPath()
     m_PathIsSet = false;
 }
 
-}
-}
-}
-}
+int32_t StorageFile::getSize() const
+{
+    return m_Size;
 }
 
+
+void StorageFile::setSize(int32_t value)
+{
+    m_Size = value;
+    m_SizeIsSet = true;
+}
+
+bool StorageFile::sizeIsSet() const
+{
+    return m_SizeIsSet;
+}
+
+void StorageFile::unsetSize()
+{
+    m_SizeIsSet = false;
+}
+
+}
+}
+}
+}
+}

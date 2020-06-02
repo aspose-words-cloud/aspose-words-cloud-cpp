@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCellInsert.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableCellInsert.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ TableCellInsert::TableCellInsert()
 {
     m_InsertAfter = 0;
     m_InsertAfterIsSet = false;
+
 }
 
 TableCellInsert::~TableCellInsert()
@@ -50,7 +50,6 @@ void TableCellInsert::validate()
 web::json::value TableCellInsert::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_InsertAfterIsSet)
     {
         val[_XPLATSTR("InsertAfter")] = ModelBase::toJson(m_InsertAfter);
@@ -66,31 +65,25 @@ void TableCellInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
         if(!fieldValue.is_null())
         {
-            setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
+           setInsertAfter(ModelBase::integerFromJson(fieldValue));
         }
     }
+
 }
 
 void TableCellInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_InsertAfterIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InsertAfter"), m_InsertAfter));
-        
     }
+
 }
 
 void TableCellInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("InsertAfter")))
-    {
-        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 int32_t TableCellInsert::getInsertAfter() const
@@ -104,6 +97,7 @@ void TableCellInsert::setInsertAfter(int32_t value)
     m_InsertAfter = value;
     m_InsertAfterIsSet = true;
 }
+
 bool TableCellInsert::insertAfterIsSet() const
 {
     return m_InsertAfterIsSet;
@@ -119,4 +113,3 @@ void TableCellInsert::unsetInsertAfter()
 }
 }
 }
-

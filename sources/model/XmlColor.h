@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XmlColor.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_XmlColor_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_XmlColor_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Utility class for Color serialization.
 /// </summary>
-class  XmlColor
+class XmlColor
     : public ModelBase
 {
 public:
@@ -62,13 +60,6 @@ public:
     /// XmlColor members
 
     /// <summary>
-    /// Gets or sets hTML string color representation.
-    /// </summary>
-    utility::string_t getWeb() const;
-    bool webIsSet() const;
-    void unsetWeb();
-    void setWeb(utility::string_t value);
-    /// <summary>
     /// Gets or sets alpha component of color structure.
     /// </summary>
     int32_t getAlpha() const;
@@ -76,11 +67,20 @@ public:
     void unsetAlpha();
     void setAlpha(int32_t value);
 
+    /// <summary>
+    /// Gets or sets hTML string color representation.
+    /// </summary>
+    utility::string_t getWeb() const;
+    bool webIsSet() const;
+    void unsetWeb();
+    void setWeb(utility::string_t value);
+
 protected:
-    utility::string_t m_Web;
-    bool m_WebIsSet;
     int32_t m_Alpha;
     bool m_AlphaIsSet;
+
+    utility::string_t m_Web;
+    bool m_WebIsSet;
 };
 
 }
