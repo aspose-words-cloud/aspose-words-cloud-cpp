@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 UpdateDrawingObjectRequest::UpdateDrawingObjectRequest(
     utility::string_t name,
-    utility::string_t drawingObject,
+    std::shared_ptr<DrawingObjectUpdate> drawingObject,
     std::shared_ptr<HttpContent> imageFile,
     utility::string_t nodePath,
     int32_t index,
@@ -67,12 +67,12 @@ void UpdateDrawingObjectRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t UpdateDrawingObjectRequest::getDrawingObject() const
+std::shared_ptr<DrawingObjectUpdate> UpdateDrawingObjectRequest::getDrawingObject() const
 {
     return m_DrawingObject;
 }
 
-void UpdateDrawingObjectRequest::setDrawingObject(utility::string_t drawingObject)
+void UpdateDrawingObjectRequest::setDrawingObject(std::shared_ptr<DrawingObjectUpdate> drawingObject)
 {
     m_DrawingObject = std::move(drawingObject);
 }

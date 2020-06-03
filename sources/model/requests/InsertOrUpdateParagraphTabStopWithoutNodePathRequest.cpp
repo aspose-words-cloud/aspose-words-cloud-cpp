@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.cpp">
+* <copyright company="Aspose" file="InsertOrUpdateParagraphTabStopWithoutNodePathRequest.cpp">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,16 +23,15 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "DeleteParagraphTabStopRequest.h"
+#include "InsertOrUpdateParagraphTabStopWithoutNodePathRequest.h"
 namespace aspose {
 namespace words {
 namespace cloud {
 namespace api {
 namespace models {
-DeleteParagraphTabStopRequest::DeleteParagraphTabStopRequest(
+InsertOrUpdateParagraphTabStopWithoutNodePathRequest::InsertOrUpdateParagraphTabStopWithoutNodePathRequest(
     utility::string_t name,
-    double position,
-    utility::string_t nodePath,
+    std::shared_ptr<TabStopInsert> dto,
     int32_t index,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -40,8 +39,7 @@ DeleteParagraphTabStopRequest::DeleteParagraphTabStopRequest(
     boost::optional< utility::string_t > password,
     boost::optional< utility::string_t > destFileName
 ) : m_Name(std::move(name)),
-m_Position(std::move(position)),
-m_NodePath(std::move(nodePath)),
+m_Dto(std::move(dto)),
 m_Index(std::move(index)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -51,92 +49,82 @@ m_DestFileName(std::move(destFileName))
 {
 }
 
-utility::string_t DeleteParagraphTabStopRequest::getName() const
+utility::string_t InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getName() const
 {
     return m_Name;
 }
 
-void DeleteParagraphTabStopRequest::setName(utility::string_t name)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setName(utility::string_t name)
 {
     m_Name = std::move(name);
 }
 
-double DeleteParagraphTabStopRequest::getPosition() const
+std::shared_ptr<TabStopInsert> InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getDto() const
 {
-    return m_Position;
+    return m_Dto;
 }
 
-void DeleteParagraphTabStopRequest::setPosition(double position)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setDto(std::shared_ptr<TabStopInsert> dto)
 {
-    m_Position = std::move(position);
+    m_Dto = std::move(dto);
 }
 
-utility::string_t DeleteParagraphTabStopRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void DeleteParagraphTabStopRequest::setNodePath(utility::string_t nodePath)
-{
-    m_NodePath = std::move(nodePath);
-}
-
-int32_t DeleteParagraphTabStopRequest::getIndex() const
+int32_t InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getIndex() const
 {
     return m_Index;
 }
 
-void DeleteParagraphTabStopRequest::setIndex(int32_t index)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
 }
 
-boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getFolder() const
+boost::optional< utility::string_t > InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getFolder() const
 {
     return m_Folder;
 }
 
-void DeleteParagraphTabStopRequest::setFolder(boost::optional< utility::string_t > folder)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setFolder(boost::optional< utility::string_t > folder)
 {
     m_Folder = std::move(folder);
 }
 
-boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getStorage() const
+boost::optional< utility::string_t > InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getStorage() const
 {
     return m_Storage;
 }
 
-void DeleteParagraphTabStopRequest::setStorage(boost::optional< utility::string_t > storage)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setStorage(boost::optional< utility::string_t > storage)
 {
     m_Storage = std::move(storage);
 }
 
-boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getLoadEncoding() const
+boost::optional< utility::string_t > InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getLoadEncoding() const
 {
     return m_LoadEncoding;
 }
 
-void DeleteParagraphTabStopRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
 {
     m_LoadEncoding = std::move(loadEncoding);
 }
 
-boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getPassword() const
+boost::optional< utility::string_t > InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getPassword() const
 {
     return m_Password;
 }
 
-void DeleteParagraphTabStopRequest::setPassword(boost::optional< utility::string_t > password)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setPassword(boost::optional< utility::string_t > password)
 {
     m_Password = std::move(password);
 }
 
-boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getDestFileName() const
+boost::optional< utility::string_t > InsertOrUpdateParagraphTabStopWithoutNodePathRequest::getDestFileName() const
 {
     return m_DestFileName;
 }
 
-void DeleteParagraphTabStopRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+void InsertOrUpdateParagraphTabStopWithoutNodePathRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
 {
     m_DestFileName = std::move(destFileName);
 }

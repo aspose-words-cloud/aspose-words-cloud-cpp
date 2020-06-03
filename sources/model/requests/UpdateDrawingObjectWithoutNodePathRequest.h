@@ -26,6 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_UpdateDrawingObjectWithoutNodePathRequest_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_UpdateDrawingObjectWithoutNodePathRequest_H_
 
+#include "DrawingObjectUpdate.h"
 #include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -40,7 +41,7 @@ class UpdateDrawingObjectWithoutNodePathRequest {
     public: 
  UpdateDrawingObjectWithoutNodePathRequest(
             utility::string_t name,
-            utility::string_t drawingObject,
+            std::shared_ptr<DrawingObjectUpdate> drawingObject,
             std::shared_ptr<HttpContent> imageFile,
             int32_t index,
             boost::optional< utility::string_t > folder,
@@ -55,8 +56,8 @@ class UpdateDrawingObjectWithoutNodePathRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getDrawingObject() const;
-        void setDrawingObject(utility::string_t drawingObject);
+        std::shared_ptr<DrawingObjectUpdate> getDrawingObject() const;
+        void setDrawingObject(std::shared_ptr<DrawingObjectUpdate> drawingObject);
 
         std::shared_ptr<HttpContent> getImageFile() const;
         void setImageFile(std::shared_ptr<HttpContent> imageFile);
@@ -87,7 +88,7 @@ class UpdateDrawingObjectWithoutNodePathRequest {
 
     private:
         utility::string_t m_Name;
-        utility::string_t m_DrawingObject;
+        std::shared_ptr<DrawingObjectUpdate> m_DrawingObject;
         std::shared_ptr<HttpContent> m_ImageFile;
         int32_t m_Index;
         boost::optional< utility::string_t > m_Folder;

@@ -35,6 +35,8 @@ OoxmlSaveOptionsData::OoxmlSaveOptionsData()
 {
     m_Compliance = utility::conversions::to_string_t("");
     m_ComplianceIsSet = false;
+
+    m_CompressionLevelIsSet = false;
     m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
     m_PrettyFormat = false;
@@ -58,6 +60,10 @@ web::json::value OoxmlSaveOptionsData::toJson() const
     {
         val[_XPLATSTR("Compliance")] = ModelBase::toJson(m_Compliance);
     }
+    if(m_CompressionLevelIsSet)
+    {
+        val[_XPLATSTR("CompressionLevel")] = ModelBase::toJson(m_CompressionLevel);
+    }
     if(m_PasswordIsSet)
     {
         val[_XPLATSTR("Password")] = ModelBase::toJson(m_Password);
@@ -80,6 +86,16 @@ void OoxmlSaveOptionsData::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
            setCompliance(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
+
+    if(val.has_field(_XPLATSTR("CompressionLevel")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("CompressionLevel")];
+        if(!fieldValue.is_null())
+        {
+           setCompressionLevel(ModelBase::enumFromJson(fieldValue));
         }
     }
 
@@ -112,6 +128,12 @@ void OoxmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>&
     if(m_ComplianceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Compliance"), m_Compliance));
+    }
+
+
+    if(m_CompressionLevelIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CompressionLevel"), m_CompressionLevel));
     }
 
 
@@ -153,6 +175,28 @@ bool OoxmlSaveOptionsData::complianceIsSet() const
 void OoxmlSaveOptionsData::unsetCompliance()
 {
     m_ComplianceIsSet = false;
+}
+
+utility::string_t OoxmlSaveOptionsData::getCompressionLevel() const
+{
+    return m_CompressionLevel;
+}
+
+
+void OoxmlSaveOptionsData::setCompressionLevel(utility::string_t value)
+{
+    m_CompressionLevel = value;
+    m_CompressionLevelIsSet = true;
+}
+
+bool OoxmlSaveOptionsData::compressionLevelIsSet() const
+{
+    return m_CompressionLevelIsSet;
+}
+
+void OoxmlSaveOptionsData::unsetCompressionLevel()
+{
+    m_CompressionLevelIsSet = false;
 }
 
 utility::string_t OoxmlSaveOptionsData::getPassword() const

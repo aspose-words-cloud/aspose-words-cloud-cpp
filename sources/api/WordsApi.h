@@ -49,6 +49,7 @@
 #include "requests/CreateFolderRequest.h"
 #include "requests/CreateOrUpdateDocumentPropertyRequest.h"
 #include "requests/DeleteAllParagraphTabStopsRequest.h"
+#include "requests/DeleteAllParagraphTabStopsWithoutNodePathRequest.h"
 #include "requests/DeleteBorderRequest.h"
 #include "requests/DeleteBordersRequest.h"
 #include "requests/DeleteCommentRequest.h"
@@ -72,7 +73,9 @@
 #include "requests/DeleteOfficeMathObjectWithoutNodePathRequest.h"
 #include "requests/DeleteParagraphRequest.h"
 #include "requests/DeleteParagraphListFormatRequest.h"
+#include "requests/DeleteParagraphListFormatWithoutNodePathRequest.h"
 #include "requests/DeleteParagraphTabStopRequest.h"
+#include "requests/DeleteParagraphTabStopWithoutNodePathRequest.h"
 #include "requests/DeleteParagraphWithoutNodePathRequest.h"
 #include "requests/DeleteRunRequest.h"
 #include "requests/DeleteSectionRequest.h"
@@ -139,6 +142,7 @@
 #include "requests/GetParagraphsRequest.h"
 #include "requests/GetParagraphsWithoutNodePathRequest.h"
 #include "requests/GetParagraphTabStopsRequest.h"
+#include "requests/GetParagraphTabStopsWithoutNodePathRequest.h"
 #include "requests/GetParagraphWithoutNodePathRequest.h"
 #include "requests/GetRangeTextRequest.h"
 #include "requests/GetRunRequest.h"
@@ -172,8 +176,10 @@
 #include "requests/InsertHeaderFooterRequest.h"
 #include "requests/InsertListRequest.h"
 #include "requests/InsertOrUpdateParagraphTabStopRequest.h"
+#include "requests/InsertOrUpdateParagraphTabStopWithoutNodePathRequest.h"
 #include "requests/InsertPageNumbersRequest.h"
 #include "requests/InsertParagraphRequest.h"
+#include "requests/InsertParagraphWithoutNodePathRequest.h"
 #include "requests/InsertRunRequest.h"
 #include "requests/InsertStyleRequest.h"
 #include "requests/InsertTableRequest.h"
@@ -220,7 +226,9 @@
 #include "requests/UpdateListRequest.h"
 #include "requests/UpdateListLevelRequest.h"
 #include "requests/UpdateParagraphFormatRequest.h"
+#include "requests/UpdateParagraphFormatWithoutNodePathRequest.h"
 #include "requests/UpdateParagraphListFormatRequest.h"
+#include "requests/UpdateParagraphListFormatWithoutNodePathRequest.h"
 #include "requests/UpdateRunRequest.h"
 #include "requests/UpdateRunFontRequest.h"
 #include "requests/UpdateSectionPageSetupRequest.h"
@@ -273,9 +281,11 @@
 #include "DownsampleOptionsData.h"
 #include "DrawingObject.h"
 #include "DrawingObjectCollection.h"
+#include "DrawingObjectInsert.h"
 #include "DrawingObjectLink.h"
 #include "DrawingObjectResponse.h"
 #include "DrawingObjectsResponse.h"
+#include "DrawingObjectUpdate.h"
 #include "EmfSaveOptionsData.h"
 #include "EpubSaveOptionsData.h"
 #include "Error.h"
@@ -689,6 +699,20 @@ public:
     );
 
     /// <summary>
+    /// Remove all tab stops.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    pplx::task<AsposeResponse<TabStopsResponse>> deleteAllParagraphTabStopsWithoutNodePath(
+    	std::shared_ptr<DeleteAllParagraphTabStopsWithoutNodePathRequest> request
+    );
+
+    /// <summary>
     /// 'nodePath' should refer to paragraph, cell or row.
     /// </summary>
     /// <param name="name">The document name.</param>
@@ -1053,11 +1077,27 @@ public:
     );
 
     /// <summary>
+    /// Delete paragraph list format, returns updated list format properties.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+    /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    pplx::task<AsposeResponse<ParagraphListFormatResponse>> deleteParagraphListFormatWithoutNodePath(
+    	std::shared_ptr<DeleteParagraphListFormatWithoutNodePathRequest> request
+    );
+
+    /// <summary>
     /// Remove the i-th tab stop.
     /// </summary>
     /// <param name="name">The document name.</param>
-    /// <param name="nodePath">Path to the node which contains paragraph.</param>
     /// <param name="position">a tab stop position to remove.</param>
+    /// <param name="nodePath">Path to the node which contains paragraph.</param>
     /// <param name="index">Object index.</param>
     /// <param name="folder">Original document folder. (optional)</param>
     /// <param name="storage">Original document storage. (optional)</param>
@@ -1066,6 +1106,21 @@ public:
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     pplx::task<AsposeResponse<TabStopsResponse>> deleteParagraphTabStop(
     	std::shared_ptr<DeleteParagraphTabStopRequest> request
+    );
+
+    /// <summary>
+    /// Remove the i-th tab stop.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="position">a tab stop position to remove.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    pplx::task<AsposeResponse<TabStopsResponse>> deleteParagraphTabStopWithoutNodePath(
+    	std::shared_ptr<DeleteParagraphTabStopWithoutNodePathRequest> request
     );
 
     /// <summary>
@@ -1949,6 +2004,19 @@ public:
     );
 
     /// <summary>
+    /// Get all tab stops for the paragraph.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    pplx::task<AsposeResponse<TabStopsResponse>> getParagraphTabStopsWithoutNodePath(
+    	std::shared_ptr<GetParagraphTabStopsWithoutNodePathRequest> request
+    );
+
+    /// <summary>
     /// This resource represents one of the paragraphs contained in the document.
     /// </summary>
     /// <param name="name">The document name.</param>
@@ -2418,8 +2486,8 @@ public:
     /// Insert or resplace tab stop if a tab stop with the position exists.
     /// </summary>
     /// <param name="name">The document name.</param>
-    /// <param name="nodePath">Path to the node which contains paragraph.</param>
     /// <param name="dto">Paragraph tab stop.</param>
+    /// <param name="nodePath">Path to the node which contains paragraph.</param>
     /// <param name="index">Object index.</param>
     /// <param name="folder">Original document folder. (optional)</param>
     /// <param name="storage">Original document storage. (optional)</param>
@@ -2428,6 +2496,21 @@ public:
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     pplx::task<AsposeResponse<TabStopsResponse>> insertOrUpdateParagraphTabStop(
     	std::shared_ptr<InsertOrUpdateParagraphTabStopRequest> request
+    );
+
+    /// <summary>
+    /// Insert or resplace tab stop if a tab stop with the position exists.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="dto">Paragraph tab stop.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    pplx::task<AsposeResponse<TabStopsResponse>> insertOrUpdateParagraphTabStopWithoutNodePath(
+    	std::shared_ptr<InsertOrUpdateParagraphTabStopWithoutNodePathRequest> request
     );
 
     /// <summary>
@@ -2462,6 +2545,23 @@ public:
     /// <param name="insertBeforeNode">Paragraph will be inserted before node with index. (optional)</param>
     pplx::task<AsposeResponse<ParagraphResponse>> insertParagraph(
     	std::shared_ptr<InsertParagraphRequest> request
+    );
+
+    /// <summary>
+    /// Adds paragraph to document, returns added paragraph's data.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="paragraph">Paragraph data.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+    /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    /// <param name="insertBeforeNode">Paragraph will be inserted before node with index. (optional)</param>
+    pplx::task<AsposeResponse<ParagraphResponse>> insertParagraphWithoutNodePath(
+    	std::shared_ptr<InsertParagraphWithoutNodePathRequest> request
     );
 
     /// <summary>
@@ -3200,6 +3300,23 @@ public:
     );
 
     /// <summary>
+    /// Updates paragraph format properties, returns updated format properties.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="dto">Paragraph format object.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+    /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    pplx::task<AsposeResponse<ParagraphFormatResponse>> updateParagraphFormatWithoutNodePath(
+    	std::shared_ptr<UpdateParagraphFormatWithoutNodePathRequest> request
+    );
+
+    /// <summary>
     /// Updates paragraph list format properties, returns updated list format properties.
     /// </summary>
     /// <param name="name">The document name.</param>
@@ -3215,6 +3332,23 @@ public:
     /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     pplx::task<AsposeResponse<ParagraphListFormatResponse>> updateParagraphListFormat(
     	std::shared_ptr<UpdateParagraphListFormatRequest> request
+    );
+
+    /// <summary>
+    /// Updates paragraph list format properties, returns updated list format properties.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="dto">Paragraph format object.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+    /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    pplx::task<AsposeResponse<ParagraphListFormatResponse>> updateParagraphListFormatWithoutNodePath(
+    	std::shared_ptr<UpdateParagraphListFormatWithoutNodePathRequest> request
     );
 
     /// <summary>

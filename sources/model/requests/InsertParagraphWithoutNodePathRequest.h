@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.h">
+* <copyright company="Aspose" file="InsertParagraphWithoutNodePathRequest.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,9 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphTabStopRequest_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphTabStopRequest_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_InsertParagraphWithoutNodePathRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_InsertParagraphWithoutNodePathRequest_H_
 
+#include "ParagraphInsert.h"
 #include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -36,31 +37,26 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteParagraphTabStopRequest {
+class InsertParagraphWithoutNodePathRequest {
     public: 
- DeleteParagraphTabStopRequest(
+ InsertParagraphWithoutNodePathRequest(
             utility::string_t name,
-            double position,
-            utility::string_t nodePath,
-            int32_t index,
+            std::shared_ptr<ParagraphInsert> paragraph,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
             boost::optional< utility::string_t > password,
-            boost::optional< utility::string_t > destFileName
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime,
+            boost::optional< utility::string_t > insertBeforeNode
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        double getPosition() const;
-        void setPosition(double position);
-
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
-
-        int32_t getIndex() const;
-        void setIndex(int32_t index);
+        std::shared_ptr<ParagraphInsert> getParagraph() const;
+        void setParagraph(std::shared_ptr<ParagraphInsert> paragraph);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -77,16 +73,26 @@ class DeleteParagraphTabStopRequest {
         boost::optional< utility::string_t > getDestFileName() const;
         void setDestFileName(boost::optional< utility::string_t > destFileName);
 
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
+
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
+
+        boost::optional< utility::string_t > getInsertBeforeNode() const;
+        void setInsertBeforeNode(boost::optional< utility::string_t > insertBeforeNode);
+
     private:
         utility::string_t m_Name;
-        double m_Position;
-        utility::string_t m_NodePath;
-        int32_t m_Index;
+        std::shared_ptr<ParagraphInsert> m_Paragraph;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;
         boost::optional< utility::string_t > m_Password;
         boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
+        boost::optional< utility::string_t > m_InsertBeforeNode;
 };
 
 }
@@ -95,4 +101,4 @@ class DeleteParagraphTabStopRequest {
 }
 }
 
-#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphTabStopRequest_H_ */
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_InsertParagraphWithoutNodePathRequest_H_ */

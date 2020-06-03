@@ -69,6 +69,14 @@ public:
     void setCompliance(utility::string_t value);
 
     /// <summary>
+    /// Gets or sets compression level.
+    /// </summary>
+    utility::string_t getCompressionLevel() const;
+    bool compressionLevelIsSet() const;
+    void unsetCompressionLevel();
+    void setCompressionLevel(utility::string_t value);
+
+    /// <summary>
     /// Gets or sets specifies a password to encrypt document using ECMA376 Standard encryption algorithm.
     /// </summary>
     utility::string_t getPassword() const;
@@ -87,6 +95,9 @@ public:
 protected:
     utility::string_t m_Compliance;
     bool m_ComplianceIsSet;
+
+    utility::string_t m_CompressionLevel;
+    bool m_CompressionLevelIsSet;
 
     utility::string_t m_Password;
     bool m_PasswordIsSet;

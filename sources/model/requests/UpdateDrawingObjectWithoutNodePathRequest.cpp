@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 UpdateDrawingObjectWithoutNodePathRequest::UpdateDrawingObjectWithoutNodePathRequest(
     utility::string_t name,
-    utility::string_t drawingObject,
+    std::shared_ptr<DrawingObjectUpdate> drawingObject,
     std::shared_ptr<HttpContent> imageFile,
     int32_t index,
     boost::optional< utility::string_t > folder,
@@ -65,12 +65,12 @@ void UpdateDrawingObjectWithoutNodePathRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t UpdateDrawingObjectWithoutNodePathRequest::getDrawingObject() const
+std::shared_ptr<DrawingObjectUpdate> UpdateDrawingObjectWithoutNodePathRequest::getDrawingObject() const
 {
     return m_DrawingObject;
 }
 
-void UpdateDrawingObjectWithoutNodePathRequest::setDrawingObject(utility::string_t drawingObject)
+void UpdateDrawingObjectWithoutNodePathRequest::setDrawingObject(std::shared_ptr<DrawingObjectUpdate> drawingObject)
 {
     m_DrawingObject = std::move(drawingObject);
 }

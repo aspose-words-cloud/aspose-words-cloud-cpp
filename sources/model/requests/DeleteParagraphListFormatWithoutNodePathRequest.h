@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeleteParagraphTabStopRequest.h">
+* <copyright company="Aspose" file="DeleteParagraphListFormatWithoutNodePathRequest.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphTabStopRequest_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphTabStopRequest_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphListFormatWithoutNodePathRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphListFormatWithoutNodePathRequest_H_
 
 #include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
@@ -36,28 +36,22 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteParagraphTabStopRequest {
+class DeleteParagraphListFormatWithoutNodePathRequest {
     public: 
- DeleteParagraphTabStopRequest(
+ DeleteParagraphListFormatWithoutNodePathRequest(
             utility::string_t name,
-            double position,
-            utility::string_t nodePath,
             int32_t index,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
             boost::optional< utility::string_t > password,
-            boost::optional< utility::string_t > destFileName
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
-
-        double getPosition() const;
-        void setPosition(double position);
-
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -77,16 +71,22 @@ class DeleteParagraphTabStopRequest {
         boost::optional< utility::string_t > getDestFileName() const;
         void setDestFileName(boost::optional< utility::string_t > destFileName);
 
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
+
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
+
     private:
         utility::string_t m_Name;
-        double m_Position;
-        utility::string_t m_NodePath;
         int32_t m_Index;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;
         boost::optional< utility::string_t > m_Password;
         boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
 };
 
 }
@@ -95,4 +95,4 @@ class DeleteParagraphTabStopRequest {
 }
 }
 
-#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphTabStopRequest_H_ */
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_DeleteParagraphListFormatWithoutNodePathRequest_H_ */
