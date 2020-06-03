@@ -68,6 +68,7 @@ void SaveResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<SaveResult> newItem(new SaveResult());
             newItem->fromJson(fieldValue);
+            setSaveResult( newItem );
         }
     }
 

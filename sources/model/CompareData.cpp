@@ -95,6 +95,7 @@ void CompareData::fromJson(web::json::value& val)
         {
             std::shared_ptr<CompareOptions> newItem(new CompareOptions());
             newItem->fromJson(fieldValue);
+            setCompareOptions( newItem );
         }
     }
 

@@ -68,6 +68,7 @@ void FontResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Font> newItem(new Font());
             newItem->fromJson(fieldValue);
+            setFont( newItem );
         }
     }
 

@@ -243,6 +243,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<PdfDigitalSignatureDetailsData> newItem(new PdfDigitalSignatureDetailsData());
             newItem->fromJson(fieldValue);
+            setDigitalSignatureDetails( newItem );
         }
     }
 
@@ -264,6 +265,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<DownsampleOptionsData> newItem(new DownsampleOptionsData());
             newItem->fromJson(fieldValue);
+            setDownsampleOptions( newItem );
         }
     }
 
@@ -285,6 +287,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<PdfEncryptionDetailsData> newItem(new PdfEncryptionDetailsData());
             newItem->fromJson(fieldValue);
+            setEncryptionDetails( newItem );
         }
     }
 
@@ -376,6 +379,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<OutlineOptionsData> newItem(new OutlineOptionsData());
             newItem->fromJson(fieldValue);
+            setOutlineOptions( newItem );
         }
     }
 

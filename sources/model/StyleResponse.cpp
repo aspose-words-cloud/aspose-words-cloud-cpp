@@ -68,6 +68,7 @@ void StyleResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Style> newItem(new Style());
             newItem->fromJson(fieldValue);
+            setStyle( newItem );
         }
     }
 

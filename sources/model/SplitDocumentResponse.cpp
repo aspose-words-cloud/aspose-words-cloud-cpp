@@ -68,6 +68,7 @@ void SplitDocumentResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<SplitDocumentResult> newItem(new SplitDocumentResult());
             newItem->fromJson(fieldValue);
+            setSplitResult( newItem );
         }
     }
 

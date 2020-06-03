@@ -78,6 +78,7 @@ void Shading::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
+            setBackgroundPatternColor( newItem );
         }
     }
 
@@ -89,6 +90,7 @@ void Shading::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
+            setForegroundPatternColor( newItem );
         }
     }
 

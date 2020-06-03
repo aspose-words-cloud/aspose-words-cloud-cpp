@@ -68,6 +68,7 @@ void RevisionsModificationResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
             newItem->fromJson(fieldValue);
+            setResult( newItem );
         }
     }
 

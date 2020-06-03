@@ -343,6 +343,7 @@ void Font::fromJson(web::json::value& val)
         {
             std::shared_ptr<Border> newItem(new Border());
             newItem->fromJson(fieldValue);
+            setBorder( newItem );
         }
     }
 
@@ -354,6 +355,7 @@ void Font::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
+            setColor( newItem );
         }
     }
 
@@ -415,6 +417,7 @@ void Font::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
+            setHighlightColor( newItem );
         }
     }
 
@@ -696,6 +699,7 @@ void Font::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
+            setUnderlineColor( newItem );
         }
     }
 

@@ -83,6 +83,7 @@ void LoadWebDocumentData::fromJson(web::json::value& val)
         {
             std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
             newItem->fromJson(fieldValue);
+            setSaveOptions( newItem );
         }
     }
 

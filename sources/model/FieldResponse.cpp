@@ -68,6 +68,7 @@ void FieldResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Field> newItem(new Field());
             newItem->fromJson(fieldValue);
+            setField( newItem );
         }
     }
 

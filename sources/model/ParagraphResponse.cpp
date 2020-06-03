@@ -68,6 +68,7 @@ void ParagraphResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Paragraph> newItem(new Paragraph());
             newItem->fromJson(fieldValue);
+            setParagraph( newItem );
         }
     }
 

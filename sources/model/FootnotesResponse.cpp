@@ -68,6 +68,7 @@ void FootnotesResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<FootnoteCollection> newItem(new FootnoteCollection());
             newItem->fromJson(fieldValue);
+            setFootnotes( newItem );
         }
     }
 

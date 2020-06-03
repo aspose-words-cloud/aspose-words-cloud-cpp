@@ -68,6 +68,7 @@ void SectionResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Section> newItem(new Section());
             newItem->fromJson(fieldValue);
+            setSection( newItem );
         }
     }
 

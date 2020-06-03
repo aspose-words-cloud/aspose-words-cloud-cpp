@@ -68,6 +68,7 @@ void SectionLinkCollectionResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
             newItem->fromJson(fieldValue);
+            setSections( newItem );
         }
     }
 

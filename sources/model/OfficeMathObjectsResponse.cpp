@@ -68,6 +68,7 @@ void OfficeMathObjectsResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<OfficeMathObjectsCollection> newItem(new OfficeMathObjectsCollection());
             newItem->fromJson(fieldValue);
+            setOfficeMathObjects( newItem );
         }
     }
 

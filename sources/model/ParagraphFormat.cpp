@@ -395,6 +395,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         {
             std::shared_ptr<Shading> newItem(new Shading());
             newItem->fromJson(fieldValue);
+            setShading( newItem );
         }
     }
 

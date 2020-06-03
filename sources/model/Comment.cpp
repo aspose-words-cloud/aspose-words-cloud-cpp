@@ -115,6 +115,7 @@ void Comment::fromJson(web::json::value& val)
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
             newItem->fromJson(fieldValue);
+            setContent( newItem );
         }
     }
 
@@ -146,6 +147,7 @@ void Comment::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
+            setRangeEnd( newItem );
         }
     }
 
@@ -157,6 +159,7 @@ void Comment::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
+            setRangeStart( newItem );
         }
     }
 

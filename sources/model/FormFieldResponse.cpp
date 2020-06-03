@@ -68,6 +68,7 @@ void FormFieldResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<FormField> newItem(new FormField());
             newItem->fromJson(fieldValue);
+            setFormField( newItem );
         }
     }
 

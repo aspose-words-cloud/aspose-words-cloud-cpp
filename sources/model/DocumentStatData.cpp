@@ -99,6 +99,7 @@ void DocumentStatData::fromJson(web::json::value& val)
         {
             std::shared_ptr<FootnotesStatData> newItem(new FootnotesStatData());
             newItem->fromJson(fieldValue);
+            setFootnotesStatData( newItem );
         }
     }
 

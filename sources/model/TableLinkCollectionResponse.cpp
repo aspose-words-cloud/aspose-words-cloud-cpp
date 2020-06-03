@@ -68,6 +68,7 @@ void TableLinkCollectionResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
             newItem->fromJson(fieldValue);
+            setTables( newItem );
         }
     }
 

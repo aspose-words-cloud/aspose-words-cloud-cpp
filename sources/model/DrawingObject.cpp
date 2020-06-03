@@ -142,6 +142,7 @@ void DrawingObject::fromJson(web::json::value& val)
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromJson(fieldValue);
+            setImageDataLink( newItem );
         }
     }
 
@@ -163,6 +164,7 @@ void DrawingObject::fromJson(web::json::value& val)
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromJson(fieldValue);
+            setOleDataLink( newItem );
         }
     }
 

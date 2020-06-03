@@ -86,6 +86,7 @@ void OfficeMathObject::fromJson(web::json::value& val)
         {
             std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
             newItem->fromJson(fieldValue);
+            setContent( newItem );
         }
     }
 

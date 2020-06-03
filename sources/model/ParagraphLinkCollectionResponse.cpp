@@ -68,6 +68,7 @@ void ParagraphLinkCollectionResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
             newItem->fromJson(fieldValue);
+            setParagraphs( newItem );
         }
     }
 

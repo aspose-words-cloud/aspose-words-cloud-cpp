@@ -93,6 +93,7 @@ void ReportEngineSettings::fromJson(web::json::value& val)
         {
             std::shared_ptr<CsvDataLoadOptions> newItem(new CsvDataLoadOptions());
             newItem->fromJson(fieldValue);
+            setCsvDataLoadOptions( newItem );
         }
     }
 

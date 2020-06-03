@@ -144,6 +144,7 @@ void ListLevel::fromJson(web::json::value& val)
         {
             std::shared_ptr<Font> newItem(new Font());
             newItem->fromJson(fieldValue);
+            setFont( newItem );
         }
     }
 
@@ -165,6 +166,7 @@ void ListLevel::fromJson(web::json::value& val)
         {
             std::shared_ptr<Style> newItem(new Style());
             newItem->fromJson(fieldValue);
+            setLinkedStyle( newItem );
         }
     }
 

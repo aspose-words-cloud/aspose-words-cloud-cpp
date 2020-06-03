@@ -68,6 +68,7 @@ void RunsResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Runs> newItem(new Runs());
             newItem->fromJson(fieldValue);
+            setRuns( newItem );
         }
     }
 

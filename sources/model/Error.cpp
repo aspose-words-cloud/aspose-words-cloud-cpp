@@ -105,6 +105,7 @@ void Error::fromJson(web::json::value& val)
         {
             std::shared_ptr<ErrorDetails> newItem(new ErrorDetails());
             newItem->fromJson(fieldValue);
+            setInnerError( newItem );
         }
     }
 

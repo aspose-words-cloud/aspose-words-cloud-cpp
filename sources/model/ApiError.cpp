@@ -121,6 +121,7 @@ void ApiError::fromJson(web::json::value& val)
         {
             std::shared_ptr<ApiError> newItem(new ApiError());
             newItem->fromJson(fieldValue);
+            setInnerError( newItem );
         }
     }
 

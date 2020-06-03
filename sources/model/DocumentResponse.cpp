@@ -68,6 +68,7 @@ void DocumentResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Document> newItem(new Document());
             newItem->fromJson(fieldValue);
+            setDocument( newItem );
         }
     }
 

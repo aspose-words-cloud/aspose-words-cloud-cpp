@@ -85,6 +85,7 @@ void SearchResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
             newItem->fromJson(fieldValue);
+            setSearchResults( newItem );
         }
     }
 

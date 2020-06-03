@@ -155,6 +155,7 @@ void ListInfo::fromJson(web::json::value& val)
         {
             std::shared_ptr<ListLevels> newItem(new ListLevels());
             newItem->fromJson(fieldValue);
+            setListLevels( newItem );
         }
     }
 
@@ -166,6 +167,7 @@ void ListInfo::fromJson(web::json::value& val)
         {
             std::shared_ptr<Style> newItem(new Style());
             newItem->fromJson(fieldValue);
+            setStyle( newItem );
         }
     }
 

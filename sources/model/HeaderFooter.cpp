@@ -109,6 +109,7 @@ void HeaderFooter::fromJson(web::json::value& val)
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
+            setDrawingObjects( newItem );
         }
     }
 
@@ -120,6 +121,7 @@ void HeaderFooter::fromJson(web::json::value& val)
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
+            setParagraphs( newItem );
         }
     }
 

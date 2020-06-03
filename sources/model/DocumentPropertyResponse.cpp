@@ -68,6 +68,7 @@ void DocumentPropertyResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
             newItem->fromJson(fieldValue);
+            setDocumentProperty( newItem );
         }
     }
 

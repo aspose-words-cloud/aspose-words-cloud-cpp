@@ -72,6 +72,7 @@ void DocumentPosition::fromJson(web::json::value& val)
         {
             std::shared_ptr<NodeLink> newItem(new NodeLink());
             newItem->fromJson(fieldValue);
+            setNode( newItem );
         }
     }
 

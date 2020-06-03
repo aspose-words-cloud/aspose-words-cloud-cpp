@@ -68,7 +68,7 @@ utility::string_t ApiConfiguration::getAppSid() const{
 
 utility::string_t ApiConfiguration::getApiVersion() const
 {
-    return utility::conversions::to_string_t("/v4.0");
+    return utility::conversions::to_string_t("v4.0");
 }
 
 bool ApiConfiguration::isDebugMode() const {

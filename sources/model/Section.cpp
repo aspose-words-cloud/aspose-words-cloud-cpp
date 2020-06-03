@@ -121,6 +121,7 @@ void Section::fromJson(web::json::value& val)
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
+            setHeaderFooters( newItem );
         }
     }
 
@@ -132,6 +133,7 @@ void Section::fromJson(web::json::value& val)
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
+            setPageSetup( newItem );
         }
     }
 
@@ -143,6 +145,7 @@ void Section::fromJson(web::json::value& val)
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
+            setParagraphs( newItem );
         }
     }
 
@@ -154,6 +157,7 @@ void Section::fromJson(web::json::value& val)
         {
             std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
+            setTables( newItem );
         }
     }
 

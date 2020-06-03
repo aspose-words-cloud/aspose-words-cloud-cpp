@@ -68,6 +68,7 @@ void TableCellFormatResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
             newItem->fromJson(fieldValue);
+            setCellFormat( newItem );
         }
     }
 

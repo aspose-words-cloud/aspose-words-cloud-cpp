@@ -68,6 +68,7 @@ void SectionPageSetupResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<PageSetup> newItem(new PageSetup());
             newItem->fromJson(fieldValue);
+            setPageSetup( newItem );
         }
     }
 

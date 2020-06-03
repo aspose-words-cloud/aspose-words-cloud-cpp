@@ -108,6 +108,7 @@ void Border::fromJson(web::json::value& val)
         {
             std::shared_ptr<XmlColor> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
+            setColor( newItem );
         }
     }
 

@@ -125,6 +125,7 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<MetafileRenderingOptionsData> newItem(new MetafileRenderingOptionsData());
             newItem->fromJson(fieldValue);
+            setMetafileRenderingOptions( newItem );
         }
     }
 

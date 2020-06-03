@@ -107,6 +107,7 @@ void XpsSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<OutlineOptionsData> newItem(new OutlineOptionsData());
             newItem->fromJson(fieldValue);
+            setOutlineOptions( newItem );
         }
     }
 

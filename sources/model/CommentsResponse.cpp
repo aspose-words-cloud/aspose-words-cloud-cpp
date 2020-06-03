@@ -68,6 +68,7 @@ void CommentsResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<CommentsCollection> newItem(new CommentsCollection());
             newItem->fromJson(fieldValue);
+            setComments( newItem );
         }
     }
 

@@ -216,6 +216,7 @@ void TableProperties::fromJson(web::json::value& val)
         {
             std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
             newItem->fromJson(fieldValue);
+            setPreferredWidth( newItem );
         }
     }
 

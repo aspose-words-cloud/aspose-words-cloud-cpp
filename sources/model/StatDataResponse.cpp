@@ -74,6 +74,7 @@ void StatDataResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setDocumentLink( newItem );
         }
     }
 
@@ -85,6 +86,7 @@ void StatDataResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
             newItem->fromJson(fieldValue);
+            setStatData( newItem );
         }
     }
 

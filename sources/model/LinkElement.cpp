@@ -66,6 +66,7 @@ void LinkElement::fromJson(web::json::value& val)
         {
             std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromJson(fieldValue);
+            setLink( newItem );
         }
     }
 

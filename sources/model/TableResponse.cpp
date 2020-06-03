@@ -68,6 +68,7 @@ void TableResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Table> newItem(new Table());
             newItem->fromJson(fieldValue);
+            setTable( newItem );
         }
     }
 

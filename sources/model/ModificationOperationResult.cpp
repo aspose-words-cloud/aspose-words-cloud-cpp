@@ -72,6 +72,7 @@ void ModificationOperationResult::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setDest( newItem );
         }
     }
 
@@ -83,6 +84,7 @@ void ModificationOperationResult::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setSource( newItem );
         }
     }
 

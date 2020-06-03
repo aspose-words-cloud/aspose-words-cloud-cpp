@@ -68,6 +68,7 @@ void HeaderFooterResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<HeaderFooter> newItem(new HeaderFooter());
             newItem->fromJson(fieldValue);
+            setHeaderFooter( newItem );
         }
     }
 

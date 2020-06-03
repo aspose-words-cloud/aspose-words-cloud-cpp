@@ -74,6 +74,7 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setDocumentLink( newItem );
         }
     }
 

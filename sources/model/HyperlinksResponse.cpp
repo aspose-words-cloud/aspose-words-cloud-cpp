@@ -68,6 +68,7 @@ void HyperlinksResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Hyperlinks> newItem(new Hyperlinks());
             newItem->fromJson(fieldValue);
+            setHyperlinks( newItem );
         }
     }
 

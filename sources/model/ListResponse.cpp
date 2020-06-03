@@ -68,6 +68,7 @@ void ListResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ListInfo> newItem(new ListInfo());
             newItem->fromJson(fieldValue);
+            setList( newItem );
         }
     }
 

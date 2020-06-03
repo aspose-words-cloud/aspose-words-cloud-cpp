@@ -68,6 +68,7 @@ void BookmarksResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Bookmarks> newItem(new Bookmarks());
             newItem->fromJson(fieldValue);
+            setBookmarks( newItem );
         }
     }
 

@@ -68,6 +68,7 @@ void BorderResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<Border> newItem(new Border());
             newItem->fromJson(fieldValue);
+            setBorder( newItem );
         }
     }
 

@@ -140,6 +140,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<GraphicsQualityOptionsData> newItem(new GraphicsQualityOptionsData());
             newItem->fromJson(fieldValue);
+            setGraphicsQualityOptions( newItem );
         }
     }
 

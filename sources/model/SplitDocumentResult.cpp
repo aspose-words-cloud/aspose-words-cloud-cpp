@@ -107,6 +107,7 @@ void SplitDocumentResult::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setSourceDocument( newItem );
         }
     }
 
@@ -118,6 +119,7 @@ void SplitDocumentResult::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setZippedPages( newItem );
         }
     }
 

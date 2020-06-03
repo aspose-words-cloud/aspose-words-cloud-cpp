@@ -57,10 +57,11 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 	UploadFileToStorage(fullName, filePath);
 
 	utility::stringstream_t ss;
-    auto outbuf = ucout.rdbuf(ss.rdbuf());
+    auto* outbuf = ucout.rdbuf(ss.rdbuf());
 
 	std::shared_ptr<web::http::http_response> response;
 	response = api->deleteFields(request).get();
+	ucout << std::flush;
 
 	utility::string_t res = ss.str(),
 		fwSlash = _XPLATSTR("/"),
@@ -69,7 +70,7 @@ TEST_F(ConfigurationTest, TestDebugMode) {
 						fwSlash + remoteName + fwSlash  + nodePath + fwSlash + _XPLATSTR("fields"),
 		expectedResponseHeader = _XPLATSTR("Response 200: OK");
 
-    ucout.rdbuf(outbuf);
+	ucout.rdbuf(outbuf);
 
 	EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
 	EXPECT_EQ(200, response->status_code());

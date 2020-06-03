@@ -94,6 +94,7 @@ void FootnoteBase::fromJson(web::json::value& val)
         {
             std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
+            setPosition( newItem );
         }
     }
 

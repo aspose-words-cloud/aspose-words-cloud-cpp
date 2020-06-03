@@ -136,6 +136,7 @@ void GraphicsQualityOptionsData::fromJson(web::json::value& val)
         {
             std::shared_ptr<StringFormatData> newItem(new StringFormatData());
             newItem->fromJson(fieldValue);
+            setStringFormat( newItem );
         }
     }
 

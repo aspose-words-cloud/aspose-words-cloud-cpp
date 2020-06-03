@@ -68,6 +68,7 @@ void ParagraphListFormatResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ListFormat> newItem(new ListFormat());
             newItem->fromJson(fieldValue);
+            setListFormat( newItem );
         }
     }
 

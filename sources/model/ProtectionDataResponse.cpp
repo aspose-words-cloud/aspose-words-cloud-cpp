@@ -74,6 +74,7 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
+            setDocumentLink( newItem );
         }
     }
 
@@ -85,6 +86,7 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<ProtectionData> newItem(new ProtectionData());
             newItem->fromJson(fieldValue);
+            setProtectionData( newItem );
         }
     }
 

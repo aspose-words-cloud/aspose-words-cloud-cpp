@@ -68,6 +68,7 @@ void DrawingObjectsResponse::fromJson(web::json::value& val)
         {
             std::shared_ptr<DrawingObjectCollection> newItem(new DrawingObjectCollection());
             newItem->fromJson(fieldValue);
+            setDrawingObjects( newItem );
         }
     }
 
