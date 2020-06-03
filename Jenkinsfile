@@ -28,9 +28,9 @@ parallel windows: {
                 }
             }
             
-            gitlabCommitStatus("windows_tests") {
-                stage('windows_tests'){
-                    if (needToBuildWindows) {
+            if (needToBuildWindows) {
+                gitlabCommitStatus("windows_tests") {
+                    stage('windows_tests'){
                         withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                             bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
                         }
@@ -47,7 +47,7 @@ parallel windows: {
                         }
                     }
                 }
-            }		
+            }            
         } finally {
             bat 'docker system prune -f'
             deleteDir()
@@ -68,9 +68,9 @@ parallel windows: {
                 }
             }
             
-            gitlabCommitStatus("linux_tests") {
-                stage('linux_tests'){
-                    if (needToBuildLinux) {
+            if (needToBuildLinux) {
+                gitlabCommitStatus("linux_tests") {
+                    stage('linux_tests'){
                         withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                             sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
                         }
@@ -87,7 +87,7 @@ parallel windows: {
                         }
                     }
                 }
-            }		
+            }
         } finally {
             sh 'docker system prune -f'
             deleteDir()
