@@ -60,11 +60,11 @@ parallel windows: {
                 stage('linux_checkout'){
                     checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
 
-                    bat 'git show -s HEAD > gitMessage'
+                    sh 'git show -s HEAD > gitMessage'
                     def commitMessage = readFile('gitMessage').trim()
                     echo commitMessage
                     needToBuildLinux = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')               
-                    bat 'git clean -fdx'
+                    sh 'git clean -fdx'
                 }
             }
             
