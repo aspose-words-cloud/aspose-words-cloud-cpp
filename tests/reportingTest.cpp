@@ -70,9 +70,9 @@ TEST_F(ReportingTest, TestBuildReport) {
 	std::shared_ptr<ReportEngineSettings> settings = std::make_shared<ReportEngineSettings>();
 	settings->setDataSourceType(STCONVERT("Json"));
 
-	auto buildOptions = std::vector<std::shared_ptr<ReportBuildOptions>>();
-	buildOptions.push_back(ReportBuildOptions::AllowMissingMembers);
-	buildOptions.push_back(ReportBuildOptions::RemoveEmptyParagraphs);
+	auto buildOptions = std::vector<utility::string_t>();
+	buildOptions.push_back(ReportBuildOptions::AllowMissingMembers->getValue());
+	buildOptions.push_back(ReportBuildOptions::RemoveEmptyParagraphs->getValue());
 	settings->setReportBuildOptions(buildOptions);
 
 	std::shared_ptr<BuildReportRequest> request = std::make_shared<BuildReportRequest>(
