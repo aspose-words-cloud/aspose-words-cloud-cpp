@@ -232,6 +232,8 @@ TEST_F(StorageApiTest, TestConfiguration) {
 		std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
 
 	auto config = std::make_shared<ApiConfiguration>();
+	config->setBaseUrl(get_configuration()->getBaseUrl());
+
 	auto api = std::make_shared<WordsApi>(config);
 
 	try
