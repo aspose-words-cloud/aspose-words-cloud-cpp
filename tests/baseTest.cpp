@@ -48,32 +48,31 @@ TEST_F(ConfigurationTest, TestDebugMode) {
     utility::string_t fullName = path_combine(dataFolder, remoteName);
 	utility::string_t nodePath = STCONVERT("paragraphs/0");
 
-	auto newConfig = get_config();
-	newConfig->setDebugMode(true);
-    std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(newConfig);
     std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, nodePath, dataFolder, boost::none, boost::none,
 		boost::none, boost::none, boost::none, boost::none);
 
 	UploadFileToStorage(fullName, filePath);
 
 	utility::stringstream_t ss;
-    auto* outbuf = ucout.rdbuf(ss.rdbuf());
+	auto* oldbuff = ucout.rdbuf();
+	ucout.rdbuf(ss.rdbuf());
 
+	get_configuration()->setDebugMode(true);
 	std::shared_ptr<web::http::http_response> response;
-	response = api->deleteFields(request).get();
-	ucout << std::flush;
+	response = get_api()->deleteFields(request).get();
+	get_configuration()->setDebugMode(false);
+
+	ucout.rdbuf(oldbuff);
+	EXPECT_EQ(200, response->status_code());
 
 	utility::string_t res = ss.str(),
 		fwSlash = _XPLATSTR("/"),
 		expectedUri = _XPLATSTR("DELETE: ") +
-						fwSlash + newConfig->getApiVersion() + fwSlash + _XPLATSTR("words") +
+						get_configuration()->getApiVersion() + fwSlash + _XPLATSTR("words") +
 						fwSlash + remoteName + fwSlash  + nodePath + fwSlash + _XPLATSTR("fields"),
 		expectedResponseHeader = _XPLATSTR("Response 200: OK");
 
-	ucout.rdbuf(outbuf);
-
 	EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
-	EXPECT_EQ(200, response->status_code());
 }
 
 ///Checks that API version is properly applied to path building
@@ -84,29 +83,29 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
     utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
 	utility::string_t nodePath = STCONVERT("paragraphs/0");
 
-	auto newConfig = get_config();
-	newConfig->setDebugMode(true);
-
-    std::shared_ptr<WordsApi> api= std::make_shared<WordsApi>(newConfig);
-
     std::shared_ptr<DeleteFieldsRequest> request= std::make_shared<DeleteFieldsRequest>(remoteName, nodePath, dataFolder, boost::none, boost::none,
 		boost::none, boost::none, boost::none, boost::none);
 	ucout << "Uploading";
 	UploadFileToStorage(fullName, filePath);
 
 	utility::stringstream_t ss;
-	streambuf_t* outbuf = ucout.rdbuf(ss.rdbuf());
+	auto* oldbuff = ucout.rdbuf();
+	ucout.rdbuf(ss.rdbuf());
 	
+	get_configuration()->setDebugMode(true);
+
 	std::shared_ptr<web::http::http_response> response;
-	response = api->deleteFields(request).get();
+	response = get_api()->deleteFields(request).get();
+
+	get_configuration()->setDebugMode(false);
+	ucout.rdbuf(oldbuff);
 
 	utility::string_t res = ss.str(),
 		fwSlash = _XPLATSTR("/"),
 		expectedUri = _XPLATSTR("DELETE: ") +
-		fwSlash + newConfig->getApiVersion() + fwSlash + _XPLATSTR("words") +
+		get_configuration()->getApiVersion() + fwSlash + _XPLATSTR("words") +
 		fwSlash + remoteName + fwSlash + nodePath + fwSlash + _XPLATSTR("fields"),
 		expectedResponseHeader = _XPLATSTR("Response 200: OK");
-    ucout.rdbuf(outbuf);
 
     EXPECT_THAT(res, AllOf(HasSubstr(expectedUri), HasSubstr(expectedResponseHeader)));
 	EXPECT_EQ(200, response->status_code());
