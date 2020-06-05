@@ -16,6 +16,21 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 20.6
+
+- Added new methods:
+  - deleteAllParagraphTabStopsWithoutNodePath
+  - deleteParagraphTabStopWithoutNodePath
+  - getParagraphTabStopsWithoutNodePath
+  - insertOrUpdateParagraphTabStopWithoutNodePath
+  - insertParagraphWithoutNodePath
+  - updateParagraphFormatWithoutNodePath
+  - updateParagraphListFormatWithoutNodePath
+  - deleteParagraphListFormatWithoutNodePath
+- DrawingObject related methods have been changed body content. Special request classes are introduced instead of strings.
+- insertOrUpdateParagraphTabStop, deleteParagraphTabStop methods have been changed parameter order
+- OoxmlSaveOptionsData.CompressionLevel property has been added
+
 ## Enhancements in Version 20.5
 
 - Added methods to work with Word document lists
