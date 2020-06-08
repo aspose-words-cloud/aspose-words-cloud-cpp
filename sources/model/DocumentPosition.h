@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets Node.
     /// </summary>
-    std::shared_ptr<NodeLink> getNode() const;
+    <DATA_TYPE_START>NodeLink<DATA_TYPE_END> getNode() const;
     bool nodeIsSet() const;
     void unsetNode();
-    void setNode(std::shared_ptr<NodeLink> value);
+    void setNode(<DATA_TYPE_START>NodeLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets offset into the node.
     /// </summary>
-    int32_t getOffset() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getOffset() const;
     bool offsetIsSet() const;
     void unsetOffset();
-    void setOffset(int32_t value);
+    void setOffset(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<NodeLink> m_Node;
+    <DATA_TYPE_START>NodeLink<DATA_TYPE_END> m_Node;
     bool m_NodeIsSet;
-    int32_t m_Offset;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_Offset;
     bool m_OffsetIsSet;
 };
 

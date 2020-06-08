@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets string value of the document property.
     /// </summary>
-    utility::string_t getValue() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getValue() const;
     bool valueIsSet() const;
     void unsetValue();
-    void setValue(utility::string_t value);
+    void setValue(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Value;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Value;
     bool m_ValueIsSet;
 };
 

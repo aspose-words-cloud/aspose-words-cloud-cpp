@@ -62,51 +62,51 @@ public:
     /// PdfDigitalSignatureDetailsData members
 
     /// <summary>
-    /// Gets or sets certificate&#39;s filename using for signing.
+    /// Gets or sets certificate&#x27;s filename using for signing.
     /// </summary>
-    utility::string_t getCertificateFilename() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getCertificateFilename() const;
     bool certificateFilenameIsSet() const;
     void unsetCertificateFilename();
-    void setCertificateFilename(utility::string_t value);
+    void setCertificateFilename(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets hash algorithm.
     /// </summary>
-    utility::string_t getHashAlgorithm() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getHashAlgorithm() const;
     bool hashAlgorithmIsSet() const;
     void unsetHashAlgorithm();
-    void setHashAlgorithm(utility::string_t value);
+    void setHashAlgorithm(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets location of the signing.
     /// </summary>
-    utility::string_t getLocation() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLocation() const;
     bool locationIsSet() const;
     void unsetLocation();
-    void setLocation(utility::string_t value);
+    void setLocation(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets reason for the signing.
     /// </summary>
-    utility::string_t getReason() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getReason() const;
     bool reasonIsSet() const;
     void unsetReason();
-    void setReason(utility::string_t value);
+    void setReason(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets date of the signing.
     /// </summary>
-    utility::datetime getSignatureDate() const;
+    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> getSignatureDate() const;
     bool signatureDateIsSet() const;
     void unsetSignatureDate();
-    void setSignatureDate(utility::datetime value);
+    void setSignatureDate(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_CertificateFilename;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_CertificateFilename;
     bool m_CertificateFilenameIsSet;
-    utility::string_t m_HashAlgorithm;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_HashAlgorithm;
     bool m_HashAlgorithmIsSet;
-    utility::string_t m_Location;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Location;
     bool m_LocationIsSet;
-    utility::string_t m_Reason;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Reason;
     bool m_ReasonIsSet;
-    utility::datetime m_SignatureDate;
+    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> m_SignatureDate;
     bool m_SignatureDateIsSet;
 };
 

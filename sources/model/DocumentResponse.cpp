@@ -67,7 +67,7 @@ void DocumentResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Document")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Document> newItem(new Document());
+            <DATA_TYPE_START>Document<DATA_TYPE_END> newItem(new Document());
             newItem->fromJson(fieldValue);
             setDocument( newItem );
         }
@@ -97,20 +97,20 @@ void DocumentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Document")))
         {
-            std::shared_ptr<Document> newItem(new Document());
+            <DATA_TYPE_START>Document<DATA_TYPE_END> newItem(new Document());
             newItem->fromMultiPart(multipart, _XPLATSTR("Document."));
             setDocument( newItem );
         }
     }
 }
 
-std::shared_ptr<Document> DocumentResponse::getDocument() const
+<DATA_TYPE_START>Document<DATA_TYPE_END> DocumentResponse::getDocument() const
 {
     return m_Document;
 }
 
 
-void DocumentResponse::setDocument(std::shared_ptr<Document> value)
+void DocumentResponse::setDocument(<DATA_TYPE_START>Document<DATA_TYPE_END> value)
 {
     m_Document = value;
     m_DocumentIsSet = true;

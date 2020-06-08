@@ -65,130 +65,130 @@ public:
     /// <summary>
     /// Gets or sets specifies how an inline table is aligned in the document.
     /// </summary>
-    utility::string_t getAlignment() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
-    void setAlignment(utility::string_t value);
+    void setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents.
     /// </summary>
-    bool isAllowAutoFit() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isAllowAutoFit() const;
     bool allowAutoFitIsSet() const;
     void unsetAllowAutoFit();
-    void setAllowAutoFit(bool value);
+    void setAllowAutoFit(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets whether this is a right-to-left table.
     /// </summary>
-    bool isBidi() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isBidi() const;
     bool bidiIsSet() const;
     void unsetBidi();
-    void setBidi(bool value);
+    void setBidi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of space (in points) to add below the contents of cells.
     /// </summary>
-    double getBottomPadding() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getBottomPadding() const;
     bool bottomPaddingIsSet() const;
     void unsetBottomPadding();
-    void setBottomPadding(double value);
+    void setBottomPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of space (in points) between the cells.
     /// </summary>
-    double getCellSpacing() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getCellSpacing() const;
     bool cellSpacingIsSet() const;
     void unsetCellSpacing();
-    void setCellSpacing(double value);
+    void setCellSpacing(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the value that represents the left indent of the table.
     /// </summary>
-    double getLeftIndent() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeftIndent() const;
     bool leftIndentIsSet() const;
     void unsetLeftIndent();
-    void setLeftIndent(double value);
+    void setLeftIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of space (in points) to add to the left of the contents of cells.
     /// </summary>
-    double getLeftPadding() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeftPadding() const;
     bool leftPaddingIsSet() const;
     void unsetLeftPadding();
-    void setLeftPadding(double value);
+    void setLeftPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets PreferredWidth.
     /// </summary>
-    std::shared_ptr<PreferredWidth> getPreferredWidth() const;
+    <DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> getPreferredWidth() const;
     bool preferredWidthIsSet() const;
     void unsetPreferredWidth();
-    void setPreferredWidth(std::shared_ptr<PreferredWidth> value);
+    void setPreferredWidth(<DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of space (in points) to add to the right of the contents of cells.
     /// </summary>
-    double getRightPadding() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getRightPadding() const;
     bool rightPaddingIsSet() const;
     void unsetRightPadding();
-    void setRightPadding(double value);
+    void setRightPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the locale independent style identifier of the table style applied to this table.
     /// </summary>
-    utility::string_t getStyleIdentifier() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleIdentifier() const;
     bool styleIdentifierIsSet() const;
     void unsetStyleIdentifier();
-    void setStyleIdentifier(utility::string_t value);
+    void setStyleIdentifier(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the name of the table style applied to this table.
     /// </summary>
-    utility::string_t getStyleName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleName() const;
     bool styleNameIsSet() const;
     void unsetStyleName();
-    void setStyleName(utility::string_t value);
+    void setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets bit flags that specify how a table style is applied to this table.
     /// </summary>
-    utility::string_t getStyleOptions() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleOptions() const;
     bool styleOptionsIsSet() const;
     void unsetStyleOptions();
-    void setStyleOptions(utility::string_t value);
+    void setStyleOptions(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets get or sets TextWrapping for table.
     /// </summary>
-    utility::string_t getTextWrapping() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTextWrapping() const;
     bool textWrappingIsSet() const;
     void unsetTextWrapping();
-    void setTextWrapping(utility::string_t value);
+    void setTextWrapping(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of space (in points) to add above the contents of cells.
     /// </summary>
-    double getTopPadding() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getTopPadding() const;
     bool topPaddingIsSet() const;
     void unsetTopPadding();
-    void setTopPadding(double value);
+    void setTopPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Alignment;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Alignment;
     bool m_AlignmentIsSet;
-    bool m_AllowAutoFit;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_AllowAutoFit;
     bool m_AllowAutoFitIsSet;
-    bool m_Bidi;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_Bidi;
     bool m_BidiIsSet;
-    double m_BottomPadding;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_BottomPadding;
     bool m_BottomPaddingIsSet;
-    double m_CellSpacing;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_CellSpacing;
     bool m_CellSpacingIsSet;
-    double m_LeftIndent;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LeftIndent;
     bool m_LeftIndentIsSet;
-    double m_LeftPadding;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LeftPadding;
     bool m_LeftPaddingIsSet;
-    std::shared_ptr<PreferredWidth> m_PreferredWidth;
+    <DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> m_PreferredWidth;
     bool m_PreferredWidthIsSet;
-    double m_RightPadding;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_RightPadding;
     bool m_RightPaddingIsSet;
-    utility::string_t m_StyleIdentifier;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleIdentifier;
     bool m_StyleIdentifierIsSet;
-    utility::string_t m_StyleName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleName;
     bool m_StyleNameIsSet;
-    utility::string_t m_StyleOptions;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleOptions;
     bool m_StyleOptionsIsSet;
-    utility::string_t m_TextWrapping;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextWrapping;
     bool m_TextWrappingIsSet;
-    double m_TopPadding;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_TopPadding;
     bool m_TopPaddingIsSet;
 };
 

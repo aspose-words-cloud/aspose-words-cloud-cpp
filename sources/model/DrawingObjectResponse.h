@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets DrawingObject.
     /// </summary>
-    std::shared_ptr<DrawingObject> getDrawingObject() const;
+    <DATA_TYPE_START>DrawingObject<DATA_TYPE_END> getDrawingObject() const;
     bool drawingObjectIsSet() const;
     void unsetDrawingObject();
-    void setDrawingObject(std::shared_ptr<DrawingObject> value);
+    void setDrawingObject(<DATA_TYPE_START>DrawingObject<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<DrawingObject> m_DrawingObject;
+    <DATA_TYPE_START>DrawingObject<DATA_TYPE_END> m_DrawingObject;
     bool m_DrawingObjectIsSet;
 };
 

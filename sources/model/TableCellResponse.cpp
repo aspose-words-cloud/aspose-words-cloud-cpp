@@ -67,7 +67,7 @@ void TableCellResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Cell")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<TableCell> newItem(new TableCell());
+            <DATA_TYPE_START>TableCell<DATA_TYPE_END> newItem(new TableCell());
             newItem->fromJson(fieldValue);
             setCell( newItem );
         }
@@ -97,20 +97,20 @@ void TableCellResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     {
         if(multipart->hasContent(_XPLATSTR("Cell")))
         {
-            std::shared_ptr<TableCell> newItem(new TableCell());
+            <DATA_TYPE_START>TableCell<DATA_TYPE_END> newItem(new TableCell());
             newItem->fromMultiPart(multipart, _XPLATSTR("Cell."));
             setCell( newItem );
         }
     }
 }
 
-std::shared_ptr<TableCell> TableCellResponse::getCell() const
+<DATA_TYPE_START>TableCell<DATA_TYPE_END> TableCellResponse::getCell() const
 {
     return m_Cell;
 }
 
 
-void TableCellResponse::setCell(std::shared_ptr<TableCell> value)
+void TableCellResponse::setCell(<DATA_TYPE_START>TableCell<DATA_TYPE_END> value)
 {
     m_Cell = value;
     m_CellIsSet = true;

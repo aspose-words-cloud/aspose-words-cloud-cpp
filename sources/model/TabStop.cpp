@@ -68,7 +68,7 @@ void TabStop::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsClear")];
         if(!fieldValue.is_null())
         {
-            setIsClear(ModelBase::boolFromJson(fieldValue));
+            setIsClear(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -91,17 +91,17 @@ void TabStop::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
 
     if(multipart->hasContent(_XPLATSTR("IsClear")))
     {
-        setIsClear(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsClear"))));
+        setIsClear(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsClear"))));
     }
 }
 
-bool TabStop::isIsClear() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TabStop::isIsClear() const
 {
     return m_IsClear;
 }
 
 
-void TabStop::setIsClear(bool value)
+void TabStop::setIsClear(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsClear = value;
     m_IsClearIsSet = true;

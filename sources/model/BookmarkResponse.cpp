@@ -67,7 +67,7 @@ void BookmarkResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Bookmark")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Bookmark> newItem(new Bookmark());
+            <DATA_TYPE_START>Bookmark<DATA_TYPE_END> newItem(new Bookmark());
             newItem->fromJson(fieldValue);
             setBookmark( newItem );
         }
@@ -97,20 +97,20 @@ void BookmarkResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Bookmark")))
         {
-            std::shared_ptr<Bookmark> newItem(new Bookmark());
+            <DATA_TYPE_START>Bookmark<DATA_TYPE_END> newItem(new Bookmark());
             newItem->fromMultiPart(multipart, _XPLATSTR("Bookmark."));
             setBookmark( newItem );
         }
     }
 }
 
-std::shared_ptr<Bookmark> BookmarkResponse::getBookmark() const
+<DATA_TYPE_START>Bookmark<DATA_TYPE_END> BookmarkResponse::getBookmark() const
 {
     return m_Bookmark;
 }
 
 
-void BookmarkResponse::setBookmark(std::shared_ptr<Bookmark> value)
+void BookmarkResponse::setBookmark(<DATA_TYPE_START>Bookmark<DATA_TYPE_END> value)
 {
     m_Bookmark = value;
     m_BookmarkIsSet = true;

@@ -65,7 +65,7 @@ void LinkElement::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("link")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
+            <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
             newItem->fromJson(fieldValue);
             setLink( newItem );
         }
@@ -95,20 +95,20 @@ void LinkElement::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     {
         if(multipart->hasContent(_XPLATSTR("link")))
         {
-            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
+            <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("link."));
             setLink( newItem );
         }
     }
 }
 
-std::shared_ptr<WordsApiLink> LinkElement::getLink() const
+<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> LinkElement::getLink() const
 {
     return m_Link;
 }
 
 
-void LinkElement::setLink(std::shared_ptr<WordsApiLink> value)
+void LinkElement::setLink(<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> value)
 {
     m_Link = value;
     m_LinkIsSet = true;

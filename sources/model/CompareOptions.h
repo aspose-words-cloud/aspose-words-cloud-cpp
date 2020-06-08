@@ -64,85 +64,85 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether true indicates that documents comparison is case insensitive. By default comparison is case sensitive.             
     /// </summary>
-    bool isIgnoreCaseChanges() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreCaseChanges() const;
     bool ignoreCaseChangesIsSet() const;
     void unsetIgnoreCaseChanges();
-    void setIgnoreCaseChanges(bool value);
+    void setIgnoreCaseChanges(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether to compare the differences in data contained in tables. By default tables are not ignored.             
     /// </summary>
-    bool isIgnoreTables() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreTables() const;
     bool ignoreTablesIsSet() const;
     void unsetIgnoreTables();
-    void setIgnoreTables(bool value);
+    void setIgnoreTables(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether to compare differences in fields. By default fields are not ignored.             
     /// </summary>
-    bool isIgnoreFields() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreFields() const;
     bool ignoreFieldsIsSet() const;
     void unsetIgnoreFields();
-    void setIgnoreFields(bool value);
+    void setIgnoreFields(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether to compare differences in footnotes and endnotes. By default footnotes are not ignored.             
     /// </summary>
-    bool isIgnoreFootnotes() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreFootnotes() const;
     bool ignoreFootnotesIsSet() const;
     void unsetIgnoreFootnotes();
-    void setIgnoreFootnotes(bool value);
+    void setIgnoreFootnotes(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether to compare differences in comments. By default comments are not ignored.             
     /// </summary>
-    bool isIgnoreComments() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreComments() const;
     bool ignoreCommentsIsSet() const;
     void unsetIgnoreComments();
-    void setIgnoreComments(bool value);
+    void setIgnoreComments(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether to compare differences in the data contained within text boxes. By default textboxes are not ignored.             
     /// </summary>
-    bool isIgnoreTextboxes() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreTextboxes() const;
     bool ignoreTextboxesIsSet() const;
     void unsetIgnoreTextboxes();
-    void setIgnoreTextboxes(bool value);
+    void setIgnoreTextboxes(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether true indicates that formatting is ignored. By default document formatting is not ignored.             
     /// </summary>
-    bool isIgnoreFormatting() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreFormatting() const;
     bool ignoreFormattingIsSet() const;
     void unsetIgnoreFormatting();
-    void setIgnoreFormatting(bool value);
+    void setIgnoreFormatting(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether true indicates that headers and footers content is ignored. By default headers and footers are not ignored.             
     /// </summary>
-    bool isIgnoreHeadersAndFooters() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIgnoreHeadersAndFooters() const;
     bool ignoreHeadersAndFootersIsSet() const;
     void unsetIgnoreHeadersAndFooters();
-    void setIgnoreHeadersAndFooters(bool value);
+    void setIgnoreHeadersAndFooters(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies which document shall be used as a target during comparison.             
     /// </summary>
-    utility::string_t getTarget() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTarget() const;
     bool targetIsSet() const;
     void unsetTarget();
-    void setTarget(utility::string_t value);
+    void setTarget(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    bool m_IgnoreCaseChanges;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreCaseChanges;
     bool m_IgnoreCaseChangesIsSet;
-    bool m_IgnoreTables;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreTables;
     bool m_IgnoreTablesIsSet;
-    bool m_IgnoreFields;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreFields;
     bool m_IgnoreFieldsIsSet;
-    bool m_IgnoreFootnotes;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreFootnotes;
     bool m_IgnoreFootnotesIsSet;
-    bool m_IgnoreComments;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreComments;
     bool m_IgnoreCommentsIsSet;
-    bool m_IgnoreTextboxes;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreTextboxes;
     bool m_IgnoreTextboxesIsSet;
-    bool m_IgnoreFormatting;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreFormatting;
     bool m_IgnoreFormattingIsSet;
-    bool m_IgnoreHeadersAndFooters;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IgnoreHeadersAndFooters;
     bool m_IgnoreHeadersAndFootersIsSet;
-    utility::string_t m_Target;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Target;
     bool m_TargetIsSet;
 };
 

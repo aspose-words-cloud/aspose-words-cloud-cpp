@@ -68,7 +68,7 @@ void WordMLSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
+            setPrettyFormat(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -91,17 +91,17 @@ void WordMLSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormDat
 
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+        setPrettyFormat(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
 }
 
-bool WordMLSaveOptionsData::isPrettyFormat() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> WordMLSaveOptionsData::isPrettyFormat() const
 {
     return m_PrettyFormat;
 }
 
 
-void WordMLSaveOptionsData::setPrettyFormat(bool value)
+void WordMLSaveOptionsData::setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;

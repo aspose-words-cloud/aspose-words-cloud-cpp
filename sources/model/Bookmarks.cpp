@@ -53,7 +53,7 @@ web::json::value Bookmarks::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_BookmarkList.begin(), m_BookmarkList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Bookmark> item) {
+			[&](<DATA_TYPE_START>Bookmark<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void Bookmarks::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarkList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<Bookmark>(nullptr);
+                return <DATA_TYPE_START>Bookmark<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<Bookmark> newItem(new Bookmark());
+                <DATA_TYPE_START>Bookmark<DATA_TYPE_END> newItem(new Bookmark());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void Bookmarks::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_BookmarkList.begin(), m_BookmarkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Bookmark> item){
+        std::transform(m_BookmarkList.begin(), m_BookmarkList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Bookmark<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void Bookmarks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BookmarkList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<Bookmark>(nullptr) ;
+                return <DATA_TYPE_START>Bookmark<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<Bookmark> newItem(new Bookmark());
+                <DATA_TYPE_START>Bookmark<DATA_TYPE_END> newItem(new Bookmark());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void Bookmarks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-std::vector<std::shared_ptr<Bookmark>>& Bookmarks::getBookmarkList()
+<DATA_TYPE_START>List<Bookmark><DATA_TYPE_END>& Bookmarks::getBookmarkList()
 {
     return m_BookmarkList;
 }
 
-void Bookmarks::setBookmarkList(std::vector<std::shared_ptr<Bookmark>> const& value)
+void Bookmarks::setBookmarkList(<DATA_TYPE_START>List<Bookmark><DATA_TYPE_END> const& value)
 {
     m_BookmarkList = value;
     m_BookmarkListIsSet = true;

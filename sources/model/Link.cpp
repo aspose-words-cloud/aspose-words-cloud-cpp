@@ -162,13 +162,13 @@ void Link::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
     }
 }
 
-utility::string_t Link::getHref() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Link::getHref() const
 {
     return m_Href;
 }
 
 
-void Link::setHref(utility::string_t value)
+void Link::setHref(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Href = value;
     m_HrefIsSet = true;
@@ -183,13 +183,13 @@ void Link::unsetHref()
     m_HrefIsSet = false;
 }
 
-utility::string_t Link::getRel() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Link::getRel() const
 {
     return m_Rel;
 }
 
 
-void Link::setRel(utility::string_t value)
+void Link::setRel(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Rel = value;
     m_RelIsSet = true;
@@ -204,13 +204,13 @@ void Link::unsetRel()
     m_RelIsSet = false;
 }
 
-utility::string_t Link::getType() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Link::getType() const
 {
     return m_Type;
 }
 
 
-void Link::setType(utility::string_t value)
+void Link::setType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Type = value;
     m_TypeIsSet = true;
@@ -225,13 +225,13 @@ void Link::unsetType()
     m_TypeIsSet = false;
 }
 
-utility::string_t Link::getTitle() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Link::getTitle() const
 {
     return m_Title;
 }
 
 
-void Link::setTitle(utility::string_t value)
+void Link::setTitle(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Title = value;
     m_TitleIsSet = true;

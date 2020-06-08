@@ -139,7 +139,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("GraphicsQualityOptions")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<GraphicsQualityOptionsData> newItem(new GraphicsQualityOptionsData());
+            <DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> newItem(new GraphicsQualityOptionsData());
             newItem->fromJson(fieldValue);
             setGraphicsQualityOptions( newItem );
         }
@@ -149,7 +149,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HorizontalResolution")];
         if(!fieldValue.is_null())
         {
-            setHorizontalResolution(ModelBase::doubleFromJson(fieldValue));
+            setHorizontalResolution(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ImageBrightness")))
@@ -157,7 +157,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ImageBrightness")];
         if(!fieldValue.is_null())
         {
-            setImageBrightness(ModelBase::doubleFromJson(fieldValue));
+            setImageBrightness(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ImageColorMode")))
@@ -173,7 +173,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ImageContrast")];
         if(!fieldValue.is_null())
         {
-            setImageContrast(ModelBase::doubleFromJson(fieldValue));
+            setImageContrast(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("PaperColor")))
@@ -197,7 +197,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Resolution")];
         if(!fieldValue.is_null())
         {
-            setResolution(ModelBase::doubleFromJson(fieldValue));
+            setResolution(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Scale")))
@@ -205,7 +205,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Scale")];
         if(!fieldValue.is_null())
         {
-            setScale(ModelBase::doubleFromJson(fieldValue));
+            setScale(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UseAntiAliasing")))
@@ -213,7 +213,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseAntiAliasing")];
         if(!fieldValue.is_null())
         {
-            setUseAntiAliasing(ModelBase::boolFromJson(fieldValue));
+            setUseAntiAliasing(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UseGdiEmfRenderer")))
@@ -221,7 +221,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseGdiEmfRenderer")];
         if(!fieldValue.is_null())
         {
-            setUseGdiEmfRenderer(ModelBase::boolFromJson(fieldValue));
+            setUseGdiEmfRenderer(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UseHighQualityRendering")))
@@ -229,7 +229,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseHighQualityRendering")];
         if(!fieldValue.is_null())
         {
-            setUseHighQualityRendering(ModelBase::boolFromJson(fieldValue));
+            setUseHighQualityRendering(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("VerticalResolution")))
@@ -237,7 +237,7 @@ void ImageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("VerticalResolution")];
         if(!fieldValue.is_null())
         {
-            setVerticalResolution(ModelBase::doubleFromJson(fieldValue));
+            setVerticalResolution(ModelBase::double?FromJson(fieldValue));
         }
     }
 }
@@ -325,18 +325,18 @@ void ImageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData
     {
         if(multipart->hasContent(_XPLATSTR("GraphicsQualityOptions")))
         {
-            std::shared_ptr<GraphicsQualityOptionsData> newItem(new GraphicsQualityOptionsData());
+            <DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> newItem(new GraphicsQualityOptionsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("GraphicsQualityOptions."));
             setGraphicsQualityOptions( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("HorizontalResolution")))
     {
-        setHorizontalResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("HorizontalResolution"))));
+        setHorizontalResolution(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("HorizontalResolution"))));
     }
     if(multipart->hasContent(_XPLATSTR("ImageBrightness")))
     {
-        setImageBrightness(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ImageBrightness"))));
+        setImageBrightness(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("ImageBrightness"))));
     }
     if(multipart->hasContent(_XPLATSTR("ImageColorMode")))
     {
@@ -344,7 +344,7 @@ void ImageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData
     }
     if(multipart->hasContent(_XPLATSTR("ImageContrast")))
     {
-        setImageContrast(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ImageContrast"))));
+        setImageContrast(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("ImageContrast"))));
     }
     if(multipart->hasContent(_XPLATSTR("PaperColor")))
     {
@@ -356,37 +356,37 @@ void ImageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData
     }
     if(multipart->hasContent(_XPLATSTR("Resolution")))
     {
-        setResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Resolution"))));
+        setResolution(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Resolution"))));
     }
     if(multipart->hasContent(_XPLATSTR("Scale")))
     {
-        setScale(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Scale"))));
+        setScale(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Scale"))));
     }
     if(multipart->hasContent(_XPLATSTR("UseAntiAliasing")))
     {
-        setUseAntiAliasing(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseAntiAliasing"))));
+        setUseAntiAliasing(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UseAntiAliasing"))));
     }
     if(multipart->hasContent(_XPLATSTR("UseGdiEmfRenderer")))
     {
-        setUseGdiEmfRenderer(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseGdiEmfRenderer"))));
+        setUseGdiEmfRenderer(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UseGdiEmfRenderer"))));
     }
     if(multipart->hasContent(_XPLATSTR("UseHighQualityRendering")))
     {
-        setUseHighQualityRendering(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseHighQualityRendering"))));
+        setUseHighQualityRendering(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UseHighQualityRendering"))));
     }
     if(multipart->hasContent(_XPLATSTR("VerticalResolution")))
     {
-        setVerticalResolution(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("VerticalResolution"))));
+        setVerticalResolution(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("VerticalResolution"))));
     }
 }
 
-std::shared_ptr<GraphicsQualityOptionsData> ImageSaveOptionsData::getGraphicsQualityOptions() const
+<DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> ImageSaveOptionsData::getGraphicsQualityOptions() const
 {
     return m_GraphicsQualityOptions;
 }
 
 
-void ImageSaveOptionsData::setGraphicsQualityOptions(std::shared_ptr<GraphicsQualityOptionsData> value)
+void ImageSaveOptionsData::setGraphicsQualityOptions(<DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> value)
 {
     m_GraphicsQualityOptions = value;
     m_GraphicsQualityOptionsIsSet = true;
@@ -401,13 +401,13 @@ void ImageSaveOptionsData::unsetGraphicsQualityOptions()
     m_GraphicsQualityOptionsIsSet = false;
 }
 
-double ImageSaveOptionsData::getHorizontalResolution() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ImageSaveOptionsData::getHorizontalResolution() const
 {
     return m_HorizontalResolution;
 }
 
 
-void ImageSaveOptionsData::setHorizontalResolution(double value)
+void ImageSaveOptionsData::setHorizontalResolution(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_HorizontalResolution = value;
     m_HorizontalResolutionIsSet = true;
@@ -422,13 +422,13 @@ void ImageSaveOptionsData::unsetHorizontalResolution()
     m_HorizontalResolutionIsSet = false;
 }
 
-double ImageSaveOptionsData::getImageBrightness() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ImageSaveOptionsData::getImageBrightness() const
 {
     return m_ImageBrightness;
 }
 
 
-void ImageSaveOptionsData::setImageBrightness(double value)
+void ImageSaveOptionsData::setImageBrightness(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_ImageBrightness = value;
     m_ImageBrightnessIsSet = true;
@@ -443,13 +443,13 @@ void ImageSaveOptionsData::unsetImageBrightness()
     m_ImageBrightnessIsSet = false;
 }
 
-utility::string_t ImageSaveOptionsData::getImageColorMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ImageSaveOptionsData::getImageColorMode() const
 {
     return m_ImageColorMode;
 }
 
 
-void ImageSaveOptionsData::setImageColorMode(utility::string_t value)
+void ImageSaveOptionsData::setImageColorMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ImageColorMode = value;
     m_ImageColorModeIsSet = true;
@@ -464,13 +464,13 @@ void ImageSaveOptionsData::unsetImageColorMode()
     m_ImageColorModeIsSet = false;
 }
 
-double ImageSaveOptionsData::getImageContrast() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ImageSaveOptionsData::getImageContrast() const
 {
     return m_ImageContrast;
 }
 
 
-void ImageSaveOptionsData::setImageContrast(double value)
+void ImageSaveOptionsData::setImageContrast(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_ImageContrast = value;
     m_ImageContrastIsSet = true;
@@ -485,13 +485,13 @@ void ImageSaveOptionsData::unsetImageContrast()
     m_ImageContrastIsSet = false;
 }
 
-utility::string_t ImageSaveOptionsData::getPaperColor() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ImageSaveOptionsData::getPaperColor() const
 {
     return m_PaperColor;
 }
 
 
-void ImageSaveOptionsData::setPaperColor(utility::string_t value)
+void ImageSaveOptionsData::setPaperColor(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_PaperColor = value;
     m_PaperColorIsSet = true;
@@ -506,13 +506,13 @@ void ImageSaveOptionsData::unsetPaperColor()
     m_PaperColorIsSet = false;
 }
 
-utility::string_t ImageSaveOptionsData::getPixelFormat() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ImageSaveOptionsData::getPixelFormat() const
 {
     return m_PixelFormat;
 }
 
 
-void ImageSaveOptionsData::setPixelFormat(utility::string_t value)
+void ImageSaveOptionsData::setPixelFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_PixelFormat = value;
     m_PixelFormatIsSet = true;
@@ -527,13 +527,13 @@ void ImageSaveOptionsData::unsetPixelFormat()
     m_PixelFormatIsSet = false;
 }
 
-double ImageSaveOptionsData::getResolution() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ImageSaveOptionsData::getResolution() const
 {
     return m_Resolution;
 }
 
 
-void ImageSaveOptionsData::setResolution(double value)
+void ImageSaveOptionsData::setResolution(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Resolution = value;
     m_ResolutionIsSet = true;
@@ -548,13 +548,13 @@ void ImageSaveOptionsData::unsetResolution()
     m_ResolutionIsSet = false;
 }
 
-double ImageSaveOptionsData::getScale() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ImageSaveOptionsData::getScale() const
 {
     return m_Scale;
 }
 
 
-void ImageSaveOptionsData::setScale(double value)
+void ImageSaveOptionsData::setScale(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Scale = value;
     m_ScaleIsSet = true;
@@ -569,13 +569,13 @@ void ImageSaveOptionsData::unsetScale()
     m_ScaleIsSet = false;
 }
 
-bool ImageSaveOptionsData::isUseAntiAliasing() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ImageSaveOptionsData::isUseAntiAliasing() const
 {
     return m_UseAntiAliasing;
 }
 
 
-void ImageSaveOptionsData::setUseAntiAliasing(bool value)
+void ImageSaveOptionsData::setUseAntiAliasing(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_UseAntiAliasing = value;
     m_UseAntiAliasingIsSet = true;
@@ -590,13 +590,13 @@ void ImageSaveOptionsData::unsetUseAntiAliasing()
     m_UseAntiAliasingIsSet = false;
 }
 
-bool ImageSaveOptionsData::isUseGdiEmfRenderer() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ImageSaveOptionsData::isUseGdiEmfRenderer() const
 {
     return m_UseGdiEmfRenderer;
 }
 
 
-void ImageSaveOptionsData::setUseGdiEmfRenderer(bool value)
+void ImageSaveOptionsData::setUseGdiEmfRenderer(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_UseGdiEmfRenderer = value;
     m_UseGdiEmfRendererIsSet = true;
@@ -611,13 +611,13 @@ void ImageSaveOptionsData::unsetUseGdiEmfRenderer()
     m_UseGdiEmfRendererIsSet = false;
 }
 
-bool ImageSaveOptionsData::isUseHighQualityRendering() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ImageSaveOptionsData::isUseHighQualityRendering() const
 {
     return m_UseHighQualityRendering;
 }
 
 
-void ImageSaveOptionsData::setUseHighQualityRendering(bool value)
+void ImageSaveOptionsData::setUseHighQualityRendering(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_UseHighQualityRendering = value;
     m_UseHighQualityRenderingIsSet = true;
@@ -632,13 +632,13 @@ void ImageSaveOptionsData::unsetUseHighQualityRendering()
     m_UseHighQualityRenderingIsSet = false;
 }
 
-double ImageSaveOptionsData::getVerticalResolution() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ImageSaveOptionsData::getVerticalResolution() const
 {
     return m_VerticalResolution;
 }
 
 
-void ImageSaveOptionsData::setVerticalResolution(double value)
+void ImageSaveOptionsData::setVerticalResolution(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_VerticalResolution = value;
     m_VerticalResolutionIsSet = true;

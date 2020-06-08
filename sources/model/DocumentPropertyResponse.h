@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets DocumentProperty.
     /// </summary>
-    std::shared_ptr<DocumentProperty> getDocumentProperty() const;
+    <DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> getDocumentProperty() const;
     bool documentPropertyIsSet() const;
     void unsetDocumentProperty();
-    void setDocumentProperty(std::shared_ptr<DocumentProperty> value);
+    void setDocumentProperty(<DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<DocumentProperty> m_DocumentProperty;
+    <DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> m_DocumentProperty;
     bool m_DocumentPropertyIsSet;
 };
 

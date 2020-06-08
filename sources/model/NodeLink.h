@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets node id.
     /// </summary>
-    utility::string_t getNodeId() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getNodeId() const;
     bool nodeIdIsSet() const;
     void unsetNodeId();
-    void setNodeId(utility::string_t value);
+    void setNodeId(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_NodeId;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_NodeId;
     bool m_NodeIdIsSet;
 };
 

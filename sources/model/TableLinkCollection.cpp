@@ -53,7 +53,7 @@ web::json::value TableLinkCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_TableLinkList.begin(), m_TableLinkList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<TableLink> item) {
+			[&](<DATA_TYPE_START>TableLink<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void TableLinkCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableLinkList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<TableLink>(nullptr);
+                return <DATA_TYPE_START>TableLink<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<TableLink> newItem(new TableLink());
+                <DATA_TYPE_START>TableLink<DATA_TYPE_END> newItem(new TableLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void TableLinkCollection::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_TableLinkList.begin(), m_TableLinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<TableLink> item){
+        std::transform(m_TableLinkList.begin(), m_TableLinkList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>TableLink<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void TableLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableLinkList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<TableLink>(nullptr) ;
+                return <DATA_TYPE_START>TableLink<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<TableLink> newItem(new TableLink());
+                <DATA_TYPE_START>TableLink<DATA_TYPE_END> newItem(new TableLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void TableLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
 }
 
-std::vector<std::shared_ptr<TableLink>>& TableLinkCollection::getTableLinkList()
+<DATA_TYPE_START>List<TableLink><DATA_TYPE_END>& TableLinkCollection::getTableLinkList()
 {
     return m_TableLinkList;
 }
 
-void TableLinkCollection::setTableLinkList(std::vector<std::shared_ptr<TableLink>> const& value)
+void TableLinkCollection::setTableLinkList(<DATA_TYPE_START>List<TableLink><DATA_TYPE_END> const& value)
 {
     m_TableLinkList = value;
     m_TableLinkListIsSet = true;

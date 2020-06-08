@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets table cell will be inserted after cell with specified 0-based index.
     /// </summary>
-    int32_t getInsertAfter() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getInsertAfter() const;
     bool insertAfterIsSet() const;
     void unsetInsertAfter();
-    void setInsertAfter(int32_t value);
+    void setInsertAfter(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    int32_t m_InsertAfter;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_InsertAfter;
     bool m_InsertAfterIsSet;
 };
 

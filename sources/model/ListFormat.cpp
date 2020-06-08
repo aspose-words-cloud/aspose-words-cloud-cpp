@@ -80,7 +80,7 @@ void ListFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsListItem")];
         if(!fieldValue.is_null())
         {
-            setIsListItem(ModelBase::boolFromJson(fieldValue));
+            setIsListItem(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ListId")))
@@ -88,7 +88,7 @@ void ListFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListId")];
         if(!fieldValue.is_null())
         {
-            setListId(ModelBase::int32_tFromJson(fieldValue));
+            setListId(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ListLevelNumber")))
@@ -96,7 +96,7 @@ void ListFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListLevelNumber")];
         if(!fieldValue.is_null())
         {
-            setListLevelNumber(ModelBase::int32_tFromJson(fieldValue));
+            setListLevelNumber(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -129,25 +129,25 @@ void ListFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(multipart->hasContent(_XPLATSTR("IsListItem")))
     {
-        setIsListItem(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
+        setIsListItem(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
     }
     if(multipart->hasContent(_XPLATSTR("ListId")))
     {
-        setListId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
+        setListId(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
     }
     if(multipart->hasContent(_XPLATSTR("ListLevelNumber")))
     {
-        setListLevelNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListLevelNumber"))));
+        setListLevelNumber(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ListLevelNumber"))));
     }
 }
 
-bool ListFormat::isIsListItem() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ListFormat::isIsListItem() const
 {
     return m_IsListItem;
 }
 
 
-void ListFormat::setIsListItem(bool value)
+void ListFormat::setIsListItem(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsListItem = value;
     m_IsListItemIsSet = true;
@@ -162,13 +162,13 @@ void ListFormat::unsetIsListItem()
     m_IsListItemIsSet = false;
 }
 
-int32_t ListFormat::getListId() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> ListFormat::getListId() const
 {
     return m_ListId;
 }
 
 
-void ListFormat::setListId(int32_t value)
+void ListFormat::setListId(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_ListId = value;
     m_ListIdIsSet = true;
@@ -183,13 +183,13 @@ void ListFormat::unsetListId()
     m_ListIdIsSet = false;
 }
 
-int32_t ListFormat::getListLevelNumber() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> ListFormat::getListLevelNumber() const
 {
     return m_ListLevelNumber;
 }
 
 
-void ListFormat::setListLevelNumber(int32_t value)
+void ListFormat::setListLevelNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_ListLevelNumber = value;
     m_ListLevelNumberIsSet = true;

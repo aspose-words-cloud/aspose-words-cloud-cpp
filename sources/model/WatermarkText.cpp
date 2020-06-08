@@ -80,7 +80,7 @@ void WatermarkText::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RotationAngle")];
         if(!fieldValue.is_null())
         {
-            setRotationAngle(ModelBase::doubleFromJson(fieldValue));
+            setRotationAngle(ModelBase::double?FromJson(fieldValue));
         }
     }
 }
@@ -112,17 +112,17 @@ void WatermarkText::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
     if(multipart->hasContent(_XPLATSTR("RotationAngle")))
     {
-        setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
+        setRotationAngle(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
     }
 }
 
-utility::string_t WatermarkText::getText() const
+<DATA_TYPE_START>string<DATA_TYPE_END> WatermarkText::getText() const
 {
     return m_Text;
 }
 
 
-void WatermarkText::setText(utility::string_t value)
+void WatermarkText::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Text = value;
     m_TextIsSet = true;
@@ -137,13 +137,13 @@ void WatermarkText::unsetText()
     m_TextIsSet = false;
 }
 
-double WatermarkText::getRotationAngle() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> WatermarkText::getRotationAngle() const
 {
     return m_RotationAngle;
 }
 
 
-void WatermarkText::setRotationAngle(double value)
+void WatermarkText::setRotationAngle(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_RotationAngle = value;
     m_RotationAngleIsSet = true;

@@ -67,7 +67,7 @@ void HeaderFooterResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HeaderFooter")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<HeaderFooter> newItem(new HeaderFooter());
+            <DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> newItem(new HeaderFooter());
             newItem->fromJson(fieldValue);
             setHeaderFooter( newItem );
         }
@@ -97,20 +97,20 @@ void HeaderFooterResponse::fromMultiPart(const std::shared_ptr<MultipartFormData
     {
         if(multipart->hasContent(_XPLATSTR("HeaderFooter")))
         {
-            std::shared_ptr<HeaderFooter> newItem(new HeaderFooter());
+            <DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> newItem(new HeaderFooter());
             newItem->fromMultiPart(multipart, _XPLATSTR("HeaderFooter."));
             setHeaderFooter( newItem );
         }
     }
 }
 
-std::shared_ptr<HeaderFooter> HeaderFooterResponse::getHeaderFooter() const
+<DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> HeaderFooterResponse::getHeaderFooter() const
 {
     return m_HeaderFooter;
 }
 
 
-void HeaderFooterResponse::setHeaderFooter(std::shared_ptr<HeaderFooter> value)
+void HeaderFooterResponse::setHeaderFooter(<DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> value)
 {
     m_HeaderFooter = value;
     m_HeaderFooterIsSet = true;

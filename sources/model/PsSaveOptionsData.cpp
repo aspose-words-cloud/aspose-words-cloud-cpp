@@ -68,7 +68,7 @@ void PsSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseBookFoldPrintingSettings")];
         if(!fieldValue.is_null())
         {
-            setUseBookFoldPrintingSettings(ModelBase::boolFromJson(fieldValue));
+            setUseBookFoldPrintingSettings(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -91,17 +91,17 @@ void PsSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
 
     if(multipart->hasContent(_XPLATSTR("UseBookFoldPrintingSettings")))
     {
-        setUseBookFoldPrintingSettings(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseBookFoldPrintingSettings"))));
+        setUseBookFoldPrintingSettings(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UseBookFoldPrintingSettings"))));
     }
 }
 
-bool PsSaveOptionsData::isUseBookFoldPrintingSettings() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> PsSaveOptionsData::isUseBookFoldPrintingSettings() const
 {
     return m_UseBookFoldPrintingSettings;
 }
 
 
-void PsSaveOptionsData::setUseBookFoldPrintingSettings(bool value)
+void PsSaveOptionsData::setUseBookFoldPrintingSettings(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_UseBookFoldPrintingSettings = value;
     m_UseBookFoldPrintingSettingsIsSet = true;

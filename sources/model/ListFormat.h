@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
     /// </summary>
-    bool isIsListItem() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsListItem() const;
     bool isListItemIsSet() const;
     void unsetIsListItem();
-    void setIsListItem(bool value);
+    void setIsListItem(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the list id of this paragraph.
     /// </summary>
-    int32_t getListId() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getListId() const;
     bool listIdIsSet() const;
     void unsetListId();
-    void setListId(int32_t value);
+    void setListId(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the list level number (0 to 8) for the paragraph.
     /// </summary>
-    int32_t getListLevelNumber() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getListLevelNumber() const;
     bool listLevelNumberIsSet() const;
     void unsetListLevelNumber();
-    void setListLevelNumber(int32_t value);
+    void setListLevelNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    bool m_IsListItem;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsListItem;
     bool m_IsListItemIsSet;
-    int32_t m_ListId;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ListId;
     bool m_ListIdIsSet;
-    int32_t m_ListLevelNumber;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ListLevelNumber;
     bool m_ListLevelNumberIsSet;
 };
 

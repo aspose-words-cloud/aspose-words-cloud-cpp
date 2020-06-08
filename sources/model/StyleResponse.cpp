@@ -67,7 +67,7 @@ void StyleResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Style")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Style> newItem(new Style());
+            <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
             newItem->fromJson(fieldValue);
             setStyle( newItem );
         }
@@ -97,20 +97,20 @@ void StyleResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     {
         if(multipart->hasContent(_XPLATSTR("Style")))
         {
-            std::shared_ptr<Style> newItem(new Style());
+            <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
             newItem->fromMultiPart(multipart, _XPLATSTR("Style."));
             setStyle( newItem );
         }
     }
 }
 
-std::shared_ptr<Style> StyleResponse::getStyle() const
+<DATA_TYPE_START>Style<DATA_TYPE_END> StyleResponse::getStyle() const
 {
     return m_Style;
 }
 
 
-void StyleResponse::setStyle(std::shared_ptr<Style> value)
+void StyleResponse::setStyle(<DATA_TYPE_START>Style<DATA_TYPE_END> value)
 {
     m_Style = value;
     m_StyleIsSet = true;

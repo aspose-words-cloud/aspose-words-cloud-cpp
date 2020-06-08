@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Properties.
     /// </summary>
-    std::shared_ptr<TableProperties> getProperties() const;
+    <DATA_TYPE_START>TableProperties<DATA_TYPE_END> getProperties() const;
     bool propertiesIsSet() const;
     void unsetProperties();
-    void setProperties(std::shared_ptr<TableProperties> value);
+    void setProperties(<DATA_TYPE_START>TableProperties<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<TableProperties> m_Properties;
+    <DATA_TYPE_START>TableProperties<DATA_TYPE_END> m_Properties;
     bool m_PropertiesIsSet;
 };
 

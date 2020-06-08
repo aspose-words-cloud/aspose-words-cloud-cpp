@@ -67,7 +67,7 @@ void RunsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Runs")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Runs> newItem(new Runs());
+            <DATA_TYPE_START>Runs<DATA_TYPE_END> newItem(new Runs());
             newItem->fromJson(fieldValue);
             setRuns( newItem );
         }
@@ -97,20 +97,20 @@ void RunsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("Runs")))
         {
-            std::shared_ptr<Runs> newItem(new Runs());
+            <DATA_TYPE_START>Runs<DATA_TYPE_END> newItem(new Runs());
             newItem->fromMultiPart(multipart, _XPLATSTR("Runs."));
             setRuns( newItem );
         }
     }
 }
 
-std::shared_ptr<Runs> RunsResponse::getRuns() const
+<DATA_TYPE_START>Runs<DATA_TYPE_END> RunsResponse::getRuns() const
 {
     return m_Runs;
 }
 
 
-void RunsResponse::setRuns(std::shared_ptr<Runs> value)
+void RunsResponse::setRuns(<DATA_TYPE_START>Runs<DATA_TYPE_END> value)
 {
     m_Runs = value;
     m_RunsIsSet = true;

@@ -95,13 +95,13 @@ void RunLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     }
 }
 
-utility::string_t RunLink::getText() const
+<DATA_TYPE_START>string<DATA_TYPE_END> RunLink::getText() const
 {
     return m_Text;
 }
 
 
-void RunLink::setText(utility::string_t value)
+void RunLink::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Text = value;
     m_TextIsSet = true;

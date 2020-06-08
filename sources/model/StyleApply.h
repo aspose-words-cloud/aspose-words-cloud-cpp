@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets the case sensitive name of the style to apply.
     /// </summary>
-    utility::string_t getStyleName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleName() const;
     bool styleNameIsSet() const;
     void unsetStyleName();
-    void setStyleName(utility::string_t value);
+    void setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_StyleName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleName;
     bool m_StyleNameIsSet;
 };
 

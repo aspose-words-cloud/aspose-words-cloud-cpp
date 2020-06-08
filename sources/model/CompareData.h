@@ -65,40 +65,40 @@ public:
     /// <summary>
     /// Gets or sets path to document to compare at the server.
     /// </summary>
-    utility::string_t getComparingWithDocument() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getComparingWithDocument() const;
     bool comparingWithDocumentIsSet() const;
     void unsetComparingWithDocument();
-    void setComparingWithDocument(utility::string_t value);
+    void setComparingWithDocument(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets initials of the author to use for revisions.
     /// </summary>
-    utility::string_t getAuthor() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getAuthor() const;
     bool authorIsSet() const;
     void unsetAuthor();
-    void setAuthor(utility::string_t value);
+    void setAuthor(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the date and time to use for revisions.             
     /// </summary>
-    utility::datetime getDateTime() const;
+    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> getDateTime() const;
     bool dateTimeIsSet() const;
     void unsetDateTime();
-    void setDateTime(utility::datetime value);
+    void setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets CompareOptions.
     /// </summary>
-    std::shared_ptr<CompareOptions> getCompareOptions() const;
+    <DATA_TYPE_START>CompareOptions<DATA_TYPE_END> getCompareOptions() const;
     bool compareOptionsIsSet() const;
     void unsetCompareOptions();
-    void setCompareOptions(std::shared_ptr<CompareOptions> value);
+    void setCompareOptions(<DATA_TYPE_START>CompareOptions<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_ComparingWithDocument;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ComparingWithDocument;
     bool m_ComparingWithDocumentIsSet;
-    utility::string_t m_Author;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Author;
     bool m_AuthorIsSet;
-    utility::datetime m_DateTime;
+    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> m_DateTime;
     bool m_DateTimeIsSet;
-    std::shared_ptr<CompareOptions> m_CompareOptions;
+    <DATA_TYPE_START>CompareOptions<DATA_TYPE_END> m_CompareOptions;
     bool m_CompareOptionsIsSet;
 };
 

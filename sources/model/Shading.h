@@ -65,31 +65,31 @@ public:
     /// <summary>
     /// Gets or sets BackgroundPatternColor.
     /// </summary>
-    std::shared_ptr<XmlColor> getBackgroundPatternColor() const;
+    <DATA_TYPE_START>XmlColor<DATA_TYPE_END> getBackgroundPatternColor() const;
     bool backgroundPatternColorIsSet() const;
     void unsetBackgroundPatternColor();
-    void setBackgroundPatternColor(std::shared_ptr<XmlColor> value);
+    void setBackgroundPatternColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets ForegroundPatternColor.
     /// </summary>
-    std::shared_ptr<XmlColor> getForegroundPatternColor() const;
+    <DATA_TYPE_START>XmlColor<DATA_TYPE_END> getForegroundPatternColor() const;
     bool foregroundPatternColorIsSet() const;
     void unsetForegroundPatternColor();
-    void setForegroundPatternColor(std::shared_ptr<XmlColor> value);
+    void setForegroundPatternColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the shading texture.
     /// </summary>
-    utility::string_t getTexture() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTexture() const;
     bool textureIsSet() const;
     void unsetTexture();
-    void setTexture(utility::string_t value);
+    void setTexture(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<XmlColor> m_BackgroundPatternColor;
+    <DATA_TYPE_START>XmlColor<DATA_TYPE_END> m_BackgroundPatternColor;
     bool m_BackgroundPatternColorIsSet;
-    std::shared_ptr<XmlColor> m_ForegroundPatternColor;
+    <DATA_TYPE_START>XmlColor<DATA_TYPE_END> m_ForegroundPatternColor;
     bool m_ForegroundPatternColorIsSet;
-    utility::string_t m_Texture;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Texture;
     bool m_TextureIsSet;
 };
 

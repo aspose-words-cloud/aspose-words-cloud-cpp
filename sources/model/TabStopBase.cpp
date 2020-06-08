@@ -94,7 +94,7 @@ void TabStopBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
-            setPosition(ModelBase::doubleFromJson(fieldValue));
+            setPosition(ModelBase::double?FromJson(fieldValue));
         }
     }
 }
@@ -135,17 +135,17 @@ void TabStopBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
     if(multipart->hasContent(_XPLATSTR("Position")))
     {
-        setPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Position"))));
+        setPosition(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Position"))));
     }
 }
 
-utility::string_t TabStopBase::getAlignment() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TabStopBase::getAlignment() const
 {
     return m_Alignment;
 }
 
 
-void TabStopBase::setAlignment(utility::string_t value)
+void TabStopBase::setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Alignment = value;
     m_AlignmentIsSet = true;
@@ -160,13 +160,13 @@ void TabStopBase::unsetAlignment()
     m_AlignmentIsSet = false;
 }
 
-utility::string_t TabStopBase::getLeader() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TabStopBase::getLeader() const
 {
     return m_Leader;
 }
 
 
-void TabStopBase::setLeader(utility::string_t value)
+void TabStopBase::setLeader(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Leader = value;
     m_LeaderIsSet = true;
@@ -181,13 +181,13 @@ void TabStopBase::unsetLeader()
     m_LeaderIsSet = false;
 }
 
-double TabStopBase::getPosition() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TabStopBase::getPosition() const
 {
     return m_Position;
 }
 
 
-void TabStopBase::setPosition(double value)
+void TabStopBase::setPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Position = value;
     m_PositionIsSet = true;

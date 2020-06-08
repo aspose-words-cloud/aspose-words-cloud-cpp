@@ -100,7 +100,7 @@ void StyleUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsQuickStyle")];
         if(!fieldValue.is_null())
         {
-            setIsQuickStyle(ModelBase::boolFromJson(fieldValue));
+            setIsQuickStyle(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Name")))
@@ -154,7 +154,7 @@ void StyleUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
     if(multipart->hasContent(_XPLATSTR("IsQuickStyle")))
     {
-        setIsQuickStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsQuickStyle"))));
+        setIsQuickStyle(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsQuickStyle"))));
     }
     if(multipart->hasContent(_XPLATSTR("Name")))
     {
@@ -162,13 +162,13 @@ void StyleUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
 }
 
-utility::string_t StyleUpdate::getNextParagraphStyleName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StyleUpdate::getNextParagraphStyleName() const
 {
     return m_NextParagraphStyleName;
 }
 
 
-void StyleUpdate::setNextParagraphStyleName(utility::string_t value)
+void StyleUpdate::setNextParagraphStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NextParagraphStyleName = value;
     m_NextParagraphStyleNameIsSet = true;
@@ -183,13 +183,13 @@ void StyleUpdate::unsetNextParagraphStyleName()
     m_NextParagraphStyleNameIsSet = false;
 }
 
-utility::string_t StyleUpdate::getBaseStyleName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StyleUpdate::getBaseStyleName() const
 {
     return m_BaseStyleName;
 }
 
 
-void StyleUpdate::setBaseStyleName(utility::string_t value)
+void StyleUpdate::setBaseStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_BaseStyleName = value;
     m_BaseStyleNameIsSet = true;
@@ -204,13 +204,13 @@ void StyleUpdate::unsetBaseStyleName()
     m_BaseStyleNameIsSet = false;
 }
 
-bool StyleUpdate::isIsQuickStyle() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> StyleUpdate::isIsQuickStyle() const
 {
     return m_IsQuickStyle;
 }
 
 
-void StyleUpdate::setIsQuickStyle(bool value)
+void StyleUpdate::setIsQuickStyle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsQuickStyle = value;
     m_IsQuickStyleIsSet = true;
@@ -225,13 +225,13 @@ void StyleUpdate::unsetIsQuickStyle()
     m_IsQuickStyleIsSet = false;
 }
 
-utility::string_t StyleUpdate::getName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StyleUpdate::getName() const
 {
     return m_Name;
 }
 
 
-void StyleUpdate::setName(utility::string_t value)
+void StyleUpdate::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Name = value;
     m_NameIsSet = true;

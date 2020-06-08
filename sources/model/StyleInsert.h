@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets the case sensitive name of the style to create.
     /// </summary>
-    utility::string_t getStyleName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleName() const;
     bool styleNameIsSet() const;
     void unsetStyleName();
-    void setStyleName(utility::string_t value);
+    void setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the StyleType value that specifies the type of the style to create.
     /// </summary>
-    utility::string_t getStyleType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleType() const;
     bool styleTypeIsSet() const;
     void unsetStyleType();
-    void setStyleType(utility::string_t value);
+    void setStyleType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_StyleName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleName;
     bool m_StyleNameIsSet;
-    utility::string_t m_StyleType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleType;
     bool m_StyleTypeIsSet;
 };
 

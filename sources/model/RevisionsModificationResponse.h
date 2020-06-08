@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Result.
     /// </summary>
-    std::shared_ptr<ModificationOperationResult> getResult() const;
+    <DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> getResult() const;
     bool resultIsSet() const;
     void unsetResult();
-    void setResult(std::shared_ptr<ModificationOperationResult> value);
+    void setResult(<DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<ModificationOperationResult> m_Result;
+    <DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> m_Result;
     bool m_ResultIsSet;
 };
 

@@ -67,7 +67,7 @@ void FootnoteResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Footnote")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Footnote> newItem(new Footnote());
+            <DATA_TYPE_START>Footnote<DATA_TYPE_END> newItem(new Footnote());
             newItem->fromJson(fieldValue);
             setFootnote( newItem );
         }
@@ -97,20 +97,20 @@ void FootnoteResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Footnote")))
         {
-            std::shared_ptr<Footnote> newItem(new Footnote());
+            <DATA_TYPE_START>Footnote<DATA_TYPE_END> newItem(new Footnote());
             newItem->fromMultiPart(multipart, _XPLATSTR("Footnote."));
             setFootnote( newItem );
         }
     }
 }
 
-std::shared_ptr<Footnote> FootnoteResponse::getFootnote() const
+<DATA_TYPE_START>Footnote<DATA_TYPE_END> FootnoteResponse::getFootnote() const
 {
     return m_Footnote;
 }
 
 
-void FootnoteResponse::setFootnote(std::shared_ptr<Footnote> value)
+void FootnoteResponse::setFootnote(<DATA_TYPE_START>Footnote<DATA_TYPE_END> value)
 {
     m_Footnote = value;
     m_FootnoteIsSet = true;

@@ -63,15 +63,15 @@ public:
     /// ParagraphLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of paragraph&#39;s links.
+    /// Gets or sets collection of paragraph&#x27;s links.
     /// </summary>
-    std::vector<std::shared_ptr<ParagraphLink>>& getParagraphLinkList();
+    <DATA_TYPE_START>List<ParagraphLink><DATA_TYPE_END>& getParagraphLinkList();
     bool paragraphLinkListIsSet() const;
     void unsetParagraphLinkList();
-    void setParagraphLinkList(std::vector<std::shared_ptr<ParagraphLink>> const& value);
+    void setParagraphLinkList(<DATA_TYPE_START>List<ParagraphLink><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<ParagraphLink>> m_ParagraphLinkList;
+    <DATA_TYPE_START>List<ParagraphLink><DATA_TYPE_END> m_ParagraphLinkList;
     bool m_ParagraphLinkListIsSet;
 };
 

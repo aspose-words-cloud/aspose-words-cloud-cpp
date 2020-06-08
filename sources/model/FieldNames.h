@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets collection of fields names.
     /// </summary>
-    std::vector<utility::string_t>& getNames();
+    <DATA_TYPE_START>List<string><DATA_TYPE_END>& getNames();
     bool namesIsSet() const;
     void unsetNames();
-    void setNames(std::vector<utility::string_t> const& value);
+    void setNames(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<utility::string_t> m_Names;
+    <DATA_TYPE_START>List<string><DATA_TYPE_END> m_Names;
     bool m_NamesIsSet;
 };
 

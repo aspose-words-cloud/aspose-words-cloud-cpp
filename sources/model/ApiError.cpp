@@ -113,7 +113,7 @@ void ApiError::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
-            setDateTime(ModelBase::dateFromJson(fieldValue));
+            setDateTime(ModelBase::DateTime?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("InnerError")))
@@ -121,7 +121,7 @@ void ApiError::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("InnerError")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<ApiError> newItem(new ApiError());
+            <DATA_TYPE_START>ApiError<DATA_TYPE_END> newItem(new ApiError());
             newItem->fromJson(fieldValue);
             setInnerError( newItem );
         }
@@ -181,26 +181,26 @@ void ApiError::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
     if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
+        setDateTime(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
     if(multipart->hasContent(_XPLATSTR("InnerError")))
     {
         if(multipart->hasContent(_XPLATSTR("InnerError")))
         {
-            std::shared_ptr<ApiError> newItem(new ApiError());
+            <DATA_TYPE_START>ApiError<DATA_TYPE_END> newItem(new ApiError());
             newItem->fromMultiPart(multipart, _XPLATSTR("InnerError."));
             setInnerError( newItem );
         }
     }
 }
 
-utility::string_t ApiError::getCode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ApiError::getCode() const
 {
     return m_Code;
 }
 
 
-void ApiError::setCode(utility::string_t value)
+void ApiError::setCode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Code = value;
     m_CodeIsSet = true;
@@ -215,13 +215,13 @@ void ApiError::unsetCode()
     m_CodeIsSet = false;
 }
 
-utility::string_t ApiError::getMessage() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ApiError::getMessage() const
 {
     return m_Message;
 }
 
 
-void ApiError::setMessage(utility::string_t value)
+void ApiError::setMessage(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Message = value;
     m_MessageIsSet = true;
@@ -236,13 +236,13 @@ void ApiError::unsetMessage()
     m_MessageIsSet = false;
 }
 
-utility::string_t ApiError::getDescription() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ApiError::getDescription() const
 {
     return m_Description;
 }
 
 
-void ApiError::setDescription(utility::string_t value)
+void ApiError::setDescription(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Description = value;
     m_DescriptionIsSet = true;
@@ -257,13 +257,13 @@ void ApiError::unsetDescription()
     m_DescriptionIsSet = false;
 }
 
-utility::datetime ApiError::getDateTime() const
+<DATA_TYPE_START>DateTime?<DATA_TYPE_END> ApiError::getDateTime() const
 {
     return m_DateTime;
 }
 
 
-void ApiError::setDateTime(utility::datetime value)
+void ApiError::setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
 {
     m_DateTime = value;
     m_DateTimeIsSet = true;
@@ -278,13 +278,13 @@ void ApiError::unsetDateTime()
     m_DateTimeIsSet = false;
 }
 
-std::shared_ptr<ApiError> ApiError::getInnerError() const
+<DATA_TYPE_START>ApiError<DATA_TYPE_END> ApiError::getInnerError() const
 {
     return m_InnerError;
 }
 
 
-void ApiError::setInnerError(std::shared_ptr<ApiError> value)
+void ApiError::setInnerError(<DATA_TYPE_START>ApiError<DATA_TYPE_END> value)
 {
     m_InnerError = value;
     m_InnerErrorIsSet = true;

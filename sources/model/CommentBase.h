@@ -65,58 +65,58 @@ public:
     /// <summary>
     /// Gets or sets RangeStart.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeStart() const;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getRangeStart() const;
     bool rangeStartIsSet() const;
     void unsetRangeStart();
-    void setRangeStart(std::shared_ptr<DocumentPosition> value);
+    void setRangeStart(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets RangeEnd.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeEnd() const;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getRangeEnd() const;
     bool rangeEndIsSet() const;
     void unsetRangeEnd();
-    void setRangeEnd(std::shared_ptr<DocumentPosition> value);
+    void setRangeEnd(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the author name for a comment.
     /// </summary>
-    utility::string_t getAuthor() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getAuthor() const;
     bool authorIsSet() const;
     void unsetAuthor();
-    void setAuthor(utility::string_t value);
+    void setAuthor(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the initials of the user associated with a specific comment.
     /// </summary>
-    utility::string_t getInitial() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getInitial() const;
     bool initialIsSet() const;
     void unsetInitial();
-    void setInitial(utility::string_t value);
+    void setInitial(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the date and time that the comment was made.
     /// </summary>
-    utility::datetime getDateTime() const;
+    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> getDateTime() const;
     bool dateTimeIsSet() const;
     void unsetDateTime();
-    void setDateTime(utility::datetime value);
+    void setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets this is a convenience property that allows to easily get or set text of the comment.
     /// </summary>
-    utility::string_t getText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(utility::string_t value);
+    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_RangeStart;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_RangeStart;
     bool m_RangeStartIsSet;
-    std::shared_ptr<DocumentPosition> m_RangeEnd;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_RangeEnd;
     bool m_RangeEndIsSet;
-    utility::string_t m_Author;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Author;
     bool m_AuthorIsSet;
-    utility::string_t m_Initial;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Initial;
     bool m_InitialIsSet;
-    utility::datetime m_DateTime;
+    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> m_DateTime;
     bool m_DateTimeIsSet;
-    utility::string_t m_Text;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
     bool m_TextIsSet;
 };
 

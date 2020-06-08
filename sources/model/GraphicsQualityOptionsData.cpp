@@ -127,7 +127,7 @@ void GraphicsQualityOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("StringFormat")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<StringFormatData> newItem(new StringFormatData());
+            <DATA_TYPE_START>StringFormatData<DATA_TYPE_END> newItem(new StringFormatData());
             newItem->fromJson(fieldValue);
             setStringFormat( newItem );
         }
@@ -206,7 +206,7 @@ void GraphicsQualityOptionsData::fromMultiPart(const std::shared_ptr<MultipartFo
     {
         if(multipart->hasContent(_XPLATSTR("StringFormat")))
         {
-            std::shared_ptr<StringFormatData> newItem(new StringFormatData());
+            <DATA_TYPE_START>StringFormatData<DATA_TYPE_END> newItem(new StringFormatData());
             newItem->fromMultiPart(multipart, _XPLATSTR("StringFormat."));
             setStringFormat( newItem );
         }
@@ -217,13 +217,13 @@ void GraphicsQualityOptionsData::fromMultiPart(const std::shared_ptr<MultipartFo
     }
 }
 
-utility::string_t GraphicsQualityOptionsData::getCompositingMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> GraphicsQualityOptionsData::getCompositingMode() const
 {
     return m_CompositingMode;
 }
 
 
-void GraphicsQualityOptionsData::setCompositingMode(utility::string_t value)
+void GraphicsQualityOptionsData::setCompositingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_CompositingMode = value;
     m_CompositingModeIsSet = true;
@@ -238,13 +238,13 @@ void GraphicsQualityOptionsData::unsetCompositingMode()
     m_CompositingModeIsSet = false;
 }
 
-utility::string_t GraphicsQualityOptionsData::getCompositingQuality() const
+<DATA_TYPE_START>string<DATA_TYPE_END> GraphicsQualityOptionsData::getCompositingQuality() const
 {
     return m_CompositingQuality;
 }
 
 
-void GraphicsQualityOptionsData::setCompositingQuality(utility::string_t value)
+void GraphicsQualityOptionsData::setCompositingQuality(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_CompositingQuality = value;
     m_CompositingQualityIsSet = true;
@@ -259,13 +259,13 @@ void GraphicsQualityOptionsData::unsetCompositingQuality()
     m_CompositingQualityIsSet = false;
 }
 
-utility::string_t GraphicsQualityOptionsData::getInterpolationMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> GraphicsQualityOptionsData::getInterpolationMode() const
 {
     return m_InterpolationMode;
 }
 
 
-void GraphicsQualityOptionsData::setInterpolationMode(utility::string_t value)
+void GraphicsQualityOptionsData::setInterpolationMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_InterpolationMode = value;
     m_InterpolationModeIsSet = true;
@@ -280,13 +280,13 @@ void GraphicsQualityOptionsData::unsetInterpolationMode()
     m_InterpolationModeIsSet = false;
 }
 
-utility::string_t GraphicsQualityOptionsData::getSmoothingMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> GraphicsQualityOptionsData::getSmoothingMode() const
 {
     return m_SmoothingMode;
 }
 
 
-void GraphicsQualityOptionsData::setSmoothingMode(utility::string_t value)
+void GraphicsQualityOptionsData::setSmoothingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_SmoothingMode = value;
     m_SmoothingModeIsSet = true;
@@ -301,13 +301,13 @@ void GraphicsQualityOptionsData::unsetSmoothingMode()
     m_SmoothingModeIsSet = false;
 }
 
-std::shared_ptr<StringFormatData> GraphicsQualityOptionsData::getStringFormat() const
+<DATA_TYPE_START>StringFormatData<DATA_TYPE_END> GraphicsQualityOptionsData::getStringFormat() const
 {
     return m_StringFormat;
 }
 
 
-void GraphicsQualityOptionsData::setStringFormat(std::shared_ptr<StringFormatData> value)
+void GraphicsQualityOptionsData::setStringFormat(<DATA_TYPE_START>StringFormatData<DATA_TYPE_END> value)
 {
     m_StringFormat = value;
     m_StringFormatIsSet = true;
@@ -322,13 +322,13 @@ void GraphicsQualityOptionsData::unsetStringFormat()
     m_StringFormatIsSet = false;
 }
 
-utility::string_t GraphicsQualityOptionsData::getTextRenderingHint() const
+<DATA_TYPE_START>string<DATA_TYPE_END> GraphicsQualityOptionsData::getTextRenderingHint() const
 {
     return m_TextRenderingHint;
 }
 
 
-void GraphicsQualityOptionsData::setTextRenderingHint(utility::string_t value)
+void GraphicsQualityOptionsData::setTextRenderingHint(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_TextRenderingHint = value;
     m_TextRenderingHintIsSet = true;

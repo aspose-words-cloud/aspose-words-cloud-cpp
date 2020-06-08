@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets text from range.
     /// </summary>
-    utility::string_t getText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(utility::string_t value);
+    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Text;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
     bool m_TextIsSet;
 };
 

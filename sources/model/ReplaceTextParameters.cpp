@@ -106,7 +106,7 @@ void ReplaceTextParameters::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsMatchCase")];
         if(!fieldValue.is_null())
         {
-            setIsMatchCase(ModelBase::boolFromJson(fieldValue));
+            setIsMatchCase(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsMatchWholeWord")))
@@ -114,7 +114,7 @@ void ReplaceTextParameters::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsMatchWholeWord")];
         if(!fieldValue.is_null())
         {
-            setIsMatchWholeWord(ModelBase::boolFromJson(fieldValue));
+            setIsMatchWholeWord(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsOldValueRegex")))
@@ -122,7 +122,7 @@ void ReplaceTextParameters::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsOldValueRegex")];
         if(!fieldValue.is_null())
         {
-            setIsOldValueRegex(ModelBase::boolFromJson(fieldValue));
+            setIsOldValueRegex(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -173,25 +173,25 @@ void ReplaceTextParameters::fromMultiPart(const std::shared_ptr<MultipartFormDat
     }
     if(multipart->hasContent(_XPLATSTR("IsMatchCase")))
     {
-        setIsMatchCase(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsMatchCase"))));
+        setIsMatchCase(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsMatchCase"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsMatchWholeWord")))
     {
-        setIsMatchWholeWord(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsMatchWholeWord"))));
+        setIsMatchWholeWord(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsMatchWholeWord"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsOldValueRegex")))
     {
-        setIsOldValueRegex(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsOldValueRegex"))));
+        setIsOldValueRegex(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsOldValueRegex"))));
     }
 }
 
-utility::string_t ReplaceTextParameters::getOldValue() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ReplaceTextParameters::getOldValue() const
 {
     return m_OldValue;
 }
 
 
-void ReplaceTextParameters::setOldValue(utility::string_t value)
+void ReplaceTextParameters::setOldValue(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_OldValue = value;
     m_OldValueIsSet = true;
@@ -206,13 +206,13 @@ void ReplaceTextParameters::unsetOldValue()
     m_OldValueIsSet = false;
 }
 
-utility::string_t ReplaceTextParameters::getNewValue() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ReplaceTextParameters::getNewValue() const
 {
     return m_NewValue;
 }
 
 
-void ReplaceTextParameters::setNewValue(utility::string_t value)
+void ReplaceTextParameters::setNewValue(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NewValue = value;
     m_NewValueIsSet = true;
@@ -227,13 +227,13 @@ void ReplaceTextParameters::unsetNewValue()
     m_NewValueIsSet = false;
 }
 
-bool ReplaceTextParameters::isIsMatchCase() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ReplaceTextParameters::isIsMatchCase() const
 {
     return m_IsMatchCase;
 }
 
 
-void ReplaceTextParameters::setIsMatchCase(bool value)
+void ReplaceTextParameters::setIsMatchCase(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsMatchCase = value;
     m_IsMatchCaseIsSet = true;
@@ -248,13 +248,13 @@ void ReplaceTextParameters::unsetIsMatchCase()
     m_IsMatchCaseIsSet = false;
 }
 
-bool ReplaceTextParameters::isIsMatchWholeWord() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ReplaceTextParameters::isIsMatchWholeWord() const
 {
     return m_IsMatchWholeWord;
 }
 
 
-void ReplaceTextParameters::setIsMatchWholeWord(bool value)
+void ReplaceTextParameters::setIsMatchWholeWord(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsMatchWholeWord = value;
     m_IsMatchWholeWordIsSet = true;
@@ -269,13 +269,13 @@ void ReplaceTextParameters::unsetIsMatchWholeWord()
     m_IsMatchWholeWordIsSet = false;
 }
 
-bool ReplaceTextParameters::isIsOldValueRegex() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ReplaceTextParameters::isIsOldValueRegex() const
 {
     return m_IsOldValueRegex;
 }
 
 
-void ReplaceTextParameters::setIsOldValueRegex(bool value)
+void ReplaceTextParameters::setIsOldValueRegex(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsOldValueRegex = value;
     m_IsOldValueRegexIsSet = true;

@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets the watermark text.
     /// </summary>
-    utility::string_t getText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(utility::string_t value);
+    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the watermark rotation angle.
     /// </summary>
-    double getRotationAngle() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getRotationAngle() const;
     bool rotationAngleIsSet() const;
     void unsetRotationAngle();
-    void setRotationAngle(double value);
+    void setRotationAngle(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Text;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
     bool m_TextIsSet;
-    double m_RotationAngle;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_RotationAngle;
     bool m_RotationAngleIsSet;
 };
 

@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets FieldNames.
     /// </summary>
-    std::shared_ptr<FieldNames> getFieldNames() const;
+    <DATA_TYPE_START>FieldNames<DATA_TYPE_END> getFieldNames() const;
     bool fieldNamesIsSet() const;
     void unsetFieldNames();
-    void setFieldNames(std::shared_ptr<FieldNames> value);
+    void setFieldNames(<DATA_TYPE_START>FieldNames<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<FieldNames> m_FieldNames;
+    <DATA_TYPE_START>FieldNames<DATA_TYPE_END> m_FieldNames;
     bool m_FieldNamesIsSet;
 };
 

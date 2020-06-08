@@ -67,7 +67,7 @@ void BorderResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Border")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Border> newItem(new Border());
+            <DATA_TYPE_START>Border<DATA_TYPE_END> newItem(new Border());
             newItem->fromJson(fieldValue);
             setBorder( newItem );
         }
@@ -97,20 +97,20 @@ void BorderResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     {
         if(multipart->hasContent(_XPLATSTR("Border")))
         {
-            std::shared_ptr<Border> newItem(new Border());
+            <DATA_TYPE_START>Border<DATA_TYPE_END> newItem(new Border());
             newItem->fromMultiPart(multipart, _XPLATSTR("Border."));
             setBorder( newItem );
         }
     }
 }
 
-std::shared_ptr<Border> BorderResponse::getBorder() const
+<DATA_TYPE_START>Border<DATA_TYPE_END> BorderResponse::getBorder() const
 {
     return m_Border;
 }
 
 
-void BorderResponse::setBorder(std::shared_ptr<Border> value)
+void BorderResponse::setBorder(<DATA_TYPE_START>Border<DATA_TYPE_END> value)
 {
     m_Border = value;
     m_BorderIsSet = true;

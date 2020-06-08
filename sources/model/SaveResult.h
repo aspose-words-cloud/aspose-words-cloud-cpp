@@ -65,31 +65,31 @@ public:
     /// <summary>
     /// Gets or sets SourceDocument.
     /// </summary>
-    std::shared_ptr<FileLink> getSourceDocument() const;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getSourceDocument() const;
     bool sourceDocumentIsSet() const;
     void unsetSourceDocument();
-    void setSourceDocument(std::shared_ptr<FileLink> value);
+    void setSourceDocument(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets DestDocument.
     /// </summary>
-    std::shared_ptr<FileLink> getDestDocument() const;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getDestDocument() const;
     bool destDocumentIsSet() const;
     void unsetDestDocument();
-    void setDestDocument(std::shared_ptr<FileLink> value);
+    void setDestDocument(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets links to additional items (css, images etc).
     /// </summary>
-    std::vector<std::shared_ptr<FileLink>>& getAdditionalItems();
+    <DATA_TYPE_START>List<FileLink><DATA_TYPE_END>& getAdditionalItems();
     bool additionalItemsIsSet() const;
     void unsetAdditionalItems();
-    void setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value);
+    void setAdditionalItems(<DATA_TYPE_START>List<FileLink><DATA_TYPE_END> const& value);
 
 protected:
-    std::shared_ptr<FileLink> m_SourceDocument;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_SourceDocument;
     bool m_SourceDocumentIsSet;
-    std::shared_ptr<FileLink> m_DestDocument;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_DestDocument;
     bool m_DestDocumentIsSet;
-    std::vector<std::shared_ptr<FileLink>> m_AdditionalItems;
+    <DATA_TYPE_START>List<FileLink><DATA_TYPE_END> m_AdditionalItems;
     bool m_AdditionalItemsIsSet;
 };
 

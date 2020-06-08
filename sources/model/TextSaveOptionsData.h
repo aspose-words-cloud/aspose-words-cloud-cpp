@@ -63,67 +63,67 @@ public:
     /// <summary>
     /// Gets or sets specifies whether to add bi-directional marks before each BiDi run when exporting in plain text format. The default value is true.
     /// </summary>
-    bool isAddBidiMarks() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isAddBidiMarks() const;
     bool addBidiMarksIsSet() const;
     void unsetAddBidiMarks();
-    void setAddBidiMarks(bool value);
+    void setAddBidiMarks(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the encoding to use when exporting in plain text format.
     /// </summary>
-    utility::string_t getEncoding() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getEncoding() const;
     bool encodingIsSet() const;
     void unsetEncoding();
-    void setEncoding(utility::string_t value);
+    void setEncoding(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether to output headers and footers when exporting in plain text format. default value is TxtExportHeadersFootersMode.PrimaryOnly.
     /// </summary>
-    utility::string_t getExportHeadersFootersMode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getExportHeadersFootersMode() const;
     bool exportHeadersFootersModeIsSet() const;
     void unsetExportHeadersFootersMode();
-    void setExportHeadersFootersMode(utility::string_t value);
+    void setExportHeadersFootersMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets allows to specify whether the page breaks should be preserved during export. The default value is false.
     /// </summary>
-    bool isForcePageBreaks() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isForcePageBreaks() const;
     bool forcePageBreaksIsSet() const;
     void unsetForcePageBreaks();
-    void setForcePageBreaks(bool value);
+    void setForcePageBreaks(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the string to use as a paragraph break when exporting in plain text format.
     /// </summary>
-    utility::string_t getParagraphBreak() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getParagraphBreak() const;
     bool paragraphBreakIsSet() const;
     void unsetParagraphBreak();
-    void setParagraphBreak(utility::string_t value);
+    void setParagraphBreak(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether the program should attempt to preserve layout of tables when saving in the plain text format.
     /// </summary>
-    bool isPreserveTableLayout() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isPreserveTableLayout() const;
     bool preserveTableLayoutIsSet() const;
     void unsetPreserveTableLayout();
-    void setPreserveTableLayout(bool value);
+    void setPreserveTableLayout(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
     /// </summary>
-    bool isSimplifyListLabels() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSimplifyListLabels() const;
     bool simplifyListLabelsIsSet() const;
     void unsetSimplifyListLabels();
-    void setSimplifyListLabels(bool value);
+    void setSimplifyListLabels(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    bool m_AddBidiMarks;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_AddBidiMarks;
     bool m_AddBidiMarksIsSet;
-    utility::string_t m_Encoding;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Encoding;
     bool m_EncodingIsSet;
-    utility::string_t m_ExportHeadersFootersMode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ExportHeadersFootersMode;
     bool m_ExportHeadersFootersModeIsSet;
-    bool m_ForcePageBreaks;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ForcePageBreaks;
     bool m_ForcePageBreaksIsSet;
-    utility::string_t m_ParagraphBreak;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ParagraphBreak;
     bool m_ParagraphBreakIsSet;
-    bool m_PreserveTableLayout;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_PreserveTableLayout;
     bool m_PreserveTableLayoutIsSet;
-    bool m_SimplifyListLabels;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SimplifyListLabels;
     bool m_SimplifyListLabelsIsSet;
 };
 

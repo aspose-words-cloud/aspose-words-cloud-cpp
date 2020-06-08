@@ -64,67 +64,67 @@ public:
     /// <summary>
     /// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
     /// </summary>
-    utility::string_t getColorMode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getColorMode() const;
     bool colorModeIsSet() const;
     void unsetColorMode();
-    void setColorMode(utility::string_t value);
+    void setColorMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets determines the quality of the JPEG images inside PDF document.
     /// </summary>
-    int32_t getJpegQuality() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getJpegQuality() const;
     bool jpegQualityIsSet() const;
     void unsetJpegQuality();
-    void setJpegQuality(int32_t value);
+    void setJpegQuality(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets MetafileRenderingOptions.
     /// </summary>
-    std::shared_ptr<MetafileRenderingOptionsData> getMetafileRenderingOptions() const;
+    <DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> getMetafileRenderingOptions() const;
     bool metafileRenderingOptionsIsSet() const;
     void unsetMetafileRenderingOptions();
-    void setMetafileRenderingOptions(std::shared_ptr<MetafileRenderingOptionsData> value);
+    void setMetafileRenderingOptions(<DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
     /// </summary>
-    utility::string_t getNumeralFormat() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getNumeralFormat() const;
     bool numeralFormatIsSet() const;
     void unsetNumeralFormat();
-    void setNumeralFormat(utility::string_t value);
+    void setNumeralFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
     /// </summary>
-    bool isOptimizeOutput() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isOptimizeOutput() const;
     bool optimizeOutputIsSet() const;
     void unsetOptimizeOutput();
-    void setOptimizeOutput(bool value);
+    void setOptimizeOutput(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets determines number of pages to render.
     /// </summary>
-    int32_t getPageCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getPageCount() const;
     bool pageCountIsSet() const;
     void unsetPageCount();
-    void setPageCount(int32_t value);
+    void setPageCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets determines 0-based index of the first page to render.
     /// </summary>
-    int32_t getPageIndex() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getPageIndex() const;
     bool pageIndexIsSet() const;
     void unsetPageIndex();
-    void setPageIndex(int32_t value);
+    void setPageIndex(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_ColorMode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ColorMode;
     bool m_ColorModeIsSet;
-    int32_t m_JpegQuality;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_JpegQuality;
     bool m_JpegQualityIsSet;
-    std::shared_ptr<MetafileRenderingOptionsData> m_MetafileRenderingOptions;
+    <DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> m_MetafileRenderingOptions;
     bool m_MetafileRenderingOptionsIsSet;
-    utility::string_t m_NumeralFormat;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_NumeralFormat;
     bool m_NumeralFormatIsSet;
-    bool m_OptimizeOutput;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_OptimizeOutput;
     bool m_OptimizeOutputIsSet;
-    int32_t m_PageCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_PageCount;
     bool m_PageCountIsSet;
-    int32_t m_PageIndex;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_PageIndex;
     bool m_PageIndexIsSet;
 };
 

@@ -65,40 +65,40 @@ public:
     /// <summary>
     /// Gets or sets Position.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getPosition() const;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getPosition() const;
     bool positionIsSet() const;
     void unsetPosition();
-    void setPosition(std::shared_ptr<DocumentPosition> value);
+    void setPosition(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns a value that specifies whether this is a footnote or endnote.
     /// </summary>
-    utility::string_t getFootnoteType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getFootnoteType() const;
     bool footnoteTypeIsSet() const;
     void unsetFootnoteType();
-    void setFootnoteType(utility::string_t value);
+    void setFootnoteType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets /sets custom reference mark to be used for this footnote. Default value is Empty, meaning auto-numbered footnotes are used.
     /// </summary>
-    utility::string_t getReferenceMark() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getReferenceMark() const;
     bool referenceMarkIsSet() const;
     void unsetReferenceMark();
-    void setReferenceMark(utility::string_t value);
+    void setReferenceMark(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets this is a convenience property that allows to easily get or set text of the footnote.
     /// </summary>
-    utility::string_t getText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(utility::string_t value);
+    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_Position;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_Position;
     bool m_PositionIsSet;
-    utility::string_t m_FootnoteType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_FootnoteType;
     bool m_FootnoteTypeIsSet;
-    utility::string_t m_ReferenceMark;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ReferenceMark;
     bool m_ReferenceMarkIsSet;
-    utility::string_t m_Text;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
     bool m_TextIsSet;
 };
 

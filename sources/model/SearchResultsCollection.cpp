@@ -53,7 +53,7 @@ web::json::value SearchResultsCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<SearchResult> item) {
+			[&](<DATA_TYPE_START>SearchResult<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void SearchResultsCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<SearchResult>(nullptr);
+                return <DATA_TYPE_START>SearchResult<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<SearchResult> newItem(new SearchResult());
+                <DATA_TYPE_START>SearchResult<DATA_TYPE_END> newItem(new SearchResult());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void SearchResultsCollection::toMultipart(const std::shared_ptr<MultipartFormDat
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<SearchResult> item){
+        std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>SearchResult<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void SearchResultsCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<SearchResult>(nullptr) ;
+                return <DATA_TYPE_START>SearchResult<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<SearchResult> newItem(new SearchResult());
+                <DATA_TYPE_START>SearchResult<DATA_TYPE_END> newItem(new SearchResult());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void SearchResultsCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
 }
 
-std::vector<std::shared_ptr<SearchResult>>& SearchResultsCollection::getResultsList()
+<DATA_TYPE_START>List<SearchResult><DATA_TYPE_END>& SearchResultsCollection::getResultsList()
 {
     return m_ResultsList;
 }
 
-void SearchResultsCollection::setResultsList(std::vector<std::shared_ptr<SearchResult>> const& value)
+void SearchResultsCollection::setResultsList(<DATA_TYPE_START>List<SearchResult><DATA_TYPE_END> const& value)
 {
     m_ResultsList = value;
     m_ResultsListIsSet = true;

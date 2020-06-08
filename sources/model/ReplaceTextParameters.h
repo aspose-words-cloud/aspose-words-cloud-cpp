@@ -64,49 +64,49 @@ public:
     /// <summary>
     /// Gets or sets old text value (or regex pattern IsOldValueRegex) to replace.
     /// </summary>
-    utility::string_t getOldValue() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getOldValue() const;
     bool oldValueIsSet() const;
     void unsetOldValue();
-    void setOldValue(utility::string_t value);
+    void setOldValue(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets new text value to replace by.
     /// </summary>
-    utility::string_t getNewValue() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getNewValue() const;
     bool newValueIsSet() const;
     void unsetNewValue();
-    void setNewValue(utility::string_t value);
+    void setNewValue(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
     /// </summary>
-    bool isIsMatchCase() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsMatchCase() const;
     bool isMatchCaseIsSet() const;
     void unsetIsMatchCase();
-    void setIsMatchCase(bool value);
+    void setIsMatchCase(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether flag, means that only whole word matched are replaced.
     /// </summary>
-    bool isIsMatchWholeWord() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsMatchWholeWord() const;
     bool isMatchWholeWordIsSet() const;
     void unsetIsMatchWholeWord();
-    void setIsMatchWholeWord(bool value);
+    void setIsMatchWholeWord(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
     /// </summary>
-    bool isIsOldValueRegex() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsOldValueRegex() const;
     bool isOldValueRegexIsSet() const;
     void unsetIsOldValueRegex();
-    void setIsOldValueRegex(bool value);
+    void setIsOldValueRegex(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_OldValue;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_OldValue;
     bool m_OldValueIsSet;
-    utility::string_t m_NewValue;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_NewValue;
     bool m_NewValueIsSet;
-    bool m_IsMatchCase;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsMatchCase;
     bool m_IsMatchCaseIsSet;
-    bool m_IsMatchWholeWord;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsMatchWholeWord;
     bool m_IsMatchWholeWordIsSet;
-    bool m_IsOldValueRegex;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsOldValueRegex;
     bool m_IsOldValueRegexIsSet;
 };
 

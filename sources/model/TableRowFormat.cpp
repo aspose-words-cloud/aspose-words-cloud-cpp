@@ -86,7 +86,7 @@ void TableRowFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AllowBreakAcrossPages")];
         if(!fieldValue.is_null())
         {
-            setAllowBreakAcrossPages(ModelBase::boolFromJson(fieldValue));
+            setAllowBreakAcrossPages(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("HeadingFormat")))
@@ -94,7 +94,7 @@ void TableRowFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HeadingFormat")];
         if(!fieldValue.is_null())
         {
-            setHeadingFormat(ModelBase::boolFromJson(fieldValue));
+            setHeadingFormat(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Height")))
@@ -102,7 +102,7 @@ void TableRowFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Height")];
         if(!fieldValue.is_null())
         {
-            setHeight(ModelBase::doubleFromJson(fieldValue));
+            setHeight(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("HeightRule")))
@@ -148,15 +148,15 @@ void TableRowFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
 
     if(multipart->hasContent(_XPLATSTR("AllowBreakAcrossPages")))
     {
-        setAllowBreakAcrossPages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowBreakAcrossPages"))));
+        setAllowBreakAcrossPages(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AllowBreakAcrossPages"))));
     }
     if(multipart->hasContent(_XPLATSTR("HeadingFormat")))
     {
-        setHeadingFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("HeadingFormat"))));
+        setHeadingFormat(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("HeadingFormat"))));
     }
     if(multipart->hasContent(_XPLATSTR("Height")))
     {
-        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
+        setHeight(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
     }
     if(multipart->hasContent(_XPLATSTR("HeightRule")))
     {
@@ -164,13 +164,13 @@ void TableRowFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     }
 }
 
-bool TableRowFormat::isAllowBreakAcrossPages() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TableRowFormat::isAllowBreakAcrossPages() const
 {
     return m_AllowBreakAcrossPages;
 }
 
 
-void TableRowFormat::setAllowBreakAcrossPages(bool value)
+void TableRowFormat::setAllowBreakAcrossPages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_AllowBreakAcrossPages = value;
     m_AllowBreakAcrossPagesIsSet = true;
@@ -185,13 +185,13 @@ void TableRowFormat::unsetAllowBreakAcrossPages()
     m_AllowBreakAcrossPagesIsSet = false;
 }
 
-bool TableRowFormat::isHeadingFormat() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TableRowFormat::isHeadingFormat() const
 {
     return m_HeadingFormat;
 }
 
 
-void TableRowFormat::setHeadingFormat(bool value)
+void TableRowFormat::setHeadingFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_HeadingFormat = value;
     m_HeadingFormatIsSet = true;
@@ -206,13 +206,13 @@ void TableRowFormat::unsetHeadingFormat()
     m_HeadingFormatIsSet = false;
 }
 
-double TableRowFormat::getHeight() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TableRowFormat::getHeight() const
 {
     return m_Height;
 }
 
 
-void TableRowFormat::setHeight(double value)
+void TableRowFormat::setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Height = value;
     m_HeightIsSet = true;
@@ -227,13 +227,13 @@ void TableRowFormat::unsetHeight()
     m_HeightIsSet = false;
 }
 
-utility::string_t TableRowFormat::getHeightRule() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TableRowFormat::getHeightRule() const
 {
     return m_HeightRule;
 }
 
 
-void TableRowFormat::setHeightRule(utility::string_t value)
+void TableRowFormat::setHeightRule(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_HeightRule = value;
     m_HeightRuleIsSet = true;

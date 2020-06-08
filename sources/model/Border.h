@@ -65,58 +65,58 @@ public:
     /// <summary>
     /// Gets or sets the border type.             
     /// </summary>
-    utility::string_t getBorderType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getBorderType() const;
     bool borderTypeIsSet() const;
     void unsetBorderType();
-    void setBorderType(utility::string_t value);
+    void setBorderType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets Color.
     /// </summary>
-    std::shared_ptr<XmlColor> getColor() const;
+    <DATA_TYPE_START>XmlColor<DATA_TYPE_END> getColor() const;
     bool colorIsSet() const;
     void unsetColor();
-    void setColor(std::shared_ptr<XmlColor> value);
+    void setColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets distance of the border from text or from the page edge in points.
     /// </summary>
-    double getDistanceFromText() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getDistanceFromText() const;
     bool distanceFromTextIsSet() const;
     void unsetDistanceFromText();
-    void setDistanceFromText(double value);
+    void setDistanceFromText(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the border style.
     /// </summary>
-    utility::string_t getLineStyle() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLineStyle() const;
     bool lineStyleIsSet() const;
     void unsetLineStyle();
-    void setLineStyle(utility::string_t value);
+    void setLineStyle(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the border width in points.
     /// </summary>
-    double getLineWidth() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLineWidth() const;
     bool lineWidthIsSet() const;
     void unsetLineWidth();
-    void setLineWidth(double value);
+    void setLineWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether the border has a shadow.
     /// </summary>
-    bool isShadow() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isShadow() const;
     bool shadowIsSet() const;
     void unsetShadow();
-    void setShadow(bool value);
+    void setShadow(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_BorderType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_BorderType;
     bool m_BorderTypeIsSet;
-    std::shared_ptr<XmlColor> m_Color;
+    <DATA_TYPE_START>XmlColor<DATA_TYPE_END> m_Color;
     bool m_ColorIsSet;
-    double m_DistanceFromText;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_DistanceFromText;
     bool m_DistanceFromTextIsSet;
-    utility::string_t m_LineStyle;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_LineStyle;
     bool m_LineStyleIsSet;
-    double m_LineWidth;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LineWidth;
     bool m_LineWidthIsSet;
-    bool m_Shadow;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_Shadow;
     bool m_ShadowIsSet;
 };
 

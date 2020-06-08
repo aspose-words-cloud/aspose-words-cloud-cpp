@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets list of documents.
     /// </summary>
-    std::vector<std::shared_ptr<DocumentEntry>>& getDocumentEntries();
+    <DATA_TYPE_START>List<DocumentEntry><DATA_TYPE_END>& getDocumentEntries();
     bool documentEntriesIsSet() const;
     void unsetDocumentEntries();
-    void setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> const& value);
+    void setDocumentEntries(<DATA_TYPE_START>List<DocumentEntry><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<DocumentEntry>> m_DocumentEntries;
+    <DATA_TYPE_START>List<DocumentEntry><DATA_TYPE_END> m_DocumentEntries;
     bool m_DocumentEntriesIsSet;
 };
 

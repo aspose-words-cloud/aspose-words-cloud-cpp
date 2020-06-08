@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Paragraph.
     /// </summary>
-    std::shared_ptr<Paragraph> getParagraph() const;
+    <DATA_TYPE_START>Paragraph<DATA_TYPE_END> getParagraph() const;
     bool paragraphIsSet() const;
     void unsetParagraph();
-    void setParagraph(std::shared_ptr<Paragraph> value);
+    void setParagraph(<DATA_TYPE_START>Paragraph<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<Paragraph> m_Paragraph;
+    <DATA_TYPE_START>Paragraph<DATA_TYPE_END> m_Paragraph;
     bool m_ParagraphIsSet;
 };
 

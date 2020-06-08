@@ -64,265 +64,265 @@ public:
     /// <summary>
     /// Gets or sets specifies that this section contains bidirectional (complex scripts) text.             
     /// </summary>
-    bool isBidi() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isBidi() const;
     bool bidiIsSet() const;
     void unsetBidi();
-    void setBidi(bool value);
+    void setBidi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies where the page border is positioned relative to intersecting texts and objects.             
     /// </summary>
-    bool isBorderAlwaysInFront() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isBorderAlwaysInFront() const;
     bool borderAlwaysInFrontIsSet() const;
     void unsetBorderAlwaysInFront();
-    void setBorderAlwaysInFront(bool value);
+    void setBorderAlwaysInFront(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies which pages the page border is printed on.             
     /// </summary>
-    utility::string_t getBorderAppliesTo() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getBorderAppliesTo() const;
     bool borderAppliesToIsSet() const;
     void unsetBorderAppliesTo();
-    void setBorderAppliesTo(utility::string_t value);
+    void setBorderAppliesTo(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value that indicates whether the specified page border is measured from the edge of the page or from the text it surrounds.             
     /// </summary>
-    utility::string_t getBorderDistanceFrom() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getBorderDistanceFrom() const;
     bool borderDistanceFromIsSet() const;
     void unsetBorderDistanceFrom();
-    void setBorderDistanceFrom(utility::string_t value);
+    void setBorderDistanceFrom(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body text.             
     /// </summary>
-    double getBottomMargin() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getBottomMargin() const;
     bool bottomMarginIsSet() const;
     void unsetBottomMargin();
-    void setBottomMargin(double value);
+    void setBottomMargin(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if a different header or footer is used on the first page.             
     /// </summary>
-    bool isDifferentFirstPageHeaderFooter() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isDifferentFirstPageHeaderFooter() const;
     bool differentFirstPageHeaderFooterIsSet() const;
     void unsetDifferentFirstPageHeaderFooter();
-    void setDifferentFirstPageHeaderFooter(bool value);
+    void setDifferentFirstPageHeaderFooter(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the paper tray (bin) to use for the first page of a section. The value is implementation (printer) specific.             
     /// </summary>
-    int32_t getFirstPageTray() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getFirstPageTray() const;
     bool firstPageTrayIsSet() const;
     void unsetFirstPageTray();
-    void setFirstPageTray(int32_t value);
+    void setFirstPageTray(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the distance (in points) between the footer and the bottom of the page.             
     /// </summary>
-    double getFooterDistance() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getFooterDistance() const;
     bool footerDistanceIsSet() const;
     void unsetFooterDistance();
-    void setFooterDistance(double value);
+    void setFooterDistance(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of extra space added to the margin for document binding.             
     /// </summary>
-    double getGutter() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getGutter() const;
     bool gutterIsSet() const;
     void unsetGutter();
-    void setGutter(double value);
+    void setGutter(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the distance (in points) between the header and the top of the page.             
     /// </summary>
-    double getHeaderDistance() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getHeaderDistance() const;
     bool headerDistanceIsSet() const;
     void unsetHeaderDistance();
-    void setHeaderDistance(double value);
+    void setHeaderDistance(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the distance (in points) between the left edge of the page and the left boundary of the body text.             
     /// </summary>
-    double getLeftMargin() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeftMargin() const;
     bool leftMarginIsSet() const;
     void unsetLeftMargin();
-    void setLeftMargin(double value);
+    void setLeftMargin(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the numeric increment for line numbers.             
     /// </summary>
-    int32_t getLineNumberCountBy() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getLineNumberCountBy() const;
     bool lineNumberCountByIsSet() const;
     void unsetLineNumberCountBy();
-    void setLineNumberCountBy(int32_t value);
+    void setLineNumberCountBy(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets distance between the right edge of line numbers and the left edge of the document.             
     /// </summary>
-    double getLineNumberDistanceFromText() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLineNumberDistanceFromText() const;
     bool lineNumberDistanceFromTextIsSet() const;
     void unsetLineNumberDistanceFromText();
-    void setLineNumberDistanceFromText(double value);
+    void setLineNumberDistanceFromText(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new page or section or runs continuously.             
     /// </summary>
-    utility::string_t getLineNumberRestartMode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLineNumberRestartMode() const;
     bool lineNumberRestartModeIsSet() const;
     void unsetLineNumberRestartMode();
-    void setLineNumberRestartMode(utility::string_t value);
+    void setLineNumberRestartMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the starting line number.             
     /// </summary>
-    int32_t getLineStartingNumber() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getLineStartingNumber() const;
     bool lineStartingNumberIsSet() const;
     void unsetLineStartingNumber();
-    void setLineStartingNumber(int32_t value);
+    void setLineStartingNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the orientation of the page.             
     /// </summary>
-    utility::string_t getOrientation() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getOrientation() const;
     bool orientationIsSet() const;
     void unsetOrientation();
-    void setOrientation(utility::string_t value);
+    void setOrientation(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the paper tray (bin) to be used for all but the first page of a section. The value is implementation (printer) specific.             
     /// </summary>
-    int32_t getOtherPagesTray() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getOtherPagesTray() const;
     bool otherPagesTrayIsSet() const;
     void unsetOtherPagesTray();
-    void setOtherPagesTray(int32_t value);
+    void setOtherPagesTray(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the height of the page in points.             
     /// </summary>
-    double getPageHeight() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getPageHeight() const;
     bool pageHeightIsSet() const;
     void unsetPageHeight();
-    void setPageHeight(double value);
+    void setPageHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the page number format.             
     /// </summary>
-    utility::string_t getPageNumberStyle() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getPageNumberStyle() const;
     bool pageNumberStyleIsSet() const;
     void unsetPageNumberStyle();
-    void setPageNumberStyle(utility::string_t value);
+    void setPageNumberStyle(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the starting page number of the section.             
     /// </summary>
-    int32_t getPageStartingNumber() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getPageStartingNumber() const;
     bool pageStartingNumberIsSet() const;
     void unsetPageStartingNumber();
-    void setPageStartingNumber(int32_t value);
+    void setPageStartingNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the width of the page in points.             
     /// </summary>
-    double getPageWidth() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getPageWidth() const;
     bool pageWidthIsSet() const;
     void unsetPageWidth();
-    void setPageWidth(double value);
+    void setPageWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the paper size.             
     /// </summary>
-    utility::string_t getPaperSize() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getPaperSize() const;
     bool paperSizeIsSet() const;
     void unsetPaperSize();
-    void setPaperSize(utility::string_t value);
+    void setPaperSize(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if page numbering restarts at the beginning of the section.             
     /// </summary>
-    bool isRestartPageNumbering() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isRestartPageNumbering() const;
     bool restartPageNumberingIsSet() const;
     void unsetRestartPageNumbering();
-    void setRestartPageNumbering(bool value);
+    void setRestartPageNumbering(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the distance (in points) between the right edge of the page and the right boundary of the body text.             
     /// </summary>
-    double getRightMargin() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getRightMargin() const;
     bool rightMarginIsSet() const;
     void unsetRightMargin();
-    void setRightMargin(double value);
+    void setRightMargin(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets whether Microsoft Word uses gutters for the section based on a right-to-left language or a left-to-right language.             
     /// </summary>
-    bool isRtlGutter() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isRtlGutter() const;
     bool rtlGutterIsSet() const;
     void unsetRtlGutter();
-    void setRtlGutter(bool value);
+    void setRtlGutter(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the type of section break for the specified object.             
     /// </summary>
-    utility::string_t getSectionStart() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getSectionStart() const;
     bool sectionStartIsSet() const;
     void unsetSectionStart();
-    void setSectionStart(utility::string_t value);
+    void setSectionStart(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#39;t suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.             
+    /// Gets or sets true if endnotes are printed at the end of the next section that doesn&#x27;t suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.             
     /// </summary>
-    bool isSuppressEndnotes() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSuppressEndnotes() const;
     bool suppressEndnotesIsSet() const;
     void unsetSuppressEndnotes();
-    void setSuppressEndnotes(bool value);
+    void setSuppressEndnotes(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.             
     /// </summary>
-    double getTopMargin() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getTopMargin() const;
     bool topMarginIsSet() const;
     void unsetTopMargin();
-    void setTopMargin(double value);
+    void setTopMargin(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the vertical alignment of text on each page in a document or section.             
     /// </summary>
-    utility::string_t getVerticalAlignment() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getVerticalAlignment() const;
     bool verticalAlignmentIsSet() const;
     void unsetVerticalAlignment();
-    void setVerticalAlignment(utility::string_t value);
+    void setVerticalAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    bool m_Bidi;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_Bidi;
     bool m_BidiIsSet;
-    bool m_BorderAlwaysInFront;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_BorderAlwaysInFront;
     bool m_BorderAlwaysInFrontIsSet;
-    utility::string_t m_BorderAppliesTo;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_BorderAppliesTo;
     bool m_BorderAppliesToIsSet;
-    utility::string_t m_BorderDistanceFrom;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_BorderDistanceFrom;
     bool m_BorderDistanceFromIsSet;
-    double m_BottomMargin;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_BottomMargin;
     bool m_BottomMarginIsSet;
-    bool m_DifferentFirstPageHeaderFooter;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_DifferentFirstPageHeaderFooter;
     bool m_DifferentFirstPageHeaderFooterIsSet;
-    int32_t m_FirstPageTray;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_FirstPageTray;
     bool m_FirstPageTrayIsSet;
-    double m_FooterDistance;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_FooterDistance;
     bool m_FooterDistanceIsSet;
-    double m_Gutter;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Gutter;
     bool m_GutterIsSet;
-    double m_HeaderDistance;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_HeaderDistance;
     bool m_HeaderDistanceIsSet;
-    double m_LeftMargin;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LeftMargin;
     bool m_LeftMarginIsSet;
-    int32_t m_LineNumberCountBy;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_LineNumberCountBy;
     bool m_LineNumberCountByIsSet;
-    double m_LineNumberDistanceFromText;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LineNumberDistanceFromText;
     bool m_LineNumberDistanceFromTextIsSet;
-    utility::string_t m_LineNumberRestartMode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_LineNumberRestartMode;
     bool m_LineNumberRestartModeIsSet;
-    int32_t m_LineStartingNumber;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_LineStartingNumber;
     bool m_LineStartingNumberIsSet;
-    utility::string_t m_Orientation;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Orientation;
     bool m_OrientationIsSet;
-    int32_t m_OtherPagesTray;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_OtherPagesTray;
     bool m_OtherPagesTrayIsSet;
-    double m_PageHeight;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_PageHeight;
     bool m_PageHeightIsSet;
-    utility::string_t m_PageNumberStyle;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_PageNumberStyle;
     bool m_PageNumberStyleIsSet;
-    int32_t m_PageStartingNumber;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_PageStartingNumber;
     bool m_PageStartingNumberIsSet;
-    double m_PageWidth;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_PageWidth;
     bool m_PageWidthIsSet;
-    utility::string_t m_PaperSize;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_PaperSize;
     bool m_PaperSizeIsSet;
-    bool m_RestartPageNumbering;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_RestartPageNumbering;
     bool m_RestartPageNumberingIsSet;
-    double m_RightMargin;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_RightMargin;
     bool m_RightMarginIsSet;
-    bool m_RtlGutter;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_RtlGutter;
     bool m_RtlGutterIsSet;
-    utility::string_t m_SectionStart;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_SectionStart;
     bool m_SectionStartIsSet;
-    bool m_SuppressEndnotes;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SuppressEndnotes;
     bool m_SuppressEndnotesIsSet;
-    double m_TopMargin;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_TopMargin;
     bool m_TopMarginIsSet;
-    utility::string_t m_VerticalAlignment;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_VerticalAlignment;
     bool m_VerticalAlignmentIsSet;
 };
 

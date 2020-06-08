@@ -67,7 +67,7 @@ void ParagraphResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Paragraph")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Paragraph> newItem(new Paragraph());
+            <DATA_TYPE_START>Paragraph<DATA_TYPE_END> newItem(new Paragraph());
             newItem->fromJson(fieldValue);
             setParagraph( newItem );
         }
@@ -97,20 +97,20 @@ void ParagraphResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     {
         if(multipart->hasContent(_XPLATSTR("Paragraph")))
         {
-            std::shared_ptr<Paragraph> newItem(new Paragraph());
+            <DATA_TYPE_START>Paragraph<DATA_TYPE_END> newItem(new Paragraph());
             newItem->fromMultiPart(multipart, _XPLATSTR("Paragraph."));
             setParagraph( newItem );
         }
     }
 }
 
-std::shared_ptr<Paragraph> ParagraphResponse::getParagraph() const
+<DATA_TYPE_START>Paragraph<DATA_TYPE_END> ParagraphResponse::getParagraph() const
 {
     return m_Paragraph;
 }
 
 
-void ParagraphResponse::setParagraph(std::shared_ptr<Paragraph> value)
+void ParagraphResponse::setParagraph(<DATA_TYPE_START>Paragraph<DATA_TYPE_END> value)
 {
     m_Paragraph = value;
     m_ParagraphIsSet = true;

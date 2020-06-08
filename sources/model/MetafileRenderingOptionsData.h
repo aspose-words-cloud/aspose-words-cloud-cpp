@@ -64,49 +64,49 @@ public:
     /// <summary>
     /// Gets or sets determines how EMF+ Dual metafiles should be rendered.
     /// </summary>
-    utility::string_t getEmfPlusDualRenderingMode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getEmfPlusDualRenderingMode() const;
     bool emfPlusDualRenderingModeIsSet() const;
     void unsetEmfPlusDualRenderingMode();
-    void setEmfPlusDualRenderingMode(utility::string_t value);
+    void setEmfPlusDualRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value determining whether or not the raster operations should be emulated.             
     /// </summary>
-    bool isEmulateRasterOperations() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isEmulateRasterOperations() const;
     bool emulateRasterOperationsIsSet() const;
     void unsetEmulateRasterOperations();
-    void setEmulateRasterOperations(bool value);
+    void setEmulateRasterOperations(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets determines how metafile images should be rendered.
     /// </summary>
-    utility::string_t getRenderingMode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRenderingMode() const;
     bool renderingModeIsSet() const;
     void unsetRenderingMode();
-    void setRenderingMode(utility::string_t value);
+    void setRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets determines how WMF metafiles with embedded EMF metafiles should be rendered.
     /// </summary>
-    bool isUseEmfEmbeddedToWmf() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseEmfEmbeddedToWmf() const;
     bool useEmfEmbeddedToWmfIsSet() const;
     void unsetUseEmfEmbeddedToWmf();
-    void setUseEmfEmbeddedToWmf(bool value);
+    void setUseEmfEmbeddedToWmf(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value determining whether or not to scale fonts in WMF metafile according to metafile size on the page. The default value is true.
     /// </summary>
-    bool isScaleWmfFontsToMetafileSize() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isScaleWmfFontsToMetafileSize() const;
     bool scaleWmfFontsToMetafileSizeIsSet() const;
     void unsetScaleWmfFontsToMetafileSize();
-    void setScaleWmfFontsToMetafileSize(bool value);
+    void setScaleWmfFontsToMetafileSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_EmfPlusDualRenderingMode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_EmfPlusDualRenderingMode;
     bool m_EmfPlusDualRenderingModeIsSet;
-    bool m_EmulateRasterOperations;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_EmulateRasterOperations;
     bool m_EmulateRasterOperationsIsSet;
-    utility::string_t m_RenderingMode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_RenderingMode;
     bool m_RenderingModeIsSet;
-    bool m_UseEmfEmbeddedToWmf;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseEmfEmbeddedToWmf;
     bool m_UseEmfEmbeddedToWmfIsSet;
-    bool m_ScaleWmfFontsToMetafileSize;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ScaleWmfFontsToMetafileSize;
     bool m_ScaleWmfFontsToMetafileSizeIsSet;
 };
 

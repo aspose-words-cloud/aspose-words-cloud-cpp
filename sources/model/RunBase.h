@@ -62,15 +62,15 @@ public:
     /// RunBase members
 
     /// <summary>
-    /// Gets or sets run&#39;s text.
+    /// Gets or sets run&#x27;s text.
     /// </summary>
-    utility::string_t getText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(utility::string_t value);
+    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Text;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
     bool m_TextIsSet;
 };
 

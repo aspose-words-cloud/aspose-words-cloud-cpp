@@ -53,7 +53,7 @@ web::json::value FilesList::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Value.begin(), m_Value.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<StorageFile> item) {
+			[&](<DATA_TYPE_START>StorageFile<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -77,11 +77,11 @@ void FilesList::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Value), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<StorageFile>(nullptr);
+                return <DATA_TYPE_START>StorageFile<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<StorageFile> newItem(new StorageFile());
+                <DATA_TYPE_START>StorageFile<DATA_TYPE_END> newItem(new StorageFile());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -98,7 +98,7 @@ void FilesList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Value.begin(), m_Value.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<StorageFile> item){
+        std::transform(m_Value.begin(), m_Value.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>StorageFile<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -122,11 +122,11 @@ void FilesList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Value), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<StorageFile>(nullptr) ;
+                return <DATA_TYPE_START>StorageFile<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<StorageFile> newItem(new StorageFile());
+                <DATA_TYPE_START>StorageFile<DATA_TYPE_END> newItem(new StorageFile());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -135,12 +135,12 @@ void FilesList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-std::vector<std::shared_ptr<StorageFile>>& FilesList::getValue()
+<DATA_TYPE_START>List<StorageFile><DATA_TYPE_END>& FilesList::getValue()
 {
     return m_Value;
 }
 
-void FilesList::setValue(std::vector<std::shared_ptr<StorageFile>> const& value)
+void FilesList::setValue(<DATA_TYPE_START>List<StorageFile><DATA_TYPE_END> const& value)
 {
     m_Value = value;
     m_ValueIsSet = true;

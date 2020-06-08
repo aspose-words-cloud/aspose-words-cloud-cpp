@@ -63,15 +63,15 @@ public:
     /// SectionLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of section&#39;s links.
+    /// Gets or sets collection of section&#x27;s links.
     /// </summary>
-    std::vector<std::shared_ptr<SectionLink>>& getSectionLinkList();
+    <DATA_TYPE_START>List<SectionLink><DATA_TYPE_END>& getSectionLinkList();
     bool sectionLinkListIsSet() const;
     void unsetSectionLinkList();
-    void setSectionLinkList(std::vector<std::shared_ptr<SectionLink>> const& value);
+    void setSectionLinkList(<DATA_TYPE_START>List<SectionLink><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<SectionLink>> m_SectionLinkList;
+    <DATA_TYPE_START>List<SectionLink><DATA_TYPE_END> m_SectionLinkList;
     bool m_SectionLinkListIsSet;
 };
 

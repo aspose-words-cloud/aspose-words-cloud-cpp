@@ -107,7 +107,7 @@ void Error::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("InnerError")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<ErrorDetails> newItem(new ErrorDetails());
+            <DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> newItem(new ErrorDetails());
             newItem->fromJson(fieldValue);
             setInnerError( newItem );
         }
@@ -164,20 +164,20 @@ void Error::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     {
         if(multipart->hasContent(_XPLATSTR("InnerError")))
         {
-            std::shared_ptr<ErrorDetails> newItem(new ErrorDetails());
+            <DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> newItem(new ErrorDetails());
             newItem->fromMultiPart(multipart, _XPLATSTR("InnerError."));
             setInnerError( newItem );
         }
     }
 }
 
-utility::string_t Error::getCode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Error::getCode() const
 {
     return m_Code;
 }
 
 
-void Error::setCode(utility::string_t value)
+void Error::setCode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Code = value;
     m_CodeIsSet = true;
@@ -192,13 +192,13 @@ void Error::unsetCode()
     m_CodeIsSet = false;
 }
 
-utility::string_t Error::getMessage() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Error::getMessage() const
 {
     return m_Message;
 }
 
 
-void Error::setMessage(utility::string_t value)
+void Error::setMessage(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Message = value;
     m_MessageIsSet = true;
@@ -213,13 +213,13 @@ void Error::unsetMessage()
     m_MessageIsSet = false;
 }
 
-utility::string_t Error::getDescription() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Error::getDescription() const
 {
     return m_Description;
 }
 
 
-void Error::setDescription(utility::string_t value)
+void Error::setDescription(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Description = value;
     m_DescriptionIsSet = true;
@@ -234,13 +234,13 @@ void Error::unsetDescription()
     m_DescriptionIsSet = false;
 }
 
-std::shared_ptr<ErrorDetails> Error::getInnerError() const
+<DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> Error::getInnerError() const
 {
     return m_InnerError;
 }
 
 
-void Error::setInnerError(std::shared_ptr<ErrorDetails> value)
+void Error::setInnerError(<DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> value)
 {
     m_InnerError = value;
     m_InnerErrorIsSet = true;

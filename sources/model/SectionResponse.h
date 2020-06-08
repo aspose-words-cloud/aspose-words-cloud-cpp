@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Section.
     /// </summary>
-    std::shared_ptr<Section> getSection() const;
+    <DATA_TYPE_START>Section<DATA_TYPE_END> getSection() const;
     bool sectionIsSet() const;
     void unsetSection();
-    void setSection(std::shared_ptr<Section> value);
+    void setSection(<DATA_TYPE_START>Section<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<Section> m_Section;
+    <DATA_TYPE_START>Section<DATA_TYPE_END> m_Section;
     bool m_SectionIsSet;
 };
 

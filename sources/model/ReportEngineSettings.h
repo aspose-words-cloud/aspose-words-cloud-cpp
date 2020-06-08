@@ -66,40 +66,40 @@ public:
     /// <summary>
     /// Gets or sets type of datasource.
     /// </summary>
-    utility::string_t getDataSourceType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getDataSourceType() const;
     bool dataSourceTypeIsSet() const;
     void unsetDataSourceType();
-    void setDataSourceType(utility::string_t value);
+    void setDataSourceType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets type of options to build report.
     /// </summary>
-    std::vector<std::shared_ptr<ReportBuildOptions>>& getReportBuildOptions();
+    <DATA_TYPE_START>List<ReportBuildOptions><DATA_TYPE_END>& getReportBuildOptions();
     bool reportBuildOptionsIsSet() const;
     void unsetReportBuildOptions();
-    void setReportBuildOptions(std::vector<std::shared_ptr<ReportBuildOptions>> const& value);
+    void setReportBuildOptions(<DATA_TYPE_START>List<ReportBuildOptions><DATA_TYPE_END> const& value);
     /// <summary>
     /// Gets or sets a name to reference the data source object in the template.
     /// </summary>
-    utility::string_t getDataSourceName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getDataSourceName() const;
     bool dataSourceNameIsSet() const;
     void unsetDataSourceName();
-    void setDataSourceName(utility::string_t value);
+    void setDataSourceName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets CsvDataLoadOptions.
     /// </summary>
-    std::shared_ptr<CsvDataLoadOptions> getCsvDataLoadOptions() const;
+    <DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> getCsvDataLoadOptions() const;
     bool csvDataLoadOptionsIsSet() const;
     void unsetCsvDataLoadOptions();
-    void setCsvDataLoadOptions(std::shared_ptr<CsvDataLoadOptions> value);
+    void setCsvDataLoadOptions(<DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_DataSourceType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_DataSourceType;
     bool m_DataSourceTypeIsSet;
-    std::vector<std::shared_ptr<ReportBuildOptions>> m_ReportBuildOptions;
+    <DATA_TYPE_START>List<ReportBuildOptions><DATA_TYPE_END> m_ReportBuildOptions;
     bool m_ReportBuildOptionsIsSet;
-    utility::string_t m_DataSourceName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_DataSourceName;
     bool m_DataSourceNameIsSet;
-    std::shared_ptr<CsvDataLoadOptions> m_CsvDataLoadOptions;
+    <DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> m_CsvDataLoadOptions;
     bool m_CsvDataLoadOptionsIsSet;
 };
 

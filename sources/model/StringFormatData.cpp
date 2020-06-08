@@ -185,13 +185,13 @@ void StringFormatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     }
 }
 
-utility::string_t StringFormatData::getAlignment() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StringFormatData::getAlignment() const
 {
     return m_Alignment;
 }
 
 
-void StringFormatData::setAlignment(utility::string_t value)
+void StringFormatData::setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Alignment = value;
     m_AlignmentIsSet = true;
@@ -206,13 +206,13 @@ void StringFormatData::unsetAlignment()
     m_AlignmentIsSet = false;
 }
 
-utility::string_t StringFormatData::getFormatFlags() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StringFormatData::getFormatFlags() const
 {
     return m_FormatFlags;
 }
 
 
-void StringFormatData::setFormatFlags(utility::string_t value)
+void StringFormatData::setFormatFlags(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FormatFlags = value;
     m_FormatFlagsIsSet = true;
@@ -227,13 +227,13 @@ void StringFormatData::unsetFormatFlags()
     m_FormatFlagsIsSet = false;
 }
 
-utility::string_t StringFormatData::getHotkeyPrefix() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StringFormatData::getHotkeyPrefix() const
 {
     return m_HotkeyPrefix;
 }
 
 
-void StringFormatData::setHotkeyPrefix(utility::string_t value)
+void StringFormatData::setHotkeyPrefix(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_HotkeyPrefix = value;
     m_HotkeyPrefixIsSet = true;
@@ -248,13 +248,13 @@ void StringFormatData::unsetHotkeyPrefix()
     m_HotkeyPrefixIsSet = false;
 }
 
-utility::string_t StringFormatData::getLineAlignment() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StringFormatData::getLineAlignment() const
 {
     return m_LineAlignment;
 }
 
 
-void StringFormatData::setLineAlignment(utility::string_t value)
+void StringFormatData::setLineAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_LineAlignment = value;
     m_LineAlignmentIsSet = true;
@@ -269,13 +269,13 @@ void StringFormatData::unsetLineAlignment()
     m_LineAlignmentIsSet = false;
 }
 
-utility::string_t StringFormatData::getTrimming() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StringFormatData::getTrimming() const
 {
     return m_Trimming;
 }
 
 
-void StringFormatData::setTrimming(utility::string_t value)
+void StringFormatData::setTrimming(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Trimming = value;
     m_TrimmingIsSet = true;

@@ -72,7 +72,7 @@ void FootnotesStatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("WordCount")];
         if(!fieldValue.is_null())
         {
-            setWordCount(ModelBase::int32_tFromJson(fieldValue));
+            setWordCount(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ParagraphCount")))
@@ -80,7 +80,7 @@ void FootnotesStatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ParagraphCount")];
         if(!fieldValue.is_null())
         {
-            setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
+            setParagraphCount(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -108,21 +108,21 @@ void FootnotesStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
 
     if(multipart->hasContent(_XPLATSTR("WordCount")))
     {
-        setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
+        setWordCount(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
     }
     if(multipart->hasContent(_XPLATSTR("ParagraphCount")))
     {
-        setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+        setParagraphCount(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
     }
 }
 
-int32_t FootnotesStatData::getWordCount() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> FootnotesStatData::getWordCount() const
 {
     return m_WordCount;
 }
 
 
-void FootnotesStatData::setWordCount(int32_t value)
+void FootnotesStatData::setWordCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_WordCount = value;
     m_WordCountIsSet = true;
@@ -137,13 +137,13 @@ void FootnotesStatData::unsetWordCount()
     m_WordCountIsSet = false;
 }
 
-int32_t FootnotesStatData::getParagraphCount() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> FootnotesStatData::getParagraphCount() const
 {
     return m_ParagraphCount;
 }
 
 
-void FootnotesStatData::setParagraphCount(int32_t value)
+void FootnotesStatData::setParagraphCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_ParagraphCount = value;
     m_ParagraphCountIsSet = true;

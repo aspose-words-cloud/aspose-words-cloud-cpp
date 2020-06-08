@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets CellFormat.
     /// </summary>
-    std::shared_ptr<TableCellFormat> getCellFormat() const;
+    <DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> getCellFormat() const;
     bool cellFormatIsSet() const;
     void unsetCellFormat();
-    void setCellFormat(std::shared_ptr<TableCellFormat> value);
+    void setCellFormat(<DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<TableCellFormat> m_CellFormat;
+    <DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> m_CellFormat;
     bool m_CellFormatIsSet;
 };
 

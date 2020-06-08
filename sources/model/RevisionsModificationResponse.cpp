@@ -67,7 +67,7 @@ void RevisionsModificationResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Result")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
+            <DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> newItem(new ModificationOperationResult());
             newItem->fromJson(fieldValue);
             setResult( newItem );
         }
@@ -97,20 +97,20 @@ void RevisionsModificationResponse::fromMultiPart(const std::shared_ptr<Multipar
     {
         if(multipart->hasContent(_XPLATSTR("Result")))
         {
-            std::shared_ptr<ModificationOperationResult> newItem(new ModificationOperationResult());
+            <DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> newItem(new ModificationOperationResult());
             newItem->fromMultiPart(multipart, _XPLATSTR("Result."));
             setResult( newItem );
         }
     }
 }
 
-std::shared_ptr<ModificationOperationResult> RevisionsModificationResponse::getResult() const
+<DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> RevisionsModificationResponse::getResult() const
 {
     return m_Result;
 }
 
 
-void RevisionsModificationResponse::setResult(std::shared_ptr<ModificationOperationResult> value)
+void RevisionsModificationResponse::setResult(<DATA_TYPE_START>ModificationOperationResult<DATA_TYPE_END> value)
 {
     m_Result = value;
     m_ResultIsSet = true;

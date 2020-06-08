@@ -85,7 +85,7 @@ void OfficeMathObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
+            <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> newItem(new StoryChildNodes());
             newItem->fromJson(fieldValue);
             setContent( newItem );
         }
@@ -154,7 +154,7 @@ void OfficeMathObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Content")))
         {
-            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
+            <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> newItem(new StoryChildNodes());
             newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
@@ -173,13 +173,13 @@ void OfficeMathObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     }
 }
 
-std::shared_ptr<StoryChildNodes> OfficeMathObject::getContent() const
+<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> OfficeMathObject::getContent() const
 {
     return m_Content;
 }
 
 
-void OfficeMathObject::setContent(std::shared_ptr<StoryChildNodes> value)
+void OfficeMathObject::setContent(<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> value)
 {
     m_Content = value;
     m_ContentIsSet = true;
@@ -194,13 +194,13 @@ void OfficeMathObject::unsetContent()
     m_ContentIsSet = false;
 }
 
-utility::string_t OfficeMathObject::getDisplayType() const
+<DATA_TYPE_START>string<DATA_TYPE_END> OfficeMathObject::getDisplayType() const
 {
     return m_DisplayType;
 }
 
 
-void OfficeMathObject::setDisplayType(utility::string_t value)
+void OfficeMathObject::setDisplayType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_DisplayType = value;
     m_DisplayTypeIsSet = true;
@@ -215,13 +215,13 @@ void OfficeMathObject::unsetDisplayType()
     m_DisplayTypeIsSet = false;
 }
 
-utility::string_t OfficeMathObject::getJustification() const
+<DATA_TYPE_START>string<DATA_TYPE_END> OfficeMathObject::getJustification() const
 {
     return m_Justification;
 }
 
 
-void OfficeMathObject::setJustification(utility::string_t value)
+void OfficeMathObject::setJustification(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Justification = value;
     m_JustificationIsSet = true;
@@ -236,13 +236,13 @@ void OfficeMathObject::unsetJustification()
     m_JustificationIsSet = false;
 }
 
-utility::string_t OfficeMathObject::getMathObjectType() const
+<DATA_TYPE_START>string<DATA_TYPE_END> OfficeMathObject::getMathObjectType() const
 {
     return m_MathObjectType;
 }
 
 
-void OfficeMathObject::setMathObjectType(utility::string_t value)
+void OfficeMathObject::setMathObjectType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_MathObjectType = value;
     m_MathObjectTypeIsSet = true;

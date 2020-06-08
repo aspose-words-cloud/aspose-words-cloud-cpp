@@ -67,7 +67,7 @@ void ParagraphListFormatResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListFormat")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<ListFormat> newItem(new ListFormat());
+            <DATA_TYPE_START>ListFormat<DATA_TYPE_END> newItem(new ListFormat());
             newItem->fromJson(fieldValue);
             setListFormat( newItem );
         }
@@ -97,20 +97,20 @@ void ParagraphListFormatResponse::fromMultiPart(const std::shared_ptr<MultipartF
     {
         if(multipart->hasContent(_XPLATSTR("ListFormat")))
         {
-            std::shared_ptr<ListFormat> newItem(new ListFormat());
+            <DATA_TYPE_START>ListFormat<DATA_TYPE_END> newItem(new ListFormat());
             newItem->fromMultiPart(multipart, _XPLATSTR("ListFormat."));
             setListFormat( newItem );
         }
     }
 }
 
-std::shared_ptr<ListFormat> ParagraphListFormatResponse::getListFormat() const
+<DATA_TYPE_START>ListFormat<DATA_TYPE_END> ParagraphListFormatResponse::getListFormat() const
 {
     return m_ListFormat;
 }
 
 
-void ParagraphListFormatResponse::setListFormat(std::shared_ptr<ListFormat> value)
+void ParagraphListFormatResponse::setListFormat(<DATA_TYPE_START>ListFormat<DATA_TYPE_END> value)
 {
     m_ListFormat = value;
     m_ListFormatIsSet = true;

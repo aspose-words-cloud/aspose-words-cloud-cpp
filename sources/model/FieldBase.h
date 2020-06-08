@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets field code.
     /// </summary>
-    utility::string_t getFieldCode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getFieldCode() const;
     bool fieldCodeIsSet() const;
     void unsetFieldCode();
-    void setFieldCode(utility::string_t value);
+    void setFieldCode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets LCID of the field.
     /// </summary>
-    utility::string_t getLocaleId() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLocaleId() const;
     bool localeIdIsSet() const;
     void unsetLocaleId();
-    void setLocaleId(utility::string_t value);
+    void setLocaleId(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_FieldCode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_FieldCode;
     bool m_FieldCodeIsSet;
-    utility::string_t m_LocaleId;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_LocaleId;
     bool m_LocaleIdIsSet;
 };
 

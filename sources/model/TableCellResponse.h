@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Cell.
     /// </summary>
-    std::shared_ptr<TableCell> getCell() const;
+    <DATA_TYPE_START>TableCell<DATA_TYPE_END> getCell() const;
     bool cellIsSet() const;
     void unsetCell();
-    void setCell(std::shared_ptr<TableCell> value);
+    void setCell(<DATA_TYPE_START>TableCell<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<TableCell> m_Cell;
+    <DATA_TYPE_START>TableCell<DATA_TYPE_END> m_Cell;
     bool m_CellIsSet;
 };
 

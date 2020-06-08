@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Document.
     /// </summary>
-    std::shared_ptr<Document> getDocument() const;
+    <DATA_TYPE_START>Document<DATA_TYPE_END> getDocument() const;
     bool documentIsSet() const;
     void unsetDocument();
-    void setDocument(std::shared_ptr<Document> value);
+    void setDocument(<DATA_TYPE_START>Document<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<Document> m_Document;
+    <DATA_TYPE_START>Document<DATA_TYPE_END> m_Document;
     bool m_DocumentIsSet;
 };
 

@@ -67,7 +67,7 @@ void BordersResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Borders")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<BordersCollection> newItem(new BordersCollection());
+            <DATA_TYPE_START>BordersCollection<DATA_TYPE_END> newItem(new BordersCollection());
             newItem->fromJson(fieldValue);
             setBorders( newItem );
         }
@@ -97,20 +97,20 @@ void BordersResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     {
         if(multipart->hasContent(_XPLATSTR("Borders")))
         {
-            std::shared_ptr<BordersCollection> newItem(new BordersCollection());
+            <DATA_TYPE_START>BordersCollection<DATA_TYPE_END> newItem(new BordersCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("Borders."));
             setBorders( newItem );
         }
     }
 }
 
-std::shared_ptr<BordersCollection> BordersResponse::getBorders() const
+<DATA_TYPE_START>BordersCollection<DATA_TYPE_END> BordersResponse::getBorders() const
 {
     return m_Borders;
 }
 
 
-void BordersResponse::setBorders(std::shared_ptr<BordersCollection> value)
+void BordersResponse::setBorders(<DATA_TYPE_START>BordersCollection<DATA_TYPE_END> value)
 {
     m_Borders = value;
     m_BordersIsSet = true;

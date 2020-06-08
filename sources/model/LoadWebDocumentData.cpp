@@ -79,7 +79,7 @@ void LoadWebDocumentData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SaveOptions")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
+            <DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> newItem(new SaveOptionsData());
             newItem->fromJson(fieldValue);
             setSaveOptions( newItem );
         }
@@ -118,20 +118,20 @@ void LoadWebDocumentData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         if(multipart->hasContent(_XPLATSTR("SaveOptions")))
         {
-            std::shared_ptr<SaveOptionsData> newItem(new SaveOptionsData());
+            <DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> newItem(new SaveOptionsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("SaveOptions."));
             setSaveOptions( newItem );
         }
     }
 }
 
-utility::string_t LoadWebDocumentData::getLoadingDocumentUrl() const
+<DATA_TYPE_START>string<DATA_TYPE_END> LoadWebDocumentData::getLoadingDocumentUrl() const
 {
     return m_LoadingDocumentUrl;
 }
 
 
-void LoadWebDocumentData::setLoadingDocumentUrl(utility::string_t value)
+void LoadWebDocumentData::setLoadingDocumentUrl(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_LoadingDocumentUrl = value;
     m_LoadingDocumentUrlIsSet = true;
@@ -146,13 +146,13 @@ void LoadWebDocumentData::unsetLoadingDocumentUrl()
     m_LoadingDocumentUrlIsSet = false;
 }
 
-std::shared_ptr<SaveOptionsData> LoadWebDocumentData::getSaveOptions() const
+<DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> LoadWebDocumentData::getSaveOptions() const
 {
     return m_SaveOptions;
 }
 
 
-void LoadWebDocumentData::setSaveOptions(std::shared_ptr<SaveOptionsData> value)
+void LoadWebDocumentData::setSaveOptions(<DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> value)
 {
     m_SaveOptions = value;
     m_SaveOptionsIsSet = true;

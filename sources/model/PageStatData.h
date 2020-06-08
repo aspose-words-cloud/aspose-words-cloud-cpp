@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the page&#39;s statistical data.
+/// Container for the page&#x27;s statistical data.
 /// </summary>
 class  PageStatData
     : public ModelBase
@@ -65,40 +65,40 @@ public:
     /// <summary>
     /// Gets or sets page number.
     /// </summary>
-    int32_t getPageNumber() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getPageNumber() const;
     bool pageNumberIsSet() const;
     void unsetPageNumber();
-    void setPageNumber(int32_t value);
+    void setPageNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets total count of words in the page.
     /// </summary>
-    int32_t getWordCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getWordCount() const;
     bool wordCountIsSet() const;
     void unsetWordCount();
-    void setWordCount(int32_t value);
+    void setWordCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets total count of paragraphs in the page.
     /// </summary>
-    int32_t getParagraphCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getParagraphCount() const;
     bool paragraphCountIsSet() const;
     void unsetParagraphCount();
-    void setParagraphCount(int32_t value);
+    void setParagraphCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets FootnotesStatData.
     /// </summary>
-    std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
+    <DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
     void unsetFootnotesStatData();
-    void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
+    void setFootnotesStatData(<DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> value);
 
 protected:
-    int32_t m_PageNumber;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_PageNumber;
     bool m_PageNumberIsSet;
-    int32_t m_WordCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_WordCount;
     bool m_WordCountIsSet;
-    int32_t m_ParagraphCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ParagraphCount;
     bool m_ParagraphCountIsSet;
-    std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
+    <DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> m_FootnotesStatData;
     bool m_FootnotesStatDataIsSet;
 };
 

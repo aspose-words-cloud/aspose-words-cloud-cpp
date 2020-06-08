@@ -118,13 +118,13 @@ void Hyperlink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-utility::string_t Hyperlink::getDisplayText() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Hyperlink::getDisplayText() const
 {
     return m_DisplayText;
 }
 
 
-void Hyperlink::setDisplayText(utility::string_t value)
+void Hyperlink::setDisplayText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_DisplayText = value;
     m_DisplayTextIsSet = true;
@@ -139,13 +139,13 @@ void Hyperlink::unsetDisplayText()
     m_DisplayTextIsSet = false;
 }
 
-utility::string_t Hyperlink::getValue() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Hyperlink::getValue() const
 {
     return m_Value;
 }
 
 
-void Hyperlink::setValue(utility::string_t value)
+void Hyperlink::setValue(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Value = value;
     m_ValueIsSet = true;

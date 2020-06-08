@@ -53,7 +53,7 @@ web::json::value ListLevels::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ListLevel> item) {
+			[&](<DATA_TYPE_START>ListLevel<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void ListLevels::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListLevel), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<ListLevel>(nullptr);
+                return <DATA_TYPE_START>ListLevel<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<ListLevel> newItem(new ListLevel());
+                <DATA_TYPE_START>ListLevel<DATA_TYPE_END> newItem(new ListLevel());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void ListLevels::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListLevel> item){
+        std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>ListLevel<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void ListLevels::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListLevel), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<ListLevel>(nullptr) ;
+                return <DATA_TYPE_START>ListLevel<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<ListLevel> newItem(new ListLevel());
+                <DATA_TYPE_START>ListLevel<DATA_TYPE_END> newItem(new ListLevel());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void ListLevels::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
 }
 
-std::vector<std::shared_ptr<ListLevel>>& ListLevels::getListLevel()
+<DATA_TYPE_START>List<ListLevel><DATA_TYPE_END>& ListLevels::getListLevel()
 {
     return m_ListLevel;
 }
 
-void ListLevels::setListLevel(std::vector<std::shared_ptr<ListLevel>> const& value)
+void ListLevels::setListLevel(<DATA_TYPE_START>List<ListLevel><DATA_TYPE_END> const& value)
 {
     m_ListLevel = value;
     m_ListLevelIsSet = true;

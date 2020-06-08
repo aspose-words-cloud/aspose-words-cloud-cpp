@@ -58,7 +58,7 @@ web::json::value TableRow::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_TableCellList.begin(), m_TableCellList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<TableCell> item) {
+			[&](<DATA_TYPE_START>TableCell<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -80,7 +80,7 @@ void TableRow::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RowFormat")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
+            <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> newItem(new TableRowFormat());
             newItem->fromJson(fieldValue);
             setRowFormat( newItem );
         }
@@ -94,11 +94,11 @@ void TableRow::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableCellList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<TableCell>(nullptr);
+                return <DATA_TYPE_START>TableCell<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<TableCell> newItem(new TableCell());
+                <DATA_TYPE_START>TableCell<DATA_TYPE_END> newItem(new TableCell());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -123,7 +123,7 @@ void TableRow::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_TableCellList.begin(), m_TableCellList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<TableCell> item){
+        std::transform(m_TableCellList.begin(), m_TableCellList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>TableCell<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -142,7 +142,7 @@ void TableRow::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     {
         if(multipart->hasContent(_XPLATSTR("RowFormat")))
         {
-            std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
+            <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> newItem(new TableRowFormat());
             newItem->fromMultiPart(multipart, _XPLATSTR("RowFormat."));
             setRowFormat( newItem );
         }
@@ -156,11 +156,11 @@ void TableRow::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableCellList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<TableCell>(nullptr) ;
+                return <DATA_TYPE_START>TableCell<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<TableCell> newItem(new TableCell());
+                <DATA_TYPE_START>TableCell<DATA_TYPE_END> newItem(new TableCell());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -169,13 +169,13 @@ void TableRow::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
 }
 
-std::shared_ptr<TableRowFormat> TableRow::getRowFormat() const
+<DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> TableRow::getRowFormat() const
 {
     return m_RowFormat;
 }
 
 
-void TableRow::setRowFormat(std::shared_ptr<TableRowFormat> value)
+void TableRow::setRowFormat(<DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> value)
 {
     m_RowFormat = value;
     m_RowFormatIsSet = true;
@@ -190,12 +190,12 @@ void TableRow::unsetRowFormat()
     m_RowFormatIsSet = false;
 }
 
-std::vector<std::shared_ptr<TableCell>>& TableRow::getTableCellList()
+<DATA_TYPE_START>List<TableCell><DATA_TYPE_END>& TableRow::getTableCellList()
 {
     return m_TableCellList;
 }
 
-void TableRow::setTableCellList(std::vector<std::shared_ptr<TableCell>> const& value)
+void TableRow::setTableCellList(<DATA_TYPE_START>List<TableCell><DATA_TYPE_END> const& value)
 {
     m_TableCellList = value;
     m_TableCellListIsSet = true;

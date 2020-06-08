@@ -67,7 +67,7 @@ void CommentsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Comments")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<CommentsCollection> newItem(new CommentsCollection());
+            <DATA_TYPE_START>CommentsCollection<DATA_TYPE_END> newItem(new CommentsCollection());
             newItem->fromJson(fieldValue);
             setComments( newItem );
         }
@@ -97,20 +97,20 @@ void CommentsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Comments")))
         {
-            std::shared_ptr<CommentsCollection> newItem(new CommentsCollection());
+            <DATA_TYPE_START>CommentsCollection<DATA_TYPE_END> newItem(new CommentsCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("Comments."));
             setComments( newItem );
         }
     }
 }
 
-std::shared_ptr<CommentsCollection> CommentsResponse::getComments() const
+<DATA_TYPE_START>CommentsCollection<DATA_TYPE_END> CommentsResponse::getComments() const
 {
     return m_Comments;
 }
 
 
-void CommentsResponse::setComments(std::shared_ptr<CommentsCollection> value)
+void CommentsResponse::setComments(<DATA_TYPE_START>CommentsCollection<DATA_TYPE_END> value)
 {
     m_Comments = value;
     m_CommentsIsSet = true;

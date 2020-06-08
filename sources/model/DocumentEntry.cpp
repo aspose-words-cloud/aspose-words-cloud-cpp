@@ -116,13 +116,13 @@ void DocumentEntry::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
 }
 
-utility::string_t DocumentEntry::getHref() const
+<DATA_TYPE_START>string<DATA_TYPE_END> DocumentEntry::getHref() const
 {
     return m_Href;
 }
 
 
-void DocumentEntry::setHref(utility::string_t value)
+void DocumentEntry::setHref(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Href = value;
     m_HrefIsSet = true;
@@ -137,13 +137,13 @@ void DocumentEntry::unsetHref()
     m_HrefIsSet = false;
 }
 
-utility::string_t DocumentEntry::getImportFormatMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> DocumentEntry::getImportFormatMode() const
 {
     return m_ImportFormatMode;
 }
 
 
-void DocumentEntry::setImportFormatMode(utility::string_t value)
+void DocumentEntry::setImportFormatMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ImportFormatMode = value;
     m_ImportFormatModeIsSet = true;

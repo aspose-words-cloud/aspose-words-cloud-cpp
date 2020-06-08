@@ -64,130 +64,130 @@ public:
     /// <summary>
     /// Gets or sets specifies prefix which is added to all class names in style.css file. Default value is \&quot;aw\&quot;.
     /// </summary>
-    utility::string_t getCssClassNamesPrefix() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getCssClassNamesPrefix() const;
     bool cssClassNamesPrefixIsSet() const;
     void unsetCssClassNamesPrefix();
-    void setCssClassNamesPrefix(utility::string_t value);
+    void setCssClassNamesPrefix(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets encoding.
     /// </summary>
-    utility::string_t getEncoding() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getEncoding() const;
     bool encodingIsSet() const;
     void unsetEncoding();
-    void setEncoding(utility::string_t value);
+    void setEncoding(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether the CSS (Cascading Style Sheet) should be embedded into Html document.
     /// </summary>
-    bool isExportEmbeddedCss() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportEmbeddedCss() const;
     bool exportEmbeddedCssIsSet() const;
     void unsetExportEmbeddedCss();
-    void setExportEmbeddedCss(bool value);
+    void setExportEmbeddedCss(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether fonts should be embedded into Html document in Base64 format.
     /// </summary>
-    bool isExportEmbeddedFonts() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportEmbeddedFonts() const;
     bool exportEmbeddedFontsIsSet() const;
     void unsetExportEmbeddedFonts();
-    void setExportEmbeddedFonts(bool value);
+    void setExportEmbeddedFonts(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether images should be embedded into Html document in Base64 format.
     /// </summary>
-    bool isExportEmbeddedImages() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportEmbeddedImages() const;
     bool exportEmbeddedImagesIsSet() const;
     void unsetExportEmbeddedImages();
-    void setExportEmbeddedImages(bool value);
+    void setExportEmbeddedImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets indication of whether form fields are exported as interactive items (as &#39;input&#39; tag) rather than converted to text or graphics.
+    /// Gets or sets indication of whether form fields are exported as interactive items (as &#x27;input&#x27; tag) rather than converted to text or graphics.
     /// </summary>
-    bool isExportFormFields() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportFormFields() const;
     bool exportFormFieldsIsSet() const;
     void unsetExportFormFields();
-    void setExportFormFields(bool value);
+    void setExportFormFields(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies export format of fonts.
     /// </summary>
-    utility::string_t getFontFormat() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getFontFormat() const;
     bool fontFormatIsSet() const;
     void unsetFontFormat();
-    void setFontFormat(utility::string_t value);
+    void setFontFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the horizontal alignment of pages in an HTML document. Default value is HtmlFixedHorizontalPageAlignment.Center.
     /// </summary>
-    utility::string_t getPageHorizontalAlignment() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getPageHorizontalAlignment() const;
     bool pageHorizontalAlignmentIsSet() const;
     void unsetPageHorizontalAlignment();
-    void setPageHorizontalAlignment(utility::string_t value);
+    void setPageHorizontalAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the margins around pages in an HTML document. The margins value is measured in points and should be equal to or greater than 0. Default value is 10 points.
     /// </summary>
-    double getPageMargins() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getPageMargins() const;
     bool pageMarginsIsSet() const;
     void unsetPageMargins();
-    void setPageMargins(double value);
+    void setPageMargins(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the physical folder where resources are saved when exporting a document.
     /// </summary>
-    utility::string_t getResourcesFolder() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
-    void setResourcesFolder(utility::string_t value);
+    void setResourcesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the name of the folder used to construct resource URIs.
     /// </summary>
-    utility::string_t getResourcesFolderAlias() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;
     void unsetResourcesFolderAlias();
-    void setResourcesFolderAlias(utility::string_t value);
+    void setResourcesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets flag indicates whether \&quot;@font-face\&quot; CSS rules should be placed into a separate file \&quot;fontFaces.css\&quot; when a document is being saved with external stylesheet (that is, when Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedCss is false). Default value is false, all CSS rules are written into single file \&quot;styles.css\&quot;.
     /// </summary>
-    bool isSaveFontFaceCssSeparately() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSaveFontFaceCssSeparately() const;
     bool saveFontFaceCssSeparatelyIsSet() const;
     void unsetSaveFontFaceCssSeparately();
-    void setSaveFontFaceCssSeparately(bool value);
+    void setSaveFontFaceCssSeparately(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether border around pages should be shown.
     /// </summary>
-    bool isShowPageBorder() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isShowPageBorder() const;
     bool showPageBorderIsSet() const;
     void unsetShowPageBorder();
-    void setShowPageBorder(bool value);
+    void setShowPageBorder(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets flag indicates whether fonts from target machine must be used to display the document. If this flag is set to true, Aspose.Words.Saving.HtmlFixedSaveOptions.FontFormat and Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedFonts properties do not have effect, also Aspose.Words.Saving.HtmlFixedSaveOptions.ResourceSavingCallback is not fired for fonts. Default is false.
     /// </summary>
-    bool isUseTargetMachineFonts() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseTargetMachineFonts() const;
     bool useTargetMachineFontsIsSet() const;
     void unsetUseTargetMachineFonts();
-    void setUseTargetMachineFonts(bool value);
+    void setUseTargetMachineFonts(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_CssClassNamesPrefix;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_CssClassNamesPrefix;
     bool m_CssClassNamesPrefixIsSet;
-    utility::string_t m_Encoding;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Encoding;
     bool m_EncodingIsSet;
-    bool m_ExportEmbeddedCss;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportEmbeddedCss;
     bool m_ExportEmbeddedCssIsSet;
-    bool m_ExportEmbeddedFonts;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportEmbeddedFonts;
     bool m_ExportEmbeddedFontsIsSet;
-    bool m_ExportEmbeddedImages;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportEmbeddedImages;
     bool m_ExportEmbeddedImagesIsSet;
-    bool m_ExportFormFields;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportFormFields;
     bool m_ExportFormFieldsIsSet;
-    utility::string_t m_FontFormat;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_FontFormat;
     bool m_FontFormatIsSet;
-    utility::string_t m_PageHorizontalAlignment;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_PageHorizontalAlignment;
     bool m_PageHorizontalAlignmentIsSet;
-    double m_PageMargins;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_PageMargins;
     bool m_PageMarginsIsSet;
-    utility::string_t m_ResourcesFolder;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ResourcesFolder;
     bool m_ResourcesFolderIsSet;
-    utility::string_t m_ResourcesFolderAlias;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ResourcesFolderAlias;
     bool m_ResourcesFolderAliasIsSet;
-    bool m_SaveFontFaceCssSeparately;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SaveFontFaceCssSeparately;
     bool m_SaveFontFaceCssSeparatelyIsSet;
-    bool m_ShowPageBorder;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ShowPageBorder;
     bool m_ShowPageBorderIsSet;
-    bool m_UseTargetMachineFonts;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseTargetMachineFonts;
     bool m_UseTargetMachineFontsIsSet;
 };
 

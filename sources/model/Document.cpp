@@ -62,7 +62,7 @@ web::json::value Document::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Link> item) {
+			[&](<DATA_TYPE_START>Link<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -106,11 +106,11 @@ void Document::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Links), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<Link>(nullptr);
+                return <DATA_TYPE_START>Link<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<Link> newItem(new Link());
+                <DATA_TYPE_START>Link<DATA_TYPE_END> newItem(new Link());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -139,7 +139,7 @@ void Document::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsEncrypted")];
         if(!fieldValue.is_null())
         {
-            setIsEncrypted(ModelBase::boolFromJson(fieldValue));
+            setIsEncrypted(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsSigned")))
@@ -147,7 +147,7 @@ void Document::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsSigned")];
         if(!fieldValue.is_null())
         {
-            setIsSigned(ModelBase::boolFromJson(fieldValue));
+            setIsSigned(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("DocumentProperties")))
@@ -155,7 +155,7 @@ void Document::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DocumentProperties")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<DocumentProperties> newItem(new DocumentProperties());
+            <DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> newItem(new DocumentProperties());
             newItem->fromJson(fieldValue);
             setDocumentProperties( newItem );
         }
@@ -169,7 +169,7 @@ void Document::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Link> item){
+        std::transform(m_Links.begin(), m_Links.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Link<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -221,11 +221,11 @@ void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Links), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<Link>(nullptr) ;
+                return <DATA_TYPE_START>Link<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<Link> newItem(new Link());
+                <DATA_TYPE_START>Link<DATA_TYPE_END> newItem(new Link());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -242,29 +242,29 @@ void Document::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
     if(multipart->hasContent(_XPLATSTR("IsEncrypted")))
     {
-        setIsEncrypted(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsEncrypted"))));
+        setIsEncrypted(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsEncrypted"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsSigned")))
     {
-        setIsSigned(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsSigned"))));
+        setIsSigned(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsSigned"))));
     }
     if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
     {
         if(multipart->hasContent(_XPLATSTR("DocumentProperties")))
         {
-            std::shared_ptr<DocumentProperties> newItem(new DocumentProperties());
+            <DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> newItem(new DocumentProperties());
             newItem->fromMultiPart(multipart, _XPLATSTR("DocumentProperties."));
             setDocumentProperties( newItem );
         }
     }
 }
 
-std::vector<std::shared_ptr<Link>>& Document::getLinks()
+<DATA_TYPE_START>List<Link><DATA_TYPE_END>& Document::getLinks()
 {
     return m_Links;
 }
 
-void Document::setLinks(std::vector<std::shared_ptr<Link>> const& value)
+void Document::setLinks(<DATA_TYPE_START>List<Link><DATA_TYPE_END> const& value)
 {
     m_Links = value;
     m_LinksIsSet = true;
@@ -279,13 +279,13 @@ void Document::unsetLinks()
     m_LinksIsSet = false;
 }
 
-utility::string_t Document::getFileName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Document::getFileName() const
 {
     return m_FileName;
 }
 
 
-void Document::setFileName(utility::string_t value)
+void Document::setFileName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FileName = value;
     m_FileNameIsSet = true;
@@ -300,13 +300,13 @@ void Document::unsetFileName()
     m_FileNameIsSet = false;
 }
 
-utility::string_t Document::getSourceFormat() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Document::getSourceFormat() const
 {
     return m_SourceFormat;
 }
 
 
-void Document::setSourceFormat(utility::string_t value)
+void Document::setSourceFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_SourceFormat = value;
     m_SourceFormatIsSet = true;
@@ -321,13 +321,13 @@ void Document::unsetSourceFormat()
     m_SourceFormatIsSet = false;
 }
 
-bool Document::isIsEncrypted() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Document::isIsEncrypted() const
 {
     return m_IsEncrypted;
 }
 
 
-void Document::setIsEncrypted(bool value)
+void Document::setIsEncrypted(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsEncrypted = value;
     m_IsEncryptedIsSet = true;
@@ -342,13 +342,13 @@ void Document::unsetIsEncrypted()
     m_IsEncryptedIsSet = false;
 }
 
-bool Document::isIsSigned() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Document::isIsSigned() const
 {
     return m_IsSigned;
 }
 
 
-void Document::setIsSigned(bool value)
+void Document::setIsSigned(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsSigned = value;
     m_IsSignedIsSet = true;
@@ -363,13 +363,13 @@ void Document::unsetIsSigned()
     m_IsSignedIsSet = false;
 }
 
-std::shared_ptr<DocumentProperties> Document::getDocumentProperties() const
+<DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> Document::getDocumentProperties() const
 {
     return m_DocumentProperties;
 }
 
 
-void Document::setDocumentProperties(std::shared_ptr<DocumentProperties> value)
+void Document::setDocumentProperties(<DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> value)
 {
     m_DocumentProperties = value;
     m_DocumentPropertiesIsSet = true;

@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets field code.
     /// </summary>
-    utility::string_t getFieldCode() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getFieldCode() const;
     bool fieldCodeIsSet() const;
     void unsetFieldCode();
-    void setFieldCode(utility::string_t value);
+    void setFieldCode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_FieldCode;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_FieldCode;
     bool m_FieldCodeIsSet;
 };
 

@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering. Default value is 128.
     /// </summary>
-    int32_t getThresholdForFloydSteinbergDithering() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getThresholdForFloydSteinbergDithering() const;
     bool thresholdForFloydSteinbergDitheringIsSet() const;
     void unsetThresholdForFloydSteinbergDithering();
-    void setThresholdForFloydSteinbergDithering(int32_t value);
+    void setThresholdForFloydSteinbergDithering(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies method used while converting images to 1 bpp format.
     /// </summary>
-    utility::string_t getTiffBinarizationMethod() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTiffBinarizationMethod() const;
     bool tiffBinarizationMethodIsSet() const;
     void unsetTiffBinarizationMethod();
-    void setTiffBinarizationMethod(utility::string_t value);
+    void setTiffBinarizationMethod(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets type of compression.
     /// </summary>
-    utility::string_t getTiffCompression() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTiffCompression() const;
     bool tiffCompressionIsSet() const;
     void unsetTiffCompression();
-    void setTiffCompression(utility::string_t value);
+    void setTiffCompression(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    int32_t m_ThresholdForFloydSteinbergDithering;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ThresholdForFloydSteinbergDithering;
     bool m_ThresholdForFloydSteinbergDitheringIsSet;
-    utility::string_t m_TiffBinarizationMethod;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TiffBinarizationMethod;
     bool m_TiffBinarizationMethodIsSet;
-    utility::string_t m_TiffCompression;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TiffCompression;
     bool m_TiffCompressionIsSet;
 };
 

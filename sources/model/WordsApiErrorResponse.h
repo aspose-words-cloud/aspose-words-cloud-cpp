@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Error.
     /// </summary>
-    std::shared_ptr<ApiError> getError() const;
+    <DATA_TYPE_START>ApiError<DATA_TYPE_END> getError() const;
     bool errorIsSet() const;
     void unsetError();
-    void setError(std::shared_ptr<ApiError> value);
+    void setError(<DATA_TYPE_START>ApiError<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<ApiError> m_Error;
+    <DATA_TYPE_START>ApiError<DATA_TYPE_END> m_Error;
     bool m_ErrorIsSet;
 };
 

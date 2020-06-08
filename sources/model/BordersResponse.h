@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Borders.
     /// </summary>
-    std::shared_ptr<BordersCollection> getBorders() const;
+    <DATA_TYPE_START>BordersCollection<DATA_TYPE_END> getBorders() const;
     bool bordersIsSet() const;
     void unsetBorders();
-    void setBorders(std::shared_ptr<BordersCollection> value);
+    void setBorders(<DATA_TYPE_START>BordersCollection<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<BordersCollection> m_Borders;
+    <DATA_TYPE_START>BordersCollection<DATA_TYPE_END> m_Borders;
     bool m_BordersIsSet;
 };
 

@@ -116,13 +116,13 @@ void FieldBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-utility::string_t FieldBase::getFieldCode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> FieldBase::getFieldCode() const
 {
     return m_FieldCode;
 }
 
 
-void FieldBase::setFieldCode(utility::string_t value)
+void FieldBase::setFieldCode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FieldCode = value;
     m_FieldCodeIsSet = true;
@@ -137,13 +137,13 @@ void FieldBase::unsetFieldCode()
     m_FieldCodeIsSet = false;
 }
 
-utility::string_t FieldBase::getLocaleId() const
+<DATA_TYPE_START>string<DATA_TYPE_END> FieldBase::getLocaleId() const
 {
     return m_LocaleId;
 }
 
 
-void FieldBase::setLocaleId(utility::string_t value)
+void FieldBase::setLocaleId(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_LocaleId = value;
     m_LocaleIdIsSet = true;

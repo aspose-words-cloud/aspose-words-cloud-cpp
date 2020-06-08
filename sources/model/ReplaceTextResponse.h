@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets DocumentLink.
     /// </summary>
-    std::shared_ptr<FileLink> getDocumentLink() const;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
-    void setDocumentLink(std::shared_ptr<FileLink> value);
+    void setDocumentLink(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets number of occurrences of the captured text in the document.
     /// </summary>
-    int32_t getMatches() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getMatches() const;
     bool matchesIsSet() const;
     void unsetMatches();
-    void setMatches(int32_t value);
+    void setMatches(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<FileLink> m_DocumentLink;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_DocumentLink;
     bool m_DocumentLinkIsSet;
-    int32_t m_Matches;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_Matches;
     bool m_MatchesIsSet;
 };
 

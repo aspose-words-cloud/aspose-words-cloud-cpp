@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets styles which are contained in document.
     /// </summary>
-    std::vector<std::shared_ptr<Style>>& getStyles();
+    <DATA_TYPE_START>List<Style><DATA_TYPE_END>& getStyles();
     bool stylesIsSet() const;
     void unsetStyles();
-    void setStyles(std::vector<std::shared_ptr<Style>> const& value);
+    void setStyles(<DATA_TYPE_START>List<Style><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<Style>> m_Styles;
+    <DATA_TYPE_START>List<Style><DATA_TYPE_END> m_Styles;
     bool m_StylesIsSet;
 };
 

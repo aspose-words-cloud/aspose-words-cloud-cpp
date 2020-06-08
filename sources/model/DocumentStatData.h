@@ -40,7 +40,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the document&#39;s statistical data.
+/// Container for the document&#x27;s statistical data.
 /// </summary>
 class  DocumentStatData
     : public ModelBase
@@ -66,49 +66,49 @@ public:
     /// <summary>
     /// Gets or sets total count of words in the document.
     /// </summary>
-    int32_t getWordCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getWordCount() const;
     bool wordCountIsSet() const;
     void unsetWordCount();
-    void setWordCount(int32_t value);
+    void setWordCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets total count of paragraphs in the document.
     /// </summary>
-    int32_t getParagraphCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getParagraphCount() const;
     bool paragraphCountIsSet() const;
     void unsetParagraphCount();
-    void setParagraphCount(int32_t value);
+    void setParagraphCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets total count of pages in the document.
     /// </summary>
-    int32_t getPageCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getPageCount() const;
     bool pageCountIsSet() const;
     void unsetPageCount();
-    void setPageCount(int32_t value);
+    void setPageCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets FootnotesStatData.
     /// </summary>
-    std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
+    <DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
     void unsetFootnotesStatData();
-    void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
+    void setFootnotesStatData(<DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets detailed statistics of all pages.
     /// </summary>
-    std::vector<std::shared_ptr<PageStatData>>& getPageStatData();
+    <DATA_TYPE_START>List<PageStatData><DATA_TYPE_END>& getPageStatData();
     bool pageStatDataIsSet() const;
     void unsetPageStatData();
-    void setPageStatData(std::vector<std::shared_ptr<PageStatData>> const& value);
+    void setPageStatData(<DATA_TYPE_START>List<PageStatData><DATA_TYPE_END> const& value);
 
 protected:
-    int32_t m_WordCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_WordCount;
     bool m_WordCountIsSet;
-    int32_t m_ParagraphCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ParagraphCount;
     bool m_ParagraphCountIsSet;
-    int32_t m_PageCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_PageCount;
     bool m_PageCountIsSet;
-    std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
+    <DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> m_FootnotesStatData;
     bool m_FootnotesStatDataIsSet;
-    std::vector<std::shared_ptr<PageStatData>> m_PageStatData;
+    <DATA_TYPE_START>List<PageStatData><DATA_TYPE_END> m_PageStatData;
     bool m_PageStatDataIsSet;
 };
 

@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets total count of words in footnotes.
     /// </summary>
-    int32_t getWordCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getWordCount() const;
     bool wordCountIsSet() const;
     void unsetWordCount();
-    void setWordCount(int32_t value);
+    void setWordCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets total count of paragraphs in footnotes.
     /// </summary>
-    int32_t getParagraphCount() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getParagraphCount() const;
     bool paragraphCountIsSet() const;
     void unsetParagraphCount();
-    void setParagraphCount(int32_t value);
+    void setParagraphCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    int32_t m_WordCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_WordCount;
     bool m_WordCountIsSet;
-    int32_t m_ParagraphCount;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ParagraphCount;
     bool m_ParagraphCountIsSet;
 };
 

@@ -80,7 +80,7 @@ void ErrorDetails::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ErrorDateTime")];
         if(!fieldValue.is_null())
         {
-            setErrorDateTime(ModelBase::dateFromJson(fieldValue));
+            setErrorDateTime(ModelBase::DateTime?FromJson(fieldValue));
         }
     }
 }
@@ -112,17 +112,17 @@ void ErrorDetails::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     }
     if(multipart->hasContent(_XPLATSTR("ErrorDateTime")))
     {
-        setErrorDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ErrorDateTime"))));
+        setErrorDateTime(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("ErrorDateTime"))));
     }
 }
 
-utility::string_t ErrorDetails::getRequestId() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ErrorDetails::getRequestId() const
 {
     return m_RequestId;
 }
 
 
-void ErrorDetails::setRequestId(utility::string_t value)
+void ErrorDetails::setRequestId(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_RequestId = value;
     m_RequestIdIsSet = true;
@@ -137,13 +137,13 @@ void ErrorDetails::unsetRequestId()
     m_RequestIdIsSet = false;
 }
 
-utility::datetime ErrorDetails::getErrorDateTime() const
+<DATA_TYPE_START>DateTime?<DATA_TYPE_END> ErrorDetails::getErrorDateTime() const
 {
     return m_ErrorDateTime;
 }
 
 
-void ErrorDetails::setErrorDateTime(utility::datetime value)
+void ErrorDetails::setErrorDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
 {
     m_ErrorDateTime = value;
     m_ErrorDateTimeIsSet = true;

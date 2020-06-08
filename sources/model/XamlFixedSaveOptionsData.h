@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets specifies the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format. Default is null.
     /// </summary>
-    utility::string_t getResourcesFolder() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
-    void setResourcesFolder(utility::string_t value);
+    void setResourcesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the name of the folder used to construct image URIs written into an fixed page Xaml document. Default is null.
     /// </summary>
-    utility::string_t getResourcesFolderAlias() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;
     void unsetResourcesFolderAlias();
-    void setResourcesFolderAlias(utility::string_t value);
+    void setResourcesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_ResourcesFolder;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ResourcesFolder;
     bool m_ResourcesFolderIsSet;
-    utility::string_t m_ResourcesFolderAlias;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_ResourcesFolderAlias;
     bool m_ResourcesFolderAliasIsSet;
 };
 

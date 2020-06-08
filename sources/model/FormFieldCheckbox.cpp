@@ -80,7 +80,7 @@ void FormFieldCheckbox::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CheckBoxSize")];
         if(!fieldValue.is_null())
         {
-            setCheckBoxSize(ModelBase::doubleFromJson(fieldValue));
+            setCheckBoxSize(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Checked")))
@@ -88,7 +88,7 @@ void FormFieldCheckbox::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Checked")];
         if(!fieldValue.is_null())
         {
-            setChecked(ModelBase::boolFromJson(fieldValue));
+            setChecked(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsCheckBoxExactSize")))
@@ -96,7 +96,7 @@ void FormFieldCheckbox::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsCheckBoxExactSize")];
         if(!fieldValue.is_null())
         {
-            setIsCheckBoxExactSize(ModelBase::boolFromJson(fieldValue));
+            setIsCheckBoxExactSize(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -129,25 +129,25 @@ void FormFieldCheckbox::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
 
     if(multipart->hasContent(_XPLATSTR("CheckBoxSize")))
     {
-        setCheckBoxSize(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("CheckBoxSize"))));
+        setCheckBoxSize(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("CheckBoxSize"))));
     }
     if(multipart->hasContent(_XPLATSTR("Checked")))
     {
-        setChecked(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Checked"))));
+        setChecked(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Checked"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsCheckBoxExactSize")))
     {
-        setIsCheckBoxExactSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsCheckBoxExactSize"))));
+        setIsCheckBoxExactSize(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsCheckBoxExactSize"))));
     }
 }
 
-double FormFieldCheckbox::getCheckBoxSize() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> FormFieldCheckbox::getCheckBoxSize() const
 {
     return m_CheckBoxSize;
 }
 
 
-void FormFieldCheckbox::setCheckBoxSize(double value)
+void FormFieldCheckbox::setCheckBoxSize(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_CheckBoxSize = value;
     m_CheckBoxSizeIsSet = true;
@@ -162,13 +162,13 @@ void FormFieldCheckbox::unsetCheckBoxSize()
     m_CheckBoxSizeIsSet = false;
 }
 
-bool FormFieldCheckbox::isChecked() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> FormFieldCheckbox::isChecked() const
 {
     return m_Checked;
 }
 
 
-void FormFieldCheckbox::setChecked(bool value)
+void FormFieldCheckbox::setChecked(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Checked = value;
     m_CheckedIsSet = true;
@@ -183,13 +183,13 @@ void FormFieldCheckbox::unsetChecked()
     m_CheckedIsSet = false;
 }
 
-bool FormFieldCheckbox::isIsCheckBoxExactSize() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> FormFieldCheckbox::isIsCheckBoxExactSize() const
 {
     return m_IsCheckBoxExactSize;
 }
 
 
-void FormFieldCheckbox::setIsCheckBoxExactSize(bool value)
+void FormFieldCheckbox::setIsCheckBoxExactSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsCheckBoxExactSize = value;
     m_IsCheckBoxExactSizeIsSet = true;

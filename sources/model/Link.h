@@ -62,42 +62,42 @@ public:
     /// Link members
 
     /// <summary>
-    /// Gets or sets the \&quot;href\&quot; attribute contains the link&#39;s IRI. atom:link elements MUST have an href attribute, whose value MUST be a IRI reference.
+    /// Gets or sets the \&quot;href\&quot; attribute contains the link&#x27;s IRI. atom:link elements MUST have an href attribute, whose value MUST be a IRI reference.
     /// </summary>
-    utility::string_t getHref() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getHref() const;
     bool hrefIsSet() const;
     void unsetHref();
-    void setHref(utility::string_t value);
+    void setHref(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets atom:link elements MAY have a \&quot;rel\&quot; attribute that indicates the link relation type.  If the \&quot;rel\&quot; attribute is not present, the link element MUST be interpreted as if the link relation type is \&quot;alternate\&quot;.
     /// </summary>
-    utility::string_t getRel() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRel() const;
     bool relIsSet() const;
     void unsetRel();
-    void setRel(utility::string_t value);
+    void setRel(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets on the link element, the \&quot;type\&quot; attribute&#39;s value is an advisory media type: it is a hint about the type of the representation that is expected to be returned when the value of the href attribute is dereferenced.  Note that the type attribute does not override the actual media type returned with the representation.
+    /// Gets or sets on the link element, the \&quot;type\&quot; attribute&#x27;s value is an advisory media type: it is a hint about the type of the representation that is expected to be returned when the value of the href attribute is dereferenced.  Note that the type attribute does not override the actual media type returned with the representation.
     /// </summary>
-    utility::string_t getType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getType() const;
     bool typeIsSet() const;
     void unsetType();
-    void setType(utility::string_t value);
+    void setType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the \&quot;title\&quot; attribute conveys human-readable information about the link.  The content of the \&quot;title\&quot; attribute is Language-Sensitive.
     /// </summary>
-    utility::string_t getTitle() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTitle() const;
     bool titleIsSet() const;
     void unsetTitle();
-    void setTitle(utility::string_t value);
+    void setTitle(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Href;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Href;
     bool m_HrefIsSet;
-    utility::string_t m_Rel;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Rel;
     bool m_RelIsSet;
-    utility::string_t m_Type;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Type;
     bool m_TypeIsSet;
-    utility::string_t m_Title;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Title;
     bool m_TitleIsSet;
 };
 

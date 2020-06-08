@@ -63,40 +63,40 @@ public:
     /// <summary>
     /// Gets or sets specifies whether export should correspond to ODT specification 1.1 strictly.
     /// </summary>
-    bool isIsStrictSchema11() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsStrictSchema11() const;
     bool isStrictSchema11IsSet() const;
     void unsetIsStrictSchema11();
-    void setIsStrictSchema11(bool value);
+    void setIsStrictSchema11(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets allows to specify units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.  Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
     /// </summary>
-    utility::string_t getMeasureUnit() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getMeasureUnit() const;
     bool measureUnitIsSet() const;
     void unsetMeasureUnit();
-    void setMeasureUnit(utility::string_t value);
+    void setMeasureUnit(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a password to encrypt document.
     /// </summary>
-    utility::string_t getPassword() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getPassword() const;
     bool passwordIsSet() const;
     void unsetPassword();
-    void setPassword(utility::string_t value);
+    void setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
-    bool isPrettyFormat() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isPrettyFormat() const;
     bool prettyFormatIsSet() const;
     void unsetPrettyFormat();
-    void setPrettyFormat(bool value);
+    void setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    bool m_IsStrictSchema11;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsStrictSchema11;
     bool m_IsStrictSchema11IsSet;
-    utility::string_t m_MeasureUnit;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_MeasureUnit;
     bool m_MeasureUnitIsSet;
-    utility::string_t m_Password;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Password;
     bool m_PasswordIsSet;
-    bool m_PrettyFormat;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_PrettyFormat;
     bool m_PrettyFormatIsSet;
 };
 

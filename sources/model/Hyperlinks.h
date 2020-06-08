@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets array of Hyperlink.
     /// </summary>
-    std::vector<std::shared_ptr<Hyperlink>>& getHyperlinkList();
+    <DATA_TYPE_START>List<Hyperlink><DATA_TYPE_END>& getHyperlinkList();
     bool hyperlinkListIsSet() const;
     void unsetHyperlinkList();
-    void setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> const& value);
+    void setHyperlinkList(<DATA_TYPE_START>List<Hyperlink><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<Hyperlink>> m_HyperlinkList;
+    <DATA_TYPE_START>List<Hyperlink><DATA_TYPE_END> m_HyperlinkList;
     bool m_HyperlinkListIsSet;
 };
 

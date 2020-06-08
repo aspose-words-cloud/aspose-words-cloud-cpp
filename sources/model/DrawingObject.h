@@ -64,94 +64,94 @@ public:
     /// <summary>
     /// Gets or sets height of the drawing object in points.
     /// </summary>
-    double getHeight() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getHeight() const;
     bool heightIsSet() const;
     void unsetHeight();
-    void setHeight(double value);
+    void setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets ImageDataLink.
     /// </summary>
-    std::shared_ptr<WordsApiLink> getImageDataLink() const;
+    <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> getImageDataLink() const;
     bool imageDataLinkIsSet() const;
     void unsetImageDataLink();
-    void setImageDataLink(std::shared_ptr<WordsApiLink> value);
+    void setImageDataLink(<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets distance in points from the origin to the left side of the image.             
     /// </summary>
-    double getLeft() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeft() const;
     bool leftIsSet() const;
     void unsetLeft();
-    void setLeft(double value);
+    void setLeft(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets OleDataLink.
     /// </summary>
-    std::shared_ptr<WordsApiLink> getOleDataLink() const;
+    <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> getOleDataLink() const;
     bool oleDataLinkIsSet() const;
     void unsetOleDataLink();
-    void setOleDataLink(std::shared_ptr<WordsApiLink> value);
+    void setOleDataLink(<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies where the distance to the image is measured from.             
     /// </summary>
-    utility::string_t getRelativeHorizontalPosition() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
     void unsetRelativeHorizontalPosition();
-    void setRelativeHorizontalPosition(utility::string_t value);
+    void setRelativeHorizontalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies where the distance to the image measured from.
     /// </summary>
-    utility::string_t getRelativeVerticalPosition() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRelativeVerticalPosition() const;
     bool relativeVerticalPositionIsSet() const;
     void unsetRelativeVerticalPosition();
-    void setRelativeVerticalPosition(utility::string_t value);
+    void setRelativeVerticalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a list of links that originate from this DrawingObjectDto.
     /// </summary>
-    std::vector<std::shared_ptr<WordsApiLink>>& getRenderLinks();
+    <DATA_TYPE_START>List<WordsApiLink><DATA_TYPE_END>& getRenderLinks();
     bool renderLinksIsSet() const;
     void unsetRenderLinks();
-    void setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value);
+    void setRenderLinks(<DATA_TYPE_START>List<WordsApiLink><DATA_TYPE_END> const& value);
     /// <summary>
     /// Gets or sets distance in points from the origin to the top side of the image.
     /// </summary>
-    double getTop() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getTop() const;
     bool topIsSet() const;
     void unsetTop();
-    void setTop(double value);
+    void setTop(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets width of the drawing objects in points.
     /// </summary>
-    double getWidth() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getWidth() const;
     bool widthIsSet() const;
     void unsetWidth();
-    void setWidth(double value);
+    void setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies how to wrap text around the image.
     /// </summary>
-    utility::string_t getWrapType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getWrapType() const;
     bool wrapTypeIsSet() const;
     void unsetWrapType();
-    void setWrapType(utility::string_t value);
+    void setWrapType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    double m_Height;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Height;
     bool m_HeightIsSet;
-    std::shared_ptr<WordsApiLink> m_ImageDataLink;
+    <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> m_ImageDataLink;
     bool m_ImageDataLinkIsSet;
-    double m_Left;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Left;
     bool m_LeftIsSet;
-    std::shared_ptr<WordsApiLink> m_OleDataLink;
+    <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> m_OleDataLink;
     bool m_OleDataLinkIsSet;
-    utility::string_t m_RelativeHorizontalPosition;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_RelativeHorizontalPosition;
     bool m_RelativeHorizontalPositionIsSet;
-    utility::string_t m_RelativeVerticalPosition;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_RelativeVerticalPosition;
     bool m_RelativeVerticalPositionIsSet;
-    std::vector<std::shared_ptr<WordsApiLink>> m_RenderLinks;
+    <DATA_TYPE_START>List<WordsApiLink><DATA_TYPE_END> m_RenderLinks;
     bool m_RenderLinksIsSet;
-    double m_Top;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Top;
     bool m_TopIsSet;
-    double m_Width;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Width;
     bool m_WidthIsSet;
-    utility::string_t m_WrapType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_WrapType;
     bool m_WrapTypeIsSet;
 };
 

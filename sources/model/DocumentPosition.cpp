@@ -71,7 +71,7 @@ void DocumentPosition::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Node")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<NodeLink> newItem(new NodeLink());
+            <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
             newItem->fromJson(fieldValue);
             setNode( newItem );
         }
@@ -81,7 +81,7 @@ void DocumentPosition::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Offset")];
         if(!fieldValue.is_null())
         {
-            setOffset(ModelBase::int32_tFromJson(fieldValue));
+            setOffset(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -114,24 +114,24 @@ void DocumentPosition::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Node")))
         {
-            std::shared_ptr<NodeLink> newItem(new NodeLink());
+            <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("Node."));
             setNode( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("Offset")))
     {
-        setOffset(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Offset"))));
+        setOffset(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("Offset"))));
     }
 }
 
-std::shared_ptr<NodeLink> DocumentPosition::getNode() const
+<DATA_TYPE_START>NodeLink<DATA_TYPE_END> DocumentPosition::getNode() const
 {
     return m_Node;
 }
 
 
-void DocumentPosition::setNode(std::shared_ptr<NodeLink> value)
+void DocumentPosition::setNode(<DATA_TYPE_START>NodeLink<DATA_TYPE_END> value)
 {
     m_Node = value;
     m_NodeIsSet = true;
@@ -146,13 +146,13 @@ void DocumentPosition::unsetNode()
     m_NodeIsSet = false;
 }
 
-int32_t DocumentPosition::getOffset() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> DocumentPosition::getOffset() const
 {
     return m_Offset;
 }
 
 
-void DocumentPosition::setOffset(int32_t value)
+void DocumentPosition::setOffset(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_Offset = value;
     m_OffsetIsSet = true;

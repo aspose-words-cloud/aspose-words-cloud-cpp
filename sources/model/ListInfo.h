@@ -66,67 +66,67 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether returns true if this list is a definition of a list style.
     /// </summary>
-    bool isIsListStyleDefinition() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsListStyleDefinition() const;
     bool isListStyleDefinitionIsSet() const;
     void unsetIsListStyleDefinition();
-    void setIsListStyleDefinition(bool value);
+    void setIsListStyleDefinition(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether returns true if this list is a reference to a list style.
     /// </summary>
-    bool isIsListStyleReference() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsListStyleReference() const;
     bool isListStyleReferenceIsSet() const;
     void unsetIsListStyleReference();
-    void setIsListStyleReference(bool value);
+    void setIsListStyleReference(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether returns true when the list contains 9 levels; false when 1 level.
     /// </summary>
-    bool isIsMultiLevel() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsMultiLevel() const;
     bool isMultiLevelIsSet() const;
     void unsetIsMultiLevel();
-    void setIsMultiLevel(bool value);
+    void setIsMultiLevel(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
     /// </summary>
-    bool isIsRestartAtEachSection() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsRestartAtEachSection() const;
     bool isRestartAtEachSectionIsSet() const;
     void unsetIsRestartAtEachSection();
-    void setIsRestartAtEachSection(bool value);
+    void setIsRestartAtEachSection(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the unique identifier of the list.
     /// </summary>
-    int32_t getListId() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getListId() const;
     bool listIdIsSet() const;
     void unsetListId();
-    void setListId(int32_t value);
+    void setListId(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets ListLevels.
     /// </summary>
-    std::shared_ptr<ListLevels> getListLevels() const;
+    <DATA_TYPE_START>ListLevels<DATA_TYPE_END> getListLevels() const;
     bool listLevelsIsSet() const;
     void unsetListLevels();
-    void setListLevels(std::shared_ptr<ListLevels> value);
+    void setListLevels(<DATA_TYPE_START>ListLevels<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets Style.
     /// </summary>
-    std::shared_ptr<Style> getStyle() const;
+    <DATA_TYPE_START>Style<DATA_TYPE_END> getStyle() const;
     bool styleIsSet() const;
     void unsetStyle();
-    void setStyle(std::shared_ptr<Style> value);
+    void setStyle(<DATA_TYPE_START>Style<DATA_TYPE_END> value);
 
 protected:
-    bool m_IsListStyleDefinition;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsListStyleDefinition;
     bool m_IsListStyleDefinitionIsSet;
-    bool m_IsListStyleReference;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsListStyleReference;
     bool m_IsListStyleReferenceIsSet;
-    bool m_IsMultiLevel;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsMultiLevel;
     bool m_IsMultiLevelIsSet;
-    bool m_IsRestartAtEachSection;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsRestartAtEachSection;
     bool m_IsRestartAtEachSectionIsSet;
-    int32_t m_ListId;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ListId;
     bool m_ListIdIsSet;
-    std::shared_ptr<ListLevels> m_ListLevels;
+    <DATA_TYPE_START>ListLevels<DATA_TYPE_END> m_ListLevels;
     bool m_ListLevelsIsSet;
-    std::shared_ptr<Style> m_Style;
+    <DATA_TYPE_START>Style<DATA_TYPE_END> m_Style;
     bool m_StyleIsSet;
 };
 

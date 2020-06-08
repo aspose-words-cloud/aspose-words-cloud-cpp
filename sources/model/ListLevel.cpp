@@ -140,7 +140,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Font")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Font> newItem(new Font());
+            <DATA_TYPE_START>Font<DATA_TYPE_END> newItem(new Font());
             newItem->fromJson(fieldValue);
             setFont( newItem );
         }
@@ -150,7 +150,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsLegal")];
         if(!fieldValue.is_null())
         {
-            setIsLegal(ModelBase::boolFromJson(fieldValue));
+            setIsLegal(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LinkedStyle")))
@@ -158,7 +158,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LinkedStyle")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Style> newItem(new Style());
+            <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
             newItem->fromJson(fieldValue);
             setLinkedStyle( newItem );
         }
@@ -176,7 +176,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("NumberPosition")];
         if(!fieldValue.is_null())
         {
-            setNumberPosition(ModelBase::doubleFromJson(fieldValue));
+            setNumberPosition(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("NumberStyle")))
@@ -192,7 +192,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RestartAfterLevel")];
         if(!fieldValue.is_null())
         {
-            setRestartAfterLevel(ModelBase::int32_tFromJson(fieldValue));
+            setRestartAfterLevel(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("StartAt")))
@@ -200,7 +200,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("StartAt")];
         if(!fieldValue.is_null())
         {
-            setStartAt(ModelBase::int32_tFromJson(fieldValue));
+            setStartAt(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TabPosition")))
@@ -208,7 +208,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("TabPosition")];
         if(!fieldValue.is_null())
         {
-            setTabPosition(ModelBase::doubleFromJson(fieldValue));
+            setTabPosition(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TextPosition")))
@@ -216,7 +216,7 @@ void ListLevel::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("TextPosition")];
         if(!fieldValue.is_null())
         {
-            setTextPosition(ModelBase::doubleFromJson(fieldValue));
+            setTextPosition(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TrailingCharacter")))
@@ -314,20 +314,20 @@ void ListLevel::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     {
         if(multipart->hasContent(_XPLATSTR("Font")))
         {
-            std::shared_ptr<Font> newItem(new Font());
+            <DATA_TYPE_START>Font<DATA_TYPE_END> newItem(new Font());
             newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
             setFont( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("IsLegal")))
     {
-        setIsLegal(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsLegal"))));
+        setIsLegal(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsLegal"))));
     }
     if(multipart->hasContent(_XPLATSTR("LinkedStyle")))
     {
         if(multipart->hasContent(_XPLATSTR("LinkedStyle")))
         {
-            std::shared_ptr<Style> newItem(new Style());
+            <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
             newItem->fromMultiPart(multipart, _XPLATSTR("LinkedStyle."));
             setLinkedStyle( newItem );
         }
@@ -338,7 +338,7 @@ void ListLevel::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
     if(multipart->hasContent(_XPLATSTR("NumberPosition")))
     {
-        setNumberPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("NumberPosition"))));
+        setNumberPosition(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("NumberPosition"))));
     }
     if(multipart->hasContent(_XPLATSTR("NumberStyle")))
     {
@@ -346,19 +346,19 @@ void ListLevel::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
     if(multipart->hasContent(_XPLATSTR("RestartAfterLevel")))
     {
-        setRestartAfterLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("RestartAfterLevel"))));
+        setRestartAfterLevel(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("RestartAfterLevel"))));
     }
     if(multipart->hasContent(_XPLATSTR("StartAt")))
     {
-        setStartAt(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("StartAt"))));
+        setStartAt(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("StartAt"))));
     }
     if(multipart->hasContent(_XPLATSTR("TabPosition")))
     {
-        setTabPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TabPosition"))));
+        setTabPosition(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("TabPosition"))));
     }
     if(multipart->hasContent(_XPLATSTR("TextPosition")))
     {
-        setTextPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TextPosition"))));
+        setTextPosition(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("TextPosition"))));
     }
     if(multipart->hasContent(_XPLATSTR("TrailingCharacter")))
     {
@@ -366,13 +366,13 @@ void ListLevel::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-utility::string_t ListLevel::getAlignment() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ListLevel::getAlignment() const
 {
     return m_Alignment;
 }
 
 
-void ListLevel::setAlignment(utility::string_t value)
+void ListLevel::setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Alignment = value;
     m_AlignmentIsSet = true;
@@ -387,13 +387,13 @@ void ListLevel::unsetAlignment()
     m_AlignmentIsSet = false;
 }
 
-std::shared_ptr<Font> ListLevel::getFont() const
+<DATA_TYPE_START>Font<DATA_TYPE_END> ListLevel::getFont() const
 {
     return m_Font;
 }
 
 
-void ListLevel::setFont(std::shared_ptr<Font> value)
+void ListLevel::setFont(<DATA_TYPE_START>Font<DATA_TYPE_END> value)
 {
     m_Font = value;
     m_FontIsSet = true;
@@ -408,13 +408,13 @@ void ListLevel::unsetFont()
     m_FontIsSet = false;
 }
 
-bool ListLevel::isIsLegal() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ListLevel::isIsLegal() const
 {
     return m_IsLegal;
 }
 
 
-void ListLevel::setIsLegal(bool value)
+void ListLevel::setIsLegal(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsLegal = value;
     m_IsLegalIsSet = true;
@@ -429,13 +429,13 @@ void ListLevel::unsetIsLegal()
     m_IsLegalIsSet = false;
 }
 
-std::shared_ptr<Style> ListLevel::getLinkedStyle() const
+<DATA_TYPE_START>Style<DATA_TYPE_END> ListLevel::getLinkedStyle() const
 {
     return m_LinkedStyle;
 }
 
 
-void ListLevel::setLinkedStyle(std::shared_ptr<Style> value)
+void ListLevel::setLinkedStyle(<DATA_TYPE_START>Style<DATA_TYPE_END> value)
 {
     m_LinkedStyle = value;
     m_LinkedStyleIsSet = true;
@@ -450,13 +450,13 @@ void ListLevel::unsetLinkedStyle()
     m_LinkedStyleIsSet = false;
 }
 
-utility::string_t ListLevel::getNumberFormat() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ListLevel::getNumberFormat() const
 {
     return m_NumberFormat;
 }
 
 
-void ListLevel::setNumberFormat(utility::string_t value)
+void ListLevel::setNumberFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NumberFormat = value;
     m_NumberFormatIsSet = true;
@@ -471,13 +471,13 @@ void ListLevel::unsetNumberFormat()
     m_NumberFormatIsSet = false;
 }
 
-double ListLevel::getNumberPosition() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ListLevel::getNumberPosition() const
 {
     return m_NumberPosition;
 }
 
 
-void ListLevel::setNumberPosition(double value)
+void ListLevel::setNumberPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_NumberPosition = value;
     m_NumberPositionIsSet = true;
@@ -492,13 +492,13 @@ void ListLevel::unsetNumberPosition()
     m_NumberPositionIsSet = false;
 }
 
-utility::string_t ListLevel::getNumberStyle() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ListLevel::getNumberStyle() const
 {
     return m_NumberStyle;
 }
 
 
-void ListLevel::setNumberStyle(utility::string_t value)
+void ListLevel::setNumberStyle(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NumberStyle = value;
     m_NumberStyleIsSet = true;
@@ -513,13 +513,13 @@ void ListLevel::unsetNumberStyle()
     m_NumberStyleIsSet = false;
 }
 
-int32_t ListLevel::getRestartAfterLevel() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> ListLevel::getRestartAfterLevel() const
 {
     return m_RestartAfterLevel;
 }
 
 
-void ListLevel::setRestartAfterLevel(int32_t value)
+void ListLevel::setRestartAfterLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_RestartAfterLevel = value;
     m_RestartAfterLevelIsSet = true;
@@ -534,13 +534,13 @@ void ListLevel::unsetRestartAfterLevel()
     m_RestartAfterLevelIsSet = false;
 }
 
-int32_t ListLevel::getStartAt() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> ListLevel::getStartAt() const
 {
     return m_StartAt;
 }
 
 
-void ListLevel::setStartAt(int32_t value)
+void ListLevel::setStartAt(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_StartAt = value;
     m_StartAtIsSet = true;
@@ -555,13 +555,13 @@ void ListLevel::unsetStartAt()
     m_StartAtIsSet = false;
 }
 
-double ListLevel::getTabPosition() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ListLevel::getTabPosition() const
 {
     return m_TabPosition;
 }
 
 
-void ListLevel::setTabPosition(double value)
+void ListLevel::setTabPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_TabPosition = value;
     m_TabPositionIsSet = true;
@@ -576,13 +576,13 @@ void ListLevel::unsetTabPosition()
     m_TabPositionIsSet = false;
 }
 
-double ListLevel::getTextPosition() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ListLevel::getTextPosition() const
 {
     return m_TextPosition;
 }
 
 
-void ListLevel::setTextPosition(double value)
+void ListLevel::setTextPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_TextPosition = value;
     m_TextPositionIsSet = true;
@@ -597,13 +597,13 @@ void ListLevel::unsetTextPosition()
     m_TextPositionIsSet = false;
 }
 
-utility::string_t ListLevel::getTrailingCharacter() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ListLevel::getTrailingCharacter() const
 {
     return m_TrailingCharacter;
 }
 
 
-void ListLevel::setTrailingCharacter(utility::string_t value)
+void ListLevel::setTrailingCharacter(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_TrailingCharacter = value;
     m_TrailingCharacterIsSet = true;

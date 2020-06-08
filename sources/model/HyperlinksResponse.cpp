@@ -67,7 +67,7 @@ void HyperlinksResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Hyperlinks")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Hyperlinks> newItem(new Hyperlinks());
+            <DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> newItem(new Hyperlinks());
             newItem->fromJson(fieldValue);
             setHyperlinks( newItem );
         }
@@ -97,20 +97,20 @@ void HyperlinksResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     {
         if(multipart->hasContent(_XPLATSTR("Hyperlinks")))
         {
-            std::shared_ptr<Hyperlinks> newItem(new Hyperlinks());
+            <DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> newItem(new Hyperlinks());
             newItem->fromMultiPart(multipart, _XPLATSTR("Hyperlinks."));
             setHyperlinks( newItem );
         }
     }
 }
 
-std::shared_ptr<Hyperlinks> HyperlinksResponse::getHyperlinks() const
+<DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> HyperlinksResponse::getHyperlinks() const
 {
     return m_Hyperlinks;
 }
 
 
-void HyperlinksResponse::setHyperlinks(std::shared_ptr<Hyperlinks> value)
+void HyperlinksResponse::setHyperlinks(<DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> value)
 {
     m_Hyperlinks = value;
     m_HyperlinksIsSet = true;

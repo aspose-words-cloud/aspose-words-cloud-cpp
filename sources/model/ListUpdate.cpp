@@ -66,7 +66,7 @@ void ListUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsRestartAtEachSection")];
         if(!fieldValue.is_null())
         {
-            setIsRestartAtEachSection(ModelBase::boolFromJson(fieldValue));
+            setIsRestartAtEachSection(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -89,17 +89,17 @@ void ListUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
 
     if(multipart->hasContent(_XPLATSTR("IsRestartAtEachSection")))
     {
-        setIsRestartAtEachSection(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsRestartAtEachSection"))));
+        setIsRestartAtEachSection(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsRestartAtEachSection"))));
     }
 }
 
-bool ListUpdate::isIsRestartAtEachSection() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> ListUpdate::isIsRestartAtEachSection() const
 {
     return m_IsRestartAtEachSection;
 }
 
 
-void ListUpdate::setIsRestartAtEachSection(bool value)
+void ListUpdate::setIsRestartAtEachSection(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsRestartAtEachSection = value;
     m_IsRestartAtEachSectionIsSet = true;

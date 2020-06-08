@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether this tab stop clears any existing tab stops in this position.
     /// </summary>
-    bool isIsClear() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsClear() const;
     bool isClearIsSet() const;
     void unsetIsClear();
-    void setIsClear(bool value);
+    void setIsClear(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    bool m_IsClear;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsClear;
     bool m_IsClearIsSet;
 };
 

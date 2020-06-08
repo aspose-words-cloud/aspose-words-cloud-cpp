@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether flag indicates whether the property is built-in or not. If true the property is built-in, if false the property is custom.
     /// </summary>
-    bool isBuiltIn() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isBuiltIn() const;
     bool builtInIsSet() const;
     void unsetBuiltIn();
-    void setBuiltIn(bool value);
+    void setBuiltIn(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets name of the document property.
     /// </summary>
-    utility::string_t getName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(utility::string_t value);
+    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets string value of the document property.
     /// </summary>
-    utility::string_t getValue() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getValue() const;
     bool valueIsSet() const;
     void unsetValue();
-    void setValue(utility::string_t value);
+    void setValue(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    bool m_BuiltIn;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_BuiltIn;
     bool m_BuiltInIsSet;
-    utility::string_t m_Name;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
     bool m_NameIsSet;
-    utility::string_t m_Value;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Value;
     bool m_ValueIsSet;
 };
 

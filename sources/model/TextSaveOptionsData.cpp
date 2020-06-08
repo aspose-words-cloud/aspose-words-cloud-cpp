@@ -104,7 +104,7 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AddBidiMarks")];
         if(!fieldValue.is_null())
         {
-            setAddBidiMarks(ModelBase::boolFromJson(fieldValue));
+            setAddBidiMarks(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Encoding")))
@@ -128,7 +128,7 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ForcePageBreaks")];
         if(!fieldValue.is_null())
         {
-            setForcePageBreaks(ModelBase::boolFromJson(fieldValue));
+            setForcePageBreaks(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ParagraphBreak")))
@@ -144,7 +144,7 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PreserveTableLayout")];
         if(!fieldValue.is_null())
         {
-            setPreserveTableLayout(ModelBase::boolFromJson(fieldValue));
+            setPreserveTableLayout(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SimplifyListLabels")))
@@ -152,7 +152,7 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SimplifyListLabels")];
         if(!fieldValue.is_null())
         {
-            setSimplifyListLabels(ModelBase::boolFromJson(fieldValue));
+            setSimplifyListLabels(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -205,7 +205,7 @@ void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
 
     if(multipart->hasContent(_XPLATSTR("AddBidiMarks")))
     {
-        setAddBidiMarks(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddBidiMarks"))));
+        setAddBidiMarks(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AddBidiMarks"))));
     }
     if(multipart->hasContent(_XPLATSTR("Encoding")))
     {
@@ -217,7 +217,7 @@ void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("ForcePageBreaks")))
     {
-        setForcePageBreaks(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ForcePageBreaks"))));
+        setForcePageBreaks(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ForcePageBreaks"))));
     }
     if(multipart->hasContent(_XPLATSTR("ParagraphBreak")))
     {
@@ -225,21 +225,21 @@ void TextSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("PreserveTableLayout")))
     {
-        setPreserveTableLayout(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PreserveTableLayout"))));
+        setPreserveTableLayout(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PreserveTableLayout"))));
     }
     if(multipart->hasContent(_XPLATSTR("SimplifyListLabels")))
     {
-        setSimplifyListLabels(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SimplifyListLabels"))));
+        setSimplifyListLabels(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SimplifyListLabels"))));
     }
 }
 
-bool TextSaveOptionsData::isAddBidiMarks() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TextSaveOptionsData::isAddBidiMarks() const
 {
     return m_AddBidiMarks;
 }
 
 
-void TextSaveOptionsData::setAddBidiMarks(bool value)
+void TextSaveOptionsData::setAddBidiMarks(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_AddBidiMarks = value;
     m_AddBidiMarksIsSet = true;
@@ -254,13 +254,13 @@ void TextSaveOptionsData::unsetAddBidiMarks()
     m_AddBidiMarksIsSet = false;
 }
 
-utility::string_t TextSaveOptionsData::getEncoding() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TextSaveOptionsData::getEncoding() const
 {
     return m_Encoding;
 }
 
 
-void TextSaveOptionsData::setEncoding(utility::string_t value)
+void TextSaveOptionsData::setEncoding(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Encoding = value;
     m_EncodingIsSet = true;
@@ -275,13 +275,13 @@ void TextSaveOptionsData::unsetEncoding()
     m_EncodingIsSet = false;
 }
 
-utility::string_t TextSaveOptionsData::getExportHeadersFootersMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TextSaveOptionsData::getExportHeadersFootersMode() const
 {
     return m_ExportHeadersFootersMode;
 }
 
 
-void TextSaveOptionsData::setExportHeadersFootersMode(utility::string_t value)
+void TextSaveOptionsData::setExportHeadersFootersMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ExportHeadersFootersMode = value;
     m_ExportHeadersFootersModeIsSet = true;
@@ -296,13 +296,13 @@ void TextSaveOptionsData::unsetExportHeadersFootersMode()
     m_ExportHeadersFootersModeIsSet = false;
 }
 
-bool TextSaveOptionsData::isForcePageBreaks() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TextSaveOptionsData::isForcePageBreaks() const
 {
     return m_ForcePageBreaks;
 }
 
 
-void TextSaveOptionsData::setForcePageBreaks(bool value)
+void TextSaveOptionsData::setForcePageBreaks(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ForcePageBreaks = value;
     m_ForcePageBreaksIsSet = true;
@@ -317,13 +317,13 @@ void TextSaveOptionsData::unsetForcePageBreaks()
     m_ForcePageBreaksIsSet = false;
 }
 
-utility::string_t TextSaveOptionsData::getParagraphBreak() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TextSaveOptionsData::getParagraphBreak() const
 {
     return m_ParagraphBreak;
 }
 
 
-void TextSaveOptionsData::setParagraphBreak(utility::string_t value)
+void TextSaveOptionsData::setParagraphBreak(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ParagraphBreak = value;
     m_ParagraphBreakIsSet = true;
@@ -338,13 +338,13 @@ void TextSaveOptionsData::unsetParagraphBreak()
     m_ParagraphBreakIsSet = false;
 }
 
-bool TextSaveOptionsData::isPreserveTableLayout() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TextSaveOptionsData::isPreserveTableLayout() const
 {
     return m_PreserveTableLayout;
 }
 
 
-void TextSaveOptionsData::setPreserveTableLayout(bool value)
+void TextSaveOptionsData::setPreserveTableLayout(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_PreserveTableLayout = value;
     m_PreserveTableLayoutIsSet = true;
@@ -359,13 +359,13 @@ void TextSaveOptionsData::unsetPreserveTableLayout()
     m_PreserveTableLayoutIsSet = false;
 }
 
-bool TextSaveOptionsData::isSimplifyListLabels() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TextSaveOptionsData::isSimplifyListLabels() const
 {
     return m_SimplifyListLabels;
 }
 
 
-void TextSaveOptionsData::setSimplifyListLabels(bool value)
+void TextSaveOptionsData::setSimplifyListLabels(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_SimplifyListLabels = value;
     m_SimplifyListLabelsIsSet = true;

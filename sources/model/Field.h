@@ -63,22 +63,22 @@ public:
     /// <summary>
     /// Gets or sets LCID of the field.
     /// </summary>
-    utility::string_t getLocaleId() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLocaleId() const;
     bool localeIdIsSet() const;
     void unsetLocaleId();
-    void setLocaleId(utility::string_t value);
+    void setLocaleId(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets field result.
     /// </summary>
-    utility::string_t getResult() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getResult() const;
     bool resultIsSet() const;
     void unsetResult();
-    void setResult(utility::string_t value);
+    void setResult(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_LocaleId;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_LocaleId;
     bool m_LocaleIdIsSet;
-    utility::string_t m_Result;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Result;
     bool m_ResultIsSet;
 };
 

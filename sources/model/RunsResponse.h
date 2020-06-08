@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Runs.
     /// </summary>
-    std::shared_ptr<Runs> getRuns() const;
+    <DATA_TYPE_START>Runs<DATA_TYPE_END> getRuns() const;
     bool runsIsSet() const;
     void unsetRuns();
-    void setRuns(std::shared_ptr<Runs> value);
+    void setRuns(<DATA_TYPE_START>Runs<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<Runs> m_Runs;
+    <DATA_TYPE_START>Runs<DATA_TYPE_END> m_Runs;
     bool m_RunsIsSet;
 };
 

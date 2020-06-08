@@ -67,7 +67,7 @@ void TableRowResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Row")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<TableRow> newItem(new TableRow());
+            <DATA_TYPE_START>TableRow<DATA_TYPE_END> newItem(new TableRow());
             newItem->fromJson(fieldValue);
             setRow( newItem );
         }
@@ -97,20 +97,20 @@ void TableRowResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("Row")))
         {
-            std::shared_ptr<TableRow> newItem(new TableRow());
+            <DATA_TYPE_START>TableRow<DATA_TYPE_END> newItem(new TableRow());
             newItem->fromMultiPart(multipart, _XPLATSTR("Row."));
             setRow( newItem );
         }
     }
 }
 
-std::shared_ptr<TableRow> TableRowResponse::getRow() const
+<DATA_TYPE_START>TableRow<DATA_TYPE_END> TableRowResponse::getRow() const
 {
     return m_Row;
 }
 
 
-void TableRowResponse::setRow(std::shared_ptr<TableRow> value)
+void TableRowResponse::setRow(<DATA_TYPE_START>TableRow<DATA_TYPE_END> value)
 {
     m_Row = value;
     m_RowIsSet = true;

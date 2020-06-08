@@ -65,58 +65,58 @@ public:
     /// <summary>
     /// Gets or sets allows to specify individual bookmarks outline level.
     /// </summary>
-    std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& getBookmarksOutlineLevels();
+    <DATA_TYPE_START>List<BookmarksOutlineLevelData><DATA_TYPE_END>& getBookmarksOutlineLevels();
     bool bookmarksOutlineLevelsIsSet() const;
     void unsetBookmarksOutlineLevels();
-    void setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value);
+    void setBookmarksOutlineLevels(<DATA_TYPE_START>List<BookmarksOutlineLevelData><DATA_TYPE_END> const& value);
     /// <summary>
     /// Gets or sets specifies the default level in the document outline at which to display Word bookmarks.
     /// </summary>
-    int32_t getDefaultBookmarksOutlineLevel() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getDefaultBookmarksOutlineLevel() const;
     bool defaultBookmarksOutlineLevelIsSet() const;
     void unsetDefaultBookmarksOutlineLevel();
-    void setDefaultBookmarksOutlineLevel(int32_t value);
+    void setDefaultBookmarksOutlineLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value determining whether or not to create missing outline levels     when the document is exported.     Default value for this property is false.
     /// </summary>
-    bool isCreateMissingOutlineLevels() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isCreateMissingOutlineLevels() const;
     bool createMissingOutlineLevelsIsSet() const;
     void unsetCreateMissingOutlineLevels();
-    void setCreateMissingOutlineLevels(bool value);
+    void setCreateMissingOutlineLevels(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether or not to create outlines for headings (paragraphs formatted     with the Heading styles) inside tables.
     /// </summary>
-    bool isCreateOutlinesForHeadingsInTables() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isCreateOutlinesForHeadingsInTables() const;
     bool createOutlinesForHeadingsInTablesIsSet() const;
     void unsetCreateOutlinesForHeadingsInTables();
-    void setCreateOutlinesForHeadingsInTables(bool value);
+    void setCreateOutlinesForHeadingsInTables(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies how many levels in the document outline to show expanded when the file is viewed.
     /// </summary>
-    int32_t getExpandedOutlineLevels() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getExpandedOutlineLevels() const;
     bool expandedOutlineLevelsIsSet() const;
     void unsetExpandedOutlineLevels();
-    void setExpandedOutlineLevels(int32_t value);
+    void setExpandedOutlineLevels(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
     /// </summary>
-    int32_t getHeadingsOutlineLevels() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getHeadingsOutlineLevels() const;
     bool headingsOutlineLevelsIsSet() const;
     void unsetHeadingsOutlineLevels();
-    void setHeadingsOutlineLevels(int32_t value);
+    void setHeadingsOutlineLevels(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    std::vector<std::shared_ptr<BookmarksOutlineLevelData>> m_BookmarksOutlineLevels;
+    <DATA_TYPE_START>List<BookmarksOutlineLevelData><DATA_TYPE_END> m_BookmarksOutlineLevels;
     bool m_BookmarksOutlineLevelsIsSet;
-    int32_t m_DefaultBookmarksOutlineLevel;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_DefaultBookmarksOutlineLevel;
     bool m_DefaultBookmarksOutlineLevelIsSet;
-    bool m_CreateMissingOutlineLevels;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_CreateMissingOutlineLevels;
     bool m_CreateMissingOutlineLevelsIsSet;
-    bool m_CreateOutlinesForHeadingsInTables;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_CreateOutlinesForHeadingsInTables;
     bool m_CreateOutlinesForHeadingsInTablesIsSet;
-    int32_t m_ExpandedOutlineLevels;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ExpandedOutlineLevels;
     bool m_ExpandedOutlineLevelsIsSet;
-    int32_t m_HeadingsOutlineLevels;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_HeadingsOutlineLevels;
     bool m_HeadingsOutlineLevelsIsSet;
 };
 

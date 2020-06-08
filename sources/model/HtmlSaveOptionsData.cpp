@@ -296,7 +296,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AllowNegativeIndent")];
         if(!fieldValue.is_null())
         {
-            setAllowNegativeIndent(ModelBase::boolFromJson(fieldValue));
+            setAllowNegativeIndent(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("CssClassNamePrefix")))
@@ -336,7 +336,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DocumentSplitHeadingLevel")];
         if(!fieldValue.is_null())
         {
-            setDocumentSplitHeadingLevel(ModelBase::int32_tFromJson(fieldValue));
+            setDocumentSplitHeadingLevel(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Encoding")))
@@ -352,7 +352,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportDocumentProperties")];
         if(!fieldValue.is_null())
         {
-            setExportDocumentProperties(ModelBase::boolFromJson(fieldValue));
+            setExportDocumentProperties(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportDropDownFormFieldAsText")))
@@ -360,7 +360,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportDropDownFormFieldAsText")];
         if(!fieldValue.is_null())
         {
-            setExportDropDownFormFieldAsText(ModelBase::boolFromJson(fieldValue));
+            setExportDropDownFormFieldAsText(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportFontResources")))
@@ -368,7 +368,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportFontResources")];
         if(!fieldValue.is_null())
         {
-            setExportFontResources(ModelBase::boolFromJson(fieldValue));
+            setExportFontResources(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportFontsAsBase64")))
@@ -376,7 +376,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportFontsAsBase64")];
         if(!fieldValue.is_null())
         {
-            setExportFontsAsBase64(ModelBase::boolFromJson(fieldValue));
+            setExportFontsAsBase64(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportHeadersFootersMode")))
@@ -392,7 +392,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportImagesAsBase64")];
         if(!fieldValue.is_null())
         {
-            setExportImagesAsBase64(ModelBase::boolFromJson(fieldValue));
+            setExportImagesAsBase64(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportLanguageInformation")))
@@ -400,7 +400,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportLanguageInformation")];
         if(!fieldValue.is_null())
         {
-            setExportLanguageInformation(ModelBase::boolFromJson(fieldValue));
+            setExportLanguageInformation(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportListLabels")))
@@ -416,7 +416,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportOriginalUrlForLinkedImages")];
         if(!fieldValue.is_null())
         {
-            setExportOriginalUrlForLinkedImages(ModelBase::boolFromJson(fieldValue));
+            setExportOriginalUrlForLinkedImages(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportPageMargins")))
@@ -424,7 +424,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportPageMargins")];
         if(!fieldValue.is_null())
         {
-            setExportPageMargins(ModelBase::boolFromJson(fieldValue));
+            setExportPageMargins(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportPageSetup")))
@@ -432,7 +432,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportPageSetup")];
         if(!fieldValue.is_null())
         {
-            setExportPageSetup(ModelBase::boolFromJson(fieldValue));
+            setExportPageSetup(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportRelativeFontSize")))
@@ -440,7 +440,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportRelativeFontSize")];
         if(!fieldValue.is_null())
         {
-            setExportRelativeFontSize(ModelBase::boolFromJson(fieldValue));
+            setExportRelativeFontSize(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportRoundtripInformation")))
@@ -448,7 +448,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportRoundtripInformation")];
         if(!fieldValue.is_null())
         {
-            setExportRoundtripInformation(ModelBase::boolFromJson(fieldValue));
+            setExportRoundtripInformation(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportTextBoxAsSvg")))
@@ -456,7 +456,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportTextBoxAsSvg")];
         if(!fieldValue.is_null())
         {
-            setExportTextBoxAsSvg(ModelBase::boolFromJson(fieldValue));
+            setExportTextBoxAsSvg(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportTextInputFormFieldAsText")))
@@ -464,7 +464,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportTextInputFormFieldAsText")];
         if(!fieldValue.is_null())
         {
-            setExportTextInputFormFieldAsText(ModelBase::boolFromJson(fieldValue));
+            setExportTextInputFormFieldAsText(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportTocPageNumbers")))
@@ -472,7 +472,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportTocPageNumbers")];
         if(!fieldValue.is_null())
         {
-            setExportTocPageNumbers(ModelBase::boolFromJson(fieldValue));
+            setExportTocPageNumbers(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportXhtmlTransitional")))
@@ -480,7 +480,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportXhtmlTransitional")];
         if(!fieldValue.is_null())
         {
-            setExportXhtmlTransitional(ModelBase::boolFromJson(fieldValue));
+            setExportXhtmlTransitional(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("FontResourcesSubsettingSizeThreshold")))
@@ -488,7 +488,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FontResourcesSubsettingSizeThreshold")];
         if(!fieldValue.is_null())
         {
-            setFontResourcesSubsettingSizeThreshold(ModelBase::int32_tFromJson(fieldValue));
+            setFontResourcesSubsettingSizeThreshold(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("FontsFolder")))
@@ -520,7 +520,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ImageResolution")];
         if(!fieldValue.is_null())
         {
-            setImageResolution(ModelBase::int32_tFromJson(fieldValue));
+            setImageResolution(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ImagesFolder")))
@@ -560,7 +560,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
+            setPrettyFormat(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ResolveFontNames")))
@@ -568,7 +568,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ResolveFontNames")];
         if(!fieldValue.is_null())
         {
-            setResolveFontNames(ModelBase::boolFromJson(fieldValue));
+            setResolveFontNames(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ResourceFolder")))
@@ -592,7 +592,7 @@ void HtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ScaleImageToShapeSize")];
         if(!fieldValue.is_null())
         {
-            setScaleImageToShapeSize(ModelBase::boolFromJson(fieldValue));
+            setScaleImageToShapeSize(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TableWidthOutputMode")))
@@ -813,7 +813,7 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
 
     if(multipart->hasContent(_XPLATSTR("AllowNegativeIndent")))
     {
-        setAllowNegativeIndent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowNegativeIndent"))));
+        setAllowNegativeIndent(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AllowNegativeIndent"))));
     }
     if(multipart->hasContent(_XPLATSTR("CssClassNamePrefix")))
     {
@@ -833,7 +833,7 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("DocumentSplitHeadingLevel")))
     {
-        setDocumentSplitHeadingLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("DocumentSplitHeadingLevel"))));
+        setDocumentSplitHeadingLevel(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("DocumentSplitHeadingLevel"))));
     }
     if(multipart->hasContent(_XPLATSTR("Encoding")))
     {
@@ -841,19 +841,19 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("ExportDocumentProperties")))
     {
-        setExportDocumentProperties(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportDocumentProperties"))));
+        setExportDocumentProperties(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportDocumentProperties"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportDropDownFormFieldAsText")))
     {
-        setExportDropDownFormFieldAsText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportDropDownFormFieldAsText"))));
+        setExportDropDownFormFieldAsText(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportDropDownFormFieldAsText"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportFontResources")))
     {
-        setExportFontResources(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportFontResources"))));
+        setExportFontResources(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportFontResources"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportFontsAsBase64")))
     {
-        setExportFontsAsBase64(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportFontsAsBase64"))));
+        setExportFontsAsBase64(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportFontsAsBase64"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportHeadersFootersMode")))
     {
@@ -861,11 +861,11 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("ExportImagesAsBase64")))
     {
-        setExportImagesAsBase64(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportImagesAsBase64"))));
+        setExportImagesAsBase64(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportImagesAsBase64"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportLanguageInformation")))
     {
-        setExportLanguageInformation(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportLanguageInformation"))));
+        setExportLanguageInformation(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportLanguageInformation"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportListLabels")))
     {
@@ -873,43 +873,43 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("ExportOriginalUrlForLinkedImages")))
     {
-        setExportOriginalUrlForLinkedImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportOriginalUrlForLinkedImages"))));
+        setExportOriginalUrlForLinkedImages(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportOriginalUrlForLinkedImages"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportPageMargins")))
     {
-        setExportPageMargins(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportPageMargins"))));
+        setExportPageMargins(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportPageMargins"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportPageSetup")))
     {
-        setExportPageSetup(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportPageSetup"))));
+        setExportPageSetup(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportPageSetup"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportRelativeFontSize")))
     {
-        setExportRelativeFontSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportRelativeFontSize"))));
+        setExportRelativeFontSize(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportRelativeFontSize"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportRoundtripInformation")))
     {
-        setExportRoundtripInformation(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportRoundtripInformation"))));
+        setExportRoundtripInformation(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportRoundtripInformation"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportTextBoxAsSvg")))
     {
-        setExportTextBoxAsSvg(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportTextBoxAsSvg"))));
+        setExportTextBoxAsSvg(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportTextBoxAsSvg"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportTextInputFormFieldAsText")))
     {
-        setExportTextInputFormFieldAsText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportTextInputFormFieldAsText"))));
+        setExportTextInputFormFieldAsText(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportTextInputFormFieldAsText"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportTocPageNumbers")))
     {
-        setExportTocPageNumbers(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportTocPageNumbers"))));
+        setExportTocPageNumbers(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportTocPageNumbers"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportXhtmlTransitional")))
     {
-        setExportXhtmlTransitional(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportXhtmlTransitional"))));
+        setExportXhtmlTransitional(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportXhtmlTransitional"))));
     }
     if(multipart->hasContent(_XPLATSTR("FontResourcesSubsettingSizeThreshold")))
     {
-        setFontResourcesSubsettingSizeThreshold(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("FontResourcesSubsettingSizeThreshold"))));
+        setFontResourcesSubsettingSizeThreshold(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("FontResourcesSubsettingSizeThreshold"))));
     }
     if(multipart->hasContent(_XPLATSTR("FontsFolder")))
     {
@@ -925,7 +925,7 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("ImageResolution")))
     {
-        setImageResolution(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ImageResolution"))));
+        setImageResolution(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ImageResolution"))));
     }
     if(multipart->hasContent(_XPLATSTR("ImagesFolder")))
     {
@@ -945,11 +945,11 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+        setPrettyFormat(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
     if(multipart->hasContent(_XPLATSTR("ResolveFontNames")))
     {
-        setResolveFontNames(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ResolveFontNames"))));
+        setResolveFontNames(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ResolveFontNames"))));
     }
     if(multipart->hasContent(_XPLATSTR("ResourceFolder")))
     {
@@ -961,7 +961,7 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("ScaleImageToShapeSize")))
     {
-        setScaleImageToShapeSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ScaleImageToShapeSize"))));
+        setScaleImageToShapeSize(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ScaleImageToShapeSize"))));
     }
     if(multipart->hasContent(_XPLATSTR("TableWidthOutputMode")))
     {
@@ -969,13 +969,13 @@ void HtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
 }
 
-bool HtmlSaveOptionsData::isAllowNegativeIndent() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isAllowNegativeIndent() const
 {
     return m_AllowNegativeIndent;
 }
 
 
-void HtmlSaveOptionsData::setAllowNegativeIndent(bool value)
+void HtmlSaveOptionsData::setAllowNegativeIndent(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_AllowNegativeIndent = value;
     m_AllowNegativeIndentIsSet = true;
@@ -990,13 +990,13 @@ void HtmlSaveOptionsData::unsetAllowNegativeIndent()
     m_AllowNegativeIndentIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getCssClassNamePrefix() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getCssClassNamePrefix() const
 {
     return m_CssClassNamePrefix;
 }
 
 
-void HtmlSaveOptionsData::setCssClassNamePrefix(utility::string_t value)
+void HtmlSaveOptionsData::setCssClassNamePrefix(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_CssClassNamePrefix = value;
     m_CssClassNamePrefixIsSet = true;
@@ -1011,13 +1011,13 @@ void HtmlSaveOptionsData::unsetCssClassNamePrefix()
     m_CssClassNamePrefixIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getCssStyleSheetFileName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getCssStyleSheetFileName() const
 {
     return m_CssStyleSheetFileName;
 }
 
 
-void HtmlSaveOptionsData::setCssStyleSheetFileName(utility::string_t value)
+void HtmlSaveOptionsData::setCssStyleSheetFileName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_CssStyleSheetFileName = value;
     m_CssStyleSheetFileNameIsSet = true;
@@ -1032,13 +1032,13 @@ void HtmlSaveOptionsData::unsetCssStyleSheetFileName()
     m_CssStyleSheetFileNameIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getCssStyleSheetType() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getCssStyleSheetType() const
 {
     return m_CssStyleSheetType;
 }
 
 
-void HtmlSaveOptionsData::setCssStyleSheetType(utility::string_t value)
+void HtmlSaveOptionsData::setCssStyleSheetType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_CssStyleSheetType = value;
     m_CssStyleSheetTypeIsSet = true;
@@ -1053,13 +1053,13 @@ void HtmlSaveOptionsData::unsetCssStyleSheetType()
     m_CssStyleSheetTypeIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getDocumentSplitCriteria() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getDocumentSplitCriteria() const
 {
     return m_DocumentSplitCriteria;
 }
 
 
-void HtmlSaveOptionsData::setDocumentSplitCriteria(utility::string_t value)
+void HtmlSaveOptionsData::setDocumentSplitCriteria(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_DocumentSplitCriteria = value;
     m_DocumentSplitCriteriaIsSet = true;
@@ -1074,13 +1074,13 @@ void HtmlSaveOptionsData::unsetDocumentSplitCriteria()
     m_DocumentSplitCriteriaIsSet = false;
 }
 
-int32_t HtmlSaveOptionsData::getDocumentSplitHeadingLevel() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> HtmlSaveOptionsData::getDocumentSplitHeadingLevel() const
 {
     return m_DocumentSplitHeadingLevel;
 }
 
 
-void HtmlSaveOptionsData::setDocumentSplitHeadingLevel(int32_t value)
+void HtmlSaveOptionsData::setDocumentSplitHeadingLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_DocumentSplitHeadingLevel = value;
     m_DocumentSplitHeadingLevelIsSet = true;
@@ -1095,13 +1095,13 @@ void HtmlSaveOptionsData::unsetDocumentSplitHeadingLevel()
     m_DocumentSplitHeadingLevelIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getEncoding() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getEncoding() const
 {
     return m_Encoding;
 }
 
 
-void HtmlSaveOptionsData::setEncoding(utility::string_t value)
+void HtmlSaveOptionsData::setEncoding(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Encoding = value;
     m_EncodingIsSet = true;
@@ -1116,13 +1116,13 @@ void HtmlSaveOptionsData::unsetEncoding()
     m_EncodingIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportDocumentProperties() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportDocumentProperties() const
 {
     return m_ExportDocumentProperties;
 }
 
 
-void HtmlSaveOptionsData::setExportDocumentProperties(bool value)
+void HtmlSaveOptionsData::setExportDocumentProperties(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportDocumentProperties = value;
     m_ExportDocumentPropertiesIsSet = true;
@@ -1137,13 +1137,13 @@ void HtmlSaveOptionsData::unsetExportDocumentProperties()
     m_ExportDocumentPropertiesIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportDropDownFormFieldAsText() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportDropDownFormFieldAsText() const
 {
     return m_ExportDropDownFormFieldAsText;
 }
 
 
-void HtmlSaveOptionsData::setExportDropDownFormFieldAsText(bool value)
+void HtmlSaveOptionsData::setExportDropDownFormFieldAsText(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportDropDownFormFieldAsText = value;
     m_ExportDropDownFormFieldAsTextIsSet = true;
@@ -1158,13 +1158,13 @@ void HtmlSaveOptionsData::unsetExportDropDownFormFieldAsText()
     m_ExportDropDownFormFieldAsTextIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportFontResources() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportFontResources() const
 {
     return m_ExportFontResources;
 }
 
 
-void HtmlSaveOptionsData::setExportFontResources(bool value)
+void HtmlSaveOptionsData::setExportFontResources(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportFontResources = value;
     m_ExportFontResourcesIsSet = true;
@@ -1179,13 +1179,13 @@ void HtmlSaveOptionsData::unsetExportFontResources()
     m_ExportFontResourcesIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportFontsAsBase64() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportFontsAsBase64() const
 {
     return m_ExportFontsAsBase64;
 }
 
 
-void HtmlSaveOptionsData::setExportFontsAsBase64(bool value)
+void HtmlSaveOptionsData::setExportFontsAsBase64(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportFontsAsBase64 = value;
     m_ExportFontsAsBase64IsSet = true;
@@ -1200,13 +1200,13 @@ void HtmlSaveOptionsData::unsetExportFontsAsBase64()
     m_ExportFontsAsBase64IsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getExportHeadersFootersMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getExportHeadersFootersMode() const
 {
     return m_ExportHeadersFootersMode;
 }
 
 
-void HtmlSaveOptionsData::setExportHeadersFootersMode(utility::string_t value)
+void HtmlSaveOptionsData::setExportHeadersFootersMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ExportHeadersFootersMode = value;
     m_ExportHeadersFootersModeIsSet = true;
@@ -1221,13 +1221,13 @@ void HtmlSaveOptionsData::unsetExportHeadersFootersMode()
     m_ExportHeadersFootersModeIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportImagesAsBase64() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportImagesAsBase64() const
 {
     return m_ExportImagesAsBase64;
 }
 
 
-void HtmlSaveOptionsData::setExportImagesAsBase64(bool value)
+void HtmlSaveOptionsData::setExportImagesAsBase64(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportImagesAsBase64 = value;
     m_ExportImagesAsBase64IsSet = true;
@@ -1242,13 +1242,13 @@ void HtmlSaveOptionsData::unsetExportImagesAsBase64()
     m_ExportImagesAsBase64IsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportLanguageInformation() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportLanguageInformation() const
 {
     return m_ExportLanguageInformation;
 }
 
 
-void HtmlSaveOptionsData::setExportLanguageInformation(bool value)
+void HtmlSaveOptionsData::setExportLanguageInformation(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportLanguageInformation = value;
     m_ExportLanguageInformationIsSet = true;
@@ -1263,13 +1263,13 @@ void HtmlSaveOptionsData::unsetExportLanguageInformation()
     m_ExportLanguageInformationIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getExportListLabels() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getExportListLabels() const
 {
     return m_ExportListLabels;
 }
 
 
-void HtmlSaveOptionsData::setExportListLabels(utility::string_t value)
+void HtmlSaveOptionsData::setExportListLabels(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ExportListLabels = value;
     m_ExportListLabelsIsSet = true;
@@ -1284,13 +1284,13 @@ void HtmlSaveOptionsData::unsetExportListLabels()
     m_ExportListLabelsIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportOriginalUrlForLinkedImages() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportOriginalUrlForLinkedImages() const
 {
     return m_ExportOriginalUrlForLinkedImages;
 }
 
 
-void HtmlSaveOptionsData::setExportOriginalUrlForLinkedImages(bool value)
+void HtmlSaveOptionsData::setExportOriginalUrlForLinkedImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportOriginalUrlForLinkedImages = value;
     m_ExportOriginalUrlForLinkedImagesIsSet = true;
@@ -1305,13 +1305,13 @@ void HtmlSaveOptionsData::unsetExportOriginalUrlForLinkedImages()
     m_ExportOriginalUrlForLinkedImagesIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportPageMargins() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportPageMargins() const
 {
     return m_ExportPageMargins;
 }
 
 
-void HtmlSaveOptionsData::setExportPageMargins(bool value)
+void HtmlSaveOptionsData::setExportPageMargins(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportPageMargins = value;
     m_ExportPageMarginsIsSet = true;
@@ -1326,13 +1326,13 @@ void HtmlSaveOptionsData::unsetExportPageMargins()
     m_ExportPageMarginsIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportPageSetup() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportPageSetup() const
 {
     return m_ExportPageSetup;
 }
 
 
-void HtmlSaveOptionsData::setExportPageSetup(bool value)
+void HtmlSaveOptionsData::setExportPageSetup(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportPageSetup = value;
     m_ExportPageSetupIsSet = true;
@@ -1347,13 +1347,13 @@ void HtmlSaveOptionsData::unsetExportPageSetup()
     m_ExportPageSetupIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportRelativeFontSize() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportRelativeFontSize() const
 {
     return m_ExportRelativeFontSize;
 }
 
 
-void HtmlSaveOptionsData::setExportRelativeFontSize(bool value)
+void HtmlSaveOptionsData::setExportRelativeFontSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportRelativeFontSize = value;
     m_ExportRelativeFontSizeIsSet = true;
@@ -1368,13 +1368,13 @@ void HtmlSaveOptionsData::unsetExportRelativeFontSize()
     m_ExportRelativeFontSizeIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportRoundtripInformation() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportRoundtripInformation() const
 {
     return m_ExportRoundtripInformation;
 }
 
 
-void HtmlSaveOptionsData::setExportRoundtripInformation(bool value)
+void HtmlSaveOptionsData::setExportRoundtripInformation(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportRoundtripInformation = value;
     m_ExportRoundtripInformationIsSet = true;
@@ -1389,13 +1389,13 @@ void HtmlSaveOptionsData::unsetExportRoundtripInformation()
     m_ExportRoundtripInformationIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportTextBoxAsSvg() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportTextBoxAsSvg() const
 {
     return m_ExportTextBoxAsSvg;
 }
 
 
-void HtmlSaveOptionsData::setExportTextBoxAsSvg(bool value)
+void HtmlSaveOptionsData::setExportTextBoxAsSvg(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportTextBoxAsSvg = value;
     m_ExportTextBoxAsSvgIsSet = true;
@@ -1410,13 +1410,13 @@ void HtmlSaveOptionsData::unsetExportTextBoxAsSvg()
     m_ExportTextBoxAsSvgIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportTextInputFormFieldAsText() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportTextInputFormFieldAsText() const
 {
     return m_ExportTextInputFormFieldAsText;
 }
 
 
-void HtmlSaveOptionsData::setExportTextInputFormFieldAsText(bool value)
+void HtmlSaveOptionsData::setExportTextInputFormFieldAsText(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportTextInputFormFieldAsText = value;
     m_ExportTextInputFormFieldAsTextIsSet = true;
@@ -1431,13 +1431,13 @@ void HtmlSaveOptionsData::unsetExportTextInputFormFieldAsText()
     m_ExportTextInputFormFieldAsTextIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportTocPageNumbers() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportTocPageNumbers() const
 {
     return m_ExportTocPageNumbers;
 }
 
 
-void HtmlSaveOptionsData::setExportTocPageNumbers(bool value)
+void HtmlSaveOptionsData::setExportTocPageNumbers(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportTocPageNumbers = value;
     m_ExportTocPageNumbersIsSet = true;
@@ -1452,13 +1452,13 @@ void HtmlSaveOptionsData::unsetExportTocPageNumbers()
     m_ExportTocPageNumbersIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isExportXhtmlTransitional() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isExportXhtmlTransitional() const
 {
     return m_ExportXhtmlTransitional;
 }
 
 
-void HtmlSaveOptionsData::setExportXhtmlTransitional(bool value)
+void HtmlSaveOptionsData::setExportXhtmlTransitional(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ExportXhtmlTransitional = value;
     m_ExportXhtmlTransitionalIsSet = true;
@@ -1473,13 +1473,13 @@ void HtmlSaveOptionsData::unsetExportXhtmlTransitional()
     m_ExportXhtmlTransitionalIsSet = false;
 }
 
-int32_t HtmlSaveOptionsData::getFontResourcesSubsettingSizeThreshold() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> HtmlSaveOptionsData::getFontResourcesSubsettingSizeThreshold() const
 {
     return m_FontResourcesSubsettingSizeThreshold;
 }
 
 
-void HtmlSaveOptionsData::setFontResourcesSubsettingSizeThreshold(int32_t value)
+void HtmlSaveOptionsData::setFontResourcesSubsettingSizeThreshold(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_FontResourcesSubsettingSizeThreshold = value;
     m_FontResourcesSubsettingSizeThresholdIsSet = true;
@@ -1494,13 +1494,13 @@ void HtmlSaveOptionsData::unsetFontResourcesSubsettingSizeThreshold()
     m_FontResourcesSubsettingSizeThresholdIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getFontsFolder() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getFontsFolder() const
 {
     return m_FontsFolder;
 }
 
 
-void HtmlSaveOptionsData::setFontsFolder(utility::string_t value)
+void HtmlSaveOptionsData::setFontsFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FontsFolder = value;
     m_FontsFolderIsSet = true;
@@ -1515,13 +1515,13 @@ void HtmlSaveOptionsData::unsetFontsFolder()
     m_FontsFolderIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getFontsFolderAlias() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getFontsFolderAlias() const
 {
     return m_FontsFolderAlias;
 }
 
 
-void HtmlSaveOptionsData::setFontsFolderAlias(utility::string_t value)
+void HtmlSaveOptionsData::setFontsFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FontsFolderAlias = value;
     m_FontsFolderAliasIsSet = true;
@@ -1536,13 +1536,13 @@ void HtmlSaveOptionsData::unsetFontsFolderAlias()
     m_FontsFolderAliasIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getHtmlVersion() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getHtmlVersion() const
 {
     return m_HtmlVersion;
 }
 
 
-void HtmlSaveOptionsData::setHtmlVersion(utility::string_t value)
+void HtmlSaveOptionsData::setHtmlVersion(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_HtmlVersion = value;
     m_HtmlVersionIsSet = true;
@@ -1557,13 +1557,13 @@ void HtmlSaveOptionsData::unsetHtmlVersion()
     m_HtmlVersionIsSet = false;
 }
 
-int32_t HtmlSaveOptionsData::getImageResolution() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> HtmlSaveOptionsData::getImageResolution() const
 {
     return m_ImageResolution;
 }
 
 
-void HtmlSaveOptionsData::setImageResolution(int32_t value)
+void HtmlSaveOptionsData::setImageResolution(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_ImageResolution = value;
     m_ImageResolutionIsSet = true;
@@ -1578,13 +1578,13 @@ void HtmlSaveOptionsData::unsetImageResolution()
     m_ImageResolutionIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getImagesFolder() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getImagesFolder() const
 {
     return m_ImagesFolder;
 }
 
 
-void HtmlSaveOptionsData::setImagesFolder(utility::string_t value)
+void HtmlSaveOptionsData::setImagesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ImagesFolder = value;
     m_ImagesFolderIsSet = true;
@@ -1599,13 +1599,13 @@ void HtmlSaveOptionsData::unsetImagesFolder()
     m_ImagesFolderIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getImagesFolderAlias() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getImagesFolderAlias() const
 {
     return m_ImagesFolderAlias;
 }
 
 
-void HtmlSaveOptionsData::setImagesFolderAlias(utility::string_t value)
+void HtmlSaveOptionsData::setImagesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ImagesFolderAlias = value;
     m_ImagesFolderAliasIsSet = true;
@@ -1620,13 +1620,13 @@ void HtmlSaveOptionsData::unsetImagesFolderAlias()
     m_ImagesFolderAliasIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getMetafileFormat() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getMetafileFormat() const
 {
     return m_MetafileFormat;
 }
 
 
-void HtmlSaveOptionsData::setMetafileFormat(utility::string_t value)
+void HtmlSaveOptionsData::setMetafileFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_MetafileFormat = value;
     m_MetafileFormatIsSet = true;
@@ -1641,13 +1641,13 @@ void HtmlSaveOptionsData::unsetMetafileFormat()
     m_MetafileFormatIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getOfficeMathOutputMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getOfficeMathOutputMode() const
 {
     return m_OfficeMathOutputMode;
 }
 
 
-void HtmlSaveOptionsData::setOfficeMathOutputMode(utility::string_t value)
+void HtmlSaveOptionsData::setOfficeMathOutputMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_OfficeMathOutputMode = value;
     m_OfficeMathOutputModeIsSet = true;
@@ -1662,13 +1662,13 @@ void HtmlSaveOptionsData::unsetOfficeMathOutputMode()
     m_OfficeMathOutputModeIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isPrettyFormat() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isPrettyFormat() const
 {
     return m_PrettyFormat;
 }
 
 
-void HtmlSaveOptionsData::setPrettyFormat(bool value)
+void HtmlSaveOptionsData::setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;
@@ -1683,13 +1683,13 @@ void HtmlSaveOptionsData::unsetPrettyFormat()
     m_PrettyFormatIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isResolveFontNames() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isResolveFontNames() const
 {
     return m_ResolveFontNames;
 }
 
 
-void HtmlSaveOptionsData::setResolveFontNames(bool value)
+void HtmlSaveOptionsData::setResolveFontNames(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ResolveFontNames = value;
     m_ResolveFontNamesIsSet = true;
@@ -1704,13 +1704,13 @@ void HtmlSaveOptionsData::unsetResolveFontNames()
     m_ResolveFontNamesIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getResourceFolder() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getResourceFolder() const
 {
     return m_ResourceFolder;
 }
 
 
-void HtmlSaveOptionsData::setResourceFolder(utility::string_t value)
+void HtmlSaveOptionsData::setResourceFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ResourceFolder = value;
     m_ResourceFolderIsSet = true;
@@ -1725,13 +1725,13 @@ void HtmlSaveOptionsData::unsetResourceFolder()
     m_ResourceFolderIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getResourceFolderAlias() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getResourceFolderAlias() const
 {
     return m_ResourceFolderAlias;
 }
 
 
-void HtmlSaveOptionsData::setResourceFolderAlias(utility::string_t value)
+void HtmlSaveOptionsData::setResourceFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ResourceFolderAlias = value;
     m_ResourceFolderAliasIsSet = true;
@@ -1746,13 +1746,13 @@ void HtmlSaveOptionsData::unsetResourceFolderAlias()
     m_ResourceFolderAliasIsSet = false;
 }
 
-bool HtmlSaveOptionsData::isScaleImageToShapeSize() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> HtmlSaveOptionsData::isScaleImageToShapeSize() const
 {
     return m_ScaleImageToShapeSize;
 }
 
 
-void HtmlSaveOptionsData::setScaleImageToShapeSize(bool value)
+void HtmlSaveOptionsData::setScaleImageToShapeSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ScaleImageToShapeSize = value;
     m_ScaleImageToShapeSizeIsSet = true;
@@ -1767,13 +1767,13 @@ void HtmlSaveOptionsData::unsetScaleImageToShapeSize()
     m_ScaleImageToShapeSizeIsSet = false;
 }
 
-utility::string_t HtmlSaveOptionsData::getTableWidthOutputMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> HtmlSaveOptionsData::getTableWidthOutputMode() const
 {
     return m_TableWidthOutputMode;
 }
 
 
-void HtmlSaveOptionsData::setTableWidthOutputMode(utility::string_t value)
+void HtmlSaveOptionsData::setTableWidthOutputMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_TableWidthOutputMode = value;
     m_TableWidthOutputModeIsSet = true;

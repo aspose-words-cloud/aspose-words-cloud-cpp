@@ -93,13 +93,13 @@ void ParagraphInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
 }
 
-utility::string_t ParagraphInsert::getText() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphInsert::getText() const
 {
     return m_Text;
 }
 
 
-void ParagraphInsert::setText(utility::string_t value)
+void ParagraphInsert::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Text = value;
     m_TextIsSet = true;

@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets request Id.
     /// </summary>
-    utility::string_t getRequestId() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRequestId() const;
     bool requestIdIsSet() const;
     void unsetRequestId();
-    void setRequestId(utility::string_t value);
+    void setRequestId(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_RequestId;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_RequestId;
     bool m_RequestIdIsSet;
 };
 

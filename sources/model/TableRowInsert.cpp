@@ -72,7 +72,7 @@ void TableRowInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
         if(!fieldValue.is_null())
         {
-            setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
+            setInsertAfter(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ColumnsCount")))
@@ -80,7 +80,7 @@ void TableRowInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ColumnsCount")];
         if(!fieldValue.is_null())
         {
-            setColumnsCount(ModelBase::int32_tFromJson(fieldValue));
+            setColumnsCount(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -108,21 +108,21 @@ void TableRowInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
 
     if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
-        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
+        setInsertAfter(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
     }
     if(multipart->hasContent(_XPLATSTR("ColumnsCount")))
     {
-        setColumnsCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
+        setColumnsCount(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ColumnsCount"))));
     }
 }
 
-int32_t TableRowInsert::getInsertAfter() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> TableRowInsert::getInsertAfter() const
 {
     return m_InsertAfter;
 }
 
 
-void TableRowInsert::setInsertAfter(int32_t value)
+void TableRowInsert::setInsertAfter(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_InsertAfter = value;
     m_InsertAfterIsSet = true;
@@ -137,13 +137,13 @@ void TableRowInsert::unsetInsertAfter()
     m_InsertAfterIsSet = false;
 }
 
-int32_t TableRowInsert::getColumnsCount() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> TableRowInsert::getColumnsCount() const
 {
     return m_ColumnsCount;
 }
 
 
-void TableRowInsert::setColumnsCount(int32_t value)
+void TableRowInsert::setColumnsCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_ColumnsCount = value;
     m_ColumnsCountIsSet = true;

@@ -63,40 +63,40 @@ public:
     /// <summary>
     /// Gets or sets maximum length for the text field. Zero when the length is not limited.
     /// </summary>
-    int32_t getMaxLength() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getMaxLength() const;
     bool maxLengthIsSet() const;
     void unsetMaxLength();
-    void setMaxLength(int32_t value);
+    void setMaxLength(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the default string or a calculation expression of a text form field.
     /// </summary>
-    utility::string_t getTextInputDefault() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTextInputDefault() const;
     bool textInputDefaultIsSet() const;
     void unsetTextInputDefault();
-    void setTextInputDefault(utility::string_t value);
+    void setTextInputDefault(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets returns or sets the text formatting for a text form field.
     /// </summary>
-    utility::string_t getTextInputFormat() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTextInputFormat() const;
     bool textInputFormatIsSet() const;
     void unsetTextInputFormat();
-    void setTextInputFormat(utility::string_t value);
+    void setTextInputFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the type of a text form field.
     /// </summary>
-    utility::string_t getTextInputType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTextInputType() const;
     bool textInputTypeIsSet() const;
     void unsetTextInputType();
-    void setTextInputType(utility::string_t value);
+    void setTextInputType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    int32_t m_MaxLength;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_MaxLength;
     bool m_MaxLengthIsSet;
-    utility::string_t m_TextInputDefault;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextInputDefault;
     bool m_TextInputDefaultIsSet;
-    utility::string_t m_TextInputFormat;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextInputFormat;
     bool m_TextInputFormatIsSet;
-    utility::string_t m_TextInputType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextInputType;
     bool m_TextInputTypeIsSet;
 };
 

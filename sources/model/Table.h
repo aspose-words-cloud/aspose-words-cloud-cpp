@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets TableProperties.
     /// </summary>
-    std::shared_ptr<TableProperties> getTableProperties() const;
+    <DATA_TYPE_START>TableProperties<DATA_TYPE_END> getTableProperties() const;
     bool tablePropertiesIsSet() const;
     void unsetTableProperties();
-    void setTableProperties(std::shared_ptr<TableProperties> value);
+    void setTableProperties(<DATA_TYPE_START>TableProperties<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets collection of table&#39;s rows.
+    /// Gets or sets collection of table&#x27;s rows.
     /// </summary>
-    std::vector<std::shared_ptr<TableRow>>& getTableRowList();
+    <DATA_TYPE_START>List<TableRow><DATA_TYPE_END>& getTableRowList();
     bool tableRowListIsSet() const;
     void unsetTableRowList();
-    void setTableRowList(std::vector<std::shared_ptr<TableRow>> const& value);
+    void setTableRowList(<DATA_TYPE_START>List<TableRow><DATA_TYPE_END> const& value);
 
 protected:
-    std::shared_ptr<TableProperties> m_TableProperties;
+    <DATA_TYPE_START>TableProperties<DATA_TYPE_END> m_TableProperties;
     bool m_TablePropertiesIsSet;
-    std::vector<std::shared_ptr<TableRow>> m_TableRowList;
+    <DATA_TYPE_START>List<TableRow><DATA_TYPE_END> m_TableRowList;
     bool m_TableRowListIsSet;
 };
 

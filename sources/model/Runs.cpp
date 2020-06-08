@@ -53,7 +53,7 @@ web::json::value Runs::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Run> item) {
+			[&](<DATA_TYPE_START>Run<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void Runs::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<Run>(nullptr);
+                return <DATA_TYPE_START>Run<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<Run> newItem(new Run());
+                <DATA_TYPE_START>Run<DATA_TYPE_END> newItem(new Run());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void Runs::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, cons
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Run> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Run<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void Runs::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<Run>(nullptr) ;
+                return <DATA_TYPE_START>Run<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<Run> newItem(new Run());
+                <DATA_TYPE_START>Run<DATA_TYPE_END> newItem(new Run());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void Runs::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
     }
 }
 
-std::vector<std::shared_ptr<Run>>& Runs::getList()
+<DATA_TYPE_START>List<Run><DATA_TYPE_END>& Runs::getList()
 {
     return m_List;
 }
 
-void Runs::setList(std::vector<std::shared_ptr<Run>> const& value)
+void Runs::setList(<DATA_TYPE_START>List<Run><DATA_TYPE_END> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

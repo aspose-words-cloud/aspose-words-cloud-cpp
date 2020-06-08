@@ -53,7 +53,7 @@ web::json::value FieldNames::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray),
-			[&](utility::string_t item) {
+			[&](<DATA_TYPE_START>string<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -91,7 +91,7 @@ void FieldNames::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
+        std::transform(m_Names.begin(), m_Names.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>string<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -119,12 +119,12 @@ void FieldNames::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
 }
 
-std::vector<utility::string_t>& FieldNames::getNames()
+<DATA_TYPE_START>List<string><DATA_TYPE_END>& FieldNames::getNames()
 {
     return m_Names;
 }
 
-void FieldNames::setNames(std::vector<utility::string_t> const& value)
+void FieldNames::setNames(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value)
 {
     m_Names = value;
     m_NamesIsSet = true;

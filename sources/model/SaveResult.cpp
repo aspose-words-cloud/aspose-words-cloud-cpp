@@ -63,7 +63,7 @@ web::json::value SaveResult::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<FileLink> item) {
+			[&](<DATA_TYPE_START>FileLink<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -83,7 +83,7 @@ void SaveResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SourceDocument")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
+            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setSourceDocument( newItem );
         }
@@ -93,7 +93,7 @@ void SaveResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DestDocument")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
+            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setDestDocument( newItem );
         }
@@ -107,11 +107,11 @@ void SaveResult::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<FileLink>(nullptr);
+                return <DATA_TYPE_START>FileLink<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<FileLink> newItem(new FileLink());
+                <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -144,7 +144,7 @@ void SaveResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FileLink> item){
+        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>FileLink<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -163,7 +163,7 @@ void SaveResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     {
         if(multipart->hasContent(_XPLATSTR("SourceDocument")))
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
+            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("SourceDocument."));
             setSourceDocument( newItem );
         }
@@ -172,7 +172,7 @@ void SaveResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     {
         if(multipart->hasContent(_XPLATSTR("DestDocument")))
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
+            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("DestDocument."));
             setDestDocument( newItem );
         }
@@ -186,11 +186,11 @@ void SaveResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<FileLink>(nullptr) ;
+                return <DATA_TYPE_START>FileLink<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<FileLink> newItem(new FileLink());
+                <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -199,13 +199,13 @@ void SaveResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
 }
 
-std::shared_ptr<FileLink> SaveResult::getSourceDocument() const
+<DATA_TYPE_START>FileLink<DATA_TYPE_END> SaveResult::getSourceDocument() const
 {
     return m_SourceDocument;
 }
 
 
-void SaveResult::setSourceDocument(std::shared_ptr<FileLink> value)
+void SaveResult::setSourceDocument(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
 {
     m_SourceDocument = value;
     m_SourceDocumentIsSet = true;
@@ -220,13 +220,13 @@ void SaveResult::unsetSourceDocument()
     m_SourceDocumentIsSet = false;
 }
 
-std::shared_ptr<FileLink> SaveResult::getDestDocument() const
+<DATA_TYPE_START>FileLink<DATA_TYPE_END> SaveResult::getDestDocument() const
 {
     return m_DestDocument;
 }
 
 
-void SaveResult::setDestDocument(std::shared_ptr<FileLink> value)
+void SaveResult::setDestDocument(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
 {
     m_DestDocument = value;
     m_DestDocumentIsSet = true;
@@ -241,12 +241,12 @@ void SaveResult::unsetDestDocument()
     m_DestDocumentIsSet = false;
 }
 
-std::vector<std::shared_ptr<FileLink>>& SaveResult::getAdditionalItems()
+<DATA_TYPE_START>List<FileLink><DATA_TYPE_END>& SaveResult::getAdditionalItems()
 {
     return m_AdditionalItems;
 }
 
-void SaveResult::setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value)
+void SaveResult::setAdditionalItems(<DATA_TYPE_START>List<FileLink><DATA_TYPE_END> const& value)
 {
     m_AdditionalItems = value;
     m_AdditionalItemsIsSet = true;

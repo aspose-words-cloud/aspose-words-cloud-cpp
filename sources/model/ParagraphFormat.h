@@ -65,247 +65,247 @@ public:
     /// <summary>
     /// Gets or sets a flag indicating whether inter-character spacing is automatically adjusted between regions of Latin text and regions of East Asian text in the current paragraph.             
     /// </summary>
-    bool isAddSpaceBetweenFarEastAndAlpha() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isAddSpaceBetweenFarEastAndAlpha() const;
     bool addSpaceBetweenFarEastAndAlphaIsSet() const;
     void unsetAddSpaceBetweenFarEastAndAlpha();
-    void setAddSpaceBetweenFarEastAndAlpha(bool value);
+    void setAddSpaceBetweenFarEastAndAlpha(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a flag indicating whether inter-character spacing is automatically adjusted between regions of numbers and regions of East Asian text in the current paragraph.             
     /// </summary>
-    bool isAddSpaceBetweenFarEastAndDigit() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isAddSpaceBetweenFarEastAndDigit() const;
     bool addSpaceBetweenFarEastAndDigitIsSet() const;
     void unsetAddSpaceBetweenFarEastAndDigit();
-    void setAddSpaceBetweenFarEastAndDigit(bool value);
+    void setAddSpaceBetweenFarEastAndDigit(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets text alignment for the paragraph.             
     /// </summary>
-    utility::string_t getAlignment() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
-    void setAlignment(utility::string_t value);
+    void setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets whether this is a right-to-left paragraph.             
     /// </summary>
-    bool isBidi() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isBidi() const;
     bool bidiIsSet() const;
     void unsetBidi();
-    void setBidi(bool value);
+    void setBidi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the position for a drop cap text.             
     /// </summary>
-    utility::string_t getDropCapPosition() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getDropCapPosition() const;
     bool dropCapPositionIsSet() const;
     void unsetDropCapPosition();
-    void setDropCapPosition(utility::string_t value);
+    void setDropCapPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the value (in points) for a first line or hanging indent. Use a positive value to set a first-line indent, and use a negative value to set a hanging indent.             
     /// </summary>
-    double getFirstLineIndent() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getFirstLineIndent() const;
     bool firstLineIndentIsSet() const;
     void unsetFirstLineIndent();
-    void setFirstLineIndent(double value);
+    void setFirstLineIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets True when the paragraph is an item in a bulleted or numbered list.
     /// </summary>
-    bool isIsListItem() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsListItem() const;
     bool isListItemIsSet() const;
     void unsetIsListItem();
-    void setIsListItem(bool value);
+    void setIsListItem(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if all lines in the paragraph are to remain on the same page.             
     /// </summary>
-    bool isKeepTogether() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isKeepTogether() const;
     bool keepTogetherIsSet() const;
     void unsetKeepTogether();
-    void setKeepTogether(bool value);
+    void setKeepTogether(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if the paragraph is to remains on the same page as the paragraph that follows it.             
     /// </summary>
-    bool isKeepWithNext() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isKeepWithNext() const;
     bool keepWithNextIsSet() const;
     void unsetKeepWithNext();
-    void setKeepWithNext(bool value);
+    void setKeepWithNext(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the value (in points) that represents the left indent for paragraph.             
     /// </summary>
-    double getLeftIndent() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeftIndent() const;
     bool leftIndentIsSet() const;
     void unsetLeftIndent();
-    void setLeftIndent(double value);
+    void setLeftIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the line spacing (in points) for the paragraph.             
     /// </summary>
-    double getLineSpacing() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLineSpacing() const;
     bool lineSpacingIsSet() const;
     void unsetLineSpacing();
-    void setLineSpacing(double value);
+    void setLineSpacing(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the line spacing for the paragraph.             
     /// </summary>
-    utility::string_t getLineSpacingRule() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLineSpacingRule() const;
     bool lineSpacingRuleIsSet() const;
     void unsetLineSpacingRule();
-    void setLineSpacingRule(utility::string_t value);
+    void setLineSpacingRule(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the number of lines of the paragraph text used to calculate the drop cap height.             
     /// </summary>
-    int32_t getLinesToDrop() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getLinesToDrop() const;
     bool linesToDropIsSet() const;
     void unsetLinesToDrop();
-    void setLinesToDrop(int32_t value);
+    void setLinesToDrop(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets when true, SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.             
     /// </summary>
-    bool isNoSpaceBetweenParagraphsOfSameStyle() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isNoSpaceBetweenParagraphsOfSameStyle() const;
     bool noSpaceBetweenParagraphsOfSameStyleIsSet() const;
     void unsetNoSpaceBetweenParagraphsOfSameStyle();
-    void setNoSpaceBetweenParagraphsOfSameStyle(bool value);
+    void setNoSpaceBetweenParagraphsOfSameStyle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the outline level of the paragraph in the document.             
     /// </summary>
-    utility::string_t getOutlineLevel() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getOutlineLevel() const;
     bool outlineLevelIsSet() const;
     void unsetOutlineLevel();
-    void setOutlineLevel(utility::string_t value);
+    void setOutlineLevel(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if a page break is forced before the paragraph.             
     /// </summary>
-    bool isPageBreakBefore() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isPageBreakBefore() const;
     bool pageBreakBeforeIsSet() const;
     void unsetPageBreakBefore();
-    void setPageBreakBefore(bool value);
+    void setPageBreakBefore(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the value (in points) that represents the right indent for paragraph.             
     /// </summary>
-    double getRightIndent() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getRightIndent() const;
     bool rightIndentIsSet() const;
     void unsetRightIndent();
-    void setRightIndent(double value);
+    void setRightIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets Shading.
     /// </summary>
-    std::shared_ptr<Shading> getShading() const;
+    <DATA_TYPE_START>Shading<DATA_TYPE_END> getShading() const;
     bool shadingIsSet() const;
     void unsetShading();
-    void setShading(std::shared_ptr<Shading> value);
+    void setShading(<DATA_TYPE_START>Shading<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of spacing (in points) after the paragraph.             
     /// </summary>
-    double getSpaceAfter() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getSpaceAfter() const;
     bool spaceAfterIsSet() const;
     void unsetSpaceAfter();
-    void setSpaceAfter(double value);
+    void setSpaceAfter(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if the amount of spacing after the paragraph is set automatically.             
     /// </summary>
-    bool isSpaceAfterAuto() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSpaceAfterAuto() const;
     bool spaceAfterAutoIsSet() const;
     void unsetSpaceAfterAuto();
-    void setSpaceAfterAuto(bool value);
+    void setSpaceAfterAuto(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the amount of spacing (in points) before the paragraph.             
     /// </summary>
-    double getSpaceBefore() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getSpaceBefore() const;
     bool spaceBeforeIsSet() const;
     void unsetSpaceBefore();
-    void setSpaceBefore(double value);
+    void setSpaceBefore(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if the amount of spacing before the paragraph is set automatically.             
     /// </summary>
-    bool isSpaceBeforeAuto() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSpaceBeforeAuto() const;
     bool spaceBeforeAutoIsSet() const;
     void unsetSpaceBeforeAuto();
-    void setSpaceBeforeAuto(bool value);
+    void setSpaceBeforeAuto(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the locale independent style identifier of the paragraph style applied to this formatting.             
     /// </summary>
-    utility::string_t getStyleIdentifier() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleIdentifier() const;
     bool styleIdentifierIsSet() const;
     void unsetStyleIdentifier();
-    void setStyleIdentifier(utility::string_t value);
+    void setStyleIdentifier(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the name of the paragraph style applied to this formatting.             
     /// </summary>
-    utility::string_t getStyleName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleName() const;
     bool styleNameIsSet() const;
     void unsetStyleName();
-    void setStyleName(utility::string_t value);
+    void setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies whether the current paragraph should be exempted from any hyphenation which is applied in the document settings.             
     /// </summary>
-    bool isSuppressAutoHyphens() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSuppressAutoHyphens() const;
     bool suppressAutoHyphensIsSet() const;
     void unsetSuppressAutoHyphens();
-    void setSuppressAutoHyphens(bool value);
+    void setSuppressAutoHyphens(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets specifies whether the current paragraph&#39;s lines should be exempted from line numbering which is applied in the parent section.             
+    /// Gets or sets specifies whether the current paragraph&#x27;s lines should be exempted from line numbering which is applied in the parent section.             
     /// </summary>
-    bool isSuppressLineNumbers() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSuppressLineNumbers() const;
     bool suppressLineNumbersIsSet() const;
     void unsetSuppressLineNumbers();
-    void setSuppressLineNumbers(bool value);
+    void setSuppressLineNumbers(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets true if the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.             
     /// </summary>
-    bool isWidowControl() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isWidowControl() const;
     bool widowControlIsSet() const;
     void unsetWidowControl();
-    void setWidowControl(bool value);
+    void setWidowControl(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    bool m_AddSpaceBetweenFarEastAndAlpha;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_AddSpaceBetweenFarEastAndAlpha;
     bool m_AddSpaceBetweenFarEastAndAlphaIsSet;
-    bool m_AddSpaceBetweenFarEastAndDigit;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_AddSpaceBetweenFarEastAndDigit;
     bool m_AddSpaceBetweenFarEastAndDigitIsSet;
-    utility::string_t m_Alignment;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Alignment;
     bool m_AlignmentIsSet;
-    bool m_Bidi;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_Bidi;
     bool m_BidiIsSet;
-    utility::string_t m_DropCapPosition;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_DropCapPosition;
     bool m_DropCapPositionIsSet;
-    double m_FirstLineIndent;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_FirstLineIndent;
     bool m_FirstLineIndentIsSet;
-    bool m_IsListItem;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsListItem;
     bool m_IsListItemIsSet;
-    bool m_KeepTogether;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_KeepTogether;
     bool m_KeepTogetherIsSet;
-    bool m_KeepWithNext;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_KeepWithNext;
     bool m_KeepWithNextIsSet;
-    double m_LeftIndent;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LeftIndent;
     bool m_LeftIndentIsSet;
-    double m_LineSpacing;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LineSpacing;
     bool m_LineSpacingIsSet;
-    utility::string_t m_LineSpacingRule;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_LineSpacingRule;
     bool m_LineSpacingRuleIsSet;
-    int32_t m_LinesToDrop;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_LinesToDrop;
     bool m_LinesToDropIsSet;
-    bool m_NoSpaceBetweenParagraphsOfSameStyle;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_NoSpaceBetweenParagraphsOfSameStyle;
     bool m_NoSpaceBetweenParagraphsOfSameStyleIsSet;
-    utility::string_t m_OutlineLevel;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_OutlineLevel;
     bool m_OutlineLevelIsSet;
-    bool m_PageBreakBefore;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_PageBreakBefore;
     bool m_PageBreakBeforeIsSet;
-    double m_RightIndent;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_RightIndent;
     bool m_RightIndentIsSet;
-    std::shared_ptr<Shading> m_Shading;
+    <DATA_TYPE_START>Shading<DATA_TYPE_END> m_Shading;
     bool m_ShadingIsSet;
-    double m_SpaceAfter;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_SpaceAfter;
     bool m_SpaceAfterIsSet;
-    bool m_SpaceAfterAuto;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SpaceAfterAuto;
     bool m_SpaceAfterAutoIsSet;
-    double m_SpaceBefore;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_SpaceBefore;
     bool m_SpaceBeforeIsSet;
-    bool m_SpaceBeforeAuto;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SpaceBeforeAuto;
     bool m_SpaceBeforeAutoIsSet;
-    utility::string_t m_StyleIdentifier;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleIdentifier;
     bool m_StyleIdentifierIsSet;
-    utility::string_t m_StyleName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleName;
     bool m_StyleNameIsSet;
-    bool m_SuppressAutoHyphens;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SuppressAutoHyphens;
     bool m_SuppressAutoHyphensIsSet;
-    bool m_SuppressLineNumbers;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SuppressLineNumbers;
     bool m_SuppressLineNumbersIsSet;
-    bool m_WidowControl;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_WidowControl;
     bool m_WidowControlIsSet;
 };
 

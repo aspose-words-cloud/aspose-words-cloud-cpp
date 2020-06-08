@@ -54,7 +54,7 @@ web::json::value FilesUploadResult::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Uploaded.begin(), m_Uploaded.end(), std::back_inserter(jsonArray),
-			[&](utility::string_t item) {
+			[&](<DATA_TYPE_START>string<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -66,7 +66,7 @@ web::json::value FilesUploadResult::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Errors.begin(), m_Errors.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Error> item) {
+			[&](<DATA_TYPE_START>Error<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -102,11 +102,11 @@ void FilesUploadResult::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Errors), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<Error>(nullptr);
+                return <DATA_TYPE_START>Error<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<Error> newItem(new Error());
+                <DATA_TYPE_START>Error<DATA_TYPE_END> newItem(new Error());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -123,7 +123,7 @@ void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Uploaded.begin(), m_Uploaded.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
+        std::transform(m_Uploaded.begin(), m_Uploaded.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>string<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -134,7 +134,7 @@ void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& mu
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Errors.begin(), m_Errors.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Error> item){
+        std::transform(m_Errors.begin(), m_Errors.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Error<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -169,11 +169,11 @@ void FilesUploadResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Errors), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<Error>(nullptr) ;
+                return <DATA_TYPE_START>Error<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<Error> newItem(new Error());
+                <DATA_TYPE_START>Error<DATA_TYPE_END> newItem(new Error());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -182,12 +182,12 @@ void FilesUploadResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
 }
 
-std::vector<utility::string_t>& FilesUploadResult::getUploaded()
+<DATA_TYPE_START>List<string><DATA_TYPE_END>& FilesUploadResult::getUploaded()
 {
     return m_Uploaded;
 }
 
-void FilesUploadResult::setUploaded(std::vector<utility::string_t> const& value)
+void FilesUploadResult::setUploaded(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value)
 {
     m_Uploaded = value;
     m_UploadedIsSet = true;
@@ -202,12 +202,12 @@ void FilesUploadResult::unsetUploaded()
     m_UploadedIsSet = false;
 }
 
-std::vector<std::shared_ptr<Error>>& FilesUploadResult::getErrors()
+<DATA_TYPE_START>List<Error><DATA_TYPE_END>& FilesUploadResult::getErrors()
 {
     return m_Errors;
 }
 
-void FilesUploadResult::setErrors(std::vector<std::shared_ptr<Error>> const& value)
+void FilesUploadResult::setErrors(<DATA_TYPE_START>List<Error><DATA_TYPE_END> const& value)
 {
     m_Errors = value;
     m_ErrorsIsSet = true;

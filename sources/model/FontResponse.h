@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Font.
     /// </summary>
-    std::shared_ptr<Font> getFont() const;
+    <DATA_TYPE_START>Font<DATA_TYPE_END> getFont() const;
     bool fontIsSet() const;
     void unsetFont();
-    void setFont(std::shared_ptr<Font> value);
+    void setFont(<DATA_TYPE_START>Font<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<Font> m_Font;
+    <DATA_TYPE_START>Font<DATA_TYPE_END> m_Font;
     bool m_FontIsSet;
 };
 

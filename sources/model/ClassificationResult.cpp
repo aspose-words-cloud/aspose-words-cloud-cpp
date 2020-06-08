@@ -80,7 +80,7 @@ void ClassificationResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ClassProbability")];
         if(!fieldValue.is_null())
         {
-            setClassProbability(ModelBase::doubleFromJson(fieldValue));
+            setClassProbability(ModelBase::double?FromJson(fieldValue));
         }
     }
 }
@@ -112,17 +112,17 @@ void ClassificationResult::fromMultiPart(const std::shared_ptr<MultipartFormData
     }
     if(multipart->hasContent(_XPLATSTR("ClassProbability")))
     {
-        setClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
+        setClassProbability(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("ClassProbability"))));
     }
 }
 
-utility::string_t ClassificationResult::getClassName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> ClassificationResult::getClassName() const
 {
     return m_ClassName;
 }
 
 
-void ClassificationResult::setClassName(utility::string_t value)
+void ClassificationResult::setClassName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ClassName = value;
     m_ClassNameIsSet = true;
@@ -137,13 +137,13 @@ void ClassificationResult::unsetClassName()
     m_ClassNameIsSet = false;
 }
 
-double ClassificationResult::getClassProbability() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> ClassificationResult::getClassProbability() const
 {
     return m_ClassProbability;
 }
 
 
-void ClassificationResult::setClassProbability(double value)
+void ClassificationResult::setClassProbability(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_ClassProbability = value;
     m_ClassProbabilityIsSet = true;

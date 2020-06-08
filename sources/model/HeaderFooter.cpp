@@ -55,7 +55,7 @@ web::json::value HeaderFooter::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<NodeLink> item) {
+			[&](<DATA_TYPE_START>NodeLink<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -89,11 +89,11 @@ void HeaderFooter::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<NodeLink>(nullptr);
+                return <DATA_TYPE_START>NodeLink<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<NodeLink> newItem(new NodeLink());
+                <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -106,7 +106,7 @@ void HeaderFooter::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DrawingObjects")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<LinkElement> newItem(new LinkElement());
+            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
             setDrawingObjects( newItem );
         }
@@ -116,7 +116,7 @@ void HeaderFooter::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Paragraphs")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<LinkElement> newItem(new LinkElement());
+            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
             setParagraphs( newItem );
         }
@@ -130,7 +130,7 @@ void HeaderFooter::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
+        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>NodeLink<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -170,11 +170,11 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<NodeLink>(nullptr) ;
+                return <DATA_TYPE_START>NodeLink<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<NodeLink> newItem(new NodeLink());
+                <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -185,7 +185,7 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
         {
-            std::shared_ptr<LinkElement> newItem(new LinkElement());
+            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
             newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObjects."));
             setDrawingObjects( newItem );
         }
@@ -194,19 +194,19 @@ void HeaderFooter::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("Paragraphs")))
         {
-            std::shared_ptr<LinkElement> newItem(new LinkElement());
+            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
             newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
             setParagraphs( newItem );
         }
     }
 }
 
-std::vector<std::shared_ptr<NodeLink>>& HeaderFooter::getChildNodes()
+<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END>& HeaderFooter::getChildNodes()
 {
     return m_ChildNodes;
 }
 
-void HeaderFooter::setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value)
+void HeaderFooter::setChildNodes(<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> const& value)
 {
     m_ChildNodes = value;
     m_ChildNodesIsSet = true;
@@ -221,13 +221,13 @@ void HeaderFooter::unsetChildNodes()
     m_ChildNodesIsSet = false;
 }
 
-std::shared_ptr<LinkElement> HeaderFooter::getDrawingObjects() const
+<DATA_TYPE_START>LinkElement<DATA_TYPE_END> HeaderFooter::getDrawingObjects() const
 {
     return m_DrawingObjects;
 }
 
 
-void HeaderFooter::setDrawingObjects(std::shared_ptr<LinkElement> value)
+void HeaderFooter::setDrawingObjects(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value)
 {
     m_DrawingObjects = value;
     m_DrawingObjectsIsSet = true;
@@ -242,13 +242,13 @@ void HeaderFooter::unsetDrawingObjects()
     m_DrawingObjectsIsSet = false;
 }
 
-std::shared_ptr<LinkElement> HeaderFooter::getParagraphs() const
+<DATA_TYPE_START>LinkElement<DATA_TYPE_END> HeaderFooter::getParagraphs() const
 {
     return m_Paragraphs;
 }
 
 
-void HeaderFooter::setParagraphs(std::shared_ptr<LinkElement> value)
+void HeaderFooter::setParagraphs(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value)
 {
     m_Paragraphs = value;
     m_ParagraphsIsSet = true;

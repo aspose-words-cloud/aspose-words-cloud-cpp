@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets child nodes.
     /// </summary>
-    std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
+    <DATA_TYPE_START>List<NodeLink><DATA_TYPE_END>& getChildNodes();
     bool childNodesIsSet() const;
     void unsetChildNodes();
-    void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
+    void setChildNodes(<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;
+    <DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> m_ChildNodes;
     bool m_ChildNodesIsSet;
 };
 

@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
     /// </summary>
-    utility::string_t getNextParagraphStyleName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getNextParagraphStyleName() const;
     bool nextParagraphStyleNameIsSet() const;
     void unsetNextParagraphStyleName();
-    void setNextParagraphStyleName(utility::string_t value);
+    void setNextParagraphStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets /sets the name of the style this style is based on.
     /// </summary>
-    utility::string_t getBaseStyleName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getBaseStyleName() const;
     bool baseStyleNameIsSet() const;
     void unsetBaseStyleName();
-    void setBaseStyleName(utility::string_t value);
+    void setBaseStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
     /// </summary>
-    bool isIsQuickStyle() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsQuickStyle() const;
     bool isQuickStyleIsSet() const;
     void unsetIsQuickStyle();
-    void setIsQuickStyle(bool value);
+    void setIsQuickStyle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the name of the style.
     /// </summary>
-    utility::string_t getName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(utility::string_t value);
+    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_NextParagraphStyleName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_NextParagraphStyleName;
     bool m_NextParagraphStyleNameIsSet;
-    utility::string_t m_BaseStyleName;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_BaseStyleName;
     bool m_BaseStyleNameIsSet;
-    bool m_IsQuickStyle;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsQuickStyle;
     bool m_IsQuickStyleIsSet;
-    utility::string_t m_Name;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
     bool m_NameIsSet;
 };
 

@@ -97,7 +97,7 @@ void StorageFile::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsFolder")];
         if(!fieldValue.is_null())
         {
-            setIsFolder(ModelBase::boolFromJson(fieldValue));
+            setIsFolder(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ModifiedDate")))
@@ -105,7 +105,7 @@ void StorageFile::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ModifiedDate")];
         if(!fieldValue.is_null())
         {
-            setModifiedDate(ModelBase::dateFromJson(fieldValue));
+            setModifiedDate(ModelBase::DateTime?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Size")))
@@ -113,7 +113,7 @@ void StorageFile::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Size")];
         if(!fieldValue.is_null())
         {
-            setSize(ModelBase::int64_tFromJson(fieldValue));
+            setSize(ModelBase::long?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Path")))
@@ -168,15 +168,15 @@ void StorageFile::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
     if(multipart->hasContent(_XPLATSTR("IsFolder")))
     {
-        setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsFolder"))));
+        setIsFolder(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsFolder"))));
     }
     if(multipart->hasContent(_XPLATSTR("ModifiedDate")))
     {
-        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("ModifiedDate"))));
+        setModifiedDate(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("ModifiedDate"))));
     }
     if(multipart->hasContent(_XPLATSTR("Size")))
     {
-        setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
+        setSize(ModelBase::long?FromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
     }
     if(multipart->hasContent(_XPLATSTR("Path")))
     {
@@ -184,13 +184,13 @@ void StorageFile::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
 }
 
-utility::string_t StorageFile::getName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StorageFile::getName() const
 {
     return m_Name;
 }
 
 
-void StorageFile::setName(utility::string_t value)
+void StorageFile::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -205,13 +205,13 @@ void StorageFile::unsetName()
     m_NameIsSet = false;
 }
 
-bool StorageFile::isIsFolder() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> StorageFile::isIsFolder() const
 {
     return m_IsFolder;
 }
 
 
-void StorageFile::setIsFolder(bool value)
+void StorageFile::setIsFolder(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IsFolder = value;
     m_IsFolderIsSet = true;
@@ -226,13 +226,13 @@ void StorageFile::unsetIsFolder()
     m_IsFolderIsSet = false;
 }
 
-utility::datetime StorageFile::getModifiedDate() const
+<DATA_TYPE_START>DateTime?<DATA_TYPE_END> StorageFile::getModifiedDate() const
 {
     return m_ModifiedDate;
 }
 
 
-void StorageFile::setModifiedDate(utility::datetime value)
+void StorageFile::setModifiedDate(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
 {
     m_ModifiedDate = value;
     m_ModifiedDateIsSet = true;
@@ -247,13 +247,13 @@ void StorageFile::unsetModifiedDate()
     m_ModifiedDateIsSet = false;
 }
 
-int64_t StorageFile::getSize() const
+<DATA_TYPE_START>long?<DATA_TYPE_END> StorageFile::getSize() const
 {
     return m_Size;
 }
 
 
-void StorageFile::setSize(int64_t value)
+void StorageFile::setSize(<DATA_TYPE_START>long?<DATA_TYPE_END> value)
 {
     m_Size = value;
     m_SizeIsSet = true;
@@ -268,13 +268,13 @@ void StorageFile::unsetSize()
     m_SizeIsSet = false;
 }
 
-utility::string_t StorageFile::getPath() const
+<DATA_TYPE_START>string<DATA_TYPE_END> StorageFile::getPath() const
 {
     return m_Path;
 }
 
 
-void StorageFile::setPath(utility::string_t value)
+void StorageFile::setPath(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Path = value;
     m_PathIsSet = true;

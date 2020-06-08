@@ -80,7 +80,7 @@ void XmlColor::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Alpha")];
         if(!fieldValue.is_null())
         {
-            setAlpha(ModelBase::int32_tFromJson(fieldValue));
+            setAlpha(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -112,17 +112,17 @@ void XmlColor::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
     if(multipart->hasContent(_XPLATSTR("Alpha")))
     {
-        setAlpha(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Alpha"))));
+        setAlpha(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("Alpha"))));
     }
 }
 
-utility::string_t XmlColor::getWeb() const
+<DATA_TYPE_START>string<DATA_TYPE_END> XmlColor::getWeb() const
 {
     return m_Web;
 }
 
 
-void XmlColor::setWeb(utility::string_t value)
+void XmlColor::setWeb(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Web = value;
     m_WebIsSet = true;
@@ -137,13 +137,13 @@ void XmlColor::unsetWeb()
     m_WebIsSet = false;
 }
 
-int32_t XmlColor::getAlpha() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> XmlColor::getAlpha() const
 {
     return m_Alpha;
 }
 
 
-void XmlColor::setAlpha(int32_t value)
+void XmlColor::setAlpha(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_Alpha = value;
     m_AlphaIsSet = true;

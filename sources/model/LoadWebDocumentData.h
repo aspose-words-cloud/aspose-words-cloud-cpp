@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets web document url.
     /// </summary>
-    utility::string_t getLoadingDocumentUrl() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getLoadingDocumentUrl() const;
     bool loadingDocumentUrlIsSet() const;
     void unsetLoadingDocumentUrl();
-    void setLoadingDocumentUrl(utility::string_t value);
+    void setLoadingDocumentUrl(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets SaveOptions.
     /// </summary>
-    std::shared_ptr<SaveOptionsData> getSaveOptions() const;
+    <DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> getSaveOptions() const;
     bool saveOptionsIsSet() const;
     void unsetSaveOptions();
-    void setSaveOptions(std::shared_ptr<SaveOptionsData> value);
+    void setSaveOptions(<DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_LoadingDocumentUrl;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_LoadingDocumentUrl;
     bool m_LoadingDocumentUrlIsSet;
-    std::shared_ptr<SaveOptionsData> m_SaveOptions;
+    <DATA_TYPE_START>SaveOptionsData<DATA_TYPE_END> m_SaveOptions;
     bool m_SaveOptionsIsSet;
 };
 

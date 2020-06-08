@@ -93,13 +93,13 @@ void RangeDocument::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
 }
 
-utility::string_t RangeDocument::getDocumentName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> RangeDocument::getDocumentName() const
 {
     return m_DocumentName;
 }
 
 
-void RangeDocument::setDocumentName(utility::string_t value)
+void RangeDocument::setDocumentName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_DocumentName = value;
     m_DocumentNameIsSet = true;

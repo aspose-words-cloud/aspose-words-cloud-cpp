@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets the unit of measure used for this preferred width value.
     /// </summary>
-    utility::string_t getType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getType() const;
     bool typeIsSet() const;
     void unsetType();
-    void setType(utility::string_t value);
+    void setType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
     /// </summary>
-    double getValue() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getValue() const;
     bool valueIsSet() const;
     void unsetValue();
-    void setValue(double value);
+    void setValue(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Type;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Type;
     bool m_TypeIsSet;
-    double m_Value;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Value;
     bool m_ValueIsSet;
 };
 

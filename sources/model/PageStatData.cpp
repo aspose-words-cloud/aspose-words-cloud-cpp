@@ -83,7 +83,7 @@ void PageStatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PageNumber")];
         if(!fieldValue.is_null())
         {
-            setPageNumber(ModelBase::int32_tFromJson(fieldValue));
+            setPageNumber(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("WordCount")))
@@ -91,7 +91,7 @@ void PageStatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("WordCount")];
         if(!fieldValue.is_null())
         {
-            setWordCount(ModelBase::int32_tFromJson(fieldValue));
+            setWordCount(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ParagraphCount")))
@@ -99,7 +99,7 @@ void PageStatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ParagraphCount")];
         if(!fieldValue.is_null())
         {
-            setParagraphCount(ModelBase::int32_tFromJson(fieldValue));
+            setParagraphCount(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("FootnotesStatData")))
@@ -107,7 +107,7 @@ void PageStatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FootnotesStatData")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<FootnotesStatData> newItem(new FootnotesStatData());
+            <DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> newItem(new FootnotesStatData());
             newItem->fromJson(fieldValue);
             setFootnotesStatData( newItem );
         }
@@ -150,34 +150,34 @@ void PageStatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
 
     if(multipart->hasContent(_XPLATSTR("PageNumber")))
     {
-        setPageNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageNumber"))));
+        setPageNumber(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("PageNumber"))));
     }
     if(multipart->hasContent(_XPLATSTR("WordCount")))
     {
-        setWordCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
+        setWordCount(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("WordCount"))));
     }
     if(multipart->hasContent(_XPLATSTR("ParagraphCount")))
     {
-        setParagraphCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
+        setParagraphCount(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ParagraphCount"))));
     }
     if(multipart->hasContent(_XPLATSTR("FootnotesStatData")))
     {
         if(multipart->hasContent(_XPLATSTR("FootnotesStatData")))
         {
-            std::shared_ptr<FootnotesStatData> newItem(new FootnotesStatData());
+            <DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> newItem(new FootnotesStatData());
             newItem->fromMultiPart(multipart, _XPLATSTR("FootnotesStatData."));
             setFootnotesStatData( newItem );
         }
     }
 }
 
-int32_t PageStatData::getPageNumber() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> PageStatData::getPageNumber() const
 {
     return m_PageNumber;
 }
 
 
-void PageStatData::setPageNumber(int32_t value)
+void PageStatData::setPageNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_PageNumber = value;
     m_PageNumberIsSet = true;
@@ -192,13 +192,13 @@ void PageStatData::unsetPageNumber()
     m_PageNumberIsSet = false;
 }
 
-int32_t PageStatData::getWordCount() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> PageStatData::getWordCount() const
 {
     return m_WordCount;
 }
 
 
-void PageStatData::setWordCount(int32_t value)
+void PageStatData::setWordCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_WordCount = value;
     m_WordCountIsSet = true;
@@ -213,13 +213,13 @@ void PageStatData::unsetWordCount()
     m_WordCountIsSet = false;
 }
 
-int32_t PageStatData::getParagraphCount() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> PageStatData::getParagraphCount() const
 {
     return m_ParagraphCount;
 }
 
 
-void PageStatData::setParagraphCount(int32_t value)
+void PageStatData::setParagraphCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_ParagraphCount = value;
     m_ParagraphCountIsSet = true;
@@ -234,13 +234,13 @@ void PageStatData::unsetParagraphCount()
     m_ParagraphCountIsSet = false;
 }
 
-std::shared_ptr<FootnotesStatData> PageStatData::getFootnotesStatData() const
+<DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> PageStatData::getFootnotesStatData() const
 {
     return m_FootnotesStatData;
 }
 
 
-void PageStatData::setFootnotesStatData(std::shared_ptr<FootnotesStatData> value)
+void PageStatData::setFootnotesStatData(<DATA_TYPE_START>FootnotesStatData<DATA_TYPE_END> value)
 {
     m_FootnotesStatData = value;
     m_FootnotesStatDataIsSet = true;

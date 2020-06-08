@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Footnote.
     /// </summary>
-    std::shared_ptr<Footnote> getFootnote() const;
+    <DATA_TYPE_START>Footnote<DATA_TYPE_END> getFootnote() const;
     bool footnoteIsSet() const;
     void unsetFootnote();
-    void setFootnote(std::shared_ptr<Footnote> value);
+    void setFootnote(<DATA_TYPE_START>Footnote<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<Footnote> m_Footnote;
+    <DATA_TYPE_START>Footnote<DATA_TYPE_END> m_Footnote;
     bool m_FootnoteIsSet;
 };
 

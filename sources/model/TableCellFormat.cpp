@@ -133,7 +133,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BottomPadding")];
         if(!fieldValue.is_null())
         {
-            setBottomPadding(ModelBase::doubleFromJson(fieldValue));
+            setBottomPadding(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("FitText")))
@@ -141,7 +141,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FitText")];
         if(!fieldValue.is_null())
         {
-            setFitText(ModelBase::boolFromJson(fieldValue));
+            setFitText(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("HorizontalMerge")))
@@ -157,7 +157,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LeftPadding")];
         if(!fieldValue.is_null())
         {
-            setLeftPadding(ModelBase::doubleFromJson(fieldValue));
+            setLeftPadding(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Orientation")))
@@ -173,7 +173,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PreferredWidth")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
+            <DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> newItem(new PreferredWidth());
             newItem->fromJson(fieldValue);
             setPreferredWidth( newItem );
         }
@@ -183,7 +183,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RightPadding")];
         if(!fieldValue.is_null())
         {
-            setRightPadding(ModelBase::doubleFromJson(fieldValue));
+            setRightPadding(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TopPadding")))
@@ -191,7 +191,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("TopPadding")];
         if(!fieldValue.is_null())
         {
-            setTopPadding(ModelBase::doubleFromJson(fieldValue));
+            setTopPadding(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("VerticalAlignment")))
@@ -215,7 +215,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Width")];
         if(!fieldValue.is_null())
         {
-            setWidth(ModelBase::doubleFromJson(fieldValue));
+            setWidth(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("WrapText")))
@@ -223,7 +223,7 @@ void TableCellFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("WrapText")];
         if(!fieldValue.is_null())
         {
-            setWrapText(ModelBase::boolFromJson(fieldValue));
+            setWrapText(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -304,11 +304,11 @@ void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
 
     if(multipart->hasContent(_XPLATSTR("BottomPadding")))
     {
-        setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BottomPadding"))));
+        setBottomPadding(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("BottomPadding"))));
     }
     if(multipart->hasContent(_XPLATSTR("FitText")))
     {
-        setFitText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("FitText"))));
+        setFitText(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("FitText"))));
     }
     if(multipart->hasContent(_XPLATSTR("HorizontalMerge")))
     {
@@ -316,7 +316,7 @@ void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("LeftPadding")))
     {
-        setLeftPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftPadding"))));
+        setLeftPadding(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("LeftPadding"))));
     }
     if(multipart->hasContent(_XPLATSTR("Orientation")))
     {
@@ -326,18 +326,18 @@ void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     {
         if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
         {
-            std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
+            <DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> newItem(new PreferredWidth());
             newItem->fromMultiPart(multipart, _XPLATSTR("PreferredWidth."));
             setPreferredWidth( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("RightPadding")))
     {
-        setRightPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightPadding"))));
+        setRightPadding(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("RightPadding"))));
     }
     if(multipart->hasContent(_XPLATSTR("TopPadding")))
     {
-        setTopPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TopPadding"))));
+        setTopPadding(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("TopPadding"))));
     }
     if(multipart->hasContent(_XPLATSTR("VerticalAlignment")))
     {
@@ -349,21 +349,21 @@ void TableCellFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("Width")))
     {
-        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
+        setWidth(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
     }
     if(multipart->hasContent(_XPLATSTR("WrapText")))
     {
-        setWrapText(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("WrapText"))));
+        setWrapText(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("WrapText"))));
     }
 }
 
-double TableCellFormat::getBottomPadding() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TableCellFormat::getBottomPadding() const
 {
     return m_BottomPadding;
 }
 
 
-void TableCellFormat::setBottomPadding(double value)
+void TableCellFormat::setBottomPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_BottomPadding = value;
     m_BottomPaddingIsSet = true;
@@ -378,13 +378,13 @@ void TableCellFormat::unsetBottomPadding()
     m_BottomPaddingIsSet = false;
 }
 
-bool TableCellFormat::isFitText() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TableCellFormat::isFitText() const
 {
     return m_FitText;
 }
 
 
-void TableCellFormat::setFitText(bool value)
+void TableCellFormat::setFitText(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_FitText = value;
     m_FitTextIsSet = true;
@@ -399,13 +399,13 @@ void TableCellFormat::unsetFitText()
     m_FitTextIsSet = false;
 }
 
-utility::string_t TableCellFormat::getHorizontalMerge() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TableCellFormat::getHorizontalMerge() const
 {
     return m_HorizontalMerge;
 }
 
 
-void TableCellFormat::setHorizontalMerge(utility::string_t value)
+void TableCellFormat::setHorizontalMerge(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_HorizontalMerge = value;
     m_HorizontalMergeIsSet = true;
@@ -420,13 +420,13 @@ void TableCellFormat::unsetHorizontalMerge()
     m_HorizontalMergeIsSet = false;
 }
 
-double TableCellFormat::getLeftPadding() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TableCellFormat::getLeftPadding() const
 {
     return m_LeftPadding;
 }
 
 
-void TableCellFormat::setLeftPadding(double value)
+void TableCellFormat::setLeftPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_LeftPadding = value;
     m_LeftPaddingIsSet = true;
@@ -441,13 +441,13 @@ void TableCellFormat::unsetLeftPadding()
     m_LeftPaddingIsSet = false;
 }
 
-utility::string_t TableCellFormat::getOrientation() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TableCellFormat::getOrientation() const
 {
     return m_Orientation;
 }
 
 
-void TableCellFormat::setOrientation(utility::string_t value)
+void TableCellFormat::setOrientation(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Orientation = value;
     m_OrientationIsSet = true;
@@ -462,13 +462,13 @@ void TableCellFormat::unsetOrientation()
     m_OrientationIsSet = false;
 }
 
-std::shared_ptr<PreferredWidth> TableCellFormat::getPreferredWidth() const
+<DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> TableCellFormat::getPreferredWidth() const
 {
     return m_PreferredWidth;
 }
 
 
-void TableCellFormat::setPreferredWidth(std::shared_ptr<PreferredWidth> value)
+void TableCellFormat::setPreferredWidth(<DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> value)
 {
     m_PreferredWidth = value;
     m_PreferredWidthIsSet = true;
@@ -483,13 +483,13 @@ void TableCellFormat::unsetPreferredWidth()
     m_PreferredWidthIsSet = false;
 }
 
-double TableCellFormat::getRightPadding() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TableCellFormat::getRightPadding() const
 {
     return m_RightPadding;
 }
 
 
-void TableCellFormat::setRightPadding(double value)
+void TableCellFormat::setRightPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_RightPadding = value;
     m_RightPaddingIsSet = true;
@@ -504,13 +504,13 @@ void TableCellFormat::unsetRightPadding()
     m_RightPaddingIsSet = false;
 }
 
-double TableCellFormat::getTopPadding() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TableCellFormat::getTopPadding() const
 {
     return m_TopPadding;
 }
 
 
-void TableCellFormat::setTopPadding(double value)
+void TableCellFormat::setTopPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_TopPadding = value;
     m_TopPaddingIsSet = true;
@@ -525,13 +525,13 @@ void TableCellFormat::unsetTopPadding()
     m_TopPaddingIsSet = false;
 }
 
-utility::string_t TableCellFormat::getVerticalAlignment() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TableCellFormat::getVerticalAlignment() const
 {
     return m_VerticalAlignment;
 }
 
 
-void TableCellFormat::setVerticalAlignment(utility::string_t value)
+void TableCellFormat::setVerticalAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_VerticalAlignment = value;
     m_VerticalAlignmentIsSet = true;
@@ -546,13 +546,13 @@ void TableCellFormat::unsetVerticalAlignment()
     m_VerticalAlignmentIsSet = false;
 }
 
-utility::string_t TableCellFormat::getVerticalMerge() const
+<DATA_TYPE_START>string<DATA_TYPE_END> TableCellFormat::getVerticalMerge() const
 {
     return m_VerticalMerge;
 }
 
 
-void TableCellFormat::setVerticalMerge(utility::string_t value)
+void TableCellFormat::setVerticalMerge(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_VerticalMerge = value;
     m_VerticalMergeIsSet = true;
@@ -567,13 +567,13 @@ void TableCellFormat::unsetVerticalMerge()
     m_VerticalMergeIsSet = false;
 }
 
-double TableCellFormat::getWidth() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> TableCellFormat::getWidth() const
 {
     return m_Width;
 }
 
 
-void TableCellFormat::setWidth(double value)
+void TableCellFormat::setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Width = value;
     m_WidthIsSet = true;
@@ -588,13 +588,13 @@ void TableCellFormat::unsetWidth()
     m_WidthIsSet = false;
 }
 
-bool TableCellFormat::isWrapText() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> TableCellFormat::isWrapText() const
 {
     return m_WrapText;
 }
 
 
-void TableCellFormat::setWrapText(bool value)
+void TableCellFormat::setWrapText(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_WrapText = value;
     m_WrapTextIsSet = true;

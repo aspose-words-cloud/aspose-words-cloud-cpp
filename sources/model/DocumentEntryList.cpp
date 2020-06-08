@@ -53,7 +53,7 @@ web::json::value DocumentEntryList::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<DocumentEntry> item) {
+			[&](<DATA_TYPE_START>DocumentEntry<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -77,11 +77,11 @@ void DocumentEntryList::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<DocumentEntry>(nullptr);
+                return <DATA_TYPE_START>DocumentEntry<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
+                <DATA_TYPE_START>DocumentEntry<DATA_TYPE_END> newItem(new DocumentEntry());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -98,7 +98,7 @@ void DocumentEntryList::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<DocumentEntry> item){
+        std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>DocumentEntry<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -122,11 +122,11 @@ void DocumentEntryList::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_DocumentEntries), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<DocumentEntry>(nullptr) ;
+                return <DATA_TYPE_START>DocumentEntry<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<DocumentEntry> newItem(new DocumentEntry());
+                <DATA_TYPE_START>DocumentEntry<DATA_TYPE_END> newItem(new DocumentEntry());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -135,12 +135,12 @@ void DocumentEntryList::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
 }
 
-std::vector<std::shared_ptr<DocumentEntry>>& DocumentEntryList::getDocumentEntries()
+<DATA_TYPE_START>List<DocumentEntry><DATA_TYPE_END>& DocumentEntryList::getDocumentEntries()
 {
     return m_DocumentEntries;
 }
 
-void DocumentEntryList::setDocumentEntries(std::vector<std::shared_ptr<DocumentEntry>> const& value)
+void DocumentEntryList::setDocumentEntries(<DATA_TYPE_START>List<DocumentEntry><DATA_TYPE_END> const& value)
 {
     m_DocumentEntries = value;
     m_DocumentEntriesIsSet = true;

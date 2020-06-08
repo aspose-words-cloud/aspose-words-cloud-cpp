@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets RangeStart.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeStart() const;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getRangeStart() const;
     bool rangeStartIsSet() const;
     void unsetRangeStart();
-    void setRangeStart(std::shared_ptr<DocumentPosition> value);
+    void setRangeStart(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets RangeEnd.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getRangeEnd() const;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getRangeEnd() const;
     bool rangeEndIsSet() const;
     void unsetRangeEnd();
-    void setRangeEnd(std::shared_ptr<DocumentPosition> value);
+    void setRangeEnd(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_RangeStart;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_RangeStart;
     bool m_RangeStartIsSet;
-    std::shared_ptr<DocumentPosition> m_RangeEnd;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_RangeEnd;
     bool m_RangeEndIsSet;
 };
 

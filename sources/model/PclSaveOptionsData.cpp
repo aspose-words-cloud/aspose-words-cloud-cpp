@@ -82,7 +82,7 @@ void PclSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RasterizeTransformedElements")];
         if(!fieldValue.is_null())
         {
-            setRasterizeTransformedElements(ModelBase::boolFromJson(fieldValue));
+            setRasterizeTransformedElements(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -114,17 +114,17 @@ void PclSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("RasterizeTransformedElements")))
     {
-        setRasterizeTransformedElements(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("RasterizeTransformedElements"))));
+        setRasterizeTransformedElements(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("RasterizeTransformedElements"))));
     }
 }
 
-utility::string_t PclSaveOptionsData::getFalllbackFontName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> PclSaveOptionsData::getFalllbackFontName() const
 {
     return m_FalllbackFontName;
 }
 
 
-void PclSaveOptionsData::setFalllbackFontName(utility::string_t value)
+void PclSaveOptionsData::setFalllbackFontName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FalllbackFontName = value;
     m_FalllbackFontNameIsSet = true;
@@ -139,13 +139,13 @@ void PclSaveOptionsData::unsetFalllbackFontName()
     m_FalllbackFontNameIsSet = false;
 }
 
-bool PclSaveOptionsData::isRasterizeTransformedElements() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> PclSaveOptionsData::isRasterizeTransformedElements() const
 {
     return m_RasterizeTransformedElements;
 }
 
 
-void PclSaveOptionsData::setRasterizeTransformedElements(bool value)
+void PclSaveOptionsData::setRasterizeTransformedElements(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_RasterizeTransformedElements = value;
     m_RasterizeTransformedElementsIsSet = true;

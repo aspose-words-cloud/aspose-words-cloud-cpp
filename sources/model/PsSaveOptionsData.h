@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets determines whether the document should be saved using a booklet printing layout.
     /// </summary>
-    bool isUseBookFoldPrintingSettings() const;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseBookFoldPrintingSettings() const;
     bool useBookFoldPrintingSettingsIsSet() const;
     void unsetUseBookFoldPrintingSettings();
-    void setUseBookFoldPrintingSettings(bool value);
+    void setUseBookFoldPrintingSettings(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
 
 protected:
-    bool m_UseBookFoldPrintingSettings;
+    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseBookFoldPrintingSettings;
     bool m_UseBookFoldPrintingSettingsIsSet;
 };
 

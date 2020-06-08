@@ -68,7 +68,7 @@ void EpubSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EpubNavigationMapLevel")];
         if(!fieldValue.is_null())
         {
-            setEpubNavigationMapLevel(ModelBase::int32_tFromJson(fieldValue));
+            setEpubNavigationMapLevel(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -91,17 +91,17 @@ void EpubSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
 
     if(multipart->hasContent(_XPLATSTR("EpubNavigationMapLevel")))
     {
-        setEpubNavigationMapLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("EpubNavigationMapLevel"))));
+        setEpubNavigationMapLevel(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("EpubNavigationMapLevel"))));
     }
 }
 
-int32_t EpubSaveOptionsData::getEpubNavigationMapLevel() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> EpubSaveOptionsData::getEpubNavigationMapLevel() const
 {
     return m_EpubNavigationMapLevel;
 }
 
 
-void EpubSaveOptionsData::setEpubNavigationMapLevel(int32_t value)
+void EpubSaveOptionsData::setEpubNavigationMapLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_EpubNavigationMapLevel = value;
     m_EpubNavigationMapLevelIsSet = true;

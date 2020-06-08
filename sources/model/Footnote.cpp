@@ -90,7 +90,7 @@ void Footnote::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
+            <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> newItem(new StoryChildNodes());
             newItem->fromJson(fieldValue);
             setContent( newItem );
         }
@@ -108,7 +108,7 @@ void Footnote::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
+            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setPosition( newItem );
         }
@@ -177,7 +177,7 @@ void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     {
         if(multipart->hasContent(_XPLATSTR("Content")))
         {
-            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
+            <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> newItem(new StoryChildNodes());
             newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
@@ -190,7 +190,7 @@ void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     {
         if(multipart->hasContent(_XPLATSTR("Position")))
         {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
+            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("Position."));
             setPosition( newItem );
         }
@@ -205,13 +205,13 @@ void Footnote::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
 }
 
-std::shared_ptr<StoryChildNodes> Footnote::getContent() const
+<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> Footnote::getContent() const
 {
     return m_Content;
 }
 
 
-void Footnote::setContent(std::shared_ptr<StoryChildNodes> value)
+void Footnote::setContent(<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> value)
 {
     m_Content = value;
     m_ContentIsSet = true;
@@ -226,13 +226,13 @@ void Footnote::unsetContent()
     m_ContentIsSet = false;
 }
 
-utility::string_t Footnote::getFootnoteType() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Footnote::getFootnoteType() const
 {
     return m_FootnoteType;
 }
 
 
-void Footnote::setFootnoteType(utility::string_t value)
+void Footnote::setFootnoteType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_FootnoteType = value;
     m_FootnoteTypeIsSet = true;
@@ -247,13 +247,13 @@ void Footnote::unsetFootnoteType()
     m_FootnoteTypeIsSet = false;
 }
 
-std::shared_ptr<DocumentPosition> Footnote::getPosition() const
+<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> Footnote::getPosition() const
 {
     return m_Position;
 }
 
 
-void Footnote::setPosition(std::shared_ptr<DocumentPosition> value)
+void Footnote::setPosition(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
 {
     m_Position = value;
     m_PositionIsSet = true;
@@ -268,13 +268,13 @@ void Footnote::unsetPosition()
     m_PositionIsSet = false;
 }
 
-utility::string_t Footnote::getReferenceMark() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Footnote::getReferenceMark() const
 {
     return m_ReferenceMark;
 }
 
 
-void Footnote::setReferenceMark(utility::string_t value)
+void Footnote::setReferenceMark(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ReferenceMark = value;
     m_ReferenceMarkIsSet = true;
@@ -289,13 +289,13 @@ void Footnote::unsetReferenceMark()
     m_ReferenceMarkIsSet = false;
 }
 
-utility::string_t Footnote::getText() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Footnote::getText() const
 {
     return m_Text;
 }
 
 
-void Footnote::setText(utility::string_t value)
+void Footnote::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Text = value;
     m_TextIsSet = true;

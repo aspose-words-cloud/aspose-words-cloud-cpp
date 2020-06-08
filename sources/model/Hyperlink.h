@@ -62,24 +62,24 @@ public:
     /// Hyperlink members
 
     /// <summary>
-    /// Gets or sets hypelink&#39;s display text.
+    /// Gets or sets hypelink&#x27;s display text.
     /// </summary>
-    utility::string_t getDisplayText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getDisplayText() const;
     bool displayTextIsSet() const;
     void unsetDisplayText();
-    void setDisplayText(utility::string_t value);
+    void setDisplayText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets value.
     /// </summary>
-    utility::string_t getValue() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getValue() const;
     bool valueIsSet() const;
     void unsetValue();
-    void setValue(utility::string_t value);
+    void setValue(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_DisplayText;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_DisplayText;
     bool m_DisplayTextIsSet;
-    utility::string_t m_Value;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Value;
     bool m_ValueIsSet;
 };
 

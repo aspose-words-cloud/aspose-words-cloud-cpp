@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets OfficeMathObjects.
     /// </summary>
-    std::shared_ptr<OfficeMathObjectsCollection> getOfficeMathObjects() const;
+    <DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> getOfficeMathObjects() const;
     bool officeMathObjectsIsSet() const;
     void unsetOfficeMathObjects();
-    void setOfficeMathObjects(std::shared_ptr<OfficeMathObjectsCollection> value);
+    void setOfficeMathObjects(<DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<OfficeMathObjectsCollection> m_OfficeMathObjects;
+    <DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> m_OfficeMathObjects;
     bool m_OfficeMathObjectsIsSet;
 };
 

@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets HeaderFooter.
     /// </summary>
-    std::shared_ptr<HeaderFooter> getHeaderFooter() const;
+    <DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> getHeaderFooter() const;
     bool headerFooterIsSet() const;
     void unsetHeaderFooter();
-    void setHeaderFooter(std::shared_ptr<HeaderFooter> value);
+    void setHeaderFooter(<DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<HeaderFooter> m_HeaderFooter;
+    <DATA_TYPE_START>HeaderFooter<DATA_TYPE_END> m_HeaderFooter;
     bool m_HeaderFooterIsSet;
 };
 

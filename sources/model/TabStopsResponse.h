@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets represents a tab stop.
     /// </summary>
-    std::vector<std::shared_ptr<TabStop>>& getTabStops();
+    <DATA_TYPE_START>List<TabStop><DATA_TYPE_END>& getTabStops();
     bool tabStopsIsSet() const;
     void unsetTabStops();
-    void setTabStops(std::vector<std::shared_ptr<TabStop>> const& value);
+    void setTabStops(<DATA_TYPE_START>List<TabStop><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<TabStop>> m_TabStops;
+    <DATA_TYPE_START>List<TabStop><DATA_TYPE_END> m_TabStops;
     bool m_TabStopsIsSet;
 };
 

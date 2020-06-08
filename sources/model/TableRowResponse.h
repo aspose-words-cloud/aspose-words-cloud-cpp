@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Row.
     /// </summary>
-    std::shared_ptr<TableRow> getRow() const;
+    <DATA_TYPE_START>TableRow<DATA_TYPE_END> getRow() const;
     bool rowIsSet() const;
     void unsetRow();
-    void setRow(std::shared_ptr<TableRow> value);
+    void setRow(<DATA_TYPE_START>TableRow<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<TableRow> m_Row;
+    <DATA_TYPE_START>TableRow<DATA_TYPE_END> m_Row;
     bool m_RowIsSet;
 };
 

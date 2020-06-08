@@ -298,7 +298,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AllCaps")];
         if(!fieldValue.is_null())
         {
-            setAllCaps(ModelBase::boolFromJson(fieldValue));
+            setAllCaps(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Bidi")))
@@ -306,7 +306,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
         if(!fieldValue.is_null())
         {
-            setBidi(ModelBase::boolFromJson(fieldValue));
+            setBidi(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Bold")))
@@ -314,7 +314,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Bold")];
         if(!fieldValue.is_null())
         {
-            setBold(ModelBase::boolFromJson(fieldValue));
+            setBold(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("BoldBi")))
@@ -322,7 +322,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BoldBi")];
         if(!fieldValue.is_null())
         {
-            setBoldBi(ModelBase::boolFromJson(fieldValue));
+            setBoldBi(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Border")))
@@ -330,7 +330,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Border")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Border> newItem(new Border());
+            <DATA_TYPE_START>Border<DATA_TYPE_END> newItem(new Border());
             newItem->fromJson(fieldValue);
             setBorder( newItem );
         }
@@ -340,7 +340,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Color")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
             setColor( newItem );
         }
@@ -350,7 +350,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ComplexScript")];
         if(!fieldValue.is_null())
         {
-            setComplexScript(ModelBase::boolFromJson(fieldValue));
+            setComplexScript(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("DoubleStrikeThrough")))
@@ -358,7 +358,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DoubleStrikeThrough")];
         if(!fieldValue.is_null())
         {
-            setDoubleStrikeThrough(ModelBase::boolFromJson(fieldValue));
+            setDoubleStrikeThrough(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Emboss")))
@@ -366,7 +366,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Emboss")];
         if(!fieldValue.is_null())
         {
-            setEmboss(ModelBase::boolFromJson(fieldValue));
+            setEmboss(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Engrave")))
@@ -374,7 +374,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Engrave")];
         if(!fieldValue.is_null())
         {
-            setEngrave(ModelBase::boolFromJson(fieldValue));
+            setEngrave(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Hidden")))
@@ -382,7 +382,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Hidden")];
         if(!fieldValue.is_null())
         {
-            setHidden(ModelBase::boolFromJson(fieldValue));
+            setHidden(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("HighlightColor")))
@@ -390,7 +390,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HighlightColor")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
             setHighlightColor( newItem );
         }
@@ -400,7 +400,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Italic")];
         if(!fieldValue.is_null())
         {
-            setItalic(ModelBase::boolFromJson(fieldValue));
+            setItalic(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ItalicBi")))
@@ -408,7 +408,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ItalicBi")];
         if(!fieldValue.is_null())
         {
-            setItalicBi(ModelBase::boolFromJson(fieldValue));
+            setItalicBi(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Kerning")))
@@ -416,7 +416,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Kerning")];
         if(!fieldValue.is_null())
         {
-            setKerning(ModelBase::doubleFromJson(fieldValue));
+            setKerning(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LocaleId")))
@@ -424,7 +424,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LocaleId")];
         if(!fieldValue.is_null())
         {
-            setLocaleId(ModelBase::int32_tFromJson(fieldValue));
+            setLocaleId(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LocaleIdBi")))
@@ -432,7 +432,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LocaleIdBi")];
         if(!fieldValue.is_null())
         {
-            setLocaleIdBi(ModelBase::int32_tFromJson(fieldValue));
+            setLocaleIdBi(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LocaleIdFarEast")))
@@ -440,7 +440,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LocaleIdFarEast")];
         if(!fieldValue.is_null())
         {
-            setLocaleIdFarEast(ModelBase::int32_tFromJson(fieldValue));
+            setLocaleIdFarEast(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Name")))
@@ -488,7 +488,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("NoProofing")];
         if(!fieldValue.is_null())
         {
-            setNoProofing(ModelBase::boolFromJson(fieldValue));
+            setNoProofing(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Outline")))
@@ -496,7 +496,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Outline")];
         if(!fieldValue.is_null())
         {
-            setOutline(ModelBase::boolFromJson(fieldValue));
+            setOutline(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Position")))
@@ -504,7 +504,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
-            setPosition(ModelBase::doubleFromJson(fieldValue));
+            setPosition(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Scaling")))
@@ -512,7 +512,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Scaling")];
         if(!fieldValue.is_null())
         {
-            setScaling(ModelBase::int32_tFromJson(fieldValue));
+            setScaling(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Shadow")))
@@ -520,7 +520,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Shadow")];
         if(!fieldValue.is_null())
         {
-            setShadow(ModelBase::boolFromJson(fieldValue));
+            setShadow(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Size")))
@@ -528,7 +528,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Size")];
         if(!fieldValue.is_null())
         {
-            setSize(ModelBase::doubleFromJson(fieldValue));
+            setSize(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SizeBi")))
@@ -536,7 +536,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SizeBi")];
         if(!fieldValue.is_null())
         {
-            setSizeBi(ModelBase::doubleFromJson(fieldValue));
+            setSizeBi(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SmallCaps")))
@@ -544,7 +544,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SmallCaps")];
         if(!fieldValue.is_null())
         {
-            setSmallCaps(ModelBase::boolFromJson(fieldValue));
+            setSmallCaps(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Spacing")))
@@ -552,7 +552,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Spacing")];
         if(!fieldValue.is_null())
         {
-            setSpacing(ModelBase::doubleFromJson(fieldValue));
+            setSpacing(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("StrikeThrough")))
@@ -560,7 +560,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("StrikeThrough")];
         if(!fieldValue.is_null())
         {
-            setStrikeThrough(ModelBase::boolFromJson(fieldValue));
+            setStrikeThrough(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("StyleIdentifier")))
@@ -584,7 +584,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Subscript")];
         if(!fieldValue.is_null())
         {
-            setSubscript(ModelBase::boolFromJson(fieldValue));
+            setSubscript(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Superscript")))
@@ -592,7 +592,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Superscript")];
         if(!fieldValue.is_null())
         {
-            setSuperscript(ModelBase::boolFromJson(fieldValue));
+            setSuperscript(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TextEffect")))
@@ -616,7 +616,7 @@ void Font::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UnderlineColor")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
             setUnderlineColor( newItem );
         }
@@ -848,25 +848,25 @@ void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
 
     if(multipart->hasContent(_XPLATSTR("AllCaps")))
     {
-        setAllCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllCaps"))));
+        setAllCaps(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AllCaps"))));
     }
     if(multipart->hasContent(_XPLATSTR("Bidi")))
     {
-        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
+        setBidi(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
     }
     if(multipart->hasContent(_XPLATSTR("Bold")))
     {
-        setBold(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bold"))));
+        setBold(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Bold"))));
     }
     if(multipart->hasContent(_XPLATSTR("BoldBi")))
     {
-        setBoldBi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BoldBi"))));
+        setBoldBi(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("BoldBi"))));
     }
     if(multipart->hasContent(_XPLATSTR("Border")))
     {
         if(multipart->hasContent(_XPLATSTR("Border")))
         {
-            std::shared_ptr<Border> newItem(new Border());
+            <DATA_TYPE_START>Border<DATA_TYPE_END> newItem(new Border());
             newItem->fromMultiPart(multipart, _XPLATSTR("Border."));
             setBorder( newItem );
         }
@@ -875,63 +875,63 @@ void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
     {
         if(multipart->hasContent(_XPLATSTR("Color")))
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromMultiPart(multipart, _XPLATSTR("Color."));
             setColor( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("ComplexScript")))
     {
-        setComplexScript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ComplexScript"))));
+        setComplexScript(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ComplexScript"))));
     }
     if(multipart->hasContent(_XPLATSTR("DoubleStrikeThrough")))
     {
-        setDoubleStrikeThrough(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DoubleStrikeThrough"))));
+        setDoubleStrikeThrough(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("DoubleStrikeThrough"))));
     }
     if(multipart->hasContent(_XPLATSTR("Emboss")))
     {
-        setEmboss(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Emboss"))));
+        setEmboss(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Emboss"))));
     }
     if(multipart->hasContent(_XPLATSTR("Engrave")))
     {
-        setEngrave(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Engrave"))));
+        setEngrave(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Engrave"))));
     }
     if(multipart->hasContent(_XPLATSTR("Hidden")))
     {
-        setHidden(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Hidden"))));
+        setHidden(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Hidden"))));
     }
     if(multipart->hasContent(_XPLATSTR("HighlightColor")))
     {
         if(multipart->hasContent(_XPLATSTR("HighlightColor")))
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromMultiPart(multipart, _XPLATSTR("HighlightColor."));
             setHighlightColor( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("Italic")))
     {
-        setItalic(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Italic"))));
+        setItalic(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Italic"))));
     }
     if(multipart->hasContent(_XPLATSTR("ItalicBi")))
     {
-        setItalicBi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ItalicBi"))));
+        setItalicBi(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ItalicBi"))));
     }
     if(multipart->hasContent(_XPLATSTR("Kerning")))
     {
-        setKerning(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Kerning"))));
+        setKerning(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Kerning"))));
     }
     if(multipart->hasContent(_XPLATSTR("LocaleId")))
     {
-        setLocaleId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LocaleId"))));
+        setLocaleId(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("LocaleId"))));
     }
     if(multipart->hasContent(_XPLATSTR("LocaleIdBi")))
     {
-        setLocaleIdBi(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LocaleIdBi"))));
+        setLocaleIdBi(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("LocaleIdBi"))));
     }
     if(multipart->hasContent(_XPLATSTR("LocaleIdFarEast")))
     {
-        setLocaleIdFarEast(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LocaleIdFarEast"))));
+        setLocaleIdFarEast(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("LocaleIdFarEast"))));
     }
     if(multipart->hasContent(_XPLATSTR("Name")))
     {
@@ -955,43 +955,43 @@ void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
     }
     if(multipart->hasContent(_XPLATSTR("NoProofing")))
     {
-        setNoProofing(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("NoProofing"))));
+        setNoProofing(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("NoProofing"))));
     }
     if(multipart->hasContent(_XPLATSTR("Outline")))
     {
-        setOutline(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Outline"))));
+        setOutline(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Outline"))));
     }
     if(multipart->hasContent(_XPLATSTR("Position")))
     {
-        setPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Position"))));
+        setPosition(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Position"))));
     }
     if(multipart->hasContent(_XPLATSTR("Scaling")))
     {
-        setScaling(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Scaling"))));
+        setScaling(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("Scaling"))));
     }
     if(multipart->hasContent(_XPLATSTR("Shadow")))
     {
-        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
+        setShadow(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
     }
     if(multipart->hasContent(_XPLATSTR("Size")))
     {
-        setSize(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
+        setSize(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Size"))));
     }
     if(multipart->hasContent(_XPLATSTR("SizeBi")))
     {
-        setSizeBi(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("SizeBi"))));
+        setSizeBi(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("SizeBi"))));
     }
     if(multipart->hasContent(_XPLATSTR("SmallCaps")))
     {
-        setSmallCaps(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SmallCaps"))));
+        setSmallCaps(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SmallCaps"))));
     }
     if(multipart->hasContent(_XPLATSTR("Spacing")))
     {
-        setSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Spacing"))));
+        setSpacing(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Spacing"))));
     }
     if(multipart->hasContent(_XPLATSTR("StrikeThrough")))
     {
-        setStrikeThrough(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("StrikeThrough"))));
+        setStrikeThrough(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("StrikeThrough"))));
     }
     if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
     {
@@ -1003,11 +1003,11 @@ void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
     }
     if(multipart->hasContent(_XPLATSTR("Subscript")))
     {
-        setSubscript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Subscript"))));
+        setSubscript(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Subscript"))));
     }
     if(multipart->hasContent(_XPLATSTR("Superscript")))
     {
-        setSuperscript(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Superscript"))));
+        setSuperscript(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Superscript"))));
     }
     if(multipart->hasContent(_XPLATSTR("TextEffect")))
     {
@@ -1021,20 +1021,20 @@ void Font::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, co
     {
         if(multipart->hasContent(_XPLATSTR("UnderlineColor")))
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromMultiPart(multipart, _XPLATSTR("UnderlineColor."));
             setUnderlineColor( newItem );
         }
     }
 }
 
-bool Font::isAllCaps() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isAllCaps() const
 {
     return m_AllCaps;
 }
 
 
-void Font::setAllCaps(bool value)
+void Font::setAllCaps(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_AllCaps = value;
     m_AllCapsIsSet = true;
@@ -1049,13 +1049,13 @@ void Font::unsetAllCaps()
     m_AllCapsIsSet = false;
 }
 
-bool Font::isBidi() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isBidi() const
 {
     return m_Bidi;
 }
 
 
-void Font::setBidi(bool value)
+void Font::setBidi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Bidi = value;
     m_BidiIsSet = true;
@@ -1070,13 +1070,13 @@ void Font::unsetBidi()
     m_BidiIsSet = false;
 }
 
-bool Font::isBold() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isBold() const
 {
     return m_Bold;
 }
 
 
-void Font::setBold(bool value)
+void Font::setBold(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Bold = value;
     m_BoldIsSet = true;
@@ -1091,13 +1091,13 @@ void Font::unsetBold()
     m_BoldIsSet = false;
 }
 
-bool Font::isBoldBi() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isBoldBi() const
 {
     return m_BoldBi;
 }
 
 
-void Font::setBoldBi(bool value)
+void Font::setBoldBi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_BoldBi = value;
     m_BoldBiIsSet = true;
@@ -1112,13 +1112,13 @@ void Font::unsetBoldBi()
     m_BoldBiIsSet = false;
 }
 
-std::shared_ptr<Border> Font::getBorder() const
+<DATA_TYPE_START>Border<DATA_TYPE_END> Font::getBorder() const
 {
     return m_Border;
 }
 
 
-void Font::setBorder(std::shared_ptr<Border> value)
+void Font::setBorder(<DATA_TYPE_START>Border<DATA_TYPE_END> value)
 {
     m_Border = value;
     m_BorderIsSet = true;
@@ -1133,13 +1133,13 @@ void Font::unsetBorder()
     m_BorderIsSet = false;
 }
 
-std::shared_ptr<XmlColor> Font::getColor() const
+<DATA_TYPE_START>XmlColor<DATA_TYPE_END> Font::getColor() const
 {
     return m_Color;
 }
 
 
-void Font::setColor(std::shared_ptr<XmlColor> value)
+void Font::setColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value)
 {
     m_Color = value;
     m_ColorIsSet = true;
@@ -1154,13 +1154,13 @@ void Font::unsetColor()
     m_ColorIsSet = false;
 }
 
-bool Font::isComplexScript() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isComplexScript() const
 {
     return m_ComplexScript;
 }
 
 
-void Font::setComplexScript(bool value)
+void Font::setComplexScript(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ComplexScript = value;
     m_ComplexScriptIsSet = true;
@@ -1175,13 +1175,13 @@ void Font::unsetComplexScript()
     m_ComplexScriptIsSet = false;
 }
 
-bool Font::isDoubleStrikeThrough() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isDoubleStrikeThrough() const
 {
     return m_DoubleStrikeThrough;
 }
 
 
-void Font::setDoubleStrikeThrough(bool value)
+void Font::setDoubleStrikeThrough(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_DoubleStrikeThrough = value;
     m_DoubleStrikeThroughIsSet = true;
@@ -1196,13 +1196,13 @@ void Font::unsetDoubleStrikeThrough()
     m_DoubleStrikeThroughIsSet = false;
 }
 
-bool Font::isEmboss() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isEmboss() const
 {
     return m_Emboss;
 }
 
 
-void Font::setEmboss(bool value)
+void Font::setEmboss(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Emboss = value;
     m_EmbossIsSet = true;
@@ -1217,13 +1217,13 @@ void Font::unsetEmboss()
     m_EmbossIsSet = false;
 }
 
-bool Font::isEngrave() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isEngrave() const
 {
     return m_Engrave;
 }
 
 
-void Font::setEngrave(bool value)
+void Font::setEngrave(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Engrave = value;
     m_EngraveIsSet = true;
@@ -1238,13 +1238,13 @@ void Font::unsetEngrave()
     m_EngraveIsSet = false;
 }
 
-bool Font::isHidden() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isHidden() const
 {
     return m_Hidden;
 }
 
 
-void Font::setHidden(bool value)
+void Font::setHidden(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Hidden = value;
     m_HiddenIsSet = true;
@@ -1259,13 +1259,13 @@ void Font::unsetHidden()
     m_HiddenIsSet = false;
 }
 
-std::shared_ptr<XmlColor> Font::getHighlightColor() const
+<DATA_TYPE_START>XmlColor<DATA_TYPE_END> Font::getHighlightColor() const
 {
     return m_HighlightColor;
 }
 
 
-void Font::setHighlightColor(std::shared_ptr<XmlColor> value)
+void Font::setHighlightColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value)
 {
     m_HighlightColor = value;
     m_HighlightColorIsSet = true;
@@ -1280,13 +1280,13 @@ void Font::unsetHighlightColor()
     m_HighlightColorIsSet = false;
 }
 
-bool Font::isItalic() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isItalic() const
 {
     return m_Italic;
 }
 
 
-void Font::setItalic(bool value)
+void Font::setItalic(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Italic = value;
     m_ItalicIsSet = true;
@@ -1301,13 +1301,13 @@ void Font::unsetItalic()
     m_ItalicIsSet = false;
 }
 
-bool Font::isItalicBi() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isItalicBi() const
 {
     return m_ItalicBi;
 }
 
 
-void Font::setItalicBi(bool value)
+void Font::setItalicBi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_ItalicBi = value;
     m_ItalicBiIsSet = true;
@@ -1322,13 +1322,13 @@ void Font::unsetItalicBi()
     m_ItalicBiIsSet = false;
 }
 
-double Font::getKerning() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Font::getKerning() const
 {
     return m_Kerning;
 }
 
 
-void Font::setKerning(double value)
+void Font::setKerning(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Kerning = value;
     m_KerningIsSet = true;
@@ -1343,13 +1343,13 @@ void Font::unsetKerning()
     m_KerningIsSet = false;
 }
 
-int32_t Font::getLocaleId() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> Font::getLocaleId() const
 {
     return m_LocaleId;
 }
 
 
-void Font::setLocaleId(int32_t value)
+void Font::setLocaleId(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_LocaleId = value;
     m_LocaleIdIsSet = true;
@@ -1364,13 +1364,13 @@ void Font::unsetLocaleId()
     m_LocaleIdIsSet = false;
 }
 
-int32_t Font::getLocaleIdBi() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> Font::getLocaleIdBi() const
 {
     return m_LocaleIdBi;
 }
 
 
-void Font::setLocaleIdBi(int32_t value)
+void Font::setLocaleIdBi(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_LocaleIdBi = value;
     m_LocaleIdBiIsSet = true;
@@ -1385,13 +1385,13 @@ void Font::unsetLocaleIdBi()
     m_LocaleIdBiIsSet = false;
 }
 
-int32_t Font::getLocaleIdFarEast() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> Font::getLocaleIdFarEast() const
 {
     return m_LocaleIdFarEast;
 }
 
 
-void Font::setLocaleIdFarEast(int32_t value)
+void Font::setLocaleIdFarEast(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_LocaleIdFarEast = value;
     m_LocaleIdFarEastIsSet = true;
@@ -1406,13 +1406,13 @@ void Font::unsetLocaleIdFarEast()
     m_LocaleIdFarEastIsSet = false;
 }
 
-utility::string_t Font::getName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getName() const
 {
     return m_Name;
 }
 
 
-void Font::setName(utility::string_t value)
+void Font::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -1427,13 +1427,13 @@ void Font::unsetName()
     m_NameIsSet = false;
 }
 
-utility::string_t Font::getNameAscii() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getNameAscii() const
 {
     return m_NameAscii;
 }
 
 
-void Font::setNameAscii(utility::string_t value)
+void Font::setNameAscii(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NameAscii = value;
     m_NameAsciiIsSet = true;
@@ -1448,13 +1448,13 @@ void Font::unsetNameAscii()
     m_NameAsciiIsSet = false;
 }
 
-utility::string_t Font::getNameBi() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getNameBi() const
 {
     return m_NameBi;
 }
 
 
-void Font::setNameBi(utility::string_t value)
+void Font::setNameBi(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NameBi = value;
     m_NameBiIsSet = true;
@@ -1469,13 +1469,13 @@ void Font::unsetNameBi()
     m_NameBiIsSet = false;
 }
 
-utility::string_t Font::getNameFarEast() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getNameFarEast() const
 {
     return m_NameFarEast;
 }
 
 
-void Font::setNameFarEast(utility::string_t value)
+void Font::setNameFarEast(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NameFarEast = value;
     m_NameFarEastIsSet = true;
@@ -1490,13 +1490,13 @@ void Font::unsetNameFarEast()
     m_NameFarEastIsSet = false;
 }
 
-utility::string_t Font::getNameOther() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getNameOther() const
 {
     return m_NameOther;
 }
 
 
-void Font::setNameOther(utility::string_t value)
+void Font::setNameOther(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NameOther = value;
     m_NameOtherIsSet = true;
@@ -1511,13 +1511,13 @@ void Font::unsetNameOther()
     m_NameOtherIsSet = false;
 }
 
-bool Font::isNoProofing() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isNoProofing() const
 {
     return m_NoProofing;
 }
 
 
-void Font::setNoProofing(bool value)
+void Font::setNoProofing(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_NoProofing = value;
     m_NoProofingIsSet = true;
@@ -1532,13 +1532,13 @@ void Font::unsetNoProofing()
     m_NoProofingIsSet = false;
 }
 
-bool Font::isOutline() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isOutline() const
 {
     return m_Outline;
 }
 
 
-void Font::setOutline(bool value)
+void Font::setOutline(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Outline = value;
     m_OutlineIsSet = true;
@@ -1553,13 +1553,13 @@ void Font::unsetOutline()
     m_OutlineIsSet = false;
 }
 
-double Font::getPosition() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Font::getPosition() const
 {
     return m_Position;
 }
 
 
-void Font::setPosition(double value)
+void Font::setPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Position = value;
     m_PositionIsSet = true;
@@ -1574,13 +1574,13 @@ void Font::unsetPosition()
     m_PositionIsSet = false;
 }
 
-int32_t Font::getScaling() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> Font::getScaling() const
 {
     return m_Scaling;
 }
 
 
-void Font::setScaling(int32_t value)
+void Font::setScaling(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_Scaling = value;
     m_ScalingIsSet = true;
@@ -1595,13 +1595,13 @@ void Font::unsetScaling()
     m_ScalingIsSet = false;
 }
 
-bool Font::isShadow() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isShadow() const
 {
     return m_Shadow;
 }
 
 
-void Font::setShadow(bool value)
+void Font::setShadow(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Shadow = value;
     m_ShadowIsSet = true;
@@ -1616,13 +1616,13 @@ void Font::unsetShadow()
     m_ShadowIsSet = false;
 }
 
-double Font::getSize() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Font::getSize() const
 {
     return m_Size;
 }
 
 
-void Font::setSize(double value)
+void Font::setSize(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Size = value;
     m_SizeIsSet = true;
@@ -1637,13 +1637,13 @@ void Font::unsetSize()
     m_SizeIsSet = false;
 }
 
-double Font::getSizeBi() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Font::getSizeBi() const
 {
     return m_SizeBi;
 }
 
 
-void Font::setSizeBi(double value)
+void Font::setSizeBi(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_SizeBi = value;
     m_SizeBiIsSet = true;
@@ -1658,13 +1658,13 @@ void Font::unsetSizeBi()
     m_SizeBiIsSet = false;
 }
 
-bool Font::isSmallCaps() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isSmallCaps() const
 {
     return m_SmallCaps;
 }
 
 
-void Font::setSmallCaps(bool value)
+void Font::setSmallCaps(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_SmallCaps = value;
     m_SmallCapsIsSet = true;
@@ -1679,13 +1679,13 @@ void Font::unsetSmallCaps()
     m_SmallCapsIsSet = false;
 }
 
-double Font::getSpacing() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Font::getSpacing() const
 {
     return m_Spacing;
 }
 
 
-void Font::setSpacing(double value)
+void Font::setSpacing(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_Spacing = value;
     m_SpacingIsSet = true;
@@ -1700,13 +1700,13 @@ void Font::unsetSpacing()
     m_SpacingIsSet = false;
 }
 
-bool Font::isStrikeThrough() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isStrikeThrough() const
 {
     return m_StrikeThrough;
 }
 
 
-void Font::setStrikeThrough(bool value)
+void Font::setStrikeThrough(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_StrikeThrough = value;
     m_StrikeThroughIsSet = true;
@@ -1721,13 +1721,13 @@ void Font::unsetStrikeThrough()
     m_StrikeThroughIsSet = false;
 }
 
-utility::string_t Font::getStyleIdentifier() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getStyleIdentifier() const
 {
     return m_StyleIdentifier;
 }
 
 
-void Font::setStyleIdentifier(utility::string_t value)
+void Font::setStyleIdentifier(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_StyleIdentifier = value;
     m_StyleIdentifierIsSet = true;
@@ -1742,13 +1742,13 @@ void Font::unsetStyleIdentifier()
     m_StyleIdentifierIsSet = false;
 }
 
-utility::string_t Font::getStyleName() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getStyleName() const
 {
     return m_StyleName;
 }
 
 
-void Font::setStyleName(utility::string_t value)
+void Font::setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_StyleName = value;
     m_StyleNameIsSet = true;
@@ -1763,13 +1763,13 @@ void Font::unsetStyleName()
     m_StyleNameIsSet = false;
 }
 
-bool Font::isSubscript() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isSubscript() const
 {
     return m_Subscript;
 }
 
 
-void Font::setSubscript(bool value)
+void Font::setSubscript(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Subscript = value;
     m_SubscriptIsSet = true;
@@ -1784,13 +1784,13 @@ void Font::unsetSubscript()
     m_SubscriptIsSet = false;
 }
 
-bool Font::isSuperscript() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Font::isSuperscript() const
 {
     return m_Superscript;
 }
 
 
-void Font::setSuperscript(bool value)
+void Font::setSuperscript(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Superscript = value;
     m_SuperscriptIsSet = true;
@@ -1805,13 +1805,13 @@ void Font::unsetSuperscript()
     m_SuperscriptIsSet = false;
 }
 
-utility::string_t Font::getTextEffect() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getTextEffect() const
 {
     return m_TextEffect;
 }
 
 
-void Font::setTextEffect(utility::string_t value)
+void Font::setTextEffect(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_TextEffect = value;
     m_TextEffectIsSet = true;
@@ -1826,13 +1826,13 @@ void Font::unsetTextEffect()
     m_TextEffectIsSet = false;
 }
 
-utility::string_t Font::getUnderline() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Font::getUnderline() const
 {
     return m_Underline;
 }
 
 
-void Font::setUnderline(utility::string_t value)
+void Font::setUnderline(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Underline = value;
     m_UnderlineIsSet = true;
@@ -1847,13 +1847,13 @@ void Font::unsetUnderline()
     m_UnderlineIsSet = false;
 }
 
-std::shared_ptr<XmlColor> Font::getUnderlineColor() const
+<DATA_TYPE_START>XmlColor<DATA_TYPE_END> Font::getUnderlineColor() const
 {
     return m_UnderlineColor;
 }
 
 
-void Font::setUnderlineColor(std::shared_ptr<XmlColor> value)
+void Font::setUnderlineColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value)
 {
     m_UnderlineColor = value;
     m_UnderlineColorIsSet = true;

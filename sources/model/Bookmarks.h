@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets array of bookmarks.
     /// </summary>
-    std::vector<std::shared_ptr<Bookmark>>& getBookmarkList();
+    <DATA_TYPE_START>List<Bookmark><DATA_TYPE_END>& getBookmarkList();
     bool bookmarkListIsSet() const;
     void unsetBookmarkList();
-    void setBookmarkList(std::vector<std::shared_ptr<Bookmark>> const& value);
+    void setBookmarkList(<DATA_TYPE_START>List<Bookmark><DATA_TYPE_END> const& value);
 
 protected:
-    std::vector<std::shared_ptr<Bookmark>> m_BookmarkList;
+    <DATA_TYPE_START>List<Bookmark><DATA_TYPE_END> m_BookmarkList;
     bool m_BookmarkListIsSet;
 };
 

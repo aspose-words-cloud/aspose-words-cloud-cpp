@@ -65,76 +65,76 @@ public:
     /// <summary>
     /// Gets or sets Position.
     /// </summary>
-    std::shared_ptr<DocumentPosition> getPosition() const;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getPosition() const;
     bool positionIsSet() const;
     void unsetPosition();
-    void setPosition(std::shared_ptr<DocumentPosition> value);
+    void setPosition(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies where the distance to the image is measured from.             
     /// </summary>
-    utility::string_t getRelativeHorizontalPosition() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
     void unsetRelativeHorizontalPosition();
-    void setRelativeHorizontalPosition(utility::string_t value);
+    void setRelativeHorizontalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets distance in points from the origin to the left side of the image.             
     /// </summary>
-    double getLeft() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeft() const;
     bool leftIsSet() const;
     void unsetLeft();
-    void setLeft(double value);
+    void setLeft(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies where the distance to the image measured from.
     /// </summary>
-    utility::string_t getRelativeVerticalPosition() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getRelativeVerticalPosition() const;
     bool relativeVerticalPositionIsSet() const;
     void unsetRelativeVerticalPosition();
-    void setRelativeVerticalPosition(utility::string_t value);
+    void setRelativeVerticalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets distance in points from the origin to the top side of the image.
     /// </summary>
-    double getTop() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getTop() const;
     bool topIsSet() const;
     void unsetTop();
-    void setTop(double value);
+    void setTop(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets width of the drawing objects in points.
     /// </summary>
-    double getWidth() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getWidth() const;
     bool widthIsSet() const;
     void unsetWidth();
-    void setWidth(double value);
+    void setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets height of the drawing object in points.
     /// </summary>
-    double getHeight() const;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> getHeight() const;
     bool heightIsSet() const;
     void unsetHeight();
-    void setHeight(double value);
+    void setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies how to wrap text around the image.
     /// </summary>
-    utility::string_t getWrapType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getWrapType() const;
     bool wrapTypeIsSet() const;
     void unsetWrapType();
-    void setWrapType(utility::string_t value);
+    void setWrapType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_Position;
+    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_Position;
     bool m_PositionIsSet;
-    utility::string_t m_RelativeHorizontalPosition;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_RelativeHorizontalPosition;
     bool m_RelativeHorizontalPositionIsSet;
-    double m_Left;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Left;
     bool m_LeftIsSet;
-    utility::string_t m_RelativeVerticalPosition;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_RelativeVerticalPosition;
     bool m_RelativeVerticalPositionIsSet;
-    double m_Top;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Top;
     bool m_TopIsSet;
-    double m_Width;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Width;
     bool m_WidthIsSet;
-    double m_Height;
+    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Height;
     bool m_HeightIsSet;
-    utility::string_t m_WrapType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_WrapType;
     bool m_WrapTypeIsSet;
 };
 

@@ -67,7 +67,7 @@ void TableCellFormatResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CellFormat")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
+            <DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> newItem(new TableCellFormat());
             newItem->fromJson(fieldValue);
             setCellFormat( newItem );
         }
@@ -97,20 +97,20 @@ void TableCellFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormD
     {
         if(multipart->hasContent(_XPLATSTR("CellFormat")))
         {
-            std::shared_ptr<TableCellFormat> newItem(new TableCellFormat());
+            <DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> newItem(new TableCellFormat());
             newItem->fromMultiPart(multipart, _XPLATSTR("CellFormat."));
             setCellFormat( newItem );
         }
     }
 }
 
-std::shared_ptr<TableCellFormat> TableCellFormatResponse::getCellFormat() const
+<DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> TableCellFormatResponse::getCellFormat() const
 {
     return m_CellFormat;
 }
 
 
-void TableCellFormatResponse::setCellFormat(std::shared_ptr<TableCellFormat> value)
+void TableCellFormatResponse::setCellFormat(<DATA_TYPE_START>TableCellFormat<DATA_TYPE_END> value)
 {
     m_CellFormat = value;
     m_CellFormatIsSet = true;

@@ -93,13 +93,13 @@ void DocumentPropertyBase::fromMultiPart(const std::shared_ptr<MultipartFormData
     }
 }
 
-utility::string_t DocumentPropertyBase::getValue() const
+<DATA_TYPE_START>string<DATA_TYPE_END> DocumentPropertyBase::getValue() const
 {
     return m_Value;
 }
 
 
-void DocumentPropertyBase::setValue(utility::string_t value)
+void DocumentPropertyBase::setValue(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Value = value;
     m_ValueIsSet = true;

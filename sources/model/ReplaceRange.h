@@ -62,24 +62,24 @@ public:
     /// ReplaceRange members
 
     /// <summary>
-    /// Gets or sets range&#39;s text.
+    /// Gets or sets range&#x27;s text.
     /// </summary>
-    utility::string_t getText() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(utility::string_t value);
+    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets range&#39;s text type.
+    /// Gets or sets range&#x27;s text type.
     /// </summary>
-    utility::string_t getTextType() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getTextType() const;
     bool textTypeIsSet() const;
     void unsetTextType();
-    void setTextType(utility::string_t value);
+    void setTextType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Text;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
     bool m_TextIsSet;
-    utility::string_t m_TextType;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextType;
     bool m_TextTypeIsSet;
 };
 

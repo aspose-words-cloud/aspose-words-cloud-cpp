@@ -114,7 +114,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreCaseChanges")];
         if(!fieldValue.is_null())
         {
-            setIgnoreCaseChanges(ModelBase::boolFromJson(fieldValue));
+            setIgnoreCaseChanges(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreTables")))
@@ -122,7 +122,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreTables")];
         if(!fieldValue.is_null())
         {
-            setIgnoreTables(ModelBase::boolFromJson(fieldValue));
+            setIgnoreTables(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreFields")))
@@ -130,7 +130,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreFields")];
         if(!fieldValue.is_null())
         {
-            setIgnoreFields(ModelBase::boolFromJson(fieldValue));
+            setIgnoreFields(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreFootnotes")))
@@ -138,7 +138,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreFootnotes")];
         if(!fieldValue.is_null())
         {
-            setIgnoreFootnotes(ModelBase::boolFromJson(fieldValue));
+            setIgnoreFootnotes(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreComments")))
@@ -146,7 +146,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreComments")];
         if(!fieldValue.is_null())
         {
-            setIgnoreComments(ModelBase::boolFromJson(fieldValue));
+            setIgnoreComments(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreTextboxes")))
@@ -154,7 +154,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreTextboxes")];
         if(!fieldValue.is_null())
         {
-            setIgnoreTextboxes(ModelBase::boolFromJson(fieldValue));
+            setIgnoreTextboxes(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreFormatting")))
@@ -162,7 +162,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreFormatting")];
         if(!fieldValue.is_null())
         {
-            setIgnoreFormatting(ModelBase::boolFromJson(fieldValue));
+            setIgnoreFormatting(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IgnoreHeadersAndFooters")))
@@ -170,7 +170,7 @@ void CompareOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IgnoreHeadersAndFooters")];
         if(!fieldValue.is_null())
         {
-            setIgnoreHeadersAndFooters(ModelBase::boolFromJson(fieldValue));
+            setIgnoreHeadersAndFooters(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Target")))
@@ -241,35 +241,35 @@ void CompareOptions::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
 
     if(multipart->hasContent(_XPLATSTR("IgnoreCaseChanges")))
     {
-        setIgnoreCaseChanges(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreCaseChanges"))));
+        setIgnoreCaseChanges(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreCaseChanges"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreTables")))
     {
-        setIgnoreTables(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreTables"))));
+        setIgnoreTables(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreTables"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreFields")))
     {
-        setIgnoreFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreFields"))));
+        setIgnoreFields(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreFields"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreFootnotes")))
     {
-        setIgnoreFootnotes(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreFootnotes"))));
+        setIgnoreFootnotes(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreFootnotes"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreComments")))
     {
-        setIgnoreComments(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreComments"))));
+        setIgnoreComments(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreComments"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreTextboxes")))
     {
-        setIgnoreTextboxes(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreTextboxes"))));
+        setIgnoreTextboxes(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreTextboxes"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreFormatting")))
     {
-        setIgnoreFormatting(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreFormatting"))));
+        setIgnoreFormatting(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreFormatting"))));
     }
     if(multipart->hasContent(_XPLATSTR("IgnoreHeadersAndFooters")))
     {
-        setIgnoreHeadersAndFooters(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IgnoreHeadersAndFooters"))));
+        setIgnoreHeadersAndFooters(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IgnoreHeadersAndFooters"))));
     }
     if(multipart->hasContent(_XPLATSTR("Target")))
     {
@@ -277,13 +277,13 @@ void CompareOptions::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     }
 }
 
-bool CompareOptions::isIgnoreCaseChanges() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreCaseChanges() const
 {
     return m_IgnoreCaseChanges;
 }
 
 
-void CompareOptions::setIgnoreCaseChanges(bool value)
+void CompareOptions::setIgnoreCaseChanges(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreCaseChanges = value;
     m_IgnoreCaseChangesIsSet = true;
@@ -298,13 +298,13 @@ void CompareOptions::unsetIgnoreCaseChanges()
     m_IgnoreCaseChangesIsSet = false;
 }
 
-bool CompareOptions::isIgnoreTables() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreTables() const
 {
     return m_IgnoreTables;
 }
 
 
-void CompareOptions::setIgnoreTables(bool value)
+void CompareOptions::setIgnoreTables(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreTables = value;
     m_IgnoreTablesIsSet = true;
@@ -319,13 +319,13 @@ void CompareOptions::unsetIgnoreTables()
     m_IgnoreTablesIsSet = false;
 }
 
-bool CompareOptions::isIgnoreFields() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreFields() const
 {
     return m_IgnoreFields;
 }
 
 
-void CompareOptions::setIgnoreFields(bool value)
+void CompareOptions::setIgnoreFields(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreFields = value;
     m_IgnoreFieldsIsSet = true;
@@ -340,13 +340,13 @@ void CompareOptions::unsetIgnoreFields()
     m_IgnoreFieldsIsSet = false;
 }
 
-bool CompareOptions::isIgnoreFootnotes() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreFootnotes() const
 {
     return m_IgnoreFootnotes;
 }
 
 
-void CompareOptions::setIgnoreFootnotes(bool value)
+void CompareOptions::setIgnoreFootnotes(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreFootnotes = value;
     m_IgnoreFootnotesIsSet = true;
@@ -361,13 +361,13 @@ void CompareOptions::unsetIgnoreFootnotes()
     m_IgnoreFootnotesIsSet = false;
 }
 
-bool CompareOptions::isIgnoreComments() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreComments() const
 {
     return m_IgnoreComments;
 }
 
 
-void CompareOptions::setIgnoreComments(bool value)
+void CompareOptions::setIgnoreComments(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreComments = value;
     m_IgnoreCommentsIsSet = true;
@@ -382,13 +382,13 @@ void CompareOptions::unsetIgnoreComments()
     m_IgnoreCommentsIsSet = false;
 }
 
-bool CompareOptions::isIgnoreTextboxes() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreTextboxes() const
 {
     return m_IgnoreTextboxes;
 }
 
 
-void CompareOptions::setIgnoreTextboxes(bool value)
+void CompareOptions::setIgnoreTextboxes(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreTextboxes = value;
     m_IgnoreTextboxesIsSet = true;
@@ -403,13 +403,13 @@ void CompareOptions::unsetIgnoreTextboxes()
     m_IgnoreTextboxesIsSet = false;
 }
 
-bool CompareOptions::isIgnoreFormatting() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreFormatting() const
 {
     return m_IgnoreFormatting;
 }
 
 
-void CompareOptions::setIgnoreFormatting(bool value)
+void CompareOptions::setIgnoreFormatting(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreFormatting = value;
     m_IgnoreFormattingIsSet = true;
@@ -424,13 +424,13 @@ void CompareOptions::unsetIgnoreFormatting()
     m_IgnoreFormattingIsSet = false;
 }
 
-bool CompareOptions::isIgnoreHeadersAndFooters() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> CompareOptions::isIgnoreHeadersAndFooters() const
 {
     return m_IgnoreHeadersAndFooters;
 }
 
 
-void CompareOptions::setIgnoreHeadersAndFooters(bool value)
+void CompareOptions::setIgnoreHeadersAndFooters(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_IgnoreHeadersAndFooters = value;
     m_IgnoreHeadersAndFootersIsSet = true;
@@ -445,13 +445,13 @@ void CompareOptions::unsetIgnoreHeadersAndFooters()
     m_IgnoreHeadersAndFootersIsSet = false;
 }
 
-utility::string_t CompareOptions::getTarget() const
+<DATA_TYPE_START>string<DATA_TYPE_END> CompareOptions::getTarget() const
 {
     return m_Target;
 }
 
 
-void CompareOptions::setTarget(utility::string_t value)
+void CompareOptions::setTarget(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Target = value;
     m_TargetIsSet = true;

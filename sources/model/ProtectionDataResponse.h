@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets DocumentLink.
     /// </summary>
-    std::shared_ptr<FileLink> getDocumentLink() const;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
-    void setDocumentLink(std::shared_ptr<FileLink> value);
+    void setDocumentLink(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets ProtectionData.
     /// </summary>
-    std::shared_ptr<ProtectionData> getProtectionData() const;
+    <DATA_TYPE_START>ProtectionData<DATA_TYPE_END> getProtectionData() const;
     bool protectionDataIsSet() const;
     void unsetProtectionData();
-    void setProtectionData(std::shared_ptr<ProtectionData> value);
+    void setProtectionData(<DATA_TYPE_START>ProtectionData<DATA_TYPE_END> value);
 
 protected:
-    std::shared_ptr<FileLink> m_DocumentLink;
+    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_DocumentLink;
     bool m_DocumentLinkIsSet;
-    std::shared_ptr<ProtectionData> m_ProtectionData;
+    <DATA_TYPE_START>ProtectionData<DATA_TYPE_END> m_ProtectionData;
     bool m_ProtectionDataIsSet;
 };
 

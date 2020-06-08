@@ -76,7 +76,7 @@ void Shading::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BackgroundPatternColor")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
             setBackgroundPatternColor( newItem );
         }
@@ -86,7 +86,7 @@ void Shading::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ForegroundPatternColor")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
             setForegroundPatternColor( newItem );
         }
@@ -137,7 +137,7 @@ void Shading::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("BackgroundPatternColor")))
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromMultiPart(multipart, _XPLATSTR("BackgroundPatternColor."));
             setBackgroundPatternColor( newItem );
         }
@@ -146,7 +146,7 @@ void Shading::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("ForegroundPatternColor")))
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromMultiPart(multipart, _XPLATSTR("ForegroundPatternColor."));
             setForegroundPatternColor( newItem );
         }
@@ -157,13 +157,13 @@ void Shading::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     }
 }
 
-std::shared_ptr<XmlColor> Shading::getBackgroundPatternColor() const
+<DATA_TYPE_START>XmlColor<DATA_TYPE_END> Shading::getBackgroundPatternColor() const
 {
     return m_BackgroundPatternColor;
 }
 
 
-void Shading::setBackgroundPatternColor(std::shared_ptr<XmlColor> value)
+void Shading::setBackgroundPatternColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value)
 {
     m_BackgroundPatternColor = value;
     m_BackgroundPatternColorIsSet = true;
@@ -178,13 +178,13 @@ void Shading::unsetBackgroundPatternColor()
     m_BackgroundPatternColorIsSet = false;
 }
 
-std::shared_ptr<XmlColor> Shading::getForegroundPatternColor() const
+<DATA_TYPE_START>XmlColor<DATA_TYPE_END> Shading::getForegroundPatternColor() const
 {
     return m_ForegroundPatternColor;
 }
 
 
-void Shading::setForegroundPatternColor(std::shared_ptr<XmlColor> value)
+void Shading::setForegroundPatternColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value)
 {
     m_ForegroundPatternColor = value;
     m_ForegroundPatternColorIsSet = true;
@@ -199,13 +199,13 @@ void Shading::unsetForegroundPatternColor()
     m_ForegroundPatternColorIsSet = false;
 }
 
-utility::string_t Shading::getTexture() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Shading::getTexture() const
 {
     return m_Texture;
 }
 
 
-void Shading::setTexture(utility::string_t value)
+void Shading::setTexture(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_Texture = value;
     m_TextureIsSet = true;

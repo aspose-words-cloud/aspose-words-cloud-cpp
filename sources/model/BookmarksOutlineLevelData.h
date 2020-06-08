@@ -62,24 +62,24 @@ public:
     /// BookmarksOutlineLevelData members
 
     /// <summary>
-    /// Gets or sets specify the bookmark&#39;s name.
+    /// Gets or sets specify the bookmark&#x27;s name.
     /// </summary>
-    utility::string_t getName() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(utility::string_t value);
+    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
-    /// Gets or sets specify the bookmark&#39;s level.
+    /// Gets or sets specify the bookmark&#x27;s level.
     /// </summary>
-    int32_t getBookmarksOutlineLevel() const;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> getBookmarksOutlineLevel() const;
     bool bookmarksOutlineLevelIsSet() const;
     void unsetBookmarksOutlineLevel();
-    void setBookmarksOutlineLevel(int32_t value);
+    void setBookmarksOutlineLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_Name;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
     bool m_NameIsSet;
-    int32_t m_BookmarksOutlineLevel;
+    <DATA_TYPE_START>int?<DATA_TYPE_END> m_BookmarksOutlineLevel;
     bool m_BookmarksOutlineLevelIsSet;
 };
 

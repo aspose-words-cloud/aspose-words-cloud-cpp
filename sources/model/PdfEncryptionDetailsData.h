@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets specifies the encryption algorithm to use.
     /// </summary>
-    utility::string_t getEncryptionAlgorithm() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getEncryptionAlgorithm() const;
     bool encryptionAlgorithmIsSet() const;
     void unsetEncryptionAlgorithm();
-    void setEncryptionAlgorithm(utility::string_t value);
+    void setEncryptionAlgorithm(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the owner password for the encrypted PDF document.
     /// </summary>
-    utility::string_t getOwnerPassword() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getOwnerPassword() const;
     bool ownerPasswordIsSet() const;
     void unsetOwnerPassword();
-    void setOwnerPassword(utility::string_t value);
+    void setOwnerPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the operations that are allowed to a user on an encrypted PDF document.
     /// </summary>
-    utility::string_t getPermissions() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getPermissions() const;
     bool permissionsIsSet() const;
     void unsetPermissions();
-    void setPermissions(utility::string_t value);
+    void setPermissions(<DATA_TYPE_START>string<DATA_TYPE_END> value);
     /// <summary>
     /// Gets or sets specifies the user password required for opening the encrypted PDF document.
     /// </summary>
-    utility::string_t getUserPassword() const;
+    <DATA_TYPE_START>string<DATA_TYPE_END> getUserPassword() const;
     bool userPasswordIsSet() const;
     void unsetUserPassword();
-    void setUserPassword(utility::string_t value);
+    void setUserPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
 
 protected:
-    utility::string_t m_EncryptionAlgorithm;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_EncryptionAlgorithm;
     bool m_EncryptionAlgorithmIsSet;
-    utility::string_t m_OwnerPassword;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_OwnerPassword;
     bool m_OwnerPasswordIsSet;
-    utility::string_t m_Permissions;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_Permissions;
     bool m_PermissionsIsSet;
-    utility::string_t m_UserPassword;
+    <DATA_TYPE_START>string<DATA_TYPE_END> m_UserPassword;
     bool m_UserPasswordIsSet;
 };
 

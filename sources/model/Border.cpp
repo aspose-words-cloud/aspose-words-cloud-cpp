@@ -105,7 +105,7 @@ void Border::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Color")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromJson(fieldValue);
             setColor( newItem );
         }
@@ -115,7 +115,7 @@ void Border::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DistanceFromText")];
         if(!fieldValue.is_null())
         {
-            setDistanceFromText(ModelBase::doubleFromJson(fieldValue));
+            setDistanceFromText(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LineStyle")))
@@ -131,7 +131,7 @@ void Border::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LineWidth")];
         if(!fieldValue.is_null())
         {
-            setLineWidth(ModelBase::doubleFromJson(fieldValue));
+            setLineWidth(ModelBase::double?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Shadow")))
@@ -139,7 +139,7 @@ void Border::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Shadow")];
         if(!fieldValue.is_null())
         {
-            setShadow(ModelBase::boolFromJson(fieldValue));
+            setShadow(ModelBase::bool?FromJson(fieldValue));
         }
     }
 }
@@ -196,14 +196,14 @@ void Border::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, 
     {
         if(multipart->hasContent(_XPLATSTR("Color")))
         {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
+            <DATA_TYPE_START>XmlColor<DATA_TYPE_END> newItem(new XmlColor());
             newItem->fromMultiPart(multipart, _XPLATSTR("Color."));
             setColor( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("DistanceFromText")))
     {
-        setDistanceFromText(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("DistanceFromText"))));
+        setDistanceFromText(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("DistanceFromText"))));
     }
     if(multipart->hasContent(_XPLATSTR("LineStyle")))
     {
@@ -211,21 +211,21 @@ void Border::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, 
     }
     if(multipart->hasContent(_XPLATSTR("LineWidth")))
     {
-        setLineWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LineWidth"))));
+        setLineWidth(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("LineWidth"))));
     }
     if(multipart->hasContent(_XPLATSTR("Shadow")))
     {
-        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
+        setShadow(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
     }
 }
 
-utility::string_t Border::getBorderType() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Border::getBorderType() const
 {
     return m_BorderType;
 }
 
 
-void Border::setBorderType(utility::string_t value)
+void Border::setBorderType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_BorderType = value;
     m_BorderTypeIsSet = true;
@@ -240,13 +240,13 @@ void Border::unsetBorderType()
     m_BorderTypeIsSet = false;
 }
 
-std::shared_ptr<XmlColor> Border::getColor() const
+<DATA_TYPE_START>XmlColor<DATA_TYPE_END> Border::getColor() const
 {
     return m_Color;
 }
 
 
-void Border::setColor(std::shared_ptr<XmlColor> value)
+void Border::setColor(<DATA_TYPE_START>XmlColor<DATA_TYPE_END> value)
 {
     m_Color = value;
     m_ColorIsSet = true;
@@ -261,13 +261,13 @@ void Border::unsetColor()
     m_ColorIsSet = false;
 }
 
-double Border::getDistanceFromText() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Border::getDistanceFromText() const
 {
     return m_DistanceFromText;
 }
 
 
-void Border::setDistanceFromText(double value)
+void Border::setDistanceFromText(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_DistanceFromText = value;
     m_DistanceFromTextIsSet = true;
@@ -282,13 +282,13 @@ void Border::unsetDistanceFromText()
     m_DistanceFromTextIsSet = false;
 }
 
-utility::string_t Border::getLineStyle() const
+<DATA_TYPE_START>string<DATA_TYPE_END> Border::getLineStyle() const
 {
     return m_LineStyle;
 }
 
 
-void Border::setLineStyle(utility::string_t value)
+void Border::setLineStyle(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_LineStyle = value;
     m_LineStyleIsSet = true;
@@ -303,13 +303,13 @@ void Border::unsetLineStyle()
     m_LineStyleIsSet = false;
 }
 
-double Border::getLineWidth() const
+<DATA_TYPE_START>double?<DATA_TYPE_END> Border::getLineWidth() const
 {
     return m_LineWidth;
 }
 
 
-void Border::setLineWidth(double value)
+void Border::setLineWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
 {
     m_LineWidth = value;
     m_LineWidthIsSet = true;
@@ -324,13 +324,13 @@ void Border::unsetLineWidth()
     m_LineWidthIsSet = false;
 }
 
-bool Border::isShadow() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> Border::isShadow() const
 {
     return m_Shadow;
 }
 
 
-void Border::setShadow(bool value)
+void Border::setShadow(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_Shadow = value;
     m_ShadowIsSet = true;

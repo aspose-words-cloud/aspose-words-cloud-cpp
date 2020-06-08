@@ -53,7 +53,7 @@ web::json::value Hyperlinks::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Hyperlink> item) {
+			[&](<DATA_TYPE_START>Hyperlink<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void Hyperlinks::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<Hyperlink>(nullptr);
+                return <DATA_TYPE_START>Hyperlink<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<Hyperlink> newItem(new Hyperlink());
+                <DATA_TYPE_START>Hyperlink<DATA_TYPE_END> newItem(new Hyperlink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void Hyperlinks::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Hyperlink> item){
+        std::transform(m_HyperlinkList.begin(), m_HyperlinkList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Hyperlink<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void Hyperlinks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_HyperlinkList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<Hyperlink>(nullptr) ;
+                return <DATA_TYPE_START>Hyperlink<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<Hyperlink> newItem(new Hyperlink());
+                <DATA_TYPE_START>Hyperlink<DATA_TYPE_END> newItem(new Hyperlink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void Hyperlinks::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
 }
 
-std::vector<std::shared_ptr<Hyperlink>>& Hyperlinks::getHyperlinkList()
+<DATA_TYPE_START>List<Hyperlink><DATA_TYPE_END>& Hyperlinks::getHyperlinkList()
 {
     return m_HyperlinkList;
 }
 
-void Hyperlinks::setHyperlinkList(std::vector<std::shared_ptr<Hyperlink>> const& value)
+void Hyperlinks::setHyperlinkList(<DATA_TYPE_START>List<Hyperlink><DATA_TYPE_END> const& value)
 {
     m_HyperlinkList = value;
     m_HyperlinkListIsSet = true;

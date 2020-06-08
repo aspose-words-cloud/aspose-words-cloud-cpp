@@ -67,7 +67,7 @@ void TableResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Table")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Table> newItem(new Table());
+            <DATA_TYPE_START>Table<DATA_TYPE_END> newItem(new Table());
             newItem->fromJson(fieldValue);
             setTable( newItem );
         }
@@ -97,20 +97,20 @@ void TableResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     {
         if(multipart->hasContent(_XPLATSTR("Table")))
         {
-            std::shared_ptr<Table> newItem(new Table());
+            <DATA_TYPE_START>Table<DATA_TYPE_END> newItem(new Table());
             newItem->fromMultiPart(multipart, _XPLATSTR("Table."));
             setTable( newItem );
         }
     }
 }
 
-std::shared_ptr<Table> TableResponse::getTable() const
+<DATA_TYPE_START>Table<DATA_TYPE_END> TableResponse::getTable() const
 {
     return m_Table;
 }
 
 
-void TableResponse::setTable(std::shared_ptr<Table> value)
+void TableResponse::setTable(<DATA_TYPE_START>Table<DATA_TYPE_END> value)
 {
     m_Table = value;
     m_TableIsSet = true;

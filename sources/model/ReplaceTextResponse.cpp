@@ -73,7 +73,7 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
+            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setDocumentLink( newItem );
         }
@@ -83,7 +83,7 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Matches")];
         if(!fieldValue.is_null())
         {
-            setMatches(ModelBase::int32_tFromJson(fieldValue));
+            setMatches(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -116,24 +116,24 @@ void ReplaceTextResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         if(multipart->hasContent(_XPLATSTR("DocumentLink")))
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
+            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
             setDocumentLink( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("Matches")))
     {
-        setMatches(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Matches"))));
+        setMatches(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("Matches"))));
     }
 }
 
-std::shared_ptr<FileLink> ReplaceTextResponse::getDocumentLink() const
+<DATA_TYPE_START>FileLink<DATA_TYPE_END> ReplaceTextResponse::getDocumentLink() const
 {
     return m_DocumentLink;
 }
 
 
-void ReplaceTextResponse::setDocumentLink(std::shared_ptr<FileLink> value)
+void ReplaceTextResponse::setDocumentLink(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
 {
     m_DocumentLink = value;
     m_DocumentLinkIsSet = true;
@@ -148,13 +148,13 @@ void ReplaceTextResponse::unsetDocumentLink()
     m_DocumentLinkIsSet = false;
 }
 
-int32_t ReplaceTextResponse::getMatches() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> ReplaceTextResponse::getMatches() const
 {
     return m_Matches;
 }
 
 
-void ReplaceTextResponse::setMatches(int32_t value)
+void ReplaceTextResponse::setMatches(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_Matches = value;
     m_MatchesIsSet = true;

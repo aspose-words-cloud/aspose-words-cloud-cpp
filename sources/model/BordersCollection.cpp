@@ -53,7 +53,7 @@ web::json::value BordersCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Border> item) {
+			[&](<DATA_TYPE_START>Border<DATA_TYPE_END> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void BordersCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return std::shared_ptr<Border>(nullptr);
+                return <DATA_TYPE_START>Border<DATA_TYPE_END>(nullptr);
             }
             else
             {
-                std::shared_ptr<Border> newItem(new Border());
+                <DATA_TYPE_START>Border<DATA_TYPE_END> newItem(new Border());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void BordersCollection::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Border> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Border<DATA_TYPE_END> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void BordersCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return std::shared_ptr<Border>(nullptr) ;
+                return <DATA_TYPE_START>Border<DATA_TYPE_END>(nullptr) ;
             }
             else
             {
-                std::shared_ptr<Border> newItem(new Border());
+                <DATA_TYPE_START>Border<DATA_TYPE_END> newItem(new Border());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void BordersCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
 }
 
-std::vector<std::shared_ptr<Border>>& BordersCollection::getList()
+<DATA_TYPE_START>List<Border><DATA_TYPE_END>& BordersCollection::getList()
 {
     return m_List;
 }
 
-void BordersCollection::setList(std::vector<std::shared_ptr<Border>> const& value)
+void BordersCollection::setList(<DATA_TYPE_START>List<Border><DATA_TYPE_END> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

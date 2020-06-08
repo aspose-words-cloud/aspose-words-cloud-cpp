@@ -111,7 +111,7 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("JpegQuality")];
         if(!fieldValue.is_null())
         {
-            setJpegQuality(ModelBase::int32_tFromJson(fieldValue));
+            setJpegQuality(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("MetafileRenderingOptions")))
@@ -119,7 +119,7 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("MetafileRenderingOptions")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<MetafileRenderingOptionsData> newItem(new MetafileRenderingOptionsData());
+            <DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> newItem(new MetafileRenderingOptionsData());
             newItem->fromJson(fieldValue);
             setMetafileRenderingOptions( newItem );
         }
@@ -137,7 +137,7 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OptimizeOutput")];
         if(!fieldValue.is_null())
         {
-            setOptimizeOutput(ModelBase::boolFromJson(fieldValue));
+            setOptimizeOutput(ModelBase::bool?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("PageCount")))
@@ -145,7 +145,7 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PageCount")];
         if(!fieldValue.is_null())
         {
-            setPageCount(ModelBase::int32_tFromJson(fieldValue));
+            setPageCount(ModelBase::int?FromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("PageIndex")))
@@ -153,7 +153,7 @@ void FixedPageSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PageIndex")];
         if(!fieldValue.is_null())
         {
-            setPageIndex(ModelBase::int32_tFromJson(fieldValue));
+            setPageIndex(ModelBase::int?FromJson(fieldValue));
         }
     }
 }
@@ -213,13 +213,13 @@ void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartForm
     }
     if(multipart->hasContent(_XPLATSTR("JpegQuality")))
     {
-        setJpegQuality(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("JpegQuality"))));
+        setJpegQuality(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("JpegQuality"))));
     }
     if(multipart->hasContent(_XPLATSTR("MetafileRenderingOptions")))
     {
         if(multipart->hasContent(_XPLATSTR("MetafileRenderingOptions")))
         {
-            std::shared_ptr<MetafileRenderingOptionsData> newItem(new MetafileRenderingOptionsData());
+            <DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> newItem(new MetafileRenderingOptionsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("MetafileRenderingOptions."));
             setMetafileRenderingOptions( newItem );
         }
@@ -230,25 +230,25 @@ void FixedPageSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartForm
     }
     if(multipart->hasContent(_XPLATSTR("OptimizeOutput")))
     {
-        setOptimizeOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OptimizeOutput"))));
+        setOptimizeOutput(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("OptimizeOutput"))));
     }
     if(multipart->hasContent(_XPLATSTR("PageCount")))
     {
-        setPageCount(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageCount"))));
+        setPageCount(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("PageCount"))));
     }
     if(multipart->hasContent(_XPLATSTR("PageIndex")))
     {
-        setPageIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("PageIndex"))));
+        setPageIndex(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("PageIndex"))));
     }
 }
 
-utility::string_t FixedPageSaveOptionsData::getColorMode() const
+<DATA_TYPE_START>string<DATA_TYPE_END> FixedPageSaveOptionsData::getColorMode() const
 {
     return m_ColorMode;
 }
 
 
-void FixedPageSaveOptionsData::setColorMode(utility::string_t value)
+void FixedPageSaveOptionsData::setColorMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_ColorMode = value;
     m_ColorModeIsSet = true;
@@ -263,13 +263,13 @@ void FixedPageSaveOptionsData::unsetColorMode()
     m_ColorModeIsSet = false;
 }
 
-int32_t FixedPageSaveOptionsData::getJpegQuality() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> FixedPageSaveOptionsData::getJpegQuality() const
 {
     return m_JpegQuality;
 }
 
 
-void FixedPageSaveOptionsData::setJpegQuality(int32_t value)
+void FixedPageSaveOptionsData::setJpegQuality(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_JpegQuality = value;
     m_JpegQualityIsSet = true;
@@ -284,13 +284,13 @@ void FixedPageSaveOptionsData::unsetJpegQuality()
     m_JpegQualityIsSet = false;
 }
 
-std::shared_ptr<MetafileRenderingOptionsData> FixedPageSaveOptionsData::getMetafileRenderingOptions() const
+<DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> FixedPageSaveOptionsData::getMetafileRenderingOptions() const
 {
     return m_MetafileRenderingOptions;
 }
 
 
-void FixedPageSaveOptionsData::setMetafileRenderingOptions(std::shared_ptr<MetafileRenderingOptionsData> value)
+void FixedPageSaveOptionsData::setMetafileRenderingOptions(<DATA_TYPE_START>MetafileRenderingOptionsData<DATA_TYPE_END> value)
 {
     m_MetafileRenderingOptions = value;
     m_MetafileRenderingOptionsIsSet = true;
@@ -305,13 +305,13 @@ void FixedPageSaveOptionsData::unsetMetafileRenderingOptions()
     m_MetafileRenderingOptionsIsSet = false;
 }
 
-utility::string_t FixedPageSaveOptionsData::getNumeralFormat() const
+<DATA_TYPE_START>string<DATA_TYPE_END> FixedPageSaveOptionsData::getNumeralFormat() const
 {
     return m_NumeralFormat;
 }
 
 
-void FixedPageSaveOptionsData::setNumeralFormat(utility::string_t value)
+void FixedPageSaveOptionsData::setNumeralFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
 {
     m_NumeralFormat = value;
     m_NumeralFormatIsSet = true;
@@ -326,13 +326,13 @@ void FixedPageSaveOptionsData::unsetNumeralFormat()
     m_NumeralFormatIsSet = false;
 }
 
-bool FixedPageSaveOptionsData::isOptimizeOutput() const
+<DATA_TYPE_START>bool?<DATA_TYPE_END> FixedPageSaveOptionsData::isOptimizeOutput() const
 {
     return m_OptimizeOutput;
 }
 
 
-void FixedPageSaveOptionsData::setOptimizeOutput(bool value)
+void FixedPageSaveOptionsData::setOptimizeOutput(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
 {
     m_OptimizeOutput = value;
     m_OptimizeOutputIsSet = true;
@@ -347,13 +347,13 @@ void FixedPageSaveOptionsData::unsetOptimizeOutput()
     m_OptimizeOutputIsSet = false;
 }
 
-int32_t FixedPageSaveOptionsData::getPageCount() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> FixedPageSaveOptionsData::getPageCount() const
 {
     return m_PageCount;
 }
 
 
-void FixedPageSaveOptionsData::setPageCount(int32_t value)
+void FixedPageSaveOptionsData::setPageCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_PageCount = value;
     m_PageCountIsSet = true;
@@ -368,13 +368,13 @@ void FixedPageSaveOptionsData::unsetPageCount()
     m_PageCountIsSet = false;
 }
 
-int32_t FixedPageSaveOptionsData::getPageIndex() const
+<DATA_TYPE_START>int?<DATA_TYPE_END> FixedPageSaveOptionsData::getPageIndex() const
 {
     return m_PageIndex;
 }
 
 
-void FixedPageSaveOptionsData::setPageIndex(int32_t value)
+void FixedPageSaveOptionsData::setPageIndex(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
 {
     m_PageIndex = value;
     m_PageIndexIsSet = true;
