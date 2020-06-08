@@ -64,49 +64,49 @@ public:
     /// <summary>
     /// Gets or sets horizontal alignment of the string.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getAlignment() const;
+    utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
-    void setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setAlignment(utility::string_t value);
     /// <summary>
     /// Gets or sets a System.Drawing.StringFormatFlags enumeration that contains formatting information.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFormatFlags() const;
+    utility::string_t getFormatFlags() const;
     bool formatFlagsIsSet() const;
     void unsetFormatFlags();
-    void setFormatFlags(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFormatFlags(utility::string_t value);
     /// <summary>
     /// Gets or sets the System.Drawing.Text.HotkeyPrefix object for this System.Drawing.StringFormat object.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getHotkeyPrefix() const;
+    utility::string_t getHotkeyPrefix() const;
     bool hotkeyPrefixIsSet() const;
     void unsetHotkeyPrefix();
-    void setHotkeyPrefix(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setHotkeyPrefix(utility::string_t value);
     /// <summary>
     /// Gets or sets the vertical alignment of the string.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getLineAlignment() const;
+    utility::string_t getLineAlignment() const;
     bool lineAlignmentIsSet() const;
     void unsetLineAlignment();
-    void setLineAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setLineAlignment(utility::string_t value);
     /// <summary>
     /// Gets or sets the System.Drawing.StringTrimming enumeration for this System.Drawing.StringFormat object.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTrimming() const;
+    utility::string_t getTrimming() const;
     bool trimmingIsSet() const;
     void unsetTrimming();
-    void setTrimming(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTrimming(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Alignment;
+    utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FormatFlags;
+    utility::string_t m_FormatFlags;
     bool m_FormatFlagsIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_HotkeyPrefix;
+    utility::string_t m_HotkeyPrefix;
     bool m_HotkeyPrefixIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_LineAlignment;
+    utility::string_t m_LineAlignment;
     bool m_LineAlignmentIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Trimming;
+    utility::string_t m_Trimming;
     bool m_TrimmingIsSet;
 };
 

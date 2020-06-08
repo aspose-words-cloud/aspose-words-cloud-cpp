@@ -64,94 +64,94 @@ public:
     /// <summary>
     /// Gets or sets returns or sets the starting number for this list level.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getStartAt() const;
+    int32_t getStartAt() const;
     bool startAtIsSet() const;
     void unsetStartAt();
-    void setStartAt(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setStartAt(int32_t value);
     /// <summary>
     /// Gets or sets returns or sets the number style for this list level.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getNumberStyle() const;
+    utility::string_t getNumberStyle() const;
     bool numberStyleIsSet() const;
     void unsetNumberStyle();
-    void setNumberStyle(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setNumberStyle(utility::string_t value);
     /// <summary>
     /// Gets or sets returns or sets the number format for the list level.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getNumberFormat() const;
+    utility::string_t getNumberFormat() const;
     bool numberFormatIsSet() const;
     void unsetNumberFormat();
-    void setNumberFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setNumberFormat(utility::string_t value);
     /// <summary>
     /// Gets or sets the justification of the actual number of the list item.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getAlignment() const;
+    utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
-    void setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setAlignment(utility::string_t value);
     /// <summary>
     /// Gets or sets a value indicating whether true if the level turns all inherited numbers to Arabic, false if it preserves their number style.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsLegal() const;
+    bool isIsLegal() const;
     bool isLegalIsSet() const;
     void unsetIsLegal();
-    void setIsLegal(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsLegal(bool value);
     /// <summary>
     /// Gets or sets or returns the list level that must appear before the specified list level restarts numbering.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getRestartAfterLevel() const;
+    int32_t getRestartAfterLevel() const;
     bool restartAfterLevelIsSet() const;
     void unsetRestartAfterLevel();
-    void setRestartAfterLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setRestartAfterLevel(int32_t value);
     /// <summary>
     /// Gets or sets returns or sets the character inserted after the number for the list level.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTrailingCharacter() const;
+    utility::string_t getTrailingCharacter() const;
     bool trailingCharacterIsSet() const;
     void unsetTrailingCharacter();
-    void setTrailingCharacter(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTrailingCharacter(utility::string_t value);
     /// <summary>
     /// Gets or sets returns or sets the tab position (in points) for the list level.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getTabPosition() const;
+    double getTabPosition() const;
     bool tabPositionIsSet() const;
     void unsetTabPosition();
-    void setTabPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setTabPosition(double value);
     /// <summary>
     /// Gets or sets returns or sets the position (in points) of the number or bullet for the list level.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getNumberPosition() const;
+    double getNumberPosition() const;
     bool numberPositionIsSet() const;
     void unsetNumberPosition();
-    void setNumberPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setNumberPosition(double value);
     /// <summary>
     /// Gets or sets returns or sets the position (in points) for the second line of wrapping text for the list level.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getTextPosition() const;
+    double getTextPosition() const;
     bool textPositionIsSet() const;
     void unsetTextPosition();
-    void setTextPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setTextPosition(double value);
 
 protected:
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_StartAt;
+    int32_t m_StartAt;
     bool m_StartAtIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_NumberStyle;
+    utility::string_t m_NumberStyle;
     bool m_NumberStyleIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_NumberFormat;
+    utility::string_t m_NumberFormat;
     bool m_NumberFormatIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Alignment;
+    utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsLegal;
+    bool m_IsLegal;
     bool m_IsLegalIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_RestartAfterLevel;
+    int32_t m_RestartAfterLevel;
     bool m_RestartAfterLevelIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_TrailingCharacter;
+    utility::string_t m_TrailingCharacter;
     bool m_TrailingCharacterIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_TabPosition;
+    double m_TabPosition;
     bool m_TabPositionIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_NumberPosition;
+    double m_NumberPosition;
     bool m_NumberPositionIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_TextPosition;
+    double m_TextPosition;
     bool m_TextPositionIsSet;
 };
 

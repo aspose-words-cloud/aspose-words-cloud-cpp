@@ -83,7 +83,7 @@ void FootnoteBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setPosition( newItem );
         }
@@ -152,7 +152,7 @@ void FootnoteBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("Position")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("Position."));
             setPosition( newItem );
         }
@@ -171,13 +171,13 @@ void FootnoteBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     }
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> FootnoteBase::getPosition() const
+std::shared_ptr<DocumentPosition> FootnoteBase::getPosition() const
 {
     return m_Position;
 }
 
 
-void FootnoteBase::setPosition(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void FootnoteBase::setPosition(std::shared_ptr<DocumentPosition> value)
 {
     m_Position = value;
     m_PositionIsSet = true;
@@ -192,13 +192,13 @@ void FootnoteBase::unsetPosition()
     m_PositionIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FootnoteBase::getFootnoteType() const
+utility::string_t FootnoteBase::getFootnoteType() const
 {
     return m_FootnoteType;
 }
 
 
-void FootnoteBase::setFootnoteType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FootnoteBase::setFootnoteType(utility::string_t value)
 {
     m_FootnoteType = value;
     m_FootnoteTypeIsSet = true;
@@ -213,13 +213,13 @@ void FootnoteBase::unsetFootnoteType()
     m_FootnoteTypeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FootnoteBase::getReferenceMark() const
+utility::string_t FootnoteBase::getReferenceMark() const
 {
     return m_ReferenceMark;
 }
 
 
-void FootnoteBase::setReferenceMark(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FootnoteBase::setReferenceMark(utility::string_t value)
 {
     m_ReferenceMark = value;
     m_ReferenceMarkIsSet = true;
@@ -234,13 +234,13 @@ void FootnoteBase::unsetReferenceMark()
     m_ReferenceMarkIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FootnoteBase::getText() const
+utility::string_t FootnoteBase::getText() const
 {
     return m_Text;
 }
 
 
-void FootnoteBase::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FootnoteBase::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

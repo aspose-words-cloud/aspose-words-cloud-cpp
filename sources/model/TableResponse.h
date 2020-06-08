@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Table.
     /// </summary>
-    <DATA_TYPE_START>Table<DATA_TYPE_END> getTable() const;
+    std::shared_ptr<Table> getTable() const;
     bool tableIsSet() const;
     void unsetTable();
-    void setTable(<DATA_TYPE_START>Table<DATA_TYPE_END> value);
+    void setTable(std::shared_ptr<Table> value);
 
 protected:
-    <DATA_TYPE_START>Table<DATA_TYPE_END> m_Table;
+    std::shared_ptr<Table> m_Table;
     bool m_TableIsSet;
 };
 

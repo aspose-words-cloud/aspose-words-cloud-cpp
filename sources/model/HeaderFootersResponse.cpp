@@ -67,7 +67,7 @@ void HeaderFootersResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HeaderFooters")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>HeaderFooterLinkCollection<DATA_TYPE_END> newItem(new HeaderFooterLinkCollection());
+            std::shared_ptr<HeaderFooterLinkCollection> newItem(new HeaderFooterLinkCollection());
             newItem->fromJson(fieldValue);
             setHeaderFooters( newItem );
         }
@@ -97,20 +97,20 @@ void HeaderFootersResponse::fromMultiPart(const std::shared_ptr<MultipartFormDat
     {
         if(multipart->hasContent(_XPLATSTR("HeaderFooters")))
         {
-            <DATA_TYPE_START>HeaderFooterLinkCollection<DATA_TYPE_END> newItem(new HeaderFooterLinkCollection());
+            std::shared_ptr<HeaderFooterLinkCollection> newItem(new HeaderFooterLinkCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("HeaderFooters."));
             setHeaderFooters( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>HeaderFooterLinkCollection<DATA_TYPE_END> HeaderFootersResponse::getHeaderFooters() const
+std::shared_ptr<HeaderFooterLinkCollection> HeaderFootersResponse::getHeaderFooters() const
 {
     return m_HeaderFooters;
 }
 
 
-void HeaderFootersResponse::setHeaderFooters(<DATA_TYPE_START>HeaderFooterLinkCollection<DATA_TYPE_END> value)
+void HeaderFootersResponse::setHeaderFooters(std::shared_ptr<HeaderFooterLinkCollection> value)
 {
     m_HeaderFooters = value;
     m_HeaderFootersIsSet = true;

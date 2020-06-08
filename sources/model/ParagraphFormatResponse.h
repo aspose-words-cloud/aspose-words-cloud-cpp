@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets ParagraphFormat.
     /// </summary>
-    <DATA_TYPE_START>ParagraphFormat<DATA_TYPE_END> getParagraphFormat() const;
+    std::shared_ptr<ParagraphFormat> getParagraphFormat() const;
     bool paragraphFormatIsSet() const;
     void unsetParagraphFormat();
-    void setParagraphFormat(<DATA_TYPE_START>ParagraphFormat<DATA_TYPE_END> value);
+    void setParagraphFormat(std::shared_ptr<ParagraphFormat> value);
 
 protected:
-    <DATA_TYPE_START>ParagraphFormat<DATA_TYPE_END> m_ParagraphFormat;
+    std::shared_ptr<ParagraphFormat> m_ParagraphFormat;
     bool m_ParagraphFormatIsSet;
 };
 

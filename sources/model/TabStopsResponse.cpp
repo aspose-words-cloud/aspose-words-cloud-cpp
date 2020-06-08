@@ -53,7 +53,7 @@ web::json::value TabStopsResponse::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_TabStops.begin(), m_TabStops.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>TabStop<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<TabStop> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void TabStopsResponse::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_TabStops), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>TabStop<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<TabStop>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>TabStop<DATA_TYPE_END> newItem(new TabStop());
+                std::shared_ptr<TabStop> newItem(new TabStop());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void TabStopsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& mul
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_TabStops.begin(), m_TabStops.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>TabStop<DATA_TYPE_END> item){
+        std::transform(m_TabStops.begin(), m_TabStops.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<TabStop> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void TabStopsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TabStops), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>TabStop<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<TabStop>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>TabStop<DATA_TYPE_END> newItem(new TabStop());
+                std::shared_ptr<TabStop> newItem(new TabStop());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void TabStopsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     }
 }
 
-<DATA_TYPE_START>List<TabStop><DATA_TYPE_END>& TabStopsResponse::getTabStops()
+std::vector<std::shared_ptr<TabStop>>& TabStopsResponse::getTabStops()
 {
     return m_TabStops;
 }
 
-void TabStopsResponse::setTabStops(<DATA_TYPE_START>List<TabStop><DATA_TYPE_END> const& value)
+void TabStopsResponse::setTabStops(std::vector<std::shared_ptr<TabStop>> const& value)
 {
     m_TabStops = value;
     m_TabStopsIsSet = true;

@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Files and folders contained by folder StorageFile.
     /// </summary>
-    <DATA_TYPE_START>List<StorageFile><DATA_TYPE_END>& getValue();
+    std::vector<std::shared_ptr<StorageFile>>& getValue();
     bool valueIsSet() const;
     void unsetValue();
-    void setValue(<DATA_TYPE_START>List<StorageFile><DATA_TYPE_END> const& value);
+    void setValue(std::vector<std::shared_ptr<StorageFile>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<StorageFile><DATA_TYPE_END> m_Value;
+    std::vector<std::shared_ptr<StorageFile>> m_Value;
     bool m_ValueIsSet;
 };
 

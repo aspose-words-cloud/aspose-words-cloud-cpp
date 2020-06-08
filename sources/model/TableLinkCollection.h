@@ -63,15 +63,15 @@ public:
     /// TableLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of table&#x27;s links.
+    /// Gets or sets collection of table&#39;s links.
     /// </summary>
-    <DATA_TYPE_START>List<TableLink><DATA_TYPE_END>& getTableLinkList();
+    std::vector<std::shared_ptr<TableLink>>& getTableLinkList();
     bool tableLinkListIsSet() const;
     void unsetTableLinkList();
-    void setTableLinkList(<DATA_TYPE_START>List<TableLink><DATA_TYPE_END> const& value);
+    void setTableLinkList(std::vector<std::shared_ptr<TableLink>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<TableLink><DATA_TYPE_END> m_TableLinkList;
+    std::vector<std::shared_ptr<TableLink>> m_TableLinkList;
     bool m_TableLinkListIsSet;
 };
 

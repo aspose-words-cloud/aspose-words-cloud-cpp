@@ -65,112 +65,112 @@ public:
     /// <summary>
     /// Gets or sets returns or sets the amount of space (in points) to add below the contents of cell.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getBottomPadding() const;
+    double getBottomPadding() const;
     bool bottomPaddingIsSet() const;
     void unsetBottomPadding();
-    void setBottomPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setBottomPadding(double value);
     /// <summary>
     /// Gets or sets if true, fits text in the cell, compressing each paragraph to the width of the cell.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isFitText() const;
+    bool isFitText() const;
     bool fitTextIsSet() const;
     void unsetFitText();
-    void setFitText(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setFitText(bool value);
     /// <summary>
     /// Gets or sets specifies how the cell is merged horizontally with other cells in the row.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getHorizontalMerge() const;
+    utility::string_t getHorizontalMerge() const;
     bool horizontalMergeIsSet() const;
     void unsetHorizontalMerge();
-    void setHorizontalMerge(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setHorizontalMerge(utility::string_t value);
     /// <summary>
     /// Gets or sets returns or sets the amount of space (in points) to add to the left of the contents of cell.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeftPadding() const;
+    double getLeftPadding() const;
     bool leftPaddingIsSet() const;
     void unsetLeftPadding();
-    void setLeftPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setLeftPadding(double value);
     /// <summary>
     /// Gets or sets returns or sets the orientation of text in a table cell.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getOrientation() const;
+    utility::string_t getOrientation() const;
     bool orientationIsSet() const;
     void unsetOrientation();
-    void setOrientation(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setOrientation(utility::string_t value);
     /// <summary>
     /// Gets or sets PreferredWidth.
     /// </summary>
-    <DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> getPreferredWidth() const;
+    std::shared_ptr<PreferredWidth> getPreferredWidth() const;
     bool preferredWidthIsSet() const;
     void unsetPreferredWidth();
-    void setPreferredWidth(<DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> value);
+    void setPreferredWidth(std::shared_ptr<PreferredWidth> value);
     /// <summary>
     /// Gets or sets returns or sets the amount of space (in points) to add to the right of the contents of cell.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getRightPadding() const;
+    double getRightPadding() const;
     bool rightPaddingIsSet() const;
     void unsetRightPadding();
-    void setRightPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setRightPadding(double value);
     /// <summary>
     /// Gets or sets returns or sets the amount of space (in points) to add above the contents of cell.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getTopPadding() const;
+    double getTopPadding() const;
     bool topPaddingIsSet() const;
     void unsetTopPadding();
-    void setTopPadding(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setTopPadding(double value);
     /// <summary>
     /// Gets or sets returns or sets the vertical alignment of text in the cell.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getVerticalAlignment() const;
+    utility::string_t getVerticalAlignment() const;
     bool verticalAlignmentIsSet() const;
     void unsetVerticalAlignment();
-    void setVerticalAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setVerticalAlignment(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies how the cell is merged with other cells vertically.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getVerticalMerge() const;
+    utility::string_t getVerticalMerge() const;
     bool verticalMergeIsSet() const;
     void unsetVerticalMerge();
-    void setVerticalMerge(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setVerticalMerge(utility::string_t value);
     /// <summary>
     /// Gets or sets the width of the cell in points.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getWidth() const;
+    double getWidth() const;
     bool widthIsSet() const;
     void unsetWidth();
-    void setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setWidth(double value);
     /// <summary>
     /// Gets or sets if true, wrap text for the cell.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isWrapText() const;
+    bool isWrapText() const;
     bool wrapTextIsSet() const;
     void unsetWrapText();
-    void setWrapText(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setWrapText(bool value);
 
 protected:
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_BottomPadding;
+    double m_BottomPadding;
     bool m_BottomPaddingIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_FitText;
+    bool m_FitText;
     bool m_FitTextIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_HorizontalMerge;
+    utility::string_t m_HorizontalMerge;
     bool m_HorizontalMergeIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_LeftPadding;
+    double m_LeftPadding;
     bool m_LeftPaddingIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Orientation;
+    utility::string_t m_Orientation;
     bool m_OrientationIsSet;
-    <DATA_TYPE_START>PreferredWidth<DATA_TYPE_END> m_PreferredWidth;
+    std::shared_ptr<PreferredWidth> m_PreferredWidth;
     bool m_PreferredWidthIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_RightPadding;
+    double m_RightPadding;
     bool m_RightPaddingIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_TopPadding;
+    double m_TopPadding;
     bool m_TopPaddingIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_VerticalAlignment;
+    utility::string_t m_VerticalAlignment;
     bool m_VerticalAlignmentIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_VerticalMerge;
+    utility::string_t m_VerticalMerge;
     bool m_VerticalMergeIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Width;
+    double m_Width;
     bool m_WidthIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_WrapText;
+    bool m_WrapText;
     bool m_WrapTextIsSet;
 };
 

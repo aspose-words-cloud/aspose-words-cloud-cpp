@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets name for new document.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDocumentName() const;
+    utility::string_t getDocumentName() const;
     bool documentNameIsSet() const;
     void unsetDocumentName();
-    void setDocumentName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDocumentName(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_DocumentName;
+    utility::string_t m_DocumentName;
     bool m_DocumentNameIsSet;
 };
 

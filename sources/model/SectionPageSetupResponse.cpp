@@ -67,7 +67,7 @@ void SectionPageSetupResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PageSetup")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>PageSetup<DATA_TYPE_END> newItem(new PageSetup());
+            std::shared_ptr<PageSetup> newItem(new PageSetup());
             newItem->fromJson(fieldValue);
             setPageSetup( newItem );
         }
@@ -97,20 +97,20 @@ void SectionPageSetupResponse::fromMultiPart(const std::shared_ptr<MultipartForm
     {
         if(multipart->hasContent(_XPLATSTR("PageSetup")))
         {
-            <DATA_TYPE_START>PageSetup<DATA_TYPE_END> newItem(new PageSetup());
+            std::shared_ptr<PageSetup> newItem(new PageSetup());
             newItem->fromMultiPart(multipart, _XPLATSTR("PageSetup."));
             setPageSetup( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>PageSetup<DATA_TYPE_END> SectionPageSetupResponse::getPageSetup() const
+std::shared_ptr<PageSetup> SectionPageSetupResponse::getPageSetup() const
 {
     return m_PageSetup;
 }
 
 
-void SectionPageSetupResponse::setPageSetup(<DATA_TYPE_START>PageSetup<DATA_TYPE_END> value)
+void SectionPageSetupResponse::setPageSetup(std::shared_ptr<PageSetup> value)
 {
     m_PageSetup = value;
     m_PageSetupIsSet = true;

@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets ListFormat.
     /// </summary>
-    <DATA_TYPE_START>ListFormat<DATA_TYPE_END> getListFormat() const;
+    std::shared_ptr<ListFormat> getListFormat() const;
     bool listFormatIsSet() const;
     void unsetListFormat();
-    void setListFormat(<DATA_TYPE_START>ListFormat<DATA_TYPE_END> value);
+    void setListFormat(std::shared_ptr<ListFormat> value);
 
 protected:
-    <DATA_TYPE_START>ListFormat<DATA_TYPE_END> m_ListFormat;
+    std::shared_ptr<ListFormat> m_ListFormat;
     bool m_ListFormatIsSet;
 };
 

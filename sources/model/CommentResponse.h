@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Comment.
     /// </summary>
-    <DATA_TYPE_START>Comment<DATA_TYPE_END> getComment() const;
+    std::shared_ptr<Comment> getComment() const;
     bool commentIsSet() const;
     void unsetComment();
-    void setComment(<DATA_TYPE_START>Comment<DATA_TYPE_END> value);
+    void setComment(std::shared_ptr<Comment> value);
 
 protected:
-    <DATA_TYPE_START>Comment<DATA_TYPE_END> m_Comment;
+    std::shared_ptr<Comment> m_Comment;
     bool m_CommentIsSet;
 };
 

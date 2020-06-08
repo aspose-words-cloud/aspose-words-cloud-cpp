@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets specifies whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents. Default value is false.             
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportCidUrlsForMhtmlResources() const;
+    bool isExportCidUrlsForMhtmlResources() const;
     bool exportCidUrlsForMhtmlResourcesIsSet() const;
     void unsetExportCidUrlsForMhtmlResources();
-    void setExportCidUrlsForMhtmlResources(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setExportCidUrlsForMhtmlResources(bool value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportCidUrlsForMhtmlResources;
+    bool m_ExportCidUrlsForMhtmlResources;
     bool m_ExportCidUrlsForMhtmlResourcesIsSet;
 };
 

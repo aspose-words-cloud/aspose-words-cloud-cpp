@@ -53,7 +53,7 @@ web::json::value FootnoteCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>Footnote<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<Footnote> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void FootnoteCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>Footnote<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<Footnote>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>Footnote<DATA_TYPE_END> newItem(new Footnote());
+                std::shared_ptr<Footnote> newItem(new Footnote());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void FootnoteCollection::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Footnote<DATA_TYPE_END> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Footnote> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void FootnoteCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>&
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>Footnote<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<Footnote>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>Footnote<DATA_TYPE_END> newItem(new Footnote());
+                std::shared_ptr<Footnote> newItem(new Footnote());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void FootnoteCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
 }
 
-<DATA_TYPE_START>List<Footnote><DATA_TYPE_END>& FootnoteCollection::getList()
+std::vector<std::shared_ptr<Footnote>>& FootnoteCollection::getList()
 {
     return m_List;
 }
 
-void FootnoteCollection::setList(<DATA_TYPE_START>List<Footnote><DATA_TYPE_END> const& value)
+void FootnoteCollection::setList(std::vector<std::shared_ptr<Footnote>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

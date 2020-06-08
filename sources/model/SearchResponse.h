@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets a regular expression pattern used to find matches.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getSearchingPattern() const;
+    utility::string_t getSearchingPattern() const;
     bool searchingPatternIsSet() const;
     void unsetSearchingPattern();
-    void setSearchingPattern(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setSearchingPattern(utility::string_t value);
     /// <summary>
     /// Gets or sets SearchResults.
     /// </summary>
-    <DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> getSearchResults() const;
+    std::shared_ptr<SearchResultsCollection> getSearchResults() const;
     bool searchResultsIsSet() const;
     void unsetSearchResults();
-    void setSearchResults(<DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> value);
+    void setSearchResults(std::shared_ptr<SearchResultsCollection> value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_SearchingPattern;
+    utility::string_t m_SearchingPattern;
     bool m_SearchingPatternIsSet;
-    <DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> m_SearchResults;
+    std::shared_ptr<SearchResultsCollection> m_SearchResults;
     bool m_SearchResultsIsSet;
 };
 

@@ -93,13 +93,13 @@ void ListInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ListInsert::getTemplate() const
+utility::string_t ListInsert::getTemplate() const
 {
     return m_Template;
 }
 
 
-void ListInsert::setTemplate(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ListInsert::setTemplate(utility::string_t value)
 {
     m_Template = value;
     m_TemplateIsSet = true;

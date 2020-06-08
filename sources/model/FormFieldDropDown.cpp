@@ -55,7 +55,7 @@ web::json::value FormFieldDropDown::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>string<DATA_TYPE_END> item) {
+			[&](utility::string_t item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -93,7 +93,7 @@ void FormFieldDropDown::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DropDownSelectedIndex")];
         if(!fieldValue.is_null())
         {
-            setDropDownSelectedIndex(ModelBase::int?FromJson(fieldValue));
+            setDropDownSelectedIndex(ModelBase::int32_tFromJson(fieldValue));
         }
     }
 }
@@ -105,7 +105,7 @@ void FormFieldDropDown::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>string<DATA_TYPE_END> item){
+        std::transform(m_DropDownItems.begin(), m_DropDownItems.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
             return ModelBase::toJson(item);
         });
         
@@ -138,16 +138,16 @@ void FormFieldDropDown::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
     if(multipart->hasContent(_XPLATSTR("DropDownSelectedIndex")))
     {
-        setDropDownSelectedIndex(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("DropDownSelectedIndex"))));
+        setDropDownSelectedIndex(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("DropDownSelectedIndex"))));
     }
 }
 
-<DATA_TYPE_START>List<string><DATA_TYPE_END>& FormFieldDropDown::getDropDownItems()
+std::vector<utility::string_t>& FormFieldDropDown::getDropDownItems()
 {
     return m_DropDownItems;
 }
 
-void FormFieldDropDown::setDropDownItems(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value)
+void FormFieldDropDown::setDropDownItems(std::vector<utility::string_t> const& value)
 {
     m_DropDownItems = value;
     m_DropDownItemsIsSet = true;
@@ -162,13 +162,13 @@ void FormFieldDropDown::unsetDropDownItems()
     m_DropDownItemsIsSet = false;
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> FormFieldDropDown::getDropDownSelectedIndex() const
+int32_t FormFieldDropDown::getDropDownSelectedIndex() const
 {
     return m_DropDownSelectedIndex;
 }
 
 
-void FormFieldDropDown::setDropDownSelectedIndex(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void FormFieldDropDown::setDropDownSelectedIndex(int32_t value)
 {
     m_DropDownSelectedIndex = value;
     m_DropDownSelectedIndexIsSet = true;

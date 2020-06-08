@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsRestartAtEachSection() const;
+    bool isIsRestartAtEachSection() const;
     bool isRestartAtEachSectionIsSet() const;
     void unsetIsRestartAtEachSection();
-    void setIsRestartAtEachSection(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsRestartAtEachSection(bool value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsRestartAtEachSection;
+    bool m_IsRestartAtEachSection;
     bool m_IsRestartAtEachSectionIsSet;
 };
 

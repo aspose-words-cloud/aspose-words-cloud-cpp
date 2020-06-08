@@ -84,7 +84,7 @@ void CsvDataLoadOptions::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HasHeaders")];
         if(!fieldValue.is_null())
         {
-            setHasHeaders(ModelBase::bool?FromJson(fieldValue));
+            setHasHeaders(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Delimiter")))
@@ -146,7 +146,7 @@ void CsvDataLoadOptions::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 
     if(multipart->hasContent(_XPLATSTR("HasHeaders")))
     {
-        setHasHeaders(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("HasHeaders"))));
+        setHasHeaders(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("HasHeaders"))));
     }
     if(multipart->hasContent(_XPLATSTR("Delimiter")))
     {
@@ -162,13 +162,13 @@ void CsvDataLoadOptions::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> CsvDataLoadOptions::isHasHeaders() const
+bool CsvDataLoadOptions::isHasHeaders() const
 {
     return m_HasHeaders;
 }
 
 
-void CsvDataLoadOptions::setHasHeaders(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void CsvDataLoadOptions::setHasHeaders(bool value)
 {
     m_HasHeaders = value;
     m_HasHeadersIsSet = true;
@@ -183,13 +183,13 @@ void CsvDataLoadOptions::unsetHasHeaders()
     m_HasHeadersIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CsvDataLoadOptions::getDelimiter() const
+utility::string_t CsvDataLoadOptions::getDelimiter() const
 {
     return m_Delimiter;
 }
 
 
-void CsvDataLoadOptions::setDelimiter(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CsvDataLoadOptions::setDelimiter(utility::string_t value)
 {
     m_Delimiter = value;
     m_DelimiterIsSet = true;
@@ -204,13 +204,13 @@ void CsvDataLoadOptions::unsetDelimiter()
     m_DelimiterIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CsvDataLoadOptions::getQuoteChar() const
+utility::string_t CsvDataLoadOptions::getQuoteChar() const
 {
     return m_QuoteChar;
 }
 
 
-void CsvDataLoadOptions::setQuoteChar(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CsvDataLoadOptions::setQuoteChar(utility::string_t value)
 {
     m_QuoteChar = value;
     m_QuoteCharIsSet = true;
@@ -225,13 +225,13 @@ void CsvDataLoadOptions::unsetQuoteChar()
     m_QuoteCharIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CsvDataLoadOptions::getCommentChar() const
+utility::string_t CsvDataLoadOptions::getCommentChar() const
 {
     return m_CommentChar;
 }
 
 
-void CsvDataLoadOptions::setCommentChar(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CsvDataLoadOptions::setCommentChar(utility::string_t value)
 {
     m_CommentChar = value;
     m_CommentCharIsSet = true;

@@ -67,7 +67,7 @@ void CommentResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Comment")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Comment<DATA_TYPE_END> newItem(new Comment());
+            std::shared_ptr<Comment> newItem(new Comment());
             newItem->fromJson(fieldValue);
             setComment( newItem );
         }
@@ -97,20 +97,20 @@ void CommentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     {
         if(multipart->hasContent(_XPLATSTR("Comment")))
         {
-            <DATA_TYPE_START>Comment<DATA_TYPE_END> newItem(new Comment());
+            std::shared_ptr<Comment> newItem(new Comment());
             newItem->fromMultiPart(multipart, _XPLATSTR("Comment."));
             setComment( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>Comment<DATA_TYPE_END> CommentResponse::getComment() const
+std::shared_ptr<Comment> CommentResponse::getComment() const
 {
     return m_Comment;
 }
 
 
-void CommentResponse::setComment(<DATA_TYPE_START>Comment<DATA_TYPE_END> value)
+void CommentResponse::setComment(std::shared_ptr<Comment> value)
 {
     m_Comment = value;
     m_CommentIsSet = true;

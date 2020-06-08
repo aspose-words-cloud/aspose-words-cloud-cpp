@@ -65,31 +65,31 @@ public:
     /// <summary>
     /// Gets or sets Position.
     /// </summary>
-    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getPosition() const;
+    std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
     void unsetPosition();
-    void setPosition(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
+    void setPosition(std::shared_ptr<DocumentPosition> value);
     /// <summary>
     /// Gets or sets count of columns. Default is 2.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getColumnsCount() const;
+    int32_t getColumnsCount() const;
     bool columnsCountIsSet() const;
     void unsetColumnsCount();
-    void setColumnsCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setColumnsCount(int32_t value);
     /// <summary>
     /// Gets or sets count of rows. Default is 2.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getRowsCount() const;
+    int32_t getRowsCount() const;
     bool rowsCountIsSet() const;
     void unsetRowsCount();
-    void setRowsCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setRowsCount(int32_t value);
 
 protected:
-    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_Position;
+    std::shared_ptr<DocumentPosition> m_Position;
     bool m_PositionIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ColumnsCount;
+    int32_t m_ColumnsCount;
     bool m_ColumnsCountIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_RowsCount;
+    int32_t m_RowsCount;
     bool m_RowsCountIsSet;
 };
 

@@ -65,31 +65,31 @@ public:
     /// <summary>
     /// Gets or sets child nodes.
     /// </summary>
-    <DATA_TYPE_START>List<NodeLink><DATA_TYPE_END>& getChildNodes();
+    std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;
     void unsetChildNodes();
-    void setChildNodes(<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> const& value);
+    void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
     /// <summary>
     /// Gets or sets DrawingObjects.
     /// </summary>
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> getDrawingObjects() const;
+    std::shared_ptr<LinkElement> getDrawingObjects() const;
     bool drawingObjectsIsSet() const;
     void unsetDrawingObjects();
-    void setDrawingObjects(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value);
+    void setDrawingObjects(std::shared_ptr<LinkElement> value);
     /// <summary>
     /// Gets or sets Paragraphs.
     /// </summary>
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> getParagraphs() const;
+    std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
     void unsetParagraphs();
-    void setParagraphs(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value);
+    void setParagraphs(std::shared_ptr<LinkElement> value);
 
 protected:
-    <DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> m_ChildNodes;
+    std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;
     bool m_ChildNodesIsSet;
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> m_DrawingObjects;
+    std::shared_ptr<LinkElement> m_DrawingObjects;
     bool m_DrawingObjectsIsSet;
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> m_Paragraphs;
+    std::shared_ptr<LinkElement> m_Paragraphs;
     bool m_ParagraphsIsSet;
 };
 

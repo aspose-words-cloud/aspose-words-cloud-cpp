@@ -64,58 +64,58 @@ public:
     /// <summary>
     /// Gets or sets specified whether images should be embedded into SVG document as base64.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportEmbeddedImages() const;
+    bool isExportEmbeddedImages() const;
     bool exportEmbeddedImagesIsSet() const;
     void unsetExportEmbeddedImages();
-    void setExportEmbeddedImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setExportEmbeddedImages(bool value);
     /// <summary>
     /// Gets or sets specifies if the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isFitToViewPort() const;
+    bool isFitToViewPort() const;
     bool fitToViewPortIsSet() const;
     void unsetFitToViewPort();
-    void setFitToViewPort(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setFitToViewPort(bool value);
     /// <summary>
     /// Gets or sets specifies the physical folder where resources (images) are saved when exporting.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getResourcesFolder() const;
+    utility::string_t getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
     void unsetResourcesFolder();
-    void setResourcesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setResourcesFolder(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies the name of the folder used to construct image URIs.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getResourcesFolderAlias() const;
+    utility::string_t getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;
     void unsetResourcesFolderAlias();
-    void setResourcesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setResourcesFolderAlias(utility::string_t value);
     /// <summary>
     /// Gets or sets show/hide page stepper.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isShowPageBorder() const;
+    bool isShowPageBorder() const;
     bool showPageBorderIsSet() const;
     void unsetShowPageBorder();
-    void setShowPageBorder(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setShowPageBorder(bool value);
     /// <summary>
     /// Gets or sets determines how text should be rendered.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTextOutputMode() const;
+    utility::string_t getTextOutputMode() const;
     bool textOutputModeIsSet() const;
     void unsetTextOutputMode();
-    void setTextOutputMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTextOutputMode(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportEmbeddedImages;
+    bool m_ExportEmbeddedImages;
     bool m_ExportEmbeddedImagesIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_FitToViewPort;
+    bool m_FitToViewPort;
     bool m_FitToViewPortIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ResourcesFolder;
+    utility::string_t m_ResourcesFolder;
     bool m_ResourcesFolderIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ResourcesFolderAlias;
+    utility::string_t m_ResourcesFolderAlias;
     bool m_ResourcesFolderAliasIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ShowPageBorder;
+    bool m_ShowPageBorder;
     bool m_ShowPageBorderIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextOutputMode;
+    utility::string_t m_TextOutputMode;
     bool m_TextOutputModeIsSet;
 };
 

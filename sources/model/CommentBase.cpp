@@ -94,7 +94,7 @@ void CommentBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setRangeStart( newItem );
         }
@@ -104,7 +104,7 @@ void CommentBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setRangeEnd( newItem );
         }
@@ -130,7 +130,7 @@ void CommentBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
-            setDateTime(ModelBase::DateTime?FromJson(fieldValue));
+            setDateTime(ModelBase::dateFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Text")))
@@ -194,7 +194,7 @@ void CommentBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     {
         if(multipart->hasContent(_XPLATSTR("RangeStart")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
             setRangeStart( newItem );
         }
@@ -203,7 +203,7 @@ void CommentBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     {
         if(multipart->hasContent(_XPLATSTR("RangeEnd")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
             setRangeEnd( newItem );
         }
@@ -218,7 +218,7 @@ void CommentBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
     if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
     if(multipart->hasContent(_XPLATSTR("Text")))
     {
@@ -226,13 +226,13 @@ void CommentBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> CommentBase::getRangeStart() const
+std::shared_ptr<DocumentPosition> CommentBase::getRangeStart() const
 {
     return m_RangeStart;
 }
 
 
-void CommentBase::setRangeStart(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void CommentBase::setRangeStart(std::shared_ptr<DocumentPosition> value)
 {
     m_RangeStart = value;
     m_RangeStartIsSet = true;
@@ -247,13 +247,13 @@ void CommentBase::unsetRangeStart()
     m_RangeStartIsSet = false;
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> CommentBase::getRangeEnd() const
+std::shared_ptr<DocumentPosition> CommentBase::getRangeEnd() const
 {
     return m_RangeEnd;
 }
 
 
-void CommentBase::setRangeEnd(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void CommentBase::setRangeEnd(std::shared_ptr<DocumentPosition> value)
 {
     m_RangeEnd = value;
     m_RangeEndIsSet = true;
@@ -268,13 +268,13 @@ void CommentBase::unsetRangeEnd()
     m_RangeEndIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CommentBase::getAuthor() const
+utility::string_t CommentBase::getAuthor() const
 {
     return m_Author;
 }
 
 
-void CommentBase::setAuthor(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CommentBase::setAuthor(utility::string_t value)
 {
     m_Author = value;
     m_AuthorIsSet = true;
@@ -289,13 +289,13 @@ void CommentBase::unsetAuthor()
     m_AuthorIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CommentBase::getInitial() const
+utility::string_t CommentBase::getInitial() const
 {
     return m_Initial;
 }
 
 
-void CommentBase::setInitial(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CommentBase::setInitial(utility::string_t value)
 {
     m_Initial = value;
     m_InitialIsSet = true;
@@ -310,13 +310,13 @@ void CommentBase::unsetInitial()
     m_InitialIsSet = false;
 }
 
-<DATA_TYPE_START>DateTime?<DATA_TYPE_END> CommentBase::getDateTime() const
+utility::datetime CommentBase::getDateTime() const
 {
     return m_DateTime;
 }
 
 
-void CommentBase::setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
+void CommentBase::setDateTime(utility::datetime value)
 {
     m_DateTime = value;
     m_DateTimeIsSet = true;
@@ -331,13 +331,13 @@ void CommentBase::unsetDateTime()
     m_DateTimeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CommentBase::getText() const
+utility::string_t CommentBase::getText() const
 {
     return m_Text;
 }
 
 
-void CommentBase::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CommentBase::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

@@ -80,7 +80,7 @@ void BookmarksOutlineLevelData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BookmarksOutlineLevel")];
         if(!fieldValue.is_null())
         {
-            setBookmarksOutlineLevel(ModelBase::int?FromJson(fieldValue));
+            setBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
         }
     }
 }
@@ -112,17 +112,17 @@ void BookmarksOutlineLevelData::fromMultiPart(const std::shared_ptr<MultipartFor
     }
     if(multipart->hasContent(_XPLATSTR("BookmarksOutlineLevel")))
     {
-        setBookmarksOutlineLevel(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevel"))));
+        setBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevel"))));
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> BookmarksOutlineLevelData::getName() const
+utility::string_t BookmarksOutlineLevelData::getName() const
 {
     return m_Name;
 }
 
 
-void BookmarksOutlineLevelData::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void BookmarksOutlineLevelData::setName(utility::string_t value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -137,13 +137,13 @@ void BookmarksOutlineLevelData::unsetName()
     m_NameIsSet = false;
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> BookmarksOutlineLevelData::getBookmarksOutlineLevel() const
+int32_t BookmarksOutlineLevelData::getBookmarksOutlineLevel() const
 {
     return m_BookmarksOutlineLevel;
 }
 
 
-void BookmarksOutlineLevelData::setBookmarksOutlineLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void BookmarksOutlineLevelData::setBookmarksOutlineLevel(int32_t value)
 {
     m_BookmarksOutlineLevel = value;
     m_BookmarksOutlineLevelIsSet = true;

@@ -109,7 +109,7 @@ void Comment::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Content")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> newItem(new StoryChildNodes());
+            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
             newItem->fromJson(fieldValue);
             setContent( newItem );
         }
@@ -119,7 +119,7 @@ void Comment::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
-            setDateTime(ModelBase::DateTime?FromJson(fieldValue));
+            setDateTime(ModelBase::dateFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Initial")))
@@ -135,7 +135,7 @@ void Comment::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setRangeEnd( newItem );
         }
@@ -145,7 +145,7 @@ void Comment::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setRangeStart( newItem );
         }
@@ -223,14 +223,14 @@ void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("Content")))
         {
-            <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> newItem(new StoryChildNodes());
+            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
             newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
             setContent( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
     if(multipart->hasContent(_XPLATSTR("Initial")))
     {
@@ -240,7 +240,7 @@ void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("RangeEnd")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
             setRangeEnd( newItem );
         }
@@ -249,7 +249,7 @@ void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("RangeStart")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
             setRangeStart( newItem );
         }
@@ -260,13 +260,13 @@ void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Comment::getAuthor() const
+utility::string_t Comment::getAuthor() const
 {
     return m_Author;
 }
 
 
-void Comment::setAuthor(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Comment::setAuthor(utility::string_t value)
 {
     m_Author = value;
     m_AuthorIsSet = true;
@@ -281,13 +281,13 @@ void Comment::unsetAuthor()
     m_AuthorIsSet = false;
 }
 
-<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> Comment::getContent() const
+std::shared_ptr<StoryChildNodes> Comment::getContent() const
 {
     return m_Content;
 }
 
 
-void Comment::setContent(<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> value)
+void Comment::setContent(std::shared_ptr<StoryChildNodes> value)
 {
     m_Content = value;
     m_ContentIsSet = true;
@@ -302,13 +302,13 @@ void Comment::unsetContent()
     m_ContentIsSet = false;
 }
 
-<DATA_TYPE_START>DateTime?<DATA_TYPE_END> Comment::getDateTime() const
+utility::datetime Comment::getDateTime() const
 {
     return m_DateTime;
 }
 
 
-void Comment::setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
+void Comment::setDateTime(utility::datetime value)
 {
     m_DateTime = value;
     m_DateTimeIsSet = true;
@@ -323,13 +323,13 @@ void Comment::unsetDateTime()
     m_DateTimeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Comment::getInitial() const
+utility::string_t Comment::getInitial() const
 {
     return m_Initial;
 }
 
 
-void Comment::setInitial(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Comment::setInitial(utility::string_t value)
 {
     m_Initial = value;
     m_InitialIsSet = true;
@@ -344,13 +344,13 @@ void Comment::unsetInitial()
     m_InitialIsSet = false;
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> Comment::getRangeEnd() const
+std::shared_ptr<DocumentPosition> Comment::getRangeEnd() const
 {
     return m_RangeEnd;
 }
 
 
-void Comment::setRangeEnd(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void Comment::setRangeEnd(std::shared_ptr<DocumentPosition> value)
 {
     m_RangeEnd = value;
     m_RangeEndIsSet = true;
@@ -365,13 +365,13 @@ void Comment::unsetRangeEnd()
     m_RangeEndIsSet = false;
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> Comment::getRangeStart() const
+std::shared_ptr<DocumentPosition> Comment::getRangeStart() const
 {
     return m_RangeStart;
 }
 
 
-void Comment::setRangeStart(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void Comment::setRangeStart(std::shared_ptr<DocumentPosition> value)
 {
     m_RangeStart = value;
     m_RangeStartIsSet = true;
@@ -386,13 +386,13 @@ void Comment::unsetRangeStart()
     m_RangeStartIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Comment::getText() const
+utility::string_t Comment::getText() const
 {
     return m_Text;
 }
 
 
-void Comment::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Comment::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

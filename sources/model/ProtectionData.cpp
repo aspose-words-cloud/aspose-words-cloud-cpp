@@ -93,13 +93,13 @@ void ProtectionData::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ProtectionData::getProtectionType() const
+utility::string_t ProtectionData::getProtectionType() const
 {
     return m_ProtectionType;
 }
 
 
-void ProtectionData::setProtectionType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ProtectionData::setProtectionType(utility::string_t value)
 {
     m_ProtectionType = value;
     m_ProtectionTypeIsSet = true;

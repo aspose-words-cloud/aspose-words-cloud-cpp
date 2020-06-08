@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// List of uploaded file names
     /// </summary>
-    <DATA_TYPE_START>List<string><DATA_TYPE_END>& getUploaded();
+    std::vector<utility::string_t>& getUploaded();
     bool uploadedIsSet() const;
     void unsetUploaded();
-    void setUploaded(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value);
+    void setUploaded(std::vector<utility::string_t> const& value);
     /// <summary>
     /// List of errors.
     /// </summary>
-    <DATA_TYPE_START>List<Error><DATA_TYPE_END>& getErrors();
+    std::vector<std::shared_ptr<Error>>& getErrors();
     bool errorsIsSet() const;
     void unsetErrors();
-    void setErrors(<DATA_TYPE_START>List<Error><DATA_TYPE_END> const& value);
+    void setErrors(std::vector<std::shared_ptr<Error>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<string><DATA_TYPE_END> m_Uploaded;
+    std::vector<utility::string_t> m_Uploaded;
     bool m_UploadedIsSet;
-    <DATA_TYPE_START>List<Error><DATA_TYPE_END> m_Errors;
+    std::vector<std::shared_ptr<Error>> m_Errors;
     bool m_ErrorsIsSet;
 };
 

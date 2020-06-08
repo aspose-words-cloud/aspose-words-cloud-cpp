@@ -53,7 +53,7 @@ web::json::value CommentsCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_CommentList.begin(), m_CommentList.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>Comment<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<Comment> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void CommentsCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_CommentList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>Comment<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<Comment>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>Comment<DATA_TYPE_END> newItem(new Comment());
+                std::shared_ptr<Comment> newItem(new Comment());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void CommentsCollection::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_CommentList.begin(), m_CommentList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Comment<DATA_TYPE_END> item){
+        std::transform(m_CommentList.begin(), m_CommentList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Comment> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void CommentsCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>&
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_CommentList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>Comment<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<Comment>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>Comment<DATA_TYPE_END> newItem(new Comment());
+                std::shared_ptr<Comment> newItem(new Comment());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void CommentsCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
 }
 
-<DATA_TYPE_START>List<Comment><DATA_TYPE_END>& CommentsCollection::getCommentList()
+std::vector<std::shared_ptr<Comment>>& CommentsCollection::getCommentList()
 {
     return m_CommentList;
 }
 
-void CommentsCollection::setCommentList(<DATA_TYPE_START>List<Comment><DATA_TYPE_END> const& value)
+void CommentsCollection::setCommentList(std::vector<std::shared_ptr<Comment>> const& value)
 {
     m_CommentList = value;
     m_CommentListIsSet = true;

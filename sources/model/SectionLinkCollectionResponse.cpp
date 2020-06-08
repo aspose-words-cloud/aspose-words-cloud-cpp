@@ -67,7 +67,7 @@ void SectionLinkCollectionResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Sections")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>SectionLinkCollection<DATA_TYPE_END> newItem(new SectionLinkCollection());
+            std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
             newItem->fromJson(fieldValue);
             setSections( newItem );
         }
@@ -97,20 +97,20 @@ void SectionLinkCollectionResponse::fromMultiPart(const std::shared_ptr<Multipar
     {
         if(multipart->hasContent(_XPLATSTR("Sections")))
         {
-            <DATA_TYPE_START>SectionLinkCollection<DATA_TYPE_END> newItem(new SectionLinkCollection());
+            std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("Sections."));
             setSections( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>SectionLinkCollection<DATA_TYPE_END> SectionLinkCollectionResponse::getSections() const
+std::shared_ptr<SectionLinkCollection> SectionLinkCollectionResponse::getSections() const
 {
     return m_Sections;
 }
 
 
-void SectionLinkCollectionResponse::setSections(<DATA_TYPE_START>SectionLinkCollection<DATA_TYPE_END> value)
+void SectionLinkCollectionResponse::setSections(std::shared_ptr<SectionLinkCollection> value)
 {
     m_Sections = value;
     m_SectionsIsSet = true;

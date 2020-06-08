@@ -116,7 +116,7 @@ void FormField::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CalculateOnExit")];
         if(!fieldValue.is_null())
         {
-            setCalculateOnExit(ModelBase::bool?FromJson(fieldValue));
+            setCalculateOnExit(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Enabled")))
@@ -124,7 +124,7 @@ void FormField::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Enabled")];
         if(!fieldValue.is_null())
         {
-            setEnabled(ModelBase::bool?FromJson(fieldValue));
+            setEnabled(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("EntryMacro")))
@@ -164,7 +164,7 @@ void FormField::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OwnHelp")];
         if(!fieldValue.is_null())
         {
-            setOwnHelp(ModelBase::bool?FromJson(fieldValue));
+            setOwnHelp(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("OwnStatus")))
@@ -172,7 +172,7 @@ void FormField::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OwnStatus")];
         if(!fieldValue.is_null())
         {
-            setOwnStatus(ModelBase::bool?FromJson(fieldValue));
+            setOwnStatus(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("StatusText")))
@@ -243,11 +243,11 @@ void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
 
     if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
     {
-        setCalculateOnExit(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
+        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
     }
     if(multipart->hasContent(_XPLATSTR("Enabled")))
     {
-        setEnabled(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
+        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
     }
     if(multipart->hasContent(_XPLATSTR("EntryMacro")))
     {
@@ -267,11 +267,11 @@ void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
     if(multipart->hasContent(_XPLATSTR("OwnHelp")))
     {
-        setOwnHelp(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
+        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
     }
     if(multipart->hasContent(_XPLATSTR("OwnStatus")))
     {
-        setOwnStatus(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
+        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
     }
     if(multipart->hasContent(_XPLATSTR("StatusText")))
     {
@@ -279,13 +279,13 @@ void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> FormField::isCalculateOnExit() const
+bool FormField::isCalculateOnExit() const
 {
     return m_CalculateOnExit;
 }
 
 
-void FormField::setCalculateOnExit(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void FormField::setCalculateOnExit(bool value)
 {
     m_CalculateOnExit = value;
     m_CalculateOnExitIsSet = true;
@@ -300,13 +300,13 @@ void FormField::unsetCalculateOnExit()
     m_CalculateOnExitIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> FormField::isEnabled() const
+bool FormField::isEnabled() const
 {
     return m_Enabled;
 }
 
 
-void FormField::setEnabled(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void FormField::setEnabled(bool value)
 {
     m_Enabled = value;
     m_EnabledIsSet = true;
@@ -321,13 +321,13 @@ void FormField::unsetEnabled()
     m_EnabledIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormField::getEntryMacro() const
+utility::string_t FormField::getEntryMacro() const
 {
     return m_EntryMacro;
 }
 
 
-void FormField::setEntryMacro(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormField::setEntryMacro(utility::string_t value)
 {
     m_EntryMacro = value;
     m_EntryMacroIsSet = true;
@@ -342,13 +342,13 @@ void FormField::unsetEntryMacro()
     m_EntryMacroIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormField::getExitMacro() const
+utility::string_t FormField::getExitMacro() const
 {
     return m_ExitMacro;
 }
 
 
-void FormField::setExitMacro(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormField::setExitMacro(utility::string_t value)
 {
     m_ExitMacro = value;
     m_ExitMacroIsSet = true;
@@ -363,13 +363,13 @@ void FormField::unsetExitMacro()
     m_ExitMacroIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormField::getHelpText() const
+utility::string_t FormField::getHelpText() const
 {
     return m_HelpText;
 }
 
 
-void FormField::setHelpText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormField::setHelpText(utility::string_t value)
 {
     m_HelpText = value;
     m_HelpTextIsSet = true;
@@ -384,13 +384,13 @@ void FormField::unsetHelpText()
     m_HelpTextIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormField::getName() const
+utility::string_t FormField::getName() const
 {
     return m_Name;
 }
 
 
-void FormField::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormField::setName(utility::string_t value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -405,13 +405,13 @@ void FormField::unsetName()
     m_NameIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> FormField::isOwnHelp() const
+bool FormField::isOwnHelp() const
 {
     return m_OwnHelp;
 }
 
 
-void FormField::setOwnHelp(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void FormField::setOwnHelp(bool value)
 {
     m_OwnHelp = value;
     m_OwnHelpIsSet = true;
@@ -426,13 +426,13 @@ void FormField::unsetOwnHelp()
     m_OwnHelpIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> FormField::isOwnStatus() const
+bool FormField::isOwnStatus() const
 {
     return m_OwnStatus;
 }
 
 
-void FormField::setOwnStatus(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void FormField::setOwnStatus(bool value)
 {
     m_OwnStatus = value;
     m_OwnStatusIsSet = true;
@@ -447,13 +447,13 @@ void FormField::unsetOwnStatus()
     m_OwnStatusIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormField::getStatusText() const
+utility::string_t FormField::getStatusText() const
 {
     return m_StatusText;
 }
 
 
-void FormField::setStatusText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormField::setStatusText(utility::string_t value)
 {
     m_StatusText = value;
     m_StatusTextIsSet = true;

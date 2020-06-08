@@ -67,7 +67,7 @@ void FieldsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Fields")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FieldCollection<DATA_TYPE_END> newItem(new FieldCollection());
+            std::shared_ptr<FieldCollection> newItem(new FieldCollection());
             newItem->fromJson(fieldValue);
             setFields( newItem );
         }
@@ -97,20 +97,20 @@ void FieldsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     {
         if(multipart->hasContent(_XPLATSTR("Fields")))
         {
-            <DATA_TYPE_START>FieldCollection<DATA_TYPE_END> newItem(new FieldCollection());
+            std::shared_ptr<FieldCollection> newItem(new FieldCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("Fields."));
             setFields( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>FieldCollection<DATA_TYPE_END> FieldsResponse::getFields() const
+std::shared_ptr<FieldCollection> FieldsResponse::getFields() const
 {
     return m_Fields;
 }
 
 
-void FieldsResponse::setFields(<DATA_TYPE_START>FieldCollection<DATA_TYPE_END> value)
+void FieldsResponse::setFields(std::shared_ptr<FieldCollection> value)
 {
     m_Fields = value;
     m_FieldsIsSet = true;

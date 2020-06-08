@@ -95,13 +95,13 @@ void ParagraphLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphLink::getText() const
+utility::string_t ParagraphLink::getText() const
 {
     return m_Text;
 }
 
 
-void ParagraphLink::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphLink::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

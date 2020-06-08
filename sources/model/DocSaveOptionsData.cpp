@@ -86,7 +86,7 @@ void DocSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AlwaysCompressMetafiles")];
         if(!fieldValue.is_null())
         {
-            setAlwaysCompressMetafiles(ModelBase::bool?FromJson(fieldValue));
+            setAlwaysCompressMetafiles(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Password")))
@@ -102,7 +102,7 @@ void DocSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SavePictureBullet")];
         if(!fieldValue.is_null())
         {
-            setSavePictureBullet(ModelBase::bool?FromJson(fieldValue));
+            setSavePictureBullet(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SaveRoutingSlip")))
@@ -110,7 +110,7 @@ void DocSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SaveRoutingSlip")];
         if(!fieldValue.is_null())
         {
-            setSaveRoutingSlip(ModelBase::bool?FromJson(fieldValue));
+            setSaveRoutingSlip(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -148,7 +148,7 @@ void DocSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 
     if(multipart->hasContent(_XPLATSTR("AlwaysCompressMetafiles")))
     {
-        setAlwaysCompressMetafiles(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AlwaysCompressMetafiles"))));
+        setAlwaysCompressMetafiles(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AlwaysCompressMetafiles"))));
     }
     if(multipart->hasContent(_XPLATSTR("Password")))
     {
@@ -156,21 +156,21 @@ void DocSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("SavePictureBullet")))
     {
-        setSavePictureBullet(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SavePictureBullet"))));
+        setSavePictureBullet(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SavePictureBullet"))));
     }
     if(multipart->hasContent(_XPLATSTR("SaveRoutingSlip")))
     {
-        setSaveRoutingSlip(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SaveRoutingSlip"))));
+        setSaveRoutingSlip(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SaveRoutingSlip"))));
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> DocSaveOptionsData::isAlwaysCompressMetafiles() const
+bool DocSaveOptionsData::isAlwaysCompressMetafiles() const
 {
     return m_AlwaysCompressMetafiles;
 }
 
 
-void DocSaveOptionsData::setAlwaysCompressMetafiles(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void DocSaveOptionsData::setAlwaysCompressMetafiles(bool value)
 {
     m_AlwaysCompressMetafiles = value;
     m_AlwaysCompressMetafilesIsSet = true;
@@ -185,13 +185,13 @@ void DocSaveOptionsData::unsetAlwaysCompressMetafiles()
     m_AlwaysCompressMetafilesIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DocSaveOptionsData::getPassword() const
+utility::string_t DocSaveOptionsData::getPassword() const
 {
     return m_Password;
 }
 
 
-void DocSaveOptionsData::setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DocSaveOptionsData::setPassword(utility::string_t value)
 {
     m_Password = value;
     m_PasswordIsSet = true;
@@ -206,13 +206,13 @@ void DocSaveOptionsData::unsetPassword()
     m_PasswordIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> DocSaveOptionsData::isSavePictureBullet() const
+bool DocSaveOptionsData::isSavePictureBullet() const
 {
     return m_SavePictureBullet;
 }
 
 
-void DocSaveOptionsData::setSavePictureBullet(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void DocSaveOptionsData::setSavePictureBullet(bool value)
 {
     m_SavePictureBullet = value;
     m_SavePictureBulletIsSet = true;
@@ -227,13 +227,13 @@ void DocSaveOptionsData::unsetSavePictureBullet()
     m_SavePictureBulletIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> DocSaveOptionsData::isSaveRoutingSlip() const
+bool DocSaveOptionsData::isSaveRoutingSlip() const
 {
     return m_SaveRoutingSlip;
 }
 
 
-void DocSaveOptionsData::setSaveRoutingSlip(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void DocSaveOptionsData::setSaveRoutingSlip(bool value)
 {
     m_SaveRoutingSlip = value;
     m_SaveRoutingSlipIsSet = true;

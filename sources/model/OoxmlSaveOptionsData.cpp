@@ -110,7 +110,7 @@ void OoxmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::bool?FromJson(fieldValue));
+            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -160,17 +160,17 @@ void OoxmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData
     }
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> OoxmlSaveOptionsData::getCompliance() const
+utility::string_t OoxmlSaveOptionsData::getCompliance() const
 {
     return m_Compliance;
 }
 
 
-void OoxmlSaveOptionsData::setCompliance(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void OoxmlSaveOptionsData::setCompliance(utility::string_t value)
 {
     m_Compliance = value;
     m_ComplianceIsSet = true;
@@ -185,13 +185,13 @@ void OoxmlSaveOptionsData::unsetCompliance()
     m_ComplianceIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> OoxmlSaveOptionsData::getCompressionLevel() const
+utility::string_t OoxmlSaveOptionsData::getCompressionLevel() const
 {
     return m_CompressionLevel;
 }
 
 
-void OoxmlSaveOptionsData::setCompressionLevel(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void OoxmlSaveOptionsData::setCompressionLevel(utility::string_t value)
 {
     m_CompressionLevel = value;
     m_CompressionLevelIsSet = true;
@@ -206,13 +206,13 @@ void OoxmlSaveOptionsData::unsetCompressionLevel()
     m_CompressionLevelIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> OoxmlSaveOptionsData::getPassword() const
+utility::string_t OoxmlSaveOptionsData::getPassword() const
 {
     return m_Password;
 }
 
 
-void OoxmlSaveOptionsData::setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void OoxmlSaveOptionsData::setPassword(utility::string_t value)
 {
     m_Password = value;
     m_PasswordIsSet = true;
@@ -227,13 +227,13 @@ void OoxmlSaveOptionsData::unsetPassword()
     m_PasswordIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> OoxmlSaveOptionsData::isPrettyFormat() const
+bool OoxmlSaveOptionsData::isPrettyFormat() const
 {
     return m_PrettyFormat;
 }
 
 
-void OoxmlSaveOptionsData::setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void OoxmlSaveOptionsData::setPrettyFormat(bool value)
 {
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;

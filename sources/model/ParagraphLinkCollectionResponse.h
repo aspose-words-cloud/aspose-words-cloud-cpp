@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Paragraphs.
     /// </summary>
-    <DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> getParagraphs() const;
+    std::shared_ptr<ParagraphLinkCollection> getParagraphs() const;
     bool paragraphsIsSet() const;
     void unsetParagraphs();
-    void setParagraphs(<DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> value);
+    void setParagraphs(std::shared_ptr<ParagraphLinkCollection> value);
 
 protected:
-    <DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> m_Paragraphs;
+    std::shared_ptr<ParagraphLinkCollection> m_Paragraphs;
     bool m_ParagraphsIsSet;
 };
 

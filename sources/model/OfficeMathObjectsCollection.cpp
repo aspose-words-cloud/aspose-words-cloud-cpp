@@ -53,7 +53,7 @@ web::json::value OfficeMathObjectsCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>OfficeMathObject<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<OfficeMathObject> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void OfficeMathObjectsCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>OfficeMathObject<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<OfficeMathObject>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>OfficeMathObject<DATA_TYPE_END> newItem(new OfficeMathObject());
+                std::shared_ptr<OfficeMathObject> newItem(new OfficeMathObject());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void OfficeMathObjectsCollection::toMultipart(const std::shared_ptr<MultipartFor
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>OfficeMathObject<DATA_TYPE_END> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<OfficeMathObject> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void OfficeMathObjectsCollection::fromMultiPart(const std::shared_ptr<MultipartF
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>OfficeMathObject<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<OfficeMathObject>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>OfficeMathObject<DATA_TYPE_END> newItem(new OfficeMathObject());
+                std::shared_ptr<OfficeMathObject> newItem(new OfficeMathObject());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void OfficeMathObjectsCollection::fromMultiPart(const std::shared_ptr<MultipartF
     }
 }
 
-<DATA_TYPE_START>List<OfficeMathObject><DATA_TYPE_END>& OfficeMathObjectsCollection::getList()
+std::vector<std::shared_ptr<OfficeMathObject>>& OfficeMathObjectsCollection::getList()
 {
     return m_List;
 }
 
-void OfficeMathObjectsCollection::setList(<DATA_TYPE_START>List<OfficeMathObject><DATA_TYPE_END> const& value)
+void OfficeMathObjectsCollection::setList(std::vector<std::shared_ptr<OfficeMathObject>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

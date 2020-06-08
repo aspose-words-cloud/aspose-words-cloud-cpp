@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTemplate() const;
+    utility::string_t getTemplate() const;
     bool templateIsSet() const;
     void unsetTemplate();
-    void setTemplate(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTemplate(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Template;
+    utility::string_t m_Template;
     bool m_TemplateIsSet;
 };
 

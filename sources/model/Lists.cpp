@@ -53,7 +53,7 @@ web::json::value Lists::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>ListInfo<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<ListInfo> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void Lists::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListInfo), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ListInfo<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<ListInfo>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>ListInfo<DATA_TYPE_END> newItem(new ListInfo());
+                std::shared_ptr<ListInfo> newItem(new ListInfo());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void Lists::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>ListInfo<DATA_TYPE_END> item){
+        std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListInfo> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void Lists::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListInfo), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ListInfo<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<ListInfo>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>ListInfo<DATA_TYPE_END> newItem(new ListInfo());
+                std::shared_ptr<ListInfo> newItem(new ListInfo());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void Lists::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
 }
 
-<DATA_TYPE_START>List<ListInfo><DATA_TYPE_END>& Lists::getListInfo()
+std::vector<std::shared_ptr<ListInfo>>& Lists::getListInfo()
 {
     return m_ListInfo;
 }
 
-void Lists::setListInfo(<DATA_TYPE_START>List<ListInfo><DATA_TYPE_END> const& value)
+void Lists::setListInfo(std::vector<std::shared_ptr<ListInfo>> const& value)
 {
     m_ListInfo = value;
     m_ListInfoIsSet = true;

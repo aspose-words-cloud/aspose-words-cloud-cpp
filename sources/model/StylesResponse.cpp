@@ -53,7 +53,7 @@ web::json::value StylesResponse::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Styles.begin(), m_Styles.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>Style<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<Style> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void StylesResponse::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Styles), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>Style<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<Style>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
+                std::shared_ptr<Style> newItem(new Style());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void StylesResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multi
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Styles.begin(), m_Styles.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>Style<DATA_TYPE_END> item){
+        std::transform(m_Styles.begin(), m_Styles.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Style> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void StylesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Styles), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>Style<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<Style>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
+                std::shared_ptr<Style> newItem(new Style());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void StylesResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     }
 }
 
-<DATA_TYPE_START>List<Style><DATA_TYPE_END>& StylesResponse::getStyles()
+std::vector<std::shared_ptr<Style>>& StylesResponse::getStyles()
 {
     return m_Styles;
 }
 
-void StylesResponse::setStyles(<DATA_TYPE_START>List<Style><DATA_TYPE_END> const& value)
+void StylesResponse::setStyles(std::vector<std::shared_ptr<Style>> const& value)
 {
     m_Styles = value;
     m_StylesIsSet = true;

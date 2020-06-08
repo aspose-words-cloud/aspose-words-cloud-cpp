@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets the name of the bookmark.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
+    utility::string_t getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setName(utility::string_t value);
     /// <summary>
     /// Gets or sets the text enclosed in the bookmark.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
+    utility::string_t getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setText(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
+    utility::string_t m_Name;
     bool m_NameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
+    utility::string_t m_Text;
     bool m_TextIsSet;
 };
 

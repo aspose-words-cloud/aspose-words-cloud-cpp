@@ -93,13 +93,13 @@ void RunBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> RunBase::getText() const
+utility::string_t RunBase::getText() const
 {
     return m_Text;
 }
 
 
-void RunBase::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void RunBase::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

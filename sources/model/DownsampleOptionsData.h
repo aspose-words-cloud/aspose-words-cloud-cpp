@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets specifies whether images should be downsampled.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isDownsampleImages() const;
+    bool isDownsampleImages() const;
     bool downsampleImagesIsSet() const;
     void unsetDownsampleImages();
-    void setDownsampleImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setDownsampleImages(bool value);
     /// <summary>
     /// Gets or sets specifies the resolution in pixels per inch which the images should be downsampled to.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getResolution() const;
+    int32_t getResolution() const;
     bool resolutionIsSet() const;
     void unsetResolution();
-    void setResolution(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setResolution(int32_t value);
     /// <summary>
     /// Gets or sets specifies the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getResolutionThreshold() const;
+    int32_t getResolutionThreshold() const;
     bool resolutionThresholdIsSet() const;
     void unsetResolutionThreshold();
-    void setResolutionThreshold(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setResolutionThreshold(int32_t value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_DownsampleImages;
+    bool m_DownsampleImages;
     bool m_DownsampleImagesIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_Resolution;
+    int32_t m_Resolution;
     bool m_ResolutionIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ResolutionThreshold;
+    int32_t m_ResolutionThreshold;
     bool m_ResolutionThresholdIsSet;
 };
 

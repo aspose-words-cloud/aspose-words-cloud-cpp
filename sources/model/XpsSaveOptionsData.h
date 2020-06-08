@@ -65,40 +65,40 @@ public:
     /// <summary>
     /// Gets or sets specifies the level in the XPS document outline at which to display Word bookmarks.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getBookmarksOutlineLevel() const;
+    int32_t getBookmarksOutlineLevel() const;
     bool bookmarksOutlineLevelIsSet() const;
     void unsetBookmarksOutlineLevel();
-    void setBookmarksOutlineLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setBookmarksOutlineLevel(int32_t value);
     /// <summary>
     /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the XPS document outline.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getHeadingsOutlineLevels() const;
+    int32_t getHeadingsOutlineLevels() const;
     bool headingsOutlineLevelsIsSet() const;
     void unsetHeadingsOutlineLevels();
-    void setHeadingsOutlineLevels(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setHeadingsOutlineLevels(int32_t value);
     /// <summary>
     /// Gets or sets OutlineOptions.
     /// </summary>
-    <DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> getOutlineOptions() const;
+    std::shared_ptr<OutlineOptionsData> getOutlineOptions() const;
     bool outlineOptionsIsSet() const;
     void unsetOutlineOptions();
-    void setOutlineOptions(<DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> value);
+    void setOutlineOptions(std::shared_ptr<OutlineOptionsData> value);
     /// <summary>
     /// Gets or sets determines whether the document should be saved using a booklet printing layout.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseBookFoldPrintingSettings() const;
+    bool isUseBookFoldPrintingSettings() const;
     bool useBookFoldPrintingSettingsIsSet() const;
     void unsetUseBookFoldPrintingSettings();
-    void setUseBookFoldPrintingSettings(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUseBookFoldPrintingSettings(bool value);
 
 protected:
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_BookmarksOutlineLevel;
+    int32_t m_BookmarksOutlineLevel;
     bool m_BookmarksOutlineLevelIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_HeadingsOutlineLevels;
+    int32_t m_HeadingsOutlineLevels;
     bool m_HeadingsOutlineLevelsIsSet;
-    <DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> m_OutlineOptions;
+    std::shared_ptr<OutlineOptionsData> m_OutlineOptions;
     bool m_OutlineOptionsIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseBookFoldPrintingSettings;
+    bool m_UseBookFoldPrintingSettings;
     bool m_UseBookFoldPrintingSettingsIsSet;
 };
 

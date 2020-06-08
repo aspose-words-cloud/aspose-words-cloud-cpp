@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets List.
     /// </summary>
-    <DATA_TYPE_START>ListInfo<DATA_TYPE_END> getList() const;
+    std::shared_ptr<ListInfo> getList() const;
     bool listIsSet() const;
     void unsetList();
-    void setList(<DATA_TYPE_START>ListInfo<DATA_TYPE_END> value);
+    void setList(std::shared_ptr<ListInfo> value);
 
 protected:
-    <DATA_TYPE_START>ListInfo<DATA_TYPE_END> m_List;
+    std::shared_ptr<ListInfo> m_List;
     bool m_ListIsSet;
 };
 

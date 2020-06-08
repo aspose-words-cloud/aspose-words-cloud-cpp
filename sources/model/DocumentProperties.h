@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets collection of document properties.
     /// </summary>
-    <DATA_TYPE_START>List<DocumentProperty><DATA_TYPE_END>& getList();
+    std::vector<std::shared_ptr<DocumentProperty>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(<DATA_TYPE_START>List<DocumentProperty><DATA_TYPE_END> const& value);
+    void setList(std::vector<std::shared_ptr<DocumentProperty>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<DocumentProperty><DATA_TYPE_END> m_List;
+    std::vector<std::shared_ptr<DocumentProperty>> m_List;
     bool m_ListIsSet;
 };
 

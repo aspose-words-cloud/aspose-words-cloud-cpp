@@ -95,13 +95,13 @@ void HeaderFooterLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> HeaderFooterLink::getType() const
+utility::string_t HeaderFooterLink::getType() const
 {
     return m_Type;
 }
 
 
-void HeaderFooterLink::setType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void HeaderFooterLink::setType(utility::string_t value)
 {
     m_Type = value;
     m_TypeIsSet = true;

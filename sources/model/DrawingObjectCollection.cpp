@@ -53,7 +53,7 @@ web::json::value DrawingObjectCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>LinkElement<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<LinkElement> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void DrawingObjectCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>LinkElement<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<LinkElement>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+                std::shared_ptr<LinkElement> newItem(new LinkElement());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void DrawingObjectCollection::toMultipart(const std::shared_ptr<MultipartFormDat
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>LinkElement<DATA_TYPE_END> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<LinkElement> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void DrawingObjectCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>LinkElement<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<LinkElement>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+                std::shared_ptr<LinkElement> newItem(new LinkElement());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void DrawingObjectCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
 }
 
-<DATA_TYPE_START>List<LinkElement><DATA_TYPE_END>& DrawingObjectCollection::getList()
+std::vector<std::shared_ptr<LinkElement>>& DrawingObjectCollection::getList()
 {
     return m_List;
 }
 
-void DrawingObjectCollection::setList(<DATA_TYPE_START>List<LinkElement><DATA_TYPE_END> const& value)
+void DrawingObjectCollection::setList(std::vector<std::shared_ptr<LinkElement>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

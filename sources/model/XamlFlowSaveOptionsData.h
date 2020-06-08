@@ -63,22 +63,22 @@ public:
     /// <summary>
     /// Gets or sets specifies the physical folder where images are saved when exporting.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getImagesFolder() const;
+    utility::string_t getImagesFolder() const;
     bool imagesFolderIsSet() const;
     void unsetImagesFolder();
-    void setImagesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setImagesFolder(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies the name of the folder used to construct image URIs.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getImagesFolderAlias() const;
+    utility::string_t getImagesFolderAlias() const;
     bool imagesFolderAliasIsSet() const;
     void unsetImagesFolderAlias();
-    void setImagesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setImagesFolderAlias(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ImagesFolder;
+    utility::string_t m_ImagesFolder;
     bool m_ImagesFolderIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ImagesFolderAlias;
+    utility::string_t m_ImagesFolderAlias;
     bool m_ImagesFolderAliasIsSet;
 };
 

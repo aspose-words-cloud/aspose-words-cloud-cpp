@@ -80,7 +80,7 @@ void PreferredWidth::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
-            setValue(ModelBase::double?FromJson(fieldValue));
+            setValue(ModelBase::doubleFromJson(fieldValue));
         }
     }
 }
@@ -112,17 +112,17 @@ void PreferredWidth::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     }
     if(multipart->hasContent(_XPLATSTR("Value")))
     {
-        setValue(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
+        setValue(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PreferredWidth::getType() const
+utility::string_t PreferredWidth::getType() const
 {
     return m_Type;
 }
 
 
-void PreferredWidth::setType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PreferredWidth::setType(utility::string_t value)
 {
     m_Type = value;
     m_TypeIsSet = true;
@@ -137,13 +137,13 @@ void PreferredWidth::unsetType()
     m_TypeIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> PreferredWidth::getValue() const
+double PreferredWidth::getValue() const
 {
     return m_Value;
 }
 
 
-void PreferredWidth::setValue(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void PreferredWidth::setValue(double value)
 {
     m_Value = value;
     m_ValueIsSet = true;

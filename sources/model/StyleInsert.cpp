@@ -116,13 +116,13 @@ void StyleInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> StyleInsert::getStyleName() const
+utility::string_t StyleInsert::getStyleName() const
 {
     return m_StyleName;
 }
 
 
-void StyleInsert::setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void StyleInsert::setStyleName(utility::string_t value)
 {
     m_StyleName = value;
     m_StyleNameIsSet = true;
@@ -137,13 +137,13 @@ void StyleInsert::unsetStyleName()
     m_StyleNameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> StyleInsert::getStyleType() const
+utility::string_t StyleInsert::getStyleType() const
 {
     return m_StyleType;
 }
 
 
-void StyleInsert::setStyleType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void StyleInsert::setStyleType(utility::string_t value)
 {
     m_StyleType = value;
     m_StyleTypeIsSet = true;

@@ -95,13 +95,13 @@ void NodeLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> NodeLink::getNodeId() const
+utility::string_t NodeLink::getNodeId() const
 {
     return m_NodeId;
 }
 
 
-void NodeLink::setNodeId(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void NodeLink::setNodeId(utility::string_t value)
 {
     m_NodeId = value;
     m_NodeIdIsSet = true;

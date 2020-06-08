@@ -80,7 +80,7 @@ void DocumentProperty::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BuiltIn")];
         if(!fieldValue.is_null())
         {
-            setBuiltIn(ModelBase::bool?FromJson(fieldValue));
+            setBuiltIn(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Name")))
@@ -129,7 +129,7 @@ void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
 
     if(multipart->hasContent(_XPLATSTR("BuiltIn")))
     {
-        setBuiltIn(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
+        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
     }
     if(multipart->hasContent(_XPLATSTR("Name")))
     {
@@ -141,13 +141,13 @@ void DocumentProperty::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> DocumentProperty::isBuiltIn() const
+bool DocumentProperty::isBuiltIn() const
 {
     return m_BuiltIn;
 }
 
 
-void DocumentProperty::setBuiltIn(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void DocumentProperty::setBuiltIn(bool value)
 {
     m_BuiltIn = value;
     m_BuiltInIsSet = true;
@@ -162,13 +162,13 @@ void DocumentProperty::unsetBuiltIn()
     m_BuiltInIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DocumentProperty::getName() const
+utility::string_t DocumentProperty::getName() const
 {
     return m_Name;
 }
 
 
-void DocumentProperty::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DocumentProperty::setName(utility::string_t value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -183,13 +183,13 @@ void DocumentProperty::unsetName()
     m_NameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DocumentProperty::getValue() const
+utility::string_t DocumentProperty::getValue() const
 {
     return m_Value;
 }
 
 
-void DocumentProperty::setValue(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DocumentProperty::setValue(utility::string_t value)
 {
     m_Value = value;
     m_ValueIsSet = true;

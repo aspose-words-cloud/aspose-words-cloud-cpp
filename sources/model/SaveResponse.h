@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets SaveResult.
     /// </summary>
-    <DATA_TYPE_START>SaveResult<DATA_TYPE_END> getSaveResult() const;
+    std::shared_ptr<SaveResult> getSaveResult() const;
     bool saveResultIsSet() const;
     void unsetSaveResult();
-    void setSaveResult(<DATA_TYPE_START>SaveResult<DATA_TYPE_END> value);
+    void setSaveResult(std::shared_ptr<SaveResult> value);
 
 protected:
-    <DATA_TYPE_START>SaveResult<DATA_TYPE_END> m_SaveResult;
+    std::shared_ptr<SaveResult> m_SaveResult;
     bool m_SaveResultIsSet;
 };
 

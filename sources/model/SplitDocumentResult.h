@@ -65,31 +65,31 @@ public:
     /// <summary>
     /// Gets or sets SourceDocument.
     /// </summary>
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getSourceDocument() const;
+    std::shared_ptr<FileLink> getSourceDocument() const;
     bool sourceDocumentIsSet() const;
     void unsetSourceDocument();
-    void setSourceDocument(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
+    void setSourceDocument(std::shared_ptr<FileLink> value);
     /// <summary>
     /// Gets or sets array of pages.
     /// </summary>
-    <DATA_TYPE_START>List<FileLink><DATA_TYPE_END>& getPages();
+    std::vector<std::shared_ptr<FileLink>>& getPages();
     bool pagesIsSet() const;
     void unsetPages();
-    void setPages(<DATA_TYPE_START>List<FileLink><DATA_TYPE_END> const& value);
+    void setPages(std::vector<std::shared_ptr<FileLink>> const& value);
     /// <summary>
     /// Gets or sets ZippedPages.
     /// </summary>
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getZippedPages() const;
+    std::shared_ptr<FileLink> getZippedPages() const;
     bool zippedPagesIsSet() const;
     void unsetZippedPages();
-    void setZippedPages(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
+    void setZippedPages(std::shared_ptr<FileLink> value);
 
 protected:
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_SourceDocument;
+    std::shared_ptr<FileLink> m_SourceDocument;
     bool m_SourceDocumentIsSet;
-    <DATA_TYPE_START>List<FileLink><DATA_TYPE_END> m_Pages;
+    std::vector<std::shared_ptr<FileLink>> m_Pages;
     bool m_PagesIsSet;
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_ZippedPages;
+    std::shared_ptr<FileLink> m_ZippedPages;
     bool m_ZippedPagesIsSet;
 };
 

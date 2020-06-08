@@ -57,7 +57,7 @@ web::json::value Section::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>NodeLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<NodeLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -99,11 +99,11 @@ void Section::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>NodeLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<NodeLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
+                std::shared_ptr<NodeLink> newItem(new NodeLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -116,7 +116,7 @@ void Section::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("HeaderFooters")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
             setHeaderFooters( newItem );
         }
@@ -126,7 +126,7 @@ void Section::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PageSetup")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
             setPageSetup( newItem );
         }
@@ -136,7 +136,7 @@ void Section::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Paragraphs")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
             setParagraphs( newItem );
         }
@@ -146,7 +146,7 @@ void Section::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Tables")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromJson(fieldValue);
             setTables( newItem );
         }
@@ -160,7 +160,7 @@ void Section::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, c
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>NodeLink<DATA_TYPE_END> item){
+        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -216,11 +216,11 @@ void Section::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>NodeLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<NodeLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
+                std::shared_ptr<NodeLink> newItem(new NodeLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -231,7 +231,7 @@ void Section::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("HeaderFooters")))
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromMultiPart(multipart, _XPLATSTR("HeaderFooters."));
             setHeaderFooters( newItem );
         }
@@ -240,7 +240,7 @@ void Section::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("PageSetup")))
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromMultiPart(multipart, _XPLATSTR("PageSetup."));
             setPageSetup( newItem );
         }
@@ -249,7 +249,7 @@ void Section::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("Paragraphs")))
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
             setParagraphs( newItem );
         }
@@ -258,19 +258,19 @@ void Section::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart,
     {
         if(multipart->hasContent(_XPLATSTR("Tables")))
         {
-            <DATA_TYPE_START>LinkElement<DATA_TYPE_END> newItem(new LinkElement());
+            std::shared_ptr<LinkElement> newItem(new LinkElement());
             newItem->fromMultiPart(multipart, _XPLATSTR("Tables."));
             setTables( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END>& Section::getChildNodes()
+std::vector<std::shared_ptr<NodeLink>>& Section::getChildNodes()
 {
     return m_ChildNodes;
 }
 
-void Section::setChildNodes(<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> const& value)
+void Section::setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value)
 {
     m_ChildNodes = value;
     m_ChildNodesIsSet = true;
@@ -285,13 +285,13 @@ void Section::unsetChildNodes()
     m_ChildNodesIsSet = false;
 }
 
-<DATA_TYPE_START>LinkElement<DATA_TYPE_END> Section::getHeaderFooters() const
+std::shared_ptr<LinkElement> Section::getHeaderFooters() const
 {
     return m_HeaderFooters;
 }
 
 
-void Section::setHeaderFooters(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value)
+void Section::setHeaderFooters(std::shared_ptr<LinkElement> value)
 {
     m_HeaderFooters = value;
     m_HeaderFootersIsSet = true;
@@ -306,13 +306,13 @@ void Section::unsetHeaderFooters()
     m_HeaderFootersIsSet = false;
 }
 
-<DATA_TYPE_START>LinkElement<DATA_TYPE_END> Section::getPageSetup() const
+std::shared_ptr<LinkElement> Section::getPageSetup() const
 {
     return m_PageSetup;
 }
 
 
-void Section::setPageSetup(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value)
+void Section::setPageSetup(std::shared_ptr<LinkElement> value)
 {
     m_PageSetup = value;
     m_PageSetupIsSet = true;
@@ -327,13 +327,13 @@ void Section::unsetPageSetup()
     m_PageSetupIsSet = false;
 }
 
-<DATA_TYPE_START>LinkElement<DATA_TYPE_END> Section::getParagraphs() const
+std::shared_ptr<LinkElement> Section::getParagraphs() const
 {
     return m_Paragraphs;
 }
 
 
-void Section::setParagraphs(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value)
+void Section::setParagraphs(std::shared_ptr<LinkElement> value)
 {
     m_Paragraphs = value;
     m_ParagraphsIsSet = true;
@@ -348,13 +348,13 @@ void Section::unsetParagraphs()
     m_ParagraphsIsSet = false;
 }
 
-<DATA_TYPE_START>LinkElement<DATA_TYPE_END> Section::getTables() const
+std::shared_ptr<LinkElement> Section::getTables() const
 {
     return m_Tables;
 }
 
 
-void Section::setTables(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value)
+void Section::setTables(std::shared_ptr<LinkElement> value)
 {
     m_Tables = value;
     m_TablesIsSet = true;

@@ -63,40 +63,40 @@ public:
     /// <summary>
     /// Gets or sets When false, small metafiles are not compressed for performance reason. Default value is true, all metafiles are compressed regardless of its size.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isAlwaysCompressMetafiles() const;
+    bool isAlwaysCompressMetafiles() const;
     bool alwaysCompressMetafilesIsSet() const;
     void unsetAlwaysCompressMetafiles();
-    void setAlwaysCompressMetafiles(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setAlwaysCompressMetafiles(bool value);
     /// <summary>
     /// Gets or sets password.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPassword() const;
+    utility::string_t getPassword() const;
     bool passwordIsSet() const;
     void unsetPassword();
-    void setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPassword(utility::string_t value);
     /// <summary>
     /// Gets or sets When false, PictureBullet data is not saved to output document. Default value is true.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSavePictureBullet() const;
+    bool isSavePictureBullet() const;
     bool savePictureBulletIsSet() const;
     void unsetSavePictureBullet();
-    void setSavePictureBullet(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setSavePictureBullet(bool value);
     /// <summary>
     /// Gets or sets determine whether or not save RoutingSlip data saved to output document.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSaveRoutingSlip() const;
+    bool isSaveRoutingSlip() const;
     bool saveRoutingSlipIsSet() const;
     void unsetSaveRoutingSlip();
-    void setSaveRoutingSlip(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setSaveRoutingSlip(bool value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_AlwaysCompressMetafiles;
+    bool m_AlwaysCompressMetafiles;
     bool m_AlwaysCompressMetafilesIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Password;
+    utility::string_t m_Password;
     bool m_PasswordIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SavePictureBullet;
+    bool m_SavePictureBullet;
     bool m_SavePictureBulletIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SaveRoutingSlip;
+    bool m_SaveRoutingSlip;
     bool m_SaveRoutingSlipIsSet;
 };
 

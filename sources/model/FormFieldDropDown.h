@@ -63,22 +63,22 @@ public:
     /// <summary>
     /// Gets or sets provides access to the items of a dropdown form field.
     /// </summary>
-    <DATA_TYPE_START>List<string><DATA_TYPE_END>& getDropDownItems();
+    std::vector<utility::string_t>& getDropDownItems();
     bool dropDownItemsIsSet() const;
     void unsetDropDownItems();
-    void setDropDownItems(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value);
+    void setDropDownItems(std::vector<utility::string_t> const& value);
     /// <summary>
     /// Gets or sets the index specifying the currently selected item in a dropdown form field.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getDropDownSelectedIndex() const;
+    int32_t getDropDownSelectedIndex() const;
     bool dropDownSelectedIndexIsSet() const;
     void unsetDropDownSelectedIndex();
-    void setDropDownSelectedIndex(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setDropDownSelectedIndex(int32_t value);
 
 protected:
-    <DATA_TYPE_START>List<string><DATA_TYPE_END> m_DropDownItems;
+    std::vector<utility::string_t> m_DropDownItems;
     bool m_DropDownItemsIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_DropDownSelectedIndex;
+    int32_t m_DropDownSelectedIndex;
     bool m_DropDownSelectedIndexIsSet;
 };
 

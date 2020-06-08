@@ -67,7 +67,7 @@ void FormFieldsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FormFields")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FormFieldCollection<DATA_TYPE_END> newItem(new FormFieldCollection());
+            std::shared_ptr<FormFieldCollection> newItem(new FormFieldCollection());
             newItem->fromJson(fieldValue);
             setFormFields( newItem );
         }
@@ -97,20 +97,20 @@ void FormFieldsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     {
         if(multipart->hasContent(_XPLATSTR("FormFields")))
         {
-            <DATA_TYPE_START>FormFieldCollection<DATA_TYPE_END> newItem(new FormFieldCollection());
+            std::shared_ptr<FormFieldCollection> newItem(new FormFieldCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("FormFields."));
             setFormFields( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>FormFieldCollection<DATA_TYPE_END> FormFieldsResponse::getFormFields() const
+std::shared_ptr<FormFieldCollection> FormFieldsResponse::getFormFields() const
 {
     return m_FormFields;
 }
 
 
-void FormFieldsResponse::setFormFields(<DATA_TYPE_START>FormFieldCollection<DATA_TYPE_END> value)
+void FormFieldsResponse::setFormFields(std::shared_ptr<FormFieldCollection> value)
 {
     m_FormFields = value;
     m_FormFieldsIsSet = true;

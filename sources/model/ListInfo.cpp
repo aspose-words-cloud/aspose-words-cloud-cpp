@@ -102,7 +102,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsListStyleDefinition")];
         if(!fieldValue.is_null())
         {
-            setIsListStyleDefinition(ModelBase::bool?FromJson(fieldValue));
+            setIsListStyleDefinition(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsListStyleReference")))
@@ -110,7 +110,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsListStyleReference")];
         if(!fieldValue.is_null())
         {
-            setIsListStyleReference(ModelBase::bool?FromJson(fieldValue));
+            setIsListStyleReference(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsMultiLevel")))
@@ -118,7 +118,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsMultiLevel")];
         if(!fieldValue.is_null())
         {
-            setIsMultiLevel(ModelBase::bool?FromJson(fieldValue));
+            setIsMultiLevel(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsRestartAtEachSection")))
@@ -126,7 +126,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsRestartAtEachSection")];
         if(!fieldValue.is_null())
         {
-            setIsRestartAtEachSection(ModelBase::bool?FromJson(fieldValue));
+            setIsRestartAtEachSection(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ListId")))
@@ -134,7 +134,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListId")];
         if(!fieldValue.is_null())
         {
-            setListId(ModelBase::int?FromJson(fieldValue));
+            setListId(ModelBase::int32_tFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ListLevels")))
@@ -142,7 +142,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListLevels")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>ListLevels<DATA_TYPE_END> newItem(new ListLevels());
+            std::shared_ptr<ListLevels> newItem(new ListLevels());
             newItem->fromJson(fieldValue);
             setListLevels( newItem );
         }
@@ -152,7 +152,7 @@ void ListInfo::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Style")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
+            std::shared_ptr<Style> newItem(new Style());
             newItem->fromJson(fieldValue);
             setStyle( newItem );
         }
@@ -213,29 +213,29 @@ void ListInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
 
     if(multipart->hasContent(_XPLATSTR("IsListStyleDefinition")))
     {
-        setIsListStyleDefinition(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsListStyleDefinition"))));
+        setIsListStyleDefinition(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListStyleDefinition"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsListStyleReference")))
     {
-        setIsListStyleReference(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsListStyleReference"))));
+        setIsListStyleReference(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListStyleReference"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsMultiLevel")))
     {
-        setIsMultiLevel(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsMultiLevel"))));
+        setIsMultiLevel(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsMultiLevel"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsRestartAtEachSection")))
     {
-        setIsRestartAtEachSection(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsRestartAtEachSection"))));
+        setIsRestartAtEachSection(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsRestartAtEachSection"))));
     }
     if(multipart->hasContent(_XPLATSTR("ListId")))
     {
-        setListId(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
+        setListId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
     }
     if(multipart->hasContent(_XPLATSTR("ListLevels")))
     {
         if(multipart->hasContent(_XPLATSTR("ListLevels")))
         {
-            <DATA_TYPE_START>ListLevels<DATA_TYPE_END> newItem(new ListLevels());
+            std::shared_ptr<ListLevels> newItem(new ListLevels());
             newItem->fromMultiPart(multipart, _XPLATSTR("ListLevels."));
             setListLevels( newItem );
         }
@@ -244,20 +244,20 @@ void ListInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     {
         if(multipart->hasContent(_XPLATSTR("Style")))
         {
-            <DATA_TYPE_START>Style<DATA_TYPE_END> newItem(new Style());
+            std::shared_ptr<Style> newItem(new Style());
             newItem->fromMultiPart(multipart, _XPLATSTR("Style."));
             setStyle( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ListInfo::isIsListStyleDefinition() const
+bool ListInfo::isIsListStyleDefinition() const
 {
     return m_IsListStyleDefinition;
 }
 
 
-void ListInfo::setIsListStyleDefinition(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ListInfo::setIsListStyleDefinition(bool value)
 {
     m_IsListStyleDefinition = value;
     m_IsListStyleDefinitionIsSet = true;
@@ -272,13 +272,13 @@ void ListInfo::unsetIsListStyleDefinition()
     m_IsListStyleDefinitionIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ListInfo::isIsListStyleReference() const
+bool ListInfo::isIsListStyleReference() const
 {
     return m_IsListStyleReference;
 }
 
 
-void ListInfo::setIsListStyleReference(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ListInfo::setIsListStyleReference(bool value)
 {
     m_IsListStyleReference = value;
     m_IsListStyleReferenceIsSet = true;
@@ -293,13 +293,13 @@ void ListInfo::unsetIsListStyleReference()
     m_IsListStyleReferenceIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ListInfo::isIsMultiLevel() const
+bool ListInfo::isIsMultiLevel() const
 {
     return m_IsMultiLevel;
 }
 
 
-void ListInfo::setIsMultiLevel(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ListInfo::setIsMultiLevel(bool value)
 {
     m_IsMultiLevel = value;
     m_IsMultiLevelIsSet = true;
@@ -314,13 +314,13 @@ void ListInfo::unsetIsMultiLevel()
     m_IsMultiLevelIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ListInfo::isIsRestartAtEachSection() const
+bool ListInfo::isIsRestartAtEachSection() const
 {
     return m_IsRestartAtEachSection;
 }
 
 
-void ListInfo::setIsRestartAtEachSection(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ListInfo::setIsRestartAtEachSection(bool value)
 {
     m_IsRestartAtEachSection = value;
     m_IsRestartAtEachSectionIsSet = true;
@@ -335,13 +335,13 @@ void ListInfo::unsetIsRestartAtEachSection()
     m_IsRestartAtEachSectionIsSet = false;
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> ListInfo::getListId() const
+int32_t ListInfo::getListId() const
 {
     return m_ListId;
 }
 
 
-void ListInfo::setListId(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void ListInfo::setListId(int32_t value)
 {
     m_ListId = value;
     m_ListIdIsSet = true;
@@ -356,13 +356,13 @@ void ListInfo::unsetListId()
     m_ListIdIsSet = false;
 }
 
-<DATA_TYPE_START>ListLevels<DATA_TYPE_END> ListInfo::getListLevels() const
+std::shared_ptr<ListLevels> ListInfo::getListLevels() const
 {
     return m_ListLevels;
 }
 
 
-void ListInfo::setListLevels(<DATA_TYPE_START>ListLevels<DATA_TYPE_END> value)
+void ListInfo::setListLevels(std::shared_ptr<ListLevels> value)
 {
     m_ListLevels = value;
     m_ListLevelsIsSet = true;
@@ -377,13 +377,13 @@ void ListInfo::unsetListLevels()
     m_ListLevelsIsSet = false;
 }
 
-<DATA_TYPE_START>Style<DATA_TYPE_END> ListInfo::getStyle() const
+std::shared_ptr<Style> ListInfo::getStyle() const
 {
     return m_Style;
 }
 
 
-void ListInfo::setStyle(<DATA_TYPE_START>Style<DATA_TYPE_END> value)
+void ListInfo::setStyle(std::shared_ptr<Style> value)
 {
     m_Style = value;
     m_StyleIsSet = true;

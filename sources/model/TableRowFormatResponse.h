@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets RowFormat.
     /// </summary>
-    <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> getRowFormat() const;
+    std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;
     void unsetRowFormat();
-    void setRowFormat(<DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> value);
+    void setRowFormat(std::shared_ptr<TableRowFormat> value);
 
 protected:
-    <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> m_RowFormat;
+    std::shared_ptr<TableRowFormat> m_RowFormat;
     bool m_RowFormatIsSet;
 };
 

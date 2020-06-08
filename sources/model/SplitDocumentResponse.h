@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets SplitResult.
     /// </summary>
-    <DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> getSplitResult() const;
+    std::shared_ptr<SplitDocumentResult> getSplitResult() const;
     bool splitResultIsSet() const;
     void unsetSplitResult();
-    void setSplitResult(<DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> value);
+    void setSplitResult(std::shared_ptr<SplitDocumentResult> value);
 
 protected:
-    <DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> m_SplitResult;
+    std::shared_ptr<SplitDocumentResult> m_SplitResult;
     bool m_SplitResultIsSet;
 };
 

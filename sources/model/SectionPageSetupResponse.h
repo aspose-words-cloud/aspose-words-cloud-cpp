@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets PageSetup.
     /// </summary>
-    <DATA_TYPE_START>PageSetup<DATA_TYPE_END> getPageSetup() const;
+    std::shared_ptr<PageSetup> getPageSetup() const;
     bool pageSetupIsSet() const;
     void unsetPageSetup();
-    void setPageSetup(<DATA_TYPE_START>PageSetup<DATA_TYPE_END> value);
+    void setPageSetup(std::shared_ptr<PageSetup> value);
 
 protected:
-    <DATA_TYPE_START>PageSetup<DATA_TYPE_END> m_PageSetup;
+    std::shared_ptr<PageSetup> m_PageSetup;
     bool m_PageSetupIsSet;
 };
 

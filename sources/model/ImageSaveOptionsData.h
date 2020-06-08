@@ -65,121 +65,121 @@ public:
     /// <summary>
     /// Gets or sets GraphicsQualityOptions.
     /// </summary>
-    <DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> getGraphicsQualityOptions() const;
+    std::shared_ptr<GraphicsQualityOptionsData> getGraphicsQualityOptions() const;
     bool graphicsQualityOptionsIsSet() const;
     void unsetGraphicsQualityOptions();
-    void setGraphicsQualityOptions(<DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> value);
+    void setGraphicsQualityOptions(std::shared_ptr<GraphicsQualityOptionsData> value);
     /// <summary>
     /// Gets or sets the horizontal resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getHorizontalResolution() const;
+    double getHorizontalResolution() const;
     bool horizontalResolutionIsSet() const;
     void unsetHorizontalResolution();
-    void setHorizontalResolution(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setHorizontalResolution(double value);
     /// <summary>
     /// Gets or sets brightness of image.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getImageBrightness() const;
+    double getImageBrightness() const;
     bool imageBrightnessIsSet() const;
     void unsetImageBrightness();
-    void setImageBrightness(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setImageBrightness(double value);
     /// <summary>
     /// Gets or sets color mode of image.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getImageColorMode() const;
+    utility::string_t getImageColorMode() const;
     bool imageColorModeIsSet() const;
     void unsetImageColorMode();
-    void setImageColorMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setImageColorMode(utility::string_t value);
     /// <summary>
     /// Gets or sets contrast of image.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getImageContrast() const;
+    double getImageContrast() const;
     bool imageContrastIsSet() const;
     void unsetImageContrast();
-    void setImageContrast(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setImageContrast(double value);
     /// <summary>
     /// Gets or sets background (paper) color of image.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPaperColor() const;
+    utility::string_t getPaperColor() const;
     bool paperColorIsSet() const;
     void unsetPaperColor();
-    void setPaperColor(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPaperColor(utility::string_t value);
     /// <summary>
     /// Gets or sets pixel format of image.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPixelFormat() const;
+    utility::string_t getPixelFormat() const;
     bool pixelFormatIsSet() const;
     void unsetPixelFormat();
-    void setPixelFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPixelFormat(utility::string_t value);
     /// <summary>
     /// Gets or sets both horizontal and vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getResolution() const;
+    double getResolution() const;
     bool resolutionIsSet() const;
     void unsetResolution();
-    void setResolution(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setResolution(double value);
     /// <summary>
     /// Gets or sets zoom factor of image.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getScale() const;
+    double getScale() const;
     bool scaleIsSet() const;
     void unsetScale();
-    void setScale(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setScale(double value);
     /// <summary>
     /// Gets or sets determine whether or not to use anti-aliasing for rendering.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseAntiAliasing() const;
+    bool isUseAntiAliasing() const;
     bool useAntiAliasingIsSet() const;
     void unsetUseAntiAliasing();
-    void setUseAntiAliasing(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUseAntiAliasing(bool value);
     /// <summary>
     /// Gets or sets a value determining whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseGdiEmfRenderer() const;
+    bool isUseGdiEmfRenderer() const;
     bool useGdiEmfRendererIsSet() const;
     void unsetUseGdiEmfRenderer();
-    void setUseGdiEmfRenderer(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUseGdiEmfRenderer(bool value);
     /// <summary>
     /// Gets or sets determine whether or not to use high quality (i.e. slow) rendering algorithms.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUseHighQualityRendering() const;
+    bool isUseHighQualityRendering() const;
     bool useHighQualityRenderingIsSet() const;
     void unsetUseHighQualityRendering();
-    void setUseHighQualityRendering(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUseHighQualityRendering(bool value);
     /// <summary>
     /// Gets or sets the vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getVerticalResolution() const;
+    double getVerticalResolution() const;
     bool verticalResolutionIsSet() const;
     void unsetVerticalResolution();
-    void setVerticalResolution(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setVerticalResolution(double value);
 
 protected:
-    <DATA_TYPE_START>GraphicsQualityOptionsData<DATA_TYPE_END> m_GraphicsQualityOptions;
+    std::shared_ptr<GraphicsQualityOptionsData> m_GraphicsQualityOptions;
     bool m_GraphicsQualityOptionsIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_HorizontalResolution;
+    double m_HorizontalResolution;
     bool m_HorizontalResolutionIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_ImageBrightness;
+    double m_ImageBrightness;
     bool m_ImageBrightnessIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ImageColorMode;
+    utility::string_t m_ImageColorMode;
     bool m_ImageColorModeIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_ImageContrast;
+    double m_ImageContrast;
     bool m_ImageContrastIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_PaperColor;
+    utility::string_t m_PaperColor;
     bool m_PaperColorIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_PixelFormat;
+    utility::string_t m_PixelFormat;
     bool m_PixelFormatIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Resolution;
+    double m_Resolution;
     bool m_ResolutionIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Scale;
+    double m_Scale;
     bool m_ScaleIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseAntiAliasing;
+    bool m_UseAntiAliasing;
     bool m_UseAntiAliasingIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseGdiEmfRenderer;
+    bool m_UseGdiEmfRenderer;
     bool m_UseGdiEmfRendererIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UseHighQualityRendering;
+    bool m_UseHighQualityRendering;
     bool m_UseHighQualityRenderingIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_VerticalResolution;
+    double m_VerticalResolution;
     bool m_VerticalResolutionIsSet;
 };
 

@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Field.
     /// </summary>
-    <DATA_TYPE_START>Field<DATA_TYPE_END> getField() const;
+    std::shared_ptr<Field> getField() const;
     bool fieldIsSet() const;
     void unsetField();
-    void setField(<DATA_TYPE_START>Field<DATA_TYPE_END> value);
+    void setField(std::shared_ptr<Field> value);
 
 protected:
-    <DATA_TYPE_START>Field<DATA_TYPE_END> m_Field;
+    std::shared_ptr<Field> m_Field;
     bool m_FieldIsSet;
 };
 

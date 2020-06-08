@@ -116,13 +116,13 @@ void ReplaceRange::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ReplaceRange::getText() const
+utility::string_t ReplaceRange::getText() const
 {
     return m_Text;
 }
 
 
-void ReplaceRange::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ReplaceRange::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;
@@ -137,13 +137,13 @@ void ReplaceRange::unsetText()
     m_TextIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ReplaceRange::getTextType() const
+utility::string_t ReplaceRange::getTextType() const
 {
     return m_TextType;
 }
 
 
-void ReplaceRange::setTextType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ReplaceRange::setTextType(utility::string_t value)
 {
     m_TextType = value;
     m_TextTypeIsSet = true;

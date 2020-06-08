@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets collection of DrawingObjects links.
     /// </summary>
-    <DATA_TYPE_START>List<LinkElement><DATA_TYPE_END>& getList();
+    std::vector<std::shared_ptr<LinkElement>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(<DATA_TYPE_START>List<LinkElement><DATA_TYPE_END> const& value);
+    void setList(std::vector<std::shared_ptr<LinkElement>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<LinkElement><DATA_TYPE_END> m_List;
+    std::vector<std::shared_ptr<LinkElement>> m_List;
     bool m_ListIsSet;
 };
 

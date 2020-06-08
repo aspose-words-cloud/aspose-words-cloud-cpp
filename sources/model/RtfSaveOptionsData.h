@@ -63,40 +63,40 @@ public:
     /// <summary>
     /// Gets or sets allows to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportCompactSize() const;
+    bool isExportCompactSize() const;
     bool exportCompactSizeIsSet() const;
     void unsetExportCompactSize();
-    void setExportCompactSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setExportCompactSize(bool value);
     /// <summary>
     /// Gets or sets specifies whether the keywords for \&quot;old readers\&quot; are written to RTF or not.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isExportImagesForOldReaders() const;
+    bool isExportImagesForOldReaders() const;
     bool exportImagesForOldReadersIsSet() const;
     void unsetExportImagesForOldReaders();
-    void setExportImagesForOldReaders(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setExportImagesForOldReaders(bool value);
     /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isPrettyFormat() const;
+    bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;
     void unsetPrettyFormat();
-    void setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setPrettyFormat(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSaveImagesAsWmf() const;
+    bool isSaveImagesAsWmf() const;
     bool saveImagesAsWmfIsSet() const;
     void unsetSaveImagesAsWmf();
-    void setSaveImagesAsWmf(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setSaveImagesAsWmf(bool value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportCompactSize;
+    bool m_ExportCompactSize;
     bool m_ExportCompactSizeIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ExportImagesForOldReaders;
+    bool m_ExportImagesForOldReaders;
     bool m_ExportImagesForOldReadersIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_PrettyFormat;
+    bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SaveImagesAsWmf;
+    bool m_SaveImagesAsWmf;
     bool m_SaveImagesAsWmfIsSet;
 };
 

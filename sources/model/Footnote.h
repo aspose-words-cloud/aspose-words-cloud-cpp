@@ -65,49 +65,49 @@ public:
     /// <summary>
     /// Gets or sets Content.
     /// </summary>
-    <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> getContent() const;
+    std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
     void unsetContent();
-    void setContent(<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> value);
+    void setContent(std::shared_ptr<StoryChildNodes> value);
     /// <summary>
     /// Gets or sets returns a value that specifies whether this is a footnote or endnote.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFootnoteType() const;
+    utility::string_t getFootnoteType() const;
     bool footnoteTypeIsSet() const;
     void unsetFootnoteType();
-    void setFootnoteType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFootnoteType(utility::string_t value);
     /// <summary>
     /// Gets or sets Position.
     /// </summary>
-    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> getPosition() const;
+    std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
     void unsetPosition();
-    void setPosition(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value);
+    void setPosition(std::shared_ptr<DocumentPosition> value);
     /// <summary>
     /// Gets or sets /sets custom reference mark to be used for this footnote. Default value is Empty, meaning auto-numbered footnotes are used.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getReferenceMark() const;
+    utility::string_t getReferenceMark() const;
     bool referenceMarkIsSet() const;
     void unsetReferenceMark();
-    void setReferenceMark(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setReferenceMark(utility::string_t value);
     /// <summary>
     /// Gets or sets this is a convenience property that allows to easily get or set text of the footnote.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getText() const;
+    utility::string_t getText() const;
     bool textIsSet() const;
     void unsetText();
-    void setText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setText(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> m_Content;
+    std::shared_ptr<StoryChildNodes> m_Content;
     bool m_ContentIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FootnoteType;
+    utility::string_t m_FootnoteType;
     bool m_FootnoteTypeIsSet;
-    <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> m_Position;
+    std::shared_ptr<DocumentPosition> m_Position;
     bool m_PositionIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ReferenceMark;
+    utility::string_t m_ReferenceMark;
     bool m_ReferenceMarkIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Text;
+    utility::string_t m_Text;
     bool m_TextIsSet;
 };
 

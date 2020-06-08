@@ -152,7 +152,7 @@ void SaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ZipOutput")];
         if(!fieldValue.is_null())
         {
-            setZipOutput(ModelBase::bool?FromJson(fieldValue));
+            setZipOutput(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UpdateLastSavedTimeProperty")))
@@ -160,7 +160,7 @@ void SaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UpdateLastSavedTimeProperty")];
         if(!fieldValue.is_null())
         {
-            setUpdateLastSavedTimeProperty(ModelBase::bool?FromJson(fieldValue));
+            setUpdateLastSavedTimeProperty(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UpdateSdtContent")))
@@ -168,7 +168,7 @@ void SaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UpdateSdtContent")];
         if(!fieldValue.is_null())
         {
-            setUpdateSdtContent(ModelBase::bool?FromJson(fieldValue));
+            setUpdateSdtContent(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UpdateFields")))
@@ -176,7 +176,7 @@ void SaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UpdateFields")];
         if(!fieldValue.is_null())
         {
-            setUpdateFields(ModelBase::bool?FromJson(fieldValue));
+            setUpdateFields(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Dml3DEffectsRenderingMode")))
@@ -192,7 +192,7 @@ void SaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UpdateLastPrintedProperty")];
         if(!fieldValue.is_null())
         {
-            setUpdateLastPrintedProperty(ModelBase::bool?FromJson(fieldValue));
+            setUpdateLastPrintedProperty(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -276,19 +276,19 @@ void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("ZipOutput")))
     {
-        setZipOutput(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
+        setZipOutput(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ZipOutput"))));
     }
     if(multipart->hasContent(_XPLATSTR("UpdateLastSavedTimeProperty")))
     {
-        setUpdateLastSavedTimeProperty(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
+        setUpdateLastSavedTimeProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastSavedTimeProperty"))));
     }
     if(multipart->hasContent(_XPLATSTR("UpdateSdtContent")))
     {
-        setUpdateSdtContent(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
+        setUpdateSdtContent(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateSdtContent"))));
     }
     if(multipart->hasContent(_XPLATSTR("UpdateFields")))
     {
-        setUpdateFields(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
+        setUpdateFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateFields"))));
     }
     if(multipart->hasContent(_XPLATSTR("Dml3DEffectsRenderingMode")))
     {
@@ -296,17 +296,17 @@ void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("UpdateLastPrintedProperty")))
     {
-        setUpdateLastPrintedProperty(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastPrintedProperty"))));
+        setUpdateLastPrintedProperty(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UpdateLastPrintedProperty"))));
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SaveOptionsData::getSaveFormat() const
+utility::string_t SaveOptionsData::getSaveFormat() const
 {
     return m_SaveFormat;
 }
 
 
-void SaveOptionsData::setSaveFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SaveOptionsData::setSaveFormat(utility::string_t value)
 {
     m_SaveFormat = value;
     m_SaveFormatIsSet = true;
@@ -321,13 +321,13 @@ void SaveOptionsData::unsetSaveFormat()
     m_SaveFormatIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SaveOptionsData::getFileName() const
+utility::string_t SaveOptionsData::getFileName() const
 {
     return m_FileName;
 }
 
 
-void SaveOptionsData::setFileName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SaveOptionsData::setFileName(utility::string_t value)
 {
     m_FileName = value;
     m_FileNameIsSet = true;
@@ -342,13 +342,13 @@ void SaveOptionsData::unsetFileName()
     m_FileNameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SaveOptionsData::getDmlRenderingMode() const
+utility::string_t SaveOptionsData::getDmlRenderingMode() const
 {
     return m_DmlRenderingMode;
 }
 
 
-void SaveOptionsData::setDmlRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SaveOptionsData::setDmlRenderingMode(utility::string_t value)
 {
     m_DmlRenderingMode = value;
     m_DmlRenderingModeIsSet = true;
@@ -363,13 +363,13 @@ void SaveOptionsData::unsetDmlRenderingMode()
     m_DmlRenderingModeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SaveOptionsData::getDmlEffectsRenderingMode() const
+utility::string_t SaveOptionsData::getDmlEffectsRenderingMode() const
 {
     return m_DmlEffectsRenderingMode;
 }
 
 
-void SaveOptionsData::setDmlEffectsRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SaveOptionsData::setDmlEffectsRenderingMode(utility::string_t value)
 {
     m_DmlEffectsRenderingMode = value;
     m_DmlEffectsRenderingModeIsSet = true;
@@ -384,13 +384,13 @@ void SaveOptionsData::unsetDmlEffectsRenderingMode()
     m_DmlEffectsRenderingModeIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SaveOptionsData::isZipOutput() const
+bool SaveOptionsData::isZipOutput() const
 {
     return m_ZipOutput;
 }
 
 
-void SaveOptionsData::setZipOutput(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SaveOptionsData::setZipOutput(bool value)
 {
     m_ZipOutput = value;
     m_ZipOutputIsSet = true;
@@ -405,13 +405,13 @@ void SaveOptionsData::unsetZipOutput()
     m_ZipOutputIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SaveOptionsData::isUpdateLastSavedTimeProperty() const
+bool SaveOptionsData::isUpdateLastSavedTimeProperty() const
 {
     return m_UpdateLastSavedTimeProperty;
 }
 
 
-void SaveOptionsData::setUpdateLastSavedTimeProperty(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SaveOptionsData::setUpdateLastSavedTimeProperty(bool value)
 {
     m_UpdateLastSavedTimeProperty = value;
     m_UpdateLastSavedTimePropertyIsSet = true;
@@ -426,13 +426,13 @@ void SaveOptionsData::unsetUpdateLastSavedTimeProperty()
     m_UpdateLastSavedTimePropertyIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SaveOptionsData::isUpdateSdtContent() const
+bool SaveOptionsData::isUpdateSdtContent() const
 {
     return m_UpdateSdtContent;
 }
 
 
-void SaveOptionsData::setUpdateSdtContent(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SaveOptionsData::setUpdateSdtContent(bool value)
 {
     m_UpdateSdtContent = value;
     m_UpdateSdtContentIsSet = true;
@@ -447,13 +447,13 @@ void SaveOptionsData::unsetUpdateSdtContent()
     m_UpdateSdtContentIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SaveOptionsData::isUpdateFields() const
+bool SaveOptionsData::isUpdateFields() const
 {
     return m_UpdateFields;
 }
 
 
-void SaveOptionsData::setUpdateFields(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SaveOptionsData::setUpdateFields(bool value)
 {
     m_UpdateFields = value;
     m_UpdateFieldsIsSet = true;
@@ -468,13 +468,13 @@ void SaveOptionsData::unsetUpdateFields()
     m_UpdateFieldsIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SaveOptionsData::getDml3DEffectsRenderingMode() const
+utility::string_t SaveOptionsData::getDml3DEffectsRenderingMode() const
 {
     return m_Dml3DEffectsRenderingMode;
 }
 
 
-void SaveOptionsData::setDml3DEffectsRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SaveOptionsData::setDml3DEffectsRenderingMode(utility::string_t value)
 {
     m_Dml3DEffectsRenderingMode = value;
     m_Dml3DEffectsRenderingModeIsSet = true;
@@ -489,13 +489,13 @@ void SaveOptionsData::unsetDml3DEffectsRenderingMode()
     m_Dml3DEffectsRenderingModeIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SaveOptionsData::isUpdateLastPrintedProperty() const
+bool SaveOptionsData::isUpdateLastPrintedProperty() const
 {
     return m_UpdateLastPrintedProperty;
 }
 
 
-void SaveOptionsData::setUpdateLastPrintedProperty(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SaveOptionsData::setUpdateLastPrintedProperty(bool value)
 {
     m_UpdateLastPrintedProperty = value;
     m_UpdateLastPrintedPropertyIsSet = true;

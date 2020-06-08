@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets Content.
     /// </summary>
-    <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> getContent() const;
+    std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
     void unsetContent();
-    void setContent(<DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> value);
+    void setContent(std::shared_ptr<StoryChildNodes> value);
     /// <summary>
     /// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDisplayType() const;
+    utility::string_t getDisplayType() const;
     bool displayTypeIsSet() const;
     void unsetDisplayType();
-    void setDisplayType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDisplayType(utility::string_t value);
     /// <summary>
     /// Gets or sets /sets Office Math justification.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getJustification() const;
+    utility::string_t getJustification() const;
     bool justificationIsSet() const;
     void unsetJustification();
-    void setJustification(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setJustification(utility::string_t value);
     /// <summary>
     /// Gets or sets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getMathObjectType() const;
+    utility::string_t getMathObjectType() const;
     bool mathObjectTypeIsSet() const;
     void unsetMathObjectType();
-    void setMathObjectType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setMathObjectType(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>StoryChildNodes<DATA_TYPE_END> m_Content;
+    std::shared_ptr<StoryChildNodes> m_Content;
     bool m_ContentIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_DisplayType;
+    utility::string_t m_DisplayType;
     bool m_DisplayTypeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Justification;
+    utility::string_t m_Justification;
     bool m_JustificationIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_MathObjectType;
+    utility::string_t m_MathObjectType;
     bool m_MathObjectTypeIsSet;
 };
 

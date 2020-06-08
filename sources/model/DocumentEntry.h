@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets path to document to append at the server.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getHref() const;
+    utility::string_t getHref() const;
     bool hrefIsSet() const;
     void unsetHref();
-    void setHref(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setHref(utility::string_t value);
     /// <summary>
     /// Gets or sets defines which formatting will be used: appended or destination document.Can be KeepSourceFormatting or UseDestinationStyles.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getImportFormatMode() const;
+    utility::string_t getImportFormatMode() const;
     bool importFormatModeIsSet() const;
     void unsetImportFormatMode();
-    void setImportFormatMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setImportFormatMode(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Href;
+    utility::string_t m_Href;
     bool m_HrefIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ImportFormatMode;
+    utility::string_t m_ImportFormatMode;
     bool m_ImportFormatModeIsSet;
 };
 

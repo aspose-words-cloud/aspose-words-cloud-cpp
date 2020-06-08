@@ -66,58 +66,58 @@ public:
     /// <summary>
     /// Gets or sets a list of links that originate from this document.
     /// </summary>
-    <DATA_TYPE_START>List<Link><DATA_TYPE_END>& getLinks();
+    std::vector<std::shared_ptr<Link>>& getLinks();
     bool linksIsSet() const;
     void unsetLinks();
-    void setLinks(<DATA_TYPE_START>List<Link><DATA_TYPE_END> const& value);
+    void setLinks(std::vector<std::shared_ptr<Link>> const& value);
     /// <summary>
     /// Gets or sets the name of the file.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFileName() const;
+    utility::string_t getFileName() const;
     bool fileNameIsSet() const;
     void unsetFileName();
-    void setFileName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFileName(utility::string_t value);
     /// <summary>
     /// Gets or sets the original format of the document.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getSourceFormat() const;
+    utility::string_t getSourceFormat() const;
     bool sourceFormatIsSet() const;
     void unsetSourceFormat();
-    void setSourceFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setSourceFormat(utility::string_t value);
     /// <summary>
     /// Gets or sets a value indicating whether returns true if the document is encrypted and requires a password to open.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsEncrypted() const;
+    bool isIsEncrypted() const;
     bool isEncryptedIsSet() const;
     void unsetIsEncrypted();
-    void setIsEncrypted(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsEncrypted(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsSigned() const;
+    bool isIsSigned() const;
     bool isSignedIsSet() const;
     void unsetIsSigned();
-    void setIsSigned(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsSigned(bool value);
     /// <summary>
     /// Gets or sets DocumentProperties.
     /// </summary>
-    <DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> getDocumentProperties() const;
+    std::shared_ptr<DocumentProperties> getDocumentProperties() const;
     bool documentPropertiesIsSet() const;
     void unsetDocumentProperties();
-    void setDocumentProperties(<DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> value);
+    void setDocumentProperties(std::shared_ptr<DocumentProperties> value);
 
 protected:
-    <DATA_TYPE_START>List<Link><DATA_TYPE_END> m_Links;
+    std::vector<std::shared_ptr<Link>> m_Links;
     bool m_LinksIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FileName;
+    utility::string_t m_FileName;
     bool m_FileNameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_SourceFormat;
+    utility::string_t m_SourceFormat;
     bool m_SourceFormatIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsEncrypted;
+    bool m_IsEncrypted;
     bool m_IsEncryptedIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsSigned;
+    bool m_IsSigned;
     bool m_IsSignedIsSet;
-    <DATA_TYPE_START>DocumentProperties<DATA_TYPE_END> m_DocumentProperties;
+    std::shared_ptr<DocumentProperties> m_DocumentProperties;
     bool m_DocumentPropertiesIsSet;
 };
 

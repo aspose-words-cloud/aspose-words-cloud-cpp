@@ -162,13 +162,13 @@ void FontInfo::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FontInfo::getFontFamilyName() const
+utility::string_t FontInfo::getFontFamilyName() const
 {
     return m_FontFamilyName;
 }
 
 
-void FontInfo::setFontFamilyName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FontInfo::setFontFamilyName(utility::string_t value)
 {
     m_FontFamilyName = value;
     m_FontFamilyNameIsSet = true;
@@ -183,13 +183,13 @@ void FontInfo::unsetFontFamilyName()
     m_FontFamilyNameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FontInfo::getFullFontName() const
+utility::string_t FontInfo::getFullFontName() const
 {
     return m_FullFontName;
 }
 
 
-void FontInfo::setFullFontName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FontInfo::setFullFontName(utility::string_t value)
 {
     m_FullFontName = value;
     m_FullFontNameIsSet = true;
@@ -204,13 +204,13 @@ void FontInfo::unsetFullFontName()
     m_FullFontNameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FontInfo::getVersion() const
+utility::string_t FontInfo::getVersion() const
 {
     return m_Version;
 }
 
 
-void FontInfo::setVersion(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FontInfo::setVersion(utility::string_t value)
 {
     m_Version = value;
     m_VersionIsSet = true;
@@ -225,13 +225,13 @@ void FontInfo::unsetVersion()
     m_VersionIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FontInfo::getFilePath() const
+utility::string_t FontInfo::getFilePath() const
 {
     return m_FilePath;
 }
 
 
-void FontInfo::setFilePath(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FontInfo::setFilePath(utility::string_t value)
 {
     m_FilePath = value;
     m_FilePathIsSet = true;

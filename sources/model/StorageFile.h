@@ -64,49 +64,49 @@ public:
     /// <summary>
     /// File or folder name.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
+    utility::string_t getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setName(utility::string_t value);
     /// <summary>
     /// True if it is a folder.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsFolder() const;
+    bool isIsFolder() const;
     bool isFolderIsSet() const;
     void unsetIsFolder();
-    void setIsFolder(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsFolder(bool value);
     /// <summary>
     /// File or folder last modified DateTime.
     /// </summary>
-    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> getModifiedDate() const;
+    utility::datetime getModifiedDate() const;
     bool modifiedDateIsSet() const;
     void unsetModifiedDate();
-    void setModifiedDate(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value);
+    void setModifiedDate(utility::datetime value);
     /// <summary>
     /// File or folder size.
     /// </summary>
-    <DATA_TYPE_START>long?<DATA_TYPE_END> getSize() const;
+    int64_t getSize() const;
     bool sizeIsSet() const;
     void unsetSize();
-    void setSize(<DATA_TYPE_START>long?<DATA_TYPE_END> value);
+    void setSize(int64_t value);
     /// <summary>
     /// File or folder path.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPath() const;
+    utility::string_t getPath() const;
     bool pathIsSet() const;
     void unsetPath();
-    void setPath(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPath(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
+    utility::string_t m_Name;
     bool m_NameIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsFolder;
+    bool m_IsFolder;
     bool m_IsFolderIsSet;
-    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> m_ModifiedDate;
+    utility::datetime m_ModifiedDate;
     bool m_ModifiedDateIsSet;
-    <DATA_TYPE_START>long?<DATA_TYPE_END> m_Size;
+    int64_t m_Size;
     bool m_SizeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Path;
+    utility::string_t m_Path;
     bool m_PathIsSet;
 };
 

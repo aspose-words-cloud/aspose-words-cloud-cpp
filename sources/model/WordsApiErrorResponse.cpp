@@ -67,7 +67,7 @@ void WordsApiErrorResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Error")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>ApiError<DATA_TYPE_END> newItem(new ApiError());
+            std::shared_ptr<ApiError> newItem(new ApiError());
             newItem->fromJson(fieldValue);
             setError( newItem );
         }
@@ -97,20 +97,20 @@ void WordsApiErrorResponse::fromMultiPart(const std::shared_ptr<MultipartFormDat
     {
         if(multipart->hasContent(_XPLATSTR("Error")))
         {
-            <DATA_TYPE_START>ApiError<DATA_TYPE_END> newItem(new ApiError());
+            std::shared_ptr<ApiError> newItem(new ApiError());
             newItem->fromMultiPart(multipart, _XPLATSTR("Error."));
             setError( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>ApiError<DATA_TYPE_END> WordsApiErrorResponse::getError() const
+std::shared_ptr<ApiError> WordsApiErrorResponse::getError() const
 {
     return m_Error;
 }
 
 
-void WordsApiErrorResponse::setError(<DATA_TYPE_START>ApiError<DATA_TYPE_END> value)
+void WordsApiErrorResponse::setError(std::shared_ptr<ApiError> value)
 {
     m_Error = value;
     m_ErrorIsSet = true;

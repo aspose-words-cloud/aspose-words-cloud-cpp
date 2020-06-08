@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets collection of OfficeMath objects.
     /// </summary>
-    <DATA_TYPE_START>List<OfficeMathObject><DATA_TYPE_END>& getList();
+    std::vector<std::shared_ptr<OfficeMathObject>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(<DATA_TYPE_START>List<OfficeMathObject><DATA_TYPE_END> const& value);
+    void setList(std::vector<std::shared_ptr<OfficeMathObject>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<OfficeMathObject><DATA_TYPE_END> m_List;
+    std::vector<std::shared_ptr<OfficeMathObject>> m_List;
     bool m_ListIsSet;
 };
 

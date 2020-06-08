@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets the name of the class.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getClassName() const;
+    utility::string_t getClassName() const;
     bool classNameIsSet() const;
     void unsetClassName();
-    void setClassName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setClassName(utility::string_t value);
     /// <summary>
     /// Gets or sets the probability of class.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getClassProbability() const;
+    double getClassProbability() const;
     bool classProbabilityIsSet() const;
     void unsetClassProbability();
-    void setClassProbability(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setClassProbability(double value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ClassName;
+    utility::string_t m_ClassName;
     bool m_ClassNameIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_ClassProbability;
+    double m_ClassProbability;
     bool m_ClassProbabilityIsSet;
 };
 

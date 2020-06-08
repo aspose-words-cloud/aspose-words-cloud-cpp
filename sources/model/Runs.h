@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets collection of fields.
     /// </summary>
-    <DATA_TYPE_START>List<Run><DATA_TYPE_END>& getList();
+    std::vector<std::shared_ptr<Run>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(<DATA_TYPE_START>List<Run><DATA_TYPE_END> const& value);
+    void setList(std::vector<std::shared_ptr<Run>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<Run><DATA_TYPE_END> m_List;
+    std::vector<std::shared_ptr<Run>> m_List;
     bool m_ListIsSet;
 };
 

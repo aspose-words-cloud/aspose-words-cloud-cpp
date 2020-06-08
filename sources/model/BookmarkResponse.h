@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Bookmark.
     /// </summary>
-    <DATA_TYPE_START>Bookmark<DATA_TYPE_END> getBookmark() const;
+    std::shared_ptr<Bookmark> getBookmark() const;
     bool bookmarkIsSet() const;
     void unsetBookmark();
-    void setBookmark(<DATA_TYPE_START>Bookmark<DATA_TYPE_END> value);
+    void setBookmark(std::shared_ptr<Bookmark> value);
 
 protected:
-    <DATA_TYPE_START>Bookmark<DATA_TYPE_END> m_Bookmark;
+    std::shared_ptr<Bookmark> m_Bookmark;
     bool m_BookmarkIsSet;
 };
 

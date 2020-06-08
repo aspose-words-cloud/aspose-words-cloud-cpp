@@ -67,7 +67,7 @@ void TableLinkCollectionResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Tables")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> newItem(new TableLinkCollection());
+            std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
             newItem->fromJson(fieldValue);
             setTables( newItem );
         }
@@ -97,20 +97,20 @@ void TableLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartF
     {
         if(multipart->hasContent(_XPLATSTR("Tables")))
         {
-            <DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> newItem(new TableLinkCollection());
+            std::shared_ptr<TableLinkCollection> newItem(new TableLinkCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("Tables."));
             setTables( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> TableLinkCollectionResponse::getTables() const
+std::shared_ptr<TableLinkCollection> TableLinkCollectionResponse::getTables() const
 {
     return m_Tables;
 }
 
 
-void TableLinkCollectionResponse::setTables(<DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> value)
+void TableLinkCollectionResponse::setTables(std::shared_ptr<TableLinkCollection> value)
 {
     m_Tables = value;
     m_TablesIsSet = true;

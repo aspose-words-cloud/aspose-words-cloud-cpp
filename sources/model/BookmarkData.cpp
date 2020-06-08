@@ -116,13 +116,13 @@ void BookmarkData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> BookmarkData::getName() const
+utility::string_t BookmarkData::getName() const
 {
     return m_Name;
 }
 
 
-void BookmarkData::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void BookmarkData::setName(utility::string_t value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -137,13 +137,13 @@ void BookmarkData::unsetName()
     m_NameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> BookmarkData::getText() const
+utility::string_t BookmarkData::getText() const
 {
     return m_Text;
 }
 
 
-void BookmarkData::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void BookmarkData::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

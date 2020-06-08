@@ -67,7 +67,7 @@ void TablePropertiesResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Properties")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>TableProperties<DATA_TYPE_END> newItem(new TableProperties());
+            std::shared_ptr<TableProperties> newItem(new TableProperties());
             newItem->fromJson(fieldValue);
             setProperties( newItem );
         }
@@ -97,20 +97,20 @@ void TablePropertiesResponse::fromMultiPart(const std::shared_ptr<MultipartFormD
     {
         if(multipart->hasContent(_XPLATSTR("Properties")))
         {
-            <DATA_TYPE_START>TableProperties<DATA_TYPE_END> newItem(new TableProperties());
+            std::shared_ptr<TableProperties> newItem(new TableProperties());
             newItem->fromMultiPart(multipart, _XPLATSTR("Properties."));
             setProperties( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>TableProperties<DATA_TYPE_END> TablePropertiesResponse::getProperties() const
+std::shared_ptr<TableProperties> TablePropertiesResponse::getProperties() const
 {
     return m_Properties;
 }
 
 
-void TablePropertiesResponse::setProperties(<DATA_TYPE_START>TableProperties<DATA_TYPE_END> value)
+void TablePropertiesResponse::setProperties(std::shared_ptr<TableProperties> value)
 {
     m_Properties = value;
     m_PropertiesIsSet = true;

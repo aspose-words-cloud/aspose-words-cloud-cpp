@@ -86,7 +86,7 @@ void OdtSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsStrictSchema11")];
         if(!fieldValue.is_null())
         {
-            setIsStrictSchema11(ModelBase::bool?FromJson(fieldValue));
+            setIsStrictSchema11(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("MeasureUnit")))
@@ -110,7 +110,7 @@ void OdtSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::bool?FromJson(fieldValue));
+            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -148,7 +148,7 @@ void OdtSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 
     if(multipart->hasContent(_XPLATSTR("IsStrictSchema11")))
     {
-        setIsStrictSchema11(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsStrictSchema11"))));
+        setIsStrictSchema11(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsStrictSchema11"))));
     }
     if(multipart->hasContent(_XPLATSTR("MeasureUnit")))
     {
@@ -160,17 +160,17 @@ void OdtSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> OdtSaveOptionsData::isIsStrictSchema11() const
+bool OdtSaveOptionsData::isIsStrictSchema11() const
 {
     return m_IsStrictSchema11;
 }
 
 
-void OdtSaveOptionsData::setIsStrictSchema11(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void OdtSaveOptionsData::setIsStrictSchema11(bool value)
 {
     m_IsStrictSchema11 = value;
     m_IsStrictSchema11IsSet = true;
@@ -185,13 +185,13 @@ void OdtSaveOptionsData::unsetIsStrictSchema11()
     m_IsStrictSchema11IsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> OdtSaveOptionsData::getMeasureUnit() const
+utility::string_t OdtSaveOptionsData::getMeasureUnit() const
 {
     return m_MeasureUnit;
 }
 
 
-void OdtSaveOptionsData::setMeasureUnit(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void OdtSaveOptionsData::setMeasureUnit(utility::string_t value)
 {
     m_MeasureUnit = value;
     m_MeasureUnitIsSet = true;
@@ -206,13 +206,13 @@ void OdtSaveOptionsData::unsetMeasureUnit()
     m_MeasureUnitIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> OdtSaveOptionsData::getPassword() const
+utility::string_t OdtSaveOptionsData::getPassword() const
 {
     return m_Password;
 }
 
 
-void OdtSaveOptionsData::setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void OdtSaveOptionsData::setPassword(utility::string_t value)
 {
     m_Password = value;
     m_PasswordIsSet = true;
@@ -227,13 +227,13 @@ void OdtSaveOptionsData::unsetPassword()
     m_PasswordIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> OdtSaveOptionsData::isPrettyFormat() const
+bool OdtSaveOptionsData::isPrettyFormat() const
 {
     return m_PrettyFormat;
 }
 
 
-void OdtSaveOptionsData::setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void OdtSaveOptionsData::setPrettyFormat(bool value)
 {
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;

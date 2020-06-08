@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets array of document lists.
     /// </summary>
-    <DATA_TYPE_START>List<ListInfo><DATA_TYPE_END>& getListInfo();
+    std::vector<std::shared_ptr<ListInfo>>& getListInfo();
     bool listInfoIsSet() const;
     void unsetListInfo();
-    void setListInfo(<DATA_TYPE_START>List<ListInfo><DATA_TYPE_END> const& value);
+    void setListInfo(std::vector<std::shared_ptr<ListInfo>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<ListInfo><DATA_TYPE_END> m_ListInfo;
+    std::vector<std::shared_ptr<ListInfo>> m_ListInfo;
     bool m_ListInfoIsSet;
 };
 

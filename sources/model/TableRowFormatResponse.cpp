@@ -67,7 +67,7 @@ void TableRowFormatResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RowFormat")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> newItem(new TableRowFormat());
+            std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
             newItem->fromJson(fieldValue);
             setRowFormat( newItem );
         }
@@ -97,20 +97,20 @@ void TableRowFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
     {
         if(multipart->hasContent(_XPLATSTR("RowFormat")))
         {
-            <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> newItem(new TableRowFormat());
+            std::shared_ptr<TableRowFormat> newItem(new TableRowFormat());
             newItem->fromMultiPart(multipart, _XPLATSTR("RowFormat."));
             setRowFormat( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> TableRowFormatResponse::getRowFormat() const
+std::shared_ptr<TableRowFormat> TableRowFormatResponse::getRowFormat() const
 {
     return m_RowFormat;
 }
 
 
-void TableRowFormatResponse::setRowFormat(<DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> value)
+void TableRowFormatResponse::setRowFormat(std::shared_ptr<TableRowFormat> value)
 {
     m_RowFormat = value;
     m_RowFormatIsSet = true;

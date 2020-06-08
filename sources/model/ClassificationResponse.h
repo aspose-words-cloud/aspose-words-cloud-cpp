@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets best class name.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getBestClassName() const;
+    utility::string_t getBestClassName() const;
     bool bestClassNameIsSet() const;
     void unsetBestClassName();
-    void setBestClassName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setBestClassName(utility::string_t value);
     /// <summary>
     /// Gets or sets best class probability.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getBestClassProbability() const;
+    double getBestClassProbability() const;
     bool bestClassProbabilityIsSet() const;
     void unsetBestClassProbability();
-    void setBestClassProbability(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setBestClassProbability(double value);
     /// <summary>
     /// Gets or sets array of best classes results.
     /// </summary>
-    <DATA_TYPE_START>List<ClassificationResult><DATA_TYPE_END>& getBestResults();
+    std::vector<std::shared_ptr<ClassificationResult>>& getBestResults();
     bool bestResultsIsSet() const;
     void unsetBestResults();
-    void setBestResults(<DATA_TYPE_START>List<ClassificationResult><DATA_TYPE_END> const& value);
+    void setBestResults(std::vector<std::shared_ptr<ClassificationResult>> const& value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_BestClassName;
+    utility::string_t m_BestClassName;
     bool m_BestClassNameIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_BestClassProbability;
+    double m_BestClassProbability;
     bool m_BestClassProbabilityIsSet;
-    <DATA_TYPE_START>List<ClassificationResult><DATA_TYPE_END> m_BestResults;
+    std::vector<std::shared_ptr<ClassificationResult>> m_BestResults;
     bool m_BestResultsIsSet;
 };
 

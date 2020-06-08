@@ -65,49 +65,49 @@ public:
     /// <summary>
     /// Gets or sets api error code.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCode() const;
+    utility::string_t getCode() const;
     bool codeIsSet() const;
     void unsetCode();
-    void setCode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCode(utility::string_t value);
     /// <summary>
     /// Gets or sets error message.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getMessage() const;
+    utility::string_t getMessage() const;
     bool messageIsSet() const;
     void unsetMessage();
-    void setMessage(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setMessage(utility::string_t value);
     /// <summary>
     /// Gets or sets error description.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDescription() const;
+    utility::string_t getDescription() const;
     bool descriptionIsSet() const;
     void unsetDescription();
-    void setDescription(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDescription(utility::string_t value);
     /// <summary>
     /// Gets or sets server datetime.
     /// </summary>
-    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> getDateTime() const;
+    utility::datetime getDateTime() const;
     bool dateTimeIsSet() const;
     void unsetDateTime();
-    void setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value);
+    void setDateTime(utility::datetime value);
     /// <summary>
     /// Gets or sets InnerError.
     /// </summary>
-    <DATA_TYPE_START>ApiError<DATA_TYPE_END> getInnerError() const;
+    std::shared_ptr<ApiError> getInnerError() const;
     bool innerErrorIsSet() const;
     void unsetInnerError();
-    void setInnerError(<DATA_TYPE_START>ApiError<DATA_TYPE_END> value);
+    void setInnerError(std::shared_ptr<ApiError> value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Code;
+    utility::string_t m_Code;
     bool m_CodeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Message;
+    utility::string_t m_Message;
     bool m_MessageIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Description;
+    utility::string_t m_Description;
     bool m_DescriptionIsSet;
-    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> m_DateTime;
+    utility::datetime m_DateTime;
     bool m_DateTimeIsSet;
-    <DATA_TYPE_START>ApiError<DATA_TYPE_END> m_InnerError;
+    std::shared_ptr<ApiError> m_InnerError;
     bool m_InnerErrorIsSet;
 };
 

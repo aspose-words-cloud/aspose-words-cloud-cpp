@@ -216,7 +216,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CreateNoteHyperlinks")];
         if(!fieldValue.is_null())
         {
-            setCreateNoteHyperlinks(ModelBase::bool?FromJson(fieldValue));
+            setCreateNoteHyperlinks(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("CustomPropertiesExport")))
@@ -232,7 +232,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DigitalSignatureDetails")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>PdfDigitalSignatureDetailsData<DATA_TYPE_END> newItem(new PdfDigitalSignatureDetailsData());
+            std::shared_ptr<PdfDigitalSignatureDetailsData> newItem(new PdfDigitalSignatureDetailsData());
             newItem->fromJson(fieldValue);
             setDigitalSignatureDetails( newItem );
         }
@@ -242,7 +242,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DisplayDocTitle")];
         if(!fieldValue.is_null())
         {
-            setDisplayDocTitle(ModelBase::bool?FromJson(fieldValue));
+            setDisplayDocTitle(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("DownsampleOptions")))
@@ -250,7 +250,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DownsampleOptions")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DownsampleOptionsData<DATA_TYPE_END> newItem(new DownsampleOptionsData());
+            std::shared_ptr<DownsampleOptionsData> newItem(new DownsampleOptionsData());
             newItem->fromJson(fieldValue);
             setDownsampleOptions( newItem );
         }
@@ -260,7 +260,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EmbedFullFonts")];
         if(!fieldValue.is_null())
         {
-            setEmbedFullFonts(ModelBase::bool?FromJson(fieldValue));
+            setEmbedFullFonts(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("EncryptionDetails")))
@@ -268,7 +268,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EncryptionDetails")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>PdfEncryptionDetailsData<DATA_TYPE_END> newItem(new PdfEncryptionDetailsData());
+            std::shared_ptr<PdfEncryptionDetailsData> newItem(new PdfEncryptionDetailsData());
             newItem->fromJson(fieldValue);
             setEncryptionDetails( newItem );
         }
@@ -278,7 +278,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EscapeUri")];
         if(!fieldValue.is_null())
         {
-            setEscapeUri(ModelBase::bool?FromJson(fieldValue));
+            setEscapeUri(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportDocumentStructure")))
@@ -286,7 +286,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportDocumentStructure")];
         if(!fieldValue.is_null())
         {
-            setExportDocumentStructure(ModelBase::bool?FromJson(fieldValue));
+            setExportDocumentStructure(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("FontEmbeddingMode")))
@@ -326,7 +326,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("InterpolateImages")];
         if(!fieldValue.is_null())
         {
-            setInterpolateImages(ModelBase::bool?FromJson(fieldValue));
+            setInterpolateImages(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("OpenHyperlinksInNewWindow")))
@@ -334,7 +334,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OpenHyperlinksInNewWindow")];
         if(!fieldValue.is_null())
         {
-            setOpenHyperlinksInNewWindow(ModelBase::bool?FromJson(fieldValue));
+            setOpenHyperlinksInNewWindow(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("OutlineOptions")))
@@ -342,7 +342,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OutlineOptions")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> newItem(new OutlineOptionsData());
+            std::shared_ptr<OutlineOptionsData> newItem(new OutlineOptionsData());
             newItem->fromJson(fieldValue);
             setOutlineOptions( newItem );
         }
@@ -360,7 +360,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PreblendImages")];
         if(!fieldValue.is_null())
         {
-            setPreblendImages(ModelBase::bool?FromJson(fieldValue));
+            setPreblendImages(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("PreserveFormFields")))
@@ -368,7 +368,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PreserveFormFields")];
         if(!fieldValue.is_null())
         {
-            setPreserveFormFields(ModelBase::bool?FromJson(fieldValue));
+            setPreserveFormFields(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TextCompression")))
@@ -384,7 +384,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseBookFoldPrintingSettings")];
         if(!fieldValue.is_null())
         {
-            setUseBookFoldPrintingSettings(ModelBase::bool?FromJson(fieldValue));
+            setUseBookFoldPrintingSettings(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("UseCoreFonts")))
@@ -392,7 +392,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("UseCoreFonts")];
         if(!fieldValue.is_null())
         {
-            setUseCoreFonts(ModelBase::bool?FromJson(fieldValue));
+            setUseCoreFonts(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ZoomBehavior")))
@@ -408,7 +408,7 @@ void PdfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ZoomFactor")];
         if(!fieldValue.is_null())
         {
-            setZoomFactor(ModelBase::int?FromJson(fieldValue));
+            setZoomFactor(ModelBase::int32_tFromJson(fieldValue));
         }
     }
 }
@@ -567,7 +567,7 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("CreateNoteHyperlinks")))
     {
-        setCreateNoteHyperlinks(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("CreateNoteHyperlinks"))));
+        setCreateNoteHyperlinks(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CreateNoteHyperlinks"))));
     }
     if(multipart->hasContent(_XPLATSTR("CustomPropertiesExport")))
     {
@@ -577,44 +577,44 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     {
         if(multipart->hasContent(_XPLATSTR("DigitalSignatureDetails")))
         {
-            <DATA_TYPE_START>PdfDigitalSignatureDetailsData<DATA_TYPE_END> newItem(new PdfDigitalSignatureDetailsData());
+            std::shared_ptr<PdfDigitalSignatureDetailsData> newItem(new PdfDigitalSignatureDetailsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("DigitalSignatureDetails."));
             setDigitalSignatureDetails( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("DisplayDocTitle")))
     {
-        setDisplayDocTitle(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("DisplayDocTitle"))));
+        setDisplayDocTitle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("DisplayDocTitle"))));
     }
     if(multipart->hasContent(_XPLATSTR("DownsampleOptions")))
     {
         if(multipart->hasContent(_XPLATSTR("DownsampleOptions")))
         {
-            <DATA_TYPE_START>DownsampleOptionsData<DATA_TYPE_END> newItem(new DownsampleOptionsData());
+            std::shared_ptr<DownsampleOptionsData> newItem(new DownsampleOptionsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("DownsampleOptions."));
             setDownsampleOptions( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("EmbedFullFonts")))
     {
-        setEmbedFullFonts(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("EmbedFullFonts"))));
+        setEmbedFullFonts(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("EmbedFullFonts"))));
     }
     if(multipart->hasContent(_XPLATSTR("EncryptionDetails")))
     {
         if(multipart->hasContent(_XPLATSTR("EncryptionDetails")))
         {
-            <DATA_TYPE_START>PdfEncryptionDetailsData<DATA_TYPE_END> newItem(new PdfEncryptionDetailsData());
+            std::shared_ptr<PdfEncryptionDetailsData> newItem(new PdfEncryptionDetailsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("EncryptionDetails."));
             setEncryptionDetails( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("EscapeUri")))
     {
-        setEscapeUri(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("EscapeUri"))));
+        setEscapeUri(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("EscapeUri"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportDocumentStructure")))
     {
-        setExportDocumentStructure(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportDocumentStructure"))));
+        setExportDocumentStructure(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportDocumentStructure"))));
     }
     if(multipart->hasContent(_XPLATSTR("FontEmbeddingMode")))
     {
@@ -634,17 +634,17 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("InterpolateImages")))
     {
-        setInterpolateImages(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("InterpolateImages"))));
+        setInterpolateImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("InterpolateImages"))));
     }
     if(multipart->hasContent(_XPLATSTR("OpenHyperlinksInNewWindow")))
     {
-        setOpenHyperlinksInNewWindow(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("OpenHyperlinksInNewWindow"))));
+        setOpenHyperlinksInNewWindow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OpenHyperlinksInNewWindow"))));
     }
     if(multipart->hasContent(_XPLATSTR("OutlineOptions")))
     {
         if(multipart->hasContent(_XPLATSTR("OutlineOptions")))
         {
-            <DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> newItem(new OutlineOptionsData());
+            std::shared_ptr<OutlineOptionsData> newItem(new OutlineOptionsData());
             newItem->fromMultiPart(multipart, _XPLATSTR("OutlineOptions."));
             setOutlineOptions( newItem );
         }
@@ -655,11 +655,11 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("PreblendImages")))
     {
-        setPreblendImages(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PreblendImages"))));
+        setPreblendImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PreblendImages"))));
     }
     if(multipart->hasContent(_XPLATSTR("PreserveFormFields")))
     {
-        setPreserveFormFields(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PreserveFormFields"))));
+        setPreserveFormFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PreserveFormFields"))));
     }
     if(multipart->hasContent(_XPLATSTR("TextCompression")))
     {
@@ -667,11 +667,11 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("UseBookFoldPrintingSettings")))
     {
-        setUseBookFoldPrintingSettings(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UseBookFoldPrintingSettings"))));
+        setUseBookFoldPrintingSettings(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseBookFoldPrintingSettings"))));
     }
     if(multipart->hasContent(_XPLATSTR("UseCoreFonts")))
     {
-        setUseCoreFonts(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("UseCoreFonts"))));
+        setUseCoreFonts(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseCoreFonts"))));
     }
     if(multipart->hasContent(_XPLATSTR("ZoomBehavior")))
     {
@@ -679,17 +679,17 @@ void PdfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("ZoomFactor")))
     {
-        setZoomFactor(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ZoomFactor"))));
+        setZoomFactor(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ZoomFactor"))));
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getCompliance() const
+utility::string_t PdfSaveOptionsData::getCompliance() const
 {
     return m_Compliance;
 }
 
 
-void PdfSaveOptionsData::setCompliance(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setCompliance(utility::string_t value)
 {
     m_Compliance = value;
     m_ComplianceIsSet = true;
@@ -704,13 +704,13 @@ void PdfSaveOptionsData::unsetCompliance()
     m_ComplianceIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isCreateNoteHyperlinks() const
+bool PdfSaveOptionsData::isCreateNoteHyperlinks() const
 {
     return m_CreateNoteHyperlinks;
 }
 
 
-void PdfSaveOptionsData::setCreateNoteHyperlinks(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setCreateNoteHyperlinks(bool value)
 {
     m_CreateNoteHyperlinks = value;
     m_CreateNoteHyperlinksIsSet = true;
@@ -725,13 +725,13 @@ void PdfSaveOptionsData::unsetCreateNoteHyperlinks()
     m_CreateNoteHyperlinksIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getCustomPropertiesExport() const
+utility::string_t PdfSaveOptionsData::getCustomPropertiesExport() const
 {
     return m_CustomPropertiesExport;
 }
 
 
-void PdfSaveOptionsData::setCustomPropertiesExport(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setCustomPropertiesExport(utility::string_t value)
 {
     m_CustomPropertiesExport = value;
     m_CustomPropertiesExportIsSet = true;
@@ -746,13 +746,13 @@ void PdfSaveOptionsData::unsetCustomPropertiesExport()
     m_CustomPropertiesExportIsSet = false;
 }
 
-<DATA_TYPE_START>PdfDigitalSignatureDetailsData<DATA_TYPE_END> PdfSaveOptionsData::getDigitalSignatureDetails() const
+std::shared_ptr<PdfDigitalSignatureDetailsData> PdfSaveOptionsData::getDigitalSignatureDetails() const
 {
     return m_DigitalSignatureDetails;
 }
 
 
-void PdfSaveOptionsData::setDigitalSignatureDetails(<DATA_TYPE_START>PdfDigitalSignatureDetailsData<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setDigitalSignatureDetails(std::shared_ptr<PdfDigitalSignatureDetailsData> value)
 {
     m_DigitalSignatureDetails = value;
     m_DigitalSignatureDetailsIsSet = true;
@@ -767,13 +767,13 @@ void PdfSaveOptionsData::unsetDigitalSignatureDetails()
     m_DigitalSignatureDetailsIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isDisplayDocTitle() const
+bool PdfSaveOptionsData::isDisplayDocTitle() const
 {
     return m_DisplayDocTitle;
 }
 
 
-void PdfSaveOptionsData::setDisplayDocTitle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setDisplayDocTitle(bool value)
 {
     m_DisplayDocTitle = value;
     m_DisplayDocTitleIsSet = true;
@@ -788,13 +788,13 @@ void PdfSaveOptionsData::unsetDisplayDocTitle()
     m_DisplayDocTitleIsSet = false;
 }
 
-<DATA_TYPE_START>DownsampleOptionsData<DATA_TYPE_END> PdfSaveOptionsData::getDownsampleOptions() const
+std::shared_ptr<DownsampleOptionsData> PdfSaveOptionsData::getDownsampleOptions() const
 {
     return m_DownsampleOptions;
 }
 
 
-void PdfSaveOptionsData::setDownsampleOptions(<DATA_TYPE_START>DownsampleOptionsData<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setDownsampleOptions(std::shared_ptr<DownsampleOptionsData> value)
 {
     m_DownsampleOptions = value;
     m_DownsampleOptionsIsSet = true;
@@ -809,13 +809,13 @@ void PdfSaveOptionsData::unsetDownsampleOptions()
     m_DownsampleOptionsIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isEmbedFullFonts() const
+bool PdfSaveOptionsData::isEmbedFullFonts() const
 {
     return m_EmbedFullFonts;
 }
 
 
-void PdfSaveOptionsData::setEmbedFullFonts(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setEmbedFullFonts(bool value)
 {
     m_EmbedFullFonts = value;
     m_EmbedFullFontsIsSet = true;
@@ -830,13 +830,13 @@ void PdfSaveOptionsData::unsetEmbedFullFonts()
     m_EmbedFullFontsIsSet = false;
 }
 
-<DATA_TYPE_START>PdfEncryptionDetailsData<DATA_TYPE_END> PdfSaveOptionsData::getEncryptionDetails() const
+std::shared_ptr<PdfEncryptionDetailsData> PdfSaveOptionsData::getEncryptionDetails() const
 {
     return m_EncryptionDetails;
 }
 
 
-void PdfSaveOptionsData::setEncryptionDetails(<DATA_TYPE_START>PdfEncryptionDetailsData<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setEncryptionDetails(std::shared_ptr<PdfEncryptionDetailsData> value)
 {
     m_EncryptionDetails = value;
     m_EncryptionDetailsIsSet = true;
@@ -851,13 +851,13 @@ void PdfSaveOptionsData::unsetEncryptionDetails()
     m_EncryptionDetailsIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isEscapeUri() const
+bool PdfSaveOptionsData::isEscapeUri() const
 {
     return m_EscapeUri;
 }
 
 
-void PdfSaveOptionsData::setEscapeUri(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setEscapeUri(bool value)
 {
     m_EscapeUri = value;
     m_EscapeUriIsSet = true;
@@ -872,13 +872,13 @@ void PdfSaveOptionsData::unsetEscapeUri()
     m_EscapeUriIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isExportDocumentStructure() const
+bool PdfSaveOptionsData::isExportDocumentStructure() const
 {
     return m_ExportDocumentStructure;
 }
 
 
-void PdfSaveOptionsData::setExportDocumentStructure(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setExportDocumentStructure(bool value)
 {
     m_ExportDocumentStructure = value;
     m_ExportDocumentStructureIsSet = true;
@@ -893,13 +893,13 @@ void PdfSaveOptionsData::unsetExportDocumentStructure()
     m_ExportDocumentStructureIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getFontEmbeddingMode() const
+utility::string_t PdfSaveOptionsData::getFontEmbeddingMode() const
 {
     return m_FontEmbeddingMode;
 }
 
 
-void PdfSaveOptionsData::setFontEmbeddingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setFontEmbeddingMode(utility::string_t value)
 {
     m_FontEmbeddingMode = value;
     m_FontEmbeddingModeIsSet = true;
@@ -914,13 +914,13 @@ void PdfSaveOptionsData::unsetFontEmbeddingMode()
     m_FontEmbeddingModeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getHeaderFooterBookmarksExportMode() const
+utility::string_t PdfSaveOptionsData::getHeaderFooterBookmarksExportMode() const
 {
     return m_HeaderFooterBookmarksExportMode;
 }
 
 
-void PdfSaveOptionsData::setHeaderFooterBookmarksExportMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setHeaderFooterBookmarksExportMode(utility::string_t value)
 {
     m_HeaderFooterBookmarksExportMode = value;
     m_HeaderFooterBookmarksExportModeIsSet = true;
@@ -935,13 +935,13 @@ void PdfSaveOptionsData::unsetHeaderFooterBookmarksExportMode()
     m_HeaderFooterBookmarksExportModeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getImageColorSpaceExportMode() const
+utility::string_t PdfSaveOptionsData::getImageColorSpaceExportMode() const
 {
     return m_ImageColorSpaceExportMode;
 }
 
 
-void PdfSaveOptionsData::setImageColorSpaceExportMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setImageColorSpaceExportMode(utility::string_t value)
 {
     m_ImageColorSpaceExportMode = value;
     m_ImageColorSpaceExportModeIsSet = true;
@@ -956,13 +956,13 @@ void PdfSaveOptionsData::unsetImageColorSpaceExportMode()
     m_ImageColorSpaceExportModeIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getImageCompression() const
+utility::string_t PdfSaveOptionsData::getImageCompression() const
 {
     return m_ImageCompression;
 }
 
 
-void PdfSaveOptionsData::setImageCompression(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setImageCompression(utility::string_t value)
 {
     m_ImageCompression = value;
     m_ImageCompressionIsSet = true;
@@ -977,13 +977,13 @@ void PdfSaveOptionsData::unsetImageCompression()
     m_ImageCompressionIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isInterpolateImages() const
+bool PdfSaveOptionsData::isInterpolateImages() const
 {
     return m_InterpolateImages;
 }
 
 
-void PdfSaveOptionsData::setInterpolateImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setInterpolateImages(bool value)
 {
     m_InterpolateImages = value;
     m_InterpolateImagesIsSet = true;
@@ -998,13 +998,13 @@ void PdfSaveOptionsData::unsetInterpolateImages()
     m_InterpolateImagesIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isOpenHyperlinksInNewWindow() const
+bool PdfSaveOptionsData::isOpenHyperlinksInNewWindow() const
 {
     return m_OpenHyperlinksInNewWindow;
 }
 
 
-void PdfSaveOptionsData::setOpenHyperlinksInNewWindow(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setOpenHyperlinksInNewWindow(bool value)
 {
     m_OpenHyperlinksInNewWindow = value;
     m_OpenHyperlinksInNewWindowIsSet = true;
@@ -1019,13 +1019,13 @@ void PdfSaveOptionsData::unsetOpenHyperlinksInNewWindow()
     m_OpenHyperlinksInNewWindowIsSet = false;
 }
 
-<DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> PdfSaveOptionsData::getOutlineOptions() const
+std::shared_ptr<OutlineOptionsData> PdfSaveOptionsData::getOutlineOptions() const
 {
     return m_OutlineOptions;
 }
 
 
-void PdfSaveOptionsData::setOutlineOptions(<DATA_TYPE_START>OutlineOptionsData<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setOutlineOptions(std::shared_ptr<OutlineOptionsData> value)
 {
     m_OutlineOptions = value;
     m_OutlineOptionsIsSet = true;
@@ -1040,13 +1040,13 @@ void PdfSaveOptionsData::unsetOutlineOptions()
     m_OutlineOptionsIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getPageMode() const
+utility::string_t PdfSaveOptionsData::getPageMode() const
 {
     return m_PageMode;
 }
 
 
-void PdfSaveOptionsData::setPageMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setPageMode(utility::string_t value)
 {
     m_PageMode = value;
     m_PageModeIsSet = true;
@@ -1061,13 +1061,13 @@ void PdfSaveOptionsData::unsetPageMode()
     m_PageModeIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isPreblendImages() const
+bool PdfSaveOptionsData::isPreblendImages() const
 {
     return m_PreblendImages;
 }
 
 
-void PdfSaveOptionsData::setPreblendImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setPreblendImages(bool value)
 {
     m_PreblendImages = value;
     m_PreblendImagesIsSet = true;
@@ -1082,13 +1082,13 @@ void PdfSaveOptionsData::unsetPreblendImages()
     m_PreblendImagesIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isPreserveFormFields() const
+bool PdfSaveOptionsData::isPreserveFormFields() const
 {
     return m_PreserveFormFields;
 }
 
 
-void PdfSaveOptionsData::setPreserveFormFields(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setPreserveFormFields(bool value)
 {
     m_PreserveFormFields = value;
     m_PreserveFormFieldsIsSet = true;
@@ -1103,13 +1103,13 @@ void PdfSaveOptionsData::unsetPreserveFormFields()
     m_PreserveFormFieldsIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getTextCompression() const
+utility::string_t PdfSaveOptionsData::getTextCompression() const
 {
     return m_TextCompression;
 }
 
 
-void PdfSaveOptionsData::setTextCompression(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setTextCompression(utility::string_t value)
 {
     m_TextCompression = value;
     m_TextCompressionIsSet = true;
@@ -1124,13 +1124,13 @@ void PdfSaveOptionsData::unsetTextCompression()
     m_TextCompressionIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isUseBookFoldPrintingSettings() const
+bool PdfSaveOptionsData::isUseBookFoldPrintingSettings() const
 {
     return m_UseBookFoldPrintingSettings;
 }
 
 
-void PdfSaveOptionsData::setUseBookFoldPrintingSettings(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setUseBookFoldPrintingSettings(bool value)
 {
     m_UseBookFoldPrintingSettings = value;
     m_UseBookFoldPrintingSettingsIsSet = true;
@@ -1145,13 +1145,13 @@ void PdfSaveOptionsData::unsetUseBookFoldPrintingSettings()
     m_UseBookFoldPrintingSettingsIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> PdfSaveOptionsData::isUseCoreFonts() const
+bool PdfSaveOptionsData::isUseCoreFonts() const
 {
     return m_UseCoreFonts;
 }
 
 
-void PdfSaveOptionsData::setUseCoreFonts(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setUseCoreFonts(bool value)
 {
     m_UseCoreFonts = value;
     m_UseCoreFontsIsSet = true;
@@ -1166,13 +1166,13 @@ void PdfSaveOptionsData::unsetUseCoreFonts()
     m_UseCoreFontsIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfSaveOptionsData::getZoomBehavior() const
+utility::string_t PdfSaveOptionsData::getZoomBehavior() const
 {
     return m_ZoomBehavior;
 }
 
 
-void PdfSaveOptionsData::setZoomBehavior(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setZoomBehavior(utility::string_t value)
 {
     m_ZoomBehavior = value;
     m_ZoomBehaviorIsSet = true;
@@ -1187,13 +1187,13 @@ void PdfSaveOptionsData::unsetZoomBehavior()
     m_ZoomBehaviorIsSet = false;
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> PdfSaveOptionsData::getZoomFactor() const
+int32_t PdfSaveOptionsData::getZoomFactor() const
 {
     return m_ZoomFactor;
 }
 
 
-void PdfSaveOptionsData::setZoomFactor(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void PdfSaveOptionsData::setZoomFactor(int32_t value)
 {
     m_ZoomFactor = value;
     m_ZoomFactorIsSet = true;

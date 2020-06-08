@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets the alignment of text at this tab stop.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getAlignment() const;
+    utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
-    void setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setAlignment(utility::string_t value);
     /// <summary>
     /// Gets or sets the type of the leader line displayed under the tab character.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getLeader() const;
+    utility::string_t getLeader() const;
     bool leaderIsSet() const;
     void unsetLeader();
-    void setLeader(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setLeader(utility::string_t value);
     /// <summary>
     /// Gets or sets the position of the tab stop in points.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getPosition() const;
+    double getPosition() const;
     bool positionIsSet() const;
     void unsetPosition();
-    void setPosition(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setPosition(double value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Alignment;
+    utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Leader;
+    utility::string_t m_Leader;
     bool m_LeaderIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Position;
+    double m_Position;
     bool m_PositionIsSet;
 };
 

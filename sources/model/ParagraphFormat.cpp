@@ -223,7 +223,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")];
         if(!fieldValue.is_null())
         {
-            setAddSpaceBetweenFarEastAndAlpha(ModelBase::bool?FromJson(fieldValue));
+            setAddSpaceBetweenFarEastAndAlpha(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("AddSpaceBetweenFarEastAndDigit")))
@@ -231,7 +231,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("AddSpaceBetweenFarEastAndDigit")];
         if(!fieldValue.is_null())
         {
-            setAddSpaceBetweenFarEastAndDigit(ModelBase::bool?FromJson(fieldValue));
+            setAddSpaceBetweenFarEastAndDigit(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Alignment")))
@@ -247,7 +247,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
         if(!fieldValue.is_null())
         {
-            setBidi(ModelBase::bool?FromJson(fieldValue));
+            setBidi(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("DropCapPosition")))
@@ -263,7 +263,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FirstLineIndent")];
         if(!fieldValue.is_null())
         {
-            setFirstLineIndent(ModelBase::double?FromJson(fieldValue));
+            setFirstLineIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsListItem")))
@@ -271,7 +271,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsListItem")];
         if(!fieldValue.is_null())
         {
-            setIsListItem(ModelBase::bool?FromJson(fieldValue));
+            setIsListItem(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("KeepTogether")))
@@ -279,7 +279,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("KeepTogether")];
         if(!fieldValue.is_null())
         {
-            setKeepTogether(ModelBase::bool?FromJson(fieldValue));
+            setKeepTogether(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("KeepWithNext")))
@@ -287,7 +287,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("KeepWithNext")];
         if(!fieldValue.is_null())
         {
-            setKeepWithNext(ModelBase::bool?FromJson(fieldValue));
+            setKeepWithNext(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LeftIndent")))
@@ -295,7 +295,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LeftIndent")];
         if(!fieldValue.is_null())
         {
-            setLeftIndent(ModelBase::double?FromJson(fieldValue));
+            setLeftIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LineSpacing")))
@@ -303,7 +303,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LineSpacing")];
         if(!fieldValue.is_null())
         {
-            setLineSpacing(ModelBase::double?FromJson(fieldValue));
+            setLineSpacing(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LineSpacingRule")))
@@ -319,7 +319,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("LinesToDrop")];
         if(!fieldValue.is_null())
         {
-            setLinesToDrop(ModelBase::int?FromJson(fieldValue));
+            setLinesToDrop(ModelBase::int32_tFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")))
@@ -327,7 +327,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")];
         if(!fieldValue.is_null())
         {
-            setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::bool?FromJson(fieldValue));
+            setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("OutlineLevel")))
@@ -343,7 +343,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PageBreakBefore")];
         if(!fieldValue.is_null())
         {
-            setPageBreakBefore(ModelBase::bool?FromJson(fieldValue));
+            setPageBreakBefore(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("RightIndent")))
@@ -351,7 +351,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RightIndent")];
         if(!fieldValue.is_null())
         {
-            setRightIndent(ModelBase::double?FromJson(fieldValue));
+            setRightIndent(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Shading")))
@@ -359,7 +359,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Shading")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Shading<DATA_TYPE_END> newItem(new Shading());
+            std::shared_ptr<Shading> newItem(new Shading());
             newItem->fromJson(fieldValue);
             setShading( newItem );
         }
@@ -369,7 +369,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SpaceAfter")];
         if(!fieldValue.is_null())
         {
-            setSpaceAfter(ModelBase::double?FromJson(fieldValue));
+            setSpaceAfter(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SpaceAfterAuto")))
@@ -377,7 +377,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SpaceAfterAuto")];
         if(!fieldValue.is_null())
         {
-            setSpaceAfterAuto(ModelBase::bool?FromJson(fieldValue));
+            setSpaceAfterAuto(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SpaceBefore")))
@@ -385,7 +385,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SpaceBefore")];
         if(!fieldValue.is_null())
         {
-            setSpaceBefore(ModelBase::double?FromJson(fieldValue));
+            setSpaceBefore(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SpaceBeforeAuto")))
@@ -393,7 +393,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SpaceBeforeAuto")];
         if(!fieldValue.is_null())
         {
-            setSpaceBeforeAuto(ModelBase::bool?FromJson(fieldValue));
+            setSpaceBeforeAuto(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("StyleIdentifier")))
@@ -417,7 +417,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SuppressAutoHyphens")];
         if(!fieldValue.is_null())
         {
-            setSuppressAutoHyphens(ModelBase::bool?FromJson(fieldValue));
+            setSuppressAutoHyphens(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SuppressLineNumbers")))
@@ -425,7 +425,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SuppressLineNumbers")];
         if(!fieldValue.is_null())
         {
-            setSuppressLineNumbers(ModelBase::bool?FromJson(fieldValue));
+            setSuppressLineNumbers(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("WidowControl")))
@@ -433,7 +433,7 @@ void ParagraphFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("WidowControl")];
         if(!fieldValue.is_null())
         {
-            setWidowControl(ModelBase::bool?FromJson(fieldValue));
+            setWidowControl(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -589,11 +589,11 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
 
     if(multipart->hasContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha")))
     {
-        setAddSpaceBetweenFarEastAndAlpha(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha"))));
+        setAddSpaceBetweenFarEastAndAlpha(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndAlpha"))));
     }
     if(multipart->hasContent(_XPLATSTR("AddSpaceBetweenFarEastAndDigit")))
     {
-        setAddSpaceBetweenFarEastAndDigit(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndDigit"))));
+        setAddSpaceBetweenFarEastAndDigit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AddSpaceBetweenFarEastAndDigit"))));
     }
     if(multipart->hasContent(_XPLATSTR("Alignment")))
     {
@@ -601,7 +601,7 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("Bidi")))
     {
-        setBidi(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
+        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
     }
     if(multipart->hasContent(_XPLATSTR("DropCapPosition")))
     {
@@ -609,27 +609,27 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("FirstLineIndent")))
     {
-        setFirstLineIndent(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("FirstLineIndent"))));
+        setFirstLineIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("FirstLineIndent"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsListItem")))
     {
-        setIsListItem(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
+        setIsListItem(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
     }
     if(multipart->hasContent(_XPLATSTR("KeepTogether")))
     {
-        setKeepTogether(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("KeepTogether"))));
+        setKeepTogether(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("KeepTogether"))));
     }
     if(multipart->hasContent(_XPLATSTR("KeepWithNext")))
     {
-        setKeepWithNext(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("KeepWithNext"))));
+        setKeepWithNext(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("KeepWithNext"))));
     }
     if(multipart->hasContent(_XPLATSTR("LeftIndent")))
     {
-        setLeftIndent(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("LeftIndent"))));
+        setLeftIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftIndent"))));
     }
     if(multipart->hasContent(_XPLATSTR("LineSpacing")))
     {
-        setLineSpacing(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("LineSpacing"))));
+        setLineSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LineSpacing"))));
     }
     if(multipart->hasContent(_XPLATSTR("LineSpacingRule")))
     {
@@ -637,11 +637,11 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("LinesToDrop")))
     {
-        setLinesToDrop(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("LinesToDrop"))));
+        setLinesToDrop(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("LinesToDrop"))));
     }
     if(multipart->hasContent(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle")))
     {
-        setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle"))));
+        setNoSpaceBetweenParagraphsOfSameStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("NoSpaceBetweenParagraphsOfSameStyle"))));
     }
     if(multipart->hasContent(_XPLATSTR("OutlineLevel")))
     {
@@ -649,36 +649,36 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("PageBreakBefore")))
     {
-        setPageBreakBefore(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PageBreakBefore"))));
+        setPageBreakBefore(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PageBreakBefore"))));
     }
     if(multipart->hasContent(_XPLATSTR("RightIndent")))
     {
-        setRightIndent(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("RightIndent"))));
+        setRightIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightIndent"))));
     }
     if(multipart->hasContent(_XPLATSTR("Shading")))
     {
         if(multipart->hasContent(_XPLATSTR("Shading")))
         {
-            <DATA_TYPE_START>Shading<DATA_TYPE_END> newItem(new Shading());
+            std::shared_ptr<Shading> newItem(new Shading());
             newItem->fromMultiPart(multipart, _XPLATSTR("Shading."));
             setShading( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("SpaceAfter")))
     {
-        setSpaceAfter(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("SpaceAfter"))));
+        setSpaceAfter(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("SpaceAfter"))));
     }
     if(multipart->hasContent(_XPLATSTR("SpaceAfterAuto")))
     {
-        setSpaceAfterAuto(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SpaceAfterAuto"))));
+        setSpaceAfterAuto(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SpaceAfterAuto"))));
     }
     if(multipart->hasContent(_XPLATSTR("SpaceBefore")))
     {
-        setSpaceBefore(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("SpaceBefore"))));
+        setSpaceBefore(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("SpaceBefore"))));
     }
     if(multipart->hasContent(_XPLATSTR("SpaceBeforeAuto")))
     {
-        setSpaceBeforeAuto(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SpaceBeforeAuto"))));
+        setSpaceBeforeAuto(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SpaceBeforeAuto"))));
     }
     if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
     {
@@ -690,25 +690,25 @@ void ParagraphFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     }
     if(multipart->hasContent(_XPLATSTR("SuppressAutoHyphens")))
     {
-        setSuppressAutoHyphens(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SuppressAutoHyphens"))));
+        setSuppressAutoHyphens(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SuppressAutoHyphens"))));
     }
     if(multipart->hasContent(_XPLATSTR("SuppressLineNumbers")))
     {
-        setSuppressLineNumbers(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SuppressLineNumbers"))));
+        setSuppressLineNumbers(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SuppressLineNumbers"))));
     }
     if(multipart->hasContent(_XPLATSTR("WidowControl")))
     {
-        setWidowControl(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("WidowControl"))));
+        setWidowControl(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("WidowControl"))));
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isAddSpaceBetweenFarEastAndAlpha() const
+bool ParagraphFormat::isAddSpaceBetweenFarEastAndAlpha() const
 {
     return m_AddSpaceBetweenFarEastAndAlpha;
 }
 
 
-void ParagraphFormat::setAddSpaceBetweenFarEastAndAlpha(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setAddSpaceBetweenFarEastAndAlpha(bool value)
 {
     m_AddSpaceBetweenFarEastAndAlpha = value;
     m_AddSpaceBetweenFarEastAndAlphaIsSet = true;
@@ -723,13 +723,13 @@ void ParagraphFormat::unsetAddSpaceBetweenFarEastAndAlpha()
     m_AddSpaceBetweenFarEastAndAlphaIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isAddSpaceBetweenFarEastAndDigit() const
+bool ParagraphFormat::isAddSpaceBetweenFarEastAndDigit() const
 {
     return m_AddSpaceBetweenFarEastAndDigit;
 }
 
 
-void ParagraphFormat::setAddSpaceBetweenFarEastAndDigit(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setAddSpaceBetweenFarEastAndDigit(bool value)
 {
     m_AddSpaceBetweenFarEastAndDigit = value;
     m_AddSpaceBetweenFarEastAndDigitIsSet = true;
@@ -744,13 +744,13 @@ void ParagraphFormat::unsetAddSpaceBetweenFarEastAndDigit()
     m_AddSpaceBetweenFarEastAndDigitIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphFormat::getAlignment() const
+utility::string_t ParagraphFormat::getAlignment() const
 {
     return m_Alignment;
 }
 
 
-void ParagraphFormat::setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphFormat::setAlignment(utility::string_t value)
 {
     m_Alignment = value;
     m_AlignmentIsSet = true;
@@ -765,13 +765,13 @@ void ParagraphFormat::unsetAlignment()
     m_AlignmentIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isBidi() const
+bool ParagraphFormat::isBidi() const
 {
     return m_Bidi;
 }
 
 
-void ParagraphFormat::setBidi(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setBidi(bool value)
 {
     m_Bidi = value;
     m_BidiIsSet = true;
@@ -786,13 +786,13 @@ void ParagraphFormat::unsetBidi()
     m_BidiIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphFormat::getDropCapPosition() const
+utility::string_t ParagraphFormat::getDropCapPosition() const
 {
     return m_DropCapPosition;
 }
 
 
-void ParagraphFormat::setDropCapPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphFormat::setDropCapPosition(utility::string_t value)
 {
     m_DropCapPosition = value;
     m_DropCapPositionIsSet = true;
@@ -807,13 +807,13 @@ void ParagraphFormat::unsetDropCapPosition()
     m_DropCapPositionIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ParagraphFormat::getFirstLineIndent() const
+double ParagraphFormat::getFirstLineIndent() const
 {
     return m_FirstLineIndent;
 }
 
 
-void ParagraphFormat::setFirstLineIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ParagraphFormat::setFirstLineIndent(double value)
 {
     m_FirstLineIndent = value;
     m_FirstLineIndentIsSet = true;
@@ -828,13 +828,13 @@ void ParagraphFormat::unsetFirstLineIndent()
     m_FirstLineIndentIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isIsListItem() const
+bool ParagraphFormat::isIsListItem() const
 {
     return m_IsListItem;
 }
 
 
-void ParagraphFormat::setIsListItem(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setIsListItem(bool value)
 {
     m_IsListItem = value;
     m_IsListItemIsSet = true;
@@ -849,13 +849,13 @@ void ParagraphFormat::unsetIsListItem()
     m_IsListItemIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isKeepTogether() const
+bool ParagraphFormat::isKeepTogether() const
 {
     return m_KeepTogether;
 }
 
 
-void ParagraphFormat::setKeepTogether(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setKeepTogether(bool value)
 {
     m_KeepTogether = value;
     m_KeepTogetherIsSet = true;
@@ -870,13 +870,13 @@ void ParagraphFormat::unsetKeepTogether()
     m_KeepTogetherIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isKeepWithNext() const
+bool ParagraphFormat::isKeepWithNext() const
 {
     return m_KeepWithNext;
 }
 
 
-void ParagraphFormat::setKeepWithNext(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setKeepWithNext(bool value)
 {
     m_KeepWithNext = value;
     m_KeepWithNextIsSet = true;
@@ -891,13 +891,13 @@ void ParagraphFormat::unsetKeepWithNext()
     m_KeepWithNextIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ParagraphFormat::getLeftIndent() const
+double ParagraphFormat::getLeftIndent() const
 {
     return m_LeftIndent;
 }
 
 
-void ParagraphFormat::setLeftIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ParagraphFormat::setLeftIndent(double value)
 {
     m_LeftIndent = value;
     m_LeftIndentIsSet = true;
@@ -912,13 +912,13 @@ void ParagraphFormat::unsetLeftIndent()
     m_LeftIndentIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ParagraphFormat::getLineSpacing() const
+double ParagraphFormat::getLineSpacing() const
 {
     return m_LineSpacing;
 }
 
 
-void ParagraphFormat::setLineSpacing(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ParagraphFormat::setLineSpacing(double value)
 {
     m_LineSpacing = value;
     m_LineSpacingIsSet = true;
@@ -933,13 +933,13 @@ void ParagraphFormat::unsetLineSpacing()
     m_LineSpacingIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphFormat::getLineSpacingRule() const
+utility::string_t ParagraphFormat::getLineSpacingRule() const
 {
     return m_LineSpacingRule;
 }
 
 
-void ParagraphFormat::setLineSpacingRule(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphFormat::setLineSpacingRule(utility::string_t value)
 {
     m_LineSpacingRule = value;
     m_LineSpacingRuleIsSet = true;
@@ -954,13 +954,13 @@ void ParagraphFormat::unsetLineSpacingRule()
     m_LineSpacingRuleIsSet = false;
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> ParagraphFormat::getLinesToDrop() const
+int32_t ParagraphFormat::getLinesToDrop() const
 {
     return m_LinesToDrop;
 }
 
 
-void ParagraphFormat::setLinesToDrop(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void ParagraphFormat::setLinesToDrop(int32_t value)
 {
     m_LinesToDrop = value;
     m_LinesToDropIsSet = true;
@@ -975,13 +975,13 @@ void ParagraphFormat::unsetLinesToDrop()
     m_LinesToDropIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isNoSpaceBetweenParagraphsOfSameStyle() const
+bool ParagraphFormat::isNoSpaceBetweenParagraphsOfSameStyle() const
 {
     return m_NoSpaceBetweenParagraphsOfSameStyle;
 }
 
 
-void ParagraphFormat::setNoSpaceBetweenParagraphsOfSameStyle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setNoSpaceBetweenParagraphsOfSameStyle(bool value)
 {
     m_NoSpaceBetweenParagraphsOfSameStyle = value;
     m_NoSpaceBetweenParagraphsOfSameStyleIsSet = true;
@@ -996,13 +996,13 @@ void ParagraphFormat::unsetNoSpaceBetweenParagraphsOfSameStyle()
     m_NoSpaceBetweenParagraphsOfSameStyleIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphFormat::getOutlineLevel() const
+utility::string_t ParagraphFormat::getOutlineLevel() const
 {
     return m_OutlineLevel;
 }
 
 
-void ParagraphFormat::setOutlineLevel(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphFormat::setOutlineLevel(utility::string_t value)
 {
     m_OutlineLevel = value;
     m_OutlineLevelIsSet = true;
@@ -1017,13 +1017,13 @@ void ParagraphFormat::unsetOutlineLevel()
     m_OutlineLevelIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isPageBreakBefore() const
+bool ParagraphFormat::isPageBreakBefore() const
 {
     return m_PageBreakBefore;
 }
 
 
-void ParagraphFormat::setPageBreakBefore(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setPageBreakBefore(bool value)
 {
     m_PageBreakBefore = value;
     m_PageBreakBeforeIsSet = true;
@@ -1038,13 +1038,13 @@ void ParagraphFormat::unsetPageBreakBefore()
     m_PageBreakBeforeIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ParagraphFormat::getRightIndent() const
+double ParagraphFormat::getRightIndent() const
 {
     return m_RightIndent;
 }
 
 
-void ParagraphFormat::setRightIndent(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ParagraphFormat::setRightIndent(double value)
 {
     m_RightIndent = value;
     m_RightIndentIsSet = true;
@@ -1059,13 +1059,13 @@ void ParagraphFormat::unsetRightIndent()
     m_RightIndentIsSet = false;
 }
 
-<DATA_TYPE_START>Shading<DATA_TYPE_END> ParagraphFormat::getShading() const
+std::shared_ptr<Shading> ParagraphFormat::getShading() const
 {
     return m_Shading;
 }
 
 
-void ParagraphFormat::setShading(<DATA_TYPE_START>Shading<DATA_TYPE_END> value)
+void ParagraphFormat::setShading(std::shared_ptr<Shading> value)
 {
     m_Shading = value;
     m_ShadingIsSet = true;
@@ -1080,13 +1080,13 @@ void ParagraphFormat::unsetShading()
     m_ShadingIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ParagraphFormat::getSpaceAfter() const
+double ParagraphFormat::getSpaceAfter() const
 {
     return m_SpaceAfter;
 }
 
 
-void ParagraphFormat::setSpaceAfter(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ParagraphFormat::setSpaceAfter(double value)
 {
     m_SpaceAfter = value;
     m_SpaceAfterIsSet = true;
@@ -1101,13 +1101,13 @@ void ParagraphFormat::unsetSpaceAfter()
     m_SpaceAfterIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isSpaceAfterAuto() const
+bool ParagraphFormat::isSpaceAfterAuto() const
 {
     return m_SpaceAfterAuto;
 }
 
 
-void ParagraphFormat::setSpaceAfterAuto(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setSpaceAfterAuto(bool value)
 {
     m_SpaceAfterAuto = value;
     m_SpaceAfterAutoIsSet = true;
@@ -1122,13 +1122,13 @@ void ParagraphFormat::unsetSpaceAfterAuto()
     m_SpaceAfterAutoIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ParagraphFormat::getSpaceBefore() const
+double ParagraphFormat::getSpaceBefore() const
 {
     return m_SpaceBefore;
 }
 
 
-void ParagraphFormat::setSpaceBefore(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ParagraphFormat::setSpaceBefore(double value)
 {
     m_SpaceBefore = value;
     m_SpaceBeforeIsSet = true;
@@ -1143,13 +1143,13 @@ void ParagraphFormat::unsetSpaceBefore()
     m_SpaceBeforeIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isSpaceBeforeAuto() const
+bool ParagraphFormat::isSpaceBeforeAuto() const
 {
     return m_SpaceBeforeAuto;
 }
 
 
-void ParagraphFormat::setSpaceBeforeAuto(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setSpaceBeforeAuto(bool value)
 {
     m_SpaceBeforeAuto = value;
     m_SpaceBeforeAutoIsSet = true;
@@ -1164,13 +1164,13 @@ void ParagraphFormat::unsetSpaceBeforeAuto()
     m_SpaceBeforeAutoIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphFormat::getStyleIdentifier() const
+utility::string_t ParagraphFormat::getStyleIdentifier() const
 {
     return m_StyleIdentifier;
 }
 
 
-void ParagraphFormat::setStyleIdentifier(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphFormat::setStyleIdentifier(utility::string_t value)
 {
     m_StyleIdentifier = value;
     m_StyleIdentifierIsSet = true;
@@ -1185,13 +1185,13 @@ void ParagraphFormat::unsetStyleIdentifier()
     m_StyleIdentifierIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ParagraphFormat::getStyleName() const
+utility::string_t ParagraphFormat::getStyleName() const
 {
     return m_StyleName;
 }
 
 
-void ParagraphFormat::setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ParagraphFormat::setStyleName(utility::string_t value)
 {
     m_StyleName = value;
     m_StyleNameIsSet = true;
@@ -1206,13 +1206,13 @@ void ParagraphFormat::unsetStyleName()
     m_StyleNameIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isSuppressAutoHyphens() const
+bool ParagraphFormat::isSuppressAutoHyphens() const
 {
     return m_SuppressAutoHyphens;
 }
 
 
-void ParagraphFormat::setSuppressAutoHyphens(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setSuppressAutoHyphens(bool value)
 {
     m_SuppressAutoHyphens = value;
     m_SuppressAutoHyphensIsSet = true;
@@ -1227,13 +1227,13 @@ void ParagraphFormat::unsetSuppressAutoHyphens()
     m_SuppressAutoHyphensIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isSuppressLineNumbers() const
+bool ParagraphFormat::isSuppressLineNumbers() const
 {
     return m_SuppressLineNumbers;
 }
 
 
-void ParagraphFormat::setSuppressLineNumbers(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setSuppressLineNumbers(bool value)
 {
     m_SuppressLineNumbers = value;
     m_SuppressLineNumbersIsSet = true;
@@ -1248,13 +1248,13 @@ void ParagraphFormat::unsetSuppressLineNumbers()
     m_SuppressLineNumbersIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> ParagraphFormat::isWidowControl() const
+bool ParagraphFormat::isWidowControl() const
 {
     return m_WidowControl;
 }
 
 
-void ParagraphFormat::setWidowControl(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void ParagraphFormat::setWidowControl(bool value)
 {
     m_WidowControl = value;
     m_WidowControlIsSet = true;

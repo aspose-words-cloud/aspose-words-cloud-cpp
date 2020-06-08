@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets link.
     /// </summary>
-    <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> getLink() const;
+    std::shared_ptr<WordsApiLink> getLink() const;
     bool linkIsSet() const;
     void unsetLink();
-    void setLink(<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> value);
+    void setLink(std::shared_ptr<WordsApiLink> value);
 
 protected:
-    <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> m_Link;
+    std::shared_ptr<WordsApiLink> m_Link;
     bool m_LinkIsSet;
 };
 

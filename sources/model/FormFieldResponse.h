@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets FormField.
     /// </summary>
-    <DATA_TYPE_START>FormField<DATA_TYPE_END> getFormField() const;
+    std::shared_ptr<FormField> getFormField() const;
     bool formFieldIsSet() const;
     void unsetFormField();
-    void setFormField(<DATA_TYPE_START>FormField<DATA_TYPE_END> value);
+    void setFormField(std::shared_ptr<FormField> value);
 
 protected:
-    <DATA_TYPE_START>FormField<DATA_TYPE_END> m_FormField;
+    std::shared_ptr<FormField> m_FormField;
     bool m_FormFieldIsSet;
 };
 

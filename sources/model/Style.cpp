@@ -72,7 +72,7 @@ web::json::value Style::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Aliases.begin(), m_Aliases.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>string<DATA_TYPE_END> item) {
+			[&](utility::string_t item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -154,7 +154,7 @@ void Style::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BuiltIn")];
         if(!fieldValue.is_null())
         {
-            setBuiltIn(ModelBase::bool?FromJson(fieldValue));
+            setBuiltIn(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Font")))
@@ -162,7 +162,7 @@ void Style::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Font")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Font<DATA_TYPE_END> newItem(new Font());
+            std::shared_ptr<Font> newItem(new Font());
             newItem->fromJson(fieldValue);
             setFont( newItem );
         }
@@ -172,7 +172,7 @@ void Style::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsHeading")];
         if(!fieldValue.is_null())
         {
-            setIsHeading(ModelBase::bool?FromJson(fieldValue));
+            setIsHeading(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("IsQuickStyle")))
@@ -180,7 +180,7 @@ void Style::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsQuickStyle")];
         if(!fieldValue.is_null())
         {
-            setIsQuickStyle(ModelBase::bool?FromJson(fieldValue));
+            setIsQuickStyle(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("LinkedStyleName")))
@@ -232,7 +232,7 @@ void Style::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Aliases.begin(), m_Aliases.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>string<DATA_TYPE_END> item){
+        std::transform(m_Aliases.begin(), m_Aliases.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
             return ModelBase::toJson(item);
         });
         
@@ -317,24 +317,24 @@ void Style::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
     if(multipart->hasContent(_XPLATSTR("BuiltIn")))
     {
-        setBuiltIn(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
+        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
     }
     if(multipart->hasContent(_XPLATSTR("Font")))
     {
         if(multipart->hasContent(_XPLATSTR("Font")))
         {
-            <DATA_TYPE_START>Font<DATA_TYPE_END> newItem(new Font());
+            std::shared_ptr<Font> newItem(new Font());
             newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
             setFont( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("IsHeading")))
     {
-        setIsHeading(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsHeading"))));
+        setIsHeading(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsHeading"))));
     }
     if(multipart->hasContent(_XPLATSTR("IsQuickStyle")))
     {
-        setIsQuickStyle(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("IsQuickStyle"))));
+        setIsQuickStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsQuickStyle"))));
     }
     if(multipart->hasContent(_XPLATSTR("LinkedStyleName")))
     {
@@ -358,12 +358,12 @@ void Style::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
 }
 
-<DATA_TYPE_START>List<string><DATA_TYPE_END>& Style::getAliases()
+std::vector<utility::string_t>& Style::getAliases()
 {
     return m_Aliases;
 }
 
-void Style::setAliases(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value)
+void Style::setAliases(std::vector<utility::string_t> const& value)
 {
     m_Aliases = value;
     m_AliasesIsSet = true;
@@ -378,13 +378,13 @@ void Style::unsetAliases()
     m_AliasesIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Style::getBaseStyleName() const
+utility::string_t Style::getBaseStyleName() const
 {
     return m_BaseStyleName;
 }
 
 
-void Style::setBaseStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Style::setBaseStyleName(utility::string_t value)
 {
     m_BaseStyleName = value;
     m_BaseStyleNameIsSet = true;
@@ -399,13 +399,13 @@ void Style::unsetBaseStyleName()
     m_BaseStyleNameIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> Style::isBuiltIn() const
+bool Style::isBuiltIn() const
 {
     return m_BuiltIn;
 }
 
 
-void Style::setBuiltIn(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void Style::setBuiltIn(bool value)
 {
     m_BuiltIn = value;
     m_BuiltInIsSet = true;
@@ -420,13 +420,13 @@ void Style::unsetBuiltIn()
     m_BuiltInIsSet = false;
 }
 
-<DATA_TYPE_START>Font<DATA_TYPE_END> Style::getFont() const
+std::shared_ptr<Font> Style::getFont() const
 {
     return m_Font;
 }
 
 
-void Style::setFont(<DATA_TYPE_START>Font<DATA_TYPE_END> value)
+void Style::setFont(std::shared_ptr<Font> value)
 {
     m_Font = value;
     m_FontIsSet = true;
@@ -441,13 +441,13 @@ void Style::unsetFont()
     m_FontIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> Style::isIsHeading() const
+bool Style::isIsHeading() const
 {
     return m_IsHeading;
 }
 
 
-void Style::setIsHeading(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void Style::setIsHeading(bool value)
 {
     m_IsHeading = value;
     m_IsHeadingIsSet = true;
@@ -462,13 +462,13 @@ void Style::unsetIsHeading()
     m_IsHeadingIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> Style::isIsQuickStyle() const
+bool Style::isIsQuickStyle() const
 {
     return m_IsQuickStyle;
 }
 
 
-void Style::setIsQuickStyle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void Style::setIsQuickStyle(bool value)
 {
     m_IsQuickStyle = value;
     m_IsQuickStyleIsSet = true;
@@ -483,13 +483,13 @@ void Style::unsetIsQuickStyle()
     m_IsQuickStyleIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Style::getLinkedStyleName() const
+utility::string_t Style::getLinkedStyleName() const
 {
     return m_LinkedStyleName;
 }
 
 
-void Style::setLinkedStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Style::setLinkedStyleName(utility::string_t value)
 {
     m_LinkedStyleName = value;
     m_LinkedStyleNameIsSet = true;
@@ -504,13 +504,13 @@ void Style::unsetLinkedStyleName()
     m_LinkedStyleNameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Style::getName() const
+utility::string_t Style::getName() const
 {
     return m_Name;
 }
 
 
-void Style::setName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Style::setName(utility::string_t value)
 {
     m_Name = value;
     m_NameIsSet = true;
@@ -525,13 +525,13 @@ void Style::unsetName()
     m_NameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Style::getNextParagraphStyleName() const
+utility::string_t Style::getNextParagraphStyleName() const
 {
     return m_NextParagraphStyleName;
 }
 
 
-void Style::setNextParagraphStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Style::setNextParagraphStyleName(utility::string_t value)
 {
     m_NextParagraphStyleName = value;
     m_NextParagraphStyleNameIsSet = true;
@@ -546,13 +546,13 @@ void Style::unsetNextParagraphStyleName()
     m_NextParagraphStyleNameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Style::getStyleIdentifier() const
+utility::string_t Style::getStyleIdentifier() const
 {
     return m_StyleIdentifier;
 }
 
 
-void Style::setStyleIdentifier(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Style::setStyleIdentifier(utility::string_t value)
 {
     m_StyleIdentifier = value;
     m_StyleIdentifierIsSet = true;
@@ -567,13 +567,13 @@ void Style::unsetStyleIdentifier()
     m_StyleIdentifierIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Style::getType() const
+utility::string_t Style::getType() const
 {
     return m_Type;
 }
 
 
-void Style::setType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Style::setType(utility::string_t value)
 {
     m_Type = value;
     m_TypeIsSet = true;

@@ -98,7 +98,7 @@ void SvgSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportEmbeddedImages")];
         if(!fieldValue.is_null())
         {
-            setExportEmbeddedImages(ModelBase::bool?FromJson(fieldValue));
+            setExportEmbeddedImages(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("FitToViewPort")))
@@ -106,7 +106,7 @@ void SvgSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FitToViewPort")];
         if(!fieldValue.is_null())
         {
-            setFitToViewPort(ModelBase::bool?FromJson(fieldValue));
+            setFitToViewPort(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ResourcesFolder")))
@@ -130,7 +130,7 @@ void SvgSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ShowPageBorder")];
         if(!fieldValue.is_null())
         {
-            setShowPageBorder(ModelBase::bool?FromJson(fieldValue));
+            setShowPageBorder(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TextOutputMode")))
@@ -186,11 +186,11 @@ void SvgSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 
     if(multipart->hasContent(_XPLATSTR("ExportEmbeddedImages")))
     {
-        setExportEmbeddedImages(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportEmbeddedImages"))));
+        setExportEmbeddedImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportEmbeddedImages"))));
     }
     if(multipart->hasContent(_XPLATSTR("FitToViewPort")))
     {
-        setFitToViewPort(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("FitToViewPort"))));
+        setFitToViewPort(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("FitToViewPort"))));
     }
     if(multipart->hasContent(_XPLATSTR("ResourcesFolder")))
     {
@@ -202,7 +202,7 @@ void SvgSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
     if(multipart->hasContent(_XPLATSTR("ShowPageBorder")))
     {
-        setShowPageBorder(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ShowPageBorder"))));
+        setShowPageBorder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ShowPageBorder"))));
     }
     if(multipart->hasContent(_XPLATSTR("TextOutputMode")))
     {
@@ -210,13 +210,13 @@ void SvgSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SvgSaveOptionsData::isExportEmbeddedImages() const
+bool SvgSaveOptionsData::isExportEmbeddedImages() const
 {
     return m_ExportEmbeddedImages;
 }
 
 
-void SvgSaveOptionsData::setExportEmbeddedImages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SvgSaveOptionsData::setExportEmbeddedImages(bool value)
 {
     m_ExportEmbeddedImages = value;
     m_ExportEmbeddedImagesIsSet = true;
@@ -231,13 +231,13 @@ void SvgSaveOptionsData::unsetExportEmbeddedImages()
     m_ExportEmbeddedImagesIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SvgSaveOptionsData::isFitToViewPort() const
+bool SvgSaveOptionsData::isFitToViewPort() const
 {
     return m_FitToViewPort;
 }
 
 
-void SvgSaveOptionsData::setFitToViewPort(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SvgSaveOptionsData::setFitToViewPort(bool value)
 {
     m_FitToViewPort = value;
     m_FitToViewPortIsSet = true;
@@ -252,13 +252,13 @@ void SvgSaveOptionsData::unsetFitToViewPort()
     m_FitToViewPortIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SvgSaveOptionsData::getResourcesFolder() const
+utility::string_t SvgSaveOptionsData::getResourcesFolder() const
 {
     return m_ResourcesFolder;
 }
 
 
-void SvgSaveOptionsData::setResourcesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SvgSaveOptionsData::setResourcesFolder(utility::string_t value)
 {
     m_ResourcesFolder = value;
     m_ResourcesFolderIsSet = true;
@@ -273,13 +273,13 @@ void SvgSaveOptionsData::unsetResourcesFolder()
     m_ResourcesFolderIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SvgSaveOptionsData::getResourcesFolderAlias() const
+utility::string_t SvgSaveOptionsData::getResourcesFolderAlias() const
 {
     return m_ResourcesFolderAlias;
 }
 
 
-void SvgSaveOptionsData::setResourcesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SvgSaveOptionsData::setResourcesFolderAlias(utility::string_t value)
 {
     m_ResourcesFolderAlias = value;
     m_ResourcesFolderAliasIsSet = true;
@@ -294,13 +294,13 @@ void SvgSaveOptionsData::unsetResourcesFolderAlias()
     m_ResourcesFolderAliasIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> SvgSaveOptionsData::isShowPageBorder() const
+bool SvgSaveOptionsData::isShowPageBorder() const
 {
     return m_ShowPageBorder;
 }
 
 
-void SvgSaveOptionsData::setShowPageBorder(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void SvgSaveOptionsData::setShowPageBorder(bool value)
 {
     m_ShowPageBorder = value;
     m_ShowPageBorderIsSet = true;
@@ -315,13 +315,13 @@ void SvgSaveOptionsData::unsetShowPageBorder()
     m_ShowPageBorderIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SvgSaveOptionsData::getTextOutputMode() const
+utility::string_t SvgSaveOptionsData::getTextOutputMode() const
 {
     return m_TextOutputMode;
 }
 
 
-void SvgSaveOptionsData::setTextOutputMode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SvgSaveOptionsData::setTextOutputMode(utility::string_t value)
 {
     m_TextOutputMode = value;
     m_TextOutputModeIsSet = true;

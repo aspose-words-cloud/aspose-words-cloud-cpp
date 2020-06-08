@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Tables.
     /// </summary>
-    <DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> getTables() const;
+    std::shared_ptr<TableLinkCollection> getTables() const;
     bool tablesIsSet() const;
     void unsetTables();
-    void setTables(<DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> value);
+    void setTables(std::shared_ptr<TableLinkCollection> value);
 
 protected:
-    <DATA_TYPE_START>TableLinkCollection<DATA_TYPE_END> m_Tables;
+    std::shared_ptr<TableLinkCollection> m_Tables;
     bool m_TablesIsSet;
 };
 

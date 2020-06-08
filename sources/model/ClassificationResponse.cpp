@@ -65,7 +65,7 @@ web::json::value ClassificationResponse::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>ClassificationResult<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<ClassificationResult> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -95,7 +95,7 @@ void ClassificationResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BestClassProbability")];
         if(!fieldValue.is_null())
         {
-            setBestClassProbability(ModelBase::double?FromJson(fieldValue));
+            setBestClassProbability(ModelBase::doubleFromJson(fieldValue));
         }
     }
     {
@@ -107,11 +107,11 @@ void ClassificationResponse::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_BestResults), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ClassificationResult<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<ClassificationResult>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>ClassificationResult<DATA_TYPE_END> newItem(new ClassificationResult());
+                std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -138,7 +138,7 @@ void ClassificationResponse::toMultipart(const std::shared_ptr<MultipartFormData
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>ClassificationResult<DATA_TYPE_END> item){
+        std::transform(m_BestResults.begin(), m_BestResults.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ClassificationResult> item){
             return ModelBase::toJson(item);
         });
         
@@ -159,7 +159,7 @@ void ClassificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
     }
     if(multipart->hasContent(_XPLATSTR("BestClassProbability")))
     {
-        setBestClassProbability(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("BestClassProbability"))));
+        setBestClassProbability(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BestClassProbability"))));
     }
     {
         m_BestResults.clear();
@@ -170,11 +170,11 @@ void ClassificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BestResults), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ClassificationResult<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<ClassificationResult>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>ClassificationResult<DATA_TYPE_END> newItem(new ClassificationResult());
+                std::shared_ptr<ClassificationResult> newItem(new ClassificationResult());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -183,13 +183,13 @@ void ClassificationResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ClassificationResponse::getBestClassName() const
+utility::string_t ClassificationResponse::getBestClassName() const
 {
     return m_BestClassName;
 }
 
 
-void ClassificationResponse::setBestClassName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ClassificationResponse::setBestClassName(utility::string_t value)
 {
     m_BestClassName = value;
     m_BestClassNameIsSet = true;
@@ -204,13 +204,13 @@ void ClassificationResponse::unsetBestClassName()
     m_BestClassNameIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> ClassificationResponse::getBestClassProbability() const
+double ClassificationResponse::getBestClassProbability() const
 {
     return m_BestClassProbability;
 }
 
 
-void ClassificationResponse::setBestClassProbability(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void ClassificationResponse::setBestClassProbability(double value)
 {
     m_BestClassProbability = value;
     m_BestClassProbabilityIsSet = true;
@@ -225,12 +225,12 @@ void ClassificationResponse::unsetBestClassProbability()
     m_BestClassProbabilityIsSet = false;
 }
 
-<DATA_TYPE_START>List<ClassificationResult><DATA_TYPE_END>& ClassificationResponse::getBestResults()
+std::vector<std::shared_ptr<ClassificationResult>>& ClassificationResponse::getBestResults()
 {
     return m_BestResults;
 }
 
-void ClassificationResponse::setBestResults(<DATA_TYPE_START>List<ClassificationResult><DATA_TYPE_END> const& value)
+void ClassificationResponse::setBestResults(std::vector<std::shared_ptr<ClassificationResult>> const& value)
 {
     m_BestResults = value;
     m_BestResultsIsSet = true;

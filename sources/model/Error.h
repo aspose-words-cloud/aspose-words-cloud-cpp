@@ -65,40 +65,40 @@ public:
     /// <summary>
     /// Code             
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCode() const;
+    utility::string_t getCode() const;
     bool codeIsSet() const;
     void unsetCode();
-    void setCode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCode(utility::string_t value);
     /// <summary>
     /// Message             
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getMessage() const;
+    utility::string_t getMessage() const;
     bool messageIsSet() const;
     void unsetMessage();
-    void setMessage(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setMessage(utility::string_t value);
     /// <summary>
     /// Description             
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDescription() const;
+    utility::string_t getDescription() const;
     bool descriptionIsSet() const;
     void unsetDescription();
-    void setDescription(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDescription(utility::string_t value);
     /// <summary>
     /// Gets or sets InnerError.
     /// </summary>
-    <DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> getInnerError() const;
+    std::shared_ptr<ErrorDetails> getInnerError() const;
     bool innerErrorIsSet() const;
     void unsetInnerError();
-    void setInnerError(<DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> value);
+    void setInnerError(std::shared_ptr<ErrorDetails> value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Code;
+    utility::string_t m_Code;
     bool m_CodeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Message;
+    utility::string_t m_Message;
     bool m_MessageIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Description;
+    utility::string_t m_Description;
     bool m_DescriptionIsSet;
-    <DATA_TYPE_START>ErrorDetails<DATA_TYPE_END> m_InnerError;
+    std::shared_ptr<ErrorDetails> m_InnerError;
     bool m_InnerErrorIsSet;
 };
 

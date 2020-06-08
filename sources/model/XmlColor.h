@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets hTML string color representation.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getWeb() const;
+    utility::string_t getWeb() const;
     bool webIsSet() const;
     void unsetWeb();
-    void setWeb(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setWeb(utility::string_t value);
     /// <summary>
     /// Gets or sets alpha component of color structure.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getAlpha() const;
+    int32_t getAlpha() const;
     bool alphaIsSet() const;
     void unsetAlpha();
-    void setAlpha(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setAlpha(int32_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Web;
+    utility::string_t m_Web;
     bool m_WebIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_Alpha;
+    int32_t m_Alpha;
     bool m_AlphaIsSet;
 };
 

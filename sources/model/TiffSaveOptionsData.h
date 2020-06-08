@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering. Default value is 128.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getThresholdForFloydSteinbergDithering() const;
+    int32_t getThresholdForFloydSteinbergDithering() const;
     bool thresholdForFloydSteinbergDitheringIsSet() const;
     void unsetThresholdForFloydSteinbergDithering();
-    void setThresholdForFloydSteinbergDithering(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setThresholdForFloydSteinbergDithering(int32_t value);
     /// <summary>
     /// Gets or sets specifies method used while converting images to 1 bpp format.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTiffBinarizationMethod() const;
+    utility::string_t getTiffBinarizationMethod() const;
     bool tiffBinarizationMethodIsSet() const;
     void unsetTiffBinarizationMethod();
-    void setTiffBinarizationMethod(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTiffBinarizationMethod(utility::string_t value);
     /// <summary>
     /// Gets or sets type of compression.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTiffCompression() const;
+    utility::string_t getTiffCompression() const;
     bool tiffCompressionIsSet() const;
     void unsetTiffCompression();
-    void setTiffCompression(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTiffCompression(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ThresholdForFloydSteinbergDithering;
+    int32_t m_ThresholdForFloydSteinbergDithering;
     bool m_ThresholdForFloydSteinbergDitheringIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_TiffBinarizationMethod;
+    utility::string_t m_TiffBinarizationMethod;
     bool m_TiffBinarizationMethodIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_TiffCompression;
+    utility::string_t m_TiffCompression;
     bool m_TiffCompressionIsSet;
 };
 

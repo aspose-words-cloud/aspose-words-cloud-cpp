@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Hyperlinks.
     /// </summary>
-    <DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> getHyperlinks() const;
+    std::shared_ptr<Hyperlinks> getHyperlinks() const;
     bool hyperlinksIsSet() const;
     void unsetHyperlinks();
-    void setHyperlinks(<DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> value);
+    void setHyperlinks(std::shared_ptr<Hyperlinks> value);
 
 protected:
-    <DATA_TYPE_START>Hyperlinks<DATA_TYPE_END> m_Hyperlinks;
+    std::shared_ptr<Hyperlinks> m_Hyperlinks;
     bool m_HyperlinksIsSet;
 };
 

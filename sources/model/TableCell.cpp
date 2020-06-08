@@ -53,7 +53,7 @@ web::json::value TableCell::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>NodeLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<NodeLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void TableCell::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>NodeLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<NodeLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
+                std::shared_ptr<NodeLink> newItem(new NodeLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void TableCell::toMultipart(const std::shared_ptr<MultipartFormData>& multipart,
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>NodeLink<DATA_TYPE_END> item){
+        std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void TableCell::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>NodeLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<NodeLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>NodeLink<DATA_TYPE_END> newItem(new NodeLink());
+                std::shared_ptr<NodeLink> newItem(new NodeLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void TableCell::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END>& TableCell::getChildNodes()
+std::vector<std::shared_ptr<NodeLink>>& TableCell::getChildNodes()
 {
     return m_ChildNodes;
 }
 
-void TableCell::setChildNodes(<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> const& value)
+void TableCell::setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value)
 {
     m_ChildNodes = value;
     m_ChildNodesIsSet = true;

@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets true if the text in a table row is allowed to split across a page break.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isAllowBreakAcrossPages() const;
+    bool isAllowBreakAcrossPages() const;
     bool allowBreakAcrossPagesIsSet() const;
     void unsetAllowBreakAcrossPages();
-    void setAllowBreakAcrossPages(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setAllowBreakAcrossPages(bool value);
     /// <summary>
     /// Gets or sets true if the row is repeated as a table heading on every page when the table spans more than one page.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isHeadingFormat() const;
+    bool isHeadingFormat() const;
     bool headingFormatIsSet() const;
     void unsetHeadingFormat();
-    void setHeadingFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setHeadingFormat(bool value);
     /// <summary>
     /// Gets or sets the height of the table row in points.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getHeight() const;
+    double getHeight() const;
     bool heightIsSet() const;
     void unsetHeight();
-    void setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setHeight(double value);
     /// <summary>
     /// Gets or sets the rule for determining the height of the table row.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getHeightRule() const;
+    utility::string_t getHeightRule() const;
     bool heightRuleIsSet() const;
     void unsetHeightRule();
-    void setHeightRule(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setHeightRule(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_AllowBreakAcrossPages;
+    bool m_AllowBreakAcrossPages;
     bool m_AllowBreakAcrossPagesIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_HeadingFormat;
+    bool m_HeadingFormat;
     bool m_HeadingFormatIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Height;
+    double m_Height;
     bool m_HeightIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_HeightRule;
+    utility::string_t m_HeightRule;
     bool m_HeightRuleIsSet;
 };
 

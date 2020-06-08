@@ -70,7 +70,7 @@ void ModificationOperationResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Source")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setSource( newItem );
         }
@@ -80,7 +80,7 @@ void ModificationOperationResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Dest")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setDest( newItem );
         }
@@ -118,7 +118,7 @@ void ModificationOperationResult::fromMultiPart(const std::shared_ptr<MultipartF
     {
         if(multipart->hasContent(_XPLATSTR("Source")))
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("Source."));
             setSource( newItem );
         }
@@ -127,20 +127,20 @@ void ModificationOperationResult::fromMultiPart(const std::shared_ptr<MultipartF
     {
         if(multipart->hasContent(_XPLATSTR("Dest")))
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("Dest."));
             setDest( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>FileLink<DATA_TYPE_END> ModificationOperationResult::getSource() const
+std::shared_ptr<FileLink> ModificationOperationResult::getSource() const
 {
     return m_Source;
 }
 
 
-void ModificationOperationResult::setSource(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
+void ModificationOperationResult::setSource(std::shared_ptr<FileLink> value)
 {
     m_Source = value;
     m_SourceIsSet = true;
@@ -155,13 +155,13 @@ void ModificationOperationResult::unsetSource()
     m_SourceIsSet = false;
 }
 
-<DATA_TYPE_START>FileLink<DATA_TYPE_END> ModificationOperationResult::getDest() const
+std::shared_ptr<FileLink> ModificationOperationResult::getDest() const
 {
     return m_Dest;
 }
 
 
-void ModificationOperationResult::setDest(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
+void ModificationOperationResult::setDest(std::shared_ptr<FileLink> value)
 {
     m_Dest = value;
     m_DestIsSet = true;

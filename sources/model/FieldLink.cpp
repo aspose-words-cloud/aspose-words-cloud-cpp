@@ -95,13 +95,13 @@ void FieldLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipar
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FieldLink::getFieldCode() const
+utility::string_t FieldLink::getFieldCode() const
 {
     return m_FieldCode;
 }
 
 
-void FieldLink::setFieldCode(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FieldLink::setFieldCode(utility::string_t value)
 {
     m_FieldCode = value;
     m_FieldCodeIsSet = true;

@@ -72,7 +72,7 @@ void StatDataResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setDocumentLink( newItem );
         }
@@ -82,7 +82,7 @@ void StatDataResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("StatData")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentStatData<DATA_TYPE_END> newItem(new DocumentStatData());
+            std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
             newItem->fromJson(fieldValue);
             setStatData( newItem );
         }
@@ -120,7 +120,7 @@ void StatDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("DocumentLink")))
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
             setDocumentLink( newItem );
         }
@@ -129,20 +129,20 @@ void StatDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
     {
         if(multipart->hasContent(_XPLATSTR("StatData")))
         {
-            <DATA_TYPE_START>DocumentStatData<DATA_TYPE_END> newItem(new DocumentStatData());
+            std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
             newItem->fromMultiPart(multipart, _XPLATSTR("StatData."));
             setStatData( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>FileLink<DATA_TYPE_END> StatDataResponse::getDocumentLink() const
+std::shared_ptr<FileLink> StatDataResponse::getDocumentLink() const
 {
     return m_DocumentLink;
 }
 
 
-void StatDataResponse::setDocumentLink(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
+void StatDataResponse::setDocumentLink(std::shared_ptr<FileLink> value)
 {
     m_DocumentLink = value;
     m_DocumentLinkIsSet = true;
@@ -157,13 +157,13 @@ void StatDataResponse::unsetDocumentLink()
     m_DocumentLinkIsSet = false;
 }
 
-<DATA_TYPE_START>DocumentStatData<DATA_TYPE_END> StatDataResponse::getStatData() const
+std::shared_ptr<DocumentStatData> StatDataResponse::getStatData() const
 {
     return m_StatData;
 }
 
 
-void StatDataResponse::setStatData(<DATA_TYPE_START>DocumentStatData<DATA_TYPE_END> value)
+void StatDataResponse::setStatData(std::shared_ptr<DocumentStatData> value)
 {
     m_StatData = value;
     m_StatDataIsSet = true;

@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets table row will be inserted after row with specified 0-based index.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getInsertAfter() const;
+    int32_t getInsertAfter() const;
     bool insertAfterIsSet() const;
     void unsetInsertAfter();
-    void setInsertAfter(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setInsertAfter(int32_t value);
     /// <summary>
     /// Gets or sets count of columns. Default is 1.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getColumnsCount() const;
+    int32_t getColumnsCount() const;
     bool columnsCountIsSet() const;
     void unsetColumnsCount();
-    void setColumnsCount(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setColumnsCount(int32_t value);
 
 protected:
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_InsertAfter;
+    int32_t m_InsertAfter;
     bool m_InsertAfterIsSet;
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_ColumnsCount;
+    int32_t m_ColumnsCount;
     bool m_ColumnsCountIsSet;
 };
 

@@ -53,7 +53,7 @@ web::json::value SectionLinkCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_SectionLinkList.begin(), m_SectionLinkList.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>SectionLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<SectionLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void SectionLinkCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_SectionLinkList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>SectionLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<SectionLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>SectionLink<DATA_TYPE_END> newItem(new SectionLink());
+                std::shared_ptr<SectionLink> newItem(new SectionLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void SectionLinkCollection::toMultipart(const std::shared_ptr<MultipartFormData>
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_SectionLinkList.begin(), m_SectionLinkList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>SectionLink<DATA_TYPE_END> item){
+        std::transform(m_SectionLinkList.begin(), m_SectionLinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<SectionLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void SectionLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormDat
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_SectionLinkList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>SectionLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<SectionLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>SectionLink<DATA_TYPE_END> newItem(new SectionLink());
+                std::shared_ptr<SectionLink> newItem(new SectionLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void SectionLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormDat
     }
 }
 
-<DATA_TYPE_START>List<SectionLink><DATA_TYPE_END>& SectionLinkCollection::getSectionLinkList()
+std::vector<std::shared_ptr<SectionLink>>& SectionLinkCollection::getSectionLinkList()
 {
     return m_SectionLinkList;
 }
 
-void SectionLinkCollection::setSectionLinkList(<DATA_TYPE_START>List<SectionLink><DATA_TYPE_END> const& value)
+void SectionLinkCollection::setSectionLinkList(std::vector<std::shared_ptr<SectionLink>> const& value)
 {
     m_SectionLinkList = value;
     m_SectionLinkListIsSet = true;

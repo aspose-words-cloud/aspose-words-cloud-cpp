@@ -64,67 +64,67 @@ public:
     /// <summary>
     /// Gets or sets specifies where the distance to the image is measured from.             
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getRelativeHorizontalPosition() const;
+    utility::string_t getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
     void unsetRelativeHorizontalPosition();
-    void setRelativeHorizontalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setRelativeHorizontalPosition(utility::string_t value);
     /// <summary>
     /// Gets or sets distance in points from the origin to the left side of the image.             
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getLeft() const;
+    double getLeft() const;
     bool leftIsSet() const;
     void unsetLeft();
-    void setLeft(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setLeft(double value);
     /// <summary>
     /// Gets or sets specifies where the distance to the image measured from.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getRelativeVerticalPosition() const;
+    utility::string_t getRelativeVerticalPosition() const;
     bool relativeVerticalPositionIsSet() const;
     void unsetRelativeVerticalPosition();
-    void setRelativeVerticalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setRelativeVerticalPosition(utility::string_t value);
     /// <summary>
     /// Gets or sets distance in points from the origin to the top side of the image.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getTop() const;
+    double getTop() const;
     bool topIsSet() const;
     void unsetTop();
-    void setTop(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setTop(double value);
     /// <summary>
     /// Gets or sets width of the drawing objects in points.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getWidth() const;
+    double getWidth() const;
     bool widthIsSet() const;
     void unsetWidth();
-    void setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setWidth(double value);
     /// <summary>
     /// Gets or sets height of the drawing object in points.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getHeight() const;
+    double getHeight() const;
     bool heightIsSet() const;
     void unsetHeight();
-    void setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setHeight(double value);
     /// <summary>
     /// Gets or sets specifies how to wrap text around the image.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getWrapType() const;
+    utility::string_t getWrapType() const;
     bool wrapTypeIsSet() const;
     void unsetWrapType();
-    void setWrapType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setWrapType(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_RelativeHorizontalPosition;
+    utility::string_t m_RelativeHorizontalPosition;
     bool m_RelativeHorizontalPositionIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Left;
+    double m_Left;
     bool m_LeftIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_RelativeVerticalPosition;
+    utility::string_t m_RelativeVerticalPosition;
     bool m_RelativeVerticalPositionIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Top;
+    double m_Top;
     bool m_TopIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Width;
+    double m_Width;
     bool m_WidthIsSet;
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_Height;
+    double m_Height;
     bool m_HeightIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_WrapType;
+    utility::string_t m_WrapType;
     bool m_WrapTypeIsSet;
 };
 

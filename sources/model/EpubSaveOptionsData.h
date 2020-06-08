@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets specifies the maximum level of headings populated to the navigation map when exporting.
     /// </summary>
-    <DATA_TYPE_START>int?<DATA_TYPE_END> getEpubNavigationMapLevel() const;
+    int32_t getEpubNavigationMapLevel() const;
     bool epubNavigationMapLevelIsSet() const;
     void unsetEpubNavigationMapLevel();
-    void setEpubNavigationMapLevel(<DATA_TYPE_START>int?<DATA_TYPE_END> value);
+    void setEpubNavigationMapLevel(int32_t value);
 
 protected:
-    <DATA_TYPE_START>int?<DATA_TYPE_END> m_EpubNavigationMapLevel;
+    int32_t m_EpubNavigationMapLevel;
     bool m_EpubNavigationMapLevelIsSet;
 };
 

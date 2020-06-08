@@ -64,94 +64,94 @@ public:
     /// <summary>
     /// Gets or sets format of save.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getSaveFormat() const;
+    utility::string_t getSaveFormat() const;
     bool saveFormatIsSet() const;
     void unsetSaveFormat();
-    void setSaveFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setSaveFormat(utility::string_t value);
     /// <summary>
     /// Gets or sets name of destination file.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFileName() const;
+    utility::string_t getFileName() const;
     bool fileNameIsSet() const;
     void unsetFileName();
-    void setFileName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFileName(utility::string_t value);
     /// <summary>
     /// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDmlRenderingMode() const;
+    utility::string_t getDmlRenderingMode() const;
     bool dmlRenderingModeIsSet() const;
     void unsetDmlRenderingMode();
-    void setDmlRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDmlRenderingMode(utility::string_t value);
     /// <summary>
     /// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDmlEffectsRenderingMode() const;
+    utility::string_t getDmlEffectsRenderingMode() const;
     bool dmlEffectsRenderingModeIsSet() const;
     void unsetDmlEffectsRenderingMode();
-    void setDmlEffectsRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDmlEffectsRenderingMode(utility::string_t value);
     /// <summary>
     /// Gets or sets controls zip output or not. Default value is false.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isZipOutput() const;
+    bool isZipOutput() const;
     bool zipOutputIsSet() const;
     void unsetZipOutput();
-    void setZipOutput(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setZipOutput(bool value);
     /// <summary>
     /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUpdateLastSavedTimeProperty() const;
+    bool isUpdateLastSavedTimeProperty() const;
     bool updateLastSavedTimePropertyIsSet() const;
     void unsetUpdateLastSavedTimeProperty();
-    void setUpdateLastSavedTimeProperty(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUpdateLastSavedTimeProperty(bool value);
     /// <summary>
     /// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUpdateSdtContent() const;
+    bool isUpdateSdtContent() const;
     bool updateSdtContentIsSet() const;
     void unsetUpdateSdtContent();
-    void setUpdateSdtContent(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUpdateSdtContent(bool value);
     /// <summary>
     /// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUpdateFields() const;
+    bool isUpdateFields() const;
     bool updateFieldsIsSet() const;
     void unsetUpdateFields();
-    void setUpdateFields(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUpdateFields(bool value);
     /// <summary>
     /// Gets or sets a value determining how 3D effects are rendered.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDml3DEffectsRenderingMode() const;
+    utility::string_t getDml3DEffectsRenderingMode() const;
     bool dml3DEffectsRenderingModeIsSet() const;
     void unsetDml3DEffectsRenderingMode();
-    void setDml3DEffectsRenderingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDml3DEffectsRenderingMode(utility::string_t value);
     /// <summary>
     /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isUpdateLastPrintedProperty() const;
+    bool isUpdateLastPrintedProperty() const;
     bool updateLastPrintedPropertyIsSet() const;
     void unsetUpdateLastPrintedProperty();
-    void setUpdateLastPrintedProperty(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setUpdateLastPrintedProperty(bool value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_SaveFormat;
+    utility::string_t m_SaveFormat;
     bool m_SaveFormatIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FileName;
+    utility::string_t m_FileName;
     bool m_FileNameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_DmlRenderingMode;
+    utility::string_t m_DmlRenderingMode;
     bool m_DmlRenderingModeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_DmlEffectsRenderingMode;
+    utility::string_t m_DmlEffectsRenderingMode;
     bool m_DmlEffectsRenderingModeIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_ZipOutput;
+    bool m_ZipOutput;
     bool m_ZipOutputIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UpdateLastSavedTimeProperty;
+    bool m_UpdateLastSavedTimeProperty;
     bool m_UpdateLastSavedTimePropertyIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UpdateSdtContent;
+    bool m_UpdateSdtContent;
     bool m_UpdateSdtContentIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UpdateFields;
+    bool m_UpdateFields;
     bool m_UpdateFieldsIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Dml3DEffectsRenderingMode;
+    utility::string_t m_Dml3DEffectsRenderingMode;
     bool m_Dml3DEffectsRenderingModeIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_UpdateLastPrintedProperty;
+    bool m_UpdateLastPrintedProperty;
     bool m_UpdateLastPrintedPropertyIsSet;
 };
 

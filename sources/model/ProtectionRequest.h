@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets current password.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPassword() const;
+    utility::string_t getPassword() const;
     bool passwordIsSet() const;
     void unsetPassword();
-    void setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPassword(utility::string_t value);
     /// <summary>
     /// Gets or sets new password.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getNewPassword() const;
+    utility::string_t getNewPassword() const;
     bool newPasswordIsSet() const;
     void unsetNewPassword();
-    void setNewPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setNewPassword(utility::string_t value);
     /// <summary>
     /// Gets or sets new type of protection.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getProtectionType() const;
+    utility::string_t getProtectionType() const;
     bool protectionTypeIsSet() const;
     void unsetProtectionType();
-    void setProtectionType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setProtectionType(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Password;
+    utility::string_t m_Password;
     bool m_PasswordIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_NewPassword;
+    utility::string_t m_NewPassword;
     bool m_NewPasswordIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ProtectionType;
+    utility::string_t m_ProtectionType;
     bool m_ProtectionTypeIsSet;
 };
 

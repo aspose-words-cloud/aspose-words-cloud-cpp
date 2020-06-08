@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets type of the protection.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getProtectionType() const;
+    utility::string_t getProtectionType() const;
     bool protectionTypeIsSet() const;
     void unsetProtectionType();
-    void setProtectionType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setProtectionType(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ProtectionType;
+    utility::string_t m_ProtectionType;
     bool m_ProtectionTypeIsSet;
 };
 

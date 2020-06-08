@@ -118,13 +118,13 @@ void XamlFlowSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> XamlFlowSaveOptionsData::getImagesFolder() const
+utility::string_t XamlFlowSaveOptionsData::getImagesFolder() const
 {
     return m_ImagesFolder;
 }
 
 
-void XamlFlowSaveOptionsData::setImagesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void XamlFlowSaveOptionsData::setImagesFolder(utility::string_t value)
 {
     m_ImagesFolder = value;
     m_ImagesFolderIsSet = true;
@@ -139,13 +139,13 @@ void XamlFlowSaveOptionsData::unsetImagesFolder()
     m_ImagesFolderIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> XamlFlowSaveOptionsData::getImagesFolderAlias() const
+utility::string_t XamlFlowSaveOptionsData::getImagesFolderAlias() const
 {
     return m_ImagesFolderAlias;
 }
 
 
-void XamlFlowSaveOptionsData::setImagesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void XamlFlowSaveOptionsData::setImagesFolderAlias(utility::string_t value)
 {
     m_ImagesFolderAlias = value;
     m_ImagesFolderAliasIsSet = true;

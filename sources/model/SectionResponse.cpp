@@ -67,7 +67,7 @@ void SectionResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Section")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Section<DATA_TYPE_END> newItem(new Section());
+            std::shared_ptr<Section> newItem(new Section());
             newItem->fromJson(fieldValue);
             setSection( newItem );
         }
@@ -97,20 +97,20 @@ void SectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
     {
         if(multipart->hasContent(_XPLATSTR("Section")))
         {
-            <DATA_TYPE_START>Section<DATA_TYPE_END> newItem(new Section());
+            std::shared_ptr<Section> newItem(new Section());
             newItem->fromMultiPart(multipart, _XPLATSTR("Section."));
             setSection( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>Section<DATA_TYPE_END> SectionResponse::getSection() const
+std::shared_ptr<Section> SectionResponse::getSection() const
 {
     return m_Section;
 }
 
 
-void SectionResponse::setSection(<DATA_TYPE_START>Section<DATA_TYPE_END> value)
+void SectionResponse::setSection(std::shared_ptr<Section> value)
 {
     m_Section = value;
     m_SectionIsSet = true;

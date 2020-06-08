@@ -67,7 +67,7 @@ void SaveResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SaveResult")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>SaveResult<DATA_TYPE_END> newItem(new SaveResult());
+            std::shared_ptr<SaveResult> newItem(new SaveResult());
             newItem->fromJson(fieldValue);
             setSaveResult( newItem );
         }
@@ -97,20 +97,20 @@ void SaveResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("SaveResult")))
         {
-            <DATA_TYPE_START>SaveResult<DATA_TYPE_END> newItem(new SaveResult());
+            std::shared_ptr<SaveResult> newItem(new SaveResult());
             newItem->fromMultiPart(multipart, _XPLATSTR("SaveResult."));
             setSaveResult( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>SaveResult<DATA_TYPE_END> SaveResponse::getSaveResult() const
+std::shared_ptr<SaveResult> SaveResponse::getSaveResult() const
 {
     return m_SaveResult;
 }
 
 
-void SaveResponse::setSaveResult(<DATA_TYPE_START>SaveResult<DATA_TYPE_END> value)
+void SaveResponse::setSaveResult(std::shared_ptr<SaveResult> value)
 {
     m_SaveResult = value;
     m_SaveResultIsSet = true;

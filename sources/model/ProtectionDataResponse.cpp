@@ -72,7 +72,7 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DocumentLink")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setDocumentLink( newItem );
         }
@@ -82,7 +82,7 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ProtectionData")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>ProtectionData<DATA_TYPE_END> newItem(new ProtectionData());
+            std::shared_ptr<ProtectionData> newItem(new ProtectionData());
             newItem->fromJson(fieldValue);
             setProtectionData( newItem );
         }
@@ -120,7 +120,7 @@ void ProtectionDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
     {
         if(multipart->hasContent(_XPLATSTR("DocumentLink")))
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
             setDocumentLink( newItem );
         }
@@ -129,20 +129,20 @@ void ProtectionDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
     {
         if(multipart->hasContent(_XPLATSTR("ProtectionData")))
         {
-            <DATA_TYPE_START>ProtectionData<DATA_TYPE_END> newItem(new ProtectionData());
+            std::shared_ptr<ProtectionData> newItem(new ProtectionData());
             newItem->fromMultiPart(multipart, _XPLATSTR("ProtectionData."));
             setProtectionData( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>FileLink<DATA_TYPE_END> ProtectionDataResponse::getDocumentLink() const
+std::shared_ptr<FileLink> ProtectionDataResponse::getDocumentLink() const
 {
     return m_DocumentLink;
 }
 
 
-void ProtectionDataResponse::setDocumentLink(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
+void ProtectionDataResponse::setDocumentLink(std::shared_ptr<FileLink> value)
 {
     m_DocumentLink = value;
     m_DocumentLinkIsSet = true;
@@ -157,13 +157,13 @@ void ProtectionDataResponse::unsetDocumentLink()
     m_DocumentLinkIsSet = false;
 }
 
-<DATA_TYPE_START>ProtectionData<DATA_TYPE_END> ProtectionDataResponse::getProtectionData() const
+std::shared_ptr<ProtectionData> ProtectionDataResponse::getProtectionData() const
 {
     return m_ProtectionData;
 }
 
 
-void ProtectionDataResponse::setProtectionData(<DATA_TYPE_START>ProtectionData<DATA_TYPE_END> value)
+void ProtectionDataResponse::setProtectionData(std::shared_ptr<ProtectionData> value)
 {
     m_ProtectionData = value;
     m_ProtectionDataIsSet = true;

@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets page number format, e.g. \&quot;{PAGE} of {NUMPAGES}\&quot;.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFormat() const;
+    utility::string_t getFormat() const;
     bool formatIsSet() const;
     void unsetFormat();
-    void setFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFormat(utility::string_t value);
     /// <summary>
     /// Gets or sets text alignment, possible values are left, right, center or justify.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getAlignment() const;
+    utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
-    void setAlignment(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setAlignment(utility::string_t value);
     /// <summary>
     /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsTop() const;
+    bool isIsTop() const;
     bool isTopIsSet() const;
     void unsetIsTop();
-    void setIsTop(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsTop(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether if true the page number is added on first page too.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isSetPageNumberOnFirstPage() const;
+    bool isSetPageNumberOnFirstPage() const;
     bool setPageNumberOnFirstPageIsSet() const;
     void unsetSetPageNumberOnFirstPage();
-    void setSetPageNumberOnFirstPage(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setSetPageNumberOnFirstPage(bool value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Format;
+    utility::string_t m_Format;
     bool m_FormatIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Alignment;
+    utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsTop;
+    bool m_IsTop;
     bool m_IsTopIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_SetPageNumberOnFirstPage;
+    bool m_SetPageNumberOnFirstPage;
     bool m_SetPageNumberOnFirstPageIsSet;
 };
 

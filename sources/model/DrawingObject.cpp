@@ -93,7 +93,7 @@ web::json::value DrawingObject::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_RenderLinks.begin(), m_RenderLinks.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<WordsApiLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -127,7 +127,7 @@ void DrawingObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Height")];
         if(!fieldValue.is_null())
         {
-            setHeight(ModelBase::double?FromJson(fieldValue));
+            setHeight(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ImageDataLink")))
@@ -135,7 +135,7 @@ void DrawingObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ImageDataLink")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
+            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromJson(fieldValue);
             setImageDataLink( newItem );
         }
@@ -145,7 +145,7 @@ void DrawingObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Left")];
         if(!fieldValue.is_null())
         {
-            setLeft(ModelBase::double?FromJson(fieldValue));
+            setLeft(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("OleDataLink")))
@@ -153,7 +153,7 @@ void DrawingObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OleDataLink")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
+            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromJson(fieldValue);
             setOleDataLink( newItem );
         }
@@ -183,11 +183,11 @@ void DrawingObject::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_RenderLinks), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<WordsApiLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
+                std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -200,7 +200,7 @@ void DrawingObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Top")];
         if(!fieldValue.is_null())
         {
-            setTop(ModelBase::double?FromJson(fieldValue));
+            setTop(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Width")))
@@ -208,7 +208,7 @@ void DrawingObject::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Width")];
         if(!fieldValue.is_null())
         {
-            setWidth(ModelBase::double?FromJson(fieldValue));
+            setWidth(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("WrapType")))
@@ -264,7 +264,7 @@ void DrawingObject::toMultipart(const std::shared_ptr<MultipartFormData>& multip
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_RenderLinks.begin(), m_RenderLinks.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> item){
+        std::transform(m_RenderLinks.begin(), m_RenderLinks.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<WordsApiLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -296,26 +296,26 @@ void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
 
     if(multipart->hasContent(_XPLATSTR("Height")))
     {
-        setHeight(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
+        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
     }
     if(multipart->hasContent(_XPLATSTR("ImageDataLink")))
     {
         if(multipart->hasContent(_XPLATSTR("ImageDataLink")))
         {
-            <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
+            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("ImageDataLink."));
             setImageDataLink( newItem );
         }
     }
     if(multipart->hasContent(_XPLATSTR("Left")))
     {
-        setLeft(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Left"))));
+        setLeft(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Left"))));
     }
     if(multipart->hasContent(_XPLATSTR("OleDataLink")))
     {
         if(multipart->hasContent(_XPLATSTR("OleDataLink")))
         {
-            <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
+            std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("OleDataLink."));
             setOleDataLink( newItem );
         }
@@ -337,11 +337,11 @@ void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_RenderLinks), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<WordsApiLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> newItem(new WordsApiLink());
+                std::shared_ptr<WordsApiLink> newItem(new WordsApiLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -350,11 +350,11 @@ void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
     if(multipart->hasContent(_XPLATSTR("Top")))
     {
-        setTop(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Top"))));
+        setTop(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Top"))));
     }
     if(multipart->hasContent(_XPLATSTR("Width")))
     {
-        setWidth(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
+        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
     }
     if(multipart->hasContent(_XPLATSTR("WrapType")))
     {
@@ -362,13 +362,13 @@ void DrawingObject::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObject::getHeight() const
+double DrawingObject::getHeight() const
 {
     return m_Height;
 }
 
 
-void DrawingObject::setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObject::setHeight(double value)
 {
     m_Height = value;
     m_HeightIsSet = true;
@@ -383,13 +383,13 @@ void DrawingObject::unsetHeight()
     m_HeightIsSet = false;
 }
 
-<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> DrawingObject::getImageDataLink() const
+std::shared_ptr<WordsApiLink> DrawingObject::getImageDataLink() const
 {
     return m_ImageDataLink;
 }
 
 
-void DrawingObject::setImageDataLink(<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> value)
+void DrawingObject::setImageDataLink(std::shared_ptr<WordsApiLink> value)
 {
     m_ImageDataLink = value;
     m_ImageDataLinkIsSet = true;
@@ -404,13 +404,13 @@ void DrawingObject::unsetImageDataLink()
     m_ImageDataLinkIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObject::getLeft() const
+double DrawingObject::getLeft() const
 {
     return m_Left;
 }
 
 
-void DrawingObject::setLeft(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObject::setLeft(double value)
 {
     m_Left = value;
     m_LeftIsSet = true;
@@ -425,13 +425,13 @@ void DrawingObject::unsetLeft()
     m_LeftIsSet = false;
 }
 
-<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> DrawingObject::getOleDataLink() const
+std::shared_ptr<WordsApiLink> DrawingObject::getOleDataLink() const
 {
     return m_OleDataLink;
 }
 
 
-void DrawingObject::setOleDataLink(<DATA_TYPE_START>WordsApiLink<DATA_TYPE_END> value)
+void DrawingObject::setOleDataLink(std::shared_ptr<WordsApiLink> value)
 {
     m_OleDataLink = value;
     m_OleDataLinkIsSet = true;
@@ -446,13 +446,13 @@ void DrawingObject::unsetOleDataLink()
     m_OleDataLinkIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DrawingObject::getRelativeHorizontalPosition() const
+utility::string_t DrawingObject::getRelativeHorizontalPosition() const
 {
     return m_RelativeHorizontalPosition;
 }
 
 
-void DrawingObject::setRelativeHorizontalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DrawingObject::setRelativeHorizontalPosition(utility::string_t value)
 {
     m_RelativeHorizontalPosition = value;
     m_RelativeHorizontalPositionIsSet = true;
@@ -467,13 +467,13 @@ void DrawingObject::unsetRelativeHorizontalPosition()
     m_RelativeHorizontalPositionIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DrawingObject::getRelativeVerticalPosition() const
+utility::string_t DrawingObject::getRelativeVerticalPosition() const
 {
     return m_RelativeVerticalPosition;
 }
 
 
-void DrawingObject::setRelativeVerticalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DrawingObject::setRelativeVerticalPosition(utility::string_t value)
 {
     m_RelativeVerticalPosition = value;
     m_RelativeVerticalPositionIsSet = true;
@@ -488,12 +488,12 @@ void DrawingObject::unsetRelativeVerticalPosition()
     m_RelativeVerticalPositionIsSet = false;
 }
 
-<DATA_TYPE_START>List<WordsApiLink><DATA_TYPE_END>& DrawingObject::getRenderLinks()
+std::vector<std::shared_ptr<WordsApiLink>>& DrawingObject::getRenderLinks()
 {
     return m_RenderLinks;
 }
 
-void DrawingObject::setRenderLinks(<DATA_TYPE_START>List<WordsApiLink><DATA_TYPE_END> const& value)
+void DrawingObject::setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value)
 {
     m_RenderLinks = value;
     m_RenderLinksIsSet = true;
@@ -508,13 +508,13 @@ void DrawingObject::unsetRenderLinks()
     m_RenderLinksIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObject::getTop() const
+double DrawingObject::getTop() const
 {
     return m_Top;
 }
 
 
-void DrawingObject::setTop(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObject::setTop(double value)
 {
     m_Top = value;
     m_TopIsSet = true;
@@ -529,13 +529,13 @@ void DrawingObject::unsetTop()
     m_TopIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObject::getWidth() const
+double DrawingObject::getWidth() const
 {
     return m_Width;
 }
 
 
-void DrawingObject::setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObject::setWidth(double value)
 {
     m_Width = value;
     m_WidthIsSet = true;
@@ -550,13 +550,13 @@ void DrawingObject::unsetWidth()
     m_WidthIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DrawingObject::getWrapType() const
+utility::string_t DrawingObject::getWrapType() const
 {
     return m_WrapType;
 }
 
 
-void DrawingObject::setWrapType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DrawingObject::setWrapType(utility::string_t value)
 {
     m_WrapType = value;
     m_WrapTypeIsSet = true;

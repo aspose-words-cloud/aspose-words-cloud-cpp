@@ -95,13 +95,13 @@ void RangeTextResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> RangeTextResponse::getText() const
+utility::string_t RangeTextResponse::getText() const
 {
     return m_Text;
 }
 
 
-void RangeTextResponse::setText(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void RangeTextResponse::setText(utility::string_t value)
 {
     m_Text = value;
     m_TextIsSet = true;

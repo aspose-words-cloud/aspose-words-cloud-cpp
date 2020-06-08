@@ -62,7 +62,7 @@ web::json::value ReportEngineSettings::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ReportBuildOptions.begin(), m_ReportBuildOptions.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>ReportBuildOptions<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<ReportBuildOptions> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -102,11 +102,11 @@ void ReportEngineSettings::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ReportBuildOptions), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ReportBuildOptions<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<ReportBuildOptions>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>ReportBuildOptions<DATA_TYPE_END> newItem(new ReportBuildOptions());
+                std::shared_ptr<ReportBuildOptions> newItem(new ReportBuildOptions());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -127,7 +127,7 @@ void ReportEngineSettings::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CsvDataLoadOptions")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> newItem(new CsvDataLoadOptions());
+            std::shared_ptr<CsvDataLoadOptions> newItem(new CsvDataLoadOptions());
             newItem->fromJson(fieldValue);
             setCsvDataLoadOptions( newItem );
         }
@@ -146,7 +146,7 @@ void ReportEngineSettings::toMultipart(const std::shared_ptr<MultipartFormData>&
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ReportBuildOptions.begin(), m_ReportBuildOptions.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>ReportBuildOptions<DATA_TYPE_END> item){
+        std::transform(m_ReportBuildOptions.begin(), m_ReportBuildOptions.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ReportBuildOptions> item){
             return ModelBase::toJson(item);
         });
         
@@ -187,11 +187,11 @@ void ReportEngineSettings::fromMultiPart(const std::shared_ptr<MultipartFormData
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ReportBuildOptions), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ReportBuildOptions<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<ReportBuildOptions>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>ReportBuildOptions<DATA_TYPE_END> newItem(new ReportBuildOptions());
+                std::shared_ptr<ReportBuildOptions> newItem(new ReportBuildOptions());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -206,20 +206,20 @@ void ReportEngineSettings::fromMultiPart(const std::shared_ptr<MultipartFormData
     {
         if(multipart->hasContent(_XPLATSTR("CsvDataLoadOptions")))
         {
-            <DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> newItem(new CsvDataLoadOptions());
+            std::shared_ptr<CsvDataLoadOptions> newItem(new CsvDataLoadOptions());
             newItem->fromMultiPart(multipart, _XPLATSTR("CsvDataLoadOptions."));
             setCsvDataLoadOptions( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ReportEngineSettings::getDataSourceType() const
+utility::string_t ReportEngineSettings::getDataSourceType() const
 {
     return m_DataSourceType;
 }
 
 
-void ReportEngineSettings::setDataSourceType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ReportEngineSettings::setDataSourceType(utility::string_t value)
 {
     m_DataSourceType = value;
     m_DataSourceTypeIsSet = true;
@@ -234,12 +234,12 @@ void ReportEngineSettings::unsetDataSourceType()
     m_DataSourceTypeIsSet = false;
 }
 
-<DATA_TYPE_START>List<ReportBuildOptions><DATA_TYPE_END>& ReportEngineSettings::getReportBuildOptions()
+std::vector<std::shared_ptr<ReportBuildOptions>>& ReportEngineSettings::getReportBuildOptions()
 {
     return m_ReportBuildOptions;
 }
 
-void ReportEngineSettings::setReportBuildOptions(<DATA_TYPE_START>List<ReportBuildOptions><DATA_TYPE_END> const& value)
+void ReportEngineSettings::setReportBuildOptions(std::vector<std::shared_ptr<ReportBuildOptions>> const& value)
 {
     m_ReportBuildOptions = value;
     m_ReportBuildOptionsIsSet = true;
@@ -254,13 +254,13 @@ void ReportEngineSettings::unsetReportBuildOptions()
     m_ReportBuildOptionsIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ReportEngineSettings::getDataSourceName() const
+utility::string_t ReportEngineSettings::getDataSourceName() const
 {
     return m_DataSourceName;
 }
 
 
-void ReportEngineSettings::setDataSourceName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ReportEngineSettings::setDataSourceName(utility::string_t value)
 {
     m_DataSourceName = value;
     m_DataSourceNameIsSet = true;
@@ -275,13 +275,13 @@ void ReportEngineSettings::unsetDataSourceName()
     m_DataSourceNameIsSet = false;
 }
 
-<DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> ReportEngineSettings::getCsvDataLoadOptions() const
+std::shared_ptr<CsvDataLoadOptions> ReportEngineSettings::getCsvDataLoadOptions() const
 {
     return m_CsvDataLoadOptions;
 }
 
 
-void ReportEngineSettings::setCsvDataLoadOptions(<DATA_TYPE_START>CsvDataLoadOptions<DATA_TYPE_END> value)
+void ReportEngineSettings::setCsvDataLoadOptions(std::shared_ptr<CsvDataLoadOptions> value)
 {
     m_CsvDataLoadOptions = value;
     m_CsvDataLoadOptionsIsSet = true;

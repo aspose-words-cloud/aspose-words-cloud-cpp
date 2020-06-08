@@ -67,7 +67,7 @@ void DrawingObjectsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DrawingObjects")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DrawingObjectCollection<DATA_TYPE_END> newItem(new DrawingObjectCollection());
+            std::shared_ptr<DrawingObjectCollection> newItem(new DrawingObjectCollection());
             newItem->fromJson(fieldValue);
             setDrawingObjects( newItem );
         }
@@ -97,20 +97,20 @@ void DrawingObjectsResponse::fromMultiPart(const std::shared_ptr<MultipartFormDa
     {
         if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
         {
-            <DATA_TYPE_START>DrawingObjectCollection<DATA_TYPE_END> newItem(new DrawingObjectCollection());
+            std::shared_ptr<DrawingObjectCollection> newItem(new DrawingObjectCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObjects."));
             setDrawingObjects( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>DrawingObjectCollection<DATA_TYPE_END> DrawingObjectsResponse::getDrawingObjects() const
+std::shared_ptr<DrawingObjectCollection> DrawingObjectsResponse::getDrawingObjects() const
 {
     return m_DrawingObjects;
 }
 
 
-void DrawingObjectsResponse::setDrawingObjects(<DATA_TYPE_START>DrawingObjectCollection<DATA_TYPE_END> value)
+void DrawingObjectsResponse::setDrawingObjects(std::shared_ptr<DrawingObjectCollection> value)
 {
     m_DrawingObjects = value;
     m_DrawingObjectsIsSet = true;

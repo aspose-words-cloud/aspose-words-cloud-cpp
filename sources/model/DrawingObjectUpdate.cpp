@@ -110,7 +110,7 @@ void DrawingObjectUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Left")];
         if(!fieldValue.is_null())
         {
-            setLeft(ModelBase::double?FromJson(fieldValue));
+            setLeft(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("RelativeVerticalPosition")))
@@ -126,7 +126,7 @@ void DrawingObjectUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Top")];
         if(!fieldValue.is_null())
         {
-            setTop(ModelBase::double?FromJson(fieldValue));
+            setTop(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Width")))
@@ -134,7 +134,7 @@ void DrawingObjectUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Width")];
         if(!fieldValue.is_null())
         {
-            setWidth(ModelBase::double?FromJson(fieldValue));
+            setWidth(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("Height")))
@@ -142,7 +142,7 @@ void DrawingObjectUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Height")];
         if(!fieldValue.is_null())
         {
-            setHeight(ModelBase::double?FromJson(fieldValue));
+            setHeight(ModelBase::doubleFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("WrapType")))
@@ -207,7 +207,7 @@ void DrawingObjectUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("Left")))
     {
-        setLeft(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Left"))));
+        setLeft(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Left"))));
     }
     if(multipart->hasContent(_XPLATSTR("RelativeVerticalPosition")))
     {
@@ -215,15 +215,15 @@ void DrawingObjectUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
     if(multipart->hasContent(_XPLATSTR("Top")))
     {
-        setTop(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Top"))));
+        setTop(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Top"))));
     }
     if(multipart->hasContent(_XPLATSTR("Width")))
     {
-        setWidth(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
+        setWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Width"))));
     }
     if(multipart->hasContent(_XPLATSTR("Height")))
     {
-        setHeight(ModelBase::double?FromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
+        setHeight(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Height"))));
     }
     if(multipart->hasContent(_XPLATSTR("WrapType")))
     {
@@ -231,13 +231,13 @@ void DrawingObjectUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DrawingObjectUpdate::getRelativeHorizontalPosition() const
+utility::string_t DrawingObjectUpdate::getRelativeHorizontalPosition() const
 {
     return m_RelativeHorizontalPosition;
 }
 
 
-void DrawingObjectUpdate::setRelativeHorizontalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setRelativeHorizontalPosition(utility::string_t value)
 {
     m_RelativeHorizontalPosition = value;
     m_RelativeHorizontalPositionIsSet = true;
@@ -252,13 +252,13 @@ void DrawingObjectUpdate::unsetRelativeHorizontalPosition()
     m_RelativeHorizontalPositionIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObjectUpdate::getLeft() const
+double DrawingObjectUpdate::getLeft() const
 {
     return m_Left;
 }
 
 
-void DrawingObjectUpdate::setLeft(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setLeft(double value)
 {
     m_Left = value;
     m_LeftIsSet = true;
@@ -273,13 +273,13 @@ void DrawingObjectUpdate::unsetLeft()
     m_LeftIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DrawingObjectUpdate::getRelativeVerticalPosition() const
+utility::string_t DrawingObjectUpdate::getRelativeVerticalPosition() const
 {
     return m_RelativeVerticalPosition;
 }
 
 
-void DrawingObjectUpdate::setRelativeVerticalPosition(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setRelativeVerticalPosition(utility::string_t value)
 {
     m_RelativeVerticalPosition = value;
     m_RelativeVerticalPositionIsSet = true;
@@ -294,13 +294,13 @@ void DrawingObjectUpdate::unsetRelativeVerticalPosition()
     m_RelativeVerticalPositionIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObjectUpdate::getTop() const
+double DrawingObjectUpdate::getTop() const
 {
     return m_Top;
 }
 
 
-void DrawingObjectUpdate::setTop(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setTop(double value)
 {
     m_Top = value;
     m_TopIsSet = true;
@@ -315,13 +315,13 @@ void DrawingObjectUpdate::unsetTop()
     m_TopIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObjectUpdate::getWidth() const
+double DrawingObjectUpdate::getWidth() const
 {
     return m_Width;
 }
 
 
-void DrawingObjectUpdate::setWidth(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setWidth(double value)
 {
     m_Width = value;
     m_WidthIsSet = true;
@@ -336,13 +336,13 @@ void DrawingObjectUpdate::unsetWidth()
     m_WidthIsSet = false;
 }
 
-<DATA_TYPE_START>double?<DATA_TYPE_END> DrawingObjectUpdate::getHeight() const
+double DrawingObjectUpdate::getHeight() const
 {
     return m_Height;
 }
 
 
-void DrawingObjectUpdate::setHeight(<DATA_TYPE_START>double?<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setHeight(double value)
 {
     m_Height = value;
     m_HeightIsSet = true;
@@ -357,13 +357,13 @@ void DrawingObjectUpdate::unsetHeight()
     m_HeightIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> DrawingObjectUpdate::getWrapType() const
+utility::string_t DrawingObjectUpdate::getWrapType() const
 {
     return m_WrapType;
 }
 
 
-void DrawingObjectUpdate::setWrapType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void DrawingObjectUpdate::setWrapType(utility::string_t value)
 {
     m_WrapType = value;
     m_WrapTypeIsSet = true;

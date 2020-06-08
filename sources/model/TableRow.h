@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets RowFormat.
     /// </summary>
-    <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> getRowFormat() const;
+    std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;
     void unsetRowFormat();
-    void setRowFormat(<DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> value);
+    void setRowFormat(std::shared_ptr<TableRowFormat> value);
     /// <summary>
-    /// Gets or sets collection of table&#x27;s rows.
+    /// Gets or sets collection of table&#39;s rows.
     /// </summary>
-    <DATA_TYPE_START>List<TableCell><DATA_TYPE_END>& getTableCellList();
+    std::vector<std::shared_ptr<TableCell>>& getTableCellList();
     bool tableCellListIsSet() const;
     void unsetTableCellList();
-    void setTableCellList(<DATA_TYPE_START>List<TableCell><DATA_TYPE_END> const& value);
+    void setTableCellList(std::vector<std::shared_ptr<TableCell>> const& value);
 
 protected:
-    <DATA_TYPE_START>TableRowFormat<DATA_TYPE_END> m_RowFormat;
+    std::shared_ptr<TableRowFormat> m_RowFormat;
     bool m_RowFormatIsSet;
-    <DATA_TYPE_START>List<TableCell><DATA_TYPE_END> m_TableCellList;
+    std::vector<std::shared_ptr<TableCell>> m_TableCellList;
     bool m_TableCellListIsSet;
 };
 

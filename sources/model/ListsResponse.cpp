@@ -67,7 +67,7 @@ void ListsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Lists")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Lists<DATA_TYPE_END> newItem(new Lists());
+            std::shared_ptr<Lists> newItem(new Lists());
             newItem->fromJson(fieldValue);
             setLists( newItem );
         }
@@ -97,20 +97,20 @@ void ListsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     {
         if(multipart->hasContent(_XPLATSTR("Lists")))
         {
-            <DATA_TYPE_START>Lists<DATA_TYPE_END> newItem(new Lists());
+            std::shared_ptr<Lists> newItem(new Lists());
             newItem->fromMultiPart(multipart, _XPLATSTR("Lists."));
             setLists( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>Lists<DATA_TYPE_END> ListsResponse::getLists() const
+std::shared_ptr<Lists> ListsResponse::getLists() const
 {
     return m_Lists;
 }
 
 
-void ListsResponse::setLists(<DATA_TYPE_START>Lists<DATA_TYPE_END> value)
+void ListsResponse::setLists(std::shared_ptr<Lists> value)
 {
     m_Lists = value;
     m_ListsIsSet = true;

@@ -64,13 +64,13 @@ public:
     /// <summary>
     /// Gets or sets Style.
     /// </summary>
-    <DATA_TYPE_START>Style<DATA_TYPE_END> getStyle() const;
+    std::shared_ptr<Style> getStyle() const;
     bool styleIsSet() const;
     void unsetStyle();
-    void setStyle(<DATA_TYPE_START>Style<DATA_TYPE_END> value);
+    void setStyle(std::shared_ptr<Style> value);
 
 protected:
-    <DATA_TYPE_START>Style<DATA_TYPE_END> m_Style;
+    std::shared_ptr<Style> m_Style;
     bool m_StyleIsSet;
 };
 

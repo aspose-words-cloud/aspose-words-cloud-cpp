@@ -63,85 +63,85 @@ public:
     /// <summary>
     /// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isCalculateOnExit() const;
+    bool isCalculateOnExit() const;
     bool calculateOnExitIsSet() const;
     void unsetCalculateOnExit();
-    void setCalculateOnExit(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setCalculateOnExit(bool value);
     /// <summary>
     /// Gets or sets true if a form field is enabled.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isEnabled() const;
+    bool isEnabled() const;
     bool enabledIsSet() const;
     void unsetEnabled();
-    void setEnabled(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setEnabled(bool value);
     /// <summary>
     /// Gets or sets returns or sets an entry macro name for the form field.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getEntryMacro() const;
+    utility::string_t getEntryMacro() const;
     bool entryMacroIsSet() const;
     void unsetEntryMacro();
-    void setEntryMacro(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setEntryMacro(utility::string_t value);
     /// <summary>
     /// Gets or sets returns or sets an exit macro name for the form field.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getExitMacro() const;
+    utility::string_t getExitMacro() const;
     bool exitMacroIsSet() const;
     void unsetExitMacro();
-    void setExitMacro(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setExitMacro(utility::string_t value);
     /// <summary>
-    /// Gets or sets returns or sets the text that&#x27;s displayed in a message box when the form field has the focus and the user presses F1.
+    /// Gets or sets returns or sets the text that&#39;s displayed in a message box when the form field has the focus and the user presses F1.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getHelpText() const;
+    utility::string_t getHelpText() const;
     bool helpTextIsSet() const;
     void unsetHelpText();
-    void setHelpText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setHelpText(utility::string_t value);
     /// <summary>
     /// Gets or sets the form field name.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
+    utility::string_t getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setName(utility::string_t value);
     /// <summary>
-    /// Gets or sets specifies the source of the text that&#x27;s displayed in a message box when a form field has the focus and the user presses F1.
+    /// Gets or sets specifies the source of the text that&#39;s displayed in a message box when a form field has the focus and the user presses F1.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isOwnHelp() const;
+    bool isOwnHelp() const;
     bool ownHelpIsSet() const;
     void unsetOwnHelp();
-    void setOwnHelp(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setOwnHelp(bool value);
     /// <summary>
-    /// Gets or sets specifies the source of the text that&#x27;s displayed in the status bar when a form field has the focus.
+    /// Gets or sets specifies the source of the text that&#39;s displayed in the status bar when a form field has the focus.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isOwnStatus() const;
+    bool isOwnStatus() const;
     bool ownStatusIsSet() const;
     void unsetOwnStatus();
-    void setOwnStatus(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setOwnStatus(bool value);
     /// <summary>
-    /// Gets or sets returns or sets the text that&#x27;s displayed in the status bar when a form field has the focus.
+    /// Gets or sets returns or sets the text that&#39;s displayed in the status bar when a form field has the focus.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getStatusText() const;
+    utility::string_t getStatusText() const;
     bool statusTextIsSet() const;
     void unsetStatusText();
-    void setStatusText(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setStatusText(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_CalculateOnExit;
+    bool m_CalculateOnExit;
     bool m_CalculateOnExitIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_Enabled;
+    bool m_Enabled;
     bool m_EnabledIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_EntryMacro;
+    utility::string_t m_EntryMacro;
     bool m_EntryMacroIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_ExitMacro;
+    utility::string_t m_ExitMacro;
     bool m_ExitMacroIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_HelpText;
+    utility::string_t m_HelpText;
     bool m_HelpTextIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
+    utility::string_t m_Name;
     bool m_NameIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_OwnHelp;
+    bool m_OwnHelp;
     bool m_OwnHelpIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_OwnStatus;
+    bool m_OwnStatus;
     bool m_OwnStatusIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_StatusText;
+    utility::string_t m_StatusText;
     bool m_StatusTextIsSet;
 };
 

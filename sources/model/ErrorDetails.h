@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// The request id.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getRequestId() const;
+    utility::string_t getRequestId() const;
     bool requestIdIsSet() const;
     void unsetRequestId();
-    void setRequestId(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setRequestId(utility::string_t value);
     /// <summary>
     /// Error datetime.
     /// </summary>
-    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> getErrorDateTime() const;
+    utility::datetime getErrorDateTime() const;
     bool errorDateTimeIsSet() const;
     void unsetErrorDateTime();
-    void setErrorDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value);
+    void setErrorDateTime(utility::datetime value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_RequestId;
+    utility::string_t m_RequestId;
     bool m_RequestIdIsSet;
-    <DATA_TYPE_START>DateTime?<DATA_TYPE_END> m_ErrorDateTime;
+    utility::datetime m_ErrorDateTime;
     bool m_ErrorDateTimeIsSet;
 };
 

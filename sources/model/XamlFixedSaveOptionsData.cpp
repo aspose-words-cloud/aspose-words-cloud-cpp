@@ -118,13 +118,13 @@ void XamlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartForm
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> XamlFixedSaveOptionsData::getResourcesFolder() const
+utility::string_t XamlFixedSaveOptionsData::getResourcesFolder() const
 {
     return m_ResourcesFolder;
 }
 
 
-void XamlFixedSaveOptionsData::setResourcesFolder(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void XamlFixedSaveOptionsData::setResourcesFolder(utility::string_t value)
 {
     m_ResourcesFolder = value;
     m_ResourcesFolderIsSet = true;
@@ -139,13 +139,13 @@ void XamlFixedSaveOptionsData::unsetResourcesFolder()
     m_ResourcesFolderIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> XamlFixedSaveOptionsData::getResourcesFolderAlias() const
+utility::string_t XamlFixedSaveOptionsData::getResourcesFolderAlias() const
 {
     return m_ResourcesFolderAlias;
 }
 
 
-void XamlFixedSaveOptionsData::setResourcesFolderAlias(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void XamlFixedSaveOptionsData::setResourcesFolderAlias(utility::string_t value)
 {
     m_ResourcesFolderAlias = value;
     m_ResourcesFolderAliasIsSet = true;

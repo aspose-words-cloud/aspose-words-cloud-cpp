@@ -64,22 +64,22 @@ public:
     /// <summary>
     /// Gets or sets name of the font that will be used if no expected font is found in printer and built-in fonts collections.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFalllbackFontName() const;
+    utility::string_t getFalllbackFontName() const;
     bool falllbackFontNameIsSet() const;
     void unsetFalllbackFontName();
-    void setFalllbackFontName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFalllbackFontName(utility::string_t value);
     /// <summary>
     /// Gets or sets a value determining whether or not complex transformed elements should be rasterized before saving to PCL document.  Default is true.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isRasterizeTransformedElements() const;
+    bool isRasterizeTransformedElements() const;
     bool rasterizeTransformedElementsIsSet() const;
     void unsetRasterizeTransformedElements();
-    void setRasterizeTransformedElements(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setRasterizeTransformedElements(bool value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FalllbackFontName;
+    utility::string_t m_FalllbackFontName;
     bool m_FalllbackFontNameIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_RasterizeTransformedElements;
+    bool m_RasterizeTransformedElements;
     bool m_RasterizeTransformedElementsIsSet;
 };
 

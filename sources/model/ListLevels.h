@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets the collection of list levels for this list.
     /// </summary>
-    <DATA_TYPE_START>List<ListLevel><DATA_TYPE_END>& getListLevel();
+    std::vector<std::shared_ptr<ListLevel>>& getListLevel();
     bool listLevelIsSet() const;
     void unsetListLevel();
-    void setListLevel(<DATA_TYPE_START>List<ListLevel><DATA_TYPE_END> const& value);
+    void setListLevel(std::vector<std::shared_ptr<ListLevel>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<ListLevel><DATA_TYPE_END> m_ListLevel;
+    std::vector<std::shared_ptr<ListLevel>> m_ListLevel;
     bool m_ListLevelIsSet;
 };
 

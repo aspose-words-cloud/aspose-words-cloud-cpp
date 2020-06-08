@@ -65,49 +65,49 @@ public:
     /// <summary>
     /// Gets or sets child nodes.
     /// </summary>
-    <DATA_TYPE_START>List<NodeLink><DATA_TYPE_END>& getChildNodes();
+    std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;
     void unsetChildNodes();
-    void setChildNodes(<DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> const& value);
+    void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
     /// <summary>
     /// Gets or sets HeaderFooters.
     /// </summary>
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> getHeaderFooters() const;
+    std::shared_ptr<LinkElement> getHeaderFooters() const;
     bool headerFootersIsSet() const;
     void unsetHeaderFooters();
-    void setHeaderFooters(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value);
+    void setHeaderFooters(std::shared_ptr<LinkElement> value);
     /// <summary>
     /// Gets or sets PageSetup.
     /// </summary>
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> getPageSetup() const;
+    std::shared_ptr<LinkElement> getPageSetup() const;
     bool pageSetupIsSet() const;
     void unsetPageSetup();
-    void setPageSetup(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value);
+    void setPageSetup(std::shared_ptr<LinkElement> value);
     /// <summary>
     /// Gets or sets Paragraphs.
     /// </summary>
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> getParagraphs() const;
+    std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
     void unsetParagraphs();
-    void setParagraphs(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value);
+    void setParagraphs(std::shared_ptr<LinkElement> value);
     /// <summary>
     /// Gets or sets Tables.
     /// </summary>
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> getTables() const;
+    std::shared_ptr<LinkElement> getTables() const;
     bool tablesIsSet() const;
     void unsetTables();
-    void setTables(<DATA_TYPE_START>LinkElement<DATA_TYPE_END> value);
+    void setTables(std::shared_ptr<LinkElement> value);
 
 protected:
-    <DATA_TYPE_START>List<NodeLink><DATA_TYPE_END> m_ChildNodes;
+    std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;
     bool m_ChildNodesIsSet;
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> m_HeaderFooters;
+    std::shared_ptr<LinkElement> m_HeaderFooters;
     bool m_HeaderFootersIsSet;
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> m_PageSetup;
+    std::shared_ptr<LinkElement> m_PageSetup;
     bool m_PageSetupIsSet;
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> m_Paragraphs;
+    std::shared_ptr<LinkElement> m_Paragraphs;
     bool m_ParagraphsIsSet;
-    <DATA_TYPE_START>LinkElement<DATA_TYPE_END> m_Tables;
+    std::shared_ptr<LinkElement> m_Tables;
     bool m_TablesIsSet;
 };
 

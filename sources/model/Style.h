@@ -65,103 +65,103 @@ public:
     /// <summary>
     /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
     /// </summary>
-    <DATA_TYPE_START>List<string><DATA_TYPE_END>& getAliases();
+    std::vector<utility::string_t>& getAliases();
     bool aliasesIsSet() const;
     void unsetAliases();
-    void setAliases(<DATA_TYPE_START>List<string><DATA_TYPE_END> const& value);
+    void setAliases(std::vector<utility::string_t> const& value);
     /// <summary>
     /// Gets or sets /sets the name of the style this style is based on.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getBaseStyleName() const;
+    utility::string_t getBaseStyleName() const;
     bool baseStyleNameIsSet() const;
     void unsetBaseStyleName();
-    void setBaseStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setBaseStyleName(utility::string_t value);
     /// <summary>
     /// Gets or sets a value indicating whether true if this style is one of the built-in styles in MS Word.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isBuiltIn() const;
+    bool isBuiltIn() const;
     bool builtInIsSet() const;
     void unsetBuiltIn();
-    void setBuiltIn(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setBuiltIn(bool value);
     /// <summary>
     /// Gets or sets Font.
     /// </summary>
-    <DATA_TYPE_START>Font<DATA_TYPE_END> getFont() const;
+    std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;
     void unsetFont();
-    void setFont(<DATA_TYPE_START>Font<DATA_TYPE_END> value);
+    void setFont(std::shared_ptr<Font> value);
     /// <summary>
     /// Gets or sets a value indicating whether true when the style is one of the built-in Heading styles.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsHeading() const;
+    bool isIsHeading() const;
     bool isHeadingIsSet() const;
     void unsetIsHeading();
-    void setIsHeading(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsHeading(bool value);
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsQuickStyle() const;
+    bool isIsQuickStyle() const;
     bool isQuickStyleIsSet() const;
     void unsetIsQuickStyle();
-    void setIsQuickStyle(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsQuickStyle(bool value);
     /// <summary>
     /// Gets or sets the name of the Style linked to this one. Returns Empty string if no styles are linked.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getLinkedStyleName() const;
+    utility::string_t getLinkedStyleName() const;
     bool linkedStyleNameIsSet() const;
     void unsetLinkedStyleName();
-    void setLinkedStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setLinkedStyleName(utility::string_t value);
     /// <summary>
     /// Gets or sets the name of the style.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getName() const;
+    utility::string_t getName() const;
     bool nameIsSet() const;
     void unsetName();
-    void setName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setName(utility::string_t value);
     /// <summary>
     /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getNextParagraphStyleName() const;
+    utility::string_t getNextParagraphStyleName() const;
     bool nextParagraphStyleNameIsSet() const;
     void unsetNextParagraphStyleName();
-    void setNextParagraphStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setNextParagraphStyleName(utility::string_t value);
     /// <summary>
     /// Gets or sets the locale independent style identifier for a built-in style.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getStyleIdentifier() const;
+    utility::string_t getStyleIdentifier() const;
     bool styleIdentifierIsSet() const;
     void unsetStyleIdentifier();
-    void setStyleIdentifier(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setStyleIdentifier(utility::string_t value);
     /// <summary>
     /// Gets or sets the style type (paragraph or character).
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getType() const;
+    utility::string_t getType() const;
     bool typeIsSet() const;
     void unsetType();
-    void setType(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setType(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>List<string><DATA_TYPE_END> m_Aliases;
+    std::vector<utility::string_t> m_Aliases;
     bool m_AliasesIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_BaseStyleName;
+    utility::string_t m_BaseStyleName;
     bool m_BaseStyleNameIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_BuiltIn;
+    bool m_BuiltIn;
     bool m_BuiltInIsSet;
-    <DATA_TYPE_START>Font<DATA_TYPE_END> m_Font;
+    std::shared_ptr<Font> m_Font;
     bool m_FontIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsHeading;
+    bool m_IsHeading;
     bool m_IsHeadingIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsQuickStyle;
+    bool m_IsQuickStyle;
     bool m_IsQuickStyleIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_LinkedStyleName;
+    utility::string_t m_LinkedStyleName;
     bool m_LinkedStyleNameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Name;
+    utility::string_t m_Name;
     bool m_NameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_NextParagraphStyleName;
+    utility::string_t m_NextParagraphStyleName;
     bool m_NextParagraphStyleNameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_StyleIdentifier;
+    utility::string_t m_StyleIdentifier;
     bool m_StyleIdentifierIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Type;
+    utility::string_t m_Type;
     bool m_TypeIsSet;
 };
 

@@ -64,31 +64,31 @@ public:
     /// <summary>
     /// Gets or sets the list of addititional fonts, provided by aspose team.
     /// </summary>
-    <DATA_TYPE_START>List<FontInfo><DATA_TYPE_END>& getAdditionalFonts();
+    std::vector<std::shared_ptr<FontInfo>>& getAdditionalFonts();
     bool additionalFontsIsSet() const;
     void unsetAdditionalFonts();
-    void setAdditionalFonts(<DATA_TYPE_START>List<FontInfo><DATA_TYPE_END> const& value);
+    void setAdditionalFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
     /// <summary>
     /// Gets or sets custom user fonts (from user file storage). To use them, you should specify \&quot;fontsLocation\&quot; parameter in any request.
     /// </summary>
-    <DATA_TYPE_START>List<FontInfo><DATA_TYPE_END>& getCustomFonts();
+    std::vector<std::shared_ptr<FontInfo>>& getCustomFonts();
     bool customFontsIsSet() const;
     void unsetCustomFonts();
-    void setCustomFonts(<DATA_TYPE_START>List<FontInfo><DATA_TYPE_END> const& value);
+    void setCustomFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
     /// <summary>
     /// Gets or sets the list of system fonts, availiable on the server.
     /// </summary>
-    <DATA_TYPE_START>List<FontInfo><DATA_TYPE_END>& getSystemFonts();
+    std::vector<std::shared_ptr<FontInfo>>& getSystemFonts();
     bool systemFontsIsSet() const;
     void unsetSystemFonts();
-    void setSystemFonts(<DATA_TYPE_START>List<FontInfo><DATA_TYPE_END> const& value);
+    void setSystemFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<FontInfo><DATA_TYPE_END> m_AdditionalFonts;
+    std::vector<std::shared_ptr<FontInfo>> m_AdditionalFonts;
     bool m_AdditionalFontsIsSet;
-    <DATA_TYPE_START>List<FontInfo><DATA_TYPE_END> m_CustomFonts;
+    std::vector<std::shared_ptr<FontInfo>> m_CustomFonts;
     bool m_CustomFontsIsSet;
-    <DATA_TYPE_START>List<FontInfo><DATA_TYPE_END> m_SystemFonts;
+    std::vector<std::shared_ptr<FontInfo>> m_SystemFonts;
     bool m_SystemFontsIsSet;
 };
 

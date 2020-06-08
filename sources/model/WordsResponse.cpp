@@ -93,13 +93,13 @@ void WordsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mult
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> WordsResponse::getRequestId() const
+utility::string_t WordsResponse::getRequestId() const
 {
     return m_RequestId;
 }
 
 
-void WordsResponse::setRequestId(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void WordsResponse::setRequestId(utility::string_t value)
 {
     m_RequestId = value;
     m_RequestIdIsSet = true;

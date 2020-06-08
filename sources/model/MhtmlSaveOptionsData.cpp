@@ -68,7 +68,7 @@ void MhtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportCidUrlsForMhtmlResources")];
         if(!fieldValue.is_null())
         {
-            setExportCidUrlsForMhtmlResources(ModelBase::bool?FromJson(fieldValue));
+            setExportCidUrlsForMhtmlResources(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -91,17 +91,17 @@ void MhtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData
 
     if(multipart->hasContent(_XPLATSTR("ExportCidUrlsForMhtmlResources")))
     {
-        setExportCidUrlsForMhtmlResources(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportCidUrlsForMhtmlResources"))));
+        setExportCidUrlsForMhtmlResources(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportCidUrlsForMhtmlResources"))));
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> MhtmlSaveOptionsData::isExportCidUrlsForMhtmlResources() const
+bool MhtmlSaveOptionsData::isExportCidUrlsForMhtmlResources() const
 {
     return m_ExportCidUrlsForMhtmlResources;
 }
 
 
-void MhtmlSaveOptionsData::setExportCidUrlsForMhtmlResources(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void MhtmlSaveOptionsData::setExportCidUrlsForMhtmlResources(bool value)
 {
     m_ExportCidUrlsForMhtmlResources = value;
     m_ExportCidUrlsForMhtmlResourcesIsSet = true;

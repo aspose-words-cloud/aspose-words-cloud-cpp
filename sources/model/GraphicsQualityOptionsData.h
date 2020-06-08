@@ -65,58 +65,58 @@ public:
     /// <summary>
     /// Gets or sets a value that specifies how composited images are drawn to this Graphics.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCompositingMode() const;
+    utility::string_t getCompositingMode() const;
     bool compositingModeIsSet() const;
     void unsetCompositingMode();
-    void setCompositingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCompositingMode(utility::string_t value);
     /// <summary>
     /// Gets or sets the rendering quality of composited images drawn to this Graphics.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCompositingQuality() const;
+    utility::string_t getCompositingQuality() const;
     bool compositingQualityIsSet() const;
     void unsetCompositingQuality();
-    void setCompositingQuality(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCompositingQuality(utility::string_t value);
     /// <summary>
     /// Gets or sets the interpolation mode associated with this Graphics.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getInterpolationMode() const;
+    utility::string_t getInterpolationMode() const;
     bool interpolationModeIsSet() const;
     void unsetInterpolationMode();
-    void setInterpolationMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setInterpolationMode(utility::string_t value);
     /// <summary>
     /// Gets or sets the rendering quality for this Graphics.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getSmoothingMode() const;
+    utility::string_t getSmoothingMode() const;
     bool smoothingModeIsSet() const;
     void unsetSmoothingMode();
-    void setSmoothingMode(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setSmoothingMode(utility::string_t value);
     /// <summary>
     /// Gets or sets StringFormat.
     /// </summary>
-    <DATA_TYPE_START>StringFormatData<DATA_TYPE_END> getStringFormat() const;
+    std::shared_ptr<StringFormatData> getStringFormat() const;
     bool stringFormatIsSet() const;
     void unsetStringFormat();
-    void setStringFormat(<DATA_TYPE_START>StringFormatData<DATA_TYPE_END> value);
+    void setStringFormat(std::shared_ptr<StringFormatData> value);
     /// <summary>
     /// Gets or sets the rendering mode for text associated with this Graphics.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getTextRenderingHint() const;
+    utility::string_t getTextRenderingHint() const;
     bool textRenderingHintIsSet() const;
     void unsetTextRenderingHint();
-    void setTextRenderingHint(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setTextRenderingHint(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_CompositingMode;
+    utility::string_t m_CompositingMode;
     bool m_CompositingModeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_CompositingQuality;
+    utility::string_t m_CompositingQuality;
     bool m_CompositingQualityIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_InterpolationMode;
+    utility::string_t m_InterpolationMode;
     bool m_InterpolationModeIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_SmoothingMode;
+    utility::string_t m_SmoothingMode;
     bool m_SmoothingModeIsSet;
-    <DATA_TYPE_START>StringFormatData<DATA_TYPE_END> m_StringFormat;
+    std::shared_ptr<StringFormatData> m_StringFormat;
     bool m_StringFormatIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_TextRenderingHint;
+    utility::string_t m_TextRenderingHint;
     bool m_TextRenderingHintIsSet;
 };
 

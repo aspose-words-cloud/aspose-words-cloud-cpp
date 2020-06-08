@@ -53,7 +53,7 @@ web::json::value DocumentProperties::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<DocumentProperty> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void DocumentProperties::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>DocumentProperty<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<DocumentProperty>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> newItem(new DocumentProperty());
+                std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void DocumentProperties::toMultipart(const std::shared_ptr<MultipartFormData>& m
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<DocumentProperty> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void DocumentProperties::fromMultiPart(const std::shared_ptr<MultipartFormData>&
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>DocumentProperty<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<DocumentProperty>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>DocumentProperty<DATA_TYPE_END> newItem(new DocumentProperty());
+                std::shared_ptr<DocumentProperty> newItem(new DocumentProperty());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void DocumentProperties::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
 }
 
-<DATA_TYPE_START>List<DocumentProperty><DATA_TYPE_END>& DocumentProperties::getList()
+std::vector<std::shared_ptr<DocumentProperty>>& DocumentProperties::getList()
 {
     return m_List;
 }
 
-void DocumentProperties::setList(<DATA_TYPE_START>List<DocumentProperty><DATA_TYPE_END> const& value)
+void DocumentProperties::setList(std::vector<std::shared_ptr<DocumentProperty>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

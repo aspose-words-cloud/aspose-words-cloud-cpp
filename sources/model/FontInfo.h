@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets family name of the font.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFontFamilyName() const;
+    utility::string_t getFontFamilyName() const;
     bool fontFamilyNameIsSet() const;
     void unsetFontFamilyName();
-    void setFontFamilyName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFontFamilyName(utility::string_t value);
     /// <summary>
     /// Gets or sets full name of the font.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFullFontName() const;
+    utility::string_t getFullFontName() const;
     bool fullFontNameIsSet() const;
     void unsetFullFontName();
-    void setFullFontName(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFullFontName(utility::string_t value);
     /// <summary>
     /// Gets or sets version string of the font.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getVersion() const;
+    utility::string_t getVersion() const;
     bool versionIsSet() const;
     void unsetVersion();
-    void setVersion(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setVersion(utility::string_t value);
     /// <summary>
     /// Gets or sets path to the font file if any.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getFilePath() const;
+    utility::string_t getFilePath() const;
     bool filePathIsSet() const;
     void unsetFilePath();
-    void setFilePath(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setFilePath(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FontFamilyName;
+    utility::string_t m_FontFamilyName;
     bool m_FontFamilyNameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FullFontName;
+    utility::string_t m_FullFontName;
     bool m_FullFontNameIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Version;
+    utility::string_t m_Version;
     bool m_VersionIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_FilePath;
+    utility::string_t m_FilePath;
     bool m_FilePathIsSet;
 };
 

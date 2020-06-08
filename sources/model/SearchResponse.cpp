@@ -81,7 +81,7 @@ void SearchResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SearchResults")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> newItem(new SearchResultsCollection());
+            std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
             newItem->fromJson(fieldValue);
             setSearchResults( newItem );
         }
@@ -120,20 +120,20 @@ void SearchResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& mul
     {
         if(multipart->hasContent(_XPLATSTR("SearchResults")))
         {
-            <DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> newItem(new SearchResultsCollection());
+            std::shared_ptr<SearchResultsCollection> newItem(new SearchResultsCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("SearchResults."));
             setSearchResults( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> SearchResponse::getSearchingPattern() const
+utility::string_t SearchResponse::getSearchingPattern() const
 {
     return m_SearchingPattern;
 }
 
 
-void SearchResponse::setSearchingPattern(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void SearchResponse::setSearchingPattern(utility::string_t value)
 {
     m_SearchingPattern = value;
     m_SearchingPatternIsSet = true;
@@ -148,13 +148,13 @@ void SearchResponse::unsetSearchingPattern()
     m_SearchingPatternIsSet = false;
 }
 
-<DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> SearchResponse::getSearchResults() const
+std::shared_ptr<SearchResultsCollection> SearchResponse::getSearchResults() const
 {
     return m_SearchResults;
 }
 
 
-void SearchResponse::setSearchResults(<DATA_TYPE_START>SearchResultsCollection<DATA_TYPE_END> value)
+void SearchResponse::setSearchResults(std::shared_ptr<SearchResultsCollection> value)
 {
     m_SearchResults = value;
     m_SearchResultsIsSet = true;

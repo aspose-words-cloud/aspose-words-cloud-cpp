@@ -122,7 +122,7 @@ void PdfDigitalSignatureDetailsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SignatureDate")];
         if(!fieldValue.is_null())
         {
-            setSignatureDate(ModelBase::DateTime?FromJson(fieldValue));
+            setSignatureDate(ModelBase::dateFromJson(fieldValue));
         }
     }
 }
@@ -181,17 +181,17 @@ void PdfDigitalSignatureDetailsData::fromMultiPart(const std::shared_ptr<Multipa
     }
     if(multipart->hasContent(_XPLATSTR("SignatureDate")))
     {
-        setSignatureDate(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("SignatureDate"))));
+        setSignatureDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("SignatureDate"))));
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfDigitalSignatureDetailsData::getCertificateFilename() const
+utility::string_t PdfDigitalSignatureDetailsData::getCertificateFilename() const
 {
     return m_CertificateFilename;
 }
 
 
-void PdfDigitalSignatureDetailsData::setCertificateFilename(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfDigitalSignatureDetailsData::setCertificateFilename(utility::string_t value)
 {
     m_CertificateFilename = value;
     m_CertificateFilenameIsSet = true;
@@ -206,13 +206,13 @@ void PdfDigitalSignatureDetailsData::unsetCertificateFilename()
     m_CertificateFilenameIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfDigitalSignatureDetailsData::getHashAlgorithm() const
+utility::string_t PdfDigitalSignatureDetailsData::getHashAlgorithm() const
 {
     return m_HashAlgorithm;
 }
 
 
-void PdfDigitalSignatureDetailsData::setHashAlgorithm(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfDigitalSignatureDetailsData::setHashAlgorithm(utility::string_t value)
 {
     m_HashAlgorithm = value;
     m_HashAlgorithmIsSet = true;
@@ -227,13 +227,13 @@ void PdfDigitalSignatureDetailsData::unsetHashAlgorithm()
     m_HashAlgorithmIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfDigitalSignatureDetailsData::getLocation() const
+utility::string_t PdfDigitalSignatureDetailsData::getLocation() const
 {
     return m_Location;
 }
 
 
-void PdfDigitalSignatureDetailsData::setLocation(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfDigitalSignatureDetailsData::setLocation(utility::string_t value)
 {
     m_Location = value;
     m_LocationIsSet = true;
@@ -248,13 +248,13 @@ void PdfDigitalSignatureDetailsData::unsetLocation()
     m_LocationIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfDigitalSignatureDetailsData::getReason() const
+utility::string_t PdfDigitalSignatureDetailsData::getReason() const
 {
     return m_Reason;
 }
 
 
-void PdfDigitalSignatureDetailsData::setReason(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfDigitalSignatureDetailsData::setReason(utility::string_t value)
 {
     m_Reason = value;
     m_ReasonIsSet = true;
@@ -269,13 +269,13 @@ void PdfDigitalSignatureDetailsData::unsetReason()
     m_ReasonIsSet = false;
 }
 
-<DATA_TYPE_START>DateTime?<DATA_TYPE_END> PdfDigitalSignatureDetailsData::getSignatureDate() const
+utility::datetime PdfDigitalSignatureDetailsData::getSignatureDate() const
 {
     return m_SignatureDate;
 }
 
 
-void PdfDigitalSignatureDetailsData::setSignatureDate(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
+void PdfDigitalSignatureDetailsData::setSignatureDate(utility::datetime value)
 {
     m_SignatureDate = value;
     m_SignatureDateIsSet = true;

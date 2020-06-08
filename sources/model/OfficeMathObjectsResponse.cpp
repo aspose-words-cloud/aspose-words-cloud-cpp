@@ -67,7 +67,7 @@ void OfficeMathObjectsResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("OfficeMathObjects")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> newItem(new OfficeMathObjectsCollection());
+            std::shared_ptr<OfficeMathObjectsCollection> newItem(new OfficeMathObjectsCollection());
             newItem->fromJson(fieldValue);
             setOfficeMathObjects( newItem );
         }
@@ -97,20 +97,20 @@ void OfficeMathObjectsResponse::fromMultiPart(const std::shared_ptr<MultipartFor
     {
         if(multipart->hasContent(_XPLATSTR("OfficeMathObjects")))
         {
-            <DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> newItem(new OfficeMathObjectsCollection());
+            std::shared_ptr<OfficeMathObjectsCollection> newItem(new OfficeMathObjectsCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("OfficeMathObjects."));
             setOfficeMathObjects( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> OfficeMathObjectsResponse::getOfficeMathObjects() const
+std::shared_ptr<OfficeMathObjectsCollection> OfficeMathObjectsResponse::getOfficeMathObjects() const
 {
     return m_OfficeMathObjects;
 }
 
 
-void OfficeMathObjectsResponse::setOfficeMathObjects(<DATA_TYPE_START>OfficeMathObjectsCollection<DATA_TYPE_END> value)
+void OfficeMathObjectsResponse::setOfficeMathObjects(std::shared_ptr<OfficeMathObjectsCollection> value)
 {
     m_OfficeMathObjects = value;
     m_OfficeMathObjectsIsSet = true;

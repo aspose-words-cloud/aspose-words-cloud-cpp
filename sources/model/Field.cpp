@@ -118,13 +118,13 @@ void Field::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Field::getLocaleId() const
+utility::string_t Field::getLocaleId() const
 {
     return m_LocaleId;
 }
 
 
-void Field::setLocaleId(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Field::setLocaleId(utility::string_t value)
 {
     m_LocaleId = value;
     m_LocaleIdIsSet = true;
@@ -139,13 +139,13 @@ void Field::unsetLocaleId()
     m_LocaleIdIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> Field::getResult() const
+utility::string_t Field::getResult() const
 {
     return m_Result;
 }
 
 
-void Field::setResult(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void Field::setResult(utility::string_t value)
 {
     m_Result = value;
     m_ResultIsSet = true;

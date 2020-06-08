@@ -86,7 +86,7 @@ void RtfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportCompactSize")];
         if(!fieldValue.is_null())
         {
-            setExportCompactSize(ModelBase::bool?FromJson(fieldValue));
+            setExportCompactSize(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ExportImagesForOldReaders")))
@@ -94,7 +94,7 @@ void RtfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportImagesForOldReaders")];
         if(!fieldValue.is_null())
         {
-            setExportImagesForOldReaders(ModelBase::bool?FromJson(fieldValue));
+            setExportImagesForOldReaders(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("PrettyFormat")))
@@ -102,7 +102,7 @@ void RtfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::bool?FromJson(fieldValue));
+            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("SaveImagesAsWmf")))
@@ -110,7 +110,7 @@ void RtfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SaveImagesAsWmf")];
         if(!fieldValue.is_null())
         {
-            setSaveImagesAsWmf(ModelBase::bool?FromJson(fieldValue));
+            setSaveImagesAsWmf(ModelBase::boolFromJson(fieldValue));
         }
     }
 }
@@ -148,29 +148,29 @@ void RtfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 
     if(multipart->hasContent(_XPLATSTR("ExportCompactSize")))
     {
-        setExportCompactSize(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportCompactSize"))));
+        setExportCompactSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportCompactSize"))));
     }
     if(multipart->hasContent(_XPLATSTR("ExportImagesForOldReaders")))
     {
-        setExportImagesForOldReaders(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("ExportImagesForOldReaders"))));
+        setExportImagesForOldReaders(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportImagesForOldReaders"))));
     }
     if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
     {
-        setPrettyFormat(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
+        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
     }
     if(multipart->hasContent(_XPLATSTR("SaveImagesAsWmf")))
     {
-        setSaveImagesAsWmf(ModelBase::bool?FromHttpContent(multipart->getContent(_XPLATSTR("SaveImagesAsWmf"))));
+        setSaveImagesAsWmf(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SaveImagesAsWmf"))));
     }
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> RtfSaveOptionsData::isExportCompactSize() const
+bool RtfSaveOptionsData::isExportCompactSize() const
 {
     return m_ExportCompactSize;
 }
 
 
-void RtfSaveOptionsData::setExportCompactSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void RtfSaveOptionsData::setExportCompactSize(bool value)
 {
     m_ExportCompactSize = value;
     m_ExportCompactSizeIsSet = true;
@@ -185,13 +185,13 @@ void RtfSaveOptionsData::unsetExportCompactSize()
     m_ExportCompactSizeIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> RtfSaveOptionsData::isExportImagesForOldReaders() const
+bool RtfSaveOptionsData::isExportImagesForOldReaders() const
 {
     return m_ExportImagesForOldReaders;
 }
 
 
-void RtfSaveOptionsData::setExportImagesForOldReaders(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void RtfSaveOptionsData::setExportImagesForOldReaders(bool value)
 {
     m_ExportImagesForOldReaders = value;
     m_ExportImagesForOldReadersIsSet = true;
@@ -206,13 +206,13 @@ void RtfSaveOptionsData::unsetExportImagesForOldReaders()
     m_ExportImagesForOldReadersIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> RtfSaveOptionsData::isPrettyFormat() const
+bool RtfSaveOptionsData::isPrettyFormat() const
 {
     return m_PrettyFormat;
 }
 
 
-void RtfSaveOptionsData::setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void RtfSaveOptionsData::setPrettyFormat(bool value)
 {
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;
@@ -227,13 +227,13 @@ void RtfSaveOptionsData::unsetPrettyFormat()
     m_PrettyFormatIsSet = false;
 }
 
-<DATA_TYPE_START>bool?<DATA_TYPE_END> RtfSaveOptionsData::isSaveImagesAsWmf() const
+bool RtfSaveOptionsData::isSaveImagesAsWmf() const
 {
     return m_SaveImagesAsWmf;
 }
 
 
-void RtfSaveOptionsData::setSaveImagesAsWmf(<DATA_TYPE_START>bool?<DATA_TYPE_END> value)
+void RtfSaveOptionsData::setSaveImagesAsWmf(bool value)
 {
     m_SaveImagesAsWmf = value;
     m_SaveImagesAsWmfIsSet = true;

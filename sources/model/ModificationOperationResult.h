@@ -65,22 +65,22 @@ public:
     /// <summary>
     /// Gets or sets Source.
     /// </summary>
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getSource() const;
+    std::shared_ptr<FileLink> getSource() const;
     bool sourceIsSet() const;
     void unsetSource();
-    void setSource(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
+    void setSource(std::shared_ptr<FileLink> value);
     /// <summary>
     /// Gets or sets Dest.
     /// </summary>
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> getDest() const;
+    std::shared_ptr<FileLink> getDest() const;
     bool destIsSet() const;
     void unsetDest();
-    void setDest(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value);
+    void setDest(std::shared_ptr<FileLink> value);
 
 protected:
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_Source;
+    std::shared_ptr<FileLink> m_Source;
     bool m_SourceIsSet;
-    <DATA_TYPE_START>FileLink<DATA_TYPE_END> m_Dest;
+    std::shared_ptr<FileLink> m_Dest;
     bool m_DestIsSet;
 };
 

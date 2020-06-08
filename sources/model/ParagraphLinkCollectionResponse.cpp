@@ -67,7 +67,7 @@ void ParagraphLinkCollectionResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Paragraphs")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> newItem(new ParagraphLinkCollection());
+            std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
             newItem->fromJson(fieldValue);
             setParagraphs( newItem );
         }
@@ -97,20 +97,20 @@ void ParagraphLinkCollectionResponse::fromMultiPart(const std::shared_ptr<Multip
     {
         if(multipart->hasContent(_XPLATSTR("Paragraphs")))
         {
-            <DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> newItem(new ParagraphLinkCollection());
+            std::shared_ptr<ParagraphLinkCollection> newItem(new ParagraphLinkCollection());
             newItem->fromMultiPart(multipart, _XPLATSTR("Paragraphs."));
             setParagraphs( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> ParagraphLinkCollectionResponse::getParagraphs() const
+std::shared_ptr<ParagraphLinkCollection> ParagraphLinkCollectionResponse::getParagraphs() const
 {
     return m_Paragraphs;
 }
 
 
-void ParagraphLinkCollectionResponse::setParagraphs(<DATA_TYPE_START>ParagraphLinkCollection<DATA_TYPE_END> value)
+void ParagraphLinkCollectionResponse::setParagraphs(std::shared_ptr<ParagraphLinkCollection> value)
 {
     m_Paragraphs = value;
     m_ParagraphsIsSet = true;

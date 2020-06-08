@@ -53,7 +53,7 @@ web::json::value FormFieldCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>FormField<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<FormField> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void FormFieldCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>FormField<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<FormField>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>FormField<DATA_TYPE_END> newItem(new FormField());
+                std::shared_ptr<FormField> newItem(new FormField());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void FormFieldCollection::toMultipart(const std::shared_ptr<MultipartFormData>& 
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>FormField<DATA_TYPE_END> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FormField> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void FormFieldCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>FormField<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<FormField>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>FormField<DATA_TYPE_END> newItem(new FormField());
+                std::shared_ptr<FormField> newItem(new FormField());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void FormFieldCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
 }
 
-<DATA_TYPE_START>List<FormField><DATA_TYPE_END>& FormFieldCollection::getList()
+std::vector<std::shared_ptr<FormField>>& FormFieldCollection::getList()
 {
     return m_List;
 }
 
-void FormFieldCollection::setList(<DATA_TYPE_START>List<FormField><DATA_TYPE_END> const& value)
+void FormFieldCollection::setList(std::vector<std::shared_ptr<FormField>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

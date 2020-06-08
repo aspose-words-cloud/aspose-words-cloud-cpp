@@ -99,7 +99,7 @@ void CompareData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
-            setDateTime(ModelBase::DateTime?FromJson(fieldValue));
+            setDateTime(ModelBase::dateFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("CompareOptions")))
@@ -107,7 +107,7 @@ void CompareData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CompareOptions")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>CompareOptions<DATA_TYPE_END> newItem(new CompareOptions());
+            std::shared_ptr<CompareOptions> newItem(new CompareOptions());
             newItem->fromJson(fieldValue);
             setCompareOptions( newItem );
         }
@@ -158,26 +158,26 @@ void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multip
     }
     if(multipart->hasContent(_XPLATSTR("DateTime")))
     {
-        setDateTime(ModelBase::DateTime?FromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
+        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
     }
     if(multipart->hasContent(_XPLATSTR("CompareOptions")))
     {
         if(multipart->hasContent(_XPLATSTR("CompareOptions")))
         {
-            <DATA_TYPE_START>CompareOptions<DATA_TYPE_END> newItem(new CompareOptions());
+            std::shared_ptr<CompareOptions> newItem(new CompareOptions());
             newItem->fromMultiPart(multipart, _XPLATSTR("CompareOptions."));
             setCompareOptions( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CompareData::getComparingWithDocument() const
+utility::string_t CompareData::getComparingWithDocument() const
 {
     return m_ComparingWithDocument;
 }
 
 
-void CompareData::setComparingWithDocument(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CompareData::setComparingWithDocument(utility::string_t value)
 {
     m_ComparingWithDocument = value;
     m_ComparingWithDocumentIsSet = true;
@@ -192,13 +192,13 @@ void CompareData::unsetComparingWithDocument()
     m_ComparingWithDocumentIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> CompareData::getAuthor() const
+utility::string_t CompareData::getAuthor() const
 {
     return m_Author;
 }
 
 
-void CompareData::setAuthor(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void CompareData::setAuthor(utility::string_t value)
 {
     m_Author = value;
     m_AuthorIsSet = true;
@@ -213,13 +213,13 @@ void CompareData::unsetAuthor()
     m_AuthorIsSet = false;
 }
 
-<DATA_TYPE_START>DateTime?<DATA_TYPE_END> CompareData::getDateTime() const
+utility::datetime CompareData::getDateTime() const
 {
     return m_DateTime;
 }
 
 
-void CompareData::setDateTime(<DATA_TYPE_START>DateTime?<DATA_TYPE_END> value)
+void CompareData::setDateTime(utility::datetime value)
 {
     m_DateTime = value;
     m_DateTimeIsSet = true;
@@ -234,13 +234,13 @@ void CompareData::unsetDateTime()
     m_DateTimeIsSet = false;
 }
 
-<DATA_TYPE_START>CompareOptions<DATA_TYPE_END> CompareData::getCompareOptions() const
+std::shared_ptr<CompareOptions> CompareData::getCompareOptions() const
 {
     return m_CompareOptions;
 }
 
 
-void CompareData::setCompareOptions(<DATA_TYPE_START>CompareOptions<DATA_TYPE_END> value)
+void CompareData::setCompareOptions(std::shared_ptr<CompareOptions> value)
 {
     m_CompareOptions = value;
     m_CompareOptionsIsSet = true;

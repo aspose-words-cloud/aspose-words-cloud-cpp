@@ -65,13 +65,13 @@ public:
     /// <summary>
     /// Gets or sets collection of comments.
     /// </summary>
-    <DATA_TYPE_START>List<SearchResult><DATA_TYPE_END>& getResultsList();
+    std::vector<std::shared_ptr<SearchResult>>& getResultsList();
     bool resultsListIsSet() const;
     void unsetResultsList();
-    void setResultsList(<DATA_TYPE_START>List<SearchResult><DATA_TYPE_END> const& value);
+    void setResultsList(std::vector<std::shared_ptr<SearchResult>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<SearchResult><DATA_TYPE_END> m_ResultsList;
+    std::vector<std::shared_ptr<SearchResult>> m_ResultsList;
     bool m_ResultsListIsSet;
 };
 

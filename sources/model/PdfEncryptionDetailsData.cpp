@@ -162,13 +162,13 @@ void PdfEncryptionDetailsData::fromMultiPart(const std::shared_ptr<MultipartForm
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfEncryptionDetailsData::getEncryptionAlgorithm() const
+utility::string_t PdfEncryptionDetailsData::getEncryptionAlgorithm() const
 {
     return m_EncryptionAlgorithm;
 }
 
 
-void PdfEncryptionDetailsData::setEncryptionAlgorithm(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfEncryptionDetailsData::setEncryptionAlgorithm(utility::string_t value)
 {
     m_EncryptionAlgorithm = value;
     m_EncryptionAlgorithmIsSet = true;
@@ -183,13 +183,13 @@ void PdfEncryptionDetailsData::unsetEncryptionAlgorithm()
     m_EncryptionAlgorithmIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfEncryptionDetailsData::getOwnerPassword() const
+utility::string_t PdfEncryptionDetailsData::getOwnerPassword() const
 {
     return m_OwnerPassword;
 }
 
 
-void PdfEncryptionDetailsData::setOwnerPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfEncryptionDetailsData::setOwnerPassword(utility::string_t value)
 {
     m_OwnerPassword = value;
     m_OwnerPasswordIsSet = true;
@@ -204,13 +204,13 @@ void PdfEncryptionDetailsData::unsetOwnerPassword()
     m_OwnerPasswordIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfEncryptionDetailsData::getPermissions() const
+utility::string_t PdfEncryptionDetailsData::getPermissions() const
 {
     return m_Permissions;
 }
 
 
-void PdfEncryptionDetailsData::setPermissions(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfEncryptionDetailsData::setPermissions(utility::string_t value)
 {
     m_Permissions = value;
     m_PermissionsIsSet = true;
@@ -225,13 +225,13 @@ void PdfEncryptionDetailsData::unsetPermissions()
     m_PermissionsIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> PdfEncryptionDetailsData::getUserPassword() const
+utility::string_t PdfEncryptionDetailsData::getUserPassword() const
 {
     return m_UserPassword;
 }
 
 
-void PdfEncryptionDetailsData::setUserPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void PdfEncryptionDetailsData::setUserPassword(utility::string_t value)
 {
     m_UserPassword = value;
     m_UserPasswordIsSet = true;

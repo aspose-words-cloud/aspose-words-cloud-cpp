@@ -53,7 +53,7 @@ web::json::value HeaderFooterLinkCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>HeaderFooterLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<HeaderFooterLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void HeaderFooterLinkCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_List), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>HeaderFooterLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<HeaderFooterLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>HeaderFooterLink<DATA_TYPE_END> newItem(new HeaderFooterLink());
+                std::shared_ptr<HeaderFooterLink> newItem(new HeaderFooterLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void HeaderFooterLinkCollection::toMultipart(const std::shared_ptr<MultipartForm
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>HeaderFooterLink<DATA_TYPE_END> item){
+        std::transform(m_List.begin(), m_List.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<HeaderFooterLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void HeaderFooterLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFo
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_List), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>HeaderFooterLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<HeaderFooterLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>HeaderFooterLink<DATA_TYPE_END> newItem(new HeaderFooterLink());
+                std::shared_ptr<HeaderFooterLink> newItem(new HeaderFooterLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void HeaderFooterLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFo
     }
 }
 
-<DATA_TYPE_START>List<HeaderFooterLink><DATA_TYPE_END>& HeaderFooterLinkCollection::getList()
+std::vector<std::shared_ptr<HeaderFooterLink>>& HeaderFooterLinkCollection::getList()
 {
     return m_List;
 }
 
-void HeaderFooterLinkCollection::setList(<DATA_TYPE_START>List<HeaderFooterLink><DATA_TYPE_END> const& value)
+void HeaderFooterLinkCollection::setList(std::vector<std::shared_ptr<HeaderFooterLink>> const& value)
 {
     m_List = value;
     m_ListIsSet = true;

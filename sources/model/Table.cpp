@@ -58,7 +58,7 @@ web::json::value Table::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>TableRow<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<TableRow> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -80,7 +80,7 @@ void Table::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("TableProperties")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>TableProperties<DATA_TYPE_END> newItem(new TableProperties());
+            std::shared_ptr<TableProperties> newItem(new TableProperties());
             newItem->fromJson(fieldValue);
             setTableProperties( newItem );
         }
@@ -94,11 +94,11 @@ void Table::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_TableRowList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>TableRow<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<TableRow>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>TableRow<DATA_TYPE_END> newItem(new TableRow());
+                std::shared_ptr<TableRow> newItem(new TableRow());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -123,7 +123,7 @@ void Table::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, con
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>TableRow<DATA_TYPE_END> item){
+        std::transform(m_TableRowList.begin(), m_TableRowList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<TableRow> item){
             return ModelBase::toJson(item);
         });
         
@@ -142,7 +142,7 @@ void Table::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     {
         if(multipart->hasContent(_XPLATSTR("TableProperties")))
         {
-            <DATA_TYPE_START>TableProperties<DATA_TYPE_END> newItem(new TableProperties());
+            std::shared_ptr<TableProperties> newItem(new TableProperties());
             newItem->fromMultiPart(multipart, _XPLATSTR("TableProperties."));
             setTableProperties( newItem );
         }
@@ -156,11 +156,11 @@ void Table::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_TableRowList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>TableRow<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<TableRow>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>TableRow<DATA_TYPE_END> newItem(new TableRow());
+                std::shared_ptr<TableRow> newItem(new TableRow());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -169,13 +169,13 @@ void Table::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, c
     }
 }
 
-<DATA_TYPE_START>TableProperties<DATA_TYPE_END> Table::getTableProperties() const
+std::shared_ptr<TableProperties> Table::getTableProperties() const
 {
     return m_TableProperties;
 }
 
 
-void Table::setTableProperties(<DATA_TYPE_START>TableProperties<DATA_TYPE_END> value)
+void Table::setTableProperties(std::shared_ptr<TableProperties> value)
 {
     m_TableProperties = value;
     m_TablePropertiesIsSet = true;
@@ -190,12 +190,12 @@ void Table::unsetTableProperties()
     m_TablePropertiesIsSet = false;
 }
 
-<DATA_TYPE_START>List<TableRow><DATA_TYPE_END>& Table::getTableRowList()
+std::vector<std::shared_ptr<TableRow>>& Table::getTableRowList()
 {
     return m_TableRowList;
 }
 
-void Table::setTableRowList(<DATA_TYPE_START>List<TableRow><DATA_TYPE_END> const& value)
+void Table::setTableRowList(std::vector<std::shared_ptr<TableRow>> const& value)
 {
     m_TableRowList = value;
     m_TableRowListIsSet = true;

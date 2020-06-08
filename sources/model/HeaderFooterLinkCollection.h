@@ -63,15 +63,15 @@ public:
     /// HeaderFooterLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of section&#x27;s links.
+    /// Gets or sets collection of section&#39;s links.
     /// </summary>
-    <DATA_TYPE_START>List<HeaderFooterLink><DATA_TYPE_END>& getList();
+    std::vector<std::shared_ptr<HeaderFooterLink>>& getList();
     bool listIsSet() const;
     void unsetList();
-    void setList(<DATA_TYPE_START>List<HeaderFooterLink><DATA_TYPE_END> const& value);
+    void setList(std::vector<std::shared_ptr<HeaderFooterLink>> const& value);
 
 protected:
-    <DATA_TYPE_START>List<HeaderFooterLink><DATA_TYPE_END> m_List;
+    std::vector<std::shared_ptr<HeaderFooterLink>> m_List;
     bool m_ListIsSet;
 };
 

@@ -53,7 +53,7 @@ web::json::value ParagraphLinkCollection::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>ParagraphLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<ParagraphLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -79,11 +79,11 @@ void ParagraphLinkCollection::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ParagraphLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<ParagraphLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>ParagraphLink<DATA_TYPE_END> newItem(new ParagraphLink());
+                std::shared_ptr<ParagraphLink> newItem(new ParagraphLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -100,7 +100,7 @@ void ParagraphLinkCollection::toMultipart(const std::shared_ptr<MultipartFormDat
 
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>ParagraphLink<DATA_TYPE_END> item){
+        std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ParagraphLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -124,11 +124,11 @@ void ParagraphLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>ParagraphLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<ParagraphLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>ParagraphLink<DATA_TYPE_END> newItem(new ParagraphLink());
+                std::shared_ptr<ParagraphLink> newItem(new ParagraphLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -137,12 +137,12 @@ void ParagraphLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormD
     }
 }
 
-<DATA_TYPE_START>List<ParagraphLink><DATA_TYPE_END>& ParagraphLinkCollection::getParagraphLinkList()
+std::vector<std::shared_ptr<ParagraphLink>>& ParagraphLinkCollection::getParagraphLinkList()
 {
     return m_ParagraphLinkList;
 }
 
-void ParagraphLinkCollection::setParagraphLinkList(<DATA_TYPE_START>List<ParagraphLink><DATA_TYPE_END> const& value)
+void ParagraphLinkCollection::setParagraphLinkList(std::vector<std::shared_ptr<ParagraphLink>> const& value)
 {
     m_ParagraphLinkList = value;
     m_ParagraphLinkListIsSet = true;

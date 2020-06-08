@@ -93,13 +93,13 @@ void StyleApply::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipa
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> StyleApply::getStyleName() const
+utility::string_t StyleApply::getStyleName() const
 {
     return m_StyleName;
 }
 
 
-void StyleApply::setStyleName(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void StyleApply::setStyleName(utility::string_t value)
 {
     m_StyleName = value;
     m_StyleNameIsSet = true;

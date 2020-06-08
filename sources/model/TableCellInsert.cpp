@@ -66,7 +66,7 @@ void TableCellInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("InsertAfter")];
         if(!fieldValue.is_null())
         {
-            setInsertAfter(ModelBase::int?FromJson(fieldValue));
+            setInsertAfter(ModelBase::int32_tFromJson(fieldValue));
         }
     }
 }
@@ -89,17 +89,17 @@ void TableCellInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& mu
 
     if(multipart->hasContent(_XPLATSTR("InsertAfter")))
     {
-        setInsertAfter(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
+        setInsertAfter(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("InsertAfter"))));
     }
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> TableCellInsert::getInsertAfter() const
+int32_t TableCellInsert::getInsertAfter() const
 {
     return m_InsertAfter;
 }
 
 
-void TableCellInsert::setInsertAfter(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void TableCellInsert::setInsertAfter(int32_t value)
 {
     m_InsertAfter = value;
     m_InsertAfterIsSet = true;

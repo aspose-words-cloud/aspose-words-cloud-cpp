@@ -67,7 +67,7 @@ void FontResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Font")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>Font<DATA_TYPE_END> newItem(new Font());
+            std::shared_ptr<Font> newItem(new Font());
             newItem->fromJson(fieldValue);
             setFont( newItem );
         }
@@ -97,20 +97,20 @@ void FontResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("Font")))
         {
-            <DATA_TYPE_START>Font<DATA_TYPE_END> newItem(new Font());
+            std::shared_ptr<Font> newItem(new Font());
             newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
             setFont( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>Font<DATA_TYPE_END> FontResponse::getFont() const
+std::shared_ptr<Font> FontResponse::getFont() const
 {
     return m_Font;
 }
 
 
-void FontResponse::setFont(<DATA_TYPE_START>Font<DATA_TYPE_END> value)
+void FontResponse::setFont(std::shared_ptr<Font> value)
 {
     m_Font = value;
     m_FontIsSet = true;

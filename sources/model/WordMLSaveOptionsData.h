@@ -63,13 +63,13 @@ public:
     /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isPrettyFormat() const;
+    bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;
     void unsetPrettyFormat();
-    void setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setPrettyFormat(bool value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_PrettyFormat;
+    bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
 };
 

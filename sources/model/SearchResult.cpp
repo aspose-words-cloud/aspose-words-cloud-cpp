@@ -70,7 +70,7 @@ void SearchResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setRangeStart( newItem );
         }
@@ -80,7 +80,7 @@ void SearchResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromJson(fieldValue);
             setRangeEnd( newItem );
         }
@@ -118,7 +118,7 @@ void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("RangeStart")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
             setRangeStart( newItem );
         }
@@ -127,20 +127,20 @@ void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multi
     {
         if(multipart->hasContent(_XPLATSTR("RangeEnd")))
         {
-            <DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> newItem(new DocumentPosition());
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
             newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
             setRangeEnd( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> SearchResult::getRangeStart() const
+std::shared_ptr<DocumentPosition> SearchResult::getRangeStart() const
 {
     return m_RangeStart;
 }
 
 
-void SearchResult::setRangeStart(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void SearchResult::setRangeStart(std::shared_ptr<DocumentPosition> value)
 {
     m_RangeStart = value;
     m_RangeStartIsSet = true;
@@ -155,13 +155,13 @@ void SearchResult::unsetRangeStart()
     m_RangeStartIsSet = false;
 }
 
-<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> SearchResult::getRangeEnd() const
+std::shared_ptr<DocumentPosition> SearchResult::getRangeEnd() const
 {
     return m_RangeEnd;
 }
 
 
-void SearchResult::setRangeEnd(<DATA_TYPE_START>DocumentPosition<DATA_TYPE_END> value)
+void SearchResult::setRangeEnd(std::shared_ptr<DocumentPosition> value)
 {
     m_RangeEnd = value;
     m_RangeEndIsSet = true;

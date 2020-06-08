@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets a value indicating whether the first record of CSV data contains column names.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isHasHeaders() const;
+    bool isHasHeaders() const;
     bool hasHeadersIsSet() const;
     void unsetHasHeaders();
-    void setHasHeaders(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setHasHeaders(bool value);
     /// <summary>
     /// Gets or sets the character to be used as a column delimiter.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getDelimiter() const;
+    utility::string_t getDelimiter() const;
     bool delimiterIsSet() const;
     void unsetDelimiter();
-    void setDelimiter(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setDelimiter(utility::string_t value);
     /// <summary>
     /// Gets or sets the character that is used to quote field values.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getQuoteChar() const;
+    utility::string_t getQuoteChar() const;
     bool quoteCharIsSet() const;
     void unsetQuoteChar();
-    void setQuoteChar(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setQuoteChar(utility::string_t value);
     /// <summary>
     /// Gets or sets the character that is used to comment lines of CSV data.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCommentChar() const;
+    utility::string_t getCommentChar() const;
     bool commentCharIsSet() const;
     void unsetCommentChar();
-    void setCommentChar(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCommentChar(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_HasHeaders;
+    bool m_HasHeaders;
     bool m_HasHeadersIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Delimiter;
+    utility::string_t m_Delimiter;
     bool m_DelimiterIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_QuoteChar;
+    utility::string_t m_QuoteChar;
     bool m_QuoteCharIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_CommentChar;
+    utility::string_t m_CommentChar;
     bool m_CommentCharIsSet;
 };
 

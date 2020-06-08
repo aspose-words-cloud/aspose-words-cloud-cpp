@@ -63,31 +63,31 @@ public:
     /// <summary>
     /// Gets or sets the size of the checkbox in points. Has effect only when IsCheckBoxExactSize is true.
     /// </summary>
-    <DATA_TYPE_START>double?<DATA_TYPE_END> getCheckBoxSize() const;
+    double getCheckBoxSize() const;
     bool checkBoxSizeIsSet() const;
     void unsetCheckBoxSize();
-    void setCheckBoxSize(<DATA_TYPE_START>double?<DATA_TYPE_END> value);
+    void setCheckBoxSize(double value);
     /// <summary>
     /// Gets or sets the checked status of the check box form field.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isChecked() const;
+    bool isChecked() const;
     bool _checkedIsSet() const;
     void unsetChecked();
-    void setChecked(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setChecked(bool value);
     /// <summary>
     /// Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isIsCheckBoxExactSize() const;
+    bool isIsCheckBoxExactSize() const;
     bool isCheckBoxExactSizeIsSet() const;
     void unsetIsCheckBoxExactSize();
-    void setIsCheckBoxExactSize(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setIsCheckBoxExactSize(bool value);
 
 protected:
-    <DATA_TYPE_START>double?<DATA_TYPE_END> m_CheckBoxSize;
+    double m_CheckBoxSize;
     bool m_CheckBoxSizeIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_Checked;
+    bool m_Checked;
     bool m_CheckedIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_IsCheckBoxExactSize;
+    bool m_IsCheckBoxExactSize;
     bool m_IsCheckBoxExactSizeIsSet;
 };
 

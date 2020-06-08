@@ -64,40 +64,40 @@ public:
     /// <summary>
     /// Gets or sets specifies the encryption algorithm to use.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getEncryptionAlgorithm() const;
+    utility::string_t getEncryptionAlgorithm() const;
     bool encryptionAlgorithmIsSet() const;
     void unsetEncryptionAlgorithm();
-    void setEncryptionAlgorithm(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setEncryptionAlgorithm(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies the owner password for the encrypted PDF document.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getOwnerPassword() const;
+    utility::string_t getOwnerPassword() const;
     bool ownerPasswordIsSet() const;
     void unsetOwnerPassword();
-    void setOwnerPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setOwnerPassword(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies the operations that are allowed to a user on an encrypted PDF document.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPermissions() const;
+    utility::string_t getPermissions() const;
     bool permissionsIsSet() const;
     void unsetPermissions();
-    void setPermissions(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPermissions(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies the user password required for opening the encrypted PDF document.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getUserPassword() const;
+    utility::string_t getUserPassword() const;
     bool userPasswordIsSet() const;
     void unsetUserPassword();
-    void setUserPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setUserPassword(utility::string_t value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_EncryptionAlgorithm;
+    utility::string_t m_EncryptionAlgorithm;
     bool m_EncryptionAlgorithmIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_OwnerPassword;
+    utility::string_t m_OwnerPassword;
     bool m_OwnerPasswordIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Permissions;
+    utility::string_t m_Permissions;
     bool m_PermissionsIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_UserPassword;
+    utility::string_t m_UserPassword;
     bool m_UserPasswordIsSet;
 };
 

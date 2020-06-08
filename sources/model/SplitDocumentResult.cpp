@@ -59,7 +59,7 @@ web::json::value SplitDocumentResult::toJson() const
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Pages.begin(), m_Pages.end(), std::back_inserter(jsonArray),
-			[&](<DATA_TYPE_START>FileLink<DATA_TYPE_END> item) {
+			[&](std::shared_ptr<FileLink> item) {
 			return ModelBase::toJson(item);
 		});
         
@@ -83,7 +83,7 @@ void SplitDocumentResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SourceDocument")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setSourceDocument( newItem );
         }
@@ -97,11 +97,11 @@ void SplitDocumentResult::fromJson(web::json::value& val)
         std::transform(arr.begin(), arr.end(), std::back_inserter(m_Pages), [&](web::json::value& item){
             if(item.is_null())
             {
-                return <DATA_TYPE_START>FileLink<DATA_TYPE_END>(nullptr);
+                return std::shared_ptr<FileLink>(nullptr);
             }
             else
             {
-                <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+                std::shared_ptr<FileLink> newItem(new FileLink());
                 newItem->fromJson(item);
                 return newItem;
             }
@@ -114,7 +114,7 @@ void SplitDocumentResult::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ZippedPages")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromJson(fieldValue);
             setZippedPages( newItem );
         }
@@ -136,7 +136,7 @@ void SplitDocumentResult::toMultipart(const std::shared_ptr<MultipartFormData>& 
     }
     {
         std::vector<web::json::value> jsonArray;
-        std::transform(m_Pages.begin(), m_Pages.end(), std::back_inserter(jsonArray), [&](<DATA_TYPE_START>FileLink<DATA_TYPE_END> item){
+        std::transform(m_Pages.begin(), m_Pages.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FileLink> item){
             return ModelBase::toJson(item);
         });
         
@@ -163,7 +163,7 @@ void SplitDocumentResult::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         if(multipart->hasContent(_XPLATSTR("SourceDocument")))
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("SourceDocument."));
             setSourceDocument( newItem );
         }
@@ -177,11 +177,11 @@ void SplitDocumentResult::fromMultiPart(const std::shared_ptr<MultipartFormData>
         std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Pages), [&](web::json::value item) {
             if(item.is_null())
             {
-                return <DATA_TYPE_START>FileLink<DATA_TYPE_END>(nullptr) ;
+                return std::shared_ptr<FileLink>(nullptr) ;
             }
             else
             {
-                <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+                std::shared_ptr<FileLink> newItem(new FileLink());
                 newItem->fromJson(item);
                 return newItem ;
             }
@@ -192,20 +192,20 @@ void SplitDocumentResult::fromMultiPart(const std::shared_ptr<MultipartFormData>
     {
         if(multipart->hasContent(_XPLATSTR("ZippedPages")))
         {
-            <DATA_TYPE_START>FileLink<DATA_TYPE_END> newItem(new FileLink());
+            std::shared_ptr<FileLink> newItem(new FileLink());
             newItem->fromMultiPart(multipart, _XPLATSTR("ZippedPages."));
             setZippedPages( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>FileLink<DATA_TYPE_END> SplitDocumentResult::getSourceDocument() const
+std::shared_ptr<FileLink> SplitDocumentResult::getSourceDocument() const
 {
     return m_SourceDocument;
 }
 
 
-void SplitDocumentResult::setSourceDocument(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
+void SplitDocumentResult::setSourceDocument(std::shared_ptr<FileLink> value)
 {
     m_SourceDocument = value;
     m_SourceDocumentIsSet = true;
@@ -220,12 +220,12 @@ void SplitDocumentResult::unsetSourceDocument()
     m_SourceDocumentIsSet = false;
 }
 
-<DATA_TYPE_START>List<FileLink><DATA_TYPE_END>& SplitDocumentResult::getPages()
+std::vector<std::shared_ptr<FileLink>>& SplitDocumentResult::getPages()
 {
     return m_Pages;
 }
 
-void SplitDocumentResult::setPages(<DATA_TYPE_START>List<FileLink><DATA_TYPE_END> const& value)
+void SplitDocumentResult::setPages(std::vector<std::shared_ptr<FileLink>> const& value)
 {
     m_Pages = value;
     m_PagesIsSet = true;
@@ -240,13 +240,13 @@ void SplitDocumentResult::unsetPages()
     m_PagesIsSet = false;
 }
 
-<DATA_TYPE_START>FileLink<DATA_TYPE_END> SplitDocumentResult::getZippedPages() const
+std::shared_ptr<FileLink> SplitDocumentResult::getZippedPages() const
 {
     return m_ZippedPages;
 }
 
 
-void SplitDocumentResult::setZippedPages(<DATA_TYPE_START>FileLink<DATA_TYPE_END> value)
+void SplitDocumentResult::setZippedPages(std::shared_ptr<FileLink> value)
 {
     m_ZippedPages = value;
     m_ZippedPagesIsSet = true;

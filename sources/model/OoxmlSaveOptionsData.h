@@ -63,40 +63,40 @@ public:
     /// <summary>
     /// Gets or sets specifies the OOXML version for the output document.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCompliance() const;
+    utility::string_t getCompliance() const;
     bool complianceIsSet() const;
     void unsetCompliance();
-    void setCompliance(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCompliance(utility::string_t value);
     /// <summary>
     /// Gets or sets compression level.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getCompressionLevel() const;
+    utility::string_t getCompressionLevel() const;
     bool compressionLevelIsSet() const;
     void unsetCompressionLevel();
-    void setCompressionLevel(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setCompressionLevel(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies a password to encrypt document using ECMA376 Standard encryption algorithm.
     /// </summary>
-    <DATA_TYPE_START>string<DATA_TYPE_END> getPassword() const;
+    utility::string_t getPassword() const;
     bool passwordIsSet() const;
     void unsetPassword();
-    void setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value);
+    void setPassword(utility::string_t value);
     /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> isPrettyFormat() const;
+    bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;
     void unsetPrettyFormat();
-    void setPrettyFormat(<DATA_TYPE_START>bool?<DATA_TYPE_END> value);
+    void setPrettyFormat(bool value);
 
 protected:
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Compliance;
+    utility::string_t m_Compliance;
     bool m_ComplianceIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_CompressionLevel;
+    utility::string_t m_CompressionLevel;
     bool m_CompressionLevelIsSet;
-    <DATA_TYPE_START>string<DATA_TYPE_END> m_Password;
+    utility::string_t m_Password;
     bool m_PasswordIsSet;
-    <DATA_TYPE_START>bool?<DATA_TYPE_END> m_PrettyFormat;
+    bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
 };
 

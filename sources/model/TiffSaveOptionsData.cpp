@@ -80,7 +80,7 @@ void TiffSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ThresholdForFloydSteinbergDithering")];
         if(!fieldValue.is_null())
         {
-            setThresholdForFloydSteinbergDithering(ModelBase::int?FromJson(fieldValue));
+            setThresholdForFloydSteinbergDithering(ModelBase::int32_tFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TiffBinarizationMethod")))
@@ -129,7 +129,7 @@ void TiffSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
 
     if(multipart->hasContent(_XPLATSTR("ThresholdForFloydSteinbergDithering")))
     {
-        setThresholdForFloydSteinbergDithering(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ThresholdForFloydSteinbergDithering"))));
+        setThresholdForFloydSteinbergDithering(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ThresholdForFloydSteinbergDithering"))));
     }
     if(multipart->hasContent(_XPLATSTR("TiffBinarizationMethod")))
     {
@@ -141,13 +141,13 @@ void TiffSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>
     }
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> TiffSaveOptionsData::getThresholdForFloydSteinbergDithering() const
+int32_t TiffSaveOptionsData::getThresholdForFloydSteinbergDithering() const
 {
     return m_ThresholdForFloydSteinbergDithering;
 }
 
 
-void TiffSaveOptionsData::setThresholdForFloydSteinbergDithering(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void TiffSaveOptionsData::setThresholdForFloydSteinbergDithering(int32_t value)
 {
     m_ThresholdForFloydSteinbergDithering = value;
     m_ThresholdForFloydSteinbergDitheringIsSet = true;
@@ -162,13 +162,13 @@ void TiffSaveOptionsData::unsetThresholdForFloydSteinbergDithering()
     m_ThresholdForFloydSteinbergDitheringIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> TiffSaveOptionsData::getTiffBinarizationMethod() const
+utility::string_t TiffSaveOptionsData::getTiffBinarizationMethod() const
 {
     return m_TiffBinarizationMethod;
 }
 
 
-void TiffSaveOptionsData::setTiffBinarizationMethod(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void TiffSaveOptionsData::setTiffBinarizationMethod(utility::string_t value)
 {
     m_TiffBinarizationMethod = value;
     m_TiffBinarizationMethodIsSet = true;
@@ -183,13 +183,13 @@ void TiffSaveOptionsData::unsetTiffBinarizationMethod()
     m_TiffBinarizationMethodIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> TiffSaveOptionsData::getTiffCompression() const
+utility::string_t TiffSaveOptionsData::getTiffCompression() const
 {
     return m_TiffCompression;
 }
 
 
-void TiffSaveOptionsData::setTiffCompression(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void TiffSaveOptionsData::setTiffCompression(utility::string_t value)
 {
     m_TiffCompression = value;
     m_TiffCompressionIsSet = true;

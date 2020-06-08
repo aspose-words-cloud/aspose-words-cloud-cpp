@@ -86,7 +86,7 @@ void FormFieldTextInput::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("MaxLength")];
         if(!fieldValue.is_null())
         {
-            setMaxLength(ModelBase::int?FromJson(fieldValue));
+            setMaxLength(ModelBase::int32_tFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("TextInputDefault")))
@@ -148,7 +148,7 @@ void FormFieldTextInput::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 
     if(multipart->hasContent(_XPLATSTR("MaxLength")))
     {
-        setMaxLength(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("MaxLength"))));
+        setMaxLength(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("MaxLength"))));
     }
     if(multipart->hasContent(_XPLATSTR("TextInputDefault")))
     {
@@ -164,13 +164,13 @@ void FormFieldTextInput::fromMultiPart(const std::shared_ptr<MultipartFormData>&
     }
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> FormFieldTextInput::getMaxLength() const
+int32_t FormFieldTextInput::getMaxLength() const
 {
     return m_MaxLength;
 }
 
 
-void FormFieldTextInput::setMaxLength(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void FormFieldTextInput::setMaxLength(int32_t value)
 {
     m_MaxLength = value;
     m_MaxLengthIsSet = true;
@@ -185,13 +185,13 @@ void FormFieldTextInput::unsetMaxLength()
     m_MaxLengthIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormFieldTextInput::getTextInputDefault() const
+utility::string_t FormFieldTextInput::getTextInputDefault() const
 {
     return m_TextInputDefault;
 }
 
 
-void FormFieldTextInput::setTextInputDefault(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormFieldTextInput::setTextInputDefault(utility::string_t value)
 {
     m_TextInputDefault = value;
     m_TextInputDefaultIsSet = true;
@@ -206,13 +206,13 @@ void FormFieldTextInput::unsetTextInputDefault()
     m_TextInputDefaultIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormFieldTextInput::getTextInputFormat() const
+utility::string_t FormFieldTextInput::getTextInputFormat() const
 {
     return m_TextInputFormat;
 }
 
 
-void FormFieldTextInput::setTextInputFormat(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormFieldTextInput::setTextInputFormat(utility::string_t value)
 {
     m_TextInputFormat = value;
     m_TextInputFormatIsSet = true;
@@ -227,13 +227,13 @@ void FormFieldTextInput::unsetTextInputFormat()
     m_TextInputFormatIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> FormFieldTextInput::getTextInputType() const
+utility::string_t FormFieldTextInput::getTextInputType() const
 {
     return m_TextInputType;
 }
 
 
-void FormFieldTextInput::setTextInputType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void FormFieldTextInput::setTextInputType(utility::string_t value)
 {
     m_TextInputType = value;
     m_TextInputTypeIsSet = true;

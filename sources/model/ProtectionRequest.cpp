@@ -139,13 +139,13 @@ void ProtectionRequest::fromMultiPart(const std::shared_ptr<MultipartFormData>& 
     }
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ProtectionRequest::getPassword() const
+utility::string_t ProtectionRequest::getPassword() const
 {
     return m_Password;
 }
 
 
-void ProtectionRequest::setPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ProtectionRequest::setPassword(utility::string_t value)
 {
     m_Password = value;
     m_PasswordIsSet = true;
@@ -160,13 +160,13 @@ void ProtectionRequest::unsetPassword()
     m_PasswordIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ProtectionRequest::getNewPassword() const
+utility::string_t ProtectionRequest::getNewPassword() const
 {
     return m_NewPassword;
 }
 
 
-void ProtectionRequest::setNewPassword(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ProtectionRequest::setNewPassword(utility::string_t value)
 {
     m_NewPassword = value;
     m_NewPasswordIsSet = true;
@@ -181,13 +181,13 @@ void ProtectionRequest::unsetNewPassword()
     m_NewPasswordIsSet = false;
 }
 
-<DATA_TYPE_START>string<DATA_TYPE_END> ProtectionRequest::getProtectionType() const
+utility::string_t ProtectionRequest::getProtectionType() const
 {
     return m_ProtectionType;
 }
 
 
-void ProtectionRequest::setProtectionType(<DATA_TYPE_START>string<DATA_TYPE_END> value)
+void ProtectionRequest::setProtectionType(utility::string_t value)
 {
     m_ProtectionType = value;
     m_ProtectionTypeIsSet = true;

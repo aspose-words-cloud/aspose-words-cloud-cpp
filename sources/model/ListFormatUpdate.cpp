@@ -72,7 +72,7 @@ void ListFormatUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListLevelNumber")];
         if(!fieldValue.is_null())
         {
-            setListLevelNumber(ModelBase::int?FromJson(fieldValue));
+            setListLevelNumber(ModelBase::int32_tFromJson(fieldValue));
         }
     }
     if(val.has_field(_XPLATSTR("ListId")))
@@ -80,7 +80,7 @@ void ListFormatUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ListId")];
         if(!fieldValue.is_null())
         {
-            setListId(ModelBase::int?FromJson(fieldValue));
+            setListId(ModelBase::int32_tFromJson(fieldValue));
         }
     }
 }
@@ -108,21 +108,21 @@ void ListFormatUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& m
 
     if(multipart->hasContent(_XPLATSTR("ListLevelNumber")))
     {
-        setListLevelNumber(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ListLevelNumber"))));
+        setListLevelNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListLevelNumber"))));
     }
     if(multipart->hasContent(_XPLATSTR("ListId")))
     {
-        setListId(ModelBase::int?FromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
+        setListId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
     }
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> ListFormatUpdate::getListLevelNumber() const
+int32_t ListFormatUpdate::getListLevelNumber() const
 {
     return m_ListLevelNumber;
 }
 
 
-void ListFormatUpdate::setListLevelNumber(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void ListFormatUpdate::setListLevelNumber(int32_t value)
 {
     m_ListLevelNumber = value;
     m_ListLevelNumberIsSet = true;
@@ -137,13 +137,13 @@ void ListFormatUpdate::unsetListLevelNumber()
     m_ListLevelNumberIsSet = false;
 }
 
-<DATA_TYPE_START>int?<DATA_TYPE_END> ListFormatUpdate::getListId() const
+int32_t ListFormatUpdate::getListId() const
 {
     return m_ListId;
 }
 
 
-void ListFormatUpdate::setListId(<DATA_TYPE_START>int?<DATA_TYPE_END> value)
+void ListFormatUpdate::setListId(int32_t value)
 {
     m_ListId = value;
     m_ListIdIsSet = true;

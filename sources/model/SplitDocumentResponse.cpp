@@ -67,7 +67,7 @@ void SplitDocumentResponse::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("SplitResult")];
         if(!fieldValue.is_null())
         {
-            <DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> newItem(new SplitDocumentResult());
+            std::shared_ptr<SplitDocumentResult> newItem(new SplitDocumentResult());
             newItem->fromJson(fieldValue);
             setSplitResult( newItem );
         }
@@ -97,20 +97,20 @@ void SplitDocumentResponse::fromMultiPart(const std::shared_ptr<MultipartFormDat
     {
         if(multipart->hasContent(_XPLATSTR("SplitResult")))
         {
-            <DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> newItem(new SplitDocumentResult());
+            std::shared_ptr<SplitDocumentResult> newItem(new SplitDocumentResult());
             newItem->fromMultiPart(multipart, _XPLATSTR("SplitResult."));
             setSplitResult( newItem );
         }
     }
 }
 
-<DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> SplitDocumentResponse::getSplitResult() const
+std::shared_ptr<SplitDocumentResult> SplitDocumentResponse::getSplitResult() const
 {
     return m_SplitResult;
 }
 
 
-void SplitDocumentResponse::setSplitResult(<DATA_TYPE_START>SplitDocumentResult<DATA_TYPE_END> value)
+void SplitDocumentResponse::setSplitResult(std::shared_ptr<SplitDocumentResult> value)
 {
     m_SplitResult = value;
     m_SplitResultIsSet = true;
