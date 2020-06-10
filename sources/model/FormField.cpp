@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormField.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "FormField.h"
 
@@ -52,6 +51,7 @@ FormField::FormField()
     m_OwnStatusIsSet = false;
     m_StatusText = utility::conversions::to_string_t("");
     m_StatusTextIsSet = false;
+
 }
 
 FormField::~FormField()
@@ -66,7 +66,6 @@ void FormField::validate()
 web::json::value FormField::toJson() const
 {
     web::json::value val = this->NodeLink::toJson();
-
     if(m_CalculateOnExitIsSet)
     {
         val[_XPLATSTR("CalculateOnExit")] = ModelBase::toJson(m_CalculateOnExit);
@@ -116,167 +115,154 @@ void FormField::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CalculateOnExit")];
         if(!fieldValue.is_null())
         {
-            setCalculateOnExit(ModelBase::boolFromJson(fieldValue));
+           setCalculateOnExit(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Enabled")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Enabled")];
         if(!fieldValue.is_null())
         {
-            setEnabled(ModelBase::boolFromJson(fieldValue));
+           setEnabled(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("EntryMacro")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("EntryMacro")];
         if(!fieldValue.is_null())
         {
-            setEntryMacro(ModelBase::stringFromJson(fieldValue));
+           setEntryMacro(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ExitMacro")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExitMacro")];
         if(!fieldValue.is_null())
         {
-            setExitMacro(ModelBase::stringFromJson(fieldValue));
+           setExitMacro(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("HelpText")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("HelpText")];
         if(!fieldValue.is_null())
         {
-            setHelpText(ModelBase::stringFromJson(fieldValue));
+           setHelpText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Name")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
-            setName(ModelBase::stringFromJson(fieldValue));
+           setName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("OwnHelp")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("OwnHelp")];
         if(!fieldValue.is_null())
         {
-            setOwnHelp(ModelBase::boolFromJson(fieldValue));
+           setOwnHelp(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("OwnStatus")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("OwnStatus")];
         if(!fieldValue.is_null())
         {
-            setOwnStatus(ModelBase::boolFromJson(fieldValue));
+           setOwnStatus(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StatusText")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StatusText")];
         if(!fieldValue.is_null())
         {
-            setStatusText(ModelBase::stringFromJson(fieldValue));
+           setStatusText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void FormField::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CalculateOnExitIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CalculateOnExit"), m_CalculateOnExit));
-        
     }
+
+
     if(m_EnabledIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Enabled"), m_Enabled));
-        
     }
+
+
     if(m_EntryMacroIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EntryMacro"), m_EntryMacro));
-        
     }
+
+
     if(m_ExitMacroIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExitMacro"), m_ExitMacro));
-        
     }
+
+
     if(m_HelpTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HelpText"), m_HelpText));
-        
     }
+
+
     if(m_NameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
-        
     }
+
+
     if(m_OwnHelpIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnHelp"), m_OwnHelp));
-        
     }
+
+
     if(m_OwnStatusIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("OwnStatus"), m_OwnStatus));
-        
     }
+
+
     if(m_StatusTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StatusText"), m_StatusText));
-        
     }
+
 }
 
 void FormField::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    NodeLink::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("CalculateOnExit")))
-    {
-        setCalculateOnExit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CalculateOnExit"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Enabled")))
-    {
-        setEnabled(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Enabled"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("EntryMacro")))
-    {
-        setEntryMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EntryMacro"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExitMacro")))
-    {
-        setExitMacro(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ExitMacro"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HelpText")))
-    {
-        setHelpText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HelpText"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Name")))
-    {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OwnHelp")))
-    {
-        setOwnHelp(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnHelp"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("OwnStatus")))
-    {
-        setOwnStatus(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("OwnStatus"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StatusText")))
-    {
-        setStatusText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StatusText"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool FormField::isCalculateOnExit() const
@@ -290,6 +276,7 @@ void FormField::setCalculateOnExit(bool value)
     m_CalculateOnExit = value;
     m_CalculateOnExitIsSet = true;
 }
+
 bool FormField::calculateOnExitIsSet() const
 {
     return m_CalculateOnExitIsSet;
@@ -311,6 +298,7 @@ void FormField::setEnabled(bool value)
     m_Enabled = value;
     m_EnabledIsSet = true;
 }
+
 bool FormField::enabledIsSet() const
 {
     return m_EnabledIsSet;
@@ -332,6 +320,7 @@ void FormField::setEntryMacro(utility::string_t value)
     m_EntryMacro = value;
     m_EntryMacroIsSet = true;
 }
+
 bool FormField::entryMacroIsSet() const
 {
     return m_EntryMacroIsSet;
@@ -353,6 +342,7 @@ void FormField::setExitMacro(utility::string_t value)
     m_ExitMacro = value;
     m_ExitMacroIsSet = true;
 }
+
 bool FormField::exitMacroIsSet() const
 {
     return m_ExitMacroIsSet;
@@ -374,6 +364,7 @@ void FormField::setHelpText(utility::string_t value)
     m_HelpText = value;
     m_HelpTextIsSet = true;
 }
+
 bool FormField::helpTextIsSet() const
 {
     return m_HelpTextIsSet;
@@ -395,6 +386,7 @@ void FormField::setName(utility::string_t value)
     m_Name = value;
     m_NameIsSet = true;
 }
+
 bool FormField::nameIsSet() const
 {
     return m_NameIsSet;
@@ -416,6 +408,7 @@ void FormField::setOwnHelp(bool value)
     m_OwnHelp = value;
     m_OwnHelpIsSet = true;
 }
+
 bool FormField::ownHelpIsSet() const
 {
     return m_OwnHelpIsSet;
@@ -437,6 +430,7 @@ void FormField::setOwnStatus(bool value)
     m_OwnStatus = value;
     m_OwnStatusIsSet = true;
 }
+
 bool FormField::ownStatusIsSet() const
 {
     return m_OwnStatusIsSet;
@@ -458,6 +452,7 @@ void FormField::setStatusText(utility::string_t value)
     m_StatusText = value;
     m_StatusTextIsSet = true;
 }
+
 bool FormField::statusTextIsSet() const
 {
     return m_StatusTextIsSet;
@@ -473,4 +468,3 @@ void FormField::unsetStatusText()
 }
 }
 }
-

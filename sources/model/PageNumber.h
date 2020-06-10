@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PageNumber.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_PageNumber_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PageNumber_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Class is used for insert page number request building.
 /// </summary>
-class  PageNumber
+class PageNumber
     : public ModelBase
 {
 public:
@@ -62,19 +60,21 @@ public:
     /// PageNumber members
 
     /// <summary>
-    /// Gets or sets page number format, e.g. \&quot;{PAGE} of {NUMPAGES}\&quot;.
-    /// </summary>
-    utility::string_t getFormat() const;
-    bool formatIsSet() const;
-    void unsetFormat();
-    void setFormat(utility::string_t value);
-    /// <summary>
     /// Gets or sets text alignment, possible values are left, right, center or justify.
     /// </summary>
     utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets page number format, e.g. "{PAGE} of {NUMPAGES}".
+    /// </summary>
+    utility::string_t getFormat() const;
+    bool formatIsSet() const;
+    void unsetFormat();
+    void setFormat(utility::string_t value);
+
     /// <summary>
     /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
     /// </summary>
@@ -82,6 +82,7 @@ public:
     bool isTopIsSet() const;
     void unsetIsTop();
     void setIsTop(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether if true the page number is added on first page too.
     /// </summary>
@@ -91,12 +92,15 @@ public:
     void setSetPageNumberOnFirstPage(bool value);
 
 protected:
-    utility::string_t m_Format;
-    bool m_FormatIsSet;
     utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
+
+    utility::string_t m_Format;
+    bool m_FormatIsSet;
+
     bool m_IsTop;
     bool m_IsTopIsSet;
+
     bool m_SetPageNumberOnFirstPage;
     bool m_SetPageNumberOnFirstPageIsSet;
 };

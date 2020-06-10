@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BordersResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_BordersResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_BordersResponse_H_
 
-
 #include "BordersCollection.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET {nodeWithBorders}/borders.
+/// This response should be returned by the service when handling:
+/// GET {nodeWithBorders}/borders.
 /// </summary>
-class  BordersResponse
+class BordersResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +63,7 @@ public:
     /// BordersResponse members
 
     /// <summary>
-    /// Gets or sets Borders.
+    /// Gets or sets table.
     /// </summary>
     std::shared_ptr<BordersCollection> getBorders() const;
     bool bordersIsSet() const;

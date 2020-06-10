@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Comment.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Comment.h"
 
 namespace aspose {
@@ -36,15 +35,19 @@ Comment::Comment()
 {
     m_Author = utility::conversions::to_string_t("");
     m_AuthorIsSet = false;
+
     m_ContentIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
     m_Initial = utility::conversions::to_string_t("");
     m_InitialIsSet = false;
+
     m_RangeEndIsSet = false;
+
     m_RangeStartIsSet = false;
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
+
 }
 
 Comment::~Comment()
@@ -59,7 +62,6 @@ void Comment::validate()
 web::json::value Comment::toJson() const
 {
     web::json::value val = this->CommentLink::toJson();
-
     if(m_AuthorIsSet)
     {
         val[_XPLATSTR("Author")] = ModelBase::toJson(m_Author);
@@ -101,9 +103,11 @@ void Comment::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Author")];
         if(!fieldValue.is_null())
         {
-            setAuthor(ModelBase::stringFromJson(fieldValue));
+           setAuthor(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Content")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Content")];
@@ -114,22 +118,28 @@ void Comment::fromJson(web::json::value& val)
             setContent( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("DateTime")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
         if(!fieldValue.is_null())
         {
-            setDateTime(ModelBase::dateFromJson(fieldValue));
+           setDateTime(ModelBase::dateTimeFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Initial")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Initial")];
         if(!fieldValue.is_null())
         {
-            setInitial(ModelBase::stringFromJson(fieldValue));
+           setInitial(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RangeEnd")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
@@ -140,6 +150,8 @@ void Comment::fromJson(web::json::value& val)
             setRangeEnd( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RangeStart")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
@@ -150,114 +162,78 @@ void Comment::fromJson(web::json::value& val)
             setRangeStart( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Text")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
-            setText(ModelBase::stringFromJson(fieldValue));
+           setText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void Comment::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     CommentLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_AuthorIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Author"), m_Author));
-        
     }
+
+
     if(m_ContentIsSet)
     {
         if (m_Content.get())
         {
             m_Content->toMultipart(multipart, _XPLATSTR("Content."));
         }
-        
     }
+
+
     if(m_DateTimeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
-        
     }
+
+
     if(m_InitialIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Initial"), m_Initial));
-        
     }
+
+
     if(m_RangeEndIsSet)
     {
         if (m_RangeEnd.get())
         {
             m_RangeEnd->toMultipart(multipart, _XPLATSTR("RangeEnd."));
         }
-        
     }
+
+
     if(m_RangeStartIsSet)
     {
         if (m_RangeStart.get())
         {
             m_RangeStart->toMultipart(multipart, _XPLATSTR("RangeStart."));
         }
-        
     }
+
+
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
+
 }
 
 void Comment::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    CommentLink::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Author")))
-    {
-        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Author"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Content")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Content")))
-        {
-            std::shared_ptr<StoryChildNodes> newItem(new StoryChildNodes());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Content."));
-            setContent( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("DateTime")))
-    {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Initial")))
-    {
-        setInitial(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Initial"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RangeEnd")))
-    {
-        if(multipart->hasContent(_XPLATSTR("RangeEnd")))
-        {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
-            setRangeEnd( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("RangeStart")))
-    {
-        if(multipart->hasContent(_XPLATSTR("RangeStart")))
-        {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
-            setRangeStart( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t Comment::getAuthor() const
@@ -271,6 +247,7 @@ void Comment::setAuthor(utility::string_t value)
     m_Author = value;
     m_AuthorIsSet = true;
 }
+
 bool Comment::authorIsSet() const
 {
     return m_AuthorIsSet;
@@ -292,6 +269,7 @@ void Comment::setContent(std::shared_ptr<StoryChildNodes> value)
     m_Content = value;
     m_ContentIsSet = true;
 }
+
 bool Comment::contentIsSet() const
 {
     return m_ContentIsSet;
@@ -313,6 +291,7 @@ void Comment::setDateTime(utility::datetime value)
     m_DateTime = value;
     m_DateTimeIsSet = true;
 }
+
 bool Comment::dateTimeIsSet() const
 {
     return m_DateTimeIsSet;
@@ -334,6 +313,7 @@ void Comment::setInitial(utility::string_t value)
     m_Initial = value;
     m_InitialIsSet = true;
 }
+
 bool Comment::initialIsSet() const
 {
     return m_InitialIsSet;
@@ -355,6 +335,7 @@ void Comment::setRangeEnd(std::shared_ptr<DocumentPosition> value)
     m_RangeEnd = value;
     m_RangeEndIsSet = true;
 }
+
 bool Comment::rangeEndIsSet() const
 {
     return m_RangeEndIsSet;
@@ -376,6 +357,7 @@ void Comment::setRangeStart(std::shared_ptr<DocumentPosition> value)
     m_RangeStart = value;
     m_RangeStartIsSet = true;
 }
+
 bool Comment::rangeStartIsSet() const
 {
     return m_RangeStartIsSet;
@@ -397,6 +379,7 @@ void Comment::setText(utility::string_t value)
     m_Text = value;
     m_TextIsSet = true;
 }
+
 bool Comment::textIsSet() const
 {
     return m_TextIsSet;
@@ -412,4 +395,3 @@ void Comment::unsetText()
 }
 }
 }
-

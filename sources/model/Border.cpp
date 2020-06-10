@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Border.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Border.h"
 
 namespace aspose {
@@ -34,17 +33,18 @@ namespace models {
 
 Border::Border()
 {
-    m_BorderType = utility::conversions::to_string_t("");
     m_BorderTypeIsSet = false;
+
     m_ColorIsSet = false;
     m_DistanceFromText = 0.0;
     m_DistanceFromTextIsSet = false;
-    m_LineStyle = utility::conversions::to_string_t("");
+
     m_LineStyleIsSet = false;
     m_LineWidth = 0.0;
     m_LineWidthIsSet = false;
     m_Shadow = false;
     m_ShadowIsSet = false;
+
 }
 
 Border::~Border()
@@ -59,7 +59,6 @@ void Border::validate()
 web::json::value Border::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_BorderTypeIsSet)
     {
         val[_XPLATSTR("BorderType")] = ModelBase::toJson(m_BorderType);
@@ -97,9 +96,11 @@ void Border::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("BorderType")];
         if(!fieldValue.is_null())
         {
-            setBorderType(ModelBase::stringFromJson(fieldValue));
+           setBorderType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Color")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Color")];
@@ -110,113 +111,96 @@ void Border::fromJson(web::json::value& val)
             setColor( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("DistanceFromText")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("DistanceFromText")];
         if(!fieldValue.is_null())
         {
-            setDistanceFromText(ModelBase::doubleFromJson(fieldValue));
+           setDistanceFromText(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineStyle")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineStyle")];
         if(!fieldValue.is_null())
         {
-            setLineStyle(ModelBase::stringFromJson(fieldValue));
+           setLineStyle(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineWidth")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineWidth")];
         if(!fieldValue.is_null())
         {
-            setLineWidth(ModelBase::doubleFromJson(fieldValue));
+           setLineWidth(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Shadow")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Shadow")];
         if(!fieldValue.is_null())
         {
-            setShadow(ModelBase::boolFromJson(fieldValue));
+           setShadow(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void Border::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BorderTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BorderType"), m_BorderType));
-        
     }
+
+
     if(m_ColorIsSet)
     {
         if (m_Color.get())
         {
             m_Color->toMultipart(multipart, _XPLATSTR("Color."));
         }
-        
     }
+
+
     if(m_DistanceFromTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DistanceFromText"), m_DistanceFromText));
-        
     }
+
+
     if(m_LineStyleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineStyle"), m_LineStyle));
-        
     }
+
+
     if(m_LineWidthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineWidth"), m_LineWidth));
-        
     }
+
+
     if(m_ShadowIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Shadow"), m_Shadow));
-        
     }
+
 }
 
 void Border::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("BorderType")))
-    {
-        setBorderType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BorderType"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Color")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Color")))
-        {
-            std::shared_ptr<XmlColor> newItem(new XmlColor());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Color."));
-            setColor( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("DistanceFromText")))
-    {
-        setDistanceFromText(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("DistanceFromText"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineStyle")))
-    {
-        setLineStyle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LineStyle"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineWidth")))
-    {
-        setLineWidth(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LineWidth"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Shadow")))
-    {
-        setShadow(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Shadow"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t Border::getBorderType() const
@@ -230,6 +214,7 @@ void Border::setBorderType(utility::string_t value)
     m_BorderType = value;
     m_BorderTypeIsSet = true;
 }
+
 bool Border::borderTypeIsSet() const
 {
     return m_BorderTypeIsSet;
@@ -251,6 +236,7 @@ void Border::setColor(std::shared_ptr<XmlColor> value)
     m_Color = value;
     m_ColorIsSet = true;
 }
+
 bool Border::colorIsSet() const
 {
     return m_ColorIsSet;
@@ -272,6 +258,7 @@ void Border::setDistanceFromText(double value)
     m_DistanceFromText = value;
     m_DistanceFromTextIsSet = true;
 }
+
 bool Border::distanceFromTextIsSet() const
 {
     return m_DistanceFromTextIsSet;
@@ -293,6 +280,7 @@ void Border::setLineStyle(utility::string_t value)
     m_LineStyle = value;
     m_LineStyleIsSet = true;
 }
+
 bool Border::lineStyleIsSet() const
 {
     return m_LineStyleIsSet;
@@ -314,6 +302,7 @@ void Border::setLineWidth(double value)
     m_LineWidth = value;
     m_LineWidthIsSet = true;
 }
+
 bool Border::lineWidthIsSet() const
 {
     return m_LineWidthIsSet;
@@ -335,6 +324,7 @@ void Border::setShadow(bool value)
     m_Shadow = value;
     m_ShadowIsSet = true;
 }
+
 bool Border::shadowIsSet() const
 {
     return m_ShadowIsSet;
@@ -350,4 +340,3 @@ void Border::unsetShadow()
 }
 }
 }
-

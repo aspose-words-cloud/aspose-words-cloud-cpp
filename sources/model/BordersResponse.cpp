@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BordersResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "BordersResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 BordersResponse::BordersResponse()
 {
     m_BordersIsSet = false;
+
 }
 
 BordersResponse::~BordersResponse()
@@ -49,7 +49,6 @@ void BordersResponse::validate()
 web::json::value BordersResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_BordersIsSet)
     {
         val[_XPLATSTR("Borders")] = ModelBase::toJson(m_Borders);
@@ -72,36 +71,26 @@ void BordersResponse::fromJson(web::json::value& val)
             setBorders( newItem );
         }
     }
+
 }
 
 void BordersResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_BordersIsSet)
     {
         if (m_Borders.get())
         {
             m_Borders->toMultipart(multipart, _XPLATSTR("Borders."));
         }
-        
     }
+
 }
 
 void BordersResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Borders")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Borders")))
-        {
-            std::shared_ptr<BordersCollection> newItem(new BordersCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Borders."));
-            setBorders( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<BordersCollection> BordersResponse::getBorders() const
@@ -115,6 +104,7 @@ void BordersResponse::setBorders(std::shared_ptr<BordersCollection> value)
     m_Borders = value;
     m_BordersIsSet = true;
 }
+
 bool BordersResponse::bordersIsSet() const
 {
     return m_BordersIsSet;
@@ -130,4 +120,3 @@ void BordersResponse::unsetBorders()
 }
 }
 }
-

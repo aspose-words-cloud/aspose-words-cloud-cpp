@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormField.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FormField_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FormField_H_
 
-
 #include "NodeLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// FromField.
 /// </summary>
-class  FormField
+class FormField
     : public NodeLink
 {
 public:
@@ -67,6 +67,7 @@ public:
     bool calculateOnExitIsSet() const;
     void unsetCalculateOnExit();
     void setCalculateOnExit(bool value);
+
     /// <summary>
     /// Gets or sets true if a form field is enabled.
     /// </summary>
@@ -74,6 +75,7 @@ public:
     bool enabledIsSet() const;
     void unsetEnabled();
     void setEnabled(bool value);
+
     /// <summary>
     /// Gets or sets returns or sets an entry macro name for the form field.
     /// </summary>
@@ -81,6 +83,7 @@ public:
     bool entryMacroIsSet() const;
     void unsetEntryMacro();
     void setEntryMacro(utility::string_t value);
+
     /// <summary>
     /// Gets or sets returns or sets an exit macro name for the form field.
     /// </summary>
@@ -88,13 +91,15 @@ public:
     bool exitMacroIsSet() const;
     void unsetExitMacro();
     void setExitMacro(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets returns or sets the text that&#39;s displayed in a message box when the form field has the focus and the user presses F1.
+    /// Gets or sets returns or sets the text that's displayed in a message box when the form field has the focus and the user presses F1.
     /// </summary>
     utility::string_t getHelpText() const;
     bool helpTextIsSet() const;
     void unsetHelpText();
     void setHelpText(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the form field name.
     /// </summary>
@@ -102,22 +107,25 @@ public:
     bool nameIsSet() const;
     void unsetName();
     void setName(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets specifies the source of the text that&#39;s displayed in a message box when a form field has the focus and the user presses F1.
+    /// Gets or sets specifies the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
     /// </summary>
     bool isOwnHelp() const;
     bool ownHelpIsSet() const;
     void unsetOwnHelp();
     void setOwnHelp(bool value);
+
     /// <summary>
-    /// Gets or sets specifies the source of the text that&#39;s displayed in the status bar when a form field has the focus.
+    /// Gets or sets specifies the source of the text that's displayed in the status bar when a form field has the focus.
     /// </summary>
     bool isOwnStatus() const;
     bool ownStatusIsSet() const;
     void unsetOwnStatus();
     void setOwnStatus(bool value);
+
     /// <summary>
-    /// Gets or sets returns or sets the text that&#39;s displayed in the status bar when a form field has the focus.
+    /// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
     /// </summary>
     utility::string_t getStatusText() const;
     bool statusTextIsSet() const;
@@ -127,20 +135,28 @@ public:
 protected:
     bool m_CalculateOnExit;
     bool m_CalculateOnExitIsSet;
+
     bool m_Enabled;
     bool m_EnabledIsSet;
+
     utility::string_t m_EntryMacro;
     bool m_EntryMacroIsSet;
+
     utility::string_t m_ExitMacro;
     bool m_ExitMacroIsSet;
+
     utility::string_t m_HelpText;
     bool m_HelpTextIsSet;
+
     utility::string_t m_Name;
     bool m_NameIsSet;
+
     bool m_OwnHelp;
     bool m_OwnHelpIsSet;
+
     bool m_OwnStatus;
     bool m_OwnStatusIsSet;
+
     utility::string_t m_StatusText;
     bool m_StatusTextIsSet;
 };

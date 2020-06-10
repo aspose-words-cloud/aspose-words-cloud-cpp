@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BuildReportOnlineRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,13 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef buildReportOnline_H
-#define buildReportOnline_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_BuildReportOnlineRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_BuildReportOnlineRequest_H_
+
 #include "ReportEngineSettings.h"
 #include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -37,13 +37,13 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class BuildReportOnlineRequest{
+class BuildReportOnlineRequest {
     public: 
-     BuildReportOnlineRequest(
-                std::shared_ptr<HttpContent> _template,
-                utility::string_t data,
-                std::shared_ptr<ReportEngineSettings> reportEngineSettings,
-                boost::optional<utility::string_t> documentFileName
+ BuildReportOnlineRequest(
+            std::shared_ptr<HttpContent> _template,
+            utility::string_t data,
+            std::shared_ptr<ReportEngineSettings> reportEngineSettings,
+            boost::optional< utility::string_t > documentFileName
         );
 
         std::shared_ptr<HttpContent> getTemplate() const;
@@ -55,13 +55,14 @@ class BuildReportOnlineRequest{
         std::shared_ptr<ReportEngineSettings> getReportEngineSettings() const;
         void setReportEngineSettings(std::shared_ptr<ReportEngineSettings> reportEngineSettings);
 
-        boost::optional<utility::string_t> getDocumentFileName() const;
-        void setDocumentFileName(boost::optional<utility::string_t> documentFileName);
+        boost::optional< utility::string_t > getDocumentFileName() const;
+        void setDocumentFileName(boost::optional< utility::string_t > documentFileName);
+
     private:
-        std::shared_ptr<HttpContent> m__template;
-        utility::string_t m_data;
-        std::shared_ptr<ReportEngineSettings> m_reportEngineSettings;
-        boost::optional<utility::string_t> m_documentFileName;
+        std::shared_ptr<HttpContent> m_Template;
+        utility::string_t m_Data;
+        std::shared_ptr<ReportEngineSettings> m_ReportEngineSettings;
+        boost::optional< utility::string_t > m_DocumentFileName;
 };
 
 }
@@ -70,4 +71,4 @@ class BuildReportOnlineRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_BuildReportOnlineRequest_H_ */

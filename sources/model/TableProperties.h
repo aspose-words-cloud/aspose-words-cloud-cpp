@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableProperties.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TableProperties_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableProperties_H_
 
-
 #include "LinkElement.h"
 #include "PreferredWidth.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,9 +38,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents the table properties.             
+/// Represents the table properties.
 /// </summary>
-class  TableProperties
+class TableProperties
     : public LinkElement
 {
 public:
@@ -69,6 +68,7 @@ public:
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
+
     /// <summary>
     /// Gets or sets allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents.
     /// </summary>
@@ -76,6 +76,7 @@ public:
     bool allowAutoFitIsSet() const;
     void unsetAllowAutoFit();
     void setAllowAutoFit(bool value);
+
     /// <summary>
     /// Gets or sets whether this is a right-to-left table.
     /// </summary>
@@ -83,6 +84,7 @@ public:
     bool bidiIsSet() const;
     void unsetBidi();
     void setBidi(bool value);
+
     /// <summary>
     /// Gets or sets the amount of space (in points) to add below the contents of cells.
     /// </summary>
@@ -90,6 +92,7 @@ public:
     bool bottomPaddingIsSet() const;
     void unsetBottomPadding();
     void setBottomPadding(double value);
+
     /// <summary>
     /// Gets or sets the amount of space (in points) between the cells.
     /// </summary>
@@ -97,6 +100,7 @@ public:
     bool cellSpacingIsSet() const;
     void unsetCellSpacing();
     void setCellSpacing(double value);
+
     /// <summary>
     /// Gets or sets the value that represents the left indent of the table.
     /// </summary>
@@ -104,6 +108,7 @@ public:
     bool leftIndentIsSet() const;
     void unsetLeftIndent();
     void setLeftIndent(double value);
+
     /// <summary>
     /// Gets or sets the amount of space (in points) to add to the left of the contents of cells.
     /// </summary>
@@ -111,13 +116,16 @@ public:
     bool leftPaddingIsSet() const;
     void unsetLeftPadding();
     void setLeftPadding(double value);
+
     /// <summary>
-    /// Gets or sets PreferredWidth.
+    /// Gets or sets the table preferred width.
+    /// Preferred width can be specified as a percentage, number of points or a special "auto" value.
     /// </summary>
     std::shared_ptr<PreferredWidth> getPreferredWidth() const;
     bool preferredWidthIsSet() const;
     void unsetPreferredWidth();
     void setPreferredWidth(std::shared_ptr<PreferredWidth> value);
+
     /// <summary>
     /// Gets or sets the amount of space (in points) to add to the right of the contents of cells.
     /// </summary>
@@ -125,6 +133,7 @@ public:
     bool rightPaddingIsSet() const;
     void unsetRightPadding();
     void setRightPadding(double value);
+
     /// <summary>
     /// Gets or sets the locale independent style identifier of the table style applied to this table.
     /// </summary>
@@ -132,6 +141,7 @@ public:
     bool styleIdentifierIsSet() const;
     void unsetStyleIdentifier();
     void setStyleIdentifier(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the name of the table style applied to this table.
     /// </summary>
@@ -139,6 +149,7 @@ public:
     bool styleNameIsSet() const;
     void unsetStyleName();
     void setStyleName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets bit flags that specify how a table style is applied to this table.
     /// </summary>
@@ -146,6 +157,7 @@ public:
     bool styleOptionsIsSet() const;
     void unsetStyleOptions();
     void setStyleOptions(utility::string_t value);
+
     /// <summary>
     /// Gets or sets get or sets TextWrapping for table.
     /// </summary>
@@ -153,6 +165,7 @@ public:
     bool textWrappingIsSet() const;
     void unsetTextWrapping();
     void setTextWrapping(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the amount of space (in points) to add above the contents of cells.
     /// </summary>
@@ -164,30 +177,43 @@ public:
 protected:
     utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
+
     bool m_AllowAutoFit;
     bool m_AllowAutoFitIsSet;
+
     bool m_Bidi;
     bool m_BidiIsSet;
+
     double m_BottomPadding;
     bool m_BottomPaddingIsSet;
+
     double m_CellSpacing;
     bool m_CellSpacingIsSet;
+
     double m_LeftIndent;
     bool m_LeftIndentIsSet;
+
     double m_LeftPadding;
     bool m_LeftPaddingIsSet;
+
     std::shared_ptr<PreferredWidth> m_PreferredWidth;
     bool m_PreferredWidthIsSet;
+
     double m_RightPadding;
     bool m_RightPaddingIsSet;
+
     utility::string_t m_StyleIdentifier;
     bool m_StyleIdentifierIsSet;
+
     utility::string_t m_StyleName;
     bool m_StyleNameIsSet;
+
     utility::string_t m_StyleOptions;
     bool m_StyleOptionsIsSet;
+
     utility::string_t m_TextWrapping;
     bool m_TextWrappingIsSet;
+
     double m_TopPadding;
     bool m_TopPaddingIsSet;
 };

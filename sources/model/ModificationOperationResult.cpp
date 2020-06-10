@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ModificationOperationResult.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ModificationOperationResult.h"
 
 namespace aspose {
@@ -34,8 +33,10 @@ namespace models {
 
 ModificationOperationResult::ModificationOperationResult()
 {
-    m_SourceIsSet = false;
     m_DestIsSet = false;
+
+    m_SourceIsSet = false;
+
 }
 
 ModificationOperationResult::~ModificationOperationResult()
@@ -50,14 +51,13 @@ void ModificationOperationResult::validate()
 web::json::value ModificationOperationResult::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_SourceIsSet)
-    {
-        val[_XPLATSTR("Source")] = ModelBase::toJson(m_Source);
-    }
     if(m_DestIsSet)
     {
         val[_XPLATSTR("Dest")] = ModelBase::toJson(m_Dest);
+    }
+    if(m_SourceIsSet)
+    {
+        val[_XPLATSTR("Source")] = ModelBase::toJson(m_Source);
     }
 
     return val;
@@ -65,16 +65,6 @@ web::json::value ModificationOperationResult::toJson() const
 
 void ModificationOperationResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Source")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Source")];
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromJson(fieldValue);
-            setSource( newItem );
-        }
-    }
     if(val.has_field(_XPLATSTR("Dest")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Dest")];
@@ -85,12 +75,32 @@ void ModificationOperationResult::fromJson(web::json::value& val)
             setDest( newItem );
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("Source")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Source")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<FileLink> newItem(new FileLink());
+            newItem->fromJson(fieldValue);
+            setSource( newItem );
+        }
+    }
+
 }
 
 void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_DestIsSet)
+    {
+        if (m_Dest.get())
+        {
+            m_Dest->toMultipart(multipart, _XPLATSTR("Dest."));
+        }
+    }
+
 
     if(m_SourceIsSet)
     {
@@ -98,61 +108,13 @@ void ModificationOperationResult::toMultipart(const std::shared_ptr<MultipartFor
         {
             m_Source->toMultipart(multipart, _XPLATSTR("Source."));
         }
-        
     }
-    if(m_DestIsSet)
-    {
-        if (m_Dest.get())
-        {
-            m_Dest->toMultipart(multipart, _XPLATSTR("Dest."));
-        }
-        
-    }
+
 }
 
 void ModificationOperationResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Source")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Source")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Source."));
-            setSource( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("Dest")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Dest")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Dest."));
-            setDest( newItem );
-        }
-    }
-}
-
-std::shared_ptr<FileLink> ModificationOperationResult::getSource() const
-{
-    return m_Source;
-}
-
-
-void ModificationOperationResult::setSource(std::shared_ptr<FileLink> value)
-{
-    m_Source = value;
-    m_SourceIsSet = true;
-}
-bool ModificationOperationResult::sourceIsSet() const
-{
-    return m_SourceIsSet;
-}
-
-void ModificationOperationResult::unsetSource()
-{
-    m_SourceIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<FileLink> ModificationOperationResult::getDest() const
@@ -166,6 +128,7 @@ void ModificationOperationResult::setDest(std::shared_ptr<FileLink> value)
     m_Dest = value;
     m_DestIsSet = true;
 }
+
 bool ModificationOperationResult::destIsSet() const
 {
     return m_DestIsSet;
@@ -176,9 +139,30 @@ void ModificationOperationResult::unsetDest()
     m_DestIsSet = false;
 }
 
-}
-}
-}
-}
+std::shared_ptr<FileLink> ModificationOperationResult::getSource() const
+{
+    return m_Source;
 }
 
+
+void ModificationOperationResult::setSource(std::shared_ptr<FileLink> value)
+{
+    m_Source = value;
+    m_SourceIsSet = true;
+}
+
+bool ModificationOperationResult::sourceIsSet() const
+{
+    return m_SourceIsSet;
+}
+
+void ModificationOperationResult::unsetSource()
+{
+    m_SourceIsSet = false;
+}
+
+}
+}
+}
+}
+}

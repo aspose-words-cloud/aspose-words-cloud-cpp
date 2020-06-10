@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DeleteFolderRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef deleteFolder_H
-#define deleteFolder_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DeleteFolderRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_DeleteFolderRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,26 +36,27 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class DeleteFolderRequest{
+class DeleteFolderRequest {
     public: 
-     DeleteFolderRequest(
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName,
-                boost::optional<bool> recursive
+ DeleteFolderRequest(
+            utility::string_t path,
+            boost::optional< utility::string_t > storageName,
+            boost::optional< bool > recursive
         );
 
         utility::string_t getPath() const;
         void setPath(utility::string_t path);
 
-        boost::optional<utility::string_t> getStorageName() const;
-        void setStorageName(boost::optional<utility::string_t> storageName);
+        boost::optional< utility::string_t > getStorageName() const;
+        void setStorageName(boost::optional< utility::string_t > storageName);
 
-        boost::optional<bool> getRecursive() const;
-        void setRecursive(boost::optional<bool> recursive);
+        boost::optional< bool > getRecursive() const;
+        void setRecursive(boost::optional< bool > recursive);
+
     private:
-        utility::string_t m_path;
-        boost::optional<utility::string_t> m_storageName;
-        boost::optional<bool> m_recursive;
+        utility::string_t m_Path;
+        boost::optional< utility::string_t > m_StorageName;
+        boost::optional< bool > m_Recursive;
 };
 
 }
@@ -63,4 +65,4 @@ class DeleteFolderRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_DeleteFolderRequest_H_ */

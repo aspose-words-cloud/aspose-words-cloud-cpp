@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="NodeLink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "NodeLink.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ NodeLink::NodeLink()
 {
     m_NodeId = utility::conversions::to_string_t("");
     m_NodeIdIsSet = false;
+
 }
 
 NodeLink::~NodeLink()
@@ -50,7 +50,6 @@ void NodeLink::validate()
 web::json::value NodeLink::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_NodeIdIsSet)
     {
         val[_XPLATSTR("NodeId")] = ModelBase::toJson(m_NodeId);
@@ -68,31 +67,26 @@ void NodeLink::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("NodeId")];
         if(!fieldValue.is_null())
         {
-            setNodeId(ModelBase::stringFromJson(fieldValue));
+           setNodeId(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void NodeLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_NodeIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NodeId"), m_NodeId));
-        
     }
+
 }
 
 void NodeLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("NodeId")))
-    {
-        setNodeId(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NodeId"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t NodeLink::getNodeId() const
@@ -106,6 +100,7 @@ void NodeLink::setNodeId(utility::string_t value)
     m_NodeId = value;
     m_NodeIdIsSet = true;
 }
+
 bool NodeLink::nodeIdIsSet() const
 {
     return m_NodeIdIsSet;
@@ -121,4 +116,3 @@ void NodeLink::unsetNodeId()
 }
 }
 }
-

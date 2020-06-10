@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GraphicsQualityOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_GraphicsQualityOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_GraphicsQualityOptionsData_H_
 
-
-#include "../ModelBase.h"
-
 #include "StringFormatData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Allows to specify additional System.Drawing.Graphics quality options.
 /// </summary>
-class  GraphicsQualityOptionsData
+class GraphicsQualityOptionsData
     : public ModelBase
 {
 public:
@@ -69,6 +67,7 @@ public:
     bool compositingModeIsSet() const;
     void unsetCompositingMode();
     void setCompositingMode(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the rendering quality of composited images drawn to this Graphics.
     /// </summary>
@@ -76,6 +75,7 @@ public:
     bool compositingQualityIsSet() const;
     void unsetCompositingQuality();
     void setCompositingQuality(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the interpolation mode associated with this Graphics.
     /// </summary>
@@ -83,6 +83,7 @@ public:
     bool interpolationModeIsSet() const;
     void unsetInterpolationMode();
     void setInterpolationMode(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the rendering quality for this Graphics.
     /// </summary>
@@ -90,13 +91,15 @@ public:
     bool smoothingModeIsSet() const;
     void unsetSmoothingMode();
     void setSmoothingMode(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets StringFormat.
+    /// Gets or sets text layout information (such as alignment, orientation and tab stops) display manipulations (such as ellipsis insertion and national digit substitution) and OpenType features.
     /// </summary>
     std::shared_ptr<StringFormatData> getStringFormat() const;
     bool stringFormatIsSet() const;
     void unsetStringFormat();
     void setStringFormat(std::shared_ptr<StringFormatData> value);
+
     /// <summary>
     /// Gets or sets the rendering mode for text associated with this Graphics.
     /// </summary>
@@ -108,14 +111,19 @@ public:
 protected:
     utility::string_t m_CompositingMode;
     bool m_CompositingModeIsSet;
+
     utility::string_t m_CompositingQuality;
     bool m_CompositingQualityIsSet;
+
     utility::string_t m_InterpolationMode;
     bool m_InterpolationModeIsSet;
+
     utility::string_t m_SmoothingMode;
     bool m_SmoothingModeIsSet;
+
     std::shared_ptr<StringFormatData> m_StringFormat;
     bool m_StringFormatIsSet;
+
     utility::string_t m_TextRenderingHint;
     bool m_TextRenderingHintIsSet;
 };

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StyleResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 StyleResponse::StyleResponse()
 {
     m_StyleIsSet = false;
+
 }
 
 StyleResponse::~StyleResponse()
@@ -49,7 +49,6 @@ void StyleResponse::validate()
 web::json::value StyleResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_StyleIsSet)
     {
         val[_XPLATSTR("Style")] = ModelBase::toJson(m_Style);
@@ -72,36 +71,26 @@ void StyleResponse::fromJson(web::json::value& val)
             setStyle( newItem );
         }
     }
+
 }
 
 void StyleResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_StyleIsSet)
     {
         if (m_Style.get())
         {
             m_Style->toMultipart(multipart, _XPLATSTR("Style."));
         }
-        
     }
+
 }
 
 void StyleResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Style")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Style")))
-        {
-            std::shared_ptr<Style> newItem(new Style());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Style."));
-            setStyle( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Style> StyleResponse::getStyle() const
@@ -115,6 +104,7 @@ void StyleResponse::setStyle(std::shared_ptr<Style> value)
     m_Style = value;
     m_StyleIsSet = true;
 }
+
 bool StyleResponse::styleIsSet() const
 {
     return m_StyleIsSet;
@@ -130,4 +120,3 @@ void StyleResponse::unsetStyle()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SearchResult.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SearchResult.h"
 
 namespace aspose {
@@ -34,8 +33,10 @@ namespace models {
 
 SearchResult::SearchResult()
 {
-    m_RangeStartIsSet = false;
     m_RangeEndIsSet = false;
+
+    m_RangeStartIsSet = false;
+
 }
 
 SearchResult::~SearchResult()
@@ -50,14 +51,13 @@ void SearchResult::validate()
 web::json::value SearchResult::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_RangeStartIsSet)
-    {
-        val[_XPLATSTR("RangeStart")] = ModelBase::toJson(m_RangeStart);
-    }
     if(m_RangeEndIsSet)
     {
         val[_XPLATSTR("RangeEnd")] = ModelBase::toJson(m_RangeEnd);
+    }
+    if(m_RangeStartIsSet)
+    {
+        val[_XPLATSTR("RangeStart")] = ModelBase::toJson(m_RangeStart);
     }
 
     return val;
@@ -65,16 +65,6 @@ web::json::value SearchResult::toJson() const
 
 void SearchResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("RangeStart")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromJson(fieldValue);
-            setRangeStart( newItem );
-        }
-    }
     if(val.has_field(_XPLATSTR("RangeEnd")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RangeEnd")];
@@ -85,12 +75,32 @@ void SearchResult::fromJson(web::json::value& val)
             setRangeEnd( newItem );
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("RangeStart")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("RangeStart")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
+            newItem->fromJson(fieldValue);
+            setRangeStart( newItem );
+        }
+    }
+
 }
 
 void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_RangeEndIsSet)
+    {
+        if (m_RangeEnd.get())
+        {
+            m_RangeEnd->toMultipart(multipart, _XPLATSTR("RangeEnd."));
+        }
+    }
+
 
     if(m_RangeStartIsSet)
     {
@@ -98,61 +108,13 @@ void SearchResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipa
         {
             m_RangeStart->toMultipart(multipart, _XPLATSTR("RangeStart."));
         }
-        
     }
-    if(m_RangeEndIsSet)
-    {
-        if (m_RangeEnd.get())
-        {
-            m_RangeEnd->toMultipart(multipart, _XPLATSTR("RangeEnd."));
-        }
-        
-    }
+
 }
 
 void SearchResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("RangeStart")))
-    {
-        if(multipart->hasContent(_XPLATSTR("RangeStart")))
-        {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RangeStart."));
-            setRangeStart( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("RangeEnd")))
-    {
-        if(multipart->hasContent(_XPLATSTR("RangeEnd")))
-        {
-            std::shared_ptr<DocumentPosition> newItem(new DocumentPosition());
-            newItem->fromMultiPart(multipart, _XPLATSTR("RangeEnd."));
-            setRangeEnd( newItem );
-        }
-    }
-}
-
-std::shared_ptr<DocumentPosition> SearchResult::getRangeStart() const
-{
-    return m_RangeStart;
-}
-
-
-void SearchResult::setRangeStart(std::shared_ptr<DocumentPosition> value)
-{
-    m_RangeStart = value;
-    m_RangeStartIsSet = true;
-}
-bool SearchResult::rangeStartIsSet() const
-{
-    return m_RangeStartIsSet;
-}
-
-void SearchResult::unsetRangeStart()
-{
-    m_RangeStartIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<DocumentPosition> SearchResult::getRangeEnd() const
@@ -166,6 +128,7 @@ void SearchResult::setRangeEnd(std::shared_ptr<DocumentPosition> value)
     m_RangeEnd = value;
     m_RangeEndIsSet = true;
 }
+
 bool SearchResult::rangeEndIsSet() const
 {
     return m_RangeEndIsSet;
@@ -176,9 +139,30 @@ void SearchResult::unsetRangeEnd()
     m_RangeEndIsSet = false;
 }
 
-}
-}
-}
-}
+std::shared_ptr<DocumentPosition> SearchResult::getRangeStart() const
+{
+    return m_RangeStart;
 }
 
+
+void SearchResult::setRangeStart(std::shared_ptr<DocumentPosition> value)
+{
+    m_RangeStart = value;
+    m_RangeStartIsSet = true;
+}
+
+bool SearchResult::rangeStartIsSet() const
+{
+    return m_RangeStartIsSet;
+}
+
+void SearchResult::unsetRangeStart()
+{
+    m_RangeStartIsSet = false;
+}
+
+}
+}
+}
+}
+}

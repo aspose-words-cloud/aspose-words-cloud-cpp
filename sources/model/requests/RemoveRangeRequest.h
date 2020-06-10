@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RemoveRangeRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef removeRange_H
-#define removeRange_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RemoveRangeRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_RemoveRangeRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,17 +36,17 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class RemoveRangeRequest{
+class RemoveRangeRequest {
     public: 
-     RemoveRangeRequest(
-                utility::string_t name,
-                utility::string_t rangeStartIdentifier,
-                boost::optional<utility::string_t> rangeEndIdentifier,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+ RemoveRangeRequest(
+            utility::string_t name,
+            utility::string_t rangeStartIdentifier,
+            boost::optional< utility::string_t > rangeEndIdentifier,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName
         );
 
         utility::string_t getName() const;
@@ -54,32 +55,33 @@ class RemoveRangeRequest{
         utility::string_t getRangeStartIdentifier() const;
         void setRangeStartIdentifier(utility::string_t rangeStartIdentifier);
 
-        boost::optional<utility::string_t> getRangeEndIdentifier() const;
-        void setRangeEndIdentifier(boost::optional<utility::string_t> rangeEndIdentifier);
+        boost::optional< utility::string_t > getRangeEndIdentifier() const;
+        void setRangeEndIdentifier(boost::optional< utility::string_t > rangeEndIdentifier);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
+
     private:
-        utility::string_t m_name;
-        utility::string_t m_rangeStartIdentifier;
-        boost::optional<utility::string_t> m_rangeEndIdentifier;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
+        utility::string_t m_Name;
+        utility::string_t m_RangeStartIdentifier;
+        boost::optional< utility::string_t > m_RangeEndIdentifier;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
 };
 
 }
@@ -88,4 +90,4 @@ class RemoveRangeRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_RemoveRangeRequest_H_ */

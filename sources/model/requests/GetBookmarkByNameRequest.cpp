@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetBookmarkByNameRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,76 +22,91 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetBookmarkByNameRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetBookmarkByNameRequest::GetBookmarkByNameRequest(
-        utility::string_t name,
-                utility::string_t bookmarkName,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_bookmarkName(std::move(bookmarkName)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetBookmarkByNameRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetBookmarkByNameRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t GetBookmarkByNameRequest::getBookmarkName() const
-        {
-            return m_bookmarkName;
-        }
-        void GetBookmarkByNameRequest::setBookmarkName(utility::string_t bookmarkName){
-            m_bookmarkName = std::move(bookmarkName);
-        }
-        boost::optional<utility::string_t> GetBookmarkByNameRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetBookmarkByNameRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetBookmarkByNameRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetBookmarkByNameRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetBookmarkByNameRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetBookmarkByNameRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetBookmarkByNameRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetBookmarkByNameRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t bookmarkName,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_BookmarkName(std::move(bookmarkName)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetBookmarkByNameRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetBookmarkByNameRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t GetBookmarkByNameRequest::getBookmarkName() const
+{
+    return m_BookmarkName;
+}
+
+void GetBookmarkByNameRequest::setBookmarkName(utility::string_t bookmarkName)
+{
+    m_BookmarkName = std::move(bookmarkName);
+}
+
+boost::optional< utility::string_t > GetBookmarkByNameRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetBookmarkByNameRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetBookmarkByNameRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetBookmarkByNameRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetBookmarkByNameRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetBookmarkByNameRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetBookmarkByNameRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetBookmarkByNameRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

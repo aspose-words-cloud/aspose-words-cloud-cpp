@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertWatermarkImageRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,12 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef insertWatermarkImage_H
-#define insertWatermarkImage_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_InsertWatermarkImageRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_InsertWatermarkImageRequest_H_
+
 #include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,66 +36,67 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class InsertWatermarkImageRequest{
+class InsertWatermarkImageRequest {
     public: 
-     InsertWatermarkImageRequest(
-                utility::string_t name,
-                boost::optional<std::shared_ptr<HttpContent>> imageFile,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<double> rotationAngle,
-                boost::optional<utility::string_t> image
+ InsertWatermarkImageRequest(
+            utility::string_t name,
+            boost::optional< std::shared_ptr<HttpContent> > imageFile,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime,
+            boost::optional< double > rotationAngle,
+            boost::optional< utility::string_t > image
         );
 
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        boost::optional<std::shared_ptr<HttpContent>> getImageFile() const;
-        void setImageFile(boost::optional<std::shared_ptr<HttpContent>> imageFile);
+        boost::optional< std::shared_ptr<HttpContent> > getImageFile() const;
+        void setImageFile(boost::optional< std::shared_ptr<HttpContent> > imageFile);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
 
-        boost::optional<utility::string_t> getRevisionAuthor() const;
-        void setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor);
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
 
-        boost::optional<utility::string_t> getRevisionDateTime() const;
-        void setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime);
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
 
-        boost::optional<double> getRotationAngle() const;
-        void setRotationAngle(boost::optional<double> rotationAngle);
+        boost::optional< double > getRotationAngle() const;
+        void setRotationAngle(boost::optional< double > rotationAngle);
 
-        boost::optional<utility::string_t> getImage() const;
-        void setImage(boost::optional<utility::string_t> image);
+        boost::optional< utility::string_t > getImage() const;
+        void setImage(boost::optional< utility::string_t > image);
+
     private:
-        utility::string_t m_name;
-        boost::optional<std::shared_ptr<HttpContent>> m_imageFile;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<utility::string_t> m_revisionAuthor;
-        boost::optional<utility::string_t> m_revisionDateTime;
-        boost::optional<double> m_rotationAngle;
-        boost::optional<utility::string_t> m_image;
+        utility::string_t m_Name;
+        boost::optional< std::shared_ptr<HttpContent> > m_ImageFile;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
+        boost::optional< double > m_RotationAngle;
+        boost::optional< utility::string_t > m_Image;
 };
 
 }
@@ -104,4 +105,4 @@ class InsertWatermarkImageRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_InsertWatermarkImageRequest_H_ */

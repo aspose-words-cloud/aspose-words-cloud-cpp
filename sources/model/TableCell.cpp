@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCell.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableCell.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TableCell::TableCell()
 {
     m_ChildNodesIsSet = false;
+
 }
 
 TableCell::~TableCell()
@@ -49,14 +49,14 @@ void TableCell::validate()
 web::json::value TableCell::toJson() const
 {
     web::json::value val = this->NodeLink::toJson();
-
+    if(m_ChildNodesIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<NodeLink> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<NodeLink> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("ChildNodes")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void TableCell::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("ChildNodes")) 
                             && !val[_XPLATSTR("ChildNodes")].is_null())
         {
-        auto arr = val[_XPLATSTR("ChildNodes")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<NodeLink>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<NodeLink> newItem(new NodeLink());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("ChildNodes")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_ChildNodes), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<NodeLink> newItem(new NodeLink());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<NodeLink>)nullptr;
+            });
         }
     }
+
 }
 
 void TableCell::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ChildNodes.begin(), m_ChildNodes.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<NodeLink> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ChildNodes"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void TableCell::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    NodeLink::fromMultiPart(multipart, prefix);
-
-    {
-        m_ChildNodes.clear();
-        if(multipart->hasContent(_XPLATSTR("ChildNodes")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ChildNodes")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ChildNodes), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<NodeLink>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<NodeLink> newItem(new NodeLink());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<NodeLink>>& TableCell::getChildNodes()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<NodeLink>>& TableCell::getChildNodes()
     return m_ChildNodes;
 }
 
+
 void TableCell::setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value)
 {
     m_ChildNodes = value;
     m_ChildNodesIsSet = true;
 }
+
 bool TableCell::childNodesIsSet() const
 {
     return m_ChildNodesIsSet;
@@ -162,4 +141,3 @@ void TableCell::unsetChildNodes()
 }
 }
 }
-

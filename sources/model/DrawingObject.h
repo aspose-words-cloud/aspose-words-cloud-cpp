@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObject.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObject_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObject_H_
 
-
 #include "DrawingObjectLink.h"
 #include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// Represents Drawing Object DTO.
 /// </summary>
-class  DrawingObject
+class DrawingObject
     : public DrawingObjectLink
 {
 public:
@@ -68,34 +68,39 @@ public:
     bool heightIsSet() const;
     void unsetHeight();
     void setHeight(double value);
+
     /// <summary>
-    /// Gets or sets ImageDataLink.
+    /// Gets or sets link to image data. Can be null if shape does not have an image.
     /// </summary>
     std::shared_ptr<WordsApiLink> getImageDataLink() const;
     bool imageDataLinkIsSet() const;
     void unsetImageDataLink();
     void setImageDataLink(std::shared_ptr<WordsApiLink> value);
+
     /// <summary>
-    /// Gets or sets distance in points from the origin to the left side of the image.             
+    /// Gets or sets distance in points from the origin to the left side of the image.
     /// </summary>
     double getLeft() const;
     bool leftIsSet() const;
     void unsetLeft();
     void setLeft(double value);
+
     /// <summary>
-    /// Gets or sets OleDataLink.
+    /// Gets or sets link to ole object. Can be null if shape does not have ole data.
     /// </summary>
     std::shared_ptr<WordsApiLink> getOleDataLink() const;
     bool oleDataLinkIsSet() const;
     void unsetOleDataLink();
     void setOleDataLink(std::shared_ptr<WordsApiLink> value);
+
     /// <summary>
-    /// Gets or sets specifies where the distance to the image is measured from.             
+    /// Gets or sets specifies where the distance to the image is measured from.
     /// </summary>
     utility::string_t getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
     void unsetRelativeHorizontalPosition();
     void setRelativeHorizontalPosition(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies where the distance to the image measured from.
     /// </summary>
@@ -103,6 +108,7 @@ public:
     bool relativeVerticalPositionIsSet() const;
     void unsetRelativeVerticalPosition();
     void setRelativeVerticalPosition(utility::string_t value);
+
     /// <summary>
     /// Gets or sets a list of links that originate from this DrawingObjectDto.
     /// </summary>
@@ -110,6 +116,7 @@ public:
     bool renderLinksIsSet() const;
     void unsetRenderLinks();
     void setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value);
+
     /// <summary>
     /// Gets or sets distance in points from the origin to the top side of the image.
     /// </summary>
@@ -117,6 +124,7 @@ public:
     bool topIsSet() const;
     void unsetTop();
     void setTop(double value);
+
     /// <summary>
     /// Gets or sets width of the drawing objects in points.
     /// </summary>
@@ -124,6 +132,7 @@ public:
     bool widthIsSet() const;
     void unsetWidth();
     void setWidth(double value);
+
     /// <summary>
     /// Gets or sets specifies how to wrap text around the image.
     /// </summary>
@@ -135,22 +144,31 @@ public:
 protected:
     double m_Height;
     bool m_HeightIsSet;
+
     std::shared_ptr<WordsApiLink> m_ImageDataLink;
     bool m_ImageDataLinkIsSet;
+
     double m_Left;
     bool m_LeftIsSet;
+
     std::shared_ptr<WordsApiLink> m_OleDataLink;
     bool m_OleDataLinkIsSet;
+
     utility::string_t m_RelativeHorizontalPosition;
     bool m_RelativeHorizontalPositionIsSet;
+
     utility::string_t m_RelativeVerticalPosition;
     bool m_RelativeVerticalPositionIsSet;
+
     std::vector<std::shared_ptr<WordsApiLink>> m_RenderLinks;
     bool m_RenderLinksIsSet;
+
     double m_Top;
     bool m_TopIsSet;
+
     double m_Width;
     bool m_WidthIsSet;
+
     utility::string_t m_WrapType;
     bool m_WrapTypeIsSet;
 };

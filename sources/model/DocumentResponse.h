@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentResponse_H_
 
-
 #include "Document.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// Represents the response with document description.
 /// </summary>
-class  DocumentResponse
+class DocumentResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// DocumentResponse members
 
     /// <summary>
-    /// Gets or sets Document.
+    /// Gets or sets document description.
     /// </summary>
     std::shared_ptr<Document> getDocument() const;
     bool documentIsSet() const;

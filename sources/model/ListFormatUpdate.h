@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListFormatUpdate.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListFormatUpdate_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ListFormatUpdate_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +36,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph list format element for update.             
+/// Paragraph list format element for update.
 /// </summary>
-class  ListFormatUpdate
+class ListFormatUpdate
     : public ModelBase
 {
 public:
@@ -62,13 +60,6 @@ public:
     /// ListFormatUpdate members
 
     /// <summary>
-    /// Gets or sets the list level number (0 to 8) for the paragraph.
-    /// </summary>
-    int32_t getListLevelNumber() const;
-    bool listLevelNumberIsSet() const;
-    void unsetListLevelNumber();
-    void setListLevelNumber(int32_t value);
-    /// <summary>
     /// Gets or sets the list id of this paragraph.
     /// </summary>
     int32_t getListId() const;
@@ -76,11 +67,20 @@ public:
     void unsetListId();
     void setListId(int32_t value);
 
+    /// <summary>
+    /// Gets or sets the list level number (0 to 8) for the paragraph.
+    /// </summary>
+    int32_t getListLevelNumber() const;
+    bool listLevelNumberIsSet() const;
+    void unsetListLevelNumber();
+    void setListLevelNumber(int32_t value);
+
 protected:
-    int32_t m_ListLevelNumber;
-    bool m_ListLevelNumberIsSet;
     int32_t m_ListId;
     bool m_ListIdIsSet;
+
+    int32_t m_ListLevelNumber;
+    bool m_ListLevelNumberIsSet;
 };
 
 }

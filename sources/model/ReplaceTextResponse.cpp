@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceTextResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ReplaceTextResponse.h"
 
 namespace aspose {
@@ -37,6 +36,7 @@ ReplaceTextResponse::ReplaceTextResponse()
     m_DocumentLinkIsSet = false;
     m_Matches = 0;
     m_MatchesIsSet = false;
+
 }
 
 ReplaceTextResponse::~ReplaceTextResponse()
@@ -51,7 +51,6 @@ void ReplaceTextResponse::validate()
 web::json::value ReplaceTextResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_DocumentLinkIsSet)
     {
         val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
@@ -78,53 +77,42 @@ void ReplaceTextResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Matches")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Matches")];
         if(!fieldValue.is_null())
         {
-            setMatches(ModelBase::int32_tFromJson(fieldValue));
+           setMatches(ModelBase::integerFromJson(fieldValue));
         }
     }
+
 }
 
 void ReplaceTextResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
             m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
         }
-        
     }
+
+
     if(m_MatchesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Matches"), m_Matches));
-        
     }
+
 }
 
 void ReplaceTextResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
-    {
-        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
-            setDocumentLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("Matches")))
-    {
-        setMatches(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Matches"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<FileLink> ReplaceTextResponse::getDocumentLink() const
@@ -138,6 +126,7 @@ void ReplaceTextResponse::setDocumentLink(std::shared_ptr<FileLink> value)
     m_DocumentLink = value;
     m_DocumentLinkIsSet = true;
 }
+
 bool ReplaceTextResponse::documentLinkIsSet() const
 {
     return m_DocumentLinkIsSet;
@@ -159,6 +148,7 @@ void ReplaceTextResponse::setMatches(int32_t value)
     m_Matches = value;
     m_MatchesIsSet = true;
 }
+
 bool ReplaceTextResponse::matchesIsSet() const
 {
     return m_MatchesIsSet;
@@ -174,4 +164,3 @@ void ReplaceTextResponse::unsetMatches()
 }
 }
 }
-

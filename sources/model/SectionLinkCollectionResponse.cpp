@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionLinkCollectionResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SectionLinkCollectionResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 SectionLinkCollectionResponse::SectionLinkCollectionResponse()
 {
     m_SectionsIsSet = false;
+
 }
 
 SectionLinkCollectionResponse::~SectionLinkCollectionResponse()
@@ -49,7 +49,6 @@ void SectionLinkCollectionResponse::validate()
 web::json::value SectionLinkCollectionResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_SectionsIsSet)
     {
         val[_XPLATSTR("Sections")] = ModelBase::toJson(m_Sections);
@@ -72,36 +71,26 @@ void SectionLinkCollectionResponse::fromJson(web::json::value& val)
             setSections( newItem );
         }
     }
+
 }
 
 void SectionLinkCollectionResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_SectionsIsSet)
     {
         if (m_Sections.get())
         {
             m_Sections->toMultipart(multipart, _XPLATSTR("Sections."));
         }
-        
     }
+
 }
 
 void SectionLinkCollectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Sections")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Sections")))
-        {
-            std::shared_ptr<SectionLinkCollection> newItem(new SectionLinkCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Sections."));
-            setSections( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<SectionLinkCollection> SectionLinkCollectionResponse::getSections() const
@@ -115,6 +104,7 @@ void SectionLinkCollectionResponse::setSections(std::shared_ptr<SectionLinkColle
     m_Sections = value;
     m_SectionsIsSet = true;
 }
+
 bool SectionLinkCollectionResponse::sectionsIsSet() const
 {
     return m_SectionsIsSet;
@@ -130,4 +120,3 @@ void SectionLinkCollectionResponse::unsetSections()
 }
 }
 }
-

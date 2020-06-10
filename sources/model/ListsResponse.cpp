@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListsResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ListsResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 ListsResponse::ListsResponse()
 {
     m_ListsIsSet = false;
+
 }
 
 ListsResponse::~ListsResponse()
@@ -49,7 +49,6 @@ void ListsResponse::validate()
 web::json::value ListsResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_ListsIsSet)
     {
         val[_XPLATSTR("Lists")] = ModelBase::toJson(m_Lists);
@@ -72,36 +71,26 @@ void ListsResponse::fromJson(web::json::value& val)
             setLists( newItem );
         }
     }
+
 }
 
 void ListsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ListsIsSet)
     {
         if (m_Lists.get())
         {
             m_Lists->toMultipart(multipart, _XPLATSTR("Lists."));
         }
-        
     }
+
 }
 
 void ListsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Lists")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Lists")))
-        {
-            std::shared_ptr<Lists> newItem(new Lists());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Lists."));
-            setLists( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Lists> ListsResponse::getLists() const
@@ -115,6 +104,7 @@ void ListsResponse::setLists(std::shared_ptr<Lists> value)
     m_Lists = value;
     m_ListsIsSet = true;
 }
+
 bool ListsResponse::listsIsSet() const
 {
     return m_ListsIsSet;
@@ -130,4 +120,3 @@ void ListsResponse::unsetLists()
 }
 }
 }
-

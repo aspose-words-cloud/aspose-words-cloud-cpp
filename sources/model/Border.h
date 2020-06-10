@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Border.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Border_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Border_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
 #include "XmlColor.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Represents a border of an object.
 /// </summary>
-class  Border
+class Border
     : public LinkElement
 {
 public:
@@ -63,19 +62,21 @@ public:
     /// Border members
 
     /// <summary>
-    /// Gets or sets the border type.             
+    /// Gets or sets the border type.
     /// </summary>
     utility::string_t getBorderType() const;
     bool borderTypeIsSet() const;
     void unsetBorderType();
     void setBorderType(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets Color.
+    /// Gets or sets the border color.
     /// </summary>
     std::shared_ptr<XmlColor> getColor() const;
     bool colorIsSet() const;
     void unsetColor();
     void setColor(std::shared_ptr<XmlColor> value);
+
     /// <summary>
     /// Gets or sets distance of the border from text or from the page edge in points.
     /// </summary>
@@ -83,6 +84,7 @@ public:
     bool distanceFromTextIsSet() const;
     void unsetDistanceFromText();
     void setDistanceFromText(double value);
+
     /// <summary>
     /// Gets or sets the border style.
     /// </summary>
@@ -90,6 +92,7 @@ public:
     bool lineStyleIsSet() const;
     void unsetLineStyle();
     void setLineStyle(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the border width in points.
     /// </summary>
@@ -97,6 +100,7 @@ public:
     bool lineWidthIsSet() const;
     void unsetLineWidth();
     void setLineWidth(double value);
+
     /// <summary>
     /// Gets or sets a value indicating whether the border has a shadow.
     /// </summary>
@@ -108,14 +112,19 @@ public:
 protected:
     utility::string_t m_BorderType;
     bool m_BorderTypeIsSet;
+
     std::shared_ptr<XmlColor> m_Color;
     bool m_ColorIsSet;
+
     double m_DistanceFromText;
     bool m_DistanceFromTextIsSet;
+
     utility::string_t m_LineStyle;
     bool m_LineStyleIsSet;
+
     double m_LineWidth;
     bool m_LineWidthIsSet;
+
     bool m_Shadow;
     bool m_ShadowIsSet;
 };

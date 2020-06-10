@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FieldResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FieldResponse::FieldResponse()
 {
     m_FieldIsSet = false;
+
 }
 
 FieldResponse::~FieldResponse()
@@ -49,7 +49,6 @@ void FieldResponse::validate()
 web::json::value FieldResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_FieldIsSet)
     {
         val[_XPLATSTR("Field")] = ModelBase::toJson(m_Field);
@@ -72,36 +71,26 @@ void FieldResponse::fromJson(web::json::value& val)
             setField( newItem );
         }
     }
+
 }
 
 void FieldResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FieldIsSet)
     {
         if (m_Field.get())
         {
             m_Field->toMultipart(multipart, _XPLATSTR("Field."));
         }
-        
     }
+
 }
 
 void FieldResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Field")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Field")))
-        {
-            std::shared_ptr<Field> newItem(new Field());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Field."));
-            setField( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Field> FieldResponse::getField() const
@@ -115,6 +104,7 @@ void FieldResponse::setField(std::shared_ptr<Field> value)
     m_Field = value;
     m_FieldIsSet = true;
 }
+
 bool FieldResponse::fieldIsSet() const
 {
     return m_FieldIsSet;
@@ -130,4 +120,3 @@ void FieldResponse::unsetField()
 }
 }
 }
-

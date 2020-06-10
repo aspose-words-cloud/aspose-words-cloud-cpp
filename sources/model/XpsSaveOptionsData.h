@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XpsSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_XpsSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_XpsSaveOptionsData_H_
 
-
 #include "FixedPageSaveOptionsData.h"
-#include "MetafileRenderingOptionsData.h"
 #include "OutlineOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Container class for xps save options.
 /// </summary>
-class  XpsSaveOptionsData
+class XpsSaveOptionsData
     : public FixedPageSaveOptionsData
 {
 public:
@@ -69,6 +68,7 @@ public:
     bool bookmarksOutlineLevelIsSet() const;
     void unsetBookmarksOutlineLevel();
     void setBookmarksOutlineLevel(int32_t value);
+
     /// <summary>
     /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the XPS document outline.
     /// </summary>
@@ -76,13 +76,15 @@ public:
     bool headingsOutlineLevelsIsSet() const;
     void unsetHeadingsOutlineLevels();
     void setHeadingsOutlineLevels(int32_t value);
+
     /// <summary>
-    /// Gets or sets OutlineOptions.
+    /// Gets or sets allows to specify outline options.
     /// </summary>
     std::shared_ptr<OutlineOptionsData> getOutlineOptions() const;
     bool outlineOptionsIsSet() const;
     void unsetOutlineOptions();
     void setOutlineOptions(std::shared_ptr<OutlineOptionsData> value);
+
     /// <summary>
     /// Gets or sets determines whether the document should be saved using a booklet printing layout.
     /// </summary>
@@ -94,10 +96,13 @@ public:
 protected:
     int32_t m_BookmarksOutlineLevel;
     bool m_BookmarksOutlineLevelIsSet;
+
     int32_t m_HeadingsOutlineLevels;
     bool m_HeadingsOutlineLevelsIsSet;
+
     std::shared_ptr<OutlineOptionsData> m_OutlineOptions;
     bool m_OutlineOptionsIsSet;
+
     bool m_UseBookFoldPrintingSettings;
     bool m_UseBookFoldPrintingSettingsIsSet;
 };

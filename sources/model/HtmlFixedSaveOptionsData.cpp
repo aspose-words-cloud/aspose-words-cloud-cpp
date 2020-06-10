@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HtmlFixedSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "HtmlFixedSaveOptionsData.h"
 
@@ -62,6 +61,7 @@ HtmlFixedSaveOptionsData::HtmlFixedSaveOptionsData()
     m_ShowPageBorderIsSet = false;
     m_UseTargetMachineFonts = false;
     m_UseTargetMachineFontsIsSet = false;
+
 }
 
 HtmlFixedSaveOptionsData::~HtmlFixedSaveOptionsData()
@@ -76,7 +76,6 @@ void HtmlFixedSaveOptionsData::validate()
 web::json::value HtmlFixedSaveOptionsData::toJson() const
 {
     web::json::value val = this->FixedPageSaveOptionsData::toJson();
-
     if(m_CssClassNamesPrefixIsSet)
     {
         val[_XPLATSTR("CssClassNamesPrefix")] = ModelBase::toJson(m_CssClassNamesPrefix);
@@ -146,252 +145,234 @@ void HtmlFixedSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CssClassNamesPrefix")];
         if(!fieldValue.is_null())
         {
-            setCssClassNamesPrefix(ModelBase::stringFromJson(fieldValue));
+           setCssClassNamesPrefix(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Encoding")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Encoding")];
         if(!fieldValue.is_null())
         {
-            setEncoding(ModelBase::stringFromJson(fieldValue));
+           setEncoding(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ExportEmbeddedCss")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExportEmbeddedCss")];
         if(!fieldValue.is_null())
         {
-            setExportEmbeddedCss(ModelBase::boolFromJson(fieldValue));
+           setExportEmbeddedCss(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ExportEmbeddedFonts")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExportEmbeddedFonts")];
         if(!fieldValue.is_null())
         {
-            setExportEmbeddedFonts(ModelBase::boolFromJson(fieldValue));
+           setExportEmbeddedFonts(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ExportEmbeddedImages")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExportEmbeddedImages")];
         if(!fieldValue.is_null())
         {
-            setExportEmbeddedImages(ModelBase::boolFromJson(fieldValue));
+           setExportEmbeddedImages(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ExportFormFields")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExportFormFields")];
         if(!fieldValue.is_null())
         {
-            setExportFormFields(ModelBase::boolFromJson(fieldValue));
+           setExportFormFields(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("FontFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("FontFormat")];
         if(!fieldValue.is_null())
         {
-            setFontFormat(ModelBase::stringFromJson(fieldValue));
+           setFontFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PageHorizontalAlignment")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PageHorizontalAlignment")];
         if(!fieldValue.is_null())
         {
-            setPageHorizontalAlignment(ModelBase::stringFromJson(fieldValue));
+           setPageHorizontalAlignment(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PageMargins")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PageMargins")];
         if(!fieldValue.is_null())
         {
-            setPageMargins(ModelBase::doubleFromJson(fieldValue));
+           setPageMargins(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ResourcesFolder")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ResourcesFolder")];
         if(!fieldValue.is_null())
         {
-            setResourcesFolder(ModelBase::stringFromJson(fieldValue));
+           setResourcesFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ResourcesFolderAlias")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ResourcesFolderAlias")];
         if(!fieldValue.is_null())
         {
-            setResourcesFolderAlias(ModelBase::stringFromJson(fieldValue));
+           setResourcesFolderAlias(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SaveFontFaceCssSeparately")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SaveFontFaceCssSeparately")];
         if(!fieldValue.is_null())
         {
-            setSaveFontFaceCssSeparately(ModelBase::boolFromJson(fieldValue));
+           setSaveFontFaceCssSeparately(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ShowPageBorder")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ShowPageBorder")];
         if(!fieldValue.is_null())
         {
-            setShowPageBorder(ModelBase::boolFromJson(fieldValue));
+           setShowPageBorder(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("UseTargetMachineFonts")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("UseTargetMachineFonts")];
         if(!fieldValue.is_null())
         {
-            setUseTargetMachineFonts(ModelBase::boolFromJson(fieldValue));
+           setUseTargetMachineFonts(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void HtmlFixedSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FixedPageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CssClassNamesPrefixIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CssClassNamesPrefix"), m_CssClassNamesPrefix));
-        
     }
+
+
     if(m_EncodingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Encoding"), m_Encoding));
-        
     }
+
+
     if(m_ExportEmbeddedCssIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportEmbeddedCss"), m_ExportEmbeddedCss));
-        
     }
+
+
     if(m_ExportEmbeddedFontsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportEmbeddedFonts"), m_ExportEmbeddedFonts));
-        
     }
+
+
     if(m_ExportEmbeddedImagesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportEmbeddedImages"), m_ExportEmbeddedImages));
-        
     }
+
+
     if(m_ExportFormFieldsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportFormFields"), m_ExportFormFields));
-        
     }
+
+
     if(m_FontFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FontFormat"), m_FontFormat));
-        
     }
+
+
     if(m_PageHorizontalAlignmentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageHorizontalAlignment"), m_PageHorizontalAlignment));
-        
     }
+
+
     if(m_PageMarginsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PageMargins"), m_PageMargins));
-        
     }
+
+
     if(m_ResourcesFolderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourcesFolder"), m_ResourcesFolder));
-        
     }
+
+
     if(m_ResourcesFolderAliasIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourcesFolderAlias"), m_ResourcesFolderAlias));
-        
     }
+
+
     if(m_SaveFontFaceCssSeparatelyIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFontFaceCssSeparately"), m_SaveFontFaceCssSeparately));
-        
     }
+
+
     if(m_ShowPageBorderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ShowPageBorder"), m_ShowPageBorder));
-        
     }
+
+
     if(m_UseTargetMachineFontsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseTargetMachineFonts"), m_UseTargetMachineFonts));
-        
     }
+
 }
 
 void HtmlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FixedPageSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("CssClassNamesPrefix")))
-    {
-        setCssClassNamesPrefix(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CssClassNamesPrefix"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Encoding")))
-    {
-        setEncoding(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Encoding"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExportEmbeddedCss")))
-    {
-        setExportEmbeddedCss(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportEmbeddedCss"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExportEmbeddedFonts")))
-    {
-        setExportEmbeddedFonts(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportEmbeddedFonts"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExportEmbeddedImages")))
-    {
-        setExportEmbeddedImages(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportEmbeddedImages"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExportFormFields")))
-    {
-        setExportFormFields(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportFormFields"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FontFormat")))
-    {
-        setFontFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FontFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageHorizontalAlignment")))
-    {
-        setPageHorizontalAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("PageHorizontalAlignment"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PageMargins")))
-    {
-        setPageMargins(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("PageMargins"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ResourcesFolder")))
-    {
-        setResourcesFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResourcesFolder"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ResourcesFolderAlias")))
-    {
-        setResourcesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResourcesFolderAlias"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SaveFontFaceCssSeparately")))
-    {
-        setSaveFontFaceCssSeparately(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SaveFontFaceCssSeparately"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ShowPageBorder")))
-    {
-        setShowPageBorder(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ShowPageBorder"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UseTargetMachineFonts")))
-    {
-        setUseTargetMachineFonts(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseTargetMachineFonts"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t HtmlFixedSaveOptionsData::getCssClassNamesPrefix() const
@@ -405,6 +386,7 @@ void HtmlFixedSaveOptionsData::setCssClassNamesPrefix(utility::string_t value)
     m_CssClassNamesPrefix = value;
     m_CssClassNamesPrefixIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::cssClassNamesPrefixIsSet() const
 {
     return m_CssClassNamesPrefixIsSet;
@@ -426,6 +408,7 @@ void HtmlFixedSaveOptionsData::setEncoding(utility::string_t value)
     m_Encoding = value;
     m_EncodingIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::encodingIsSet() const
 {
     return m_EncodingIsSet;
@@ -447,6 +430,7 @@ void HtmlFixedSaveOptionsData::setExportEmbeddedCss(bool value)
     m_ExportEmbeddedCss = value;
     m_ExportEmbeddedCssIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::exportEmbeddedCssIsSet() const
 {
     return m_ExportEmbeddedCssIsSet;
@@ -468,6 +452,7 @@ void HtmlFixedSaveOptionsData::setExportEmbeddedFonts(bool value)
     m_ExportEmbeddedFonts = value;
     m_ExportEmbeddedFontsIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::exportEmbeddedFontsIsSet() const
 {
     return m_ExportEmbeddedFontsIsSet;
@@ -489,6 +474,7 @@ void HtmlFixedSaveOptionsData::setExportEmbeddedImages(bool value)
     m_ExportEmbeddedImages = value;
     m_ExportEmbeddedImagesIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::exportEmbeddedImagesIsSet() const
 {
     return m_ExportEmbeddedImagesIsSet;
@@ -510,6 +496,7 @@ void HtmlFixedSaveOptionsData::setExportFormFields(bool value)
     m_ExportFormFields = value;
     m_ExportFormFieldsIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::exportFormFieldsIsSet() const
 {
     return m_ExportFormFieldsIsSet;
@@ -531,6 +518,7 @@ void HtmlFixedSaveOptionsData::setFontFormat(utility::string_t value)
     m_FontFormat = value;
     m_FontFormatIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::fontFormatIsSet() const
 {
     return m_FontFormatIsSet;
@@ -552,6 +540,7 @@ void HtmlFixedSaveOptionsData::setPageHorizontalAlignment(utility::string_t valu
     m_PageHorizontalAlignment = value;
     m_PageHorizontalAlignmentIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::pageHorizontalAlignmentIsSet() const
 {
     return m_PageHorizontalAlignmentIsSet;
@@ -573,6 +562,7 @@ void HtmlFixedSaveOptionsData::setPageMargins(double value)
     m_PageMargins = value;
     m_PageMarginsIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::pageMarginsIsSet() const
 {
     return m_PageMarginsIsSet;
@@ -594,6 +584,7 @@ void HtmlFixedSaveOptionsData::setResourcesFolder(utility::string_t value)
     m_ResourcesFolder = value;
     m_ResourcesFolderIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::resourcesFolderIsSet() const
 {
     return m_ResourcesFolderIsSet;
@@ -615,6 +606,7 @@ void HtmlFixedSaveOptionsData::setResourcesFolderAlias(utility::string_t value)
     m_ResourcesFolderAlias = value;
     m_ResourcesFolderAliasIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::resourcesFolderAliasIsSet() const
 {
     return m_ResourcesFolderAliasIsSet;
@@ -636,6 +628,7 @@ void HtmlFixedSaveOptionsData::setSaveFontFaceCssSeparately(bool value)
     m_SaveFontFaceCssSeparately = value;
     m_SaveFontFaceCssSeparatelyIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::saveFontFaceCssSeparatelyIsSet() const
 {
     return m_SaveFontFaceCssSeparatelyIsSet;
@@ -657,6 +650,7 @@ void HtmlFixedSaveOptionsData::setShowPageBorder(bool value)
     m_ShowPageBorder = value;
     m_ShowPageBorderIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::showPageBorderIsSet() const
 {
     return m_ShowPageBorderIsSet;
@@ -678,6 +672,7 @@ void HtmlFixedSaveOptionsData::setUseTargetMachineFonts(bool value)
     m_UseTargetMachineFonts = value;
     m_UseTargetMachineFontsIsSet = true;
 }
+
 bool HtmlFixedSaveOptionsData::useTargetMachineFontsIsSet() const
 {
     return m_UseTargetMachineFontsIsSet;
@@ -693,4 +688,3 @@ void HtmlFixedSaveOptionsData::unsetUseTargetMachineFonts()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphFormatResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ParagraphFormatResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 ParagraphFormatResponse::ParagraphFormatResponse()
 {
     m_ParagraphFormatIsSet = false;
+
 }
 
 ParagraphFormatResponse::~ParagraphFormatResponse()
@@ -49,7 +49,6 @@ void ParagraphFormatResponse::validate()
 web::json::value ParagraphFormatResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_ParagraphFormatIsSet)
     {
         val[_XPLATSTR("ParagraphFormat")] = ModelBase::toJson(m_ParagraphFormat);
@@ -72,36 +71,26 @@ void ParagraphFormatResponse::fromJson(web::json::value& val)
             setParagraphFormat( newItem );
         }
     }
+
 }
 
 void ParagraphFormatResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ParagraphFormatIsSet)
     {
         if (m_ParagraphFormat.get())
         {
             m_ParagraphFormat->toMultipart(multipart, _XPLATSTR("ParagraphFormat."));
         }
-        
     }
+
 }
 
 void ParagraphFormatResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
-    {
-        if(multipart->hasContent(_XPLATSTR("ParagraphFormat")))
-        {
-            std::shared_ptr<ParagraphFormat> newItem(new ParagraphFormat());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ParagraphFormat."));
-            setParagraphFormat( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<ParagraphFormat> ParagraphFormatResponse::getParagraphFormat() const
@@ -115,6 +104,7 @@ void ParagraphFormatResponse::setParagraphFormat(std::shared_ptr<ParagraphFormat
     m_ParagraphFormat = value;
     m_ParagraphFormatIsSet = true;
 }
+
 bool ParagraphFormatResponse::paragraphFormatIsSet() const
 {
     return m_ParagraphFormatIsSet;
@@ -130,4 +120,3 @@ void ParagraphFormatResponse::unsetParagraphFormat()
 }
 }
 }
-

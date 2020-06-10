@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ModificationOperationResult.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ModificationOperationResult_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ModificationOperationResult_H_
 
-
-#include "../ModelBase.h"
-
 #include "FileLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// result of the operation which modifies the original document and saves the result.
 /// </summary>
-class  ModificationOperationResult
+class ModificationOperationResult
     : public ModelBase
 {
 public:
@@ -63,25 +61,27 @@ public:
     /// ModificationOperationResult members
 
     /// <summary>
-    /// Gets or sets Source.
-    /// </summary>
-    std::shared_ptr<FileLink> getSource() const;
-    bool sourceIsSet() const;
-    void unsetSource();
-    void setSource(std::shared_ptr<FileLink> value);
-    /// <summary>
-    /// Gets or sets Dest.
+    /// Gets or sets link to the dest document (result of the modification operation).
     /// </summary>
     std::shared_ptr<FileLink> getDest() const;
     bool destIsSet() const;
     void unsetDest();
     void setDest(std::shared_ptr<FileLink> value);
 
+    /// <summary>
+    /// Gets or sets link to the source document (source for the modification operation).
+    /// </summary>
+    std::shared_ptr<FileLink> getSource() const;
+    bool sourceIsSet() const;
+    void unsetSource();
+    void setSource(std::shared_ptr<FileLink> value);
+
 protected:
-    std::shared_ptr<FileLink> m_Source;
-    bool m_SourceIsSet;
     std::shared_ptr<FileLink> m_Dest;
     bool m_DestIsSet;
+
+    std::shared_ptr<FileLink> m_Source;
+    bool m_SourceIsSet;
 };
 
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunsResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RunsResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RunsResponse_H_
 
-
 #include "Runs.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
+/// This response should be returned by the service when handling:
+/// GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
 /// </summary>
-class  RunsResponse
+class RunsResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +63,7 @@ public:
     /// RunsResponse members
 
     /// <summary>
-    /// Gets or sets Runs.
+    /// Gets or sets collection of runs.
     /// </summary>
     std::shared_ptr<Runs> getRuns() const;
     bool runsIsSet() const;

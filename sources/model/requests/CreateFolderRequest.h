@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CreateFolderRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef createFolder_H
-#define createFolder_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_CreateFolderRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_CreateFolderRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,21 +36,22 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class CreateFolderRequest{
+class CreateFolderRequest {
     public: 
-     CreateFolderRequest(
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName
+ CreateFolderRequest(
+            utility::string_t path,
+            boost::optional< utility::string_t > storageName
         );
 
         utility::string_t getPath() const;
         void setPath(utility::string_t path);
 
-        boost::optional<utility::string_t> getStorageName() const;
-        void setStorageName(boost::optional<utility::string_t> storageName);
+        boost::optional< utility::string_t > getStorageName() const;
+        void setStorageName(boost::optional< utility::string_t > storageName);
+
     private:
-        utility::string_t m_path;
-        boost::optional<utility::string_t> m_storageName;
+        utility::string_t m_Path;
+        boost::optional< utility::string_t > m_StorageName;
 };
 
 }
@@ -58,4 +60,4 @@ class CreateFolderRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_CreateFolderRequest_H_ */

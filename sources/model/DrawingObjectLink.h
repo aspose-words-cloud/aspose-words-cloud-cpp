@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObjectLink.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectLink_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectLink_H_
 
-
 #include "NodeLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// Represents link for Drawing Object DTO.
 /// </summary>
-class  DrawingObjectLink
+class DrawingObjectLink
     : public NodeLink
 {
 public:

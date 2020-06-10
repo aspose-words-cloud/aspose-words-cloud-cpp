@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldsResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FieldsResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FieldsResponse::FieldsResponse()
 {
     m_FieldsIsSet = false;
+
 }
 
 FieldsResponse::~FieldsResponse()
@@ -49,7 +49,6 @@ void FieldsResponse::validate()
 web::json::value FieldsResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_FieldsIsSet)
     {
         val[_XPLATSTR("Fields")] = ModelBase::toJson(m_Fields);
@@ -72,36 +71,26 @@ void FieldsResponse::fromJson(web::json::value& val)
             setFields( newItem );
         }
     }
+
 }
 
 void FieldsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FieldsIsSet)
     {
         if (m_Fields.get())
         {
             m_Fields->toMultipart(multipart, _XPLATSTR("Fields."));
         }
-        
     }
+
 }
 
 void FieldsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Fields")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Fields")))
-        {
-            std::shared_ptr<FieldCollection> newItem(new FieldCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Fields."));
-            setFields( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<FieldCollection> FieldsResponse::getFields() const
@@ -115,6 +104,7 @@ void FieldsResponse::setFields(std::shared_ptr<FieldCollection> value)
     m_Fields = value;
     m_FieldsIsSet = true;
 }
+
 bool FieldsResponse::fieldsIsSet() const
 {
     return m_FieldsIsSet;
@@ -130,4 +120,3 @@ void FieldsResponse::unsetFields()
 }
 }
 }
-

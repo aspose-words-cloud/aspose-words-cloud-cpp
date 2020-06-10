@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReportBuildOptions.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
 
 #include "ReportBuildOptions.h"
 
@@ -52,14 +51,13 @@ const utility::string_t& ReportBuildOptions::getValue() const
     return m_value;
 }
 
-const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::None = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("None")));
+ const std::shared_ptr< ReportBuildOptions > ReportBuildOptions::None = std::shared_ptr< ReportBuildOptions >(new ReportBuildOptions(_XPLATSTR("None")));
 
-const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::AllowMissingMembers = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("AllowMissingMembers")));
+ const std::shared_ptr< ReportBuildOptions > ReportBuildOptions::AllowMissingMembers = std::shared_ptr< ReportBuildOptions >(new ReportBuildOptions(_XPLATSTR("AllowMissingMembers")));
 
-const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::RemoveEmptyParagraphs = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("RemoveEmptyParagraphs")));
+ const std::shared_ptr< ReportBuildOptions > ReportBuildOptions::RemoveEmptyParagraphs = std::shared_ptr< ReportBuildOptions >(new ReportBuildOptions(_XPLATSTR("RemoveEmptyParagraphs")));
 
-const std::shared_ptr<ReportBuildOptions> ReportBuildOptions::InlineErrorMessages = std::shared_ptr<ReportBuildOptions>(new ReportBuildOptions(_XPLATSTR("InlineErrorMessages")));
-
+ const std::shared_ptr< ReportBuildOptions > ReportBuildOptions::InlineErrorMessages = std::shared_ptr< ReportBuildOptions >(new ReportBuildOptions(_XPLATSTR("InlineErrorMessages")));
 
 void ReportBuildOptions::validate()
 {
@@ -85,10 +83,8 @@ void ReportBuildOptions::fromMultiPart(const std::shared_ptr<MultipartFormData>&
 {
     // TODO: not implemented
 }
-
 }
 }
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OfficeMathObject.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_OfficeMathObject_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_OfficeMathObject_H_
 
-
 #include "OfficeMathLink.h"
 #include "StoryChildNodes.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// OfficeMath object.
 /// </summary>
-class  OfficeMathObject
+class OfficeMathObject
     : public OfficeMathLink
 {
 public:
@@ -62,19 +62,22 @@ public:
     /// OfficeMathObject members
 
     /// <summary>
-    /// Gets or sets Content.
+    /// Gets or sets content of footnote.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
     void unsetContent();
     void setContent(std::shared_ptr<StoryChildNodes> value);
+
     /// <summary>
-    /// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line.
+    /// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text
+    /// or displayed on its own line.
     /// </summary>
     utility::string_t getDisplayType() const;
     bool displayTypeIsSet() const;
     void unsetDisplayType();
     void setDisplayType(utility::string_t value);
+
     /// <summary>
     /// Gets or sets /sets Office Math justification.
     /// </summary>
@@ -82,6 +85,7 @@ public:
     bool justificationIsSet() const;
     void unsetJustification();
     void setJustification(utility::string_t value);
+
     /// <summary>
     /// Gets or sets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
     /// </summary>
@@ -93,10 +97,13 @@ public:
 protected:
     std::shared_ptr<StoryChildNodes> m_Content;
     bool m_ContentIsSet;
+
     utility::string_t m_DisplayType;
     bool m_DisplayTypeIsSet;
+
     utility::string_t m_Justification;
     bool m_JustificationIsSet;
+
     utility::string_t m_MathObjectType;
     bool m_MathObjectTypeIsSet;
 };

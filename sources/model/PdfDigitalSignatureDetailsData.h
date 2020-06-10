@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PdfDigitalSignatureDetailsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_PdfDigitalSignatureDetailsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PdfDigitalSignatureDetailsData_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// container class for details of digital signature.
 /// </summary>
-class  PdfDigitalSignatureDetailsData
+class PdfDigitalSignatureDetailsData
     : public ModelBase
 {
 public:
@@ -62,12 +60,13 @@ public:
     /// PdfDigitalSignatureDetailsData members
 
     /// <summary>
-    /// Gets or sets certificate&#39;s filename using for signing.
+    /// Gets or sets certificate's filename using for signing.
     /// </summary>
     utility::string_t getCertificateFilename() const;
     bool certificateFilenameIsSet() const;
     void unsetCertificateFilename();
     void setCertificateFilename(utility::string_t value);
+
     /// <summary>
     /// Gets or sets hash algorithm.
     /// </summary>
@@ -75,6 +74,7 @@ public:
     bool hashAlgorithmIsSet() const;
     void unsetHashAlgorithm();
     void setHashAlgorithm(utility::string_t value);
+
     /// <summary>
     /// Gets or sets location of the signing.
     /// </summary>
@@ -82,6 +82,7 @@ public:
     bool locationIsSet() const;
     void unsetLocation();
     void setLocation(utility::string_t value);
+
     /// <summary>
     /// Gets or sets reason for the signing.
     /// </summary>
@@ -89,6 +90,7 @@ public:
     bool reasonIsSet() const;
     void unsetReason();
     void setReason(utility::string_t value);
+
     /// <summary>
     /// Gets or sets date of the signing.
     /// </summary>
@@ -100,12 +102,16 @@ public:
 protected:
     utility::string_t m_CertificateFilename;
     bool m_CertificateFilenameIsSet;
+
     utility::string_t m_HashAlgorithm;
     bool m_HashAlgorithmIsSet;
+
     utility::string_t m_Location;
     bool m_LocationIsSet;
+
     utility::string_t m_Reason;
     bool m_ReasonIsSet;
+
     utility::datetime m_SignatureDate;
     bool m_SignatureDateIsSet;
 };

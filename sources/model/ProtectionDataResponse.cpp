@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ProtectionDataResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ProtectionDataResponse.h"
 
 namespace aspose {
@@ -35,7 +34,9 @@ namespace models {
 ProtectionDataResponse::ProtectionDataResponse()
 {
     m_DocumentLinkIsSet = false;
+
     m_ProtectionDataIsSet = false;
+
 }
 
 ProtectionDataResponse::~ProtectionDataResponse()
@@ -50,7 +51,6 @@ void ProtectionDataResponse::validate()
 web::json::value ProtectionDataResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_DocumentLinkIsSet)
     {
         val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
@@ -77,6 +77,8 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ProtectionData")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ProtectionData")];
@@ -87,53 +89,35 @@ void ProtectionDataResponse::fromJson(web::json::value& val)
             setProtectionData( newItem );
         }
     }
+
 }
 
 void ProtectionDataResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
             m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
         }
-        
     }
+
+
     if(m_ProtectionDataIsSet)
     {
         if (m_ProtectionData.get())
         {
             m_ProtectionData->toMultipart(multipart, _XPLATSTR("ProtectionData."));
         }
-        
     }
+
 }
 
 void ProtectionDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
-    {
-        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
-            setDocumentLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("ProtectionData")))
-    {
-        if(multipart->hasContent(_XPLATSTR("ProtectionData")))
-        {
-            std::shared_ptr<ProtectionData> newItem(new ProtectionData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("ProtectionData."));
-            setProtectionData( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<FileLink> ProtectionDataResponse::getDocumentLink() const
@@ -147,6 +131,7 @@ void ProtectionDataResponse::setDocumentLink(std::shared_ptr<FileLink> value)
     m_DocumentLink = value;
     m_DocumentLinkIsSet = true;
 }
+
 bool ProtectionDataResponse::documentLinkIsSet() const
 {
     return m_DocumentLinkIsSet;
@@ -168,6 +153,7 @@ void ProtectionDataResponse::setProtectionData(std::shared_ptr<ProtectionData> v
     m_ProtectionData = value;
     m_ProtectionDataIsSet = true;
 }
+
 bool ProtectionDataResponse::protectionDataIsSet() const
 {
     return m_ProtectionDataIsSet;
@@ -183,4 +169,3 @@ void ProtectionDataResponse::unsetProtectionData()
 }
 }
 }
-

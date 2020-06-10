@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListLevels.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ListLevels.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 ListLevels::ListLevels()
 {
     m_ListLevelIsSet = false;
+
 }
 
 ListLevels::~ListLevels()
@@ -49,14 +49,14 @@ void ListLevels::validate()
 web::json::value ListLevels::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_ListLevelIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ListLevel> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<ListLevel> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("ListLevel")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void ListLevels::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("ListLevel")) 
                             && !val[_XPLATSTR("ListLevel")].is_null())
         {
-        auto arr = val[_XPLATSTR("ListLevel")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListLevel), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<ListLevel>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<ListLevel> newItem(new ListLevel());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("ListLevel")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListLevel), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<ListLevel> newItem(new ListLevel());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<ListLevel>)nullptr;
+            });
         }
     }
+
 }
 
 void ListLevels::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ListLevel.begin(), m_ListLevel.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListLevel> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListLevel"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void ListLevels::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_ListLevel.clear();
-        if(multipart->hasContent(_XPLATSTR("ListLevel")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ListLevel")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListLevel), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<ListLevel>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<ListLevel> newItem(new ListLevel());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<ListLevel>>& ListLevels::getListLevel()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<ListLevel>>& ListLevels::getListLevel()
     return m_ListLevel;
 }
 
+
 void ListLevels::setListLevel(std::vector<std::shared_ptr<ListLevel>> const& value)
 {
     m_ListLevel = value;
     m_ListLevelIsSet = true;
 }
+
 bool ListLevels::listLevelIsSet() const
 {
     return m_ListLevelIsSet;
@@ -162,4 +141,3 @@ void ListLevels::unsetListLevel()
 }
 }
 }
-

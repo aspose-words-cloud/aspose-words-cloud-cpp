@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PdfEncryptionDetailsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_PdfEncryptionDetailsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_PdfEncryptionDetailsData_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// container class for details of encryption.
 /// </summary>
-class  PdfEncryptionDetailsData
+class PdfEncryptionDetailsData
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool encryptionAlgorithmIsSet() const;
     void unsetEncryptionAlgorithm();
     void setEncryptionAlgorithm(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies the owner password for the encrypted PDF document.
     /// </summary>
@@ -75,6 +74,7 @@ public:
     bool ownerPasswordIsSet() const;
     void unsetOwnerPassword();
     void setOwnerPassword(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies the operations that are allowed to a user on an encrypted PDF document.
     /// </summary>
@@ -82,6 +82,7 @@ public:
     bool permissionsIsSet() const;
     void unsetPermissions();
     void setPermissions(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies the user password required for opening the encrypted PDF document.
     /// </summary>
@@ -93,10 +94,13 @@ public:
 protected:
     utility::string_t m_EncryptionAlgorithm;
     bool m_EncryptionAlgorithmIsSet;
+
     utility::string_t m_OwnerPassword;
     bool m_OwnerPasswordIsSet;
+
     utility::string_t m_Permissions;
     bool m_PermissionsIsSet;
+
     utility::string_t m_UserPassword;
     bool m_UserPasswordIsSet;
 };

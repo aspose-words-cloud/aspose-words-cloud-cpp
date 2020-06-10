@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TabStop.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TabStop.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ TabStop::TabStop()
 {
     m_IsClear = false;
     m_IsClearIsSet = false;
+
 }
 
 TabStop::~TabStop()
@@ -50,7 +50,6 @@ void TabStop::validate()
 web::json::value TabStop::toJson() const
 {
     web::json::value val = this->TabStopBase::toJson();
-
     if(m_IsClearIsSet)
     {
         val[_XPLATSTR("IsClear")] = ModelBase::toJson(m_IsClear);
@@ -68,31 +67,26 @@ void TabStop::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsClear")];
         if(!fieldValue.is_null())
         {
-            setIsClear(ModelBase::boolFromJson(fieldValue));
+           setIsClear(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void TabStop::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     TabStopBase::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_IsClearIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsClear"), m_IsClear));
-        
     }
+
 }
 
 void TabStop::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    TabStopBase::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("IsClear")))
-    {
-        setIsClear(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsClear"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool TabStop::isIsClear() const
@@ -106,6 +100,7 @@ void TabStop::setIsClear(bool value)
     m_IsClear = value;
     m_IsClearIsSet = true;
 }
+
 bool TabStop::isClearIsSet() const
 {
     return m_IsClearIsSet;
@@ -121,4 +116,3 @@ void TabStop::unsetIsClear()
 }
 }
 }
-

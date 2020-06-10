@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateParagraphListFormatWithoutNodePathRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,112 +22,139 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "UpdateParagraphListFormatWithoutNodePathRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 UpdateParagraphListFormatWithoutNodePathRequest::UpdateParagraphListFormatWithoutNodePathRequest(
-        utility::string_t name,
-                std::shared_ptr<ListFormatUpdate> dto,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
-        ) : 
-            m_name(std::move(name)),
-            m_dto(std::move(dto)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
-        {
-            
-        }
-
-        utility::string_t UpdateParagraphListFormatWithoutNodePathRequest::getName() const
-        {
-            return m_name;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        std::shared_ptr<ListFormatUpdate> UpdateParagraphListFormatWithoutNodePathRequest::getDto() const
-        {
-            return m_dto;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setDto(std::shared_ptr<ListFormatUpdate> dto){
-            m_dto = std::move(dto);
-        }
-        int32_t UpdateParagraphListFormatWithoutNodePathRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> UpdateParagraphListFormatWithoutNodePathRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void UpdateParagraphListFormatWithoutNodePathRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    std::shared_ptr<ListFormatUpdate> dto,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
+) : m_Name(std::move(name)),
+m_Dto(std::move(dto)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
+{
 }
 
+utility::string_t UpdateParagraphListFormatWithoutNodePathRequest::getName() const
+{
+    return m_Name;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+std::shared_ptr<ListFormatUpdate> UpdateParagraphListFormatWithoutNodePathRequest::getDto() const
+{
+    return m_Dto;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setDto(std::shared_ptr<ListFormatUpdate> dto)
+{
+    m_Dto = std::move(dto);
+}
+
+int32_t UpdateParagraphListFormatWithoutNodePathRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > UpdateParagraphListFormatWithoutNodePathRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void UpdateParagraphListFormatWithoutNodePathRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+}
+}
+}
+}
+}

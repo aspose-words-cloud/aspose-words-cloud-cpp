@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunBase.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "RunBase.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ RunBase::RunBase()
 {
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
+
 }
 
 RunBase::~RunBase()
@@ -50,7 +50,6 @@ void RunBase::validate()
 web::json::value RunBase::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_TextIsSet)
     {
         val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
@@ -66,31 +65,25 @@ void RunBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
-            setText(ModelBase::stringFromJson(fieldValue));
+           setText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void RunBase::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
+
 }
 
 void RunBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t RunBase::getText() const
@@ -104,6 +97,7 @@ void RunBase::setText(utility::string_t value)
     m_Text = value;
     m_TextIsSet = true;
 }
+
 bool RunBase::textIsSet() const
 {
     return m_TextIsSet;
@@ -119,4 +113,3 @@ void RunBase::unsetText()
 }
 }
 }
-

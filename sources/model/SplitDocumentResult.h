@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SplitDocumentResult.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentResult_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentResult_H_
 
-
-#include "../ModelBase.h"
-
 #include "FileLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Result of splitting document.
 /// </summary>
-class  SplitDocumentResult
+class SplitDocumentResult
     : public ModelBase
 {
 public:
@@ -63,21 +61,23 @@ public:
     /// SplitDocumentResult members
 
     /// <summary>
-    /// Gets or sets SourceDocument.
-    /// </summary>
-    std::shared_ptr<FileLink> getSourceDocument() const;
-    bool sourceDocumentIsSet() const;
-    void unsetSourceDocument();
-    void setSourceDocument(std::shared_ptr<FileLink> value);
-    /// <summary>
     /// Gets or sets array of pages.
     /// </summary>
     std::vector<std::shared_ptr<FileLink>>& getPages();
     bool pagesIsSet() const;
     void unsetPages();
     void setPages(std::vector<std::shared_ptr<FileLink>> const& value);
+
     /// <summary>
-    /// Gets or sets ZippedPages.
+    /// Gets or sets linkt to the source document.
+    /// </summary>
+    std::shared_ptr<FileLink> getSourceDocument() const;
+    bool sourceDocumentIsSet() const;
+    void unsetSourceDocument();
+    void setSourceDocument(std::shared_ptr<FileLink> value);
+
+    /// <summary>
+    /// Gets or sets link to the file archive with pages.
     /// </summary>
     std::shared_ptr<FileLink> getZippedPages() const;
     bool zippedPagesIsSet() const;
@@ -85,10 +85,12 @@ public:
     void setZippedPages(std::shared_ptr<FileLink> value);
 
 protected:
-    std::shared_ptr<FileLink> m_SourceDocument;
-    bool m_SourceDocumentIsSet;
     std::vector<std::shared_ptr<FileLink>> m_Pages;
     bool m_PagesIsSet;
+
+    std::shared_ptr<FileLink> m_SourceDocument;
+    bool m_SourceDocumentIsSet;
+
     std::shared_ptr<FileLink> m_ZippedPages;
     bool m_ZippedPagesIsSet;
 };

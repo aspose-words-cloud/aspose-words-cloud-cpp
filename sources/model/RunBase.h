@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RunBase.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RunBase_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RunBase_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Run element.
 /// </summary>
-class  RunBase
+class RunBase
     : public ModelBase
 {
 public:
@@ -62,7 +60,7 @@ public:
     /// RunBase members
 
     /// <summary>
-    /// Gets or sets run&#39;s text.
+    /// Gets or sets run's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

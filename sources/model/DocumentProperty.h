@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentProperty.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentProperty_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentProperty_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Words document property DTO.
 /// </summary>
-class  DocumentProperty
+class DocumentProperty
     : public LinkElement
 {
 public:
@@ -62,12 +61,14 @@ public:
     /// DocumentProperty members
 
     /// <summary>
-    /// Gets or sets a value indicating whether flag indicates whether the property is built-in or not. If true the property is built-in, if false the property is custom.
+    /// Gets or sets a value indicating whether flag indicates whether the property is built-in or not.
+    /// If true the property is built-in, if false the property is custom.
     /// </summary>
     bool isBuiltIn() const;
     bool builtInIsSet() const;
     void unsetBuiltIn();
     void setBuiltIn(bool value);
+
     /// <summary>
     /// Gets or sets name of the document property.
     /// </summary>
@@ -75,6 +76,7 @@ public:
     bool nameIsSet() const;
     void unsetName();
     void setName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets string value of the document property.
     /// </summary>
@@ -86,8 +88,10 @@ public:
 protected:
     bool m_BuiltIn;
     bool m_BuiltInIsSet;
+
     utility::string_t m_Name;
     bool m_NameIsSet;
+
     utility::string_t m_Value;
     bool m_ValueIsSet;
 };

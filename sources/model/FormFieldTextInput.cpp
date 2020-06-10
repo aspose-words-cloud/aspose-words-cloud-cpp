@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldTextInput.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FormFieldTextInput.h"
 
 namespace aspose {
@@ -40,8 +39,9 @@ FormFieldTextInput::FormFieldTextInput()
     m_TextInputDefaultIsSet = false;
     m_TextInputFormat = utility::conversions::to_string_t("");
     m_TextInputFormatIsSet = false;
-    m_TextInputType = utility::conversions::to_string_t("");
+
     m_TextInputTypeIsSet = false;
+
 }
 
 FormFieldTextInput::~FormFieldTextInput()
@@ -56,7 +56,6 @@ void FormFieldTextInput::validate()
 web::json::value FormFieldTextInput::toJson() const
 {
     web::json::value val = this->FormField::toJson();
-
     if(m_MaxLengthIsSet)
     {
         val[_XPLATSTR("MaxLength")] = ModelBase::toJson(m_MaxLength);
@@ -86,82 +85,74 @@ void FormFieldTextInput::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("MaxLength")];
         if(!fieldValue.is_null())
         {
-            setMaxLength(ModelBase::int32_tFromJson(fieldValue));
+           setMaxLength(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TextInputDefault")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TextInputDefault")];
         if(!fieldValue.is_null())
         {
-            setTextInputDefault(ModelBase::stringFromJson(fieldValue));
+           setTextInputDefault(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TextInputFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TextInputFormat")];
         if(!fieldValue.is_null())
         {
-            setTextInputFormat(ModelBase::stringFromJson(fieldValue));
+           setTextInputFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TextInputType")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TextInputType")];
         if(!fieldValue.is_null())
         {
-            setTextInputType(ModelBase::stringFromJson(fieldValue));
+           setTextInputType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void FormFieldTextInput::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FormField::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_MaxLengthIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("MaxLength"), m_MaxLength));
-        
     }
+
+
     if(m_TextInputDefaultIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextInputDefault"), m_TextInputDefault));
-        
     }
+
+
     if(m_TextInputFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextInputFormat"), m_TextInputFormat));
-        
     }
+
+
     if(m_TextInputTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextInputType"), m_TextInputType));
-        
     }
+
 }
 
 void FormFieldTextInput::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FormField::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("MaxLength")))
-    {
-        setMaxLength(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("MaxLength"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TextInputDefault")))
-    {
-        setTextInputDefault(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextInputDefault"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TextInputFormat")))
-    {
-        setTextInputFormat(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextInputFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TextInputType")))
-    {
-        setTextInputType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextInputType"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 int32_t FormFieldTextInput::getMaxLength() const
@@ -175,6 +166,7 @@ void FormFieldTextInput::setMaxLength(int32_t value)
     m_MaxLength = value;
     m_MaxLengthIsSet = true;
 }
+
 bool FormFieldTextInput::maxLengthIsSet() const
 {
     return m_MaxLengthIsSet;
@@ -196,6 +188,7 @@ void FormFieldTextInput::setTextInputDefault(utility::string_t value)
     m_TextInputDefault = value;
     m_TextInputDefaultIsSet = true;
 }
+
 bool FormFieldTextInput::textInputDefaultIsSet() const
 {
     return m_TextInputDefaultIsSet;
@@ -217,6 +210,7 @@ void FormFieldTextInput::setTextInputFormat(utility::string_t value)
     m_TextInputFormat = value;
     m_TextInputFormatIsSet = true;
 }
+
 bool FormFieldTextInput::textInputFormatIsSet() const
 {
     return m_TextInputFormatIsSet;
@@ -238,6 +232,7 @@ void FormFieldTextInput::setTextInputType(utility::string_t value)
     m_TextInputType = value;
     m_TextInputTypeIsSet = true;
 }
+
 bool FormFieldTextInput::textInputTypeIsSet() const
 {
     return m_TextInputTypeIsSet;
@@ -253,4 +248,3 @@ void FormFieldTextInput::unsetTextInputType()
 }
 }
 }
-

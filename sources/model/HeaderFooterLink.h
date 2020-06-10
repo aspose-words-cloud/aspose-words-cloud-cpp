@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HeaderFooterLink.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_HeaderFooterLink_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_HeaderFooterLink_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// HeaderFooter link element.
 /// </summary>
-class  HeaderFooterLink
+class HeaderFooterLink
     : public LinkElement
 {
 public:
@@ -62,7 +61,7 @@ public:
     /// HeaderFooterLink members
 
     /// <summary>
-    /// Gets or sets paragraph&#39;s text.
+    /// Gets or sets paragraph's text.
     /// </summary>
     utility::string_t getType() const;
     bool typeIsSet() const;

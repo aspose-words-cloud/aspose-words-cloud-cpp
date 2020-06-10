@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleInsert.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StyleInsert_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StyleInsert_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Represents a single document style to insert.
 /// </summary>
-class  StyleInsert
+class StyleInsert
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool styleNameIsSet() const;
     void unsetStyleName();
     void setStyleName(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the StyleType value that specifies the type of the style to create.
     /// </summary>
@@ -79,6 +78,7 @@ public:
 protected:
     utility::string_t m_StyleName;
     bool m_StyleNameIsSet;
+
     utility::string_t m_StyleType;
     bool m_StyleTypeIsSet;
 };

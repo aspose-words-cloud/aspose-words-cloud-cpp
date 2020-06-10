@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Section.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Section_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Section_H_
 
-
 #include "LinkElement.h"
 #include "NodeLink.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Section element.
 /// </summary>
-class  Section
+class Section
     : public LinkElement
 {
 public:
@@ -69,29 +68,33 @@ public:
     bool childNodesIsSet() const;
     void unsetChildNodes();
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
+
     /// <summary>
-    /// Gets or sets HeaderFooters.
+    /// Gets or sets link to HeaderFooters resource.
     /// </summary>
     std::shared_ptr<LinkElement> getHeaderFooters() const;
     bool headerFootersIsSet() const;
     void unsetHeaderFooters();
     void setHeaderFooters(std::shared_ptr<LinkElement> value);
+
     /// <summary>
-    /// Gets or sets PageSetup.
+    /// Gets or sets link to PageSetup resource.
     /// </summary>
     std::shared_ptr<LinkElement> getPageSetup() const;
     bool pageSetupIsSet() const;
     void unsetPageSetup();
     void setPageSetup(std::shared_ptr<LinkElement> value);
+
     /// <summary>
-    /// Gets or sets Paragraphs.
+    /// Gets or sets link to Paragraphs resource.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
     void unsetParagraphs();
     void setParagraphs(std::shared_ptr<LinkElement> value);
+
     /// <summary>
-    /// Gets or sets Tables.
+    /// Gets or sets link to Tables resource.
     /// </summary>
     std::shared_ptr<LinkElement> getTables() const;
     bool tablesIsSet() const;
@@ -101,12 +104,16 @@ public:
 protected:
     std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;
     bool m_ChildNodesIsSet;
+
     std::shared_ptr<LinkElement> m_HeaderFooters;
     bool m_HeaderFootersIsSet;
+
     std::shared_ptr<LinkElement> m_PageSetup;
     bool m_PageSetupIsSet;
+
     std::shared_ptr<LinkElement> m_Paragraphs;
     bool m_ParagraphsIsSet;
+
     std::shared_ptr<LinkElement> m_Tables;
     bool m_TablesIsSet;
 };

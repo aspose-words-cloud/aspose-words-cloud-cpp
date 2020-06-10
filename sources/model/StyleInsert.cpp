@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleInsert.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StyleInsert.h"
 
 namespace aspose {
@@ -36,8 +35,9 @@ StyleInsert::StyleInsert()
 {
     m_StyleName = utility::conversions::to_string_t("");
     m_StyleNameIsSet = false;
-    m_StyleType = utility::conversions::to_string_t("");
+
     m_StyleTypeIsSet = false;
+
 }
 
 StyleInsert::~StyleInsert()
@@ -52,7 +52,6 @@ void StyleInsert::validate()
 web::json::value StyleInsert::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_StyleNameIsSet)
     {
         val[_XPLATSTR("StyleName")] = ModelBase::toJson(m_StyleName);
@@ -72,48 +71,41 @@ void StyleInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("StyleName")];
         if(!fieldValue.is_null())
         {
-            setStyleName(ModelBase::stringFromJson(fieldValue));
+           setStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StyleType")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StyleType")];
         if(!fieldValue.is_null())
         {
-            setStyleType(ModelBase::stringFromJson(fieldValue));
+           setStyleType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void StyleInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_StyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleName"), m_StyleName));
-        
     }
+
+
     if(m_StyleTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleType"), m_StyleType));
-        
     }
+
 }
 
 void StyleInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("StyleName")))
-    {
-        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StyleType")))
-    {
-        setStyleType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleType"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t StyleInsert::getStyleName() const
@@ -127,6 +119,7 @@ void StyleInsert::setStyleName(utility::string_t value)
     m_StyleName = value;
     m_StyleNameIsSet = true;
 }
+
 bool StyleInsert::styleNameIsSet() const
 {
     return m_StyleNameIsSet;
@@ -148,6 +141,7 @@ void StyleInsert::setStyleType(utility::string_t value)
     m_StyleType = value;
     m_StyleTypeIsSet = true;
 }
+
 bool StyleInsert::styleTypeIsSet() const
 {
     return m_StyleTypeIsSet;
@@ -163,4 +157,3 @@ void StyleInsert::unsetStyleType()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentPosition.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentPosition.h"
 
 namespace aspose {
@@ -37,6 +36,7 @@ DocumentPosition::DocumentPosition()
     m_NodeIsSet = false;
     m_Offset = 0;
     m_OffsetIsSet = false;
+
 }
 
 DocumentPosition::~DocumentPosition()
@@ -51,7 +51,6 @@ void DocumentPosition::validate()
 web::json::value DocumentPosition::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_NodeIsSet)
     {
         val[_XPLATSTR("Node")] = ModelBase::toJson(m_Node);
@@ -76,53 +75,41 @@ void DocumentPosition::fromJson(web::json::value& val)
             setNode( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Offset")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Offset")];
         if(!fieldValue.is_null())
         {
-            setOffset(ModelBase::int32_tFromJson(fieldValue));
+           setOffset(ModelBase::integerFromJson(fieldValue));
         }
     }
+
 }
 
 void DocumentPosition::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_NodeIsSet)
     {
         if (m_Node.get())
         {
             m_Node->toMultipart(multipart, _XPLATSTR("Node."));
         }
-        
     }
+
+
     if(m_OffsetIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Offset"), m_Offset));
-        
     }
+
 }
 
 void DocumentPosition::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Node")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Node")))
-        {
-            std::shared_ptr<NodeLink> newItem(new NodeLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Node."));
-            setNode( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("Offset")))
-    {
-        setOffset(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("Offset"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<NodeLink> DocumentPosition::getNode() const
@@ -136,6 +123,7 @@ void DocumentPosition::setNode(std::shared_ptr<NodeLink> value)
     m_Node = value;
     m_NodeIsSet = true;
 }
+
 bool DocumentPosition::nodeIsSet() const
 {
     return m_NodeIsSet;
@@ -157,6 +145,7 @@ void DocumentPosition::setOffset(int32_t value)
     m_Offset = value;
     m_OffsetIsSet = true;
 }
+
 bool DocumentPosition::offsetIsSet() const
 {
     return m_OffsetIsSet;
@@ -172,4 +161,3 @@ void DocumentPosition::unsetOffset()
 }
 }
 }
-

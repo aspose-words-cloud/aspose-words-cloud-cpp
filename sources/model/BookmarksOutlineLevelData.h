@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BookmarksOutlineLevelData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_BookmarksOutlineLevelData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_BookmarksOutlineLevelData_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// container class for individual bookmarks outline level.
 /// </summary>
-class  BookmarksOutlineLevelData
+class BookmarksOutlineLevelData
     : public ModelBase
 {
 public:
@@ -62,25 +60,27 @@ public:
     /// BookmarksOutlineLevelData members
 
     /// <summary>
-    /// Gets or sets specify the bookmark&#39;s name.
-    /// </summary>
-    utility::string_t getName() const;
-    bool nameIsSet() const;
-    void unsetName();
-    void setName(utility::string_t value);
-    /// <summary>
-    /// Gets or sets specify the bookmark&#39;s level.
+    /// Gets or sets specify the bookmark's level.
     /// </summary>
     int32_t getBookmarksOutlineLevel() const;
     bool bookmarksOutlineLevelIsSet() const;
     void unsetBookmarksOutlineLevel();
     void setBookmarksOutlineLevel(int32_t value);
 
+    /// <summary>
+    /// Gets or sets specify the bookmark's name.
+    /// </summary>
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
+    void setName(utility::string_t value);
+
 protected:
-    utility::string_t m_Name;
-    bool m_NameIsSet;
     int32_t m_BookmarksOutlineLevel;
     bool m_BookmarksOutlineLevelIsSet;
+
+    utility::string_t m_Name;
+    bool m_NameIsSet;
 };
 
 }

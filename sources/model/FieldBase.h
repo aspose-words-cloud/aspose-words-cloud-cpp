@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldBase.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FieldBase_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FieldBase_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Field.
 /// </summary>
-class  FieldBase
+class FieldBase
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool fieldCodeIsSet() const;
     void unsetFieldCode();
     void setFieldCode(utility::string_t value);
+
     /// <summary>
     /// Gets or sets LCID of the field.
     /// </summary>
@@ -79,6 +78,7 @@ public:
 protected:
     utility::string_t m_FieldCode;
     bool m_FieldCodeIsSet;
+
     utility::string_t m_LocaleId;
     bool m_LocaleIdIsSet;
 };

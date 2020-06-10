@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="EpubSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "EpubSaveOptionsData.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ EpubSaveOptionsData::EpubSaveOptionsData()
 {
     m_EpubNavigationMapLevel = 0;
     m_EpubNavigationMapLevelIsSet = false;
+
 }
 
 EpubSaveOptionsData::~EpubSaveOptionsData()
@@ -50,7 +50,6 @@ void EpubSaveOptionsData::validate()
 web::json::value EpubSaveOptionsData::toJson() const
 {
     web::json::value val = this->HtmlSaveOptionsData::toJson();
-
     if(m_EpubNavigationMapLevelIsSet)
     {
         val[_XPLATSTR("EpubNavigationMapLevel")] = ModelBase::toJson(m_EpubNavigationMapLevel);
@@ -68,31 +67,26 @@ void EpubSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EpubNavigationMapLevel")];
         if(!fieldValue.is_null())
         {
-            setEpubNavigationMapLevel(ModelBase::int32_tFromJson(fieldValue));
+           setEpubNavigationMapLevel(ModelBase::integerFromJson(fieldValue));
         }
     }
+
 }
 
 void EpubSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     HtmlSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_EpubNavigationMapLevelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EpubNavigationMapLevel"), m_EpubNavigationMapLevel));
-        
     }
+
 }
 
 void EpubSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    HtmlSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("EpubNavigationMapLevel")))
-    {
-        setEpubNavigationMapLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("EpubNavigationMapLevel"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 int32_t EpubSaveOptionsData::getEpubNavigationMapLevel() const
@@ -106,6 +100,7 @@ void EpubSaveOptionsData::setEpubNavigationMapLevel(int32_t value)
     m_EpubNavigationMapLevel = value;
     m_EpubNavigationMapLevelIsSet = true;
 }
+
 bool EpubSaveOptionsData::epubNavigationMapLevelIsSet() const
 {
     return m_EpubNavigationMapLevelIsSet;
@@ -121,4 +116,3 @@ void EpubSaveOptionsData::unsetEpubNavigationMapLevel()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Lists.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Lists.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 Lists::Lists()
 {
     m_ListInfoIsSet = false;
+
 }
 
 Lists::~Lists()
@@ -49,14 +49,14 @@ void Lists::validate()
 web::json::value Lists::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_ListInfoIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ListInfo> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<ListInfo> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("ListInfo")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void Lists::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("ListInfo")) 
                             && !val[_XPLATSTR("ListInfo")].is_null())
         {
-        auto arr = val[_XPLATSTR("ListInfo")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListInfo), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<ListInfo>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<ListInfo> newItem(new ListInfo());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("ListInfo")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_ListInfo), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<ListInfo> newItem(new ListInfo());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<ListInfo>)nullptr;
+            });
         }
     }
+
 }
 
 void Lists::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ListInfo.begin(), m_ListInfo.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ListInfo> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListInfo"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void Lists::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_ListInfo.clear();
-        if(multipart->hasContent(_XPLATSTR("ListInfo")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ListInfo")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ListInfo), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<ListInfo>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<ListInfo> newItem(new ListInfo());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<ListInfo>>& Lists::getListInfo()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<ListInfo>>& Lists::getListInfo()
     return m_ListInfo;
 }
 
+
 void Lists::setListInfo(std::vector<std::shared_ptr<ListInfo>> const& value)
 {
     m_ListInfo = value;
     m_ListInfoIsSet = true;
 }
+
 bool Lists::listInfoIsSet() const
 {
     return m_ListInfoIsSet;
@@ -162,4 +141,3 @@ void Lists::unsetListInfo()
 }
 }
 }
-

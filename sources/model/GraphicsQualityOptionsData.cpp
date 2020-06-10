@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GraphicsQualityOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "GraphicsQualityOptionsData.h"
 
 namespace aspose {
@@ -34,17 +33,18 @@ namespace models {
 
 GraphicsQualityOptionsData::GraphicsQualityOptionsData()
 {
-    m_CompositingMode = utility::conversions::to_string_t("");
     m_CompositingModeIsSet = false;
-    m_CompositingQuality = utility::conversions::to_string_t("");
+
     m_CompositingQualityIsSet = false;
-    m_InterpolationMode = utility::conversions::to_string_t("");
+
     m_InterpolationModeIsSet = false;
-    m_SmoothingMode = utility::conversions::to_string_t("");
+
     m_SmoothingModeIsSet = false;
+
     m_StringFormatIsSet = false;
-    m_TextRenderingHint = utility::conversions::to_string_t("");
+
     m_TextRenderingHintIsSet = false;
+
 }
 
 GraphicsQualityOptionsData::~GraphicsQualityOptionsData()
@@ -59,7 +59,6 @@ void GraphicsQualityOptionsData::validate()
 web::json::value GraphicsQualityOptionsData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_CompositingModeIsSet)
     {
         val[_XPLATSTR("CompositingMode")] = ModelBase::toJson(m_CompositingMode);
@@ -95,33 +94,41 @@ void GraphicsQualityOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CompositingMode")];
         if(!fieldValue.is_null())
         {
-            setCompositingMode(ModelBase::stringFromJson(fieldValue));
+           setCompositingMode(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("CompositingQuality")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("CompositingQuality")];
         if(!fieldValue.is_null())
         {
-            setCompositingQuality(ModelBase::stringFromJson(fieldValue));
+           setCompositingQuality(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("InterpolationMode")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("InterpolationMode")];
         if(!fieldValue.is_null())
         {
-            setInterpolationMode(ModelBase::stringFromJson(fieldValue));
+           setInterpolationMode(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SmoothingMode")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SmoothingMode")];
         if(!fieldValue.is_null())
         {
-            setSmoothingMode(ModelBase::stringFromJson(fieldValue));
+           setSmoothingMode(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StringFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StringFormat")];
@@ -132,89 +139,65 @@ void GraphicsQualityOptionsData::fromJson(web::json::value& val)
             setStringFormat( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TextRenderingHint")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TextRenderingHint")];
         if(!fieldValue.is_null())
         {
-            setTextRenderingHint(ModelBase::stringFromJson(fieldValue));
+           setTextRenderingHint(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void GraphicsQualityOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CompositingModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CompositingMode"), m_CompositingMode));
-        
     }
+
+
     if(m_CompositingQualityIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CompositingQuality"), m_CompositingQuality));
-        
     }
+
+
     if(m_InterpolationModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("InterpolationMode"), m_InterpolationMode));
-        
     }
+
+
     if(m_SmoothingModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SmoothingMode"), m_SmoothingMode));
-        
     }
+
+
     if(m_StringFormatIsSet)
     {
         if (m_StringFormat.get())
         {
             m_StringFormat->toMultipart(multipart, _XPLATSTR("StringFormat."));
         }
-        
     }
+
+
     if(m_TextRenderingHintIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextRenderingHint"), m_TextRenderingHint));
-        
     }
+
 }
 
 void GraphicsQualityOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("CompositingMode")))
-    {
-        setCompositingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CompositingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CompositingQuality")))
-    {
-        setCompositingQuality(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CompositingQuality"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("InterpolationMode")))
-    {
-        setInterpolationMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("InterpolationMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SmoothingMode")))
-    {
-        setSmoothingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("SmoothingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StringFormat")))
-    {
-        if(multipart->hasContent(_XPLATSTR("StringFormat")))
-        {
-            std::shared_ptr<StringFormatData> newItem(new StringFormatData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("StringFormat."));
-            setStringFormat( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("TextRenderingHint")))
-    {
-        setTextRenderingHint(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextRenderingHint"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t GraphicsQualityOptionsData::getCompositingMode() const
@@ -228,6 +211,7 @@ void GraphicsQualityOptionsData::setCompositingMode(utility::string_t value)
     m_CompositingMode = value;
     m_CompositingModeIsSet = true;
 }
+
 bool GraphicsQualityOptionsData::compositingModeIsSet() const
 {
     return m_CompositingModeIsSet;
@@ -249,6 +233,7 @@ void GraphicsQualityOptionsData::setCompositingQuality(utility::string_t value)
     m_CompositingQuality = value;
     m_CompositingQualityIsSet = true;
 }
+
 bool GraphicsQualityOptionsData::compositingQualityIsSet() const
 {
     return m_CompositingQualityIsSet;
@@ -270,6 +255,7 @@ void GraphicsQualityOptionsData::setInterpolationMode(utility::string_t value)
     m_InterpolationMode = value;
     m_InterpolationModeIsSet = true;
 }
+
 bool GraphicsQualityOptionsData::interpolationModeIsSet() const
 {
     return m_InterpolationModeIsSet;
@@ -291,6 +277,7 @@ void GraphicsQualityOptionsData::setSmoothingMode(utility::string_t value)
     m_SmoothingMode = value;
     m_SmoothingModeIsSet = true;
 }
+
 bool GraphicsQualityOptionsData::smoothingModeIsSet() const
 {
     return m_SmoothingModeIsSet;
@@ -312,6 +299,7 @@ void GraphicsQualityOptionsData::setStringFormat(std::shared_ptr<StringFormatDat
     m_StringFormat = value;
     m_StringFormatIsSet = true;
 }
+
 bool GraphicsQualityOptionsData::stringFormatIsSet() const
 {
     return m_StringFormatIsSet;
@@ -333,6 +321,7 @@ void GraphicsQualityOptionsData::setTextRenderingHint(utility::string_t value)
     m_TextRenderingHint = value;
     m_TextRenderingHintIsSet = true;
 }
+
 bool GraphicsQualityOptionsData::textRenderingHintIsSet() const
 {
     return m_TextRenderingHintIsSet;
@@ -348,4 +337,3 @@ void GraphicsQualityOptionsData::unsetTextRenderingHint()
 }
 }
 }
-

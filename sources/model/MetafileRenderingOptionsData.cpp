@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MetafileRenderingOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "MetafileRenderingOptionsData.h"
 
 namespace aspose {
@@ -40,10 +39,11 @@ MetafileRenderingOptionsData::MetafileRenderingOptionsData()
     m_EmulateRasterOperationsIsSet = false;
     m_RenderingMode = utility::conversions::to_string_t("");
     m_RenderingModeIsSet = false;
-    m_UseEmfEmbeddedToWmf = false;
-    m_UseEmfEmbeddedToWmfIsSet = false;
     m_ScaleWmfFontsToMetafileSize = false;
     m_ScaleWmfFontsToMetafileSizeIsSet = false;
+    m_UseEmfEmbeddedToWmf = false;
+    m_UseEmfEmbeddedToWmfIsSet = false;
+
 }
 
 MetafileRenderingOptionsData::~MetafileRenderingOptionsData()
@@ -58,7 +58,6 @@ void MetafileRenderingOptionsData::validate()
 web::json::value MetafileRenderingOptionsData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_EmfPlusDualRenderingModeIsSet)
     {
         val[_XPLATSTR("EmfPlusDualRenderingMode")] = ModelBase::toJson(m_EmfPlusDualRenderingMode);
@@ -71,13 +70,13 @@ web::json::value MetafileRenderingOptionsData::toJson() const
     {
         val[_XPLATSTR("RenderingMode")] = ModelBase::toJson(m_RenderingMode);
     }
-    if(m_UseEmfEmbeddedToWmfIsSet)
-    {
-        val[_XPLATSTR("UseEmfEmbeddedToWmf")] = ModelBase::toJson(m_UseEmfEmbeddedToWmf);
-    }
     if(m_ScaleWmfFontsToMetafileSizeIsSet)
     {
         val[_XPLATSTR("ScaleWmfFontsToMetafileSize")] = ModelBase::toJson(m_ScaleWmfFontsToMetafileSize);
+    }
+    if(m_UseEmfEmbeddedToWmfIsSet)
+    {
+        val[_XPLATSTR("UseEmfEmbeddedToWmf")] = ModelBase::toJson(m_UseEmfEmbeddedToWmf);
     }
 
     return val;
@@ -90,99 +89,89 @@ void MetafileRenderingOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("EmfPlusDualRenderingMode")];
         if(!fieldValue.is_null())
         {
-            setEmfPlusDualRenderingMode(ModelBase::stringFromJson(fieldValue));
+           setEmfPlusDualRenderingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("EmulateRasterOperations")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("EmulateRasterOperations")];
         if(!fieldValue.is_null())
         {
-            setEmulateRasterOperations(ModelBase::boolFromJson(fieldValue));
+           setEmulateRasterOperations(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RenderingMode")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RenderingMode")];
         if(!fieldValue.is_null())
         {
-            setRenderingMode(ModelBase::stringFromJson(fieldValue));
+           setRenderingMode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("UseEmfEmbeddedToWmf")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("UseEmfEmbeddedToWmf")];
-        if(!fieldValue.is_null())
-        {
-            setUseEmfEmbeddedToWmf(ModelBase::boolFromJson(fieldValue));
-        }
-    }
+
+
     if(val.has_field(_XPLATSTR("ScaleWmfFontsToMetafileSize")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ScaleWmfFontsToMetafileSize")];
         if(!fieldValue.is_null())
         {
-            setScaleWmfFontsToMetafileSize(ModelBase::boolFromJson(fieldValue));
+           setScaleWmfFontsToMetafileSize(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("UseEmfEmbeddedToWmf")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("UseEmfEmbeddedToWmf")];
+        if(!fieldValue.is_null())
+        {
+           setUseEmfEmbeddedToWmf(ModelBase::booleanFromJson(fieldValue));
+        }
+    }
+
 }
 
 void MetafileRenderingOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_EmfPlusDualRenderingModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EmfPlusDualRenderingMode"), m_EmfPlusDualRenderingMode));
-        
     }
+
+
     if(m_EmulateRasterOperationsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("EmulateRasterOperations"), m_EmulateRasterOperations));
-        
     }
+
+
     if(m_RenderingModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RenderingMode"), m_RenderingMode));
-        
     }
-    if(m_UseEmfEmbeddedToWmfIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseEmfEmbeddedToWmf"), m_UseEmfEmbeddedToWmf));
-        
-    }
+
+
     if(m_ScaleWmfFontsToMetafileSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ScaleWmfFontsToMetafileSize"), m_ScaleWmfFontsToMetafileSize));
-        
     }
+
+
+    if(m_UseEmfEmbeddedToWmfIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UseEmfEmbeddedToWmf"), m_UseEmfEmbeddedToWmf));
+    }
+
 }
 
 void MetafileRenderingOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("EmfPlusDualRenderingMode")))
-    {
-        setEmfPlusDualRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("EmfPlusDualRenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("EmulateRasterOperations")))
-    {
-        setEmulateRasterOperations(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("EmulateRasterOperations"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RenderingMode")))
-    {
-        setRenderingMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("RenderingMode"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("UseEmfEmbeddedToWmf")))
-    {
-        setUseEmfEmbeddedToWmf(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("UseEmfEmbeddedToWmf"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ScaleWmfFontsToMetafileSize")))
-    {
-        setScaleWmfFontsToMetafileSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ScaleWmfFontsToMetafileSize"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t MetafileRenderingOptionsData::getEmfPlusDualRenderingMode() const
@@ -196,6 +185,7 @@ void MetafileRenderingOptionsData::setEmfPlusDualRenderingMode(utility::string_t
     m_EmfPlusDualRenderingMode = value;
     m_EmfPlusDualRenderingModeIsSet = true;
 }
+
 bool MetafileRenderingOptionsData::emfPlusDualRenderingModeIsSet() const
 {
     return m_EmfPlusDualRenderingModeIsSet;
@@ -217,6 +207,7 @@ void MetafileRenderingOptionsData::setEmulateRasterOperations(bool value)
     m_EmulateRasterOperations = value;
     m_EmulateRasterOperationsIsSet = true;
 }
+
 bool MetafileRenderingOptionsData::emulateRasterOperationsIsSet() const
 {
     return m_EmulateRasterOperationsIsSet;
@@ -238,6 +229,7 @@ void MetafileRenderingOptionsData::setRenderingMode(utility::string_t value)
     m_RenderingMode = value;
     m_RenderingModeIsSet = true;
 }
+
 bool MetafileRenderingOptionsData::renderingModeIsSet() const
 {
     return m_RenderingModeIsSet;
@@ -246,27 +238,6 @@ bool MetafileRenderingOptionsData::renderingModeIsSet() const
 void MetafileRenderingOptionsData::unsetRenderingMode()
 {
     m_RenderingModeIsSet = false;
-}
-
-bool MetafileRenderingOptionsData::isUseEmfEmbeddedToWmf() const
-{
-    return m_UseEmfEmbeddedToWmf;
-}
-
-
-void MetafileRenderingOptionsData::setUseEmfEmbeddedToWmf(bool value)
-{
-    m_UseEmfEmbeddedToWmf = value;
-    m_UseEmfEmbeddedToWmfIsSet = true;
-}
-bool MetafileRenderingOptionsData::useEmfEmbeddedToWmfIsSet() const
-{
-    return m_UseEmfEmbeddedToWmfIsSet;
-}
-
-void MetafileRenderingOptionsData::unsetUseEmfEmbeddedToWmf()
-{
-    m_UseEmfEmbeddedToWmfIsSet = false;
 }
 
 bool MetafileRenderingOptionsData::isScaleWmfFontsToMetafileSize() const
@@ -280,6 +251,7 @@ void MetafileRenderingOptionsData::setScaleWmfFontsToMetafileSize(bool value)
     m_ScaleWmfFontsToMetafileSize = value;
     m_ScaleWmfFontsToMetafileSizeIsSet = true;
 }
+
 bool MetafileRenderingOptionsData::scaleWmfFontsToMetafileSizeIsSet() const
 {
     return m_ScaleWmfFontsToMetafileSizeIsSet;
@@ -290,9 +262,30 @@ void MetafileRenderingOptionsData::unsetScaleWmfFontsToMetafileSize()
     m_ScaleWmfFontsToMetafileSizeIsSet = false;
 }
 
-}
-}
-}
-}
+bool MetafileRenderingOptionsData::isUseEmfEmbeddedToWmf() const
+{
+    return m_UseEmfEmbeddedToWmf;
 }
 
+
+void MetafileRenderingOptionsData::setUseEmfEmbeddedToWmf(bool value)
+{
+    m_UseEmfEmbeddedToWmf = value;
+    m_UseEmfEmbeddedToWmfIsSet = true;
+}
+
+bool MetafileRenderingOptionsData::useEmfEmbeddedToWmfIsSet() const
+{
+    return m_UseEmfEmbeddedToWmfIsSet;
+}
+
+void MetafileRenderingOptionsData::unsetUseEmfEmbeddedToWmf()
+{
+    m_UseEmfEmbeddedToWmfIsSet = false;
+}
+
+}
+}
+}
+}
+}

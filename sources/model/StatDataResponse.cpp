@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StatDataResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StatDataResponse.h"
 
 namespace aspose {
@@ -35,7 +34,9 @@ namespace models {
 StatDataResponse::StatDataResponse()
 {
     m_DocumentLinkIsSet = false;
+
     m_StatDataIsSet = false;
+
 }
 
 StatDataResponse::~StatDataResponse()
@@ -50,7 +51,6 @@ void StatDataResponse::validate()
 web::json::value StatDataResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_DocumentLinkIsSet)
     {
         val[_XPLATSTR("DocumentLink")] = ModelBase::toJson(m_DocumentLink);
@@ -77,6 +77,8 @@ void StatDataResponse::fromJson(web::json::value& val)
             setDocumentLink( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StatData")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StatData")];
@@ -87,53 +89,35 @@ void StatDataResponse::fromJson(web::json::value& val)
             setStatData( newItem );
         }
     }
+
 }
 
 void StatDataResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DocumentLinkIsSet)
     {
         if (m_DocumentLink.get())
         {
             m_DocumentLink->toMultipart(multipart, _XPLATSTR("DocumentLink."));
         }
-        
     }
+
+
     if(m_StatDataIsSet)
     {
         if (m_StatData.get())
         {
             m_StatData->toMultipart(multipart, _XPLATSTR("StatData."));
         }
-        
     }
+
 }
 
 void StatDataResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("DocumentLink")))
-    {
-        if(multipart->hasContent(_XPLATSTR("DocumentLink")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DocumentLink."));
-            setDocumentLink( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("StatData")))
-    {
-        if(multipart->hasContent(_XPLATSTR("StatData")))
-        {
-            std::shared_ptr<DocumentStatData> newItem(new DocumentStatData());
-            newItem->fromMultiPart(multipart, _XPLATSTR("StatData."));
-            setStatData( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<FileLink> StatDataResponse::getDocumentLink() const
@@ -147,6 +131,7 @@ void StatDataResponse::setDocumentLink(std::shared_ptr<FileLink> value)
     m_DocumentLink = value;
     m_DocumentLinkIsSet = true;
 }
+
 bool StatDataResponse::documentLinkIsSet() const
 {
     return m_DocumentLinkIsSet;
@@ -168,6 +153,7 @@ void StatDataResponse::setStatData(std::shared_ptr<DocumentStatData> value)
     m_StatData = value;
     m_StatDataIsSet = true;
 }
+
 bool StatDataResponse::statDataIsSet() const
 {
     return m_StatDataIsSet;
@@ -183,4 +169,3 @@ void StatDataResponse::unsetStatData()
 }
 }
 }
-

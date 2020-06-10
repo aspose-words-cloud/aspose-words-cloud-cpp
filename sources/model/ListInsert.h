@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListInsert.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListInsert_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ListInsert_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Insert document to document list.
 /// </summary>
-class  ListInsert
+class ListInsert
     : public ModelBase
 {
 public:
@@ -65,7 +63,7 @@ public:
     /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
     /// </summary>
     utility::string_t getTemplate() const;
-    bool templateIsSet() const;
+    bool _templateIsSet() const;
     void unsetTemplate();
     void setTemplate(utility::string_t value);
 

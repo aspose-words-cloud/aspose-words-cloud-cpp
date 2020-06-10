@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionLinkCollection.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SectionLinkCollection_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SectionLinkCollection_H_
 
-
 #include "LinkElement.h"
 #include "SectionLink.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Collection of links to sections.
 /// </summary>
-class  SectionLinkCollection
+class SectionLinkCollection
     : public LinkElement
 {
 public:
@@ -63,7 +62,7 @@ public:
     /// SectionLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of section&#39;s links.
+    /// Gets or sets collection of section's links.
     /// </summary>
     std::vector<std::shared_ptr<SectionLink>>& getSectionLinkList();
     bool sectionLinkListIsSet() const;

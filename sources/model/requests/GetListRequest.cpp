@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetListRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,76 +22,91 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetListRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetListRequest::GetListRequest(
-        utility::string_t name,
-                int32_t listId,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_listId(std::move(listId)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetListRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetListRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        int32_t GetListRequest::getListId() const
-        {
-            return m_listId;
-        }
-        void GetListRequest::setListId(int32_t listId){
-            m_listId = std::move(listId);
-        }
-        boost::optional<utility::string_t> GetListRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetListRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetListRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetListRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetListRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetListRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetListRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetListRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    int32_t listId,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_ListId(std::move(listId)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetListRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetListRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+int32_t GetListRequest::getListId() const
+{
+    return m_ListId;
+}
+
+void GetListRequest::setListId(int32_t listId)
+{
+    m_ListId = std::move(listId);
+}
+
+boost::optional< utility::string_t > GetListRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetListRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetListRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetListRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetListRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetListRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetListRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetListRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

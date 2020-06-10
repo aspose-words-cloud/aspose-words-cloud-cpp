@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StyleResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StyleResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StyleResponse_H_
 
-
 #include "Style.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,10 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+/// This response should be returned by the service when handling:
+/// GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
 /// </summary>
-class  StyleResponse
+class StyleResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +63,7 @@ public:
     /// StyleResponse members
 
     /// <summary>
-    /// Gets or sets Style.
+    /// Gets or sets style which are contained in document.
     /// </summary>
     std::shared_ptr<Style> getStyle() const;
     bool styleIsSet() const;

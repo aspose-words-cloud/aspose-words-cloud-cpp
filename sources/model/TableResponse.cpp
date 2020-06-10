@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TableResponse::TableResponse()
 {
     m_TableIsSet = false;
+
 }
 
 TableResponse::~TableResponse()
@@ -49,7 +49,6 @@ void TableResponse::validate()
 web::json::value TableResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_TableIsSet)
     {
         val[_XPLATSTR("Table")] = ModelBase::toJson(m_Table);
@@ -72,36 +71,26 @@ void TableResponse::fromJson(web::json::value& val)
             setTable( newItem );
         }
     }
+
 }
 
 void TableResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TableIsSet)
     {
         if (m_Table.get())
         {
             m_Table->toMultipart(multipart, _XPLATSTR("Table."));
         }
-        
     }
+
 }
 
 void TableResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Table")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Table")))
-        {
-            std::shared_ptr<Table> newItem(new Table());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Table."));
-            setTable( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Table> TableResponse::getTable() const
@@ -115,6 +104,7 @@ void TableResponse::setTable(std::shared_ptr<Table> value)
     m_Table = value;
     m_TableIsSet = true;
 }
+
 bool TableResponse::tableIsSet() const
 {
     return m_TableIsSet;
@@ -130,4 +120,3 @@ void TableResponse::unsetTable()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ResetCacheRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef resetCache_H
-#define resetCache_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ResetCacheRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ResetCacheRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,11 +36,12 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class ResetCacheRequest{
+class ResetCacheRequest {
     public: 
-    explicit ResetCacheRequest(
-
+        explicit ResetCacheRequest(
         );
+
+
     private:
 };
 
@@ -49,4 +51,4 @@ class ResetCacheRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_ResetCacheRequest_H_ */

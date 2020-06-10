@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RtfSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RtfSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RtfSaveOptionsData_H_
 
-
 #include "SaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for rtf save options.
 /// </summary>
-class  RtfSaveOptionsData
+class RtfSaveOptionsData
     : public SaveOptionsData
 {
 public:
@@ -67,13 +67,15 @@ public:
     bool exportCompactSizeIsSet() const;
     void unsetExportCompactSize();
     void setExportCompactSize(bool value);
+
     /// <summary>
-    /// Gets or sets specifies whether the keywords for \&quot;old readers\&quot; are written to RTF or not.
+    /// Gets or sets specifies whether the keywords for "old readers" are written to RTF or not.
     /// </summary>
     bool isExportImagesForOldReaders() const;
     bool exportImagesForOldReadersIsSet() const;
     void unsetExportImagesForOldReaders();
     void setExportImagesForOldReaders(bool value);
+
     /// <summary>
     /// Gets or sets specifies whether or not use pretty formats output.
     /// </summary>
@@ -81,6 +83,7 @@ public:
     bool prettyFormatIsSet() const;
     void unsetPrettyFormat();
     void setPrettyFormat(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
     /// </summary>
@@ -92,10 +95,13 @@ public:
 protected:
     bool m_ExportCompactSize;
     bool m_ExportCompactSizeIsSet;
+
     bool m_ExportImagesForOldReaders;
     bool m_ExportImagesForOldReadersIsSet;
+
     bool m_PrettyFormat;
     bool m_PrettyFormatIsSet;
+
     bool m_SaveImagesAsWmf;
     bool m_SaveImagesAsWmfIsSet;
 };

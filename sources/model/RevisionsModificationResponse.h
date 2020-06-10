@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RevisionsModificationResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_RevisionsModificationResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_RevisionsModificationResponse_H_
 
-
 #include "ModificationOperationResult.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 /// </summary>
-class  RevisionsModificationResponse
+class RevisionsModificationResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// RevisionsModificationResponse members
 
     /// <summary>
-    /// Gets or sets Result.
+    /// Gets or sets result of the modification operations for the revisions collection.
     /// </summary>
     std::shared_ptr<ModificationOperationResult> getResult() const;
     bool resultIsSet() const;

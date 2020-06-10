@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HeaderFooter.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_HeaderFooter_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_HeaderFooter_H_
 
-
 #include "HeaderFooterLink.h"
 #include "LinkElement.h"
 #include "NodeLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +41,7 @@ namespace models {
 /// <summary>
 /// Section element.
 /// </summary>
-class  HeaderFooter
+class HeaderFooter
     : public HeaderFooterLink
 {
 public:
@@ -69,15 +69,17 @@ public:
     bool childNodesIsSet() const;
     void unsetChildNodes();
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
+
     /// <summary>
-    /// Gets or sets DrawingObjects.
+    /// Gets or sets link to DrawingObjects resource.
     /// </summary>
     std::shared_ptr<LinkElement> getDrawingObjects() const;
     bool drawingObjectsIsSet() const;
     void unsetDrawingObjects();
     void setDrawingObjects(std::shared_ptr<LinkElement> value);
+
     /// <summary>
-    /// Gets or sets Paragraphs.
+    /// Gets or sets link to Paragraphs resource.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
@@ -87,8 +89,10 @@ public:
 protected:
     std::vector<std::shared_ptr<NodeLink>> m_ChildNodes;
     bool m_ChildNodesIsSet;
+
     std::shared_ptr<LinkElement> m_DrawingObjects;
     bool m_DrawingObjectsIsSet;
+
     std::shared_ptr<LinkElement> m_Paragraphs;
     bool m_ParagraphsIsSet;
 };

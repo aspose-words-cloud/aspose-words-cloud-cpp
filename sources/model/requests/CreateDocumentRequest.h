@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CreateDocumentRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef createDocument_H
-#define createDocument_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_CreateDocumentRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_CreateDocumentRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,26 +36,27 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class CreateDocumentRequest{
+class CreateDocumentRequest {
     public: 
-     CreateDocumentRequest(
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> fileName,
-                boost::optional<utility::string_t> folder
+ CreateDocumentRequest(
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > fileName,
+            boost::optional< utility::string_t > folder
         );
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getFileName() const;
-        void setFileName(boost::optional<utility::string_t> fileName);
+        boost::optional< utility::string_t > getFileName() const;
+        void setFileName(boost::optional< utility::string_t > fileName);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
+
     private:
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_fileName;
-        boost::optional<utility::string_t> m_folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_FileName;
+        boost::optional< utility::string_t > m_Folder;
 };
 
 }
@@ -63,4 +65,4 @@ class CreateDocumentRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_CreateDocumentRequest_H_ */

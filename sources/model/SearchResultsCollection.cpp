@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SearchResultsCollection.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SearchResultsCollection.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 SearchResultsCollection::SearchResultsCollection()
 {
     m_ResultsListIsSet = false;
+
 }
 
 SearchResultsCollection::~SearchResultsCollection()
@@ -49,14 +49,14 @@ void SearchResultsCollection::validate()
 web::json::value SearchResultsCollection::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_ResultsListIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<SearchResult> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<SearchResult> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("ResultsList")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void SearchResultsCollection::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("ResultsList")) 
                             && !val[_XPLATSTR("ResultsList")].is_null())
         {
-        auto arr = val[_XPLATSTR("ResultsList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<SearchResult>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<SearchResult> newItem(new SearchResult());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("ResultsList")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_ResultsList), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<SearchResult> newItem(new SearchResult());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<SearchResult>)nullptr;
+            });
         }
     }
+
 }
 
 void SearchResultsCollection::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ResultsList.begin(), m_ResultsList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<SearchResult> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResultsList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void SearchResultsCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_ResultsList.clear();
-        if(multipart->hasContent(_XPLATSTR("ResultsList")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResultsList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ResultsList), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<SearchResult>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<SearchResult> newItem(new SearchResult());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<SearchResult>>& SearchResultsCollection::getResultsList()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<SearchResult>>& SearchResultsCollection::getResultsL
     return m_ResultsList;
 }
 
+
 void SearchResultsCollection::setResultsList(std::vector<std::shared_ptr<SearchResult>> const& value)
 {
     m_ResultsList = value;
     m_ResultsListIsSet = true;
 }
+
 bool SearchResultsCollection::resultsListIsSet() const
 {
     return m_ResultsListIsSet;
@@ -162,4 +141,3 @@ void SearchResultsCollection::unsetResultsList()
 }
 }
 }
-

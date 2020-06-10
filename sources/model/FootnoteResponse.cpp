@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnoteResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FootnoteResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FootnoteResponse::FootnoteResponse()
 {
     m_FootnoteIsSet = false;
+
 }
 
 FootnoteResponse::~FootnoteResponse()
@@ -49,7 +49,6 @@ void FootnoteResponse::validate()
 web::json::value FootnoteResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_FootnoteIsSet)
     {
         val[_XPLATSTR("Footnote")] = ModelBase::toJson(m_Footnote);
@@ -72,36 +71,26 @@ void FootnoteResponse::fromJson(web::json::value& val)
             setFootnote( newItem );
         }
     }
+
 }
 
 void FootnoteResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FootnoteIsSet)
     {
         if (m_Footnote.get())
         {
             m_Footnote->toMultipart(multipart, _XPLATSTR("Footnote."));
         }
-        
     }
+
 }
 
 void FootnoteResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Footnote")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Footnote")))
-        {
-            std::shared_ptr<Footnote> newItem(new Footnote());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Footnote."));
-            setFootnote( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Footnote> FootnoteResponse::getFootnote() const
@@ -115,6 +104,7 @@ void FootnoteResponse::setFootnote(std::shared_ptr<Footnote> value)
     m_Footnote = value;
     m_FootnoteIsSet = true;
 }
+
 bool FootnoteResponse::footnoteIsSet() const
 {
     return m_FootnoteIsSet;
@@ -130,4 +120,3 @@ void FootnoteResponse::unsetFootnote()
 }
 }
 }
-

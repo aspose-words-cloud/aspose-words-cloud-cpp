@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PreferredWidth.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PreferredWidth.h"
 
 namespace aspose {
@@ -34,10 +33,10 @@ namespace models {
 
 PreferredWidth::PreferredWidth()
 {
-    m_Type = utility::conversions::to_string_t("");
     m_TypeIsSet = false;
     m_Value = 0.0;
     m_ValueIsSet = false;
+
 }
 
 PreferredWidth::~PreferredWidth()
@@ -52,7 +51,6 @@ void PreferredWidth::validate()
 web::json::value PreferredWidth::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_TypeIsSet)
     {
         val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
@@ -72,48 +70,41 @@ void PreferredWidth::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Type")];
         if(!fieldValue.is_null())
         {
-            setType(ModelBase::stringFromJson(fieldValue));
+           setType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Value")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
-            setValue(ModelBase::doubleFromJson(fieldValue));
+           setValue(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
 }
 
 void PreferredWidth::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
-        
     }
+
+
     if(m_ValueIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
-        
     }
+
 }
 
 void PreferredWidth::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Type")))
-    {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Value")))
-    {
-        setValue(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t PreferredWidth::getType() const
@@ -127,6 +118,7 @@ void PreferredWidth::setType(utility::string_t value)
     m_Type = value;
     m_TypeIsSet = true;
 }
+
 bool PreferredWidth::typeIsSet() const
 {
     return m_TypeIsSet;
@@ -148,6 +140,7 @@ void PreferredWidth::setValue(double value)
     m_Value = value;
     m_ValueIsSet = true;
 }
+
 bool PreferredWidth::valueIsSet() const
 {
     return m_ValueIsSet;
@@ -163,4 +156,3 @@ void PreferredWidth::unsetValue()
 }
 }
 }
-

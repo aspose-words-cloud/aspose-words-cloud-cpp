@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SectionResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SectionResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 SectionResponse::SectionResponse()
 {
     m_SectionIsSet = false;
+
 }
 
 SectionResponse::~SectionResponse()
@@ -49,7 +49,6 @@ void SectionResponse::validate()
 web::json::value SectionResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_SectionIsSet)
     {
         val[_XPLATSTR("Section")] = ModelBase::toJson(m_Section);
@@ -72,36 +71,26 @@ void SectionResponse::fromJson(web::json::value& val)
             setSection( newItem );
         }
     }
+
 }
 
 void SectionResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_SectionIsSet)
     {
         if (m_Section.get())
         {
             m_Section->toMultipart(multipart, _XPLATSTR("Section."));
         }
-        
     }
+
 }
 
 void SectionResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Section")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Section")))
-        {
-            std::shared_ptr<Section> newItem(new Section());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Section."));
-            setSection( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Section> SectionResponse::getSection() const
@@ -115,6 +104,7 @@ void SectionResponse::setSection(std::shared_ptr<Section> value)
     m_Section = value;
     m_SectionIsSet = true;
 }
+
 bool SectionResponse::sectionIsSet() const
 {
     return m_SectionIsSet;
@@ -130,4 +120,3 @@ void SectionResponse::unsetSection()
 }
 }
 }
-

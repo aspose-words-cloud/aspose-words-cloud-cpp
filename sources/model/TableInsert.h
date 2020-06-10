@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableInsert.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TableInsert_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableInsert_H_
 
-
-#include "../ModelBase.h"
-
 #include "DocumentPosition.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Table element.
 /// </summary>
-class  TableInsert
+class TableInsert
     : public ModelBase
 {
 public:
@@ -63,19 +61,21 @@ public:
     /// TableInsert members
 
     /// <summary>
-    /// Gets or sets Position.
-    /// </summary>
-    std::shared_ptr<DocumentPosition> getPosition() const;
-    bool positionIsSet() const;
-    void unsetPosition();
-    void setPosition(std::shared_ptr<DocumentPosition> value);
-    /// <summary>
     /// Gets or sets count of columns. Default is 2.
     /// </summary>
     int32_t getColumnsCount() const;
     bool columnsCountIsSet() const;
     void unsetColumnsCount();
     void setColumnsCount(int32_t value);
+
+    /// <summary>
+    /// Gets or sets table will be inserted before specified position.
+    /// </summary>
+    std::shared_ptr<DocumentPosition> getPosition() const;
+    bool positionIsSet() const;
+    void unsetPosition();
+    void setPosition(std::shared_ptr<DocumentPosition> value);
+
     /// <summary>
     /// Gets or sets count of rows. Default is 2.
     /// </summary>
@@ -85,10 +85,12 @@ public:
     void setRowsCount(int32_t value);
 
 protected:
-    std::shared_ptr<DocumentPosition> m_Position;
-    bool m_PositionIsSet;
     int32_t m_ColumnsCount;
     bool m_ColumnsCountIsSet;
+
+    std::shared_ptr<DocumentPosition> m_Position;
+    bool m_PositionIsSet;
+
     int32_t m_RowsCount;
     bool m_RowsCountIsSet;
 };

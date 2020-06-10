@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ProtectionDataResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ProtectionDataResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ProtectionDataResponse_H_
 
-
 #include "FileLink.h"
 #include "ProtectionData.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +41,7 @@ namespace models {
 /// <summary>
 /// Response for the request of data about protection.
 /// </summary>
-class  ProtectionDataResponse
+class ProtectionDataResponse
     : public WordsResponse
 {
 public:
@@ -63,14 +63,15 @@ public:
     /// ProtectionDataResponse members
 
     /// <summary>
-    /// Gets or sets DocumentLink.
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
+
     /// <summary>
-    /// Gets or sets ProtectionData.
+    /// Gets or sets protection's data of the document.
     /// </summary>
     std::shared_ptr<ProtectionData> getProtectionData() const;
     bool protectionDataIsSet() const;
@@ -80,6 +81,7 @@ public:
 protected:
     std::shared_ptr<FileLink> m_DocumentLink;
     bool m_DocumentLinkIsSet;
+
     std::shared_ptr<ProtectionData> m_ProtectionData;
     bool m_ProtectionDataIsSet;
 };

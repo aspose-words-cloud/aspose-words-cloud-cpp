@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiException.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,7 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "ApiException.h"
 
 namespace aspose {
@@ -31,7 +32,7 @@ namespace api {
 
 ApiException::ApiException( int errorCode
     , const utility::string_t& message
-	, std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response )
+	, std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
     : web::http::http_exception( errorCode, message )
     , m_Response(response)
 {
@@ -39,14 +40,14 @@ ApiException::ApiException( int errorCode
 ApiException::ApiException( int errorCode
     , const utility::string_t& message
     , std::map<utility::string_t, utility::string_t>& headers
-    , std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> response )
+    , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
     : web::http::http_exception( errorCode, message )
     , m_Response(response)
     , m_Headers(headers)
 {
 }
 
-std::shared_ptr<aspose::words::cloud::api::models::WordsApiErrorResponse> ApiException::getResponse() const
+std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > ApiException::getResponse() const
 {
     return m_Response;
 }

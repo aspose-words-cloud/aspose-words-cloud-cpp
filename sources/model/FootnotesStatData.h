@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FootnotesStatData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FootnotesStatData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FootnotesStatData_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Container for the footnotes statistical data.
 /// </summary>
-class  FootnotesStatData
+class FootnotesStatData
     : public ModelBase
 {
 public:
@@ -62,13 +60,6 @@ public:
     /// FootnotesStatData members
 
     /// <summary>
-    /// Gets or sets total count of words in footnotes.
-    /// </summary>
-    int32_t getWordCount() const;
-    bool wordCountIsSet() const;
-    void unsetWordCount();
-    void setWordCount(int32_t value);
-    /// <summary>
     /// Gets or sets total count of paragraphs in footnotes.
     /// </summary>
     int32_t getParagraphCount() const;
@@ -76,11 +67,20 @@ public:
     void unsetParagraphCount();
     void setParagraphCount(int32_t value);
 
+    /// <summary>
+    /// Gets or sets total count of words in footnotes.
+    /// </summary>
+    int32_t getWordCount() const;
+    bool wordCountIsSet() const;
+    void unsetWordCount();
+    void setWordCount(int32_t value);
+
 protected:
-    int32_t m_WordCount;
-    bool m_WordCountIsSet;
     int32_t m_ParagraphCount;
     bool m_ParagraphCountIsSet;
+
+    int32_t m_WordCount;
+    bool m_WordCountIsSet;
 };
 
 }

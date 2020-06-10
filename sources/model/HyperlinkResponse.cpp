@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HyperlinkResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "HyperlinkResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 HyperlinkResponse::HyperlinkResponse()
 {
     m_HyperlinkIsSet = false;
+
 }
 
 HyperlinkResponse::~HyperlinkResponse()
@@ -49,7 +49,6 @@ void HyperlinkResponse::validate()
 web::json::value HyperlinkResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_HyperlinkIsSet)
     {
         val[_XPLATSTR("Hyperlink")] = ModelBase::toJson(m_Hyperlink);
@@ -72,36 +71,26 @@ void HyperlinkResponse::fromJson(web::json::value& val)
             setHyperlink( newItem );
         }
     }
+
 }
 
 void HyperlinkResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_HyperlinkIsSet)
     {
         if (m_Hyperlink.get())
         {
             m_Hyperlink->toMultipart(multipart, _XPLATSTR("Hyperlink."));
         }
-        
     }
+
 }
 
 void HyperlinkResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Hyperlink")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Hyperlink")))
-        {
-            std::shared_ptr<Hyperlink> newItem(new Hyperlink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Hyperlink."));
-            setHyperlink( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Hyperlink> HyperlinkResponse::getHyperlink() const
@@ -115,6 +104,7 @@ void HyperlinkResponse::setHyperlink(std::shared_ptr<Hyperlink> value)
     m_Hyperlink = value;
     m_HyperlinkIsSet = true;
 }
+
 bool HyperlinkResponse::hyperlinkIsSet() const
 {
     return m_HyperlinkIsSet;
@@ -130,4 +120,3 @@ void HyperlinkResponse::unsetHyperlink()
 }
 }
 }
-

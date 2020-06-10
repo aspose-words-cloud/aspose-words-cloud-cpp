@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CompareData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "CompareData.h"
 
 namespace aspose {
@@ -34,13 +33,15 @@ namespace models {
 
 CompareData::CompareData()
 {
-    m_ComparingWithDocument = utility::conversions::to_string_t("");
-    m_ComparingWithDocumentIsSet = false;
     m_Author = utility::conversions::to_string_t("");
     m_AuthorIsSet = false;
+
+    m_CompareOptionsIsSet = false;
+    m_ComparingWithDocument = utility::conversions::to_string_t("");
+    m_ComparingWithDocumentIsSet = false;
     m_DateTime = utility::datetime();
     m_DateTimeIsSet = false;
-    m_CompareOptionsIsSet = false;
+
 }
 
 CompareData::~CompareData()
@@ -55,22 +56,21 @@ void CompareData::validate()
 web::json::value CompareData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_ComparingWithDocumentIsSet)
-    {
-        val[_XPLATSTR("ComparingWithDocument")] = ModelBase::toJson(m_ComparingWithDocument);
-    }
     if(m_AuthorIsSet)
     {
         val[_XPLATSTR("Author")] = ModelBase::toJson(m_Author);
     }
-    if(m_DateTimeIsSet)
-    {
-        val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
-    }
     if(m_CompareOptionsIsSet)
     {
         val[_XPLATSTR("CompareOptions")] = ModelBase::toJson(m_CompareOptions);
+    }
+    if(m_ComparingWithDocumentIsSet)
+    {
+        val[_XPLATSTR("ComparingWithDocument")] = ModelBase::toJson(m_ComparingWithDocument);
+    }
+    if(m_DateTimeIsSet)
+    {
+        val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
     }
 
     return val;
@@ -78,30 +78,16 @@ web::json::value CompareData::toJson() const
 
 void CompareData::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("ComparingWithDocument")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("ComparingWithDocument")];
-        if(!fieldValue.is_null())
-        {
-            setComparingWithDocument(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("Author")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Author")];
         if(!fieldValue.is_null())
         {
-            setAuthor(ModelBase::stringFromJson(fieldValue));
+           setAuthor(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("DateTime")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
-        if(!fieldValue.is_null())
-        {
-            setDateTime(ModelBase::dateFromJson(fieldValue));
-        }
-    }
+
+
     if(val.has_field(_XPLATSTR("CompareOptions")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("CompareOptions")];
@@ -112,84 +98,63 @@ void CompareData::fromJson(web::json::value& val)
             setCompareOptions( newItem );
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("ComparingWithDocument")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("ComparingWithDocument")];
+        if(!fieldValue.is_null())
+        {
+           setComparingWithDocument(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
+
+    if(val.has_field(_XPLATSTR("DateTime")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
+        if(!fieldValue.is_null())
+        {
+           setDateTime(ModelBase::dateTimeFromJson(fieldValue));
+        }
+    }
+
 }
 
 void CompareData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
-    if(m_ComparingWithDocumentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ComparingWithDocument"), m_ComparingWithDocument));
-        
-    }
     if(m_AuthorIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Author"), m_Author));
-        
     }
-    if(m_DateTimeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
-        
-    }
+
+
     if(m_CompareOptionsIsSet)
     {
         if (m_CompareOptions.get())
         {
             m_CompareOptions->toMultipart(multipart, _XPLATSTR("CompareOptions."));
         }
-        
     }
+
+
+    if(m_ComparingWithDocumentIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ComparingWithDocument"), m_ComparingWithDocument));
+    }
+
+
+    if(m_DateTimeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
+    }
+
 }
 
 void CompareData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("ComparingWithDocument")))
-    {
-        setComparingWithDocument(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ComparingWithDocument"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Author")))
-    {
-        setAuthor(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Author"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("DateTime")))
-    {
-        setDateTime(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("DateTime"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CompareOptions")))
-    {
-        if(multipart->hasContent(_XPLATSTR("CompareOptions")))
-        {
-            std::shared_ptr<CompareOptions> newItem(new CompareOptions());
-            newItem->fromMultiPart(multipart, _XPLATSTR("CompareOptions."));
-            setCompareOptions( newItem );
-        }
-    }
-}
-
-utility::string_t CompareData::getComparingWithDocument() const
-{
-    return m_ComparingWithDocument;
-}
-
-
-void CompareData::setComparingWithDocument(utility::string_t value)
-{
-    m_ComparingWithDocument = value;
-    m_ComparingWithDocumentIsSet = true;
-}
-bool CompareData::comparingWithDocumentIsSet() const
-{
-    return m_ComparingWithDocumentIsSet;
-}
-
-void CompareData::unsetComparingWithDocument()
-{
-    m_ComparingWithDocumentIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t CompareData::getAuthor() const
@@ -203,6 +168,7 @@ void CompareData::setAuthor(utility::string_t value)
     m_Author = value;
     m_AuthorIsSet = true;
 }
+
 bool CompareData::authorIsSet() const
 {
     return m_AuthorIsSet;
@@ -211,27 +177,6 @@ bool CompareData::authorIsSet() const
 void CompareData::unsetAuthor()
 {
     m_AuthorIsSet = false;
-}
-
-utility::datetime CompareData::getDateTime() const
-{
-    return m_DateTime;
-}
-
-
-void CompareData::setDateTime(utility::datetime value)
-{
-    m_DateTime = value;
-    m_DateTimeIsSet = true;
-}
-bool CompareData::dateTimeIsSet() const
-{
-    return m_DateTimeIsSet;
-}
-
-void CompareData::unsetDateTime()
-{
-    m_DateTimeIsSet = false;
 }
 
 std::shared_ptr<CompareOptions> CompareData::getCompareOptions() const
@@ -245,6 +190,7 @@ void CompareData::setCompareOptions(std::shared_ptr<CompareOptions> value)
     m_CompareOptions = value;
     m_CompareOptionsIsSet = true;
 }
+
 bool CompareData::compareOptionsIsSet() const
 {
     return m_CompareOptionsIsSet;
@@ -255,9 +201,52 @@ void CompareData::unsetCompareOptions()
     m_CompareOptionsIsSet = false;
 }
 
-}
-}
-}
-}
+utility::string_t CompareData::getComparingWithDocument() const
+{
+    return m_ComparingWithDocument;
 }
 
+
+void CompareData::setComparingWithDocument(utility::string_t value)
+{
+    m_ComparingWithDocument = value;
+    m_ComparingWithDocumentIsSet = true;
+}
+
+bool CompareData::comparingWithDocumentIsSet() const
+{
+    return m_ComparingWithDocumentIsSet;
+}
+
+void CompareData::unsetComparingWithDocument()
+{
+    m_ComparingWithDocumentIsSet = false;
+}
+
+utility::datetime CompareData::getDateTime() const
+{
+    return m_DateTime;
+}
+
+
+void CompareData::setDateTime(utility::datetime value)
+{
+    m_DateTime = value;
+    m_DateTimeIsSet = true;
+}
+
+bool CompareData::dateTimeIsSet() const
+{
+    return m_DateTimeIsSet;
+}
+
+void CompareData::unsetDateTime()
+{
+    m_DateTimeIsSet = false;
+}
+
+}
+}
+}
+}
+}

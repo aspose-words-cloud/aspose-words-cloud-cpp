@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MhtmlSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "MhtmlSaveOptionsData.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ MhtmlSaveOptionsData::MhtmlSaveOptionsData()
 {
     m_ExportCidUrlsForMhtmlResources = false;
     m_ExportCidUrlsForMhtmlResourcesIsSet = false;
+
 }
 
 MhtmlSaveOptionsData::~MhtmlSaveOptionsData()
@@ -50,7 +50,6 @@ void MhtmlSaveOptionsData::validate()
 web::json::value MhtmlSaveOptionsData::toJson() const
 {
     web::json::value val = this->HtmlSaveOptionsData::toJson();
-
     if(m_ExportCidUrlsForMhtmlResourcesIsSet)
     {
         val[_XPLATSTR("ExportCidUrlsForMhtmlResources")] = ModelBase::toJson(m_ExportCidUrlsForMhtmlResources);
@@ -68,31 +67,26 @@ void MhtmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportCidUrlsForMhtmlResources")];
         if(!fieldValue.is_null())
         {
-            setExportCidUrlsForMhtmlResources(ModelBase::boolFromJson(fieldValue));
+           setExportCidUrlsForMhtmlResources(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void MhtmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     HtmlSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ExportCidUrlsForMhtmlResourcesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportCidUrlsForMhtmlResources"), m_ExportCidUrlsForMhtmlResources));
-        
     }
+
 }
 
 void MhtmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    HtmlSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("ExportCidUrlsForMhtmlResources")))
-    {
-        setExportCidUrlsForMhtmlResources(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportCidUrlsForMhtmlResources"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool MhtmlSaveOptionsData::isExportCidUrlsForMhtmlResources() const
@@ -106,6 +100,7 @@ void MhtmlSaveOptionsData::setExportCidUrlsForMhtmlResources(bool value)
     m_ExportCidUrlsForMhtmlResources = value;
     m_ExportCidUrlsForMhtmlResourcesIsSet = true;
 }
+
 bool MhtmlSaveOptionsData::exportCidUrlsForMhtmlResourcesIsSet() const
 {
     return m_ExportCidUrlsForMhtmlResourcesIsSet;
@@ -121,4 +116,3 @@ void MhtmlSaveOptionsData::unsetExportCidUrlsForMhtmlResources()
 }
 }
 }
-

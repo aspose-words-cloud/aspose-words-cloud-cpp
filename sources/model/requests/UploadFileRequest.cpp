@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UploadFileRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,49 +22,55 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "UploadFileRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 UploadFileRequest::UploadFileRequest(
-        std::shared_ptr<HttpContent> fileContent,
-                utility::string_t path,
-                boost::optional<utility::string_t> storageName
-        ) : 
-            m_fileContent(std::move(fileContent)),
-            m_path(std::move(path)),
-            m_storageName(std::move(storageName))
-        {
-            
-        }
-
-        std::shared_ptr<HttpContent> UploadFileRequest::getFileContent() const
-        {
-            return m_fileContent;
-        }
-        void UploadFileRequest::setFileContent(std::shared_ptr<HttpContent> fileContent){
-            m_fileContent = std::move(fileContent);
-        }
-        utility::string_t UploadFileRequest::getPath() const
-        {
-            return m_path;
-        }
-        void UploadFileRequest::setPath(utility::string_t path){
-            m_path = std::move(path);
-        }
-        boost::optional<utility::string_t> UploadFileRequest::getStorageName() const
-        {
-            return m_storageName;
-        }
-        void UploadFileRequest::setStorageName(boost::optional<utility::string_t> storageName){
-            m_storageName = std::move(storageName);
-        }
-
-}
-}
-}
-}
+    std::shared_ptr<HttpContent> fileContent,
+    utility::string_t path,
+    boost::optional< utility::string_t > storageName
+) : m_FileContent(std::move(fileContent)),
+m_Path(std::move(path)),
+m_StorageName(std::move(storageName))
+{
 }
 
+std::shared_ptr<HttpContent> UploadFileRequest::getFileContent() const
+{
+    return m_FileContent;
+}
+
+void UploadFileRequest::setFileContent(std::shared_ptr<HttpContent> fileContent)
+{
+    m_FileContent = std::move(fileContent);
+}
+
+utility::string_t UploadFileRequest::getPath() const
+{
+    return m_Path;
+}
+
+void UploadFileRequest::setPath(utility::string_t path)
+{
+    m_Path = std::move(path);
+}
+
+boost::optional< utility::string_t > UploadFileRequest::getStorageName() const
+{
+    return m_StorageName;
+}
+
+void UploadFileRequest::setStorageName(boost::optional< utility::string_t > storageName)
+{
+    m_StorageName = std::move(storageName);
+}
+
+}
+}
+}
+}
+}

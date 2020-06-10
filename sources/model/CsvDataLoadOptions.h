@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CsvDataLoadOptions.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_CsvDataLoadOptions_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_CsvDataLoadOptions_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Represents options for parsing CSV data.
 /// </summary>
-class  CsvDataLoadOptions
+class CsvDataLoadOptions
     : public ModelBase
 {
 public:
@@ -62,27 +60,6 @@ public:
     /// CsvDataLoadOptions members
 
     /// <summary>
-    /// Gets or sets a value indicating whether the first record of CSV data contains column names.
-    /// </summary>
-    bool isHasHeaders() const;
-    bool hasHeadersIsSet() const;
-    void unsetHasHeaders();
-    void setHasHeaders(bool value);
-    /// <summary>
-    /// Gets or sets the character to be used as a column delimiter.
-    /// </summary>
-    utility::string_t getDelimiter() const;
-    bool delimiterIsSet() const;
-    void unsetDelimiter();
-    void setDelimiter(utility::string_t value);
-    /// <summary>
-    /// Gets or sets the character that is used to quote field values.
-    /// </summary>
-    utility::string_t getQuoteChar() const;
-    bool quoteCharIsSet() const;
-    void unsetQuoteChar();
-    void setQuoteChar(utility::string_t value);
-    /// <summary>
     /// Gets or sets the character that is used to comment lines of CSV data.
     /// </summary>
     utility::string_t getCommentChar() const;
@@ -90,15 +67,42 @@ public:
     void unsetCommentChar();
     void setCommentChar(utility::string_t value);
 
+    /// <summary>
+    /// Gets or sets the character to be used as a column delimiter.
+    /// </summary>
+    utility::string_t getDelimiter() const;
+    bool delimiterIsSet() const;
+    void unsetDelimiter();
+    void setDelimiter(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the first record of CSV data contains column names.
+    /// </summary>
+    bool isHasHeaders() const;
+    bool hasHeadersIsSet() const;
+    void unsetHasHeaders();
+    void setHasHeaders(bool value);
+
+    /// <summary>
+    /// Gets or sets the character that is used to quote field values.
+    /// </summary>
+    utility::string_t getQuoteChar() const;
+    bool quoteCharIsSet() const;
+    void unsetQuoteChar();
+    void setQuoteChar(utility::string_t value);
+
 protected:
-    bool m_HasHeaders;
-    bool m_HasHeadersIsSet;
-    utility::string_t m_Delimiter;
-    bool m_DelimiterIsSet;
-    utility::string_t m_QuoteChar;
-    bool m_QuoteCharIsSet;
     utility::string_t m_CommentChar;
     bool m_CommentCharIsSet;
+
+    utility::string_t m_Delimiter;
+    bool m_DelimiterIsSet;
+
+    bool m_HasHeaders;
+    bool m_HasHeadersIsSet;
+
+    utility::string_t m_QuoteChar;
+    bool m_QuoteCharIsSet;
 };
 
 }

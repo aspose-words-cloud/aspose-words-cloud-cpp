@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RtfSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "RtfSaveOptionsData.h"
 
 namespace aspose {
@@ -42,6 +41,7 @@ RtfSaveOptionsData::RtfSaveOptionsData()
     m_PrettyFormatIsSet = false;
     m_SaveImagesAsWmf = false;
     m_SaveImagesAsWmfIsSet = false;
+
 }
 
 RtfSaveOptionsData::~RtfSaveOptionsData()
@@ -56,7 +56,6 @@ void RtfSaveOptionsData::validate()
 web::json::value RtfSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
-
     if(m_ExportCompactSizeIsSet)
     {
         val[_XPLATSTR("ExportCompactSize")] = ModelBase::toJson(m_ExportCompactSize);
@@ -86,82 +85,74 @@ void RtfSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ExportCompactSize")];
         if(!fieldValue.is_null())
         {
-            setExportCompactSize(ModelBase::boolFromJson(fieldValue));
+           setExportCompactSize(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ExportImagesForOldReaders")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExportImagesForOldReaders")];
         if(!fieldValue.is_null())
         {
-            setExportImagesForOldReaders(ModelBase::boolFromJson(fieldValue));
+           setExportImagesForOldReaders(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PrettyFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
+           setPrettyFormat(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SaveImagesAsWmf")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SaveImagesAsWmf")];
         if(!fieldValue.is_null())
         {
-            setSaveImagesAsWmf(ModelBase::boolFromJson(fieldValue));
+           setSaveImagesAsWmf(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void RtfSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ExportCompactSizeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportCompactSize"), m_ExportCompactSize));
-        
     }
+
+
     if(m_ExportImagesForOldReadersIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportImagesForOldReaders"), m_ExportImagesForOldReaders));
-        
     }
+
+
     if(m_PrettyFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
-        
     }
+
+
     if(m_SaveImagesAsWmfIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveImagesAsWmf"), m_SaveImagesAsWmf));
-        
     }
+
 }
 
 void RtfSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    SaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("ExportCompactSize")))
-    {
-        setExportCompactSize(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportCompactSize"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExportImagesForOldReaders")))
-    {
-        setExportImagesForOldReaders(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("ExportImagesForOldReaders"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
-    {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SaveImagesAsWmf")))
-    {
-        setSaveImagesAsWmf(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("SaveImagesAsWmf"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool RtfSaveOptionsData::isExportCompactSize() const
@@ -175,6 +166,7 @@ void RtfSaveOptionsData::setExportCompactSize(bool value)
     m_ExportCompactSize = value;
     m_ExportCompactSizeIsSet = true;
 }
+
 bool RtfSaveOptionsData::exportCompactSizeIsSet() const
 {
     return m_ExportCompactSizeIsSet;
@@ -196,6 +188,7 @@ void RtfSaveOptionsData::setExportImagesForOldReaders(bool value)
     m_ExportImagesForOldReaders = value;
     m_ExportImagesForOldReadersIsSet = true;
 }
+
 bool RtfSaveOptionsData::exportImagesForOldReadersIsSet() const
 {
     return m_ExportImagesForOldReadersIsSet;
@@ -217,6 +210,7 @@ void RtfSaveOptionsData::setPrettyFormat(bool value)
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;
 }
+
 bool RtfSaveOptionsData::prettyFormatIsSet() const
 {
     return m_PrettyFormatIsSet;
@@ -238,6 +232,7 @@ void RtfSaveOptionsData::setSaveImagesAsWmf(bool value)
     m_SaveImagesAsWmf = value;
     m_SaveImagesAsWmfIsSet = true;
 }
+
 bool RtfSaveOptionsData::saveImagesAsWmfIsSet() const
 {
     return m_SaveImagesAsWmfIsSet;
@@ -253,4 +248,3 @@ void RtfSaveOptionsData::unsetSaveImagesAsWmf()
 }
 }
 }
-

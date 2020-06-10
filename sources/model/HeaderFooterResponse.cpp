@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HeaderFooterResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "HeaderFooterResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 HeaderFooterResponse::HeaderFooterResponse()
 {
     m_HeaderFooterIsSet = false;
+
 }
 
 HeaderFooterResponse::~HeaderFooterResponse()
@@ -49,7 +49,6 @@ void HeaderFooterResponse::validate()
 web::json::value HeaderFooterResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_HeaderFooterIsSet)
     {
         val[_XPLATSTR("HeaderFooter")] = ModelBase::toJson(m_HeaderFooter);
@@ -72,36 +71,26 @@ void HeaderFooterResponse::fromJson(web::json::value& val)
             setHeaderFooter( newItem );
         }
     }
+
 }
 
 void HeaderFooterResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_HeaderFooterIsSet)
     {
         if (m_HeaderFooter.get())
         {
             m_HeaderFooter->toMultipart(multipart, _XPLATSTR("HeaderFooter."));
         }
-        
     }
+
 }
 
 void HeaderFooterResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("HeaderFooter")))
-    {
-        if(multipart->hasContent(_XPLATSTR("HeaderFooter")))
-        {
-            std::shared_ptr<HeaderFooter> newItem(new HeaderFooter());
-            newItem->fromMultiPart(multipart, _XPLATSTR("HeaderFooter."));
-            setHeaderFooter( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<HeaderFooter> HeaderFooterResponse::getHeaderFooter() const
@@ -115,6 +104,7 @@ void HeaderFooterResponse::setHeaderFooter(std::shared_ptr<HeaderFooter> value)
     m_HeaderFooter = value;
     m_HeaderFooterIsSet = true;
 }
+
 bool HeaderFooterResponse::headerFooterIsSet() const
 {
     return m_HeaderFooterIsSet;
@@ -130,4 +120,3 @@ void HeaderFooterResponse::unsetHeaderFooter()
 }
 }
 }
-

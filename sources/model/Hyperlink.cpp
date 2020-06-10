@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Hyperlink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Hyperlink.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ Hyperlink::Hyperlink()
     m_DisplayTextIsSet = false;
     m_Value = utility::conversions::to_string_t("");
     m_ValueIsSet = false;
+
 }
 
 Hyperlink::~Hyperlink()
@@ -52,7 +52,6 @@ void Hyperlink::validate()
 web::json::value Hyperlink::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_DisplayTextIsSet)
     {
         val[_XPLATSTR("DisplayText")] = ModelBase::toJson(m_DisplayText);
@@ -74,48 +73,42 @@ void Hyperlink::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("DisplayText")];
         if(!fieldValue.is_null())
         {
-            setDisplayText(ModelBase::stringFromJson(fieldValue));
+           setDisplayText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Value")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Value")];
         if(!fieldValue.is_null())
         {
-            setValue(ModelBase::stringFromJson(fieldValue));
+           setValue(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void Hyperlink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DisplayTextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DisplayText"), m_DisplayText));
-        
     }
+
+
     if(m_ValueIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Value"), m_Value));
-        
     }
+
 }
 
 void Hyperlink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("DisplayText")))
-    {
-        setDisplayText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("DisplayText"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Value")))
-    {
-        setValue(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Value"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t Hyperlink::getDisplayText() const
@@ -129,6 +122,7 @@ void Hyperlink::setDisplayText(utility::string_t value)
     m_DisplayText = value;
     m_DisplayTextIsSet = true;
 }
+
 bool Hyperlink::displayTextIsSet() const
 {
     return m_DisplayTextIsSet;
@@ -150,6 +144,7 @@ void Hyperlink::setValue(utility::string_t value)
     m_Value = value;
     m_ValueIsSet = true;
 }
+
 bool Hyperlink::valueIsSet() const
 {
     return m_ValueIsSet;
@@ -165,4 +160,3 @@ void Hyperlink::unsetValue()
 }
 }
 }
-

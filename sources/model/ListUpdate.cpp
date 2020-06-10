@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListUpdate.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ListUpdate.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ ListUpdate::ListUpdate()
 {
     m_IsRestartAtEachSection = false;
     m_IsRestartAtEachSectionIsSet = false;
+
 }
 
 ListUpdate::~ListUpdate()
@@ -50,7 +50,6 @@ void ListUpdate::validate()
 web::json::value ListUpdate::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_IsRestartAtEachSectionIsSet)
     {
         val[_XPLATSTR("IsRestartAtEachSection")] = ModelBase::toJson(m_IsRestartAtEachSection);
@@ -66,31 +65,25 @@ void ListUpdate::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsRestartAtEachSection")];
         if(!fieldValue.is_null())
         {
-            setIsRestartAtEachSection(ModelBase::boolFromJson(fieldValue));
+           setIsRestartAtEachSection(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void ListUpdate::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_IsRestartAtEachSectionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsRestartAtEachSection"), m_IsRestartAtEachSection));
-        
     }
+
 }
 
 void ListUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("IsRestartAtEachSection")))
-    {
-        setIsRestartAtEachSection(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsRestartAtEachSection"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool ListUpdate::isIsRestartAtEachSection() const
@@ -104,6 +97,7 @@ void ListUpdate::setIsRestartAtEachSection(bool value)
     m_IsRestartAtEachSection = value;
     m_IsRestartAtEachSectionIsSet = true;
 }
+
 bool ListUpdate::isRestartAtEachSectionIsSet() const
 {
     return m_IsRestartAtEachSectionIsSet;
@@ -119,4 +113,3 @@ void ListUpdate::unsetIsRestartAtEachSection()
 }
 }
 }
-

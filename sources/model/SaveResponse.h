@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SaveResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SaveResponse_H_
 
-
 #include "SaveResult.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// Save response.
 /// </summary>
-class  SaveResponse
+class SaveResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// SaveResponse members
 
     /// <summary>
-    /// Gets or sets SaveResult.
+    /// Gets or sets save result.
     /// </summary>
     std::shared_ptr<SaveResult> getSaveResult() const;
     bool saveResultIsSet() const;

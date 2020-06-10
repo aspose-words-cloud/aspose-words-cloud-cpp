@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentStatData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,11 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DocumentStatData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DocumentStatData_H_
 
-
-#include "../ModelBase.h"
-
 #include "FootnotesStatData.h"
 #include "PageStatData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,9 +38,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container for the document&#39;s statistical data.
+/// Container for the document's statistical data.
 /// </summary>
-class  DocumentStatData
+class DocumentStatData
     : public ModelBase
 {
 public:
@@ -64,19 +62,13 @@ public:
     /// DocumentStatData members
 
     /// <summary>
-    /// Gets or sets total count of words in the document.
+    /// Gets or sets detailed statistics of footnotes.
     /// </summary>
-    int32_t getWordCount() const;
-    bool wordCountIsSet() const;
-    void unsetWordCount();
-    void setWordCount(int32_t value);
-    /// <summary>
-    /// Gets or sets total count of paragraphs in the document.
-    /// </summary>
-    int32_t getParagraphCount() const;
-    bool paragraphCountIsSet() const;
-    void unsetParagraphCount();
-    void setParagraphCount(int32_t value);
+    std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
+    bool footnotesStatDataIsSet() const;
+    void unsetFootnotesStatData();
+    void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
+
     /// <summary>
     /// Gets or sets total count of pages in the document.
     /// </summary>
@@ -84,13 +76,7 @@ public:
     bool pageCountIsSet() const;
     void unsetPageCount();
     void setPageCount(int32_t value);
-    /// <summary>
-    /// Gets or sets FootnotesStatData.
-    /// </summary>
-    std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
-    bool footnotesStatDataIsSet() const;
-    void unsetFootnotesStatData();
-    void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
+
     /// <summary>
     /// Gets or sets detailed statistics of all pages.
     /// </summary>
@@ -99,17 +85,37 @@ public:
     void unsetPageStatData();
     void setPageStatData(std::vector<std::shared_ptr<PageStatData>> const& value);
 
+    /// <summary>
+    /// Gets or sets total count of paragraphs in the document.
+    /// </summary>
+    int32_t getParagraphCount() const;
+    bool paragraphCountIsSet() const;
+    void unsetParagraphCount();
+    void setParagraphCount(int32_t value);
+
+    /// <summary>
+    /// Gets or sets total count of words in the document.
+    /// </summary>
+    int32_t getWordCount() const;
+    bool wordCountIsSet() const;
+    void unsetWordCount();
+    void setWordCount(int32_t value);
+
 protected:
-    int32_t m_WordCount;
-    bool m_WordCountIsSet;
-    int32_t m_ParagraphCount;
-    bool m_ParagraphCountIsSet;
-    int32_t m_PageCount;
-    bool m_PageCountIsSet;
     std::shared_ptr<FootnotesStatData> m_FootnotesStatData;
     bool m_FootnotesStatDataIsSet;
+
+    int32_t m_PageCount;
+    bool m_PageCountIsSet;
+
     std::vector<std::shared_ptr<PageStatData>> m_PageStatData;
     bool m_PageStatDataIsSet;
+
+    int32_t m_ParagraphCount;
+    bool m_ParagraphCountIsSet;
+
+    int32_t m_WordCount;
+    bool m_WordCountIsSet;
 };
 
 }

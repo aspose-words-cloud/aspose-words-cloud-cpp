@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ProtectionData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ProtectionData.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ ProtectionData::ProtectionData()
 {
     m_ProtectionType = utility::conversions::to_string_t("");
     m_ProtectionTypeIsSet = false;
+
 }
 
 ProtectionData::~ProtectionData()
@@ -50,7 +50,6 @@ void ProtectionData::validate()
 web::json::value ProtectionData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_ProtectionTypeIsSet)
     {
         val[_XPLATSTR("ProtectionType")] = ModelBase::toJson(m_ProtectionType);
@@ -66,31 +65,25 @@ void ProtectionData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ProtectionType")];
         if(!fieldValue.is_null())
         {
-            setProtectionType(ModelBase::stringFromJson(fieldValue));
+           setProtectionType(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void ProtectionData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ProtectionTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ProtectionType"), m_ProtectionType));
-        
     }
+
 }
 
 void ProtectionData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("ProtectionType")))
-    {
-        setProtectionType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ProtectionType"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t ProtectionData::getProtectionType() const
@@ -104,6 +97,7 @@ void ProtectionData::setProtectionType(utility::string_t value)
     m_ProtectionType = value;
     m_ProtectionTypeIsSet = true;
 }
+
 bool ProtectionData::protectionTypeIsSet() const
 {
     return m_ProtectionTypeIsSet;
@@ -119,4 +113,3 @@ void ProtectionData::unsetProtectionType()
 }
 }
 }
-

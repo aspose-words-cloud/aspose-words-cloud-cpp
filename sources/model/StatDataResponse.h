@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StatDataResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StatDataResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StatDataResponse_H_
 
-
 #include "DocumentStatData.h"
 #include "FileLink.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,9 +39,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for the request of the document&#39;s statistical data.
+/// Response for the request of the document's statistical data.
 /// </summary>
-class  StatDataResponse
+class StatDataResponse
     : public WordsResponse
 {
 public:
@@ -63,14 +63,15 @@ public:
     /// StatDataResponse members
 
     /// <summary>
-    /// Gets or sets DocumentLink.
+    /// Gets or sets link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
     void unsetDocumentLink();
     void setDocumentLink(std::shared_ptr<FileLink> value);
+
     /// <summary>
-    /// Gets or sets StatData.
+    /// Gets or sets statistical data of the document.
     /// </summary>
     std::shared_ptr<DocumentStatData> getStatData() const;
     bool statDataIsSet() const;
@@ -80,6 +81,7 @@ public:
 protected:
     std::shared_ptr<FileLink> m_DocumentLink;
     bool m_DocumentLinkIsSet;
+
     std::shared_ptr<DocumentStatData> m_StatData;
     bool m_StatDataIsSet;
 };

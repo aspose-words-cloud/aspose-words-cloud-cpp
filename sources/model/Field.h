@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Field.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Field_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Field_H_
 
-
 #include "FieldLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// Field.
 /// </summary>
-class  Field
+class Field
     : public FieldLink
 {
 public:
@@ -67,6 +67,7 @@ public:
     bool localeIdIsSet() const;
     void unsetLocaleId();
     void setLocaleId(utility::string_t value);
+
     /// <summary>
     /// Gets or sets field result.
     /// </summary>
@@ -78,6 +79,7 @@ public:
 protected:
     utility::string_t m_LocaleId;
     bool m_LocaleIdIsSet;
+
     utility::string_t m_Result;
     bool m_ResultIsSet;
 };

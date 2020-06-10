@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ParagraphResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 ParagraphResponse::ParagraphResponse()
 {
     m_ParagraphIsSet = false;
+
 }
 
 ParagraphResponse::~ParagraphResponse()
@@ -49,7 +49,6 @@ void ParagraphResponse::validate()
 web::json::value ParagraphResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_ParagraphIsSet)
     {
         val[_XPLATSTR("Paragraph")] = ModelBase::toJson(m_Paragraph);
@@ -72,36 +71,26 @@ void ParagraphResponse::fromJson(web::json::value& val)
             setParagraph( newItem );
         }
     }
+
 }
 
 void ParagraphResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ParagraphIsSet)
     {
         if (m_Paragraph.get())
         {
             m_Paragraph->toMultipart(multipart, _XPLATSTR("Paragraph."));
         }
-        
     }
+
 }
 
 void ParagraphResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Paragraph")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Paragraph")))
-        {
-            std::shared_ptr<Paragraph> newItem(new Paragraph());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Paragraph."));
-            setParagraph( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Paragraph> ParagraphResponse::getParagraph() const
@@ -115,6 +104,7 @@ void ParagraphResponse::setParagraph(std::shared_ptr<Paragraph> value)
     m_Paragraph = value;
     m_ParagraphIsSet = true;
 }
+
 bool ParagraphResponse::paragraphIsSet() const
 {
     return m_ParagraphIsSet;
@@ -130,4 +120,3 @@ void ParagraphResponse::unsetParagraph()
 }
 }
 }
-

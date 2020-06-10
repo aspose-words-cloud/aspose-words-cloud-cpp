@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MoveFileRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef moveFile_H
-#define moveFile_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_MoveFileRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_MoveFileRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,14 +36,14 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class MoveFileRequest{
+class MoveFileRequest {
     public: 
-     MoveFileRequest(
-                utility::string_t destPath,
-                utility::string_t srcPath,
-                boost::optional<utility::string_t> srcStorageName,
-                boost::optional<utility::string_t> destStorageName,
-                boost::optional<utility::string_t> versionId
+ MoveFileRequest(
+            utility::string_t destPath,
+            utility::string_t srcPath,
+            boost::optional< utility::string_t > srcStorageName,
+            boost::optional< utility::string_t > destStorageName,
+            boost::optional< utility::string_t > versionId
         );
 
         utility::string_t getDestPath() const;
@@ -51,20 +52,21 @@ class MoveFileRequest{
         utility::string_t getSrcPath() const;
         void setSrcPath(utility::string_t srcPath);
 
-        boost::optional<utility::string_t> getSrcStorageName() const;
-        void setSrcStorageName(boost::optional<utility::string_t> srcStorageName);
+        boost::optional< utility::string_t > getSrcStorageName() const;
+        void setSrcStorageName(boost::optional< utility::string_t > srcStorageName);
 
-        boost::optional<utility::string_t> getDestStorageName() const;
-        void setDestStorageName(boost::optional<utility::string_t> destStorageName);
+        boost::optional< utility::string_t > getDestStorageName() const;
+        void setDestStorageName(boost::optional< utility::string_t > destStorageName);
 
-        boost::optional<utility::string_t> getVersionId() const;
-        void setVersionId(boost::optional<utility::string_t> versionId);
+        boost::optional< utility::string_t > getVersionId() const;
+        void setVersionId(boost::optional< utility::string_t > versionId);
+
     private:
-        utility::string_t m_destPath;
-        utility::string_t m_srcPath;
-        boost::optional<utility::string_t> m_srcStorageName;
-        boost::optional<utility::string_t> m_destStorageName;
-        boost::optional<utility::string_t> m_versionId;
+        utility::string_t m_DestPath;
+        utility::string_t m_SrcPath;
+        boost::optional< utility::string_t > m_SrcStorageName;
+        boost::optional< utility::string_t > m_DestStorageName;
+        boost::optional< utility::string_t > m_VersionId;
 };
 
 }
@@ -73,4 +75,4 @@ class MoveFileRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_MoveFileRequest_H_ */

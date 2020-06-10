@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResult.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SaveResult_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_SaveResult_H_
 
-
-#include "../ModelBase.h"
-
 #include "FileLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Result of saving.
 /// </summary>
-class  SaveResult
+class SaveResult
     : public ModelBase
 {
 public:
@@ -63,20 +61,6 @@ public:
     /// SaveResult members
 
     /// <summary>
-    /// Gets or sets SourceDocument.
-    /// </summary>
-    std::shared_ptr<FileLink> getSourceDocument() const;
-    bool sourceDocumentIsSet() const;
-    void unsetSourceDocument();
-    void setSourceDocument(std::shared_ptr<FileLink> value);
-    /// <summary>
-    /// Gets or sets DestDocument.
-    /// </summary>
-    std::shared_ptr<FileLink> getDestDocument() const;
-    bool destDocumentIsSet() const;
-    void unsetDestDocument();
-    void setDestDocument(std::shared_ptr<FileLink> value);
-    /// <summary>
     /// Gets or sets links to additional items (css, images etc).
     /// </summary>
     std::vector<std::shared_ptr<FileLink>>& getAdditionalItems();
@@ -84,13 +68,31 @@ public:
     void unsetAdditionalItems();
     void setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value);
 
+    /// <summary>
+    /// Gets or sets link to destination document.
+    /// </summary>
+    std::shared_ptr<FileLink> getDestDocument() const;
+    bool destDocumentIsSet() const;
+    void unsetDestDocument();
+    void setDestDocument(std::shared_ptr<FileLink> value);
+
+    /// <summary>
+    /// Gets or sets link to source document.
+    /// </summary>
+    std::shared_ptr<FileLink> getSourceDocument() const;
+    bool sourceDocumentIsSet() const;
+    void unsetSourceDocument();
+    void setSourceDocument(std::shared_ptr<FileLink> value);
+
 protected:
-    std::shared_ptr<FileLink> m_SourceDocument;
-    bool m_SourceDocumentIsSet;
-    std::shared_ptr<FileLink> m_DestDocument;
-    bool m_DestDocumentIsSet;
     std::vector<std::shared_ptr<FileLink>> m_AdditionalItems;
     bool m_AdditionalItemsIsSet;
+
+    std::shared_ptr<FileLink> m_DestDocument;
+    bool m_DestDocumentIsSet;
+
+    std::shared_ptr<FileLink> m_SourceDocument;
+    bool m_SourceDocumentIsSet;
 };
 
 }

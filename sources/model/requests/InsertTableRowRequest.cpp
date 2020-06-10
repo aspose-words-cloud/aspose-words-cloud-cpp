@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertTableRowRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,112 +22,139 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "InsertTableRowRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 InsertTableRowRequest::InsertTableRowRequest(
-        utility::string_t name,
-        std::shared_ptr<TableRowInsert> row,
-        utility::string_t tablePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
-        ) : 
-            m_name(std::move(name)),
-            m_row(std::move(row)),
-            m_tablePath(std::move(tablePath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
-        {
-            
-        }
-
-        utility::string_t InsertTableRowRequest::getName() const
-        {
-            return m_name;
-        }
-        void InsertTableRowRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        std::shared_ptr<TableRowInsert> InsertTableRowRequest::getRow() const
-        {
-            return m_row;
-        }
-        void InsertTableRowRequest::setRow(std::shared_ptr<TableRowInsert> row){
-            m_row = std::move(row);
-        }
-        utility::string_t InsertTableRowRequest::getTablePath() const
-        {
-            return m_tablePath;
-        }
-        void InsertTableRowRequest::setTablePath(utility::string_t tablePath){
-            m_tablePath = std::move(tablePath);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void InsertTableRowRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void InsertTableRowRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void InsertTableRowRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void InsertTableRowRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void InsertTableRowRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void InsertTableRowRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> InsertTableRowRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void InsertTableRowRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    std::shared_ptr<TableRowInsert> row,
+    utility::string_t tablePath,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
+) : m_Name(std::move(name)),
+m_Row(std::move(row)),
+m_TablePath(std::move(tablePath)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
+{
 }
 
+utility::string_t InsertTableRowRequest::getName() const
+{
+    return m_Name;
+}
+
+void InsertTableRowRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+std::shared_ptr<TableRowInsert> InsertTableRowRequest::getRow() const
+{
+    return m_Row;
+}
+
+void InsertTableRowRequest::setRow(std::shared_ptr<TableRowInsert> row)
+{
+    m_Row = std::move(row);
+}
+
+utility::string_t InsertTableRowRequest::getTablePath() const
+{
+    return m_TablePath;
+}
+
+void InsertTableRowRequest::setTablePath(utility::string_t tablePath)
+{
+    m_TablePath = std::move(tablePath);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void InsertTableRowRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void InsertTableRowRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void InsertTableRowRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void InsertTableRowRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void InsertTableRowRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void InsertTableRowRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > InsertTableRowRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void InsertTableRowRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+}
+}
+}
+}
+}

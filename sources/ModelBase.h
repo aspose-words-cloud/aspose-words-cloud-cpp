@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ModelBase.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,6 @@
 
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ModelBase_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ModelBase_H_
-
 
 #include "HttpContent.h"
 #include "MultipartFormData.h"
@@ -70,13 +69,14 @@ public:
     template<class T>
     static web::json::value toJson(const std::vector<T>& value);
 
-    static int64_t int64_tFromJson(web::json::value& val);
-    static int32_t int32_tFromJson(web::json::value& val);
-    static float floatFromJson(web::json::value& val);
+    static int64_t longFromJson(web::json::value& val);
+    static int32_t integerFromJson(web::json::value& val);
+    static float floatingFromJson(web::json::value& val);
     static utility::string_t stringFromJson(web::json::value& val);
-    static utility::datetime dateFromJson(web::json::value& val);
+	static utility::string_t enumFromJson(web::json::value& val);
+    static utility::datetime dateTimeFromJson(web::json::value& val);
     static double doubleFromJson(web::json::value& val);
-    static bool boolFromJson(web::json::value& val);
+    static bool booleanFromJson(web::json::value& val);
     static std::shared_ptr<HttpContent> fileFromJson(web::json::value& val);
 
     static std::shared_ptr<HttpContent> toHttpContent( const utility::string_t& name, const utility::string_t& value, const utility::string_t& contentType = _XPLATSTR(""));

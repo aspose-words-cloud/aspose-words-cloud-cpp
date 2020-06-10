@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RenderTableWithoutNodePathRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,94 +22,115 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "RenderTableWithoutNodePathRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 RenderTableWithoutNodePathRequest::RenderTableWithoutNodePathRequest(
-        utility::string_t name,
-                utility::string_t format,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> fontsLocation
-        ) : 
-            m_name(std::move(name)),
-            m_format(std::move(format)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_fontsLocation(std::move(fontsLocation))
-        {
-            
-        }
-
-        utility::string_t RenderTableWithoutNodePathRequest::getName() const
-        {
-            return m_name;
-        }
-        void RenderTableWithoutNodePathRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t RenderTableWithoutNodePathRequest::getFormat() const
-        {
-            return m_format;
-        }
-        void RenderTableWithoutNodePathRequest::setFormat(utility::string_t format){
-            m_format = std::move(format);
-        }
-        int32_t RenderTableWithoutNodePathRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void RenderTableWithoutNodePathRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void RenderTableWithoutNodePathRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void RenderTableWithoutNodePathRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void RenderTableWithoutNodePathRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void RenderTableWithoutNodePathRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> RenderTableWithoutNodePathRequest::getFontsLocation() const
-        {
-            return m_fontsLocation;
-        }
-        void RenderTableWithoutNodePathRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t format,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > fontsLocation
+) : m_Name(std::move(name)),
+m_Format(std::move(format)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_FontsLocation(std::move(fontsLocation))
+{
 }
 
+utility::string_t RenderTableWithoutNodePathRequest::getName() const
+{
+    return m_Name;
+}
+
+void RenderTableWithoutNodePathRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t RenderTableWithoutNodePathRequest::getFormat() const
+{
+    return m_Format;
+}
+
+void RenderTableWithoutNodePathRequest::setFormat(utility::string_t format)
+{
+    m_Format = std::move(format);
+}
+
+int32_t RenderTableWithoutNodePathRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void RenderTableWithoutNodePathRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > RenderTableWithoutNodePathRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void RenderTableWithoutNodePathRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > RenderTableWithoutNodePathRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void RenderTableWithoutNodePathRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > RenderTableWithoutNodePathRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void RenderTableWithoutNodePathRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > RenderTableWithoutNodePathRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void RenderTableWithoutNodePathRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > RenderTableWithoutNodePathRequest::getFontsLocation() const
+{
+    return m_FontsLocation;
+}
+
+void RenderTableWithoutNodePathRequest::setFontsLocation(boost::optional< utility::string_t > fontsLocation)
+{
+    m_FontsLocation = std::move(fontsLocation);
+}
+
+}
+}
+}
+}
+}

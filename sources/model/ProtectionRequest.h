@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ProtectionRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ProtectionRequest_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ProtectionRequest_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Request on changing of protection.
 /// </summary>
-class  ProtectionRequest
+class ProtectionRequest
     : public ModelBase
 {
 public:
@@ -62,19 +60,21 @@ public:
     /// ProtectionRequest members
 
     /// <summary>
-    /// Gets or sets current password.
-    /// </summary>
-    utility::string_t getPassword() const;
-    bool passwordIsSet() const;
-    void unsetPassword();
-    void setPassword(utility::string_t value);
-    /// <summary>
     /// Gets or sets new password.
     /// </summary>
     utility::string_t getNewPassword() const;
     bool newPasswordIsSet() const;
     void unsetNewPassword();
     void setNewPassword(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets current password.
+    /// </summary>
+    utility::string_t getPassword() const;
+    bool passwordIsSet() const;
+    void unsetPassword();
+    void setPassword(utility::string_t value);
+
     /// <summary>
     /// Gets or sets new type of protection.
     /// </summary>
@@ -84,10 +84,12 @@ public:
     void setProtectionType(utility::string_t value);
 
 protected:
-    utility::string_t m_Password;
-    bool m_PasswordIsSet;
     utility::string_t m_NewPassword;
     bool m_NewPasswordIsSet;
+
+    utility::string_t m_Password;
+    bool m_PasswordIsSet;
+
     utility::string_t m_ProtectionType;
     bool m_ProtectionTypeIsSet;
 };

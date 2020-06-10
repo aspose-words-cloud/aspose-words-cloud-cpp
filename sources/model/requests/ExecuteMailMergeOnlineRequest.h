@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ExecuteMailMergeOnlineRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,12 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef executeMailMergeOnline_H
-#define executeMailMergeOnline_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ExecuteMailMergeOnlineRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ExecuteMailMergeOnlineRequest_H_
+
 #include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,14 +36,14 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class ExecuteMailMergeOnlineRequest{
+class ExecuteMailMergeOnlineRequest {
     public: 
-     ExecuteMailMergeOnlineRequest(
-                std::shared_ptr<HttpContent> _template,
-                std::shared_ptr<HttpContent> data,
-                boost::optional<bool> withRegions,
-                boost::optional<utility::string_t> cleanup,
-                boost::optional<utility::string_t> documentFileName
+ ExecuteMailMergeOnlineRequest(
+            std::shared_ptr<HttpContent> _template,
+            std::shared_ptr<HttpContent> data,
+            boost::optional< bool > withRegions,
+            boost::optional< utility::string_t > cleanup,
+            boost::optional< utility::string_t > documentFileName
         );
 
         std::shared_ptr<HttpContent> getTemplate() const;
@@ -52,20 +52,21 @@ class ExecuteMailMergeOnlineRequest{
         std::shared_ptr<HttpContent> getData() const;
         void setData(std::shared_ptr<HttpContent> data);
 
-        boost::optional<bool> getWithRegions() const;
-        void setWithRegions(boost::optional<bool> withRegions);
+        boost::optional< bool > getWithRegions() const;
+        void setWithRegions(boost::optional< bool > withRegions);
 
-        boost::optional<utility::string_t> getCleanup() const;
-        void setCleanup(boost::optional<utility::string_t> cleanup);
+        boost::optional< utility::string_t > getCleanup() const;
+        void setCleanup(boost::optional< utility::string_t > cleanup);
 
-        boost::optional<utility::string_t> getDocumentFileName() const;
-        void setDocumentFileName(boost::optional<utility::string_t> documentFileName);
+        boost::optional< utility::string_t > getDocumentFileName() const;
+        void setDocumentFileName(boost::optional< utility::string_t > documentFileName);
+
     private:
-        std::shared_ptr<HttpContent> m__template;
-        std::shared_ptr<HttpContent> m_data;
-        boost::optional<bool> m_withRegions;
-        boost::optional<utility::string_t> m_cleanup;
-        boost::optional<utility::string_t> m_documentFileName;
+        std::shared_ptr<HttpContent> m_Template;
+        std::shared_ptr<HttpContent> m_Data;
+        boost::optional< bool > m_WithRegions;
+        boost::optional< utility::string_t > m_Cleanup;
+        boost::optional< utility::string_t > m_DocumentFileName;
 };
 
 }
@@ -74,4 +75,4 @@ class ExecuteMailMergeOnlineRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_ExecuteMailMergeOnlineRequest_H_ */

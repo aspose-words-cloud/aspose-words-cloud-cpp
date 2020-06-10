@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OoxmlSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "OoxmlSaveOptionsData.h"
 
 namespace aspose {
@@ -36,12 +35,13 @@ OoxmlSaveOptionsData::OoxmlSaveOptionsData()
 {
     m_Compliance = utility::conversions::to_string_t("");
     m_ComplianceIsSet = false;
-    m_CompressionLevel = utility::conversions::to_string_t("");
+
     m_CompressionLevelIsSet = false;
     m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
     m_PrettyFormat = false;
     m_PrettyFormatIsSet = false;
+
 }
 
 OoxmlSaveOptionsData::~OoxmlSaveOptionsData()
@@ -56,7 +56,6 @@ void OoxmlSaveOptionsData::validate()
 web::json::value OoxmlSaveOptionsData::toJson() const
 {
     web::json::value val = this->SaveOptionsData::toJson();
-
     if(m_ComplianceIsSet)
     {
         val[_XPLATSTR("Compliance")] = ModelBase::toJson(m_Compliance);
@@ -86,82 +85,74 @@ void OoxmlSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Compliance")];
         if(!fieldValue.is_null())
         {
-            setCompliance(ModelBase::stringFromJson(fieldValue));
+           setCompliance(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("CompressionLevel")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("CompressionLevel")];
         if(!fieldValue.is_null())
         {
-            setCompressionLevel(ModelBase::stringFromJson(fieldValue));
+           setCompressionLevel(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Password")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Password")];
         if(!fieldValue.is_null())
         {
-            setPassword(ModelBase::stringFromJson(fieldValue));
+           setPassword(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PrettyFormat")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PrettyFormat")];
         if(!fieldValue.is_null())
         {
-            setPrettyFormat(ModelBase::boolFromJson(fieldValue));
+           setPrettyFormat(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
 }
 
 void OoxmlSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     SaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ComplianceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Compliance"), m_Compliance));
-        
     }
+
+
     if(m_CompressionLevelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CompressionLevel"), m_CompressionLevel));
-        
     }
+
+
     if(m_PasswordIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Password"), m_Password));
-        
     }
+
+
     if(m_PrettyFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("PrettyFormat"), m_PrettyFormat));
-        
     }
+
 }
 
 void OoxmlSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    SaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Compliance")))
-    {
-        setCompliance(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Compliance"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CompressionLevel")))
-    {
-        setCompressionLevel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CompressionLevel"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Password")))
-    {
-        setPassword(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Password"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PrettyFormat")))
-    {
-        setPrettyFormat(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("PrettyFormat"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t OoxmlSaveOptionsData::getCompliance() const
@@ -175,6 +166,7 @@ void OoxmlSaveOptionsData::setCompliance(utility::string_t value)
     m_Compliance = value;
     m_ComplianceIsSet = true;
 }
+
 bool OoxmlSaveOptionsData::complianceIsSet() const
 {
     return m_ComplianceIsSet;
@@ -196,6 +188,7 @@ void OoxmlSaveOptionsData::setCompressionLevel(utility::string_t value)
     m_CompressionLevel = value;
     m_CompressionLevelIsSet = true;
 }
+
 bool OoxmlSaveOptionsData::compressionLevelIsSet() const
 {
     return m_CompressionLevelIsSet;
@@ -217,6 +210,7 @@ void OoxmlSaveOptionsData::setPassword(utility::string_t value)
     m_Password = value;
     m_PasswordIsSet = true;
 }
+
 bool OoxmlSaveOptionsData::passwordIsSet() const
 {
     return m_PasswordIsSet;
@@ -238,6 +232,7 @@ void OoxmlSaveOptionsData::setPrettyFormat(bool value)
     m_PrettyFormat = value;
     m_PrettyFormatIsSet = true;
 }
+
 bool OoxmlSaveOptionsData::prettyFormatIsSet() const
 {
     return m_PrettyFormatIsSet;
@@ -253,4 +248,3 @@ void OoxmlSaveOptionsData::unsetPrettyFormat()
 }
 }
 }
-

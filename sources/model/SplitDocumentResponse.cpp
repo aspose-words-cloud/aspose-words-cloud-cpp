@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SplitDocumentResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SplitDocumentResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 SplitDocumentResponse::SplitDocumentResponse()
 {
     m_SplitResultIsSet = false;
+
 }
 
 SplitDocumentResponse::~SplitDocumentResponse()
@@ -49,7 +49,6 @@ void SplitDocumentResponse::validate()
 web::json::value SplitDocumentResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_SplitResultIsSet)
     {
         val[_XPLATSTR("SplitResult")] = ModelBase::toJson(m_SplitResult);
@@ -72,36 +71,26 @@ void SplitDocumentResponse::fromJson(web::json::value& val)
             setSplitResult( newItem );
         }
     }
+
 }
 
 void SplitDocumentResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_SplitResultIsSet)
     {
         if (m_SplitResult.get())
         {
             m_SplitResult->toMultipart(multipart, _XPLATSTR("SplitResult."));
         }
-        
     }
+
 }
 
 void SplitDocumentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("SplitResult")))
-    {
-        if(multipart->hasContent(_XPLATSTR("SplitResult")))
-        {
-            std::shared_ptr<SplitDocumentResult> newItem(new SplitDocumentResult());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SplitResult."));
-            setSplitResult( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<SplitDocumentResult> SplitDocumentResponse::getSplitResult() const
@@ -115,6 +104,7 @@ void SplitDocumentResponse::setSplitResult(std::shared_ptr<SplitDocumentResult> 
     m_SplitResult = value;
     m_SplitResultIsSet = true;
 }
+
 bool SplitDocumentResponse::splitResultIsSet() const
 {
     return m_SplitResultIsSet;
@@ -130,4 +120,3 @@ void SplitDocumentResponse::unsetSplitResult()
 }
 }
 }
-

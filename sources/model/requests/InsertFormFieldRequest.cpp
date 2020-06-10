@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertFormFieldRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,121 +22,151 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "InsertFormFieldRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 InsertFormFieldRequest::InsertFormFieldRequest(
-        utility::string_t name,
-                std::shared_ptr<FormField> formField,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime,
-                boost::optional<utility::string_t> insertBeforeNode
-        ) : 
-            m_name(std::move(name)),
-            m_formField(std::move(formField)),
-            m_nodePath(std::move(nodePath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime)),
-            m_insertBeforeNode(std::move(insertBeforeNode))
-        {
-            
-        }
-
-        utility::string_t InsertFormFieldRequest::getName() const
-        {
-            return m_name;
-        }
-        void InsertFormFieldRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        std::shared_ptr<FormField> InsertFormFieldRequest::getFormField() const
-        {
-            return m_formField;
-        }
-        void InsertFormFieldRequest::setFormField(std::shared_ptr<FormField> formField){
-            m_formField = std::move(formField);
-        }
-        utility::string_t InsertFormFieldRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void InsertFormFieldRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void InsertFormFieldRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void InsertFormFieldRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void InsertFormFieldRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void InsertFormFieldRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void InsertFormFieldRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void InsertFormFieldRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void InsertFormFieldRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-        boost::optional<utility::string_t> InsertFormFieldRequest::getInsertBeforeNode() const
-        {
-            return m_insertBeforeNode;
-        }
-        void InsertFormFieldRequest::setInsertBeforeNode(boost::optional<utility::string_t> insertBeforeNode){
-            m_insertBeforeNode = std::move(insertBeforeNode);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    std::shared_ptr<FormField> formField,
+    utility::string_t nodePath,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime,
+    boost::optional< utility::string_t > insertBeforeNode
+) : m_Name(std::move(name)),
+m_FormField(std::move(formField)),
+m_NodePath(std::move(nodePath)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime)),
+m_InsertBeforeNode(std::move(insertBeforeNode))
+{
 }
 
+utility::string_t InsertFormFieldRequest::getName() const
+{
+    return m_Name;
+}
+
+void InsertFormFieldRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+std::shared_ptr<FormField> InsertFormFieldRequest::getFormField() const
+{
+    return m_FormField;
+}
+
+void InsertFormFieldRequest::setFormField(std::shared_ptr<FormField> formField)
+{
+    m_FormField = std::move(formField);
+}
+
+utility::string_t InsertFormFieldRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void InsertFormFieldRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void InsertFormFieldRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void InsertFormFieldRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void InsertFormFieldRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void InsertFormFieldRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void InsertFormFieldRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void InsertFormFieldRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void InsertFormFieldRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+boost::optional< utility::string_t > InsertFormFieldRequest::getInsertBeforeNode() const
+{
+    return m_InsertBeforeNode;
+}
+
+void InsertFormFieldRequest::setInsertBeforeNode(boost::optional< utility::string_t > insertBeforeNode)
+{
+    m_InsertBeforeNode = std::move(insertBeforeNode);
+}
+
+}
+}
+}
+}
+}

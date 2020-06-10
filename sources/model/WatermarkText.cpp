@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WatermarkText.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "WatermarkText.h"
 
 namespace aspose {
@@ -34,10 +33,11 @@ namespace models {
 
 WatermarkText::WatermarkText()
 {
-    m_Text = utility::conversions::to_string_t("");
-    m_TextIsSet = false;
     m_RotationAngle = 0.0;
     m_RotationAngleIsSet = false;
+    m_Text = utility::conversions::to_string_t("");
+    m_TextIsSet = false;
+
 }
 
 WatermarkText::~WatermarkText()
@@ -52,14 +52,13 @@ void WatermarkText::validate()
 web::json::value WatermarkText::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_TextIsSet)
-    {
-        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
-    }
     if(m_RotationAngleIsSet)
     {
         val[_XPLATSTR("RotationAngle")] = ModelBase::toJson(m_RotationAngle);
+    }
+    if(m_TextIsSet)
+    {
+        val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
     }
 
     return val;
@@ -67,74 +66,46 @@ web::json::value WatermarkText::toJson() const
 
 void WatermarkText::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("Text")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Text")];
-        if(!fieldValue.is_null())
-        {
-            setText(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(_XPLATSTR("RotationAngle")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RotationAngle")];
         if(!fieldValue.is_null())
         {
-            setRotationAngle(ModelBase::doubleFromJson(fieldValue));
+           setRotationAngle(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("Text")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Text")];
+        if(!fieldValue.is_null())
+        {
+           setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
 }
 
 void WatermarkText::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_RotationAngleIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RotationAngle"), m_RotationAngle));
+    }
+
 
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
-    if(m_RotationAngleIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RotationAngle"), m_RotationAngle));
-        
-    }
+
 }
 
 void WatermarkText::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("RotationAngle")))
-    {
-        setRotationAngle(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RotationAngle"))));
-    }
-}
-
-utility::string_t WatermarkText::getText() const
-{
-    return m_Text;
-}
-
-
-void WatermarkText::setText(utility::string_t value)
-{
-    m_Text = value;
-    m_TextIsSet = true;
-}
-bool WatermarkText::textIsSet() const
-{
-    return m_TextIsSet;
-}
-
-void WatermarkText::unsetText()
-{
-    m_TextIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 double WatermarkText::getRotationAngle() const
@@ -148,6 +119,7 @@ void WatermarkText::setRotationAngle(double value)
     m_RotationAngle = value;
     m_RotationAngleIsSet = true;
 }
+
 bool WatermarkText::rotationAngleIsSet() const
 {
     return m_RotationAngleIsSet;
@@ -158,9 +130,30 @@ void WatermarkText::unsetRotationAngle()
     m_RotationAngleIsSet = false;
 }
 
-}
-}
-}
-}
+utility::string_t WatermarkText::getText() const
+{
+    return m_Text;
 }
 
+
+void WatermarkText::setText(utility::string_t value)
+{
+    m_Text = value;
+    m_TextIsSet = true;
+}
+
+bool WatermarkText::textIsSet() const
+{
+    return m_TextIsSet;
+}
+
+void WatermarkText::unsetText()
+{
+    m_TextIsSet = false;
+}
+
+}
+}
+}
+}
+}

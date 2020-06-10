@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,40 +22,43 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetDocumentFieldNamesOnlineRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetDocumentFieldNamesOnlineRequest::GetDocumentFieldNamesOnlineRequest(
-        std::shared_ptr<HttpContent> _template,
-                boost::optional<bool> useNonMergeFields
-        ) : 
-            m__template(std::move(_template)),
-            m_useNonMergeFields(std::move(useNonMergeFields))
-        {
-            
-        }
-
-        std::shared_ptr<HttpContent> GetDocumentFieldNamesOnlineRequest::getTemplate() const
-        {
-            return m__template;
-        }
-        void GetDocumentFieldNamesOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template){
-            m__template = std::move(_template);
-        }
-        boost::optional<bool> GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const
-        {
-            return m_useNonMergeFields;
-        }
-        void GetDocumentFieldNamesOnlineRequest::setUseNonMergeFields(boost::optional<bool> useNonMergeFields){
-            m_useNonMergeFields = std::move(useNonMergeFields);
-        }
-
-}
-}
-}
-}
+    std::shared_ptr<HttpContent> _template,
+    boost::optional< bool > useNonMergeFields
+) : m_Template(std::move(_template)),
+m_UseNonMergeFields(std::move(useNonMergeFields))
+{
 }
 
+std::shared_ptr<HttpContent> GetDocumentFieldNamesOnlineRequest::getTemplate() const
+{
+    return m_Template;
+}
+
+void GetDocumentFieldNamesOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template)
+{
+    m_Template = std::move(_template);
+}
+
+boost::optional< bool > GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const
+{
+    return m_UseNonMergeFields;
+}
+
+void GetDocumentFieldNamesOnlineRequest::setUseNonMergeFields(boost::optional< bool > useNonMergeFields)
+{
+    m_UseNonMergeFields = std::move(useNonMergeFields);
+}
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SplitDocumentRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef splitDocument_H
-#define splitDocument_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,20 +36,20 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class SplitDocumentRequest{
+class SplitDocumentRequest {
     public: 
-     SplitDocumentRequest(
-                utility::string_t name,
-                utility::string_t format,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<int32_t> from,
-                boost::optional<int32_t> to,
-                boost::optional<bool> zipOutput,
-                boost::optional<utility::string_t> fontsLocation
+ SplitDocumentRequest(
+            utility::string_t name,
+            utility::string_t format,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< int32_t > from,
+            boost::optional< int32_t > to,
+            boost::optional< bool > zipOutput,
+            boost::optional< utility::string_t > fontsLocation
         );
 
         utility::string_t getName() const;
@@ -57,44 +58,45 @@ class SplitDocumentRequest{
         utility::string_t getFormat() const;
         void setFormat(utility::string_t format);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
 
-        boost::optional<int32_t> getFrom() const;
-        void setFrom(boost::optional<int32_t> from);
+        boost::optional< int32_t > getFrom() const;
+        void setFrom(boost::optional< int32_t > from);
 
-        boost::optional<int32_t> getTo() const;
-        void setTo(boost::optional<int32_t> to);
+        boost::optional< int32_t > getTo() const;
+        void setTo(boost::optional< int32_t > to);
 
-        boost::optional<bool> getZipOutput() const;
-        void setZipOutput(boost::optional<bool> zipOutput);
+        boost::optional< bool > getZipOutput() const;
+        void setZipOutput(boost::optional< bool > zipOutput);
 
-        boost::optional<utility::string_t> getFontsLocation() const;
-        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+        boost::optional< utility::string_t > getFontsLocation() const;
+        void setFontsLocation(boost::optional< utility::string_t > fontsLocation);
+
     private:
-        utility::string_t m_name;
-        utility::string_t m_format;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
-        boost::optional<int32_t> m_from;
-        boost::optional<int32_t> m_to;
-        boost::optional<bool> m_zipOutput;
-        boost::optional<utility::string_t> m_fontsLocation;
+        utility::string_t m_Name;
+        utility::string_t m_Format;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< int32_t > m_From;
+        boost::optional< int32_t > m_To;
+        boost::optional< bool > m_ZipOutput;
+        boost::optional< utility::string_t > m_FontsLocation;
 };
 
 }
@@ -103,4 +105,4 @@ class SplitDocumentRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_SplitDocumentRequest_H_ */

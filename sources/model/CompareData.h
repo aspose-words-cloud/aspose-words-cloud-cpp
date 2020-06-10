@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CompareData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_CompareData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_CompareData_H_
 
-
-#include "../ModelBase.h"
-
 #include "CompareOptions.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Container class for compare documents.
 /// </summary>
-class  CompareData
+class CompareData
     : public ModelBase
 {
 public:
@@ -63,43 +61,49 @@ public:
     /// CompareData members
 
     /// <summary>
-    /// Gets or sets path to document to compare at the server.
-    /// </summary>
-    utility::string_t getComparingWithDocument() const;
-    bool comparingWithDocumentIsSet() const;
-    void unsetComparingWithDocument();
-    void setComparingWithDocument(utility::string_t value);
-    /// <summary>
     /// Gets or sets initials of the author to use for revisions.
     /// </summary>
     utility::string_t getAuthor() const;
     bool authorIsSet() const;
     void unsetAuthor();
     void setAuthor(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets the date and time to use for revisions.             
-    /// </summary>
-    utility::datetime getDateTime() const;
-    bool dateTimeIsSet() const;
-    void unsetDateTime();
-    void setDateTime(utility::datetime value);
-    /// <summary>
-    /// Gets or sets CompareOptions.
+    /// Gets or sets the compare options.
     /// </summary>
     std::shared_ptr<CompareOptions> getCompareOptions() const;
     bool compareOptionsIsSet() const;
     void unsetCompareOptions();
     void setCompareOptions(std::shared_ptr<CompareOptions> value);
 
+    /// <summary>
+    /// Gets or sets path to document to compare at the server.
+    /// </summary>
+    utility::string_t getComparingWithDocument() const;
+    bool comparingWithDocumentIsSet() const;
+    void unsetComparingWithDocument();
+    void setComparingWithDocument(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets the date and time to use for revisions.
+    /// </summary>
+    utility::datetime getDateTime() const;
+    bool dateTimeIsSet() const;
+    void unsetDateTime();
+    void setDateTime(utility::datetime value);
+
 protected:
-    utility::string_t m_ComparingWithDocument;
-    bool m_ComparingWithDocumentIsSet;
     utility::string_t m_Author;
     bool m_AuthorIsSet;
-    utility::datetime m_DateTime;
-    bool m_DateTimeIsSet;
+
     std::shared_ptr<CompareOptions> m_CompareOptions;
     bool m_CompareOptionsIsSet;
+
+    utility::string_t m_ComparingWithDocument;
+    bool m_ComparingWithDocumentIsSet;
+
+    utility::datetime m_DateTime;
+    bool m_DateTimeIsSet;
 };
 
 }

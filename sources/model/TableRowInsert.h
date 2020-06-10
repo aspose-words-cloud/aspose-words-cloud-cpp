@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRowInsert.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TableRowInsert_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableRowInsert_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Table row element.
 /// </summary>
-class  TableRowInsert
+class TableRowInsert
     : public ModelBase
 {
 public:
@@ -62,13 +60,6 @@ public:
     /// TableRowInsert members
 
     /// <summary>
-    /// Gets or sets table row will be inserted after row with specified 0-based index.
-    /// </summary>
-    int32_t getInsertAfter() const;
-    bool insertAfterIsSet() const;
-    void unsetInsertAfter();
-    void setInsertAfter(int32_t value);
-    /// <summary>
     /// Gets or sets count of columns. Default is 1.
     /// </summary>
     int32_t getColumnsCount() const;
@@ -76,11 +67,20 @@ public:
     void unsetColumnsCount();
     void setColumnsCount(int32_t value);
 
+    /// <summary>
+    /// Gets or sets table row will be inserted after row with specified 0-based index.
+    /// </summary>
+    int32_t getInsertAfter() const;
+    bool insertAfterIsSet() const;
+    void unsetInsertAfter();
+    void setInsertAfter(int32_t value);
+
 protected:
-    int32_t m_InsertAfter;
-    bool m_InsertAfterIsSet;
     int32_t m_ColumnsCount;
     bool m_ColumnsCountIsSet;
+
+    int32_t m_InsertAfter;
+    bool m_InsertAfterIsSet;
 };
 
 }

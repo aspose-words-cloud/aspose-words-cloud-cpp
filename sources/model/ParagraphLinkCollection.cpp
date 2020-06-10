@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphLinkCollection.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ParagraphLinkCollection.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 ParagraphLinkCollection::ParagraphLinkCollection()
 {
     m_ParagraphLinkListIsSet = false;
+
 }
 
 ParagraphLinkCollection::~ParagraphLinkCollection()
@@ -49,14 +49,14 @@ void ParagraphLinkCollection::validate()
 web::json::value ParagraphLinkCollection::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_ParagraphLinkListIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<ParagraphLink> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<ParagraphLink> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("ParagraphLinkList")] = web::json::value::array(jsonArray);
@@ -75,66 +75,43 @@ void ParagraphLinkCollection::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("ParagraphLinkList")) 
                             && !val[_XPLATSTR("ParagraphLinkList")].is_null())
         {
-        auto arr = val[_XPLATSTR("ParagraphLinkList")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<ParagraphLink>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<ParagraphLink> newItem(new ParagraphLink());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("ParagraphLinkList")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<ParagraphLink> newItem(new ParagraphLink());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<ParagraphLink>)nullptr;
+            });
         }
     }
+
 }
 
 void ParagraphLinkCollection::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_ParagraphLinkList.begin(), m_ParagraphLinkList.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<ParagraphLink> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphLinkList"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
 }
 
 void ParagraphLinkCollection::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_ParagraphLinkList.clear();
-        if(multipart->hasContent(_XPLATSTR("ParagraphLinkList")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ParagraphLinkList")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_ParagraphLinkList), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<ParagraphLink>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<ParagraphLink> newItem(new ParagraphLink());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<ParagraphLink>>& ParagraphLinkCollection::getParagraphLinkList()
@@ -142,11 +119,13 @@ std::vector<std::shared_ptr<ParagraphLink>>& ParagraphLinkCollection::getParagra
     return m_ParagraphLinkList;
 }
 
+
 void ParagraphLinkCollection::setParagraphLinkList(std::vector<std::shared_ptr<ParagraphLink>> const& value)
 {
     m_ParagraphLinkList = value;
     m_ParagraphLinkListIsSet = true;
 }
+
 bool ParagraphLinkCollection::paragraphLinkListIsSet() const
 {
     return m_ParagraphLinkListIsSet;
@@ -162,4 +141,3 @@ void ParagraphLinkCollection::unsetParagraphLinkList()
 }
 }
 }
-

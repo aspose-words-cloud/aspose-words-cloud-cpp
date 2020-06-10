@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldNamesResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FieldNamesResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FieldNamesResponse_H_
 
-
 #include "FieldNames.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +40,7 @@ namespace models {
 /// <summary>
 /// This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
 /// </summary>
-class  FieldNamesResponse
+class FieldNamesResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// FieldNamesResponse members
 
     /// <summary>
-    /// Gets or sets FieldNames.
+    /// Gets or sets collection of mail merge fields.
     /// </summary>
     std::shared_ptr<FieldNames> getFieldNames() const;
     bool fieldNamesIsSet() const;

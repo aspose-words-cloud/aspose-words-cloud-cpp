@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="XamlFixedSaveOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "XamlFixedSaveOptionsData.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ XamlFixedSaveOptionsData::XamlFixedSaveOptionsData()
     m_ResourcesFolderIsSet = false;
     m_ResourcesFolderAlias = utility::conversions::to_string_t("");
     m_ResourcesFolderAliasIsSet = false;
+
 }
 
 XamlFixedSaveOptionsData::~XamlFixedSaveOptionsData()
@@ -52,7 +52,6 @@ void XamlFixedSaveOptionsData::validate()
 web::json::value XamlFixedSaveOptionsData::toJson() const
 {
     web::json::value val = this->FixedPageSaveOptionsData::toJson();
-
     if(m_ResourcesFolderIsSet)
     {
         val[_XPLATSTR("ResourcesFolder")] = ModelBase::toJson(m_ResourcesFolder);
@@ -74,48 +73,42 @@ void XamlFixedSaveOptionsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("ResourcesFolder")];
         if(!fieldValue.is_null())
         {
-            setResourcesFolder(ModelBase::stringFromJson(fieldValue));
+           setResourcesFolder(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ResourcesFolderAlias")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ResourcesFolderAlias")];
         if(!fieldValue.is_null())
         {
-            setResourcesFolderAlias(ModelBase::stringFromJson(fieldValue));
+           setResourcesFolderAlias(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void XamlFixedSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     FixedPageSaveOptionsData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_ResourcesFolderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourcesFolder"), m_ResourcesFolder));
-        
     }
+
+
     if(m_ResourcesFolderAliasIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ResourcesFolderAlias"), m_ResourcesFolderAlias));
-        
     }
+
 }
 
 void XamlFixedSaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    FixedPageSaveOptionsData::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("ResourcesFolder")))
-    {
-        setResourcesFolder(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResourcesFolder"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ResourcesFolderAlias")))
-    {
-        setResourcesFolderAlias(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ResourcesFolderAlias"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t XamlFixedSaveOptionsData::getResourcesFolder() const
@@ -129,6 +122,7 @@ void XamlFixedSaveOptionsData::setResourcesFolder(utility::string_t value)
     m_ResourcesFolder = value;
     m_ResourcesFolderIsSet = true;
 }
+
 bool XamlFixedSaveOptionsData::resourcesFolderIsSet() const
 {
     return m_ResourcesFolderIsSet;
@@ -150,6 +144,7 @@ void XamlFixedSaveOptionsData::setResourcesFolderAlias(utility::string_t value)
     m_ResourcesFolderAlias = value;
     m_ResourcesFolderAliasIsSet = true;
 }
+
 bool XamlFixedSaveOptionsData::resourcesFolderAliasIsSet() const
 {
     return m_ResourcesFolderAliasIsSet;
@@ -165,4 +160,3 @@ void XamlFixedSaveOptionsData::unsetResourcesFolderAlias()
 }
 }
 }
-

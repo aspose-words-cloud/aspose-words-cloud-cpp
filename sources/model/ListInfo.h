@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListInfo.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,11 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListInfo_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ListInfo_H_
 
-
 #include "LinkElement.h"
 #include "ListLevels.h"
 #include "Style.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -42,7 +41,7 @@ namespace models {
 /// <summary>
 /// Represents a single document list.
 /// </summary>
-class  ListInfo
+class ListInfo
     : public LinkElement
 {
 public:
@@ -70,6 +69,7 @@ public:
     bool isListStyleDefinitionIsSet() const;
     void unsetIsListStyleDefinition();
     void setIsListStyleDefinition(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether returns true if this list is a reference to a list style.
     /// </summary>
@@ -77,6 +77,7 @@ public:
     bool isListStyleReferenceIsSet() const;
     void unsetIsListStyleReference();
     void setIsListStyleReference(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether returns true when the list contains 9 levels; false when 1 level.
     /// </summary>
@@ -84,6 +85,7 @@ public:
     bool isMultiLevelIsSet() const;
     void unsetIsMultiLevel();
     void setIsMultiLevel(bool value);
+
     /// <summary>
     /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
     /// </summary>
@@ -91,6 +93,7 @@ public:
     bool isRestartAtEachSectionIsSet() const;
     void unsetIsRestartAtEachSection();
     void setIsRestartAtEachSection(bool value);
+
     /// <summary>
     /// Gets or sets the unique identifier of the list.
     /// </summary>
@@ -98,15 +101,17 @@ public:
     bool listIdIsSet() const;
     void unsetListId();
     void setListId(int32_t value);
+
     /// <summary>
-    /// Gets or sets ListLevels.
+    /// Gets or sets the collection of list levels for this list.
     /// </summary>
     std::shared_ptr<ListLevels> getListLevels() const;
     bool listLevelsIsSet() const;
     void unsetListLevels();
     void setListLevels(std::shared_ptr<ListLevels> value);
+
     /// <summary>
-    /// Gets or sets Style.
+    /// Gets or sets the list style that this list references or defines.
     /// </summary>
     std::shared_ptr<Style> getStyle() const;
     bool styleIsSet() const;
@@ -116,16 +121,22 @@ public:
 protected:
     bool m_IsListStyleDefinition;
     bool m_IsListStyleDefinitionIsSet;
+
     bool m_IsListStyleReference;
     bool m_IsListStyleReferenceIsSet;
+
     bool m_IsMultiLevel;
     bool m_IsMultiLevelIsSet;
+
     bool m_IsRestartAtEachSection;
     bool m_IsRestartAtEachSectionIsSet;
+
     int32_t m_ListId;
     bool m_ListIdIsSet;
+
     std::shared_ptr<ListLevels> m_ListLevels;
     bool m_ListLevelsIsSet;
+
     std::shared_ptr<Style> m_Style;
     bool m_StyleIsSet;
 };

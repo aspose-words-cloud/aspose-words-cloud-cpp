@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentHyperlinkByIndexRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,76 +22,91 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetDocumentHyperlinkByIndexRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetDocumentHyperlinkByIndexRequest::GetDocumentHyperlinkByIndexRequest(
-        utility::string_t name,
-                int32_t hyperlinkIndex,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password
-        ) : 
-            m_name(std::move(name)),
-            m_hyperlinkIndex(std::move(hyperlinkIndex)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password))
-        {
-            
-        }
-
-        utility::string_t GetDocumentHyperlinkByIndexRequest::getName() const
-        {
-            return m_name;
-        }
-        void GetDocumentHyperlinkByIndexRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        int32_t GetDocumentHyperlinkByIndexRequest::getHyperlinkIndex() const
-        {
-            return m_hyperlinkIndex;
-        }
-        void GetDocumentHyperlinkByIndexRequest::setHyperlinkIndex(int32_t hyperlinkIndex){
-            m_hyperlinkIndex = std::move(hyperlinkIndex);
-        }
-        boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void GetDocumentHyperlinkByIndexRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void GetDocumentHyperlinkByIndexRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void GetDocumentHyperlinkByIndexRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> GetDocumentHyperlinkByIndexRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void GetDocumentHyperlinkByIndexRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    int32_t hyperlinkIndex,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password
+) : m_Name(std::move(name)),
+m_HyperlinkIndex(std::move(hyperlinkIndex)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password))
+{
 }
 
+utility::string_t GetDocumentHyperlinkByIndexRequest::getName() const
+{
+    return m_Name;
+}
+
+void GetDocumentHyperlinkByIndexRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+int32_t GetDocumentHyperlinkByIndexRequest::getHyperlinkIndex() const
+{
+    return m_HyperlinkIndex;
+}
+
+void GetDocumentHyperlinkByIndexRequest::setHyperlinkIndex(int32_t hyperlinkIndex)
+{
+    m_HyperlinkIndex = std::move(hyperlinkIndex);
+}
+
+boost::optional< utility::string_t > GetDocumentHyperlinkByIndexRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void GetDocumentHyperlinkByIndexRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > GetDocumentHyperlinkByIndexRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void GetDocumentHyperlinkByIndexRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > GetDocumentHyperlinkByIndexRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetDocumentHyperlinkByIndexRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetDocumentHyperlinkByIndexRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetDocumentHyperlinkByIndexRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+}
+}
+}
+}
+}

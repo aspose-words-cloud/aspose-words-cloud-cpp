@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OfficeMathObjectsResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "OfficeMathObjectsResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 OfficeMathObjectsResponse::OfficeMathObjectsResponse()
 {
     m_OfficeMathObjectsIsSet = false;
+
 }
 
 OfficeMathObjectsResponse::~OfficeMathObjectsResponse()
@@ -49,7 +49,6 @@ void OfficeMathObjectsResponse::validate()
 web::json::value OfficeMathObjectsResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_OfficeMathObjectsIsSet)
     {
         val[_XPLATSTR("OfficeMathObjects")] = ModelBase::toJson(m_OfficeMathObjects);
@@ -72,36 +71,26 @@ void OfficeMathObjectsResponse::fromJson(web::json::value& val)
             setOfficeMathObjects( newItem );
         }
     }
+
 }
 
 void OfficeMathObjectsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_OfficeMathObjectsIsSet)
     {
         if (m_OfficeMathObjects.get())
         {
             m_OfficeMathObjects->toMultipart(multipart, _XPLATSTR("OfficeMathObjects."));
         }
-        
     }
+
 }
 
 void OfficeMathObjectsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("OfficeMathObjects")))
-    {
-        if(multipart->hasContent(_XPLATSTR("OfficeMathObjects")))
-        {
-            std::shared_ptr<OfficeMathObjectsCollection> newItem(new OfficeMathObjectsCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("OfficeMathObjects."));
-            setOfficeMathObjects( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<OfficeMathObjectsCollection> OfficeMathObjectsResponse::getOfficeMathObjects() const
@@ -115,6 +104,7 @@ void OfficeMathObjectsResponse::setOfficeMathObjects(std::shared_ptr<OfficeMathO
     m_OfficeMathObjects = value;
     m_OfficeMathObjectsIsSet = true;
 }
+
 bool OfficeMathObjectsResponse::officeMathObjectsIsSet() const
 {
     return m_OfficeMathObjectsIsSet;
@@ -130,4 +120,3 @@ void OfficeMathObjectsResponse::unsetOfficeMathObjects()
 }
 }
 }
-

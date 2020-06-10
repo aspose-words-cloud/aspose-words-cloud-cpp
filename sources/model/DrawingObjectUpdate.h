@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObjectUpdate.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectUpdate_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectUpdate_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Drawing object element for update.
 /// </summary>
-class  DrawingObjectUpdate
+class DrawingObjectUpdate
     : public ModelBase
 {
 public:
@@ -62,19 +60,29 @@ public:
     /// DrawingObjectUpdate members
 
     /// <summary>
-    /// Gets or sets specifies where the distance to the image is measured from.             
+    /// Gets or sets height of the drawing object in points.
     /// </summary>
-    utility::string_t getRelativeHorizontalPosition() const;
-    bool relativeHorizontalPositionIsSet() const;
-    void unsetRelativeHorizontalPosition();
-    void setRelativeHorizontalPosition(utility::string_t value);
+    double getHeight() const;
+    bool heightIsSet() const;
+    void unsetHeight();
+    void setHeight(double value);
+
     /// <summary>
-    /// Gets or sets distance in points from the origin to the left side of the image.             
+    /// Gets or sets distance in points from the origin to the left side of the image.
     /// </summary>
     double getLeft() const;
     bool leftIsSet() const;
     void unsetLeft();
     void setLeft(double value);
+
+    /// <summary>
+    /// Gets or sets specifies where the distance to the image is measured from.
+    /// </summary>
+    utility::string_t getRelativeHorizontalPosition() const;
+    bool relativeHorizontalPositionIsSet() const;
+    void unsetRelativeHorizontalPosition();
+    void setRelativeHorizontalPosition(utility::string_t value);
+
     /// <summary>
     /// Gets or sets specifies where the distance to the image measured from.
     /// </summary>
@@ -82,6 +90,7 @@ public:
     bool relativeVerticalPositionIsSet() const;
     void unsetRelativeVerticalPosition();
     void setRelativeVerticalPosition(utility::string_t value);
+
     /// <summary>
     /// Gets or sets distance in points from the origin to the top side of the image.
     /// </summary>
@@ -89,6 +98,7 @@ public:
     bool topIsSet() const;
     void unsetTop();
     void setTop(double value);
+
     /// <summary>
     /// Gets or sets width of the drawing objects in points.
     /// </summary>
@@ -96,13 +106,7 @@ public:
     bool widthIsSet() const;
     void unsetWidth();
     void setWidth(double value);
-    /// <summary>
-    /// Gets or sets height of the drawing object in points.
-    /// </summary>
-    double getHeight() const;
-    bool heightIsSet() const;
-    void unsetHeight();
-    void setHeight(double value);
+
     /// <summary>
     /// Gets or sets specifies how to wrap text around the image.
     /// </summary>
@@ -112,18 +116,24 @@ public:
     void setWrapType(utility::string_t value);
 
 protected:
-    utility::string_t m_RelativeHorizontalPosition;
-    bool m_RelativeHorizontalPositionIsSet;
-    double m_Left;
-    bool m_LeftIsSet;
-    utility::string_t m_RelativeVerticalPosition;
-    bool m_RelativeVerticalPositionIsSet;
-    double m_Top;
-    bool m_TopIsSet;
-    double m_Width;
-    bool m_WidthIsSet;
     double m_Height;
     bool m_HeightIsSet;
+
+    double m_Left;
+    bool m_LeftIsSet;
+
+    utility::string_t m_RelativeHorizontalPosition;
+    bool m_RelativeHorizontalPositionIsSet;
+
+    utility::string_t m_RelativeVerticalPosition;
+    bool m_RelativeVerticalPositionIsSet;
+
+    double m_Top;
+    bool m_TopIsSet;
+
+    double m_Width;
+    bool m_WidthIsSet;
+
     utility::string_t m_WrapType;
     bool m_WrapTypeIsSet;
 };

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MultipartFormData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,9 +22,9 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_MultipartFormData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_MultipartFormData_H_
-
 
 #include "IHttpBody.h"
 #include "HttpContent.h"
@@ -34,7 +34,6 @@
 #include <memory>
 
 #include <cpprest/details/basic_types.h>
-
 
 namespace aspose {
 namespace words {

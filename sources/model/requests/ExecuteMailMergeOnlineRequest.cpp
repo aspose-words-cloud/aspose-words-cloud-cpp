@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ExecuteMailMergeOnlineRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,67 +22,79 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "ExecuteMailMergeOnlineRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 ExecuteMailMergeOnlineRequest::ExecuteMailMergeOnlineRequest(
-        std::shared_ptr<HttpContent> _template,
-                std::shared_ptr<HttpContent> data,
-                boost::optional<bool> withRegions,
-                boost::optional<utility::string_t> cleanup,
-                boost::optional<utility::string_t> documentFileName
-        ) : 
-            m__template(std::move(_template)),
-            m_data(std::move(data)),
-            m_withRegions(std::move(withRegions)),
-            m_cleanup(std::move(cleanup)),
-            m_documentFileName(std::move(documentFileName))
-        {
-            
-        }
-
-        std::shared_ptr<HttpContent> ExecuteMailMergeOnlineRequest::getTemplate() const
-        {
-            return m__template;
-        }
-        void ExecuteMailMergeOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template){
-            m__template = std::move(_template);
-        }
-        std::shared_ptr<HttpContent> ExecuteMailMergeOnlineRequest::getData() const
-        {
-            return m_data;
-        }
-        void ExecuteMailMergeOnlineRequest::setData(std::shared_ptr<HttpContent> data){
-            m_data = std::move(data);
-        }
-        boost::optional<bool> ExecuteMailMergeOnlineRequest::getWithRegions() const
-        {
-            return m_withRegions;
-        }
-        void ExecuteMailMergeOnlineRequest::setWithRegions(boost::optional<bool> withRegions){
-            m_withRegions = std::move(withRegions);
-        }
-        boost::optional<utility::string_t> ExecuteMailMergeOnlineRequest::getCleanup() const
-        {
-            return m_cleanup;
-        }
-        void ExecuteMailMergeOnlineRequest::setCleanup(boost::optional<utility::string_t> cleanup){
-            m_cleanup = std::move(cleanup);
-        }
-        boost::optional<utility::string_t> ExecuteMailMergeOnlineRequest::getDocumentFileName() const
-        {
-            return m_documentFileName;
-        }
-        void ExecuteMailMergeOnlineRequest::setDocumentFileName(boost::optional<utility::string_t> documentFileName){
-            m_documentFileName = std::move(documentFileName);
-        }
-
-}
-}
-}
-}
+    std::shared_ptr<HttpContent> _template,
+    std::shared_ptr<HttpContent> data,
+    boost::optional< bool > withRegions,
+    boost::optional< utility::string_t > cleanup,
+    boost::optional< utility::string_t > documentFileName
+) : m_Template(std::move(_template)),
+m_Data(std::move(data)),
+m_WithRegions(std::move(withRegions)),
+m_Cleanup(std::move(cleanup)),
+m_DocumentFileName(std::move(documentFileName))
+{
 }
 
+std::shared_ptr<HttpContent> ExecuteMailMergeOnlineRequest::getTemplate() const
+{
+    return m_Template;
+}
+
+void ExecuteMailMergeOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template)
+{
+    m_Template = std::move(_template);
+}
+
+std::shared_ptr<HttpContent> ExecuteMailMergeOnlineRequest::getData() const
+{
+    return m_Data;
+}
+
+void ExecuteMailMergeOnlineRequest::setData(std::shared_ptr<HttpContent> data)
+{
+    m_Data = std::move(data);
+}
+
+boost::optional< bool > ExecuteMailMergeOnlineRequest::getWithRegions() const
+{
+    return m_WithRegions;
+}
+
+void ExecuteMailMergeOnlineRequest::setWithRegions(boost::optional< bool > withRegions)
+{
+    m_WithRegions = std::move(withRegions);
+}
+
+boost::optional< utility::string_t > ExecuteMailMergeOnlineRequest::getCleanup() const
+{
+    return m_Cleanup;
+}
+
+void ExecuteMailMergeOnlineRequest::setCleanup(boost::optional< utility::string_t > cleanup)
+{
+    m_Cleanup = std::move(cleanup);
+}
+
+boost::optional< utility::string_t > ExecuteMailMergeOnlineRequest::getDocumentFileName() const
+{
+    return m_DocumentFileName;
+}
+
+void ExecuteMailMergeOnlineRequest::setDocumentFileName(boost::optional< utility::string_t > documentFileName)
+{
+    m_DocumentFileName = std::move(documentFileName);
+}
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="LoadWebDocumentData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_LoadWebDocumentData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_LoadWebDocumentData_H_
 
-
-#include "../ModelBase.h"
-
 #include "SaveOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// Contains data for load web document.
 /// </summary>
-class  LoadWebDocumentData
+class LoadWebDocumentData
     : public ModelBase
 {
 public:
@@ -69,8 +67,9 @@ public:
     bool loadingDocumentUrlIsSet() const;
     void unsetLoadingDocumentUrl();
     void setLoadingDocumentUrl(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets SaveOptions.
+    /// Gets or sets save options.
     /// </summary>
     std::shared_ptr<SaveOptionsData> getSaveOptions() const;
     bool saveOptionsIsSet() const;
@@ -80,6 +79,7 @@ public:
 protected:
     utility::string_t m_LoadingDocumentUrl;
     bool m_LoadingDocumentUrlIsSet;
+
     std::shared_ptr<SaveOptionsData> m_SaveOptions;
     bool m_SaveOptionsIsSet;
 };

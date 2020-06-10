@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListFormat.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ListFormat_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ListFormat_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +37,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph list format element.             
+/// Paragraph list format element.
 /// </summary>
-class  ListFormat
+class ListFormat
     : public LinkElement
 {
 public:
@@ -68,6 +67,7 @@ public:
     bool isListItemIsSet() const;
     void unsetIsListItem();
     void setIsListItem(bool value);
+
     /// <summary>
     /// Gets or sets the list id of this paragraph.
     /// </summary>
@@ -75,6 +75,7 @@ public:
     bool listIdIsSet() const;
     void unsetListId();
     void setListId(int32_t value);
+
     /// <summary>
     /// Gets or sets the list level number (0 to 8) for the paragraph.
     /// </summary>
@@ -86,8 +87,10 @@ public:
 protected:
     bool m_IsListItem;
     bool m_IsListItemIsSet;
+
     int32_t m_ListId;
     bool m_ListIdIsSet;
+
     int32_t m_ListLevelNumber;
     bool m_ListLevelNumberIsSet;
 };

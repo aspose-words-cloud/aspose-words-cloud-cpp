@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Style.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Style.h"
 
 namespace aspose {
@@ -39,6 +38,7 @@ Style::Style()
     m_BaseStyleNameIsSet = false;
     m_BuiltIn = false;
     m_BuiltInIsSet = false;
+
     m_FontIsSet = false;
     m_IsHeading = false;
     m_IsHeadingIsSet = false;
@@ -50,10 +50,11 @@ Style::Style()
     m_NameIsSet = false;
     m_NextParagraphStyleName = utility::conversions::to_string_t("");
     m_NextParagraphStyleNameIsSet = false;
-    m_StyleIdentifier = utility::conversions::to_string_t("");
+
     m_StyleIdentifierIsSet = false;
-    m_Type = utility::conversions::to_string_t("");
+
     m_TypeIsSet = false;
+
 }
 
 Style::~Style()
@@ -68,14 +69,14 @@ void Style::validate()
 web::json::value Style::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
+    if(m_AliasesIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Aliases.begin(), m_Aliases.end(), std::back_inserter(jsonArray),
-			[&](utility::string_t item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](utility::string_t item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("Aliases")] = web::json::value::array(jsonArray);
@@ -134,29 +135,34 @@ void Style::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("Aliases")) 
                             && !val[_XPLATSTR("Aliases")].is_null())
         {
-        auto arr = val[_XPLATSTR("Aliases")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Aliases), [&](web::json::value& item){
-            return ModelBase::stringFromJson(item);
-        });
-
+            auto arr = val[_XPLATSTR("Aliases")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_Aliases), [&](web::json::value& item){
+                return ModelBase::stringFromJson(item);
+            });
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BaseStyleName")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BaseStyleName")];
         if(!fieldValue.is_null())
         {
-            setBaseStyleName(ModelBase::stringFromJson(fieldValue));
+           setBaseStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BuiltIn")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BuiltIn")];
         if(!fieldValue.is_null())
         {
-            setBuiltIn(ModelBase::boolFromJson(fieldValue));
+           setBuiltIn(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Font")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Font")];
@@ -167,195 +173,163 @@ void Style::fromJson(web::json::value& val)
             setFont( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("IsHeading")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsHeading")];
         if(!fieldValue.is_null())
         {
-            setIsHeading(ModelBase::boolFromJson(fieldValue));
+           setIsHeading(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("IsQuickStyle")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("IsQuickStyle")];
         if(!fieldValue.is_null())
         {
-            setIsQuickStyle(ModelBase::boolFromJson(fieldValue));
+           setIsQuickStyle(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LinkedStyleName")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LinkedStyleName")];
         if(!fieldValue.is_null())
         {
-            setLinkedStyleName(ModelBase::stringFromJson(fieldValue));
+           setLinkedStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Name")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Name")];
         if(!fieldValue.is_null())
         {
-            setName(ModelBase::stringFromJson(fieldValue));
+           setName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("NextParagraphStyleName")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("NextParagraphStyleName")];
         if(!fieldValue.is_null())
         {
-            setNextParagraphStyleName(ModelBase::stringFromJson(fieldValue));
+           setNextParagraphStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StyleIdentifier")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StyleIdentifier")];
         if(!fieldValue.is_null())
         {
-            setStyleIdentifier(ModelBase::stringFromJson(fieldValue));
+           setStyleIdentifier(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Type")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Type")];
         if(!fieldValue.is_null())
         {
-            setType(ModelBase::stringFromJson(fieldValue));
+           setType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void Style::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Aliases.begin(), m_Aliases.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Aliases"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
+
+
     if(m_BaseStyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BaseStyleName"), m_BaseStyleName));
-        
     }
+
+
     if(m_BuiltInIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BuiltIn"), m_BuiltIn));
-        
     }
+
+
     if(m_FontIsSet)
     {
         if (m_Font.get())
         {
             m_Font->toMultipart(multipart, _XPLATSTR("Font."));
         }
-        
     }
+
+
     if(m_IsHeadingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsHeading"), m_IsHeading));
-        
     }
+
+
     if(m_IsQuickStyleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsQuickStyle"), m_IsQuickStyle));
-        
     }
+
+
     if(m_LinkedStyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LinkedStyleName"), m_LinkedStyleName));
-        
     }
+
+
     if(m_NameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Name"), m_Name));
-        
     }
+
+
     if(m_NextParagraphStyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("NextParagraphStyleName"), m_NextParagraphStyleName));
-        
     }
+
+
     if(m_StyleIdentifierIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleIdentifier"), m_StyleIdentifier));
-        
     }
+
+
     if(m_TypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
-        
     }
+
 }
 
 void Style::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    {
-        m_Aliases.clear();
-        if(multipart->hasContent(_XPLATSTR("Aliases")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Aliases")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Aliases), [&](web::json::value item) {
-            return ModelBase::stringFromJson(item);
-        });
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("BaseStyleName")))
-    {
-        setBaseStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BaseStyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BuiltIn")))
-    {
-        setBuiltIn(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("BuiltIn"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Font")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Font")))
-        {
-            std::shared_ptr<Font> newItem(new Font());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
-            setFont( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("IsHeading")))
-    {
-        setIsHeading(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsHeading"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("IsQuickStyle")))
-    {
-        setIsQuickStyle(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsQuickStyle"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LinkedStyleName")))
-    {
-        setLinkedStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LinkedStyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Name")))
-    {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Name"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("NextParagraphStyleName")))
-    {
-        setNextParagraphStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("NextParagraphStyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
-    {
-        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleIdentifier"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Type")))
-    {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<utility::string_t>& Style::getAliases()
@@ -363,11 +337,13 @@ std::vector<utility::string_t>& Style::getAliases()
     return m_Aliases;
 }
 
+
 void Style::setAliases(std::vector<utility::string_t> const& value)
 {
     m_Aliases = value;
     m_AliasesIsSet = true;
 }
+
 bool Style::aliasesIsSet() const
 {
     return m_AliasesIsSet;
@@ -389,6 +365,7 @@ void Style::setBaseStyleName(utility::string_t value)
     m_BaseStyleName = value;
     m_BaseStyleNameIsSet = true;
 }
+
 bool Style::baseStyleNameIsSet() const
 {
     return m_BaseStyleNameIsSet;
@@ -410,6 +387,7 @@ void Style::setBuiltIn(bool value)
     m_BuiltIn = value;
     m_BuiltInIsSet = true;
 }
+
 bool Style::builtInIsSet() const
 {
     return m_BuiltInIsSet;
@@ -431,6 +409,7 @@ void Style::setFont(std::shared_ptr<Font> value)
     m_Font = value;
     m_FontIsSet = true;
 }
+
 bool Style::fontIsSet() const
 {
     return m_FontIsSet;
@@ -452,6 +431,7 @@ void Style::setIsHeading(bool value)
     m_IsHeading = value;
     m_IsHeadingIsSet = true;
 }
+
 bool Style::isHeadingIsSet() const
 {
     return m_IsHeadingIsSet;
@@ -473,6 +453,7 @@ void Style::setIsQuickStyle(bool value)
     m_IsQuickStyle = value;
     m_IsQuickStyleIsSet = true;
 }
+
 bool Style::isQuickStyleIsSet() const
 {
     return m_IsQuickStyleIsSet;
@@ -494,6 +475,7 @@ void Style::setLinkedStyleName(utility::string_t value)
     m_LinkedStyleName = value;
     m_LinkedStyleNameIsSet = true;
 }
+
 bool Style::linkedStyleNameIsSet() const
 {
     return m_LinkedStyleNameIsSet;
@@ -515,6 +497,7 @@ void Style::setName(utility::string_t value)
     m_Name = value;
     m_NameIsSet = true;
 }
+
 bool Style::nameIsSet() const
 {
     return m_NameIsSet;
@@ -536,6 +519,7 @@ void Style::setNextParagraphStyleName(utility::string_t value)
     m_NextParagraphStyleName = value;
     m_NextParagraphStyleNameIsSet = true;
 }
+
 bool Style::nextParagraphStyleNameIsSet() const
 {
     return m_NextParagraphStyleNameIsSet;
@@ -557,6 +541,7 @@ void Style::setStyleIdentifier(utility::string_t value)
     m_StyleIdentifier = value;
     m_StyleIdentifierIsSet = true;
 }
+
 bool Style::styleIdentifierIsSet() const
 {
     return m_StyleIdentifierIsSet;
@@ -578,6 +563,7 @@ void Style::setType(utility::string_t value)
     m_Type = value;
     m_TypeIsSet = true;
 }
+
 bool Style::typeIsSet() const
 {
     return m_TypeIsSet;
@@ -593,4 +579,3 @@ void Style::unsetType()
 }
 }
 }
-

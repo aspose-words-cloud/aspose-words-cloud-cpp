@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TabStopBase.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TabStopBase.h"
 
 namespace aspose {
@@ -34,12 +33,12 @@ namespace models {
 
 TabStopBase::TabStopBase()
 {
-    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
-    m_Leader = utility::conversions::to_string_t("");
+
     m_LeaderIsSet = false;
     m_Position = 0.0;
     m_PositionIsSet = false;
+
 }
 
 TabStopBase::~TabStopBase()
@@ -54,7 +53,6 @@ void TabStopBase::validate()
 web::json::value TabStopBase::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_AlignmentIsSet)
     {
         val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
@@ -78,65 +76,57 @@ void TabStopBase::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
         if(!fieldValue.is_null())
         {
-            setAlignment(ModelBase::stringFromJson(fieldValue));
+           setAlignment(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Leader")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Leader")];
         if(!fieldValue.is_null())
         {
-            setLeader(ModelBase::stringFromJson(fieldValue));
+           setLeader(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Position")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Position")];
         if(!fieldValue.is_null())
         {
-            setPosition(ModelBase::doubleFromJson(fieldValue));
+           setPosition(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
 }
 
 void TabStopBase::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_AlignmentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
-        
     }
+
+
     if(m_LeaderIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Leader"), m_Leader));
-        
     }
+
+
     if(m_PositionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Position"), m_Position));
-        
     }
+
 }
 
 void TabStopBase::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
-    {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Leader")))
-    {
-        setLeader(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Leader"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Position")))
-    {
-        setPosition(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("Position"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t TabStopBase::getAlignment() const
@@ -150,6 +140,7 @@ void TabStopBase::setAlignment(utility::string_t value)
     m_Alignment = value;
     m_AlignmentIsSet = true;
 }
+
 bool TabStopBase::alignmentIsSet() const
 {
     return m_AlignmentIsSet;
@@ -171,6 +162,7 @@ void TabStopBase::setLeader(utility::string_t value)
     m_Leader = value;
     m_LeaderIsSet = true;
 }
+
 bool TabStopBase::leaderIsSet() const
 {
     return m_LeaderIsSet;
@@ -192,6 +184,7 @@ void TabStopBase::setPosition(double value)
     m_Position = value;
     m_PositionIsSet = true;
 }
+
 bool TabStopBase::positionIsSet() const
 {
     return m_PositionIsSet;
@@ -207,4 +200,3 @@ void TabStopBase::unsetPosition()
 }
 }
 }
-

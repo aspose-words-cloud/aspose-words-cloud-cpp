@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImageSaveOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ImageSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_ImageSaveOptionsData_H_
 
-
 #include "FixedPageSaveOptionsData.h"
 #include "GraphicsQualityOptionsData.h"
-#include "MetafileRenderingOptionsData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +40,7 @@ namespace models {
 /// <summary>
 /// Container abstract class for image save options.
 /// </summary>
-class  ImageSaveOptionsData
+class ImageSaveOptionsData
     : public FixedPageSaveOptionsData
 {
 public:
@@ -63,19 +62,23 @@ public:
     /// ImageSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets GraphicsQualityOptions.
+    /// Gets or sets allows to specify additional System.Drawing.Graphics quality options.
     /// </summary>
     std::shared_ptr<GraphicsQualityOptionsData> getGraphicsQualityOptions() const;
     bool graphicsQualityOptionsIsSet() const;
     void unsetGraphicsQualityOptions();
     void setGraphicsQualityOptions(std::shared_ptr<GraphicsQualityOptionsData> value);
+
     /// <summary>
-    /// Gets or sets the horizontal resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
+    /// Gets or sets the horizontal resolution for the generated images, in dots per inch.
+    /// This property has effect only when saving to raster image formats.
+    /// The default value is 96.
     /// </summary>
     double getHorizontalResolution() const;
     bool horizontalResolutionIsSet() const;
     void unsetHorizontalResolution();
     void setHorizontalResolution(double value);
+
     /// <summary>
     /// Gets or sets brightness of image.
     /// </summary>
@@ -83,6 +86,7 @@ public:
     bool imageBrightnessIsSet() const;
     void unsetImageBrightness();
     void setImageBrightness(double value);
+
     /// <summary>
     /// Gets or sets color mode of image.
     /// </summary>
@@ -90,6 +94,7 @@ public:
     bool imageColorModeIsSet() const;
     void unsetImageColorMode();
     void setImageColorMode(utility::string_t value);
+
     /// <summary>
     /// Gets or sets contrast of image.
     /// </summary>
@@ -97,6 +102,7 @@ public:
     bool imageContrastIsSet() const;
     void unsetImageContrast();
     void setImageContrast(double value);
+
     /// <summary>
     /// Gets or sets background (paper) color of image.
     /// </summary>
@@ -104,6 +110,7 @@ public:
     bool paperColorIsSet() const;
     void unsetPaperColor();
     void setPaperColor(utility::string_t value);
+
     /// <summary>
     /// Gets or sets pixel format of image.
     /// </summary>
@@ -111,13 +118,17 @@ public:
     bool pixelFormatIsSet() const;
     void unsetPixelFormat();
     void setPixelFormat(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets both horizontal and vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
+    /// Gets or sets both horizontal and vertical resolution for the generated images, in dots per inch.
+    /// This property has effect only when saving to raster image formats.
+    /// The default value is 96.
     /// </summary>
     double getResolution() const;
     bool resolutionIsSet() const;
     void unsetResolution();
     void setResolution(double value);
+
     /// <summary>
     /// Gets or sets zoom factor of image.
     /// </summary>
@@ -125,6 +136,7 @@ public:
     bool scaleIsSet() const;
     void unsetScale();
     void setScale(double value);
+
     /// <summary>
     /// Gets or sets determine whether or not to use anti-aliasing for rendering.
     /// </summary>
@@ -132,6 +144,7 @@ public:
     bool useAntiAliasingIsSet() const;
     void unsetUseAntiAliasing();
     void setUseAntiAliasing(bool value);
+
     /// <summary>
     /// Gets or sets a value determining whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
     /// </summary>
@@ -139,6 +152,7 @@ public:
     bool useGdiEmfRendererIsSet() const;
     void unsetUseGdiEmfRenderer();
     void setUseGdiEmfRenderer(bool value);
+
     /// <summary>
     /// Gets or sets determine whether or not to use high quality (i.e. slow) rendering algorithms.
     /// </summary>
@@ -146,8 +160,11 @@ public:
     bool useHighQualityRenderingIsSet() const;
     void unsetUseHighQualityRendering();
     void setUseHighQualityRendering(bool value);
+
     /// <summary>
-    /// Gets or sets the vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
+    /// Gets or sets the vertical resolution for the generated images, in dots per inch.
+    /// This property has effect only when saving to raster image formats.
+    /// The default value is 96.
     /// </summary>
     double getVerticalResolution() const;
     bool verticalResolutionIsSet() const;
@@ -157,28 +174,40 @@ public:
 protected:
     std::shared_ptr<GraphicsQualityOptionsData> m_GraphicsQualityOptions;
     bool m_GraphicsQualityOptionsIsSet;
+
     double m_HorizontalResolution;
     bool m_HorizontalResolutionIsSet;
+
     double m_ImageBrightness;
     bool m_ImageBrightnessIsSet;
+
     utility::string_t m_ImageColorMode;
     bool m_ImageColorModeIsSet;
+
     double m_ImageContrast;
     bool m_ImageContrastIsSet;
+
     utility::string_t m_PaperColor;
     bool m_PaperColorIsSet;
+
     utility::string_t m_PixelFormat;
     bool m_PixelFormatIsSet;
+
     double m_Resolution;
     bool m_ResolutionIsSet;
+
     double m_Scale;
     bool m_ScaleIsSet;
+
     bool m_UseAntiAliasing;
     bool m_UseAntiAliasingIsSet;
+
     bool m_UseGdiEmfRenderer;
     bool m_UseGdiEmfRendererIsSet;
+
     bool m_UseHighQualityRendering;
     bool m_UseHighQualityRenderingIsSet;
+
     double m_VerticalResolution;
     bool m_VerticalResolutionIsSet;
 };

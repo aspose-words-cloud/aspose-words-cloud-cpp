@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassifyRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,40 +22,43 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "ClassifyRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 ClassifyRequest::ClassifyRequest(
-        utility::string_t text,
-                boost::optional<utility::string_t> bestClassesCount
-        ) : 
-            m_text(std::move(text)),
-            m_bestClassesCount(std::move(bestClassesCount))
-        {
-            
-        }
-
-        utility::string_t ClassifyRequest::getText() const
-        {
-            return m_text;
-        }
-        void ClassifyRequest::setText(utility::string_t text){
-            m_text = std::move(text);
-        }
-        boost::optional<utility::string_t> ClassifyRequest::getBestClassesCount() const
-        {
-            return m_bestClassesCount;
-        }
-        void ClassifyRequest::setBestClassesCount(boost::optional<utility::string_t> bestClassesCount){
-            m_bestClassesCount = std::move(bestClassesCount);
-        }
-
-}
-}
-}
-}
+    utility::string_t text,
+    boost::optional< utility::string_t > bestClassesCount
+) : m_Text(std::move(text)),
+m_BestClassesCount(std::move(bestClassesCount))
+{
 }
 
+utility::string_t ClassifyRequest::getText() const
+{
+    return m_Text;
+}
+
+void ClassifyRequest::setText(utility::string_t text)
+{
+    m_Text = std::move(text);
+}
+
+boost::optional< utility::string_t > ClassifyRequest::getBestClassesCount() const
+{
+    return m_BestClassesCount;
+}
+
+void ClassifyRequest::setBestClassesCount(boost::optional< utility::string_t > bestClassesCount)
+{
+    m_BestClassesCount = std::move(bestClassesCount);
+}
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Link.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Link.h"
 
 namespace aspose {
@@ -38,10 +37,11 @@ Link::Link()
     m_HrefIsSet = false;
     m_Rel = utility::conversions::to_string_t("");
     m_RelIsSet = false;
-    m_Type = utility::conversions::to_string_t("");
-    m_TypeIsSet = false;
     m_Title = utility::conversions::to_string_t("");
     m_TitleIsSet = false;
+    m_Type = utility::conversions::to_string_t("");
+    m_TypeIsSet = false;
+
 }
 
 Link::~Link()
@@ -56,7 +56,6 @@ void Link::validate()
 web::json::value Link::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_HrefIsSet)
     {
         val[_XPLATSTR("Href")] = ModelBase::toJson(m_Href);
@@ -65,13 +64,13 @@ web::json::value Link::toJson() const
     {
         val[_XPLATSTR("Rel")] = ModelBase::toJson(m_Rel);
     }
-    if(m_TypeIsSet)
-    {
-        val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
-    }
     if(m_TitleIsSet)
     {
         val[_XPLATSTR("Title")] = ModelBase::toJson(m_Title);
+    }
+    if(m_TypeIsSet)
+    {
+        val[_XPLATSTR("Type")] = ModelBase::toJson(m_Type);
     }
 
     return val;
@@ -84,82 +83,73 @@ void Link::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Href")];
         if(!fieldValue.is_null())
         {
-            setHref(ModelBase::stringFromJson(fieldValue));
+           setHref(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Rel")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Rel")];
         if(!fieldValue.is_null())
         {
-            setRel(ModelBase::stringFromJson(fieldValue));
+           setRel(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Type")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Type")];
-        if(!fieldValue.is_null())
-        {
-            setType(ModelBase::stringFromJson(fieldValue));
-        }
-    }
+
+
     if(val.has_field(_XPLATSTR("Title")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Title")];
         if(!fieldValue.is_null())
         {
-            setTitle(ModelBase::stringFromJson(fieldValue));
+           setTitle(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("Type")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Type")];
+        if(!fieldValue.is_null())
+        {
+           setType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
 }
 
 void Link::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_HrefIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
-        
     }
+
+
     if(m_RelIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Rel"), m_Rel));
-        
     }
-    if(m_TypeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
-        
-    }
+
+
     if(m_TitleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Title"), m_Title));
-        
     }
+
+
+    if(m_TypeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Type"), m_Type));
+    }
+
 }
 
 void Link::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Href")))
-    {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Rel")))
-    {
-        setRel(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Rel"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Type")))
-    {
-        setType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Type"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Title")))
-    {
-        setTitle(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Title"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t Link::getHref() const
@@ -173,6 +163,7 @@ void Link::setHref(utility::string_t value)
     m_Href = value;
     m_HrefIsSet = true;
 }
+
 bool Link::hrefIsSet() const
 {
     return m_HrefIsSet;
@@ -194,6 +185,7 @@ void Link::setRel(utility::string_t value)
     m_Rel = value;
     m_RelIsSet = true;
 }
+
 bool Link::relIsSet() const
 {
     return m_RelIsSet;
@@ -202,27 +194,6 @@ bool Link::relIsSet() const
 void Link::unsetRel()
 {
     m_RelIsSet = false;
-}
-
-utility::string_t Link::getType() const
-{
-    return m_Type;
-}
-
-
-void Link::setType(utility::string_t value)
-{
-    m_Type = value;
-    m_TypeIsSet = true;
-}
-bool Link::typeIsSet() const
-{
-    return m_TypeIsSet;
-}
-
-void Link::unsetType()
-{
-    m_TypeIsSet = false;
 }
 
 utility::string_t Link::getTitle() const
@@ -236,6 +207,7 @@ void Link::setTitle(utility::string_t value)
     m_Title = value;
     m_TitleIsSet = true;
 }
+
 bool Link::titleIsSet() const
 {
     return m_TitleIsSet;
@@ -246,9 +218,30 @@ void Link::unsetTitle()
     m_TitleIsSet = false;
 }
 
-}
-}
-}
-}
+utility::string_t Link::getType() const
+{
+    return m_Type;
 }
 
+
+void Link::setType(utility::string_t value)
+{
+    m_Type = value;
+    m_TypeIsSet = true;
+}
+
+bool Link::typeIsSet() const
+{
+    return m_TypeIsSet;
+}
+
+void Link::unsetType()
+{
+    m_TypeIsSet = false;
+}
+
+}
+}
+}
+}
+}

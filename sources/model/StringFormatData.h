@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StringFormatData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_StringFormatData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_StringFormatData_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Allows to specify System.Drawing.StringFormat options.
 /// </summary>
-class  StringFormatData
+class StringFormatData
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
+
     /// <summary>
     /// Gets or sets a System.Drawing.StringFormatFlags enumeration that contains formatting information.
     /// </summary>
@@ -75,6 +74,7 @@ public:
     bool formatFlagsIsSet() const;
     void unsetFormatFlags();
     void setFormatFlags(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the System.Drawing.Text.HotkeyPrefix object for this System.Drawing.StringFormat object.
     /// </summary>
@@ -82,6 +82,7 @@ public:
     bool hotkeyPrefixIsSet() const;
     void unsetHotkeyPrefix();
     void setHotkeyPrefix(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the vertical alignment of the string.
     /// </summary>
@@ -89,6 +90,7 @@ public:
     bool lineAlignmentIsSet() const;
     void unsetLineAlignment();
     void setLineAlignment(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the System.Drawing.StringTrimming enumeration for this System.Drawing.StringFormat object.
     /// </summary>
@@ -100,12 +102,16 @@ public:
 protected:
     utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
+
     utility::string_t m_FormatFlags;
     bool m_FormatFlagsIsSet;
+
     utility::string_t m_HotkeyPrefix;
     bool m_HotkeyPrefixIsSet;
+
     utility::string_t m_LineAlignment;
     bool m_LineAlignmentIsSet;
+
     utility::string_t m_Trimming;
     bool m_TrimmingIsSet;
 };

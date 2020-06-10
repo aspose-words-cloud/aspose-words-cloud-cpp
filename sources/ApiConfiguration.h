@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiConfiguration.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,9 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #ifndef ASPOSE_WORDS_CLOUD_API_ApiConfiguration_H_
 #define ASPOSE_WORDS_CLOUD_API_ApiConfiguration_H_
-
-
 
 #include <unordered_map>
 #include <map>
@@ -33,6 +32,7 @@
 #include <cpprest/details/basic_types.h>
 #include <cpprest/http_client.h>
 #include "../model/WordsApiErrorResponse.h"
+
 namespace aspose {
 namespace words {
 namespace cloud {
@@ -89,4 +89,5 @@ protected:
 }
 }
 }
+
 #endif /* ASPOSE_WORDS_CLOUD_API_ApiConfiguration_H_ */

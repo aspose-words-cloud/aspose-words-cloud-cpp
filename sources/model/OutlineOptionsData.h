@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OutlineOptionsData.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_OutlineOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_OutlineOptionsData_H_
 
-
-#include "../ModelBase.h"
-
 #include "BookmarksOutlineLevelData.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +39,7 @@ namespace models {
 /// <summary>
 /// container class for outline options.
 /// </summary>
-class  OutlineOptionsData
+class OutlineOptionsData
     : public ModelBase
 {
 public:
@@ -69,6 +67,26 @@ public:
     bool bookmarksOutlineLevelsIsSet() const;
     void unsetBookmarksOutlineLevels();
     void setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value);
+
+    /// <summary>
+    /// Gets or sets a value determining whether or not to create missing outline levels
+    /// when the document is exported.
+    /// Default value for this property is false.
+    /// </summary>
+    bool isCreateMissingOutlineLevels() const;
+    bool createMissingOutlineLevelsIsSet() const;
+    void unsetCreateMissingOutlineLevels();
+    void setCreateMissingOutlineLevels(bool value);
+
+    /// <summary>
+    /// Gets or sets specifies whether or not to create outlines for headings (paragraphs formatted
+    /// with the Heading styles) inside tables.
+    /// </summary>
+    bool isCreateOutlinesForHeadingsInTables() const;
+    bool createOutlinesForHeadingsInTablesIsSet() const;
+    void unsetCreateOutlinesForHeadingsInTables();
+    void setCreateOutlinesForHeadingsInTables(bool value);
+
     /// <summary>
     /// Gets or sets specifies the default level in the document outline at which to display Word bookmarks.
     /// </summary>
@@ -76,20 +94,7 @@ public:
     bool defaultBookmarksOutlineLevelIsSet() const;
     void unsetDefaultBookmarksOutlineLevel();
     void setDefaultBookmarksOutlineLevel(int32_t value);
-    /// <summary>
-    /// Gets or sets a value determining whether or not to create missing outline levels     when the document is exported.     Default value for this property is false.
-    /// </summary>
-    bool isCreateMissingOutlineLevels() const;
-    bool createMissingOutlineLevelsIsSet() const;
-    void unsetCreateMissingOutlineLevels();
-    void setCreateMissingOutlineLevels(bool value);
-    /// <summary>
-    /// Gets or sets specifies whether or not to create outlines for headings (paragraphs formatted     with the Heading styles) inside tables.
-    /// </summary>
-    bool isCreateOutlinesForHeadingsInTables() const;
-    bool createOutlinesForHeadingsInTablesIsSet() const;
-    void unsetCreateOutlinesForHeadingsInTables();
-    void setCreateOutlinesForHeadingsInTables(bool value);
+
     /// <summary>
     /// Gets or sets specifies how many levels in the document outline to show expanded when the file is viewed.
     /// </summary>
@@ -97,6 +102,7 @@ public:
     bool expandedOutlineLevelsIsSet() const;
     void unsetExpandedOutlineLevels();
     void setExpandedOutlineLevels(int32_t value);
+
     /// <summary>
     /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
     /// </summary>
@@ -108,14 +114,19 @@ public:
 protected:
     std::vector<std::shared_ptr<BookmarksOutlineLevelData>> m_BookmarksOutlineLevels;
     bool m_BookmarksOutlineLevelsIsSet;
-    int32_t m_DefaultBookmarksOutlineLevel;
-    bool m_DefaultBookmarksOutlineLevelIsSet;
+
     bool m_CreateMissingOutlineLevels;
     bool m_CreateMissingOutlineLevelsIsSet;
+
     bool m_CreateOutlinesForHeadingsInTables;
     bool m_CreateOutlinesForHeadingsInTablesIsSet;
+
+    int32_t m_DefaultBookmarksOutlineLevel;
+    bool m_DefaultBookmarksOutlineLevelIsSet;
+
     int32_t m_ExpandedOutlineLevels;
     bool m_ExpandedOutlineLevelsIsSet;
+
     int32_t m_HeadingsOutlineLevels;
     bool m_HeadingsOutlineLevelsIsSet;
 };

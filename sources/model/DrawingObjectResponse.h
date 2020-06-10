@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObjectResponse.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,9 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectResponse_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_DrawingObjectResponse_H_
 
-
 #include "DrawingObject.h"
 #include "WordsResponse.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -38,9 +38,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for \&quot;drawingObjects/n\&quot; resource.
+/// Response for "drawingObjects/n" resource.
 /// </summary>
-class  DrawingObjectResponse
+class DrawingObjectResponse
     : public WordsResponse
 {
 public:
@@ -62,7 +62,7 @@ public:
     /// DrawingObjectResponse members
 
     /// <summary>
-    /// Gets or sets DrawingObject.
+    /// Gets or sets drawing object.
     /// </summary>
     std::shared_ptr<DrawingObject> getDrawingObject() const;
     bool drawingObjectIsSet() const;

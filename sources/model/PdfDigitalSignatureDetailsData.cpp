@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PdfDigitalSignatureDetailsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "PdfDigitalSignatureDetailsData.h"
 
 namespace aspose {
@@ -44,6 +43,7 @@ PdfDigitalSignatureDetailsData::PdfDigitalSignatureDetailsData()
     m_ReasonIsSet = false;
     m_SignatureDate = utility::datetime();
     m_SignatureDateIsSet = false;
+
 }
 
 PdfDigitalSignatureDetailsData::~PdfDigitalSignatureDetailsData()
@@ -58,7 +58,6 @@ void PdfDigitalSignatureDetailsData::validate()
 web::json::value PdfDigitalSignatureDetailsData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_CertificateFilenameIsSet)
     {
         val[_XPLATSTR("CertificateFilename")] = ModelBase::toJson(m_CertificateFilename);
@@ -90,99 +89,89 @@ void PdfDigitalSignatureDetailsData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("CertificateFilename")];
         if(!fieldValue.is_null())
         {
-            setCertificateFilename(ModelBase::stringFromJson(fieldValue));
+           setCertificateFilename(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("HashAlgorithm")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("HashAlgorithm")];
         if(!fieldValue.is_null())
         {
-            setHashAlgorithm(ModelBase::stringFromJson(fieldValue));
+           setHashAlgorithm(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Location")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Location")];
         if(!fieldValue.is_null())
         {
-            setLocation(ModelBase::stringFromJson(fieldValue));
+           setLocation(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Reason")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Reason")];
         if(!fieldValue.is_null())
         {
-            setReason(ModelBase::stringFromJson(fieldValue));
+           setReason(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("SignatureDate")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("SignatureDate")];
         if(!fieldValue.is_null())
         {
-            setSignatureDate(ModelBase::dateFromJson(fieldValue));
+           setSignatureDate(ModelBase::dateTimeFromJson(fieldValue));
         }
     }
+
 }
 
 void PdfDigitalSignatureDetailsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CertificateFilenameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CertificateFilename"), m_CertificateFilename));
-        
     }
+
+
     if(m_HashAlgorithmIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HashAlgorithm"), m_HashAlgorithm));
-        
     }
+
+
     if(m_LocationIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Location"), m_Location));
-        
     }
+
+
     if(m_ReasonIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Reason"), m_Reason));
-        
     }
+
+
     if(m_SignatureDateIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SignatureDate"), m_SignatureDate));
-        
     }
+
 }
 
 void PdfDigitalSignatureDetailsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("CertificateFilename")))
-    {
-        setCertificateFilename(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("CertificateFilename"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HashAlgorithm")))
-    {
-        setHashAlgorithm(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HashAlgorithm"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Location")))
-    {
-        setLocation(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Location"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Reason")))
-    {
-        setReason(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Reason"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("SignatureDate")))
-    {
-        setSignatureDate(ModelBase::dateFromHttpContent(multipart->getContent(_XPLATSTR("SignatureDate"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t PdfDigitalSignatureDetailsData::getCertificateFilename() const
@@ -196,6 +185,7 @@ void PdfDigitalSignatureDetailsData::setCertificateFilename(utility::string_t va
     m_CertificateFilename = value;
     m_CertificateFilenameIsSet = true;
 }
+
 bool PdfDigitalSignatureDetailsData::certificateFilenameIsSet() const
 {
     return m_CertificateFilenameIsSet;
@@ -217,6 +207,7 @@ void PdfDigitalSignatureDetailsData::setHashAlgorithm(utility::string_t value)
     m_HashAlgorithm = value;
     m_HashAlgorithmIsSet = true;
 }
+
 bool PdfDigitalSignatureDetailsData::hashAlgorithmIsSet() const
 {
     return m_HashAlgorithmIsSet;
@@ -238,6 +229,7 @@ void PdfDigitalSignatureDetailsData::setLocation(utility::string_t value)
     m_Location = value;
     m_LocationIsSet = true;
 }
+
 bool PdfDigitalSignatureDetailsData::locationIsSet() const
 {
     return m_LocationIsSet;
@@ -259,6 +251,7 @@ void PdfDigitalSignatureDetailsData::setReason(utility::string_t value)
     m_Reason = value;
     m_ReasonIsSet = true;
 }
+
 bool PdfDigitalSignatureDetailsData::reasonIsSet() const
 {
     return m_ReasonIsSet;
@@ -280,6 +273,7 @@ void PdfDigitalSignatureDetailsData::setSignatureDate(utility::datetime value)
     m_SignatureDate = value;
     m_SignatureDateIsSet = true;
 }
+
 bool PdfDigitalSignatureDetailsData::signatureDateIsSet() const
 {
     return m_SignatureDateIsSet;
@@ -295,4 +289,3 @@ void PdfDigitalSignatureDetailsData::unsetSignatureDate()
 }
 }
 }
-

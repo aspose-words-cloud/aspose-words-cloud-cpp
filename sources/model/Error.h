@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Error.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Error_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Error_H_
 
-
-#include "../ModelBase.h"
-
 #include "ErrorDetails.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,9 +37,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Error
+/// Error.
 /// </summary>
-class  Error
+class Error
     : public ModelBase
 {
 public:
@@ -63,43 +61,49 @@ public:
     /// Error members
 
     /// <summary>
-    /// Code             
+    /// Code.
     /// </summary>
     utility::string_t getCode() const;
     bool codeIsSet() const;
     void unsetCode();
     void setCode(utility::string_t value);
+
     /// <summary>
-    /// Message             
-    /// </summary>
-    utility::string_t getMessage() const;
-    bool messageIsSet() const;
-    void unsetMessage();
-    void setMessage(utility::string_t value);
-    /// <summary>
-    /// Description             
+    /// Description.
     /// </summary>
     utility::string_t getDescription() const;
     bool descriptionIsSet() const;
     void unsetDescription();
     void setDescription(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets InnerError.
+    /// Inner Error.
     /// </summary>
     std::shared_ptr<ErrorDetails> getInnerError() const;
     bool innerErrorIsSet() const;
     void unsetInnerError();
     void setInnerError(std::shared_ptr<ErrorDetails> value);
 
+    /// <summary>
+    /// Message.
+    /// </summary>
+    utility::string_t getMessage() const;
+    bool messageIsSet() const;
+    void unsetMessage();
+    void setMessage(utility::string_t value);
+
 protected:
     utility::string_t m_Code;
     bool m_CodeIsSet;
-    utility::string_t m_Message;
-    bool m_MessageIsSet;
+
     utility::string_t m_Description;
     bool m_DescriptionIsSet;
+
     std::shared_ptr<ErrorDetails> m_InnerError;
     bool m_InnerErrorIsSet;
+
+    utility::string_t m_Message;
+    bool m_MessageIsSet;
 };
 
 }

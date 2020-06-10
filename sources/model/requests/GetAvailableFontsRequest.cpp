@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetAvailableFontsRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,31 +22,31 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "GetAvailableFontsRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 GetAvailableFontsRequest::GetAvailableFontsRequest(
-        boost::optional<utility::string_t> fontsLocation
-        ) : 
-            m_fontsLocation(std::move(fontsLocation))
-        {
-            
-        }
-
-        boost::optional<utility::string_t> GetAvailableFontsRequest::getFontsLocation() const
-        {
-            return m_fontsLocation;
-        }
-        void GetAvailableFontsRequest::setFontsLocation(boost::optional<utility::string_t> fontsLocation){
-            m_fontsLocation = std::move(fontsLocation);
-        }
-
-}
-}
-}
-}
+    boost::optional< utility::string_t > fontsLocation
+) : m_FontsLocation(std::move(fontsLocation))
+{
 }
 
+boost::optional< utility::string_t > GetAvailableFontsRequest::getFontsLocation() const
+{
+    return m_FontsLocation;
+}
+
+void GetAvailableFontsRequest::setFontsLocation(boost::optional< utility::string_t > fontsLocation)
+{
+    m_FontsLocation = std::move(fontsLocation);
+}
+
+}
+}
+}
+}
+}

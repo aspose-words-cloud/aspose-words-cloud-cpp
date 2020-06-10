@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 DocumentResponse::DocumentResponse()
 {
     m_DocumentIsSet = false;
+
 }
 
 DocumentResponse::~DocumentResponse()
@@ -49,7 +49,6 @@ void DocumentResponse::validate()
 web::json::value DocumentResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_DocumentIsSet)
     {
         val[_XPLATSTR("Document")] = ModelBase::toJson(m_Document);
@@ -72,36 +71,26 @@ void DocumentResponse::fromJson(web::json::value& val)
             setDocument( newItem );
         }
     }
+
 }
 
 void DocumentResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DocumentIsSet)
     {
         if (m_Document.get())
         {
             m_Document->toMultipart(multipart, _XPLATSTR("Document."));
         }
-        
     }
+
 }
 
 void DocumentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Document")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Document")))
-        {
-            std::shared_ptr<Document> newItem(new Document());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Document."));
-            setDocument( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Document> DocumentResponse::getDocument() const
@@ -115,6 +104,7 @@ void DocumentResponse::setDocument(std::shared_ptr<Document> value)
     m_Document = value;
     m_DocumentIsSet = true;
 }
+
 bool DocumentResponse::documentIsSet() const
 {
     return m_DocumentIsSet;
@@ -130,4 +120,3 @@ void DocumentResponse::unsetDocument()
 }
 }
 }
-

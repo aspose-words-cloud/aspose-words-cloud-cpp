@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FieldLink.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FieldLink.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ FieldLink::FieldLink()
 {
     m_FieldCode = utility::conversions::to_string_t("");
     m_FieldCodeIsSet = false;
+
 }
 
 FieldLink::~FieldLink()
@@ -50,7 +50,6 @@ void FieldLink::validate()
 web::json::value FieldLink::toJson() const
 {
     web::json::value val = this->NodeLink::toJson();
-
     if(m_FieldCodeIsSet)
     {
         val[_XPLATSTR("FieldCode")] = ModelBase::toJson(m_FieldCode);
@@ -68,31 +67,26 @@ void FieldLink::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("FieldCode")];
         if(!fieldValue.is_null())
         {
-            setFieldCode(ModelBase::stringFromJson(fieldValue));
+           setFieldCode(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void FieldLink::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     NodeLink::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FieldCodeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FieldCode"), m_FieldCode));
-        
     }
+
 }
 
 void FieldLink::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    NodeLink::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("FieldCode")))
-    {
-        setFieldCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FieldCode"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t FieldLink::getFieldCode() const
@@ -106,6 +100,7 @@ void FieldLink::setFieldCode(utility::string_t value)
     m_FieldCode = value;
     m_FieldCodeIsSet = true;
 }
+
 bool FieldLink::fieldCodeIsSet() const
 {
     return m_FieldCodeIsSet;
@@ -121,4 +116,3 @@ void FieldLink::unsetFieldCode()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CommentResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "CommentResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 CommentResponse::CommentResponse()
 {
     m_CommentIsSet = false;
+
 }
 
 CommentResponse::~CommentResponse()
@@ -49,7 +49,6 @@ void CommentResponse::validate()
 web::json::value CommentResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_CommentIsSet)
     {
         val[_XPLATSTR("Comment")] = ModelBase::toJson(m_Comment);
@@ -72,36 +71,26 @@ void CommentResponse::fromJson(web::json::value& val)
             setComment( newItem );
         }
     }
+
 }
 
 void CommentResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CommentIsSet)
     {
         if (m_Comment.get())
         {
             m_Comment->toMultipart(multipart, _XPLATSTR("Comment."));
         }
-        
     }
+
 }
 
 void CommentResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Comment")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Comment")))
-        {
-            std::shared_ptr<Comment> newItem(new Comment());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Comment."));
-            setComment( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Comment> CommentResponse::getComment() const
@@ -115,6 +104,7 @@ void CommentResponse::setComment(std::shared_ptr<Comment> value)
     m_Comment = value;
     m_CommentIsSet = true;
 }
+
 bool CommentResponse::commentIsSet() const
 {
     return m_CommentIsSet;
@@ -130,4 +120,3 @@ void CommentResponse::unsetComment()
 }
 }
 }
-

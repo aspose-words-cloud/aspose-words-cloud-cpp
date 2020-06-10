@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OutlineOptionsData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "OutlineOptionsData.h"
 
 namespace aspose {
@@ -35,16 +34,17 @@ namespace models {
 OutlineOptionsData::OutlineOptionsData()
 {
     m_BookmarksOutlineLevelsIsSet = false;
-    m_DefaultBookmarksOutlineLevel = 0;
-    m_DefaultBookmarksOutlineLevelIsSet = false;
     m_CreateMissingOutlineLevels = false;
     m_CreateMissingOutlineLevelsIsSet = false;
     m_CreateOutlinesForHeadingsInTables = false;
     m_CreateOutlinesForHeadingsInTablesIsSet = false;
+    m_DefaultBookmarksOutlineLevel = 0;
+    m_DefaultBookmarksOutlineLevelIsSet = false;
     m_ExpandedOutlineLevels = 0;
     m_ExpandedOutlineLevelsIsSet = false;
     m_HeadingsOutlineLevels = 0;
     m_HeadingsOutlineLevelsIsSet = false;
+
 }
 
 OutlineOptionsData::~OutlineOptionsData()
@@ -59,22 +59,18 @@ void OutlineOptionsData::validate()
 web::json::value OutlineOptionsData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
+    if(m_BookmarksOutlineLevelsIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_BookmarksOutlineLevels.begin(), m_BookmarksOutlineLevels.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<BookmarksOutlineLevelData> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<BookmarksOutlineLevelData> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("BookmarksOutlineLevels")] = web::json::value::array(jsonArray);
         }
-    }
-    if(m_DefaultBookmarksOutlineLevelIsSet)
-    {
-        val[_XPLATSTR("DefaultBookmarksOutlineLevel")] = ModelBase::toJson(m_DefaultBookmarksOutlineLevel);
     }
     if(m_CreateMissingOutlineLevelsIsSet)
     {
@@ -83,6 +79,10 @@ web::json::value OutlineOptionsData::toJson() const
     if(m_CreateOutlinesForHeadingsInTablesIsSet)
     {
         val[_XPLATSTR("CreateOutlinesForHeadingsInTables")] = ModelBase::toJson(m_CreateOutlinesForHeadingsInTables);
+    }
+    if(m_DefaultBookmarksOutlineLevelIsSet)
+    {
+        val[_XPLATSTR("DefaultBookmarksOutlineLevel")] = ModelBase::toJson(m_DefaultBookmarksOutlineLevel);
     }
     if(m_ExpandedOutlineLevelsIsSet)
     {
@@ -103,151 +103,122 @@ void OutlineOptionsData::fromJson(web::json::value& val)
         if(val.has_field(_XPLATSTR("BookmarksOutlineLevels")) 
                             && !val[_XPLATSTR("BookmarksOutlineLevels")].is_null())
         {
-        auto arr = val[_XPLATSTR("BookmarksOutlineLevels")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<BookmarksOutlineLevelData>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<BookmarksOutlineLevelData> newItem(new BookmarksOutlineLevelData());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("BookmarksOutlineLevels")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<BookmarksOutlineLevelData> newItem(new BookmarksOutlineLevelData());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<BookmarksOutlineLevelData>)nullptr;
+            });
         }
     }
-    if(val.has_field(_XPLATSTR("DefaultBookmarksOutlineLevel")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("DefaultBookmarksOutlineLevel")];
-        if(!fieldValue.is_null())
-        {
-            setDefaultBookmarksOutlineLevel(ModelBase::int32_tFromJson(fieldValue));
-        }
-    }
+
+
     if(val.has_field(_XPLATSTR("CreateMissingOutlineLevels")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("CreateMissingOutlineLevels")];
         if(!fieldValue.is_null())
         {
-            setCreateMissingOutlineLevels(ModelBase::boolFromJson(fieldValue));
+           setCreateMissingOutlineLevels(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("CreateOutlinesForHeadingsInTables")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("CreateOutlinesForHeadingsInTables")];
         if(!fieldValue.is_null())
         {
-            setCreateOutlinesForHeadingsInTables(ModelBase::boolFromJson(fieldValue));
+           setCreateOutlinesForHeadingsInTables(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("DefaultBookmarksOutlineLevel")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("DefaultBookmarksOutlineLevel")];
+        if(!fieldValue.is_null())
+        {
+           setDefaultBookmarksOutlineLevel(ModelBase::integerFromJson(fieldValue));
+        }
+    }
+
+
     if(val.has_field(_XPLATSTR("ExpandedOutlineLevels")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ExpandedOutlineLevels")];
         if(!fieldValue.is_null())
         {
-            setExpandedOutlineLevels(ModelBase::int32_tFromJson(fieldValue));
+           setExpandedOutlineLevels(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("HeadingsOutlineLevels")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("HeadingsOutlineLevels")];
         if(!fieldValue.is_null())
         {
-            setHeadingsOutlineLevels(ModelBase::int32_tFromJson(fieldValue));
+           setHeadingsOutlineLevels(ModelBase::integerFromJson(fieldValue));
         }
     }
+
 }
 
 void OutlineOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_BookmarksOutlineLevels.begin(), m_BookmarksOutlineLevels.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<BookmarksOutlineLevelData> item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BookmarksOutlineLevels"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
-    if(m_DefaultBookmarksOutlineLevelIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DefaultBookmarksOutlineLevel"), m_DefaultBookmarksOutlineLevel));
-        
-    }
+
+
     if(m_CreateMissingOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateMissingOutlineLevels"), m_CreateMissingOutlineLevels));
-        
     }
+
+
     if(m_CreateOutlinesForHeadingsInTablesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CreateOutlinesForHeadingsInTables"), m_CreateOutlinesForHeadingsInTables));
-        
     }
+
+
+    if(m_DefaultBookmarksOutlineLevelIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DefaultBookmarksOutlineLevel"), m_DefaultBookmarksOutlineLevel));
+    }
+
+
     if(m_ExpandedOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExpandedOutlineLevels"), m_ExpandedOutlineLevels));
-        
     }
+
+
     if(m_HeadingsOutlineLevelsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HeadingsOutlineLevels"), m_HeadingsOutlineLevels));
-        
     }
+
 }
 
 void OutlineOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    {
-        m_BookmarksOutlineLevels.clear();
-        if(multipart->hasContent(_XPLATSTR("BookmarksOutlineLevels")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("BookmarksOutlineLevels")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_BookmarksOutlineLevels), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<BookmarksOutlineLevelData>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<BookmarksOutlineLevelData> newItem(new BookmarksOutlineLevelData());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("DefaultBookmarksOutlineLevel")))
-    {
-        setDefaultBookmarksOutlineLevel(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("DefaultBookmarksOutlineLevel"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CreateMissingOutlineLevels")))
-    {
-        setCreateMissingOutlineLevels(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CreateMissingOutlineLevels"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CreateOutlinesForHeadingsInTables")))
-    {
-        setCreateOutlinesForHeadingsInTables(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("CreateOutlinesForHeadingsInTables"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ExpandedOutlineLevels")))
-    {
-        setExpandedOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ExpandedOutlineLevels"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HeadingsOutlineLevels")))
-    {
-        setHeadingsOutlineLevels(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("HeadingsOutlineLevels"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& OutlineOptionsData::getBookmarksOutlineLevels()
@@ -255,11 +226,13 @@ std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& OutlineOptionsData::get
     return m_BookmarksOutlineLevels;
 }
 
+
 void OutlineOptionsData::setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value)
 {
     m_BookmarksOutlineLevels = value;
     m_BookmarksOutlineLevelsIsSet = true;
 }
+
 bool OutlineOptionsData::bookmarksOutlineLevelsIsSet() const
 {
     return m_BookmarksOutlineLevelsIsSet;
@@ -268,27 +241,6 @@ bool OutlineOptionsData::bookmarksOutlineLevelsIsSet() const
 void OutlineOptionsData::unsetBookmarksOutlineLevels()
 {
     m_BookmarksOutlineLevelsIsSet = false;
-}
-
-int32_t OutlineOptionsData::getDefaultBookmarksOutlineLevel() const
-{
-    return m_DefaultBookmarksOutlineLevel;
-}
-
-
-void OutlineOptionsData::setDefaultBookmarksOutlineLevel(int32_t value)
-{
-    m_DefaultBookmarksOutlineLevel = value;
-    m_DefaultBookmarksOutlineLevelIsSet = true;
-}
-bool OutlineOptionsData::defaultBookmarksOutlineLevelIsSet() const
-{
-    return m_DefaultBookmarksOutlineLevelIsSet;
-}
-
-void OutlineOptionsData::unsetDefaultBookmarksOutlineLevel()
-{
-    m_DefaultBookmarksOutlineLevelIsSet = false;
 }
 
 bool OutlineOptionsData::isCreateMissingOutlineLevels() const
@@ -302,6 +254,7 @@ void OutlineOptionsData::setCreateMissingOutlineLevels(bool value)
     m_CreateMissingOutlineLevels = value;
     m_CreateMissingOutlineLevelsIsSet = true;
 }
+
 bool OutlineOptionsData::createMissingOutlineLevelsIsSet() const
 {
     return m_CreateMissingOutlineLevelsIsSet;
@@ -323,6 +276,7 @@ void OutlineOptionsData::setCreateOutlinesForHeadingsInTables(bool value)
     m_CreateOutlinesForHeadingsInTables = value;
     m_CreateOutlinesForHeadingsInTablesIsSet = true;
 }
+
 bool OutlineOptionsData::createOutlinesForHeadingsInTablesIsSet() const
 {
     return m_CreateOutlinesForHeadingsInTablesIsSet;
@@ -331,6 +285,28 @@ bool OutlineOptionsData::createOutlinesForHeadingsInTablesIsSet() const
 void OutlineOptionsData::unsetCreateOutlinesForHeadingsInTables()
 {
     m_CreateOutlinesForHeadingsInTablesIsSet = false;
+}
+
+int32_t OutlineOptionsData::getDefaultBookmarksOutlineLevel() const
+{
+    return m_DefaultBookmarksOutlineLevel;
+}
+
+
+void OutlineOptionsData::setDefaultBookmarksOutlineLevel(int32_t value)
+{
+    m_DefaultBookmarksOutlineLevel = value;
+    m_DefaultBookmarksOutlineLevelIsSet = true;
+}
+
+bool OutlineOptionsData::defaultBookmarksOutlineLevelIsSet() const
+{
+    return m_DefaultBookmarksOutlineLevelIsSet;
+}
+
+void OutlineOptionsData::unsetDefaultBookmarksOutlineLevel()
+{
+    m_DefaultBookmarksOutlineLevelIsSet = false;
 }
 
 int32_t OutlineOptionsData::getExpandedOutlineLevels() const
@@ -344,6 +320,7 @@ void OutlineOptionsData::setExpandedOutlineLevels(int32_t value)
     m_ExpandedOutlineLevels = value;
     m_ExpandedOutlineLevelsIsSet = true;
 }
+
 bool OutlineOptionsData::expandedOutlineLevelsIsSet() const
 {
     return m_ExpandedOutlineLevelsIsSet;
@@ -365,6 +342,7 @@ void OutlineOptionsData::setHeadingsOutlineLevels(int32_t value)
     m_HeadingsOutlineLevels = value;
     m_HeadingsOutlineLevelsIsSet = true;
 }
+
 bool OutlineOptionsData::headingsOutlineLevelsIsSet() const
 {
     return m_HeadingsOutlineLevelsIsSet;
@@ -380,4 +358,3 @@ void OutlineOptionsData::unsetHeadingsOutlineLevels()
 }
 }
 }
-

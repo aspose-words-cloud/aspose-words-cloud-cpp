@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassifyDocumentRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef classifyDocument_H
-#define classifyDocument_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ClassifyDocumentRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ClassifyDocumentRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,46 +36,47 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class ClassifyDocumentRequest{
+class ClassifyDocumentRequest {
     public: 
-     ClassifyDocumentRequest(
-                utility::string_t documentName,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> bestClassesCount,
-                boost::optional<utility::string_t> taxonomy
+ ClassifyDocumentRequest(
+            utility::string_t documentName,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > bestClassesCount,
+            boost::optional< utility::string_t > taxonomy
         );
 
         utility::string_t getDocumentName() const;
         void setDocumentName(utility::string_t documentName);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getBestClassesCount() const;
-        void setBestClassesCount(boost::optional<utility::string_t> bestClassesCount);
+        boost::optional< utility::string_t > getBestClassesCount() const;
+        void setBestClassesCount(boost::optional< utility::string_t > bestClassesCount);
 
-        boost::optional<utility::string_t> getTaxonomy() const;
-        void setTaxonomy(boost::optional<utility::string_t> taxonomy);
+        boost::optional< utility::string_t > getTaxonomy() const;
+        void setTaxonomy(boost::optional< utility::string_t > taxonomy);
+
     private:
-        utility::string_t m_documentName;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_bestClassesCount;
-        boost::optional<utility::string_t> m_taxonomy;
+        utility::string_t m_DocumentName;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_BestClassesCount;
+        boost::optional< utility::string_t > m_Taxonomy;
 };
 
 }
@@ -83,4 +85,4 @@ class ClassifyDocumentRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_ClassifyDocumentRequest_H_ */

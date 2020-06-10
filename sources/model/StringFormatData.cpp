@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StringFormatData.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "StringFormatData.h"
 
 namespace aspose {
@@ -34,16 +33,16 @@ namespace models {
 
 StringFormatData::StringFormatData()
 {
-    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
-    m_FormatFlags = utility::conversions::to_string_t("");
+
     m_FormatFlagsIsSet = false;
-    m_HotkeyPrefix = utility::conversions::to_string_t("");
+
     m_HotkeyPrefixIsSet = false;
-    m_LineAlignment = utility::conversions::to_string_t("");
+
     m_LineAlignmentIsSet = false;
-    m_Trimming = utility::conversions::to_string_t("");
+
     m_TrimmingIsSet = false;
+
 }
 
 StringFormatData::~StringFormatData()
@@ -58,7 +57,6 @@ void StringFormatData::validate()
 web::json::value StringFormatData::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_AlignmentIsSet)
     {
         val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
@@ -90,99 +88,89 @@ void StringFormatData::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
         if(!fieldValue.is_null())
         {
-            setAlignment(ModelBase::stringFromJson(fieldValue));
+           setAlignment(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("FormatFlags")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("FormatFlags")];
         if(!fieldValue.is_null())
         {
-            setFormatFlags(ModelBase::stringFromJson(fieldValue));
+           setFormatFlags(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("HotkeyPrefix")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("HotkeyPrefix")];
         if(!fieldValue.is_null())
         {
-            setHotkeyPrefix(ModelBase::stringFromJson(fieldValue));
+           setHotkeyPrefix(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LineAlignment")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LineAlignment")];
         if(!fieldValue.is_null())
         {
-            setLineAlignment(ModelBase::stringFromJson(fieldValue));
+           setLineAlignment(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Trimming")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Trimming")];
         if(!fieldValue.is_null())
         {
-            setTrimming(ModelBase::stringFromJson(fieldValue));
+           setTrimming(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void StringFormatData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_AlignmentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
-        
     }
+
+
     if(m_FormatFlagsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("FormatFlags"), m_FormatFlags));
-        
     }
+
+
     if(m_HotkeyPrefixIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("HotkeyPrefix"), m_HotkeyPrefix));
-        
     }
+
+
     if(m_LineAlignmentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LineAlignment"), m_LineAlignment));
-        
     }
+
+
     if(m_TrimmingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Trimming"), m_Trimming));
-        
     }
+
 }
 
 void StringFormatData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
-    {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("FormatFlags")))
-    {
-        setFormatFlags(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("FormatFlags"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("HotkeyPrefix")))
-    {
-        setHotkeyPrefix(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("HotkeyPrefix"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LineAlignment")))
-    {
-        setLineAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("LineAlignment"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Trimming")))
-    {
-        setTrimming(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Trimming"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t StringFormatData::getAlignment() const
@@ -196,6 +184,7 @@ void StringFormatData::setAlignment(utility::string_t value)
     m_Alignment = value;
     m_AlignmentIsSet = true;
 }
+
 bool StringFormatData::alignmentIsSet() const
 {
     return m_AlignmentIsSet;
@@ -217,6 +206,7 @@ void StringFormatData::setFormatFlags(utility::string_t value)
     m_FormatFlags = value;
     m_FormatFlagsIsSet = true;
 }
+
 bool StringFormatData::formatFlagsIsSet() const
 {
     return m_FormatFlagsIsSet;
@@ -238,6 +228,7 @@ void StringFormatData::setHotkeyPrefix(utility::string_t value)
     m_HotkeyPrefix = value;
     m_HotkeyPrefixIsSet = true;
 }
+
 bool StringFormatData::hotkeyPrefixIsSet() const
 {
     return m_HotkeyPrefixIsSet;
@@ -259,6 +250,7 @@ void StringFormatData::setLineAlignment(utility::string_t value)
     m_LineAlignment = value;
     m_LineAlignmentIsSet = true;
 }
+
 bool StringFormatData::lineAlignmentIsSet() const
 {
     return m_LineAlignmentIsSet;
@@ -280,6 +272,7 @@ void StringFormatData::setTrimming(utility::string_t value)
     m_Trimming = value;
     m_TrimmingIsSet = true;
 }
+
 bool StringFormatData::trimmingIsSet() const
 {
     return m_TrimmingIsSet;
@@ -295,4 +288,3 @@ void StringFormatData::unsetTrimming()
 }
 }
 }
-

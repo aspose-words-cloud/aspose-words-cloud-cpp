@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentWithFormatRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef getDocumentWithFormat_H
-#define getDocumentWithFormat_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_GetDocumentWithFormatRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_GetDocumentWithFormatRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,17 +36,17 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class GetDocumentWithFormatRequest{
+class GetDocumentWithFormatRequest {
     public: 
-     GetDocumentWithFormatRequest(
-                utility::string_t name,
-                utility::string_t format,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> outPath,
-                boost::optional<utility::string_t> fontsLocation
+ GetDocumentWithFormatRequest(
+            utility::string_t name,
+            utility::string_t format,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > outPath,
+            boost::optional< utility::string_t > fontsLocation
         );
 
         utility::string_t getName() const;
@@ -54,32 +55,33 @@ class GetDocumentWithFormatRequest{
         utility::string_t getFormat() const;
         void setFormat(utility::string_t format);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getOutPath() const;
-        void setOutPath(boost::optional<utility::string_t> outPath);
+        boost::optional< utility::string_t > getOutPath() const;
+        void setOutPath(boost::optional< utility::string_t > outPath);
 
-        boost::optional<utility::string_t> getFontsLocation() const;
-        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+        boost::optional< utility::string_t > getFontsLocation() const;
+        void setFontsLocation(boost::optional< utility::string_t > fontsLocation);
+
     private:
-        utility::string_t m_name;
-        utility::string_t m_format;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_outPath;
-        boost::optional<utility::string_t> m_fontsLocation;
+        utility::string_t m_Name;
+        utility::string_t m_Format;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_OutPath;
+        boost::optional< utility::string_t > m_FontsLocation;
 };
 
 }
@@ -88,4 +90,4 @@ class GetDocumentWithFormatRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_GetDocumentWithFormatRequest_H_ */

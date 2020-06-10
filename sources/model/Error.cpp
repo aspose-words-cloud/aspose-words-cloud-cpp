@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Error.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "Error.h"
 
 namespace aspose {
@@ -36,11 +35,13 @@ Error::Error()
 {
     m_Code = utility::conversions::to_string_t("");
     m_CodeIsSet = false;
-    m_Message = utility::conversions::to_string_t("");
-    m_MessageIsSet = false;
     m_Description = utility::conversions::to_string_t("");
     m_DescriptionIsSet = false;
+
     m_InnerErrorIsSet = false;
+    m_Message = utility::conversions::to_string_t("");
+    m_MessageIsSet = false;
+
 }
 
 Error::~Error()
@@ -55,14 +56,9 @@ void Error::validate()
 web::json::value Error::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_CodeIsSet)
     {
         val[_XPLATSTR("Code")] = ModelBase::toJson(m_Code);
-    }
-    if(m_MessageIsSet)
-    {
-        val[_XPLATSTR("Message")] = ModelBase::toJson(m_Message);
     }
     if(m_DescriptionIsSet)
     {
@@ -71,6 +67,10 @@ web::json::value Error::toJson() const
     if(m_InnerErrorIsSet)
     {
         val[_XPLATSTR("InnerError")] = ModelBase::toJson(m_InnerError);
+    }
+    if(m_MessageIsSet)
+    {
+        val[_XPLATSTR("Message")] = ModelBase::toJson(m_Message);
     }
 
     return val;
@@ -83,25 +83,21 @@ void Error::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Code")];
         if(!fieldValue.is_null())
         {
-            setCode(ModelBase::stringFromJson(fieldValue));
+           setCode(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(_XPLATSTR("Message")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Message")];
-        if(!fieldValue.is_null())
-        {
-            setMessage(ModelBase::stringFromJson(fieldValue));
-        }
-    }
+
+
     if(val.has_field(_XPLATSTR("Description")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Description")];
         if(!fieldValue.is_null())
         {
-            setDescription(ModelBase::stringFromJson(fieldValue));
+           setDescription(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("InnerError")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("InnerError")];
@@ -112,63 +108,53 @@ void Error::fromJson(web::json::value& val)
             setInnerError( newItem );
         }
     }
+
+
+    if(val.has_field(_XPLATSTR("Message")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("Message")];
+        if(!fieldValue.is_null())
+        {
+           setMessage(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
 }
 
 void Error::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CodeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
-        
     }
-    if(m_MessageIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Message"), m_Message));
-        
-    }
+
+
     if(m_DescriptionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Description"), m_Description));
-        
     }
+
+
     if(m_InnerErrorIsSet)
     {
         if (m_InnerError.get())
         {
             m_InnerError->toMultipart(multipart, _XPLATSTR("InnerError."));
         }
-        
     }
+
+
+    if(m_MessageIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Message"), m_Message));
+    }
+
 }
 
 void Error::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Code")))
-    {
-        setCode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Code"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Message")))
-    {
-        setMessage(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Message"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Description")))
-    {
-        setDescription(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Description"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("InnerError")))
-    {
-        if(multipart->hasContent(_XPLATSTR("InnerError")))
-        {
-            std::shared_ptr<ErrorDetails> newItem(new ErrorDetails());
-            newItem->fromMultiPart(multipart, _XPLATSTR("InnerError."));
-            setInnerError( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t Error::getCode() const
@@ -182,6 +168,7 @@ void Error::setCode(utility::string_t value)
     m_Code = value;
     m_CodeIsSet = true;
 }
+
 bool Error::codeIsSet() const
 {
     return m_CodeIsSet;
@@ -190,27 +177,6 @@ bool Error::codeIsSet() const
 void Error::unsetCode()
 {
     m_CodeIsSet = false;
-}
-
-utility::string_t Error::getMessage() const
-{
-    return m_Message;
-}
-
-
-void Error::setMessage(utility::string_t value)
-{
-    m_Message = value;
-    m_MessageIsSet = true;
-}
-bool Error::messageIsSet() const
-{
-    return m_MessageIsSet;
-}
-
-void Error::unsetMessage()
-{
-    m_MessageIsSet = false;
 }
 
 utility::string_t Error::getDescription() const
@@ -224,6 +190,7 @@ void Error::setDescription(utility::string_t value)
     m_Description = value;
     m_DescriptionIsSet = true;
 }
+
 bool Error::descriptionIsSet() const
 {
     return m_DescriptionIsSet;
@@ -245,6 +212,7 @@ void Error::setInnerError(std::shared_ptr<ErrorDetails> value)
     m_InnerError = value;
     m_InnerErrorIsSet = true;
 }
+
 bool Error::innerErrorIsSet() const
 {
     return m_InnerErrorIsSet;
@@ -255,9 +223,30 @@ void Error::unsetInnerError()
     m_InnerErrorIsSet = false;
 }
 
-}
-}
-}
-}
+utility::string_t Error::getMessage() const
+{
+    return m_Message;
 }
 
+
+void Error::setMessage(utility::string_t value)
+{
+    m_Message = value;
+    m_MessageIsSet = true;
+}
+
+bool Error::messageIsSet() const
+{
+    return m_MessageIsSet;
+}
+
+void Error::unsetMessage()
+{
+    m_MessageIsSet = false;
+}
+
+}
+}
+}
+}
+}

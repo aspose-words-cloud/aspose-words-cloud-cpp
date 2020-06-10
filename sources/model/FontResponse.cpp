@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FontResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FontResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 FontResponse::FontResponse()
 {
     m_FontIsSet = false;
+
 }
 
 FontResponse::~FontResponse()
@@ -49,7 +49,6 @@ void FontResponse::validate()
 web::json::value FontResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_FontIsSet)
     {
         val[_XPLATSTR("Font")] = ModelBase::toJson(m_Font);
@@ -72,36 +71,26 @@ void FontResponse::fromJson(web::json::value& val)
             setFont( newItem );
         }
     }
+
 }
 
 void FontResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_FontIsSet)
     {
         if (m_Font.get())
         {
             m_Font->toMultipart(multipart, _XPLATSTR("Font."));
         }
-        
     }
+
 }
 
 void FontResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Font")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Font")))
-        {
-            std::shared_ptr<Font> newItem(new Font());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Font."));
-            setFont( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<Font> FontResponse::getFont() const
@@ -115,6 +104,7 @@ void FontResponse::setFont(std::shared_ptr<Font> value)
     m_Font = value;
     m_FontIsSet = true;
 }
+
 bool FontResponse::fontIsSet() const
 {
     return m_FontIsSet;
@@ -130,4 +120,3 @@ void FontResponse::unsetFont()
 }
 }
 }
-

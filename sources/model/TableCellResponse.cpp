@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableCellResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableCellResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 TableCellResponse::TableCellResponse()
 {
     m_CellIsSet = false;
+
 }
 
 TableCellResponse::~TableCellResponse()
@@ -49,7 +49,6 @@ void TableCellResponse::validate()
 web::json::value TableCellResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_CellIsSet)
     {
         val[_XPLATSTR("Cell")] = ModelBase::toJson(m_Cell);
@@ -72,36 +71,26 @@ void TableCellResponse::fromJson(web::json::value& val)
             setCell( newItem );
         }
     }
+
 }
 
 void TableCellResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_CellIsSet)
     {
         if (m_Cell.get())
         {
             m_Cell->toMultipart(multipart, _XPLATSTR("Cell."));
         }
-        
     }
+
 }
 
 void TableCellResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Cell")))
-    {
-        if(multipart->hasContent(_XPLATSTR("Cell")))
-        {
-            std::shared_ptr<TableCell> newItem(new TableCell());
-            newItem->fromMultiPart(multipart, _XPLATSTR("Cell."));
-            setCell( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<TableCell> TableCellResponse::getCell() const
@@ -115,6 +104,7 @@ void TableCellResponse::setCell(std::shared_ptr<TableCell> value)
     m_Cell = value;
     m_CellIsSet = true;
 }
+
 bool TableCellResponse::cellIsSet() const
 {
     return m_CellIsSet;
@@ -130,4 +120,3 @@ void TableCellResponse::unsetCell()
 }
 }
 }
-

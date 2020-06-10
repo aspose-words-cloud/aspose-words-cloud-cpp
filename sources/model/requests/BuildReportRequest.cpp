@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BuildReportRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,94 +22,115 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "BuildReportRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 BuildReportRequest::BuildReportRequest(
-        utility::string_t name,
-                utility::string_t data,
-                std::shared_ptr<ReportEngineSettings> reportEngineSettings,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
-        ) : 
-            m_name(std::move(name)),
-            m_data(std::move(data)),
-            m_reportEngineSettings(std::move(reportEngineSettings)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName))
-        {
-            
-        }
-
-        utility::string_t BuildReportRequest::getName() const
-        {
-            return m_name;
-        }
-        void BuildReportRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        utility::string_t BuildReportRequest::getData() const
-        {
-            return m_data;
-        }
-        void BuildReportRequest::setData(utility::string_t data){
-            m_data = std::move(data);
-        }
-        std::shared_ptr<ReportEngineSettings> BuildReportRequest::getReportEngineSettings() const
-        {
-            return m_reportEngineSettings;
-        }
-        void BuildReportRequest::setReportEngineSettings(std::shared_ptr<ReportEngineSettings> reportEngineSettings){
-            m_reportEngineSettings = std::move(reportEngineSettings);
-        }
-        boost::optional<utility::string_t> BuildReportRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void BuildReportRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> BuildReportRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void BuildReportRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> BuildReportRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void BuildReportRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> BuildReportRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void BuildReportRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> BuildReportRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void BuildReportRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    utility::string_t data,
+    std::shared_ptr<ReportEngineSettings> reportEngineSettings,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName
+) : m_Name(std::move(name)),
+m_Data(std::move(data)),
+m_ReportEngineSettings(std::move(reportEngineSettings)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName))
+{
 }
 
+utility::string_t BuildReportRequest::getName() const
+{
+    return m_Name;
+}
+
+void BuildReportRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+utility::string_t BuildReportRequest::getData() const
+{
+    return m_Data;
+}
+
+void BuildReportRequest::setData(utility::string_t data)
+{
+    m_Data = std::move(data);
+}
+
+std::shared_ptr<ReportEngineSettings> BuildReportRequest::getReportEngineSettings() const
+{
+    return m_ReportEngineSettings;
+}
+
+void BuildReportRequest::setReportEngineSettings(std::shared_ptr<ReportEngineSettings> reportEngineSettings)
+{
+    m_ReportEngineSettings = std::move(reportEngineSettings);
+}
+
+boost::optional< utility::string_t > BuildReportRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void BuildReportRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > BuildReportRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void BuildReportRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > BuildReportRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void BuildReportRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > BuildReportRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void BuildReportRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > BuildReportRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void BuildReportRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+}
+}
+}
+}
+}

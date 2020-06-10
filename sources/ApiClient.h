@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiClient.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,6 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_ApiClient_H_
 #define ASPOSE_WORDS_CLOUD_API_ApiClient_H_
 
-
 #include "ApiConfiguration.h"
 #include "ApiException.h"
 #include "IHttpBody.h"
@@ -51,26 +50,26 @@ using namespace aspose::words::cloud::api::models;
 class  ApiClient
 {
 public:
-	class FormParamContainer
-	{
-	private:
-		const utility::string_t m_name;
-		const utility::string_t m_text;
-		const std::shared_ptr<HttpContent> m_file;
-		const bool m_isFile;
+    class FormParamContainer
+    {
+    private:
+        const utility::string_t m_name;
+        const utility::string_t m_text;
+        const std::shared_ptr<HttpContent> m_file;
+        const bool m_isFile;
 
-	public:
-		FormParamContainer(const utility::string_t& name, const utility::string_t& text)
-			: m_name(name), m_text(text), m_isFile(false) { }
+    public:
+        FormParamContainer(const utility::string_t& name, const utility::string_t& text)
+            : m_name(name), m_text(text), m_isFile(false) { }
 
-		FormParamContainer(const utility::string_t& name, const std::shared_ptr<HttpContent> file)
-			: m_name(name), m_file(file), m_isFile(true) { }
+        FormParamContainer(const utility::string_t& name, const std::shared_ptr<HttpContent> file)
+            : m_name(name), m_file(file), m_isFile(true) { }
 
-		bool isFile() const { return m_isFile; }
-		const utility::string_t& getName() const { return m_name; }
-		const utility::string_t& getText() const { return m_text; }
-		const std::shared_ptr<HttpContent> getFile() const { return m_file; }
-	};
+        bool isFile() const { return m_isFile; }
+        const utility::string_t& getName() const { return m_name; }
+        const utility::string_t& getText() const { return m_text; }
+        const std::shared_ptr<HttpContent> getFile() const { return m_file; }
+    };
 
     explicit ApiClient( std::shared_ptr<ApiConfiguration> configuration = nullptr );
 
@@ -102,12 +101,12 @@ public:
         return result;
     }
 
-	template<class T>
-	static utility::string_t parameterToString(std::shared_ptr<T> value)
-	{
-		ModelBase* modelPtr = static_cast<ModelBase*>(value.get());
-		return modelPtr->toJson().serialize();
-	}
+    template<class T>
+    static utility::string_t parameterToString(std::shared_ptr<T> value)
+    {
+        ModelBase* modelPtr = static_cast<ModelBase*>(value.get());
+        return modelPtr->toJson().serialize();
+    }
 
 
     pplx::task<web::http::http_response> callApi(
@@ -137,8 +136,8 @@ private:
 private:
     utility::string_t getTokenUrl() const;
     void logRequest(web::http::http_request request) const;
-	void logResponse(web::http::http_response response) const;
-	void logDataFromStream(const Concurrency::streams::istream& stream) const;
+    void logResponse(web::http::http_response response) const;
+    void logDataFromStream(const Concurrency::streams::istream& stream) const;
 };
 
 }

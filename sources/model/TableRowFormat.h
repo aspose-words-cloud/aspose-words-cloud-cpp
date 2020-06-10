@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableRowFormat.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TableRowFormat_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TableRowFormat_H_
 
-
 #include "LinkElement.h"
-#include "WordsApiLink.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +39,7 @@ namespace models {
 /// <summary>
 /// Represents all formatting for a table row.
 /// </summary>
-class  TableRowFormat
+class TableRowFormat
     : public LinkElement
 {
 public:
@@ -68,6 +67,7 @@ public:
     bool allowBreakAcrossPagesIsSet() const;
     void unsetAllowBreakAcrossPages();
     void setAllowBreakAcrossPages(bool value);
+
     /// <summary>
     /// Gets or sets true if the row is repeated as a table heading on every page when the table spans more than one page.
     /// </summary>
@@ -75,6 +75,7 @@ public:
     bool headingFormatIsSet() const;
     void unsetHeadingFormat();
     void setHeadingFormat(bool value);
+
     /// <summary>
     /// Gets or sets the height of the table row in points.
     /// </summary>
@@ -82,6 +83,7 @@ public:
     bool heightIsSet() const;
     void unsetHeight();
     void setHeight(double value);
+
     /// <summary>
     /// Gets or sets the rule for determining the height of the table row.
     /// </summary>
@@ -93,10 +95,13 @@ public:
 protected:
     bool m_AllowBreakAcrossPages;
     bool m_AllowBreakAcrossPagesIsSet;
+
     bool m_HeadingFormat;
     bool m_HeadingFormatIsSet;
+
     double m_Height;
     bool m_HeightIsSet;
+
     utility::string_t m_HeightRule;
     bool m_HeightRuleIsSet;
 };

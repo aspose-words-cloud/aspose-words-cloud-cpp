@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertOrUpdateParagraphTabStopRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,12 +22,13 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef insertOrUpdateParagraphTabStop_H
-#define insertOrUpdateParagraphTabStop_H 
 
-#include "cpprest/details/basic_types.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_InsertOrUpdateParagraphTabStopRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_InsertOrUpdateParagraphTabStopRequest_H_
+
 #include "TabStopInsert.h"
+#include "HttpContent.h"
+#include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
 namespace aspose {
@@ -36,18 +37,18 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class InsertOrUpdateParagraphTabStopRequest{
+class InsertOrUpdateParagraphTabStopRequest {
     public: 
-     InsertOrUpdateParagraphTabStopRequest(
-                utility::string_t name,
-                std::shared_ptr<TabStopInsert> dto,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName
+ InsertOrUpdateParagraphTabStopRequest(
+            utility::string_t name,
+            std::shared_ptr<TabStopInsert> dto,
+            utility::string_t nodePath,
+            int32_t index,
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName
         );
 
         utility::string_t getName() const;
@@ -62,30 +63,31 @@ class InsertOrUpdateParagraphTabStopRequest{
         int32_t getIndex() const;
         void setIndex(int32_t index);
 
-        boost::optional<utility::string_t> getFolder() const;
-        void setFolder(boost::optional<utility::string_t> folder);
+        boost::optional< utility::string_t > getFolder() const;
+        void setFolder(boost::optional< utility::string_t > folder);
 
-        boost::optional<utility::string_t> getStorage() const;
-        void setStorage(boost::optional<utility::string_t> storage);
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
-        boost::optional<utility::string_t> getLoadEncoding() const;
-        void setLoadEncoding(boost::optional<utility::string_t> loadEncoding);
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
 
-        boost::optional<utility::string_t> getPassword() const;
-        void setPassword(boost::optional<utility::string_t> password);
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional<utility::string_t> getDestFileName() const;
-        void setDestFileName(boost::optional<utility::string_t> destFileName);
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
+
     private:
-        utility::string_t m_name;
-        std::shared_ptr<TabStopInsert> m_dto;
-        utility::string_t m_nodePath;
-        int32_t m_index;
-        boost::optional<utility::string_t> m_folder;
-        boost::optional<utility::string_t> m_storage;
-        boost::optional<utility::string_t> m_loadEncoding;
-        boost::optional<utility::string_t> m_password;
-        boost::optional<utility::string_t> m_destFileName;
+        utility::string_t m_Name;
+        std::shared_ptr<TabStopInsert> m_Dto;
+        utility::string_t m_NodePath;
+        int32_t m_Index;
+        boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
 };
 
 }
@@ -94,4 +96,4 @@ class InsertOrUpdateParagraphTabStopRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_InsertOrUpdateParagraphTabStopRequest_H_ */

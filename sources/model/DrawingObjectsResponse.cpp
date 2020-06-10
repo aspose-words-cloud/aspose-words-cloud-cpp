@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DrawingObjectsResponse.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DrawingObjectsResponse.h"
 
 namespace aspose {
@@ -35,6 +34,7 @@ namespace models {
 DrawingObjectsResponse::DrawingObjectsResponse()
 {
     m_DrawingObjectsIsSet = false;
+
 }
 
 DrawingObjectsResponse::~DrawingObjectsResponse()
@@ -49,7 +49,6 @@ void DrawingObjectsResponse::validate()
 web::json::value DrawingObjectsResponse::toJson() const
 {
     web::json::value val = this->WordsResponse::toJson();
-
     if(m_DrawingObjectsIsSet)
     {
         val[_XPLATSTR("DrawingObjects")] = ModelBase::toJson(m_DrawingObjects);
@@ -72,36 +71,26 @@ void DrawingObjectsResponse::fromJson(web::json::value& val)
             setDrawingObjects( newItem );
         }
     }
+
 }
 
 void DrawingObjectsResponse::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     WordsResponse::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_DrawingObjectsIsSet)
     {
         if (m_DrawingObjects.get())
         {
             m_DrawingObjects->toMultipart(multipart, _XPLATSTR("DrawingObjects."));
         }
-        
     }
+
 }
 
 void DrawingObjectsResponse::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    WordsResponse::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
-    {
-        if(multipart->hasContent(_XPLATSTR("DrawingObjects")))
-        {
-            std::shared_ptr<DrawingObjectCollection> newItem(new DrawingObjectCollection());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DrawingObjects."));
-            setDrawingObjects( newItem );
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
 std::shared_ptr<DrawingObjectCollection> DrawingObjectsResponse::getDrawingObjects() const
@@ -115,6 +104,7 @@ void DrawingObjectsResponse::setDrawingObjects(std::shared_ptr<DrawingObjectColl
     m_DrawingObjects = value;
     m_DrawingObjectsIsSet = true;
 }
+
 bool DrawingObjectsResponse::drawingObjectsIsSet() const
 {
     return m_DrawingObjectsIsSet;
@@ -130,4 +120,3 @@ void DrawingObjectsResponse::unsetDrawingObjects()
 }
 }
 }
-

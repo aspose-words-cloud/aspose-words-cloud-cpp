@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ParagraphInsert.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ParagraphInsert.h"
 
 namespace aspose {
@@ -36,6 +35,7 @@ ParagraphInsert::ParagraphInsert()
 {
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
+
 }
 
 ParagraphInsert::~ParagraphInsert()
@@ -50,7 +50,6 @@ void ParagraphInsert::validate()
 web::json::value ParagraphInsert::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_TextIsSet)
     {
         val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
@@ -66,31 +65,25 @@ void ParagraphInsert::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
-            setText(ModelBase::stringFromJson(fieldValue));
+           setText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void ParagraphInsert::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
+
 }
 
 void ParagraphInsert::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t ParagraphInsert::getText() const
@@ -104,6 +97,7 @@ void ParagraphInsert::setText(utility::string_t value)
     m_Text = value;
     m_TextIsSet = true;
 }
+
 bool ParagraphInsert::textIsSet() const
 {
     return m_TextIsSet;
@@ -119,4 +113,3 @@ void ParagraphInsert::unsetText()
 }
 }
 }
-

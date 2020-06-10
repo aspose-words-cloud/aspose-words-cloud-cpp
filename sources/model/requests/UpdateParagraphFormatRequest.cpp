@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateParagraphFormatRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,121 +22,151 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "UpdateParagraphFormatRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
-        utility::string_t name,
-                std::shared_ptr<ParagraphFormat> dto,
-                utility::string_t nodePath,
-                int32_t index,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
-        ) : 
-            m_name(std::move(name)),
-            m_dto(std::move(dto)),
-            m_nodePath(std::move(nodePath)),
-            m_index(std::move(index)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
-        {
-            
-        }
-
-        utility::string_t UpdateParagraphFormatRequest::getName() const
-        {
-            return m_name;
-        }
-        void UpdateParagraphFormatRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        std::shared_ptr<ParagraphFormat> UpdateParagraphFormatRequest::getDto() const
-        {
-            return m_dto;
-        }
-        void UpdateParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormat> dto){
-            m_dto = std::move(dto);
-        }
-        utility::string_t UpdateParagraphFormatRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void UpdateParagraphFormatRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
-        }
-        int32_t UpdateParagraphFormatRequest::getIndex() const
-        {
-            return m_index;
-        }
-        void UpdateParagraphFormatRequest::setIndex(int32_t index){
-            m_index = std::move(index);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void UpdateParagraphFormatRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void UpdateParagraphFormatRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void UpdateParagraphFormatRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void UpdateParagraphFormatRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void UpdateParagraphFormatRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void UpdateParagraphFormatRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> UpdateParagraphFormatRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void UpdateParagraphFormatRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    std::shared_ptr<ParagraphFormat> dto,
+    utility::string_t nodePath,
+    int32_t index,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
+) : m_Name(std::move(name)),
+m_Dto(std::move(dto)),
+m_NodePath(std::move(nodePath)),
+m_Index(std::move(index)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
+{
 }
 
+utility::string_t UpdateParagraphFormatRequest::getName() const
+{
+    return m_Name;
+}
+
+void UpdateParagraphFormatRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+std::shared_ptr<ParagraphFormat> UpdateParagraphFormatRequest::getDto() const
+{
+    return m_Dto;
+}
+
+void UpdateParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormat> dto)
+{
+    m_Dto = std::move(dto);
+}
+
+utility::string_t UpdateParagraphFormatRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void UpdateParagraphFormatRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
+int32_t UpdateParagraphFormatRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void UpdateParagraphFormatRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void UpdateParagraphFormatRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void UpdateParagraphFormatRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void UpdateParagraphFormatRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void UpdateParagraphFormatRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void UpdateParagraphFormatRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void UpdateParagraphFormatRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > UpdateParagraphFormatRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void UpdateParagraphFormatRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+}
+}
+}
+}
+}

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ListFormat.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ListFormat.h"
 
 namespace aspose {
@@ -40,6 +39,7 @@ ListFormat::ListFormat()
     m_ListIdIsSet = false;
     m_ListLevelNumber = 0;
     m_ListLevelNumberIsSet = false;
+
 }
 
 ListFormat::~ListFormat()
@@ -54,7 +54,6 @@ void ListFormat::validate()
 web::json::value ListFormat::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_IsListItemIsSet)
     {
         val[_XPLATSTR("IsListItem")] = ModelBase::toJson(m_IsListItem);
@@ -80,65 +79,58 @@ void ListFormat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("IsListItem")];
         if(!fieldValue.is_null())
         {
-            setIsListItem(ModelBase::boolFromJson(fieldValue));
+           setIsListItem(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ListId")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ListId")];
         if(!fieldValue.is_null())
         {
-            setListId(ModelBase::int32_tFromJson(fieldValue));
+           setListId(ModelBase::integerFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ListLevelNumber")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ListLevelNumber")];
         if(!fieldValue.is_null())
         {
-            setListLevelNumber(ModelBase::int32_tFromJson(fieldValue));
+           setListLevelNumber(ModelBase::integerFromJson(fieldValue));
         }
     }
+
 }
 
 void ListFormat::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_IsListItemIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("IsListItem"), m_IsListItem));
-        
     }
+
+
     if(m_ListIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListId"), m_ListId));
-        
     }
+
+
     if(m_ListLevelNumberIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ListLevelNumber"), m_ListLevelNumber));
-        
     }
+
 }
 
 void ListFormat::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("IsListItem")))
-    {
-        setIsListItem(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("IsListItem"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ListId")))
-    {
-        setListId(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListId"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ListLevelNumber")))
-    {
-        setListLevelNumber(ModelBase::int32_tFromHttpContent(multipart->getContent(_XPLATSTR("ListLevelNumber"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 bool ListFormat::isIsListItem() const
@@ -152,6 +144,7 @@ void ListFormat::setIsListItem(bool value)
     m_IsListItem = value;
     m_IsListItemIsSet = true;
 }
+
 bool ListFormat::isListItemIsSet() const
 {
     return m_IsListItemIsSet;
@@ -173,6 +166,7 @@ void ListFormat::setListId(int32_t value)
     m_ListId = value;
     m_ListIdIsSet = true;
 }
+
 bool ListFormat::listIdIsSet() const
 {
     return m_ListIdIsSet;
@@ -194,6 +188,7 @@ void ListFormat::setListLevelNumber(int32_t value)
     m_ListLevelNumber = value;
     m_ListLevelNumberIsSet = true;
 }
+
 bool ListFormat::listLevelNumberIsSet() const
 {
     return m_ListLevelNumberIsSet;
@@ -209,4 +204,3 @@ void ListFormat::unsetListLevelNumber()
 }
 }
 }
-

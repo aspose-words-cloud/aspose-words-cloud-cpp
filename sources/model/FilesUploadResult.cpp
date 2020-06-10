@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FilesUploadResult.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "FilesUploadResult.h"
 
 namespace aspose {
@@ -34,8 +33,10 @@ namespace models {
 
 FilesUploadResult::FilesUploadResult()
 {
-    m_UploadedIsSet = false;
     m_ErrorsIsSet = false;
+
+    m_UploadedIsSet = false;
+
 }
 
 FilesUploadResult::~FilesUploadResult()
@@ -50,29 +51,30 @@ void FilesUploadResult::validate()
 web::json::value FilesUploadResult::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    {
-        std::vector<web::json::value> jsonArray;
-        std::transform(m_Uploaded.begin(), m_Uploaded.end(), std::back_inserter(jsonArray),
-			[&](utility::string_t item) {
-			return ModelBase::toJson(item);
-		});
-        
-        if(jsonArray.size() > 0)
-        {
-            val[_XPLATSTR("Uploaded")] = web::json::value::array(jsonArray);
-        }
-    }
+    if(m_ErrorsIsSet)
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Errors.begin(), m_Errors.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<Error> item) {
-			return ModelBase::toJson(item);
-		});
-        
+            [&](std::shared_ptr<Error> item) {
+            return ModelBase::toJson(item);
+        });
+
         if(jsonArray.size() > 0)
         {
             val[_XPLATSTR("Errors")] = web::json::value::array(jsonArray);
+        }
+    }
+    if(m_UploadedIsSet)
+    {
+        std::vector<web::json::value> jsonArray;
+        std::transform(m_Uploaded.begin(), m_Uploaded.end(), std::back_inserter(jsonArray),
+            [&](utility::string_t item) {
+            return ModelBase::toJson(item);
+        });
+
+        if(jsonArray.size() > 0)
+        {
+            val[_XPLATSTR("Uploaded")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -82,124 +84,72 @@ web::json::value FilesUploadResult::toJson() const
 void FilesUploadResult::fromJson(web::json::value& val)
 {
     {
-        m_Uploaded.clear();
-        if(val.has_field(_XPLATSTR("Uploaded")) 
-                            && !val[_XPLATSTR("Uploaded")].is_null())
-        {
-        auto arr = val[_XPLATSTR("Uploaded")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Uploaded), [&](web::json::value& item){
-            return ModelBase::stringFromJson(item);
-        });
-
-        }
-    }
-    {
         m_Errors.clear();
         if(val.has_field(_XPLATSTR("Errors")) 
                             && !val[_XPLATSTR("Errors")].is_null())
         {
-        auto arr = val[_XPLATSTR("Errors")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_Errors), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<Error>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<Error> newItem(new Error());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
+            auto arr = val[_XPLATSTR("Errors")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_Errors), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<Error> newItem(new Error());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
 
+                return (std::shared_ptr<Error>)nullptr;
+            });
         }
     }
+
+
+    {
+        m_Uploaded.clear();
+        if(val.has_field(_XPLATSTR("Uploaded")) 
+                            && !val[_XPLATSTR("Uploaded")].is_null())
+        {
+            auto arr = val[_XPLATSTR("Uploaded")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_Uploaded), [&](web::json::value& item){
+                return ModelBase::stringFromJson(item);
+            });
+        }
+    }
+
 }
 
 void FilesUploadResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    {
+        std::vector<web::json::value> jsonArray;
+        std::transform(m_Errors.begin(), m_Errors.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Error> item){
+            return ModelBase::toJson(item);
+        });
+
+        if(jsonArray.size() > 0)
+        {
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Errors"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+        }
+    }
+
 
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_Uploaded.begin(), m_Uploaded.end(), std::back_inserter(jsonArray), [&](utility::string_t item){
             return ModelBase::toJson(item);
         });
-        
+
         if(jsonArray.size() > 0)
         {
             multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Uploaded"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
         }
     }
-    {
-        std::vector<web::json::value> jsonArray;
-        std::transform(m_Errors.begin(), m_Errors.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<Error> item){
-            return ModelBase::toJson(item);
-        });
-        
-        if(jsonArray.size() > 0)
-        {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Errors"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
-        }
-    }
+
 }
 
 void FilesUploadResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    {
-        m_Uploaded.clear();
-        if(multipart->hasContent(_XPLATSTR("Uploaded")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Uploaded")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Uploaded), [&](web::json::value item) {
-            return ModelBase::stringFromJson(item);
-        });
-        }
-    }
-    {
-        m_Errors.clear();
-        if(multipart->hasContent(_XPLATSTR("Errors")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Errors")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_Errors), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<Error>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<Error> newItem(new Error());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
-}
-
-std::vector<utility::string_t>& FilesUploadResult::getUploaded()
-{
-    return m_Uploaded;
-}
-
-void FilesUploadResult::setUploaded(std::vector<utility::string_t> const& value)
-{
-    m_Uploaded = value;
-    m_UploadedIsSet = true;
-}
-bool FilesUploadResult::uploadedIsSet() const
-{
-    return m_UploadedIsSet;
-}
-
-void FilesUploadResult::unsetUploaded()
-{
-    m_UploadedIsSet = false;
+    // TODO: implement fromMultiPart
 }
 
 std::vector<std::shared_ptr<Error>>& FilesUploadResult::getErrors()
@@ -207,11 +157,13 @@ std::vector<std::shared_ptr<Error>>& FilesUploadResult::getErrors()
     return m_Errors;
 }
 
+
 void FilesUploadResult::setErrors(std::vector<std::shared_ptr<Error>> const& value)
 {
     m_Errors = value;
     m_ErrorsIsSet = true;
 }
+
 bool FilesUploadResult::errorsIsSet() const
 {
     return m_ErrorsIsSet;
@@ -222,9 +174,30 @@ void FilesUploadResult::unsetErrors()
     m_ErrorsIsSet = false;
 }
 
-}
-}
-}
-}
+std::vector<utility::string_t>& FilesUploadResult::getUploaded()
+{
+    return m_Uploaded;
 }
 
+
+void FilesUploadResult::setUploaded(std::vector<utility::string_t> const& value)
+{
+    m_Uploaded = value;
+    m_UploadedIsSet = true;
+}
+
+bool FilesUploadResult::uploadedIsSet() const
+{
+    return m_UploadedIsSet;
+}
+
+void FilesUploadResult::unsetUploaded()
+{
+    m_UploadedIsSet = false;
+}
+
+}
+}
+}
+}
+}

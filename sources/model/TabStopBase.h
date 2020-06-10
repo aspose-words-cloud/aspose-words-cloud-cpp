@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TabStopBase.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,9 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TabStopBase_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TabStopBase_H_
 
-
 #include "../ModelBase.h"
-
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -40,7 +38,7 @@ namespace models {
 /// <summary>
 /// Base class for paragraph format tab stop DTO.
 /// </summary>
-class  TabStopBase
+class TabStopBase
     : public ModelBase
 {
 public:
@@ -68,6 +66,7 @@ public:
     bool alignmentIsSet() const;
     void unsetAlignment();
     void setAlignment(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the type of the leader line displayed under the tab character.
     /// </summary>
@@ -75,6 +74,7 @@ public:
     bool leaderIsSet() const;
     void unsetLeader();
     void setLeader(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the position of the tab stop in points.
     /// </summary>
@@ -86,8 +86,10 @@ public:
 protected:
     utility::string_t m_Alignment;
     bool m_AlignmentIsSet;
+
     utility::string_t m_Leader;
     bool m_LeaderIsSet;
+
     double m_Position;
     bool m_PositionIsSet;
 };

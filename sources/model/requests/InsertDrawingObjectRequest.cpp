@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertDrawingObjectRequest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,121 +22,151 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "InsertDrawingObjectRequest.h"
-namespace aspose{
-namespace words{
-namespace cloud{
-namespace api{
-namespace models{
+namespace aspose {
+namespace words {
+namespace cloud {
+namespace api {
+namespace models {
 InsertDrawingObjectRequest::InsertDrawingObjectRequest(
-        utility::string_t name,
-                std::shared_ptr<DrawingObjectInsert> drawingObject,
-                std::shared_ptr<HttpContent> imageFile,
-                utility::string_t nodePath,
-                boost::optional<utility::string_t> folder,
-                boost::optional<utility::string_t> storage,
-                boost::optional<utility::string_t> loadEncoding,
-                boost::optional<utility::string_t> password,
-                boost::optional<utility::string_t> destFileName,
-                boost::optional<utility::string_t> revisionAuthor,
-                boost::optional<utility::string_t> revisionDateTime
-        ) : 
-            m_name(std::move(name)),
-            m_drawingObject(std::move(drawingObject)),
-            m_imageFile(std::move(imageFile)),
-            m_nodePath(std::move(nodePath)),
-            m_folder(std::move(folder)),
-            m_storage(std::move(storage)),
-            m_loadEncoding(std::move(loadEncoding)),
-            m_password(std::move(password)),
-            m_destFileName(std::move(destFileName)),
-            m_revisionAuthor(std::move(revisionAuthor)),
-            m_revisionDateTime(std::move(revisionDateTime))
-        {
-            
-        }
-
-        utility::string_t InsertDrawingObjectRequest::getName() const
-        {
-            return m_name;
-        }
-        void InsertDrawingObjectRequest::setName(utility::string_t name){
-            m_name = std::move(name);
-        }
-        std::shared_ptr<DrawingObjectInsert> InsertDrawingObjectRequest::getDrawingObject() const
-        {
-            return m_drawingObject;
-        }
-        void InsertDrawingObjectRequest::setDrawingObject(std::shared_ptr<DrawingObjectInsert> drawingObject){
-            m_drawingObject = std::move(drawingObject);
-        }
-        std::shared_ptr<HttpContent> InsertDrawingObjectRequest::getImageFile() const
-        {
-            return m_imageFile;
-        }
-        void InsertDrawingObjectRequest::setImageFile(std::shared_ptr<HttpContent> imageFile){
-            m_imageFile = std::move(imageFile);
-        }
-        utility::string_t InsertDrawingObjectRequest::getNodePath() const
-        {
-            return m_nodePath;
-        }
-        void InsertDrawingObjectRequest::setNodePath(utility::string_t nodePath){
-            m_nodePath = std::move(nodePath);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getFolder() const
-        {
-            return m_folder;
-        }
-        void InsertDrawingObjectRequest::setFolder(boost::optional<utility::string_t> folder){
-            m_folder = std::move(folder);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getStorage() const
-        {
-            return m_storage;
-        }
-        void InsertDrawingObjectRequest::setStorage(boost::optional<utility::string_t> storage){
-            m_storage = std::move(storage);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getLoadEncoding() const
-        {
-            return m_loadEncoding;
-        }
-        void InsertDrawingObjectRequest::setLoadEncoding(boost::optional<utility::string_t> loadEncoding){
-            m_loadEncoding = std::move(loadEncoding);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getPassword() const
-        {
-            return m_password;
-        }
-        void InsertDrawingObjectRequest::setPassword(boost::optional<utility::string_t> password){
-            m_password = std::move(password);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getDestFileName() const
-        {
-            return m_destFileName;
-        }
-        void InsertDrawingObjectRequest::setDestFileName(boost::optional<utility::string_t> destFileName){
-            m_destFileName = std::move(destFileName);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getRevisionAuthor() const
-        {
-            return m_revisionAuthor;
-        }
-        void InsertDrawingObjectRequest::setRevisionAuthor(boost::optional<utility::string_t> revisionAuthor){
-            m_revisionAuthor = std::move(revisionAuthor);
-        }
-        boost::optional<utility::string_t> InsertDrawingObjectRequest::getRevisionDateTime() const
-        {
-            return m_revisionDateTime;
-        }
-        void InsertDrawingObjectRequest::setRevisionDateTime(boost::optional<utility::string_t> revisionDateTime){
-            m_revisionDateTime = std::move(revisionDateTime);
-        }
-
-}
-}
-}
-}
+    utility::string_t name,
+    std::shared_ptr<DrawingObjectInsert> drawingObject,
+    std::shared_ptr<HttpContent> imageFile,
+    utility::string_t nodePath,
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
+) : m_Name(std::move(name)),
+m_DrawingObject(std::move(drawingObject)),
+m_ImageFile(std::move(imageFile)),
+m_NodePath(std::move(nodePath)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
+{
 }
 
+utility::string_t InsertDrawingObjectRequest::getName() const
+{
+    return m_Name;
+}
+
+void InsertDrawingObjectRequest::setName(utility::string_t name)
+{
+    m_Name = std::move(name);
+}
+
+std::shared_ptr<DrawingObjectInsert> InsertDrawingObjectRequest::getDrawingObject() const
+{
+    return m_DrawingObject;
+}
+
+void InsertDrawingObjectRequest::setDrawingObject(std::shared_ptr<DrawingObjectInsert> drawingObject)
+{
+    m_DrawingObject = std::move(drawingObject);
+}
+
+std::shared_ptr<HttpContent> InsertDrawingObjectRequest::getImageFile() const
+{
+    return m_ImageFile;
+}
+
+void InsertDrawingObjectRequest::setImageFile(std::shared_ptr<HttpContent> imageFile)
+{
+    m_ImageFile = std::move(imageFile);
+}
+
+utility::string_t InsertDrawingObjectRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void InsertDrawingObjectRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getFolder() const
+{
+    return m_Folder;
+}
+
+void InsertDrawingObjectRequest::setFolder(boost::optional< utility::string_t > folder)
+{
+    m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void InsertDrawingObjectRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void InsertDrawingObjectRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void InsertDrawingObjectRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void InsertDrawingObjectRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void InsertDrawingObjectRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void InsertDrawingObjectRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
+}
+
+}
+}
+}
+}
+}

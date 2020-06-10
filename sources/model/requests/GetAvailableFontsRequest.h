@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetAvailableFontsRequest.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#pragma once
-#ifndef getAvailableFonts_H
-#define getAvailableFonts_H 
 
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_GetAvailableFontsRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_GetAvailableFontsRequest_H_
+
+#include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
 
@@ -35,16 +36,17 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class GetAvailableFontsRequest{
+class GetAvailableFontsRequest {
     public: 
-    explicit GetAvailableFontsRequest(
-                boost::optional<utility::string_t> fontsLocation
+ GetAvailableFontsRequest(
+            boost::optional< utility::string_t > fontsLocation
         );
 
-        boost::optional<utility::string_t> getFontsLocation() const;
-        void setFontsLocation(boost::optional<utility::string_t> fontsLocation);
+        boost::optional< utility::string_t > getFontsLocation() const;
+        void setFontsLocation(boost::optional< utility::string_t > fontsLocation);
+
     private:
-        boost::optional<utility::string_t> m_fontsLocation;
+        boost::optional< utility::string_t > m_FontsLocation;
 };
 
 }
@@ -53,4 +55,4 @@ class GetAvailableFontsRequest{
 }
 }
 
-#endif
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_GetAvailableFontsRequest_H_ */

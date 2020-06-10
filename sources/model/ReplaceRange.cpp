@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ReplaceRange.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "ReplaceRange.h"
 
 namespace aspose {
@@ -36,8 +35,9 @@ ReplaceRange::ReplaceRange()
 {
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
-    m_TextType = utility::conversions::to_string_t("");
+
     m_TextTypeIsSet = false;
+
 }
 
 ReplaceRange::~ReplaceRange()
@@ -52,7 +52,6 @@ void ReplaceRange::validate()
 web::json::value ReplaceRange::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_TextIsSet)
     {
         val[_XPLATSTR("Text")] = ModelBase::toJson(m_Text);
@@ -72,48 +71,41 @@ void ReplaceRange::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Text")];
         if(!fieldValue.is_null())
         {
-            setText(ModelBase::stringFromJson(fieldValue));
+           setText(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TextType")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TextType")];
         if(!fieldValue.is_null())
         {
-            setTextType(ModelBase::stringFromJson(fieldValue));
+           setTextType(ModelBase::enumFromJson(fieldValue));
         }
     }
+
 }
 
 void ReplaceRange::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Text"), m_Text));
-        
     }
+
+
     if(m_TextTypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextType"), m_TextType));
-        
     }
+
 }
 
 void ReplaceRange::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Text")))
-    {
-        setText(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Text"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TextType")))
-    {
-        setTextType(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextType"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t ReplaceRange::getText() const
@@ -127,6 +119,7 @@ void ReplaceRange::setText(utility::string_t value)
     m_Text = value;
     m_TextIsSet = true;
 }
+
 bool ReplaceRange::textIsSet() const
 {
     return m_TextIsSet;
@@ -148,6 +141,7 @@ void ReplaceRange::setTextType(utility::string_t value)
     m_TextType = value;
     m_TextTypeIsSet = true;
 }
+
 bool ReplaceRange::textTypeIsSet() const
 {
     return m_TextTypeIsSet;
@@ -163,4 +157,3 @@ void ReplaceRange::unsetTextType()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FormFieldTextInput.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldTextInput_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_FormFieldTextInput_H_
 
-
 #include "FormField.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -39,7 +39,7 @@ namespace models {
 /// <summary>
 /// FormField text input element.
 /// </summary>
-class  FormFieldTextInput
+class FormFieldTextInput
     : public FormField
 {
 public:
@@ -67,6 +67,7 @@ public:
     bool maxLengthIsSet() const;
     void unsetMaxLength();
     void setMaxLength(int32_t value);
+
     /// <summary>
     /// Gets or sets the default string or a calculation expression of a text form field.
     /// </summary>
@@ -74,6 +75,7 @@ public:
     bool textInputDefaultIsSet() const;
     void unsetTextInputDefault();
     void setTextInputDefault(utility::string_t value);
+
     /// <summary>
     /// Gets or sets returns or sets the text formatting for a text form field.
     /// </summary>
@@ -81,6 +83,7 @@ public:
     bool textInputFormatIsSet() const;
     void unsetTextInputFormat();
     void setTextInputFormat(utility::string_t value);
+
     /// <summary>
     /// Gets or sets the type of a text form field.
     /// </summary>
@@ -92,10 +95,13 @@ public:
 protected:
     int32_t m_MaxLength;
     bool m_MaxLengthIsSet;
+
     utility::string_t m_TextInputDefault;
     bool m_TextInputDefaultIsSet;
+
     utility::string_t m_TextInputFormat;
     bool m_TextInputFormatIsSet;
+
     utility::string_t m_TextInputType;
     bool m_TextInputTypeIsSet;
 };

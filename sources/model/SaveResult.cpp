@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaveResult.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "SaveResult.h"
 
 namespace aspose {
@@ -34,9 +33,12 @@ namespace models {
 
 SaveResult::SaveResult()
 {
-    m_SourceDocumentIsSet = false;
-    m_DestDocumentIsSet = false;
     m_AdditionalItemsIsSet = false;
+
+    m_DestDocumentIsSet = false;
+
+    m_SourceDocumentIsSet = false;
+
 }
 
 SaveResult::~SaveResult()
@@ -51,26 +53,26 @@ void SaveResult::validate()
 web::json::value SaveResult::toJson() const
 {
     web::json::value val = web::json::value::object();
-
-    if(m_SourceDocumentIsSet)
+    if(m_AdditionalItemsIsSet)
     {
-        val[_XPLATSTR("SourceDocument")] = ModelBase::toJson(m_SourceDocument);
+        std::vector<web::json::value> jsonArray;
+        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray),
+            [&](std::shared_ptr<FileLink> item) {
+            return ModelBase::toJson(item);
+        });
+
+        if(jsonArray.size() > 0)
+        {
+            val[_XPLATSTR("AdditionalItems")] = web::json::value::array(jsonArray);
+        }
     }
     if(m_DestDocumentIsSet)
     {
         val[_XPLATSTR("DestDocument")] = ModelBase::toJson(m_DestDocument);
     }
+    if(m_SourceDocumentIsSet)
     {
-        std::vector<web::json::value> jsonArray;
-        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray),
-			[&](std::shared_ptr<FileLink> item) {
-			return ModelBase::toJson(item);
-		});
-        
-        if(jsonArray.size() > 0)
-        {
-            val[_XPLATSTR("AdditionalItems")] = web::json::value::array(jsonArray);
-        }
+        val[_XPLATSTR("SourceDocument")] = ModelBase::toJson(m_SourceDocument);
     }
 
     return val;
@@ -78,16 +80,26 @@ web::json::value SaveResult::toJson() const
 
 void SaveResult::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("SourceDocument")))
     {
-        web::json::value& fieldValue = val[_XPLATSTR("SourceDocument")];
-        if(!fieldValue.is_null())
+        m_AdditionalItems.clear();
+        if(val.has_field(_XPLATSTR("AdditionalItems")) 
+                            && !val[_XPLATSTR("AdditionalItems")].is_null())
         {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromJson(fieldValue);
-            setSourceDocument( newItem );
+            auto arr = val[_XPLATSTR("AdditionalItems")].as_array();
+            std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value& item){
+                if(!item.is_null())
+                {
+                    std::shared_ptr<FileLink> newItem(new FileLink());
+                    newItem->fromJson(item);
+                    return newItem;
+                }
+
+                return (std::shared_ptr<FileLink>)nullptr;
+            });
         }
     }
+
+
     if(val.has_field(_XPLATSTR("DestDocument")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("DestDocument")];
@@ -98,33 +110,45 @@ void SaveResult::fromJson(web::json::value& val)
             setDestDocument( newItem );
         }
     }
-    {
-        m_AdditionalItems.clear();
-        if(val.has_field(_XPLATSTR("AdditionalItems")) 
-                            && !val[_XPLATSTR("AdditionalItems")].is_null())
-        {
-        auto arr = val[_XPLATSTR("AdditionalItems")].as_array();
-        std::transform(arr.begin(), arr.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value& item){
-            if(item.is_null())
-            {
-                return std::shared_ptr<FileLink>(nullptr);
-            }
-            else
-            {
-                std::shared_ptr<FileLink> newItem(new FileLink());
-                newItem->fromJson(item);
-                return newItem;
-            }
-        });
 
+
+    if(val.has_field(_XPLATSTR("SourceDocument")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("SourceDocument")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<FileLink> newItem(new FileLink());
+            newItem->fromJson(fieldValue);
+            setSourceDocument( newItem );
         }
     }
+
 }
 
 void SaveResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    {
+        std::vector<web::json::value> jsonArray;
+        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FileLink> item){
+            return ModelBase::toJson(item);
+        });
+
+        if(jsonArray.size() > 0)
+        {
+            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AdditionalItems"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
+        }
+    }
+
+
+    if(m_DestDocumentIsSet)
+    {
+        if (m_DestDocument.get())
+        {
+            m_DestDocument->toMultipart(multipart, _XPLATSTR("DestDocument."));
+        }
+    }
+
 
     if(m_SourceDocumentIsSet)
     {
@@ -132,92 +156,35 @@ void SaveResult::toMultipart(const std::shared_ptr<MultipartFormData>& multipart
         {
             m_SourceDocument->toMultipart(multipart, _XPLATSTR("SourceDocument."));
         }
-        
     }
-    if(m_DestDocumentIsSet)
-    {
-        if (m_DestDocument.get())
-        {
-            m_DestDocument->toMultipart(multipart, _XPLATSTR("DestDocument."));
-        }
-        
-    }
-    {
-        std::vector<web::json::value> jsonArray;
-        std::transform(m_AdditionalItems.begin(), m_AdditionalItems.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<FileLink> item){
-            return ModelBase::toJson(item);
-        });
-        
-        if(jsonArray.size() > 0)
-        {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AdditionalItems"), web::json::value::array(jsonArray), _XPLATSTR("application/json")));
-        }
-    }
+
 }
 
 void SaveResult::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("SourceDocument")))
-    {
-        if(multipart->hasContent(_XPLATSTR("SourceDocument")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("SourceDocument."));
-            setSourceDocument( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("DestDocument")))
-    {
-        if(multipart->hasContent(_XPLATSTR("DestDocument")))
-        {
-            std::shared_ptr<FileLink> newItem(new FileLink());
-            newItem->fromMultiPart(multipart, _XPLATSTR("DestDocument."));
-            setDestDocument( newItem );
-        }
-    }
-    {
-        m_AdditionalItems.clear();
-        if(multipart->hasContent(_XPLATSTR("AdditionalItems")))
-        {
-
-        web::json::array jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("AdditionalItems")))).as_array();
-        std::transform(jsonArray.begin(), jsonArray.end(), std::back_inserter(m_AdditionalItems), [&](web::json::value item) {
-            if(item.is_null())
-            {
-                return std::shared_ptr<FileLink>(nullptr) ;
-            }
-            else
-            {
-                std::shared_ptr<FileLink> newItem(new FileLink());
-                newItem->fromJson(item);
-                return newItem ;
-            }
-        });
-        }
-    }
+    // TODO: implement fromMultiPart
 }
 
-std::shared_ptr<FileLink> SaveResult::getSourceDocument() const
+std::vector<std::shared_ptr<FileLink>>& SaveResult::getAdditionalItems()
 {
-    return m_SourceDocument;
+    return m_AdditionalItems;
 }
 
 
-void SaveResult::setSourceDocument(std::shared_ptr<FileLink> value)
+void SaveResult::setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value)
 {
-    m_SourceDocument = value;
-    m_SourceDocumentIsSet = true;
-}
-bool SaveResult::sourceDocumentIsSet() const
-{
-    return m_SourceDocumentIsSet;
+    m_AdditionalItems = value;
+    m_AdditionalItemsIsSet = true;
 }
 
-void SaveResult::unsetSourceDocument()
+bool SaveResult::additionalItemsIsSet() const
 {
-    m_SourceDocumentIsSet = false;
+    return m_AdditionalItemsIsSet;
+}
+
+void SaveResult::unsetAdditionalItems()
+{
+    m_AdditionalItemsIsSet = false;
 }
 
 std::shared_ptr<FileLink> SaveResult::getDestDocument() const
@@ -231,6 +198,7 @@ void SaveResult::setDestDocument(std::shared_ptr<FileLink> value)
     m_DestDocument = value;
     m_DestDocumentIsSet = true;
 }
+
 bool SaveResult::destDocumentIsSet() const
 {
     return m_DestDocumentIsSet;
@@ -241,24 +209,26 @@ void SaveResult::unsetDestDocument()
     m_DestDocumentIsSet = false;
 }
 
-std::vector<std::shared_ptr<FileLink>>& SaveResult::getAdditionalItems()
+std::shared_ptr<FileLink> SaveResult::getSourceDocument() const
 {
-    return m_AdditionalItems;
+    return m_SourceDocument;
 }
 
-void SaveResult::setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value)
+
+void SaveResult::setSourceDocument(std::shared_ptr<FileLink> value)
 {
-    m_AdditionalItems = value;
-    m_AdditionalItemsIsSet = true;
-}
-bool SaveResult::additionalItemsIsSet() const
-{
-    return m_AdditionalItemsIsSet;
+    m_SourceDocument = value;
+    m_SourceDocumentIsSet = true;
 }
 
-void SaveResult::unsetAdditionalItems()
+bool SaveResult::sourceDocumentIsSet() const
 {
-    m_AdditionalItemsIsSet = false;
+    return m_SourceDocumentIsSet;
+}
+
+void SaveResult::unsetSourceDocument()
+{
+    m_SourceDocumentIsSet = false;
 }
 
 }
@@ -266,4 +236,3 @@ void SaveResult::unsetAdditionalItems()
 }
 }
 }
-

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentEntry.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "DocumentEntry.h"
 
 namespace aspose {
@@ -38,6 +37,7 @@ DocumentEntry::DocumentEntry()
     m_HrefIsSet = false;
     m_ImportFormatMode = utility::conversions::to_string_t("");
     m_ImportFormatModeIsSet = false;
+
 }
 
 DocumentEntry::~DocumentEntry()
@@ -52,7 +52,6 @@ void DocumentEntry::validate()
 web::json::value DocumentEntry::toJson() const
 {
     web::json::value val = web::json::value::object();
-
     if(m_HrefIsSet)
     {
         val[_XPLATSTR("Href")] = ModelBase::toJson(m_Href);
@@ -72,48 +71,41 @@ void DocumentEntry::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Href")];
         if(!fieldValue.is_null())
         {
-            setHref(ModelBase::stringFromJson(fieldValue));
+           setHref(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("ImportFormatMode")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("ImportFormatMode")];
         if(!fieldValue.is_null())
         {
-            setImportFormatMode(ModelBase::stringFromJson(fieldValue));
+           setImportFormatMode(ModelBase::stringFromJson(fieldValue));
         }
     }
+
 }
 
 void DocumentEntry::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_HrefIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Href"), m_Href));
-        
     }
+
+
     if(m_ImportFormatModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ImportFormatMode"), m_ImportFormatMode));
-        
     }
+
 }
 
 void DocumentEntry::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    
-
-    if(multipart->hasContent(_XPLATSTR("Href")))
-    {
-        setHref(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Href"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("ImportFormatMode")))
-    {
-        setImportFormatMode(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("ImportFormatMode"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t DocumentEntry::getHref() const
@@ -127,6 +119,7 @@ void DocumentEntry::setHref(utility::string_t value)
     m_Href = value;
     m_HrefIsSet = true;
 }
+
 bool DocumentEntry::hrefIsSet() const
 {
     return m_HrefIsSet;
@@ -148,6 +141,7 @@ void DocumentEntry::setImportFormatMode(utility::string_t value)
     m_ImportFormatMode = value;
     m_ImportFormatModeIsSet = true;
 }
+
 bool DocumentEntry::importFormatModeIsSet() const
 {
     return m_ImportFormatModeIsSet;
@@ -163,4 +157,3 @@ void DocumentEntry::unsetImportFormatMode()
 }
 }
 }
-

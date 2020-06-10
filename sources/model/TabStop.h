@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TabStop.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +26,8 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TabStop_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TabStop_H_
 
-
 #include "TabStopBase.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -37,9 +37,9 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format tab stop.             
+/// Paragraph format tab stop.
 /// </summary>
-class  TabStop
+class TabStop
     : public TabStopBase
 {
 public:

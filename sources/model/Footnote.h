@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Footnote.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,10 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Footnote_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_Footnote_H_
 
-
 #include "DocumentPosition.h"
 #include "FootnoteLink.h"
 #include "StoryChildNodes.h"
+#include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
 namespace aspose {
@@ -41,7 +41,7 @@ namespace models {
 /// <summary>
 /// Footnote.
 /// </summary>
-class  Footnote
+class Footnote
     : public FootnoteLink
 {
 public:
@@ -63,12 +63,13 @@ public:
     /// Footnote members
 
     /// <summary>
-    /// Gets or sets Content.
+    /// Gets or sets content of footnote.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
     void unsetContent();
     void setContent(std::shared_ptr<StoryChildNodes> value);
+
     /// <summary>
     /// Gets or sets returns a value that specifies whether this is a footnote or endnote.
     /// </summary>
@@ -76,20 +77,24 @@ public:
     bool footnoteTypeIsSet() const;
     void unsetFootnoteType();
     void setFootnoteType(utility::string_t value);
+
     /// <summary>
-    /// Gets or sets Position.
+    /// Gets or sets link to comment range start node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
     void unsetPosition();
     void setPosition(std::shared_ptr<DocumentPosition> value);
+
     /// <summary>
-    /// Gets or sets /sets custom reference mark to be used for this footnote. Default value is Empty, meaning auto-numbered footnotes are used.
+    /// Gets or sets /sets custom reference mark to be used for this footnote.
+    /// Default value is Empty, meaning auto-numbered footnotes are used.
     /// </summary>
     utility::string_t getReferenceMark() const;
     bool referenceMarkIsSet() const;
     void unsetReferenceMark();
     void setReferenceMark(utility::string_t value);
+
     /// <summary>
     /// Gets or sets this is a convenience property that allows to easily get or set text of the footnote.
     /// </summary>
@@ -101,12 +106,16 @@ public:
 protected:
     std::shared_ptr<StoryChildNodes> m_Content;
     bool m_ContentIsSet;
+
     utility::string_t m_FootnoteType;
     bool m_FootnoteTypeIsSet;
+
     std::shared_ptr<DocumentPosition> m_Position;
     bool m_PositionIsSet;
+
     utility::string_t m_ReferenceMark;
     bool m_ReferenceMarkIsSet;
+
     utility::string_t m_Text;
     bool m_TextIsSet;
 };

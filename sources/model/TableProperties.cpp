@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TableProperties.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-
 #include "TableProperties.h"
 
 namespace aspose {
@@ -34,7 +33,6 @@ namespace models {
 
 TableProperties::TableProperties()
 {
-    m_Alignment = utility::conversions::to_string_t("");
     m_AlignmentIsSet = false;
     m_AllowAutoFit = false;
     m_AllowAutoFitIsSet = false;
@@ -48,19 +46,21 @@ TableProperties::TableProperties()
     m_LeftIndentIsSet = false;
     m_LeftPadding = 0.0;
     m_LeftPaddingIsSet = false;
+
     m_PreferredWidthIsSet = false;
     m_RightPadding = 0.0;
     m_RightPaddingIsSet = false;
-    m_StyleIdentifier = utility::conversions::to_string_t("");
+
     m_StyleIdentifierIsSet = false;
     m_StyleName = utility::conversions::to_string_t("");
     m_StyleNameIsSet = false;
-    m_StyleOptions = utility::conversions::to_string_t("");
+
     m_StyleOptionsIsSet = false;
-    m_TextWrapping = utility::conversions::to_string_t("");
+
     m_TextWrappingIsSet = false;
     m_TopPadding = 0.0;
     m_TopPaddingIsSet = false;
+
 }
 
 TableProperties::~TableProperties()
@@ -75,7 +75,6 @@ void TableProperties::validate()
 web::json::value TableProperties::toJson() const
 {
     web::json::value val = this->LinkElement::toJson();
-
     if(m_AlignmentIsSet)
     {
         val[_XPLATSTR("Alignment")] = ModelBase::toJson(m_Alignment);
@@ -145,57 +144,71 @@ void TableProperties::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[_XPLATSTR("Alignment")];
         if(!fieldValue.is_null())
         {
-            setAlignment(ModelBase::stringFromJson(fieldValue));
+           setAlignment(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("AllowAutoFit")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("AllowAutoFit")];
         if(!fieldValue.is_null())
         {
-            setAllowAutoFit(ModelBase::boolFromJson(fieldValue));
+           setAllowAutoFit(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("Bidi")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Bidi")];
         if(!fieldValue.is_null())
         {
-            setBidi(ModelBase::boolFromJson(fieldValue));
+           setBidi(ModelBase::booleanFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("BottomPadding")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("BottomPadding")];
         if(!fieldValue.is_null())
         {
-            setBottomPadding(ModelBase::doubleFromJson(fieldValue));
+           setBottomPadding(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("CellSpacing")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("CellSpacing")];
         if(!fieldValue.is_null())
         {
-            setCellSpacing(ModelBase::doubleFromJson(fieldValue));
+           setCellSpacing(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LeftIndent")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LeftIndent")];
         if(!fieldValue.is_null())
         {
-            setLeftIndent(ModelBase::doubleFromJson(fieldValue));
+           setLeftIndent(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("LeftPadding")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("LeftPadding")];
         if(!fieldValue.is_null())
         {
-            setLeftPadding(ModelBase::doubleFromJson(fieldValue));
+           setLeftPadding(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("PreferredWidth")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("PreferredWidth")];
@@ -206,201 +219,164 @@ void TableProperties::fromJson(web::json::value& val)
             setPreferredWidth( newItem );
         }
     }
+
+
     if(val.has_field(_XPLATSTR("RightPadding")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("RightPadding")];
         if(!fieldValue.is_null())
         {
-            setRightPadding(ModelBase::doubleFromJson(fieldValue));
+           setRightPadding(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StyleIdentifier")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StyleIdentifier")];
         if(!fieldValue.is_null())
         {
-            setStyleIdentifier(ModelBase::stringFromJson(fieldValue));
+           setStyleIdentifier(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StyleName")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StyleName")];
         if(!fieldValue.is_null())
         {
-            setStyleName(ModelBase::stringFromJson(fieldValue));
+           setStyleName(ModelBase::stringFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("StyleOptions")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("StyleOptions")];
         if(!fieldValue.is_null())
         {
-            setStyleOptions(ModelBase::stringFromJson(fieldValue));
+           setStyleOptions(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TextWrapping")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TextWrapping")];
         if(!fieldValue.is_null())
         {
-            setTextWrapping(ModelBase::stringFromJson(fieldValue));
+           setTextWrapping(ModelBase::enumFromJson(fieldValue));
         }
     }
+
+
     if(val.has_field(_XPLATSTR("TopPadding")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("TopPadding")];
         if(!fieldValue.is_null())
         {
-            setTopPadding(ModelBase::doubleFromJson(fieldValue));
+           setTopPadding(ModelBase::floatingFromJson(fieldValue));
         }
     }
+
 }
 
 void TableProperties::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     LinkElement::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-
     if(m_AlignmentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Alignment"), m_Alignment));
-        
     }
+
+
     if(m_AllowAutoFitIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllowAutoFit"), m_AllowAutoFit));
-        
     }
+
+
     if(m_BidiIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Bidi"), m_Bidi));
-        
     }
+
+
     if(m_BottomPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("BottomPadding"), m_BottomPadding));
-        
     }
+
+
     if(m_CellSpacingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("CellSpacing"), m_CellSpacing));
-        
     }
+
+
     if(m_LeftIndentIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftIndent"), m_LeftIndent));
-        
     }
+
+
     if(m_LeftPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("LeftPadding"), m_LeftPadding));
-        
     }
+
+
     if(m_PreferredWidthIsSet)
     {
         if (m_PreferredWidth.get())
         {
             m_PreferredWidth->toMultipart(multipart, _XPLATSTR("PreferredWidth."));
         }
-        
     }
+
+
     if(m_RightPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("RightPadding"), m_RightPadding));
-        
     }
+
+
     if(m_StyleIdentifierIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleIdentifier"), m_StyleIdentifier));
-        
     }
+
+
     if(m_StyleNameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleName"), m_StyleName));
-        
     }
+
+
     if(m_StyleOptionsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("StyleOptions"), m_StyleOptions));
-        
     }
+
+
     if(m_TextWrappingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TextWrapping"), m_TextWrapping));
-        
     }
+
+
     if(m_TopPaddingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("TopPadding"), m_TopPadding));
-        
     }
+
 }
 
 void TableProperties::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
-    LinkElement::fromMultiPart(multipart, prefix);
-
-    if(multipart->hasContent(_XPLATSTR("Alignment")))
-    {
-        setAlignment(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("Alignment"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("AllowAutoFit")))
-    {
-        setAllowAutoFit(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("AllowAutoFit"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("Bidi")))
-    {
-        setBidi(ModelBase::boolFromHttpContent(multipart->getContent(_XPLATSTR("Bidi"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("BottomPadding")))
-    {
-        setBottomPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("BottomPadding"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("CellSpacing")))
-    {
-        setCellSpacing(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("CellSpacing"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LeftIndent")))
-    {
-        setLeftIndent(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftIndent"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("LeftPadding")))
-    {
-        setLeftPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("LeftPadding"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
-    {
-        if(multipart->hasContent(_XPLATSTR("PreferredWidth")))
-        {
-            std::shared_ptr<PreferredWidth> newItem(new PreferredWidth());
-            newItem->fromMultiPart(multipart, _XPLATSTR("PreferredWidth."));
-            setPreferredWidth( newItem );
-        }
-    }
-    if(multipart->hasContent(_XPLATSTR("RightPadding")))
-    {
-        setRightPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("RightPadding"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StyleIdentifier")))
-    {
-        setStyleIdentifier(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleIdentifier"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StyleName")))
-    {
-        setStyleName(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleName"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("StyleOptions")))
-    {
-        setStyleOptions(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("StyleOptions"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TextWrapping")))
-    {
-        setTextWrapping(ModelBase::stringFromHttpContent(multipart->getContent(_XPLATSTR("TextWrapping"))));
-    }
-    if(multipart->hasContent(_XPLATSTR("TopPadding")))
-    {
-        setTopPadding(ModelBase::doubleFromHttpContent(multipart->getContent(_XPLATSTR("TopPadding"))));
-    }
+    // TODO: implement fromMultiPart
 }
 
 utility::string_t TableProperties::getAlignment() const
@@ -414,6 +390,7 @@ void TableProperties::setAlignment(utility::string_t value)
     m_Alignment = value;
     m_AlignmentIsSet = true;
 }
+
 bool TableProperties::alignmentIsSet() const
 {
     return m_AlignmentIsSet;
@@ -435,6 +412,7 @@ void TableProperties::setAllowAutoFit(bool value)
     m_AllowAutoFit = value;
     m_AllowAutoFitIsSet = true;
 }
+
 bool TableProperties::allowAutoFitIsSet() const
 {
     return m_AllowAutoFitIsSet;
@@ -456,6 +434,7 @@ void TableProperties::setBidi(bool value)
     m_Bidi = value;
     m_BidiIsSet = true;
 }
+
 bool TableProperties::bidiIsSet() const
 {
     return m_BidiIsSet;
@@ -477,6 +456,7 @@ void TableProperties::setBottomPadding(double value)
     m_BottomPadding = value;
     m_BottomPaddingIsSet = true;
 }
+
 bool TableProperties::bottomPaddingIsSet() const
 {
     return m_BottomPaddingIsSet;
@@ -498,6 +478,7 @@ void TableProperties::setCellSpacing(double value)
     m_CellSpacing = value;
     m_CellSpacingIsSet = true;
 }
+
 bool TableProperties::cellSpacingIsSet() const
 {
     return m_CellSpacingIsSet;
@@ -519,6 +500,7 @@ void TableProperties::setLeftIndent(double value)
     m_LeftIndent = value;
     m_LeftIndentIsSet = true;
 }
+
 bool TableProperties::leftIndentIsSet() const
 {
     return m_LeftIndentIsSet;
@@ -540,6 +522,7 @@ void TableProperties::setLeftPadding(double value)
     m_LeftPadding = value;
     m_LeftPaddingIsSet = true;
 }
+
 bool TableProperties::leftPaddingIsSet() const
 {
     return m_LeftPaddingIsSet;
@@ -561,6 +544,7 @@ void TableProperties::setPreferredWidth(std::shared_ptr<PreferredWidth> value)
     m_PreferredWidth = value;
     m_PreferredWidthIsSet = true;
 }
+
 bool TableProperties::preferredWidthIsSet() const
 {
     return m_PreferredWidthIsSet;
@@ -582,6 +566,7 @@ void TableProperties::setRightPadding(double value)
     m_RightPadding = value;
     m_RightPaddingIsSet = true;
 }
+
 bool TableProperties::rightPaddingIsSet() const
 {
     return m_RightPaddingIsSet;
@@ -603,6 +588,7 @@ void TableProperties::setStyleIdentifier(utility::string_t value)
     m_StyleIdentifier = value;
     m_StyleIdentifierIsSet = true;
 }
+
 bool TableProperties::styleIdentifierIsSet() const
 {
     return m_StyleIdentifierIsSet;
@@ -624,6 +610,7 @@ void TableProperties::setStyleName(utility::string_t value)
     m_StyleName = value;
     m_StyleNameIsSet = true;
 }
+
 bool TableProperties::styleNameIsSet() const
 {
     return m_StyleNameIsSet;
@@ -645,6 +632,7 @@ void TableProperties::setStyleOptions(utility::string_t value)
     m_StyleOptions = value;
     m_StyleOptionsIsSet = true;
 }
+
 bool TableProperties::styleOptionsIsSet() const
 {
     return m_StyleOptionsIsSet;
@@ -666,6 +654,7 @@ void TableProperties::setTextWrapping(utility::string_t value)
     m_TextWrapping = value;
     m_TextWrappingIsSet = true;
 }
+
 bool TableProperties::textWrappingIsSet() const
 {
     return m_TextWrappingIsSet;
@@ -687,6 +676,7 @@ void TableProperties::setTopPadding(double value)
     m_TopPadding = value;
     m_TopPaddingIsSet = true;
 }
+
 bool TableProperties::topPaddingIsSet() const
 {
     return m_TopPaddingIsSet;
@@ -702,4 +692,3 @@ void TableProperties::unsetTopPadding()
 }
 }
 }
-
