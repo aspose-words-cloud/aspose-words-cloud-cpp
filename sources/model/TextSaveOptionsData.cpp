@@ -35,14 +35,6 @@ TextSaveOptionsData::TextSaveOptionsData()
 {
     m_AddBidiMarks = false;
     m_AddBidiMarksIsSet = false;
-    m_Encoding = utility::conversions::to_string_t("");
-    m_EncodingIsSet = false;
-
-    m_ExportHeadersFootersModeIsSet = false;
-    m_ForcePageBreaks = false;
-    m_ForcePageBreaksIsSet = false;
-    m_ParagraphBreak = utility::conversions::to_string_t("");
-    m_ParagraphBreakIsSet = false;
     m_PreserveTableLayout = false;
     m_PreserveTableLayoutIsSet = false;
     m_SimplifyListLabels = false;
@@ -61,26 +53,10 @@ void TextSaveOptionsData::validate()
 
 web::json::value TextSaveOptionsData::toJson() const
 {
-    web::json::value val = this->SaveOptionsData::toJson();
+    web::json::value val = this->TxtSaveOptionsBaseData::toJson();
     if(m_AddBidiMarksIsSet)
     {
         val[_XPLATSTR("AddBidiMarks")] = ModelBase::toJson(m_AddBidiMarks);
-    }
-    if(m_EncodingIsSet)
-    {
-        val[_XPLATSTR("Encoding")] = ModelBase::toJson(m_Encoding);
-    }
-    if(m_ExportHeadersFootersModeIsSet)
-    {
-        val[_XPLATSTR("ExportHeadersFootersMode")] = ModelBase::toJson(m_ExportHeadersFootersMode);
-    }
-    if(m_ForcePageBreaksIsSet)
-    {
-        val[_XPLATSTR("ForcePageBreaks")] = ModelBase::toJson(m_ForcePageBreaks);
-    }
-    if(m_ParagraphBreakIsSet)
-    {
-        val[_XPLATSTR("ParagraphBreak")] = ModelBase::toJson(m_ParagraphBreak);
     }
     if(m_PreserveTableLayoutIsSet)
     {
@@ -96,7 +72,7 @@ web::json::value TextSaveOptionsData::toJson() const
 
 void TextSaveOptionsData::fromJson(web::json::value& val)
 {
-    this->SaveOptionsData::fromJson(val);
+    this->TxtSaveOptionsBaseData::fromJson(val);
 
     if(val.has_field(_XPLATSTR("AddBidiMarks")))
     {
@@ -104,46 +80,6 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
            setAddBidiMarks(ModelBase::booleanFromJson(fieldValue));
-        }
-    }
-
-
-    if(val.has_field(_XPLATSTR("Encoding")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("Encoding")];
-        if(!fieldValue.is_null())
-        {
-           setEncoding(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-
-
-    if(val.has_field(_XPLATSTR("ExportHeadersFootersMode")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("ExportHeadersFootersMode")];
-        if(!fieldValue.is_null())
-        {
-           setExportHeadersFootersMode(ModelBase::enumFromJson(fieldValue));
-        }
-    }
-
-
-    if(val.has_field(_XPLATSTR("ForcePageBreaks")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("ForcePageBreaks")];
-        if(!fieldValue.is_null())
-        {
-           setForcePageBreaks(ModelBase::booleanFromJson(fieldValue));
-        }
-    }
-
-
-    if(val.has_field(_XPLATSTR("ParagraphBreak")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("ParagraphBreak")];
-        if(!fieldValue.is_null())
-        {
-           setParagraphBreak(ModelBase::stringFromJson(fieldValue));
         }
     }
 
@@ -171,35 +107,11 @@ void TextSaveOptionsData::fromJson(web::json::value& val)
 
 void TextSaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
-    SaveOptionsData::toMultipart(multipart, prefix);
+    TxtSaveOptionsBaseData::toMultipart(multipart, prefix);
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
     if(m_AddBidiMarksIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AddBidiMarks"), m_AddBidiMarks));
-    }
-
-
-    if(m_EncodingIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Encoding"), m_Encoding));
-    }
-
-
-    if(m_ExportHeadersFootersModeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ExportHeadersFootersMode"), m_ExportHeadersFootersMode));
-    }
-
-
-    if(m_ForcePageBreaksIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ForcePageBreaks"), m_ForcePageBreaks));
-    }
-
-
-    if(m_ParagraphBreakIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ParagraphBreak"), m_ParagraphBreak));
     }
 
 
@@ -241,94 +153,6 @@ bool TextSaveOptionsData::addBidiMarksIsSet() const
 void TextSaveOptionsData::unsetAddBidiMarks()
 {
     m_AddBidiMarksIsSet = false;
-}
-
-utility::string_t TextSaveOptionsData::getEncoding() const
-{
-    return m_Encoding;
-}
-
-
-void TextSaveOptionsData::setEncoding(utility::string_t value)
-{
-    m_Encoding = value;
-    m_EncodingIsSet = true;
-}
-
-bool TextSaveOptionsData::encodingIsSet() const
-{
-    return m_EncodingIsSet;
-}
-
-void TextSaveOptionsData::unsetEncoding()
-{
-    m_EncodingIsSet = false;
-}
-
-utility::string_t TextSaveOptionsData::getExportHeadersFootersMode() const
-{
-    return m_ExportHeadersFootersMode;
-}
-
-
-void TextSaveOptionsData::setExportHeadersFootersMode(utility::string_t value)
-{
-    m_ExportHeadersFootersMode = value;
-    m_ExportHeadersFootersModeIsSet = true;
-}
-
-bool TextSaveOptionsData::exportHeadersFootersModeIsSet() const
-{
-    return m_ExportHeadersFootersModeIsSet;
-}
-
-void TextSaveOptionsData::unsetExportHeadersFootersMode()
-{
-    m_ExportHeadersFootersModeIsSet = false;
-}
-
-bool TextSaveOptionsData::isForcePageBreaks() const
-{
-    return m_ForcePageBreaks;
-}
-
-
-void TextSaveOptionsData::setForcePageBreaks(bool value)
-{
-    m_ForcePageBreaks = value;
-    m_ForcePageBreaksIsSet = true;
-}
-
-bool TextSaveOptionsData::forcePageBreaksIsSet() const
-{
-    return m_ForcePageBreaksIsSet;
-}
-
-void TextSaveOptionsData::unsetForcePageBreaks()
-{
-    m_ForcePageBreaksIsSet = false;
-}
-
-utility::string_t TextSaveOptionsData::getParagraphBreak() const
-{
-    return m_ParagraphBreak;
-}
-
-
-void TextSaveOptionsData::setParagraphBreak(utility::string_t value)
-{
-    m_ParagraphBreak = value;
-    m_ParagraphBreakIsSet = true;
-}
-
-bool TextSaveOptionsData::paragraphBreakIsSet() const
-{
-    return m_ParagraphBreakIsSet;
-}
-
-void TextSaveOptionsData::unsetParagraphBreak()
-{
-    m_ParagraphBreakIsSet = false;
 }
 
 bool TextSaveOptionsData::isPreserveTableLayout() const

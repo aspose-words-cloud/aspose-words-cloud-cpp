@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="TextSaveOptionsData.h">
+* <copyright company="Aspose" file="MarkdownSaveOptionsData.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TextSaveOptionsData_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_TextSaveOptionsData_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_MarkdownSaveOptionsData_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_MarkdownSaveOptionsData_H_
 
 #include "TxtSaveOptionsBaseData.h"
 #include "../ModelBase.h"
@@ -37,14 +37,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Container class for text save options.
+/// Container class for markdown save options.
 /// </summary>
-class TextSaveOptionsData
+class MarkdownSaveOptionsData
     : public TxtSaveOptionsBaseData
 {
 public:
-    TextSaveOptionsData();
-    virtual ~TextSaveOptionsData();
+    MarkdownSaveOptionsData();
+    virtual ~MarkdownSaveOptionsData();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -58,42 +58,20 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// TextSaveOptionsData members
+    /// MarkdownSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies whether to add bi-directional marks before each BiDi run when exporting in plain text format.
-    /// The default value is true.
+    /// Gets or sets a value that specifies how to align contents in tables when exporting into the Markdown format.
+    /// The default value is Auto.
     /// </summary>
-    bool isAddBidiMarks() const;
-    bool addBidiMarksIsSet() const;
-    void unsetAddBidiMarks();
-    void setAddBidiMarks(bool value);
-
-    /// <summary>
-    /// Gets or sets specifies whether the program should attempt to preserve layout of tables when saving in the plain text format.
-    /// </summary>
-    bool isPreserveTableLayout() const;
-    bool preserveTableLayoutIsSet() const;
-    void unsetPreserveTableLayout();
-    void setPreserveTableLayout(bool value);
-
-    /// <summary>
-    /// Gets or sets specifies whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
-    /// </summary>
-    bool isSimplifyListLabels() const;
-    bool simplifyListLabelsIsSet() const;
-    void unsetSimplifyListLabels();
-    void setSimplifyListLabels(bool value);
+    utility::string_t getTableContentAlignment() const;
+    bool tableContentAlignmentIsSet() const;
+    void unsetTableContentAlignment();
+    void setTableContentAlignment(utility::string_t value);
 
 protected:
-    bool m_AddBidiMarks;
-    bool m_AddBidiMarksIsSet;
-
-    bool m_PreserveTableLayout;
-    bool m_PreserveTableLayoutIsSet;
-
-    bool m_SimplifyListLabels;
-    bool m_SimplifyListLabelsIsSet;
+    utility::string_t m_TableContentAlignment;
+    bool m_TableContentAlignmentIsSet;
 };
 
 }
@@ -102,4 +80,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_TextSaveOptionsData_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_MarkdownSaveOptionsData_H_ */
