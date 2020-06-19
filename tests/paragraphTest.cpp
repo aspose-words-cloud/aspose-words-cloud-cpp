@@ -175,7 +175,7 @@ TEST_F(ParagraphTest, TestUpdateParagraphFormat) {
 		fullName = path_combine_url(dataFolder, remoteName),
 		filePath = path_combine(get_data_dir(commonFolder), localName);
 
-	std::shared_ptr<ParagraphFormat> body= std::make_shared<ParagraphFormat>();
+	std::shared_ptr<ParagraphFormatUpdate> body= std::make_shared<ParagraphFormatUpdate>();
 	body->setAlignment(STCONVERT("Right"));
 
 	UploadFileToStorage(fullName, filePath);
@@ -185,30 +185,6 @@ TEST_F(ParagraphTest, TestUpdateParagraphFormat) {
 		dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
 
 	AsposeResponse<ParagraphFormatResponse> actual = get_api()->updateParagraphFormat(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for updating  paragraph format settings without node path
-/// </summary>
-TEST_F(ParagraphTest, TestUpdateParagraphFormatWithoutNodePath) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestUpdateParagraphFormat.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
-
-	std::shared_ptr<ParagraphFormat> body = std::make_shared<ParagraphFormat>();
-	body->setAlignment(STCONVERT("Right"));
-
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<UpdateParagraphFormatWithoutNodePathRequest> request =
-		std::make_shared<UpdateParagraphFormatWithoutNodePathRequest>(remoteName, body, 0,
-			dataFolder, boost::none, boost::none, boost::none, boost::none, boost::none, boost::none);
-
-	AsposeResponse<ParagraphFormatResponse> actual = get_api()->updateParagraphFormatWithoutNodePath(request).get();
 
 	ASSERT_EQ(200, actual.httpResponse->status_code());
 }
