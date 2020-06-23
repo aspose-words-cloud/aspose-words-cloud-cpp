@@ -26,7 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TextSaveOptionsData_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_TextSaveOptionsData_H_
 
-#include "SaveOptionsData.h"
+#include "TxtSaveOptionsBaseData.h"
 #include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
@@ -40,7 +40,7 @@ namespace models {
 /// Container class for text save options.
 /// </summary>
 class TextSaveOptionsData
-    : public SaveOptionsData
+    : public TxtSaveOptionsBaseData
 {
 public:
     TextSaveOptionsData();
@@ -70,40 +70,6 @@ public:
     void setAddBidiMarks(bool value);
 
     /// <summary>
-    /// Gets or sets specifies the encoding to use when exporting in plain text format.
-    /// </summary>
-    utility::string_t getEncoding() const;
-    bool encodingIsSet() const;
-    void unsetEncoding();
-    void setEncoding(utility::string_t value);
-
-    /// <summary>
-    /// Gets or sets specifies whether to output headers and footers when exporting in plain text format.
-    /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
-    /// </summary>
-    utility::string_t getExportHeadersFootersMode() const;
-    bool exportHeadersFootersModeIsSet() const;
-    void unsetExportHeadersFootersMode();
-    void setExportHeadersFootersMode(utility::string_t value);
-
-    /// <summary>
-    /// Gets or sets allows to specify whether the page breaks should be preserved during export.
-    /// The default value is false.
-    /// </summary>
-    bool isForcePageBreaks() const;
-    bool forcePageBreaksIsSet() const;
-    void unsetForcePageBreaks();
-    void setForcePageBreaks(bool value);
-
-    /// <summary>
-    /// Gets or sets specifies the string to use as a paragraph break when exporting in plain text format.
-    /// </summary>
-    utility::string_t getParagraphBreak() const;
-    bool paragraphBreakIsSet() const;
-    void unsetParagraphBreak();
-    void setParagraphBreak(utility::string_t value);
-
-    /// <summary>
     /// Gets or sets specifies whether the program should attempt to preserve layout of tables when saving in the plain text format.
     /// </summary>
     bool isPreserveTableLayout() const;
@@ -122,18 +88,6 @@ public:
 protected:
     bool m_AddBidiMarks;
     bool m_AddBidiMarksIsSet;
-
-    utility::string_t m_Encoding;
-    bool m_EncodingIsSet;
-
-    utility::string_t m_ExportHeadersFootersMode;
-    bool m_ExportHeadersFootersModeIsSet;
-
-    bool m_ForcePageBreaks;
-    bool m_ForcePageBreaksIsSet;
-
-    utility::string_t m_ParagraphBreak;
-    bool m_ParagraphBreakIsSet;
 
     bool m_PreserveTableLayout;
     bool m_PreserveTableLayoutIsSet;

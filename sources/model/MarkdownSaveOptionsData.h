@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ParagraphFormat.h">
+* <copyright company="Aspose" file="MarkdownSaveOptionsData.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,10 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_MarkdownSaveOptionsData_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_MarkdownSaveOptionsData_H_
 
-#include "ParagraphFormatBase.h"
+#include "TxtSaveOptionsBaseData.h"
 #include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
@@ -37,14 +37,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format element.
+/// Container class for markdown save options.
 /// </summary>
-class ParagraphFormat
-    : public ParagraphFormatBase
+class MarkdownSaveOptionsData
+    : public TxtSaveOptionsBaseData
 {
 public:
-    ParagraphFormat();
-    virtual ~ParagraphFormat();
+    MarkdownSaveOptionsData();
+    virtual ~MarkdownSaveOptionsData();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -58,30 +58,20 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ParagraphFormat members
+    /// MarkdownSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets True when the paragraph style is one of the built-in Heading styles.
+    /// Gets or sets a value that specifies how to align contents in tables when exporting into the Markdown format.
+    /// The default value is Auto.
     /// </summary>
-    bool isIsHeading() const;
-    bool isHeadingIsSet() const;
-    void unsetIsHeading();
-    void setIsHeading(bool value);
-
-    /// <summary>
-    /// Gets or sets True when the paragraph is an item in a bulleted or numbered list.
-    /// </summary>
-    bool isIsListItem() const;
-    bool isListItemIsSet() const;
-    void unsetIsListItem();
-    void setIsListItem(bool value);
+    utility::string_t getTableContentAlignment() const;
+    bool tableContentAlignmentIsSet() const;
+    void unsetTableContentAlignment();
+    void setTableContentAlignment(utility::string_t value);
 
 protected:
-    bool m_IsHeading;
-    bool m_IsHeadingIsSet;
-
-    bool m_IsListItem;
-    bool m_IsListItemIsSet;
+    utility::string_t m_TableContentAlignment;
+    bool m_TableContentAlignmentIsSet;
 };
 
 }
@@ -90,4 +80,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_MarkdownSaveOptionsData_H_ */

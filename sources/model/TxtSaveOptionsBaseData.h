@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ParagraphFormat.h">
+* <copyright company="Aspose" file="TxtSaveOptionsBaseData.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,10 +23,10 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_TxtSaveOptionsBaseData_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_TxtSaveOptionsBaseData_H_
 
-#include "ParagraphFormatBase.h"
+#include "SaveOptionsData.h"
 #include "../ModelBase.h"
 #include <cpprest/details/basic_types.h>
 
@@ -37,14 +37,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format element.
+/// Base class for save options of text formats.
 /// </summary>
-class ParagraphFormat
-    : public ParagraphFormatBase
+class TxtSaveOptionsBaseData
+    : public SaveOptionsData
 {
 public:
-    ParagraphFormat();
-    virtual ~ParagraphFormat();
+    TxtSaveOptionsBaseData();
+    virtual ~TxtSaveOptionsBaseData();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -58,30 +58,54 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ParagraphFormat members
+    /// TxtSaveOptionsBaseData members
 
     /// <summary>
-    /// Gets or sets True when the paragraph style is one of the built-in Heading styles.
+    /// Gets or sets specifies the encoding to use when exporting in plain text format.
     /// </summary>
-    bool isIsHeading() const;
-    bool isHeadingIsSet() const;
-    void unsetIsHeading();
-    void setIsHeading(bool value);
+    utility::string_t getEncoding() const;
+    bool encodingIsSet() const;
+    void unsetEncoding();
+    void setEncoding(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets True when the paragraph is an item in a bulleted or numbered list.
+    /// Gets or sets specifies whether to output headers and footers when exporting in plain text format.
+    /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
     /// </summary>
-    bool isIsListItem() const;
-    bool isListItemIsSet() const;
-    void unsetIsListItem();
-    void setIsListItem(bool value);
+    utility::string_t getExportHeadersFootersMode() const;
+    bool exportHeadersFootersModeIsSet() const;
+    void unsetExportHeadersFootersMode();
+    void setExportHeadersFootersMode(utility::string_t value);
+
+    /// <summary>
+    /// Gets or sets allows to specify whether the page breaks should be preserved during export.
+    /// The default value is false.
+    /// </summary>
+    bool isForcePageBreaks() const;
+    bool forcePageBreaksIsSet() const;
+    void unsetForcePageBreaks();
+    void setForcePageBreaks(bool value);
+
+    /// <summary>
+    /// Gets or sets specifies the string to use as a paragraph break when exporting in plain text format.
+    /// </summary>
+    utility::string_t getParagraphBreak() const;
+    bool paragraphBreakIsSet() const;
+    void unsetParagraphBreak();
+    void setParagraphBreak(utility::string_t value);
 
 protected:
-    bool m_IsHeading;
-    bool m_IsHeadingIsSet;
+    utility::string_t m_Encoding;
+    bool m_EncodingIsSet;
 
-    bool m_IsListItem;
-    bool m_IsListItemIsSet;
+    utility::string_t m_ExportHeadersFootersMode;
+    bool m_ExportHeadersFootersModeIsSet;
+
+    bool m_ForcePageBreaks;
+    bool m_ForcePageBreaksIsSet;
+
+    utility::string_t m_ParagraphBreak;
+    bool m_ParagraphBreakIsSet;
 };
 
 }
@@ -90,4 +114,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_TxtSaveOptionsBaseData_H_ */
