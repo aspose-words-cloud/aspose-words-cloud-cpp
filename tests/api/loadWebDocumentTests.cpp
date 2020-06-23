@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ParagraphFormatUpdate.cpp">
+* <copyright company="Aspose" file="loadWebDocumentTests.cpp">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,55 +23,36 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "ParagraphFormatUpdate.h"
+#include "../TestBase.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
-namespace models {
+/// <summary>
+/// Example of how to load web document.
+/// </summary>
+class LoadWebDocumentTests : public InfrastructureTest {
+protected:
+};
 
-ParagraphFormatUpdate::ParagraphFormatUpdate()
-{
-}
+/// <summary>
+/// Test for loading web document.
+/// </summary>
+TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
+    auto requestDataSaveOptions = std::make_shared< SaveOptionsData >();
+    requestDataSaveOptions->setFileName(STCONVERT("google.doc"));
+    requestDataSaveOptions->setSaveFormat(STCONVERT("doc"));
+    requestDataSaveOptions->setDmlEffectsRenderingMode(STCONVERT("1"));
+    requestDataSaveOptions->setDmlRenderingMode(STCONVERT("1"));
+    requestDataSaveOptions->setUpdateSdtContent(false);
+    requestDataSaveOptions->setZipOutput(false);
 
-ParagraphFormatUpdate::~ParagraphFormatUpdate()
-{
-}
+    auto requestData = std::make_shared< LoadWebDocumentData >();
+    requestData->setLoadingDocumentUrl(STCONVERT("http://google.com"));
+    requestData->setSaveOptions(requestDataSaveOptions);
 
-void ParagraphFormatUpdate::validate()
-{
-    // TODO: implement validation
-}
+    std::shared_ptr< LoadWebDocumentRequest > request(new LoadWebDocumentRequest(
+        requestData,
+        boost::none
+    ));
 
-web::json::value ParagraphFormatUpdate::toJson() const
-{
-    web::json::value val = this->ParagraphFormatBase::toJson();
-
-    return val;
-}
-
-void ParagraphFormatUpdate::fromJson(web::json::value& val)
-{
-    this->ParagraphFormatBase::fromJson(val);
-
-}
-
-void ParagraphFormatUpdate::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
-{
-    ParagraphFormatBase::toMultipart(multipart, prefix);
-    auto namePrefix = ModelBase::fixNamePrefix(prefix);
-}
-
-void ParagraphFormatUpdate::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
-{
-    // TODO: implement fromMultiPart
-}
-
-
-
-}
-}
-}
-}
+   auto actual = get_api()->loadWebDocument(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
