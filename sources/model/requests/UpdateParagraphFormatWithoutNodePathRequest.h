@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="UpdateParagraphFormatRequest.h">
+* <copyright company="Aspose" file="UpdateParagraphFormatWithoutNodePathRequest.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatRequest_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatRequest_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatWithoutNodePathRequest_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatWithoutNodePathRequest_H_
 
 #include "ParagraphFormat.h"
 #include "HttpContent.h"
@@ -37,12 +37,11 @@ namespace cloud {
 namespace api {
 namespace models {
 
-class UpdateParagraphFormatRequest {
+class UpdateParagraphFormatWithoutNodePathRequest {
     public: 
- UpdateParagraphFormatRequest(
+ UpdateParagraphFormatWithoutNodePathRequest(
             utility::string_t name,
             std::shared_ptr<ParagraphFormat> dto,
-            utility::string_t nodePath,
             int32_t index,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -58,9 +57,6 @@ class UpdateParagraphFormatRequest {
 
         std::shared_ptr<ParagraphFormat> getDto() const;
         void setDto(std::shared_ptr<ParagraphFormat> dto);
-
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
@@ -89,7 +85,6 @@ class UpdateParagraphFormatRequest {
     private:
         utility::string_t m_Name;
         std::shared_ptr<ParagraphFormat> m_Dto;
-        utility::string_t m_NodePath;
         int32_t m_Index;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
@@ -106,4 +101,4 @@ class UpdateParagraphFormatRequest {
 }
 }
 
-#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatRequest_H_ */
+#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatWithoutNodePathRequest_H_ */

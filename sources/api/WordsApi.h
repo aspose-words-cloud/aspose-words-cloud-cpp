@@ -226,6 +226,7 @@
 #include "requests/UpdateListRequest.h"
 #include "requests/UpdateListLevelRequest.h"
 #include "requests/UpdateParagraphFormatRequest.h"
+#include "requests/UpdateParagraphFormatWithoutNodePathRequest.h"
 #include "requests/UpdateParagraphListFormatRequest.h"
 #include "requests/UpdateParagraphListFormatWithoutNodePathRequest.h"
 #include "requests/UpdateRunRequest.h"
@@ -351,7 +352,6 @@
 #include "ListsResponse.h"
 #include "ListUpdate.h"
 #include "LoadWebDocumentData.h"
-#include "MarkdownSaveOptionsData.h"
 #include "MetafileRenderingOptionsData.h"
 #include "MhtmlSaveOptionsData.h"
 #include "ModificationOperationResult.h"
@@ -369,9 +369,7 @@
 #include "PageStatData.h"
 #include "Paragraph.h"
 #include "ParagraphFormat.h"
-#include "ParagraphFormatBase.h"
 #include "ParagraphFormatResponse.h"
-#include "ParagraphFormatUpdate.h"
 #include "ParagraphInsert.h"
 #include "ParagraphLink.h"
 #include "ParagraphLinkCollection.h"
@@ -456,7 +454,6 @@
 #include "TabStopsResponse.h"
 #include "TextSaveOptionsData.h"
 #include "TiffSaveOptionsData.h"
-#include "TxtSaveOptionsBaseData.h"
 #include "WatermarkText.h"
 #include "WordMLSaveOptionsData.h"
 #include "WordsApiErrorResponse.h"
@@ -3300,6 +3297,23 @@ public:
     /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
     pplx::task<AsposeResponse<ParagraphFormatResponse>> updateParagraphFormat(
     	std::shared_ptr<UpdateParagraphFormatRequest> request
+    );
+
+    /// <summary>
+    /// Updates paragraph format properties, returns updated format properties.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="dto">Paragraph format object.</param>
+    /// <param name="index">Object index.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+    /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    pplx::task<AsposeResponse<ParagraphFormatResponse>> updateParagraphFormatWithoutNodePath(
+    	std::shared_ptr<UpdateParagraphFormatWithoutNodePathRequest> request
     );
 
     /// <summary>

@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="UpdateParagraphFormatRequest.cpp">
+* <copyright company="Aspose" file="UpdateParagraphFormatWithoutNodePathRequest.cpp">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,16 +23,15 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "UpdateParagraphFormatRequest.h"
+#include "UpdateParagraphFormatWithoutNodePathRequest.h"
 namespace aspose {
 namespace words {
 namespace cloud {
 namespace api {
 namespace models {
-UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
+UpdateParagraphFormatWithoutNodePathRequest::UpdateParagraphFormatWithoutNodePathRequest(
     utility::string_t name,
     std::shared_ptr<ParagraphFormat> dto,
-    utility::string_t nodePath,
     int32_t index,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -43,7 +42,6 @@ UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
 m_Dto(std::move(dto)),
-m_NodePath(std::move(nodePath)),
 m_Index(std::move(index)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -55,112 +53,102 @@ m_RevisionDateTime(std::move(revisionDateTime))
 {
 }
 
-utility::string_t UpdateParagraphFormatRequest::getName() const
+utility::string_t UpdateParagraphFormatWithoutNodePathRequest::getName() const
 {
     return m_Name;
 }
 
-void UpdateParagraphFormatRequest::setName(utility::string_t name)
+void UpdateParagraphFormatWithoutNodePathRequest::setName(utility::string_t name)
 {
     m_Name = std::move(name);
 }
 
-std::shared_ptr<ParagraphFormat> UpdateParagraphFormatRequest::getDto() const
+std::shared_ptr<ParagraphFormat> UpdateParagraphFormatWithoutNodePathRequest::getDto() const
 {
     return m_Dto;
 }
 
-void UpdateParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormat> dto)
+void UpdateParagraphFormatWithoutNodePathRequest::setDto(std::shared_ptr<ParagraphFormat> dto)
 {
     m_Dto = std::move(dto);
 }
 
-utility::string_t UpdateParagraphFormatRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void UpdateParagraphFormatRequest::setNodePath(utility::string_t nodePath)
-{
-    m_NodePath = std::move(nodePath);
-}
-
-int32_t UpdateParagraphFormatRequest::getIndex() const
+int32_t UpdateParagraphFormatWithoutNodePathRequest::getIndex() const
 {
     return m_Index;
 }
 
-void UpdateParagraphFormatRequest::setIndex(int32_t index)
+void UpdateParagraphFormatWithoutNodePathRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getFolder() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getFolder() const
 {
     return m_Folder;
 }
 
-void UpdateParagraphFormatRequest::setFolder(boost::optional< utility::string_t > folder)
+void UpdateParagraphFormatWithoutNodePathRequest::setFolder(boost::optional< utility::string_t > folder)
 {
     m_Folder = std::move(folder);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getStorage() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getStorage() const
 {
     return m_Storage;
 }
 
-void UpdateParagraphFormatRequest::setStorage(boost::optional< utility::string_t > storage)
+void UpdateParagraphFormatWithoutNodePathRequest::setStorage(boost::optional< utility::string_t > storage)
 {
     m_Storage = std::move(storage);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getLoadEncoding() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getLoadEncoding() const
 {
     return m_LoadEncoding;
 }
 
-void UpdateParagraphFormatRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+void UpdateParagraphFormatWithoutNodePathRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
 {
     m_LoadEncoding = std::move(loadEncoding);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getPassword() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getPassword() const
 {
     return m_Password;
 }
 
-void UpdateParagraphFormatRequest::setPassword(boost::optional< utility::string_t > password)
+void UpdateParagraphFormatWithoutNodePathRequest::setPassword(boost::optional< utility::string_t > password)
 {
     m_Password = std::move(password);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getDestFileName() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getDestFileName() const
 {
     return m_DestFileName;
 }
 
-void UpdateParagraphFormatRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+void UpdateParagraphFormatWithoutNodePathRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
 {
     m_DestFileName = std::move(destFileName);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getRevisionAuthor() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getRevisionAuthor() const
 {
     return m_RevisionAuthor;
 }
 
-void UpdateParagraphFormatRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+void UpdateParagraphFormatWithoutNodePathRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
 {
     m_RevisionAuthor = std::move(revisionAuthor);
 }
 
-boost::optional< utility::string_t > UpdateParagraphFormatRequest::getRevisionDateTime() const
+boost::optional< utility::string_t > UpdateParagraphFormatWithoutNodePathRequest::getRevisionDateTime() const
 {
     return m_RevisionDateTime;
 }
 
-void UpdateParagraphFormatRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+void UpdateParagraphFormatWithoutNodePathRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
 {
     m_RevisionDateTime = std::move(revisionDateTime);
 }
