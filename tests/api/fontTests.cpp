@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="documentTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="fontTests.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,48 +22,34 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "TestBase.h"
+
+#include "../TestBase.h"
 
 /// <summary>
-/// Example of how to get document
+/// Example of how to work with font.
 /// </summary>
-class DocumentTest : public InfrastructureTest {
+class FontTests : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
 };
 
 /// <summary>
-/// Test for getting document
+/// Test for reseting cache.
 /// </summary>
-TEST_F(DocumentTest, TestGetDocument) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetDocument.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
+TEST_F(FontTests, TestResetCache) {
+    std::shared_ptr< ResetCacheRequest > request(new ResetCacheRequest(
+    ));
 
-	UploadFileToStorage(fullName, filePath);
-
-	std::shared_ptr<GetDocumentRequest> request=
-			std::make_shared<GetDocumentRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none);
-
-	AsposeResponse<DocumentResponse> actual = get_api()->getDocument(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->resetCache(request).get();
 }
 
 /// <summary>
-/// Test for creating word document
+/// Test for GetAvailableFonts resource.
 /// </summary>
-TEST_F(DocumentTest, TestPutCreateDocument) {
-	utility::string_t
-		remoteName = STCONVERT("TestPutCreateDocument.docx");
+TEST_F(FontTests, TestGetAvailableFonts) {
+    std::shared_ptr< GetAvailableFontsRequest > request(new GetAvailableFontsRequest(
+        boost::none
+    ));
 
-	std::shared_ptr<CreateDocumentRequest> request=
-			std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
-
-	AsposeResponse<DocumentResponse> actual = get_api()->createDocument(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   auto actual = get_api()->getAvailableFonts(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }

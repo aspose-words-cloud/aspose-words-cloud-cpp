@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="splitDocumentToFormatTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="documentStatisticsTests.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,39 +22,41 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "TestBase.h"
+
+#include "../TestBase.h"
 
 /// <summary>
-/// Example of how to split document and return result with specified format and page rang
+/// Example of how to get document statistics.
 /// </summary>
-class SplitDocumentToFormatTest : public InfrastructureTest {
+class DocumentStatisticsTests : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/SplitDocument"));
+    utility::string_t remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentActions/Statistics");
+    utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
+
 };
 
 /// <summary>
-/// Test for document splitting
+/// Test for document classification.
 /// </summary>
-TEST_F(SplitDocumentToFormatTest, TestPostSplitDocument)
-{
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestPostSplitDocument.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		format = STCONVERT("text"),
-		filePath = path_combine(get_data_dir(commonFolder), localName),
-		destFileName = path_combine_url(baseTestOutPath, cutFileExtension(remoteName) + STCONVERT(".text"));
+TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
+    utility::string_t remoteFileName = STCONVERT("TestGetDocumentStatistics.docx");
 
-	int32_t from = 1,
-		to = 2;
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFile)
+    );
 
-	UploadFileToStorage(fullName, filePath);
+    std::shared_ptr< GetDocumentStatisticsRequest > request(new GetDocumentStatisticsRequest(
+        remoteFileName,
+        remoteDataFolder,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
-	std::shared_ptr<SplitDocumentRequest> request=
-			std::make_shared<SplitDocumentRequest>(remoteName, format, dataFolder, boost::none, boost::none,
-		boost::none, destFileName, from, to, boost::none, boost::none);
-
-	AsposeResponse<SplitDocumentResponse> actual = get_api()->splitDocument(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   auto actual = get_api()->getDocumentStatistics(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
