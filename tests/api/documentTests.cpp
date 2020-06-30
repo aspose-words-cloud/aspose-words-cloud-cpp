@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="documentTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="documentTests.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,48 +22,54 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "TestBase.h"
+
+#include "../TestBase.h"
 
 /// <summary>
-/// Example of how to get document
+/// Example of how to get document.
 /// </summary>
-class DocumentTest : public InfrastructureTest {
+class DocumentTests : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
+    utility::string_t remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentActions/Document");
+    utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
+
 };
 
 /// <summary>
-/// Test for getting document
+/// Test for getting document.
 /// </summary>
-TEST_F(DocumentTest, TestGetDocument) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetDocument.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
+TEST_F(DocumentTests, TestGetDocument) {
+    utility::string_t remoteFileName = STCONVERT("TestGetDocument.docx");
 
-	UploadFileToStorage(fullName, filePath);
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFile)
+    );
 
-	std::shared_ptr<GetDocumentRequest> request=
-			std::make_shared<GetDocumentRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none);
+    std::shared_ptr< GetDocumentRequest > request(new GetDocumentRequest(
+        remoteFileName,
+        remoteDataFolder,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
-	AsposeResponse<DocumentResponse> actual = get_api()->getDocument(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   auto actual = get_api()->getDocument(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
-/// Test for creating word document
+/// Test for creating word document.
 /// </summary>
-TEST_F(DocumentTest, TestPutCreateDocument) {
-	utility::string_t
-		remoteName = STCONVERT("TestPutCreateDocument.docx");
+TEST_F(DocumentTests, TestCreateDocument) {
+    utility::string_t remoteFileName = STCONVERT("TestCreateDocument.doc");
 
-	std::shared_ptr<CreateDocumentRequest> request=
-			std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
+    std::shared_ptr< CreateDocumentRequest > request(new CreateDocumentRequest(
+        boost::none,
+        remoteFileName,
+        remoteDataFolder
+    ));
 
-	AsposeResponse<DocumentResponse> actual = get_api()->createDocument(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   auto actual = get_api()->createDocument(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }

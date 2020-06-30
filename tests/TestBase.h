@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestBase.h">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,7 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #ifndef TEST_BASE
 #define TEST_BASE
 
@@ -72,8 +73,8 @@ public:
 	std::shared_ptr<WordsApi> get_api();
 
 protected:
-    const utility::string_t baseTestOutPath{_XPLATSTR("TestOut")};
-    const utility::string_t remoteBaseTestDataFolder{_XPLATSTR("Temp/SdkTests/TestData")};
+    const utility::string_t baseTestOutPath{_XPLATSTR("TestOut/Cpp")};
+    const utility::string_t remoteBaseTestDataFolder{_XPLATSTR("Temp/SdkTests/Cpp/TestData")};
     const boost::filesystem::path commonFolder{"Common"};
 
 private:

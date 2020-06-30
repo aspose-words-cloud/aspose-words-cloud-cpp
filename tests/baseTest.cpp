@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="baseTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="BaseTest.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,7 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
+
 #include "TestBase.h"
 
 #include <gmock/gmock.h>
@@ -91,7 +92,7 @@ TEST_F(ConfigurationTest, TestVersionIsUsing) {
 	utility::stringstream_t ss;
 	auto* oldbuff = ucout.rdbuf();
 	ucout.rdbuf(ss.rdbuf());
-	
+
 	get_configuration()->setDebugMode(true);
 
 	std::shared_ptr<web::http::http_response> response;
@@ -138,7 +139,7 @@ TEST_F(BaseApiTest, TestHandleErrors) {
 /// </summary>
 TEST_F(BaseApiTest, TestApiCoverage) {
 	fs::path sdkRoot = get_sdk_root();
-	auto testsPath = sdkRoot.parent_path() / "tests";
+	auto testsPath = sdkRoot.parent_path() / "tests" / "api";
 	auto apiPath = sdkRoot.parent_path() / "sources" / "api" / "WordsApi.h";
 
 	if (fs::exists(apiPath))

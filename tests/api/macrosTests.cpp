@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="macrosTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="macrosTests.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,33 +22,40 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "TestBase.h"
+
+#include "../TestBase.h"
 
 /// <summary>
-/// Example of how to work with macros
+/// Example of how to work with macros.
 /// </summary>
-class MacrosTest : public InfrastructureTest {
+class MacrosTests : public InfrastructureTest {
 protected:
-	utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentElements/Macros"));
+    utility::string_t remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentElements/Macros");
+    utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
+
 };
 
 /// <summary>
-/// Test for deleting macros
+/// Test for deleting macros.
 /// </summary>
-TEST_F(MacrosTest, TestDeleteDocumentMacros) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestDeleteDocumentMacros.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
+TEST_F(MacrosTests, TestDeleteMacros) {
+    utility::string_t remoteFileName = STCONVERT("TestDeleteDocumentMacros.docx");
 
-	UploadFileToStorage(fullName, filePath);
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFile)
+    );
 
-	std::shared_ptr<DeleteMacrosRequest> request=
-			std::make_shared<DeleteMacrosRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none);
+    std::shared_ptr< DeleteMacrosRequest > request(new DeleteMacrosRequest(
+        remoteFileName,
+        remoteDataFolder,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
-	std::shared_ptr<web::http::http_response> actual = get_api()->deleteMacros(request).get();
-
-	ASSERT_EQ(200, actual->status_code());
+   get_api()->deleteMacros(request).get();
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="fontTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="fontTests.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,30 +22,34 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "TestBase.h"
+
+#include "../TestBase.h"
+
 /// <summary>
-/// Example of how to work with font
+/// Example of how to work with font.
 /// </summary>
-class FontTest : public InfrastructureTest {
+class FontTests : public InfrastructureTest {
+protected:
 };
 
 /// <summary>
-/// Test for reseting cache
+/// Test for reseting cache.
 /// </summary>
-TEST_F(FontTest, TestResetCache) {
-	std::shared_ptr< ResetCacheRequest> request= std::make_shared<ResetCacheRequest>();
-	std::shared_ptr<web::http::http_response> actual = get_api()->resetCache(request).get();
+TEST_F(FontTests, TestResetCache) {
+    std::shared_ptr< ResetCacheRequest > request(new ResetCacheRequest(
+    ));
 
-	ASSERT_EQ(200, actual->status_code());
+   get_api()->resetCache(request).get();
 }
 
 /// <summary>
-/// Test for GetAvailableFonts resource
+/// Test for GetAvailableFonts resource.
 /// </summary>
-TEST_F(FontTest, TestGetAvailableFonts) {
-	std::shared_ptr<GetAvailableFontsRequest> request=
-			std::make_shared<GetAvailableFontsRequest>(boost::none);
-	AsposeResponse<AvailableFontsResponse> actual = get_api()->getAvailableFonts(request).get();
+TEST_F(FontTests, TestGetAvailableFonts) {
+    std::shared_ptr< GetAvailableFontsRequest > request(new GetAvailableFontsRequest(
+        boost::none
+    ));
 
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   auto actual = get_api()->getAvailableFonts(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }

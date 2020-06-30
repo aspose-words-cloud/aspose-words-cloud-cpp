@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="documentStatisticsTest.cpp">
-*   Copyright (c) 2019 Aspose.Words for Cloud
+* <copyright company="Aspose" file="documentStatisticsTests.cpp">
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,33 +22,41 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "TestBase.h"
+
+#include "../TestBase.h"
 
 /// <summary>
-/// Example of how to get document statistics
+/// Example of how to get document statistics.
 /// </summary>
-class DocumentStatisticsTest : public InfrastructureTest {
+class DocumentStatisticsTests : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Statistics"));
+    utility::string_t remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentActions/Statistics");
+    utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
+
 };
 
 /// <summary>
-/// Test for getting document statistics
+/// Test for document classification.
 /// </summary>
-TEST_F(DocumentStatisticsTest, TestGetDocumentStatistics) {
-	utility::string_t
-		localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = STCONVERT("TestGetDocumentStatistics.docx"),
-		fullName = path_combine_url(dataFolder, remoteName),
-		filePath = path_combine(get_data_dir(commonFolder), localName);
+TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
+    utility::string_t remoteFileName = STCONVERT("TestGetDocumentStatistics.docx");
 
-	UploadFileToStorage(fullName, filePath);
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFile)
+    );
 
-	std::shared_ptr<GetDocumentStatisticsRequest> request=
-			std::make_shared<GetDocumentStatisticsRequest>(remoteName, dataFolder, boost::none,
-		boost::none, boost::none, boost::none, boost::none, boost::none);
+    std::shared_ptr< GetDocumentStatisticsRequest > request(new GetDocumentStatisticsRequest(
+        remoteFileName,
+        remoteDataFolder,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
-	AsposeResponse<StatDataResponse> actual = get_api()->getDocumentStatistics(request).get();
-
-	ASSERT_EQ(200, actual.httpResponse->status_code());
+   auto actual = get_api()->getDocumentStatistics(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
