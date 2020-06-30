@@ -52,7 +52,7 @@ TEST_F(ClassificationTests, TestClassify) {
 /// Test for document classification.
 /// </summary>
 TEST_F(ClassificationTests, TestClassifyDocument) {
-    utility::string_t remoteFileName = STCONVERT("Source.docx");
+    utility::string_t remoteFileName = STCONVERT("TestClassifyDocument.docx");
 
     UploadFileToStorage(
         remoteDataFolder + STCONVERT("/") + remoteFileName,
@@ -67,31 +67,6 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
         boost::none,
         STCONVERT("3"),
         boost::none
-    ));
-
-   auto actual = get_api()->classifyDocument(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for document classification with taxonomy documents.
-/// </summary>
-TEST_F(ClassificationTests, TestClassifyTaxonomyDocuments) {
-    utility::string_t remoteFileName = STCONVERT("Source.docx");
-
-    UploadFileToStorage(
-        remoteDataFolder + STCONVERT("/") + remoteFileName,
-        path_combine(LocalTestDataFolder, localFile)
-    );
-
-    std::shared_ptr< ClassifyDocumentRequest > request(new ClassifyDocumentRequest(
-        remoteFileName,
-        remoteDataFolder,
-        boost::none,
-        boost::none,
-        boost::none,
-        STCONVERT("3"),
-        STCONVERT("documents")
     ));
 
    auto actual = get_api()->classifyDocument(request).get();

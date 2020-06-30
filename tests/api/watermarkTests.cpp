@@ -38,35 +38,6 @@ protected:
 /// <summary>
 /// Test for adding watermark image.
 /// </summary>
-TEST_F(WatermarkTests, TestInsertDocumentWatermarkImage) {
-    utility::string_t remoteFileName = STCONVERT("TestInsertWatermarkImage.docx");
-
-    UploadFileToStorage(
-        remoteDataFolder + STCONVERT("/") + remoteFileName,
-        path_combine(LocalTestDataFolder, localFile)
-    );
-
-    std::shared_ptr< InsertWatermarkImageRequest > request(new InsertWatermarkImageRequest(
-        remoteFileName,
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
-        remoteDataFolder,
-        boost::none,
-        boost::none,
-        boost::none,
-        baseTestOutPath + STCONVERT("/") + remoteFileName,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->insertWatermarkImage(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for adding watermark image.
-/// </summary>
 TEST_F(WatermarkTests, TestInsertWatermarkImage) {
     utility::string_t remoteFileName = STCONVERT("TestInsertWatermarkImage.docx");
     utility::string_t remoteImagePath = remoteDataFolder + STCONVERT("/TestInsertWatermarkImage.png");

@@ -52,7 +52,7 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
     requestFormField->setCalculateOnExit(true);
     requestFormField->setStatusText(STCONVERT(""));
     requestFormField->setTextInputType(STCONVERT("Regular"));
-    requestFormField->setTextInputDefault(STCONVERT(""));
+    requestFormField->setTextInputDefault(STCONVERT("No name"));
 
     std::shared_ptr< UpdateFormFieldRequest > request(new UpdateFormFieldRequest(
         remoteFileName,
@@ -89,7 +89,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
     requestFormField->setCalculateOnExit(true);
     requestFormField->setStatusText(STCONVERT(""));
     requestFormField->setTextInputType(STCONVERT("Regular"));
-    requestFormField->setTextInputDefault(STCONVERT(""));
+    requestFormField->setTextInputDefault(STCONVERT("No name"));
 
     std::shared_ptr< UpdateFormFieldWithoutNodePathRequest > request(new UpdateFormFieldWithoutNodePathRequest(
         remoteFileName,

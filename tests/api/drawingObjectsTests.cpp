@@ -289,7 +289,13 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectInsert >();
+    requestDrawingObject->setHeight(0);
     requestDrawingObject->setLeft(0);
+    requestDrawingObject->setTop(0);
+    requestDrawingObject->setWidth(0);
+    requestDrawingObject->setRelativeHorizontalPosition(STCONVERT("Margin"));
+    requestDrawingObject->setRelativeVerticalPosition(STCONVERT("Margin"));
+    requestDrawingObject->setWrapType(STCONVERT("Inline"));
 
     std::shared_ptr< InsertDrawingObjectRequest > request(new InsertDrawingObjectRequest(
         remoteFileName,
@@ -321,7 +327,13 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectInsert >();
+    requestDrawingObject->setHeight(0);
     requestDrawingObject->setLeft(0);
+    requestDrawingObject->setTop(0);
+    requestDrawingObject->setWidth(0);
+    requestDrawingObject->setRelativeHorizontalPosition(STCONVERT("Margin"));
+    requestDrawingObject->setRelativeVerticalPosition(STCONVERT("Margin"));
+    requestDrawingObject->setWrapType(STCONVERT("Inline"));
 
     std::shared_ptr< InsertDrawingObjectWithoutNodePathRequest > request(new InsertDrawingObjectWithoutNodePathRequest(
         remoteFileName,

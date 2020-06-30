@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
     utility::string_t name,
-    std::shared_ptr<ParagraphFormat> dto,
+    std::shared_ptr<ParagraphFormatUpdate> dto,
     utility::string_t nodePath,
     int32_t index,
     boost::optional< utility::string_t > folder,
@@ -65,12 +65,12 @@ void UpdateParagraphFormatRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<ParagraphFormat> UpdateParagraphFormatRequest::getDto() const
+std::shared_ptr<ParagraphFormatUpdate> UpdateParagraphFormatRequest::getDto() const
 {
     return m_Dto;
 }
 
-void UpdateParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormat> dto)
+void UpdateParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormatUpdate> dto)
 {
     m_Dto = std::move(dto);
 }

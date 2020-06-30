@@ -32,7 +32,6 @@ class ParagraphTests : public InfrastructureTest {
 protected:
     utility::string_t remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentElements/Paragraphs");
     utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
-    utility::string_t fieldFolder = STCONVERT("DocumentElements/Fields");
     utility::string_t listFolder = STCONVERT("DocumentElements/ParagraphListFormat");
     utility::string_t tabStopFolder = STCONVERT("DocumentElements/Paragraphs");
 
@@ -414,7 +413,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    auto requestDto = std::make_shared< ParagraphFormat >();
+    auto requestDto = std::make_shared< ParagraphFormatUpdate >();
     requestDto->setAlignment(STCONVERT("Right"));
 
     std::shared_ptr< UpdateParagraphFormatRequest > request(new UpdateParagraphFormatRequest(
@@ -432,37 +431,6 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
     ));
 
    auto actual = get_api()->updateParagraphFormat(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for updating  paragraph format settings without node path.
-/// </summary>
-TEST_F(ParagraphTests, TestUpdateParagraphFormatWithoutNodePath) {
-    utility::string_t remoteFileName = STCONVERT("TestGetDocumentParagraphsWithoutNodePath.docx");
-
-    UploadFileToStorage(
-        remoteDataFolder + STCONVERT("/") + remoteFileName,
-        path_combine(LocalTestDataFolder, localFile)
-    );
-
-    auto requestDto = std::make_shared< ParagraphFormat >();
-    requestDto->setAlignment(STCONVERT("Right"));
-
-    std::shared_ptr< UpdateParagraphFormatWithoutNodePathRequest > request(new UpdateParagraphFormatWithoutNodePathRequest(
-        remoteFileName,
-        requestDto,
-        0,
-        remoteDataFolder,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->updateParagraphFormatWithoutNodePath(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 

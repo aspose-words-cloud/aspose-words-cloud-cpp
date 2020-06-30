@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ParagraphFormat.h">
+* <copyright company="Aspose" file="ParagraphFormatUpdate.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormatUpdate_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormatUpdate_H_
 
 #include "ParagraphFormatBase.h"
 #include "../ModelBase.h"
@@ -37,14 +37,14 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format element.
+/// Paragraph format element update DTO.
 /// </summary>
-class ParagraphFormat
+class ParagraphFormatUpdate
     : public ParagraphFormatBase
 {
 public:
-    ParagraphFormat();
-    virtual ~ParagraphFormat();
+    ParagraphFormatUpdate();
+    virtual ~ParagraphFormatUpdate();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -58,30 +58,10 @@ public:
     void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ParagraphFormat members
+    /// ParagraphFormatUpdate members
 
-    /// <summary>
-    /// Gets or sets True when the paragraph style is one of the built-in Heading styles.
-    /// </summary>
-    bool isIsHeading() const;
-    bool isHeadingIsSet() const;
-    void unsetIsHeading();
-    void setIsHeading(bool value);
-
-    /// <summary>
-    /// Gets or sets True when the paragraph is an item in a bulleted or numbered list.
-    /// </summary>
-    bool isIsListItem() const;
-    bool isListItemIsSet() const;
-    void unsetIsListItem();
-    void setIsListItem(bool value);
 
 protected:
-    bool m_IsHeading;
-    bool m_IsHeadingIsSet;
-
-    bool m_IsListItem;
-    bool m_IsListItemIsSet;
 };
 
 }
@@ -90,4 +70,4 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormat_H_ */
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ParagraphFormatUpdate_H_ */

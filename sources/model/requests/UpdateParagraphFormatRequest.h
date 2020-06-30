@@ -26,7 +26,7 @@
 #ifndef ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatRequest_H_
 #define ASPOSE_WORDS_CLOUD_API_MODELS_UpdateParagraphFormatRequest_H_
 
-#include "ParagraphFormat.h"
+#include "ParagraphFormatUpdate.h"
 #include "HttpContent.h"
 #include "cpprest/details/basic_types.h"
 #include <boost/optional.hpp>
@@ -41,7 +41,7 @@ class UpdateParagraphFormatRequest {
     public: 
  UpdateParagraphFormatRequest(
             utility::string_t name,
-            std::shared_ptr<ParagraphFormat> dto,
+            std::shared_ptr<ParagraphFormatUpdate> dto,
             utility::string_t nodePath,
             int32_t index,
             boost::optional< utility::string_t > folder,
@@ -56,8 +56,8 @@ class UpdateParagraphFormatRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<ParagraphFormat> getDto() const;
-        void setDto(std::shared_ptr<ParagraphFormat> dto);
+        std::shared_ptr<ParagraphFormatUpdate> getDto() const;
+        void setDto(std::shared_ptr<ParagraphFormatUpdate> dto);
 
         utility::string_t getNodePath() const;
         void setNodePath(utility::string_t nodePath);
@@ -88,7 +88,7 @@ class UpdateParagraphFormatRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<ParagraphFormat> m_Dto;
+        std::shared_ptr<ParagraphFormatUpdate> m_Dto;
         utility::string_t m_NodePath;
         int32_t m_Index;
         boost::optional< utility::string_t > m_Folder;
