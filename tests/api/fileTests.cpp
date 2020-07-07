@@ -85,7 +85,7 @@ TEST_F(FileTests, TestMoveFile) {
     );
 
     std::shared_ptr< MoveFileRequest > request(new MoveFileRequest(
-        remoteDataFolder + STCONVERT("/TestMoveFileDest.docx"),
+        baseTestOutPath + STCONVERT("/TestMoveFileDest.docx"),
         remoteDataFolder + STCONVERT("/") + remoteFileName,
         boost::none,
         boost::none,

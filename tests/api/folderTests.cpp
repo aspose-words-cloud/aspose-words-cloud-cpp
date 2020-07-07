@@ -105,16 +105,14 @@ TEST_F(FolderTests, TestCopyFolder) {
 /// Test for move folder.
 /// </summary>
 TEST_F(FolderTests, TestMoveFolder) {
-    utility::string_t folderToMove = remoteDataFolder + STCONVERT("/TestMoveFolder");
-
     UploadFileToStorage(
-        folderToMove + STCONVERT("Src/TestMoveFolderSrc.docx"),
+        remoteDataFolder + STCONVERT("/TestMoveFolderSrc/TestMoveFolderSrc.docx"),
         path_combine(LocalTestDataFolder, localFile)
     );
 
     std::shared_ptr< MoveFolderRequest > request(new MoveFolderRequest(
-        folderToMove + STCONVERT("Dest"),
-        folderToMove + STCONVERT("Src"),
+        baseTestOutPath + STCONVERT("/TestMoveFolderDest"),
+        remoteDataFolder + STCONVERT("/TestMoveFolderSrc"),
         boost::none,
         boost::none
     ));
