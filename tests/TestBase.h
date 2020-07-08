@@ -57,7 +57,9 @@ protected:
     static utility::string_t cutFileExtension(const boost::filesystem::path& filename);
     boost::filesystem::path get_data_dir(const boost::filesystem::path& subfolder) const;
 
-	static std::shared_ptr<HttpContent> generate_http_content_from_file(const boost::filesystem::path& filePath,
+    utility::string_t create_random_guid() const;
+
+    static std::shared_ptr<HttpContent> generate_http_content_from_file(const boost::filesystem::path& filePath,
         const utility::string_t& filename = {}, const utility::string_t& contentType = {});
 
     static utility::string_t get_file_text(const boost::filesystem::path& file);

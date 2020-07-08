@@ -111,7 +111,7 @@ TEST_F(FolderTests, TestMoveFolder) {
     );
 
     std::shared_ptr< MoveFolderRequest > request(new MoveFolderRequest(
-        baseTestOutPath + STCONVERT("/TestMoveFolderDest"),
+        baseTestOutPath + STCONVERT("/TestMoveFolderDest_") + create_random_guid(),
         remoteDataFolder + STCONVERT("/TestMoveFolderSrc"),
         boost::none,
         boost::none

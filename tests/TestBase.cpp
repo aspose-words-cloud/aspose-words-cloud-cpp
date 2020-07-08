@@ -27,6 +27,10 @@
 
 #include <boost/filesystem/fstream.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -99,6 +103,12 @@ utility::string_t InfrastructureTest::cutFileExtension(const boost::filesystem::
 fs::path InfrastructureTest::get_data_dir(const fs::path& subfolder) const
 {
     return LocalTestDataFolder / fs::path{subfolder};
+}
+
+utility::string_t InfrastructureTest::create_random_guid() const
+{
+    boost::uuids::uuid uuid = boost::uuids::random_generator()();
+    return boost::lexical_cast< utility::string_t >(uuid);
 }
 
 std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file(const fs::path& filePath,
