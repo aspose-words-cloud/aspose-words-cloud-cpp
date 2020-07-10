@@ -15742,6 +15742,113 @@ pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::moveFolder(std::
     });
 }
 
+pplx::task<std::shared_ptr<web::http::http_response>> WordsApi::optimizeDocument(std::shared_ptr<OptimizeDocumentRequest> request)
+{
+    // verify the required parameter 'options' is set
+    if (request->getOptions() == nullptr)
+    {
+        throw ApiException(400, _XPLATSTR("Missing required parameter 'options' when calling WordsApi->optimizeDocument"));
+    }
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/{name}/compatibility/optimize"),
+    path = bPath;
+    path = replacePathParameter(path, _XPLATSTR("name"),
+        ApiClient::parameterToString(request->getName()));
+
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::vector<ApiClient::FormParamContainer> formParams;
+
+    headerParams[_XPLATSTR("Accept")] = _XPLATSTR("application/json");
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(_XPLATSTR("application/xml"));
+    consumeHttpContentTypes.insert(_XPLATSTR("application/json"));
+    if (request->getFolder())
+    {
+        queryParams[_XPLATSTR("Folder")] = ApiClient::parameterToString(*(request->getFolder()));
+    }
+    if (request->getStorage())
+    {
+        queryParams[_XPLATSTR("Storage")] = ApiClient::parameterToString(*(request->getStorage()));
+    }
+    if (request->getLoadEncoding())
+    {
+        queryParams[_XPLATSTR("LoadEncoding")] = ApiClient::parameterToString(*(request->getLoadEncoding()));
+    }
+    if (request->getPassword())
+    {
+        queryParams[_XPLATSTR("Password")] = ApiClient::parameterToString(*(request->getPassword()));
+    }
+    if (request->getDestFileName())
+    {
+        queryParams[_XPLATSTR("DestFileName")] = ApiClient::parameterToString(*(request->getDestFileName()));
+    }
+    if (request->getRevisionAuthor())
+    {
+        queryParams[_XPLATSTR("RevisionAuthor")] = ApiClient::parameterToString(*(request->getRevisionAuthor()));
+    }
+    if (request->getRevisionDateTime())
+    {
+        queryParams[_XPLATSTR("RevisionDateTime")] = ApiClient::parameterToString(*(request->getRevisionDateTime()));
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.empty() || consumeHttpContentTypes.find(_XPLATSTR("application/json")) != 
+    consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("application/json");
+        web::json::value json;
+        json = ModelBase::toJson(request->getOptions());
+        httpBody = std::shared_ptr<IHttpBody>(new JsonBody(json));
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(_XPLATSTR("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = _XPLATSTR("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart = std::make_shared<MultipartFormData>();
+(request->getOptions())->toMultipart(multipart, _XPLATSTR("options"));
+        httpBody = multipart;
+        requestHttpContentType += _XPLATSTR("; boundary=") + multipart->getBoundary();
+    }
+    else
+    {
+        throw ApiException(415, _XPLATSTR("WordsApi->optimizeDocument does not consume any supported media type."));
+    }
+
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
+    requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful    : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+        if (response.status_code() >= 400)
+        {
+            std::shared_ptr<WordsApiErrorResponse> errorResponse = std::shared_ptr<WordsApiErrorResponse>(new WordsApiErrorResponse());
+            web::json::value error_json = response.extract_json().get();
+            errorResponse->fromJson(error_json);
+
+            throw ApiException(response.status_code()
+                , _XPLATSTR("request error: ") + response.reason_phrase()
+                , errorResponse);
+        }
+
+        return response;
+    })
+    .then([=](web::http::http_response response)
+    {
+        return std::make_shared<web::http::http_response>(response);
+    });
+}
+
 pplx::task<AsposeResponse<ProtectionDataResponse>> WordsApi::protectDocument(std::shared_ptr<ProtectDocumentRequest> request)
 {
     // verify the required parameter 'protectionRequest' is set

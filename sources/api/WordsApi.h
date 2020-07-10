@@ -191,6 +191,7 @@
 #include "requests/LoadWebDocumentRequest.h"
 #include "requests/MoveFileRequest.h"
 #include "requests/MoveFolderRequest.h"
+#include "requests/OptimizeDocumentRequest.h"
 #include "requests/ProtectDocumentRequest.h"
 #include "requests/RejectAllRevisionsRequest.h"
 #include "requests/RemoveRangeRequest.h"
@@ -363,6 +364,7 @@
 #include "OfficeMathObjectsCollection.h"
 #include "OfficeMathObjectsResponse.h"
 #include "OoxmlSaveOptionsData.h"
+#include "OptimizationOptions.h"
 #include "OutlineOptionsData.h"
 #include "PageNumber.h"
 #include "PageSetup.h"
@@ -2732,6 +2734,22 @@ public:
     /// <param name="destStorageName">Destination storage name. (optional)</param>
     pplx::task<std::shared_ptr<web::http::http_response>> moveFolder(
     	std::shared_ptr<MoveFolderRequest> request
+    );
+
+    /// <summary>
+    /// Allows to optimize the document contents as well as default Aspose.Words behavior to a particular versions of MS Word.
+    /// </summary>
+    /// <param name="name">The document name.</param>
+    /// <param name="options">The document optimization options.</param>
+    /// <param name="folder">Original document folder. (optional)</param>
+    /// <param name="storage">Original document storage. (optional)</param>
+    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+    /// <param name="password">Password for opening an encrypted document. (optional)</param>
+    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+    /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions. (optional)</param>
+    /// <param name="revisionDateTime">The date and time to use for revisions. (optional)</param>
+    pplx::task<std::shared_ptr<web::http::http_response>> optimizeDocument(
+    	std::shared_ptr<OptimizeDocumentRequest> request
     );
 
     /// <summary>
