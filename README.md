@@ -18,53 +18,56 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 
 ## Enhancements in Version 20.7
 
-- Added "Markdown" save format
-- Added endpoint to update paragraph format without node path (PUT "/words/{name}/paragraphs/{index}/format")
+- Added 'Markdown' save format
+- Added endpoint to update paragraph format without node path (PUT '/words/{name}/paragraphs/{index}/format')
+
 
 ## Enhancements in Version 20.6
 
 - Added new methods:
-  - deleteAllParagraphTabStopsWithoutNodePath
-  - deleteParagraphTabStopWithoutNodePath
-  - getParagraphTabStopsWithoutNodePath
-  - insertOrUpdateParagraphTabStopWithoutNodePath
-  - insertParagraphWithoutNodePath
-  - updateParagraphFormatWithoutNodePath
-  - updateParagraphListFormatWithoutNodePath
-  - deleteParagraphListFormatWithoutNodePath
+  - DeleteAllParagraphTabStopsWithoutNodePath
+  - DeleteParagraphTabStopWithoutNodePath
+  - GetParagraphTabStopsWithoutNodePath
+  - InsertOrUpdateParagraphTabStopWithoutNodePath
+  - InsertParagraphWithoutNodePath
+  - UpdateParagraphFormatWithoutNodePath
+  - UpdateParagraphListFormatWithoutNodePath
+  - DeleteParagraphListFormatWithoutNodePath
 - DrawingObject related methods have been changed body content. Special request classes are introduced instead of strings.
-- insertOrUpdateParagraphTabStop, deleteParagraphTabStop methods have been changed parameter order
+- InsertOrUpdateParagraphTabStop, DeleteParagraphTabStop methods have been changed parameter order
 - OoxmlSaveOptionsData.CompressionLevel property has been added
+
 
 ## Enhancements in Version 20.5
 
 - Added methods to work with Word document lists
-  - getLists
-  - getList
-  - insertList
-  - updateList
-  - updateListLevel
+  - GetLists
+  - GetList
+  - InsertList
+  - UpdateList
+  - UpdateListLevel
 - Added methods to work with styles
-  - getStyles
-  - updateStyle
-  - insertStyle
-  - copyStyle
-  - getStyleFromDocumentElement
-  - applyStyleToDocumentElement
+  - GetStyles
+  - UpdateStyle
+  - InsertStyle
+  - CopyStyle
+  - GetStyleFromDocumentElement
+  - ApplyStyleToDocumentElement
 - Added methods to work with paragraph list format
-  - getParagraphListFormat
-  - getParagraphListFormatWithoutNodePath
-  - updateParagraphListFormat
-  - deleteParagraphListFormat
+  - GetParagraphListFormat
+  - GetParagraphListFormatWithoutNodePath
+  - UpdateParagraphListFormat
+  - DeleteParagraphListFormat
 - Added methods to work with paragraph tab stops
-  - g1etParagraphTabStops
-  - insertOrUpdateParagraphTabStop
-  - deleteAllParagraphTabStops
-  - deleteParagraphTabStop
+  - GetParagraphTabStops
+  - InsertOrUpdateParagraphTabStop
+  - DeleteAllParagraphTabStops
+  - DeleteParagraphTabStop
 - Added methods to build reports
-  - buildReport
-  - buildReportOnline
+  - BuildReport
+  - BuildReportOnline
 - Added Shading property to ParagraphFormat
+
 
 ## Read & Write Document Formats
 
@@ -123,7 +126,7 @@ cmake -E chdir aspose-words-cloud-cpp\build ctest -V -C Debug
 Build [Boost libraray](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz)
 ```cmd
 wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz -O /tmp/boost.tar.gz \
-    && tar -xvzf /tmp/boost.tar.gz \ 
+	&& tar -xvzf /tmp/boost.tar.gz \ 
 	&& cd boost_1_68_0 \
 	&& ./bootstrap.sh  \
 	&& ./b2 install \
