@@ -70,15 +70,16 @@ TEST_F(TableTests, TestGetTablesWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetTablesWithoutNodePathRequest > request(new GetTablesWithoutNodePathRequest(
+    std::shared_ptr< GetTablesRequest > request(new GetTablesRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getTablesWithoutNodePath(request).get();
+   auto actual = get_api()->getTables(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -95,8 +96,8 @@ TEST_F(TableTests, TestGetTable) {
 
     std::shared_ptr< GetTableRequest > request(new GetTableRequest(
         remoteFileName,
-        STCONVERT(""),
         1,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -118,16 +119,17 @@ TEST_F(TableTests, TestGetTableWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetTableWithoutNodePathRequest > request(new GetTableWithoutNodePathRequest(
+    std::shared_ptr< GetTableRequest > request(new GetTableRequest(
         remoteFileName,
         1,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getTableWithoutNodePath(request).get();
+   auto actual = get_api()->getTable(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -144,8 +146,8 @@ TEST_F(TableTests, TestDeleteTable) {
 
     std::shared_ptr< DeleteTableRequest > request(new DeleteTableRequest(
         remoteFileName,
-        STCONVERT(""),
         1,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -169,9 +171,10 @@ TEST_F(TableTests, TestDeleteTableWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< DeleteTableWithoutNodePathRequest > request(new DeleteTableWithoutNodePathRequest(
+    std::shared_ptr< DeleteTableRequest > request(new DeleteTableRequest(
         remoteFileName,
         1,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -181,7 +184,7 @@ TEST_F(TableTests, TestDeleteTableWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteTableWithoutNodePath(request).get();
+   get_api()->deleteTable(request).get();
 }
 
 /// <summary>
@@ -231,9 +234,10 @@ TEST_F(TableTests, TestInsertTableWithoutNodePath) {
     requestTable->setColumnsCount(5);
     requestTable->setRowsCount(4);
 
-    std::shared_ptr< InsertTableWithoutNodePathRequest > request(new InsertTableWithoutNodePathRequest(
+    std::shared_ptr< InsertTableRequest > request(new InsertTableRequest(
         remoteFileName,
         requestTable,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -243,7 +247,7 @@ TEST_F(TableTests, TestInsertTableWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertTableWithoutNodePath(request).get();
+   auto actual = get_api()->insertTable(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -260,8 +264,8 @@ TEST_F(TableTests, TestGetTableProperties) {
 
     std::shared_ptr< GetTablePropertiesRequest > request(new GetTablePropertiesRequest(
         remoteFileName,
-        STCONVERT(""),
         1,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -283,16 +287,17 @@ TEST_F(TableTests, TestGetTablePropertiesWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetTablePropertiesWithoutNodePathRequest > request(new GetTablePropertiesWithoutNodePathRequest(
+    std::shared_ptr< GetTablePropertiesRequest > request(new GetTablePropertiesRequest(
         remoteFileName,
         1,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getTablePropertiesWithoutNodePath(request).get();
+   auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -318,8 +323,8 @@ TEST_F(TableTests, TestUpdateTableProperties) {
     std::shared_ptr< UpdateTablePropertiesRequest > request(new UpdateTablePropertiesRequest(
         remoteFileName,
         requestProperties,
-        STCONVERT(""),
         1,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -352,10 +357,11 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
     requestProperties->setCellSpacing(2);
     requestProperties->setStyleOptions(STCONVERT("ColumnBands"));
 
-    std::shared_ptr< UpdateTablePropertiesWithoutNodePathRequest > request(new UpdateTablePropertiesWithoutNodePathRequest(
+    std::shared_ptr< UpdateTablePropertiesRequest > request(new UpdateTablePropertiesRequest(
         remoteFileName,
         requestProperties,
         1,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -365,7 +371,7 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->updateTablePropertiesWithoutNodePath(request).get();
+   auto actual = get_api()->updateTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -669,8 +675,8 @@ TEST_F(TableTests, TestRenderTable) {
     std::shared_ptr< RenderTableRequest > request(new RenderTableRequest(
         remoteFileName,
         STCONVERT("png"),
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -692,10 +698,11 @@ TEST_F(TableTests, TestRenderTableWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< RenderTableWithoutNodePathRequest > request(new RenderTableWithoutNodePathRequest(
+    std::shared_ptr< RenderTableRequest > request(new RenderTableRequest(
         remoteFileName,
         STCONVERT("png"),
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -703,5 +710,5 @@ TEST_F(TableTests, TestRenderTableWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->renderTableWithoutNodePath(request).get();
+   get_api()->renderTable(request).get();
 }

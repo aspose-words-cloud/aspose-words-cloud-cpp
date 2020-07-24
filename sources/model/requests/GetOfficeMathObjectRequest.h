@@ -40,8 +40,8 @@ class GetOfficeMathObjectRequest {
     public: 
  GetOfficeMathObjectRequest(
             utility::string_t name,
-            utility::string_t nodePath,
             int32_t index,
+            boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -51,11 +51,11 @@ class GetOfficeMathObjectRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
-
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        boost::optional< utility::string_t > getNodePath() const;
+        void setNodePath(boost::optional< utility::string_t > nodePath);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -71,8 +71,8 @@ class GetOfficeMathObjectRequest {
 
     private:
         utility::string_t m_Name;
-        utility::string_t m_NodePath;
         int32_t m_Index;
+        boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

@@ -50,8 +50,8 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
 
     std::shared_ptr< GetParagraphRequest > request(new GetParagraphRequest(
         remoteFileName,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -73,16 +73,17 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndexWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetParagraphWithoutNodePathRequest > request(new GetParagraphWithoutNodePathRequest(
+    std::shared_ptr< GetParagraphRequest > request(new GetParagraphRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphWithoutNodePath(request).get();
+   auto actual = get_api()->getParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -121,15 +122,16 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphsWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetParagraphsWithoutNodePathRequest > request(new GetParagraphsWithoutNodePathRequest(
+    std::shared_ptr< GetParagraphsRequest > request(new GetParagraphsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphsWithoutNodePath(request).get();
+   auto actual = get_api()->getParagraphs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -285,9 +287,10 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
     auto requestParagraph = std::make_shared< ParagraphInsert >();
     requestParagraph->setText(STCONVERT("This is a new paragraph for your document"));
 
-    std::shared_ptr< InsertParagraphWithoutNodePathRequest > request(new InsertParagraphWithoutNodePathRequest(
+    std::shared_ptr< InsertParagraphRequest > request(new InsertParagraphRequest(
         remoteFileName,
         requestParagraph,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -298,7 +301,7 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertParagraphWithoutNodePath(request).get();
+   auto actual = get_api()->insertParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -316,8 +319,8 @@ TEST_F(ParagraphTests, TestRenderParagraph) {
     std::shared_ptr< RenderParagraphRequest > request(new RenderParagraphRequest(
         remoteFileName,
         STCONVERT("png"),
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -339,10 +342,11 @@ TEST_F(ParagraphTests, TestRenderParagraphWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< RenderParagraphWithoutNodePathRequest > request(new RenderParagraphWithoutNodePathRequest(
+    std::shared_ptr< RenderParagraphRequest > request(new RenderParagraphRequest(
         remoteFileName,
         STCONVERT("png"),
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -350,7 +354,7 @@ TEST_F(ParagraphTests, TestRenderParagraphWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->renderParagraphWithoutNodePath(request).get();
+   get_api()->renderParagraph(request).get();
 }
 
 /// <summary>
@@ -366,8 +370,8 @@ TEST_F(ParagraphTests, TestGetParagraphFormat) {
 
     std::shared_ptr< GetParagraphFormatRequest > request(new GetParagraphFormatRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -389,16 +393,17 @@ TEST_F(ParagraphTests, TestGetParagraphFormatWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetParagraphFormatWithoutNodePathRequest > request(new GetParagraphFormatWithoutNodePathRequest(
+    std::shared_ptr< GetParagraphFormatRequest > request(new GetParagraphFormatRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphFormatWithoutNodePath(request).get();
+   auto actual = get_api()->getParagraphFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -419,8 +424,8 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
     std::shared_ptr< UpdateParagraphFormatRequest > request(new UpdateParagraphFormatRequest(
         remoteFileName,
         requestDto,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -447,8 +452,8 @@ TEST_F(ParagraphTests, TestDeleteParagraph) {
 
     std::shared_ptr< DeleteParagraphRequest > request(new DeleteParagraphRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -472,9 +477,10 @@ TEST_F(ParagraphTests, TestDeleteParagraphWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< DeleteParagraphWithoutNodePathRequest > request(new DeleteParagraphWithoutNodePathRequest(
+    std::shared_ptr< DeleteParagraphRequest > request(new DeleteParagraphRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -484,7 +490,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteParagraphWithoutNodePath(request).get();
+   get_api()->deleteParagraph(request).get();
 }
 
 /// <summary>
@@ -500,8 +506,8 @@ TEST_F(ParagraphTests, TestGetParagraphListFormat) {
 
     std::shared_ptr< GetParagraphListFormatRequest > request(new GetParagraphListFormatRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -523,16 +529,17 @@ TEST_F(ParagraphTests, TestGetParagraphListFormatWithoutNodePath) {
         path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphGetListFormat.doc"))
     );
 
-    std::shared_ptr< GetParagraphListFormatWithoutNodePathRequest > request(new GetParagraphListFormatWithoutNodePathRequest(
+    std::shared_ptr< GetParagraphListFormatRequest > request(new GetParagraphListFormatRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphListFormatWithoutNodePath(request).get();
+   auto actual = get_api()->getParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -553,8 +560,8 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
     std::shared_ptr< UpdateParagraphListFormatRequest > request(new UpdateParagraphListFormatRequest(
         remoteFileName,
         requestDto,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -582,10 +589,11 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
     auto requestDto = std::make_shared< ListFormatUpdate >();
     requestDto->setListId(2);
 
-    std::shared_ptr< UpdateParagraphListFormatWithoutNodePathRequest > request(new UpdateParagraphListFormatWithoutNodePathRequest(
+    std::shared_ptr< UpdateParagraphListFormatRequest > request(new UpdateParagraphListFormatRequest(
         remoteFileName,
         requestDto,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -595,7 +603,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->updateParagraphListFormatWithoutNodePath(request).get();
+   auto actual = get_api()->updateParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -612,8 +620,8 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormat) {
 
     std::shared_ptr< DeleteParagraphListFormatRequest > request(new DeleteParagraphListFormatRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -638,9 +646,10 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormatWithoutNodePath) {
         path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphDeleteListFormat.doc"))
     );
 
-    std::shared_ptr< DeleteParagraphListFormatWithoutNodePathRequest > request(new DeleteParagraphListFormatWithoutNodePathRequest(
+    std::shared_ptr< DeleteParagraphListFormatRequest > request(new DeleteParagraphListFormatRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -650,7 +659,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormatWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->deleteParagraphListFormatWithoutNodePath(request).get();
+   auto actual = get_api()->deleteParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -667,8 +676,8 @@ TEST_F(ParagraphTests, TestGetParagraphTabStops) {
 
     std::shared_ptr< GetParagraphTabStopsRequest > request(new GetParagraphTabStopsRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -690,16 +699,17 @@ TEST_F(ParagraphTests, TestGetParagraphTabStopsWithoutNodePath) {
         path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))
     );
 
-    std::shared_ptr< GetParagraphTabStopsWithoutNodePathRequest > request(new GetParagraphTabStopsWithoutNodePathRequest(
+    std::shared_ptr< GetParagraphTabStopsRequest > request(new GetParagraphTabStopsRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphTabStopsWithoutNodePath(request).get();
+   auto actual = get_api()->getParagraphTabStops(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -722,8 +732,8 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
     std::shared_ptr< InsertOrUpdateParagraphTabStopRequest > request(new InsertOrUpdateParagraphTabStopRequest(
         remoteFileName,
         requestDto,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -751,10 +761,11 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
     requestDto->setLeader(STCONVERT("None"));
     requestDto->setPosition(72);
 
-    std::shared_ptr< InsertOrUpdateParagraphTabStopWithoutNodePathRequest > request(new InsertOrUpdateParagraphTabStopWithoutNodePathRequest(
+    std::shared_ptr< InsertOrUpdateParagraphTabStopRequest > request(new InsertOrUpdateParagraphTabStopRequest(
         remoteFileName,
         requestDto,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -762,7 +773,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertOrUpdateParagraphTabStopWithoutNodePath(request).get();
+   auto actual = get_api()->insertOrUpdateParagraphTabStop(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -779,8 +790,8 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStops) {
 
     std::shared_ptr< DeleteAllParagraphTabStopsRequest > request(new DeleteAllParagraphTabStopsRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -803,9 +814,10 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsWithoutNodePath) {
         path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))
     );
 
-    std::shared_ptr< DeleteAllParagraphTabStopsWithoutNodePathRequest > request(new DeleteAllParagraphTabStopsWithoutNodePathRequest(
+    std::shared_ptr< DeleteAllParagraphTabStopsRequest > request(new DeleteAllParagraphTabStopsRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -813,7 +825,7 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->deleteAllParagraphTabStopsWithoutNodePath(request).get();
+   auto actual = get_api()->deleteAllParagraphTabStops(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -831,8 +843,8 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStop) {
     std::shared_ptr< DeleteParagraphTabStopRequest > request(new DeleteParagraphTabStopRequest(
         remoteFileName,
         72,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -855,10 +867,11 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStopWithoutNodePath) {
         path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))
     );
 
-    std::shared_ptr< DeleteParagraphTabStopWithoutNodePathRequest > request(new DeleteParagraphTabStopWithoutNodePathRequest(
+    std::shared_ptr< DeleteParagraphTabStopRequest > request(new DeleteParagraphTabStopRequest(
         remoteFileName,
         72,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -866,6 +879,6 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStopWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->deleteParagraphTabStopWithoutNodePath(request).get();
+   auto actual = get_api()->deleteParagraphTabStop(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }

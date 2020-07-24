@@ -71,15 +71,16 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetDocumentDrawingObjectsWithoutNodePathRequest > request(new GetDocumentDrawingObjectsWithoutNodePathRequest(
+    std::shared_ptr< GetDocumentDrawingObjectsRequest > request(new GetDocumentDrawingObjectsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getDocumentDrawingObjectsWithoutNodePath(request).get();
+   auto actual = get_api()->getDocumentDrawingObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -96,8 +97,8 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndex) {
 
     std::shared_ptr< GetDocumentDrawingObjectByIndexRequest > request(new GetDocumentDrawingObjectByIndexRequest(
         remoteFileName,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -119,16 +120,17 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexWithoutNodePath) 
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetDocumentDrawingObjectByIndexWithoutNodePathRequest > request(new GetDocumentDrawingObjectByIndexWithoutNodePathRequest(
+    std::shared_ptr< GetDocumentDrawingObjectByIndexRequest > request(new GetDocumentDrawingObjectByIndexRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getDocumentDrawingObjectByIndexWithoutNodePath(request).get();
+   auto actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -146,8 +148,8 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObject) {
     std::shared_ptr< RenderDrawingObjectRequest > request(new RenderDrawingObjectRequest(
         remoteFileName,
         STCONVERT("png"),
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -169,10 +171,11 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObjectWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< RenderDrawingObjectWithoutNodePathRequest > request(new RenderDrawingObjectWithoutNodePathRequest(
+    std::shared_ptr< RenderDrawingObjectRequest > request(new RenderDrawingObjectRequest(
         remoteFileName,
         STCONVERT("png"),
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -180,7 +183,7 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObjectWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->renderDrawingObjectWithoutNodePath(request).get();
+   get_api()->renderDrawingObject(request).get();
 }
 
 /// <summary>
@@ -196,8 +199,8 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageData) {
 
     std::shared_ptr< GetDocumentDrawingObjectImageDataRequest > request(new GetDocumentDrawingObjectImageDataRequest(
         remoteFileName,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -218,16 +221,17 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageDataWithoutNodePath
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetDocumentDrawingObjectImageDataWithoutNodePathRequest > request(new GetDocumentDrawingObjectImageDataWithoutNodePathRequest(
+    std::shared_ptr< GetDocumentDrawingObjectImageDataRequest > request(new GetDocumentDrawingObjectImageDataRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   get_api()->getDocumentDrawingObjectImageDataWithoutNodePath(request).get();
+   get_api()->getDocumentDrawingObjectImageData(request).get();
 }
 
 /// <summary>
@@ -243,8 +247,8 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleData) {
 
     std::shared_ptr< GetDocumentDrawingObjectOleDataRequest > request(new GetDocumentDrawingObjectOleDataRequest(
         remoteFileName,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -265,16 +269,17 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataWithoutNodePath) 
         path_combine(LocalTestDataFolder, localDrawingFile)
     );
 
-    std::shared_ptr< GetDocumentDrawingObjectOleDataWithoutNodePathRequest > request(new GetDocumentDrawingObjectOleDataWithoutNodePathRequest(
+    std::shared_ptr< GetDocumentDrawingObjectOleDataRequest > request(new GetDocumentDrawingObjectOleDataRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   get_api()->getDocumentDrawingObjectOleDataWithoutNodePath(request).get();
+   get_api()->getDocumentDrawingObjectOleData(request).get();
 }
 
 /// <summary>
@@ -335,10 +340,11 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
     requestDrawingObject->setRelativeVerticalPosition(STCONVERT("Margin"));
     requestDrawingObject->setWrapType(STCONVERT("Inline"));
 
-    std::shared_ptr< InsertDrawingObjectWithoutNodePathRequest > request(new InsertDrawingObjectWithoutNodePathRequest(
+    std::shared_ptr< InsertDrawingObjectRequest > request(new InsertDrawingObjectRequest(
         remoteFileName,
         requestDrawingObject,
         generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -348,7 +354,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertDrawingObjectWithoutNodePath(request).get();
+   auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -365,8 +371,8 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObject) {
 
     std::shared_ptr< DeleteDrawingObjectRequest > request(new DeleteDrawingObjectRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -390,9 +396,10 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< DeleteDrawingObjectWithoutNodePathRequest > request(new DeleteDrawingObjectWithoutNodePathRequest(
+    std::shared_ptr< DeleteDrawingObjectRequest > request(new DeleteDrawingObjectRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -402,7 +409,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteDrawingObjectWithoutNodePath(request).get();
+   get_api()->deleteDrawingObject(request).get();
 }
 
 /// <summary>
@@ -423,8 +430,8 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
         remoteFileName,
         requestDrawingObject,
         generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -452,11 +459,12 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
     auto requestDrawingObject = std::make_shared< DrawingObjectUpdate >();
     requestDrawingObject->setLeft(0);
 
-    std::shared_ptr< UpdateDrawingObjectWithoutNodePathRequest > request(new UpdateDrawingObjectWithoutNodePathRequest(
+    std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
         requestDrawingObject,
         generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -466,6 +474,6 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->updateDrawingObjectWithoutNodePath(request).get();
+   auto actual = get_api()->updateDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }

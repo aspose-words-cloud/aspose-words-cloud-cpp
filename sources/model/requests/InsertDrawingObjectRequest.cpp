@@ -33,7 +33,7 @@ InsertDrawingObjectRequest::InsertDrawingObjectRequest(
     utility::string_t name,
     std::shared_ptr<DrawingObjectInsert> drawingObject,
     std::shared_ptr<HttpContent> imageFile,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -85,12 +85,12 @@ void InsertDrawingObjectRequest::setImageFile(std::shared_ptr<HttpContent> image
     m_ImageFile = std::move(imageFile);
 }
 
-utility::string_t InsertDrawingObjectRequest::getNodePath() const
+boost::optional< utility::string_t > InsertDrawingObjectRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void InsertDrawingObjectRequest::setNodePath(utility::string_t nodePath)
+void InsertDrawingObjectRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

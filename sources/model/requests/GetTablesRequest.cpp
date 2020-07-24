@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 GetTablesRequest::GetTablesRequest(
     utility::string_t name,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -55,12 +55,12 @@ void GetTablesRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t GetTablesRequest::getNodePath() const
+boost::optional< utility::string_t > GetTablesRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void GetTablesRequest::setNodePath(utility::string_t nodePath)
+void GetTablesRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

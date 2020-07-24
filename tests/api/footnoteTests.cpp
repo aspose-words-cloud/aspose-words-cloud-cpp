@@ -82,9 +82,10 @@ TEST_F(FootnoteTests, TestInsertFootnoteWithoutNodePath) {
     requestFootnoteDto->setFootnoteType(STCONVERT("Endnote"));
     requestFootnoteDto->setText(STCONVERT("test endnote"));
 
-    std::shared_ptr< InsertFootnoteWithoutNodePathRequest > request(new InsertFootnoteWithoutNodePathRequest(
+    std::shared_ptr< InsertFootnoteRequest > request(new InsertFootnoteRequest(
         remoteFileName,
         requestFootnoteDto,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -94,7 +95,7 @@ TEST_F(FootnoteTests, TestInsertFootnoteWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertFootnoteWithoutNodePath(request).get();
+   auto actual = get_api()->insertFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -111,8 +112,8 @@ TEST_F(FootnoteTests, TestDeleteFootnote) {
 
     std::shared_ptr< DeleteFootnoteRequest > request(new DeleteFootnoteRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -136,9 +137,10 @@ TEST_F(FootnoteTests, TestDeleteFootnoteWithoutNodePath) {
         path_combine(LocalTestDataFolder, footnoteFolder + STCONVERT("/Footnote.doc"))
     );
 
-    std::shared_ptr< DeleteFootnoteWithoutNodePathRequest > request(new DeleteFootnoteWithoutNodePathRequest(
+    std::shared_ptr< DeleteFootnoteRequest > request(new DeleteFootnoteRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -148,7 +150,7 @@ TEST_F(FootnoteTests, TestDeleteFootnoteWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteFootnoteWithoutNodePath(request).get();
+   get_api()->deleteFootnote(request).get();
 }
 
 /// <summary>
@@ -186,15 +188,16 @@ TEST_F(FootnoteTests, TestGetFootnotesWithoutNodePath) {
         path_combine(LocalTestDataFolder, footnoteFolder + STCONVERT("/Footnote.doc"))
     );
 
-    std::shared_ptr< GetFootnotesWithoutNodePathRequest > request(new GetFootnotesWithoutNodePathRequest(
+    std::shared_ptr< GetFootnotesRequest > request(new GetFootnotesRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getFootnotesWithoutNodePath(request).get();
+   auto actual = get_api()->getFootnotes(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -211,8 +214,8 @@ TEST_F(FootnoteTests, TestGetFootnote) {
 
     std::shared_ptr< GetFootnoteRequest > request(new GetFootnoteRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -234,16 +237,17 @@ TEST_F(FootnoteTests, TestGetFootnoteWithoutNodePath) {
         path_combine(LocalTestDataFolder, footnoteFolder + STCONVERT("/Footnote.doc"))
     );
 
-    std::shared_ptr< GetFootnoteWithoutNodePathRequest > request(new GetFootnoteWithoutNodePathRequest(
+    std::shared_ptr< GetFootnoteRequest > request(new GetFootnoteRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getFootnoteWithoutNodePath(request).get();
+   auto actual = get_api()->getFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -264,8 +268,8 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
     std::shared_ptr< UpdateFootnoteRequest > request(new UpdateFootnoteRequest(
         remoteFileName,
         requestFootnoteDto,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -293,10 +297,11 @@ TEST_F(FootnoteTests, TestUpdateFootnoteWithoutNodePath) {
     auto requestFootnoteDto = std::make_shared< FootnoteUpdate >();
     requestFootnoteDto->setText(STCONVERT("new text is here"));
 
-    std::shared_ptr< UpdateFootnoteWithoutNodePathRequest > request(new UpdateFootnoteWithoutNodePathRequest(
+    std::shared_ptr< UpdateFootnoteRequest > request(new UpdateFootnoteRequest(
         remoteFileName,
         requestFootnoteDto,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -306,6 +311,6 @@ TEST_F(FootnoteTests, TestUpdateFootnoteWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->updateFootnoteWithoutNodePath(request).get();
+   auto actual = get_api()->updateFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }

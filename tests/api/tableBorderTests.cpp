@@ -72,8 +72,8 @@ TEST_F(TableBorderTests, TestGetBorder) {
 
     std::shared_ptr< GetBorderRequest > request(new GetBorderRequest(
         remoteFileName,
-        STCONVERT("tables/1/rows/0/cells/0"),
         STCONVERT("left"),
+        STCONVERT("tables/1/rows/0/cells/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -124,8 +124,8 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
 
     std::shared_ptr< DeleteBorderRequest > request(new DeleteBorderRequest(
         remoteFileName,
-        STCONVERT("tables/1/rows/0/cells/0"),
         STCONVERT("left"),
+        STCONVERT("tables/1/rows/0/cells/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -164,8 +164,8 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
     std::shared_ptr< UpdateBorderRequest > request(new UpdateBorderRequest(
         remoteFileName,
         requestBorderProperties,
-        STCONVERT("tables/1/rows/0/cells/0"),
         STCONVERT("left"),
+        STCONVERT("tables/1/rows/0/cells/0"),
         remoteDataFolder,
         boost::none,
         boost::none,

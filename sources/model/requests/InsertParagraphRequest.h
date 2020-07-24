@@ -42,7 +42,7 @@ class InsertParagraphRequest {
  InsertParagraphRequest(
             utility::string_t name,
             std::shared_ptr<ParagraphInsert> paragraph,
-            utility::string_t nodePath,
+            boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -59,8 +59,8 @@ class InsertParagraphRequest {
         std::shared_ptr<ParagraphInsert> getParagraph() const;
         void setParagraph(std::shared_ptr<ParagraphInsert> paragraph);
 
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
+        boost::optional< utility::string_t > getNodePath() const;
+        void setNodePath(boost::optional< utility::string_t > nodePath);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -89,7 +89,7 @@ class InsertParagraphRequest {
     private:
         utility::string_t m_Name;
         std::shared_ptr<ParagraphInsert> m_Paragraph;
-        utility::string_t m_NodePath;
+        boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 DeleteFieldsRequest::DeleteFieldsRequest(
     utility::string_t name,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -61,12 +61,12 @@ void DeleteFieldsRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t DeleteFieldsRequest::getNodePath() const
+boost::optional< utility::string_t > DeleteFieldsRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void DeleteFieldsRequest::setNodePath(utility::string_t nodePath)
+void DeleteFieldsRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

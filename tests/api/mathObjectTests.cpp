@@ -70,15 +70,16 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetOfficeMathObjectsWithoutNodePathRequest > request(new GetOfficeMathObjectsWithoutNodePathRequest(
+    std::shared_ptr< GetOfficeMathObjectsRequest > request(new GetOfficeMathObjectsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getOfficeMathObjectsWithoutNodePath(request).get();
+   auto actual = get_api()->getOfficeMathObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -95,8 +96,8 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
 
     std::shared_ptr< GetOfficeMathObjectRequest > request(new GetOfficeMathObjectRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -118,16 +119,17 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< GetOfficeMathObjectWithoutNodePathRequest > request(new GetOfficeMathObjectWithoutNodePathRequest(
+    std::shared_ptr< GetOfficeMathObjectRequest > request(new GetOfficeMathObjectRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getOfficeMathObjectWithoutNodePath(request).get();
+   auto actual = get_api()->getOfficeMathObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -145,8 +147,8 @@ TEST_F(MathObjectTests, TestRenderMathObject) {
     std::shared_ptr< RenderMathObjectRequest > request(new RenderMathObjectRequest(
         remoteFileName,
         STCONVERT("png"),
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -168,10 +170,11 @@ TEST_F(MathObjectTests, TestRenderMathObjectWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< RenderMathObjectWithoutNodePathRequest > request(new RenderMathObjectWithoutNodePathRequest(
+    std::shared_ptr< RenderMathObjectRequest > request(new RenderMathObjectRequest(
         remoteFileName,
         STCONVERT("png"),
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -179,7 +182,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->renderMathObjectWithoutNodePath(request).get();
+   get_api()->renderMathObject(request).get();
 }
 
 /// <summary>
@@ -195,8 +198,8 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObject) {
 
     std::shared_ptr< DeleteOfficeMathObjectRequest > request(new DeleteOfficeMathObjectRequest(
         remoteFileName,
-        STCONVERT(""),
         0,
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -220,9 +223,10 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectWithoutNodePath) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    std::shared_ptr< DeleteOfficeMathObjectWithoutNodePathRequest > request(new DeleteOfficeMathObjectWithoutNodePathRequest(
+    std::shared_ptr< DeleteOfficeMathObjectRequest > request(new DeleteOfficeMathObjectRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -232,5 +236,5 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteOfficeMathObjectWithoutNodePath(request).get();
+   get_api()->deleteOfficeMathObject(request).get();
 }

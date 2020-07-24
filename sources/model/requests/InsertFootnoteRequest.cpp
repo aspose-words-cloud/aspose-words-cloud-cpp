@@ -32,7 +32,7 @@ namespace models {
 InsertFootnoteRequest::InsertFootnoteRequest(
     utility::string_t name,
     std::shared_ptr<FootnoteInsert> footnoteDto,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -73,12 +73,12 @@ void InsertFootnoteRequest::setFootnoteDto(std::shared_ptr<FootnoteInsert> footn
     m_FootnoteDto = std::move(footnoteDto);
 }
 
-utility::string_t InsertFootnoteRequest::getNodePath() const
+boost::optional< utility::string_t > InsertFootnoteRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void InsertFootnoteRequest::setNodePath(utility::string_t nodePath)
+void InsertFootnoteRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

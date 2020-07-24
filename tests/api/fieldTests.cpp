@@ -73,15 +73,16 @@ TEST_F(FieldTests, TestGetFieldsWithoutNodePath) {
         path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/") + localFileName)
     );
 
-    std::shared_ptr< GetFieldsWithoutNodePathRequest > request(new GetFieldsWithoutNodePathRequest(
+    std::shared_ptr< GetFieldsRequest > request(new GetFieldsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getFieldsWithoutNodePath(request).get();
+   auto actual = get_api()->getFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -99,8 +100,8 @@ TEST_F(FieldTests, TestGetField) {
 
     std::shared_ptr< GetFieldRequest > request(new GetFieldRequest(
         remoteFileName,
-        STCONVERT("sections/0/paragraphs/0"),
         0,
+        STCONVERT("sections/0/paragraphs/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -123,16 +124,17 @@ TEST_F(FieldTests, TestGetFieldWithoutNodePath) {
         path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/") + localFileName)
     );
 
-    std::shared_ptr< GetFieldWithoutNodePathRequest > request(new GetFieldWithoutNodePathRequest(
+    std::shared_ptr< GetFieldRequest > request(new GetFieldRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getFieldWithoutNodePath(request).get();
+   auto actual = get_api()->getField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -184,9 +186,10 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
     auto requestField = std::make_shared< FieldInsert >();
     requestField->setFieldCode(STCONVERT("{ NUMPAGES }"));
 
-    std::shared_ptr< InsertFieldWithoutNodePathRequest > request(new InsertFieldWithoutNodePathRequest(
+    std::shared_ptr< InsertFieldRequest > request(new InsertFieldRequest(
         remoteFileName,
         requestField,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -197,7 +200,7 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertFieldWithoutNodePath(request).get();
+   auto actual = get_api()->insertField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -219,8 +222,8 @@ TEST_F(FieldTests, TestUpdateField) {
     std::shared_ptr< UpdateFieldRequest > request(new UpdateFieldRequest(
         remoteFileName,
         requestField,
-        STCONVERT("sections/0/paragraphs/0"),
         0,
+        STCONVERT("sections/0/paragraphs/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -280,8 +283,8 @@ TEST_F(FieldTests, TestDeleteField) {
 
     std::shared_ptr< DeleteFieldRequest > request(new DeleteFieldRequest(
         remoteFileName,
-        STCONVERT("sections/0/paragraphs/0"),
         0,
+        STCONVERT("sections/0/paragraphs/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -306,9 +309,10 @@ TEST_F(FieldTests, TestDeleteFieldWithoutNodePath) {
         path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/") + localFileName)
     );
 
-    std::shared_ptr< DeleteFieldWithoutNodePathRequest > request(new DeleteFieldWithoutNodePathRequest(
+    std::shared_ptr< DeleteFieldRequest > request(new DeleteFieldRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -318,7 +322,7 @@ TEST_F(FieldTests, TestDeleteFieldWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteFieldWithoutNodePath(request).get();
+   get_api()->deleteField(request).get();
 }
 
 /// <summary>
@@ -360,8 +364,9 @@ TEST_F(FieldTests, TestDeleteParagraphFieldsWithoutNodePath) {
         path_combine(LocalTestDataFolder, STCONVERT("Common/") + localFileName)
     );
 
-    std::shared_ptr< DeleteFieldsWithoutNodePathRequest > request(new DeleteFieldsWithoutNodePathRequest(
+    std::shared_ptr< DeleteFieldsRequest > request(new DeleteFieldsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -371,7 +376,7 @@ TEST_F(FieldTests, TestDeleteParagraphFieldsWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteFieldsWithoutNodePath(request).get();
+   get_api()->deleteFields(request).get();
 }
 
 /// <summary>
@@ -413,8 +418,9 @@ TEST_F(FieldTests, TestDeleteSectionFieldsWithoutNodePath) {
         path_combine(LocalTestDataFolder, STCONVERT("Common/") + localFileName)
     );
 
-    std::shared_ptr< DeleteFieldsWithoutNodePathRequest > request(new DeleteFieldsWithoutNodePathRequest(
+    std::shared_ptr< DeleteFieldsRequest > request(new DeleteFieldsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -424,7 +430,7 @@ TEST_F(FieldTests, TestDeleteSectionFieldsWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteFieldsWithoutNodePath(request).get();
+   get_api()->deleteFields(request).get();
 }
 
 /// <summary>

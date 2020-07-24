@@ -57,8 +57,8 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
     std::shared_ptr< UpdateFormFieldRequest > request(new UpdateFormFieldRequest(
         remoteFileName,
         requestFormField,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -91,10 +91,11 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
     requestFormField->setTextInputType(STCONVERT("Regular"));
     requestFormField->setTextInputDefault(STCONVERT("No name"));
 
-    std::shared_ptr< UpdateFormFieldWithoutNodePathRequest > request(new UpdateFormFieldWithoutNodePathRequest(
+    std::shared_ptr< UpdateFormFieldRequest > request(new UpdateFormFieldRequest(
         remoteFileName,
         requestFormField,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -104,7 +105,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->updateFormFieldWithoutNodePath(request).get();
+   auto actual = get_api()->updateFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -121,8 +122,8 @@ TEST_F(FormFieldTests, TestGetFormField) {
 
     std::shared_ptr< GetFormFieldRequest > request(new GetFormFieldRequest(
         remoteFileName,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -144,16 +145,17 @@ TEST_F(FormFieldTests, TestGetFormFieldWithoutNodePath) {
         path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))
     );
 
-    std::shared_ptr< GetFormFieldWithoutNodePathRequest > request(new GetFormFieldWithoutNodePathRequest(
+    std::shared_ptr< GetFormFieldRequest > request(new GetFormFieldRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getFormFieldWithoutNodePath(request).get();
+   auto actual = get_api()->getFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -192,15 +194,16 @@ TEST_F(FormFieldTests, TestGetFormFieldsWithoutNodePath) {
         path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))
     );
 
-    std::shared_ptr< GetFormFieldsWithoutNodePathRequest > request(new GetFormFieldsWithoutNodePathRequest(
+    std::shared_ptr< GetFormFieldsRequest > request(new GetFormFieldsRequest(
         remoteFileName,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->getFormFieldsWithoutNodePath(request).get();
+   auto actual = get_api()->getFormFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -262,9 +265,10 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
     requestFormField->setTextInputDefault(STCONVERT("123"));
     requestFormField->setTextInputFormat(STCONVERT("UPPERCASE"));
 
-    std::shared_ptr< InsertFormFieldWithoutNodePathRequest > request(new InsertFormFieldWithoutNodePathRequest(
+    std::shared_ptr< InsertFormFieldRequest > request(new InsertFormFieldRequest(
         remoteFileName,
         requestFormField,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -275,7 +279,7 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertFormFieldWithoutNodePath(request).get();
+   auto actual = get_api()->insertFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -292,8 +296,8 @@ TEST_F(FormFieldTests, TestDeleteFormField) {
 
     std::shared_ptr< DeleteFormFieldRequest > request(new DeleteFormFieldRequest(
         remoteFileName,
-        STCONVERT("sections/0"),
         0,
+        STCONVERT("sections/0"),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -317,9 +321,10 @@ TEST_F(FormFieldTests, TestDeleteFormFieldWithoutNodePath) {
         path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))
     );
 
-    std::shared_ptr< DeleteFormFieldWithoutNodePathRequest > request(new DeleteFormFieldWithoutNodePathRequest(
+    std::shared_ptr< DeleteFormFieldRequest > request(new DeleteFormFieldRequest(
         remoteFileName,
         0,
+        boost::none,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -329,5 +334,5 @@ TEST_F(FormFieldTests, TestDeleteFormFieldWithoutNodePath) {
         boost::none
     ));
 
-   get_api()->deleteFormFieldWithoutNodePath(request).get();
+   get_api()->deleteFormField(request).get();
 }

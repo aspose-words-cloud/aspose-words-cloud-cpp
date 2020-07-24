@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 GetBordersRequest::GetBordersRequest(
     utility::string_t name,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -55,12 +55,12 @@ void GetBordersRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t GetBordersRequest::getNodePath() const
+boost::optional< utility::string_t > GetBordersRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void GetBordersRequest::setNodePath(utility::string_t nodePath)
+void GetBordersRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

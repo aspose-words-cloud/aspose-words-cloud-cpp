@@ -32,7 +32,7 @@ namespace models {
 InsertParagraphRequest::InsertParagraphRequest(
     utility::string_t name,
     std::shared_ptr<ParagraphInsert> paragraph,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -75,12 +75,12 @@ void InsertParagraphRequest::setParagraph(std::shared_ptr<ParagraphInsert> parag
     m_Paragraph = std::move(paragraph);
 }
 
-utility::string_t InsertParagraphRequest::getNodePath() const
+boost::optional< utility::string_t > InsertParagraphRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void InsertParagraphRequest::setNodePath(utility::string_t nodePath)
+void InsertParagraphRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }
