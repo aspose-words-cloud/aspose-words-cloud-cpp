@@ -31,15 +31,15 @@ namespace api {
 namespace models {
 GetBorderRequest::GetBorderRequest(
     utility::string_t name,
+    utility::string_t nodePath,
     utility::string_t borderType,
-    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
     boost::optional< utility::string_t > password
 ) : m_Name(std::move(name)),
-m_BorderType(std::move(borderType)),
 m_NodePath(std::move(nodePath)),
+m_BorderType(std::move(borderType)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -57,6 +57,16 @@ void GetBorderRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
+utility::string_t GetBorderRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void GetBorderRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
 utility::string_t GetBorderRequest::getBorderType() const
 {
     return m_BorderType;
@@ -65,16 +75,6 @@ utility::string_t GetBorderRequest::getBorderType() const
 void GetBorderRequest::setBorderType(utility::string_t borderType)
 {
     m_BorderType = std::move(borderType);
-}
-
-boost::optional< utility::string_t > GetBorderRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void GetBorderRequest::setNodePath(boost::optional< utility::string_t > nodePath)
-{
-    m_NodePath = std::move(nodePath);
 }
 
 boost::optional< utility::string_t > GetBorderRequest::getFolder() const

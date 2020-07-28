@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="OptimizeDocumentRequest.cpp">
+* <copyright company="Aspose" file="DeleteParagraphWithoutNodePathOnlineRequest.cpp">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,26 +23,22 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "OptimizeDocumentRequest.h"
+#include "DeleteParagraphWithoutNodePathOnlineRequest.h"
 namespace aspose {
 namespace words {
 namespace cloud {
 namespace api {
 namespace models {
-OptimizeDocumentRequest::OptimizeDocumentRequest(
-    utility::string_t name,
-    std::shared_ptr<OptimizationOptions> options,
-    boost::optional< utility::string_t > folder,
-    boost::optional< utility::string_t > storage,
+DeleteParagraphWithoutNodePathOnlineRequest::DeleteParagraphWithoutNodePathOnlineRequest(
+    int32_t index,
+    std::shared_ptr<HttpContent> document,
     boost::optional< utility::string_t > loadEncoding,
     boost::optional< utility::string_t > password,
     boost::optional< utility::string_t > destFileName,
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
-) : m_Name(std::move(name)),
-m_Options(std::move(options)),
-m_Folder(std::move(folder)),
-m_Storage(std::move(storage)),
+) : m_Index(std::move(index)),
+m_Document(std::move(document)),
 m_LoadEncoding(std::move(loadEncoding)),
 m_Password(std::move(password)),
 m_DestFileName(std::move(destFileName)),
@@ -51,92 +47,72 @@ m_RevisionDateTime(std::move(revisionDateTime))
 {
 }
 
-utility::string_t OptimizeDocumentRequest::getName() const
+int32_t DeleteParagraphWithoutNodePathOnlineRequest::getIndex() const
 {
-    return m_Name;
+    return m_Index;
 }
 
-void OptimizeDocumentRequest::setName(utility::string_t name)
+void DeleteParagraphWithoutNodePathOnlineRequest::setIndex(int32_t index)
 {
-    m_Name = std::move(name);
+    m_Index = std::move(index);
 }
 
-std::shared_ptr<OptimizationOptions> OptimizeDocumentRequest::getOptions() const
+std::shared_ptr<HttpContent> DeleteParagraphWithoutNodePathOnlineRequest::getDocument() const
 {
-    return m_Options;
+    return m_Document;
 }
 
-void OptimizeDocumentRequest::setOptions(std::shared_ptr<OptimizationOptions> options)
+void DeleteParagraphWithoutNodePathOnlineRequest::setDocument(std::shared_ptr<HttpContent> document)
 {
-    m_Options = std::move(options);
+    m_Document = std::move(document);
 }
 
-boost::optional< utility::string_t > OptimizeDocumentRequest::getFolder() const
-{
-    return m_Folder;
-}
-
-void OptimizeDocumentRequest::setFolder(boost::optional< utility::string_t > folder)
-{
-    m_Folder = std::move(folder);
-}
-
-boost::optional< utility::string_t > OptimizeDocumentRequest::getStorage() const
-{
-    return m_Storage;
-}
-
-void OptimizeDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
-{
-    m_Storage = std::move(storage);
-}
-
-boost::optional< utility::string_t > OptimizeDocumentRequest::getLoadEncoding() const
+boost::optional< utility::string_t > DeleteParagraphWithoutNodePathOnlineRequest::getLoadEncoding() const
 {
     return m_LoadEncoding;
 }
 
-void OptimizeDocumentRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+void DeleteParagraphWithoutNodePathOnlineRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
 {
     m_LoadEncoding = std::move(loadEncoding);
 }
 
-boost::optional< utility::string_t > OptimizeDocumentRequest::getPassword() const
+boost::optional< utility::string_t > DeleteParagraphWithoutNodePathOnlineRequest::getPassword() const
 {
     return m_Password;
 }
 
-void OptimizeDocumentRequest::setPassword(boost::optional< utility::string_t > password)
+void DeleteParagraphWithoutNodePathOnlineRequest::setPassword(boost::optional< utility::string_t > password)
 {
     m_Password = std::move(password);
 }
 
-boost::optional< utility::string_t > OptimizeDocumentRequest::getDestFileName() const
+boost::optional< utility::string_t > DeleteParagraphWithoutNodePathOnlineRequest::getDestFileName() const
 {
     return m_DestFileName;
 }
 
-void OptimizeDocumentRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+void DeleteParagraphWithoutNodePathOnlineRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
 {
     m_DestFileName = std::move(destFileName);
 }
 
-boost::optional< utility::string_t > OptimizeDocumentRequest::getRevisionAuthor() const
+boost::optional< utility::string_t > DeleteParagraphWithoutNodePathOnlineRequest::getRevisionAuthor() const
 {
     return m_RevisionAuthor;
 }
 
-void OptimizeDocumentRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+void DeleteParagraphWithoutNodePathOnlineRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
 {
     m_RevisionAuthor = std::move(revisionAuthor);
 }
 
-boost::optional< utility::string_t > OptimizeDocumentRequest::getRevisionDateTime() const
+boost::optional< utility::string_t > DeleteParagraphWithoutNodePathOnlineRequest::getRevisionDateTime() const
 {
     return m_RevisionDateTime;
 }
 
-void OptimizeDocumentRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+void DeleteParagraphWithoutNodePathOnlineRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
 {
     m_RevisionDateTime = std::move(revisionDateTime);
 }

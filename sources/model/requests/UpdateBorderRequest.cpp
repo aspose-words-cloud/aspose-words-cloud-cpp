@@ -32,8 +32,8 @@ namespace models {
 UpdateBorderRequest::UpdateBorderRequest(
     utility::string_t name,
     std::shared_ptr<Border> borderProperties,
+    utility::string_t nodePath,
     utility::string_t borderType,
-    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -43,8 +43,8 @@ UpdateBorderRequest::UpdateBorderRequest(
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
 m_BorderProperties(std::move(borderProperties)),
-m_BorderType(std::move(borderType)),
 m_NodePath(std::move(nodePath)),
+m_BorderType(std::move(borderType)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -75,6 +75,16 @@ void UpdateBorderRequest::setBorderProperties(std::shared_ptr<Border> borderProp
     m_BorderProperties = std::move(borderProperties);
 }
 
+utility::string_t UpdateBorderRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void UpdateBorderRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
 utility::string_t UpdateBorderRequest::getBorderType() const
 {
     return m_BorderType;
@@ -83,16 +93,6 @@ utility::string_t UpdateBorderRequest::getBorderType() const
 void UpdateBorderRequest::setBorderType(utility::string_t borderType)
 {
     m_BorderType = std::move(borderType);
-}
-
-boost::optional< utility::string_t > UpdateBorderRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void UpdateBorderRequest::setNodePath(boost::optional< utility::string_t > nodePath)
-{
-    m_NodePath = std::move(nodePath);
 }
 
 boost::optional< utility::string_t > UpdateBorderRequest::getFolder() const

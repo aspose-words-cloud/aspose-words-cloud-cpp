@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 GetFieldsRequest::GetFieldsRequest(
     utility::string_t name,
-    boost::optional< utility::string_t > nodePath,
+    utility::string_t nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -55,12 +55,12 @@ void GetFieldsRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-boost::optional< utility::string_t > GetFieldsRequest::getNodePath() const
+utility::string_t GetFieldsRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void GetFieldsRequest::setNodePath(boost::optional< utility::string_t > nodePath)
+void GetFieldsRequest::setNodePath(utility::string_t nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

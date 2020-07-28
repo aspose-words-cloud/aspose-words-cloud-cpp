@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 GetOfficeMathObjectsRequest::GetOfficeMathObjectsRequest(
     utility::string_t name,
-    boost::optional< utility::string_t > nodePath,
+    utility::string_t nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -55,12 +55,12 @@ void GetOfficeMathObjectsRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-boost::optional< utility::string_t > GetOfficeMathObjectsRequest::getNodePath() const
+utility::string_t GetOfficeMathObjectsRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void GetOfficeMathObjectsRequest::setNodePath(boost::optional< utility::string_t > nodePath)
+void GetOfficeMathObjectsRequest::setNodePath(utility::string_t nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

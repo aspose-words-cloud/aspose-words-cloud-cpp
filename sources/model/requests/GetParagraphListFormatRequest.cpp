@@ -31,15 +31,15 @@ namespace api {
 namespace models {
 GetParagraphListFormatRequest::GetParagraphListFormatRequest(
     utility::string_t name,
+    utility::string_t nodePath,
     int32_t index,
-    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
     boost::optional< utility::string_t > password
 ) : m_Name(std::move(name)),
-m_Index(std::move(index)),
 m_NodePath(std::move(nodePath)),
+m_Index(std::move(index)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -57,6 +57,16 @@ void GetParagraphListFormatRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
+utility::string_t GetParagraphListFormatRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void GetParagraphListFormatRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
 int32_t GetParagraphListFormatRequest::getIndex() const
 {
     return m_Index;
@@ -65,16 +75,6 @@ int32_t GetParagraphListFormatRequest::getIndex() const
 void GetParagraphListFormatRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
-}
-
-boost::optional< utility::string_t > GetParagraphListFormatRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void GetParagraphListFormatRequest::setNodePath(boost::optional< utility::string_t > nodePath)
-{
-    m_NodePath = std::move(nodePath);
 }
 
 boost::optional< utility::string_t > GetParagraphListFormatRequest::getFolder() const

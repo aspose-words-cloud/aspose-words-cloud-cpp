@@ -43,7 +43,7 @@ class InsertDrawingObjectRequest {
             utility::string_t name,
             std::shared_ptr<DrawingObjectInsert> drawingObject,
             std::shared_ptr<HttpContent> imageFile,
-            boost::optional< utility::string_t > nodePath,
+            utility::string_t nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -62,8 +62,8 @@ class InsertDrawingObjectRequest {
         std::shared_ptr<HttpContent> getImageFile() const;
         void setImageFile(std::shared_ptr<HttpContent> imageFile);
 
-        boost::optional< utility::string_t > getNodePath() const;
-        void setNodePath(boost::optional< utility::string_t > nodePath);
+        utility::string_t getNodePath() const;
+        void setNodePath(utility::string_t nodePath);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -90,7 +90,7 @@ class InsertDrawingObjectRequest {
         utility::string_t m_Name;
         std::shared_ptr<DrawingObjectInsert> m_DrawingObject;
         std::shared_ptr<HttpContent> m_ImageFile;
-        boost::optional< utility::string_t > m_NodePath;
+        utility::string_t m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

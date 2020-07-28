@@ -39,13 +39,10 @@ namespace models {
 class CreateDocumentRequest {
     public: 
  CreateDocumentRequest(
-            boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > fileName,
-            boost::optional< utility::string_t > folder
+            boost::optional< utility::string_t > folder,
+            boost::optional< utility::string_t > storage
         );
-
-        boost::optional< utility::string_t > getStorage() const;
-        void setStorage(boost::optional< utility::string_t > storage);
 
         boost::optional< utility::string_t > getFileName() const;
         void setFileName(boost::optional< utility::string_t > fileName);
@@ -53,10 +50,13 @@ class CreateDocumentRequest {
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
 
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
+
     private:
-        boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_FileName;
         boost::optional< utility::string_t > m_Folder;
+        boost::optional< utility::string_t > m_Storage;
 };
 
 }

@@ -42,7 +42,7 @@ class InsertFormFieldRequest {
  InsertFormFieldRequest(
             utility::string_t name,
             std::shared_ptr<FormField> formField,
-            boost::optional< utility::string_t > nodePath,
+            utility::string_t nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -59,8 +59,8 @@ class InsertFormFieldRequest {
         std::shared_ptr<FormField> getFormField() const;
         void setFormField(std::shared_ptr<FormField> formField);
 
-        boost::optional< utility::string_t > getNodePath() const;
-        void setNodePath(boost::optional< utility::string_t > nodePath);
+        utility::string_t getNodePath() const;
+        void setNodePath(utility::string_t nodePath);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -89,7 +89,7 @@ class InsertFormFieldRequest {
     private:
         utility::string_t m_Name;
         std::shared_ptr<FormField> m_FormField;
-        boost::optional< utility::string_t > m_NodePath;
+        utility::string_t m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

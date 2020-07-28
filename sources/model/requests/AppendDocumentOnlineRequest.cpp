@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="OptimizationOptions.h">
+* <copyright company="Aspose" file="AppendDocumentOnlineRequest.cpp">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,59 +23,42 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_OptimizationOptions_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_OptimizationOptions_H_
-
-#include "../ModelBase.h"
-#include <cpprest/details/basic_types.h>
-
+#include "AppendDocumentOnlineRequest.h"
 namespace aspose {
 namespace words {
 namespace cloud {
 namespace api {
 namespace models {
-
-/// <summary>
-/// Container class for the document optimization options.
-/// </summary>
-class OptimizationOptions
-    : public ModelBase
+AppendDocumentOnlineRequest::AppendDocumentOnlineRequest(
+    std::shared_ptr<HttpContent> document,
+    std::shared_ptr<DocumentEntryList> documentList
+) : m_Document(std::move(document)),
+m_DocumentList(std::move(documentList))
 {
-public:
-    OptimizationOptions();
-    virtual ~OptimizationOptions();
+}
 
-    /////////////////////////////////////////////
-    /// ModelBase overrides
+std::shared_ptr<HttpContent> AppendDocumentOnlineRequest::getDocument() const
+{
+    return m_Document;
+}
 
-    void validate() override;
+void AppendDocumentOnlineRequest::setDocument(std::shared_ptr<HttpContent> document)
+{
+    m_Document = std::move(document);
+}
 
-    web::json::value toJson() const override;
-    void fromJson(web::json::value& json) override;
+std::shared_ptr<DocumentEntryList> AppendDocumentOnlineRequest::getDocumentList() const
+{
+    return m_DocumentList;
+}
 
-    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const override;
-    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
-
-    /////////////////////////////////////////////
-    /// OptimizationOptions members
-
-    /// <summary>
-    /// Gets or sets specific MSWord version.
-    /// </summary>
-    utility::string_t getMsWordVersion() const;
-    bool msWordVersionIsSet() const;
-    void unsetMsWordVersion();
-    void setMsWordVersion(utility::string_t value);
-
-protected:
-    utility::string_t m_MsWordVersion;
-    bool m_MsWordVersionIsSet;
-};
+void AppendDocumentOnlineRequest::setDocumentList(std::shared_ptr<DocumentEntryList> documentList)
+{
+    m_DocumentList = std::move(documentList);
+}
 
 }
 }
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_OptimizationOptions_H_ */

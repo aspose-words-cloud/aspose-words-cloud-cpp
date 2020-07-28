@@ -32,7 +32,7 @@ namespace models {
 InsertTableRequest::InsertTableRequest(
     utility::string_t name,
     std::shared_ptr<TableInsert> table,
-    boost::optional< utility::string_t > nodePath,
+    utility::string_t nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -73,12 +73,12 @@ void InsertTableRequest::setTable(std::shared_ptr<TableInsert> table)
     m_Table = std::move(table);
 }
 
-boost::optional< utility::string_t > InsertTableRequest::getNodePath() const
+utility::string_t InsertTableRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void InsertTableRequest::setNodePath(boost::optional< utility::string_t > nodePath)
+void InsertTableRequest::setNodePath(utility::string_t nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

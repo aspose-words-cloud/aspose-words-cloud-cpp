@@ -33,9 +33,6 @@ namespace models {
 
 DocumentEntryList::DocumentEntryList()
 {
-    m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = false;
-    m_ApplyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet = false;
-
     m_DocumentEntriesIsSet = false;
 
 }
@@ -52,10 +49,6 @@ void DocumentEntryList::validate()
 web::json::value DocumentEntryList::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_ApplyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet)
-    {
-        val[_XPLATSTR("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments")] = ModelBase::toJson(m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments);
-    }
     if(m_DocumentEntriesIsSet)
     {
         std::vector<web::json::value> jsonArray;
@@ -75,16 +68,6 @@ web::json::value DocumentEntryList::toJson() const
 
 void DocumentEntryList::fromJson(web::json::value& val)
 {
-    if(val.has_field(_XPLATSTR("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments")))
-    {
-        web::json::value& fieldValue = val[_XPLATSTR("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments")];
-        if(!fieldValue.is_null())
-        {
-           setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(ModelBase::booleanFromJson(fieldValue));
-        }
-    }
-
-
     {
         m_DocumentEntries.clear();
         if(val.has_field(_XPLATSTR("DocumentEntries")) 
@@ -109,12 +92,6 @@ void DocumentEntryList::fromJson(web::json::value& val)
 void DocumentEntryList::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
-    if(m_ApplyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"), m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments));
-    }
-
-
     {
         std::vector<web::json::value> jsonArray;
         std::transform(m_DocumentEntries.begin(), m_DocumentEntries.end(), std::back_inserter(jsonArray), [&](std::shared_ptr<DocumentEntry> item){
@@ -132,28 +109,6 @@ void DocumentEntryList::toMultipart(const std::shared_ptr<MultipartFormData>& mu
 void DocumentEntryList::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
     // TODO: implement fromMultiPart
-}
-
-bool DocumentEntryList::isApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const
-{
-    return m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
-}
-
-
-void DocumentEntryList::setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(bool value)
-{
-    m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = value;
-    m_ApplyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet = true;
-}
-
-bool DocumentEntryList::applyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet() const
-{
-    return m_ApplyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet;
-}
-
-void DocumentEntryList::unsetApplyBaseDocumentHeadersAndFootersToAppendingDocuments()
-{
-    m_ApplyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet = false;
 }
 
 std::vector<std::shared_ptr<DocumentEntry>>& DocumentEntryList::getDocumentEntries()

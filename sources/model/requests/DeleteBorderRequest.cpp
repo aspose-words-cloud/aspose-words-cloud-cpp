@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 DeleteBorderRequest::DeleteBorderRequest(
     utility::string_t name,
+    utility::string_t nodePath,
     utility::string_t borderType,
-    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ DeleteBorderRequest::DeleteBorderRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_BorderType(std::move(borderType)),
 m_NodePath(std::move(nodePath)),
+m_BorderType(std::move(borderType)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -63,6 +63,16 @@ void DeleteBorderRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
+utility::string_t DeleteBorderRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void DeleteBorderRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
 utility::string_t DeleteBorderRequest::getBorderType() const
 {
     return m_BorderType;
@@ -71,16 +81,6 @@ utility::string_t DeleteBorderRequest::getBorderType() const
 void DeleteBorderRequest::setBorderType(utility::string_t borderType)
 {
     m_BorderType = std::move(borderType);
-}
-
-boost::optional< utility::string_t > DeleteBorderRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void DeleteBorderRequest::setNodePath(boost::optional< utility::string_t > nodePath)
-{
-    m_NodePath = std::move(nodePath);
 }
 
 boost::optional< utility::string_t > DeleteBorderRequest::getFolder() const

@@ -32,8 +32,8 @@ namespace models {
 DeleteParagraphTabStopRequest::DeleteParagraphTabStopRequest(
     utility::string_t name,
     double position,
+    utility::string_t nodePath,
     int32_t index,
-    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ DeleteParagraphTabStopRequest::DeleteParagraphTabStopRequest(
     boost::optional< utility::string_t > destFileName
 ) : m_Name(std::move(name)),
 m_Position(std::move(position)),
-m_Index(std::move(index)),
 m_NodePath(std::move(nodePath)),
+m_Index(std::move(index)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -71,6 +71,16 @@ void DeleteParagraphTabStopRequest::setPosition(double position)
     m_Position = std::move(position);
 }
 
+utility::string_t DeleteParagraphTabStopRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void DeleteParagraphTabStopRequest::setNodePath(utility::string_t nodePath)
+{
+    m_NodePath = std::move(nodePath);
+}
+
 int32_t DeleteParagraphTabStopRequest::getIndex() const
 {
     return m_Index;
@@ -79,16 +89,6 @@ int32_t DeleteParagraphTabStopRequest::getIndex() const
 void DeleteParagraphTabStopRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
-}
-
-boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void DeleteParagraphTabStopRequest::setNodePath(boost::optional< utility::string_t > nodePath)
-{
-    m_NodePath = std::move(nodePath);
 }
 
 boost::optional< utility::string_t > DeleteParagraphTabStopRequest::getFolder() const
