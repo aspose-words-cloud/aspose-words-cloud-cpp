@@ -46,8 +46,7 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
         true
     ));
 
-   auto actual = get_api()->getDocumentFieldNamesOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->getDocumentFieldNamesOnline(request).get();
 }
 
 /// <summary>

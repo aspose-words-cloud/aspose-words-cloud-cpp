@@ -60,3 +60,17 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
    auto actual = get_api()->getDocumentStatistics(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
+
+/// <summary>
+/// Test for document classification online.
+/// </summary>
+TEST_F(DocumentStatisticsTests, TestGetDocumentStatisticsOnline) {
+    std::shared_ptr< GetDocumentStatisticsOnlineRequest > request(new GetDocumentStatisticsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->getDocumentStatisticsOnline(request).get();
+}

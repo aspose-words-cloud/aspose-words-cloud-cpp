@@ -32,7 +32,7 @@ namespace models {
 InsertFormFieldRequest::InsertFormFieldRequest(
     utility::string_t name,
     std::shared_ptr<FormField> formField,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -75,12 +75,12 @@ void InsertFormFieldRequest::setFormField(std::shared_ptr<FormField> formField)
     m_FormField = std::move(formField);
 }
 
-utility::string_t InsertFormFieldRequest::getNodePath() const
+boost::optional< utility::string_t > InsertFormFieldRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void InsertFormFieldRequest::setNodePath(utility::string_t nodePath)
+void InsertFormFieldRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

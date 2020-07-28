@@ -31,7 +31,7 @@ namespace api {
 namespace models {
 DeleteBordersRequest::DeleteBordersRequest(
     utility::string_t name,
-    utility::string_t nodePath,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -61,12 +61,12 @@ void DeleteBordersRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t DeleteBordersRequest::getNodePath() const
+boost::optional< utility::string_t > DeleteBordersRequest::getNodePath() const
 {
     return m_NodePath;
 }
 
-void DeleteBordersRequest::setNodePath(utility::string_t nodePath)
+void DeleteBordersRequest::setNodePath(boost::optional< utility::string_t > nodePath)
 {
     m_NodePath = std::move(nodePath);
 }

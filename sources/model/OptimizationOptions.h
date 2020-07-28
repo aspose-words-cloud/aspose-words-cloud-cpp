@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="GetParagraphsWithoutNodePathOnlineRequest.cpp">
+* <copyright company="Aspose" file="OptimizationOptions.h">
 *   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,54 +23,59 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "GetParagraphsWithoutNodePathOnlineRequest.h"
+#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_OptimizationOptions_H_
+#define ASPOSE_WORDS_CLOUD_API_MODELS_OptimizationOptions_H_
+
+#include "../ModelBase.h"
+#include <cpprest/details/basic_types.h>
+
 namespace aspose {
 namespace words {
 namespace cloud {
 namespace api {
 namespace models {
-GetParagraphsWithoutNodePathOnlineRequest::GetParagraphsWithoutNodePathOnlineRequest(
-    std::shared_ptr<HttpContent> document,
-    boost::optional< utility::string_t > loadEncoding,
-    boost::optional< utility::string_t > password
-) : m_Document(std::move(document)),
-m_LoadEncoding(std::move(loadEncoding)),
-m_Password(std::move(password))
-{
-}
 
-std::shared_ptr<HttpContent> GetParagraphsWithoutNodePathOnlineRequest::getDocument() const
+/// <summary>
+/// Container class for the document optimization options.
+/// </summary>
+class OptimizationOptions
+    : public ModelBase
 {
-    return m_Document;
-}
+public:
+    OptimizationOptions();
+    virtual ~OptimizationOptions();
 
-void GetParagraphsWithoutNodePathOnlineRequest::setDocument(std::shared_ptr<HttpContent> document)
-{
-    m_Document = std::move(document);
-}
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-boost::optional< utility::string_t > GetParagraphsWithoutNodePathOnlineRequest::getLoadEncoding() const
-{
-    return m_LoadEncoding;
-}
+    void validate() override;
 
-void GetParagraphsWithoutNodePathOnlineRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
-{
-    m_LoadEncoding = std::move(loadEncoding);
-}
+    web::json::value toJson() const override;
+    void fromJson(web::json::value& json) override;
 
-boost::optional< utility::string_t > GetParagraphsWithoutNodePathOnlineRequest::getPassword() const
-{
-    return m_Password;
-}
+    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const override;
+    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
 
-void GetParagraphsWithoutNodePathOnlineRequest::setPassword(boost::optional< utility::string_t > password)
-{
-    m_Password = std::move(password);
-}
+    /////////////////////////////////////////////
+    /// OptimizationOptions members
+
+    /// <summary>
+    /// Gets or sets specific MSWord version.
+    /// </summary>
+    utility::string_t getMsWordVersion() const;
+    bool msWordVersionIsSet() const;
+    void unsetMsWordVersion();
+    void setMsWordVersion(utility::string_t value);
+
+protected:
+    utility::string_t m_MsWordVersion;
+    bool m_MsWordVersionIsSet;
+};
 
 }
 }
 }
 }
 }
+
+#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_OptimizationOptions_H_ */

@@ -58,8 +58,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
         boost::none
     ));
 
-   auto actual = get_api()->getParagraph(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->getParagraph(request).get();
 }
 
 /// <summary>
@@ -83,8 +82,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndexWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->getParagraph(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->getParagraph(request).get();
 }
 
 /// <summary>
@@ -107,8 +105,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphs) {
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphs(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->getParagraphs(request).get();
 }
 
 /// <summary>
@@ -131,8 +128,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphsWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->getParagraphs(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->getParagraphs(request).get();
 }
 
 /// <summary>
@@ -269,8 +265,7 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
         boost::none
     ));
 
-   auto actual = get_api()->insertParagraph(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->insertParagraph(request).get();
 }
 
 /// <summary>
@@ -301,8 +296,7 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
         boost::none
     ));
 
-   auto actual = get_api()->insertParagraph(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->insertParagraph(request).get();
 }
 
 /// <summary>

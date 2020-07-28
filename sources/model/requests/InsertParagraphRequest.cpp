@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 InsertParagraphRequest::InsertParagraphRequest(
     utility::string_t name,
-    utility::string_t nodePath,
     std::shared_ptr<ParagraphInsert> paragraph,
+    boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -42,8 +42,8 @@ InsertParagraphRequest::InsertParagraphRequest(
     boost::optional< utility::string_t > revisionDateTime,
     boost::optional< utility::string_t > insertBeforeNode
 ) : m_Name(std::move(name)),
-m_NodePath(std::move(nodePath)),
 m_Paragraph(std::move(paragraph)),
+m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -65,16 +65,6 @@ void InsertParagraphRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t InsertParagraphRequest::getNodePath() const
-{
-    return m_NodePath;
-}
-
-void InsertParagraphRequest::setNodePath(utility::string_t nodePath)
-{
-    m_NodePath = std::move(nodePath);
-}
-
 std::shared_ptr<ParagraphInsert> InsertParagraphRequest::getParagraph() const
 {
     return m_Paragraph;
@@ -83,6 +73,16 @@ std::shared_ptr<ParagraphInsert> InsertParagraphRequest::getParagraph() const
 void InsertParagraphRequest::setParagraph(std::shared_ptr<ParagraphInsert> paragraph)
 {
     m_Paragraph = std::move(paragraph);
+}
+
+boost::optional< utility::string_t > InsertParagraphRequest::getNodePath() const
+{
+    return m_NodePath;
+}
+
+void InsertParagraphRequest::setNodePath(boost::optional< utility::string_t > nodePath)
+{
+    m_NodePath = std::move(nodePath);
 }
 
 boost::optional< utility::string_t > InsertParagraphRequest::getFolder() const

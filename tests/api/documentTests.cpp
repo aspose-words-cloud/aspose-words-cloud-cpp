@@ -65,9 +65,9 @@ TEST_F(DocumentTests, TestCreateDocument) {
     utility::string_t remoteFileName = STCONVERT("TestCreateDocument.doc");
 
     std::shared_ptr< CreateDocumentRequest > request(new CreateDocumentRequest(
-        boost::none,
         remoteFileName,
-        remoteDataFolder
+        remoteDataFolder,
+        boost::none
     ));
 
    auto actual = get_api()->createDocument(request).get();

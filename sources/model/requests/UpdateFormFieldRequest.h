@@ -42,8 +42,8 @@ class UpdateFormFieldRequest {
  UpdateFormFieldRequest(
             utility::string_t name,
             std::shared_ptr<FormField> formField,
-            utility::string_t nodePath,
             int32_t index,
+            boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -59,11 +59,11 @@ class UpdateFormFieldRequest {
         std::shared_ptr<FormField> getFormField() const;
         void setFormField(std::shared_ptr<FormField> formField);
 
-        utility::string_t getNodePath() const;
-        void setNodePath(utility::string_t nodePath);
-
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        boost::optional< utility::string_t > getNodePath() const;
+        void setNodePath(boost::optional< utility::string_t > nodePath);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -89,8 +89,8 @@ class UpdateFormFieldRequest {
     private:
         utility::string_t m_Name;
         std::shared_ptr<FormField> m_FormField;
-        utility::string_t m_NodePath;
         int32_t m_Index;
+        boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;
