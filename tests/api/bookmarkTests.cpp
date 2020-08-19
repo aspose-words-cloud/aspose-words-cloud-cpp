@@ -56,6 +56,9 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 
    auto actual = get_api()->getBookmarks(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getBookmarks != nullptr);
+   ASSERT_EQ(3, actual.body->getBookmarks->getBookmarkList.size());
+   ASSERT_EQ(STCONVERT("aspose"), actual.body->getBookmarks->getBookmarkList[1]->getName);
 }
 
 /// <summary>
