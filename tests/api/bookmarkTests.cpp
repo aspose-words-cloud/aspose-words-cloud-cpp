@@ -56,6 +56,9 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 
    auto actual = get_api()->getBookmarks(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getBookmarks() != nullptr);
+   ASSERT_EQ(3, actual.body->getBookmarks()->getBookmarkList().size());
+   ASSERT_EQ(STCONVERT("aspose"), actual.body->getBookmarks()->getBookmarkList()[1]->getName());
 }
 
 /// <summary>
@@ -63,6 +66,7 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 /// </summary>
 TEST_F(BookmarkTests, TestGetBookmarkByName) {
     utility::string_t remoteFileName = STCONVERT("TestGetDocumentBookmarkByName.docx");
+    utility::string_t bookmarkName = STCONVERT("aspose");
 
     UploadFileToStorage(
         remoteDataFolder + STCONVERT("/") + remoteFileName,
@@ -71,7 +75,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 
     std::shared_ptr< GetBookmarkByNameRequest > request(new GetBookmarkByNameRequest(
         remoteFileName,
-        STCONVERT("aspose"),
+        bookmarkName,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -80,6 +84,8 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 
    auto actual = get_api()->getBookmarkByName(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getBookmark() != nullptr);
+   ASSERT_EQ(bookmarkName, actual.body->getBookmark()->getName());
 }
 
 /// <summary>
@@ -88,6 +94,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 TEST_F(BookmarkTests, TestUpdateBookmark) {
     utility::string_t remoteFileName = STCONVERT("TestUpdateDocumentBookmark.docx");
     utility::string_t bookmarkName = STCONVERT("aspose");
+    utility::string_t bookmarkText = STCONVERT("This will be the text for Aspose");
 
     UploadFileToStorage(
         remoteDataFolder + STCONVERT("/") + remoteFileName,
@@ -96,7 +103,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
 
     auto requestBookmarkData = std::make_shared< BookmarkData >();
     requestBookmarkData->setName(bookmarkName);
-    requestBookmarkData->setText(STCONVERT("This will be the text for Aspose"));
+    requestBookmarkData->setText(bookmarkText);
 
     std::shared_ptr< UpdateBookmarkRequest > request(new UpdateBookmarkRequest(
         remoteFileName,
@@ -113,4 +120,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
 
    auto actual = get_api()->updateBookmark(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getBookmark() != nullptr);
+   ASSERT_EQ(bookmarkName, actual.body->getBookmark()->getName());
+   ASSERT_EQ(bookmarkText, actual.body->getBookmark()->getText());
 }
