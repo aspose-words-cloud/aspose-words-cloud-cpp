@@ -18,6 +18,8 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 
 ## Enhancements in Version 20.9
 
+- Added Batch API feature
+
 
 ## Enhancements in Version 20.8
 
