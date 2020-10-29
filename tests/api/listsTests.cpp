@@ -56,6 +56,10 @@ TEST_F(ListsTests, TestGetLists) {
 
    auto actual = get_api()->getLists(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getLists() != nullptr);
+   ASSERT_EQ(true, actual.body->getLists()->getListInfo() != nullptr);
+   ASSERT_EQ(2, actual.body->getLists()->getListInfo().size());
+   ASSERT_EQ(1, actual.body->getLists()->getListInfo()[0]->getListId());
 }
 
 /// <summary>
@@ -80,6 +84,8 @@ TEST_F(ListsTests, TestGetList) {
 
    auto actual = get_api()->getList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getList() != nullptr);
+   ASSERT_EQ(1, actual.body->getList()->getListId());
 }
 
 /// <summary>
@@ -111,6 +117,9 @@ TEST_F(ListsTests, TestUpdateList) {
 
    auto actual = get_api()->updateList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getList() != nullptr);
+   ASSERT_EQ(1, actual.body->getList()->getListId());
+   ASSERT_EQ(true, actual.body->getList()->getIsRestartAtEachSection());
 }
 
 /// <summary>
@@ -143,6 +152,11 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 
    auto actual = get_api()->updateListLevel(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getList() != nullptr);
+   ASSERT_EQ(true, actual.body->getList()->getListLevels() != nullptr);
+   ASSERT_EQ(true, actual.body->getList()->getListLevels()->getListLevel() != nullptr);
+   ASSERT_EQ(9, actual.body->getList()->getListLevels()->getListLevel().size());
+
 }
 
 /// <summary>
@@ -173,4 +187,6 @@ TEST_F(ListsTests, TestInsertList) {
 
    auto actual = get_api()->insertList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getList() != nullptr);
+   ASSERT_EQ(3, actual.body->getList()->getListId());
 }

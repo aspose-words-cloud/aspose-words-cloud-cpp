@@ -70,4 +70,6 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 
    auto actual = get_api()->appendDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDocument() != nullptr);
+   ASSERT_EQ(STCONVERT("TestAppendDocument.docx"), actual.body->getDocument()->getFileName());
 }

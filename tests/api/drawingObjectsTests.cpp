@@ -58,6 +58,9 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjects) {
 
    auto actual = get_api()->getDocumentDrawingObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObjects() != nullptr);
+   ASSERT_EQ(true, actual.body->getDrawingObjects()->getList() != nullptr);
+   ASSERT_EQ(1, actual.body->getDrawingObjects()->getList().size());
 }
 
 /// <summary>
@@ -82,6 +85,9 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsWithoutNodePath) {
 
    auto actual = get_api()->getDocumentDrawingObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObjects() != nullptr);
+   ASSERT_EQ(true, actual.body->getDrawingObjects()->getList() != nullptr);
+   ASSERT_EQ(1, actual.body->getDrawingObjects()->getList().size());
 }
 
 /// <summary>
@@ -107,6 +113,8 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndex) {
 
    auto actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
+   ASSERT_EQ(300, actual.body->getDrawingObject()->getHeight());
 }
 
 /// <summary>
@@ -132,6 +140,8 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexWithoutNodePath) 
 
    auto actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
+   ASSERT_EQ(300, actual.body->getDrawingObject()->getHeight());
 }
 
 /// <summary>
@@ -318,6 +328,8 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
 
    auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
+   ASSERT_EQ(STCONVERT("0.3.7.1"), actual.body->getDrawingObject()->getNodeId());
 }
 
 /// <summary>
@@ -356,6 +368,8 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
 
    auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
+   ASSERT_EQ(STCONVERT("0.3.7.1"), actual.body->getDrawingObject()->getNodeId());
 }
 
 /// <summary>
@@ -424,7 +438,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectUpdate >();
-    requestDrawingObject->setLeft(0);
+    requestDrawingObject->setLeft(1);
 
     std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
@@ -443,6 +457,8 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
 
    auto actual = get_api()->updateDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
+   ASSERT_EQ(1, actual.body->getDrawingObject()->getLeft());
 }
 
 /// <summary>
@@ -457,7 +473,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectUpdate >();
-    requestDrawingObject->setLeft(0);
+    requestDrawingObject->setLeft(1);
 
     std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
@@ -476,4 +492,6 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
 
    auto actual = get_api()->updateDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
+   ASSERT_EQ(1, actual.body->getDrawingObject()->getLeft());
 }

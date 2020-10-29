@@ -59,4 +59,6 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
 
    auto actual = get_api()->getDocumentStatistics(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getStatData() != nullptr);
+   ASSERT_EQ(10, actual.body->getStatData()->getWordCount());
 }

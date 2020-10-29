@@ -57,6 +57,10 @@ TEST_F(TableTests, TestGetTables) {
 
    auto actual = get_api()->getTables(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getTables() != nullptr);
+   ASSERT_EQ(true, actual.body->getTables()->getTableLinkList() != nullptr);
+   ASSERT_EQ(5, actual.body->getTables()->getTableLinkList().size());
+   ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -81,6 +85,10 @@ TEST_F(TableTests, TestGetTablesWithoutNodePath) {
 
    auto actual = get_api()->getTables(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getTables() != nullptr);
+   ASSERT_EQ(true, actual.body->getTables()->getTableLinkList() != nullptr);
+   ASSERT_EQ(5, actual.body->getTables()->getTableLinkList().size());
+   ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -106,6 +114,11 @@ TEST_F(TableTests, TestGetTable) {
 
    auto actual = get_api()->getTable(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getTable() != nullptr);
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList() != nullptr);
+   ASSERT_EQ(1, actual.body->getTable()->getTableRowList().size());
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList()[0]->getTableCellList() != nullptr);
+   ASSERT_EQ(2, actual.body->getTable()->getTableRowList()[0]->getTableCellList().size());
 }
 
 /// <summary>
@@ -131,6 +144,11 @@ TEST_F(TableTests, TestGetTableWithoutNodePath) {
 
    auto actual = get_api()->getTable(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getTable() != nullptr);
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList() != nullptr);
+   ASSERT_EQ(1, actual.body->getTable()->getTableRowList().size());
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList()[0]->getTableCellList() != nullptr);
+   ASSERT_EQ(2, actual.body->getTable()->getTableRowList()[0]->getTableCellList().size());
 }
 
 /// <summary>
@@ -217,6 +235,11 @@ TEST_F(TableTests, TestInsertTable) {
 
    auto actual = get_api()->insertTable(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getTable() != nullptr);
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList() != nullptr);
+   ASSERT_EQ(4, actual.body->getTable()->getTableRowList().size());
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList()[0]->getTableCellList() != nullptr);
+   ASSERT_EQ(5, actual.body->getTable()->getTableRowList()[0]->getTableCellList().size());
 }
 
 /// <summary>
@@ -249,6 +272,11 @@ TEST_F(TableTests, TestInsertTableWithoutNodePath) {
 
    auto actual = get_api()->insertTable(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getTable() != nullptr);
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList() != nullptr);
+   ASSERT_EQ(4, actual.body->getTable()->getTableRowList().size());
+   ASSERT_EQ(true, actual.body->getTable()->getTableRowList()[0]->getTableCellList() != nullptr);
+   ASSERT_EQ(5, actual.body->getTable()->getTableRowList()[0]->getTableCellList().size());
 }
 
 /// <summary>
@@ -274,6 +302,8 @@ TEST_F(TableTests, TestGetTableProperties) {
 
    auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getProperties() != nullptr);
+   ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
 }
 
 /// <summary>
@@ -299,6 +329,8 @@ TEST_F(TableTests, TestGetTablePropertiesWithoutNodePath) {
 
    auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getProperties() != nullptr);
+   ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
 }
 
 /// <summary>
@@ -336,6 +368,11 @@ TEST_F(TableTests, TestUpdateTableProperties) {
 
    auto actual = get_api()->updateTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getProperties() != nullptr);
+   ASSERT_EQ(false, actual.body->getProperties()->getAllowAutoFit());
+   ASSERT_EQ(true, actual.body->getProperties()->getBidi());
+   ASSERT_EQ(1, actual.body->getProperties()->getBottomPadding());
+   ASSERT_EQ(2, actual.body->getProperties()->getCellSpacing());
 }
 
 /// <summary>
@@ -373,6 +410,11 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
 
    auto actual = get_api()->updateTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getProperties() != nullptr);
+   ASSERT_EQ(false, actual.body->getProperties()->getAllowAutoFit());
+   ASSERT_EQ(true, actual.body->getProperties()->getBidi());
+   ASSERT_EQ(1, actual.body->getProperties()->getBottomPadding());
+   ASSERT_EQ(2, actual.body->getProperties()->getCellSpacing());
 }
 
 /// <summary>
@@ -398,6 +440,9 @@ TEST_F(TableTests, TestGetTableRow) {
 
    auto actual = get_api()->getTableRow(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getRow() != nullptr);
+   ASSERT_EQ(true, actual.body->getRow()->getTableCellList() != nullptr);
+   ASSERT_EQ(2, actual.body->getRow()->getTableCellList().size());
 }
 
 /// <summary>
@@ -456,6 +501,9 @@ TEST_F(TableTests, TestInsertTableRow) {
 
    auto actual = get_api()->insertTableRow(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getRow() != nullptr);
+   ASSERT_EQ(true, actual.body->getRow()->getTableCellList() != nullptr);
+   ASSERT_EQ(5, actual.body->getRow()->getTableCellList().size());
 }
 
 /// <summary>
@@ -481,6 +529,8 @@ TEST_F(TableTests, TestGetTableRowFormat) {
 
    auto actual = get_api()->getTableRowFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getRowFormat() != nullptr);
+   ASSERT_EQ(true, actual.body->getRowFormat()->getAllowBreakAcrossPages());
 }
 
 /// <summary>
@@ -498,7 +548,7 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
     requestFormat->setAllowBreakAcrossPages(true);
     requestFormat->setHeadingFormat(true);
     requestFormat->setHeight(10);
-    requestFormat->setHeightRule(STCONVERT("Auto"));
+    requestFormat->setHeightRule(STCONVERT("Exactly"));
 
     std::shared_ptr< UpdateTableRowFormatRequest > request(new UpdateTableRowFormatRequest(
         remoteFileName,
@@ -516,6 +566,10 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
 
    auto actual = get_api()->updateTableRowFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getRowFormat() != nullptr);
+   ASSERT_EQ(true, actual.body->getRowFormat()->getAllowBreakAcrossPages());
+   ASSERT_EQ(true, actual.body->getRowFormat()->getHeadingFormat());
+   ASSERT_EQ(10, actual.body->getRowFormat()->getHeight());
 }
 
 /// <summary>
@@ -541,6 +595,8 @@ TEST_F(TableTests, TestGetTableCell) {
 
    auto actual = get_api()->getTableCell(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getCell() != nullptr);
+   ASSERT_EQ(STCONVERT("0.0.5.0.0"), actual.body->getCell()->getNodeId());
 }
 
 /// <summary>
@@ -599,6 +655,8 @@ TEST_F(TableTests, TestInsertTableCell) {
 
    auto actual = get_api()->insertTableCell(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getCell() != nullptr);
+   ASSERT_EQ(STCONVERT("0.0.5.0.3"), actual.body->getCell()->getNodeId());
 }
 
 /// <summary>
@@ -624,6 +682,8 @@ TEST_F(TableTests, TestGetTableCellFormat) {
 
    auto actual = get_api()->getTableCellFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getCellFormat() != nullptr);
+   ASSERT_EQ(true, actual.body->getCellFormat()->getWrapText());
 }
 
 /// <summary>
@@ -659,6 +719,10 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
 
    auto actual = get_api()->updateTableCellFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getCellFormat() != nullptr);
+   ASSERT_EQ(5, actual.body->getCellFormat()->getBottomPadding());
+   ASSERT_EQ(true, actual.body->getCellFormat()->getFitText());
+   ASSERT_EQ(true, actual.body->getCellFormat()->getWrapText());
 }
 
 /// <summary>

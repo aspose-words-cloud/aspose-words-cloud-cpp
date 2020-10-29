@@ -56,6 +56,12 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperties) {
 
    auto actual = get_api()->getDocumentProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDocumentProperties() != nullptr);
+   ASSERT_EQ(true, actual.body->getDocumentProperties()->getList() != nullptr);
+   ASSERT_EQ(24, actual.body->getDocumentProperties()->getList().size());
+   ASSERT_EQ(true, actual.body->getDocumentProperties()->getList()[0] != nullptr);
+   ASSERT_EQ(STCONVERT("Author"), actual.body->getDocumentProperties()->getList()[0]->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getDocumentProperties()->getList()[0]->getValue());
 }
 
 /// <summary>
@@ -80,6 +86,9 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperty) {
 
    auto actual = get_api()->getDocumentProperty(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDocumentProperty() != nullptr);
+   ASSERT_EQ(STCONVERT("Author"), actual.body->getDocumentProperty()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getDocumentProperty()->getValue());
 }
 
 /// <summary>
@@ -137,4 +146,7 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
 
    auto actual = get_api()->createOrUpdateDocumentProperty(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getDocumentProperty() != nullptr);
+   ASSERT_EQ(STCONVERT("AsposeAuthor"), actual.body->getDocumentProperty()->getName());
+   ASSERT_EQ(STCONVERT("Imran Anwar"), actual.body->getDocumentProperty()->getValue());
 }

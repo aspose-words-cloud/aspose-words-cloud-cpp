@@ -47,8 +47,8 @@ TEST_F(TextTests, TestReplaceText) {
     );
 
     auto requestReplaceText = std::make_shared< ReplaceTextParameters >();
-    requestReplaceText->setOldValue(STCONVERT("aspose"));
-    requestReplaceText->setNewValue(STCONVERT("aspose new"));
+    requestReplaceText->setOldValue(STCONVERT("Testing"));
+    requestReplaceText->setNewValue(STCONVERT("Aspose testing"));
 
     std::shared_ptr< ReplaceTextRequest > request(new ReplaceTextRequest(
         remoteFileName,
@@ -64,6 +64,7 @@ TEST_F(TextTests, TestReplaceText) {
 
    auto actual = get_api()->replaceText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(3, actual.body->getMatches());
 }
 
 /// <summary>
@@ -89,4 +90,9 @@ TEST_F(TextTests, TestSearch) {
 
    auto actual = get_api()->search(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(true, actual.body->getSearchResults() != nullptr);
+   ASSERT_EQ(true, actual.body->getSearchResults()->getResultsList() != nullptr);
+   ASSERT_EQ(23, actual.body->getSearchResults()->getResultsList().size());
+   ASSERT_EQ(true, actual.body->getSearchResults()->getResultsList()[0]->getRangeStart() != nullptr);
+   ASSERT_EQ(65, actual.body->getSearchResults()->getResultsList()[0]->getRangeStart()->getOffset());
 }
