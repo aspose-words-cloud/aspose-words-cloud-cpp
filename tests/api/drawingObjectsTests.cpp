@@ -329,7 +329,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
    auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
-   ASSERT_EQ(STCONVERT("0.3.7.1"), actual.body->getDrawingObject()->getNodeId());
+   ASSERT_EQ(0, actual.body->getDrawingObject()->getNodeId().rfind(STCONVERT("0.3.7.1"), 0));
 }
 
 /// <summary>
@@ -369,7 +369,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
    auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDrawingObject() != nullptr);
-   ASSERT_EQ(STCONVERT("0.3.7.1"), actual.body->getDrawingObject()->getNodeId());
+   ASSERT_EQ(0, actual.body->getDrawingObject()->getNodeId().rfind(STCONVERT("0.3.7.1"), 0));
 }
 
 /// <summary>

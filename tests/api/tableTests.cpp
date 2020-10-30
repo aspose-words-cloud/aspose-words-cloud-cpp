@@ -60,7 +60,7 @@ TEST_F(TableTests, TestGetTables) {
    ASSERT_EQ(true, actual.body->getTables() != nullptr);
    ASSERT_EQ(true, actual.body->getTables()->getTableLinkList() != nullptr);
    ASSERT_EQ(5, actual.body->getTables()->getTableLinkList().size());
-   ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
+   ASSERT_EQ(0, actual.body->getTables()->getTableLinkList()[0]->getNodeId().rfind(STCONVERT("0.0.1"), 0));
 }
 
 /// <summary>
@@ -88,7 +88,7 @@ TEST_F(TableTests, TestGetTablesWithoutNodePath) {
    ASSERT_EQ(true, actual.body->getTables() != nullptr);
    ASSERT_EQ(true, actual.body->getTables()->getTableLinkList() != nullptr);
    ASSERT_EQ(5, actual.body->getTables()->getTableLinkList().size());
-   ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
+   ASSERT_EQ(0, actual.body->getTables()->getTableLinkList()[0]->getNodeId().rfind(STCONVERT("0.0.1"), 0));
 }
 
 /// <summary>
@@ -303,7 +303,7 @@ TEST_F(TableTests, TestGetTableProperties) {
    auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProperties() != nullptr);
-   ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
+   ASSERT_EQ(0, actual.body->getProperties()->getStyleName().rfind(STCONVERT("Table Grid"), 0));
 }
 
 /// <summary>
@@ -330,7 +330,7 @@ TEST_F(TableTests, TestGetTablePropertiesWithoutNodePath) {
    auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProperties() != nullptr);
-   ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
+   ASSERT_EQ(0, actual.body->getProperties()->getStyleName().rfind(STCONVERT("Table Grid"), 0));
 }
 
 /// <summary>
@@ -596,7 +596,7 @@ TEST_F(TableTests, TestGetTableCell) {
    auto actual = get_api()->getTableCell(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getCell() != nullptr);
-   ASSERT_EQ(STCONVERT("0.0.5.0.0"), actual.body->getCell()->getNodeId());
+   ASSERT_EQ(0, actual.body->getCell()->getNodeId().rfind(STCONVERT("0.0.5.0.0"), 0));
 }
 
 /// <summary>
@@ -656,7 +656,7 @@ TEST_F(TableTests, TestInsertTableCell) {
    auto actual = get_api()->insertTableCell(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getCell() != nullptr);
-   ASSERT_EQ(STCONVERT("0.0.5.0.3"), actual.body->getCell()->getNodeId());
+   ASSERT_EQ(0, actual.body->getCell()->getNodeId().rfind(STCONVERT("0.0.5.0.3"), 0));
 }
 
 /// <summary>

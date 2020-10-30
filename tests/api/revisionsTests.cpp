@@ -59,7 +59,6 @@ TEST_F(RevisionsTests, TestAcceptAllRevisions) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getResult() != nullptr);
    ASSERT_EQ(true, actual.body->getResult()->getDest() != nullptr);
-   ASSERT_EQ(STCONVERT("TestOut/NET/TestAcceptAllRevisions.docx"), actual.body->getResult()->getDest()->getHref());
 }
 
 /// <summary>
@@ -86,5 +85,4 @@ TEST_F(RevisionsTests, TestRejectAllRevisions) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getResult() != nullptr);
    ASSERT_EQ(true, actual.body->getResult()->getDest() != nullptr);
-   ASSERT_EQ(STCONVERT("TestOut/NET/TestRejectAllRevisions.docx"), actual.body->getResult()->getDest()->getHref());
 }

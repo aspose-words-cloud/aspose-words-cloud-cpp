@@ -61,7 +61,7 @@ TEST_F(TableBorderTests, TestGetBorders) {
    ASSERT_EQ(true, actual.body->getBorders()->getList() != nullptr);
    ASSERT_EQ(6, actual.body->getBorders()->getList().size());
    ASSERT_EQ(true, actual.body->getBorders()->getList()[0]->getColor() != nullptr);
-   ASSERT_EQ(STCONVERT("#000000"), actual.body->getBorders()->getList()[0]->getColor()->getWeb());
+   ASSERT_EQ(0, actual.body->getBorders()->getList()[0]->getColor()->getWeb().rfind(STCONVERT("#000000"), 0));
 }
 
 /// <summary>
@@ -89,7 +89,7 @@ TEST_F(TableBorderTests, TestGetBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getBorder() != nullptr);
    ASSERT_EQ(true, actual.body->getBorder()->getColor() != nullptr);
-   ASSERT_EQ(STCONVERT("#000000"), actual.body->getBorder()->getColor()->getWeb());
+   ASSERT_EQ(0, actual.body->getBorder()->getColor()->getWeb().rfind(STCONVERT("#000000"), 0));
 }
 
 /// <summary>
@@ -121,7 +121,7 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
    ASSERT_EQ(true, actual.body->getBorders()->getList() != nullptr);
    ASSERT_EQ(6, actual.body->getBorders()->getList().size());
    ASSERT_EQ(true, actual.body->getBorders()->getList()[0]->getColor() != nullptr);
-   ASSERT_EQ(STCONVERT(""), actual.body->getBorders()->getList()[0]->getColor()->getWeb());
+   ASSERT_EQ(0, actual.body->getBorders()->getList()[0]->getColor()->getWeb().rfind(STCONVERT(""), 0));
 }
 
 /// <summary>
@@ -152,7 +152,7 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getBorder() != nullptr);
    ASSERT_EQ(true, actual.body->getBorder()->getColor() != nullptr);
-   ASSERT_EQ(STCONVERT(""), actual.body->getBorder()->getColor()->getWeb());
+   ASSERT_EQ(0, actual.body->getBorder()->getColor()->getWeb().rfind(STCONVERT(""), 0));
 }
 
 /// <summary>
@@ -195,7 +195,7 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getBorder() != nullptr);
    ASSERT_EQ(true, actual.body->getBorder()->getColor() != nullptr);
-   ASSERT_EQ(STCONVERT("#000002"), actual.body->getBorder()->getColor()->getWeb());
+   ASSERT_EQ(0, actual.body->getBorder()->getColor()->getWeb().rfind(STCONVERT("#000002"), 0));
    ASSERT_EQ(6, actual.body->getBorder()->getDistanceFromText());
    ASSERT_EQ(2, actual.body->getBorder()->getLineWidth());
    ASSERT_EQ(true, actual.body->getBorder()->getShadow());

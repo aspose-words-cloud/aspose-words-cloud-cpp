@@ -91,5 +91,5 @@ TEST_F(BuildReportTests, TestBuildReport) {
    auto actual = get_api()->buildReport(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(STCONVERT("TestBuildReport.docx"), actual.body->getDocument()->getFileName());
+   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("TestBuildReport.docx"), 0));
 }

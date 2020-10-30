@@ -51,7 +51,7 @@ TEST_F(FileTests, TestUploadFile) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getUploaded() != nullptr);
    ASSERT_EQ(1, actual.body->getUploaded().size());
-   ASSERT_EQ(STCONVERT("TestUploadFile.docx"), actual.body->getUploaded()[0]);
+   ASSERT_EQ(0, actual.body->getUploaded()[0].rfind(STCONVERT("TestUploadFile.docx"), 0));
 }
 
 /// <summary>
