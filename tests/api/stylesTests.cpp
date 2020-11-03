@@ -58,7 +58,7 @@ TEST_F(StylesTests, TestGetStyles) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getStyles() != nullptr);
    ASSERT_EQ(22, actual.body->getStyles().size());
-   ASSERT_EQ(0, actual.body->getStyles()[0]->getName().rfind(STCONVERT("Default Paragraph Font"), 0));
+   ASSERT_EQ(STCONVERT("Default Paragraph Font"), actual.body->getStyles()[0]->getName());
 }
 
 /// <summary>
@@ -84,7 +84,7 @@ TEST_F(StylesTests, TestGetStyle) {
    auto actual = get_api()->getStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getStyle() != nullptr);
-   ASSERT_EQ(0, actual.body->getStyle()->getName().rfind(STCONVERT("Heading 1"), 0));
+   ASSERT_EQ(STCONVERT("Heading 1"), actual.body->getStyle()->getName());
 }
 
 /// <summary>
@@ -117,7 +117,7 @@ TEST_F(StylesTests, TestUpdateStyle) {
    auto actual = get_api()->updateStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getStyle() != nullptr);
-   ASSERT_EQ(0, actual.body->getStyle()->getName().rfind(STCONVERT("My Style"), 0));
+   ASSERT_EQ(STCONVERT("My Style"), actual.body->getStyle()->getName());
 }
 
 /// <summary>
@@ -150,7 +150,7 @@ TEST_F(StylesTests, TestInsertStyle) {
    auto actual = get_api()->insertStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getStyle() != nullptr);
-   ASSERT_EQ(0, actual.body->getStyle()->getName().rfind(STCONVERT("My Style"), 0));
+   ASSERT_EQ(STCONVERT("My Style"), actual.body->getStyle()->getName());
 }
 
 /// <summary>
@@ -182,7 +182,7 @@ TEST_F(StylesTests, TestCopyStyle) {
    auto actual = get_api()->copyStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getStyle() != nullptr);
-   ASSERT_EQ(0, actual.body->getStyle()->getName().rfind(STCONVERT("Heading 1_0"), 0));
+   ASSERT_EQ(STCONVERT("Heading 1_0"), actual.body->getStyle()->getName());
 }
 
 /// <summary>
@@ -208,7 +208,7 @@ TEST_F(StylesTests, TestGetStyleFromDocumentElement) {
    auto actual = get_api()->getStyleFromDocumentElement(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getStyle() != nullptr);
-   ASSERT_EQ(0, actual.body->getStyle()->getName().rfind(STCONVERT("TOC 1"), 0));
+   ASSERT_EQ(STCONVERT("TOC 1"), actual.body->getStyle()->getName());
 }
 
 /// <summary>

@@ -66,7 +66,7 @@ TEST_F(RunTests, TestUpdateRun) {
    auto actual = get_api()->updateRun(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getRun() != nullptr);
-   ASSERT_EQ(0, actual.body->getRun()->getText().rfind(STCONVERT("run with text"), 0));
+   ASSERT_EQ(STCONVERT("run with text"), actual.body->getRun()->getText());
 }
 
 /// <summary>
@@ -100,8 +100,8 @@ TEST_F(RunTests, TestInsertRun) {
    auto actual = get_api()->insertRun(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getRun() != nullptr);
-   ASSERT_EQ(0, actual.body->getRun()->getText().rfind(STCONVERT("run with text"), 0));
-   ASSERT_EQ(0, actual.body->getRun()->getNodeId().rfind(STCONVERT("0.0.1.3"), 0));
+   ASSERT_EQ(STCONVERT("run with text"), actual.body->getRun()->getText());
+   ASSERT_EQ(STCONVERT("0.0.1.3"), actual.body->getRun()->getNodeId());
 }
 
 /// <summary>

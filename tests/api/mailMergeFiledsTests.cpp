@@ -51,7 +51,7 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
    ASSERT_EQ(true, actual.body->getFieldNames() != nullptr);
    ASSERT_EQ(true, actual.body->getFieldNames()->getNames() != nullptr);
    ASSERT_EQ(15, actual.body->getFieldNames()->getNames().size());
-   ASSERT_EQ(0, actual.body->getFieldNames()->getNames()[0].rfind(STCONVERT("TableStart:Order"), 0));
+   ASSERT_EQ(STCONVERT("TableStart:Order"), actual.body->getFieldNames()->getNames()[0]);
 }
 
 /// <summary>

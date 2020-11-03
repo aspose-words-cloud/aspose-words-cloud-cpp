@@ -58,7 +58,7 @@ TEST_F(CommentTests, TestGetComment) {
    auto actual = get_api()->getComment(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getComment() != nullptr);
-   ASSERT_EQ(0, actual.body->getComment()->getText().rfind(STCONVERT("Comment 1"), 0));
+   ASSERT_EQ(STCONVERT("Comment 1") + STCONVERT("\r\n\r\n"), actual.body->getComment()->getText());
 }
 
 /// <summary>
@@ -85,7 +85,7 @@ TEST_F(CommentTests, TestGetComments) {
    ASSERT_EQ(true, actual.body->getComments() != nullptr);
    ASSERT_EQ(true, actual.body->getComments()->getCommentList() != nullptr);
    ASSERT_EQ(1, actual.body->getComments()->getCommentList().size());
-   ASSERT_EQ(0, actual.body->getComments()->getCommentList()[0]->getText().rfind(STCONVERT("Comment 1"), 0));
+   ASSERT_EQ(STCONVERT("Comment 1") + STCONVERT("\r\n\r\n"), actual.body->getComments()->getCommentList()[0]->getText());
 }
 
 /// <summary>
@@ -135,10 +135,10 @@ TEST_F(CommentTests, TestInsertComment) {
    auto actual = get_api()->insertComment(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getComment() != nullptr);
-   ASSERT_EQ(0, actual.body->getComment()->getText().rfind(STCONVERT("A new Comment"), 0));
+   ASSERT_EQ(STCONVERT("A new Comment") + STCONVERT("\r\n"), actual.body->getComment()->getText());
    ASSERT_EQ(true, actual.body->getComment()->getRangeStart() != nullptr);
    ASSERT_EQ(true, actual.body->getComment()->getRangeStart()->getNode() != nullptr);
-   ASSERT_EQ(0, actual.body->getComment()->getRangeStart()->getNode()->getNodeId().rfind(STCONVERT("0.3.0.4"), 0));
+   ASSERT_EQ(STCONVERT("0.3.0.4"), actual.body->getComment()->getRangeStart()->getNode()->getNodeId());
 }
 
 /// <summary>
@@ -189,10 +189,10 @@ TEST_F(CommentTests, TestUpdateComment) {
    auto actual = get_api()->updateComment(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getComment() != nullptr);
-   ASSERT_EQ(0, actual.body->getComment()->getText().rfind(STCONVERT("A new Comment"), 0));
+   ASSERT_EQ(STCONVERT("A new Comment") + STCONVERT("\r\n"), actual.body->getComment()->getText());
    ASSERT_EQ(true, actual.body->getComment()->getRangeStart() != nullptr);
    ASSERT_EQ(true, actual.body->getComment()->getRangeStart()->getNode() != nullptr);
-   ASSERT_EQ(0, actual.body->getComment()->getRangeStart()->getNode()->getNodeId().rfind(STCONVERT("0.3.0.1"), 0));
+   ASSERT_EQ(STCONVERT("0.3.0.1"), actual.body->getComment()->getRangeStart()->getNode()->getNodeId());
 }
 
 /// <summary>

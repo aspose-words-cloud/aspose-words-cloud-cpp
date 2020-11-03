@@ -60,7 +60,7 @@ TEST_F(SectionTests, TestGetSection) {
    ASSERT_EQ(true, actual.body->getSection() != nullptr);
    ASSERT_EQ(true, actual.body->getSection()->getChildNodes() != nullptr);
    ASSERT_EQ(13, actual.body->getSection()->getChildNodes().size());
-   ASSERT_EQ(0, actual.body->getSection()->getChildNodes()[0]->getNodeId().rfind(STCONVERT("0.3.0"), 0));
+   ASSERT_EQ(STCONVERT("0.3.0"), actual.body->getSection()->getChildNodes()[0]->getNodeId());
 }
 
 /// <summary>
@@ -87,7 +87,7 @@ TEST_F(SectionTests, TestGetSections) {
    ASSERT_EQ(true, actual.body->getSections() != nullptr);
    ASSERT_EQ(true, actual.body->getSections()->getSectionLinkList() != nullptr);
    ASSERT_EQ(1, actual.body->getSections()->getSectionLinkList().size());
-   ASSERT_EQ(0, actual.body->getSections()->getSectionLinkList()[0]->getNodeId().rfind(STCONVERT("0"), 0));
+   ASSERT_EQ(STCONVERT("0"), actual.body->getSections()->getSectionLinkList()[0]->getNodeId());
 }
 
 /// <summary>

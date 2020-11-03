@@ -89,7 +89,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
    ASSERT_EQ(true, actual.body->getHeaderFooter() != nullptr);
    ASSERT_EQ(true, actual.body->getHeaderFooter()->getChildNodes() != nullptr);
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
-   ASSERT_EQ(0, actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId().rfind(STCONVERT("0.0.0"), 0));
+   ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }
 
 /// <summary>
@@ -119,7 +119,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSection) {
    ASSERT_EQ(true, actual.body->getHeaderFooter() != nullptr);
    ASSERT_EQ(true, actual.body->getHeaderFooter()->getChildNodes() != nullptr);
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
-   ASSERT_EQ(0, actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId().rfind(STCONVERT("0.0.0"), 0));
+   ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }
 
 /// <summary>
@@ -205,5 +205,5 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
    ASSERT_EQ(true, actual.body->getHeaderFooter() != nullptr);
    ASSERT_EQ(true, actual.body->getHeaderFooter()->getChildNodes() != nullptr);
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
-   ASSERT_EQ(0, actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId().rfind(STCONVERT("0.2.0"), 0));
+   ASSERT_EQ(STCONVERT("0.2.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }

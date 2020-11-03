@@ -58,7 +58,7 @@ TEST_F(RangeTests, TestGetRangeText) {
 
    auto actual = get_api()->getRangeText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(0, actual.body->getText().rfind(STCONVERT("This is HEADER "), 0));
+   ASSERT_EQ(STCONVERT("This is HEADER "), actual.body->getText());
 }
 
 /// <summary>
@@ -86,7 +86,7 @@ TEST_F(RangeTests, TestRemoveRange) {
    auto actual = get_api()->removeRange(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("TestRemoveRange.docx"), 0));
+   ASSERT_EQ(STCONVERT("TestRemoveRange.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -117,7 +117,7 @@ TEST_F(RangeTests, TestSaveAsRange) {
    auto actual = get_api()->saveAsRange(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("NewDoc.docx"), 0));
+   ASSERT_EQ(STCONVERT("NewDoc.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -149,5 +149,5 @@ TEST_F(RangeTests, TestReplaceWithText) {
    auto actual = get_api()->replaceWithText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("TestReplaceWithText.docx"), 0));
+   ASSERT_EQ(STCONVERT("TestReplaceWithText.docx"), actual.body->getDocument()->getFileName());
 }

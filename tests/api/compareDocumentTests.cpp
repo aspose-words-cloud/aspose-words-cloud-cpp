@@ -71,5 +71,5 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
    auto actual = get_api()->compareDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("TestCompareDocumentOut.doc"), 0));
+   ASSERT_EQ(STCONVERT("TestCompareDocumentOut.doc"), actual.body->getDocument()->getFileName());
 }

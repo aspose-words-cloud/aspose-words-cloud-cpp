@@ -61,7 +61,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
    auto actual = get_api()->getParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
-   ASSERT_EQ(0, actual.body->getParagraph()->getNodeId().rfind(STCONVERT("0.0.0"), 0));
+   ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getParagraph()->getNodeId());
 }
 
 /// <summary>
@@ -88,7 +88,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndexWithoutNodePath) {
    auto actual = get_api()->getParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
-   ASSERT_EQ(0, actual.body->getParagraph()->getNodeId().rfind(STCONVERT("0.0.0"), 0));
+   ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getParagraph()->getNodeId());
 }
 
 /// <summary>
@@ -116,7 +116,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphs) {
    ASSERT_EQ(true, actual.body->getParagraphs() != nullptr);
    ASSERT_EQ(true, actual.body->getParagraphs()->getParagraphLinkList() != nullptr);
    ASSERT_EQ(15, actual.body->getParagraphs()->getParagraphLinkList().size());
-   ASSERT_EQ(0, actual.body->getParagraphs()->getParagraphLinkList()[0]->getText().rfind(STCONVERT("Page 1 of 3"), 0));
+   ASSERT_EQ(STCONVERT("Page 1 of 3"), actual.body->getParagraphs()->getParagraphLinkList()[0]->getText());
 }
 
 /// <summary>
@@ -144,7 +144,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphsWithoutNodePath) {
    ASSERT_EQ(true, actual.body->getParagraphs() != nullptr);
    ASSERT_EQ(true, actual.body->getParagraphs()->getParagraphLinkList() != nullptr);
    ASSERT_EQ(15, actual.body->getParagraphs()->getParagraphLinkList().size());
-   ASSERT_EQ(0, actual.body->getParagraphs()->getParagraphLinkList()[0]->getText().rfind(STCONVERT("Page 1 of 3"), 0));
+   ASSERT_EQ(STCONVERT("Page 1 of 3"), actual.body->getParagraphs()->getParagraphLinkList()[0]->getText());
 }
 
 /// <summary>
@@ -171,7 +171,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRun) {
    auto actual = get_api()->getRun(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getRun() != nullptr);
-   ASSERT_EQ(0, actual.body->getRun()->getText().rfind(STCONVERT("Page "), 0));
+   ASSERT_EQ(STCONVERT("Page "), actual.body->getRun()->getText());
 }
 
 /// <summary>
@@ -198,7 +198,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunFont) {
    auto actual = get_api()->getRunFont(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFont() != nullptr);
-   ASSERT_EQ(0, actual.body->getFont()->getName().rfind(STCONVERT("Times New Roman"), 0));
+   ASSERT_EQ(STCONVERT("Times New Roman"), actual.body->getFont()->getName());
 }
 
 /// <summary>
@@ -226,7 +226,7 @@ TEST_F(ParagraphTests, TestGetParagraphRuns) {
    ASSERT_EQ(true, actual.body->getRuns() != nullptr);
    ASSERT_EQ(true, actual.body->getRuns()->getList() != nullptr);
    ASSERT_EQ(6, actual.body->getRuns()->getList().size());
-   ASSERT_EQ(0, actual.body->getRuns()->getList()[0]->getText().rfind(STCONVERT("Page "), 0));
+   ASSERT_EQ(STCONVERT("Page "), actual.body->getRuns()->getList()[0]->getText());
 }
 
 /// <summary>
@@ -294,7 +294,7 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
    auto actual = get_api()->insertParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
-   ASSERT_EQ(0, actual.body->getParagraph()->getNodeId().rfind(STCONVERT("0.3.8"), 0));
+   ASSERT_EQ(STCONVERT("0.3.8"), actual.body->getParagraph()->getNodeId());
 }
 
 /// <summary>
@@ -328,7 +328,7 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
    auto actual = get_api()->insertParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
-   ASSERT_EQ(0, actual.body->getParagraph()->getNodeId().rfind(STCONVERT("0.3.8"), 0));
+   ASSERT_EQ(STCONVERT("0.3.8"), actual.body->getParagraph()->getNodeId());
 }
 
 /// <summary>
@@ -407,7 +407,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormat) {
    auto actual = get_api()->getParagraphFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getParagraphFormat() != nullptr);
-   ASSERT_EQ(0, actual.body->getParagraphFormat()->getStyleName().rfind(STCONVERT("Normal"), 0));
+   ASSERT_EQ(STCONVERT("Normal"), actual.body->getParagraphFormat()->getStyleName());
 }
 
 /// <summary>
@@ -434,7 +434,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormatWithoutNodePath) {
    auto actual = get_api()->getParagraphFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getParagraphFormat() != nullptr);
-   ASSERT_EQ(0, actual.body->getParagraphFormat()->getStyleName().rfind(STCONVERT("Normal"), 0));
+   ASSERT_EQ(STCONVERT("Normal"), actual.body->getParagraphFormat()->getStyleName());
 }
 
 /// <summary>
@@ -728,7 +728,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStops) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
    ASSERT_EQ(2, actual.body->getTabStops().size());
-   ASSERT_EQ(72, actual.body->getTabStops()[0]->getPosition());
+   ASSERT_EQ(72.0, actual.body->getTabStops()[0]->getPosition());
 }
 
 /// <summary>
@@ -756,7 +756,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStopsWithoutNodePath) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
    ASSERT_EQ(2, actual.body->getTabStops().size());
-   ASSERT_EQ(72, actual.body->getTabStops()[0]->getPosition());
+   ASSERT_EQ(72.0, actual.body->getTabStops()[0]->getPosition());
 }
 
 /// <summary>
@@ -773,7 +773,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
     auto requestDto = std::make_shared< TabStopInsert >();
     requestDto->setAlignment(STCONVERT("Left"));
     requestDto->setLeader(STCONVERT("None"));
-    requestDto->setPosition(100);
+    requestDto->setPosition(100.0);
 
     std::shared_ptr< InsertOrUpdateParagraphTabStopRequest > request(new InsertOrUpdateParagraphTabStopRequest(
         remoteFileName,
@@ -791,7 +791,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
    ASSERT_EQ(3, actual.body->getTabStops().size());
-   ASSERT_EQ(100, actual.body->getTabStops()[1]->getPosition());
+   ASSERT_EQ(100.0, actual.body->getTabStops()[1]->getPosition());
 
 
 }
@@ -810,7 +810,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
     auto requestDto = std::make_shared< TabStopInsert >();
     requestDto->setAlignment(STCONVERT("Left"));
     requestDto->setLeader(STCONVERT("None"));
-    requestDto->setPosition(100);
+    requestDto->setPosition(100.0);
 
     std::shared_ptr< InsertOrUpdateParagraphTabStopRequest > request(new InsertOrUpdateParagraphTabStopRequest(
         remoteFileName,
@@ -828,7 +828,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
    ASSERT_EQ(3, actual.body->getTabStops().size());
-   ASSERT_EQ(100, actual.body->getTabStops()[1]->getPosition());
+   ASSERT_EQ(100.0, actual.body->getTabStops()[1]->getPosition());
 
 
 }
@@ -902,7 +902,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStop) {
 
     std::shared_ptr< DeleteParagraphTabStopRequest > request(new DeleteParagraphTabStopRequest(
         remoteFileName,
-        72,
+        72.0,
         0,
         STCONVERT(""),
         remoteDataFolder,
@@ -931,7 +931,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStopWithoutNodePath) {
 
     std::shared_ptr< DeleteParagraphTabStopRequest > request(new DeleteParagraphTabStopRequest(
         remoteFileName,
-        72,
+        72.0,
         0,
         boost::none,
         remoteDataFolder,

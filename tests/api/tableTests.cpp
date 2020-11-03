@@ -60,7 +60,7 @@ TEST_F(TableTests, TestGetTables) {
    ASSERT_EQ(true, actual.body->getTables() != nullptr);
    ASSERT_EQ(true, actual.body->getTables()->getTableLinkList() != nullptr);
    ASSERT_EQ(5, actual.body->getTables()->getTableLinkList().size());
-   ASSERT_EQ(0, actual.body->getTables()->getTableLinkList()[0]->getNodeId().rfind(STCONVERT("0.0.1"), 0));
+   ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -88,7 +88,7 @@ TEST_F(TableTests, TestGetTablesWithoutNodePath) {
    ASSERT_EQ(true, actual.body->getTables() != nullptr);
    ASSERT_EQ(true, actual.body->getTables()->getTableLinkList() != nullptr);
    ASSERT_EQ(5, actual.body->getTables()->getTableLinkList().size());
-   ASSERT_EQ(0, actual.body->getTables()->getTableLinkList()[0]->getNodeId().rfind(STCONVERT("0.0.1"), 0));
+   ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -303,7 +303,7 @@ TEST_F(TableTests, TestGetTableProperties) {
    auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProperties() != nullptr);
-   ASSERT_EQ(0, actual.body->getProperties()->getStyleName().rfind(STCONVERT("Table Grid"), 0));
+   ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
 }
 
 /// <summary>
@@ -330,7 +330,7 @@ TEST_F(TableTests, TestGetTablePropertiesWithoutNodePath) {
    auto actual = get_api()->getTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProperties() != nullptr);
-   ASSERT_EQ(0, actual.body->getProperties()->getStyleName().rfind(STCONVERT("Table Grid"), 0));
+   ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
 }
 
 /// <summary>
@@ -349,7 +349,7 @@ TEST_F(TableTests, TestUpdateTableProperties) {
     requestProperties->setAllowAutoFit(false);
     requestProperties->setBidi(true);
     requestProperties->setBottomPadding(1);
-    requestProperties->setCellSpacing(2);
+    requestProperties->setCellSpacing(2.0);
     requestProperties->setStyleOptions(STCONVERT("ColumnBands"));
 
     std::shared_ptr< UpdateTablePropertiesRequest > request(new UpdateTablePropertiesRequest(
@@ -371,8 +371,8 @@ TEST_F(TableTests, TestUpdateTableProperties) {
    ASSERT_EQ(true, actual.body->getProperties() != nullptr);
    ASSERT_EQ(false, actual.body->getProperties()->getAllowAutoFit());
    ASSERT_EQ(true, actual.body->getProperties()->getBidi());
-   ASSERT_EQ(1, actual.body->getProperties()->getBottomPadding());
-   ASSERT_EQ(2, actual.body->getProperties()->getCellSpacing());
+   ASSERT_EQ(1.0, actual.body->getProperties()->getBottomPadding());
+   ASSERT_EQ(2.0, actual.body->getProperties()->getCellSpacing());
 }
 
 /// <summary>
@@ -390,8 +390,8 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
     requestProperties->setAlignment(STCONVERT("Right"));
     requestProperties->setAllowAutoFit(false);
     requestProperties->setBidi(true);
-    requestProperties->setBottomPadding(1);
-    requestProperties->setCellSpacing(2);
+    requestProperties->setBottomPadding(1.0);
+    requestProperties->setCellSpacing(2.0);
     requestProperties->setStyleOptions(STCONVERT("ColumnBands"));
 
     std::shared_ptr< UpdateTablePropertiesRequest > request(new UpdateTablePropertiesRequest(
@@ -413,8 +413,8 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
    ASSERT_EQ(true, actual.body->getProperties() != nullptr);
    ASSERT_EQ(false, actual.body->getProperties()->getAllowAutoFit());
    ASSERT_EQ(true, actual.body->getProperties()->getBidi());
-   ASSERT_EQ(1, actual.body->getProperties()->getBottomPadding());
-   ASSERT_EQ(2, actual.body->getProperties()->getCellSpacing());
+   ASSERT_EQ(1.0, actual.body->getProperties()->getBottomPadding());
+   ASSERT_EQ(2.0, actual.body->getProperties()->getCellSpacing());
 }
 
 /// <summary>
@@ -547,7 +547,7 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
     auto requestFormat = std::make_shared< TableRowFormat >();
     requestFormat->setAllowBreakAcrossPages(true);
     requestFormat->setHeadingFormat(true);
-    requestFormat->setHeight(10);
+    requestFormat->setHeight(10.0);
     requestFormat->setHeightRule(STCONVERT("Exactly"));
 
     std::shared_ptr< UpdateTableRowFormatRequest > request(new UpdateTableRowFormatRequest(
@@ -569,7 +569,7 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
    ASSERT_EQ(true, actual.body->getRowFormat() != nullptr);
    ASSERT_EQ(true, actual.body->getRowFormat()->getAllowBreakAcrossPages());
    ASSERT_EQ(true, actual.body->getRowFormat()->getHeadingFormat());
-   ASSERT_EQ(10, actual.body->getRowFormat()->getHeight());
+   ASSERT_EQ(10.0, actual.body->getRowFormat()->getHeight());
 }
 
 /// <summary>
@@ -596,7 +596,7 @@ TEST_F(TableTests, TestGetTableCell) {
    auto actual = get_api()->getTableCell(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getCell() != nullptr);
-   ASSERT_EQ(0, actual.body->getCell()->getNodeId().rfind(STCONVERT("0.0.5.0.0"), 0));
+   ASSERT_EQ(STCONVERT("0.0.5.0.0"), actual.body->getCell()->getNodeId());
 }
 
 /// <summary>
@@ -656,7 +656,7 @@ TEST_F(TableTests, TestInsertTableCell) {
    auto actual = get_api()->insertTableCell(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getCell() != nullptr);
-   ASSERT_EQ(0, actual.body->getCell()->getNodeId().rfind(STCONVERT("0.0.5.0.3"), 0));
+   ASSERT_EQ(STCONVERT("0.0.5.0.3"), actual.body->getCell()->getNodeId());
 }
 
 /// <summary>
@@ -698,7 +698,7 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
     );
 
     auto requestFormat = std::make_shared< TableCellFormat >();
-    requestFormat->setBottomPadding(5);
+    requestFormat->setBottomPadding(5.0);
     requestFormat->setFitText(true);
     requestFormat->setHorizontalMerge(STCONVERT("First"));
     requestFormat->setWrapText(true);
@@ -720,7 +720,7 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
    auto actual = get_api()->updateTableCellFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getCellFormat() != nullptr);
-   ASSERT_EQ(5, actual.body->getCellFormat()->getBottomPadding());
+   ASSERT_EQ(5.0, actual.body->getCellFormat()->getBottomPadding());
    ASSERT_EQ(true, actual.body->getCellFormat()->getFitText());
    ASSERT_EQ(true, actual.body->getCellFormat()->getWrapText());
 }

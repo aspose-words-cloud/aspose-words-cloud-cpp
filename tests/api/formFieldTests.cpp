@@ -71,8 +71,8 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
    auto actual = get_api()->updateFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFormField() != nullptr);
-   ASSERT_EQ(0, actual.body->getFormField()->getName().rfind(STCONVERT("FullName"), 0));
-   ASSERT_EQ(0, actual.body->getFormField()->getStatusText().rfind(STCONVERT(""), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>
@@ -111,8 +111,8 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
    auto actual = get_api()->updateFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFormField() != nullptr);
-   ASSERT_EQ(0, actual.body->getFormField()->getName().rfind(STCONVERT("FullName"), 0));
-   ASSERT_EQ(0, actual.body->getFormField()->getStatusText().rfind(STCONVERT(""), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>
@@ -139,7 +139,7 @@ TEST_F(FormFieldTests, TestGetFormField) {
    auto actual = get_api()->getFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFormField() != nullptr);
-   ASSERT_EQ(0, actual.body->getFormField()->getName().rfind(STCONVERT("FullName"), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
 }
 
 /// <summary>
@@ -166,7 +166,7 @@ TEST_F(FormFieldTests, TestGetFormFieldWithoutNodePath) {
    auto actual = get_api()->getFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFormField() != nullptr);
-   ASSERT_EQ(0, actual.body->getFormField()->getName().rfind(STCONVERT("FullName"), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
 }
 
 /// <summary>
@@ -194,7 +194,7 @@ TEST_F(FormFieldTests, TestGetFormFields) {
    ASSERT_EQ(true, actual.body->getFormFields() != nullptr);
    ASSERT_EQ(true, actual.body->getFormFields()->getList() != nullptr);
    ASSERT_EQ(5, actual.body->getFormFields()->getList().size());
-   ASSERT_EQ(0, actual.body->getFormFields()->getList()[0]->getName().rfind(STCONVERT("FullName"), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormFields()->getList()[0]->getName());
 }
 
 /// <summary>
@@ -222,7 +222,7 @@ TEST_F(FormFieldTests, TestGetFormFieldsWithoutNodePath) {
    ASSERT_EQ(true, actual.body->getFormFields() != nullptr);
    ASSERT_EQ(true, actual.body->getFormFields()->getList() != nullptr);
    ASSERT_EQ(5, actual.body->getFormFields()->getList().size());
-   ASSERT_EQ(0, actual.body->getFormFields()->getList()[0]->getName().rfind(STCONVERT("FullName"), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormFields()->getList()[0]->getName());
 }
 
 /// <summary>
@@ -262,8 +262,8 @@ TEST_F(FormFieldTests, TestInsertFormField) {
    auto actual = get_api()->insertFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFormField() != nullptr);
-   ASSERT_EQ(0, actual.body->getFormField()->getName().rfind(STCONVERT("FullName"), 0));
-   ASSERT_EQ(0, actual.body->getFormField()->getStatusText().rfind(STCONVERT(""), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>
@@ -303,8 +303,8 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
    auto actual = get_api()->insertFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getFormField() != nullptr);
-   ASSERT_EQ(0, actual.body->getFormField()->getName().rfind(STCONVERT("FullName"), 0));
-   ASSERT_EQ(0, actual.body->getFormField()->getStatusText().rfind(STCONVERT(""), 0));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>

@@ -57,7 +57,7 @@ TEST_F(DocumentTests, TestGetDocument) {
    auto actual = get_api()->getDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("TestGetDocument.docx"), 0));
+   ASSERT_EQ(STCONVERT("TestGetDocument.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -75,5 +75,5 @@ TEST_F(DocumentTests, TestCreateDocument) {
    auto actual = get_api()->createDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getDocument()->getFileName().rfind(STCONVERT("TestCreateDocument.doc"), 0));
+   ASSERT_EQ(STCONVERT("TestCreateDocument.doc"), actual.body->getDocument()->getFileName());
 }

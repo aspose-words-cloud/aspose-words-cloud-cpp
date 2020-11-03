@@ -57,5 +57,5 @@ TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getSaveResult() != nullptr);
    ASSERT_EQ(true, actual.body->getSaveResult()->getDestDocument() != nullptr);
-   ASSERT_EQ(0, actual.body->getSaveResult()->getDestDocument()->getHref().rfind(STCONVERT("google.doc"), 0));
+   ASSERT_EQ(STCONVERT("google.doc"), actual.body->getSaveResult()->getDestDocument()->getHref());
 }

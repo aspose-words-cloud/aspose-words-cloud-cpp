@@ -63,7 +63,7 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
    auto actual = get_api()->protectDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProtectionData() != nullptr);
-   ASSERT_EQ(0, actual.body->getProtectionData()->getProtectionType().rfind(STCONVERT("ReadOnly"), 0));
+   ASSERT_EQ(STCONVERT("ReadOnly"), actual.body->getProtectionData()->getProtectionType());
 }
 
 /// <summary>
@@ -89,7 +89,7 @@ TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
    auto actual = get_api()->getDocumentProtection(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProtectionData() != nullptr);
-   ASSERT_EQ(0, actual.body->getProtectionData()->getProtectionType().rfind(STCONVERT("ReadOnly"), 0));
+   ASSERT_EQ(STCONVERT("ReadOnly"), actual.body->getProtectionData()->getProtectionType());
 }
 
 /// <summary>
@@ -120,5 +120,5 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
    auto actual = get_api()->unprotectDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getProtectionData() != nullptr);
-   ASSERT_EQ(0, actual.body->getProtectionData()->getProtectionType().rfind(STCONVERT("NoProtection"), 0));
+   ASSERT_EQ(STCONVERT("NoProtection"), actual.body->getProtectionData()->getProtectionType());
 }

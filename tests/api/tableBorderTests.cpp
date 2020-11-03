@@ -61,7 +61,7 @@ TEST_F(TableBorderTests, TestGetBorders) {
    ASSERT_EQ(true, actual.body->getBorders()->getList() != nullptr);
    ASSERT_EQ(6, actual.body->getBorders()->getList().size());
    ASSERT_EQ(true, actual.body->getBorders()->getList()[0]->getColor() != nullptr);
-   ASSERT_EQ(0, actual.body->getBorders()->getList()[0]->getColor()->getWeb().rfind(STCONVERT("#000000"), 0));
+   ASSERT_EQ(STCONVERT("#000000"), actual.body->getBorders()->getList()[0]->getColor()->getWeb());
 }
 
 /// <summary>
@@ -89,7 +89,7 @@ TEST_F(TableBorderTests, TestGetBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getBorder() != nullptr);
    ASSERT_EQ(true, actual.body->getBorder()->getColor() != nullptr);
-   ASSERT_EQ(0, actual.body->getBorder()->getColor()->getWeb().rfind(STCONVERT("#000000"), 0));
+   ASSERT_EQ(STCONVERT("#000000"), actual.body->getBorder()->getColor()->getWeb());
 }
 
 /// <summary>
@@ -121,7 +121,7 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
    ASSERT_EQ(true, actual.body->getBorders()->getList() != nullptr);
    ASSERT_EQ(6, actual.body->getBorders()->getList().size());
    ASSERT_EQ(true, actual.body->getBorders()->getList()[0]->getColor() != nullptr);
-   ASSERT_EQ(0, actual.body->getBorders()->getList()[0]->getColor()->getWeb().rfind(STCONVERT(""), 0));
+   ASSERT_EQ(STCONVERT(""), actual.body->getBorders()->getList()[0]->getColor()->getWeb());
 }
 
 /// <summary>
@@ -152,7 +152,7 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getBorder() != nullptr);
    ASSERT_EQ(true, actual.body->getBorder()->getColor() != nullptr);
-   ASSERT_EQ(0, actual.body->getBorder()->getColor()->getWeb().rfind(STCONVERT(""), 0));
+   ASSERT_EQ(STCONVERT(""), actual.body->getBorder()->getColor()->getWeb());
 }
 
 /// <summary>
@@ -172,9 +172,9 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
     auto requestBorderProperties = std::make_shared< Border >();
     requestBorderProperties->setBorderType(STCONVERT("Left"));
     requestBorderProperties->setColor(requestBorderPropertiesColor);
-    requestBorderProperties->setDistanceFromText(6);
+    requestBorderProperties->setDistanceFromText(6.0);
     requestBorderProperties->setLineStyle(STCONVERT("DashDotStroker"));
-    requestBorderProperties->setLineWidth(2);
+    requestBorderProperties->setLineWidth(2.0);
     requestBorderProperties->setShadow(true);
 
     std::shared_ptr< UpdateBorderRequest > request(new UpdateBorderRequest(
@@ -195,8 +195,8 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(true, actual.body->getBorder() != nullptr);
    ASSERT_EQ(true, actual.body->getBorder()->getColor() != nullptr);
-   ASSERT_EQ(0, actual.body->getBorder()->getColor()->getWeb().rfind(STCONVERT("#000002"), 0));
-   ASSERT_EQ(6, actual.body->getBorder()->getDistanceFromText());
-   ASSERT_EQ(2, actual.body->getBorder()->getLineWidth());
+   ASSERT_EQ(STCONVERT("#000002"), actual.body->getBorder()->getColor()->getWeb());
+   ASSERT_EQ(6.0, actual.body->getBorder()->getDistanceFromText());
+   ASSERT_EQ(2.0, actual.body->getBorder()->getLineWidth());
    ASSERT_EQ(true, actual.body->getBorder()->getShadow());
 }

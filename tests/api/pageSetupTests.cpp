@@ -75,7 +75,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 
     auto requestPageSetup = std::make_shared< PageSetup >();
     requestPageSetup->setRtlGutter(true);
-    requestPageSetup->setLeftMargin(10);
+    requestPageSetup->setLeftMargin(10.0);
     requestPageSetup->setOrientation(STCONVERT("Landscape"));
     requestPageSetup->setPaperSize(STCONVERT("A5"));
 
