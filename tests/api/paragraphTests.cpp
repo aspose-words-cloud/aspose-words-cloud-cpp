@@ -260,7 +260,7 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
    auto actual = get_api()->updateRunFont(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getFont());
-   ASSERT_TRUE(actual.body->getFont()->getBold());
+   ASSERT_TRUE(actual.body->getFont()->isBold());
 }
 
 /// <summary>

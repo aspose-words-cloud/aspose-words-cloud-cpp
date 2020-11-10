@@ -198,5 +198,5 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
    ASSERT_EQ(STCONVERT("#000002"), actual.body->getBorder()->getColor()->getWeb());
    ASSERT_EQ(6.0, actual.body->getBorder()->getDistanceFromText());
    ASSERT_EQ(2.0, actual.body->getBorder()->getLineWidth());
-   ASSERT_TRUE(actual.body->getBorder()->getShadow());
+   ASSERT_TRUE(actual.body->getBorder()->isShadow());
 }

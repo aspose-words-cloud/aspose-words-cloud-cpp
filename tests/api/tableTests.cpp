@@ -369,8 +369,8 @@ TEST_F(TableTests, TestUpdateTableProperties) {
    auto actual = get_api()->updateTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getProperties());
-   ASSERT_FALSE(actual.body->getProperties()->getAllowAutoFit());
-   ASSERT_TRUE(actual.body->getProperties()->getBidi());
+   ASSERT_FALSE(actual.body->getProperties()->isAllowAutoFit());
+   ASSERT_TRUE(actual.body->getProperties()->isBidi());
    ASSERT_EQ(1.0, actual.body->getProperties()->getBottomPadding());
    ASSERT_EQ(2.0, actual.body->getProperties()->getCellSpacing());
 }
@@ -411,8 +411,8 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
    auto actual = get_api()->updateTableProperties(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getProperties());
-   ASSERT_FALSE(actual.body->getProperties()->getAllowAutoFit());
-   ASSERT_TRUE(actual.body->getProperties()->getBidi());
+   ASSERT_FALSE(actual.body->getProperties()->isAllowAutoFit());
+   ASSERT_TRUE(actual.body->getProperties()->isBidi());
    ASSERT_EQ(1.0, actual.body->getProperties()->getBottomPadding());
    ASSERT_EQ(2.0, actual.body->getProperties()->getCellSpacing());
 }
@@ -530,7 +530,7 @@ TEST_F(TableTests, TestGetTableRowFormat) {
    auto actual = get_api()->getTableRowFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getRowFormat());
-   ASSERT_TRUE(actual.body->getRowFormat()->getAllowBreakAcrossPages());
+   ASSERT_TRUE(actual.body->getRowFormat()->isAllowBreakAcrossPages());
 }
 
 /// <summary>
@@ -567,8 +567,8 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
    auto actual = get_api()->updateTableRowFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getRowFormat());
-   ASSERT_TRUE(actual.body->getRowFormat()->getAllowBreakAcrossPages());
-   ASSERT_TRUE(actual.body->getRowFormat()->getHeadingFormat());
+   ASSERT_TRUE(actual.body->getRowFormat()->isAllowBreakAcrossPages());
+   ASSERT_TRUE(actual.body->getRowFormat()->isHeadingFormat());
    ASSERT_EQ(10.0, actual.body->getRowFormat()->getHeight());
 }
 
@@ -683,7 +683,7 @@ TEST_F(TableTests, TestGetTableCellFormat) {
    auto actual = get_api()->getTableCellFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getCellFormat());
-   ASSERT_TRUE(actual.body->getCellFormat()->getWrapText());
+   ASSERT_TRUE(actual.body->getCellFormat()->isWrapText());
 }
 
 /// <summary>
@@ -721,8 +721,8 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getCellFormat());
    ASSERT_EQ(5.0, actual.body->getCellFormat()->getBottomPadding());
-   ASSERT_TRUE(actual.body->getCellFormat()->getFitText());
-   ASSERT_TRUE(actual.body->getCellFormat()->getWrapText());
+   ASSERT_TRUE(actual.body->getCellFormat()->isFitText());
+   ASSERT_TRUE(actual.body->getCellFormat()->isWrapText());
 }
 
 /// <summary>

@@ -95,7 +95,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
    auto actual = get_api()->updateSectionPageSetup(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getPageSetup());
-   ASSERT_TRUE(actual.body->getPageSetup()->getRtlGutter());
+   ASSERT_TRUE(actual.body->getPageSetup()->isRtlGutter());
 
 
 }

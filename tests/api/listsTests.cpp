@@ -119,7 +119,7 @@ TEST_F(ListsTests, TestUpdateList) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(actual.body->getList());
    ASSERT_EQ(1, actual.body->getList()->getListId());
-   ASSERT_TRUE(actual.body->getList()->getIsRestartAtEachSection());
+   ASSERT_TRUE(actual.body->getList()->isIsRestartAtEachSection());
 }
 
 /// <summary>
