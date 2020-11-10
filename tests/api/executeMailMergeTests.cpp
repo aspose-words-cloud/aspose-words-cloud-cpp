@@ -82,6 +82,6 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
 
    auto actual = get_api()->executeMailMerge(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getDocument() != nullptr);
+   ASSERT_TRUE(actual.body->getDocument());
    ASSERT_EQ(STCONVERT("TestExecuteMailMerge.docx"), actual.body->getDocument()->getFileName());
 }

@@ -48,8 +48,8 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
 
    auto actual = get_api()->getDocumentFieldNamesOnline(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFieldNames() != nullptr);
-   ASSERT_EQ(true, actual.body->getFieldNames()->getNames() != nullptr);
+   ASSERT_TRUE(actual.body->getFieldNames());
+   ASSERT_TRUE(actual.body->getFieldNames()->getNames());
    ASSERT_EQ(15, actual.body->getFieldNames()->getNames().size());
    ASSERT_EQ(STCONVERT("TableStart:Order"), actual.body->getFieldNames()->getNames()[0]);
 }
@@ -76,7 +76,7 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNames) {
 
    auto actual = get_api()->getDocumentFieldNames(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFieldNames() != nullptr);
-   ASSERT_EQ(true, actual.body->getFieldNames()->getNames() != nullptr);
+   ASSERT_TRUE(actual.body->getFieldNames());
+   ASSERT_TRUE(actual.body->getFieldNames()->getNames());
    ASSERT_EQ(0, actual.body->getFieldNames()->getNames().size());
 }

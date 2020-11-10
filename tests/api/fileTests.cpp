@@ -49,7 +49,7 @@ TEST_F(FileTests, TestUploadFile) {
 
    auto actual = get_api()->uploadFile(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getUploaded() != nullptr);
+   ASSERT_TRUE(actual.body->getUploaded());
    ASSERT_EQ(1, actual.body->getUploaded().size());
    ASSERT_EQ(STCONVERT("TestUploadFile.docx"), actual.body->getUploaded()[0]);
 }

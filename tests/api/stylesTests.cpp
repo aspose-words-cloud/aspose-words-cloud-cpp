@@ -56,7 +56,7 @@ TEST_F(StylesTests, TestGetStyles) {
 
    auto actual = get_api()->getStyles(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getStyles() != nullptr);
+   ASSERT_TRUE(actual.body->getStyles());
    ASSERT_EQ(22, actual.body->getStyles().size());
    ASSERT_EQ(STCONVERT("Default Paragraph Font"), actual.body->getStyles()[0]->getName());
 }
@@ -83,7 +83,7 @@ TEST_F(StylesTests, TestGetStyle) {
 
    auto actual = get_api()->getStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getStyle() != nullptr);
+   ASSERT_TRUE(actual.body->getStyle());
    ASSERT_EQ(STCONVERT("Heading 1"), actual.body->getStyle()->getName());
 }
 
@@ -116,7 +116,7 @@ TEST_F(StylesTests, TestUpdateStyle) {
 
    auto actual = get_api()->updateStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getStyle() != nullptr);
+   ASSERT_TRUE(actual.body->getStyle());
    ASSERT_EQ(STCONVERT("My Style"), actual.body->getStyle()->getName());
 }
 
@@ -149,7 +149,7 @@ TEST_F(StylesTests, TestInsertStyle) {
 
    auto actual = get_api()->insertStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getStyle() != nullptr);
+   ASSERT_TRUE(actual.body->getStyle());
    ASSERT_EQ(STCONVERT("My Style"), actual.body->getStyle()->getName());
 }
 
@@ -181,7 +181,7 @@ TEST_F(StylesTests, TestCopyStyle) {
 
    auto actual = get_api()->copyStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getStyle() != nullptr);
+   ASSERT_TRUE(actual.body->getStyle());
    ASSERT_EQ(STCONVERT("Heading 1_0"), actual.body->getStyle()->getName());
 }
 
@@ -207,7 +207,7 @@ TEST_F(StylesTests, TestGetStyleFromDocumentElement) {
 
    auto actual = get_api()->getStyleFromDocumentElement(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getStyle() != nullptr);
+   ASSERT_TRUE(actual.body->getStyle());
    ASSERT_EQ(STCONVERT("TOC 1"), actual.body->getStyle()->getName());
 }
 

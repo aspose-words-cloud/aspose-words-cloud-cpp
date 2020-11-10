@@ -60,7 +60,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
 
    auto actual = get_api()->getParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraph());
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getParagraph()->getNodeId());
 }
 
@@ -87,7 +87,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndexWithoutNodePath) {
 
    auto actual = get_api()->getParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraph());
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getParagraph()->getNodeId());
 }
 
@@ -113,8 +113,8 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphs) {
 
    auto actual = get_api()->getParagraphs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraphs() != nullptr);
-   ASSERT_EQ(true, actual.body->getParagraphs()->getParagraphLinkList() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraphs());
+   ASSERT_TRUE(actual.body->getParagraphs()->getParagraphLinkList());
    ASSERT_EQ(15, actual.body->getParagraphs()->getParagraphLinkList().size());
    ASSERT_EQ(STCONVERT("Page 1 of 3"), actual.body->getParagraphs()->getParagraphLinkList()[0]->getText());
 }
@@ -141,8 +141,8 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphsWithoutNodePath) {
 
    auto actual = get_api()->getParagraphs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraphs() != nullptr);
-   ASSERT_EQ(true, actual.body->getParagraphs()->getParagraphLinkList() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraphs());
+   ASSERT_TRUE(actual.body->getParagraphs()->getParagraphLinkList());
    ASSERT_EQ(15, actual.body->getParagraphs()->getParagraphLinkList().size());
    ASSERT_EQ(STCONVERT("Page 1 of 3"), actual.body->getParagraphs()->getParagraphLinkList()[0]->getText());
 }
@@ -170,7 +170,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRun) {
 
    auto actual = get_api()->getRun(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getRun() != nullptr);
+   ASSERT_TRUE(actual.body->getRun());
    ASSERT_EQ(STCONVERT("Page "), actual.body->getRun()->getText());
 }
 
@@ -197,7 +197,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunFont) {
 
    auto actual = get_api()->getRunFont(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFont() != nullptr);
+   ASSERT_TRUE(actual.body->getFont());
    ASSERT_EQ(STCONVERT("Times New Roman"), actual.body->getFont()->getName());
 }
 
@@ -223,8 +223,8 @@ TEST_F(ParagraphTests, TestGetParagraphRuns) {
 
    auto actual = get_api()->getRuns(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getRuns() != nullptr);
-   ASSERT_EQ(true, actual.body->getRuns()->getList() != nullptr);
+   ASSERT_TRUE(actual.body->getRuns());
+   ASSERT_TRUE(actual.body->getRuns()->getList());
    ASSERT_EQ(6, actual.body->getRuns()->getList().size());
    ASSERT_EQ(STCONVERT("Page "), actual.body->getRuns()->getList()[0]->getText());
 }
@@ -259,8 +259,8 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
 
    auto actual = get_api()->updateRunFont(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFont() != nullptr);
-   ASSERT_EQ(true, actual.body->getFont()->getBold());
+   ASSERT_TRUE(actual.body->getFont());
+   ASSERT_TRUE(actual.body->getFont()->getBold());
 }
 
 /// <summary>
@@ -293,7 +293,7 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
 
    auto actual = get_api()->insertParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraph());
    ASSERT_EQ(STCONVERT("0.3.8"), actual.body->getParagraph()->getNodeId());
 }
 
@@ -327,7 +327,7 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
 
    auto actual = get_api()->insertParagraph(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraph() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraph());
    ASSERT_EQ(STCONVERT("0.3.8"), actual.body->getParagraph()->getNodeId());
 }
 
@@ -406,7 +406,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormat) {
 
    auto actual = get_api()->getParagraphFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraphFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraphFormat());
    ASSERT_EQ(STCONVERT("Normal"), actual.body->getParagraphFormat()->getStyleName());
 }
 
@@ -433,7 +433,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormatWithoutNodePath) {
 
    auto actual = get_api()->getParagraphFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraphFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraphFormat());
    ASSERT_EQ(STCONVERT("Normal"), actual.body->getParagraphFormat()->getStyleName());
 }
 
@@ -467,7 +467,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
 
    auto actual = get_api()->updateParagraphFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getParagraphFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getParagraphFormat());
 
 }
 
@@ -548,7 +548,7 @@ TEST_F(ParagraphTests, TestGetParagraphListFormat) {
 
    auto actual = get_api()->getParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getListFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getListFormat());
    ASSERT_EQ(1, actual.body->getListFormat()->getListId());
 }
 
@@ -575,7 +575,7 @@ TEST_F(ParagraphTests, TestGetParagraphListFormatWithoutNodePath) {
 
    auto actual = get_api()->getParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getListFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getListFormat());
    ASSERT_EQ(1, actual.body->getListFormat()->getListId());
 }
 
@@ -609,7 +609,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
 
    auto actual = get_api()->updateParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getListFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getListFormat());
    ASSERT_EQ(2, actual.body->getListFormat()->getListId());
 }
 
@@ -643,7 +643,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
 
    auto actual = get_api()->updateParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getListFormat() != nullptr);
+   ASSERT_TRUE(actual.body->getListFormat());
    ASSERT_EQ(2, actual.body->getListFormat()->getListId());
 }
 
@@ -726,7 +726,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStops) {
 
    auto actual = get_api()->getParagraphTabStops(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(2, actual.body->getTabStops().size());
    ASSERT_EQ(72.0, actual.body->getTabStops()[0]->getPosition());
 }
@@ -754,7 +754,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStopsWithoutNodePath) {
 
    auto actual = get_api()->getParagraphTabStops(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(2, actual.body->getTabStops().size());
    ASSERT_EQ(72.0, actual.body->getTabStops()[0]->getPosition());
 }
@@ -789,7 +789,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
 
    auto actual = get_api()->insertOrUpdateParagraphTabStop(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(3, actual.body->getTabStops().size());
    ASSERT_EQ(100.0, actual.body->getTabStops()[1]->getPosition());
 
@@ -826,7 +826,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
 
    auto actual = get_api()->insertOrUpdateParagraphTabStop(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(3, actual.body->getTabStops().size());
    ASSERT_EQ(100.0, actual.body->getTabStops()[1]->getPosition());
 
@@ -857,7 +857,7 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStops) {
 
    auto actual = get_api()->deleteAllParagraphTabStops(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(0, actual.body->getTabStops().size());
 }
 
@@ -885,7 +885,7 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsWithoutNodePath) {
 
    auto actual = get_api()->deleteAllParagraphTabStops(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(0, actual.body->getTabStops().size());
 }
 
@@ -914,7 +914,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStop) {
 
    auto actual = get_api()->deleteParagraphTabStop(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(1, actual.body->getTabStops().size());
 }
 
@@ -943,6 +943,6 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStopWithoutNodePath) {
 
    auto actual = get_api()->deleteParagraphTabStop(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getTabStops() != nullptr);
+   ASSERT_TRUE(actual.body->getTabStops());
    ASSERT_EQ(1, actual.body->getTabStops().size());
 }

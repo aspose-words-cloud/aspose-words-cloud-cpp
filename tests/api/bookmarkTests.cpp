@@ -56,7 +56,7 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 
    auto actual = get_api()->getBookmarks(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getBookmarks() != nullptr);
+   ASSERT_TRUE(actual.body->getBookmarks());
    ASSERT_EQ(3, actual.body->getBookmarks()->getBookmarkList().size());
    ASSERT_EQ(STCONVERT("aspose"), actual.body->getBookmarks()->getBookmarkList()[1]->getName());
 }
@@ -84,7 +84,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 
    auto actual = get_api()->getBookmarkByName(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getBookmark() != nullptr);
+   ASSERT_TRUE(actual.body->getBookmark());
    ASSERT_EQ(bookmarkName, actual.body->getBookmark()->getName());
 }
 
@@ -120,7 +120,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
 
    auto actual = get_api()->updateBookmark(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getBookmark() != nullptr);
+   ASSERT_TRUE(actual.body->getBookmark());
    ASSERT_EQ(bookmarkName, actual.body->getBookmark()->getName());
    ASSERT_EQ(bookmarkText, actual.body->getBookmark()->getText());
 }

@@ -52,5 +52,5 @@ TEST_F(FontTests, TestGetAvailableFonts) {
 
    auto actual = get_api()->getAvailableFonts(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getSystemFonts() != nullptr);
+   ASSERT_TRUE(actual.body->getSystemFonts());
 }

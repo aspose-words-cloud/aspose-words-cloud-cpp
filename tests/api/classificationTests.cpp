@@ -47,7 +47,7 @@ TEST_F(ClassificationTests, TestClassify) {
    auto actual = get_api()->classify(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(STCONVERT("Science"), actual.body->getBestClassName());
-   ASSERT_EQ(true, actual.body->getBestResults() != nullptr);
+   ASSERT_TRUE(actual.body->getBestResults());
    ASSERT_EQ(3, actual.body->getBestResults().size());
 }
 
@@ -75,6 +75,6 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
    auto actual = get_api()->classifyDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_EQ(STCONVERT("Hobbies_&_Interests"), actual.body->getBestClassName());
-   ASSERT_EQ(true, actual.body->getBestResults() != nullptr);
+   ASSERT_TRUE(actual.body->getBestResults());
    ASSERT_EQ(3, actual.body->getBestResults().size());
 }

@@ -63,8 +63,8 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
 
    auto actual = get_api()->saveAs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getSaveResult() != nullptr);
-   ASSERT_EQ(true, actual.body->getSaveResult()->getDestDocument() != nullptr);
+   ASSERT_TRUE(actual.body->getSaveResult());
+   ASSERT_TRUE(actual.body->getSaveResult()->getDestDocument());
 }
 
 /// <summary>
@@ -95,8 +95,8 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
 
    auto actual = get_api()->saveAs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getSaveResult() != nullptr);
-   ASSERT_EQ(true, actual.body->getSaveResult()->getDestDocument() != nullptr);
+   ASSERT_TRUE(actual.body->getSaveResult());
+   ASSERT_TRUE(actual.body->getSaveResult()->getDestDocument());
 }
 
 /// <summary>
@@ -144,8 +144,8 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
 
    auto actual = get_api()->saveAsTiff(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getSaveResult() != nullptr);
-   ASSERT_EQ(true, actual.body->getSaveResult()->getDestDocument() != nullptr);
+   ASSERT_TRUE(actual.body->getSaveResult());
+   ASSERT_TRUE(actual.body->getSaveResult()->getDestDocument());
 }
 
 /// <summary>

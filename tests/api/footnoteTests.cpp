@@ -65,7 +65,7 @@ TEST_F(FootnoteTests, TestInsertFootnote) {
 
    auto actual = get_api()->insertFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnote() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnote());
    ASSERT_EQ(STCONVERT("0.1.7.1"), actual.body->getFootnote()->getNodeId());
    ASSERT_EQ(STCONVERT(" test endnote") + STCONVERT("\r\n"), actual.body->getFootnote()->getText());
 }
@@ -100,7 +100,7 @@ TEST_F(FootnoteTests, TestInsertFootnoteWithoutNodePath) {
 
    auto actual = get_api()->insertFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnote() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnote());
    ASSERT_EQ(STCONVERT("0.1.7.1"), actual.body->getFootnote()->getNodeId());
    ASSERT_EQ(STCONVERT(" test endnote") + STCONVERT("\r\n"), actual.body->getFootnote()->getText());
 }
@@ -181,8 +181,8 @@ TEST_F(FootnoteTests, TestGetFootnotes) {
 
    auto actual = get_api()->getFootnotes(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnotes() != nullptr);
-   ASSERT_EQ(true, actual.body->getFootnotes()->getList() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnotes());
+   ASSERT_TRUE(actual.body->getFootnotes()->getList());
    ASSERT_EQ(6, actual.body->getFootnotes()->getList().size());
    ASSERT_EQ(STCONVERT(" Footnote 1.") + STCONVERT("\r\n"), actual.body->getFootnotes()->getList()[0]->getText());
 }
@@ -209,8 +209,8 @@ TEST_F(FootnoteTests, TestGetFootnotesWithoutNodePath) {
 
    auto actual = get_api()->getFootnotes(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnotes() != nullptr);
-   ASSERT_EQ(true, actual.body->getFootnotes()->getList() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnotes());
+   ASSERT_TRUE(actual.body->getFootnotes()->getList());
    ASSERT_EQ(6, actual.body->getFootnotes()->getList().size());
    ASSERT_EQ(STCONVERT(" Footnote 1.") + STCONVERT("\r\n"), actual.body->getFootnotes()->getList()[0]->getText());
 }
@@ -238,7 +238,7 @@ TEST_F(FootnoteTests, TestGetFootnote) {
 
    auto actual = get_api()->getFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnote() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnote());
    ASSERT_EQ(STCONVERT(" Footnote 1.") + STCONVERT("\r\n"), actual.body->getFootnote()->getText());
 }
 
@@ -265,7 +265,7 @@ TEST_F(FootnoteTests, TestGetFootnoteWithoutNodePath) {
 
    auto actual = get_api()->getFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnote() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnote());
    ASSERT_EQ(STCONVERT(" Footnote 1.") + STCONVERT("\r\n"), actual.body->getFootnote()->getText());
 }
 
@@ -299,7 +299,7 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
 
    auto actual = get_api()->updateFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnote() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnote());
    ASSERT_EQ(STCONVERT(" new text is here") + STCONVERT("\r\n"), actual.body->getFootnote()->getText());
 }
 
@@ -333,6 +333,6 @@ TEST_F(FootnoteTests, TestUpdateFootnoteWithoutNodePath) {
 
    auto actual = get_api()->updateFootnote(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_EQ(true, actual.body->getFootnote() != nullptr);
+   ASSERT_TRUE(actual.body->getFootnote());
    ASSERT_EQ(STCONVERT(" new text is here") + STCONVERT("\r\n"), actual.body->getFootnote()->getText());
 }
