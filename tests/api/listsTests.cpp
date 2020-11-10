@@ -56,8 +56,8 @@ TEST_F(ListsTests, TestGetLists) {
 
    auto actual = get_api()->getLists(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getLists());
-   ASSERT_TRUE(actual.body->getLists()->getListInfo());
+   ASSERT_TRUE(IsNotNull(actual.body->getLists()));
+   ASSERT_TRUE(IsNotNull(actual.body->getLists()->getListInfo()));
    ASSERT_EQ(2, actual.body->getLists()->getListInfo().size());
    ASSERT_EQ(1, actual.body->getLists()->getListInfo()[0]->getListId());
 }
@@ -84,7 +84,7 @@ TEST_F(ListsTests, TestGetList) {
 
    auto actual = get_api()->getList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getList());
+   ASSERT_TRUE(IsNotNull(actual.body->getList()));
    ASSERT_EQ(1, actual.body->getList()->getListId());
 }
 
@@ -117,7 +117,7 @@ TEST_F(ListsTests, TestUpdateList) {
 
    auto actual = get_api()->updateList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getList());
+   ASSERT_TRUE(IsNotNull(actual.body->getList()));
    ASSERT_EQ(1, actual.body->getList()->getListId());
    ASSERT_TRUE(actual.body->getList()->isIsRestartAtEachSection());
 }
@@ -152,9 +152,9 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 
    auto actual = get_api()->updateListLevel(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getList());
-   ASSERT_TRUE(actual.body->getList()->getListLevels());
-   ASSERT_TRUE(actual.body->getList()->getListLevels()->getListLevel());
+   ASSERT_TRUE(IsNotNull(actual.body->getList()));
+   ASSERT_TRUE(IsNotNull(actual.body->getList()->getListLevels()));
+   ASSERT_TRUE(IsNotNull(actual.body->getList()->getListLevels()->getListLevel()));
    ASSERT_EQ(9, actual.body->getList()->getListLevels()->getListLevel().size());
 
 }
@@ -187,6 +187,6 @@ TEST_F(ListsTests, TestInsertList) {
 
    auto actual = get_api()->insertList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getList());
+   ASSERT_TRUE(IsNotNull(actual.body->getList()));
    ASSERT_EQ(3, actual.body->getList()->getListId());
 }

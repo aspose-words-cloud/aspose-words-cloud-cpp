@@ -58,7 +58,7 @@ TEST_F(PageSetupTests, TestGetSectionPageSetup) {
 
    auto actual = get_api()->getSectionPageSetup(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getPageSetup());
+   ASSERT_TRUE(IsNotNull(actual.body->getPageSetup()));
    ASSERT_EQ(1, actual.body->getPageSetup()->getLineStartingNumber());
 }
 
@@ -94,7 +94,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 
    auto actual = get_api()->updateSectionPageSetup(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getPageSetup());
+   ASSERT_TRUE(IsNotNull(actual.body->getPageSetup()));
    ASSERT_TRUE(actual.body->getPageSetup()->isRtlGutter());
 
 

@@ -90,9 +90,9 @@ TEST_F(TextTests, TestSearch) {
 
    auto actual = get_api()->search(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getSearchResults());
-   ASSERT_TRUE(actual.body->getSearchResults()->getResultsList());
+   ASSERT_TRUE(IsNotNull(actual.body->getSearchResults()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSearchResults()->getResultsList()));
    ASSERT_EQ(23, actual.body->getSearchResults()->getResultsList().size());
-   ASSERT_TRUE(actual.body->getSearchResults()->getResultsList()[0]->getRangeStart());
+   ASSERT_TRUE(IsNotNull(actual.body->getSearchResults()->getResultsList()[0]->getRangeStart()));
    ASSERT_EQ(65, actual.body->getSearchResults()->getResultsList()[0]->getRangeStart()->getOffset());
 }

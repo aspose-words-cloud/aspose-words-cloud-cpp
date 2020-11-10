@@ -78,7 +78,7 @@ TEST_F(FolderTests, TestGetFilesList) {
 
    auto actual = get_api()->getFilesList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getValue());
+   ASSERT_TRUE(IsNotNull(actual.body->getValue()));
 }
 
 /// <summary>

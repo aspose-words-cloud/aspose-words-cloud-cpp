@@ -67,7 +67,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
 
    auto actual = get_api()->insertWatermarkImage(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getDocument());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestInsertWatermarkImage.docx"), actual.body->getDocument()->getFileName());
 }
 
@@ -100,7 +100,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
 
    auto actual = get_api()->insertWatermarkText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getDocument());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestInsertWatermarkText.docx"), actual.body->getDocument()->getFileName());
 }
 
@@ -128,6 +128,6 @@ TEST_F(WatermarkTests, TestDeleteWatermark) {
 
    auto actual = get_api()->deleteWatermark(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getDocument());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestDeleteWatermark.docx"), actual.body->getDocument()->getFileName());
 }

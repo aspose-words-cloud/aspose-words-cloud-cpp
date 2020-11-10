@@ -57,8 +57,8 @@ TEST_F(SectionTests, TestGetSection) {
 
    auto actual = get_api()->getSection(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getSection());
-   ASSERT_TRUE(actual.body->getSection()->getChildNodes());
+   ASSERT_TRUE(IsNotNull(actual.body->getSection()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSection()->getChildNodes()));
    ASSERT_EQ(13, actual.body->getSection()->getChildNodes().size());
    ASSERT_EQ(STCONVERT("0.3.0"), actual.body->getSection()->getChildNodes()[0]->getNodeId());
 }
@@ -84,8 +84,8 @@ TEST_F(SectionTests, TestGetSections) {
 
    auto actual = get_api()->getSections(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getSections());
-   ASSERT_TRUE(actual.body->getSections()->getSectionLinkList());
+   ASSERT_TRUE(IsNotNull(actual.body->getSections()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSections()->getSectionLinkList()));
    ASSERT_EQ(1, actual.body->getSections()->getSectionLinkList().size());
    ASSERT_EQ(STCONVERT("0"), actual.body->getSections()->getSectionLinkList()[0]->getNodeId());
 }

@@ -58,8 +58,8 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooters) {
 
    auto actual = get_api()->getHeaderFooters(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getHeaderFooters());
-   ASSERT_TRUE(actual.body->getHeaderFooters()->getList());
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooters()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooters()->getList()));
    ASSERT_EQ(6, actual.body->getHeaderFooters()->getList().size());
 }
 
@@ -86,8 +86,8 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
 
    auto actual = get_api()->getHeaderFooter(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getHeaderFooter());
-   ASSERT_TRUE(actual.body->getHeaderFooter()->getChildNodes());
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()->getChildNodes()));
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }
@@ -116,8 +116,8 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSection) {
 
    auto actual = get_api()->getHeaderFooterOfSection(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getHeaderFooter());
-   ASSERT_TRUE(actual.body->getHeaderFooter()->getChildNodes());
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()->getChildNodes()));
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }
@@ -202,8 +202,8 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
 
    auto actual = get_api()->insertHeaderFooter(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getHeaderFooter());
-   ASSERT_TRUE(actual.body->getHeaderFooter()->getChildNodes());
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()->getChildNodes()));
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
    ASSERT_EQ(STCONVERT("0.2.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }

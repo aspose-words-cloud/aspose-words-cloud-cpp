@@ -57,7 +57,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndex) {
 
    auto actual = get_api()->getDocumentHyperlinkByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getHyperlink());
+   ASSERT_TRUE(IsNotNull(actual.body->getHyperlink()));
    ASSERT_EQ(STCONVERT("Aspose"), actual.body->getHyperlink()->getDisplayText());
 }
 
@@ -82,8 +82,8 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinks) {
 
    auto actual = get_api()->getDocumentHyperlinks(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getHyperlinks());
-   ASSERT_TRUE(actual.body->getHyperlinks()->getHyperlinkList());
+   ASSERT_TRUE(IsNotNull(actual.body->getHyperlinks()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHyperlinks()->getHyperlinkList()));
    ASSERT_EQ(2, actual.body->getHyperlinks()->getHyperlinkList().size());
    ASSERT_EQ(STCONVERT("Aspose"), actual.body->getHyperlinks()->getHyperlinkList()[0]->getDisplayText());
 }

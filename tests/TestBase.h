@@ -39,6 +39,12 @@ using namespace aspose::words::cloud::api;
 
 std::shared_ptr<ApiConfiguration> get_config();
 
+template<typename T>
+bool IsNotNull(std::vector<T> vector) { return true; }
+
+template<typename T>
+bool IsNotNull(std::shared_ptr<T> ptr) { return bool(ptr); }
+
 class InfrastructureTest : public ::testing::Test
 {
 protected:

@@ -59,8 +59,8 @@ TEST_F(FieldTests, TestGetFields) {
 
    auto actual = get_api()->getFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getFields());
-   ASSERT_TRUE(actual.body->getFields()->getList());
+   ASSERT_TRUE(IsNotNull(actual.body->getFields()));
+   ASSERT_TRUE(IsNotNull(actual.body->getFields()->getList()));
    ASSERT_EQ(1, actual.body->getFields()->getList().size());
    ASSERT_EQ(STCONVERT("1"), actual.body->getFields()->getList()[0]->getResult());
 }
@@ -88,8 +88,8 @@ TEST_F(FieldTests, TestGetFieldsWithoutNodePath) {
 
    auto actual = get_api()->getFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getFields());
-   ASSERT_TRUE(actual.body->getFields()->getList());
+   ASSERT_TRUE(IsNotNull(actual.body->getFields()));
+   ASSERT_TRUE(IsNotNull(actual.body->getFields()->getList()));
    ASSERT_EQ(1, actual.body->getFields()->getList().size());
    ASSERT_EQ(STCONVERT("1"), actual.body->getFields()->getList()[0]->getResult());
 }
@@ -118,7 +118,7 @@ TEST_F(FieldTests, TestGetField) {
 
    auto actual = get_api()->getField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getField());
+   ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("1"), actual.body->getField()->getResult());
 }
 
@@ -146,7 +146,7 @@ TEST_F(FieldTests, TestGetFieldWithoutNodePath) {
 
    auto actual = get_api()->getField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getField());
+   ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("1"), actual.body->getField()->getResult());
 }
 
@@ -181,7 +181,7 @@ TEST_F(FieldTests, TestInsertField) {
 
    auto actual = get_api()->insertField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getField());
+   ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("{ NUMPAGES }"), actual.body->getField()->getFieldCode());
    ASSERT_EQ(STCONVERT("0.0.0.1"), actual.body->getField()->getNodeId());
 }
@@ -217,7 +217,7 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
 
    auto actual = get_api()->insertField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getField());
+   ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("{ NUMPAGES }"), actual.body->getField()->getFieldCode());
    ASSERT_EQ(STCONVERT("5.0.22.0"), actual.body->getField()->getNodeId());
 }
@@ -253,7 +253,7 @@ TEST_F(FieldTests, TestUpdateField) {
 
    auto actual = get_api()->updateField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getField());
+   ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("{ NUMPAGES }"), actual.body->getField()->getFieldCode());
    ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getField()->getNodeId());
 }
@@ -288,7 +288,7 @@ TEST_F(FieldTests, TestInsertPageNumbers) {
 
    auto actual = get_api()->insertPageNumbers(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getDocument());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestInsertPageNumbers.docx"), actual.body->getDocument()->getFileName());
 }
 
@@ -533,6 +533,6 @@ TEST_F(FieldTests, TestUpdateDocumentFields) {
 
    auto actual = get_api()->updateFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(actual.body->getDocument());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestUpdateDocumentFields.docx"), actual.body->getDocument()->getFileName());
 }
