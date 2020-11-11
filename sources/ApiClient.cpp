@@ -101,10 +101,17 @@ utility::string_t ApiClient::parameterToString(utility::string_t value)
 {
     return value;
 }
+
+utility::string_t ApiClient::parameterToString(bool value)
+{
+    return value ? STCONVERT("true") : STCONVERT("false");
+}
+
 utility::string_t ApiClient::parameterToString(int64_t value)
 {
     return utility::conversions::details::to_string_t(value);
 }
+
 utility::string_t ApiClient::parameterToString(int32_t value)
 {
     return utility::conversions::details::to_string_t(value);
