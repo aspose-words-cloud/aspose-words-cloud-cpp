@@ -58,6 +58,7 @@ TEST_F(RangeTests, TestGetRangeText) {
 
    auto actual = get_api()->getRangeText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_EQ(STCONVERT("This is HEADER "), actual.body->getText());
 }
 
 /// <summary>
@@ -84,6 +85,8 @@ TEST_F(RangeTests, TestRemoveRange) {
 
    auto actual = get_api()->removeRange(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestRemoveRange.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -113,6 +116,8 @@ TEST_F(RangeTests, TestSaveAsRange) {
 
    auto actual = get_api()->saveAsRange(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("NewDoc.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -143,4 +148,6 @@ TEST_F(RangeTests, TestReplaceWithText) {
 
    auto actual = get_api()->replaceWithText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestReplaceWithText.docx"), actual.body->getDocument()->getFileName());
 }

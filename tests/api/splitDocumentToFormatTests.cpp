@@ -62,4 +62,7 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocument) {
 
    auto actual = get_api()->splitDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSplitResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSplitResult()->getPages()));
+   ASSERT_EQ(2, actual.body->getSplitResult()->getPages().size());
 }

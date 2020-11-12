@@ -70,6 +70,9 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
 
    auto actual = get_api()->updateFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormField()));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>
@@ -107,6 +110,9 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
 
    auto actual = get_api()->updateFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormField()));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>
@@ -132,6 +138,8 @@ TEST_F(FormFieldTests, TestGetFormField) {
 
    auto actual = get_api()->getFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormField()));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
 }
 
 /// <summary>
@@ -157,6 +165,8 @@ TEST_F(FormFieldTests, TestGetFormFieldWithoutNodePath) {
 
    auto actual = get_api()->getFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormField()));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
 }
 
 /// <summary>
@@ -181,6 +191,10 @@ TEST_F(FormFieldTests, TestGetFormFields) {
 
    auto actual = get_api()->getFormFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormFields()));
+   ASSERT_TRUE(IsNotNull(actual.body->getFormFields()->getList()));
+   ASSERT_EQ(5, actual.body->getFormFields()->getList().size());
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormFields()->getList()[0]->getName());
 }
 
 /// <summary>
@@ -205,6 +219,10 @@ TEST_F(FormFieldTests, TestGetFormFieldsWithoutNodePath) {
 
    auto actual = get_api()->getFormFields(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormFields()));
+   ASSERT_TRUE(IsNotNull(actual.body->getFormFields()->getList()));
+   ASSERT_EQ(5, actual.body->getFormFields()->getList().size());
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormFields()->getList()[0]->getName());
 }
 
 /// <summary>
@@ -243,6 +261,9 @@ TEST_F(FormFieldTests, TestInsertFormField) {
 
    auto actual = get_api()->insertFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormField()));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>
@@ -281,6 +302,9 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
 
    auto actual = get_api()->insertFormField(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFormField()));
+   ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
+   ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
 /// <summary>

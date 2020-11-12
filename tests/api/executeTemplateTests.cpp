@@ -64,6 +64,8 @@ TEST_F(ExecuteTemplateTests, TestExecuteTemplate) {
 
    auto actual = get_api()->executeMailMerge(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestExecuteTemplate.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>

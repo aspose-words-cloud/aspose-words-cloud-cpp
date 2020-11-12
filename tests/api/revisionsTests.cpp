@@ -57,6 +57,8 @@ TEST_F(RevisionsTests, TestAcceptAllRevisions) {
 
    auto actual = get_api()->acceptAllRevisions(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getResult()->getDest()));
 }
 
 /// <summary>
@@ -81,4 +83,6 @@ TEST_F(RevisionsTests, TestRejectAllRevisions) {
 
    auto actual = get_api()->rejectAllRevisions(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getResult()->getDest()));
 }

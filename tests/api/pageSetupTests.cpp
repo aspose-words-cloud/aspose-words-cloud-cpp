@@ -58,6 +58,8 @@ TEST_F(PageSetupTests, TestGetSectionPageSetup) {
 
    auto actual = get_api()->getSectionPageSetup(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getPageSetup()));
+   ASSERT_EQ(1, actual.body->getPageSetup()->getLineStartingNumber());
 }
 
 /// <summary>
@@ -73,7 +75,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 
     auto requestPageSetup = std::make_shared< PageSetup >();
     requestPageSetup->setRtlGutter(true);
-    requestPageSetup->setLeftMargin(10);
+    requestPageSetup->setLeftMargin(10.0);
     requestPageSetup->setOrientation(STCONVERT("Landscape"));
     requestPageSetup->setPaperSize(STCONVERT("A5"));
 
@@ -92,6 +94,10 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 
    auto actual = get_api()->updateSectionPageSetup(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getPageSetup()));
+   ASSERT_TRUE(actual.body->getPageSetup()->isRtlGutter());
+
+
 }
 
 /// <summary>

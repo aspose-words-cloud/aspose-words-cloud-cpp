@@ -57,6 +57,8 @@ TEST_F(CommentTests, TestGetComment) {
 
    auto actual = get_api()->getComment(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()));
+   ASSERT_EQ(STCONVERT("Comment 1") + STCONVERT("\r\n\r\n"), actual.body->getComment()->getText());
 }
 
 /// <summary>
@@ -80,6 +82,10 @@ TEST_F(CommentTests, TestGetComments) {
 
    auto actual = get_api()->getComments(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getComments()));
+   ASSERT_TRUE(IsNotNull(actual.body->getComments()->getCommentList()));
+   ASSERT_EQ(1, actual.body->getComments()->getCommentList().size());
+   ASSERT_EQ(STCONVERT("Comment 1") + STCONVERT("\r\n\r\n"), actual.body->getComments()->getCommentList()[0]->getText());
 }
 
 /// <summary>
@@ -128,6 +134,11 @@ TEST_F(CommentTests, TestInsertComment) {
 
    auto actual = get_api()->insertComment(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()));
+   ASSERT_EQ(STCONVERT("A new Comment") + STCONVERT("\r\n"), actual.body->getComment()->getText());
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()->getRangeStart()));
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()->getRangeStart()->getNode()));
+   ASSERT_EQ(STCONVERT("0.3.0.4"), actual.body->getComment()->getRangeStart()->getNode()->getNodeId());
 }
 
 /// <summary>
@@ -177,6 +188,11 @@ TEST_F(CommentTests, TestUpdateComment) {
 
    auto actual = get_api()->updateComment(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()));
+   ASSERT_EQ(STCONVERT("A new Comment") + STCONVERT("\r\n"), actual.body->getComment()->getText());
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()->getRangeStart()));
+   ASSERT_TRUE(IsNotNull(actual.body->getComment()->getRangeStart()->getNode()));
+   ASSERT_EQ(STCONVERT("0.3.0.1"), actual.body->getComment()->getRangeStart()->getNode()->getNodeId());
 }
 
 /// <summary>

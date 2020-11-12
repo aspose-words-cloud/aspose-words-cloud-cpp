@@ -57,6 +57,10 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjects) {
 
    auto actual = get_api()->getOfficeMathObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()));
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()->getList()));
+   ASSERT_EQ(16, actual.body->getOfficeMathObjects()->getList().size());
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObjects()->getList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -81,6 +85,10 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsWithoutNodePath) {
 
    auto actual = get_api()->getOfficeMathObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()));
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()->getList()));
+   ASSERT_EQ(16, actual.body->getOfficeMathObjects()->getList().size());
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObjects()->getList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -106,6 +114,8 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
 
    auto actual = get_api()->getOfficeMathObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObject()));
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObject()->getNodeId());
 }
 
 /// <summary>
@@ -131,6 +141,8 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectWithoutNodePath) {
 
    auto actual = get_api()->getOfficeMathObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObject()));
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObject()->getNodeId());
 }
 
 /// <summary>

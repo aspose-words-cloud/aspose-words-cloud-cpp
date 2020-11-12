@@ -67,6 +67,8 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
 
    auto actual = get_api()->insertWatermarkImage(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestInsertWatermarkImage.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -82,7 +84,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
 
     auto requestWatermarkText = std::make_shared< WatermarkText >();
     requestWatermarkText->setText(STCONVERT("This is the text"));
-    requestWatermarkText->setRotationAngle(90);
+    requestWatermarkText->setRotationAngle(90.0);
 
     std::shared_ptr< InsertWatermarkTextRequest > request(new InsertWatermarkTextRequest(
         remoteFileName,
@@ -98,6 +100,8 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
 
    auto actual = get_api()->insertWatermarkText(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestInsertWatermarkText.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -124,4 +128,6 @@ TEST_F(WatermarkTests, TestDeleteWatermark) {
 
    auto actual = get_api()->deleteWatermark(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestDeleteWatermark.docx"), actual.body->getDocument()->getFileName());
 }
