@@ -34,13 +34,13 @@ parallel windows: {
                         withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                             bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
                         }
-                        withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
+                        withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
                                 bat (script: "docker pull ${buildCacheImage}/win")
                                 bat (script: "docker build -f Dockerfile.windows --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows . ")
                                 bat (script: "docker push ${buildCacheImage}/win")
                                 def apiUrl = params.apiUrl
-                                bat 'runInDocker.windows.bat %WordsAppKey% %WordsAppSid% %apiUrl%'
+                                bat 'runInDocker.windows.bat %WordsClientId% %WordsClientSecret% %apiUrl%'
                             } finally {
                                 junit '**\\out\\test_result.xml'
                             }
@@ -74,13 +74,13 @@ parallel windows: {
                         withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                             sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
                         }
-                        withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
+                        withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
                                 sh (script: "docker pull ${buildCacheImage}/linux")
                                 sh (script: "docker build -f Dockerfile.linux --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux .")
                                 sh (script: "docker push ${buildCacheImage}/linux")
 
-                                sh 'docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsAppKey $WordsAppSid $apiUrl'
+                                sh 'docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runAll.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
                                 junit '**\\out\\test_result.xml'
                             }

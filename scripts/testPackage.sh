@@ -20,8 +20,8 @@ set -e
 
 # Generate credentials
 echo "{
-        \"AppKey\" : \"$1\",
-        \"AppSid\" : \"$2\",
+        \"ClientId\" : \"$1\",
+        \"ClientSecret\" : \"$2\",
         \"BaseUrl\" : \"$3\"
       }" > aspose-words-cloud-cpp/app/servercreds.json
 

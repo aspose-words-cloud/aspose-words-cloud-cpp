@@ -11,8 +11,8 @@ cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- 
 
 # Generate credentials
 echo "{
-        \"AppKey\" : \"$1\",
-        \"AppSid\" : \"$2\",
+        \"ClientId\" : \"$1\",
+        \"ClientSecret\" : \"$2\",
         \"BaseUrl\" : \"$3\"
       }" > aspose-words-cloud-cpp/servercreds.json
 

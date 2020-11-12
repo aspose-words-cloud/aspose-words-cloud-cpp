@@ -36,34 +36,34 @@ ApiConfiguration::ApiConfiguration()
     setHttpConfig(httpConfig);
 }
 
-ApiConfiguration::ApiConfiguration(utility::string_t appKey, utility::string_t appSid) : ApiConfiguration()
+ApiConfiguration::ApiConfiguration(utility::string_t clientId, utility::string_t clientSecret) : ApiConfiguration()
 {
-    setAppKey(appKey);
-    setAppSid(appSid);
+    setClientId(clientId);
+    setClientSecret(clientSecret);
 }
 
-void ApiConfiguration::setAppKey(utility::string_t appKey){
-    if (appKey.empty()) {
-        throw _XPLATSTR("appKey could not be an empty string.");
+void ApiConfiguration::setClientSecret(utility::string_t clientSecret){
+    if (clientSecret.empty()) {
+        throw _XPLATSTR("ClientSecret could not be an empty string.");
     }
 
-    m_AppKey = std::move(appKey);
+    m_clientSecret = std::move(clientSecret);
 }
 
-utility::string_t ApiConfiguration::getAppKey() const {
-    return m_AppKey;
+utility::string_t ApiConfiguration::getClientSecret() const {
+    return m_clientSecret;
 }
 
-void ApiConfiguration::setAppSid(utility::string_t appSid){
-    if (appSid.empty()) {
-        throw _XPLATSTR("appSid could not be an empty string.");
+void ApiConfiguration::setClientId(utility::string_t clientId){
+    if (clientId.empty()) {
+        throw _XPLATSTR("clientId could not be an empty string.");
     }
 
-    m_AppSid = std::move(appSid);
+    m_clientId = std::move(clientId);
 }
 
-utility::string_t ApiConfiguration::getAppSid() const{
-    return m_AppSid;
+utility::string_t ApiConfiguration::getClientId() const{
+    return m_clientId;
 }
 
 utility::string_t ApiConfiguration::getApiVersion() const
@@ -114,19 +114,19 @@ std::map<utility::string_t, utility::string_t>& ApiConfiguration::getDefaultHead
     return m_DefaultHeaders;
 }
 
-utility::string_t ApiConfiguration::getApiKey( const utility::string_t& prefix) const
+utility::string_t ApiConfiguration::getClientSecret( const utility::string_t& prefix) const
 {
-    const auto result = m_ApiKeys.find(prefix);
-    if( result != m_ApiKeys.end() )
+    const auto result = m_clientSecrets.find(prefix);
+    if( result != m_clientSecrets.end() )
     {
         return result->second;
     }
     return {};
 }
 
-void ApiConfiguration::setApiKey( const utility::string_t& prefix, const utility::string_t& apiKey )
+void ApiConfiguration::setClientSecret( const utility::string_t& prefix, const utility::string_t& clientSecret )
 {
-    m_ApiKeys[prefix] = apiKey;
+    m_clientSecrets[prefix] = clientSecret;
 }
 
 }

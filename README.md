@@ -128,8 +128,8 @@ cmake --build aspose-words-cloud-cpp\build --config Debug --target words-cloud-t
 Create servercreds.json in aspose-words-cloud-cpp directory:
 ````
 {
-	"AppKey" : "xxxxx",
-	"AppSid" : "xxxx",
+	"ClientId" : "xxxx",
+	"ClientSecret" : "xxxxx",
 	"BaseUrl" : "xxx" 
 }
 ````
@@ -172,8 +172,8 @@ cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- 
 Create servercreds.json in aspose-words-cloud-cpp directory:
 ````
 {
-	"AppKey" : "xxxxx",
-	"AppSid" : "xxxx",
+	"ClientId" : "xxxx",
+	"ClientSecret" : "xxxxx",
 	"BaseUrl" : "xxx" 
 }
 ````
@@ -212,7 +212,7 @@ Typical usage of the SDK in code follows this template:
 	// Start README example
 
 	//  create client configuration
-	auto config = std::make_shared<ApiConfiguration>(yourApiKey, yourApiSid);
+	auto config = std::make_shared<ApiConfiguration>(yourClientId, yourClientSecret);
 	// optional step, default value is https://api.aspose.cloud
 	config->setBaseUrl(baseUrl);
 
