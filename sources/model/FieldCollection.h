@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents DTO for collection of fields.
+/// DTO container with a collection of fields.
 /// </summary>
 class FieldCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// FieldCollection members
 
     /// <summary>
-    /// Gets or sets collection of fields.
+    /// Gets or sets the collection of fields.
     /// </summary>
     std::vector<std::shared_ptr<Field>>& getList();
     bool listIsSet() const;

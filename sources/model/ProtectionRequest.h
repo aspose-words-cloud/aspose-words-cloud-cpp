@@ -60,7 +60,7 @@ public:
     /// ProtectionRequest members
 
     /// <summary>
-    /// Gets or sets new password.
+    /// Gets or sets the new password.
     /// </summary>
     utility::string_t getNewPassword() const;
     bool newPasswordIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setNewPassword(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets current password.
+    /// Gets or sets the current password.
     /// </summary>
     utility::string_t getPassword() const;
     bool passwordIsSet() const;
@@ -76,7 +76,7 @@ public:
     void setPassword(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets new type of protection.
+    /// Gets or sets the new type of protection.
     /// </summary>
     utility::string_t getProtectionType() const;
     bool protectionTypeIsSet() const;

@@ -62,7 +62,7 @@ public:
     /// Document members
 
     /// <summary>
-    /// Gets or sets returns document properties.
+    /// Gets or sets the document properties.
     /// </summary>
     std::shared_ptr<DocumentProperties> getDocumentProperties() const;
     bool documentPropertiesIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setFileName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether returns true if the document is encrypted and requires a password to open.
+    /// Gets or sets a value indicating whether the document is encrypted and requires a password to open.
     /// </summary>
     bool isIsEncrypted() const;
     bool isEncryptedIsSet() const;
@@ -86,8 +86,7 @@ public:
     void setIsEncrypted(bool value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a
-    /// digital signature is present on a document, but it does not specify whether the signature is valid or not.
+    /// Gets or sets a value indicating whether the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
     /// </summary>
     bool isIsSigned() const;
     bool isSignedIsSet() const;
@@ -95,7 +94,7 @@ public:
     void setIsSigned(bool value);
 
     /// <summary>
-    /// Gets or sets a list of links that originate from this document.
+    /// Gets or sets the list of links that originate from this document.
     /// </summary>
     std::vector<std::shared_ptr<Link>>& getLinks();
     bool linksIsSet() const;

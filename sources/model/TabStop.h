@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format tab stop.
+/// DTO container with paragraph format tab stop.
 /// </summary>
 class TabStop
     : public TabStopBase

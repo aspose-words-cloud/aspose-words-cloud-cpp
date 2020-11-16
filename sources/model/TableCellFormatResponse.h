@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
+/// The REST response with the formatting properties of a table cell.
 /// </summary>
 class TableCellFormatResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// TableCellFormatResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets the formatting properties of a table cell.
     /// </summary>
     std::shared_ptr<TableCellFormat> getCellFormat() const;
     bool cellFormatIsSet() const;

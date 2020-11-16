@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET {nodeWithBorders}/borders.
+/// The REST response with a border.
 /// </summary>
 class BorderResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// BorderResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets the border.
     /// </summary>
     std::shared_ptr<Border> getBorder() const;
     bool borderIsSet() const;

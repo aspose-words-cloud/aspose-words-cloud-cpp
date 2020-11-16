@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for docx/docm/dotx/dotm/flatopc save options.
+/// Container class for docx/docm/dotx/dotm/flatopc save options.
 /// </summary>
 class OoxmlSaveOptionsData
     : public SaveOptionsData
@@ -61,7 +61,7 @@ public:
     /// OoxmlSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies the OOXML version for the output document.
+    /// Gets or sets the oOXML version for the output document.
     /// </summary>
     utility::string_t getCompliance() const;
     bool complianceIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setCompliance(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets compression level.
+    /// Gets or sets the compression level.
     /// </summary>
     utility::string_t getCompressionLevel() const;
     bool compressionLevelIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setCompressionLevel(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies a password to encrypt document using ECMA376 Standard encryption algorithm.
+    /// Gets or sets the password to encrypt document using ECMA376 Standard encryption algorithm.
     /// </summary>
     utility::string_t getPassword() const;
     bool passwordIsSet() const;
@@ -85,7 +85,7 @@ public:
     void setPassword(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies whether or not use pretty formats output.
+    /// Gets or sets a value indicating whether to use pretty formats output.
     /// </summary>
     bool isPrettyFormat() const;
     bool prettyFormatIsSet() const;

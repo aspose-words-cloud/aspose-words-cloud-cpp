@@ -62,7 +62,7 @@ public:
     /// DocumentStatData members
 
     /// <summary>
-    /// Gets or sets detailed statistics of footnotes.
+    /// Gets or sets the detailed statistics on footnotes.
     /// </summary>
     std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
 
     /// <summary>
-    /// Gets or sets total count of pages in the document.
+    /// Gets or sets the total count of pages in the document.
     /// </summary>
     int32_t getPageCount() const;
     bool pageCountIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setPageCount(int32_t value);
 
     /// <summary>
-    /// Gets or sets detailed statistics of all pages.
+    /// Gets or sets the detailed statistics on all pages.
     /// </summary>
     std::vector<std::shared_ptr<PageStatData>>& getPageStatData();
     bool pageStatDataIsSet() const;
@@ -86,7 +86,7 @@ public:
     void setPageStatData(std::vector<std::shared_ptr<PageStatData>> const& value);
 
     /// <summary>
-    /// Gets or sets total count of paragraphs in the document.
+    /// Gets or sets the total count of paragraphs in the document.
     /// </summary>
     int32_t getParagraphCount() const;
     bool paragraphCountIsSet() const;
@@ -94,7 +94,7 @@ public:
     void setParagraphCount(int32_t value);
 
     /// <summary>
-    /// Gets or sets total count of words in the document.
+    /// Gets or sets the total count of words in the document.
     /// </summary>
     int32_t getWordCount() const;
     bool wordCountIsSet() const;

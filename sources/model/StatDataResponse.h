@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for the request of the document's statistical data.
+/// The REST response with document's statistical data.
 /// </summary>
 class StatDataResponse
     : public WordsResponse
@@ -63,7 +63,7 @@ public:
     /// StatDataResponse members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets the link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setDocumentLink(std::shared_ptr<FileLink> value);
 
     /// <summary>
-    /// Gets or sets statistical data of the document.
+    /// Gets or sets the statistical data of the document.
     /// </summary>
     std::shared_ptr<DocumentStatData> getStatData() const;
     bool statDataIsSet() const;

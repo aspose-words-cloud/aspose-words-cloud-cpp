@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of comments.
+/// The collection of comments.
 /// </summary>
 class CommentsCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// CommentsCollection members
 
     /// <summary>
-    /// Gets or sets collection of comments.
+    /// Gets or sets the collection of comments.
     /// </summary>
     std::vector<std::shared_ptr<Comment>>& getCommentList();
     bool commentListIsSet() const;

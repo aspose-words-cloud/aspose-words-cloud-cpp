@@ -60,7 +60,7 @@ public:
     /// ApiError members
 
     /// <summary>
-    /// Gets or sets api error code.
+    /// Gets or sets the API error code.
     /// </summary>
     utility::string_t getCode() const;
     bool codeIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setCode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets server datetime.
+    /// Gets or sets the server DateTime.
     /// </summary>
     utility::datetime getDateTime() const;
     bool dateTimeIsSet() const;
@@ -76,7 +76,7 @@ public:
     void setDateTime(utility::datetime value);
 
     /// <summary>
-    /// Gets or sets error description.
+    /// Gets or sets the error description.
     /// </summary>
     utility::string_t getDescription() const;
     bool descriptionIsSet() const;
@@ -84,7 +84,7 @@ public:
     void setDescription(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets inner error.
+    /// Gets or sets the inner error.
     /// </summary>
     std::shared_ptr<ApiError> getInnerError() const;
     bool innerErrorIsSet() const;
@@ -92,7 +92,7 @@ public:
     void setInnerError(std::shared_ptr<ApiError> value);
 
     /// <summary>
-    /// Gets or sets error message.
+    /// Gets or sets the error message.
     /// </summary>
     utility::string_t getMessage() const;
     bool messageIsSet() const;

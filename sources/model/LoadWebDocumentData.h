@@ -61,7 +61,7 @@ public:
     /// LoadWebDocumentData members
 
     /// <summary>
-    /// Gets or sets web document url.
+    /// Gets or sets the web document URL.
     /// </summary>
     utility::string_t getLoadingDocumentUrl() const;
     bool loadingDocumentUrlIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setLoadingDocumentUrl(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets save options.
+    /// Gets or sets the save options.
     /// </summary>
     std::shared_ptr<SaveOptionsData> getSaveOptions() const;
     bool saveOptionsIsSet() const;

@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+/// The REST response with a style.
 /// </summary>
 class StyleResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// StyleResponse members
 
     /// <summary>
-    /// Gets or sets style which are contained in document.
+    /// Gets or sets the style, containded in the document.
     /// </summary>
     std::shared_ptr<Style> getStyle() const;
     bool styleIsSet() const;

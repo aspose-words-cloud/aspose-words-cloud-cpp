@@ -70,7 +70,7 @@ public:
     void setThresholdForFloydSteinbergDithering(int32_t value);
 
     /// <summary>
-    /// Gets or sets specifies method used while converting images to 1 bpp format.
+    /// Gets or sets the method used while converting images to 1 bpp format.
     /// </summary>
     utility::string_t getTiffBinarizationMethod() const;
     bool tiffBinarizationMethodIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setTiffBinarizationMethod(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets type of compression.
+    /// Gets or sets the type of compression.
     /// </summary>
     utility::string_t getTiffCompression() const;
     bool tiffCompressionIsSet() const;

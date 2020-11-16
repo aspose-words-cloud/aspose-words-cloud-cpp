@@ -60,7 +60,7 @@ public:
     /// DocumentEntry members
 
     /// <summary>
-    /// Gets or sets path to document to append at the server.
+    /// Gets or sets the path to document to append at the server.
     /// </summary>
     utility::string_t getHref() const;
     bool hrefIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setHref(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets defines which formatting will be used: appended or destination document.Can be KeepSourceFormatting or UseDestinationStyles.
+    /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
     /// </summary>
     utility::string_t getImportFormatMode() const;
     bool importFormatModeIsSet() const;

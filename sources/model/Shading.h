@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph format shading element.
+/// DTO container with a paragraph format shading element.
 /// </summary>
 class Shading
     : public ModelBase

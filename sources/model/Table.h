@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table element.
+/// DTO container with a table element.
 /// </summary>
 class Table
     : public NodeLink
@@ -71,7 +71,7 @@ public:
     void setTableProperties(std::shared_ptr<TableProperties> value);
 
     /// <summary>
-    /// Gets or sets collection of table's rows.
+    /// Gets or sets the collection of table's rows.
     /// </summary>
     std::vector<std::shared_ptr<TableRow>>& getTableRowList();
     bool tableRowListIsSet() const;

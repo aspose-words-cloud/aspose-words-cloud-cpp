@@ -62,7 +62,7 @@ public:
     /// Bookmarks members
 
     /// <summary>
-    /// Gets or sets array of bookmarks.
+    /// Gets or sets the array of bookmarks.
     /// </summary>
     std::vector<std::shared_ptr<Bookmark>>& getBookmarkList();
     bool bookmarkListIsSet() const;

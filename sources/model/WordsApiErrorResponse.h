@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for Api error.
+/// The REST response with an API error.
 /// </summary>
 class WordsApiErrorResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// WordsApiErrorResponse members
 
     /// <summary>
-    /// Gets or sets error.
+    /// Gets or sets the API error.
     /// </summary>
     std::shared_ptr<ApiError> getError() const;
     bool errorIsSet() const;

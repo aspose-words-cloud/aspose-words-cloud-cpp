@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of footnotes.
+/// DTO container with a collection of footnotes.
 /// </summary>
 class FootnoteCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// FootnoteCollection members
 
     /// <summary>
-    /// Gets or sets collection of foonotes links.
+    /// Gets or sets the collection of footnotes.
     /// </summary>
     std::vector<std::shared_ptr<Footnote>>& getList();
     bool listIsSet() const;

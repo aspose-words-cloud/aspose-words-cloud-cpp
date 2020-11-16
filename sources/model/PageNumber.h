@@ -68,7 +68,7 @@ public:
     void setAlignment(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets page number format, e.g. "{PAGE} of {NUMPAGES}".
+    /// Gets or sets the page number format, e.g. "{PAGE} of {NUMPAGES}".
     /// </summary>
     utility::string_t getFormat() const;
     bool formatIsSet() const;

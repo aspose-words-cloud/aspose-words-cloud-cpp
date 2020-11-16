@@ -68,7 +68,7 @@ public:
     void setAlignment(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a System.Drawing.StringFormatFlags enumeration that contains formatting information.
+    /// Gets or sets the System.Drawing.StringFormatFlags enumeration, that contains formatting information.
     /// </summary>
     utility::string_t getFormatFlags() const;
     bool formatFlagsIsSet() const;

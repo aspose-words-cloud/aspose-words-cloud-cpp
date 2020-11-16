@@ -84,7 +84,7 @@ public:
     void setIsOldValueRegex(bool value);
 
     /// <summary>
-    /// Gets or sets new text value to replace by.
+    /// Gets or sets the new text value to replace by.
     /// </summary>
     utility::string_t getNewValue() const;
     bool newValueIsSet() const;
@@ -92,7 +92,7 @@ public:
     void setNewValue(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets old text value (or regex pattern IsOldValueRegex) to replace.
+    /// Gets or sets the old text value (or regex pattern IsOldValueRegex) to replace.
     /// </summary>
     utility::string_t getOldValue() const;
     bool oldValueIsSet() const;

@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Range element.
+/// DTO container with a range element.
 /// </summary>
 class ReplaceRange
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// ReplaceRange members
 
     /// <summary>
-    /// Gets or sets range's text.
+    /// Gets or sets the range's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setText(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets range's text type.
+    /// Gets or sets the range's text type.
     /// </summary>
     utility::string_t getTextType() const;
     bool textTypeIsSet() const;

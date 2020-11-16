@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table row element.
+/// DTO container with a table row element.
 /// </summary>
 class TableRowInsert
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// TableRowInsert members
 
     /// <summary>
-    /// Gets or sets count of columns. Default is 1.
+    /// Gets or sets the count of columns. The default value is 1.
     /// </summary>
     int32_t getColumnsCount() const;
     bool columnsCountIsSet() const;

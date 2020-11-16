@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat.
+/// The REST response with the formatting properties of a table row.
 /// </summary>
 class TableRowFormatResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// TableRowFormatResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets the formatting properties of a table row.
     /// </summary>
     std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;

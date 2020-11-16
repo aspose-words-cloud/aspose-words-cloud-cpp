@@ -61,7 +61,7 @@ public:
     /// CompareData members
 
     /// <summary>
-    /// Gets or sets initials of the author to use for revisions.
+    /// Gets or sets the initials of the author to use for revisions.
     /// </summary>
     utility::string_t getAuthor() const;
     bool authorIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setCompareOptions(std::shared_ptr<CompareOptions> value);
 
     /// <summary>
-    /// Gets or sets path to document to compare at the server.
+    /// Gets or sets the path to document to compare at the server.
     /// </summary>
     utility::string_t getComparingWithDocument() const;
     bool comparingWithDocumentIsSet() const;

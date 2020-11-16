@@ -62,7 +62,7 @@ public:
     /// ReportEngineSettings members
 
     /// <summary>
-    /// Gets or sets options for parsing CSV data.
+    /// Gets or sets the options for parsing CSV data.
     /// </summary>
     std::shared_ptr<CsvDataLoadOptions> getCsvDataLoadOptions() const;
     bool csvDataLoadOptionsIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setCsvDataLoadOptions(std::shared_ptr<CsvDataLoadOptions> value);
 
     /// <summary>
-    /// Gets or sets a name to reference the data source object in the template.
+    /// Gets or sets the name to reference the data source object in the template.
     /// </summary>
     utility::string_t getDataSourceName() const;
     bool dataSourceNameIsSet() const;

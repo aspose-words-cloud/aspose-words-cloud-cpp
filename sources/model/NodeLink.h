@@ -61,7 +61,7 @@ public:
     /// NodeLink members
 
     /// <summary>
-    /// Gets or sets node id.
+    /// Gets or sets the node id.
     /// </summary>
     utility::string_t getNodeId() const;
     bool nodeIdIsSet() const;

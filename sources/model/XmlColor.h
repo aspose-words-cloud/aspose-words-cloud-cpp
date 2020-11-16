@@ -60,7 +60,7 @@ public:
     /// XmlColor members
 
     /// <summary>
-    /// Gets or sets alpha component of color structure.
+    /// Gets or sets the Alpha component of color structure.
     /// </summary>
     int32_t getAlpha() const;
     bool alphaIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setAlpha(int32_t value);
 
     /// <summary>
-    /// Gets or sets hTML string color representation.
+    /// Gets or sets the HTML string color representation.
     /// </summary>
     utility::string_t getWeb() const;
     bool webIsSet() const;

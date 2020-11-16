@@ -62,7 +62,7 @@ public:
     /// ImageSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets allows to specify additional System.Drawing.Graphics quality options.
+    /// Gets or sets the additional System.Drawing.Graphics quality options.
     /// </summary>
     std::shared_ptr<GraphicsQualityOptionsData> getGraphicsQualityOptions() const;
     bool graphicsQualityOptionsIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setGraphicsQualityOptions(std::shared_ptr<GraphicsQualityOptionsData> value);
 
     /// <summary>
-    /// Gets or sets the horizontal resolution for the generated images, in dots per inch.
+    /// Gets or sets the horizontal resolution in dots per inch for the generated images.
     /// This property has effect only when saving to raster image formats.
     /// The default value is 96.
     /// </summary>
@@ -80,7 +80,7 @@ public:
     void setHorizontalResolution(double value);
 
     /// <summary>
-    /// Gets or sets brightness of image.
+    /// Gets or sets the brightness level of the image.
     /// </summary>
     double getImageBrightness() const;
     bool imageBrightnessIsSet() const;
@@ -88,7 +88,7 @@ public:
     void setImageBrightness(double value);
 
     /// <summary>
-    /// Gets or sets color mode of image.
+    /// Gets or sets the color mode of the image.
     /// </summary>
     utility::string_t getImageColorMode() const;
     bool imageColorModeIsSet() const;
@@ -96,7 +96,7 @@ public:
     void setImageColorMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets contrast of image.
+    /// Gets or sets the contrast level of the image.
     /// </summary>
     double getImageContrast() const;
     bool imageContrastIsSet() const;
@@ -104,7 +104,7 @@ public:
     void setImageContrast(double value);
 
     /// <summary>
-    /// Gets or sets background (paper) color of image.
+    /// Gets or sets the background (paper) color of the image.
     /// </summary>
     utility::string_t getPaperColor() const;
     bool paperColorIsSet() const;
@@ -112,7 +112,7 @@ public:
     void setPaperColor(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets pixel format of image.
+    /// Gets or sets the pixel format of the image.
     /// </summary>
     utility::string_t getPixelFormat() const;
     bool pixelFormatIsSet() const;
@@ -120,7 +120,7 @@ public:
     void setPixelFormat(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets both horizontal and vertical resolution for the generated images, in dots per inch.
+    /// Gets or sets both horizontal and vertical resolution in dots per inch for the generated images.
     /// This property has effect only when saving to raster image formats.
     /// The default value is 96.
     /// </summary>
@@ -130,7 +130,7 @@ public:
     void setResolution(double value);
 
     /// <summary>
-    /// Gets or sets zoom factor of image.
+    /// Gets or sets the zoom factor of the image.
     /// </summary>
     double getScale() const;
     bool scaleIsSet() const;
@@ -138,7 +138,7 @@ public:
     void setScale(double value);
 
     /// <summary>
-    /// Gets or sets determine whether or not to use anti-aliasing for rendering.
+    /// Gets or sets a value indicating whether to use anti-aliasing for rendering.
     /// </summary>
     bool isUseAntiAliasing() const;
     bool useAntiAliasingIsSet() const;
@@ -146,7 +146,7 @@ public:
     void setUseAntiAliasing(bool value);
 
     /// <summary>
-    /// Gets or sets a value determining whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
+    /// Gets or sets a value indicating whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
     /// </summary>
     bool isUseGdiEmfRenderer() const;
     bool useGdiEmfRendererIsSet() const;
@@ -154,7 +154,7 @@ public:
     void setUseGdiEmfRenderer(bool value);
 
     /// <summary>
-    /// Gets or sets determine whether or not to use high quality (i.e. slow) rendering algorithms.
+    /// Gets or sets a value indicating whether to use high quality (i.e. slow) rendering algorithms.
     /// </summary>
     bool isUseHighQualityRendering() const;
     bool useHighQualityRenderingIsSet() const;
@@ -162,7 +162,7 @@ public:
     void setUseHighQualityRendering(bool value);
 
     /// <summary>
-    /// Gets or sets the vertical resolution for the generated images, in dots per inch.
+    /// Gets or sets the vertical resolution in dots per inch for the generated images.
     /// This property has effect only when saving to raster image formats.
     /// The default value is 96.
     /// </summary>

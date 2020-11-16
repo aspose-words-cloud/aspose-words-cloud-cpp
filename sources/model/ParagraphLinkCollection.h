@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of links to paragraphs.
+/// The collection of paragraph's links.
 /// </summary>
 class ParagraphLinkCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// ParagraphLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of paragraph's links.
+    /// Gets or sets the collection of paragraph's links.
     /// </summary>
     std::vector<std::shared_ptr<ParagraphLink>>& getParagraphLinkList();
     bool paragraphLinkListIsSet() const;

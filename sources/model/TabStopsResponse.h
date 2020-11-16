@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops.
+/// The REST response with an array of tab stops.
 /// </summary>
 class TabStopsResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// TabStopsResponse members
 
     /// <summary>
-    /// Gets or sets represents a tab stop.
+    /// Gets or sets the array of tab stops.
     /// </summary>
     std::vector<std::shared_ptr<TabStop>>& getTabStops();
     bool tabStopsIsSet() const;

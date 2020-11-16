@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents DTO for collection of formfields.
+/// DTO container with a collection of form fields.
 /// </summary>
 class FormFieldCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// FormFieldCollection members
 
     /// <summary>
-    /// Gets or sets collection of formfields.
+    /// Gets or sets the collection of form fields.
     /// </summary>
     std::vector<std::shared_ptr<FormField>>& getList();
     bool listIsSet() const;

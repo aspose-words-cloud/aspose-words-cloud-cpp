@@ -77,7 +77,7 @@ public:
     void setChecked(bool value);
 
     /// <summary>
-    /// Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly.
+    /// Gets or sets a value indicating whether the size of the textbox is automatic or specified explicitly.
     /// </summary>
     bool isIsCheckBoxExactSize() const;
     bool isCheckBoxExactSizeIsSet() const;

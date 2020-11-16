@@ -61,7 +61,7 @@ public:
     /// ParagraphLink members
 
     /// <summary>
-    /// Gets or sets paragraph's text.
+    /// Gets or sets the paragraph's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

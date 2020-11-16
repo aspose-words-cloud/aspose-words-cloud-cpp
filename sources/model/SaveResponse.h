@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Save response.
+/// The REST response with a save result.
 /// </summary>
 class SaveResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// SaveResponse members
 
     /// <summary>
-    /// Gets or sets save result.
+    /// Gets or sets the save result.
     /// </summary>
     std::shared_ptr<SaveResult> getSaveResult() const;
     bool saveResultIsSet() const;

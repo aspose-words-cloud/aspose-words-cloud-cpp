@@ -61,7 +61,7 @@ public:
     /// Hyperlink members
 
     /// <summary>
-    /// Gets or sets hypelink's display text.
+    /// Gets or sets the hypelink's display text.
     /// </summary>
     utility::string_t getDisplayText() const;
     bool displayTextIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setDisplayText(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets value.
+    /// Gets or sets the value.
     /// </summary>
     utility::string_t getValue() const;
     bool valueIsSet() const;

@@ -61,7 +61,7 @@ public:
     /// MarkdownSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets a value that specifies how to align contents in tables when exporting into the Markdown format.
+    /// Gets or sets the value, that specifies how to align contents in tables when exporting into the Markdown format.
     /// The default value is Auto.
     /// </summary>
     utility::string_t getTableContentAlignment() const;

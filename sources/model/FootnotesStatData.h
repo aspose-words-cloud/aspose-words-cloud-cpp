@@ -60,7 +60,7 @@ public:
     /// FootnotesStatData members
 
     /// <summary>
-    /// Gets or sets total count of paragraphs in footnotes.
+    /// Gets or sets the total count of paragraphs in footnotes.
     /// </summary>
     int32_t getParagraphCount() const;
     bool paragraphCountIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setParagraphCount(int32_t value);
 
     /// <summary>
-    /// Gets or sets total count of words in footnotes.
+    /// Gets or sets the total count of words in footnotes.
     /// </summary>
     int32_t getWordCount() const;
     bool wordCountIsSet() const;

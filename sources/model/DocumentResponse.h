@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents the response with document description.
+/// The REST response with a document description.
 /// </summary>
 class DocumentResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// DocumentResponse members
 
     /// <summary>
-    /// Gets or sets document description.
+    /// Gets or sets the document description.
     /// </summary>
     std::shared_ptr<Document> getDocument() const;
     bool documentIsSet() const;

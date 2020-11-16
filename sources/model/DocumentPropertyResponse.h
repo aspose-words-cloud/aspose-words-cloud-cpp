@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:  GET documentProperties/{propertyName}.
+/// The REST response with a document property.
 /// </summary>
 class DocumentPropertyResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// DocumentPropertyResponse members
 
     /// <summary>
-    /// Gets or sets document property.
+    /// Gets or sets the document property.
     /// </summary>
     std::shared_ptr<DocumentProperty> getDocumentProperty() const;
     bool documentPropertyIsSet() const;

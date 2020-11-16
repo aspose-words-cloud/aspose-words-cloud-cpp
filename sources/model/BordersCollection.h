@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of borders.
+/// The collection of borders.
 /// </summary>
 class BordersCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// BordersCollection members
 
     /// <summary>
-    /// Gets or sets collection of comments.
+    /// Gets or sets the collection of comments.
     /// </summary>
     std::vector<std::shared_ptr<Border>>& getList();
     bool listIsSet() const;

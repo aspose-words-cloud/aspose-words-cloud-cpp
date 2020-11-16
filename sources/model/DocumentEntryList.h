@@ -61,7 +61,7 @@ public:
     /// DocumentEntryList members
 
     /// <summary>
-    /// Gets or sets parameter that indicates to apply headers and footers from base document to appending documents. Default is true.
+    /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
     /// </summary>
     bool isApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const;
     bool applyBaseDocumentHeadersAndFootersToAppendingDocumentsIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(bool value);
 
     /// <summary>
-    /// Gets or sets list of documents.
+    /// Gets or sets the list of documents.
     /// </summary>
     std::vector<std::shared_ptr<DocumentEntry>>& getDocumentEntries();
     bool documentEntriesIsSet() const;

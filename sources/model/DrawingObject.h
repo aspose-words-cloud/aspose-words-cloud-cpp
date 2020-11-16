@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents Drawing Object DTO.
+/// DTO container with a DrawingObject.
 /// </summary>
 class DrawingObject
     : public DrawingObjectLink
@@ -62,7 +62,7 @@ public:
     /// DrawingObject members
 
     /// <summary>
-    /// Gets or sets height of the drawing object in points.
+    /// Gets or sets the height of the DrawingObject in points.
     /// </summary>
     double getHeight() const;
     bool heightIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setHeight(double value);
 
     /// <summary>
-    /// Gets or sets link to image data. Can be null if shape does not have an image.
+    /// Gets or sets the link to image data. Can be null if shape does not have an image.
     /// </summary>
     std::shared_ptr<WordsApiLink> getImageDataLink() const;
     bool imageDataLinkIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setImageDataLink(std::shared_ptr<WordsApiLink> value);
 
     /// <summary>
-    /// Gets or sets distance in points from the origin to the left side of the image.
+    /// Gets or sets the distance in points from the origin to the left side of the image.
     /// </summary>
     double getLeft() const;
     bool leftIsSet() const;
@@ -86,7 +86,7 @@ public:
     void setLeft(double value);
 
     /// <summary>
-    /// Gets or sets link to ole object. Can be null if shape does not have ole data.
+    /// Gets or sets the link to OLE object. Can be null if shape does not have OLE data.
     /// </summary>
     std::shared_ptr<WordsApiLink> getOleDataLink() const;
     bool oleDataLinkIsSet() const;
@@ -94,7 +94,7 @@ public:
     void setOleDataLink(std::shared_ptr<WordsApiLink> value);
 
     /// <summary>
-    /// Gets or sets specifies where the distance to the image is measured from.
+    /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
     /// </summary>
     utility::string_t getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
@@ -102,7 +102,7 @@ public:
     void setRelativeHorizontalPosition(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies where the distance to the image measured from.
+    /// Gets or sets the relative vertical position, from which the distance to the image is measured.
     /// </summary>
     utility::string_t getRelativeVerticalPosition() const;
     bool relativeVerticalPositionIsSet() const;
@@ -110,7 +110,7 @@ public:
     void setRelativeVerticalPosition(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a list of links that originate from this DrawingObjectDto.
+    /// Gets or sets the list of links that originate from this DrawingObjectDto.
     /// </summary>
     std::vector<std::shared_ptr<WordsApiLink>>& getRenderLinks();
     bool renderLinksIsSet() const;
@@ -118,7 +118,7 @@ public:
     void setRenderLinks(std::vector<std::shared_ptr<WordsApiLink>> const& value);
 
     /// <summary>
-    /// Gets or sets distance in points from the origin to the top side of the image.
+    /// Gets or sets the distance in points from the origin to the top side of the image.
     /// </summary>
     double getTop() const;
     bool topIsSet() const;
@@ -126,7 +126,7 @@ public:
     void setTop(double value);
 
     /// <summary>
-    /// Gets or sets width of the drawing objects in points.
+    /// Gets or sets the width of the DrawingObjects in points.
     /// </summary>
     double getWidth() const;
     bool widthIsSet() const;
@@ -134,7 +134,7 @@ public:
     void setWidth(double value);
 
     /// <summary>
-    /// Gets or sets specifies how to wrap text around the image.
+    /// Gets or sets the option that controls how to wrap text around the image.
     /// </summary>
     utility::string_t getWrapType() const;
     bool wrapTypeIsSet() const;

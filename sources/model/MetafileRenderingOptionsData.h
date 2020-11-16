@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for options of metafile rendering.
+/// Container class for options of metafile rendering.
 /// </summary>
 class MetafileRenderingOptionsData
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// MetafileRenderingOptionsData members
 
     /// <summary>
-    /// Gets or sets determines how EMF+ Dual metafiles should be rendered.
+    /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
     /// </summary>
     utility::string_t getEmfPlusDualRenderingMode() const;
     bool emfPlusDualRenderingModeIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setEmfPlusDualRenderingMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value determining whether or not the raster operations should be emulated.
+    /// Gets or sets a value indicating whether the raster operations should be emulated.
     /// </summary>
     bool isEmulateRasterOperations() const;
     bool emulateRasterOperationsIsSet() const;
@@ -76,7 +76,7 @@ public:
     void setEmulateRasterOperations(bool value);
 
     /// <summary>
-    /// Gets or sets determines how metafile images should be rendered.
+    /// Gets or sets the option that controls how metafile images should be rendered.
     /// </summary>
     utility::string_t getRenderingMode() const;
     bool renderingModeIsSet() const;
@@ -84,7 +84,7 @@ public:
     void setRenderingMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value determining whether or not to scale fonts in WMF metafile according to metafile size on the page.
+    /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
     /// The default value is true.
     /// </summary>
     bool isScaleWmfFontsToMetafileSize() const;
@@ -93,7 +93,7 @@ public:
     void setScaleWmfFontsToMetafileSize(bool value);
 
     /// <summary>
-    /// Gets or sets determines how WMF metafiles with embedded EMF metafiles should be rendered.
+    /// Gets or sets the flag, that controls how WMF metafiles with embedded EMF metafiles should be rendered.
     /// </summary>
     bool isUseEmfEmbeddedToWmf() const;
     bool useEmfEmbeddedToWmfIsSet() const;

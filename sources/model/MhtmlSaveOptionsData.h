@@ -61,8 +61,7 @@ public:
     /// MhtmlSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents.
-    /// Default value is false.
+    /// Gets or sets a value indicating whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents. The default value is false.
     /// </summary>
     bool isExportCidUrlsForMhtmlResources() const;
     bool exportCidUrlsForMhtmlResourcesIsSet() const;

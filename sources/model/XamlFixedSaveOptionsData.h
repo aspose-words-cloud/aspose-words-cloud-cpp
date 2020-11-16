@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for xaml fixed save options.
+/// Container class for xaml fixed save options.
 /// </summary>
 class XamlFixedSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -61,8 +61,8 @@ public:
     /// XamlFixedSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format.
-    /// Default is null.
+    /// Gets or sets the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format.
+    /// The default value is null.
     /// </summary>
     utility::string_t getResourcesFolder() const;
     bool resourcesFolderIsSet() const;
@@ -70,8 +70,7 @@ public:
     void setResourcesFolder(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies the name of the folder used to construct image URIs written into an fixed page Xaml document.
-    /// Default is null.
+    /// Gets or sets the name of the folder used to construct image URIs written into an fixed page Xaml document. The default value is null.
     /// </summary>
     utility::string_t getResourcesFolderAlias() const;
     bool resourcesFolderAliasIsSet() const;

@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for outline options.
+/// Container class for outline options.
 /// </summary>
 class OutlineOptionsData
     : public ModelBase
@@ -61,7 +61,7 @@ public:
     /// OutlineOptionsData members
 
     /// <summary>
-    /// Gets or sets allows to specify individual bookmarks outline level.
+    /// Gets or sets the individual bookmarks outline level.
     /// </summary>
     std::vector<std::shared_ptr<BookmarksOutlineLevelData>>& getBookmarksOutlineLevels();
     bool bookmarksOutlineLevelsIsSet() const;
@@ -69,9 +69,7 @@ public:
     void setBookmarksOutlineLevels(std::vector<std::shared_ptr<BookmarksOutlineLevelData>> const& value);
 
     /// <summary>
-    /// Gets or sets a value determining whether or not to create missing outline levels
-    /// when the document is exported.
-    /// Default value for this property is false.
+    /// Gets or sets a value indicating whether to create missing outline levels when the document is exported. The default value is false.
     /// </summary>
     bool isCreateMissingOutlineLevels() const;
     bool createMissingOutlineLevelsIsSet() const;
@@ -79,8 +77,7 @@ public:
     void setCreateMissingOutlineLevels(bool value);
 
     /// <summary>
-    /// Gets or sets specifies whether or not to create outlines for headings (paragraphs formatted
-    /// with the Heading styles) inside tables.
+    /// Gets or sets a value indicating whether to create outlines for headings (paragraphs formatted with the Heading styles) inside tables.
     /// </summary>
     bool isCreateOutlinesForHeadingsInTables() const;
     bool createOutlinesForHeadingsInTablesIsSet() const;
@@ -88,7 +85,7 @@ public:
     void setCreateOutlinesForHeadingsInTables(bool value);
 
     /// <summary>
-    /// Gets or sets specifies the default level in the document outline at which to display Word bookmarks.
+    /// Gets or sets the default level in the document outline at which to display Word bookmarks.
     /// </summary>
     int32_t getDefaultBookmarksOutlineLevel() const;
     bool defaultBookmarksOutlineLevelIsSet() const;
@@ -96,7 +93,7 @@ public:
     void setDefaultBookmarksOutlineLevel(int32_t value);
 
     /// <summary>
-    /// Gets or sets specifies how many levels in the document outline to show expanded when the file is viewed.
+    /// Gets or sets the number of levels in the document outline to show expanded when the file is viewed.
     /// </summary>
     int32_t getExpandedOutlineLevels() const;
     bool expandedOutlineLevelsIsSet() const;
@@ -104,7 +101,7 @@ public:
     void setExpandedOutlineLevels(int32_t value);
 
     /// <summary>
-    /// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
+    /// Gets or sets the number of levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
     /// </summary>
     int32_t getHeadingsOutlineLevels() const;
     bool headingsOutlineLevelsIsSet() const;

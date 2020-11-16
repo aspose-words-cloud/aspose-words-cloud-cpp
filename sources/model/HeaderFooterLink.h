@@ -61,7 +61,7 @@ public:
     /// HeaderFooterLink members
 
     /// <summary>
-    /// Gets or sets paragraph's text.
+    /// Gets or sets the paragraph's text.
     /// </summary>
     utility::string_t getType() const;
     bool typeIsSet() const;

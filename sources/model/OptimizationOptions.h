@@ -60,7 +60,7 @@ public:
     /// OptimizationOptions members
 
     /// <summary>
-    /// Gets or sets specific MSWord version.
+    /// Gets or sets the specific MSWord version.
     /// </summary>
     utility::string_t getMsWordVersion() const;
     bool msWordVersionIsSet() const;

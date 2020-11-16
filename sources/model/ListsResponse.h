@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/lists.
+/// The REST response with a collection of lists, contained in the document.
 /// </summary>
 class ListsResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// ListsResponse members
 
     /// <summary>
-    /// Gets or sets lists which are contained in document.
+    /// Gets or sets the collection of lists, contained in the document.
     /// </summary>
     std::shared_ptr<Lists> getLists() const;
     bool listsIsSet() const;

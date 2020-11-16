@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents a position in the document tree.
+/// DTO container with a position in the document tree.
 /// </summary>
 class DocumentPosition
     : public ModelBase
@@ -61,7 +61,7 @@ public:
     /// DocumentPosition members
 
     /// <summary>
-    /// Gets or sets link to  node.
+    /// Gets or sets the link to a node.
     /// </summary>
     std::shared_ptr<NodeLink> getNode() const;
     bool nodeIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setNode(std::shared_ptr<NodeLink> value);
 
     /// <summary>
-    /// Gets or sets offset into the node.
+    /// Gets or sets the offset in the node.
     /// </summary>
     int32_t getOffset() const;
     bool offsetIsSet() const;

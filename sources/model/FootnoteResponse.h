@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/footnote/0.
+/// The REST response with a footnote.
 /// </summary>
 class FootnoteResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// FootnoteResponse members
 
     /// <summary>
-    /// Gets or sets footnote information.
+    /// Gets or sets the footnote.
     /// </summary>
     std::shared_ptr<Footnote> getFootnote() const;
     bool footnoteIsSet() const;

@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table row element.
+/// DTO container with a table row element.
 /// </summary>
 class TableRow
     : public NodeLink
@@ -63,7 +63,7 @@ public:
     /// TableRow members
 
     /// <summary>
-    /// Gets or sets provides access to the formatting properties of the row.
+    /// Gets or sets the formatting properties of a row.
     /// </summary>
     std::shared_ptr<TableRowFormat> getRowFormat() const;
     bool rowFormatIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setRowFormat(std::shared_ptr<TableRowFormat> value);
 
     /// <summary>
-    /// Gets or sets collection of table's rows.
+    /// Gets or sets the collection of rows.
     /// </summary>
     std::vector<std::shared_ptr<TableCell>>& getTableCellList();
     bool tableCellListIsSet() const;

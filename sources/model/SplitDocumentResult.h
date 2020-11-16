@@ -61,7 +61,7 @@ public:
     /// SplitDocumentResult members
 
     /// <summary>
-    /// Gets or sets array of pages.
+    /// Gets or sets the list of pages.
     /// </summary>
     std::vector<std::shared_ptr<FileLink>>& getPages();
     bool pagesIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setPages(std::vector<std::shared_ptr<FileLink>> const& value);
 
     /// <summary>
-    /// Gets or sets linkt to the source document.
+    /// Gets or sets the link to the source document.
     /// </summary>
     std::shared_ptr<FileLink> getSourceDocument() const;
     bool sourceDocumentIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setSourceDocument(std::shared_ptr<FileLink> value);
 
     /// <summary>
-    /// Gets or sets link to the file archive with pages.
+    /// Gets or sets the link to the file archive with pages.
     /// </summary>
     std::shared_ptr<FileLink> getZippedPages() const;
     bool zippedPagesIsSet() const;

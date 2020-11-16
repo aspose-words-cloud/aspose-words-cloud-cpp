@@ -61,7 +61,7 @@ public:
     /// FormField members
 
     /// <summary>
-    /// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
+    /// Gets or sets a value indicating whether references to the specified form field are automatically updated whenever the field is exited.
     /// </summary>
     bool isCalculateOnExit() const;
     bool calculateOnExitIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setCalculateOnExit(bool value);
 
     /// <summary>
-    /// Gets or sets true if a form field is enabled.
+    /// Gets or sets a value indicating whether a form field is enabled.
     /// </summary>
     bool isEnabled() const;
     bool enabledIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setEnabled(bool value);
 
     /// <summary>
-    /// Gets or sets returns or sets an entry macro name for the form field.
+    /// Gets or sets the entry macro name for the form field.
     /// </summary>
     utility::string_t getEntryMacro() const;
     bool entryMacroIsSet() const;
@@ -85,7 +85,7 @@ public:
     void setEntryMacro(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets an exit macro name for the form field.
+    /// Gets or sets the exit macro name for the form field.
     /// </summary>
     utility::string_t getExitMacro() const;
     bool exitMacroIsSet() const;
@@ -93,7 +93,7 @@ public:
     void setExitMacro(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the text that's displayed in a message box when the form field has the focus and the user presses F1.
+    /// Gets or sets text, displayed in a message box when the form field has the focus and the user presses F1.
     /// </summary>
     utility::string_t getHelpText() const;
     bool helpTextIsSet() const;
@@ -109,7 +109,7 @@ public:
     void setName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
+    /// Gets or sets a value indicating whether the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
     /// </summary>
     bool isOwnHelp() const;
     bool ownHelpIsSet() const;
@@ -117,7 +117,7 @@ public:
     void setOwnHelp(bool value);
 
     /// <summary>
-    /// Gets or sets specifies the source of the text that's displayed in the status bar when a form field has the focus.
+    /// Gets or sets a value indicating whether the source of the text that's displayed in the status bar when a form field has the focus.
     /// </summary>
     bool isOwnStatus() const;
     bool ownStatusIsSet() const;
@@ -125,7 +125,7 @@ public:
     void setOwnStatus(bool value);
 
     /// <summary>
-    /// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
+    /// Gets or sets text, displayed in the status bar when a form field has the focus.
     /// </summary>
     utility::string_t getStatusText() const;
     bool statusTextIsSet() const;

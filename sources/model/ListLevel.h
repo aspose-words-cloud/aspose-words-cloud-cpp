@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents a document list levels.
+/// DTO container with a document list level.
 /// </summary>
 class ListLevel
     : public LinkElement
@@ -71,7 +71,7 @@ public:
     void setAlignment(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies character formatting used for the list label.
+    /// Gets or sets character formatting used for the list label.
     /// </summary>
     std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;
@@ -79,8 +79,7 @@ public:
     void setFont(std::shared_ptr<Font> value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether true if the level turns all inherited numbers to Arabic, false if it preserves
-    /// their number style.
+    /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
     /// </summary>
     bool isIsLegal() const;
     bool isLegalIsSet() const;
@@ -96,7 +95,7 @@ public:
     void setLinkedStyle(std::shared_ptr<Style> value);
 
     /// <summary>
-    /// Gets or sets returns or sets the number format for the list level.
+    /// Gets or sets the number format for the list level.
     /// </summary>
     utility::string_t getNumberFormat() const;
     bool numberFormatIsSet() const;
@@ -104,8 +103,7 @@ public:
     void setNumberFormat(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the position (in points) of the number or bullet for the list
-    /// level.
+    /// Gets or sets the position (in points) of the number or bullet for the list level.
     /// </summary>
     double getNumberPosition() const;
     bool numberPositionIsSet() const;
@@ -113,7 +111,7 @@ public:
     void setNumberPosition(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the number style for this list level.
+    /// Gets or sets the number style for this list level.
     /// </summary>
     utility::string_t getNumberStyle() const;
     bool numberStyleIsSet() const;
@@ -121,8 +119,7 @@ public:
     void setNumberStyle(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets or returns the list level that must appear before the specified list level
-    /// restarts numbering.
+    /// Gets or sets the list level, that must appear before the specified list level restarts numbering.
     /// </summary>
     int32_t getRestartAfterLevel() const;
     bool restartAfterLevelIsSet() const;
@@ -130,7 +127,7 @@ public:
     void setRestartAfterLevel(int32_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the starting number for this list level.
+    /// Gets or sets the starting number for this list level.
     /// </summary>
     int32_t getStartAt() const;
     bool startAtIsSet() const;
@@ -138,7 +135,7 @@ public:
     void setStartAt(int32_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the tab position (in points) for the list level.
+    /// Gets or sets the tab position (in points) for the list level.
     /// </summary>
     double getTabPosition() const;
     bool tabPositionIsSet() const;
@@ -146,8 +143,7 @@ public:
     void setTabPosition(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the position (in points) for the second line of wrapping text
-    /// for the list level.
+    /// Gets or sets the position (in points) for the second line of wrapping text for the list level.
     /// </summary>
     double getTextPosition() const;
     bool textPositionIsSet() const;
@@ -155,7 +151,7 @@ public:
     void setTextPosition(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the character inserted after the number for the list level.
+    /// Gets or sets the character inserted after the number for the list level.
     /// </summary>
     utility::string_t getTrailingCharacter() const;
     bool trailingCharacterIsSet() const;

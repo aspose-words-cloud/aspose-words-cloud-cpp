@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table cell element.
+/// DTO container with a table cell element.
 /// </summary>
 class TableCell
     : public NodeLink
@@ -61,7 +61,7 @@ public:
     /// TableCell members
 
     /// <summary>
-    /// Gets or sets child nodes.
+    /// Gets or sets the list of child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;

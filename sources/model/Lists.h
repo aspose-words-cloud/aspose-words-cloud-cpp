@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents an array of document lists.
+/// DTO container with an array of document lists.
 /// </summary>
 class Lists
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// Lists members
 
     /// <summary>
-    /// Gets or sets array of document lists.
+    /// Gets or sets the array of document lists.
     /// </summary>
     std::vector<std::shared_ptr<ListInfo>>& getListInfo();
     bool listInfoIsSet() const;

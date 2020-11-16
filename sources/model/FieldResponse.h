@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/fields/{1}.
+/// The REST response with a field.
 /// </summary>
 class FieldResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// FieldResponse members
 
     /// <summary>
-    /// Gets or sets field information.
+    /// Gets or sets the field.
     /// </summary>
     std::shared_ptr<Field> getField() const;
     bool fieldIsSet() const;

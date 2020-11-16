@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for the request of data about protection.
+/// The REST response with data on document's protection.
 /// </summary>
 class ProtectionDataResponse
     : public WordsResponse
@@ -63,7 +63,7 @@ public:
     /// ProtectionDataResponse members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets the link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setDocumentLink(std::shared_ptr<FileLink> value);
 
     /// <summary>
-    /// Gets or sets protection's data of the document.
+    /// Gets or sets the protection properties of the document.
     /// </summary>
     std::shared_ptr<ProtectionData> getProtectionData() const;
     bool protectionDataIsSet() const;

@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of search results.
+/// The collection of search results.
 /// </summary>
 class SearchResultsCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// SearchResultsCollection members
 
     /// <summary>
-    /// Gets or sets collection of comments.
+    /// Gets or sets the collection of comments.
     /// </summary>
     std::vector<std::shared_ptr<SearchResult>>& getResultsList();
     bool resultsListIsSet() const;

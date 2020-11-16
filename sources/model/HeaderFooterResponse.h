@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters/{0}.
+/// The REST response with a HeaderFooter.
 /// </summary>
 class HeaderFooterResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// HeaderFooterResponse members
 
     /// <summary>
-    /// Gets or sets headerFooter.
+    /// Gets or sets the HeaderFooter.
     /// </summary>
     std::shared_ptr<HeaderFooter> getHeaderFooter() const;
     bool headerFooterIsSet() const;
