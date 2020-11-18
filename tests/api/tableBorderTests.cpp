@@ -167,7 +167,7 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
     );
 
     auto requestBorderPropertiesColor = std::make_shared< XmlColor >();
-    requestBorderPropertiesColor->setAlpha(2);
+    requestBorderPropertiesColor->setWeb(STCONVERT("#AABBCC"));
 
     auto requestBorderProperties = std::make_shared< Border >();
     requestBorderProperties->setBorderType(STCONVERT("Left"));
@@ -195,7 +195,7 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getBorder()));
    ASSERT_TRUE(IsNotNull(actual.body->getBorder()->getColor()));
-   ASSERT_EQ(STCONVERT("#000002"), actual.body->getBorder()->getColor()->getWeb());
+   ASSERT_EQ(STCONVERT("#AABBCC"), actual.body->getBorder()->getColor()->getWeb());
    ASSERT_EQ(6.0, actual.body->getBorder()->getDistanceFromText());
    ASSERT_EQ(2.0, actual.body->getBorder()->getLineWidth());
    ASSERT_TRUE(actual.body->getBorder()->isShadow());
