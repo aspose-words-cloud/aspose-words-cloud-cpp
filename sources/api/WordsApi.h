@@ -567,8 +567,8 @@ public:
     /// <summary>
     /// Copy file.
     /// </summary>
+    /// <param name="srcPath">Source file path e.g. '/folder/file.ext'.</param>
     /// <param name="destPath">Destination file path.</param>
-    /// <param name="srcPath">Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'.</param>
     /// <param name="srcStorageName">Source storage name. (optional)</param>
     /// <param name="destStorageName">Destination storage name. (optional)</param>
     /// <param name="versionId">File version ID to copy. (optional)</param>
@@ -579,8 +579,8 @@ public:
     /// <summary>
     /// Copy folder.
     /// </summary>
+    /// <param name="srcPath">Source folder path e.g. '/src'.</param>
     /// <param name="destPath">Destination folder path e.g. '/dst'.</param>
-    /// <param name="srcPath">Source folder path e.g. /Folder1.</param>
     /// <param name="srcStorageName">Source storage name. (optional)</param>
     /// <param name="destStorageName">Destination storage name. (optional)</param>
     pplx::task<std::shared_ptr<web::http::http_response>> copyFolder(
@@ -616,7 +616,7 @@ public:
     /// <summary>
     /// Create the folder.
     /// </summary>
-    /// <param name="path">Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively.</param>
+    /// <param name="path">Folder path to create e.g. 'folder_1/folder_2/'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     pplx::task<std::shared_ptr<web::http::http_response>> createFolder(
     	std::shared_ptr<CreateFolderRequest> request
@@ -772,7 +772,7 @@ public:
     /// <summary>
     /// Delete file.
     /// </summary>
-    /// <param name="path">Path of the file including file name and extension e.g. /Folder1/file.ext.</param>
+    /// <param name="path">File path e.g. '/folder/file.ext'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     /// <param name="versionId">File version ID to delete. (optional)</param>
     pplx::task<std::shared_ptr<web::http::http_response>> deleteFile(
@@ -782,7 +782,7 @@ public:
     /// <summary>
     /// Delete folder.
     /// </summary>
-    /// <param name="path">Folder path e.g. /Folder1s.</param>
+    /// <param name="path">Folder path e.g. '/folder'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     /// <param name="recursive">Enable to delete folders, subfolders and files. (optional)</param>
     pplx::task<std::shared_ptr<web::http::http_response>> deleteFolder(
@@ -1041,7 +1041,7 @@ public:
     /// <summary>
     /// Download file.
     /// </summary>
-    /// <param name="path">Path of the file including the file name and extension e.g. /folder1/file.ext.</param>
+    /// <param name="path">File path e.g. '/folder/file.ext'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     /// <param name="versionId">File version ID to download. (optional)</param>
     pplx::task<HttpContent> downloadFile(
@@ -1374,7 +1374,7 @@ public:
     /// <summary>
     /// Get all files and folders within a folder.
     /// </summary>
-    /// <param name="path">Folder path e.g. /Folder1.</param>
+    /// <param name="path">Folder path e.g. '/folder'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     pplx::task<AsposeResponse<FilesList>> getFilesList(
     	std::shared_ptr<GetFilesListRequest> request
@@ -2127,8 +2127,8 @@ public:
     /// <summary>
     /// Move file.
     /// </summary>
+    /// <param name="srcPath">Source file path e.g. '/src.ext'.</param>
     /// <param name="destPath">Destination file path e.g. '/dest.ext'.</param>
-    /// <param name="srcPath">Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'.</param>
     /// <param name="srcStorageName">Source storage name. (optional)</param>
     /// <param name="destStorageName">Destination storage name. (optional)</param>
     /// <param name="versionId">File version ID to move. (optional)</param>
@@ -2139,8 +2139,8 @@ public:
     /// <summary>
     /// Move folder.
     /// </summary>
+    /// <param name="srcPath">Folder path to move e.g. '/folder'.</param>
     /// <param name="destPath">Destination folder path to move to e.g '/dst'.</param>
-    /// <param name="srcPath">Source folder path e.g. /Folder1.</param>
     /// <param name="srcStorageName">Source storage name. (optional)</param>
     /// <param name="destStorageName">Destination storage name. (optional)</param>
     pplx::task<std::shared_ptr<web::http::http_response>> moveFolder(

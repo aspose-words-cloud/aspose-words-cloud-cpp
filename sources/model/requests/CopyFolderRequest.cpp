@@ -30,25 +30,15 @@ namespace cloud {
 namespace api {
 namespace models {
 CopyFolderRequest::CopyFolderRequest(
-    utility::string_t destPath,
     utility::string_t srcPath,
+    utility::string_t destPath,
     boost::optional< utility::string_t > srcStorageName,
     boost::optional< utility::string_t > destStorageName
-) : m_DestPath(std::move(destPath)),
-m_SrcPath(std::move(srcPath)),
+) : m_SrcPath(std::move(srcPath)),
+m_DestPath(std::move(destPath)),
 m_SrcStorageName(std::move(srcStorageName)),
 m_DestStorageName(std::move(destStorageName))
 {
-}
-
-utility::string_t CopyFolderRequest::getDestPath() const
-{
-    return m_DestPath;
-}
-
-void CopyFolderRequest::setDestPath(utility::string_t destPath)
-{
-    m_DestPath = std::move(destPath);
 }
 
 utility::string_t CopyFolderRequest::getSrcPath() const
@@ -59,6 +49,16 @@ utility::string_t CopyFolderRequest::getSrcPath() const
 void CopyFolderRequest::setSrcPath(utility::string_t srcPath)
 {
     m_SrcPath = std::move(srcPath);
+}
+
+utility::string_t CopyFolderRequest::getDestPath() const
+{
+    return m_DestPath;
+}
+
+void CopyFolderRequest::setDestPath(utility::string_t destPath)
+{
+    m_DestPath = std::move(destPath);
 }
 
 boost::optional< utility::string_t > CopyFolderRequest::getSrcStorageName() const

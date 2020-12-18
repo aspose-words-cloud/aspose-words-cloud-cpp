@@ -30,27 +30,17 @@ namespace cloud {
 namespace api {
 namespace models {
 MoveFileRequest::MoveFileRequest(
-    utility::string_t destPath,
     utility::string_t srcPath,
+    utility::string_t destPath,
     boost::optional< utility::string_t > srcStorageName,
     boost::optional< utility::string_t > destStorageName,
     boost::optional< utility::string_t > versionId
-) : m_DestPath(std::move(destPath)),
-m_SrcPath(std::move(srcPath)),
+) : m_SrcPath(std::move(srcPath)),
+m_DestPath(std::move(destPath)),
 m_SrcStorageName(std::move(srcStorageName)),
 m_DestStorageName(std::move(destStorageName)),
 m_VersionId(std::move(versionId))
 {
-}
-
-utility::string_t MoveFileRequest::getDestPath() const
-{
-    return m_DestPath;
-}
-
-void MoveFileRequest::setDestPath(utility::string_t destPath)
-{
-    m_DestPath = std::move(destPath);
 }
 
 utility::string_t MoveFileRequest::getSrcPath() const
@@ -61,6 +51,16 @@ utility::string_t MoveFileRequest::getSrcPath() const
 void MoveFileRequest::setSrcPath(utility::string_t srcPath)
 {
     m_SrcPath = std::move(srcPath);
+}
+
+utility::string_t MoveFileRequest::getDestPath() const
+{
+    return m_DestPath;
+}
+
+void MoveFileRequest::setDestPath(utility::string_t destPath)
+{
+    m_DestPath = std::move(destPath);
 }
 
 boost::optional< utility::string_t > MoveFileRequest::getSrcStorageName() const

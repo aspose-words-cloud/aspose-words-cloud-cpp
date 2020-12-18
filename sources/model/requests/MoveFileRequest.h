@@ -39,18 +39,18 @@ namespace models {
 class MoveFileRequest {
     public: 
  MoveFileRequest(
-            utility::string_t destPath,
             utility::string_t srcPath,
+            utility::string_t destPath,
             boost::optional< utility::string_t > srcStorageName,
             boost::optional< utility::string_t > destStorageName,
             boost::optional< utility::string_t > versionId
         );
 
-        utility::string_t getDestPath() const;
-        void setDestPath(utility::string_t destPath);
-
         utility::string_t getSrcPath() const;
         void setSrcPath(utility::string_t srcPath);
+
+        utility::string_t getDestPath() const;
+        void setDestPath(utility::string_t destPath);
 
         boost::optional< utility::string_t > getSrcStorageName() const;
         void setSrcStorageName(boost::optional< utility::string_t > srcStorageName);
@@ -62,8 +62,8 @@ class MoveFileRequest {
         void setVersionId(boost::optional< utility::string_t > versionId);
 
     private:
-        utility::string_t m_DestPath;
         utility::string_t m_SrcPath;
+        utility::string_t m_DestPath;
         boost::optional< utility::string_t > m_SrcStorageName;
         boost::optional< utility::string_t > m_DestStorageName;
         boost::optional< utility::string_t > m_VersionId;

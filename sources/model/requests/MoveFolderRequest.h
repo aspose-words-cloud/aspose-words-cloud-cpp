@@ -39,17 +39,17 @@ namespace models {
 class MoveFolderRequest {
     public: 
  MoveFolderRequest(
-            utility::string_t destPath,
             utility::string_t srcPath,
+            utility::string_t destPath,
             boost::optional< utility::string_t > srcStorageName,
             boost::optional< utility::string_t > destStorageName
         );
 
-        utility::string_t getDestPath() const;
-        void setDestPath(utility::string_t destPath);
-
         utility::string_t getSrcPath() const;
         void setSrcPath(utility::string_t srcPath);
+
+        utility::string_t getDestPath() const;
+        void setDestPath(utility::string_t destPath);
 
         boost::optional< utility::string_t > getSrcStorageName() const;
         void setSrcStorageName(boost::optional< utility::string_t > srcStorageName);
@@ -58,8 +58,8 @@ class MoveFolderRequest {
         void setDestStorageName(boost::optional< utility::string_t > destStorageName);
 
     private:
-        utility::string_t m_DestPath;
         utility::string_t m_SrcPath;
+        utility::string_t m_DestPath;
         boost::optional< utility::string_t > m_SrcStorageName;
         boost::optional< utility::string_t > m_DestStorageName;
 };
