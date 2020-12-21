@@ -93,8 +93,8 @@ TEST_F(FolderTests, TestCopyFolder) {
     );
 
     std::shared_ptr< CopyFolderRequest > request(new CopyFolderRequest(
-        folderToCopy + STCONVERT("Src"),
         folderToCopy + STCONVERT("Dest"),
+        folderToCopy + STCONVERT("Src"),
         boost::none,
         boost::none
     ));
@@ -112,8 +112,8 @@ TEST_F(FolderTests, TestMoveFolder) {
     );
 
     std::shared_ptr< MoveFolderRequest > request(new MoveFolderRequest(
-        remoteDataFolder + STCONVERT("/TestMoveFolderSrc"),
         baseTestOutPath + STCONVERT("/TestMoveFolderDest_") + create_random_guid(),
+        remoteDataFolder + STCONVERT("/TestMoveFolderSrc"),
         boost::none,
         boost::none
     ));
