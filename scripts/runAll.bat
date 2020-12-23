@@ -1,8 +1,8 @@
 
 
 REM Generate credentials
-echo { "AppKey" : "%1", > aspose-words-cloud-cpp\servercreds.json
-echo  "AppSid" : "%2", >> aspose-words-cloud-cpp\servercreds.json
+echo { "ClientSecret" : "%1", > aspose-words-cloud-cpp\servercreds.json
+echo  "ClientId" : "%2", >> aspose-words-cloud-cpp\servercreds.json
 echo  "BaseUrl" : "%3" >> aspose-words-cloud-cpp\servercreds.json
 echo } >> aspose-words-cloud-cpp\servercreds.json
 
