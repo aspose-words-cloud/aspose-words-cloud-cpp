@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Reference to document.
+/// Reference to a document.
 /// </summary>
 class LinkElement
     : public ModelBase
@@ -61,7 +61,7 @@ public:
     /// LinkElement members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets the link to the document.
     /// </summary>
     std::shared_ptr<WordsApiLink> getLink() const;
     bool linkIsSet() const;

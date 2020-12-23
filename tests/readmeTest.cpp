@@ -52,14 +52,14 @@ TEST_F(ReadmeTest, TestReadmeCode) {
 
 	// get config settings
 	auto tesConfig = get_config();
-	auto yourApiKey = tesConfig->getAppKey();
-	auto yourApiSid = tesConfig->getAppSid();
+	auto yourClientId = tesConfig->getClientId();
+	auto yourClientSecret = tesConfig->getClientSecret();
 	auto baseUrl = tesConfig->getBaseUrl();
 
 	// Start README example
 
 	//  create client configuration
-	auto config = std::make_shared<ApiConfiguration>(yourApiKey, yourApiSid);
+	auto config = std::make_shared<ApiConfiguration>(yourClientId, yourClientSecret);
 	// optional step, default value is https://api.aspose.cloud
 	config->setBaseUrl(baseUrl);
 

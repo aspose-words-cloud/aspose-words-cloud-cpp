@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/comments.
+/// The REST response with a collection of comments.
 /// </summary>
 class CommentsResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// CommentsResponse members
 
     /// <summary>
-    /// Gets or sets collection of comments.
+    /// Gets or sets the collection of comments.
     /// </summary>
     std::shared_ptr<CommentsCollection> getComments() const;
     bool commentsIsSet() const;

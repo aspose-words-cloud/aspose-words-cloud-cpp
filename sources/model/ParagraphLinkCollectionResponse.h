@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.
+/// The REST response with a collection of paragraphs.
 /// </summary>
 class ParagraphLinkCollectionResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// ParagraphLinkCollectionResponse members
 
     /// <summary>
-    /// Gets or sets collection of paragraphs.
+    /// Gets or sets the collection of paragraphs.
     /// </summary>
     std::shared_ptr<ParagraphLinkCollection> getParagraphs() const;
     bool paragraphsIsSet() const;

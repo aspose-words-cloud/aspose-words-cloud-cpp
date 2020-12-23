@@ -60,7 +60,7 @@ public:
     /// SaveOptionsData members
 
     /// <summary>
-    /// Gets or sets a value determining how 3D effects are rendered.
+    /// Gets or sets the value determining how 3D effects are rendered.
     /// </summary>
     utility::string_t getDml3DEffectsRenderingMode() const;
     bool dml3DEffectsRenderingModeIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setDml3DEffectsRenderingMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value determining how DrawingML effects are rendered.
+    /// Gets or sets the value determining how DrawingML effects are rendered.
     /// { Simplified | None | Fine }.
     /// </summary>
     utility::string_t getDmlEffectsRenderingMode() const;
@@ -77,8 +77,7 @@ public:
     void setDmlEffectsRenderingMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value determining how DrawingML shapes are rendered.
-    /// { Fallback | DrawingML }.
+    /// Gets or sets the option that controls how DrawingML shapes are rendered.
     /// </summary>
     utility::string_t getDmlRenderingMode() const;
     bool dmlRenderingModeIsSet() const;
@@ -86,7 +85,7 @@ public:
     void setDmlRenderingMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets name of destination file.
+    /// Gets or sets the name of destination file.
     /// </summary>
     utility::string_t getFileName() const;
     bool fileNameIsSet() const;
@@ -94,7 +93,7 @@ public:
     void setFileName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets format of save.
+    /// Gets or sets the format of save.
     /// </summary>
     utility::string_t getSaveFormat() const;
     bool saveFormatIsSet() const;
@@ -102,8 +101,7 @@ public:
     void setSaveFormat(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format.
-    /// Default value for this property is. true.
+    /// Gets or sets a value indicating whether fields should be updated before saving the document to a fixed page format. The default value is true.
     /// </summary>
     bool isUpdateFields() const;
     bool updateFieldsIsSet() const;
@@ -111,8 +109,7 @@ public:
     void setUpdateFields(bool value);
 
     /// <summary>
-    /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted
-    /// property is updated before saving.
+    /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
     /// </summary>
     bool isUpdateLastPrintedProperty() const;
     bool updateLastPrintedPropertyIsSet() const;
@@ -120,7 +117,7 @@ public:
     void setUpdateLastPrintedProperty(bool value);
 
     /// <summary>
-    /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
+    /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
     /// </summary>
     bool isUpdateLastSavedTimeProperty() const;
     bool updateLastSavedTimePropertyIsSet() const;
@@ -128,7 +125,7 @@ public:
     void setUpdateLastSavedTimeProperty(bool value);
 
     /// <summary>
-    /// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
+    /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
     /// </summary>
     bool isUpdateSdtContent() const;
     bool updateSdtContentIsSet() const;
@@ -136,8 +133,8 @@ public:
     void setUpdateSdtContent(bool value);
 
     /// <summary>
-    /// Gets or sets controls zip output or not.
-    /// Default value is false.
+    /// Gets or sets a value indicating whether to zip output or not.
+    /// The default value is false.
     /// </summary>
     bool isZipOutput() const;
     bool zipOutputIsSet() const;

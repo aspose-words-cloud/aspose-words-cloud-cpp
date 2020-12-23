@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:  POST /{name}/split .
+/// The REST response with a result of document splitting.
 /// </summary>
 class SplitDocumentResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// SplitDocumentResponse members
 
     /// <summary>
-    /// Gets or sets resylt of splitting document.
+    /// Gets or sets the result of document splitting.
     /// </summary>
     std::shared_ptr<SplitDocumentResult> getSplitResult() const;
     bool splitResultIsSet() const;

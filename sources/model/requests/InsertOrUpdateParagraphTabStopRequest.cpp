@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 InsertOrUpdateParagraphTabStopRequest::InsertOrUpdateParagraphTabStopRequest(
     utility::string_t name,
-    std::shared_ptr<TabStopInsert> dto,
     int32_t index,
+    std::shared_ptr<TabStopInsert> tabStopInsertDto,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -40,8 +40,8 @@ InsertOrUpdateParagraphTabStopRequest::InsertOrUpdateParagraphTabStopRequest(
     boost::optional< utility::string_t > password,
     boost::optional< utility::string_t > destFileName
 ) : m_Name(std::move(name)),
-m_Dto(std::move(dto)),
 m_Index(std::move(index)),
+m_TabStopInsertDto(std::move(tabStopInsertDto)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -61,16 +61,6 @@ void InsertOrUpdateParagraphTabStopRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<TabStopInsert> InsertOrUpdateParagraphTabStopRequest::getDto() const
-{
-    return m_Dto;
-}
-
-void InsertOrUpdateParagraphTabStopRequest::setDto(std::shared_ptr<TabStopInsert> dto)
-{
-    m_Dto = std::move(dto);
-}
-
 int32_t InsertOrUpdateParagraphTabStopRequest::getIndex() const
 {
     return m_Index;
@@ -79,6 +69,16 @@ int32_t InsertOrUpdateParagraphTabStopRequest::getIndex() const
 void InsertOrUpdateParagraphTabStopRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
+}
+
+std::shared_ptr<TabStopInsert> InsertOrUpdateParagraphTabStopRequest::getTabStopInsertDto() const
+{
+    return m_TabStopInsertDto;
+}
+
+void InsertOrUpdateParagraphTabStopRequest::setTabStopInsertDto(std::shared_ptr<TabStopInsert> tabStopInsertDto)
+{
+    m_TabStopInsertDto = std::move(tabStopInsertDto);
 }
 
 boost::optional< utility::string_t > InsertOrUpdateParagraphTabStopRequest::getNodePath() const

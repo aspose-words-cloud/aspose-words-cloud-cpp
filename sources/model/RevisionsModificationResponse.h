@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
+/// The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 /// </summary>
 class RevisionsModificationResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// RevisionsModificationResponse members
 
     /// <summary>
-    /// Gets or sets result of the modification operations for the revisions collection.
+    /// Gets or sets the result of the modification operations for the revisions collection.
     /// </summary>
     std::shared_ptr<ModificationOperationResult> getResult() const;
     bool resultIsSet() const;

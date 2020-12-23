@@ -41,7 +41,12 @@ class AppendDocumentOnlineRequest {
     public: 
  AppendDocumentOnlineRequest(
             std::shared_ptr<HttpContent> document,
-            std::shared_ptr<DocumentEntryList> documentList
+            std::shared_ptr<DocumentEntryList> documentList,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
+            boost::optional< utility::string_t > destFileName,
+            boost::optional< utility::string_t > revisionAuthor,
+            boost::optional< utility::string_t > revisionDateTime
         );
 
         std::shared_ptr<HttpContent> getDocument() const;
@@ -50,9 +55,29 @@ class AppendDocumentOnlineRequest {
         std::shared_ptr<DocumentEntryList> getDocumentList() const;
         void setDocumentList(std::shared_ptr<DocumentEntryList> documentList);
 
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
+
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
+
+        boost::optional< utility::string_t > getDestFileName() const;
+        void setDestFileName(boost::optional< utility::string_t > destFileName);
+
+        boost::optional< utility::string_t > getRevisionAuthor() const;
+        void setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor);
+
+        boost::optional< utility::string_t > getRevisionDateTime() const;
+        void setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime);
+
     private:
         std::shared_ptr<HttpContent> m_Document;
         std::shared_ptr<DocumentEntryList> m_DocumentList;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
+        boost::optional< utility::string_t > m_DestFileName;
+        boost::optional< utility::string_t > m_RevisionAuthor;
+        boost::optional< utility::string_t > m_RevisionDateTime;
 };
 
 }

@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents a single document list.
+/// DTO container with a single document list.
 /// </summary>
 class ListInfo
     : public LinkElement
@@ -63,7 +63,7 @@ public:
     /// ListInfo members
 
     /// <summary>
-    /// Gets or sets a value indicating whether returns true if this list is a definition of a list style.
+    /// Gets or sets a value indicating whether this list is a definition of a list style.
     /// </summary>
     bool isIsListStyleDefinition() const;
     bool isListStyleDefinitionIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setIsListStyleDefinition(bool value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether returns true if this list is a reference to a list style.
+    /// Gets or sets a value indicating whether this list is a reference to a list style.
     /// </summary>
     bool isIsListStyleReference() const;
     bool isListStyleReferenceIsSet() const;
@@ -79,7 +79,7 @@ public:
     void setIsListStyleReference(bool value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether returns true when the list contains 9 levels; false when 1 level.
+    /// Gets or sets a value indicating whether the list contains 9 levels; false when 1 level.
     /// </summary>
     bool isIsMultiLevel() const;
     bool isMultiLevelIsSet() const;
@@ -87,7 +87,7 @@ public:
     void setIsMultiLevel(bool value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
+    /// Gets or sets a value indicating whether list should be restarted at each section. The default value is false.
     /// </summary>
     bool isIsRestartAtEachSection() const;
     bool isRestartAtEachSectionIsSet() const;

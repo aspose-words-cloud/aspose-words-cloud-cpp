@@ -57,6 +57,26 @@ TEST_F(TableBorderTests, TestGetBorders) {
 
    auto actual = get_api()->getBorders(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getBorders()));
+   ASSERT_TRUE(IsNotNull(actual.body->getBorders()->getList()));
+   ASSERT_EQ(6, actual.body->getBorders()->getList().size());
+   ASSERT_TRUE(IsNotNull(actual.body->getBorders()->getList()[0]->getColor()));
+   ASSERT_EQ(STCONVERT("#000000"), actual.body->getBorders()->getList()[0]->getColor()->getWeb());
+}
+
+/// <summary>
+/// Test for getting borders online.
+/// </summary>
+TEST_F(TableBorderTests, TestGetBordersOnline) {
+    std::shared_ptr< GetBordersOnlineRequest > request(new GetBordersOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("tables/1/rows/0/cells/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getBordersOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -81,6 +101,25 @@ TEST_F(TableBorderTests, TestGetBorder) {
     ));
 
    auto actual = get_api()->getBorder(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getBorder()));
+   ASSERT_TRUE(IsNotNull(actual.body->getBorder()->getColor()));
+   ASSERT_EQ(STCONVERT("#000000"), actual.body->getBorder()->getColor()->getWeb());
+}
+
+/// <summary>
+/// Test for getting border online.
+/// </summary>
+TEST_F(TableBorderTests, TestGetBorderOnline) {
+    std::shared_ptr< GetBorderOnlineRequest > request(new GetBorderOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("left"),
+        STCONVERT("tables/1/rows/0/cells/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getBorderOnline(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -112,6 +151,24 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
 }
 
 /// <summary>
+/// Test for deleting borders online.
+/// </summary>
+TEST_F(TableBorderTests, TestDeleteBordersOnline) {
+    std::shared_ptr< DeleteBordersOnlineRequest > request(new DeleteBordersOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("tables/1/rows/0/cells/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->deleteBordersOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for deleting border.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBorder) {
@@ -140,6 +197,25 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
 }
 
 /// <summary>
+/// Test for deleting border online.
+/// </summary>
+TEST_F(TableBorderTests, TestDeleteBorderOnline) {
+    std::shared_ptr< DeleteBorderOnlineRequest > request(new DeleteBorderOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("left"),
+        STCONVERT("tables/1/rows/0/cells/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->deleteBorderOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for updating border.
 /// </summary>
 TEST_F(TableBorderTests, TestUpdateBorder) {
@@ -151,20 +227,20 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
     );
 
     auto requestBorderPropertiesColor = std::make_shared< XmlColor >();
-    requestBorderPropertiesColor->setAlpha(2);
+    requestBorderPropertiesColor->setWeb(STCONVERT("#AABBCC"));
 
     auto requestBorderProperties = std::make_shared< Border >();
     requestBorderProperties->setBorderType(STCONVERT("Left"));
     requestBorderProperties->setColor(requestBorderPropertiesColor);
-    requestBorderProperties->setDistanceFromText(6);
+    requestBorderProperties->setDistanceFromText(6.0);
     requestBorderProperties->setLineStyle(STCONVERT("DashDotStroker"));
-    requestBorderProperties->setLineWidth(2);
+    requestBorderProperties->setLineWidth(2.0);
     requestBorderProperties->setShadow(true);
 
     std::shared_ptr< UpdateBorderRequest > request(new UpdateBorderRequest(
         remoteFileName,
-        requestBorderProperties,
         STCONVERT("left"),
+        requestBorderProperties,
         STCONVERT("tables/1/rows/0/cells/0"),
         remoteDataFolder,
         boost::none,
@@ -177,4 +253,41 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
 
    auto actual = get_api()->updateBorder(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getBorder()));
+   ASSERT_TRUE(IsNotNull(actual.body->getBorder()->getColor()));
+   ASSERT_EQ(STCONVERT("#AABBCC"), actual.body->getBorder()->getColor()->getWeb());
+   ASSERT_EQ(6.0, actual.body->getBorder()->getDistanceFromText());
+   ASSERT_EQ(2.0, actual.body->getBorder()->getLineWidth());
+   ASSERT_TRUE(actual.body->getBorder()->isShadow());
+}
+
+/// <summary>
+/// Test for updating border online.
+/// </summary>
+TEST_F(TableBorderTests, TestUpdateBorderOnline) {
+    auto requestBorderPropertiesColor = std::make_shared< XmlColor >();
+    requestBorderPropertiesColor->setAlpha(2);
+
+    auto requestBorderProperties = std::make_shared< Border >();
+    requestBorderProperties->setBorderType(STCONVERT("Left"));
+    requestBorderProperties->setColor(requestBorderPropertiesColor);
+    requestBorderProperties->setDistanceFromText(6);
+    requestBorderProperties->setLineStyle(STCONVERT("DashDotStroker"));
+    requestBorderProperties->setLineWidth(2);
+    requestBorderProperties->setShadow(true);
+
+    std::shared_ptr< UpdateBorderOnlineRequest > request(new UpdateBorderOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestBorderProperties,
+        STCONVERT("left"),
+        STCONVERT("tables/1/rows/0/cells/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateBorderOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }

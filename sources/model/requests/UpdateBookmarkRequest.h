@@ -41,8 +41,8 @@ class UpdateBookmarkRequest {
     public: 
  UpdateBookmarkRequest(
             utility::string_t name,
-            std::shared_ptr<BookmarkData> bookmarkData,
             utility::string_t bookmarkName,
+            std::shared_ptr<BookmarkData> bookmarkData,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -55,11 +55,11 @@ class UpdateBookmarkRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<BookmarkData> getBookmarkData() const;
-        void setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData);
-
         utility::string_t getBookmarkName() const;
         void setBookmarkName(utility::string_t bookmarkName);
+
+        std::shared_ptr<BookmarkData> getBookmarkData() const;
+        void setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -84,8 +84,8 @@ class UpdateBookmarkRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<BookmarkData> m_BookmarkData;
         utility::string_t m_BookmarkName;
+        std::shared_ptr<BookmarkData> m_BookmarkData;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

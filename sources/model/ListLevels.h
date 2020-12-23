@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents a single document list.
+/// DTO container with a single document list.
 /// </summary>
 class ListLevels
     : public LinkElement

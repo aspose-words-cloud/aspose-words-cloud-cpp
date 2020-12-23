@@ -41,8 +41,8 @@ class InsertOrUpdateParagraphTabStopRequest {
     public: 
  InsertOrUpdateParagraphTabStopRequest(
             utility::string_t name,
-            std::shared_ptr<TabStopInsert> dto,
             int32_t index,
+            std::shared_ptr<TabStopInsert> tabStopInsertDto,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -54,11 +54,11 @@ class InsertOrUpdateParagraphTabStopRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<TabStopInsert> getDto() const;
-        void setDto(std::shared_ptr<TabStopInsert> dto);
-
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        std::shared_ptr<TabStopInsert> getTabStopInsertDto() const;
+        void setTabStopInsertDto(std::shared_ptr<TabStopInsert> tabStopInsertDto);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -80,8 +80,8 @@ class InsertOrUpdateParagraphTabStopRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<TabStopInsert> m_Dto;
         int32_t m_Index;
+        std::shared_ptr<TabStopInsert> m_TabStopInsertDto;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

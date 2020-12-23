@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of OfficeMath objects.
+/// DTO container with a collection of OfficeMath objects.
 /// </summary>
 class OfficeMathObjectsCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// OfficeMathObjectsCollection members
 
     /// <summary>
-    /// Gets or sets collection of OfficeMath objects.
+    /// Gets or sets the collection of OfficeMath objects.
     /// </summary>
     std::vector<std::shared_ptr<OfficeMathObject>>& getList();
     bool listIsSet() const;

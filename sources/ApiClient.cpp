@@ -44,11 +44,11 @@ pplx::task<void> ApiClient::requestToken()
     if (m_Configuration == nullptr)
             throw "Configuration must be set before calling an api methods";
 
-    if(m_Configuration->getAppSid().empty())
-        throw "Configuration parameter AppSid must be set before calling an api methods";
+    if(m_Configuration->getClientId().empty())
+        throw "Configuration parameter ClientId must be set before calling an api methods";
 
-    if (m_Configuration->getAppKey().empty())
-        throw "Configuration parameter AppKey must be set before calling an api methods";
+    if (m_Configuration->getClientSecret().empty())
+        throw "Configuration parameter ClientSecret must be set before calling an api methods";
 
     if (m_Configuration->getBaseUrl().empty())
         throw "Configuration parameter BaseUrl must be set before calling an api methods";
@@ -57,8 +57,8 @@ pplx::task<void> ApiClient::requestToken()
 
     std::vector<FormParamContainer> formParams = {
         FormParamContainer(_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")),
-        FormParamContainer(_XPLATSTR("client_id"), m_Configuration->getAppSid()),
-        FormParamContainer(_XPLATSTR("client_secret"), m_Configuration->getAppKey())
+        FormParamContainer(_XPLATSTR("client_id"), m_Configuration->getClientId()),
+        FormParamContainer(_XPLATSTR("client_secret"), m_Configuration->getClientSecret())
     };
 
     return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams, nullptr, headerParams, formParams, 
@@ -101,10 +101,17 @@ utility::string_t ApiClient::parameterToString(utility::string_t value)
 {
     return value;
 }
+
+utility::string_t ApiClient::parameterToString(bool value)
+{
+    return value ? STCONVERT("true") : STCONVERT("false");
+}
+
 utility::string_t ApiClient::parameterToString(int64_t value)
 {
     return utility::conversions::details::to_string_t(value);
 }
+
 utility::string_t ApiClient::parameterToString(int32_t value)
 {
     return utility::conversions::details::to_string_t(value);

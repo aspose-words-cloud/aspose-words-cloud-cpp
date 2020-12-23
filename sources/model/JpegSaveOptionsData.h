@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for jpeg save options.
+/// Container class for jpeg save options.
 /// </summary>
 class JpegSaveOptionsData
     : public ImageSaveOptionsData

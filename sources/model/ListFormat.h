@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph list format element.
+/// DTO container with a paragraph list format element.
 /// </summary>
 class ListFormat
     : public LinkElement

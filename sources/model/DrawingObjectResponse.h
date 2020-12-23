@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for "drawingObjects/n" resource.
+/// The REST response with a DrawingObject.
 /// </summary>
 class DrawingObjectResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// DrawingObjectResponse members
 
     /// <summary>
-    /// Gets or sets drawing object.
+    /// Gets or sets the DrawingObject.
     /// </summary>
     std::shared_ptr<DrawingObject> getDrawingObject() const;
     bool drawingObjectIsSet() const;

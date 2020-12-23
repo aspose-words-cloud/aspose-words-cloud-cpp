@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for details of encryption.
+/// Container class for details of encryption.
 /// </summary>
 class PdfEncryptionDetailsData
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// PdfEncryptionDetailsData members
 
     /// <summary>
-    /// Gets or sets specifies the encryption algorithm to use.
+    /// Gets or sets the encryption algorithm to use.
     /// </summary>
     utility::string_t getEncryptionAlgorithm() const;
     bool encryptionAlgorithmIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setEncryptionAlgorithm(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies the owner password for the encrypted PDF document.
+    /// Gets or sets the owner password for the encrypted PDF document.
     /// </summary>
     utility::string_t getOwnerPassword() const;
     bool ownerPasswordIsSet() const;
@@ -76,7 +76,7 @@ public:
     void setOwnerPassword(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies the operations that are allowed to a user on an encrypted PDF document.
+    /// Gets or sets the operations that are allowed to a user on the encrypted PDF document.
     /// </summary>
     utility::string_t getPermissions() const;
     bool permissionsIsSet() const;
@@ -84,7 +84,7 @@ public:
     void setPermissions(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies the user password required for opening the encrypted PDF document.
+    /// Gets or sets the user password required for opening the encrypted PDF document.
     /// </summary>
     utility::string_t getUserPassword() const;
     bool userPasswordIsSet() const;

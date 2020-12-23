@@ -61,7 +61,7 @@ public:
     /// FootnoteBase members
 
     /// <summary>
-    /// Gets or sets returns a value that specifies whether this is a footnote or endnote.
+    /// Gets or sets the option, that specifies whether this is a footnote or endnote.
     /// </summary>
     utility::string_t getFootnoteType() const;
     bool footnoteTypeIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setFootnoteType(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets link to comment range start node.
+    /// Gets or sets the link to comment range start node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setPosition(std::shared_ptr<DocumentPosition> value);
 
     /// <summary>
-    /// Gets or sets /sets custom reference mark to be used for this footnote.
+    /// Gets or sets the custom reference mark to be used for this footnote.
     /// Default value is Empty, meaning auto-numbered footnotes are used.
     /// </summary>
     utility::string_t getReferenceMark() const;
@@ -86,7 +86,7 @@ public:
     void setReferenceMark(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets this is a convenience property that allows to easily get or set text of the footnote.
+    /// Gets or sets text of the footnote.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

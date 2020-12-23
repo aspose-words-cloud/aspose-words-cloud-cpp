@@ -41,8 +41,8 @@ class InsertTableRowRequest {
     public: 
  InsertTableRowRequest(
             utility::string_t name,
-            std::shared_ptr<TableRowInsert> row,
             utility::string_t tablePath,
+            std::shared_ptr<TableRowInsert> row,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -55,11 +55,11 @@ class InsertTableRowRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<TableRowInsert> getRow() const;
-        void setRow(std::shared_ptr<TableRowInsert> row);
-
         utility::string_t getTablePath() const;
         void setTablePath(utility::string_t tablePath);
+
+        std::shared_ptr<TableRowInsert> getRow() const;
+        void setRow(std::shared_ptr<TableRowInsert> row);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -84,8 +84,8 @@ class InsertTableRowRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<TableRowInsert> m_Row;
         utility::string_t m_TablePath;
+        std::shared_ptr<TableRowInsert> m_Row;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

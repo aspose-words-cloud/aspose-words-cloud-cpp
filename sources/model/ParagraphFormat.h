@@ -61,7 +61,7 @@ public:
     /// ParagraphFormat members
 
     /// <summary>
-    /// Gets or sets True when the paragraph style is one of the built-in Heading styles.
+    /// Gets or sets a value indicating whether the paragraph style is one of the built-in Heading styles.
     /// </summary>
     bool isIsHeading() const;
     bool isHeadingIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setIsHeading(bool value);
 
     /// <summary>
-    /// Gets or sets True when the paragraph is an item in a bulleted or numbered list.
+    /// Gets or sets a value indicating whether the paragraph is an item in a bulleted or numbered list.
     /// </summary>
     bool isIsListItem() const;
     bool isListItemIsSet() const;

@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Section element.
+/// DTO container with a section element.
 /// </summary>
 class HeaderFooter
     : public HeaderFooterLink
@@ -63,7 +63,7 @@ public:
     /// HeaderFooter members
 
     /// <summary>
-    /// Gets or sets child nodes.
+    /// Gets or sets the child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
 
     /// <summary>
-    /// Gets or sets link to DrawingObjects resource.
+    /// Gets or sets the link to DrawingObjects resource.
     /// </summary>
     std::shared_ptr<LinkElement> getDrawingObjects() const;
     bool drawingObjectsIsSet() const;
@@ -79,7 +79,7 @@ public:
     void setDrawingObjects(std::shared_ptr<LinkElement> value);
 
     /// <summary>
-    /// Gets or sets link to Paragraphs resource.
+    /// Gets or sets the link to Paragraphs resource.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;

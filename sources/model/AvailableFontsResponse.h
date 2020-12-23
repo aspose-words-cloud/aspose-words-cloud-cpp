@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// The list of fonts, available for document processing.
+/// The REST response with data on system, additional and custom fonts, available for document processing.
 /// </summary>
 class AvailableFontsResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// AvailableFontsResponse members
 
     /// <summary>
-    /// Gets or sets the list of addititional fonts, provided by aspose team.
+    /// Gets or sets the list of additional fonts, provided by Aspose team.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getAdditionalFonts();
     bool additionalFontsIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setAdditionalFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
 
     /// <summary>
-    /// Gets or sets custom user fonts (from user file storage). To use them, you should specify "fontsLocation" parameter in any request.
+    /// Gets or sets the list of custom user fonts from user cloud storage. To use them, you should specify "fontsLocation" parameter in any request.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getCustomFonts();
     bool customFontsIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setCustomFonts(std::vector<std::shared_ptr<FontInfo>> const& value);
 
     /// <summary>
-    /// Gets or sets the list of system fonts, availiable on the server.
+    /// Gets or sets the list of system fonts, available on the server.
     /// </summary>
     std::vector<std::shared_ptr<FontInfo>>& getSystemFonts();
     bool systemFontsIsSet() const;

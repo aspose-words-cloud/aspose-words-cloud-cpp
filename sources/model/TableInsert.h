@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Table element.
+/// DTO container with a table element.
 /// </summary>
 class TableInsert
     : public ModelBase
@@ -61,7 +61,7 @@ public:
     /// TableInsert members
 
     /// <summary>
-    /// Gets or sets count of columns. Default is 2.
+    /// Gets or sets the number of columns. The default value is 2.
     /// </summary>
     int32_t getColumnsCount() const;
     bool columnsCountIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setColumnsCount(int32_t value);
 
     /// <summary>
-    /// Gets or sets table will be inserted before specified position.
+    /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
     /// </summary>
     std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setPosition(std::shared_ptr<DocumentPosition> value);
 
     /// <summary>
-    /// Gets or sets count of rows. Default is 2.
+    /// Gets or sets the number of rows. The default value is 2.
     /// </summary>
     int32_t getRowsCount() const;
     bool rowsCountIsSet() const;

@@ -61,7 +61,7 @@ public:
     /// PageStatData members
 
     /// <summary>
-    /// Gets or sets detailed statistics of footnotes.
+    /// Gets or sets the detailed statistics on the footnotes.
     /// </summary>
     std::shared_ptr<FootnotesStatData> getFootnotesStatData() const;
     bool footnotesStatDataIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setFootnotesStatData(std::shared_ptr<FootnotesStatData> value);
 
     /// <summary>
-    /// Gets or sets page number.
+    /// Gets or sets the page number.
     /// </summary>
     int32_t getPageNumber() const;
     bool pageNumberIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setPageNumber(int32_t value);
 
     /// <summary>
-    /// Gets or sets total count of paragraphs in the page.
+    /// Gets or sets the total count of paragraphs in the page.
     /// </summary>
     int32_t getParagraphCount() const;
     bool paragraphCountIsSet() const;
@@ -85,7 +85,7 @@ public:
     void setParagraphCount(int32_t value);
 
     /// <summary>
-    /// Gets or sets total count of words in the page.
+    /// Gets or sets the total count of words in the page.
     /// </summary>
     int32_t getWordCount() const;
     bool wordCountIsSet() const;

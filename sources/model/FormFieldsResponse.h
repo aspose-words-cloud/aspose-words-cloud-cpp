@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/formfields.
+/// The REST response with a collection of form fields.
 /// </summary>
 class FormFieldsResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// FormFieldsResponse members
 
     /// <summary>
-    /// Gets or sets collection of form fields.
+    /// Gets or sets the collection of form fields.
     /// </summary>
     std::shared_ptr<FormFieldCollection> getFormFields() const;
     bool formFieldsIsSet() const;

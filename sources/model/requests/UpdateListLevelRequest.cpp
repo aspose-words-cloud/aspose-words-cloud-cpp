@@ -31,9 +31,9 @@ namespace api {
 namespace models {
 UpdateListLevelRequest::UpdateListLevelRequest(
     utility::string_t name,
-    std::shared_ptr<ListLevelUpdate> listUpdate,
     int32_t listId,
     int32_t listLevel,
+    std::shared_ptr<ListLevelUpdate> listUpdate,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -42,9 +42,9 @@ UpdateListLevelRequest::UpdateListLevelRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_ListUpdate(std::move(listUpdate)),
 m_ListId(std::move(listId)),
 m_ListLevel(std::move(listLevel)),
+m_ListUpdate(std::move(listUpdate)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -65,16 +65,6 @@ void UpdateListLevelRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<ListLevelUpdate> UpdateListLevelRequest::getListUpdate() const
-{
-    return m_ListUpdate;
-}
-
-void UpdateListLevelRequest::setListUpdate(std::shared_ptr<ListLevelUpdate> listUpdate)
-{
-    m_ListUpdate = std::move(listUpdate);
-}
-
 int32_t UpdateListLevelRequest::getListId() const
 {
     return m_ListId;
@@ -93,6 +83,16 @@ int32_t UpdateListLevelRequest::getListLevel() const
 void UpdateListLevelRequest::setListLevel(int32_t listLevel)
 {
     m_ListLevel = std::move(listLevel);
+}
+
+std::shared_ptr<ListLevelUpdate> UpdateListLevelRequest::getListUpdate() const
+{
+    return m_ListUpdate;
+}
+
+void UpdateListLevelRequest::setListUpdate(std::shared_ptr<ListLevelUpdate> listUpdate)
+{
+    m_ListUpdate = std::move(listUpdate);
 }
 
 boost::optional< utility::string_t > UpdateListLevelRequest::getFolder() const

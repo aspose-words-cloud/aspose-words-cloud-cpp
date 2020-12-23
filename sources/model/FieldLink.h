@@ -61,7 +61,7 @@ public:
     /// FieldLink members
 
     /// <summary>
-    /// Gets or sets field code.
+    /// Gets or sets the field code.
     /// </summary>
     utility::string_t getFieldCode() const;
     bool fieldCodeIsSet() const;

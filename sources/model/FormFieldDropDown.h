@@ -61,7 +61,7 @@ public:
     /// FormFieldDropDown members
 
     /// <summary>
-    /// Gets or sets provides access to the items of a dropdown form field.
+    /// Gets or sets the items array of a dropdown form field.
     /// </summary>
     std::vector<utility::string_t>& getDropDownItems();
     bool dropDownItemsIsSet() const;

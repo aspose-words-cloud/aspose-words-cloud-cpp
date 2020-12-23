@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents drawing objects collection DTO.
+/// DTO container with a collection of DrawingObjects links.
 /// </summary>
 class DrawingObjectCollection
     : public LinkElement
@@ -61,7 +61,7 @@ public:
     /// DrawingObjectCollection members
 
     /// <summary>
-    /// Gets or sets collection of DrawingObjects links.
+    /// Gets or sets the collection of DrawingObjects links.
     /// </summary>
     std::vector<std::shared_ptr<LinkElement>>& getList();
     bool listIsSet() const;

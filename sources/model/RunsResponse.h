@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
+/// The REST response with a collection of Run elements.
 /// </summary>
 class RunsResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// RunsResponse members
 
     /// <summary>
-    /// Gets or sets collection of runs.
+    /// Gets or sets the collection of Run elements.
     /// </summary>
     std::shared_ptr<Runs> getRuns() const;
     bool runsIsSet() const;

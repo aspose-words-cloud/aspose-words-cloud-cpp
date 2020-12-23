@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of links to sections.
+/// The collection of section's links.
 /// </summary>
 class SectionLinkCollection
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// SectionLinkCollection members
 
     /// <summary>
-    /// Gets or sets collection of section's links.
+    /// Gets or sets the collection of section's links.
     /// </summary>
     std::vector<std::shared_ptr<SectionLink>>& getSectionLinkList();
     bool sectionLinkListIsSet() const;

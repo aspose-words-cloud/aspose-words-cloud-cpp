@@ -39,7 +39,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Comment.
+/// DTO container with a comment.
 /// </summary>
 class Comment
     : public CommentLink
@@ -63,7 +63,7 @@ public:
     /// Comment members
 
     /// <summary>
-    /// Gets or sets returns or sets the author name for a comment.
+    /// Gets or sets the author name for a comment.
     /// </summary>
     utility::string_t getAuthor() const;
     bool authorIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setAuthor(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets content of comment.
+    /// Gets or sets the content of the comment.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
@@ -87,7 +87,7 @@ public:
     void setDateTime(utility::datetime value);
 
     /// <summary>
-    /// Gets or sets returns or sets the initials of the user associated with a specific comment.
+    /// Gets or sets the initials of the user associated with a specific comment.
     /// </summary>
     utility::string_t getInitial() const;
     bool initialIsSet() const;
@@ -95,7 +95,7 @@ public:
     void setInitial(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets link to comment range end node.
+    /// Gets or sets the link to comment range end node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeEnd() const;
     bool rangeEndIsSet() const;
@@ -103,7 +103,7 @@ public:
     void setRangeEnd(std::shared_ptr<DocumentPosition> value);
 
     /// <summary>
-    /// Gets or sets link to comment range start node.
+    /// Gets or sets the link to comment range start node.
     /// </summary>
     std::shared_ptr<DocumentPosition> getRangeStart() const;
     bool rangeStartIsSet() const;
@@ -111,7 +111,7 @@ public:
     void setRangeStart(std::shared_ptr<DocumentPosition> value);
 
     /// <summary>
-    /// Gets or sets this is a convenience property that allows to easily get or set text of the comment.
+    /// Gets or sets text of the comment.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

@@ -37,8 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
+/// The REST response with a range's text.
 /// </summary>
 class RangeTextResponse
     : public WordsResponse
@@ -62,7 +61,7 @@ public:
     /// RangeTextResponse members
 
     /// <summary>
-    /// Gets or sets text from range.
+    /// Gets or sets the range's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Preferred width.
+/// DTO container with a preferred width value.
 /// </summary>
 class PreferredWidth
     : public ModelBase

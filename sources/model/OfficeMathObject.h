@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// OfficeMath object.
+/// DTO container with an OfficeMath object.
 /// </summary>
 class OfficeMathObject
     : public OfficeMathLink
@@ -62,7 +62,7 @@ public:
     /// OfficeMathObject members
 
     /// <summary>
-    /// Gets or sets content of footnote.
+    /// Gets or sets the content of a footnote.
     /// </summary>
     std::shared_ptr<StoryChildNodes> getContent() const;
     bool contentIsSet() const;
@@ -70,8 +70,7 @@ public:
     void setContent(std::shared_ptr<StoryChildNodes> value);
 
     /// <summary>
-    /// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text
-    /// or displayed on its own line.
+    /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
     /// </summary>
     utility::string_t getDisplayType() const;
     bool displayTypeIsSet() const;
@@ -79,7 +78,7 @@ public:
     void setDisplayType(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets /sets Office Math justification.
+    /// Gets or sets the justification of the OfficeMath object.
     /// </summary>
     utility::string_t getJustification() const;
     bool justificationIsSet() const;
@@ -87,7 +86,7 @@ public:
     void setJustification(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
+    /// Gets or sets the type of the OfficeMath object.
     /// </summary>
     utility::string_t getMathObjectType() const;
     bool mathObjectTypeIsSet() const;

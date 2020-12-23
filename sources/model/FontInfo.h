@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Font info.
+/// DTO container with font info.
 /// </summary>
 class FontInfo
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// FontInfo members
 
     /// <summary>
-    /// Gets or sets path to the font file if any.
+    /// Gets or sets the path to the font file if any.
     /// </summary>
     utility::string_t getFilePath() const;
     bool filePathIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setFilePath(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets family name of the font.
+    /// Gets or sets the family name of the font.
     /// </summary>
     utility::string_t getFontFamilyName() const;
     bool fontFamilyNameIsSet() const;
@@ -76,7 +76,7 @@ public:
     void setFontFamilyName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets full name of the font.
+    /// Gets or sets the full name of the font.
     /// </summary>
     utility::string_t getFullFontName() const;
     bool fullFontNameIsSet() const;
@@ -84,7 +84,7 @@ public:
     void setFullFontName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets version string of the font.
+    /// Gets or sets the version string of the font.
     /// </summary>
     utility::string_t getVersion() const;
     bool versionIsSet() const;

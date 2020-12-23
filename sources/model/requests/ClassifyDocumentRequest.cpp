@@ -30,14 +30,14 @@ namespace cloud {
 namespace api {
 namespace models {
 ClassifyDocumentRequest::ClassifyDocumentRequest(
-    utility::string_t documentName,
+    utility::string_t name,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
     boost::optional< utility::string_t > password,
     boost::optional< utility::string_t > bestClassesCount,
     boost::optional< utility::string_t > taxonomy
-) : m_DocumentName(std::move(documentName)),
+) : m_Name(std::move(name)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -47,14 +47,14 @@ m_Taxonomy(std::move(taxonomy))
 {
 }
 
-utility::string_t ClassifyDocumentRequest::getDocumentName() const
+utility::string_t ClassifyDocumentRequest::getName() const
 {
-    return m_DocumentName;
+    return m_Name;
 }
 
-void ClassifyDocumentRequest::setDocumentName(utility::string_t documentName)
+void ClassifyDocumentRequest::setName(utility::string_t name)
 {
-    m_DocumentName = std::move(documentName);
+    m_Name = std::move(name);
 }
 
 boost::optional< utility::string_t > ClassifyDocumentRequest::getFolder() const

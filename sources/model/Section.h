@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Section element.
+/// DTO container with a section element.
 /// </summary>
 class Section
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// Section members
 
     /// <summary>
-    /// Gets or sets child nodes.
+    /// Gets or sets the list of child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setChildNodes(std::vector<std::shared_ptr<NodeLink>> const& value);
 
     /// <summary>
-    /// Gets or sets link to HeaderFooters resource.
+    /// Gets or sets the link to HeaderFooters resource.
     /// </summary>
     std::shared_ptr<LinkElement> getHeaderFooters() const;
     bool headerFootersIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setHeaderFooters(std::shared_ptr<LinkElement> value);
 
     /// <summary>
-    /// Gets or sets link to PageSetup resource.
+    /// Gets or sets the link to PageSetup resource.
     /// </summary>
     std::shared_ptr<LinkElement> getPageSetup() const;
     bool pageSetupIsSet() const;
@@ -86,7 +86,7 @@ public:
     void setPageSetup(std::shared_ptr<LinkElement> value);
 
     /// <summary>
-    /// Gets or sets link to Paragraphs resource.
+    /// Gets or sets the link to Paragraphs resource.
     /// </summary>
     std::shared_ptr<LinkElement> getParagraphs() const;
     bool paragraphsIsSet() const;
@@ -94,7 +94,7 @@ public:
     void setParagraphs(std::shared_ptr<LinkElement> value);
 
     /// <summary>
-    /// Gets or sets link to Tables resource.
+    /// Gets or sets the link to Tables resource.
     /// </summary>
     std::shared_ptr<LinkElement> getTables() const;
     bool tablesIsSet() const;

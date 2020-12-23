@@ -41,8 +41,8 @@ class UpdateParagraphFormatRequest {
     public: 
  UpdateParagraphFormatRequest(
             utility::string_t name,
-            std::shared_ptr<ParagraphFormatUpdate> dto,
             int32_t index,
+            std::shared_ptr<ParagraphFormatUpdate> paragraphFormatDto,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -56,11 +56,11 @@ class UpdateParagraphFormatRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<ParagraphFormatUpdate> getDto() const;
-        void setDto(std::shared_ptr<ParagraphFormatUpdate> dto);
-
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        std::shared_ptr<ParagraphFormatUpdate> getParagraphFormatDto() const;
+        void setParagraphFormatDto(std::shared_ptr<ParagraphFormatUpdate> paragraphFormatDto);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -88,8 +88,8 @@ class UpdateParagraphFormatRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<ParagraphFormatUpdate> m_Dto;
         int32_t m_Index;
+        std::shared_ptr<ParagraphFormatUpdate> m_ParagraphFormatDto;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

@@ -31,9 +31,9 @@ namespace api {
 namespace models {
 UpdateRunFontRequest::UpdateRunFontRequest(
     utility::string_t name,
-    std::shared_ptr<Font> fontDto,
     utility::string_t paragraphPath,
     int32_t index,
+    std::shared_ptr<Font> fontDto,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -42,9 +42,9 @@ UpdateRunFontRequest::UpdateRunFontRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_FontDto(std::move(fontDto)),
 m_ParagraphPath(std::move(paragraphPath)),
 m_Index(std::move(index)),
+m_FontDto(std::move(fontDto)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -65,16 +65,6 @@ void UpdateRunFontRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<Font> UpdateRunFontRequest::getFontDto() const
-{
-    return m_FontDto;
-}
-
-void UpdateRunFontRequest::setFontDto(std::shared_ptr<Font> fontDto)
-{
-    m_FontDto = std::move(fontDto);
-}
-
 utility::string_t UpdateRunFontRequest::getParagraphPath() const
 {
     return m_ParagraphPath;
@@ -93,6 +83,16 @@ int32_t UpdateRunFontRequest::getIndex() const
 void UpdateRunFontRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
+}
+
+std::shared_ptr<Font> UpdateRunFontRequest::getFontDto() const
+{
+    return m_FontDto;
+}
+
+void UpdateRunFontRequest::setFontDto(std::shared_ptr<Font> fontDto)
+{
+    m_FontDto = std::move(fontDto);
 }
 
 boost::optional< utility::string_t > UpdateRunFontRequest::getFolder() const

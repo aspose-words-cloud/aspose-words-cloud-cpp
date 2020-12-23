@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/OfficeMathObjects.
+/// The REST response with a collection of OfficeMath objects.
 /// </summary>
 class OfficeMathObjectsResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// OfficeMathObjectsResponse members
 
     /// <summary>
-    /// Gets or sets collection of OfficeMath objects.
+    /// Gets or sets the collection of OfficeMath objects.
     /// </summary>
     std::shared_ptr<OfficeMathObjectsCollection> getOfficeMathObjects() const;
     bool officeMathObjectsIsSet() const;

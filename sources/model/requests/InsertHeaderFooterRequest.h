@@ -40,8 +40,8 @@ class InsertHeaderFooterRequest {
     public: 
  InsertHeaderFooterRequest(
             utility::string_t name,
-            utility::string_t headerFooterType,
             utility::string_t sectionPath,
+            utility::string_t headerFooterType,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -54,11 +54,11 @@ class InsertHeaderFooterRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getHeaderFooterType() const;
-        void setHeaderFooterType(utility::string_t headerFooterType);
-
         utility::string_t getSectionPath() const;
         void setSectionPath(utility::string_t sectionPath);
+
+        utility::string_t getHeaderFooterType() const;
+        void setHeaderFooterType(utility::string_t headerFooterType);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -83,8 +83,8 @@ class InsertHeaderFooterRequest {
 
     private:
         utility::string_t m_Name;
-        utility::string_t m_HeaderFooterType;
         utility::string_t m_SectionPath;
+        utility::string_t m_HeaderFooterType;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

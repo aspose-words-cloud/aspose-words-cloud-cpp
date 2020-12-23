@@ -62,7 +62,7 @@ public:
     /// FixedPageSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets a value determining how colors are rendered.
+    /// Gets or sets the value determining how colors are rendered.
     /// { Normal | Grayscale}.
     /// </summary>
     utility::string_t getColorMode() const;
@@ -71,7 +71,7 @@ public:
     void setColorMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets determines the quality of the JPEG images inside PDF document.
+    /// Gets or sets the quality of the JPEG images inside PDF document.
     /// </summary>
     int32_t getJpegQuality() const;
     bool jpegQualityIsSet() const;
@@ -79,7 +79,7 @@ public:
     void setJpegQuality(int32_t value);
 
     /// <summary>
-    /// Gets or sets allows to specify metafile rendering options.
+    /// Gets or sets the metafile rendering options.
     /// </summary>
     std::shared_ptr<MetafileRenderingOptionsData> getMetafileRenderingOptions() const;
     bool metafileRenderingOptionsIsSet() const;
@@ -87,7 +87,7 @@ public:
     void setMetafileRenderingOptions(std::shared_ptr<MetafileRenderingOptionsData> value);
 
     /// <summary>
-    /// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
+    /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
     /// </summary>
     utility::string_t getNumeralFormat() const;
     bool numeralFormatIsSet() const;
@@ -95,9 +95,9 @@ public:
     void setNumeralFormat(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets flag indicates whether it is required to optimize output of XPS.
+    /// Gets or sets a value indicating whether it is required to optimize output of XPS.
     /// If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated.
-    /// Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
+    /// Note: The accuracy of the content display may be affected if this property is set to true.. The default value is false.
     /// </summary>
     bool isOptimizeOutput() const;
     bool optimizeOutputIsSet() const;
@@ -105,7 +105,7 @@ public:
     void setOptimizeOutput(bool value);
 
     /// <summary>
-    /// Gets or sets determines number of pages to render.
+    /// Gets or sets the number of pages to render.
     /// </summary>
     int32_t getPageCount() const;
     bool pageCountIsSet() const;
@@ -113,7 +113,7 @@ public:
     void setPageCount(int32_t value);
 
     /// <summary>
-    /// Gets or sets determines 0-based index of the first page to render.
+    /// Gets or sets the 0-based index of the first page to render.
     /// </summary>
     int32_t getPageIndex() const;
     bool pageIndexIsSet() const;

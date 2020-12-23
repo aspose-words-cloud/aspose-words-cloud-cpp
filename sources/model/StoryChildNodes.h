@@ -61,7 +61,7 @@ public:
     /// StoryChildNodes members
 
     /// <summary>
-    /// Gets or sets child nodes.
+    /// Gets or sets the list of child nodes.
     /// </summary>
     std::vector<std::shared_ptr<NodeLink>>& getChildNodes();
     bool childNodesIsSet() const;

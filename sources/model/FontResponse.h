@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
+/// The REST response with a font.
 /// </summary>
 class FontResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// FontResponse members
 
     /// <summary>
-    /// Gets or sets font.
+    /// Gets or sets the font.
     /// </summary>
     std::shared_ptr<Font> getFont() const;
     bool fontIsSet() const;

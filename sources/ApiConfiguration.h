@@ -44,7 +44,7 @@ class  ApiConfiguration
 {
 public:
     ApiConfiguration();
-    ApiConfiguration(utility::string_t appKey, utility::string_t appSid);
+    ApiConfiguration(utility::string_t clientId, utility::string_t clientSecret);
     virtual ~ApiConfiguration() = default;
 
     web::http::client::http_client_config& getHttpConfig();
@@ -58,14 +58,14 @@ public:
 
     std::map<utility::string_t, utility::string_t>& getDefaultHeaders();
 
-    utility::string_t getApiKey( const utility::string_t& prefix) const;
-    void setApiKey( const utility::string_t& prefix, const utility::string_t& apiKey );
+    utility::string_t getClientId() const;
+    void setClientId( utility::string_t apiSid );
 
-    utility::string_t getAppKey() const;
-    void setAppKey( utility::string_t apiKey );
+    utility::string_t getClientSecret( const utility::string_t& prefix) const;
+    void setClientSecret( const utility::string_t& prefix, const utility::string_t& clientSecret );
 
-    utility::string_t getAppSid() const;
-    void setAppSid( utility::string_t apiSid );
+    utility::string_t getClientSecret() const;
+    void setClientSecret( utility::string_t clientSecret );
 
     utility::string_t getApiVersion() const;
 
@@ -76,10 +76,10 @@ protected:
     bool m_DebugMode = false;
     utility::string_t m_BaseUrl = STCONVERT("https://api.aspose.cloud");
     std::map<utility::string_t, utility::string_t> m_DefaultHeaders;
-    std::unordered_map<utility::string_t, utility::string_t> m_ApiKeys;
+    std::unordered_map<utility::string_t, utility::string_t> m_clientSecrets;
 
-    utility::string_t m_AppKey;
-    utility::string_t m_AppSid;
+    utility::string_t m_clientSecret;
+    utility::string_t m_clientId;
 
     web::http::client::http_client_config m_HttpConfig;
     utility::string_t m_UserAgent = STCONVERT("CppAsposeClient");

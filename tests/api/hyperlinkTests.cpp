@@ -57,6 +57,23 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndex) {
 
    auto actual = get_api()->getDocumentHyperlinkByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getHyperlink()));
+   ASSERT_EQ(STCONVERT("Aspose"), actual.body->getHyperlink()->getDisplayText());
+}
+
+/// <summary>
+/// Test for getting hyperlink by specified index online.
+/// </summary>
+TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndexOnline) {
+    std::shared_ptr< GetDocumentHyperlinkByIndexOnlineRequest > request(new GetDocumentHyperlinkByIndexOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getDocumentHyperlinkByIndexOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -79,5 +96,23 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinks) {
     ));
 
    auto actual = get_api()->getDocumentHyperlinks(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getHyperlinks()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHyperlinks()->getHyperlinkList()));
+   ASSERT_EQ(2, actual.body->getHyperlinks()->getHyperlinkList().size());
+   ASSERT_EQ(STCONVERT("Aspose"), actual.body->getHyperlinks()->getHyperlinkList()[0]->getDisplayText());
+}
+
+/// <summary>
+/// Test for getting hyperlinks online.
+/// </summary>
+TEST_F(HyperlinkTests, TestGetDocumentHyperlinksOnline) {
+    std::shared_ptr< GetDocumentHyperlinksOnlineRequest > request(new GetDocumentHyperlinksOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getDocumentHyperlinksOnline(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }

@@ -32,9 +32,13 @@ namespace models {
 SaveAsOnlineRequest::SaveAsOnlineRequest(
     std::shared_ptr<HttpContent> document,
     std::shared_ptr<SaveOptionsData> saveOptionsData,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
     boost::optional< utility::string_t > fontsLocation
 ) : m_Document(std::move(document)),
 m_SaveOptionsData(std::move(saveOptionsData)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
 m_FontsLocation(std::move(fontsLocation))
 {
 }
@@ -57,6 +61,26 @@ std::shared_ptr<SaveOptionsData> SaveAsOnlineRequest::getSaveOptionsData() const
 void SaveAsOnlineRequest::setSaveOptionsData(std::shared_ptr<SaveOptionsData> saveOptionsData)
 {
     m_SaveOptionsData = std::move(saveOptionsData);
+}
+
+boost::optional< utility::string_t > SaveAsOnlineRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void SaveAsOnlineRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > SaveAsOnlineRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void SaveAsOnlineRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
 }
 
 boost::optional< utility::string_t > SaveAsOnlineRequest::getFontsLocation() const

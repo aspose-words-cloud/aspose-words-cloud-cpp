@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// PUT https://api.aspose.cloud/v4.0/words/classify.
+/// The REST response with data on multi-class text classification.
 /// </summary>
 class ClassificationResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// ClassificationResponse members
 
     /// <summary>
-    /// Gets or sets best class name.
+    /// Gets or sets the best class name.
     /// </summary>
     utility::string_t getBestClassName() const;
     bool bestClassNameIsSet() const;
@@ -71,7 +70,7 @@ public:
     void setBestClassName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets best class probability.
+    /// Gets or sets the best class probability.
     /// </summary>
     double getBestClassProbability() const;
     bool bestClassProbabilityIsSet() const;
@@ -79,7 +78,7 @@ public:
     void setBestClassProbability(double value);
 
     /// <summary>
-    /// Gets or sets array of best classes results.
+    /// Gets or sets the array of best classes results.
     /// </summary>
     std::vector<std::shared_ptr<ClassificationResult>>& getBestResults();
     bool bestResultsIsSet() const;

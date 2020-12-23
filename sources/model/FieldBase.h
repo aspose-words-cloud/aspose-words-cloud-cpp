@@ -60,7 +60,7 @@ public:
     /// FieldBase members
 
     /// <summary>
-    /// Gets or sets field code.
+    /// Gets or sets the field code.
     /// </summary>
     utility::string_t getFieldCode() const;
     bool fieldCodeIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setFieldCode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets LCID of the field.
+    /// Gets or sets the LCID of the field.
     /// </summary>
     utility::string_t getLocaleId() const;
     bool localeIdIsSet() const;

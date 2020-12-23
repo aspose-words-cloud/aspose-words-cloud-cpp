@@ -78,7 +78,7 @@ public:
     void setColor(std::shared_ptr<XmlColor> value);
 
     /// <summary>
-    /// Gets or sets distance of the border from text or from the page edge in points.
+    /// Gets or sets the distance of the border from text or from the page edge in points.
     /// </summary>
     double getDistanceFromText() const;
     bool distanceFromTextIsSet() const;

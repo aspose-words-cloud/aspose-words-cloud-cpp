@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:  GET /{name}/hyperlinks .
+/// The REST response with a collection of hyperlinks.
 /// </summary>
 class HyperlinksResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// HyperlinksResponse members
 
     /// <summary>
-    /// Gets or sets collection of hyperlinks.
+    /// Gets or sets the collection of hyperlinks.
     /// </summary>
     std::shared_ptr<Hyperlinks> getHyperlinks() const;
     bool hyperlinksIsSet() const;

@@ -61,7 +61,7 @@ public:
     /// RunLink members
 
     /// <summary>
-    /// Gets or sets run's text.
+    /// Gets or sets the run's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

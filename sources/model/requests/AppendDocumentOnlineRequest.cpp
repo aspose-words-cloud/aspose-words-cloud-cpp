@@ -31,9 +31,19 @@ namespace api {
 namespace models {
 AppendDocumentOnlineRequest::AppendDocumentOnlineRequest(
     std::shared_ptr<HttpContent> document,
-    std::shared_ptr<DocumentEntryList> documentList
+    std::shared_ptr<DocumentEntryList> documentList,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
+    boost::optional< utility::string_t > destFileName,
+    boost::optional< utility::string_t > revisionAuthor,
+    boost::optional< utility::string_t > revisionDateTime
 ) : m_Document(std::move(document)),
-m_DocumentList(std::move(documentList))
+m_DocumentList(std::move(documentList)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
+m_DestFileName(std::move(destFileName)),
+m_RevisionAuthor(std::move(revisionAuthor)),
+m_RevisionDateTime(std::move(revisionDateTime))
 {
 }
 
@@ -55,6 +65,56 @@ std::shared_ptr<DocumentEntryList> AppendDocumentOnlineRequest::getDocumentList(
 void AppendDocumentOnlineRequest::setDocumentList(std::shared_ptr<DocumentEntryList> documentList)
 {
     m_DocumentList = std::move(documentList);
+}
+
+boost::optional< utility::string_t > AppendDocumentOnlineRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void AppendDocumentOnlineRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > AppendDocumentOnlineRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void AppendDocumentOnlineRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
+}
+
+boost::optional< utility::string_t > AppendDocumentOnlineRequest::getDestFileName() const
+{
+    return m_DestFileName;
+}
+
+void AppendDocumentOnlineRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
+{
+    m_DestFileName = std::move(destFileName);
+}
+
+boost::optional< utility::string_t > AppendDocumentOnlineRequest::getRevisionAuthor() const
+{
+    return m_RevisionAuthor;
+}
+
+void AppendDocumentOnlineRequest::setRevisionAuthor(boost::optional< utility::string_t > revisionAuthor)
+{
+    m_RevisionAuthor = std::move(revisionAuthor);
+}
+
+boost::optional< utility::string_t > AppendDocumentOnlineRequest::getRevisionDateTime() const
+{
+    return m_RevisionDateTime;
+}
+
+void AppendDocumentOnlineRequest::setRevisionDateTime(boost::optional< utility::string_t > revisionDateTime)
+{
+    m_RevisionDateTime = std::move(revisionDateTime);
 }
 
 }

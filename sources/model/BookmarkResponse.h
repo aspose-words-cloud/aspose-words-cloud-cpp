@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:  GET bookmarks/{bookmarkName}.
+/// The REST response with a bookmark.
 /// </summary>
 class BookmarkResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// BookmarkResponse members
 
     /// <summary>
-    /// Gets or sets bookmark.
+    /// Gets or sets the bookmark.
     /// </summary>
     std::shared_ptr<Bookmark> getBookmark() const;
     bool bookmarkIsSet() const;

@@ -40,6 +40,8 @@ class GetDocumentStatisticsOnlineRequest {
     public: 
  GetDocumentStatisticsOnlineRequest(
             std::shared_ptr<HttpContent> document,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
             boost::optional< bool > includeComments,
             boost::optional< bool > includeFootnotes,
             boost::optional< bool > includeTextInShapes
@@ -47,6 +49,12 @@ class GetDocumentStatisticsOnlineRequest {
 
         std::shared_ptr<HttpContent> getDocument() const;
         void setDocument(std::shared_ptr<HttpContent> document);
+
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
+
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
 
         boost::optional< bool > getIncludeComments() const;
         void setIncludeComments(boost::optional< bool > includeComments);
@@ -59,6 +67,8 @@ class GetDocumentStatisticsOnlineRequest {
 
     private:
         std::shared_ptr<HttpContent> m_Document;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
         boost::optional< bool > m_IncludeComments;
         boost::optional< bool > m_IncludeFootnotes;
         boost::optional< bool > m_IncludeTextInShapes;

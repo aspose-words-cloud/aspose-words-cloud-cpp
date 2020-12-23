@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Response for "Replace text" action.
+/// The REST response with a number of occurrences of the captured text in the document.
 /// </summary>
 class ReplaceTextResponse
     : public WordsResponse
@@ -62,7 +62,7 @@ public:
     /// ReplaceTextResponse members
 
     /// <summary>
-    /// Gets or sets link to the document.
+    /// Gets or sets the link to the document.
     /// </summary>
     std::shared_ptr<FileLink> getDocumentLink() const;
     bool documentLinkIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setDocumentLink(std::shared_ptr<FileLink> value);
 
     /// <summary>
-    /// Gets or sets number of occurrences of the captured text in the document.
+    /// Gets or sets the number of occurrences of the captured text in the document.
     /// </summary>
     int32_t getMatches() const;
     bool matchesIsSet() const;

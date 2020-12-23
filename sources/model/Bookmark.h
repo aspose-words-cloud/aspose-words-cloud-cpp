@@ -69,7 +69,7 @@ public:
     void setName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets the text enclosed in the bookmark.
+    /// Gets or sets text, enclosed in the bookmark.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;

@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateStyleRequest::UpdateStyleRequest(
     utility::string_t name,
-    std::shared_ptr<StyleUpdate> styleUpdate,
     utility::string_t styleName,
+    std::shared_ptr<StyleUpdate> styleUpdate,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ UpdateStyleRequest::UpdateStyleRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_StyleUpdate(std::move(styleUpdate)),
 m_StyleName(std::move(styleName)),
+m_StyleUpdate(std::move(styleUpdate)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -63,16 +63,6 @@ void UpdateStyleRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<StyleUpdate> UpdateStyleRequest::getStyleUpdate() const
-{
-    return m_StyleUpdate;
-}
-
-void UpdateStyleRequest::setStyleUpdate(std::shared_ptr<StyleUpdate> styleUpdate)
-{
-    m_StyleUpdate = std::move(styleUpdate);
-}
-
 utility::string_t UpdateStyleRequest::getStyleName() const
 {
     return m_StyleName;
@@ -81,6 +71,16 @@ utility::string_t UpdateStyleRequest::getStyleName() const
 void UpdateStyleRequest::setStyleName(utility::string_t styleName)
 {
     m_StyleName = std::move(styleName);
+}
+
+std::shared_ptr<StyleUpdate> UpdateStyleRequest::getStyleUpdate() const
+{
+    return m_StyleUpdate;
+}
+
+void UpdateStyleRequest::setStyleUpdate(std::shared_ptr<StyleUpdate> styleUpdate)
+{
+    m_StyleUpdate = std::move(styleUpdate);
 }
 
 boost::optional< utility::string_t > UpdateStyleRequest::getFolder() const

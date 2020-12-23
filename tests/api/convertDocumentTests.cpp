@@ -63,6 +63,8 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
 
    auto actual = get_api()->saveAs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()->getDestDocument()));
 }
 
 /// <summary>
@@ -78,10 +80,13 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
     std::shared_ptr< SaveAsOnlineRequest > request(new SaveAsOnlineRequest(
         generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/") + localName)),
         requestSaveOptionsData,
+        boost::none,
+        boost::none,
         boost::none
     ));
 
-   get_api()->saveAsOnline(request).get();
+auto actual = get_api()->saveAsOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -112,6 +117,8 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
 
    auto actual = get_api()->saveAs(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()->getDestDocument()));
 }
 
 /// <summary>
@@ -159,6 +166,47 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
 
    auto actual = get_api()->saveAsTiff(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()->getDestDocument()));
+}
+
+/// <summary>
+/// Test for converting document to one of the available formats.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
+    utility::string_t localName = STCONVERT("test_multi_pages.docx");
+
+    auto requestSaveOptions = std::make_shared< TiffSaveOptionsData >();
+    requestSaveOptions->setSaveFormat(STCONVERT("tiff"));
+    requestSaveOptions->setFileName(baseTestOutPath + STCONVERT("/abc.tiff"));
+
+    std::shared_ptr< SaveAsTiffOnlineRequest > request(new SaveAsTiffOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/") + localName)),
+        requestSaveOptions,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->saveAsTiffOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>

@@ -246,7 +246,7 @@ TEST_F(StorageApiTest, TestConfiguration) {
 	{
 	}
 
-	config->setAppKey(get_configuration()->getAppKey());
+	config->setClientSecret(get_configuration()->getClientSecret());
 
 	try
 	{
@@ -257,7 +257,7 @@ TEST_F(StorageApiTest, TestConfiguration) {
 	{
 	}
 
-	config->setAppSid(get_configuration()->getAppSid());
+	config->setClientId(get_configuration()->getClientId());
 
 	ASSERT_NO_THROW(api->createDocument(request).get());
 }

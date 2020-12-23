@@ -61,7 +61,7 @@ public:
     /// ModificationOperationResult members
 
     /// <summary>
-    /// Gets or sets link to the dest document (result of the modification operation).
+    /// Gets or sets the link to the dest document (result of the modification operation).
     /// </summary>
     std::shared_ptr<FileLink> getDest() const;
     bool destIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setDest(std::shared_ptr<FileLink> value);
 
     /// <summary>
-    /// Gets or sets link to the source document (source for the modification operation).
+    /// Gets or sets the link to the source document (source for the modification operation).
     /// </summary>
     std::shared_ptr<FileLink> getSource() const;
     bool sourceIsSet() const;

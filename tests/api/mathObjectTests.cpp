@@ -57,6 +57,25 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjects) {
 
    auto actual = get_api()->getOfficeMathObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()));
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()->getList()));
+   ASSERT_EQ(16, actual.body->getOfficeMathObjects()->getList().size());
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObjects()->getList()[0]->getNodeId());
+}
+
+/// <summary>
+/// Test for getting mathObjects online.
+/// </summary>
+TEST_F(MathObjectTests, TestGetOfficeMathObjectsOnline) {
+    std::shared_ptr< GetOfficeMathObjectsOnlineRequest > request(new GetOfficeMathObjectsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getOfficeMathObjectsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -81,6 +100,10 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsWithoutNodePath) {
 
    auto actual = get_api()->getOfficeMathObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()));
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObjects()->getList()));
+   ASSERT_EQ(16, actual.body->getOfficeMathObjects()->getList().size());
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObjects()->getList()[0]->getNodeId());
 }
 
 /// <summary>
@@ -105,6 +128,24 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
     ));
 
    auto actual = get_api()->getOfficeMathObject(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObject()));
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObject()->getNodeId());
+}
+
+/// <summary>
+/// Test for getting mathObject online.
+/// </summary>
+TEST_F(MathObjectTests, TestGetOfficeMathObjectOnline) {
+    std::shared_ptr< GetOfficeMathObjectOnlineRequest > request(new GetOfficeMathObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getOfficeMathObjectOnline(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -131,6 +172,8 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectWithoutNodePath) {
 
    auto actual = get_api()->getOfficeMathObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getOfficeMathObject()));
+   ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getOfficeMathObject()->getNodeId());
 }
 
 /// <summary>
@@ -157,6 +200,23 @@ TEST_F(MathObjectTests, TestRenderMathObject) {
     ));
 
    get_api()->renderMathObject(request).get();
+}
+
+/// <summary>
+/// Test for rendering mathObject.
+/// </summary>
+TEST_F(MathObjectTests, TestRenderMathObjectOnline) {
+    std::shared_ptr< RenderMathObjectOnlineRequest > request(new RenderMathObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("png"),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->renderMathObjectOnline(request).get();
 }
 
 /// <summary>
@@ -210,6 +270,24 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObject) {
     ));
 
    get_api()->deleteOfficeMathObject(request).get();
+}
+
+/// <summary>
+/// Test for deleting mathObject online.
+/// </summary>
+TEST_F(MathObjectTests, TestDeleteOfficeMathObjectOnline) {
+    std::shared_ptr< DeleteOfficeMathObjectOnlineRequest > request(new DeleteOfficeMathObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->deleteOfficeMathObjectOnline(request).get();
 }
 
 /// <summary>

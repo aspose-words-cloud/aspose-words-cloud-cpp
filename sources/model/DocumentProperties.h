@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Collection of document properties.
+/// The collection of document properties.
 /// </summary>
 class DocumentProperties
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// DocumentProperties members
 
     /// <summary>
-    /// Gets or sets collection of document properties.
+    /// Gets or sets the collection of document properties.
     /// </summary>
     std::vector<std::shared_ptr<DocumentProperty>>& getList();
     bool listIsSet() const;

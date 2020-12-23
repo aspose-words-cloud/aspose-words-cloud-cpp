@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for ps save options.
+/// Container class for ps save options.
 /// </summary>
 class PsSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -61,7 +61,7 @@ public:
     /// PsSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets determines whether the document should be saved using a booklet printing layout.
+    /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
     /// </summary>
     bool isUseBookFoldPrintingSettings() const;
     bool useBookFoldPrintingSettingsIsSet() const;

@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for png save options.
+/// Container class for png save options.
 /// </summary>
 class PngSaveOptionsData
     : public ImageSaveOptionsData

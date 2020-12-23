@@ -61,7 +61,7 @@ public:
     /// SaveResult members
 
     /// <summary>
-    /// Gets or sets links to additional items (css, images etc).
+    /// Gets or sets the list of links to additional items (css, images etc).
     /// </summary>
     std::vector<std::shared_ptr<FileLink>>& getAdditionalItems();
     bool additionalItemsIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setAdditionalItems(std::vector<std::shared_ptr<FileLink>> const& value);
 
     /// <summary>
-    /// Gets or sets link to destination document.
+    /// Gets or sets the link to destination document.
     /// </summary>
     std::shared_ptr<FileLink> getDestDocument() const;
     bool destDocumentIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setDestDocument(std::shared_ptr<FileLink> value);
 
     /// <summary>
-    /// Gets or sets link to source document.
+    /// Gets or sets the link to source document.
     /// </summary>
     std::shared_ptr<FileLink> getSourceDocument() const;
     bool sourceDocumentIsSet() const;

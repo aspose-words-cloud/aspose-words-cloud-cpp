@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for doc/dot save options.
+/// Container class for doc/dot save options.
 /// </summary>
 class DocSaveOptionsData
     : public SaveOptionsData
@@ -61,8 +61,8 @@ public:
     /// DocSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets When false, small metafiles are not compressed for performance reason.
-    /// Default value is true, all metafiles are compressed regardless of its size.
+    /// Gets or sets a value indicating when False, that small metafiles are not compressed for performance reason.
+    /// The default value is true, all metafiles are compressed regardless of its size.
     /// </summary>
     bool isAlwaysCompressMetafiles() const;
     bool alwaysCompressMetafilesIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setAlwaysCompressMetafiles(bool value);
 
     /// <summary>
-    /// Gets or sets password.
+    /// Gets or sets the password.
     /// </summary>
     utility::string_t getPassword() const;
     bool passwordIsSet() const;
@@ -78,8 +78,8 @@ public:
     void setPassword(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets When false, PictureBullet data is not saved to output document.
-    /// Default value is true.
+    /// Gets or sets a value indicating when False, that PictureBullet data is not saved to the output document.
+    /// The default value is true.
     /// </summary>
     bool isSavePictureBullet() const;
     bool savePictureBulletIsSet() const;
@@ -87,7 +87,7 @@ public:
     void setSavePictureBullet(bool value);
 
     /// <summary>
-    /// Gets or sets determine whether or not save RoutingSlip data saved to output document.
+    /// Gets or sets a value indicating whether to save RoutingSlip data to output document.
     /// </summary>
     bool isSaveRoutingSlip() const;
     bool saveRoutingSlipIsSet() const;

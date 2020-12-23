@@ -61,7 +61,7 @@ public:
     /// PageSetup members
 
     /// <summary>
-    /// Gets or sets specifies that this section contains bidirectional (complex scripts) text.
+    /// Gets or sets a value indicating whether this section contains bidirectional (complex scripts) text.
     /// </summary>
     bool isBidi() const;
     bool bidiIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setBidi(bool value);
 
     /// <summary>
-    /// Gets or sets specifies where the page border is positioned relative to intersecting texts and objects.
+    /// Gets or sets a value indicating whether the page border is positioned relative to intersecting texts and objects.
     /// </summary>
     bool isBorderAlwaysInFront() const;
     bool borderAlwaysInFrontIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setBorderAlwaysInFront(bool value);
 
     /// <summary>
-    /// Gets or sets specifies which pages the page border is printed on.
+    /// Gets or sets the option that controls which pages the page border is printed on.
     /// </summary>
     utility::string_t getBorderAppliesTo() const;
     bool borderAppliesToIsSet() const;
@@ -85,8 +85,7 @@ public:
     void setBorderAppliesTo(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value that indicates whether the specified page border is measured from the edge of the page or from
-    /// the text it surrounds.
+    /// Gets or sets the value, that indicates whether the specified page border is measured from the edge of the page or from the text it surrounds.
     /// </summary>
     utility::string_t getBorderDistanceFrom() const;
     bool borderDistanceFromIsSet() const;
@@ -94,8 +93,7 @@ public:
     void setBorderDistanceFrom(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body
-    /// text.
+    /// Gets or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body text.
     /// </summary>
     double getBottomMargin() const;
     bool bottomMarginIsSet() const;
@@ -103,7 +101,7 @@ public:
     void setBottomMargin(double value);
 
     /// <summary>
-    /// Gets or sets true if a different header or footer is used on the first page.
+    /// Gets or sets a value indicating whether a different header or footer is used on the first page.
     /// </summary>
     bool isDifferentFirstPageHeaderFooter() const;
     bool differentFirstPageHeaderFooterIsSet() const;
@@ -120,7 +118,7 @@ public:
     void setFirstPageTray(int32_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the distance (in points) between the footer and the bottom of the page.
+    /// Gets or sets the distance (in points) between the footer and the bottom of the page.
     /// </summary>
     double getFooterDistance() const;
     bool footerDistanceIsSet() const;
@@ -136,7 +134,7 @@ public:
     void setGutter(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the distance (in points) between the header and the top of the page.
+    /// Gets or sets the distance (in points) between the header and the top of the page.
     /// </summary>
     double getHeaderDistance() const;
     bool headerDistanceIsSet() const;
@@ -144,7 +142,7 @@ public:
     void setHeaderDistance(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the distance (in points) between the left edge of the page and the left boundary of the body text.
+    /// Gets or sets the distance (in points) between the left edge of the page and the left boundary of the body text.
     /// </summary>
     double getLeftMargin() const;
     bool leftMarginIsSet() const;
@@ -152,7 +150,7 @@ public:
     void setLeftMargin(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the numeric increment for line numbers.
+    /// Gets or sets the numeric increment for line numbers.
     /// </summary>
     int32_t getLineNumberCountBy() const;
     bool lineNumberCountByIsSet() const;
@@ -160,7 +158,7 @@ public:
     void setLineNumberCountBy(int32_t value);
 
     /// <summary>
-    /// Gets or sets distance between the right edge of line numbers and the left edge of the document.
+    /// Gets or sets the distance between the right edge of line numbers and the left edge of the document.
     /// </summary>
     double getLineNumberDistanceFromText() const;
     bool lineNumberDistanceFromTextIsSet() const;
@@ -168,8 +166,7 @@ public:
     void setLineNumberDistanceFromText(double value);
 
     /// <summary>
-    /// Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new
-    /// page or section or runs continuously.
+    /// Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new page or section or runs continuously.
     /// </summary>
     utility::string_t getLineNumberRestartMode() const;
     bool lineNumberRestartModeIsSet() const;
@@ -185,7 +182,7 @@ public:
     void setLineStartingNumber(int32_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the orientation of the page.
+    /// Gets or sets the orientation of the page.
     /// </summary>
     utility::string_t getOrientation() const;
     bool orientationIsSet() const;
@@ -202,7 +199,7 @@ public:
     void setOtherPagesTray(int32_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the height of the page in points.
+    /// Gets or sets the height of the page in points.
     /// </summary>
     double getPageHeight() const;
     bool pageHeightIsSet() const;
@@ -226,7 +223,7 @@ public:
     void setPageStartingNumber(int32_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the width of the page in points.
+    /// Gets or sets the width of the page in points.
     /// </summary>
     double getPageWidth() const;
     bool pageWidthIsSet() const;
@@ -234,7 +231,7 @@ public:
     void setPageWidth(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the paper size.
+    /// Gets or sets the paper size.
     /// </summary>
     utility::string_t getPaperSize() const;
     bool paperSizeIsSet() const;
@@ -242,7 +239,7 @@ public:
     void setPaperSize(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets true if page numbering restarts at the beginning of the section.
+    /// Gets or sets a value indicating whether page numbering restarts at the beginning of the section.
     /// </summary>
     bool isRestartPageNumbering() const;
     bool restartPageNumberingIsSet() const;
@@ -250,8 +247,7 @@ public:
     void setRestartPageNumbering(bool value);
 
     /// <summary>
-    /// Gets or sets returns or sets the distance (in points) between the right edge of the page and the right boundary of the body
-    /// text.
+    /// Gets or sets the distance (in points) between the right edge of the page and the right boundary of the body text.
     /// </summary>
     double getRightMargin() const;
     bool rightMarginIsSet() const;
@@ -259,8 +255,7 @@ public:
     void setRightMargin(double value);
 
     /// <summary>
-    /// Gets or sets whether Microsoft Word uses gutters for the section based on a right-to-left language or a
-    /// left-to-right language.
+    /// Gets or sets a value indicating whether Microsoft Word uses gutters for the section based on a right-to-left language or a left-to-right language.
     /// </summary>
     bool isRtlGutter() const;
     bool rtlGutterIsSet() const;
@@ -268,7 +263,7 @@ public:
     void setRtlGutter(bool value);
 
     /// <summary>
-    /// Gets or sets returns or sets the type of section break for the specified object.
+    /// Gets or sets the type of section break for the specified object.
     /// </summary>
     utility::string_t getSectionStart() const;
     bool sectionStartIsSet() const;
@@ -276,8 +271,7 @@ public:
     void setSectionStart(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets true if endnotes are printed at the end of the next section that doesn't suppress endnotes.
-    /// Suppressed endnotes are printed before the endnotes in that section.
+    /// Gets or sets a value indicating whether endnotes are printed at the end of the next section that doesn't suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.
     /// </summary>
     bool isSuppressEndnotes() const;
     bool suppressEndnotesIsSet() const;
@@ -285,7 +279,7 @@ public:
     void setSuppressEndnotes(bool value);
 
     /// <summary>
-    /// Gets or sets returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.
+    /// Gets or sets the distance (in points) between the top edge of the page and the top boundary of the body text.
     /// </summary>
     double getTopMargin() const;
     bool topMarginIsSet() const;
@@ -293,7 +287,7 @@ public:
     void setTopMargin(double value);
 
     /// <summary>
-    /// Gets or sets returns or sets the vertical alignment of text on each page in a document or section.
+    /// Gets or sets the vertical alignment of text on each page in the document.or section.
     /// </summary>
     utility::string_t getVerticalAlignment() const;
     bool verticalAlignmentIsSet() const;

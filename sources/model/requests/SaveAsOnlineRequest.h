@@ -42,6 +42,8 @@ class SaveAsOnlineRequest {
  SaveAsOnlineRequest(
             std::shared_ptr<HttpContent> document,
             std::shared_ptr<SaveOptionsData> saveOptionsData,
+            boost::optional< utility::string_t > loadEncoding,
+            boost::optional< utility::string_t > password,
             boost::optional< utility::string_t > fontsLocation
         );
 
@@ -51,12 +53,20 @@ class SaveAsOnlineRequest {
         std::shared_ptr<SaveOptionsData> getSaveOptionsData() const;
         void setSaveOptionsData(std::shared_ptr<SaveOptionsData> saveOptionsData);
 
+        boost::optional< utility::string_t > getLoadEncoding() const;
+        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
+
+        boost::optional< utility::string_t > getPassword() const;
+        void setPassword(boost::optional< utility::string_t > password);
+
         boost::optional< utility::string_t > getFontsLocation() const;
         void setFontsLocation(boost::optional< utility::string_t > fontsLocation);
 
     private:
         std::shared_ptr<HttpContent> m_Document;
         std::shared_ptr<SaveOptionsData> m_SaveOptionsData;
+        boost::optional< utility::string_t > m_LoadEncoding;
+        boost::optional< utility::string_t > m_Password;
         boost::optional< utility::string_t > m_FontsLocation;
 };
 

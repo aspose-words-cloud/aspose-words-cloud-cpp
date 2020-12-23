@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties.
+/// The REST response with a table.
 /// </summary>
 class TablePropertiesResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// TablePropertiesResponse members
 
     /// <summary>
-    /// Gets or sets table.
+    /// Gets or sets the table.
     /// </summary>
     std::shared_ptr<TableProperties> getProperties() const;
     bool propertiesIsSet() const;

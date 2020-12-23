@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Range element.
+/// DTO container with a Range element.
 /// </summary>
 class RangeDocument
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// RangeDocument members
 
     /// <summary>
-    /// Gets or sets name for new document.
+    /// Gets or sets the name for a new document.
     /// </summary>
     utility::string_t getDocumentName() const;
     bool documentNameIsSet() const;

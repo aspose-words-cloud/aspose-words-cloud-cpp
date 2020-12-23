@@ -61,7 +61,7 @@ public:
     /// DrawingObjectInsert members
 
     /// <summary>
-    /// Gets or sets height of the drawing object in points.
+    /// Gets or sets the height of the DrawingObject in points.
     /// </summary>
     double getHeight() const;
     bool heightIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setHeight(double value);
 
     /// <summary>
-    /// Gets or sets distance in points from the origin to the left side of the image.
+    /// Gets or sets the distance in points from the origin to the left side of the image.
     /// </summary>
     double getLeft() const;
     bool leftIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setLeft(double value);
 
     /// <summary>
-    /// Gets or sets drawing object will be inserted before specified position.
+    /// Gets or sets the position, before which the DrawingObject will be inserted.
     /// </summary>
     std::shared_ptr<DocumentPosition> getPosition() const;
     bool positionIsSet() const;
@@ -85,7 +85,7 @@ public:
     void setPosition(std::shared_ptr<DocumentPosition> value);
 
     /// <summary>
-    /// Gets or sets specifies where the distance to the image is measured from.
+    /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
     /// </summary>
     utility::string_t getRelativeHorizontalPosition() const;
     bool relativeHorizontalPositionIsSet() const;
@@ -93,7 +93,7 @@ public:
     void setRelativeHorizontalPosition(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies where the distance to the image measured from.
+    /// Gets or sets the relative vertical position, from which the distance to the image is measured.
     /// </summary>
     utility::string_t getRelativeVerticalPosition() const;
     bool relativeVerticalPositionIsSet() const;
@@ -101,7 +101,7 @@ public:
     void setRelativeVerticalPosition(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets distance in points from the origin to the top side of the image.
+    /// Gets or sets the distance in points from the origin to the top side of the image.
     /// </summary>
     double getTop() const;
     bool topIsSet() const;
@@ -109,7 +109,7 @@ public:
     void setTop(double value);
 
     /// <summary>
-    /// Gets or sets width of the drawing objects in points.
+    /// Gets or sets the width of the DrawingObjects in points.
     /// </summary>
     double getWidth() const;
     bool widthIsSet() const;
@@ -117,7 +117,7 @@ public:
     void setWidth(double value);
 
     /// <summary>
-    /// Gets or sets specifies how to wrap text around the image.
+    /// Gets or sets the option indicating how to wrap text around the image.
     /// </summary>
     utility::string_t getWrapType() const;
     bool wrapTypeIsSet() const;

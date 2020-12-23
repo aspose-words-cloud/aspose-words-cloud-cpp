@@ -61,7 +61,7 @@ public:
     /// FormFieldTextInput members
 
     /// <summary>
-    /// Gets or sets maximum length for the text field. Zero when the length is not limited.
+    /// Gets or sets the maximum length for the text field. Zero when the length is not limited.
     /// </summary>
     int32_t getMaxLength() const;
     bool maxLengthIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setMaxLength(int32_t value);
 
     /// <summary>
-    /// Gets or sets the default string or a calculation expression of a text form field.
+    /// Gets or sets the default string or a calculation expression of the text form field.
     /// </summary>
     utility::string_t getTextInputDefault() const;
     bool textInputDefaultIsSet() const;
@@ -77,7 +77,7 @@ public:
     void setTextInputDefault(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets returns or sets the text formatting for a text form field.
+    /// Gets or sets text formatting for the text form field.
     /// </summary>
     utility::string_t getTextInputFormat() const;
     bool textInputFormatIsSet() const;
@@ -85,7 +85,7 @@ public:
     void setTextInputFormat(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets the type of a text form field.
+    /// Gets or sets the type of the text form field.
     /// </summary>
     utility::string_t getTextInputType() const;
     bool textInputTypeIsSet() const;

@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateFieldRequest::UpdateFieldRequest(
     utility::string_t name,
-    std::shared_ptr<FieldUpdate> field,
     int32_t index,
+    std::shared_ptr<FieldUpdate> field,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -42,8 +42,8 @@ UpdateFieldRequest::UpdateFieldRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_Field(std::move(field)),
 m_Index(std::move(index)),
+m_Field(std::move(field)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -65,16 +65,6 @@ void UpdateFieldRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<FieldUpdate> UpdateFieldRequest::getField() const
-{
-    return m_Field;
-}
-
-void UpdateFieldRequest::setField(std::shared_ptr<FieldUpdate> field)
-{
-    m_Field = std::move(field);
-}
-
 int32_t UpdateFieldRequest::getIndex() const
 {
     return m_Index;
@@ -83,6 +73,16 @@ int32_t UpdateFieldRequest::getIndex() const
 void UpdateFieldRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
+}
+
+std::shared_ptr<FieldUpdate> UpdateFieldRequest::getField() const
+{
+    return m_Field;
+}
+
+void UpdateFieldRequest::setField(std::shared_ptr<FieldUpdate> field)
+{
+    m_Field = std::move(field);
 }
 
 boost::optional< utility::string_t > UpdateFieldRequest::getNodePath() const

@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Field.
+/// DTO container with a field.
 /// </summary>
 class Field
     : public FieldLink
@@ -61,7 +61,7 @@ public:
     /// Field members
 
     /// <summary>
-    /// Gets or sets LCID of the field.
+    /// Gets or sets the LCID of the field.
     /// </summary>
     utility::string_t getLocaleId() const;
     bool localeIdIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setLocaleId(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets field result.
+    /// Gets or sets the field result.
     /// </summary>
     utility::string_t getResult() const;
     bool resultIsSet() const;

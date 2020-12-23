@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateFootnoteRequest::UpdateFootnoteRequest(
     utility::string_t name,
-    std::shared_ptr<FootnoteUpdate> footnoteDto,
     int32_t index,
+    std::shared_ptr<FootnoteUpdate> footnoteDto,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -42,8 +42,8 @@ UpdateFootnoteRequest::UpdateFootnoteRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_FootnoteDto(std::move(footnoteDto)),
 m_Index(std::move(index)),
+m_FootnoteDto(std::move(footnoteDto)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -65,16 +65,6 @@ void UpdateFootnoteRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<FootnoteUpdate> UpdateFootnoteRequest::getFootnoteDto() const
-{
-    return m_FootnoteDto;
-}
-
-void UpdateFootnoteRequest::setFootnoteDto(std::shared_ptr<FootnoteUpdate> footnoteDto)
-{
-    m_FootnoteDto = std::move(footnoteDto);
-}
-
 int32_t UpdateFootnoteRequest::getIndex() const
 {
     return m_Index;
@@ -83,6 +73,16 @@ int32_t UpdateFootnoteRequest::getIndex() const
 void UpdateFootnoteRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
+}
+
+std::shared_ptr<FootnoteUpdate> UpdateFootnoteRequest::getFootnoteDto() const
+{
+    return m_FootnoteDto;
+}
+
+void UpdateFootnoteRequest::setFootnoteDto(std::shared_ptr<FootnoteUpdate> footnoteDto)
+{
+    m_FootnoteDto = std::move(footnoteDto);
 }
 
 boost::optional< utility::string_t > UpdateFootnoteRequest::getNodePath() const

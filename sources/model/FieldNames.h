@@ -61,7 +61,7 @@ public:
     /// FieldNames members
 
     /// <summary>
-    /// Gets or sets collection of fields names.
+    /// Gets or sets the collection of fields names.
     /// </summary>
     std::vector<utility::string_t>& getNames();
     bool namesIsSet() const;

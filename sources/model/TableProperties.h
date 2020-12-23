@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents the table properties.
+/// DTO container with table properties.
 /// </summary>
 class TableProperties
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// TableProperties members
 
     /// <summary>
-    /// Gets or sets specifies how an inline table is aligned in the document.
+    /// Gets or sets the option that controls how an inline table is aligned in the document.
     /// </summary>
     utility::string_t getAlignment() const;
     bool alignmentIsSet() const;
@@ -70,7 +70,7 @@ public:
     void setAlignment(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents.
+    /// Gets or sets a value indicating whether to automatically resize cells in a table to fit their contents.
     /// </summary>
     bool isAllowAutoFit() const;
     bool allowAutoFitIsSet() const;
@@ -78,7 +78,7 @@ public:
     void setAllowAutoFit(bool value);
 
     /// <summary>
-    /// Gets or sets whether this is a right-to-left table.
+    /// Gets or sets a value indicating whether this is a right-to-left table.
     /// </summary>
     bool isBidi() const;
     bool bidiIsSet() const;
@@ -102,7 +102,7 @@ public:
     void setCellSpacing(double value);
 
     /// <summary>
-    /// Gets or sets the value that represents the left indent of the table.
+    /// Gets or sets the value, that represents the left indent of the table.
     /// </summary>
     double getLeftIndent() const;
     bool leftIndentIsSet() const;
@@ -151,7 +151,7 @@ public:
     void setStyleName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets bit flags that specify how a table style is applied to this table.
+    /// Gets or sets the bit flags, that specify how a table style is applied to this table.
     /// </summary>
     utility::string_t getStyleOptions() const;
     bool styleOptionsIsSet() const;
@@ -159,7 +159,7 @@ public:
     void setStyleOptions(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets get or sets TextWrapping for table.
+    /// Gets or sets the option that controls text wrapping for the table.
     /// </summary>
     utility::string_t getTextWrapping() const;
     bool textWrappingIsSet() const;

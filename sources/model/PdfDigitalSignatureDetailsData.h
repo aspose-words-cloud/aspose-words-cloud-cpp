@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for details of digital signature.
+/// Container class for details of digital signature.
 /// </summary>
 class PdfDigitalSignatureDetailsData
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// PdfDigitalSignatureDetailsData members
 
     /// <summary>
-    /// Gets or sets certificate's filename using for signing.
+    /// Gets or sets the certificate's filename using for signing.
     /// </summary>
     utility::string_t getCertificateFilename() const;
     bool certificateFilenameIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setCertificateFilename(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets hash algorithm.
+    /// Gets or sets the hash algorithm.
     /// </summary>
     utility::string_t getHashAlgorithm() const;
     bool hashAlgorithmIsSet() const;
@@ -76,7 +76,7 @@ public:
     void setHashAlgorithm(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets location of the signing.
+    /// Gets or sets the location of the signing.
     /// </summary>
     utility::string_t getLocation() const;
     bool locationIsSet() const;
@@ -84,7 +84,7 @@ public:
     void setLocation(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets reason for the signing.
+    /// Gets or sets the reason for the signing.
     /// </summary>
     utility::string_t getReason() const;
     bool reasonIsSet() const;
@@ -92,7 +92,7 @@ public:
     void setReason(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets date of the signing.
+    /// Gets or sets the date of the signing.
     /// </summary>
     utility::datetime getSignatureDate() const;
     bool signatureDateIsSet() const;

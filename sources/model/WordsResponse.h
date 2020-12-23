@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Base class for all responses.
+/// The base class for all responses.
 /// </summary>
 class WordsResponse
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// WordsResponse members
 
     /// <summary>
-    /// Gets or sets request Id.
+    /// Gets or sets the request Id.
     /// </summary>
     utility::string_t getRequestId() const;
     bool requestIdIsSet() const;

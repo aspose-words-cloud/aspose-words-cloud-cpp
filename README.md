@@ -16,6 +16,33 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 20.12
+
+
+
+## Enhancements in Version 20.11
+
+- In configuration json file appSid / appKey has been replaced to clientId / clientSecret.
+- In Words API initialization methods clientId parameter precedes clientSecret parameter.
+- Fixed the problem with methods passing boolean values as query parameters (they were ignored by the server).
+
+## Enhancements in Version 20.10
+
+- Internal API changes.
+
+
+## Enhancements in Version 20.9
+
+- Added Batch API feature
+
+
+## Enhancements in Version 20.8
+
+- Added new api method (PUT '/words/{name}/compatibility/optimize') which is allows to optimize the document contents as well as default Aspose.Words behavior to a particular versions of MS Word
+- Added 'ApplyBaseDocumentHeadersAndFootersToAppendingDocuments' option to 'DocumentEntryList' for AppendDocument API
+- WithoutNodePath methods have been removed, pass null values instead
+
+
 ## Enhancements in Version 20.7
 
 - Added 'Markdown' save format
@@ -111,8 +138,8 @@ cmake --build aspose-words-cloud-cpp\build --config Debug --target words-cloud-t
 Create servercreds.json in aspose-words-cloud-cpp directory:
 ````
 {
-	"AppKey" : "xxxxx",
-	"AppSid" : "xxxx",
+	"ClientId" : "xxxx",
+	"ClientSecret" : "xxxxx",
 	"BaseUrl" : "xxx" 
 }
 ````
@@ -155,8 +182,8 @@ cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- 
 Create servercreds.json in aspose-words-cloud-cpp directory:
 ````
 {
-	"AppKey" : "xxxxx",
-	"AppSid" : "xxxx",
+	"ClientId" : "xxxx",
+	"ClientSecret" : "xxxxx",
 	"BaseUrl" : "xxx" 
 }
 ````
@@ -195,7 +222,7 @@ Typical usage of the SDK in code follows this template:
 	// Start README example
 
 	//  create client configuration
-	auto config = std::make_shared<ApiConfiguration>(yourApiKey, yourApiSid);
+	auto config = std::make_shared<ApiConfiguration>(yourClientId, yourClientSecret);
 	// optional step, default value is https://api.aspose.cloud
 	config->setBaseUrl(baseUrl);
 

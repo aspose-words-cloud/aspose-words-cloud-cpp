@@ -60,7 +60,7 @@ public:
     /// ListUpdate members
 
     /// <summary>
-    /// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
+    /// Gets or sets a value indicating whether list should be restarted at each section. The default value is false.
     /// </summary>
     bool isIsRestartAtEachSection() const;
     bool isRestartAtEachSectionIsSet() const;

@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Provides information for the words api resource link.
+/// Provides information for the words API resource link.
 /// </summary>
 class WordsApiLink
     : public Link

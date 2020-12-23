@@ -57,6 +57,25 @@ TEST_F(SectionTests, TestGetSection) {
 
    auto actual = get_api()->getSection(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSection()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSection()->getChildNodes()));
+   ASSERT_EQ(13, actual.body->getSection()->getChildNodes().size());
+   ASSERT_EQ(STCONVERT("0.3.0"), actual.body->getSection()->getChildNodes()[0]->getNodeId());
+}
+
+/// <summary>
+/// Test for getting section by index online.
+/// </summary>
+TEST_F(SectionTests, TestGetSectionOnline) {
+    std::shared_ptr< GetSectionOnlineRequest > request(new GetSectionOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getSectionOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -79,6 +98,24 @@ TEST_F(SectionTests, TestGetSections) {
     ));
 
    auto actual = get_api()->getSections(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSections()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSections()->getSectionLinkList()));
+   ASSERT_EQ(1, actual.body->getSections()->getSectionLinkList().size());
+   ASSERT_EQ(STCONVERT("0"), actual.body->getSections()->getSectionLinkList()[0]->getNodeId());
+}
+
+/// <summary>
+/// Test for getting sections online.
+/// </summary>
+TEST_F(SectionTests, TestGetSectionsOnline) {
+    std::shared_ptr< GetSectionsOnlineRequest > request(new GetSectionsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getSectionsOnline(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -106,4 +143,21 @@ TEST_F(SectionTests, TestDeleteSection) {
     ));
 
    get_api()->deleteSection(request).get();
+}
+
+/// <summary>
+/// Test for delete a section online.
+/// </summary>
+TEST_F(SectionTests, TestDeleteSectionOnline) {
+    std::shared_ptr< DeleteSectionOnlineRequest > request(new DeleteSectionOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->deleteSectionOnline(request).get();
 }

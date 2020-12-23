@@ -56,6 +56,23 @@ TEST_F(StylesTests, TestGetStyles) {
 
    auto actual = get_api()->getStyles(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStyles()));
+   ASSERT_EQ(22, actual.body->getStyles().size());
+   ASSERT_EQ(STCONVERT("Default Paragraph Font"), actual.body->getStyles()[0]->getName());
+}
+
+/// <summary>
+/// Test for getting styles from document online.
+/// </summary>
+TEST_F(StylesTests, TestGetStylesOnline) {
+    std::shared_ptr< GetStylesOnlineRequest > request(new GetStylesOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getStylesOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -80,6 +97,23 @@ TEST_F(StylesTests, TestGetStyle) {
 
    auto actual = get_api()->getStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStyle()));
+   ASSERT_EQ(STCONVERT("Heading 1"), actual.body->getStyle()->getName());
+}
+
+/// <summary>
+/// Test for getting style from document online.
+/// </summary>
+TEST_F(StylesTests, TestGetStyleOnline) {
+    std::shared_ptr< GetStyleOnlineRequest > request(new GetStyleOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("Heading 1"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getStyleOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -98,8 +132,8 @@ TEST_F(StylesTests, TestUpdateStyle) {
 
     std::shared_ptr< UpdateStyleRequest > request(new UpdateStyleRequest(
         remoteFileName,
-        requestStyleUpdate,
         STCONVERT("Heading 1"),
+        requestStyleUpdate,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -111,6 +145,30 @@ TEST_F(StylesTests, TestUpdateStyle) {
 
    auto actual = get_api()->updateStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStyle()));
+   ASSERT_EQ(STCONVERT("My Style"), actual.body->getStyle()->getName());
+}
+
+/// <summary>
+/// Test for updating style from document online.
+/// </summary>
+TEST_F(StylesTests, TestUpdateStyleOnline) {
+    auto requestStyleUpdate = std::make_shared< StyleUpdate >();
+    requestStyleUpdate->setName(STCONVERT("My Style"));
+
+    std::shared_ptr< UpdateStyleOnlineRequest > request(new UpdateStyleOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("Heading 1"),
+        requestStyleUpdate,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateStyleOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -142,6 +200,30 @@ TEST_F(StylesTests, TestInsertStyle) {
 
    auto actual = get_api()->insertStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStyle()));
+   ASSERT_EQ(STCONVERT("My Style"), actual.body->getStyle()->getName());
+}
+
+/// <summary>
+/// Test for inserting style from document online.
+/// </summary>
+TEST_F(StylesTests, TestInsertStyleOnline) {
+    auto requestStyleInsert = std::make_shared< StyleInsert >();
+    requestStyleInsert->setStyleName(STCONVERT("My Style"));
+    requestStyleInsert->setStyleType(STCONVERT("Paragraph"));
+
+    std::shared_ptr< InsertStyleOnlineRequest > request(new InsertStyleOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestStyleInsert,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertStyleOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -172,6 +254,29 @@ TEST_F(StylesTests, TestCopyStyle) {
 
    auto actual = get_api()->copyStyle(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStyle()));
+   ASSERT_EQ(STCONVERT("Heading 1_0"), actual.body->getStyle()->getName());
+}
+
+/// <summary>
+/// Test for coping style from document online.
+/// </summary>
+TEST_F(StylesTests, TestCopyStyleOnline) {
+    auto requestStyleCopy = std::make_shared< StyleCopy >();
+    requestStyleCopy->setStyleName(STCONVERT("Heading 1"));
+
+    std::shared_ptr< CopyStyleOnlineRequest > request(new CopyStyleOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestStyleCopy,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->copyStyleOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -196,6 +301,23 @@ TEST_F(StylesTests, TestGetStyleFromDocumentElement) {
 
    auto actual = get_api()->getStyleFromDocumentElement(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStyle()));
+   ASSERT_EQ(STCONVERT("TOC 1"), actual.body->getStyle()->getName());
+}
+
+/// <summary>
+/// Test for getting style from document element online.
+/// </summary>
+TEST_F(StylesTests, TestGetStyleFromDocumentElementOnline) {
+    std::shared_ptr< GetStyleFromDocumentElementOnlineRequest > request(new GetStyleFromDocumentElementOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/1/paragraphFormat"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getStyleFromDocumentElementOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -214,8 +336,8 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElement) {
 
     std::shared_ptr< ApplyStyleToDocumentElementRequest > request(new ApplyStyleToDocumentElementRequest(
         remoteFileName,
-        requestStyleApply,
         STCONVERT("paragraphs/1/paragraphFormat"),
+        requestStyleApply,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -227,4 +349,26 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElement) {
 
    auto actual = get_api()->applyStyleToDocumentElement(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for applying style to document element online.
+/// </summary>
+TEST_F(StylesTests, TestApplyStyleToDocumentElementOnline) {
+    auto requestStyleApply = std::make_shared< StyleApply >();
+    requestStyleApply->setStyleName(STCONVERT("Heading 1"));
+
+    std::shared_ptr< ApplyStyleToDocumentElementOnlineRequest > request(new ApplyStyleToDocumentElementOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/1/paragraphFormat"),
+        requestStyleApply,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->applyStyleToDocumentElementOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }

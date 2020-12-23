@@ -62,8 +62,8 @@ std::shared_ptr<ApiConfiguration> get_config()
 	web::json::value fileJson = web::json::value::parse(credentials);
 
 	auto newConfig = std::make_shared<ApiConfiguration>();
-	newConfig->setAppKey(fileJson[_XPLATSTR("AppKey")].as_string());
-	newConfig->setAppSid(fileJson[_XPLATSTR("AppSid")].as_string());
+	newConfig->setClientSecret(fileJson[_XPLATSTR("ClientSecret")].as_string());
+	newConfig->setClientId(fileJson[_XPLATSTR("ClientId")].as_string());
 
 	if (fileJson.has_string_field(_XPLATSTR("BaseUrl"))) {
 		newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());

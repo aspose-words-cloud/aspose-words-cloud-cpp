@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 InsertTableRowRequest::InsertTableRowRequest(
     utility::string_t name,
-    std::shared_ptr<TableRowInsert> row,
     utility::string_t tablePath,
+    std::shared_ptr<TableRowInsert> row,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ InsertTableRowRequest::InsertTableRowRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_Row(std::move(row)),
 m_TablePath(std::move(tablePath)),
+m_Row(std::move(row)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -63,16 +63,6 @@ void InsertTableRowRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<TableRowInsert> InsertTableRowRequest::getRow() const
-{
-    return m_Row;
-}
-
-void InsertTableRowRequest::setRow(std::shared_ptr<TableRowInsert> row)
-{
-    m_Row = std::move(row);
-}
-
 utility::string_t InsertTableRowRequest::getTablePath() const
 {
     return m_TablePath;
@@ -81,6 +71,16 @@ utility::string_t InsertTableRowRequest::getTablePath() const
 void InsertTableRowRequest::setTablePath(utility::string_t tablePath)
 {
     m_TablePath = std::move(tablePath);
+}
+
+std::shared_ptr<TableRowInsert> InsertTableRowRequest::getRow() const
+{
+    return m_Row;
+}
+
+void InsertTableRowRequest::setRow(std::shared_ptr<TableRowInsert> row)
+{
+    m_Row = std::move(row);
 }
 
 boost::optional< utility::string_t > InsertTableRowRequest::getFolder() const

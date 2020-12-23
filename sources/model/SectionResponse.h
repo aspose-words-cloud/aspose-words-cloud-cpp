@@ -38,8 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// This response should be returned by the service when handling:
-/// GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}.
+/// The REST response with a section.
 /// </summary>
 class SectionResponse
     : public WordsResponse
@@ -63,7 +62,7 @@ public:
     /// SectionResponse members
 
     /// <summary>
-    /// Gets or sets section.
+    /// Gets or sets the section.
     /// </summary>
     std::shared_ptr<Section> getSection() const;
     bool sectionIsSet() const;

@@ -77,6 +77,7 @@ public:
     void setConfiguration(std::shared_ptr<ApiConfiguration> configuration);
 
     static utility::string_t parameterToString(utility::string_t value);
+    static utility::string_t parameterToString(bool value);
     static utility::string_t parameterToString(int32_t value);
     static utility::string_t parameterToString(int64_t value);
     static utility::string_t parameterToString(float value);
@@ -129,7 +130,7 @@ private:
     utility::string_t m_AccessToken;
     std::array<std::pair<utility::string_t, utility::string_t>, 2> defaultHeaders =
     {
-        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("20.7")),
+        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("20.11")),
         std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client"), _XPLATSTR("C++ SDK"))
     };
 

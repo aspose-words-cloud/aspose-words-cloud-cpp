@@ -31,10 +31,14 @@ namespace api {
 namespace models {
 GetDocumentStatisticsOnlineRequest::GetDocumentStatisticsOnlineRequest(
     std::shared_ptr<HttpContent> document,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
     boost::optional< bool > includeComments,
     boost::optional< bool > includeFootnotes,
     boost::optional< bool > includeTextInShapes
 ) : m_Document(std::move(document)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
 m_IncludeComments(std::move(includeComments)),
 m_IncludeFootnotes(std::move(includeFootnotes)),
 m_IncludeTextInShapes(std::move(includeTextInShapes))
@@ -49,6 +53,26 @@ std::shared_ptr<HttpContent> GetDocumentStatisticsOnlineRequest::getDocument() c
 void GetDocumentStatisticsOnlineRequest::setDocument(std::shared_ptr<HttpContent> document)
 {
     m_Document = std::move(document);
+}
+
+boost::optional< utility::string_t > GetDocumentStatisticsOnlineRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetDocumentStatisticsOnlineRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetDocumentStatisticsOnlineRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetDocumentStatisticsOnlineRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
 }
 
 boost::optional< bool > GetDocumentStatisticsOnlineRequest::getIncludeComments() const

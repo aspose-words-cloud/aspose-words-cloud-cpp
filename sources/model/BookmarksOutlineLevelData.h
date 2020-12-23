@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for individual bookmarks outline level.
+/// Container class for individual bookmarks outline level.
 /// </summary>
 class BookmarksOutlineLevelData
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// BookmarksOutlineLevelData members
 
     /// <summary>
-    /// Gets or sets specify the bookmark's level.
+    /// Gets or sets the bookmark's level.
     /// </summary>
     int32_t getBookmarksOutlineLevel() const;
     bool bookmarksOutlineLevelIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setBookmarksOutlineLevel(int32_t value);
 
     /// <summary>
-    /// Gets or sets specify the bookmark's name.
+    /// Gets or sets the bookmark's name.
     /// </summary>
     utility::string_t getName() const;
     bool nameIsSet() const;

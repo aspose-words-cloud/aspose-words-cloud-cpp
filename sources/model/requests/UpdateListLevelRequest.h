@@ -41,9 +41,9 @@ class UpdateListLevelRequest {
     public: 
  UpdateListLevelRequest(
             utility::string_t name,
-            std::shared_ptr<ListLevelUpdate> listUpdate,
             int32_t listId,
             int32_t listLevel,
+            std::shared_ptr<ListLevelUpdate> listUpdate,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -56,14 +56,14 @@ class UpdateListLevelRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<ListLevelUpdate> getListUpdate() const;
-        void setListUpdate(std::shared_ptr<ListLevelUpdate> listUpdate);
-
         int32_t getListId() const;
         void setListId(int32_t listId);
 
         int32_t getListLevel() const;
         void setListLevel(int32_t listLevel);
+
+        std::shared_ptr<ListLevelUpdate> getListUpdate() const;
+        void setListUpdate(std::shared_ptr<ListLevelUpdate> listUpdate);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -88,9 +88,9 @@ class UpdateListLevelRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<ListLevelUpdate> m_ListUpdate;
         int32_t m_ListId;
         int32_t m_ListLevel;
+        std::shared_ptr<ListLevelUpdate> m_ListUpdate;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

@@ -47,7 +47,8 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
     );
 
     auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
-    requestProtectionRequest->setNewPassword(STCONVERT("123"));
+    requestProtectionRequest->setPassword(STCONVERT("123"));
+    requestProtectionRequest->setProtectionType(STCONVERT("ReadOnly"));
 
     std::shared_ptr< ProtectDocumentRequest > request(new ProtectDocumentRequest(
         remoteFileName,
@@ -61,17 +62,39 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
 
    auto actual = get_api()->protectDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getProtectionData()));
+   ASSERT_EQ(STCONVERT("ReadOnly"), actual.body->getProtectionData()->getProtectionType());
+}
+
+/// <summary>
+/// Test for setting document protection.
+/// </summary>
+TEST_F(DocumentProtectionTests, TestProtectDocumentOnline) {
+    auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
+    requestProtectionRequest->setNewPassword(STCONVERT("123"));
+
+    std::shared_ptr< ProtectDocumentOnlineRequest > request(new ProtectDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestProtectionRequest,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->protectDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
 /// Test for getting document protection.
 /// </summary>
 TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
+    utility::string_t localFilePath = STCONVERT("DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx");
     utility::string_t remoteFileName = STCONVERT("TestGetDocumentProtection.docx");
 
     UploadFileToStorage(
         remoteDataFolder + STCONVERT("/") + remoteFileName,
-        path_combine(LocalTestDataFolder, localFile)
+        path_combine(LocalTestDataFolder, localFilePath)
     );
 
     std::shared_ptr< GetDocumentProtectionRequest > request(new GetDocumentProtectionRequest(
@@ -87,30 +110,16 @@ TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
 }
 
 /// <summary>
-/// Test for changing document protection.
+/// Test for getting document protection.
 /// </summary>
-TEST_F(DocumentProtectionTests, TestChangeDocumentProtection) {
-    utility::string_t remoteFileName = STCONVERT("TestChangeDocumentProtection.docx");
-
-    UploadFileToStorage(
-        remoteDataFolder + STCONVERT("/") + remoteFileName,
-        path_combine(LocalTestDataFolder, localFile)
-    );
-
-    auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
-    requestProtectionRequest->setNewPassword(STCONVERT("321"));
-
-    std::shared_ptr< ProtectDocumentRequest > request(new ProtectDocumentRequest(
-        remoteFileName,
-        requestProtectionRequest,
-        remoteDataFolder,
-        boost::none,
-        boost::none,
+TEST_F(DocumentProtectionTests, TestGetDocumentProtectionOnline) {
+    std::shared_ptr< GetDocumentProtectionOnlineRequest > request(new GetDocumentProtectionOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->protectDocument(request).get();
+   auto actual = get_api()->getDocumentProtectionOnline(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
@@ -141,4 +150,27 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
 
    auto actual = get_api()->unprotectDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getProtectionData()));
+   ASSERT_EQ(STCONVERT("NoProtection"), actual.body->getProtectionData()->getProtectionType());
+}
+
+/// <summary>
+/// Test for deleting unprotect document.
+/// </summary>
+TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocumentOnline) {
+    utility::string_t localFilePath = STCONVERT("DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx");
+
+    auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
+    requestProtectionRequest->setPassword(STCONVERT("aspose"));
+
+    std::shared_ptr< UnprotectDocumentOnlineRequest > request(new UnprotectDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFilePath)),
+        requestProtectionRequest,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->unprotectDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }

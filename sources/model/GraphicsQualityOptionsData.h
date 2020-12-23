@@ -61,7 +61,7 @@ public:
     /// GraphicsQualityOptionsData members
 
     /// <summary>
-    /// Gets or sets a value that specifies how composited images are drawn to this Graphics.
+    /// Gets or sets the value, that specifies how composited images are drawn to this Graphics.
     /// </summary>
     utility::string_t getCompositingMode() const;
     bool compositingModeIsSet() const;

@@ -62,7 +62,7 @@ public:
     /// Hyperlinks members
 
     /// <summary>
-    /// Gets or sets array of Hyperlink.
+    /// Gets or sets the array of Hyperlink.
     /// </summary>
     std::vector<std::shared_ptr<Hyperlink>>& getHyperlinkList();
     bool hyperlinkListIsSet() const;

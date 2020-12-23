@@ -60,7 +60,7 @@ public:
     /// StyleUpdate members
 
     /// <summary>
-    /// Gets or sets /sets the name of the style this style is based on.
+    /// Gets or sets the name of the style this style is based on.
     /// </summary>
     utility::string_t getBaseStyleName() const;
     bool baseStyleNameIsSet() const;
@@ -68,7 +68,7 @@ public:
     void setBaseStyleName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
+    /// Gets or sets a value indicating whether this style is shown in the Quick Style gallery inside MS Word UI.
     /// </summary>
     bool isIsQuickStyle() const;
     bool isQuickStyleIsSet() const;
@@ -84,8 +84,7 @@ public:
     void setName(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets /sets the name of the style to be applied automatically to a new paragraph
-    /// inserted after a paragraph formatted with the specified style.
+    /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
     /// </summary>
     utility::string_t getNextParagraphStyleName() const;
     bool nextParagraphStyleNameIsSet() const;

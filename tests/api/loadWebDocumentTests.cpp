@@ -55,4 +55,7 @@ TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
 
    auto actual = get_api()->loadWebDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()));
+   ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()->getDestDocument()));
+   ASSERT_EQ(STCONVERT("google.doc"), actual.body->getSaveResult()->getDestDocument()->getHref());
 }

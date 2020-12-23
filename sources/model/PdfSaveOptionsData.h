@@ -41,7 +41,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// container class for pdf save options.
+/// Container class for pdf save options.
 /// </summary>
 class PdfSaveOptionsData
     : public FixedPageSaveOptionsData
@@ -65,7 +65,7 @@ public:
     /// PdfSaveOptionsData members
 
     /// <summary>
-    /// Gets or sets specifies the PDF standards compliance level for output documents.
+    /// Gets or sets the PDF standards compliance level for output documents.
     /// </summary>
     utility::string_t getCompliance() const;
     bool complianceIsSet() const;
@@ -73,9 +73,9 @@ public:
     void setCompliance(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies whether to convert footnote/endnote references in main text story into active hyperlinks.
+    /// Gets or sets a value indicating whether to convert footnote/endnote references in main text story into active hyperlinks.
     /// When clicked the hyperlink will lead to the corresponding footnote/endnote.
-    /// Default is false.
+    /// The default value is false.
     /// </summary>
     bool isCreateNoteHyperlinks() const;
     bool createNoteHyperlinksIsSet() const;
@@ -83,8 +83,8 @@ public:
     void setCreateNoteHyperlinks(bool value);
 
     /// <summary>
-    /// Gets or sets a value determining the way CustomDocumentProperties are exported to PDF file.
-    /// Default value is None.
+    /// Gets or sets the option that controls the way CustomDocumentProperties are exported to PDF file.
+    /// The default value is None.
     /// </summary>
     utility::string_t getCustomPropertiesExport() const;
     bool customPropertiesExportIsSet() const;
@@ -92,7 +92,7 @@ public:
     void setCustomPropertiesExport(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies the details for signing the output PDF document.
+    /// Gets or sets the details for signing the output PDF document.
     /// </summary>
     std::shared_ptr<PdfDigitalSignatureDetailsData> getDigitalSignatureDetails() const;
     bool digitalSignatureDetailsIsSet() const;
@@ -100,7 +100,7 @@ public:
     void setDigitalSignatureDetails(std::shared_ptr<PdfDigitalSignatureDetailsData> value);
 
     /// <summary>
-    /// Gets or sets a flag specifying whether the window’s title bar should display the document title taken from the Title entry of the document information dictionary.
+    /// Gets or sets a value indicating whether the window’s title bar should display the document title taken from the Title entry of the document information dictionary.
     /// </summary>
     bool isDisplayDocTitle() const;
     bool displayDocTitleIsSet() const;
@@ -108,7 +108,7 @@ public:
     void setDisplayDocTitle(bool value);
 
     /// <summary>
-    /// Gets or sets allows to specify downsample options.
+    /// Gets or sets the downsample options.
     /// </summary>
     std::shared_ptr<DownsampleOptionsData> getDownsampleOptions() const;
     bool downsampleOptionsIsSet() const;
@@ -116,7 +116,7 @@ public:
     void setDownsampleOptions(std::shared_ptr<DownsampleOptionsData> value);
 
     /// <summary>
-    /// Gets or sets controls how fonts are embedded into the resulting PDF documents.
+    /// Gets or sets a value indicating whether fonts are embedded into the resulting PDF documents.
     /// </summary>
     bool isEmbedFullFonts() const;
     bool embedFullFontsIsSet() const;
@@ -124,7 +124,7 @@ public:
     void setEmbedFullFonts(bool value);
 
     /// <summary>
-    /// Gets or sets specifies the details for encrypting the output PDF document.
+    /// Gets or sets the details for encrypting the output PDF document.
     /// </summary>
     std::shared_ptr<PdfEncryptionDetailsData> getEncryptionDetails() const;
     bool encryptionDetailsIsSet() const;
@@ -132,7 +132,7 @@ public:
     void setEncryptionDetails(std::shared_ptr<PdfEncryptionDetailsData> value);
 
     /// <summary>
-    /// Gets or sets a flag specifying whether URI should be escaped before writing.
+    /// Gets or sets a value indicating whether URI should be escaped before writing.
     /// </summary>
     bool isEscapeUri() const;
     bool escapeUriIsSet() const;
@@ -140,7 +140,7 @@ public:
     void setEscapeUri(bool value);
 
     /// <summary>
-    /// Gets or sets determines whether or not to export document structure.
+    /// Gets or sets a value indicating whether to export document structure.
     /// </summary>
     bool isExportDocumentStructure() const;
     bool exportDocumentStructureIsSet() const;
@@ -148,7 +148,7 @@ public:
     void setExportDocumentStructure(bool value);
 
     /// <summary>
-    /// Gets or sets specifies the font embedding mode.
+    /// Gets or sets the font embedding mode.
     /// </summary>
     utility::string_t getFontEmbeddingMode() const;
     bool fontEmbeddingModeIsSet() const;
@@ -156,7 +156,7 @@ public:
     void setFontEmbeddingMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets determines how bookmarks in headers/footers are exported.
+    /// Gets or sets the option that controls how bookmarks in headers/footers are exported.
     /// The default value is Aspose.Words.Saving.HeaderFooterBookmarksExportMode.All.
     /// </summary>
     utility::string_t getHeaderFooterBookmarksExportMode() const;
@@ -165,7 +165,7 @@ public:
     void setHeaderFooterBookmarksExportMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies how the color space will be selected for the images in PDF document.
+    /// Gets or sets the option that controls how the color space will be selected for the images in PDF document.
     /// </summary>
     utility::string_t getImageColorSpaceExportMode() const;
     bool imageColorSpaceExportModeIsSet() const;
@@ -173,7 +173,7 @@ public:
     void setImageColorSpaceExportMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies compression type to be used for all images in the document.
+    /// Gets or sets the compression type to be used for all images in the document.
     /// </summary>
     utility::string_t getImageCompression() const;
     bool imageCompressionIsSet() const;
@@ -181,9 +181,7 @@ public:
     void setImageCompression(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a flag indicating whether image interpolation shall be performed by a conforming
-    /// reader. When false is specified, the flag is not written to the output document
-    /// and the default behaviour of reader is used instead.
+    /// Gets or sets a value indicating whether image interpolation shall be performed by a conforming reader. When false is specified, the flag is not written to the output document and the default behavior of reader is used instead.
     /// </summary>
     bool isInterpolateImages() const;
     bool interpolateImagesIsSet() const;
@@ -191,7 +189,7 @@ public:
     void setInterpolateImages(bool value);
 
     /// <summary>
-    /// Gets or sets determines whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
+    /// Gets or sets a value indicating whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
     /// </summary>
     bool isOpenHyperlinksInNewWindow() const;
     bool openHyperlinksInNewWindowIsSet() const;
@@ -199,7 +197,7 @@ public:
     void setOpenHyperlinksInNewWindow(bool value);
 
     /// <summary>
-    /// Gets or sets allows to specify outline options.
+    /// Gets or sets the outline options.
     /// </summary>
     std::shared_ptr<OutlineOptionsData> getOutlineOptions() const;
     bool outlineOptionsIsSet() const;
@@ -207,7 +205,7 @@ public:
     void setOutlineOptions(std::shared_ptr<OutlineOptionsData> value);
 
     /// <summary>
-    /// Gets or sets specifies how the PDF document should be displayed when opened in the PDF reader.
+    /// Gets or sets the option that controls how the PDF document should be displayed when opened in the PDF reader.
     /// </summary>
     utility::string_t getPageMode() const;
     bool pageModeIsSet() const;
@@ -215,7 +213,7 @@ public:
     void setPageMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets a value determining whether or not to preblend transparent images with black background color.
+    /// Gets or sets a value indicating whether to preblend transparent images with black background color.
     /// </summary>
     bool isPreblendImages() const;
     bool preblendImagesIsSet() const;
@@ -223,7 +221,7 @@ public:
     void setPreblendImages(bool value);
 
     /// <summary>
-    /// Gets or sets specifies whether to preserve Microsoft Word form fields as form fields in PDF or convert them to text.
+    /// Gets or sets a value indicating whether to preserve Microsoft Word form fields as form fields in PDF or convert them to text.
     /// </summary>
     bool isPreserveFormFields() const;
     bool preserveFormFieldsIsSet() const;
@@ -231,7 +229,7 @@ public:
     void setPreserveFormFields(bool value);
 
     /// <summary>
-    /// Gets or sets specifies compression type to be used for all textual content in the document.
+    /// Gets or sets the compression type to be used for all textual content in the document.
     /// </summary>
     utility::string_t getTextCompression() const;
     bool textCompressionIsSet() const;
@@ -239,7 +237,7 @@ public:
     void setTextCompression(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets determines whether the document should be saved using a booklet printing layout.
+    /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
     /// </summary>
     bool isUseBookFoldPrintingSettings() const;
     bool useBookFoldPrintingSettingsIsSet() const;
@@ -247,7 +245,7 @@ public:
     void setUseBookFoldPrintingSettings(bool value);
 
     /// <summary>
-    /// Gets or sets determines whether or not to substitute TrueType fonts Arial, Times New Roman, Courier New and Symbol with core PDF Type 1 fonts.
+    /// Gets or sets a value indicating whether to substitute TrueType fonts Arial, Times New Roman, Courier New and Symbol with core PDF Type 1 fonts.
     /// </summary>
     bool isUseCoreFonts() const;
     bool useCoreFontsIsSet() const;
@@ -255,7 +253,7 @@ public:
     void setUseCoreFonts(bool value);
 
     /// <summary>
-    /// Gets or sets determines what type of zoom should be applied when a document is opened with a PDF viewer.
+    /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
     /// </summary>
     utility::string_t getZoomBehavior() const;
     bool zoomBehaviorIsSet() const;
@@ -263,7 +261,7 @@ public:
     void setZoomBehavior(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets determines zoom factor (in percentages) for a document.
+    /// Gets or sets the zoom factor (in percentages) for a document.
     /// </summary>
     int32_t getZoomFactor() const;
     bool zoomFactorIsSet() const;

@@ -38,7 +38,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents DTO for collection of runs.
+/// DTO container with a collection of runs.
 /// </summary>
 class Runs
     : public LinkElement
@@ -62,7 +62,7 @@ public:
     /// Runs members
 
     /// <summary>
-    /// Gets or sets collection of fields.
+    /// Gets or sets the collection of runs.
     /// </summary>
     std::vector<std::shared_ptr<Run>>& getList();
     bool listIsSet() const;

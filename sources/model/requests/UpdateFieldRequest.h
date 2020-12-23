@@ -41,8 +41,8 @@ class UpdateFieldRequest {
     public: 
  UpdateFieldRequest(
             utility::string_t name,
-            std::shared_ptr<FieldUpdate> field,
             int32_t index,
+            std::shared_ptr<FieldUpdate> field,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -56,11 +56,11 @@ class UpdateFieldRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<FieldUpdate> getField() const;
-        void setField(std::shared_ptr<FieldUpdate> field);
-
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        std::shared_ptr<FieldUpdate> getField() const;
+        void setField(std::shared_ptr<FieldUpdate> field);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -88,8 +88,8 @@ class UpdateFieldRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<FieldUpdate> m_Field;
         int32_t m_Index;
+        std::shared_ptr<FieldUpdate> m_Field;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

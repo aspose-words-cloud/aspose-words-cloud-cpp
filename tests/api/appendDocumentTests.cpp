@@ -70,6 +70,8 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 
    auto actual = get_api()->appendDocument(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
+   ASSERT_EQ(STCONVERT("TestAppendDocument.docx"), actual.body->getDocument()->getFileName());
 }
 
 /// <summary>
@@ -95,8 +97,14 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
 
     std::shared_ptr< AppendDocumentOnlineRequest > request(new AppendDocumentOnlineRequest(
         generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        requestDocumentList
+        requestDocumentList,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
     ));
 
-   get_api()->appendDocumentOnline(request).get();
+auto actual = get_api()->appendDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }

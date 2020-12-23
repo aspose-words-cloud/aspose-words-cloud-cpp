@@ -59,6 +59,8 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
 
    auto actual = get_api()->getDocumentStatistics(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getStatData()));
+   ASSERT_EQ(10, actual.body->getStatData()->getWordCount());
 }
 
 /// <summary>
@@ -69,8 +71,11 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatisticsOnline) {
         generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
         boost::none,
         boost::none,
+        boost::none,
+        boost::none,
         boost::none
     ));
 
-   get_api()->getDocumentStatisticsOnline(request).get();
+   auto actual = get_api()->getDocumentStatisticsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }

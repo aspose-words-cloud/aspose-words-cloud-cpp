@@ -41,9 +41,9 @@ class UpdateRunRequest {
     public: 
  UpdateRunRequest(
             utility::string_t name,
-            std::shared_ptr<RunUpdate> run,
             utility::string_t paragraphPath,
             int32_t index,
+            std::shared_ptr<RunUpdate> run,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -56,14 +56,14 @@ class UpdateRunRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<RunUpdate> getRun() const;
-        void setRun(std::shared_ptr<RunUpdate> run);
-
         utility::string_t getParagraphPath() const;
         void setParagraphPath(utility::string_t paragraphPath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        std::shared_ptr<RunUpdate> getRun() const;
+        void setRun(std::shared_ptr<RunUpdate> run);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -88,9 +88,9 @@ class UpdateRunRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<RunUpdate> m_Run;
         utility::string_t m_ParagraphPath;
         int32_t m_Index;
+        std::shared_ptr<RunUpdate> m_Run;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

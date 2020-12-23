@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateBookmarkRequest::UpdateBookmarkRequest(
     utility::string_t name,
-    std::shared_ptr<BookmarkData> bookmarkData,
     utility::string_t bookmarkName,
+    std::shared_ptr<BookmarkData> bookmarkData,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ UpdateBookmarkRequest::UpdateBookmarkRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_BookmarkData(std::move(bookmarkData)),
 m_BookmarkName(std::move(bookmarkName)),
+m_BookmarkData(std::move(bookmarkData)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -63,16 +63,6 @@ void UpdateBookmarkRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<BookmarkData> UpdateBookmarkRequest::getBookmarkData() const
-{
-    return m_BookmarkData;
-}
-
-void UpdateBookmarkRequest::setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData)
-{
-    m_BookmarkData = std::move(bookmarkData);
-}
-
 utility::string_t UpdateBookmarkRequest::getBookmarkName() const
 {
     return m_BookmarkName;
@@ -81,6 +71,16 @@ utility::string_t UpdateBookmarkRequest::getBookmarkName() const
 void UpdateBookmarkRequest::setBookmarkName(utility::string_t bookmarkName)
 {
     m_BookmarkName = std::move(bookmarkName);
+}
+
+std::shared_ptr<BookmarkData> UpdateBookmarkRequest::getBookmarkData() const
+{
+    return m_BookmarkData;
+}
+
+void UpdateBookmarkRequest::setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData)
+{
+    m_BookmarkData = std::move(bookmarkData);
 }
 
 boost::optional< utility::string_t > UpdateBookmarkRequest::getFolder() const

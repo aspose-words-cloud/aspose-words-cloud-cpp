@@ -37,7 +37,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Represents all formatting for a table row.
+/// DTO container with formatting for a table row.
 /// </summary>
 class TableRowFormat
     : public LinkElement
@@ -61,7 +61,7 @@ public:
     /// TableRowFormat members
 
     /// <summary>
-    /// Gets or sets true if the text in a table row is allowed to split across a page break.
+    /// Gets or sets a value indicating whether the text in a table row is allowed to split across a page break.
     /// </summary>
     bool isAllowBreakAcrossPages() const;
     bool allowBreakAcrossPagesIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setAllowBreakAcrossPages(bool value);
 
     /// <summary>
-    /// Gets or sets true if the row is repeated as a table heading on every page when the table spans more than one page.
+    /// Gets or sets a value indicating whether the row is repeated as a table heading on every page when the table spans more than one page.
     /// </summary>
     bool isHeadingFormat() const;
     bool headingFormatIsSet() const;

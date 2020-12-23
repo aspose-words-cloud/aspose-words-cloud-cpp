@@ -61,7 +61,7 @@ public:
     /// TxtSaveOptionsBaseData members
 
     /// <summary>
-    /// Gets or sets specifies the encoding to use when exporting in plain text format.
+    /// Gets or sets the character encoding to use when exporting in plain text format.
     /// </summary>
     utility::string_t getEncoding() const;
     bool encodingIsSet() const;
@@ -69,7 +69,7 @@ public:
     void setEncoding(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets specifies whether to output headers and footers when exporting in plain text format.
+    /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
     /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
     /// </summary>
     utility::string_t getExportHeadersFootersMode() const;
@@ -78,7 +78,7 @@ public:
     void setExportHeadersFootersMode(utility::string_t value);
 
     /// <summary>
-    /// Gets or sets allows to specify whether the page breaks should be preserved during export.
+    /// Gets or sets a value indicating whether the page breaks should be preserved during export.
     /// The default value is false.
     /// </summary>
     bool isForcePageBreaks() const;
@@ -87,7 +87,7 @@ public:
     void setForcePageBreaks(bool value);
 
     /// <summary>
-    /// Gets or sets specifies the string to use as a paragraph break when exporting in plain text format.
+    /// Gets or sets the string to use as a paragraph break when exporting in plain text format.
     /// </summary>
     utility::string_t getParagraphBreak() const;
     bool paragraphBreakIsSet() const;

@@ -36,7 +36,7 @@ namespace api {
 namespace models {
 
 /// <summary>
-/// Paragraph element.
+/// DTO container with a paragraph's text.
 /// </summary>
 class ParagraphInsert
     : public ModelBase
@@ -60,7 +60,7 @@ public:
     /// ParagraphInsert members
 
     /// <summary>
-    /// Gets or sets paragraph's text.
+    /// Gets or sets the paragraph's text.
     /// </summary>
     utility::string_t getText() const;
     bool textIsSet() const;
