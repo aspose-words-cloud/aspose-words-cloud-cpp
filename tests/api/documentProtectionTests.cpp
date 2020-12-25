@@ -67,6 +67,38 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
 }
 
 /// <summary>
+/// Test for changing document protection.
+/// </summary>
+TEST_F(DocumentProtectionTests, TestChangeDocumentProtection) {
+    utility::string_t localFilePath = STCONVERT("DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx");
+    utility::string_t remoteFileName = STCONVERT("TestChangeDocumentProtection.docx");
+
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFilePath)
+    );
+
+    auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
+    requestProtectionRequest->setPassword(STCONVERT("aspose"));
+    requestProtectionRequest->setProtectionType(STCONVERT("AllowOnlyComments"));
+
+    std::shared_ptr< ProtectDocumentRequest > request(new ProtectDocumentRequest(
+        remoteFileName,
+        requestProtectionRequest,
+        remoteDataFolder,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->protectDocument(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getProtectionData()));
+   ASSERT_EQ(STCONVERT("AllowOnlyComments"), actual.body->getProtectionData()->getProtectionType());
+}
+
+/// <summary>
 /// Test for getting document protection.
 /// </summary>
 TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
