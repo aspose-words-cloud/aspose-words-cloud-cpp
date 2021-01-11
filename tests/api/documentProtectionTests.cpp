@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="documentProtectionTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,35 +67,22 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
 }
 
 /// <summary>
-/// Test for changing document protection.
+/// Test for setting document protection.
 /// </summary>
-TEST_F(DocumentProtectionTests, TestChangeDocumentProtection) {
-    utility::string_t localFilePath = STCONVERT("DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx");
-    utility::string_t remoteFileName = STCONVERT("TestChangeDocumentProtection.docx");
-
-    UploadFileToStorage(
-        remoteDataFolder + STCONVERT("/") + remoteFileName,
-        path_combine(LocalTestDataFolder, localFilePath)
-    );
-
+TEST_F(DocumentProtectionTests, TestProtectDocumentOnline) {
     auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
-    requestProtectionRequest->setPassword(STCONVERT("aspose"));
-    requestProtectionRequest->setProtectionType(STCONVERT("AllowOnlyComments"));
+    requestProtectionRequest->setNewPassword(STCONVERT("123"));
 
-    std::shared_ptr< ProtectDocumentRequest > request(new ProtectDocumentRequest(
-        remoteFileName,
+    std::shared_ptr< ProtectDocumentOnlineRequest > request(new ProtectDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
         requestProtectionRequest,
-        remoteDataFolder,
-        boost::none,
         boost::none,
         boost::none,
         boost::none
     ));
 
-   auto actual = get_api()->protectDocument(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getProtectionData()));
-   ASSERT_EQ(STCONVERT("AllowOnlyComments"), actual.body->getProtectionData()->getProtectionType());
+auto actual = get_api()->protectDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -120,8 +107,20 @@ TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
 
    auto actual = get_api()->getDocumentProtection(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getProtectionData()));
-   ASSERT_EQ(STCONVERT("ReadOnly"), actual.body->getProtectionData()->getProtectionType());
+}
+
+/// <summary>
+/// Test for getting document protection.
+/// </summary>
+TEST_F(DocumentProtectionTests, TestGetDocumentProtectionOnline) {
+    std::shared_ptr< GetDocumentProtectionOnlineRequest > request(new GetDocumentProtectionOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getDocumentProtectionOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -153,4 +152,25 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getProtectionData()));
    ASSERT_EQ(STCONVERT("NoProtection"), actual.body->getProtectionData()->getProtectionType());
+}
+
+/// <summary>
+/// Test for deleting unprotect document.
+/// </summary>
+TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocumentOnline) {
+    utility::string_t localFilePath = STCONVERT("DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx");
+
+    auto requestProtectionRequest = std::make_shared< ProtectionRequest >();
+    requestProtectionRequest->setPassword(STCONVERT("aspose"));
+
+    std::shared_ptr< UnprotectDocumentOnlineRequest > request(new UnprotectDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFilePath)),
+        requestProtectionRequest,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->unprotectDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }

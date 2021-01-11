@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateRunRequest.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,9 +31,9 @@ namespace api {
 namespace models {
 UpdateRunRequest::UpdateRunRequest(
     utility::string_t name,
-    std::shared_ptr<RunUpdate> run,
     utility::string_t paragraphPath,
     int32_t index,
+    std::shared_ptr<RunUpdate> run,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -42,9 +42,9 @@ UpdateRunRequest::UpdateRunRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_Run(std::move(run)),
 m_ParagraphPath(std::move(paragraphPath)),
 m_Index(std::move(index)),
+m_Run(std::move(run)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -65,16 +65,6 @@ void UpdateRunRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<RunUpdate> UpdateRunRequest::getRun() const
-{
-    return m_Run;
-}
-
-void UpdateRunRequest::setRun(std::shared_ptr<RunUpdate> run)
-{
-    m_Run = std::move(run);
-}
-
 utility::string_t UpdateRunRequest::getParagraphPath() const
 {
     return m_ParagraphPath;
@@ -93,6 +83,16 @@ int32_t UpdateRunRequest::getIndex() const
 void UpdateRunRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
+}
+
+std::shared_ptr<RunUpdate> UpdateRunRequest::getRun() const
+{
+    return m_Run;
+}
+
+void UpdateRunRequest::setRun(std::shared_ptr<RunUpdate> run)
+{
+    m_Run = std::move(run);
 }
 
 boost::optional< utility::string_t > UpdateRunRequest::getFolder() const

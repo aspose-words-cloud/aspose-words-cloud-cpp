@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApplyStyleToDocumentElementRequest.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 ApplyStyleToDocumentElementRequest::ApplyStyleToDocumentElementRequest(
     utility::string_t name,
-    std::shared_ptr<StyleApply> styleApply,
     utility::string_t styledNodePath,
+    std::shared_ptr<StyleApply> styleApply,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ ApplyStyleToDocumentElementRequest::ApplyStyleToDocumentElementRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_StyleApply(std::move(styleApply)),
 m_StyledNodePath(std::move(styledNodePath)),
+m_StyleApply(std::move(styleApply)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -63,16 +63,6 @@ void ApplyStyleToDocumentElementRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<StyleApply> ApplyStyleToDocumentElementRequest::getStyleApply() const
-{
-    return m_StyleApply;
-}
-
-void ApplyStyleToDocumentElementRequest::setStyleApply(std::shared_ptr<StyleApply> styleApply)
-{
-    m_StyleApply = std::move(styleApply);
-}
-
 utility::string_t ApplyStyleToDocumentElementRequest::getStyledNodePath() const
 {
     return m_StyledNodePath;
@@ -81,6 +71,16 @@ utility::string_t ApplyStyleToDocumentElementRequest::getStyledNodePath() const
 void ApplyStyleToDocumentElementRequest::setStyledNodePath(utility::string_t styledNodePath)
 {
     m_StyledNodePath = std::move(styledNodePath);
+}
+
+std::shared_ptr<StyleApply> ApplyStyleToDocumentElementRequest::getStyleApply() const
+{
+    return m_StyleApply;
+}
+
+void ApplyStyleToDocumentElementRequest::setStyleApply(std::shared_ptr<StyleApply> styleApply)
+{
+    m_StyleApply = std::move(styleApply);
 }
 
 boost::optional< utility::string_t > ApplyStyleToDocumentElementRequest::getFolder() const

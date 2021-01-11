@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="mailMergeFiledsTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,6 +43,8 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
 
     std::shared_ptr< GetDocumentFieldNamesOnlineRequest > request(new GetDocumentFieldNamesOnlineRequest(
         generate_http_content_from_file(path_combine(LocalTestDataFolder, mailMergeFolder + STCONVERT("/") + localDocumentFile)),
+        boost::none,
+        boost::none,
         true
     ));
 

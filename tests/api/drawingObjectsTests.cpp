@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="drawingObjectsTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,9 +58,21 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjects) {
 
    auto actual = get_api()->getDocumentDrawingObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObjects()));
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObjects()->getList()));
-   ASSERT_EQ(1, actual.body->getDrawingObjects()->getList().size());
+}
+
+/// <summary>
+/// Test for getting drawing objects from document online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsOnline) {
+    std::shared_ptr< GetDocumentDrawingObjectsOnlineRequest > request(new GetDocumentDrawingObjectsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getDocumentDrawingObjectsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -85,9 +97,6 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsWithoutNodePath) {
 
    auto actual = get_api()->getDocumentDrawingObjects(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObjects()));
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObjects()->getList()));
-   ASSERT_EQ(1, actual.body->getDrawingObjects()->getList().size());
 }
 
 /// <summary>
@@ -113,8 +122,22 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndex) {
 
    auto actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObject()));
-   ASSERT_EQ(300.0, actual.body->getDrawingObject()->getHeight());
+}
+
+/// <summary>
+/// Test for getting drawing object by specified index online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexOnline) {
+    std::shared_ptr< GetDocumentDrawingObjectByIndexOnlineRequest > request(new GetDocumentDrawingObjectByIndexOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getDocumentDrawingObjectByIndexOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -140,8 +163,6 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexWithoutNodePath) 
 
    auto actual = get_api()->getDocumentDrawingObjectByIndex(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObject()));
-   ASSERT_EQ(300.0, actual.body->getDrawingObject()->getHeight());
 }
 
 /// <summary>
@@ -164,10 +185,30 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObject) {
         boost::none,
         boost::none,
         boost::none,
+        boost::none,
         boost::none
     ));
 
    get_api()->renderDrawingObject(request).get();
+}
+
+/// <summary>
+/// Test for getting drawing object by specified index and format online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestRenderDrawingObjectOnline) {
+    std::shared_ptr< RenderDrawingObjectOnlineRequest > request(new RenderDrawingObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("png"),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->renderDrawingObjectOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -187,6 +228,7 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObjectWithoutNodePath) {
         0,
         boost::none,
         remoteDataFolder,
+        boost::none,
         boost::none,
         boost::none,
         boost::none,
@@ -218,6 +260,21 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageData) {
     ));
 
    get_api()->getDocumentDrawingObjectImageData(request).get();
+}
+
+/// <summary>
+/// Test for reading drawing object's image data online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageDataOnline) {
+    std::shared_ptr< GetDocumentDrawingObjectImageDataOnlineRequest > request(new GetDocumentDrawingObjectImageDataOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->getDocumentDrawingObjectImageDataOnline(request).get();
 }
 
 /// <summary>
@@ -269,6 +326,21 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleData) {
 }
 
 /// <summary>
+/// Test for getting drawing object OLE data online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataOnline) {
+    std::shared_ptr< GetDocumentDrawingObjectOleDataOnlineRequest > request(new GetDocumentDrawingObjectOleDataOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localDrawingFile)),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->getDocumentDrawingObjectOleDataOnline(request).get();
+}
+
+/// <summary>
 /// Test for getting drawing object OLE data without node path.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataWithoutNodePath) {
@@ -304,10 +376,10 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectInsert >();
-    requestDrawingObject->setHeight(0.0);
-    requestDrawingObject->setLeft(0.0);
-    requestDrawingObject->setTop(0.0);
-    requestDrawingObject->setWidth(0.0);
+    requestDrawingObject->setHeight(0);
+    requestDrawingObject->setLeft(0);
+    requestDrawingObject->setTop(0);
+    requestDrawingObject->setWidth(0);
     requestDrawingObject->setRelativeHorizontalPosition(STCONVERT("Margin"));
     requestDrawingObject->setRelativeVerticalPosition(STCONVERT("Margin"));
     requestDrawingObject->setWrapType(STCONVERT("Inline"));
@@ -328,8 +400,35 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
 
    auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObject()));
-   ASSERT_EQ(STCONVERT("0.3.7.1"), actual.body->getDrawingObject()->getNodeId());
+}
+
+/// <summary>
+/// Test for adding drawing object online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestInsertDrawingObjectOnline) {
+    auto requestDrawingObject = std::make_shared< DrawingObjectInsert >();
+    requestDrawingObject->setHeight(0);
+    requestDrawingObject->setLeft(0);
+    requestDrawingObject->setTop(0);
+    requestDrawingObject->setWidth(0);
+    requestDrawingObject->setRelativeHorizontalPosition(STCONVERT("Margin"));
+    requestDrawingObject->setRelativeVerticalPosition(STCONVERT("Margin"));
+    requestDrawingObject->setWrapType(STCONVERT("Inline"));
+
+    std::shared_ptr< InsertDrawingObjectOnlineRequest > request(new InsertDrawingObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestDrawingObject,
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertDrawingObjectOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -344,10 +443,10 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectInsert >();
-    requestDrawingObject->setHeight(0.0);
-    requestDrawingObject->setLeft(0.0);
-    requestDrawingObject->setTop(0.0);
-    requestDrawingObject->setWidth(0.0);
+    requestDrawingObject->setHeight(0);
+    requestDrawingObject->setLeft(0);
+    requestDrawingObject->setTop(0);
+    requestDrawingObject->setWidth(0);
     requestDrawingObject->setRelativeHorizontalPosition(STCONVERT("Margin"));
     requestDrawingObject->setRelativeVerticalPosition(STCONVERT("Margin"));
     requestDrawingObject->setWrapType(STCONVERT("Inline"));
@@ -368,8 +467,6 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
 
    auto actual = get_api()->insertDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObject()));
-   ASSERT_EQ(STCONVERT("0.3.7.1"), actual.body->getDrawingObject()->getNodeId());
 }
 
 /// <summary>
@@ -397,6 +494,24 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObject) {
     ));
 
    get_api()->deleteDrawingObject(request).get();
+}
+
+/// <summary>
+/// Test for deleting drawing object online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectOnline) {
+    std::shared_ptr< DeleteDrawingObjectOnlineRequest > request(new DeleteDrawingObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->deleteDrawingObjectOnline(request).get();
 }
 
 /// <summary>
@@ -438,7 +553,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectUpdate >();
-    requestDrawingObject->setLeft(1.0);
+    requestDrawingObject->setLeft(0);
 
     std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
@@ -457,8 +572,30 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
 
    auto actual = get_api()->updateDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObject()));
-   ASSERT_EQ(1.0, actual.body->getDrawingObject()->getLeft());
+}
+
+/// <summary>
+/// Test for updating drawing object online.
+/// </summary>
+TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectOnline) {
+    auto requestDrawingObject = std::make_shared< DrawingObjectUpdate >();
+    requestDrawingObject->setLeft(0);
+
+    std::shared_ptr< UpdateDrawingObjectOnlineRequest > request(new UpdateDrawingObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestDrawingObject,
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateDrawingObjectOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -473,7 +610,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
     );
 
     auto requestDrawingObject = std::make_shared< DrawingObjectUpdate >();
-    requestDrawingObject->setLeft(1.0);
+    requestDrawingObject->setLeft(0);
 
     std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
@@ -492,6 +629,4 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
 
    auto actual = get_api()->updateDrawingObject(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getDrawingObject()));
-   ASSERT_EQ(1.0, actual.body->getDrawingObject()->getLeft());
 }

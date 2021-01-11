@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateFormFieldRequest.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateFormFieldRequest::UpdateFormFieldRequest(
     utility::string_t name,
-    std::shared_ptr<FormField> formField,
     int32_t index,
+    std::shared_ptr<FormField> formField,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -42,8 +42,8 @@ UpdateFormFieldRequest::UpdateFormFieldRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_FormField(std::move(formField)),
 m_Index(std::move(index)),
+m_FormField(std::move(formField)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -65,16 +65,6 @@ void UpdateFormFieldRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-std::shared_ptr<FormField> UpdateFormFieldRequest::getFormField() const
-{
-    return m_FormField;
-}
-
-void UpdateFormFieldRequest::setFormField(std::shared_ptr<FormField> formField)
-{
-    m_FormField = std::move(formField);
-}
-
 int32_t UpdateFormFieldRequest::getIndex() const
 {
     return m_Index;
@@ -83,6 +73,16 @@ int32_t UpdateFormFieldRequest::getIndex() const
 void UpdateFormFieldRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
+}
+
+std::shared_ptr<FormField> UpdateFormFieldRequest::getFormField() const
+{
+    return m_FormField;
+}
+
+void UpdateFormFieldRequest::setFormField(std::shared_ptr<FormField> formField)
+{
+    m_FormField = std::move(formField);
 }
 
 boost::optional< utility::string_t > UpdateFormFieldRequest::getNodePath() const

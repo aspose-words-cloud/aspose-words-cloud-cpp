@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,21 +30,45 @@ namespace cloud {
 namespace api {
 namespace models {
 GetDocumentFieldNamesOnlineRequest::GetDocumentFieldNamesOnlineRequest(
-    std::shared_ptr<HttpContent> _template,
+    std::shared_ptr<HttpContent> document,
+    boost::optional< utility::string_t > loadEncoding,
+    boost::optional< utility::string_t > password,
     boost::optional< bool > useNonMergeFields
-) : m_Template(std::move(_template)),
+) : m_Document(std::move(document)),
+m_LoadEncoding(std::move(loadEncoding)),
+m_Password(std::move(password)),
 m_UseNonMergeFields(std::move(useNonMergeFields))
 {
 }
 
-std::shared_ptr<HttpContent> GetDocumentFieldNamesOnlineRequest::getTemplate() const
+std::shared_ptr<HttpContent> GetDocumentFieldNamesOnlineRequest::getDocument() const
 {
-    return m_Template;
+    return m_Document;
 }
 
-void GetDocumentFieldNamesOnlineRequest::setTemplate(std::shared_ptr<HttpContent> _template)
+void GetDocumentFieldNamesOnlineRequest::setDocument(std::shared_ptr<HttpContent> document)
 {
-    m_Template = std::move(_template);
+    m_Document = std::move(document);
+}
+
+boost::optional< utility::string_t > GetDocumentFieldNamesOnlineRequest::getLoadEncoding() const
+{
+    return m_LoadEncoding;
+}
+
+void GetDocumentFieldNamesOnlineRequest::setLoadEncoding(boost::optional< utility::string_t > loadEncoding)
+{
+    m_LoadEncoding = std::move(loadEncoding);
+}
+
+boost::optional< utility::string_t > GetDocumentFieldNamesOnlineRequest::getPassword() const
+{
+    return m_Password;
+}
+
+void GetDocumentFieldNamesOnlineRequest::setPassword(boost::optional< utility::string_t > password)
+{
+    m_Password = std::move(password);
 }
 
 boost::optional< bool > GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const

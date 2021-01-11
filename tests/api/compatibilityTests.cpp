@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compatibilityTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -62,4 +62,24 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
     ));
 
    get_api()->optimizeDocument(request).get();
+}
+
+/// <summary>
+/// Test for optimize document to specific MS Word version.
+/// </summary>
+TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
+    auto requestOptions = std::make_shared< OptimizationOptions >();
+    requestOptions->setMsWordVersion(STCONVERT("Word2002"));
+
+    std::shared_ptr< OptimizeDocumentOnlineRequest > request(new OptimizeDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestOptions,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->optimizeDocumentOnline(request).get();
 }

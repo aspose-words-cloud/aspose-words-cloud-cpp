@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="bookmarkTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,6 +32,7 @@ class BookmarkTests : public InfrastructureTest {
 protected:
     utility::string_t remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentElements/Bookmarks");
     utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
+    utility::string_t bookmarkName = STCONVERT("aspose");
 
 };
 
@@ -56,9 +57,20 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 
    auto actual = get_api()->getBookmarks(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getBookmarks()));
-   ASSERT_EQ(3, actual.body->getBookmarks()->getBookmarkList().size());
-   ASSERT_EQ(STCONVERT("aspose"), actual.body->getBookmarks()->getBookmarkList()[1]->getName());
+}
+
+/// <summary>
+/// Test for getting bookmarks from document online.
+/// </summary>
+TEST_F(BookmarkTests, TestGetBookmarksOnline) {
+    std::shared_ptr< GetBookmarksOnlineRequest > request(new GetBookmarksOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getBookmarksOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -66,7 +78,6 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 /// </summary>
 TEST_F(BookmarkTests, TestGetBookmarkByName) {
     utility::string_t remoteFileName = STCONVERT("TestGetDocumentBookmarkByName.docx");
-    utility::string_t bookmarkName = STCONVERT("aspose");
 
     UploadFileToStorage(
         remoteDataFolder + STCONVERT("/") + remoteFileName,
@@ -84,8 +95,21 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 
    auto actual = get_api()->getBookmarkByName(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getBookmark()));
-   ASSERT_EQ(bookmarkName, actual.body->getBookmark()->getName());
+}
+
+/// <summary>
+/// Test for getting bookmark by specified name online.
+/// </summary>
+TEST_F(BookmarkTests, TestGetBookmarkByNameOnline) {
+    std::shared_ptr< GetBookmarkByNameOnlineRequest > request(new GetBookmarkByNameOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        bookmarkName,
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getBookmarkByNameOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -93,7 +117,6 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 /// </summary>
 TEST_F(BookmarkTests, TestUpdateBookmark) {
     utility::string_t remoteFileName = STCONVERT("TestUpdateDocumentBookmark.docx");
-    utility::string_t bookmarkName = STCONVERT("aspose");
     utility::string_t bookmarkText = STCONVERT("This will be the text for Aspose");
 
     UploadFileToStorage(
@@ -107,8 +130,8 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
 
     std::shared_ptr< UpdateBookmarkRequest > request(new UpdateBookmarkRequest(
         remoteFileName,
-        requestBookmarkData,
         bookmarkName,
+        requestBookmarkData,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -120,7 +143,29 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
 
    auto actual = get_api()->updateBookmark(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-   ASSERT_TRUE(IsNotNull(actual.body->getBookmark()));
-   ASSERT_EQ(bookmarkName, actual.body->getBookmark()->getName());
-   ASSERT_EQ(bookmarkText, actual.body->getBookmark()->getText());
+}
+
+/// <summary>
+/// Test for updating existed bookmark online.
+/// </summary>
+TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
+    utility::string_t remoteFileName = STCONVERT("TestUpdateDocumentBookmark.docx");
+
+    auto requestBookmarkData = std::make_shared< BookmarkData >();
+    requestBookmarkData->setName(bookmarkName);
+    requestBookmarkData->setText(STCONVERT("This will be the text for Aspose"));
+
+    std::shared_ptr< UpdateBookmarkOnlineRequest > request(new UpdateBookmarkOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        bookmarkName,
+        requestBookmarkData,
+        boost::none,
+        boost::none,
+        baseTestOutPath + STCONVERT("/") + remoteFileName,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateBookmarkOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
