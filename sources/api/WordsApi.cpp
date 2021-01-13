@@ -676,7 +676,7 @@ ApplyStyleToDocumentElementOnlineResponse WordsApi::applyStyleToDocumentElementO
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{styledNodePath}/style"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{styledNodePath}/style"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("styledNodePath"),
         ApiClient::parameterToString(request->getStyledNodePath()));
@@ -2431,7 +2431,7 @@ DeleteAllParagraphTabStopsOnlineResponse WordsApi::deleteAllParagraphTabStopsOnl
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/paragraphs/{index}/tabstops"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/paragraphs/{index}/tabstops"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -2640,7 +2640,7 @@ DeleteBorderOnlineResponse WordsApi::deleteBorderOnline(std::shared_ptr<DeleteBo
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/borders/{borderType}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/borders/{borderType}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("borderType"),
         ApiClient::parameterToString(request->getBorderType()));
@@ -2853,7 +2853,7 @@ DeleteBordersOnlineResponse WordsApi::deleteBordersOnline(std::shared_ptr<Delete
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/borders"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/borders"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -3450,7 +3450,7 @@ HttpContent WordsApi::deleteDrawingObjectOnline(std::shared_ptr<DeleteDrawingObj
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/drawingObjects/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/drawingObjects/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -3654,7 +3654,7 @@ HttpContent WordsApi::deleteFieldOnline(std::shared_ptr<DeleteFieldOnlineRequest
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/fields/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/fields/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -3854,7 +3854,7 @@ HttpContent WordsApi::deleteFieldsOnline(std::shared_ptr<DeleteFieldsOnlineReque
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/fields"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/fields"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -4202,7 +4202,7 @@ HttpContent WordsApi::deleteFootnoteOnline(std::shared_ptr<DeleteFootnoteOnlineR
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/footnotes/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/footnotes/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -4406,7 +4406,7 @@ HttpContent WordsApi::deleteFormFieldOnline(std::shared_ptr<DeleteFormFieldOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/formfields/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/formfields/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -4610,7 +4610,7 @@ HttpContent WordsApi::deleteHeaderFooterOnline(std::shared_ptr<DeleteHeaderFoote
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{sectionPath}/headersfooters/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{sectionPath}/headersfooters/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
@@ -4814,7 +4814,7 @@ HttpContent WordsApi::deleteHeadersFootersOnline(std::shared_ptr<DeleteHeadersFo
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{sectionPath}/headersfooters"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{sectionPath}/headersfooters"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
@@ -5207,7 +5207,7 @@ HttpContent WordsApi::deleteOfficeMathObjectOnline(std::shared_ptr<DeleteOfficeM
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/OfficeMathObjects/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/OfficeMathObjects/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -5521,7 +5521,7 @@ DeleteParagraphListFormatOnlineResponse WordsApi::deleteParagraphListFormatOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/paragraphs/{index}/listFormat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/paragraphs/{index}/listFormat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -5628,7 +5628,7 @@ HttpContent WordsApi::deleteParagraphOnline(std::shared_ptr<DeleteParagraphOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/paragraphs/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/paragraphs/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -5835,7 +5835,7 @@ DeleteParagraphTabStopOnlineResponse WordsApi::deleteParagraphTabStopOnline(std:
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/paragraphs/{index}/tabstop"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/paragraphs/{index}/tabstop"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -6039,7 +6039,7 @@ HttpContent WordsApi::deleteRunOnline(std::shared_ptr<DeleteRunOnlineRequest> re
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{paragraphPath}/runs/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{paragraphPath}/runs/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -6541,7 +6541,7 @@ HttpContent WordsApi::deleteTableCellOnline(std::shared_ptr<DeleteTableCellOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{tableRowPath}/cells/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{tableRowPath}/cells/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tableRowPath"),
         ApiClient::parameterToString(request->getTableRowPath()));
@@ -6643,7 +6643,7 @@ HttpContent WordsApi::deleteTableOnline(std::shared_ptr<DeleteTableOnlineRequest
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{nodePath}/tables/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{nodePath}/tables/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -6847,7 +6847,7 @@ HttpContent WordsApi::deleteTableRowOnline(std::shared_ptr<DeleteTableRowOnlineR
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{name}/{tablePath}/rows/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/delete/{tablePath}/rows/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tablePath"),
         ApiClient::parameterToString(request->getTablePath()));
@@ -7974,7 +7974,7 @@ BorderResponse WordsApi::getBorderOnline(std::shared_ptr<GetBorderOnlineRequest>
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/borders/{borderType}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/borders/{borderType}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("borderType"),
         ApiClient::parameterToString(request->getBorderType()));
@@ -8163,7 +8163,7 @@ BordersResponse WordsApi::getBordersOnline(std::shared_ptr<GetBordersOnlineReque
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/borders"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/borders"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -8805,7 +8805,7 @@ DrawingObjectResponse WordsApi::getDocumentDrawingObjectByIndexOnline(std::share
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/drawingObjects/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/drawingObjects/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -8993,7 +8993,7 @@ HttpContent WordsApi::getDocumentDrawingObjectImageDataOnline(std::shared_ptr<Ge
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/drawingObjects/{index}/imageData"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/drawingObjects/{index}/imageData"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -9176,7 +9176,7 @@ HttpContent WordsApi::getDocumentDrawingObjectOleDataOnline(std::shared_ptr<GetD
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/drawingObjects/{index}/oleData"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/drawingObjects/{index}/oleData"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -9360,7 +9360,7 @@ DrawingObjectsResponse WordsApi::getDocumentDrawingObjectsOnline(std::shared_ptr
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/drawingObjects"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/drawingObjects"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -10937,7 +10937,7 @@ FieldResponse WordsApi::getFieldOnline(std::shared_ptr<GetFieldOnlineRequest> re
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/fields/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/fields/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -11126,7 +11126,7 @@ FieldsResponse WordsApi::getFieldsOnline(std::shared_ptr<GetFieldsOnlineRequest>
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/fields"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/fields"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -11393,7 +11393,7 @@ FootnoteResponse WordsApi::getFootnoteOnline(std::shared_ptr<GetFootnoteOnlineRe
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/footnotes/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/footnotes/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -11582,7 +11582,7 @@ FootnotesResponse WordsApi::getFootnotesOnline(std::shared_ptr<GetFootnotesOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/footnotes"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/footnotes"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -11771,7 +11771,7 @@ FormFieldResponse WordsApi::getFormFieldOnline(std::shared_ptr<GetFormFieldOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/formfields/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/formfields/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -11960,7 +11960,7 @@ FormFieldsResponse WordsApi::getFormFieldsOnline(std::shared_ptr<GetFormFieldsOn
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/formfields"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/formfields"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -12543,7 +12543,7 @@ HeaderFootersResponse WordsApi::getHeaderFootersOnline(std::shared_ptr<GetHeader
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{sectionPath}/headersfooters"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{sectionPath}/headersfooters"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
@@ -13099,7 +13099,7 @@ OfficeMathObjectResponse WordsApi::getOfficeMathObjectOnline(std::shared_ptr<Get
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/OfficeMathObjects/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/OfficeMathObjects/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -13288,7 +13288,7 @@ OfficeMathObjectsResponse WordsApi::getOfficeMathObjectsOnline(std::shared_ptr<G
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/OfficeMathObjects"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/OfficeMathObjects"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -13575,7 +13575,7 @@ ParagraphFormatResponse WordsApi::getParagraphFormatOnline(std::shared_ptr<GetPa
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/paragraphs/{index}/format"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/paragraphs/{index}/format"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -13768,7 +13768,7 @@ ParagraphListFormatResponse WordsApi::getParagraphListFormatOnline(std::shared_p
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/paragraphs/{index}/listFormat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/paragraphs/{index}/listFormat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -13863,7 +13863,7 @@ ParagraphResponse WordsApi::getParagraphOnline(std::shared_ptr<GetParagraphOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/paragraphs/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/paragraphs/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -14052,7 +14052,7 @@ ParagraphLinkCollectionResponse WordsApi::getParagraphsOnline(std::shared_ptr<Ge
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/paragraphs"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/paragraphs"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -14241,7 +14241,7 @@ TabStopsResponse WordsApi::getParagraphTabStopsOnline(std::shared_ptr<GetParagra
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/paragraphs/{index}/tabstops"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/paragraphs/{index}/tabstops"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -14725,7 +14725,7 @@ FontResponse WordsApi::getRunFontOnline(std::shared_ptr<GetRunFontOnlineRequest>
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{paragraphPath}/runs/{index}/font"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{paragraphPath}/runs/{index}/font"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -14820,7 +14820,7 @@ RunResponse WordsApi::getRunOnline(std::shared_ptr<GetRunOnlineRequest> request)
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{paragraphPath}/runs/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{paragraphPath}/runs/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -15009,7 +15009,7 @@ RunsResponse WordsApi::getRunsOnline(std::shared_ptr<GetRunsOnlineRequest> reque
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{paragraphPath}/runs"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{paragraphPath}/runs"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -15836,7 +15836,7 @@ StyleResponse WordsApi::getStyleFromDocumentElementOnline(std::shared_ptr<GetSty
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{styledNodePath}/style"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{styledNodePath}/style"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("styledNodePath"),
         ApiClient::parameterToString(request->getStyledNodePath()));
@@ -16490,7 +16490,7 @@ TableCellFormatResponse WordsApi::getTableCellFormatOnline(std::shared_ptr<GetTa
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{tableRowPath}/cells/{index}/cellformat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{tableRowPath}/cells/{index}/cellformat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tableRowPath"),
         ApiClient::parameterToString(request->getTableRowPath()));
@@ -16585,7 +16585,7 @@ TableCellResponse WordsApi::getTableCellOnline(std::shared_ptr<GetTableCellOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{tableRowPath}/cells/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{tableRowPath}/cells/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tableRowPath"),
         ApiClient::parameterToString(request->getTableRowPath()));
@@ -16680,7 +16680,7 @@ TableResponse WordsApi::getTableOnline(std::shared_ptr<GetTableOnlineRequest> re
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/tables/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/tables/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -16873,7 +16873,7 @@ TablePropertiesResponse WordsApi::getTablePropertiesOnline(std::shared_ptr<GetTa
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/tables/{index}/properties"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/tables/{index}/properties"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -17164,7 +17164,7 @@ TableRowFormatResponse WordsApi::getTableRowFormatOnline(std::shared_ptr<GetTabl
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{tablePath}/rows/{index}/rowformat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{tablePath}/rows/{index}/rowformat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tablePath"),
         ApiClient::parameterToString(request->getTablePath()));
@@ -17259,7 +17259,7 @@ TableRowResponse WordsApi::getTableRowOnline(std::shared_ptr<GetTableRowOnlineRe
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{tablePath}/rows/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{tablePath}/rows/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tablePath"),
         ApiClient::parameterToString(request->getTablePath()));
@@ -17448,7 +17448,7 @@ TableLinkCollectionResponse WordsApi::getTablesOnline(std::shared_ptr<GetTablesO
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/tables"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/tables"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -17901,7 +17901,7 @@ InsertDrawingObjectOnlineResponse WordsApi::insertDrawingObjectOnline(std::share
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/drawingObjects"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/drawingObjects"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -18141,7 +18141,7 @@ InsertFieldOnlineResponse WordsApi::insertFieldOnline(std::shared_ptr<InsertFiel
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/fields"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/fields"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -18377,7 +18377,7 @@ InsertFootnoteOnlineResponse WordsApi::insertFootnoteOnline(std::shared_ptr<Inse
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/footnotes"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/footnotes"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -18613,7 +18613,7 @@ InsertFormFieldOnlineResponse WordsApi::insertFormFieldOnline(std::shared_ptr<In
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/formfields"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/formfields"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -18837,7 +18837,7 @@ InsertHeaderFooterOnlineResponse WordsApi::insertHeaderFooterOnline(std::shared_
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{sectionPath}/headersfooters"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{sectionPath}/headersfooters"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("sectionPath"),
         ApiClient::parameterToString(request->getSectionPath()));
@@ -19290,7 +19290,7 @@ InsertOrUpdateParagraphTabStopOnlineResponse WordsApi::insertOrUpdateParagraphTa
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/paragraphs/{index}/tabstops"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/paragraphs/{index}/tabstops"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -19747,7 +19747,7 @@ InsertParagraphOnlineResponse WordsApi::insertParagraphOnline(std::shared_ptr<In
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/paragraphs"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/paragraphs"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -19987,7 +19987,7 @@ InsertRunOnlineResponse WordsApi::insertRunOnline(std::shared_ptr<InsertRunOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{paragraphPath}/runs"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{paragraphPath}/runs"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -20567,7 +20567,7 @@ InsertTableCellOnlineResponse WordsApi::insertTableCellOnline(std::shared_ptr<In
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{tableRowPath}/cells"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{tableRowPath}/cells"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tableRowPath"),
         ApiClient::parameterToString(request->getTableRowPath()));
@@ -20680,7 +20680,7 @@ InsertTableOnlineResponse WordsApi::insertTableOnline(std::shared_ptr<InsertTabl
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{nodePath}/tables"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{nodePath}/tables"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("nodePath"), 
         extractOptional(request->getNodePath()));
@@ -20912,7 +20912,7 @@ InsertTableRowOnlineResponse WordsApi::insertTableRowOnline(std::shared_ptr<Inse
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{name}/{tablePath}/rows"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/post/{tablePath}/rows"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tablePath"),
         ApiClient::parameterToString(request->getTablePath()));
@@ -22633,7 +22633,7 @@ RenderDrawingObjectOnlineResponse WordsApi::renderDrawingObjectOnline(std::share
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/drawingObjects/{index}/render"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/drawingObjects/{index}/render"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -22843,7 +22843,7 @@ RenderMathObjectOnlineResponse WordsApi::renderMathObjectOnline(std::shared_ptr<
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/OfficeMathObjects/{index}/render"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/OfficeMathObjects/{index}/render"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -23242,7 +23242,7 @@ RenderParagraphOnlineResponse WordsApi::renderParagraphOnline(std::shared_ptr<Re
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/paragraphs/{index}/render"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/paragraphs/{index}/render"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -23452,7 +23452,7 @@ RenderTableOnlineResponse WordsApi::renderTableOnline(std::shared_ptr<RenderTabl
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{name}/{nodePath}/tables/{index}/render"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/get/{nodePath}/tables/{index}/render"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -25818,7 +25818,7 @@ UpdateBorderOnlineResponse WordsApi::updateBorderOnline(std::shared_ptr<UpdateBo
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/borders/{borderType}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/borders/{borderType}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("borderType"),
         ApiClient::parameterToString(request->getBorderType()));
@@ -26302,7 +26302,7 @@ UpdateDrawingObjectOnlineResponse WordsApi::updateDrawingObjectOnline(std::share
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/drawingObjects/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/drawingObjects/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -26546,7 +26546,7 @@ UpdateFieldOnlineResponse WordsApi::updateFieldOnline(std::shared_ptr<UpdateFiel
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/fields/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/fields/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -26972,7 +26972,7 @@ UpdateFootnoteOnlineResponse WordsApi::updateFootnoteOnline(std::shared_ptr<Upda
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/footnotes/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/footnotes/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -27212,7 +27212,7 @@ UpdateFormFieldOnlineResponse WordsApi::updateFormFieldOnline(std::shared_ptr<Up
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/formfields/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/formfields/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -27924,7 +27924,7 @@ UpdateParagraphFormatOnlineResponse WordsApi::updateParagraphFormatOnline(std::s
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/paragraphs/{index}/format"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/paragraphs/{index}/format"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -28164,7 +28164,7 @@ UpdateParagraphListFormatOnlineResponse WordsApi::updateParagraphListFormatOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/paragraphs/{index}/listFormat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/paragraphs/{index}/listFormat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -28527,7 +28527,7 @@ UpdateRunFontOnlineResponse WordsApi::updateRunFontOnline(std::shared_ptr<Update
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{paragraphPath}/runs/{index}/font"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{paragraphPath}/runs/{index}/font"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -28644,7 +28644,7 @@ UpdateRunOnlineResponse WordsApi::updateRunOnline(std::shared_ptr<UpdateRunOnlin
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{paragraphPath}/runs/{index}"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{paragraphPath}/runs/{index}"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("paragraphPath"),
         ApiClient::parameterToString(request->getParagraphPath()));
@@ -29348,7 +29348,7 @@ UpdateTableCellFormatOnlineResponse WordsApi::updateTableCellFormatOnline(std::s
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{tableRowPath}/cells/{index}/cellformat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{tableRowPath}/cells/{index}/cellformat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tableRowPath"),
         ApiClient::parameterToString(request->getTableRowPath()));
@@ -29588,7 +29588,7 @@ UpdateTablePropertiesOnlineResponse WordsApi::updateTablePropertiesOnline(std::s
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{nodePath}/tables/{index}/properties"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{nodePath}/tables/{index}/properties"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("index"),
         ApiClient::parameterToString(request->getIndex()));
@@ -29828,7 +29828,7 @@ UpdateTableRowFormatOnlineResponse WordsApi::updateTableRowFormatOnline(std::sha
     }
 
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{name}/{tablePath}/rows/{index}/rowformat"),
+    utility::string_t bPath = apiConfiguration->getApiVersion() + _XPLATSTR("/words/online/put/{tablePath}/rows/{index}/rowformat"),
     path = bPath;
     path = replacePathParameter(path, _XPLATSTR("tablePath"),
         ApiClient::parameterToString(request->getTablePath()));
