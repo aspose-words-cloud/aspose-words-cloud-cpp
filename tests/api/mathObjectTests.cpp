@@ -218,8 +218,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectOnline) {
         boost::none
     ));
 
-auto actual = get_api()->renderMathObjectOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->renderMathObjectOnline(request).get();
 }
 
 /// <summary>

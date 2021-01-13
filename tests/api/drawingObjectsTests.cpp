@@ -207,8 +207,7 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObjectOnline) {
         boost::none
     ));
 
-auto actual = get_api()->renderDrawingObjectOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->renderDrawingObjectOnline(request).get();
 }
 
 /// <summary>

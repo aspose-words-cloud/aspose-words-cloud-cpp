@@ -625,7 +625,7 @@ WordsResponse WordsApi::applyStyleToDocumentElement(std::shared_ptr<ApplyStyleTo
         throw ApiException(415, _XPLATSTR("WordsApi->applyStyleToDocumentElement does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -18792,7 +18792,7 @@ HeaderFooterResponse WordsApi::insertHeaderFooter(std::shared_ptr<InsertHeaderFo
         throw ApiException(415, _XPLATSTR("WordsApi->insertHeaderFooter does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -22593,7 +22593,7 @@ HttpContent WordsApi::renderDrawingObject(std::shared_ptr<RenderDrawingObjectReq
         throw ApiException(415, _XPLATSTR("WordsApi->renderDrawingObject does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -22624,7 +22624,7 @@ HttpContent WordsApi::renderDrawingObject(std::shared_ptr<RenderDrawingObjectReq
     });
 }
 
-RenderDrawingObjectOnlineResponse WordsApi::renderDrawingObjectOnline(std::shared_ptr<RenderDrawingObjectOnlineRequest> request)
+HttpContent WordsApi::renderDrawingObjectOnline(std::shared_ptr<RenderDrawingObjectOnlineRequest> request)
 {
     // verify the required parameter 'document' is set
     if (request->getDocument() == nullptr)
@@ -22714,18 +22714,13 @@ RenderDrawingObjectOnlineResponse WordsApi::renderDrawingObjectOnline(std::share
                 , errorResponse);
         }
 
-        return response;
+        return response.extract_vector();
     })
-    .then([=](web::http::http_response response)
+    .then([=](std::vector<unsigned char> response)
     {
-        AsposeResponse< RenderDrawingObjectOnlineResponse > result = {
-            std::make_shared<web::http::http_response>(response),
-            std::shared_ptr< RenderDrawingObjectOnlineResponse >(new RenderDrawingObjectOnlineResponse())
-        };
-
-        web::json::value json = response.extract_json().get();
-        result.body->fromJson(json);
-        postInitializeResponse(json, result.body.get());
+        HttpContent result;
+        std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+        result.setData(stream);
         return result;
     });
 }
@@ -22803,7 +22798,7 @@ HttpContent WordsApi::renderMathObject(std::shared_ptr<RenderMathObjectRequest> 
         throw ApiException(415, _XPLATSTR("WordsApi->renderMathObject does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -22834,7 +22829,7 @@ HttpContent WordsApi::renderMathObject(std::shared_ptr<RenderMathObjectRequest> 
     });
 }
 
-RenderMathObjectOnlineResponse WordsApi::renderMathObjectOnline(std::shared_ptr<RenderMathObjectOnlineRequest> request)
+HttpContent WordsApi::renderMathObjectOnline(std::shared_ptr<RenderMathObjectOnlineRequest> request)
 {
     // verify the required parameter 'document' is set
     if (request->getDocument() == nullptr)
@@ -22924,18 +22919,13 @@ RenderMathObjectOnlineResponse WordsApi::renderMathObjectOnline(std::shared_ptr<
                 , errorResponse);
         }
 
-        return response;
+        return response.extract_vector();
     })
-    .then([=](web::http::http_response response)
+    .then([=](std::vector<unsigned char> response)
     {
-        AsposeResponse< RenderMathObjectOnlineResponse > result = {
-            std::make_shared<web::http::http_response>(response),
-            std::shared_ptr< RenderMathObjectOnlineResponse >(new RenderMathObjectOnlineResponse())
-        };
-
-        web::json::value json = response.extract_json().get();
-        result.body->fromJson(json);
-        postInitializeResponse(json, result.body.get());
+        HttpContent result;
+        std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+        result.setData(stream);
         return result;
     });
 }
@@ -23202,7 +23192,7 @@ HttpContent WordsApi::renderParagraph(std::shared_ptr<RenderParagraphRequest> re
         throw ApiException(415, _XPLATSTR("WordsApi->renderParagraph does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -23233,7 +23223,7 @@ HttpContent WordsApi::renderParagraph(std::shared_ptr<RenderParagraphRequest> re
     });
 }
 
-RenderParagraphOnlineResponse WordsApi::renderParagraphOnline(std::shared_ptr<RenderParagraphOnlineRequest> request)
+HttpContent WordsApi::renderParagraphOnline(std::shared_ptr<RenderParagraphOnlineRequest> request)
 {
     // verify the required parameter 'document' is set
     if (request->getDocument() == nullptr)
@@ -23323,18 +23313,13 @@ RenderParagraphOnlineResponse WordsApi::renderParagraphOnline(std::shared_ptr<Re
                 , errorResponse);
         }
 
-        return response;
+        return response.extract_vector();
     })
-    .then([=](web::http::http_response response)
+    .then([=](std::vector<unsigned char> response)
     {
-        AsposeResponse< RenderParagraphOnlineResponse > result = {
-            std::make_shared<web::http::http_response>(response),
-            std::shared_ptr< RenderParagraphOnlineResponse >(new RenderParagraphOnlineResponse())
-        };
-
-        web::json::value json = response.extract_json().get();
-        result.body->fromJson(json);
-        postInitializeResponse(json, result.body.get());
+        HttpContent result;
+        std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+        result.setData(stream);
         return result;
     });
 }
@@ -23412,7 +23397,7 @@ HttpContent WordsApi::renderTable(std::shared_ptr<RenderTableRequest> request)
         throw ApiException(415, _XPLATSTR("WordsApi->renderTable does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("GET"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -23443,7 +23428,7 @@ HttpContent WordsApi::renderTable(std::shared_ptr<RenderTableRequest> request)
     });
 }
 
-RenderTableOnlineResponse WordsApi::renderTableOnline(std::shared_ptr<RenderTableOnlineRequest> request)
+HttpContent WordsApi::renderTableOnline(std::shared_ptr<RenderTableOnlineRequest> request)
 {
     // verify the required parameter 'document' is set
     if (request->getDocument() == nullptr)
@@ -23533,18 +23518,13 @@ RenderTableOnlineResponse WordsApi::renderTableOnline(std::shared_ptr<RenderTabl
                 , errorResponse);
         }
 
-        return response;
+        return response.extract_vector();
     })
-    .then([=](web::http::http_response response)
+    .then([=](std::vector<unsigned char> response)
     {
-        AsposeResponse< RenderTableOnlineResponse > result = {
-            std::make_shared<web::http::http_response>(response),
-            std::shared_ptr< RenderTableOnlineResponse >(new RenderTableOnlineResponse())
-        };
-
-        web::json::value json = response.extract_json().get();
-        result.body->fromJson(json);
-        postInitializeResponse(json, result.body.get());
+        HttpContent result;
+        std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+        result.setData(stream);
         return result;
     });
 }
@@ -25767,7 +25747,7 @@ BorderResponse WordsApi::updateBorder(std::shared_ptr<UpdateBorderRequest> reque
         throw ApiException(415, _XPLATSTR("WordsApi->updateBorder does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -26245,7 +26225,7 @@ DrawingObjectResponse WordsApi::updateDrawingObject(std::shared_ptr<UpdateDrawin
         throw ApiException(415, _XPLATSTR("WordsApi->updateDrawingObject does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -26495,7 +26475,7 @@ FieldResponse WordsApi::updateField(std::shared_ptr<UpdateFieldRequest> request)
         throw ApiException(415, _XPLATSTR("WordsApi->updateField does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -26921,7 +26901,7 @@ FootnoteResponse WordsApi::updateFootnote(std::shared_ptr<UpdateFootnoteRequest>
         throw ApiException(415, _XPLATSTR("WordsApi->updateFootnote does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -27161,7 +27141,7 @@ FormFieldResponse WordsApi::updateFormField(std::shared_ptr<UpdateFormFieldReque
         throw ApiException(415, _XPLATSTR("WordsApi->updateFormField does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -27873,7 +27853,7 @@ ParagraphFormatResponse WordsApi::updateParagraphFormat(std::shared_ptr<UpdatePa
         throw ApiException(415, _XPLATSTR("WordsApi->updateParagraphFormat does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -28113,7 +28093,7 @@ ParagraphListFormatResponse WordsApi::updateParagraphListFormat(std::shared_ptr<
         throw ApiException(415, _XPLATSTR("WordsApi->updateParagraphListFormat does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -28353,7 +28333,7 @@ RunResponse WordsApi::updateRun(std::shared_ptr<UpdateRunRequest> request)
         throw ApiException(415, _XPLATSTR("WordsApi->updateRun does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -28476,7 +28456,7 @@ FontResponse WordsApi::updateRunFont(std::shared_ptr<UpdateRunFontRequest> reque
         throw ApiException(415, _XPLATSTR("WordsApi->updateRunFont does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -29297,7 +29277,7 @@ TableCellFormatResponse WordsApi::updateTableCellFormat(std::shared_ptr<UpdateTa
         throw ApiException(415, _XPLATSTR("WordsApi->updateTableCellFormat does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -29537,7 +29517,7 @@ TablePropertiesResponse WordsApi::updateTableProperties(std::shared_ptr<UpdateTa
         throw ApiException(415, _XPLATSTR("WordsApi->updateTableProperties does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {
@@ -29777,7 +29757,7 @@ TableRowFormatResponse WordsApi::updateTableRowFormat(std::shared_ptr<UpdateTabl
         throw ApiException(415, _XPLATSTR("WordsApi->updateTableRowFormat does not consume any supported media type."));
     }
 
-    return m_ApiClient->callApi(path, _XPLATSTR("POST"), queryParams, httpBody, headerParams, formParams,
+    return m_ApiClient->callApi(path, _XPLATSTR("PUT"), queryParams, httpBody, headerParams, formParams,
     requestHttpContentType)
     .then([=](web::http::http_response response)
     {

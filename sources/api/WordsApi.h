@@ -3689,7 +3689,7 @@ public:
     /// <param name="password">Password for opening an encrypted document. (optional)</param>
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     /// <param name="fontsLocation">Folder in filestorage with custom fonts. (optional)</param>
-    RenderDrawingObjectOnlineResponse renderDrawingObjectOnline(
+    HttpContent renderDrawingObjectOnline(
     	std::shared_ptr<RenderDrawingObjectOnlineRequest> request
     );
 
@@ -3721,7 +3721,7 @@ public:
     /// <param name="password">Password for opening an encrypted document. (optional)</param>
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     /// <param name="fontsLocation">Folder in filestorage with custom fonts. (optional)</param>
-    RenderMathObjectOnlineResponse renderMathObjectOnline(
+    HttpContent renderMathObjectOnline(
     	std::shared_ptr<RenderMathObjectOnlineRequest> request
     );
 
@@ -3781,7 +3781,7 @@ public:
     /// <param name="password">Password for opening an encrypted document. (optional)</param>
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     /// <param name="fontsLocation">Folder in filestorage with custom fonts. (optional)</param>
-    RenderParagraphOnlineResponse renderParagraphOnline(
+    HttpContent renderParagraphOnline(
     	std::shared_ptr<RenderParagraphOnlineRequest> request
     );
 
@@ -3813,7 +3813,7 @@ public:
     /// <param name="password">Password for opening an encrypted document. (optional)</param>
     /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
     /// <param name="fontsLocation">Folder in filestorage with custom fonts. (optional)</param>
-    RenderTableOnlineResponse renderTableOnline(
+    HttpContent renderTableOnline(
     	std::shared_ptr<RenderTableOnlineRequest> request
     );
 

@@ -497,8 +497,7 @@ TEST_F(ParagraphTests, TestRenderParagraphOnline) {
         boost::none
     ));
 
-auto actual = get_api()->renderParagraphOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->renderParagraphOnline(request).get();
 }
 
 /// <summary>

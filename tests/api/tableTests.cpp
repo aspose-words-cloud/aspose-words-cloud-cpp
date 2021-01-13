@@ -1079,8 +1079,7 @@ TEST_F(TableTests, TestRenderTableOnline) {
         boost::none
     ));
 
-auto actual = get_api()->renderTableOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
+   get_api()->renderTableOnline(request).get();
 }
 
 /// <summary>
