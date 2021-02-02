@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="InsertHeaderFooterRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 InsertHeaderFooterRequest::InsertHeaderFooterRequest(
     utility::string_t name,
-    utility::string_t sectionPath,
     utility::string_t headerFooterType,
+    utility::string_t sectionPath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -41,8 +41,8 @@ InsertHeaderFooterRequest::InsertHeaderFooterRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_SectionPath(std::move(sectionPath)),
 m_HeaderFooterType(std::move(headerFooterType)),
+m_SectionPath(std::move(sectionPath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -63,16 +63,6 @@ void InsertHeaderFooterRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-utility::string_t InsertHeaderFooterRequest::getSectionPath() const
-{
-    return m_SectionPath;
-}
-
-void InsertHeaderFooterRequest::setSectionPath(utility::string_t sectionPath)
-{
-    m_SectionPath = std::move(sectionPath);
-}
-
 utility::string_t InsertHeaderFooterRequest::getHeaderFooterType() const
 {
     return m_HeaderFooterType;
@@ -81,6 +71,16 @@ utility::string_t InsertHeaderFooterRequest::getHeaderFooterType() const
 void InsertHeaderFooterRequest::setHeaderFooterType(utility::string_t headerFooterType)
 {
     m_HeaderFooterType = std::move(headerFooterType);
+}
+
+utility::string_t InsertHeaderFooterRequest::getSectionPath() const
+{
+    return m_SectionPath;
+}
+
+void InsertHeaderFooterRequest::setSectionPath(utility::string_t sectionPath)
+{
+    m_SectionPath = std::move(sectionPath);
 }
 
 boost::optional< utility::string_t > InsertHeaderFooterRequest::getFolder() const

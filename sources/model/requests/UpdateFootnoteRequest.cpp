@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateFootnoteRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateFootnoteRequest::UpdateFootnoteRequest(
     utility::string_t name,
-    int32_t index,
     std::shared_ptr<FootnoteUpdate> footnoteDto,
+    int32_t index,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -42,8 +42,8 @@ UpdateFootnoteRequest::UpdateFootnoteRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
-m_Index(std::move(index)),
 m_FootnoteDto(std::move(footnoteDto)),
+m_Index(std::move(index)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -65,16 +65,6 @@ void UpdateFootnoteRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
-int32_t UpdateFootnoteRequest::getIndex() const
-{
-    return m_Index;
-}
-
-void UpdateFootnoteRequest::setIndex(int32_t index)
-{
-    m_Index = std::move(index);
-}
-
 std::shared_ptr<FootnoteUpdate> UpdateFootnoteRequest::getFootnoteDto() const
 {
     return m_FootnoteDto;
@@ -83,6 +73,16 @@ std::shared_ptr<FootnoteUpdate> UpdateFootnoteRequest::getFootnoteDto() const
 void UpdateFootnoteRequest::setFootnoteDto(std::shared_ptr<FootnoteUpdate> footnoteDto)
 {
     m_FootnoteDto = std::move(footnoteDto);
+}
+
+int32_t UpdateFootnoteRequest::getIndex() const
+{
+    return m_Index;
+}
+
+void UpdateFootnoteRequest::setIndex(int32_t index)
+{
+    m_Index = std::move(index);
 }
 
 boost::optional< utility::string_t > UpdateFootnoteRequest::getNodePath() const

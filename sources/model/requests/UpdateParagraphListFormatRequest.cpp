@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateParagraphListFormatRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateParagraphListFormatRequest::UpdateParagraphListFormatRequest(
     utility::string_t name,
+    std::shared_ptr<ListFormatUpdate> dto,
     int32_t index,
-    std::shared_ptr<ListFormatUpdate> listFormatDto,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -42,8 +42,8 @@ UpdateParagraphListFormatRequest::UpdateParagraphListFormatRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
+m_Dto(std::move(dto)),
 m_Index(std::move(index)),
-m_ListFormatDto(std::move(listFormatDto)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -65,6 +65,16 @@ void UpdateParagraphListFormatRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
+std::shared_ptr<ListFormatUpdate> UpdateParagraphListFormatRequest::getDto() const
+{
+    return m_Dto;
+}
+
+void UpdateParagraphListFormatRequest::setDto(std::shared_ptr<ListFormatUpdate> dto)
+{
+    m_Dto = std::move(dto);
+}
+
 int32_t UpdateParagraphListFormatRequest::getIndex() const
 {
     return m_Index;
@@ -73,16 +83,6 @@ int32_t UpdateParagraphListFormatRequest::getIndex() const
 void UpdateParagraphListFormatRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
-}
-
-std::shared_ptr<ListFormatUpdate> UpdateParagraphListFormatRequest::getListFormatDto() const
-{
-    return m_ListFormatDto;
-}
-
-void UpdateParagraphListFormatRequest::setListFormatDto(std::shared_ptr<ListFormatUpdate> listFormatDto)
-{
-    m_ListFormatDto = std::move(listFormatDto);
 }
 
 boost::optional< utility::string_t > UpdateParagraphListFormatRequest::getNodePath() const

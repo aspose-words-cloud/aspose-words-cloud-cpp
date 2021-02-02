@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="sectionTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -64,21 +64,6 @@ TEST_F(SectionTests, TestGetSection) {
 }
 
 /// <summary>
-/// Test for getting section by index online.
-/// </summary>
-TEST_F(SectionTests, TestGetSectionOnline) {
-    std::shared_ptr< GetSectionOnlineRequest > request(new GetSectionOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getSectionOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for getting sections.
 /// </summary>
 TEST_F(SectionTests, TestGetSections) {
@@ -106,20 +91,6 @@ TEST_F(SectionTests, TestGetSections) {
 }
 
 /// <summary>
-/// Test for getting sections online.
-/// </summary>
-TEST_F(SectionTests, TestGetSectionsOnline) {
-    std::shared_ptr< GetSectionsOnlineRequest > request(new GetSectionsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getSectionsOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for delete a section.
 /// </summary>
 TEST_F(SectionTests, TestDeleteSection) {
@@ -143,21 +114,4 @@ TEST_F(SectionTests, TestDeleteSection) {
     ));
 
    get_api()->deleteSection(request).get();
-}
-
-/// <summary>
-/// Test for delete a section online.
-/// </summary>
-TEST_F(SectionTests, TestDeleteSectionOnline) {
-    std::shared_ptr< DeleteSectionOnlineRequest > request(new DeleteSectionOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->deleteSectionOnline(request).get();
 }

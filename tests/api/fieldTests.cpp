@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="fieldTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -66,21 +66,6 @@ TEST_F(FieldTests, TestGetFields) {
 }
 
 /// <summary>
-/// Test for getting fields online.
-/// </summary>
-TEST_F(FieldTests, TestGetFieldsOnline) {
-    std::shared_ptr< GetFieldsOnlineRequest > request(new GetFieldsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/GetField.docx"))),
-        STCONVERT("sections/0"),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getFieldsOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for getting fields without node path.
 /// </summary>
 TEST_F(FieldTests, TestGetFieldsWithoutNodePath) {
@@ -135,22 +120,6 @@ TEST_F(FieldTests, TestGetField) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("1"), actual.body->getField()->getResult());
-}
-
-/// <summary>
-/// Test for getting field by index online.
-/// </summary>
-TEST_F(FieldTests, TestGetFieldOnline) {
-    std::shared_ptr< GetFieldOnlineRequest > request(new GetFieldOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/GetField.docx"))),
-        0,
-        STCONVERT("sections/0/paragraphs/0"),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getFieldOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -218,29 +187,6 @@ TEST_F(FieldTests, TestInsertField) {
 }
 
 /// <summary>
-/// Test for putting field online.
-/// </summary>
-TEST_F(FieldTests, TestInsertFieldOnline) {
-    auto requestField = std::make_shared< FieldInsert >();
-    requestField->setFieldCode(STCONVERT("{ NUMPAGES }"));
-
-    std::shared_ptr< InsertFieldOnlineRequest > request(new InsertFieldOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/GetField.docx"))),
-        requestField,
-        STCONVERT("sections/0/paragraphs/0"),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->insertFieldOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for putting field without node path.
 /// </summary>
 TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
@@ -293,8 +239,8 @@ TEST_F(FieldTests, TestUpdateField) {
 
     std::shared_ptr< UpdateFieldRequest > request(new UpdateFieldRequest(
         remoteFileName,
-        0,
         requestField,
+        0,
         STCONVERT("sections/0/paragraphs/0"),
         remoteDataFolder,
         boost::none,
@@ -310,29 +256,6 @@ TEST_F(FieldTests, TestUpdateField) {
    ASSERT_TRUE(IsNotNull(actual.body->getField()));
    ASSERT_EQ(STCONVERT("{ NUMPAGES }"), actual.body->getField()->getFieldCode());
    ASSERT_EQ(STCONVERT("0.0.0.0"), actual.body->getField()->getNodeId());
-}
-
-/// <summary>
-/// Test for posting field online.
-/// </summary>
-TEST_F(FieldTests, TestUpdateFieldOnline) {
-    auto requestField = std::make_shared< FieldUpdate >();
-    requestField->setFieldCode(STCONVERT("{ NUMPAGES }"));
-
-    std::shared_ptr< UpdateFieldOnlineRequest > request(new UpdateFieldOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/GetField.docx"))),
-        requestField,
-        0,
-        STCONVERT("sections/0/paragraphs/0"),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->updateFieldOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -370,30 +293,6 @@ TEST_F(FieldTests, TestInsertPageNumbers) {
 }
 
 /// <summary>
-/// Test for inserting page numbers field online.
-/// </summary>
-TEST_F(FieldTests, TestInsertPageNumbersOnline) {
-    utility::string_t localFileName = STCONVERT("test_multi_pages.docx");
-
-    auto requestPageNumber = std::make_shared< PageNumber >();
-    requestPageNumber->setAlignment(STCONVERT("center"));
-    requestPageNumber->setFormat(STCONVERT("{PAGE} of {NUMPAGES}"));
-
-    std::shared_ptr< InsertPageNumbersOnlineRequest > request(new InsertPageNumbersOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/") + localFileName)),
-        requestPageNumber,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->insertPageNumbersOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for deleting field.
 /// </summary>
 TEST_F(FieldTests, TestDeleteField) {
@@ -419,24 +318,6 @@ TEST_F(FieldTests, TestDeleteField) {
     ));
 
    get_api()->deleteField(request).get();
-}
-
-/// <summary>
-/// Test for deleting field online.
-/// </summary>
-TEST_F(FieldTests, TestDeleteFieldOnline) {
-    std::shared_ptr< DeleteFieldOnlineRequest > request(new DeleteFieldOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/GetField.docx"))),
-        0,
-        STCONVERT("sections/0/paragraphs/0"),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->deleteFieldOnline(request).get();
 }
 
 /// <summary>
@@ -630,25 +511,6 @@ TEST_F(FieldTests, TestDeleteDocumentFields) {
 }
 
 /// <summary>
-/// Test for deleting fields online.
-/// </summary>
-TEST_F(FieldTests, TestDeleteDocumentFieldsOnline) {
-    utility::string_t localFileName = STCONVERT("Common/test_multi_pages.docx");
-
-    std::shared_ptr< DeleteFieldsOnlineRequest > request(new DeleteFieldsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFileName)),
-        STCONVERT(""),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->deleteFieldsOnline(request).get();
-}
-
-/// <summary>
 /// Test for posting updated fields.
 /// </summary>
 TEST_F(FieldTests, TestUpdateDocumentFields) {
@@ -673,21 +535,4 @@ TEST_F(FieldTests, TestUpdateDocumentFields) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestUpdateDocumentFields.docx"), actual.body->getDocument()->getFileName());
-}
-
-/// <summary>
-/// Test for posting updated fields online.
-/// </summary>
-TEST_F(FieldTests, TestUpdateDocumentFieldsOnline) {
-    utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
-
-    std::shared_ptr< UpdateFieldsOnlineRequest > request(new UpdateFieldsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->updateFieldsOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }

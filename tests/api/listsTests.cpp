@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="listsTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -63,20 +63,6 @@ TEST_F(ListsTests, TestGetLists) {
 }
 
 /// <summary>
-/// Test for getting lists from document online.
-/// </summary>
-TEST_F(ListsTests, TestGetListsOnline) {
-    std::shared_ptr< GetListsOnlineRequest > request(new GetListsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getListsOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for getting list from document.
 /// </summary>
 TEST_F(ListsTests, TestGetList) {
@@ -103,21 +89,6 @@ TEST_F(ListsTests, TestGetList) {
 }
 
 /// <summary>
-/// Test for getting list from document online.
-/// </summary>
-TEST_F(ListsTests, TestGetListOnline) {
-    std::shared_ptr< GetListOnlineRequest > request(new GetListOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        1,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getListOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for updating list from document.
 /// </summary>
 TEST_F(ListsTests, TestUpdateList) {
@@ -133,8 +104,8 @@ TEST_F(ListsTests, TestUpdateList) {
 
     std::shared_ptr< UpdateListRequest > request(new UpdateListRequest(
         remoteFileName,
-        1,
         requestListUpdate,
+        1,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -146,28 +117,9 @@ TEST_F(ListsTests, TestUpdateList) {
 
    auto actual = get_api()->updateList(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for updating list from document online.
-/// </summary>
-TEST_F(ListsTests, TestUpdateListOnline) {
-    auto requestListUpdate = std::make_shared< ListUpdate >();
-    requestListUpdate->setIsRestartAtEachSection(true);
-
-    std::shared_ptr< UpdateListOnlineRequest > request(new UpdateListOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        1,
-        requestListUpdate,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->updateListOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getList()));
+   ASSERT_EQ(1, actual.body->getList()->getListId());
+   ASSERT_TRUE(actual.body->getList()->isIsRestartAtEachSection());
 }
 
 /// <summary>
@@ -186,9 +138,9 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 
     std::shared_ptr< UpdateListLevelRequest > request(new UpdateListLevelRequest(
         remoteFileName,
-        1,
-        1,
         requestListUpdate,
+        1,
+        1,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -200,29 +152,11 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 
    auto actual = get_api()->updateListLevel(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-}
+   ASSERT_TRUE(IsNotNull(actual.body->getList()));
+   ASSERT_TRUE(IsNotNull(actual.body->getList()->getListLevels()));
+   ASSERT_TRUE(IsNotNull(actual.body->getList()->getListLevels()->getListLevel()));
+   ASSERT_EQ(9, actual.body->getList()->getListLevels()->getListLevel().size());
 
-/// <summary>
-/// Test for updating list level from document online.
-/// </summary>
-TEST_F(ListsTests, TestUpdateListLevelOnline) {
-    auto requestListUpdate = std::make_shared< ListLevelUpdate >();
-    requestListUpdate->setAlignment(STCONVERT("Right"));
-
-    std::shared_ptr< UpdateListLevelOnlineRequest > request(new UpdateListLevelOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        1,
-        requestListUpdate,
-        1,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->updateListLevelOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -255,25 +189,4 @@ TEST_F(ListsTests, TestInsertList) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getList()));
    ASSERT_EQ(3, actual.body->getList()->getListId());
-}
-
-/// <summary>
-/// Test for inserting list from document online.
-/// </summary>
-TEST_F(ListsTests, TestInsertListOnline) {
-    auto requestListInsert = std::make_shared< ListInsert >();
-    requestListInsert->setTemplate(STCONVERT("OutlineLegal"));
-
-    std::shared_ptr< InsertListOnlineRequest > request(new InsertListOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        requestListInsert,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->insertListOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }

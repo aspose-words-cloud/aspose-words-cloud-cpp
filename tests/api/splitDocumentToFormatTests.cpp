@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="splitDocumentToFormatTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,24 +65,4 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocument) {
    ASSERT_TRUE(IsNotNull(actual.body->getSplitResult()));
    ASSERT_TRUE(IsNotNull(actual.body->getSplitResult()->getPages()));
    ASSERT_EQ(2, actual.body->getSplitResult()->getPages().size());
-}
-
-/// <summary>
-/// Test for document splitting online.
-/// </summary>
-TEST_F(SplitDocumentToFormatTests, TestSplitDocumentOnline) {
-    std::shared_ptr< SplitDocumentOnlineRequest > request(new SplitDocumentOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("text"),
-        boost::none,
-        boost::none,
-        baseTestOutPath + STCONVERT("/TestSplitDocument.text"),
-        1,
-        2,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->splitDocumentOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ConvertDocumentRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,15 +32,15 @@ namespace models {
 ConvertDocumentRequest::ConvertDocumentRequest(
     std::shared_ptr<HttpContent> document,
     utility::string_t format,
+    boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > outPath,
     boost::optional< utility::string_t > fileNameFieldValue,
-    boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > fontsLocation
 ) : m_Document(std::move(document)),
 m_Format(std::move(format)),
+m_Storage(std::move(storage)),
 m_OutPath(std::move(outPath)),
 m_FileNameFieldValue(std::move(fileNameFieldValue)),
-m_Storage(std::move(storage)),
 m_FontsLocation(std::move(fontsLocation))
 {
 }
@@ -65,6 +65,16 @@ void ConvertDocumentRequest::setFormat(utility::string_t format)
     m_Format = std::move(format);
 }
 
+boost::optional< utility::string_t > ConvertDocumentRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void ConvertDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
+}
+
 boost::optional< utility::string_t > ConvertDocumentRequest::getOutPath() const
 {
     return m_OutPath;
@@ -83,16 +93,6 @@ boost::optional< utility::string_t > ConvertDocumentRequest::getFileNameFieldVal
 void ConvertDocumentRequest::setFileNameFieldValue(boost::optional< utility::string_t > fileNameFieldValue)
 {
     m_FileNameFieldValue = std::move(fileNameFieldValue);
-}
-
-boost::optional< utility::string_t > ConvertDocumentRequest::getStorage() const
-{
-    return m_Storage;
-}
-
-void ConvertDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
-{
-    m_Storage = std::move(storage);
 }
 
 boost::optional< utility::string_t > ConvertDocumentRequest::getFontsLocation() const

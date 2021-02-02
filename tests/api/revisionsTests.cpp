@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="revisionsTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -62,21 +62,6 @@ TEST_F(RevisionsTests, TestAcceptAllRevisions) {
 }
 
 /// <summary>
-/// Test for accepting revisions in document online.
-/// </summary>
-TEST_F(RevisionsTests, TestAcceptAllRevisionsOnline) {
-    std::shared_ptr< AcceptAllRevisionsOnlineRequest > request(new AcceptAllRevisionsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->acceptAllRevisionsOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for rejecting revisions in document.
 /// </summary>
 TEST_F(RevisionsTests, TestRejectAllRevisions) {
@@ -100,19 +85,4 @@ TEST_F(RevisionsTests, TestRejectAllRevisions) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getResult()));
    ASSERT_TRUE(IsNotNull(actual.body->getResult()->getDest()));
-}
-
-/// <summary>
-/// Test for rejecting revisions in document online.
-/// </summary>
-TEST_F(RevisionsTests, TestRejectAllRevisionsOnline) {
-    std::shared_ptr< RejectAllRevisionsOnlineRequest > request(new RejectAllRevisionsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->rejectAllRevisionsOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }

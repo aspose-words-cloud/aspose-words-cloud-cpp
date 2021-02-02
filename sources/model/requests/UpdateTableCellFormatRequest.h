@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateTableCellFormatRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,9 +41,9 @@ class UpdateTableCellFormatRequest {
     public: 
  UpdateTableCellFormatRequest(
             utility::string_t name,
+            std::shared_ptr<TableCellFormat> format,
             utility::string_t tableRowPath,
             int32_t index,
-            std::shared_ptr<TableCellFormat> format,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -56,14 +56,14 @@ class UpdateTableCellFormatRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
+        std::shared_ptr<TableCellFormat> getFormat() const;
+        void setFormat(std::shared_ptr<TableCellFormat> format);
+
         utility::string_t getTableRowPath() const;
         void setTableRowPath(utility::string_t tableRowPath);
 
         int32_t getIndex() const;
         void setIndex(int32_t index);
-
-        std::shared_ptr<TableCellFormat> getFormat() const;
-        void setFormat(std::shared_ptr<TableCellFormat> format);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -88,9 +88,9 @@ class UpdateTableCellFormatRequest {
 
     private:
         utility::string_t m_Name;
+        std::shared_ptr<TableCellFormat> m_Format;
         utility::string_t m_TableRowPath;
         int32_t m_Index;
-        std::shared_ptr<TableCellFormat> m_Format;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

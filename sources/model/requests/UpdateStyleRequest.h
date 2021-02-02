@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateStyleRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class UpdateStyleRequest {
     public: 
  UpdateStyleRequest(
             utility::string_t name,
-            utility::string_t styleName,
             std::shared_ptr<StyleUpdate> styleUpdate,
+            utility::string_t styleName,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -55,11 +55,11 @@ class UpdateStyleRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getStyleName() const;
-        void setStyleName(utility::string_t styleName);
-
         std::shared_ptr<StyleUpdate> getStyleUpdate() const;
         void setStyleUpdate(std::shared_ptr<StyleUpdate> styleUpdate);
+
+        utility::string_t getStyleName() const;
+        void setStyleName(utility::string_t styleName);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -84,8 +84,8 @@ class UpdateStyleRequest {
 
     private:
         utility::string_t m_Name;
-        utility::string_t m_StyleName;
         std::shared_ptr<StyleUpdate> m_StyleUpdate;
+        utility::string_t m_StyleName;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

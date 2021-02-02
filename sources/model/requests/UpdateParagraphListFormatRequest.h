@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateParagraphListFormatRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class UpdateParagraphListFormatRequest {
     public: 
  UpdateParagraphListFormatRequest(
             utility::string_t name,
+            std::shared_ptr<ListFormatUpdate> dto,
             int32_t index,
-            std::shared_ptr<ListFormatUpdate> listFormatDto,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -56,11 +56,11 @@ class UpdateParagraphListFormatRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
+        std::shared_ptr<ListFormatUpdate> getDto() const;
+        void setDto(std::shared_ptr<ListFormatUpdate> dto);
+
         int32_t getIndex() const;
         void setIndex(int32_t index);
-
-        std::shared_ptr<ListFormatUpdate> getListFormatDto() const;
-        void setListFormatDto(std::shared_ptr<ListFormatUpdate> listFormatDto);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -88,8 +88,8 @@ class UpdateParagraphListFormatRequest {
 
     private:
         utility::string_t m_Name;
+        std::shared_ptr<ListFormatUpdate> m_Dto;
         int32_t m_Index;
-        std::shared_ptr<ListFormatUpdate> m_ListFormatDto;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

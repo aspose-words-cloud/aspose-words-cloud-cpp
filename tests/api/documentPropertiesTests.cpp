@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="documentPropertiesTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,20 +65,6 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperties) {
 }
 
 /// <summary>
-/// Test for getting document properties online.
-/// </summary>
-TEST_F(DocumentPropertiesTests, TestGetDocumentPropertiesOnline) {
-    std::shared_ptr< GetDocumentPropertiesOnlineRequest > request(new GetDocumentPropertiesOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getDocumentPropertiesOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// A test for GetDocumentProperty.
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestGetDocumentProperty) {
@@ -106,21 +92,6 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperty) {
 }
 
 /// <summary>
-/// A test for GetDocumentProperty online.
-/// </summary>
-TEST_F(DocumentPropertiesTests, TestGetDocumentPropertyOnline) {
-    std::shared_ptr< GetDocumentPropertyOnlineRequest > request(new GetDocumentPropertyOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("Author"),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getDocumentPropertyOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for deleting document property.
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestDeleteDocumentProperty) {
@@ -144,23 +115,6 @@ TEST_F(DocumentPropertiesTests, TestDeleteDocumentProperty) {
     ));
 
    get_api()->deleteDocumentProperty(request).get();
-}
-
-/// <summary>
-/// Test for deleting document property online.
-/// </summary>
-TEST_F(DocumentPropertiesTests, TestDeleteDocumentPropertyOnline) {
-    std::shared_ptr< DeleteDocumentPropertyOnlineRequest > request(new DeleteDocumentPropertyOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("testProp"),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->deleteDocumentPropertyOnline(request).get();
 }
 
 /// <summary>
@@ -195,26 +149,4 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
    ASSERT_TRUE(IsNotNull(actual.body->getDocumentProperty()));
    ASSERT_EQ(STCONVERT("AsposeAuthor"), actual.body->getDocumentProperty()->getName());
    ASSERT_EQ(STCONVERT("Imran Anwar"), actual.body->getDocumentProperty()->getValue());
-}
-
-/// <summary>
-/// Test for updating document property online.
-/// </summary>
-TEST_F(DocumentPropertiesTests, TestUpdateDocumentPropertyOnline) {
-    auto requestProperty = std::make_shared< DocumentPropertyCreateOrUpdate >();
-    requestProperty->setValue(STCONVERT("Imran Anwar"));
-
-    std::shared_ptr< CreateOrUpdateDocumentPropertyOnlineRequest > request(new CreateOrUpdateDocumentPropertyOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("AsposeAuthor"),
-        requestProperty,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->createOrUpdateDocumentPropertyOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
 }

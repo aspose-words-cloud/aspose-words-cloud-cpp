@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="headerFooterTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -64,22 +64,6 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooters) {
 }
 
 /// <summary>
-/// Test for getting headers and footers online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestGetHeaderFootersOnline) {
-    std::shared_ptr< GetHeaderFootersOnlineRequest > request(new GetHeaderFootersOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getHeaderFootersOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for getting headerfooter.
 /// </summary>
 TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
@@ -106,22 +90,6 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
    ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()->getChildNodes()));
    ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
-}
-
-/// <summary>
-/// Test for getting headerfooter online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestGetHeaderFooterOnline) {
-    std::shared_ptr< GetHeaderFooterOnlineRequest > request(new GetHeaderFooterOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getHeaderFooterOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -155,23 +123,6 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSection) {
 }
 
 /// <summary>
-/// Test for getting headerfooter of section online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSectionOnline) {
-    std::shared_ptr< GetHeaderFooterOfSectionOnlineRequest > request(new GetHeaderFooterOfSectionOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        0,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getHeaderFooterOfSectionOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
 /// Test for deleting headerfooter.
 /// </summary>
 TEST_F(HeaderFooterTests, TestDeleteHeaderFooter) {
@@ -196,24 +147,6 @@ TEST_F(HeaderFooterTests, TestDeleteHeaderFooter) {
     ));
 
    get_api()->deleteHeaderFooter(request).get();
-}
-
-/// <summary>
-/// Test for deleting headerfooter online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestDeleteHeaderFooterOnline) {
-    std::shared_ptr< DeleteHeaderFooterOnlineRequest > request(new DeleteHeaderFooterOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        0,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->deleteHeaderFooterOnline(request).get();
 }
 
 /// <summary>
@@ -244,24 +177,6 @@ TEST_F(HeaderFooterTests, TestDeleteHeadersFooters) {
 }
 
 /// <summary>
-/// Test for deleting headerfooters online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestDeleteHeadersFootersOnline) {
-    std::shared_ptr< DeleteHeadersFootersOnlineRequest > request(new DeleteHeadersFootersOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->deleteHeadersFootersOnline(request).get();
-}
-
-/// <summary>
 /// Test for adding headerfooters.
 /// </summary>
 TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
@@ -274,8 +189,8 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
 
     std::shared_ptr< InsertHeaderFooterRequest > request(new InsertHeaderFooterRequest(
         remoteFileName,
-        STCONVERT(""),
         STCONVERT("FooterEven"),
+        STCONVERT(""),
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -287,23 +202,8 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
 
    auto actual = get_api()->insertHeaderFooter(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
-}
-
-/// <summary>
-/// Test for adding headerfooters online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestInsertHeaderFooterOnline) {
-    std::shared_ptr< InsertHeaderFooterOnlineRequest > request(new InsertHeaderFooterOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        STCONVERT("FooterEven"),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->insertHeaderFooterOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()));
+   ASSERT_TRUE(IsNotNull(actual.body->getHeaderFooter()->getChildNodes()));
+   ASSERT_EQ(1, actual.body->getHeaderFooter()->getChildNodes().size());
+   ASSERT_EQ(STCONVERT("0.2.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }

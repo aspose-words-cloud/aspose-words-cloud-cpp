@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApplyStyleToDocumentElementRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class ApplyStyleToDocumentElementRequest {
     public: 
  ApplyStyleToDocumentElementRequest(
             utility::string_t name,
-            utility::string_t styledNodePath,
             std::shared_ptr<StyleApply> styleApply,
+            utility::string_t styledNodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -55,11 +55,11 @@ class ApplyStyleToDocumentElementRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getStyledNodePath() const;
-        void setStyledNodePath(utility::string_t styledNodePath);
-
         std::shared_ptr<StyleApply> getStyleApply() const;
         void setStyleApply(std::shared_ptr<StyleApply> styleApply);
+
+        utility::string_t getStyledNodePath() const;
+        void setStyledNodePath(utility::string_t styledNodePath);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -84,8 +84,8 @@ class ApplyStyleToDocumentElementRequest {
 
     private:
         utility::string_t m_Name;
-        utility::string_t m_StyledNodePath;
         std::shared_ptr<StyleApply> m_StyleApply;
+        utility::string_t m_StyledNodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,28 +39,18 @@ namespace models {
 class GetDocumentFieldNamesOnlineRequest {
     public: 
  GetDocumentFieldNamesOnlineRequest(
-            std::shared_ptr<HttpContent> document,
-            boost::optional< utility::string_t > loadEncoding,
-            boost::optional< utility::string_t > password,
+            std::shared_ptr<HttpContent> _template,
             boost::optional< bool > useNonMergeFields
         );
 
-        std::shared_ptr<HttpContent> getDocument() const;
-        void setDocument(std::shared_ptr<HttpContent> document);
-
-        boost::optional< utility::string_t > getLoadEncoding() const;
-        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
-
-        boost::optional< utility::string_t > getPassword() const;
-        void setPassword(boost::optional< utility::string_t > password);
+        std::shared_ptr<HttpContent> getTemplate() const;
+        void setTemplate(std::shared_ptr<HttpContent> _template);
 
         boost::optional< bool > getUseNonMergeFields() const;
         void setUseNonMergeFields(boost::optional< bool > useNonMergeFields);
 
     private:
-        std::shared_ptr<HttpContent> m_Document;
-        boost::optional< utility::string_t > m_LoadEncoding;
-        boost::optional< utility::string_t > m_Password;
+        std::shared_ptr<HttpContent> m_Template;
         boost::optional< bool > m_UseNonMergeFields;
 };
 

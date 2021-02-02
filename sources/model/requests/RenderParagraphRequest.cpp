@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RenderParagraphRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,7 +38,6 @@ RenderParagraphRequest::RenderParagraphRequest(
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
     boost::optional< utility::string_t > password,
-    boost::optional< utility::string_t > destFileName,
     boost::optional< utility::string_t > fontsLocation
 ) : m_Name(std::move(name)),
 m_Format(std::move(format)),
@@ -48,7 +47,6 @@ m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
 m_Password(std::move(password)),
-m_DestFileName(std::move(destFileName)),
 m_FontsLocation(std::move(fontsLocation))
 {
 }
@@ -131,16 +129,6 @@ boost::optional< utility::string_t > RenderParagraphRequest::getPassword() const
 void RenderParagraphRequest::setPassword(boost::optional< utility::string_t > password)
 {
     m_Password = std::move(password);
-}
-
-boost::optional< utility::string_t > RenderParagraphRequest::getDestFileName() const
-{
-    return m_DestFileName;
-}
-
-void RenderParagraphRequest::setDestFileName(boost::optional< utility::string_t > destFileName)
-{
-    m_DestFileName = std::move(destFileName);
 }
 
 boost::optional< utility::string_t > RenderParagraphRequest::getFontsLocation() const

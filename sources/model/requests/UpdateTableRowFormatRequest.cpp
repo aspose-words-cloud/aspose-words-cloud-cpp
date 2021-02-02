@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateTableRowFormatRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,9 +31,9 @@ namespace api {
 namespace models {
 UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
     utility::string_t name,
+    std::shared_ptr<TableRowFormat> format,
     utility::string_t tablePath,
     int32_t index,
-    std::shared_ptr<TableRowFormat> format,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > loadEncoding,
@@ -42,9 +42,9 @@ UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
+m_Format(std::move(format)),
 m_TablePath(std::move(tablePath)),
 m_Index(std::move(index)),
-m_Format(std::move(format)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
 m_LoadEncoding(std::move(loadEncoding)),
@@ -65,6 +65,16 @@ void UpdateTableRowFormatRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
+std::shared_ptr<TableRowFormat> UpdateTableRowFormatRequest::getFormat() const
+{
+    return m_Format;
+}
+
+void UpdateTableRowFormatRequest::setFormat(std::shared_ptr<TableRowFormat> format)
+{
+    m_Format = std::move(format);
+}
+
 utility::string_t UpdateTableRowFormatRequest::getTablePath() const
 {
     return m_TablePath;
@@ -83,16 +93,6 @@ int32_t UpdateTableRowFormatRequest::getIndex() const
 void UpdateTableRowFormatRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
-}
-
-std::shared_ptr<TableRowFormat> UpdateTableRowFormatRequest::getFormat() const
-{
-    return m_Format;
-}
-
-void UpdateTableRowFormatRequest::setFormat(std::shared_ptr<TableRowFormat> format)
-{
-    m_Format = std::move(format);
 }
 
 boost::optional< utility::string_t > UpdateTableRowFormatRequest::getFolder() const

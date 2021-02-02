@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateParagraphFormatRequest.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,8 +31,8 @@ namespace api {
 namespace models {
 UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
     utility::string_t name,
+    std::shared_ptr<ParagraphFormatUpdate> dto,
     int32_t index,
-    std::shared_ptr<ParagraphFormatUpdate> paragraphFormatDto,
     boost::optional< utility::string_t > nodePath,
     boost::optional< utility::string_t > folder,
     boost::optional< utility::string_t > storage,
@@ -42,8 +42,8 @@ UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
     boost::optional< utility::string_t > revisionAuthor,
     boost::optional< utility::string_t > revisionDateTime
 ) : m_Name(std::move(name)),
+m_Dto(std::move(dto)),
 m_Index(std::move(index)),
-m_ParagraphFormatDto(std::move(paragraphFormatDto)),
 m_NodePath(std::move(nodePath)),
 m_Folder(std::move(folder)),
 m_Storage(std::move(storage)),
@@ -65,6 +65,16 @@ void UpdateParagraphFormatRequest::setName(utility::string_t name)
     m_Name = std::move(name);
 }
 
+std::shared_ptr<ParagraphFormatUpdate> UpdateParagraphFormatRequest::getDto() const
+{
+    return m_Dto;
+}
+
+void UpdateParagraphFormatRequest::setDto(std::shared_ptr<ParagraphFormatUpdate> dto)
+{
+    m_Dto = std::move(dto);
+}
+
 int32_t UpdateParagraphFormatRequest::getIndex() const
 {
     return m_Index;
@@ -73,16 +83,6 @@ int32_t UpdateParagraphFormatRequest::getIndex() const
 void UpdateParagraphFormatRequest::setIndex(int32_t index)
 {
     m_Index = std::move(index);
-}
-
-std::shared_ptr<ParagraphFormatUpdate> UpdateParagraphFormatRequest::getParagraphFormatDto() const
-{
-    return m_ParagraphFormatDto;
-}
-
-void UpdateParagraphFormatRequest::setParagraphFormatDto(std::shared_ptr<ParagraphFormatUpdate> paragraphFormatDto)
-{
-    m_ParagraphFormatDto = std::move(paragraphFormatDto);
 }
 
 boost::optional< utility::string_t > UpdateParagraphFormatRequest::getNodePath() const

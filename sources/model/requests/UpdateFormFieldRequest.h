@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateFormFieldRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class UpdateFormFieldRequest {
     public: 
  UpdateFormFieldRequest(
             utility::string_t name,
-            int32_t index,
             std::shared_ptr<FormField> formField,
+            int32_t index,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -56,11 +56,11 @@ class UpdateFormFieldRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        int32_t getIndex() const;
-        void setIndex(int32_t index);
-
         std::shared_ptr<FormField> getFormField() const;
         void setFormField(std::shared_ptr<FormField> formField);
+
+        int32_t getIndex() const;
+        void setIndex(int32_t index);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -88,8 +88,8 @@ class UpdateFormFieldRequest {
 
     private:
         utility::string_t m_Name;
-        int32_t m_Index;
         std::shared_ptr<FormField> m_FormField;
+        int32_t m_Index;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

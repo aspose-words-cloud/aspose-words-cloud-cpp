@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="documentStatisticsTests.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -61,21 +61,4 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getStatData()));
    ASSERT_EQ(10, actual.body->getStatData()->getWordCount());
-}
-
-/// <summary>
-/// Test for document classification online.
-/// </summary>
-TEST_F(DocumentStatisticsTests, TestGetDocumentStatisticsOnline) {
-    std::shared_ptr< GetDocumentStatisticsOnlineRequest > request(new GetDocumentStatisticsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->getDocumentStatisticsOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
 }

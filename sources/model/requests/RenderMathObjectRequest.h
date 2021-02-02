@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RenderMathObjectRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,7 +47,6 @@ class RenderMathObjectRequest {
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
             boost::optional< utility::string_t > password,
-            boost::optional< utility::string_t > destFileName,
             boost::optional< utility::string_t > fontsLocation
         );
 
@@ -75,9 +74,6 @@ class RenderMathObjectRequest {
         boost::optional< utility::string_t > getPassword() const;
         void setPassword(boost::optional< utility::string_t > password);
 
-        boost::optional< utility::string_t > getDestFileName() const;
-        void setDestFileName(boost::optional< utility::string_t > destFileName);
-
         boost::optional< utility::string_t > getFontsLocation() const;
         void setFontsLocation(boost::optional< utility::string_t > fontsLocation);
 
@@ -90,7 +86,6 @@ class RenderMathObjectRequest {
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;
         boost::optional< utility::string_t > m_Password;
-        boost::optional< utility::string_t > m_DestFileName;
         boost::optional< utility::string_t > m_FontsLocation;
 };
 

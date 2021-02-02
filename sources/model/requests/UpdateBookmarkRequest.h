@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateBookmarkRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class UpdateBookmarkRequest {
     public: 
  UpdateBookmarkRequest(
             utility::string_t name,
-            utility::string_t bookmarkName,
             std::shared_ptr<BookmarkData> bookmarkData,
+            utility::string_t bookmarkName,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -55,11 +55,11 @@ class UpdateBookmarkRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        utility::string_t getBookmarkName() const;
-        void setBookmarkName(utility::string_t bookmarkName);
-
         std::shared_ptr<BookmarkData> getBookmarkData() const;
         void setBookmarkData(std::shared_ptr<BookmarkData> bookmarkData);
+
+        utility::string_t getBookmarkName() const;
+        void setBookmarkName(utility::string_t bookmarkName);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -84,8 +84,8 @@ class UpdateBookmarkRequest {
 
     private:
         utility::string_t m_Name;
-        utility::string_t m_BookmarkName;
         std::shared_ptr<BookmarkData> m_BookmarkData;
+        utility::string_t m_BookmarkName;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;

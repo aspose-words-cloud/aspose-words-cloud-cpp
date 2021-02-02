@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ClassifyDocumentRequest.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2020 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ namespace models {
 class ClassifyDocumentRequest {
     public: 
  ClassifyDocumentRequest(
-            utility::string_t name,
+            utility::string_t documentName,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > loadEncoding,
@@ -48,8 +48,8 @@ class ClassifyDocumentRequest {
             boost::optional< utility::string_t > taxonomy
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+        utility::string_t getDocumentName() const;
+        void setDocumentName(utility::string_t documentName);
 
         boost::optional< utility::string_t > getFolder() const;
         void setFolder(boost::optional< utility::string_t > folder);
@@ -70,7 +70,7 @@ class ClassifyDocumentRequest {
         void setTaxonomy(boost::optional< utility::string_t > taxonomy);
 
     private:
-        utility::string_t m_Name;
+        utility::string_t m_DocumentName;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_LoadEncoding;
