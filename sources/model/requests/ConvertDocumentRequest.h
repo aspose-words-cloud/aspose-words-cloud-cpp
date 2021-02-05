@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ConvertDocumentRequest.h">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,9 +41,9 @@ class ConvertDocumentRequest {
  ConvertDocumentRequest(
             std::shared_ptr<HttpContent> document,
             utility::string_t format,
-            boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > outPath,
             boost::optional< utility::string_t > fileNameFieldValue,
+            boost::optional< utility::string_t > storage,
             boost::optional< utility::string_t > fontsLocation
         );
 
@@ -53,14 +53,14 @@ class ConvertDocumentRequest {
         utility::string_t getFormat() const;
         void setFormat(utility::string_t format);
 
-        boost::optional< utility::string_t > getStorage() const;
-        void setStorage(boost::optional< utility::string_t > storage);
-
         boost::optional< utility::string_t > getOutPath() const;
         void setOutPath(boost::optional< utility::string_t > outPath);
 
         boost::optional< utility::string_t > getFileNameFieldValue() const;
         void setFileNameFieldValue(boost::optional< utility::string_t > fileNameFieldValue);
+
+        boost::optional< utility::string_t > getStorage() const;
+        void setStorage(boost::optional< utility::string_t > storage);
 
         boost::optional< utility::string_t > getFontsLocation() const;
         void setFontsLocation(boost::optional< utility::string_t > fontsLocation);
@@ -68,9 +68,9 @@ class ConvertDocumentRequest {
     private:
         std::shared_ptr<HttpContent> m_Document;
         utility::string_t m_Format;
-        boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_OutPath;
         boost::optional< utility::string_t > m_FileNameFieldValue;
+        boost::optional< utility::string_t > m_Storage;
         boost::optional< utility::string_t > m_FontsLocation;
 };
 

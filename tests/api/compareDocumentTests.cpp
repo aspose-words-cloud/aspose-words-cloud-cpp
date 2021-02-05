@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compareDocumentTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -72,4 +72,34 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getDocument()));
    ASSERT_EQ(STCONVERT("TestCompareDocumentOut.doc"), actual.body->getDocument()->getFileName());
+}
+
+/// <summary>
+/// Test for document comparison online.
+/// </summary>
+TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
+    utility::string_t localName1 = STCONVERT("compareTestDoc1.doc");
+    utility::string_t localName2 = STCONVERT("compareTestDoc2.doc");
+    utility::string_t remoteName2 = STCONVERT("TestCompareDocument2.doc");
+
+    UploadFileToStorage(
+        remoteFolder + STCONVERT("/") + remoteName2,
+        path_combine(LocalTestDataFolder, localFolder + STCONVERT("/") + localName2)
+    );
+
+    auto requestCompareData = std::make_shared< CompareData >();
+    requestCompareData->setAuthor(STCONVERT("author"));
+    requestCompareData->setComparingWithDocument(remoteFolder + STCONVERT("/") + remoteName2);
+    requestCompareData->setDateTime(utility::datetime::from_string(STCONVERT("2015-10-26T00:00:00.0000000Z"), utility::datetime::ISO_8601));
+
+    std::shared_ptr< CompareDocumentOnlineRequest > request(new CompareDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFolder + STCONVERT("/") + localName1)),
+        requestCompareData,
+        boost::none,
+        boost::none,
+        baseTestOutPath + STCONVERT("/TestCompareDocumentOut.doc")
+    ));
+
+auto actual = get_api()->compareDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }

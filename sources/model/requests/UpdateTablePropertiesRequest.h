@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateTablePropertiesRequest.h">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class UpdateTablePropertiesRequest {
     public: 
  UpdateTablePropertiesRequest(
             utility::string_t name,
-            std::shared_ptr<TableProperties> properties,
             int32_t index,
+            std::shared_ptr<TableProperties> properties,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -56,11 +56,11 @@ class UpdateTablePropertiesRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<TableProperties> getProperties() const;
-        void setProperties(std::shared_ptr<TableProperties> properties);
-
         int32_t getIndex() const;
         void setIndex(int32_t index);
+
+        std::shared_ptr<TableProperties> getProperties() const;
+        void setProperties(std::shared_ptr<TableProperties> properties);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -88,8 +88,8 @@ class UpdateTablePropertiesRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<TableProperties> m_Properties;
         int32_t m_Index;
+        std::shared_ptr<TableProperties> m_Properties;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

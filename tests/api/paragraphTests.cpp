@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="paragraphTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,6 +65,22 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
 }
 
 /// <summary>
+/// Test for getting paragraph online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetDocumentParagraphOnline) {
+    std::shared_ptr< GetParagraphOnlineRequest > request(new GetParagraphOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getParagraphOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for getting paragraph without node path.
 /// </summary>
 TEST_F(ParagraphTests, TestGetDocumentParagraphByIndexWithoutNodePath) {
@@ -117,6 +133,21 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphs) {
    ASSERT_TRUE(IsNotNull(actual.body->getParagraphs()->getParagraphLinkList()));
    ASSERT_EQ(15, actual.body->getParagraphs()->getParagraphLinkList().size());
    ASSERT_EQ(STCONVERT("Page 1 of 3"), actual.body->getParagraphs()->getParagraphLinkList()[0]->getText());
+}
+
+/// <summary>
+/// Test for getting all paragraphs online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetDocumentParagraphsOnline) {
+    std::shared_ptr< GetParagraphsOnlineRequest > request(new GetParagraphsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getParagraphsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -175,6 +206,22 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRun) {
 }
 
 /// <summary>
+/// Test for getting paragraph run online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetDocumentParagraphRunOnline) {
+    std::shared_ptr< GetRunOnlineRequest > request(new GetRunOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/0"),
+        0,
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getRunOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for getting paragraph run font.
 /// </summary>
 TEST_F(ParagraphTests, TestGetDocumentParagraphRunFont) {
@@ -199,6 +246,22 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunFont) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getFont()));
    ASSERT_EQ(STCONVERT("Times New Roman"), actual.body->getFont()->getName());
+}
+
+/// <summary>
+/// Test for getting paragraph run font online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetDocumentParagraphRunFontOnline) {
+    std::shared_ptr< GetRunFontOnlineRequest > request(new GetRunFontOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/0"),
+        0,
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getRunFontOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -230,6 +293,21 @@ TEST_F(ParagraphTests, TestGetParagraphRuns) {
 }
 
 /// <summary>
+/// Test for getting paragraph runs online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetParagraphRunsOnline) {
+    std::shared_ptr< GetRunsOnlineRequest > request(new GetRunsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/paragraphs/0"),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getRunsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for updating paragraph run font.
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateRunFont) {
@@ -245,9 +323,9 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
 
     std::shared_ptr< UpdateRunFontRequest > request(new UpdateRunFontRequest(
         remoteFileName,
-        requestFontDto,
         STCONVERT("paragraphs/0"),
         0,
+        requestFontDto,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -261,6 +339,29 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getFont()));
    ASSERT_TRUE(actual.body->getFont()->isBold());
+}
+
+/// <summary>
+/// Test for updating paragraph run font online.
+/// </summary>
+TEST_F(ParagraphTests, TestUpdateRunFontOnline) {
+    auto requestFontDto = std::make_shared< Font >();
+    requestFontDto->setBold(true);
+
+    std::shared_ptr< UpdateRunFontOnlineRequest > request(new UpdateRunFontOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/0"),
+        requestFontDto,
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateRunFontOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -295,6 +396,29 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getParagraph()));
    ASSERT_EQ(STCONVERT("0.3.8"), actual.body->getParagraph()->getNodeId());
+}
+
+/// <summary>
+/// Test for adding paragraph online.
+/// </summary>
+TEST_F(ParagraphTests, TestInsertParagraphOnline) {
+    auto requestParagraph = std::make_shared< ParagraphInsert >();
+    requestParagraph->setText(STCONVERT("This is a new paragraph for your document"));
+
+    std::shared_ptr< InsertParagraphOnlineRequest > request(new InsertParagraphOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestParagraph,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertParagraphOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -351,10 +475,29 @@ TEST_F(ParagraphTests, TestRenderParagraph) {
         boost::none,
         boost::none,
         boost::none,
+        boost::none,
         boost::none
     ));
 
    get_api()->renderParagraph(request).get();
+}
+
+/// <summary>
+/// Test for paragraph rendering.
+/// </summary>
+TEST_F(ParagraphTests, TestRenderParagraphOnline) {
+    std::shared_ptr< RenderParagraphOnlineRequest > request(new RenderParagraphOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("png"),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->renderParagraphOnline(request).get();
 }
 
 /// <summary>
@@ -374,6 +517,7 @@ TEST_F(ParagraphTests, TestRenderParagraphWithoutNodePath) {
         0,
         boost::none,
         remoteDataFolder,
+        boost::none,
         boost::none,
         boost::none,
         boost::none,
@@ -408,6 +552,22 @@ TEST_F(ParagraphTests, TestGetParagraphFormat) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getParagraphFormat()));
    ASSERT_EQ(STCONVERT("Normal"), actual.body->getParagraphFormat()->getStyleName());
+}
+
+/// <summary>
+/// Test for getting paragraph format settings online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetParagraphFormatOnline) {
+    std::shared_ptr< GetParagraphFormatOnlineRequest > request(new GetParagraphFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getParagraphFormatOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -448,13 +608,13 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
         path_combine(LocalTestDataFolder, localFile)
     );
 
-    auto requestDto = std::make_shared< ParagraphFormatUpdate >();
-    requestDto->setAlignment(STCONVERT("Right"));
+    auto requestParagraphFormatDto = std::make_shared< ParagraphFormatUpdate >();
+    requestParagraphFormatDto->setAlignment(STCONVERT("Right"));
 
     std::shared_ptr< UpdateParagraphFormatRequest > request(new UpdateParagraphFormatRequest(
         remoteFileName,
-        requestDto,
         0,
+        requestParagraphFormatDto,
         STCONVERT(""),
         remoteDataFolder,
         boost::none,
@@ -469,6 +629,29 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getParagraphFormat()));
 
+}
+
+/// <summary>
+/// Test for updating  paragraph format settings online.
+/// </summary>
+TEST_F(ParagraphTests, TestUpdateParagraphFormatOnline) {
+    auto requestParagraphFormatDto = std::make_shared< ParagraphFormatUpdate >();
+    requestParagraphFormatDto->setAlignment(STCONVERT("Right"));
+
+    std::shared_ptr< UpdateParagraphFormatOnlineRequest > request(new UpdateParagraphFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestParagraphFormatDto,
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateParagraphFormatOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -496,6 +679,24 @@ TEST_F(ParagraphTests, TestDeleteParagraph) {
     ));
 
    get_api()->deleteParagraph(request).get();
+}
+
+/// <summary>
+/// Test for deleting  a paragraph online.
+/// </summary>
+TEST_F(ParagraphTests, TestDeleteParagraphOnline) {
+    std::shared_ptr< DeleteParagraphOnlineRequest > request(new DeleteParagraphOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->deleteParagraphOnline(request).get();
 }
 
 /// <summary>
@@ -553,6 +754,22 @@ TEST_F(ParagraphTests, TestGetParagraphListFormat) {
 }
 
 /// <summary>
+/// Test for getting paragraph list format online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetParagraphListFormatOnline) {
+    std::shared_ptr< GetParagraphListFormatOnlineRequest > request(new GetParagraphListFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphGetListFormat.doc"))),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getParagraphListFormatOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for getting paragraph list format without node path.
 /// </summary>
 TEST_F(ParagraphTests, TestGetParagraphListFormatWithoutNodePath) {
@@ -590,13 +807,13 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
         path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphUpdateListFormat.doc"))
     );
 
-    auto requestDto = std::make_shared< ListFormatUpdate >();
-    requestDto->setListId(2);
+    auto requestListFormatDto = std::make_shared< ListFormatUpdate >();
+    requestListFormatDto->setListId(2);
 
     std::shared_ptr< UpdateParagraphListFormatRequest > request(new UpdateParagraphListFormatRequest(
         remoteFileName,
-        requestDto,
         0,
+        requestListFormatDto,
         STCONVERT(""),
         remoteDataFolder,
         boost::none,
@@ -614,6 +831,29 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
 }
 
 /// <summary>
+/// Test for updating paragraph list format online.
+/// </summary>
+TEST_F(ParagraphTests, TestUpdateParagraphListFormatOnline) {
+    auto requestListFormatDto = std::make_shared< ListFormatUpdate >();
+    requestListFormatDto->setListId(2);
+
+    std::shared_ptr< UpdateParagraphListFormatOnlineRequest > request(new UpdateParagraphListFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphUpdateListFormat.doc"))),
+        requestListFormatDto,
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateParagraphListFormatOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for updating paragraph list format without node path.
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
@@ -624,13 +864,13 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
         path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphUpdateListFormat.doc"))
     );
 
-    auto requestDto = std::make_shared< ListFormatUpdate >();
-    requestDto->setListId(2);
+    auto requestListFormatDto = std::make_shared< ListFormatUpdate >();
+    requestListFormatDto->setListId(2);
 
     std::shared_ptr< UpdateParagraphListFormatRequest > request(new UpdateParagraphListFormatRequest(
         remoteFileName,
-        requestDto,
         0,
+        requestListFormatDto,
         boost::none,
         remoteDataFolder,
         boost::none,
@@ -673,6 +913,25 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormat) {
 
    auto actual = get_api()->deleteParagraphListFormat(request).get();
    ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
+/// Test for deleting paragraph list format online.
+/// </summary>
+TEST_F(ParagraphTests, TestDeleteParagraphListFormatOnline) {
+    std::shared_ptr< DeleteParagraphListFormatOnlineRequest > request(new DeleteParagraphListFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, listFolder + STCONVERT("/ParagraphDeleteListFormat.doc"))),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->deleteParagraphListFormatOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -732,6 +991,22 @@ TEST_F(ParagraphTests, TestGetParagraphTabStops) {
 }
 
 /// <summary>
+/// Test for getting paragraph tab stops online.
+/// </summary>
+TEST_F(ParagraphTests, TestGetParagraphTabStopsOnline) {
+    std::shared_ptr< GetParagraphTabStopsOnlineRequest > request(new GetParagraphTabStopsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getParagraphTabStopsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for getting paragraph tab stops without node path.
 /// </summary>
 TEST_F(ParagraphTests, TestGetParagraphTabStopsWithoutNodePath) {
@@ -770,15 +1045,15 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
         path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))
     );
 
-    auto requestDto = std::make_shared< TabStopInsert >();
-    requestDto->setAlignment(STCONVERT("Left"));
-    requestDto->setLeader(STCONVERT("None"));
-    requestDto->setPosition(100.0);
+    auto requestTabStopInsertDto = std::make_shared< TabStopInsert >();
+    requestTabStopInsertDto->setAlignment(STCONVERT("Left"));
+    requestTabStopInsertDto->setLeader(STCONVERT("None"));
+    requestTabStopInsertDto->setPosition(100.0);
 
     std::shared_ptr< InsertOrUpdateParagraphTabStopRequest > request(new InsertOrUpdateParagraphTabStopRequest(
         remoteFileName,
-        requestDto,
         0,
+        requestTabStopInsertDto,
         STCONVERT(""),
         remoteDataFolder,
         boost::none,
@@ -797,6 +1072,29 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
 }
 
 /// <summary>
+/// Test for inserting paragraph tab stop online.
+/// </summary>
+TEST_F(ParagraphTests, TestInsertParagraphTabStopsOnline) {
+    auto requestTabStopInsertDto = std::make_shared< TabStopInsert >();
+    requestTabStopInsertDto->setAlignment(STCONVERT("Left"));
+    requestTabStopInsertDto->setLeader(STCONVERT("None"));
+    requestTabStopInsertDto->setPosition(72);
+
+    std::shared_ptr< InsertOrUpdateParagraphTabStopOnlineRequest > request(new InsertOrUpdateParagraphTabStopOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))),
+        requestTabStopInsertDto,
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertOrUpdateParagraphTabStopOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for inserting paragraph tab stop without node path.
 /// </summary>
 TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
@@ -807,15 +1105,15 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
         path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))
     );
 
-    auto requestDto = std::make_shared< TabStopInsert >();
-    requestDto->setAlignment(STCONVERT("Left"));
-    requestDto->setLeader(STCONVERT("None"));
-    requestDto->setPosition(100.0);
+    auto requestTabStopInsertDto = std::make_shared< TabStopInsert >();
+    requestTabStopInsertDto->setAlignment(STCONVERT("Left"));
+    requestTabStopInsertDto->setLeader(STCONVERT("None"));
+    requestTabStopInsertDto->setPosition(100.0);
 
     std::shared_ptr< InsertOrUpdateParagraphTabStopRequest > request(new InsertOrUpdateParagraphTabStopRequest(
         remoteFileName,
-        requestDto,
         0,
+        requestTabStopInsertDto,
         boost::none,
         remoteDataFolder,
         boost::none,
@@ -859,6 +1157,23 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStops) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getTabStops()));
    ASSERT_EQ(0, actual.body->getTabStops().size());
+}
+
+/// <summary>
+/// Test for deleting all paragraph tab stops online.
+/// </summary>
+TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsOnline) {
+    std::shared_ptr< DeleteAllParagraphTabStopsOnlineRequest > request(new DeleteAllParagraphTabStopsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->deleteAllParagraphTabStopsOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -916,6 +1231,24 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStop) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getTabStops()));
    ASSERT_EQ(1, actual.body->getTabStops().size());
+}
+
+/// <summary>
+/// Test for deleting a tab stops online.
+/// </summary>
+TEST_F(ParagraphTests, TestDeleteParagraphTabStopOnline) {
+    std::shared_ptr< DeleteParagraphTabStopOnlineRequest > request(new DeleteParagraphTabStopOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, tabStopFolder + STCONVERT("/ParagraphTabStops.docx"))),
+        72.0,
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->deleteParagraphTabStopOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>

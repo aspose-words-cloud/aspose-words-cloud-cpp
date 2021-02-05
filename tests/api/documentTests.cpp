@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="documentTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,9 +67,9 @@ TEST_F(DocumentTests, TestCreateDocument) {
     utility::string_t remoteFileName = STCONVERT("TestCreateDocument.doc");
 
     std::shared_ptr< CreateDocumentRequest > request(new CreateDocumentRequest(
-        boost::none,
         remoteFileName,
-        remoteDataFolder
+        remoteDataFolder,
+        boost::none
     ));
 
    auto actual = get_api()->createDocument(request).get();

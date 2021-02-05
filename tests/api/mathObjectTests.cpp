@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="mathObjectTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -64,6 +64,21 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjects) {
 }
 
 /// <summary>
+/// Test for getting mathObjects online.
+/// </summary>
+TEST_F(MathObjectTests, TestGetOfficeMathObjectsOnline) {
+    std::shared_ptr< GetOfficeMathObjectsOnlineRequest > request(new GetOfficeMathObjectsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getOfficeMathObjectsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for getting mathObjects without node path.
 /// </summary>
 TEST_F(MathObjectTests, TestGetOfficeMathObjectsWithoutNodePath) {
@@ -119,6 +134,22 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
 }
 
 /// <summary>
+/// Test for getting mathObject online.
+/// </summary>
+TEST_F(MathObjectTests, TestGetOfficeMathObjectOnline) {
+    std::shared_ptr< GetOfficeMathObjectOnlineRequest > request(new GetOfficeMathObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
+
+   auto actual = get_api()->getOfficeMathObjectOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for getting mathObject without node path.
 /// </summary>
 TEST_F(MathObjectTests, TestGetOfficeMathObjectWithoutNodePath) {
@@ -165,10 +196,29 @@ TEST_F(MathObjectTests, TestRenderMathObject) {
         boost::none,
         boost::none,
         boost::none,
+        boost::none,
         boost::none
     ));
 
    get_api()->renderMathObject(request).get();
+}
+
+/// <summary>
+/// Test for rendering mathObject.
+/// </summary>
+TEST_F(MathObjectTests, TestRenderMathObjectOnline) {
+    std::shared_ptr< RenderMathObjectOnlineRequest > request(new RenderMathObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("png"),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->renderMathObjectOnline(request).get();
 }
 
 /// <summary>
@@ -188,6 +238,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectWithoutNodePath) {
         0,
         boost::none,
         remoteDataFolder,
+        boost::none,
         boost::none,
         boost::none,
         boost::none,
@@ -222,6 +273,24 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObject) {
     ));
 
    get_api()->deleteOfficeMathObject(request).get();
+}
+
+/// <summary>
+/// Test for deleting mathObject online.
+/// </summary>
+TEST_F(MathObjectTests, TestDeleteOfficeMathObjectOnline) {
+    std::shared_ptr< DeleteOfficeMathObjectOnlineRequest > request(new DeleteOfficeMathObjectOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->deleteOfficeMathObjectOnline(request).get();
 }
 
 /// <summary>

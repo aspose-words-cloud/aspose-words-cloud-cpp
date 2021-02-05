@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CreateDocumentRequest.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,23 +30,13 @@ namespace cloud {
 namespace api {
 namespace models {
 CreateDocumentRequest::CreateDocumentRequest(
-    boost::optional< utility::string_t > storage,
     boost::optional< utility::string_t > fileName,
-    boost::optional< utility::string_t > folder
-) : m_Storage(std::move(storage)),
-m_FileName(std::move(fileName)),
-m_Folder(std::move(folder))
+    boost::optional< utility::string_t > folder,
+    boost::optional< utility::string_t > storage
+) : m_FileName(std::move(fileName)),
+m_Folder(std::move(folder)),
+m_Storage(std::move(storage))
 {
-}
-
-boost::optional< utility::string_t > CreateDocumentRequest::getStorage() const
-{
-    return m_Storage;
-}
-
-void CreateDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
-{
-    m_Storage = std::move(storage);
 }
 
 boost::optional< utility::string_t > CreateDocumentRequest::getFileName() const
@@ -67,6 +57,16 @@ boost::optional< utility::string_t > CreateDocumentRequest::getFolder() const
 void CreateDocumentRequest::setFolder(boost::optional< utility::string_t > folder)
 {
     m_Folder = std::move(folder);
+}
+
+boost::optional< utility::string_t > CreateDocumentRequest::getStorage() const
+{
+    return m_Storage;
+}
+
+void CreateDocumentRequest::setStorage(boost::optional< utility::string_t > storage)
+{
+    m_Storage = std::move(storage);
 }
 
 }

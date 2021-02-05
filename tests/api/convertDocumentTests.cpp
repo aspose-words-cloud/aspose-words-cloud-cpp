@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="convertDocumentTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,6 +65,28 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()));
    ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()->getDestDocument()));
+}
+
+/// <summary>
+/// Test for converting document online to one of the available formats.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
+    utility::string_t localName = STCONVERT("test_multi_pages.docx");
+
+    auto requestSaveOptionsData = std::make_shared< SaveOptionsData >();
+    requestSaveOptionsData->setSaveFormat(STCONVERT("pdf"));
+    requestSaveOptionsData->setFileName(baseTestOutPath + STCONVERT("/TestSaveAs.pdf"));
+
+    std::shared_ptr< SaveAsOnlineRequest > request(new SaveAsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/") + localName)),
+        requestSaveOptionsData,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->saveAsOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -146,6 +168,45 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()));
    ASSERT_TRUE(IsNotNull(actual.body->getSaveResult()->getDestDocument()));
+}
+
+/// <summary>
+/// Test for converting document to one of the available formats.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
+    utility::string_t localName = STCONVERT("test_multi_pages.docx");
+
+    auto requestSaveOptions = std::make_shared< TiffSaveOptionsData >();
+    requestSaveOptions->setSaveFormat(STCONVERT("tiff"));
+    requestSaveOptions->setFileName(baseTestOutPath + STCONVERT("/abc.tiff"));
+
+    std::shared_ptr< SaveAsTiffOnlineRequest > request(new SaveAsTiffOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/") + localName)),
+        requestSaveOptions,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->saveAsTiffOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>

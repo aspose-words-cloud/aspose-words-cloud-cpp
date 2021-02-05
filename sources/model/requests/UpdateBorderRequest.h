@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UpdateBorderRequest.h">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ class UpdateBorderRequest {
     public: 
  UpdateBorderRequest(
             utility::string_t name,
-            std::shared_ptr<Border> borderProperties,
             utility::string_t borderType,
+            std::shared_ptr<Border> borderProperties,
             boost::optional< utility::string_t > nodePath,
             boost::optional< utility::string_t > folder,
             boost::optional< utility::string_t > storage,
@@ -56,11 +56,11 @@ class UpdateBorderRequest {
         utility::string_t getName() const;
         void setName(utility::string_t name);
 
-        std::shared_ptr<Border> getBorderProperties() const;
-        void setBorderProperties(std::shared_ptr<Border> borderProperties);
-
         utility::string_t getBorderType() const;
         void setBorderType(utility::string_t borderType);
+
+        std::shared_ptr<Border> getBorderProperties() const;
+        void setBorderProperties(std::shared_ptr<Border> borderProperties);
 
         boost::optional< utility::string_t > getNodePath() const;
         void setNodePath(boost::optional< utility::string_t > nodePath);
@@ -88,8 +88,8 @@ class UpdateBorderRequest {
 
     private:
         utility::string_t m_Name;
-        std::shared_ptr<Border> m_BorderProperties;
         utility::string_t m_BorderType;
+        std::shared_ptr<Border> m_BorderProperties;
         boost::optional< utility::string_t > m_NodePath;
         boost::optional< utility::string_t > m_Folder;
         boost::optional< utility::string_t > m_Storage;

@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="runTests.cpp">
-*   Copyright (c) 2020 Aspose.Words for Cloud
+*   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -51,9 +51,9 @@ TEST_F(RunTests, TestUpdateRun) {
 
     std::shared_ptr< UpdateRunRequest > request(new UpdateRunRequest(
         remoteFileName,
-        requestRun,
         STCONVERT("paragraphs/1"),
         0,
+        requestRun,
         remoteDataFolder,
         boost::none,
         boost::none,
@@ -67,6 +67,29 @@ TEST_F(RunTests, TestUpdateRun) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
    ASSERT_TRUE(IsNotNull(actual.body->getRun()));
    ASSERT_EQ(STCONVERT("run with text"), actual.body->getRun()->getText());
+}
+
+/// <summary>
+/// Test for updating run online.
+/// </summary>
+TEST_F(RunTests, TestUpdateRunOnline) {
+    auto requestRun = std::make_shared< RunUpdate >();
+    requestRun->setText(STCONVERT("run with text"));
+
+    std::shared_ptr< UpdateRunOnlineRequest > request(new UpdateRunOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/1"),
+        requestRun,
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateRunOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
 /// <summary>
@@ -105,6 +128,29 @@ TEST_F(RunTests, TestInsertRun) {
 }
 
 /// <summary>
+/// Test for adding run online.
+/// </summary>
+TEST_F(RunTests, TestInsertRunOnline) {
+    auto requestRun = std::make_shared< RunInsert >();
+    requestRun->setText(STCONVERT("run with text"));
+
+    std::shared_ptr< InsertRunOnlineRequest > request(new InsertRunOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/1"),
+        requestRun,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertRunOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
+
+/// <summary>
 /// Test for deleting run.
 /// </summary>
 TEST_F(RunTests, TestDeleteRun) {
@@ -129,4 +175,22 @@ TEST_F(RunTests, TestDeleteRun) {
     ));
 
    get_api()->deleteRun(request).get();
+}
+
+/// <summary>
+/// Test for deleting run online.
+/// </summary>
+TEST_F(RunTests, TestDeleteRunOnline) {
+    std::shared_ptr< DeleteRunOnlineRequest > request(new DeleteRunOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("paragraphs/1"),
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+   get_api()->deleteRunOnline(request).get();
 }
