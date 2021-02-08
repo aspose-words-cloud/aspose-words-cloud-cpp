@@ -1152,7 +1152,7 @@ public:
     /// <summary>
     /// Delete file.
     /// </summary>
-    /// <param name="path">Path of the file including file name and extension e.g. /Folder1/file.ext.</param>
+    /// <param name="path">Path of the file including the file name and extension e.g. /folder1/file.ext.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     /// <param name="versionId">File version ID to delete. (optional)</param>
     void deleteFile(
@@ -1162,7 +1162,7 @@ public:
     /// <summary>
     /// Delete folder.
     /// </summary>
-    /// <param name="path">Folder path e.g. /Folder1s.</param>
+    /// <param name="path">Folder path e.g. '/folder'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     /// <param name="recursive">Enable to delete folders, subfolders and files. (optional)</param>
     void deleteFolder(
@@ -2175,7 +2175,7 @@ public:
     /// <summary>
     /// Get all files and folders within a folder.
     /// </summary>
-    /// <param name="path">Folder path e.g. /Folder1.</param>
+    /// <param name="path">Folder path e.g. '/folder'.</param>
     /// <param name="storageName">Storage name. (optional)</param>
     FilesList getFilesList(
     	std::shared_ptr<GetFilesListRequest> request
