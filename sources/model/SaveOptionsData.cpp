@@ -33,6 +33,9 @@ namespace models {
 
 SaveOptionsData::SaveOptionsData()
 {
+    m_AllowEmbeddingPostScriptFonts = false;
+    m_AllowEmbeddingPostScriptFontsIsSet = false;
+
     m_Dml3DEffectsRenderingModeIsSet = false;
     m_DmlEffectsRenderingMode = utility::conversions::to_string_t("");
     m_DmlEffectsRenderingModeIsSet = false;
@@ -67,6 +70,10 @@ void SaveOptionsData::validate()
 web::json::value SaveOptionsData::toJson() const
 {
     web::json::value val = web::json::value::object();
+    if(m_AllowEmbeddingPostScriptFontsIsSet)
+    {
+        val[_XPLATSTR("AllowEmbeddingPostScriptFonts")] = ModelBase::toJson(m_AllowEmbeddingPostScriptFonts);
+    }
     if(m_Dml3DEffectsRenderingModeIsSet)
     {
         val[_XPLATSTR("Dml3DEffectsRenderingMode")] = ModelBase::toJson(m_Dml3DEffectsRenderingMode);
@@ -113,6 +120,16 @@ web::json::value SaveOptionsData::toJson() const
 
 void SaveOptionsData::fromJson(web::json::value& val)
 {
+    if(val.has_field(_XPLATSTR("AllowEmbeddingPostScriptFonts")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("AllowEmbeddingPostScriptFonts")];
+        if(!fieldValue.is_null())
+        {
+           setAllowEmbeddingPostScriptFonts(ModelBase::booleanFromJson(fieldValue));
+        }
+    }
+
+
     if(val.has_field(_XPLATSTR("Dml3DEffectsRenderingMode")))
     {
         web::json::value& fieldValue = val[_XPLATSTR("Dml3DEffectsRenderingMode")];
@@ -217,6 +234,12 @@ void SaveOptionsData::fromJson(web::json::value& val)
 void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
+    if(m_AllowEmbeddingPostScriptFontsIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("AllowEmbeddingPostScriptFonts"), m_AllowEmbeddingPostScriptFonts));
+    }
+
+
     if(m_Dml3DEffectsRenderingModeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Dml3DEffectsRenderingMode"), m_Dml3DEffectsRenderingMode));
@@ -281,6 +304,28 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
 void SaveOptionsData::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
 {
     // TODO: implement fromMultiPart
+}
+
+bool SaveOptionsData::isAllowEmbeddingPostScriptFonts() const
+{
+    return m_AllowEmbeddingPostScriptFonts;
+}
+
+
+void SaveOptionsData::setAllowEmbeddingPostScriptFonts(bool value)
+{
+    m_AllowEmbeddingPostScriptFonts = value;
+    m_AllowEmbeddingPostScriptFontsIsSet = true;
+}
+
+bool SaveOptionsData::allowEmbeddingPostScriptFontsIsSet() const
+{
+    return m_AllowEmbeddingPostScriptFontsIsSet;
+}
+
+void SaveOptionsData::unsetAllowEmbeddingPostScriptFonts()
+{
+    m_AllowEmbeddingPostScriptFontsIsSet = false;
 }
 
 utility::string_t SaveOptionsData::getDml3DEffectsRenderingMode() const

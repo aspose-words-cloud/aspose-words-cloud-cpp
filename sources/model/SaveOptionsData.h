@@ -60,6 +60,14 @@ public:
     /// SaveOptionsData members
 
     /// <summary>
+    /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
+    /// </summary>
+    bool isAllowEmbeddingPostScriptFonts() const;
+    bool allowEmbeddingPostScriptFontsIsSet() const;
+    void unsetAllowEmbeddingPostScriptFonts();
+    void setAllowEmbeddingPostScriptFonts(bool value);
+
+    /// <summary>
     /// Gets or sets the value determining how 3D effects are rendered.
     /// </summary>
     utility::string_t getDml3DEffectsRenderingMode() const;
@@ -142,6 +150,9 @@ public:
     void setZipOutput(bool value);
 
 protected:
+    bool m_AllowEmbeddingPostScriptFonts;
+    bool m_AllowEmbeddingPostScriptFontsIsSet;
+
     utility::string_t m_Dml3DEffectsRenderingMode;
     bool m_Dml3DEffectsRenderingModeIsSet;
 
