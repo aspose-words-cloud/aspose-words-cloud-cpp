@@ -49,7 +49,6 @@ parallel windows: {
                 }
             }            
         } finally {
-            bat 'docker system prune -f'
             deleteDir()
         }
     }
