@@ -67,29 +67,7 @@ TEST_F(TextTests, TestReplaceText) {
    ASSERT_EQ(3, actual.body->getMatches());
 }
 
-/// <summary>
-/// Test for replacing text online.
-/// </summary>
-TEST_F(TextTests, TestReplaceTextOnline) {
-    utility::string_t localFile = STCONVERT("Common/test_multi_pages.docx");
 
-    auto requestReplaceText = std::make_shared< ReplaceTextParameters >();
-    requestReplaceText->setOldValue(STCONVERT("aspose"));
-    requestReplaceText->setNewValue(STCONVERT("aspose new"));
-
-    std::shared_ptr< ReplaceTextOnlineRequest > request(new ReplaceTextOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        requestReplaceText,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->replaceTextOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for searching.
@@ -121,19 +99,4 @@ TEST_F(TextTests, TestSearch) {
    ASSERT_EQ(65, actual.body->getSearchResults()->getResultsList()[0]->getRangeStart()->getOffset());
 }
 
-/// <summary>
-/// Test for searching online.
-/// </summary>
-TEST_F(TextTests, TestSearchOnline) {
-    utility::string_t localFile = STCONVERT("DocumentElements/Text/SampleWordDocument.docx");
 
-    std::shared_ptr< SearchOnlineRequest > request(new SearchOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("aspose"),
-        boost::none,
-        boost::none
-    ));
-
-   auto actual = get_api()->searchOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}

@@ -61,20 +61,7 @@ TEST_F(CommentTests, TestGetComment) {
    ASSERT_EQ(STCONVERT("Comment 1") + STCONVERT("\r\n\r\n"), actual.body->getComment()->getText());
 }
 
-/// <summary>
-/// Test for getting comment by specified comment's index online.
-/// </summary>
-TEST_F(CommentTests, TestGetCommentOnline) {
-    std::shared_ptr< GetCommentOnlineRequest > request(new GetCommentOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getCommentOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for getting all comments from document.
@@ -103,19 +90,7 @@ TEST_F(CommentTests, TestGetComments) {
    ASSERT_EQ(STCONVERT("Comment 1") + STCONVERT("\r\n\r\n"), actual.body->getComments()->getCommentList()[0]->getText());
 }
 
-/// <summary>
-/// Test for getting all comments from document online.
-/// </summary>
-TEST_F(CommentTests, TestGetCommentsOnline) {
-    std::shared_ptr< GetCommentsOnlineRequest > request(new GetCommentsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getCommentsOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for adding comment.
@@ -170,44 +145,7 @@ TEST_F(CommentTests, TestInsertComment) {
    ASSERT_EQ(STCONVERT("0.3.0.4"), actual.body->getComment()->getRangeStart()->getNode()->getNodeId());
 }
 
-/// <summary>
-/// Test for adding comment online.
-/// </summary>
-TEST_F(CommentTests, TestInsertCommentOnline) {
-    auto requestCommentRangeStartNode = std::make_shared< NodeLink >();
-    requestCommentRangeStartNode->setNodeId(STCONVERT("0.3.0.3"));
 
-    auto requestCommentRangeStart = std::make_shared< DocumentPosition >();
-    requestCommentRangeStart->setNode(requestCommentRangeStartNode);
-    requestCommentRangeStart->setOffset(0);
-
-    auto requestCommentRangeEndNode = std::make_shared< NodeLink >();
-    requestCommentRangeEndNode->setNodeId(STCONVERT("0.3.0.3"));
-
-    auto requestCommentRangeEnd = std::make_shared< DocumentPosition >();
-    requestCommentRangeEnd->setNode(requestCommentRangeEndNode);
-    requestCommentRangeEnd->setOffset(0);
-
-    auto requestComment = std::make_shared< CommentInsert >();
-    requestComment->setRangeStart(requestCommentRangeStart);
-    requestComment->setRangeEnd(requestCommentRangeEnd);
-    requestComment->setInitial(STCONVERT("IA"));
-    requestComment->setAuthor(STCONVERT("Imran Anwar"));
-    requestComment->setText(STCONVERT("A new Comment"));
-
-    std::shared_ptr< InsertCommentOnlineRequest > request(new InsertCommentOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        requestComment,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->insertCommentOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for updating comment.
@@ -263,45 +201,7 @@ TEST_F(CommentTests, TestUpdateComment) {
    ASSERT_EQ(STCONVERT("0.3.0.1"), actual.body->getComment()->getRangeStart()->getNode()->getNodeId());
 }
 
-/// <summary>
-/// Test for updating comment online.
-/// </summary>
-TEST_F(CommentTests, TestUpdateCommentOnline) {
-    auto requestCommentRangeStartNode = std::make_shared< NodeLink >();
-    requestCommentRangeStartNode->setNodeId(STCONVERT("0.3.0"));
 
-    auto requestCommentRangeStart = std::make_shared< DocumentPosition >();
-    requestCommentRangeStart->setNode(requestCommentRangeStartNode);
-    requestCommentRangeStart->setOffset(0);
-
-    auto requestCommentRangeEndNode = std::make_shared< NodeLink >();
-    requestCommentRangeEndNode->setNodeId(STCONVERT("0.3.0"));
-
-    auto requestCommentRangeEnd = std::make_shared< DocumentPosition >();
-    requestCommentRangeEnd->setNode(requestCommentRangeEndNode);
-    requestCommentRangeEnd->setOffset(0);
-
-    auto requestComment = std::make_shared< CommentUpdate >();
-    requestComment->setRangeStart(requestCommentRangeStart);
-    requestComment->setRangeEnd(requestCommentRangeEnd);
-    requestComment->setInitial(STCONVERT("IA"));
-    requestComment->setAuthor(STCONVERT("Imran Anwar"));
-    requestComment->setText(STCONVERT("A new Comment"));
-
-    std::shared_ptr< UpdateCommentOnlineRequest > request(new UpdateCommentOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        requestComment,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->updateCommentOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// A test for DeleteComment.
@@ -329,22 +229,7 @@ TEST_F(CommentTests, TestDeleteComment) {
    get_api()->deleteComment(request).get();
 }
 
-/// <summary>
-/// A test for DeleteComment online.
-/// </summary>
-TEST_F(CommentTests, TestDeleteCommentOnline) {
-    std::shared_ptr< DeleteCommentOnlineRequest > request(new DeleteCommentOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   get_api()->deleteCommentOnline(request).get();
-}
 
 /// <summary>
 /// A test for DeleteComments.
@@ -371,18 +256,4 @@ TEST_F(CommentTests, TestDeleteComments) {
    get_api()->deleteComments(request).get();
 }
 
-/// <summary>
-/// A test for DeleteComments online.
-/// </summary>
-TEST_F(CommentTests, TestDeleteCommentsOnline) {
-    std::shared_ptr< DeleteCommentsOnlineRequest > request(new DeleteCommentsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   get_api()->deleteCommentsOnline(request).get();
-}

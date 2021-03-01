@@ -64,22 +64,4 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
    get_api()->optimizeDocument(request).get();
 }
 
-/// <summary>
-/// Test for optimize document to specific MS Word version.
-/// </summary>
-TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
-    auto requestOptions = std::make_shared< OptimizationOptions >();
-    requestOptions->setMsWordVersion(STCONVERT("Word2002"));
 
-    std::shared_ptr< OptimizeDocumentOnlineRequest > request(new OptimizeDocumentOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        requestOptions,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->optimizeDocumentOnline(request).get();
-}

@@ -61,21 +61,7 @@ TEST_F(RangeTests, TestGetRangeText) {
    ASSERT_EQ(STCONVERT("This is HEADER "), actual.body->getText());
 }
 
-/// <summary>
-/// Test for getting the text from range online.
-/// </summary>
-TEST_F(RangeTests, TestGetRangeTextOnline) {
-    std::shared_ptr< GetRangeTextOnlineRequest > request(new GetRangeTextOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("id0.0.0"),
-        STCONVERT("id0.0.1"),
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getRangeTextOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for removing the text for range.
@@ -103,22 +89,7 @@ TEST_F(RangeTests, TestRemoveRange) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
-/// <summary>
-/// Test for removing the text for range online.
-/// </summary>
-TEST_F(RangeTests, TestRemoveRangeOnline) {
-    std::shared_ptr< RemoveRangeOnlineRequest > request(new RemoveRangeOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("id0.0.0"),
-        STCONVERT("id0.0.1"),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-auto actual = get_api()->removeRangeOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for saving a range as a new document.
@@ -151,25 +122,7 @@ TEST_F(RangeTests, TestSaveAsRange) {
    ASSERT_EQ(STCONVERT("NewDoc.docx"), actual.body->getDocument()->getFileName());
 }
 
-/// <summary>
-/// Test for saving a range as a new document online.
-/// </summary>
-TEST_F(RangeTests, TestSaveAsRangeOnline) {
-    auto requestDocumentParameters = std::make_shared< RangeDocument >();
-    requestDocumentParameters->setDocumentName(remoteDataFolder + STCONVERT("/NewDoc.docx"));
 
-    std::shared_ptr< SaveAsRangeOnlineRequest > request(new SaveAsRangeOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("id0.0.0"),
-        requestDocumentParameters,
-        STCONVERT("id0.0.1"),
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->saveAsRangeOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for replacing text in range.
@@ -203,23 +156,4 @@ TEST_F(RangeTests, TestReplaceWithText) {
    ASSERT_EQ(STCONVERT("TestReplaceWithText.docx"), actual.body->getDocument()->getFileName());
 }
 
-/// <summary>
-/// Test for replacing text in range online.
-/// </summary>
-TEST_F(RangeTests, TestReplaceWithTextOnline) {
-    auto requestRangeText = std::make_shared< ReplaceRange >();
-    requestRangeText->setText(STCONVERT("Replaced header"));
 
-    std::shared_ptr< ReplaceWithTextOnlineRequest > request(new ReplaceWithTextOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT("id0.0.0"),
-        requestRangeText,
-        STCONVERT("id0.0.1"),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->replaceWithTextOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
