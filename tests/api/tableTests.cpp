@@ -63,7 +63,20 @@ TEST_F(TableTests, TestGetTables) {
    ASSERT_EQ(STCONVERT("0.0.1"), actual.body->getTables()->getTableLinkList()[0]->getNodeId());
 }
 
+/// <summary>
+/// Test for getting tables online.
+/// </summary>
+TEST_F(TableTests, TestGetTablesOnline) {
+    std::shared_ptr< GetTablesOnlineRequest > request(new GetTablesOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTablesOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting tables without node path.
@@ -123,7 +136,21 @@ TEST_F(TableTests, TestGetTable) {
    ASSERT_EQ(2, actual.body->getTable()->getTableRowList()[0]->getTableCellList().size());
 }
 
+/// <summary>
+/// Test for getting table online.
+/// </summary>
+TEST_F(TableTests, TestGetTableOnline) {
+    std::shared_ptr< GetTableOnlineRequest > request(new GetTableOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        1,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTableOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting table without node path.
@@ -182,7 +209,23 @@ TEST_F(TableTests, TestDeleteTable) {
    get_api()->deleteTable(request).get();
 }
 
+/// <summary>
+/// Test for deleting table online.
+/// </summary>
+TEST_F(TableTests, TestDeleteTableOnline) {
+    std::shared_ptr< DeleteTableOnlineRequest > request(new DeleteTableOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        1,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+   get_api()->deleteTableOnline(request).get();
+}
 
 /// <summary>
 /// Test for deleting table without node path.
@@ -248,7 +291,28 @@ TEST_F(TableTests, TestInsertTable) {
    ASSERT_EQ(5, actual.body->getTable()->getTableRowList()[0]->getTableCellList().size());
 }
 
+/// <summary>
+/// Test for adding table online.
+/// </summary>
+TEST_F(TableTests, TestInsertTableOnline) {
+    auto requestTable = std::make_shared< TableInsert >();
+    requestTable->setColumnsCount(5);
+    requestTable->setRowsCount(4);
 
+    std::shared_ptr< InsertTableOnlineRequest > request(new InsertTableOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestTable,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertTableOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for adding table without node path.
@@ -314,7 +378,21 @@ TEST_F(TableTests, TestGetTableProperties) {
    ASSERT_EQ(STCONVERT("Table Grid"), actual.body->getProperties()->getStyleName());
 }
 
+/// <summary>
+/// Test for getting document properties online.
+/// </summary>
+TEST_F(TableTests, TestGetTablePropertiesOnline) {
+    std::shared_ptr< GetTablePropertiesOnlineRequest > request(new GetTablePropertiesOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        1,
+        STCONVERT(""),
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTablePropertiesOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting document properties without node path.
@@ -385,7 +463,33 @@ TEST_F(TableTests, TestUpdateTableProperties) {
    ASSERT_EQ(2.0, actual.body->getProperties()->getCellSpacing());
 }
 
+/// <summary>
+/// Test for updating table properties online.
+/// </summary>
+TEST_F(TableTests, TestUpdateTablePropertiesOnline) {
+    auto requestProperties = std::make_shared< TableProperties >();
+    requestProperties->setAlignment(STCONVERT("Right"));
+    requestProperties->setAllowAutoFit(false);
+    requestProperties->setBidi(true);
+    requestProperties->setBottomPadding(1);
+    requestProperties->setCellSpacing(2);
+    requestProperties->setStyleOptions(STCONVERT("ColumnBands"));
 
+    std::shared_ptr< UpdateTablePropertiesOnlineRequest > request(new UpdateTablePropertiesOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestProperties,
+        1,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateTablePropertiesOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for updating table properties without node path.
@@ -457,7 +561,21 @@ TEST_F(TableTests, TestGetTableRow) {
    ASSERT_EQ(2, actual.body->getRow()->getTableCellList().size());
 }
 
+/// <summary>
+/// Test for getting table row online.
+/// </summary>
+TEST_F(TableTests, TestGetTableRowOnline) {
+    std::shared_ptr< GetTableRowOnlineRequest > request(new GetTableRowOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("tables/1"),
+        0,
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTableRowOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for deleting table row.
@@ -486,7 +604,23 @@ TEST_F(TableTests, TestDeleteTableRow) {
    get_api()->deleteTableRow(request).get();
 }
 
+/// <summary>
+/// Test for deleting table row online.
+/// </summary>
+TEST_F(TableTests, TestDeleteTableRowOnline) {
+    std::shared_ptr< DeleteTableRowOnlineRequest > request(new DeleteTableRowOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("tables/1"),
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+   get_api()->deleteTableRowOnline(request).get();
+}
 
 /// <summary>
 /// Test for adding row.
@@ -522,7 +656,27 @@ TEST_F(TableTests, TestInsertTableRow) {
    ASSERT_EQ(5, actual.body->getRow()->getTableCellList().size());
 }
 
+/// <summary>
+/// Test for adding row online.
+/// </summary>
+TEST_F(TableTests, TestInsertTableRowOnline) {
+    auto requestRow = std::make_shared< TableRowInsert >();
+    requestRow->setColumnsCount(5);
 
+    std::shared_ptr< InsertTableRowOnlineRequest > request(new InsertTableRowOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2"),
+        requestRow,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertTableRowOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting row format.
@@ -551,7 +705,21 @@ TEST_F(TableTests, TestGetTableRowFormat) {
    ASSERT_TRUE(actual.body->getRowFormat()->isAllowBreakAcrossPages());
 }
 
+/// <summary>
+/// Test for getting row format online.
+/// </summary>
+TEST_F(TableTests, TestGetTableRowFormatOnline) {
+    std::shared_ptr< GetTableRowFormatOnlineRequest > request(new GetTableRowFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2"),
+        0,
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTableRowFormatOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test updating row format.
@@ -592,7 +760,31 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
    ASSERT_EQ(10.0, actual.body->getRowFormat()->getHeight());
 }
 
+/// <summary>
+/// Test updating row format online.
+/// </summary>
+TEST_F(TableTests, TestUpdateTableRowFormatOnline) {
+    auto requestFormat = std::make_shared< TableRowFormat >();
+    requestFormat->setAllowBreakAcrossPages(true);
+    requestFormat->setHeadingFormat(true);
+    requestFormat->setHeight(10);
+    requestFormat->setHeightRule(STCONVERT("Auto"));
 
+    std::shared_ptr< UpdateTableRowFormatOnlineRequest > request(new UpdateTableRowFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2"),
+        requestFormat,
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateTableRowFormatOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting table cell.
@@ -621,7 +813,21 @@ TEST_F(TableTests, TestGetTableCell) {
    ASSERT_EQ(STCONVERT("0.0.5.0.0"), actual.body->getCell()->getNodeId());
 }
 
+/// <summary>
+/// Test for getting table cell online.
+/// </summary>
+TEST_F(TableTests, TestGetTableCellOnline) {
+    std::shared_ptr< GetTableCellOnlineRequest > request(new GetTableCellOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2/rows/0"),
+        0,
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTableCellOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for deleting cell.
@@ -650,7 +856,23 @@ TEST_F(TableTests, TestDeleteTableCell) {
    get_api()->deleteTableCell(request).get();
 }
 
+/// <summary>
+/// Test for deleting cell online.
+/// </summary>
+TEST_F(TableTests, TestDeleteTableCellOnline) {
+    std::shared_ptr< DeleteTableCellOnlineRequest > request(new DeleteTableCellOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2/rows/0"),
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+   get_api()->deleteTableCellOnline(request).get();
+}
 
 /// <summary>
 /// Test for adding cell.
@@ -685,7 +907,27 @@ TEST_F(TableTests, TestInsertTableCell) {
    ASSERT_EQ(STCONVERT("0.0.5.0.3"), actual.body->getCell()->getNodeId());
 }
 
+/// <summary>
+/// Test for adding cell online.
+/// </summary>
+TEST_F(TableTests, TestInsertTableCellOnline) {
+    auto requestCell = std::make_shared< TableCellInsert >();
 
+
+    std::shared_ptr< InsertTableCellOnlineRequest > request(new InsertTableCellOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2/rows/0"),
+        requestCell,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertTableCellOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting cell format.
@@ -714,7 +956,21 @@ TEST_F(TableTests, TestGetTableCellFormat) {
    ASSERT_TRUE(actual.body->getCellFormat()->isWrapText());
 }
 
+/// <summary>
+/// Test for getting cell format online.
+/// </summary>
+TEST_F(TableTests, TestGetTableCellFormatOnline) {
+    std::shared_ptr< GetTableCellFormatOnlineRequest > request(new GetTableCellFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2/rows/0"),
+        0,
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getTableCellFormatOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for updating cell format.
@@ -755,7 +1011,31 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
    ASSERT_TRUE(actual.body->getCellFormat()->isWrapText());
 }
 
+/// <summary>
+/// Test for updating cell format online.
+/// </summary>
+TEST_F(TableTests, TestUpdateTableCellFormatOnline) {
+    auto requestFormat = std::make_shared< TableCellFormat >();
+    requestFormat->setBottomPadding(5);
+    requestFormat->setFitText(true);
+    requestFormat->setHorizontalMerge(STCONVERT("First"));
+    requestFormat->setWrapText(true);
 
+    std::shared_ptr< UpdateTableCellFormatOnlineRequest > request(new UpdateTableCellFormatOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("sections/0/tables/2/rows/0"),
+        requestFormat,
+        0,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateTableCellFormatOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for table rendering.
@@ -784,7 +1064,23 @@ TEST_F(TableTests, TestRenderTable) {
    get_api()->renderTable(request).get();
 }
 
+/// <summary>
+/// Test for table rendering.
+/// </summary>
+TEST_F(TableTests, TestRenderTableOnline) {
+    std::shared_ptr< RenderTableOnlineRequest > request(new RenderTableOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        STCONVERT("png"),
+        0,
+        STCONVERT(""),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+   get_api()->renderTableOnline(request).get();
+}
 
 /// <summary>
 /// Test for table rendering without node path.

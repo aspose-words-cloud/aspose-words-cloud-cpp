@@ -71,7 +71,25 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
    ASSERT_EQ(STCONVERT("TestInsertWatermarkImage.docx"), actual.body->getDocument()->getFileName());
 }
 
+/// <summary>
+/// Test for adding watermark image online.
+/// </summary>
+TEST_F(WatermarkTests, TestInsertWatermarkImageOnline) {
+    std::shared_ptr< InsertWatermarkImageOnlineRequest > request(new InsertWatermarkImageOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+auto actual = get_api()->insertWatermarkImageOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for adding watermark text.
@@ -106,7 +124,27 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
    ASSERT_EQ(STCONVERT("TestInsertWatermarkText.docx"), actual.body->getDocument()->getFileName());
 }
 
+/// <summary>
+/// Test for adding watermark text online.
+/// </summary>
+TEST_F(WatermarkTests, TestInsertWatermarkTextOnline) {
+    auto requestWatermarkText = std::make_shared< WatermarkText >();
+    requestWatermarkText->setText(STCONVERT("This is the text"));
+    requestWatermarkText->setRotationAngle(90);
 
+    std::shared_ptr< InsertWatermarkTextOnlineRequest > request(new InsertWatermarkTextOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestWatermarkText,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertWatermarkTextOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for deleting watermark.
@@ -136,4 +174,19 @@ TEST_F(WatermarkTests, TestDeleteWatermark) {
    ASSERT_EQ(STCONVERT("TestDeleteWatermark.docx"), actual.body->getDocument()->getFileName());
 }
 
+/// <summary>
+/// Test for deleting watermark online.
+/// </summary>
+TEST_F(WatermarkTests, TestDeleteWatermarkOnline) {
+    std::shared_ptr< DeleteWatermarkOnlineRequest > request(new DeleteWatermarkOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+auto actual = get_api()->deleteWatermarkOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}

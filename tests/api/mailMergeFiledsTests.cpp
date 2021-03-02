@@ -36,6 +36,27 @@ protected:
 };
 
 /// <summary>
+/// Test for putting new fields.
+/// </summary>
+TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
+    utility::string_t localDocumentFile = STCONVERT("SampleExecuteTemplate.docx");
+
+    std::shared_ptr< GetDocumentFieldNamesOnlineRequest > request(new GetDocumentFieldNamesOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, mailMergeFolder + STCONVERT("/") + localDocumentFile)),
+        boost::none,
+        boost::none,
+        true
+    ));
+
+   auto actual = get_api()->getDocumentFieldNamesOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+   ASSERT_TRUE(IsNotNull(actual.body->getFieldNames()));
+   ASSERT_TRUE(IsNotNull(actual.body->getFieldNames()->getNames()));
+   ASSERT_EQ(15, actual.body->getFieldNames()->getNames().size());
+   ASSERT_EQ(STCONVERT("TableStart:Order"), actual.body->getFieldNames()->getNames()[0]);
+}
+
+/// <summary>
 /// Test for getting mailmerge fields.
 /// </summary>
 TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNames) {

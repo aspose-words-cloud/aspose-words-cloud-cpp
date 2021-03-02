@@ -79,4 +79,18 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
    ASSERT_EQ(3, actual.body->getBestResults().size());
 }
 
+/// <summary>
+/// Test for document classification online.
+/// </summary>
+TEST_F(ClassificationTests, TestClassifyDocumentOnline) {
+    std::shared_ptr< ClassifyDocumentOnlineRequest > request(new ClassifyDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        boost::none,
+        boost::none,
+        STCONVERT("3"),
+        boost::none
+    ));
 
+   auto actual = get_api()->classifyDocumentOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}

@@ -75,7 +75,33 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
    ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
+/// <summary>
+/// Test for posting form field online.
+/// </summary>
+TEST_F(FormFieldTests, TestUpdateFormFieldOnline) {
+    auto requestFormField = std::make_shared< FormFieldTextInput >();
+    requestFormField->setName(STCONVERT("FullName"));
+    requestFormField->setEnabled(true);
+    requestFormField->setCalculateOnExit(true);
+    requestFormField->setStatusText(STCONVERT(""));
+    requestFormField->setTextInputType(STCONVERT("Regular"));
+    requestFormField->setTextInputDefault(STCONVERT("No name"));
 
+    std::shared_ptr< UpdateFormFieldOnlineRequest > request(new UpdateFormFieldOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))),
+        requestFormField,
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->updateFormFieldOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for posting form field without node path.
@@ -144,7 +170,21 @@ TEST_F(FormFieldTests, TestGetFormField) {
    ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormField()->getName());
 }
 
+/// <summary>
+/// Test for getting form field online.
+/// </summary>
+TEST_F(FormFieldTests, TestGetFormFieldOnline) {
+    std::shared_ptr< GetFormFieldOnlineRequest > request(new GetFormFieldOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getFormFieldOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting form field without node path.
@@ -201,7 +241,20 @@ TEST_F(FormFieldTests, TestGetFormFields) {
    ASSERT_EQ(STCONVERT("FullName"), actual.body->getFormFields()->getList()[0]->getName());
 }
 
+/// <summary>
+/// Test for getting form fields online.
+/// </summary>
+TEST_F(FormFieldTests, TestGetFormFieldsOnline) {
+    std::shared_ptr< GetFormFieldsOnlineRequest > request(new GetFormFieldsOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))),
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none
+    ));
 
+   auto actual = get_api()->getFormFieldsOnline(request).get();
+   ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for getting form fields without node path.
@@ -272,7 +325,34 @@ TEST_F(FormFieldTests, TestInsertFormField) {
    ASSERT_EQ(STCONVERT(""), actual.body->getFormField()->getStatusText());
 }
 
+/// <summary>
+/// Test for insert form field without node path online.
+/// </summary>
+TEST_F(FormFieldTests, TestInsertFormFieldOnline) {
+    auto requestFormField = std::make_shared< FormFieldTextInput >();
+    requestFormField->setName(STCONVERT("FullName"));
+    requestFormField->setEnabled(true);
+    requestFormField->setCalculateOnExit(true);
+    requestFormField->setStatusText(STCONVERT(""));
+    requestFormField->setTextInputType(STCONVERT("Regular"));
+    requestFormField->setTextInputDefault(STCONVERT("123"));
+    requestFormField->setTextInputFormat(STCONVERT("UPPERCASE"));
 
+    std::shared_ptr< InsertFormFieldOnlineRequest > request(new InsertFormFieldOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))),
+        requestFormField,
+        STCONVERT("sections/0/paragraphs/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->insertFormFieldOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}
 
 /// <summary>
 /// Test for insert form field without node path.
@@ -342,7 +422,23 @@ TEST_F(FormFieldTests, TestDeleteFormField) {
    get_api()->deleteFormField(request).get();
 }
 
+/// <summary>
+/// Test for deleting form field online.
+/// </summary>
+TEST_F(FormFieldTests, TestDeleteFormFieldOnline) {
+    std::shared_ptr< DeleteFormFieldOnlineRequest > request(new DeleteFormFieldOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, fieldFolder + STCONVERT("/FormFilled.docx"))),
+        0,
+        STCONVERT("sections/0"),
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
 
+   get_api()->deleteFormFieldOnline(request).get();
+}
 
 /// <summary>
 /// Test for deleting form field without node path.

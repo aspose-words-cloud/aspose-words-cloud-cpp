@@ -74,4 +74,37 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
    ASSERT_EQ(STCONVERT("TestAppendDocument.docx"), actual.body->getDocument()->getFileName());
 }
 
+/// <summary>
+/// Test for appending document online.
+/// </summary>
+TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
+    utility::string_t remoteFileName = STCONVERT("TestAppendDocument.docx");
 
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFile)
+    );
+
+    auto requestDocumentListDocumentEntries0 = std::make_shared< DocumentEntry >();
+    requestDocumentListDocumentEntries0->setHref(remoteDataFolder + STCONVERT("/") + remoteFileName);
+    requestDocumentListDocumentEntries0->setImportFormatMode(STCONVERT("KeepSourceFormatting"));
+
+    std::vector<std::shared_ptr<DocumentEntry>> requestDocumentListDocumentEntries;
+    requestDocumentListDocumentEntries.push_back(requestDocumentListDocumentEntries0);
+
+    auto requestDocumentList = std::make_shared< DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
+
+    std::shared_ptr< AppendDocumentOnlineRequest > request(new AppendDocumentOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        requestDocumentList,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none,
+        boost::none
+    ));
+
+auto actual = get_api()->appendDocumentOnline(request).get();
+ASSERT_EQ(200, actual.httpResponse->status_code());
+}

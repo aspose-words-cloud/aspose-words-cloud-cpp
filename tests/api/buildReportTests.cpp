@@ -36,6 +36,27 @@ protected:
 };
 
 /// <summary>
+/// Test for build report online.
+/// </summary>
+TEST_F(BuildReportTests, TestBuildReportOnline) {
+    utility::string_t localDocumentFile = STCONVERT("ReportTemplate.docx");
+    utility::string_t localDataFile = get_file_text(path_combine(LocalTestDataFolder, reportingFolder + STCONVERT("/ReportData.json")));
+
+    auto requestReportEngineSettings = std::make_shared< ReportEngineSettings >();
+    requestReportEngineSettings->setDataSourceType(STCONVERT("Json"));
+    requestReportEngineSettings->setDataSourceName(STCONVERT("persons"));
+
+    std::shared_ptr< BuildReportOnlineRequest > request(new BuildReportOnlineRequest(
+        generate_http_content_from_file(path_combine(LocalTestDataFolder, reportingFolder + STCONVERT("/") + localDocumentFile)),
+        localDataFile,
+        requestReportEngineSettings,
+        boost::none
+    ));
+
+   get_api()->buildReportOnline(request).get();
+}
+
+/// <summary>
 /// Test for build report.
 /// </summary>
 TEST_F(BuildReportTests, TestBuildReport) {
