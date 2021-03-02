@@ -5,6 +5,7 @@ properties([
 			[$class: 'StringParameterDefinition', name: 'branch', defaultValue: 'master', description: 'the branch to build'],
 			[$class: 'StringParameterDefinition', name: 'apiUrl', defaultValue: 'https://api-qa.aspose.cloud', description: 'api url'],
             [$class: 'BooleanParameterDefinition', name: 'ignoreCiSkip', defaultValue: false, description: 'ignore CI Skip'],
+            [$class: 'StringParameterDefinition', name: 'credentialsId', defaultValue: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', description: 'credentials id'],
 		]
 	]
 ])
@@ -34,7 +35,7 @@ parallel windows: {
                         withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                             bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
                         }
-                        withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
+                        withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
                                 bat (script: "docker pull ${buildCacheImage}/win")
                                 bat (script: "docker build -f Dockerfile.windows --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows . ")
@@ -73,7 +74,7 @@ parallel windows: {
                         withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                             sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
                         }
-                        withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
+                        withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
                                 sh (script: "docker pull ${buildCacheImage}/linux")
                                 sh (script: "docker build -f Dockerfile.linux --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux .")
