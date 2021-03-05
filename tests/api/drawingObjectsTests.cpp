@@ -298,6 +298,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataWithoutNodePath) 
 /// Test for adding drawing object.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
+    auto imageFileContent = generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png")));
     utility::string_t remoteFileName = STCONVERT("TestInsetDrawingObject.docx");
 
     UploadFileToStorage(
@@ -317,7 +318,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
     std::shared_ptr< InsertDrawingObjectRequest > request(new InsertDrawingObjectRequest(
         remoteFileName,
         requestDrawingObject,
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        imageFileContent,
         STCONVERT(""),
         remoteDataFolder,
         boost::none,
@@ -338,6 +339,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
 /// Test for adding drawing object without node path.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
+    auto imageFileContent = generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png")));
     utility::string_t remoteFileName = STCONVERT("TestInsetDrawingObjectWithoutNodePath.docx");
 
     UploadFileToStorage(
@@ -357,7 +359,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
     std::shared_ptr< InsertDrawingObjectRequest > request(new InsertDrawingObjectRequest(
         remoteFileName,
         requestDrawingObject,
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        imageFileContent,
         boost::none,
         remoteDataFolder,
         boost::none,
@@ -432,6 +434,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectWithoutNodePath) {
 /// Test for updating drawing object.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
+    auto imageFileContent = generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png")));
     utility::string_t remoteFileName = STCONVERT("TestUpdateDrawingObject.docx");
 
     UploadFileToStorage(
@@ -445,7 +448,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
     std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
         requestDrawingObject,
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        imageFileContent,
         0,
         STCONVERT(""),
         remoteDataFolder,
@@ -467,6 +470,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
 /// Test for updating drawing object without node path.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
+    auto imageFileContent = generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png")));
     utility::string_t remoteFileName = STCONVERT("TestUpdateDrawingObjectWithoutNodePath.docx");
 
     UploadFileToStorage(
@@ -480,7 +484,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
     std::shared_ptr< UpdateDrawingObjectRequest > request(new UpdateDrawingObjectRequest(
         remoteFileName,
         requestDrawingObject,
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, STCONVERT("Common/aspose-cloud.png"))),
+        imageFileContent,
         0,
         boost::none,
         remoteDataFolder,

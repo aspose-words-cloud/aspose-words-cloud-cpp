@@ -156,8 +156,9 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
 /// A test for ConvertDocument.
 /// </summary>
 TEST_F(ConvertDocumentTests, TestConvertDocument) {
+    auto documentContent = generate_http_content_from_file(path_combine(LocalTestDataFolder, localFolder + STCONVERT("/test_uploadfile.docx")));
     std::shared_ptr< ConvertDocumentRequest > request(new ConvertDocumentRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFolder + STCONVERT("/test_uploadfile.docx"))),
+        documentContent,
         STCONVERT("pdf"),
         boost::none,
         boost::none,
