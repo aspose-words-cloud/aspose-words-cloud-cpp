@@ -36,24 +36,6 @@ protected:
 };
 
 /// <summary>
-/// Test for executing mail merge online.
-/// </summary>
-TEST_F(ExecuteMailMergeTests, TestExecuteMailMergeOnline) {
-    utility::string_t localDocumentFile = STCONVERT("SampleExecuteTemplate.docx");
-    utility::string_t localDataFile = STCONVERT("SampleExecuteTemplateData.txt");
-
-    std::shared_ptr< ExecuteMailMergeOnlineRequest > request(new ExecuteMailMergeOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, mailMergeFolder + STCONVERT("/") + localDocumentFile)),
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, mailMergeFolder + STCONVERT("/") + localDataFile)),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-   get_api()->executeMailMergeOnline(request).get();
-}
-
-/// <summary>
 /// Test for executing mail merge.
 /// </summary>
 TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {

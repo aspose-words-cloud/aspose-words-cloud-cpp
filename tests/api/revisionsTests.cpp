@@ -61,20 +61,7 @@ TEST_F(RevisionsTests, TestAcceptAllRevisions) {
    ASSERT_TRUE(IsNotNull(actual.body->getResult()->getDest()));
 }
 
-/// <summary>
-/// Test for accepting revisions in document online.
-/// </summary>
-TEST_F(RevisionsTests, TestAcceptAllRevisionsOnline) {
-    std::shared_ptr< AcceptAllRevisionsOnlineRequest > request(new AcceptAllRevisionsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-auto actual = get_api()->acceptAllRevisionsOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for rejecting revisions in document.
@@ -102,17 +89,4 @@ TEST_F(RevisionsTests, TestRejectAllRevisions) {
    ASSERT_TRUE(IsNotNull(actual.body->getResult()->getDest()));
 }
 
-/// <summary>
-/// Test for rejecting revisions in document online.
-/// </summary>
-TEST_F(RevisionsTests, TestRejectAllRevisionsOnline) {
-    std::shared_ptr< RejectAllRevisionsOnlineRequest > request(new RejectAllRevisionsOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-auto actual = get_api()->rejectAllRevisionsOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}

@@ -63,21 +63,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooters) {
    ASSERT_EQ(6, actual.body->getHeaderFooters()->getList().size());
 }
 
-/// <summary>
-/// Test for getting headers and footers online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestGetHeaderFootersOnline) {
-    std::shared_ptr< GetHeaderFootersOnlineRequest > request(new GetHeaderFootersOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getHeaderFootersOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for getting headerfooter.
@@ -108,21 +94,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }
 
-/// <summary>
-/// Test for getting headerfooter online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestGetHeaderFooterOnline) {
-    std::shared_ptr< GetHeaderFooterOnlineRequest > request(new GetHeaderFooterOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getHeaderFooterOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for getting headerfooter of section.
@@ -154,22 +126,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSection) {
    ASSERT_EQ(STCONVERT("0.0.0"), actual.body->getHeaderFooter()->getChildNodes()[0]->getNodeId());
 }
 
-/// <summary>
-/// Test for getting headerfooter of section online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSectionOnline) {
-    std::shared_ptr< GetHeaderFooterOfSectionOnlineRequest > request(new GetHeaderFooterOfSectionOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        0,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getHeaderFooterOfSectionOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for deleting headerfooter.
@@ -198,23 +155,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeaderFooter) {
    get_api()->deleteHeaderFooter(request).get();
 }
 
-/// <summary>
-/// Test for deleting headerfooter online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestDeleteHeaderFooterOnline) {
-    std::shared_ptr< DeleteHeaderFooterOnlineRequest > request(new DeleteHeaderFooterOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        0,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   get_api()->deleteHeaderFooterOnline(request).get();
-}
 
 /// <summary>
 /// Test for deleting headerfooters.
@@ -243,23 +184,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeadersFooters) {
    get_api()->deleteHeadersFooters(request).get();
 }
 
-/// <summary>
-/// Test for deleting headerfooters online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestDeleteHeadersFootersOnline) {
-    std::shared_ptr< DeleteHeadersFootersOnlineRequest > request(new DeleteHeadersFootersOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   get_api()->deleteHeadersFootersOnline(request).get();
-}
 
 /// <summary>
 /// Test for adding headerfooters.
@@ -289,21 +214,4 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
    ASSERT_EQ(200, actual.httpResponse->status_code());
 }
 
-/// <summary>
-/// Test for adding headerfooters online.
-/// </summary>
-TEST_F(HeaderFooterTests, TestInsertHeaderFooterOnline) {
-    std::shared_ptr< InsertHeaderFooterOnlineRequest > request(new InsertHeaderFooterOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        STCONVERT(""),
-        STCONVERT("FooterEven"),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-auto actual = get_api()->insertHeaderFooterOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}

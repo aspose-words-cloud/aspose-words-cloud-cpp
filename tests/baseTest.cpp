@@ -230,7 +230,7 @@ TEST_F(StorageApiTest, TestConfiguration) {
 		dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("DocumentActions/Document"));
 
 	std::shared_ptr<CreateDocumentRequest> request =
-		std::make_shared<CreateDocumentRequest>(boost::none, remoteName, dataFolder);
+		std::make_shared<CreateDocumentRequest>(remoteName, dataFolder, boost::none);
 
 	auto config = std::make_shared<ApiConfiguration>();
 	config->setBaseUrl(get_configuration()->getBaseUrl());

@@ -62,20 +62,7 @@ TEST_F(PageSetupTests, TestGetSectionPageSetup) {
    ASSERT_EQ(1, actual.body->getPageSetup()->getLineStartingNumber());
 }
 
-/// <summary>
-/// Test for getting page settings online.
-/// </summary>
-TEST_F(PageSetupTests, TestGetSectionPageSetupOnline) {
-    std::shared_ptr< GetSectionPageSetupOnlineRequest > request(new GetSectionPageSetupOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        boost::none,
-        boost::none
-    ));
 
-   auto actual = get_api()->getSectionPageSetupOnline(request).get();
-   ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for updating page settings.
@@ -115,30 +102,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 
 }
 
-/// <summary>
-/// Test for updating page settings online.
-/// </summary>
-TEST_F(PageSetupTests, TestUpdateSectionPageSetupOnline) {
-    auto requestPageSetup = std::make_shared< PageSetup >();
-    requestPageSetup->setRtlGutter(true);
-    requestPageSetup->setLeftMargin(10);
-    requestPageSetup->setOrientation(STCONVERT("Landscape"));
-    requestPageSetup->setPaperSize(STCONVERT("A5"));
 
-    std::shared_ptr< UpdateSectionPageSetupOnlineRequest > request(new UpdateSectionPageSetupOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        0,
-        requestPageSetup,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
-
-auto actual = get_api()->updateSectionPageSetupOnline(request).get();
-ASSERT_EQ(200, actual.httpResponse->status_code());
-}
 
 /// <summary>
 /// Test for page rendering.
@@ -165,18 +129,4 @@ TEST_F(PageSetupTests, TestGetRenderPage) {
    get_api()->renderPage(request).get();
 }
 
-/// <summary>
-/// Test for page rendering.
-/// </summary>
-TEST_F(PageSetupTests, TestGetRenderPageOnline) {
-    std::shared_ptr< RenderPageOnlineRequest > request(new RenderPageOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localTextFile)),
-        1,
-        STCONVERT("bmp"),
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   get_api()->renderPageOnline(request).get();
-}

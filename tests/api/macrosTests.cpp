@@ -60,18 +60,4 @@ TEST_F(MacrosTests, TestDeleteMacros) {
    get_api()->deleteMacros(request).get();
 }
 
-/// <summary>
-/// Test for deleting macros online.
-/// </summary>
-TEST_F(MacrosTests, TestDeleteMacrosOnline) {
-    std::shared_ptr< DeleteMacrosOnlineRequest > request(new DeleteMacrosOnlineRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none,
-        boost::none
-    ));
 
-   get_api()->deleteMacrosOnline(request).get();
-}
