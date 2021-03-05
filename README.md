@@ -209,7 +209,7 @@ The complete source code is available at [GitHub Repository](https://github.com/
 - [Microsoft/cpprestsdk](https://github.com/Microsoft/cpprestsdk)
 - [CMake](https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-win64-x64.msi)
 
-## Getting strted vith the SDK
+## Getting started with the SDK
 
 Copy SDK files from the repository to target directory
 ```powershell

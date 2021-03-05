@@ -39,10 +39,11 @@ protected:
 /// Test for uploading file.
 /// </summary>
 TEST_F(FileTests, TestUploadFile) {
+    auto fileContentContent = generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile));
     utility::string_t remoteFileName = STCONVERT("TestUploadFile.docx");
 
     std::shared_ptr< UploadFileRequest > request(new UploadFileRequest(
-        generate_http_content_from_file(path_combine(LocalTestDataFolder, localFile)),
+        fileContentContent,
         remoteDataFolder + STCONVERT("/") + remoteFileName,
         boost::none
     ));
