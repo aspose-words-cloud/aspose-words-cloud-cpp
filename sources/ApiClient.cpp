@@ -231,7 +231,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
 
 void ApiClient::logDataFromStream(const Concurrency::streams::istream& stream) const
 {
-    if (!m_Configuration || !m_Configuration->isDebugMode()) return;
+    if (!m_Configuration->isDebugMode()) return;
 
     if (!stream.is_valid())
     {
@@ -264,7 +264,7 @@ void ApiClient::logDataFromStream(const Concurrency::streams::istream& stream) c
 
 void ApiClient::logRequest(web::http::http_request request) const
 {
-    if (!m_Configuration || !m_Configuration->isDebugMode()) return;
+    if (!m_Configuration->isDebugMode()) return;
 
     // header
     ucout << request.method() << _XPLATSTR(": ") << request.request_uri().to_string() << _XPLATSTR('\n');
@@ -276,7 +276,7 @@ void ApiClient::logRequest(web::http::http_request request) const
 
 void ApiClient::logResponse(web::http::http_response response) const
 {
-    if (!m_Configuration || !m_Configuration->isDebugMode()) return;
+    if (!m_Configuration->isDebugMode()) return;
 
     // header
     ucout << _XPLATSTR("Response ") << response.status_code() << _XPLATSTR(": ") << response.reason_phrase() << _XPLATSTR('\n');

@@ -39,15 +39,15 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
 
     // Upload original document to cloud storage.
     auto fileContentContent = std::make_shared<HttpContent>();
-    auto fileContentStream = std::make_shared<boost::filesystem::ifstream>(documentsDir + STCONVERT("/fileName"), std::ifstream::binary);
+    auto fileContentStream = std::make_shared<boost::filesystem::ifstream>(documentsDir + STCONVERT("/") + fileName, std::ifstream::binary);
     fileContentContent->setData(fileContentStream);
     fileContentContent->setContentDisposition(_XPLATSTR("form-data"));
     auto uploadFileRequest = std::make_shared< UploadFileRequest >(fileContentContent, fileName, boost::none);
-    wordsApi->uploadFile(uploadFileRequest);
+    wordsApi->uploadFile(uploadFileRequest).get();
 
     // Calls AcceptAllRevisions method for document in cloud.
     auto request = std::make_shared< AcceptAllRevisionsRequest >(fileName, boost::none, boost::none, boost::none, boost::none, boost::none);
-    wordsApi->acceptAllRevisions(request);
+    wordsApi->acceptAllRevisions(request).get();
 }
 
 
