@@ -45,6 +45,8 @@ SaveOptionsData::SaveOptionsData()
     m_FileNameIsSet = false;
     m_SaveFormat = utility::conversions::to_string_t("");
     m_SaveFormatIsSet = false;
+    m_UpdateCreatedTimeProperty = false;
+    m_UpdateCreatedTimePropertyIsSet = false;
     m_UpdateFields = false;
     m_UpdateFieldsIsSet = false;
     m_UpdateLastPrintedProperty = false;
@@ -93,6 +95,10 @@ web::json::value SaveOptionsData::toJson() const
     if(m_SaveFormatIsSet)
     {
         val[_XPLATSTR("SaveFormat")] = ModelBase::toJson(m_SaveFormat);
+    }
+    if(m_UpdateCreatedTimePropertyIsSet)
+    {
+        val[_XPLATSTR("UpdateCreatedTimeProperty")] = ModelBase::toJson(m_UpdateCreatedTimeProperty);
     }
     if(m_UpdateFieldsIsSet)
     {
@@ -176,6 +182,16 @@ void SaveOptionsData::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
            setSaveFormat(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+
+
+    if(val.has_field(_XPLATSTR("UpdateCreatedTimeProperty")))
+    {
+        web::json::value& fieldValue = val[_XPLATSTR("UpdateCreatedTimeProperty")];
+        if(!fieldValue.is_null())
+        {
+           setUpdateCreatedTimeProperty(ModelBase::booleanFromJson(fieldValue));
         }
     }
 
@@ -267,6 +283,12 @@ void SaveOptionsData::toMultipart(const std::shared_ptr<MultipartFormData>& mult
     if(m_SaveFormatIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("SaveFormat"), m_SaveFormat));
+    }
+
+
+    if(m_UpdateCreatedTimePropertyIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("UpdateCreatedTimeProperty"), m_UpdateCreatedTimeProperty));
     }
 
 
@@ -436,6 +458,28 @@ bool SaveOptionsData::saveFormatIsSet() const
 void SaveOptionsData::unsetSaveFormat()
 {
     m_SaveFormatIsSet = false;
+}
+
+bool SaveOptionsData::isUpdateCreatedTimeProperty() const
+{
+    return m_UpdateCreatedTimeProperty;
+}
+
+
+void SaveOptionsData::setUpdateCreatedTimeProperty(bool value)
+{
+    m_UpdateCreatedTimeProperty = value;
+    m_UpdateCreatedTimePropertyIsSet = true;
+}
+
+bool SaveOptionsData::updateCreatedTimePropertyIsSet() const
+{
+    return m_UpdateCreatedTimePropertyIsSet;
+}
+
+void SaveOptionsData::unsetUpdateCreatedTimeProperty()
+{
+    m_UpdateCreatedTimePropertyIsSet = false;
 }
 
 bool SaveOptionsData::isUpdateFields() const

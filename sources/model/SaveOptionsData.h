@@ -109,6 +109,15 @@ public:
     void setSaveFormat(utility::string_t value);
 
     /// <summary>
+    /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
+    /// Default value is false.
+    /// </summary>
+    bool isUpdateCreatedTimeProperty() const;
+    bool updateCreatedTimePropertyIsSet() const;
+    void unsetUpdateCreatedTimeProperty();
+    void setUpdateCreatedTimeProperty(bool value);
+
+    /// <summary>
     /// Gets or sets a value indicating whether fields should be updated before saving the document to a fixed page format. The default value is true.
     /// </summary>
     bool isUpdateFields() const;
@@ -167,6 +176,9 @@ protected:
 
     utility::string_t m_SaveFormat;
     bool m_SaveFormatIsSet;
+
+    bool m_UpdateCreatedTimeProperty;
+    bool m_UpdateCreatedTimePropertyIsSet;
 
     bool m_UpdateFields;
     bool m_UpdateFieldsIsSet;
