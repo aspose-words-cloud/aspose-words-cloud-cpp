@@ -26,9 +26,6 @@
 #include "MultipartFormData.h"
 #include "ModelBase.h"
 
-#include <boost/uuid/random_generator.hpp>
-#include <boost/uuid/uuid_io.hpp>
-
 namespace aspose {
 namespace words {
 namespace cloud {
@@ -36,17 +33,17 @@ namespace api {
 namespace models {
 
 MultipartFormData::MultipartFormData() :
- m_Boundary(utility::conversions::details::to_string_t(boost::uuids::random_generator()()))
+ m_Boundary(utility::conversions::details::to_string_t(std::uuids::random_generator()()))
 {
 }
 
-MultipartFormData::MultipartFormData(utility::string_t boundary)
+MultipartFormData::MultipartFormData(std::wstring boundary)
     : m_Boundary(std::move(boundary))
 {
 }
 
 
-utility::string_t MultipartFormData::getBoundary() const
+std::wstring MultipartFormData::getBoundary() const
 {
     return m_Boundary;
 }
@@ -57,12 +54,12 @@ void MultipartFormData::add(const std::shared_ptr<HttpContent>& content )
     m_ContentLookup[content->getName()] = content;
 }
 
-bool MultipartFormData::hasContent(const utility::string_t& name) const
+bool MultipartFormData::hasContent(const std::wstring& name) const
 {
     return m_ContentLookup.find(name) != m_ContentLookup.end();
 }
 
-std::shared_ptr<HttpContent> MultipartFormData::getContent(const utility::string_t& name) const
+std::shared_ptr<HttpContent> MultipartFormData::getContent(const std::wstring& name) const
 {
     const auto result = m_ContentLookup.find(name);
     if(result != m_ContentLookup.end())

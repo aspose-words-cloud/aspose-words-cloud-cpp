@@ -23,12 +23,9 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_AcceptAllRevisionsRequest_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_AcceptAllRevisionsRequest_H_
+#pragma once
 
 #include "HttpContent.h"
-#include "cpprest/details/basic_types.h"
-#include <boost/optional.hpp>
 
 namespace aspose {
 namespace words {
@@ -39,39 +36,39 @@ namespace models {
 class AcceptAllRevisionsRequest {
     public: 
  AcceptAllRevisionsRequest(
-            utility::string_t name,
-            boost::optional< utility::string_t > folder,
-            boost::optional< utility::string_t > storage,
-            boost::optional< utility::string_t > loadEncoding,
-            boost::optional< utility::string_t > password,
-            boost::optional< utility::string_t > destFileName
+            std::wstring name,
+            std::optional< std::wstring > folder,
+            std::optional< std::wstring > storage,
+            std::optional< std::wstring > loadEncoding,
+            std::optional< std::wstring > password,
+            std::optional< std::wstring > destFileName
         );
 
-        utility::string_t getName() const;
-        void setName(utility::string_t name);
+        std::wstring getName() const;
+        void setName(std::wstring name);
 
-        boost::optional< utility::string_t > getFolder() const;
-        void setFolder(boost::optional< utility::string_t > folder);
+        std::optional< std::wstring > getFolder() const;
+        void setFolder(std::optional< std::wstring > folder);
 
-        boost::optional< utility::string_t > getStorage() const;
-        void setStorage(boost::optional< utility::string_t > storage);
+        std::optional< std::wstring > getStorage() const;
+        void setStorage(std::optional< std::wstring > storage);
 
-        boost::optional< utility::string_t > getLoadEncoding() const;
-        void setLoadEncoding(boost::optional< utility::string_t > loadEncoding);
+        std::optional< std::wstring > getLoadEncoding() const;
+        void setLoadEncoding(std::optional< std::wstring > loadEncoding);
 
-        boost::optional< utility::string_t > getPassword() const;
-        void setPassword(boost::optional< utility::string_t > password);
+        std::optional< std::wstring > getPassword() const;
+        void setPassword(std::optional< std::wstring > password);
 
-        boost::optional< utility::string_t > getDestFileName() const;
-        void setDestFileName(boost::optional< utility::string_t > destFileName);
+        std::optional< std::wstring > getDestFileName() const;
+        void setDestFileName(std::optional< std::wstring > destFileName);
 
     private:
-        utility::string_t m_Name;
-        boost::optional< utility::string_t > m_Folder;
-        boost::optional< utility::string_t > m_Storage;
-        boost::optional< utility::string_t > m_LoadEncoding;
-        boost::optional< utility::string_t > m_Password;
-        boost::optional< utility::string_t > m_DestFileName;
+        std::wstring m_Name;
+        std::optional< std::wstring > m_Folder;
+        std::optional< std::wstring > m_Storage;
+        std::optional< std::wstring > m_LoadEncoding;
+        std::optional< std::wstring > m_Password;
+        std::optional< std::wstring > m_DestFileName;
 };
 
 }

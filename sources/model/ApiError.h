@@ -23,11 +23,9 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_ApiError_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_ApiError_H_
+#pragma once
 
 #include "../ModelBase.h"
-#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -53,8 +51,8 @@ public:
     web::json::value toJson() const override;
     void fromJson(web::json::value& json) override;
 
-    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const override;
-    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
+    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) const override;
+    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) override;
 
     /////////////////////////////////////////////
     /// ApiError members
@@ -62,10 +60,10 @@ public:
     /// <summary>
     /// Gets or sets the API error code.
     /// </summary>
-    utility::string_t getCode() const;
+    std::wstring getCode() const;
     bool codeIsSet() const;
     void unsetCode();
-    void setCode(utility::string_t value);
+    void setCode(std::wstring value);
 
     /// <summary>
     /// Gets or sets the server DateTime.
@@ -78,10 +76,10 @@ public:
     /// <summary>
     /// Gets or sets the error description.
     /// </summary>
-    utility::string_t getDescription() const;
+    std::wstring getDescription() const;
     bool descriptionIsSet() const;
     void unsetDescription();
-    void setDescription(utility::string_t value);
+    void setDescription(std::wstring value);
 
     /// <summary>
     /// Gets or sets the inner error.
@@ -94,25 +92,25 @@ public:
     /// <summary>
     /// Gets or sets the error message.
     /// </summary>
-    utility::string_t getMessage() const;
+    std::wstring getMessage() const;
     bool messageIsSet() const;
     void unsetMessage();
-    void setMessage(utility::string_t value);
+    void setMessage(std::wstring value);
 
 protected:
-    utility::string_t m_Code;
+    std::wstring m_Code;
     bool m_CodeIsSet;
 
     utility::datetime m_DateTime;
     bool m_DateTimeIsSet;
 
-    utility::string_t m_Description;
+    std::wstring m_Description;
     bool m_DescriptionIsSet;
 
     std::shared_ptr<ApiError> m_InnerError;
     bool m_InnerErrorIsSet;
 
-    utility::string_t m_Message;
+    std::wstring m_Message;
     bool m_MessageIsSet;
 };
 
@@ -122,4 +120,3 @@ protected:
 }
 }
 
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_ApiError_H_ */

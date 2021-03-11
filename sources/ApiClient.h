@@ -23,8 +23,7 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_ApiClient_H_
-#define ASPOSE_WORDS_CLOUD_API_ApiClient_H_
+#pragma once
 
 #include "ApiConfiguration.h"
 #include "ApiException.h"
@@ -35,10 +34,6 @@
 #include <memory>
 #include <vector>
 #include <array>
-
-#include <cpprest/details/basic_types.h>
-#include <cpprest/http_client.h>
-#include <cpprest/json.h>
 
 namespace aspose {
 namespace words {
@@ -53,21 +48,21 @@ public:
     class FormParamContainer
     {
     private:
-        const utility::string_t m_name;
-        const utility::string_t m_text;
+        const std::wstring m_name;
+        const std::wstring m_text;
         const std::shared_ptr<HttpContent> m_file;
         const bool m_isFile;
 
     public:
-        FormParamContainer(const utility::string_t& name, const utility::string_t& text)
+        FormParamContainer(const std::wstring& name, const std::wstring& text)
             : m_name(name), m_text(text), m_isFile(false) { }
 
-        FormParamContainer(const utility::string_t& name, const std::shared_ptr<HttpContent> file)
+        FormParamContainer(const std::wstring& name, const std::shared_ptr<HttpContent> file)
             : m_name(name), m_file(file), m_isFile(true) { }
 
         bool isFile() const { return m_isFile; }
-        const utility::string_t& getName() const { return m_name; }
-        const utility::string_t& getText() const { return m_text; }
+        const std::wstring& getName() const { return m_name; }
+        const std::wstring& getText() const { return m_text; }
         const std::shared_ptr<HttpContent> getFile() const { return m_file; }
     };
 
@@ -76,18 +71,18 @@ public:
     std::shared_ptr<ApiConfiguration> getConfiguration() const;
     void setConfiguration(std::shared_ptr<ApiConfiguration> configuration);
 
-    static utility::string_t parameterToString(utility::string_t value);
-    static utility::string_t parameterToString(bool value);
-    static utility::string_t parameterToString(int32_t value);
-    static utility::string_t parameterToString(int64_t value);
-    static utility::string_t parameterToString(float value);
-    static utility::string_t parameterToString(double value);
-    static utility::string_t parameterToString(const utility::datetime &value);
+    static std::wstring parameterToString(std::wstring value);
+    static std::wstring parameterToString(bool value);
+    static std::wstring parameterToString(int32_t value);
+    static std::wstring parameterToString(int64_t value);
+    static std::wstring parameterToString(float value);
+    static std::wstring parameterToString(double value);
+    static std::wstring parameterToString(const utility::datetime &value);
 
     template<class T>
-    static utility::string_t parameterToString(const std::vector<T>& value)
+    static std::wstring parameterToString(const std::vector<T>& value)
     {
-        utility::string_t result;
+        std::wstring result;
         for (auto & item : value)
         {
             result.append(ApiClient::parameterToString(item));
@@ -103,7 +98,7 @@ public:
     }
 
     template<class T>
-    static utility::string_t parameterToString(std::shared_ptr<T> value)
+    static std::wstring parameterToString(std::shared_ptr<T> value)
     {
         ModelBase* modelPtr = static_cast<ModelBase*>(value.get());
         return modelPtr->toJson().serialize();
@@ -111,31 +106,31 @@ public:
 
 
     pplx::task<web::http::http_response> callApi(
-        const utility::string_t& path,
-        const utility::string_t& method,
-        const std::map<utility::string_t, utility::string_t>& queryParams,
+        const std::wstring& path,
+        const std::wstring& method,
+        const std::map<std::wstring, std::wstring>& queryParams,
         const std::shared_ptr<IHttpBody> postBody,
-        const std::map<utility::string_t, utility::string_t>& headerParams,
+        const std::map<std::wstring, std::wstring>& headerParams,
         const std::vector<FormParamContainer>& formParams,
-        const utility::string_t& contentType
+        const std::wstring& contentType
     );
 
     pplx::task<void> requestToken();
 
 protected:
-    void setAccessToken(utility::string_t token);
+    void setAccessToken(std::wstring token);
     std::shared_ptr<ApiConfiguration> m_Configuration;
 
 private:
-    utility::string_t m_AccessToken;
-    std::array<std::pair<utility::string_t, utility::string_t>, 2> defaultHeaders =
+    std::wstring m_AccessToken;
+    std::array<std::pair<std::wstring, std::wstring>, 2> defaultHeaders =
     {
-        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("21.3")),
-        std::make_pair<utility::string_t, utility::string_t>(_XPLATSTR("x-aspose-client"), _XPLATSTR("C++ SDK"))
+        std::make_pair<std::wstring, std::wstring>(_XPLATSTR("x-aspose-client-version"), _XPLATSTR("21.3")),
+        std::make_pair<std::wstring, std::wstring>(_XPLATSTR("x-aspose-client"), _XPLATSTR("C++ SDK"))
     };
 
 private:
-    utility::string_t getTokenUrl() const;
+    std::wstring getTokenUrl() const;
     void logRequest(web::http::http_request request) const;
     void logResponse(web::http::http_response response) const;
     void logDataFromStream(const Concurrency::streams::istream& stream) const;
@@ -145,5 +140,3 @@ private:
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_ApiClient_H_ */

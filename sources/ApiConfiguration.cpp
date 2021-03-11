@@ -36,13 +36,13 @@ ApiConfiguration::ApiConfiguration()
     setHttpConfig(httpConfig);
 }
 
-ApiConfiguration::ApiConfiguration(utility::string_t clientId, utility::string_t clientSecret) : ApiConfiguration()
+ApiConfiguration::ApiConfiguration(std::wstring clientId, std::wstring clientSecret) : ApiConfiguration()
 {
     setClientId(clientId);
     setClientSecret(clientSecret);
 }
 
-void ApiConfiguration::setClientSecret(utility::string_t clientSecret){
+void ApiConfiguration::setClientSecret(std::wstring clientSecret){
     if (clientSecret.empty()) {
         throw _XPLATSTR("ClientSecret could not be an empty string.");
     }
@@ -50,11 +50,11 @@ void ApiConfiguration::setClientSecret(utility::string_t clientSecret){
     m_clientSecret = std::move(clientSecret);
 }
 
-utility::string_t ApiConfiguration::getClientSecret() const {
+std::wstring ApiConfiguration::getClientSecret() const {
     return m_clientSecret;
 }
 
-void ApiConfiguration::setClientId(utility::string_t clientId){
+void ApiConfiguration::setClientId(std::wstring clientId){
     if (clientId.empty()) {
         throw _XPLATSTR("clientId could not be an empty string.");
     }
@@ -62,11 +62,11 @@ void ApiConfiguration::setClientId(utility::string_t clientId){
     m_clientId = std::move(clientId);
 }
 
-utility::string_t ApiConfiguration::getClientId() const{
+std::wstring ApiConfiguration::getClientId() const{
     return m_clientId;
 }
 
-utility::string_t ApiConfiguration::getApiVersion() const
+std::wstring ApiConfiguration::getApiVersion() const
 {
     return utility::conversions::to_string_t("v4.0");
 }
@@ -89,32 +89,32 @@ void ApiConfiguration::setHttpConfig(const web::http::client::http_client_config
     m_HttpConfig = value;
 }
 
-utility::string_t ApiConfiguration::getBaseUrl() const
+std::wstring ApiConfiguration::getBaseUrl() const
 {
     return m_BaseUrl;
 }
 
-void ApiConfiguration::setBaseUrl( utility::string_t value )
+void ApiConfiguration::setBaseUrl( std::wstring value )
 {
     m_BaseUrl = std::move(value);
 }
 
-utility::string_t ApiConfiguration::getUserAgent() const
+std::wstring ApiConfiguration::getUserAgent() const
 {
     return m_UserAgent;
 }
 
-void ApiConfiguration::setUserAgent( utility::string_t value )
+void ApiConfiguration::setUserAgent( std::wstring value )
 {
     m_UserAgent = std::move(value);
 }
 
-std::map<utility::string_t, utility::string_t>& ApiConfiguration::getDefaultHeaders()
+std::map<std::wstring, std::wstring>& ApiConfiguration::getDefaultHeaders()
 {
     return m_DefaultHeaders;
 }
 
-utility::string_t ApiConfiguration::getClientSecret( const utility::string_t& prefix) const
+std::wstring ApiConfiguration::getClientSecret( const std::wstring& prefix) const
 {
     const auto result = m_clientSecrets.find(prefix);
     if( result != m_clientSecrets.end() )
@@ -124,7 +124,7 @@ utility::string_t ApiConfiguration::getClientSecret( const utility::string_t& pr
     return {};
 }
 
-void ApiConfiguration::setClientSecret( const utility::string_t& prefix, const utility::string_t& clientSecret )
+void ApiConfiguration::setClientSecret( const std::wstring& prefix, const std::wstring& clientSecret )
 {
     m_clientSecrets[prefix] = clientSecret;
 }

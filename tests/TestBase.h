@@ -26,8 +26,6 @@
 #ifndef TEST_BASE
 #define TEST_BASE
 
-#include <boost/filesystem/path.hpp>
-
 #include <gtest/gtest.h>
 #include "WordsApi.h"
 
@@ -48,42 +46,42 @@ bool IsNotNull(std::shared_ptr<T> ptr) { return bool(ptr); }
 class InfrastructureTest : public ::testing::Test
 {
 protected:
-    static boost::filesystem::path get_sdk_root();
+    static std::filesystem::path get_sdk_root();
 
-    boost::filesystem::path LocalTestDataFolder{get_sdk_root()/"TestData"};
+    std::filesystem::path LocalTestDataFolder{get_sdk_root()/"TestData"};
 
-    virtual utility::string_t get_data_folder();
+    virtual std::wstring get_data_folder();
 
 	void SetUp() override
     {
 		m_Config = get_config();
 	};
-    static utility::string_t path_combine(const boost::filesystem::path& base, const utility::string_t& stringToAdd);
-    static utility::string_t path_combine_url(const utility::string_t& base, const utility::string_t& stringToAdd);
-    static utility::string_t cutFileExtension(const boost::filesystem::path& filename);
-    boost::filesystem::path get_data_dir(const boost::filesystem::path& subfolder) const;
+    static std::wstring path_combine(const std::filesystem::path& base, const std::wstring& stringToAdd);
+    static std::wstring path_combine_url(const std::wstring& base, const std::wstring& stringToAdd);
+    static std::wstring cutFileExtension(const std::filesystem::path& filename);
+    std::filesystem::path get_data_dir(const std::filesystem::path& subfolder) const;
 
-    utility::string_t create_random_guid() const;
+    std::wstring create_random_guid() const;
 
-    static std::shared_ptr<HttpContent> generate_http_content_from_file(const boost::filesystem::path& filePath,
-        const utility::string_t& filename = {}, const utility::string_t& contentType = {});
+    static std::shared_ptr<HttpContent> generate_http_content_from_file(const std::filesystem::path& filePath,
+        const std::wstring& filename = {}, const std::wstring& contentType = {});
 
-    static utility::string_t get_file_text(const boost::filesystem::path& file);
+    static std::wstring get_file_text(const std::filesystem::path& file);
 
-    static std::vector<boost::filesystem::path> get_directory_files(const boost::filesystem::path& dir);
+    static std::vector<std::filesystem::path> get_directory_files(const std::filesystem::path& dir);
 
 public:
-	void UploadFileToStorage(const utility::string_t& path, const boost::filesystem::path& filePath);
-	bool DoesFileExist(const utility::string_t& path);
+	void UploadFileToStorage(const std::wstring& path, const std::filesystem::path& filePath);
+	bool DoesFileExist(const std::wstring& path);
 
 public:
 	std::shared_ptr<ApiConfiguration> get_configuration() const;
 	std::shared_ptr<WordsApi> get_api();
 
 protected:
-    const utility::string_t baseTestOutPath{_XPLATSTR("TestOut/Cpp")};
-    const utility::string_t remoteBaseTestDataFolder{_XPLATSTR("Temp/SdkTests/Cpp/TestData")};
-    const boost::filesystem::path commonFolder{"Common"};
+    const std::wstring baseTestOutPath{_XPLATSTR("TestOut/Cpp")};
+    const std::wstring remoteBaseTestDataFolder{_XPLATSTR("Temp/SdkTests/Cpp/TestData")};
+    const std::filesystem::path commonFolder{"Common"};
 
 private:
 	std::shared_ptr<ApiClient> client;

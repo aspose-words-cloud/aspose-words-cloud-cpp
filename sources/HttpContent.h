@@ -23,12 +23,9 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_HttpContent_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_HttpContent_H_
+#pragma once
 
 #include <memory>
-
-#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -41,17 +38,17 @@ class  HttpContent
 public:
     virtual ~HttpContent() = default;
 
-    virtual utility::string_t getContentDisposition() const;
-    virtual void setContentDisposition( utility::string_t value );
+    virtual std::wstring getContentDisposition() const;
+    virtual void setContentDisposition( std::wstring value );
 
-    virtual utility::string_t getName() const;
-    virtual void setName( utility::string_t value );
+    virtual std::wstring getName() const;
+    virtual void setName( std::wstring value );
 
-    virtual utility::string_t getFileName() const;
-    virtual void setFileName( utility::string_t value );
+    virtual std::wstring getFileName() const;
+    virtual void setFileName( std::wstring value );
 
-    virtual utility::string_t getContentType() const;
-    virtual void setContentType( utility::string_t value );
+    virtual std::wstring getContentType() const;
+    virtual void setContentType( std::wstring value );
 
     virtual std::shared_ptr<std::istream> getData() const;
     virtual void setData( const std::shared_ptr<std::istream>& value );
@@ -59,11 +56,11 @@ public:
     virtual void writeTo( std::ostream& stream );
 
 protected:
-    // NOTE: no utility::string_t here because those strings can only contain ascii
-    utility::string_t m_ContentDisposition;
-    utility::string_t m_Name;
-    utility::string_t m_FileName;
-    utility::string_t m_ContentType;
+    // NOTE: no std::wstring here because those strings can only contain ascii
+    std::wstring m_ContentDisposition;
+    std::wstring m_Name;
+    std::wstring m_FileName;
+    std::wstring m_ContentType;
     std::shared_ptr<std::istream> m_Data;
 };
 
@@ -72,5 +69,3 @@ protected:
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_HttpContent_H_ */

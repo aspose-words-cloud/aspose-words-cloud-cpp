@@ -31,42 +31,42 @@ namespace cloud {
 namespace api {
 namespace models {
 
-utility::string_t HttpContent::getContentDisposition() const
+std::wstring HttpContent::getContentDisposition() const
 {
     return m_ContentDisposition;
 }
 
-void HttpContent::setContentDisposition(utility::string_t value )
+void HttpContent::setContentDisposition(std::wstring value )
 {
     m_ContentDisposition = std::move(value);
 }
 
-utility::string_t HttpContent::getName() const
+std::wstring HttpContent::getName() const
 {
     return m_Name;
 }
 
-void HttpContent::setName( utility::string_t value )
+void HttpContent::setName( std::wstring value )
 {
     m_Name = std::move(value);
 }
 
-utility::string_t HttpContent::getFileName() const
+std::wstring HttpContent::getFileName() const
 {
     return m_FileName;
 }
 
-void HttpContent::setFileName( utility::string_t value )
+void HttpContent::setFileName( std::wstring value )
 {
     m_FileName = std::move(value);
 }
 
-utility::string_t HttpContent::getContentType() const
+std::wstring HttpContent::getContentType() const
 {
     return m_ContentType;
 }
 
-void HttpContent::setContentType( utility::string_t value )
+void HttpContent::setContentType( std::wstring value )
 {
     m_ContentType = std::move(value);
 }

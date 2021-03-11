@@ -31,15 +31,15 @@ namespace cloud {
 namespace api {
 
 ApiException::ApiException( int errorCode
-    , const utility::string_t& message
+    , const std::wstring& message
 	, std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
     : web::http::http_exception( errorCode, message )
     , m_Response(response)
 {
 }
 ApiException::ApiException( int errorCode
-    , const utility::string_t& message
-    , std::map<utility::string_t, utility::string_t>& headers
+    , const std::wstring& message
+    , std::map<std::wstring, std::wstring>& headers
     , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
     : web::http::http_exception( errorCode, message )
     , m_Response(response)
@@ -52,7 +52,7 @@ std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > ApiE
     return m_Response;
 }
 
-std::map<utility::string_t, utility::string_t>& ApiException::getHeaders()
+std::map<std::wstring, std::wstring>& ApiException::getHeaders()
 {
     return m_Headers;
 }

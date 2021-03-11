@@ -137,7 +137,7 @@ void ApiError::fromJson(web::json::value& val)
 
 }
 
-void ApiError::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
+void ApiError::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& prefix) const
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
     if(m_CodeIsSet)
@@ -174,18 +174,18 @@ void ApiError::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, 
 
 }
 
-void ApiError::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
+void ApiError::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& prefix)
 {
     // TODO: implement fromMultiPart
 }
 
-utility::string_t ApiError::getCode() const
+std::wstring ApiError::getCode() const
 {
     return m_Code;
 }
 
 
-void ApiError::setCode(utility::string_t value)
+void ApiError::setCode(std::wstring value)
 {
     m_Code = value;
     m_CodeIsSet = true;
@@ -223,13 +223,13 @@ void ApiError::unsetDateTime()
     m_DateTimeIsSet = false;
 }
 
-utility::string_t ApiError::getDescription() const
+std::wstring ApiError::getDescription() const
 {
     return m_Description;
 }
 
 
-void ApiError::setDescription(utility::string_t value)
+void ApiError::setDescription(std::wstring value)
 {
     m_Description = value;
     m_DescriptionIsSet = true;
@@ -267,13 +267,13 @@ void ApiError::unsetInnerError()
     m_InnerErrorIsSet = false;
 }
 
-utility::string_t ApiError::getMessage() const
+std::wstring ApiError::getMessage() const
 {
     return m_Message;
 }
 
 
-void ApiError::setMessage(utility::string_t value)
+void ApiError::setMessage(std::wstring value)
 {
     m_Message = value;
     m_MessageIsSet = true;

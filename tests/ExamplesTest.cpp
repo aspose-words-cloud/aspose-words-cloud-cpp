@@ -22,34 +22,12 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include <boost/filesystem.hpp>
 #include "WordsApi.h"
 using namespace aspose::words::cloud::api;
 #include "TestBase.h"
 
 class ExamplesTest : public InfrastructureTest {
 protected:
-    boost::filesystem::path LocalTestExamplesFolder{get_sdk_root()/"ExamplesData"};
+    std::filesystem::path LocalTestExamplesFolder{get_sdk_root()/"ExamplesData"};
 };
 
-TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
-    utility::string_t documentsDir = utility::conversions::to_string_t(LocalTestExamplesFolder.generic_string());
-    auto wordsApi = get_api();
-    utility::string_t fileName  = STCONVERT("test_doc.docx");
-
-    // Upload original document to cloud storage.
-    auto fileContentContent = std::make_shared<HttpContent>();
-    auto fileContentStream = std::make_shared<boost::filesystem::ifstream>(documentsDir + STCONVERT("/") + fileName, std::ifstream::binary);
-    fileContentContent->setData(fileContentStream);
-    fileContentContent->setContentDisposition(_XPLATSTR("form-data"));
-    auto uploadFileRequest = std::make_shared< UploadFileRequest >(fileContentContent, fileName, boost::none);
-    wordsApi->uploadFile(uploadFileRequest).get();
-
-    // Calls AcceptAllRevisions method for document in cloud.
-    auto request = std::make_shared< AcceptAllRevisionsRequest >(fileName, boost::none, boost::none, boost::none, boost::none, boost::none);
-    wordsApi->acceptAllRevisions(request).get();
-}
-
-
-
-// AcceptAllRevisionsOnline => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT

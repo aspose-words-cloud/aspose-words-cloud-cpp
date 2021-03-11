@@ -53,7 +53,7 @@ pplx::task<void> ApiClient::requestToken()
     if (m_Configuration->getBaseUrl().empty())
         throw "Configuration parameter BaseUrl must be set before calling an api methods";
 
-    std::map<utility::string_t, utility::string_t> queryParams, headerParams;
+    std::map<std::wstring, std::wstring> queryParams, headerParams;
 
     std::vector<FormParamContainer> formParams = {
         FormParamContainer(_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")),
@@ -79,11 +79,11 @@ pplx::task<void> ApiClient::requestToken()
     });
 }
 
-utility::string_t ApiClient::getTokenUrl() const {
+std::wstring ApiClient::getTokenUrl() const {
     return m_Configuration->getBaseUrl() + _XPLATSTR("/connect/token");
 }
 
-void ApiClient::setAccessToken(utility::string_t token){
+void ApiClient::setAccessToken(std::wstring token){
     m_AccessToken = token;
 }
 
@@ -97,49 +97,49 @@ void ApiClient::setConfiguration(std::shared_ptr<ApiConfiguration> configuration
 }
 
 
-utility::string_t ApiClient::parameterToString(utility::string_t value)
+std::wstring ApiClient::parameterToString(std::wstring value)
 {
     return value;
 }
 
-utility::string_t ApiClient::parameterToString(bool value)
+std::wstring ApiClient::parameterToString(bool value)
 {
     return value ? STCONVERT("true") : STCONVERT("false");
 }
 
-utility::string_t ApiClient::parameterToString(int64_t value)
+std::wstring ApiClient::parameterToString(int64_t value)
 {
     return utility::conversions::details::to_string_t(value);
 }
 
-utility::string_t ApiClient::parameterToString(int32_t value)
+std::wstring ApiClient::parameterToString(int32_t value)
 {
     return utility::conversions::details::to_string_t(value);
 }
 
-utility::string_t ApiClient::parameterToString(float value)
+std::wstring ApiClient::parameterToString(float value)
 {
     return utility::conversions::details::to_string_t(value);
 }
 
-utility::string_t ApiClient::parameterToString(double value)
+std::wstring ApiClient::parameterToString(double value)
 {
     return utility::conversions::details::to_string_t(value);
 }
 
-utility::string_t ApiClient::parameterToString(const utility::datetime &value)
+std::wstring ApiClient::parameterToString(const utility::datetime &value)
 {
     return value.to_string(utility::datetime::ISO_8601);
 }
 
 pplx::task<web::http::http_response> ApiClient::callApi(
-    const utility::string_t& path,
-    const utility::string_t& method,
-    const std::map<utility::string_t, utility::string_t>& queryParams,
+    const std::wstring& path,
+    const std::wstring& method,
+    const std::map<std::wstring, std::wstring>& queryParams,
     const std::shared_ptr<IHttpBody> postBody,
-    const std::map<utility::string_t, utility::string_t>& headerParams,
+    const std::map<std::wstring, std::wstring>& headerParams,
     const std::vector<FormParamContainer>& formParams,
-    const utility::string_t& contentType
+    const std::wstring& contentType
 )
 {
     if (postBody && !formParams.empty())

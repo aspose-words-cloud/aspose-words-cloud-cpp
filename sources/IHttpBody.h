@@ -23,8 +23,7 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_IHttpBody_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_IHttpBody_H_
+#pragma once
 
 #include <iostream>
 
@@ -47,5 +46,3 @@ public:
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_IHttpBody_H_ */

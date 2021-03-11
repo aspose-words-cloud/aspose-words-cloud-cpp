@@ -24,21 +24,20 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #include "TestBase.h"
-#include <boost/filesystem.hpp>
 #include <list>
 #include <fstream>
 #include <regex>
 #include <string>
 #include <iostream>
 
-namespace fs = boost::filesystem;
+namespace fs = std::filesystem;
 
 /// <summary>
 /// README.md code test
 /// </summary>
 class ReadmeTest : public InfrastructureTest {
 protected:
-	const utility::string_t dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("Readme"));
+	const std::wstring dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("Readme"));
 	void WriteCodeToReadme();
 };
 
@@ -73,11 +72,11 @@ TEST_F(ReadmeTest, TestReadmeCode) {
 	content->setContentDisposition(_XPLATSTR("form-data"));
 
 	// upload file
-	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath, boost::none);
+	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath, std::none);
 	api->uploadFile(uploadRequest).get();
 
 	// call one of API methods
-	auto request = std::make_shared<GetSectionsRequest>(remoteName, dataFolder, boost::none, boost::none, boost::none);
+	auto request = std::make_shared<GetSectionsRequest>(remoteName, dataFolder, std::none, std::none, std::none);
 	auto response = api->getSections(request).get();
 	auto sections = response.body->getSections();
 

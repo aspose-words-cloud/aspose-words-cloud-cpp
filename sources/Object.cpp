@@ -49,25 +49,25 @@ void Object::fromJson(web::json::value& val)
     }
 }
 
-void Object::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix) const
+void Object::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& prefix) const
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
     multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("object"), m_object));
 }
 
-void Object::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& prefix)
+void Object::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& prefix)
 {
     auto namePrefix = ModelBase::fixNamePrefix(prefix);
     m_object = ModelBase::valueFromHttpContent(multipart->getContent(namePrefix + _XPLATSTR("object")));
 }
 
-web::json::value Object::getValue(const utility::string_t& key) const
+web::json::value Object::getValue(const std::wstring& key) const
 {
     return m_object.at(key);
 }
 
 
-void Object::setValue(const utility::string_t& key, const web::json::value& value)
+void Object::setValue(const std::wstring& key, const web::json::value& value)
 {
     m_object[key] = value;
 }

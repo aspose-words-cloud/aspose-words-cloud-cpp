@@ -23,8 +23,7 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_MultipartFormData_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_MultipartFormData_H_
+#pragma once
 
 #include "IHttpBody.h"
 #include "HttpContent.h"
@@ -32,8 +31,6 @@
 #include <vector>
 #include <unordered_map>
 #include <memory>
-
-#include <cpprest/details/basic_types.h>
 
 namespace aspose {
 namespace words {
@@ -46,18 +43,18 @@ class  MultipartFormData
 {
 public:
     MultipartFormData();
-    explicit MultipartFormData(utility::string_t boundary);
+    explicit MultipartFormData(std::wstring boundary);
 
     virtual void add(const std::shared_ptr<HttpContent>& content);
-    virtual utility::string_t getBoundary() const;
-    virtual std::shared_ptr<HttpContent> getContent(const utility::string_t& name) const;
-    virtual bool hasContent(const utility::string_t& name) const;
+    virtual std::wstring getBoundary() const;
+    virtual std::shared_ptr<HttpContent> getContent(const std::wstring& name) const;
+    virtual bool hasContent(const std::wstring& name) const;
     void writeTo( std::ostream& target ) const override;
 
 protected:
     std::vector<std::shared_ptr<HttpContent>> m_Contents;
-    utility::string_t m_Boundary;
-    std::unordered_map<utility::string_t, std::shared_ptr<HttpContent>> m_ContentLookup;
+    std::wstring m_Boundary;
+    std::unordered_map<std::wstring, std::shared_ptr<HttpContent>> m_ContentLookup;
 };
 
 }
@@ -65,5 +62,3 @@ protected:
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_MultipartFormData_H_ */

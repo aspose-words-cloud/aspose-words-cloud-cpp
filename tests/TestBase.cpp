@@ -25,16 +25,9 @@
 
 #include "TestBase.h"
 
-#include <boost/filesystem/fstream.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
+namespace fs = std::filesystem;
 
-namespace fs = boost::filesystem;
-
-utility::string_t get_file_text_as_string(const fs::path& file)
+std::wstring get_file_text_as_string(const fs::path& file)
 {
 #ifdef _UTF16_STRINGS
 	using ifstream_t = fs::wifstream;
@@ -57,7 +50,7 @@ utility::string_t get_file_text_as_string(const fs::path& file)
 
 std::shared_ptr<ApiConfiguration> get_config()
 {
-	utility::string_t credentials;
+	std::wstring credentials;
 	credentials = get_file_text_as_string({ fs::path{ TEST_ROOT }.parent_path() / "servercreds.json" });
 	web::json::value fileJson = web::json::value::parse(credentials);
 
@@ -80,22 +73,22 @@ fs::path InfrastructureTest::get_sdk_root()
     return fs::path{TEST_ROOT}.normalize();
 }
 
-utility::string_t InfrastructureTest::get_data_folder()
+std::wstring InfrastructureTest::get_data_folder()
 {
     return {};
 }
 
-utility::string_t InfrastructureTest::path_combine(const fs::path& base, const utility::string_t& stringToAdd)
+std::wstring InfrastructureTest::path_combine(const fs::path& base, const std::wstring& stringToAdd)
 {
     return utility::conversions::to_string_t((base / stringToAdd).generic_string());
 }
 
-utility::string_t InfrastructureTest::path_combine_url(const utility::string_t& base, const utility::string_t& stringToAdd)
+std::wstring InfrastructureTest::path_combine_url(const std::wstring& base, const std::wstring& stringToAdd)
 {
 	return base + _XPLATSTR("/") + stringToAdd;
 }
 
-utility::string_t InfrastructureTest::cutFileExtension(const boost::filesystem::path& filename)
+std::wstring InfrastructureTest::cutFileExtension(const std::filesystem::path& filename)
 {
     return utility::conversions::to_string_t(filename.stem().generic_string());
 }
@@ -105,14 +98,14 @@ fs::path InfrastructureTest::get_data_dir(const fs::path& subfolder) const
     return LocalTestDataFolder / fs::path{subfolder};
 }
 
-utility::string_t InfrastructureTest::create_random_guid() const
+std::wstring InfrastructureTest::create_random_guid() const
 {
-    boost::uuids::uuid uuid = boost::uuids::random_generator()();
-    return boost::lexical_cast< utility::string_t >(uuid);
+    std::uuids::uuid uuid = std::uuids::random_generator()();
+    return std::lexical_cast< std::wstring >(uuid);
 }
 
 std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file(const fs::path& filePath,
-	const utility::string_t& filename, const utility::string_t& contentType)
+	const std::wstring& filename, const std::wstring& contentType)
 {
     if (!fs::exists(filePath))
     {
@@ -132,12 +125,12 @@ std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file
 	return content;
 }
 
-utility::string_t InfrastructureTest::get_file_text(const fs::path& file)
+std::wstring InfrastructureTest::get_file_text(const fs::path& file)
 {
 	return get_file_text_as_string(file);
 }
 
-std::vector<fs::path> InfrastructureTest::get_directory_files(const boost::filesystem::path& dir)
+std::vector<fs::path> InfrastructureTest::get_directory_files(const std::filesystem::path& dir)
 {
     const auto dirIterator = fs::directory_iterator{dir};
     std::vector<fs::path> result;
@@ -151,19 +144,19 @@ std::vector<fs::path> InfrastructureTest::get_directory_files(const boost::files
     return result;
 }
 
-void InfrastructureTest::UploadFileToStorage(const utility::string_t& remoteName, const fs::path& filePath)
+void InfrastructureTest::UploadFileToStorage(const std::wstring& remoteName, const fs::path& filePath)
 {
-	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, boost::none);
+	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, std::none);
 	std::shared_ptr<WordsApi> api = get_api();
 	auto result = api->uploadFile(request).get();
 }
 
 
-bool InfrastructureTest::DoesFileExist(const utility::string_t& remoteName)
+bool InfrastructureTest::DoesFileExist(const std::wstring& remoteName)
 {
 	try
 	{
-		std::shared_ptr<DownloadFileRequest> request = std::make_shared<DownloadFileRequest>(remoteName, boost::none, boost::none);
+		std::shared_ptr<DownloadFileRequest> request = std::make_shared<DownloadFileRequest>(remoteName, std::none, std::none);
 		get_api()->downloadFile(request).get();
 		return true;
 	}

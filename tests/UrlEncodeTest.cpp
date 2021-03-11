@@ -30,7 +30,7 @@
 /// </summary>
 class UrlEncodeTest : public InfrastructureTest {
 protected:
-	utility::string_t get_data_folder() override {
+	std::wstring get_data_folder() override {
 		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentElements/Bookmarks"));
 	}
 };
@@ -39,15 +39,15 @@ protected:
 /// Test for URL encoding of document name
 /// </summary>
 TEST_F(UrlEncodeTest, TestUrlEncode) {
-	utility::string_t localName = STCONVERT("test_multi_pages.docx"),
+	std::wstring localName = STCONVERT("test_multi_pages.docx"),
 		remoteName = web::uri::encode_uri(STCONVERT("[“Test_Two,_Inc.”]-_83(b)Election([“Bill_Gates”]).docx"), web::uri::components::fragment),
 		fullName = path_combine(get_data_folder(), remoteName);
-	utility::string_t filePath = path_combine(get_data_dir(commonFolder), localName);
+	std::wstring filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	UploadFileToStorage(fullName, filePath);
 	std::shared_ptr<GetBookmarksRequest> req =
-		std::make_shared<GetBookmarksRequest>(remoteName, get_data_folder(), boost::none,
-			boost::none, boost::none);
+		std::make_shared<GetBookmarksRequest>(remoteName, get_data_folder(), std::none,
+			std::none, std::none);
 
 	auto requestTask = get_api()->getBookmarks(req);
 

@@ -23,13 +23,9 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_Object_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_Object_H_
+#pragma once
 
 #include "ModelBase.h"
-
-#include <cpprest/details/basic_types.h>
-#include <cpprest/json.h>
 
 namespace aspose {
 namespace words {
@@ -47,13 +43,13 @@ public:
     web::json::value toJson() const override;
     void fromJson(web::json::value& json) override;
 
-    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) const override;
-    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const utility::string_t& namePrefix) override;
+    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) const override;
+    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) override;
 
     /////////////////////////////////////////////
     /// Object manipulation
-    web::json::value getValue(const utility::string_t& key) const;
-    void setValue(const utility::string_t& key, const web::json::value& value);
+    web::json::value getValue(const std::wstring& key) const;
+    void setValue(const std::wstring& key, const web::json::value& value);
 
 private:
     web::json::value m_object = web::json::value::object();
@@ -64,5 +60,3 @@ private:
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_Object_H_ */

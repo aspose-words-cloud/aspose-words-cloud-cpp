@@ -23,12 +23,9 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef ASPOSE_WORDS_CLOUD_API_MODELS_JsonBody_H_
-#define ASPOSE_WORDS_CLOUD_API_MODELS_JsonBody_H_
+#pragma once
 
 #include "IHttpBody.h"
-
-#include <cpprest/json.h>
 
 namespace aspose {
 namespace words {
@@ -53,5 +50,3 @@ protected:
 }
 }
 }
-
-#endif /* ASPOSE_WORDS_CLOUD_API_MODELS_JsonBody_H_ */
