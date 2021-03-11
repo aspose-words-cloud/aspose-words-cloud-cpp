@@ -39,4 +39,8 @@ if(MSVC)
   target_compile_options(Words.Cloud PRIVATE /bigobj)
 endif()
 
+if (COMMAND cotire)
+    cotire(Words.Cloud)
+endif()
+
 add_library(Aspose::Words.Cloud ALIAS Words.Cloud)

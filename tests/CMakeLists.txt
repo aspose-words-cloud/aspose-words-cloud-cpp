@@ -35,7 +35,11 @@ target_link_libraries(words-cloud-test PRIVATE gtest Aspose::Words.Cloud)
 
 target_compile_definitions(words-cloud-test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
-add_test(NAME words-cloud-test COMMAND words-cloud-test --gtest_output=xml:test_result.xml) 
+if (COMMAND cotire)
+  cotire(words-cloud-test)
+endif()
+
+add_test(NAME words-cloud-test COMMAND words-cloud-test_unity --gtest_output=xml:test_result.xml) 
 
 if (MSVC)
   set_property(TEST words-cloud-test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
@@ -43,5 +47,6 @@ if (MSVC)
   if (MSVC_IDE)
     configure_file(custom.user.props custom.user.props @ONLY)
     set_property(TARGET words-cloud-test PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
+    set_property(TARGET words-cloud-test_unity PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
   endif()
 endif()
