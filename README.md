@@ -128,26 +128,17 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/#/apps) to get your application information and free quota to use the API. 
 
 ### How to build Aspose.Words.Cloud SDK on Windows
-Download and run installer for [Boost library](https://downloads.sourceforge.net/project/boost/boost-binaries/1.68.0/boost_1_68_0-msvc-14.0-64.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2Ffiles%2Fboost-binaries%2F1.68.0%2Fboost_1_68_0-msvc-14.0-64.exe%2Fdownload&ts=1545814847)
-
-Build [Microsoft/cpprestsdk](https://github.com/Microsoft/cpprestsdk)
-```cmd
-git clone https://github.com/Microsoft/cpprestsdk
-mkdir build
-mkdir install
-cmake -G "Visual Studio 15 2017" -Thost=x64 -Ax64 -DCPPREST_EXCLUDE_WEBSOCKETS=ON -DCPPREST_EXCLUDE_COMPRESSION=ON -DCPPREST_EXCLUDE_BROTLI=ON -DBUILD_TESTS=OFF -DBUILD_SAMPLES=OFF -DCMAKE_INSTALL_PREFIX=install\cpprestsdk -S cpprestsdk -B build
-cmake --build build --config Debug --target install
-```
 
 Build Aspose.Words.Cloud SDK
 ```cmd
 git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
-mkdir aspose-words-cloud-cpp\build
-cmake -G "Visual Studio 15 2017" -Thost=x64 -Ax64 -DBOOST_ROOT=<path-to-boost> -Dcpprestsdk_ROOT=install\cpprestsdk -S aspose-words-cloud-cpp -B aspose-words-cloud-cpp\build
-cmake --build aspose-words-cloud-cpp\build --config Debug --target words-cloud-test
+cd aspose-words-cloud-cpp
+mkdir .\build
+cmake -G "Visual Studio 15 2017" -Thost=x64 -Ax64 -S . -B .\build
+cmake --build .\build --config Debug --target words-cloud-test
 ```
 
-Create servercreds.json in aspose-words-cloud-cpp directory:
+Create servercreds.json in '<SDK-ROOT>\settings' directory:
 ````
 {
 	"ClientId" : "xxxx",
@@ -162,36 +153,18 @@ cmake -E chdir aspose-words-cloud-cpp\build ctest -V -C Debug
 ```
 
 ### How to build and test Aspose.Words.Cloud SDK on Linux
-Build [Boost libraray](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz)
-```cmd
-wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz -O /tmp/boost.tar.gz \
-	&& tar -xvzf /tmp/boost.tar.gz \ 
-	&& cd boost_1_68_0 \
-	&& ./bootstrap.sh  \
-	&& ./b2 install \
-	&& ldconfig
-```
-
-Build [Microsoft/cpprestsdk](https://github.com/Microsoft/cpprestsdk)
-```cmd
-git clone https://github.com/Microsoft/cpprestsdk.git
-
-cd /
-mkdir build
-mkdir install
-cmake -DCPPREST_EXCLUDE_WEBSOCKETS=ON -DCPPREST_EXCLUDE_COMPRESSION=ON -DCPPREST_EXCLUDE_BROTLI=ON -DBUILD_TESTS=OFF -DBUILD_SAMPLES=OFF -DCMAKE_INSTALL_PREFIX=install/cpprestsdk -S cpprestsdk -B build
-cmake --build build --config Debug --target install
-```
 
 Build Aspose.Words.Cloud SDK
 ```cmd
-mkdir -p aspose-words-cloud-cpp/build
+git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
+cd aspose-words-cloud-cpp
+mkdir -p ./build
 
-cmake -Dcpprestsdk_ROOT=install/cpprestsdk -DCMAKE_BUILD_TYPE=Debug -S aspose-words-cloud-cpp -B aspose-words-cloud-cpp/build 
-cmake --build aspose-words-cloud-cpp/build --config Debug --target all_unity -- VERBOSE=1
+cmake -DCMAKE_BUILD_TYPE=Debug -S . -B ./build 
+cmake --build ./build --config Debug --target all_unity -- VERBOSE=1
 ```
 
-Create servercreds.json in aspose-words-cloud-cpp directory:
+Create servercreds.json in '<SDK-ROOT>/settings' directory:
 ````
 {
 	"ClientId" : "xxxx",
@@ -202,7 +175,7 @@ Create servercreds.json in aspose-words-cloud-cpp directory:
 
 Run tests
 ```cmd
-cmake -E chdir aspose-words-cloud-cpp/build ctest -V -C Debug
+cmake -E chdir ./build ctest -V -C Debug
 ```
 
 The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp).
@@ -211,8 +184,6 @@ The complete source code is available at [GitHub Repository](https://github.com/
 
 - gcc version 8+ for Linux
 - [VS Build Tools](https://aka.ms/vs/15/release/vs_buildtools.exe) for Windows
-- [Boost libraray](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz)
-- [Microsoft/cpprestsdk](https://github.com/Microsoft/cpprestsdk)
 - [CMake](https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-win64-x64.msi)
 
 ## Getting started with the SDK
