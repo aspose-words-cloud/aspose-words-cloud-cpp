@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="Object.h">
+* <copyright company="Aspose" file="ApiException.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,38 +25,29 @@
 
 #pragma once
 
-#include "ModelBase.h"
+#include <memory>
+#include <map>
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
-namespace models {
+#include "model/WordsApiErrorResponse.h"
 
-class  Object : public ModelBase
-{
-public:
-    /////////////////////////////////////////////
-    /// ModelBase overrides
-    void validate() override;
+namespace aspose::words::cloud::api {
+    class  ApiException
+        : public web::http::http_exception
+    {
+    public:
+        ApiException( int errorCode
+            , const std::wstring& message
+            , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
+        ApiException( int errorCode
+            , const std::wstring& message
+            , std::map<std::wstring, std::wstring>& headers
+            , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
 
-    web::json::value toJson() const override;
-    void fromJson(web::json::value& json) override;
+        std::map<std::wstring, std::wstring>& getHeaders();
+        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > getResponse() const;
 
-    void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) const override;
-    void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) override;
-
-    /////////////////////////////////////////////
-    /// Object manipulation
-    web::json::value getValue(const std::wstring& key) const;
-    void setValue(const std::wstring& key, const web::json::value& value);
-
-private:
-    web::json::value m_object = web::json::value::object();
-};
-
-}
-}
-}
-}
+    protected:
+        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > m_Response;
+        std::map<std::wstring, std::wstring> m_Headers;
+    };
 }

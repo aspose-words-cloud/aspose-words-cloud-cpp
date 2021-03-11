@@ -25,39 +25,31 @@
 
 #include "ApiException.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
+namespace aspose::words::cloud::api {
+    ApiException::ApiException( int errorCode
+        , const std::wstring& message
+	    , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
+        : web::http::http_exception( errorCode, message )
+        , m_Response(response)
+    {
+    }
+    ApiException::ApiException( int errorCode
+        , const std::wstring& message
+        , std::map<std::wstring, std::wstring>& headers
+        , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
+        : web::http::http_exception( errorCode, message )
+        , m_Response(response)
+        , m_Headers(headers)
+    {
+    }
 
-ApiException::ApiException( int errorCode
-    , const std::wstring& message
-	, std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
-    : web::http::http_exception( errorCode, message )
-    , m_Response(response)
-{
-}
-ApiException::ApiException( int errorCode
-    , const std::wstring& message
-    , std::map<std::wstring, std::wstring>& headers
-    , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
-    : web::http::http_exception( errorCode, message )
-    , m_Response(response)
-    , m_Headers(headers)
-{
-}
+    std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > ApiException::getResponse() const
+    {
+        return m_Response;
+    }
 
-std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > ApiException::getResponse() const
-{
-    return m_Response;
-}
-
-std::map<std::wstring, std::wstring>& ApiException::getHeaders()
-{
-    return m_Headers;
-}
-
-}
-}
-}
+    std::map<std::wstring, std::wstring>& ApiException::getHeaders()
+    {
+        return m_Headers;
+    }
 }

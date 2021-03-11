@@ -36,46 +36,36 @@
 #include "ApiError.h"
 #include "HttpContent.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
+namespace aspose::words::cloud::api {
+    template<class T>
+    struct AsposeResponse
+    {
+	    std::shared_ptr<web::http::http_response> httpResponse;
+        std::shared_ptr<T> body;
+    };
 
-using namespace aspose::words::cloud::api::models;
-
-template<class T>
-struct AsposeResponse
-{
-	std::shared_ptr<web::http::http_response> httpResponse;
-    std::shared_ptr<T> body;
-};
-
-class WordsApi
-{
-public:
-    /// <summary>
-    /// Accepts all revisions in the document.
-    /// </summary>
-    /// <param name="name">The filename of the input document.</param>
-    /// <param name="folder">Original document folder. (optional)</param>
-    /// <param name="storage">Original document storage. (optional)</param>
-    /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
-    /// <param name="password">Password for opening an encrypted document. (optional)</param>
-    /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
-    pplx::task<HttpContent> acceptAllRevisions(
-    	std::shared_ptr<AcceptAllRevisionsRequest> request
-    );
+    class WordsApi
+    {
+    public:
+        /// <summary>
+        /// Accepts all revisions in the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="folder">Original document folder. (optional)</param>
+        /// <param name="storage">Original document storage. (optional)</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
+        /// <param name="password">Password for opening an encrypted document. (optional)</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
+        pplx::task<HttpContent> acceptAllRevisions(
+        	std::shared_ptr<AcceptAllRevisionsRequest> request
+        );
 
 
-public:
-    explicit WordsApi(std::shared_ptr<ApiConfiguration> configuration);
-    virtual ~WordsApi() = default;
+    public:
+        explicit WordsApi(std::shared_ptr<ApiConfiguration> configuration);
+        virtual ~WordsApi() = default;
 
-protected:
-    std::shared_ptr<ApiClient> m_ApiClient;
-};
-
-}
-}
-}
+    protected:
+        std::shared_ptr<ApiClient> m_ApiClient;
+    };
 }

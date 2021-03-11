@@ -26,46 +26,37 @@
 #pragma once
 
 #include <memory>
+#include <string>
+#include <optional>
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
-namespace models {
+namespace aspose::words::cloud::api::models {
+    class  HttpContent
+    {
+    public:
+        virtual ~HttpContent() = default;
 
-class  HttpContent
-{
-public:
-    virtual ~HttpContent() = default;
+        virtual std::wstring getContentDisposition() const;
+        virtual void setContentDisposition( std::wstring value );
 
-    virtual std::wstring getContentDisposition() const;
-    virtual void setContentDisposition( std::wstring value );
+        virtual std::wstring getName() const;
+        virtual void setName( std::wstring value );
 
-    virtual std::wstring getName() const;
-    virtual void setName( std::wstring value );
+        virtual std::wstring getFileName() const;
+        virtual void setFileName( std::wstring value );
 
-    virtual std::wstring getFileName() const;
-    virtual void setFileName( std::wstring value );
+        virtual std::wstring getContentType() const;
+        virtual void setContentType( std::wstring value );
 
-    virtual std::wstring getContentType() const;
-    virtual void setContentType( std::wstring value );
+        virtual std::shared_ptr<std::istream> getData() const;
+        virtual void setData( const std::shared_ptr<std::istream>& value );
 
-    virtual std::shared_ptr<std::istream> getData() const;
-    virtual void setData( const std::shared_ptr<std::istream>& value );
+        virtual void writeTo( std::ostream& stream );
 
-    virtual void writeTo( std::ostream& stream );
-
-protected:
-    // NOTE: no std::wstring here because those strings can only contain ascii
-    std::wstring m_ContentDisposition;
-    std::wstring m_Name;
-    std::wstring m_FileName;
-    std::wstring m_ContentType;
-    std::shared_ptr<std::istream> m_Data;
-};
-
-}
-}
-}
-}
+    protected:
+        std::wstring m_ContentDisposition;
+        std::wstring m_Name;
+        std::wstring m_FileName;
+        std::wstring m_ContentType;
+        std::shared_ptr<std::istream> m_Data;
+    };
 }

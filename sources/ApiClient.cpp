@@ -27,266 +27,256 @@
 #include "MultipartFormData.h"
 #include "ModelBase.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
+namespace aspose::words::cloud::api {
+    ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
+        : m_Configuration(configuration)
+    {
+    }
 
-using namespace aspose::words::cloud::api::models;
+    pplx::task<void> ApiClient::requestToken()
+    {
+        if (m_Configuration == nullptr)
+                throw "Configuration must be set before calling an api methods";
 
-ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
-    : m_Configuration(configuration)
-{
-}
+        if(m_Configuration->getClientId().empty())
+            throw "Configuration parameter ClientId must be set before calling an api methods";
 
-pplx::task<void> ApiClient::requestToken()
-{
-    if (m_Configuration == nullptr)
-            throw "Configuration must be set before calling an api methods";
+        if (m_Configuration->getClientSecret().empty())
+            throw "Configuration parameter ClientSecret must be set before calling an api methods";
 
-    if(m_Configuration->getClientId().empty())
-        throw "Configuration parameter ClientId must be set before calling an api methods";
+        if (m_Configuration->getBaseUrl().empty())
+            throw "Configuration parameter BaseUrl must be set before calling an api methods";
 
-    if (m_Configuration->getClientSecret().empty())
-        throw "Configuration parameter ClientSecret must be set before calling an api methods";
+        std::map<std::wstring, std::wstring> queryParams, headerParams;
 
-    if (m_Configuration->getBaseUrl().empty())
-        throw "Configuration parameter BaseUrl must be set before calling an api methods";
+        std::vector<FormParamContainer> formParams = {
+            FormParamContainer(_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")),
+            FormParamContainer(_XPLATSTR("client_id"), m_Configuration->getClientId()),
+            FormParamContainer(_XPLATSTR("client_secret"), m_Configuration->getClientSecret())
+        };
 
-    std::map<std::wstring, std::wstring> queryParams, headerParams;
+        return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams, nullptr, headerParams, formParams, 
+            _XPLATSTR("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
 
-    std::vector<FormParamContainer> formParams = {
-        FormParamContainer(_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")),
-        FormParamContainer(_XPLATSTR("client_id"), m_Configuration->getClientId()),
-        FormParamContainer(_XPLATSTR("client_secret"), m_Configuration->getClientSecret())
-    };
+            if (response.status_code() >= 400)
+            {
+                auto code = response.status_code();
+                auto reason = response.reason_phrase();
+                auto message = response.extract_string().get();
 
-    return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams, nullptr, headerParams, formParams, 
-        _XPLATSTR("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
+                throw ApiException(code, _XPLATSTR("error requesting token: ") + reason + _XPLATSTR("\n") + message);
+            }
 
-        if (response.status_code() >= 400)
+            return response.extract_json();
+        }).then([this](web::json::value val) {
+            this->setAccessToken(val[_XPLATSTR("access_token")].as_string());
+        });
+    }
+
+    std::wstring ApiClient::getTokenUrl() const {
+        return m_Configuration->getBaseUrl() + _XPLATSTR("/connect/token");
+    }
+
+    void ApiClient::setAccessToken(std::wstring token){
+        m_AccessToken = token;
+    }
+
+    std::shared_ptr<ApiConfiguration> ApiClient::getConfiguration() const
+    {
+        return m_Configuration;
+    }
+    void ApiClient::setConfiguration(std::shared_ptr<ApiConfiguration> configuration)
+    {
+        m_Configuration = configuration;
+    }
+
+
+    std::wstring ApiClient::parameterToString(std::wstring value)
+    {
+        return value;
+    }
+
+    std::wstring ApiClient::parameterToString(bool value)
+    {
+        return value ? STCONVERT("true") : STCONVERT("false");
+    }
+
+    std::wstring ApiClient::parameterToString(int64_t value)
+    {
+        return utility::conversions::details::to_string_t(value);
+    }
+
+    std::wstring ApiClient::parameterToString(int32_t value)
+    {
+        return utility::conversions::details::to_string_t(value);
+    }
+
+    std::wstring ApiClient::parameterToString(float value)
+    {
+        return utility::conversions::details::to_string_t(value);
+    }
+
+    std::wstring ApiClient::parameterToString(double value)
+    {
+        return utility::conversions::details::to_string_t(value);
+    }
+
+    std::wstring ApiClient::parameterToString(const utility::datetime &value)
+    {
+        return value.to_string(utility::datetime::ISO_8601);
+    }
+
+    pplx::task<web::http::http_response> ApiClient::callApi(
+        const std::wstring& path,
+        const std::wstring& method,
+        const std::map<std::wstring, std::wstring>& queryParams,
+        const std::shared_ptr<IHttpBody> postBody,
+        const std::map<std::wstring, std::wstring>& headerParams,
+        const std::vector<FormParamContainer>& formParams,
+        const std::wstring& contentType
+    )
+    {
+        if (postBody && !formParams.empty())
         {
-            auto code = response.status_code();
-            auto reason = response.reason_phrase();
-            auto message = response.extract_string().get();
-
-            throw ApiException(code, _XPLATSTR("error requesting token: ") + reason + _XPLATSTR("\n") + message);
+            throw ApiException(400, _XPLATSTR("Cannot have body and form params"));
         }
 
-        return response.extract_json();
-    }).then([this](web::json::value val) {
-        this->setAccessToken(val[_XPLATSTR("access_token")].as_string());
-    });
-}
-
-std::wstring ApiClient::getTokenUrl() const {
-    return m_Configuration->getBaseUrl() + _XPLATSTR("/connect/token");
-}
-
-void ApiClient::setAccessToken(std::wstring token){
-    m_AccessToken = token;
-}
-
-std::shared_ptr<ApiConfiguration> ApiClient::getConfiguration() const
-{
-    return m_Configuration;
-}
-void ApiClient::setConfiguration(std::shared_ptr<ApiConfiguration> configuration)
-{
-    m_Configuration = configuration;
-}
-
-
-std::wstring ApiClient::parameterToString(std::wstring value)
-{
-    return value;
-}
-
-std::wstring ApiClient::parameterToString(bool value)
-{
-    return value ? STCONVERT("true") : STCONVERT("false");
-}
-
-std::wstring ApiClient::parameterToString(int64_t value)
-{
-    return utility::conversions::details::to_string_t(value);
-}
-
-std::wstring ApiClient::parameterToString(int32_t value)
-{
-    return utility::conversions::details::to_string_t(value);
-}
-
-std::wstring ApiClient::parameterToString(float value)
-{
-    return utility::conversions::details::to_string_t(value);
-}
-
-std::wstring ApiClient::parameterToString(double value)
-{
-    return utility::conversions::details::to_string_t(value);
-}
-
-std::wstring ApiClient::parameterToString(const utility::datetime &value)
-{
-    return value.to_string(utility::datetime::ISO_8601);
-}
-
-pplx::task<web::http::http_response> ApiClient::callApi(
-    const std::wstring& path,
-    const std::wstring& method,
-    const std::map<std::wstring, std::wstring>& queryParams,
-    const std::shared_ptr<IHttpBody> postBody,
-    const std::map<std::wstring, std::wstring>& headerParams,
-    const std::vector<FormParamContainer>& formParams,
-    const std::wstring& contentType
-)
-{
-    if (postBody && !formParams.empty())
-    {
-        throw ApiException(400, _XPLATSTR("Cannot have body and form params"));
-    }
-
-    if (!formParams.empty() && (contentType != _XPLATSTR("multipart/form-data") && contentType != _XPLATSTR("application/x-www-form-urlencoded")))
-    {
-        throw ApiException(400, _XPLATSTR("Operations with form parameters must be called with multipart/form-data or application/x-www-form-urlencoded"));
-    }
-
-    web::http::client::http_client client(m_Configuration->getBaseUrl(), m_Configuration->getHttpConfig());
-
-    web::http::http_request request;
-
-    auto & request_header = request.headers();
-    for ( auto& kvp : headerParams )
-    {
-        request_header.add(kvp.first, kvp.second);
-    }
-
-    if (!formParams.empty())
-    {
-        MultipartFormData uploadData;
-        for (auto& kvp : formParams)
+        if (!formParams.empty() && (contentType != _XPLATSTR("multipart/form-data") && contentType != _XPLATSTR("application/x-www-form-urlencoded")))
         {
-            if (kvp.isFile())
+            throw ApiException(400, _XPLATSTR("Operations with form parameters must be called with multipart/form-data or application/x-www-form-urlencoded"));
+        }
+
+        web::http::client::http_client client(m_Configuration->getBaseUrl(), m_Configuration->getHttpConfig());
+
+        web::http::http_request request;
+
+        auto & request_header = request.headers();
+        for ( auto& kvp : headerParams )
+        {
+            request_header.add(kvp.first, kvp.second);
+        }
+
+        if (!formParams.empty())
+        {
+            MultipartFormData uploadData;
+            for (auto& kvp : formParams)
             {
-                uploadData.add(ModelBase::toHttpContent(kvp.getName(), kvp.getFile()));
+                if (kvp.isFile())
+                {
+                    uploadData.add(ModelBase::toHttpContent(kvp.getName(), kvp.getFile()));
+                }
+                else
+                {
+                    uploadData.add(ModelBase::toHttpContent(kvp.getName(), kvp.getText()));
+                }
+            }
+            std::ostringstream data;
+            uploadData.writeTo(data);
+            auto bodyString = data.str();
+            auto length = bodyString.size();
+
+            if (formParams.size() > 1)
+            {
+                request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, 
+                    _XPLATSTR("multipart/form-data; boundary = ") + uploadData.getBoundary());
             }
             else
             {
-                uploadData.add(ModelBase::toHttpContent(kvp.getName(), kvp.getText()));
+                request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length);
             }
         }
-        std::ostringstream data;
-        uploadData.writeTo(data);
-        auto bodyString = data.str();
-        auto length = bodyString.size();
-
-        if (formParams.size() > 1)
+        else if (postBody)
         {
-            request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, 
-                _XPLATSTR("multipart/form-data; boundary = ") + uploadData.getBoundary());
+            std::ostringstream data;
+            postBody->writeTo(data);
+            auto bodyString = data.str();
+            auto length = bodyString.size();
+            request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, contentType);
+        }
+
+        web::http::uri_builder builder(path);
+        for (auto& kvp : queryParams)
+        {
+            builder.append_query(kvp.first, kvp.second);
+        }
+        request.set_request_uri(builder.to_uri());
+        request.set_method(method);
+        if ( !request.headers().has( web::http::header_names::user_agent ) )
+        {
+            request.headers().add( web::http::header_names::user_agent, m_Configuration->getUserAgent() );
+        }
+        if (!request.headers().has(web::http::header_names::authorization)) {
+            if (this->m_AccessToken.empty() && path != getTokenUrl()) {
+                requestToken().wait();
+            }
+
+            request.headers().add(web::http::header_names::authorization, _XPLATSTR("Bearer ") + m_AccessToken);
+        }
+        for (auto header : defaultHeaders) {
+            request.headers().add(header.first, header.second);
+        }
+
+        logRequest(request);
+        return client.request(request).then([=](web::http::http_response response){
+            logResponse(response);
+            return response;
+        });
+    }
+
+    void ApiClient::logDataFromStream(const Concurrency::streams::istream& stream) const
+    {
+        if (!m_Configuration->isDebugMode()) return;
+
+        if (!stream.is_valid())
+        {
+            ucout << _XPLATSTR("EMPTY");
+            return;
+        }
+
+        auto bodyStreamBuf = stream.streambuf();
+        const size_t streamSize = bodyStreamBuf.size();
+
+        std::string buffer;
+
+        if (streamSize)
+        {
+            buffer.resize(streamSize);
+            bodyStreamBuf.scopy(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data())) , buffer.size());
         }
         else
         {
-            request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length);
-        }
-    }
-    else if (postBody)
-    {
-        std::ostringstream data;
-        postBody->writeTo(data);
-        auto bodyString = data.str();
-        auto length = bodyString.size();
-        request.set_body(concurrency::streams::bytestream::open_istream(std::move(bodyString)), length, contentType);
-    }
-
-    web::http::uri_builder builder(path);
-    for (auto& kvp : queryParams)
-    {
-        builder.append_query(kvp.first, kvp.second);
-    }
-    request.set_request_uri(builder.to_uri());
-    request.set_method(method);
-    if ( !request.headers().has( web::http::header_names::user_agent ) )
-    {
-        request.headers().add( web::http::header_names::user_agent, m_Configuration->getUserAgent() );
-    }
-    if (!request.headers().has(web::http::header_names::authorization)) {
-        if (this->m_AccessToken.empty() && path != getTokenUrl()) {
-            requestToken().wait();
+            buffer.resize(bodyStreamBuf.in_avail());
+            uint8_t* ptr = const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data()));
+            auto size = buffer.size();
+            bodyStreamBuf.acquire(ptr, size);
         }
 
-        request.headers().add(web::http::header_names::authorization, _XPLATSTR("Bearer ") + m_AccessToken);
-    }
-    for (auto header : defaultHeaders) {
-        request.headers().add(header.first, header.second);
+        for (int i = 0; i < buffer.size(); i++)
+            ucout << buffer[i];
     }
 
-    logRequest(request);
-    return client.request(request).then([=](web::http::http_response response){
-        logResponse(response);
-        return response;
-    });
-}
 
-void ApiClient::logDataFromStream(const Concurrency::streams::istream& stream) const
-{
-    if (!m_Configuration->isDebugMode()) return;
-
-    if (!stream.is_valid())
+    void ApiClient::logRequest(web::http::http_request request) const
     {
-        ucout << _XPLATSTR("EMPTY");
-        return;
+        if (!m_Configuration->isDebugMode()) return;
+
+        // header
+        ucout << request.method() << _XPLATSTR(": ") << request.request_uri().to_string() << _XPLATSTR('\n');
+
+        // body
+        logDataFromStream(request.body());
+        ucout << _XPLATSTR('\n');
     }
 
-    auto bodyStreamBuf = stream.streambuf();
-    const size_t streamSize = bodyStreamBuf.size();
-
-    std::string buffer;
-
-    if (streamSize)
+    void ApiClient::logResponse(web::http::http_response response) const
     {
-        buffer.resize(streamSize);
-        bodyStreamBuf.scopy(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data())) , buffer.size());
+        if (!m_Configuration->isDebugMode()) return;
+
+        // header
+        ucout << _XPLATSTR("Response ") << response.status_code() << _XPLATSTR(": ") << response.reason_phrase() << _XPLATSTR('\n');
+
+        // body
+        logDataFromStream(response.body());
+        ucout << _XPLATSTR('\n');
     }
-    else
-    {
-        buffer.resize(bodyStreamBuf.in_avail());
-        uint8_t* ptr = const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(buffer.data()));
-        auto size = buffer.size();
-        bodyStreamBuf.acquire(ptr, size);
-    }
-
-    for (int i = 0; i < buffer.size(); i++)
-        ucout << buffer[i];
-}
-
-
-void ApiClient::logRequest(web::http::http_request request) const
-{
-    if (!m_Configuration->isDebugMode()) return;
-
-    // header
-    ucout << request.method() << _XPLATSTR(": ") << request.request_uri().to_string() << _XPLATSTR('\n');
-
-    // body
-    logDataFromStream(request.body());
-    ucout << _XPLATSTR('\n');
-}
-
-void ApiClient::logResponse(web::http::http_response response) const
-{
-    if (!m_Configuration->isDebugMode()) return;
-
-    // header
-    ucout << _XPLATSTR("Response ") << response.status_code() << _XPLATSTR(": ") << response.reason_phrase() << _XPLATSTR('\n');
-
-    // body
-    logDataFromStream(response.body());
-    ucout << _XPLATSTR('\n');
-}
-
-}
-}
-}
 }

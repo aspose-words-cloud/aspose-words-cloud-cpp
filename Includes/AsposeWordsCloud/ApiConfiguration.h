@@ -30,59 +30,49 @@
 
 #include "../model/WordsApiErrorResponse.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
+namespace aspose::words::cloud::api {
+    class  ApiConfiguration
+    {
+    public:
+        ApiConfiguration();
+        ApiConfiguration(std::wstring clientId, std::wstring clientSecret);
+        virtual ~ApiConfiguration() = default;
 
-#define STCONVERT(s) utility::conversions::to_string_t(s)
+        web::http::client::http_client_config& getHttpConfig();
+        void setHttpConfig(const web::http::client::http_client_config& value );
 
-class  ApiConfiguration
-{
-public:
-    ApiConfiguration();
-    ApiConfiguration(std::wstring clientId, std::wstring clientSecret);
-    virtual ~ApiConfiguration() = default;
+        std::wstring getBaseUrl() const;
+        void setBaseUrl( std::wstring value );
 
-    web::http::client::http_client_config& getHttpConfig();
-    void setHttpConfig(const web::http::client::http_client_config& value );
+        std::wstring getUserAgent() const;
+        void setUserAgent( std::wstring value );
 
-    std::wstring getBaseUrl() const;
-    void setBaseUrl( std::wstring value );
+        std::map<std::wstring, std::wstring>& getDefaultHeaders();
 
-    std::wstring getUserAgent() const;
-    void setUserAgent( std::wstring value );
+        std::wstring getClientId() const;
+        void setClientId( std::wstring apiSid );
 
-    std::map<std::wstring, std::wstring>& getDefaultHeaders();
+        std::wstring getClientSecret( const std::wstring& prefix) const;
+        void setClientSecret( const std::wstring& prefix, const std::wstring& clientSecret );
 
-    std::wstring getClientId() const;
-    void setClientId( std::wstring apiSid );
+        std::wstring getClientSecret() const;
+        void setClientSecret( std::wstring clientSecret );
 
-    std::wstring getClientSecret( const std::wstring& prefix) const;
-    void setClientSecret( const std::wstring& prefix, const std::wstring& clientSecret );
+        std::wstring getApiVersion() const;
 
-    std::wstring getClientSecret() const;
-    void setClientSecret( std::wstring clientSecret );
+        bool isDebugMode() const;
+        void setDebugMode(bool debug);
 
-    std::wstring getApiVersion() const;
+    protected:
+        bool m_DebugMode = false;
+        std::wstring m_BaseUrl = STCONVERT("https://api.aspose.cloud");
+        std::map<std::wstring, std::wstring> m_DefaultHeaders;
+        std::unordered_map<std::wstring, std::wstring> m_clientSecrets;
 
-    bool isDebugMode() const;
-    void setDebugMode(bool debug);
+        std::wstring m_clientSecret;
+        std::wstring m_clientId;
 
-protected:
-    bool m_DebugMode = false;
-    std::wstring m_BaseUrl = STCONVERT("https://api.aspose.cloud");
-    std::map<std::wstring, std::wstring> m_DefaultHeaders;
-    std::unordered_map<std::wstring, std::wstring> m_clientSecrets;
-
-    std::wstring m_clientSecret;
-    std::wstring m_clientId;
-
-    web::http::client::http_client_config m_HttpConfig;
-    std::wstring m_UserAgent = STCONVERT("CppAsposeClient");
-};
-
-}
-}
-}
+        web::http::client::http_client_config m_HttpConfig;
+        std::wstring m_UserAgent = STCONVERT("CppAsposeClient");
+    };
 }

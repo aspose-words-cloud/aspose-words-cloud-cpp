@@ -27,15 +27,10 @@
 
 #include "HttpContent.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
-namespace models {
-
-class AcceptAllRevisionsRequest {
-    public: 
- AcceptAllRevisionsRequest(
+namespace aspose::words::cloud::api::models {
+    class AcceptAllRevisionsRequest {
+    public:
+        AcceptAllRevisionsRequest(
             std::wstring name,
             std::optional< std::wstring > folder,
             std::optional< std::wstring > storage,
@@ -69,12 +64,5 @@ class AcceptAllRevisionsRequest {
         std::optional< std::wstring > m_LoadEncoding;
         std::optional< std::wstring > m_Password;
         std::optional< std::wstring > m_DestFileName;
-};
-
+    };
 }
-}
-}
-}
-}
-
-#endif  /* ASPOSE_WORDS_CLOUD_API_MODELS_AcceptAllRevisionsRequest_H_ */

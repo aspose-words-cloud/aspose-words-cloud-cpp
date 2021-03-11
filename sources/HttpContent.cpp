@@ -25,70 +25,60 @@
 
 #include "HttpContent.h"
 
-namespace aspose {
-namespace words {
-namespace cloud {
-namespace api {
-namespace models {
+namespace aspose::words::cloud::api::models {
+    std::wstring HttpContent::getContentDisposition() const
+    {
+        return m_ContentDisposition;
+    }
 
-std::wstring HttpContent::getContentDisposition() const
-{
-    return m_ContentDisposition;
-}
+    void HttpContent::setContentDisposition(std::wstring value )
+    {
+        m_ContentDisposition = std::move(value);
+    }
 
-void HttpContent::setContentDisposition(std::wstring value )
-{
-    m_ContentDisposition = std::move(value);
-}
+    std::wstring HttpContent::getName() const
+    {
+        return m_Name;
+    }
 
-std::wstring HttpContent::getName() const
-{
-    return m_Name;
-}
+    void HttpContent::setName( std::wstring value )
+    {
+        m_Name = std::move(value);
+    }
 
-void HttpContent::setName( std::wstring value )
-{
-    m_Name = std::move(value);
-}
+    std::wstring HttpContent::getFileName() const
+    {
+        return m_FileName;
+    }
 
-std::wstring HttpContent::getFileName() const
-{
-    return m_FileName;
-}
+    void HttpContent::setFileName( std::wstring value )
+    {
+        m_FileName = std::move(value);
+    }
 
-void HttpContent::setFileName( std::wstring value )
-{
-    m_FileName = std::move(value);
-}
+    std::wstring HttpContent::getContentType() const
+    {
+        return m_ContentType;
+    }
 
-std::wstring HttpContent::getContentType() const
-{
-    return m_ContentType;
-}
+    void HttpContent::setContentType( std::wstring value )
+    {
+        m_ContentType = std::move(value);
+    }
 
-void HttpContent::setContentType( std::wstring value )
-{
-    m_ContentType = std::move(value);
-}
+    std::shared_ptr<std::istream> HttpContent::getData() const
+    {
+        return m_Data;
+    }
 
-std::shared_ptr<std::istream> HttpContent::getData() const
-{
-    return m_Data;
-}
+    void HttpContent::setData(const std::shared_ptr<std::istream>& value )
+    {
+        m_Data = value;
+    }
 
-void HttpContent::setData(const std::shared_ptr<std::istream>& value )
-{
-    m_Data = value;
-}
-
-void HttpContent::writeTo( std::ostream& stream )
-{
-    m_Data->seekg( 0, m_Data->beg );
-    stream << m_Data->rdbuf();
-}
-
-}
-}
-}
-}
+    void HttpContent::writeTo( std::ostream& stream )
+    {
+        m_Data->seekg( 0, m_Data->beg );
+        stream << m_Data->rdbuf();
+    }
 }
