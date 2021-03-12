@@ -1,6 +1,5 @@
-#[[
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CMakeLists.txt">
+* <copyright company="Aspose" file="aspose_words_cloud.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,21 +22,9 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+#pragma once
 
-project(aspose_words_cloud_sdk LANGUAGES CXX)
-
-add_library(aspose_words_cloud_sdk)
-
-file(GLOB_RECURSE srcs "../include/*.h" "*.cpp")
-target_sources(aspose_words_cloud_sdk PRIVATE ${srcs})
-
-if(MSVC)
-  target_compile_options(aspose_words_cloud_sdk PRIVATE /bigobj)
-endif()
-
-if (COMMAND cotire)
-    cotire(aspose_words_cloud_sdk)
-endif()
+#include <memory>
+#include <string>
+#include <optional>
