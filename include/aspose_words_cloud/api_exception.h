@@ -1,6 +1,5 @@
-#[[
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CMakeLists.txt">
+* <copyright company="Aspose" file="api_exception.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,30 +22,32 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+#pragma once
 
-project(aspose_words_cloud_test CXX)
-file(GLOB TEST_SOURCES *.cpp api/*.cpp TestBase.h)
-add_executable(aspose_words_cloud_test ${TEST_SOURCES})
-add_subdirectory(../thirdparty/gtest gtest)
-target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
+#include <memory>
+#include <map>
 
-target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+#include "model/WordsApiErrorResponse.h"
 
-if (COMMAND cotire)
-  cotire(aspose_words_cloud_test)
-endif()
+namespace aspose::words::cloud::api {
+    class  ApiException
+        : public web::http::http_exception
+    {
+    public:
+        ApiException( int errorCode
+            , const std::wstring& message
+            , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
+        ApiException( int errorCode
+            , const std::wstring& message
+            , std::map<std::wstring, std::wstring>& headers
+            , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test_unity --gtest_output=xml:test_result.xml) 
+        std::map<std::wstring, std::wstring>& getHeaders();
+        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > getResponse() const;
 
-if (MSVC)
-  set_property(TEST aspose_words_cloud_test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
-
-  if (MSVC_IDE)
-    configure_file(custom.user.props custom.user.props @ONLY)
-    set_property(TARGET aspose_words_cloud_test PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-    set_property(TARGET aspose_words_cloud_test_unity PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-  endif()
-endif()
+    protected:
+        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > m_Response;
+        std::map<std::wstring, std::wstring> m_Headers;
+    };
+}

@@ -1,6 +1,5 @@
-#[[
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CMakeLists.txt">
+* <copyright company="Aspose" file="http_content.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,30 +22,41 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+#pragma once
 
-project(aspose_words_cloud_test CXX)
-file(GLOB TEST_SOURCES *.cpp api/*.cpp TestBase.h)
-add_executable(aspose_words_cloud_test ${TEST_SOURCES})
-add_subdirectory(../thirdparty/gtest gtest)
-target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
+#include <memory>
+#include <string>
+#include <optional>
 
-target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+namespace aspose::words::cloud::api::models {
+    class  HttpContent
+    {
+    public:
+        virtual ~HttpContent() = default;
 
-if (COMMAND cotire)
-  cotire(aspose_words_cloud_test)
-endif()
+        virtual std::wstring getContentDisposition() const;
+        virtual void setContentDisposition( std::wstring value );
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test_unity --gtest_output=xml:test_result.xml) 
+        virtual std::wstring getName() const;
+        virtual void setName( std::wstring value );
 
-if (MSVC)
-  set_property(TEST aspose_words_cloud_test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
+        virtual std::wstring getFileName() const;
+        virtual void setFileName( std::wstring value );
 
-  if (MSVC_IDE)
-    configure_file(custom.user.props custom.user.props @ONLY)
-    set_property(TARGET aspose_words_cloud_test PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-    set_property(TARGET aspose_words_cloud_test_unity PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-  endif()
-endif()
+        virtual std::wstring getContentType() const;
+        virtual void setContentType( std::wstring value );
+
+        virtual std::shared_ptr<std::istream> getData() const;
+        virtual void setData( const std::shared_ptr<std::istream>& value );
+
+        virtual void writeTo( std::ostream& stream );
+
+    protected:
+        std::wstring m_ContentDisposition;
+        std::wstring m_Name;
+        std::wstring m_FileName;
+        std::wstring m_ContentType;
+        std::shared_ptr<std::istream> m_Data;
+    };
+}

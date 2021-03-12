@@ -1,6 +1,5 @@
-#[[
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CMakeLists.txt">
+* <copyright company="Aspose" file="url_encode_test.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,30 +22,35 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+#include "test_base.h"
 
-project(aspose_words_cloud_test CXX)
-file(GLOB TEST_SOURCES *.cpp api/*.cpp TestBase.h)
-add_executable(aspose_words_cloud_test ${TEST_SOURCES})
-add_subdirectory(../thirdparty/gtest gtest)
-target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
+/// <summary>
+/// URL encode test
+/// </summary>
+class UrlEncodeTest : public InfrastructureTest {
+protected:
+	std::wstring get_data_folder() override {
+		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentElements/Bookmarks"));
+	}
+};
 
-target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+/// <summary>
+/// Test for URL encoding of document name
+/// </summary>
+TEST_F(UrlEncodeTest, TestUrlEncode) {
+	std::wstring localName = STCONVERT("test_multi_pages.docx"),
+		remoteName = web::uri::encode_uri(STCONVERT("[“Test_Two,_Inc.”]-_83(b)Election([“Bill_Gates”]).docx"), web::uri::components::fragment),
+		fullName = path_combine(get_data_folder(), remoteName);
+	std::wstring filePath = path_combine(get_data_dir(commonFolder), localName);
 
-if (COMMAND cotire)
-  cotire(aspose_words_cloud_test)
-endif()
+	UploadFileToStorage(fullName, filePath);
+	std::shared_ptr<GetBookmarksRequest> req =
+		std::make_shared<GetBookmarksRequest>(remoteName, get_data_folder(), std::none,
+			std::none, std::none);
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test_unity --gtest_output=xml:test_result.xml) 
+	auto requestTask = get_api()->getBookmarks(req);
 
-if (MSVC)
-  set_property(TEST aspose_words_cloud_test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
-
-  if (MSVC_IDE)
-    configure_file(custom.user.props custom.user.props @ONLY)
-    set_property(TARGET aspose_words_cloud_test PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-    set_property(TARGET aspose_words_cloud_test_unity PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-  endif()
-endif()
+	AsposeResponse<BookmarksResponse> actual = requestTask.get();
+	ASSERT_EQ(200, actual.httpResponse->status_code());
+}

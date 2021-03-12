@@ -33,7 +33,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 include(thirdparty/cotire.cmake)
-add_subdirectory(sources Words.Cloud)
+add_subdirectory(src aspose-words-cloud-sdk)
 
 if (BUILD_TESTS)
   enable_testing()

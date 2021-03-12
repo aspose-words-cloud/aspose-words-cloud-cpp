@@ -1,6 +1,5 @@
-#[[
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CMakeLists.txt">
+* <copyright company="Aspose" file="http_content.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,30 +22,63 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+#include "http_content.h"
 
-project(aspose_words_cloud_test CXX)
-file(GLOB TEST_SOURCES *.cpp api/*.cpp TestBase.h)
-add_executable(aspose_words_cloud_test ${TEST_SOURCES})
-add_subdirectory(../thirdparty/gtest gtest)
-target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
+namespace aspose::words::cloud::api::models {
+    std::wstring HttpContent::getContentDisposition() const
+    {
+        return m_ContentDisposition;
+    }
 
-target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+    void HttpContent::setContentDisposition(std::wstring value )
+    {
+        m_ContentDisposition = std::move(value);
+    }
 
-if (COMMAND cotire)
-  cotire(aspose_words_cloud_test)
-endif()
+    std::wstring HttpContent::getName() const
+    {
+        return m_Name;
+    }
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test_unity --gtest_output=xml:test_result.xml) 
+    void HttpContent::setName( std::wstring value )
+    {
+        m_Name = std::move(value);
+    }
 
-if (MSVC)
-  set_property(TEST aspose_words_cloud_test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
+    std::wstring HttpContent::getFileName() const
+    {
+        return m_FileName;
+    }
 
-  if (MSVC_IDE)
-    configure_file(custom.user.props custom.user.props @ONLY)
-    set_property(TARGET aspose_words_cloud_test PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-    set_property(TARGET aspose_words_cloud_test_unity PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-  endif()
-endif()
+    void HttpContent::setFileName( std::wstring value )
+    {
+        m_FileName = std::move(value);
+    }
+
+    std::wstring HttpContent::getContentType() const
+    {
+        return m_ContentType;
+    }
+
+    void HttpContent::setContentType( std::wstring value )
+    {
+        m_ContentType = std::move(value);
+    }
+
+    std::shared_ptr<std::istream> HttpContent::getData() const
+    {
+        return m_Data;
+    }
+
+    void HttpContent::setData(const std::shared_ptr<std::istream>& value )
+    {
+        m_Data = value;
+    }
+
+    void HttpContent::writeTo( std::ostream& stream )
+    {
+        m_Data->seekg( 0, m_Data->beg );
+        stream << m_Data->rdbuf();
+    }
+}

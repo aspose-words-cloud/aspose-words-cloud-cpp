@@ -27,26 +27,18 @@
 
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 
-project(aspose_words_cloud_test CXX)
-file(GLOB TEST_SOURCES *.cpp api/*.cpp TestBase.h)
-add_executable(aspose_words_cloud_test ${TEST_SOURCES})
-add_subdirectory(../thirdparty/gtest gtest)
-target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
+project(aspose_words_cloud_sdk LANGUAGES CXX)
 
-target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+add_library(aspose_words_cloud_sdk)
 
-if (COMMAND cotire)
-  cotire(aspose_words_cloud_test)
+file(GLOB_RECURSE srcs "*.h" "*.cpp")
+target_sources(aspose_words_cloud_sdk PRIVATE ${srcs})
+target_include_directories(aspose_words_cloud_sdk PUBLIC ../include)
+
+if(MSVC)
+  target_compile_options(aspose_words_cloud_sdk PRIVATE /bigobj)
 endif()
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test_unity --gtest_output=xml:test_result.xml) 
-
-if (MSVC)
-  set_property(TEST aspose_words_cloud_test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
-
-  if (MSVC_IDE)
-    configure_file(custom.user.props custom.user.props @ONLY)
-    set_property(TARGET aspose_words_cloud_test PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-    set_property(TARGET aspose_words_cloud_test_unity PROPERTY VS_USER_PROPS "${CMAKE_CURRENT_BINARY_DIR}/custom.user.props")
-  endif()
+if (COMMAND cotire)
+    cotire(aspose_words_cloud_sdk)
 endif()
