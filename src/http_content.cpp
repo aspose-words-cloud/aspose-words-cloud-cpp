@@ -23,7 +23,7 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "http_content.h"
+#include "aspose_words_cloud/http_content.h"
 
 namespace aspose::words::cloud::api::models {
     std::wstring HttpContent::getContentDisposition() const

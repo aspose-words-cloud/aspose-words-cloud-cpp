@@ -23,48 +23,48 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "api_configuration.h"
+#include "aspose_words_cloud/api_configuration.h"
+#include "aspose_words_cloud/api_exception.h"
 
 namespace aspose::words::cloud::api {
-    ApiConfiguration::ApiConfiguration()
-    {
-        web::http::client::http_client_config httpConfig;
-        setHttpConfig(httpConfig);
-    }
-
-    ApiConfiguration::ApiConfiguration(std::wstring clientId, std::wstring clientSecret) : ApiConfiguration()
+    ApiConfiguration::ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret)
     {
         setClientId(clientId);
         setClientSecret(clientSecret);
     }
 
-    void ApiConfiguration::setClientSecret(std::wstring clientSecret){
-        if (clientSecret.empty()) {
-            throw _XPLATSTR("ClientSecret could not be an empty string.");
-        }
-
-        m_clientSecret = std::move(clientSecret);
+    const std::wstring& ApiConfiguration::getBaseUrl() const
+    {
+        return m_BaseUrl;
     }
 
-    std::wstring ApiConfiguration::getClientSecret() const {
-        return m_clientSecret;
+    void ApiConfiguration::setBaseUrl( const std::wstring& value )
+    {
+        m_BaseUrl = std::move(value);
     }
 
-    void ApiConfiguration::setClientId(std::wstring clientId){
+    const std::wstring& ApiConfiguration::getClientId() const{
+        return m_clientId;
+    }
+
+    void ApiConfiguration::setClientId(const std::wstring& clientId){
         if (clientId.empty()) {
-            throw _XPLATSTR("clientId could not be an empty string.");
+            throw ApiException(400, L"ClientId could not be an empty string.");
         }
 
         m_clientId = std::move(clientId);
     }
 
-    std::wstring ApiConfiguration::getClientId() const{
-        return m_clientId;
+    const std::wstring& ApiConfiguration::getClientSecret() const {
+        return m_clientSecret;
     }
 
-    std::wstring ApiConfiguration::getApiVersion() const
-    {
-        return utility::conversions::to_string_t("v4.0");
+    void ApiConfiguration::setClientSecret(const std::wstring& clientSecret){
+        if (clientSecret.empty()) {
+            throw ApiException(400, L"ClientSecret could not be an empty string.");
+        }
+
+        m_clientSecret = std::move(clientSecret);
     }
 
     bool ApiConfiguration::isDebugMode() const {
@@ -75,53 +75,8 @@ namespace aspose::words::cloud::api {
         m_DebugMode = debug;
     }
 
-    web::http::client::http_client_config& ApiConfiguration::getHttpConfig()
+    const std::wstring& ApiConfiguration::getApiVersion() const
     {
-        return m_HttpConfig;
-    }
-
-    void ApiConfiguration::setHttpConfig(const web::http::client::http_client_config& value )
-    {
-        m_HttpConfig = value;
-    }
-
-    std::wstring ApiConfiguration::getBaseUrl() const
-    {
-        return m_BaseUrl;
-    }
-
-    void ApiConfiguration::setBaseUrl( std::wstring value )
-    {
-        m_BaseUrl = std::move(value);
-    }
-
-    std::wstring ApiConfiguration::getUserAgent() const
-    {
-        return m_UserAgent;
-    }
-
-    void ApiConfiguration::setUserAgent( std::wstring value )
-    {
-        m_UserAgent = std::move(value);
-    }
-
-    std::map<std::wstring, std::wstring>& ApiConfiguration::getDefaultHeaders()
-    {
-        return m_DefaultHeaders;
-    }
-
-    std::wstring ApiConfiguration::getClientSecret( const std::wstring& prefix) const
-    {
-        const auto result = m_clientSecrets.find(prefix);
-        if( result != m_clientSecrets.end() )
-        {
-            return result->second;
-        }
-        return {};
-    }
-
-    void ApiConfiguration::setClientSecret( const std::wstring& prefix, const std::wstring& clientSecret )
-    {
-        m_clientSecrets[prefix] = clientSecret;
+        return m_Version;
     }
 }

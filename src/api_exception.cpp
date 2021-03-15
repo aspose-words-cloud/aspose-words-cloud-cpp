@@ -23,33 +23,27 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "api_exception.h"
+#include "aspose_words_cloud/api_exception.h"
 
 namespace aspose::words::cloud::api {
-    ApiException::ApiException( int errorCode
-        , const std::wstring& message
-	    , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
-        : web::http::http_exception( errorCode, message )
-        , m_Response(response)
-    {
-    }
-    ApiException::ApiException( int errorCode
-        , const std::wstring& message
-        , std::map<std::wstring, std::wstring>& headers
-        , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response )
-        : web::http::http_exception( errorCode, message )
-        , m_Response(response)
-        , m_Headers(headers)
-    {
-    }
+    ApiException::ApiException(
+        int errorCode,
+        const std::wstring& message,
+        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response
+    ) : m_ErrorCode(errorCode), m_Message(message), m_Response(response) {}
 
     std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > ApiException::getResponse() const
     {
         return m_Response;
     }
 
-    std::map<std::wstring, std::wstring>& ApiException::getHeaders()
+    int ApiException::getErrorCode() const
     {
-        return m_Headers;
+        return m_ErrorCode;
+    }
+
+    const std::wstring& ApiException::getMessage() const
+    {
+        return m_Message;
     }
 }

@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="http_content.h">
+* <copyright company="Aspose" file="words_api_error_response.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,39 +23,29 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#pragma once
-#include <memory>
-#include <string>
-#include <optional>
+#include "aspose_words_cloud/models/words_api_error_response.h"
+#include "../thirdparty/json.hpp"
 
 namespace aspose::words::cloud::api::models {
-    class  HttpContent
+    void WordsApiErrorResponse::toJson(::nlohmann::json& json) const
     {
-    public:
-        virtual ~HttpContent() = default;
+        WordsResponse::toJson(json);
+        if (m_Error) m_Error->toJson(json["Error"]);
+    }
 
-        virtual std::wstring getContentDisposition() const;
-        virtual void setContentDisposition( std::wstring value );
+    void WordsApiErrorResponse::fromJson(const ::nlohmann::json& json)
+    {
+        WordsResponse::fromJson(json);
+        if (json.contains("Error") && !json["Error"].is_null()) m_Error->fromJson(json["Error"]);
+    }
 
-        virtual std::wstring getName() const;
-        virtual void setName( std::wstring value );
+    std::shared_ptr< ApiError >& WordsApiErrorResponse::getError()
+    {
+        return m_Error;
+    }
 
-        virtual std::wstring getFileName() const;
-        virtual void setFileName( std::wstring value );
-
-        virtual std::wstring getContentType() const;
-        virtual void setContentType( std::wstring value );
-
-        virtual std::shared_ptr<std::istream> getData() const;
-        virtual void setData( const std::shared_ptr<std::istream>& value );
-
-        virtual void writeTo( std::ostream& stream );
-
-    protected:
-        std::wstring m_ContentDisposition;
-        std::wstring m_Name;
-        std::wstring m_FileName;
-        std::wstring m_ContentType;
-        std::shared_ptr<std::istream> m_Data;
-    };
+    void WordsApiErrorResponse::setError(std::shared_ptr< ApiError >& value)
+    {
+        m_Error = value;
+    }
 }

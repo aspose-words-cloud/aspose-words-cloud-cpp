@@ -24,30 +24,27 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-
 #include <memory>
-#include <map>
-
-#include "model/WordsApiErrorResponse.h"
+#include <string>
+#include <exception>
+#include "models/words_api_error_response.h"
 
 namespace aspose::words::cloud::api {
-    class  ApiException
-        : public web::http::http_exception
+    class  ApiException : std::exception
     {
     public:
-        ApiException( int errorCode
-            , const std::wstring& message
-            , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
-        ApiException( int errorCode
-            , const std::wstring& message
-            , std::map<std::wstring, std::wstring>& headers
-            , std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr );
+        ApiException(
+            int errorCode,
+            const std::wstring& message,
+            std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr);
 
-        std::map<std::wstring, std::wstring>& getHeaders();
         std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > getResponse() const;
+        int getErrorCode() const;
+        const std::wstring& getMessage() const;
 
     protected:
+        int m_ErrorCode;
+        const std::wstring& m_Message;
         std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > m_Response;
-        std::map<std::wstring, std::wstring> m_Headers;
     };
 }

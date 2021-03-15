@@ -24,45 +24,33 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-
-#include "HttpContent.h"
+#include "aspose_words_cloud/http_content.h"
 
 namespace aspose::words::cloud::api::models {
     class AcceptAllRevisionsRequest {
     public:
         AcceptAllRevisionsRequest(
-            std::wstring name,
-            std::optional< std::wstring > folder,
-            std::optional< std::wstring > storage,
-            std::optional< std::wstring > loadEncoding,
-            std::optional< std::wstring > password,
-            std::optional< std::wstring > destFileName
+            const std::wstring&& name,
+            const std::optional< std::wstring >&& folder = std::nullopt,
+            const std::optional< std::wstring >&& storage = std::nullopt,
+            const std::optional< std::wstring >&& loadEncoding = std::nullopt,
+            const std::optional< std::wstring >&& password = std::nullopt,
+            const std::optional< std::wstring >&& destFileName = std::nullopt
         );
 
-        std::wstring getName() const;
-        void setName(std::wstring name);
-
-        std::optional< std::wstring > getFolder() const;
-        void setFolder(std::optional< std::wstring > folder);
-
-        std::optional< std::wstring > getStorage() const;
-        void setStorage(std::optional< std::wstring > storage);
-
-        std::optional< std::wstring > getLoadEncoding() const;
-        void setLoadEncoding(std::optional< std::wstring > loadEncoding);
-
-        std::optional< std::wstring > getPassword() const;
-        void setPassword(std::optional< std::wstring > password);
-
-        std::optional< std::wstring > getDestFileName() const;
-        void setDestFileName(std::optional< std::wstring > destFileName);
+        const std::wstring& getName() const;
+        const std::optional< std::wstring >& getFolder() const;
+        const std::optional< std::wstring >& getStorage() const;
+        const std::optional< std::wstring >& getLoadEncoding() const;
+        const std::optional< std::wstring >& getPassword() const;
+        const std::optional< std::wstring >& getDestFileName() const;
 
     private:
-        std::wstring m_Name;
-        std::optional< std::wstring > m_Folder;
-        std::optional< std::wstring > m_Storage;
-        std::optional< std::wstring > m_LoadEncoding;
-        std::optional< std::wstring > m_Password;
-        std::optional< std::wstring > m_DestFileName;
+        const std::wstring&& m_Name;
+        const std::optional< std::wstring >&& m_Folder;
+        const std::optional< std::wstring >&& m_Storage;
+        const std::optional< std::wstring >&& m_LoadEncoding;
+        const std::optional< std::wstring >&& m_Password;
+        const std::optional< std::wstring >&& m_DestFileName;
     };
 }

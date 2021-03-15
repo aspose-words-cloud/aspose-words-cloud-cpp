@@ -23,8 +23,8 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "api_client.h"
-#include "model_base.h"
+#include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/models/model_base.h"
 
 namespace aspose::words::cloud::api {
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )

@@ -24,16 +24,14 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-
+#include <memory>
+#include <vector>
+#include <array>
 #include "ApiConfiguration.h"
 #include "ApiException.h"
 #include "IHttpBody.h"
 #include "HttpContent.h"
 #include "JsonBody.h"
-
-#include <memory>
-#include <vector>
-#include <array>
 
 namespace aspose::words::cloud::api {
     class  ApiClient

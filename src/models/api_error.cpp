@@ -23,264 +23,75 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "ApiError.h"
+#include "aspose_words_cloud/models/api_error.h"
+#include "../thirdparty/json.hpp"
 
 namespace aspose::words::cloud::api::models {
-    ApiError::ApiError()
+    void ApiError::toJson(::nlohmann::json& json) const
     {
-        m_Code = utility::conversions::to_string_t("");
-        m_CodeIsSet = false;
-        m_DateTime = utility::datetime();
-        m_DateTimeIsSet = false;
-        m_Description = utility::conversions::to_string_t("");
-        m_DescriptionIsSet = false;
-
-        m_InnerErrorIsSet = false;
-        m_Message = utility::conversions::to_string_t("");
-        m_MessageIsSet = false;
-
+        if (m_Code) json["Code"] = *m_Code;
+        if (m_DateTime) json["DateTime"] = *m_DateTime;
+        if (m_Description) json["Description"] = *m_Description;
+        if (m_InnerError) m_InnerError->toJson(json["InnerError"]);
+        if (m_Message) json["Message"] = *m_Message;
     }
 
-    ApiError::~ApiError()
+    void ApiError::fromJson(const ::nlohmann::json& json)
     {
+        if (json.contains("Code") && !json["Code"].is_null()) m_Code = std::make_shared< std::wstring >(json["Code"].get< std::wstring >());
+        if (json.contains("DateTime") && !json["DateTime"].is_null()) m_DateTime = std::make_shared< std::time_t >(json["DateTime"].get< std::time_t >());
+        if (json.contains("Description") && !json["Description"].is_null()) m_Description = std::make_shared< std::wstring >(json["Description"].get< std::wstring >());
+        if (json.contains("InnerError") && !json["InnerError"].is_null()) m_InnerError->fromJson(json["InnerError"]);
+        if (json.contains("Message") && !json["Message"].is_null()) m_Message = std::make_shared< std::wstring >(json["Message"].get< std::wstring >());
     }
 
-    void ApiError::validate()
-    {
-        // TODO: implement validation
-    }
-
-    web::json::value ApiError::toJson() const
-    {
-        web::json::value val = web::json::value::object();
-        if(m_CodeIsSet)
-        {
-            val[_XPLATSTR("Code")] = ModelBase::toJson(m_Code);
-        }
-        if(m_DateTimeIsSet)
-        {
-            val[_XPLATSTR("DateTime")] = ModelBase::toJson(m_DateTime);
-        }
-        if(m_DescriptionIsSet)
-        {
-            val[_XPLATSTR("Description")] = ModelBase::toJson(m_Description);
-        }
-        if(m_InnerErrorIsSet)
-        {
-            val[_XPLATSTR("InnerError")] = ModelBase::toJson(m_InnerError);
-        }
-        if(m_MessageIsSet)
-        {
-            val[_XPLATSTR("Message")] = ModelBase::toJson(m_Message);
-        }
-
-        return val;
-    }
-
-    void ApiError::fromJson(web::json::value& val)
-    {
-        if(val.has_field(_XPLATSTR("Code")))
-        {
-            web::json::value& fieldValue = val[_XPLATSTR("Code")];
-            if(!fieldValue.is_null())
-            {
-               setCode(ModelBase::stringFromJson(fieldValue));
-            }
-        }
-
-
-        if(val.has_field(_XPLATSTR("DateTime")))
-        {
-            web::json::value& fieldValue = val[_XPLATSTR("DateTime")];
-            if(!fieldValue.is_null())
-            {
-               setDateTime(ModelBase::dateTimeFromJson(fieldValue));
-            }
-        }
-
-
-        if(val.has_field(_XPLATSTR("Description")))
-        {
-            web::json::value& fieldValue = val[_XPLATSTR("Description")];
-            if(!fieldValue.is_null())
-            {
-               setDescription(ModelBase::stringFromJson(fieldValue));
-            }
-        }
-
-
-        if(val.has_field(_XPLATSTR("InnerError")))
-        {
-            web::json::value& fieldValue = val[_XPLATSTR("InnerError")];
-            if(!fieldValue.is_null())
-            {
-                std::shared_ptr<ApiError> newItem(new ApiError());
-                newItem->fromJson(fieldValue);
-                setInnerError( newItem );
-            }
-        }
-
-
-        if(val.has_field(_XPLATSTR("Message")))
-        {
-            web::json::value& fieldValue = val[_XPLATSTR("Message")];
-            if(!fieldValue.is_null())
-            {
-               setMessage(ModelBase::stringFromJson(fieldValue));
-            }
-        }
-
-    }
-
-    void ApiError::toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& prefix) const
-    {
-        auto namePrefix = ModelBase::fixNamePrefix(prefix);
-        if(m_CodeIsSet)
-        {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Code"), m_Code));
-        }
-
-
-        if(m_DateTimeIsSet)
-        {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("DateTime"), m_DateTime));
-        }
-
-
-        if(m_DescriptionIsSet)
-        {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Description"), m_Description));
-        }
-
-
-        if(m_InnerErrorIsSet)
-        {
-            if (m_InnerError.get())
-            {
-                m_InnerError->toMultipart(multipart, _XPLATSTR("InnerError."));
-            }
-        }
-
-
-        if(m_MessageIsSet)
-        {
-            multipart->add(ModelBase::toHttpContent(namePrefix + _XPLATSTR("Message"), m_Message));
-        }
-
-    }
-
-    void ApiError::fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& prefix)
-    {
-        // TODO: implement fromMultiPart
-    }
-
-    std::wstring ApiError::getCode() const
+    std::shared_ptr< std::wstring >& ApiError::getCode()
     {
         return m_Code;
     }
 
-
-    void ApiError::setCode(std::wstring value)
+    void ApiError::setCode(std::shared_ptr< std::wstring >& value)
     {
         m_Code = value;
-        m_CodeIsSet = true;
     }
 
-    bool ApiError::codeIsSet() const
-    {
-        return m_CodeIsSet;
-    }
-
-    void ApiError::unsetCode()
-    {
-        m_CodeIsSet = false;
-    }
-
-    utility::datetime ApiError::getDateTime() const
+    std::shared_ptr< std::time_t >& ApiError::getDateTime()
     {
         return m_DateTime;
     }
 
-
-    void ApiError::setDateTime(utility::datetime value)
+    void ApiError::setDateTime(std::shared_ptr< std::time_t >& value)
     {
         m_DateTime = value;
-        m_DateTimeIsSet = true;
     }
 
-    bool ApiError::dateTimeIsSet() const
-    {
-        return m_DateTimeIsSet;
-    }
-
-    void ApiError::unsetDateTime()
-    {
-        m_DateTimeIsSet = false;
-    }
-
-    std::wstring ApiError::getDescription() const
+    std::shared_ptr< std::wstring >& ApiError::getDescription()
     {
         return m_Description;
     }
 
-
-    void ApiError::setDescription(std::wstring value)
+    void ApiError::setDescription(std::shared_ptr< std::wstring >& value)
     {
         m_Description = value;
-        m_DescriptionIsSet = true;
     }
 
-    bool ApiError::descriptionIsSet() const
-    {
-        return m_DescriptionIsSet;
-    }
-
-    void ApiError::unsetDescription()
-    {
-        m_DescriptionIsSet = false;
-    }
-
-    std::shared_ptr<ApiError> ApiError::getInnerError() const
+    std::shared_ptr< ApiError >& ApiError::getInnerError()
     {
         return m_InnerError;
     }
 
-
-    void ApiError::setInnerError(std::shared_ptr<ApiError> value)
+    void ApiError::setInnerError(std::shared_ptr< ApiError >& value)
     {
         m_InnerError = value;
-        m_InnerErrorIsSet = true;
     }
 
-    bool ApiError::innerErrorIsSet() const
-    {
-        return m_InnerErrorIsSet;
-    }
-
-    void ApiError::unsetInnerError()
-    {
-        m_InnerErrorIsSet = false;
-    }
-
-    std::wstring ApiError::getMessage() const
+    std::shared_ptr< std::wstring >& ApiError::getMessage()
     {
         return m_Message;
     }
 
-
-    void ApiError::setMessage(std::wstring value)
+    void ApiError::setMessage(std::shared_ptr< std::wstring >& value)
     {
         m_Message = value;
-        m_MessageIsSet = true;
-    }
-
-    bool ApiError::messageIsSet() const
-    {
-        return m_MessageIsSet;
-    }
-
-    void ApiError::unsetMessage()
-    {
-        m_MessageIsSet = false;
     }
 }

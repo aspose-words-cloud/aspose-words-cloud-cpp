@@ -25,11 +25,12 @@
 
 #pragma once
 #include "../api_client.h"
-#include "../model/words_api_error_response.h"
 
 #include "requests/accept_all_revisions_request.h"
 
 #include "api_error.h"
+#include "words_api_error_response.h"
+#include "words_response.h"
 #include "http_content.h"
 
 namespace aspose::words::cloud::api {

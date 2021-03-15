@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="http_content.h">
+* <copyright company="Aspose" file="words_api_error_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,38 +24,33 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include <memory>
-#include <string>
-#include <optional>
+#include "model_base.h"
+#include "api_error.h"
+#include "words_response.h"
 
 namespace aspose::words::cloud::api::models {
-    class  HttpContent
+    /// <summary>
+    /// The REST response with an API error.
+    /// </summary>
+    class WordsApiErrorResponse : public WordsResponse
     {
     public:
-        virtual ~HttpContent() = default;
+        virtual ~WordsApiErrorResponse() = default;
+        virtual void toJson(::nlohmann::json& json) const override;
+        virtual void fromJson(const ::nlohmann::json& json) override;
 
-        virtual std::wstring getContentDisposition() const;
-        virtual void setContentDisposition( std::wstring value );
+        /// <summary>
+        /// Gets or sets the API error.
+        /// </summary>
+        std::shared_ptr< ApiError >& getError();
 
-        virtual std::wstring getName() const;
-        virtual void setName( std::wstring value );
-
-        virtual std::wstring getFileName() const;
-        virtual void setFileName( std::wstring value );
-
-        virtual std::wstring getContentType() const;
-        virtual void setContentType( std::wstring value );
-
-        virtual std::shared_ptr<std::istream> getData() const;
-        virtual void setData( const std::shared_ptr<std::istream>& value );
-
-        virtual void writeTo( std::ostream& stream );
+        /// <summary>
+        /// Gets or sets the API error.
+        /// </summary>
+        void setError(std::shared_ptr< ApiError >& value);
 
     protected:
-        std::wstring m_ContentDisposition;
-        std::wstring m_Name;
-        std::wstring m_FileName;
-        std::wstring m_ContentType;
-        std::shared_ptr<std::istream> m_Data;
+        std::shared_ptr< ApiError > m_Error;
     };
 }
+

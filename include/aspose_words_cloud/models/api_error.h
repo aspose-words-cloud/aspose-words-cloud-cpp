@@ -24,89 +24,75 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-
-#include "../ModelBase.h"
+#include "model_base.h"
 
 namespace aspose::words::cloud::api::models {
     /// <summary>
     /// Api error.
     /// </summary>
-    class ApiError
-        : public ModelBase
+    class ApiError : public ModelBase
     {
     public:
-        ApiError();
-        virtual ~ApiError();
-
-        /////////////////////////////////////////////
-        /// ModelBase overrides
-
-        void validate() override;
-
-        web::json::value toJson() const override;
-        void fromJson(web::json::value& json) override;
-
-        void toMultipart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) const override;
-        void fromMultiPart(const std::shared_ptr<MultipartFormData>& multipart, const std::wstring& namePrefix) override;
-
-        /////////////////////////////////////////////
-        /// ApiError members
+        virtual ~ApiError() = default;
+        virtual void toJson(::nlohmann::json& json) const override;
+        virtual void fromJson(const ::nlohmann::json& json) override;
 
         /// <summary>
         /// Gets or sets the API error code.
         /// </summary>
-        std::wstring getCode() const;
-        bool codeIsSet() const;
-        void unsetCode();
-        void setCode(std::wstring value);
+        std::shared_ptr< std::wstring >& getCode();
+
+        /// <summary>
+        /// Gets or sets the API error code.
+        /// </summary>
+        void setCode(std::shared_ptr< std::wstring >& value);
 
         /// <summary>
         /// Gets or sets the server DateTime.
         /// </summary>
-        utility::datetime getDateTime() const;
-        bool dateTimeIsSet() const;
-        void unsetDateTime();
-        void setDateTime(utility::datetime value);
+        std::shared_ptr< std::time_t >& getDateTime();
+
+        /// <summary>
+        /// Gets or sets the server DateTime.
+        /// </summary>
+        void setDateTime(std::shared_ptr< std::time_t >& value);
 
         /// <summary>
         /// Gets or sets the error description.
         /// </summary>
-        std::wstring getDescription() const;
-        bool descriptionIsSet() const;
-        void unsetDescription();
-        void setDescription(std::wstring value);
+        std::shared_ptr< std::wstring >& getDescription();
+
+        /// <summary>
+        /// Gets or sets the error description.
+        /// </summary>
+        void setDescription(std::shared_ptr< std::wstring >& value);
 
         /// <summary>
         /// Gets or sets the inner error.
         /// </summary>
-        std::shared_ptr<ApiError> getInnerError() const;
-        bool innerErrorIsSet() const;
-        void unsetInnerError();
-        void setInnerError(std::shared_ptr<ApiError> value);
+        std::shared_ptr< ApiError >& getInnerError();
+
+        /// <summary>
+        /// Gets or sets the inner error.
+        /// </summary>
+        void setInnerError(std::shared_ptr< ApiError >& value);
 
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        std::wstring getMessage() const;
-        bool messageIsSet() const;
-        void unsetMessage();
-        void setMessage(std::wstring value);
+        std::shared_ptr< std::wstring >& getMessage();
+
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
+        void setMessage(std::shared_ptr< std::wstring >& value);
 
     protected:
-        std::wstring m_Code;
-        bool m_CodeIsSet;
-
-        utility::datetime m_DateTime;
-        bool m_DateTimeIsSet;
-
-        std::wstring m_Description;
-        bool m_DescriptionIsSet;
-
-        std::shared_ptr<ApiError> m_InnerError;
-        bool m_InnerErrorIsSet;
-
-        std::wstring m_Message;
-        bool m_MessageIsSet;
+        std::shared_ptr< std::wstring > m_Code;
+        std::shared_ptr< std::time_t > m_DateTime;
+        std::shared_ptr< std::wstring > m_Description;
+        std::shared_ptr< ApiError > m_InnerError;
+        std::shared_ptr< std::wstring > m_Message;
     };
 }
 

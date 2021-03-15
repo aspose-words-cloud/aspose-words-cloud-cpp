@@ -23,16 +23,16 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "AcceptAllRevisionsRequest.h"
+#include "aspose_words_cloud/requests/accept_all_revisions_request.h"
 
 namespace aspose::words::cloud::api::models {
     AcceptAllRevisionsRequest::AcceptAllRevisionsRequest(
-        std::wstring name,
-        std::optional< std::wstring > folder,
-        std::optional< std::wstring > storage,
-        std::optional< std::wstring > loadEncoding,
-        std::optional< std::wstring > password,
-        std::optional< std::wstring > destFileName
+        const std::wstring&& name,
+        const std::optional< std::wstring >&& folder,
+        const std::optional< std::wstring >&& storage,
+        const std::optional< std::wstring >&& loadEncoding,
+        const std::optional< std::wstring >&& password,
+        const std::optional< std::wstring >&& destFileName
     ) : 
         m_Name(std::move(name)),
         m_Folder(std::move(folder)),
@@ -43,63 +43,33 @@ namespace aspose::words::cloud::api::models {
     {
     }
 
-    std::wstring AcceptAllRevisionsRequest::getName() const
+    const std::wstring& AcceptAllRevisionsRequest::getName() const
     {
         return m_Name;
     }
 
-    void AcceptAllRevisionsRequest::setName(std::wstring name)
-    {
-        m_Name = std::move(name);
-    }
-
-    std::optional< std::wstring > AcceptAllRevisionsRequest::getFolder() const
+    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getFolder() const
     {
         return m_Folder;
     }
 
-    void AcceptAllRevisionsRequest::setFolder(std::optional< std::wstring > folder)
-    {
-        m_Folder = std::move(folder);
-    }
-
-    std::optional< std::wstring > AcceptAllRevisionsRequest::getStorage() const
+    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getStorage() const
     {
         return m_Storage;
     }
 
-    void AcceptAllRevisionsRequest::setStorage(std::optional< std::wstring > storage)
-    {
-        m_Storage = std::move(storage);
-    }
-
-    std::optional< std::wstring > AcceptAllRevisionsRequest::getLoadEncoding() const
+    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getLoadEncoding() const
     {
         return m_LoadEncoding;
     }
 
-    void AcceptAllRevisionsRequest::setLoadEncoding(std::optional< std::wstring > loadEncoding)
-    {
-        m_LoadEncoding = std::move(loadEncoding);
-    }
-
-    std::optional< std::wstring > AcceptAllRevisionsRequest::getPassword() const
+    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getPassword() const
     {
         return m_Password;
     }
 
-    void AcceptAllRevisionsRequest::setPassword(std::optional< std::wstring > password)
-    {
-        m_Password = std::move(password);
-    }
-
-    std::optional< std::wstring > AcceptAllRevisionsRequest::getDestFileName() const
+    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getDestFileName() const
     {
         return m_DestFileName;
-    }
-
-    void AcceptAllRevisionsRequest::setDestFileName(std::optional< std::wstring > destFileName)
-    {
-        m_DestFileName = std::move(destFileName);
     }
 }
