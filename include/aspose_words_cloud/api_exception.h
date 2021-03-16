@@ -29,7 +29,7 @@
 #include <exception>
 #include "models/words_api_error_response.h"
 
-namespace aspose::words::cloud::api {
+namespace aspose::words::cloud {
     class  ApiException : std::exception
     {
     public:

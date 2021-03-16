@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="http_content.cpp">
+* <copyright company="Aspose" file="http_request_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,62 +23,35 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "aspose_words_cloud/http_content.h"
+#pragma once
+#include <memory>
+#include <string>
+#include <optional>
+#include <map>
+#include "models/model_base.h"
 
-namespace aspose::words::cloud::api::models {
-    std::wstring HttpContent::getContentDisposition() const
+namespace aspose::words::cloud {
+    class HttpRequestData
     {
-        return m_ContentDisposition;
-    }
+    public:
+        virtual ~HttpRequestData() = default;
 
-    void HttpContent::setContentDisposition(std::wstring value )
-    {
-        m_ContentDisposition = std::move(value);
-    }
+        void setPath(const std::string&& path);
+        void setPathParam(const std::string& name, const std::wstring& value);
+        void addQueryParam(const std::string& name, const std::wstring& value);
+        void addHeader(const std::string& name, const std::wstring& value);
+        void setMethod(const std::string&& method);
+        void setBody(const aspose::words::cloud::api::models::ModelBase& model);
+        void setBody(const std::istream& stream);
+        void setBody(const std::wstring& value);
+        void addFormDataParam(const std::string& name, const aspose::words::cloud::api::models::ModelBase& model);
+        void addFormDataParam(const std::string& name, const std::istream& stream);
+        void addFormDataParam(const std::string& name, const std::wstring& value);
 
-    std::wstring HttpContent::getName() const
-    {
-        return m_Name;
-    }
-
-    void HttpContent::setName( std::wstring value )
-    {
-        m_Name = std::move(value);
-    }
-
-    std::wstring HttpContent::getFileName() const
-    {
-        return m_FileName;
-    }
-
-    void HttpContent::setFileName( std::wstring value )
-    {
-        m_FileName = std::move(value);
-    }
-
-    std::wstring HttpContent::getContentType() const
-    {
-        return m_ContentType;
-    }
-
-    void HttpContent::setContentType( std::wstring value )
-    {
-        m_ContentType = std::move(value);
-    }
-
-    std::shared_ptr<std::istream> HttpContent::getData() const
-    {
-        return m_Data;
-    }
-
-    void HttpContent::setData(const std::shared_ptr<std::istream>& value )
-    {
-        m_Data = value;
-    }
-
-    void HttpContent::writeTo( std::ostream& stream )
-    {
-        m_Data->seekg( 0, m_Data->beg );
-        stream << m_Data->rdbuf();
-    }
+    protected:
+        std::string m_Path;
+        std::map<std::string, std::string> m_QueryParams;
+        std::map<std::string, std::string> m_Headers;
+        std::string m_Method;
+    };
 }

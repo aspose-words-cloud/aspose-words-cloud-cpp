@@ -29,16 +29,12 @@
 #include <memory>
 #include <string>
 
-namespace nlohmann {
-    class json;
-}
-
 namespace aspose::words::cloud::api::models {
     class ModelBase
     {
     public:
         virtual ~ModelBase() = default;
-        virtual void toJson(::nlohmann::json& json) const = 0;
-        virtual void fromJson(const ::nlohmann::json& json) = 0;
+        virtual void toJson(void* jsonIfc) const = 0;
+        virtual void fromJson(const void* jsonIfc) = 0;
     };
 }

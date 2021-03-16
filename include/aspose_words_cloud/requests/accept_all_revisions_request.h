@@ -24,33 +24,35 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "aspose_words_cloud/http_content.h"
+#include "request_model_base.h"
 
-namespace aspose::words::cloud::api::models {
-    class AcceptAllRevisionsRequest {
+namespace aspose::words::cloud::api::models::requests {
+    class AcceptAllRevisionsRequest : public RequestModelBase {
     public:
         AcceptAllRevisionsRequest(
             const std::wstring&& name,
-            const std::optional< std::wstring >&& folder = std::nullopt,
-            const std::optional< std::wstring >&& storage = std::nullopt,
-            const std::optional< std::wstring >&& loadEncoding = std::nullopt,
-            const std::optional< std::wstring >&& password = std::nullopt,
-            const std::optional< std::wstring >&& destFileName = std::nullopt
+            const std::optional<std::wstring>&& folder = std::nullopt,
+            const std::optional<std::wstring>&& storage = std::nullopt,
+            const std::optional<std::wstring>&& loadEncoding = std::nullopt,
+            const std::optional<std::wstring>&& password = std::nullopt,
+            const std::optional<std::wstring>&& destFileName = std::nullopt
         );
 
         const std::wstring& getName() const;
-        const std::optional< std::wstring >& getFolder() const;
-        const std::optional< std::wstring >& getStorage() const;
-        const std::optional< std::wstring >& getLoadEncoding() const;
-        const std::optional< std::wstring >& getPassword() const;
-        const std::optional< std::wstring >& getDestFileName() const;
+        const std::optional<std::wstring>& getFolder() const;
+        const std::optional<std::wstring>& getStorage() const;
+        const std::optional<std::wstring>& getLoadEncoding() const;
+        const std::optional<std::wstring>& getPassword() const;
+        const std::optional<std::wstring>& getDestFileName() const;
+
+        virtual std::shared_ptr<HttpRequestData> createHttpRequest() const override;
 
     private:
-        const std::wstring&& m_Name;
-        const std::optional< std::wstring >&& m_Folder;
-        const std::optional< std::wstring >&& m_Storage;
-        const std::optional< std::wstring >&& m_LoadEncoding;
-        const std::optional< std::wstring >&& m_Password;
-        const std::optional< std::wstring >&& m_DestFileName;
+        const std::wstring m_Name;
+        const std::optional<std::wstring> m_Folder;
+        const std::optional<std::wstring> m_Storage;
+        const std::optional<std::wstring> m_LoadEncoding;
+        const std::optional<std::wstring> m_Password;
+        const std::optional<std::wstring> m_DestFileName;
     };
 }

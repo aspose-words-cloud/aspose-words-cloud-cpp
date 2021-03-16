@@ -27,21 +27,23 @@
 #include "../thirdparty/json.hpp"
 
 namespace aspose::words::cloud::api::models {
-    void ApiError::toJson(::nlohmann::json& json) const
+    void ApiError::toJson(void* jsonIfc) const
     {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (m_Code) json["Code"] = *m_Code;
         if (m_DateTime) json["DateTime"] = *m_DateTime;
         if (m_Description) json["Description"] = *m_Description;
-        if (m_InnerError) m_InnerError->toJson(json["InnerError"]);
+        if (m_InnerError) m_InnerError->toJson(&json["InnerError"]);
         if (m_Message) json["Message"] = *m_Message;
     }
 
-    void ApiError::fromJson(const ::nlohmann::json& json)
+    void ApiError::fromJson(const void* jsonIfc)
     {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("Code") && !json["Code"].is_null()) m_Code = std::make_shared< std::wstring >(json["Code"].get< std::wstring >());
         if (json.contains("DateTime") && !json["DateTime"].is_null()) m_DateTime = std::make_shared< std::time_t >(json["DateTime"].get< std::time_t >());
         if (json.contains("Description") && !json["Description"].is_null()) m_Description = std::make_shared< std::wstring >(json["Description"].get< std::wstring >());
-        if (json.contains("InnerError") && !json["InnerError"].is_null()) m_InnerError->fromJson(json["InnerError"]);
+        if (json.contains("InnerError") && !json["InnerError"].is_null()) m_InnerError->fromJson(&json["InnerError"]);
         if (json.contains("Message") && !json["Message"].is_null()) m_Message = std::make_shared< std::wstring >(json["Message"].get< std::wstring >());
     }
 

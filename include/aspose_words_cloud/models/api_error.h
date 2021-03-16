@@ -34,8 +34,8 @@ namespace aspose::words::cloud::api::models {
     {
     public:
         virtual ~ApiError() = default;
-        virtual void toJson(::nlohmann::json& json) const override;
-        virtual void fromJson(const ::nlohmann::json& json) override;
+        virtual void toJson(void* jsonIfc) const override;
+        virtual void fromJson(const void* jsonIfc) override;
 
         /// <summary>
         /// Gets or sets the API error code.

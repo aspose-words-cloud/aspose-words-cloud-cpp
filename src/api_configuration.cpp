@@ -26,7 +26,7 @@
 #include "aspose_words_cloud/api_configuration.h"
 #include "aspose_words_cloud/api_exception.h"
 
-namespace aspose::words::cloud::api {
+namespace aspose::words::cloud {
     ApiConfiguration::ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret)
     {
         setClientId(clientId);

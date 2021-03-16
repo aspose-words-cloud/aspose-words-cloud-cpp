@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="model_base.cpp">
+* <copyright company="Aspose" file="request_model_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,8 +23,18 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "aspose_words_cloud/models/model_base.h"
+#pragma once
+#include <iostream>
+#include <ctime>
+#include <memory>
+#include <string>
+#include "aspose_words_cloud/http_request_data.h"
 
-namespace aspose::words::cloud::api::models {
-
+namespace aspose::words::cloud::api::models::requests {
+    class RequestModelBase
+    {
+    public:
+        virtual ~RequestModelBase() = default;
+        virtual std::shared_ptr<HttpRequestData> createHttpRequest() const = 0;
+    };
 }

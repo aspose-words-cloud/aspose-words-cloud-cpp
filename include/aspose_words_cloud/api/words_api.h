@@ -24,23 +24,10 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "../api_client.h"
-
-#include "requests/accept_all_revisions_request.h"
-
-#include "api_error.h"
-#include "words_api_error_response.h"
-#include "words_response.h"
-#include "http_content.h"
+#include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/requests/accept_all_revisions_request.h"
 
 namespace aspose::words::cloud::api {
-    template<class T>
-    struct AsposeResponse
-    {
-	    std::shared_ptr<web::http::http_response> httpResponse;
-        std::shared_ptr<T> body;
-    };
-
     class WordsApi
     {
     public:
@@ -48,18 +35,15 @@ namespace aspose::words::cloud::api {
         /// Accepts all revisions in the document.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
-        /// <param name="folder">Original document folder. (optional)</param>
-        /// <param name="storage">Original document storage. (optional)</param>
-        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. (optional)</param>
-        /// <param name="password">Password for opening an encrypted document. (optional)</param>
-        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. (optional)</param>
-        pplx::task<HttpContent> acceptAllRevisions(
-        	std::shared_ptr<AcceptAllRevisionsRequest> request
-        );
-
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        void acceptAllRevisions(std::shared_ptr<aspose::words::cloud::api::models::requests::AcceptAllRevisionsRequest> request);
 
     public:
-        explicit WordsApi(std::shared_ptr<ApiConfiguration> configuration);
+        WordsApi(std::shared_ptr<ApiConfiguration> configuration);
         virtual ~WordsApi() = default;
 
     protected:

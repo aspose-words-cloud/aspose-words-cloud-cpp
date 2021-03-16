@@ -25,7 +25,7 @@
 
 #include "aspose_words_cloud/api_exception.h"
 
-namespace aspose::words::cloud::api {
+namespace aspose::words::cloud {
     ApiException::ApiException(
         int errorCode,
         const std::wstring& message,

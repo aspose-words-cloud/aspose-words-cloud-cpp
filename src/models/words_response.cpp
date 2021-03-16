@@ -27,13 +27,15 @@
 #include "../thirdparty/json.hpp"
 
 namespace aspose::words::cloud::api::models {
-    void WordsResponse::toJson(::nlohmann::json& json) const
+    void WordsResponse::toJson(void* jsonIfc) const
     {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (m_RequestId) json["RequestId"] = *m_RequestId;
     }
 
-    void WordsResponse::fromJson(const ::nlohmann::json& json)
+    void WordsResponse::fromJson(const void* jsonIfc)
     {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("RequestId") && !json["RequestId"].is_null()) m_RequestId = std::make_shared< std::wstring >(json["RequestId"].get< std::wstring >());
     }
 

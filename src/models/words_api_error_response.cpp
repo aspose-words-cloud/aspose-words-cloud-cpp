@@ -27,16 +27,18 @@
 #include "../thirdparty/json.hpp"
 
 namespace aspose::words::cloud::api::models {
-    void WordsApiErrorResponse::toJson(::nlohmann::json& json) const
+    void WordsApiErrorResponse::toJson(void* jsonIfc) const
     {
-        WordsResponse::toJson(json);
-        if (m_Error) m_Error->toJson(json["Error"]);
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Error) m_Error->toJson(&json["Error"]);
     }
 
-    void WordsApiErrorResponse::fromJson(const ::nlohmann::json& json)
+    void WordsApiErrorResponse::fromJson(const void* jsonIfc)
     {
-        WordsResponse::fromJson(json);
-        if (json.contains("Error") && !json["Error"].is_null()) m_Error->fromJson(json["Error"]);
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Error") && !json["Error"].is_null()) m_Error->fromJson(&json["Error"]);
     }
 
     std::shared_ptr< ApiError >& WordsApiErrorResponse::getError()

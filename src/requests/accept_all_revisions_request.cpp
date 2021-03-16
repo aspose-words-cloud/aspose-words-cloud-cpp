@@ -25,14 +25,14 @@
 
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
 
-namespace aspose::words::cloud::api::models {
+namespace aspose::words::cloud::api::models::requests {
     AcceptAllRevisionsRequest::AcceptAllRevisionsRequest(
         const std::wstring&& name,
-        const std::optional< std::wstring >&& folder,
-        const std::optional< std::wstring >&& storage,
-        const std::optional< std::wstring >&& loadEncoding,
-        const std::optional< std::wstring >&& password,
-        const std::optional< std::wstring >&& destFileName
+        const std::optional<std::wstring>&& folder,
+        const std::optional<std::wstring>&& storage,
+        const std::optional<std::wstring>&& loadEncoding,
+        const std::optional<std::wstring>&& password,
+        const std::optional<std::wstring>&& destFileName
     ) : 
         m_Name(std::move(name)),
         m_Folder(std::move(folder)),
@@ -48,28 +48,42 @@ namespace aspose::words::cloud::api::models {
         return m_Name;
     }
 
-    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getFolder() const
+    const std::optional<std::wstring>& AcceptAllRevisionsRequest::getFolder() const
     {
         return m_Folder;
     }
 
-    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getStorage() const
+    const std::optional<std::wstring>& AcceptAllRevisionsRequest::getStorage() const
     {
         return m_Storage;
     }
 
-    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getLoadEncoding() const
+    const std::optional<std::wstring>& AcceptAllRevisionsRequest::getLoadEncoding() const
     {
         return m_LoadEncoding;
     }
 
-    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getPassword() const
+    const std::optional<std::wstring>& AcceptAllRevisionsRequest::getPassword() const
     {
         return m_Password;
     }
 
-    const std::optional< std::wstring >& AcceptAllRevisionsRequest::getDestFileName() const
+    const std::optional<std::wstring>& AcceptAllRevisionsRequest::getDestFileName() const
     {
         return m_DestFileName;
+    }
+
+    std::shared_ptr<HttpRequestData> AcceptAllRevisionsRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod("put");
+        result->setPath("/words/{name}/revisions/acceptAll");
+        result->setPathParam("{name}", m_Name);
+        if (m_Folder) result->addQueryParam("folder", *m_Folder);
+        if (m_Storage) result->addQueryParam("storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam("loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam("password", *m_Password);
+        if (m_DestFileName) result->addQueryParam("destFileName", *m_DestFileName);
+        return result;
     }
 }

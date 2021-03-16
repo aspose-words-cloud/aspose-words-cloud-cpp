@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="http_content.h">
+* <copyright company="Aspose" file="http_request_data.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,39 +23,44 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#pragma once
-#include <memory>
-#include <string>
-#include <optional>
+#include <codecvt>
+#include "aspose_words_cloud/http_request_data.h"
+#include "../thirdparty/httplib.h"
+#include "../thirdparty/utf8.h"
 
-namespace aspose::words::cloud::api::models {
-    class  HttpContent
+namespace aspose::words::cloud {
+    void HttpRequestData::setPath(const std::string&& path)
     {
-    public:
-        virtual ~HttpContent() = default;
+        m_Path = std::move(path);
+    }
 
-        virtual std::wstring getContentDisposition() const;
-        virtual void setContentDisposition( std::wstring value );
+    void HttpRequestData::setPathParam(const std::string& name, const std::wstring& value)
+    {
+        std::string valueUtf8;
+        utf8::utf16to8(value.begin(), value.end(), back_inserter(valueUtf8));
 
-        virtual std::wstring getName() const;
-        virtual void setName( std::wstring value );
+        size_t start_pos;
+        if ((start_pos = m_Path.find(name)) != std::string::npos) {
+            m_Path.replace(start_pos, name.length(), valueUtf8);
+        }
 
-        virtual std::wstring getFileName() const;
-        virtual void setFileName( std::wstring value );
+        if ((start_pos = m_Path.find("//")) != std::string::npos) {
+            m_Path.replace(start_pos, 2, "/");
+        }
+    }
 
-        virtual std::wstring getContentType() const;
-        virtual void setContentType( std::wstring value );
+    void HttpRequestData::addQueryParam(const std::string& name, const std::wstring& value)
+    {
+        m_QueryParams.emplace(name, std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(value));
+    }
 
-        virtual std::shared_ptr<std::istream> getData() const;
-        virtual void setData( const std::shared_ptr<std::istream>& value );
+    void HttpRequestData::addHeader(const std::string& name, const std::wstring& value)
+    {
+        m_Headers.emplace(name, std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(value));
+    }
 
-        virtual void writeTo( std::ostream& stream );
-
-    protected:
-        std::wstring m_ContentDisposition;
-        std::wstring m_Name;
-        std::wstring m_FileName;
-        std::wstring m_ContentType;
-        std::shared_ptr<std::istream> m_Data;
-    };
+    void HttpRequestData::setMethod(const std::string&& method)
+    {
+         m_Method = std::move(method);
+    }
 }

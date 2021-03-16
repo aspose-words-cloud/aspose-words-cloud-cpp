@@ -26,7 +26,7 @@
 #pragma once
 #include <string>
 
-namespace aspose::words::cloud::api {
+namespace aspose::words::cloud {
     class  ApiConfiguration
     {
     public:
