@@ -29,8 +29,10 @@ namespace aspose::words::cloud::api {
     WordsApi::WordsApi(std::shared_ptr<ApiConfiguration> configuration)
         : m_ApiClient(std::make_shared<ApiClient>(configuration)) { }
 
-    void WordsApi::acceptAllRevisions(std::shared_ptr<aspose::words::cloud::api::models::requests::AcceptAllRevisionsRequest> request)
+    std::shared_ptr<aspose::words::cloud::responses::AcceptAllRevisionsResponse> WordsApi::acceptAllRevisions(std::shared_ptr<aspose::words::cloud::requests::AcceptAllRevisionsRequest> request)
     {
-        //m_ApiClient->executeSync( request->createHttpRequest() );
+        auto response = std::make_shared< aspose::words::cloud::responses::AcceptAllRevisionsResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        return response;
     }
 }

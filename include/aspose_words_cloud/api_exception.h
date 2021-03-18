@@ -36,15 +36,15 @@ namespace aspose::words::cloud {
         ApiException(
             int errorCode,
             const std::wstring& message,
-            std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response = nullptr);
+            std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > response = nullptr);
 
-        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > getResponse() const;
+        std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > getResponse() const;
         int getErrorCode() const;
         const std::wstring& getMessage() const;
 
     protected:
         int m_ErrorCode;
         const std::wstring& m_Message;
-        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > m_Response;
+        std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > m_Response;
     };
 }

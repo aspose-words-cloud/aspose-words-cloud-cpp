@@ -26,6 +26,7 @@
 #pragma once
 #include "aspose_words_cloud/api_client.h"
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
+#include "aspose_words_cloud/responses/accept_all_revisions_response.h"
 
 namespace aspose::words::cloud::api {
     class WordsApi
@@ -40,7 +41,7 @@ namespace aspose::words::cloud::api {
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password for opening an encrypted document.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
-        void acceptAllRevisions(std::shared_ptr<aspose::words::cloud::api::models::requests::AcceptAllRevisionsRequest> request);
+        std::shared_ptr<aspose::words::cloud::responses::AcceptAllRevisionsResponse> acceptAllRevisions(std::shared_ptr<aspose::words::cloud::requests::AcceptAllRevisionsRequest> request);
 
     public:
         WordsApi(std::shared_ptr<ApiConfiguration> configuration);

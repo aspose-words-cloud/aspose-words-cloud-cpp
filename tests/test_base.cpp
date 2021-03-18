@@ -23,161 +23,91 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "test_base.h"
+#include <filesystem>
+#include <random>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include "./test_base.h"
+#include "../thirdparty/json.hpp"
 
-namespace fs = std::filesystem;
-
-std::wstring get_file_text_as_string(const fs::path& file)
+std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
 {
-#ifdef _UTF16_STRINGS
-	using ifstream_t = fs::wifstream;
-#else
-	using ifstream_t = fs::ifstream;
-#endif
+    std::wstring credentials;
+    InfrastructureTest::getFileText(getSdkRoot() + L"/settings/servercreds.json", credentials);
 
-	ifstream_t fileStream{ file };
-
-	if (!fileStream.is_open())
-	{
-		return nullptr;
-	}
-
-	utility::stringstream_t buffer;
-	buffer << fileStream.rdbuf();
-	return buffer.str();
+    auto fileJson = ::nlohmann::json::parse(credentials);
+    return std::make_shared<ApiConfiguration>(
+        fileJson["ClientId"].get<std::wstring>(),
+        fileJson["ClientSecret"].get<std::wstring>(),
+        fileJson["BaseUrl"].get<std::wstring>()
+    );
 }
 
-
-std::shared_ptr<ApiConfiguration> get_config()
+void InfrastructureTest::SetUp()
 {
-	std::wstring credentials;
-	credentials = get_file_text_as_string({ fs::path{ TEST_ROOT }.parent_path() / "servercreds.json" });
-	web::json::value fileJson = web::json::value::parse(credentials);
-
-	auto newConfig = std::make_shared<ApiConfiguration>();
-	newConfig->setClientSecret(fileJson[_XPLATSTR("ClientSecret")].as_string());
-	newConfig->setClientId(fileJson[_XPLATSTR("ClientId")].as_string());
-
-	if (fileJson.has_string_field(_XPLATSTR("BaseUrl"))) {
-		newConfig->setBaseUrl(fileJson[_XPLATSTR("BaseUrl")].as_string());
-	}
-
-	auto httpConfig = newConfig->getHttpConfig();
-	httpConfig.set_timeout(std::chrono::seconds(60));
-
-	return newConfig;
+    m_Config = getConfig();
 }
 
-fs::path InfrastructureTest::get_sdk_root()
+std::wstring InfrastructureTest::getSdkRoot()
 {
-    return fs::path{TEST_ROOT}.normalize();
+    return std::filesystem::current_path().wstring();
 }
 
-std::wstring InfrastructureTest::get_data_folder()
+std::wstring InfrastructureTest::getDataDir(const std::wstring& subfolder) const
 {
-    return {};
+    return localTestDataFolder + L"/" + subfolder;
 }
 
-std::wstring InfrastructureTest::path_combine(const fs::path& base, const std::wstring& stringToAdd)
+std::wstring InfrastructureTest::createRandomGuid() const
 {
-    return utility::conversions::to_string_t((base / stringToAdd).generic_string());
+    static std::random_device dev;
+    static std::mt19937 rng(dev());
+
+    std::uniform_int_distribution<int> dist(0, 15);
+
+    const wchar_t* v = L"0123456789abcdef";
+    const bool dash[] = { 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 };
+
+    std::wstring res;
+    for (int i = 0; i < 16; i++) {
+        if (dash[i]) res += L"-";
+        res += v[dist(rng)];
+        res += v[dist(rng)];
+    }
+    return res;
 }
 
-std::wstring InfrastructureTest::path_combine_url(const std::wstring& base, const std::wstring& stringToAdd)
+void InfrastructureTest::getFileText(const std::wstring& file, std::wstring& result)
 {
-	return base + _XPLATSTR("/") + stringToAdd;
-}
-
-std::wstring InfrastructureTest::cutFileExtension(const std::filesystem::path& filename)
-{
-    return utility::conversions::to_string_t(filename.stem().generic_string());
-}
-
-fs::path InfrastructureTest::get_data_dir(const fs::path& subfolder) const
-{
-    return LocalTestDataFolder / fs::path{subfolder};
-}
-
-std::wstring InfrastructureTest::create_random_guid() const
-{
-    std::uuids::uuid uuid = std::uuids::random_generator()();
-    return std::lexical_cast< std::wstring >(uuid);
-}
-
-std::shared_ptr<HttpContent> InfrastructureTest::generate_http_content_from_file(const fs::path& filePath,
-	const std::wstring& filename, const std::wstring& contentType)
-{
-    if (!fs::exists(filePath))
+    std::wifstream fileStream(file);
+    if (!fileStream.good())
     {
-        ucerr << _XPLATSTR("Cannot open file ") << filePath << _XPLATSTR(" to upload\n");
+        throw L"Failed to open file: " + file;
     }
 
-    auto content = std::make_shared<HttpContent>();
-	auto stream = std::make_shared<fs::ifstream>(filePath, std::ifstream::binary);
-	content->setData(stream);
-	content->setContentDisposition(_XPLATSTR("form-data"));
-
-	content->setContentType(contentType);
-
-	if (!filename.empty())
-		content->setFileName(filename);
-
-	return content;
+    std::wstringstream buffer;
+    buffer << fileStream.rdbuf();
+    result = buffer.str();
 }
 
-std::wstring InfrastructureTest::get_file_text(const fs::path& file)
+void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath)
 {
-	return get_file_text_as_string(file);
+    //std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName);
+    //std::shared_ptr<WordsApi> api = get_api();
+    //auto result = api->uploadFile(request).get();
 }
 
-std::vector<fs::path> InfrastructureTest::get_directory_files(const std::filesystem::path& dir)
+std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfiguration() const
 {
-    const auto dirIterator = fs::directory_iterator{dir};
-    std::vector<fs::path> result;
+    return m_Config;
+}
 
-    std::transform(begin(dirIterator), end(dirIterator), std::back_inserter(result),
-        [](const fs::directory_entry& entry)
+std::shared_ptr<api::WordsApi> InfrastructureTest::getApi()
+{
+    if (!m_wordsApi)
     {
-        return entry.path();
-    });
-
-    return result;
-}
-
-void InfrastructureTest::UploadFileToStorage(const std::wstring& remoteName, const fs::path& filePath)
-{
-	std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName, std::none);
-	std::shared_ptr<WordsApi> api = get_api();
-	auto result = api->uploadFile(request).get();
-}
-
-
-bool InfrastructureTest::DoesFileExist(const std::wstring& remoteName)
-{
-	try
-	{
-		std::shared_ptr<DownloadFileRequest> request = std::make_shared<DownloadFileRequest>(remoteName, std::none, std::none);
-		get_api()->downloadFile(request).get();
-		return true;
-	}
-	catch (ApiException& exception)
-	{
-		if (exception.error_code().value() == 404)
-			return false;
-		throw;
-	}
-}
-
-std::shared_ptr<ApiConfiguration> InfrastructureTest::get_configuration() const
-{
-	return m_Config;
-}
-
-std::shared_ptr<WordsApi> InfrastructureTest::get_api()
-{
-	if (!api)
-	{
-		api = std::make_shared<WordsApi>(get_configuration());
-	}
-	return api;
+        m_wordsApi = std::make_shared<api::WordsApi>(getConfiguration());
+    }
+    return m_wordsApi;
 }

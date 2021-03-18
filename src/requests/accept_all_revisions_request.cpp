@@ -26,7 +26,7 @@
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
 #include "aspose_words_cloud/responses/accept_all_revisions_response.h"
 
-namespace aspose::words::cloud::api::models::requests {
+namespace aspose::words::cloud::requests {
     AcceptAllRevisionsRequest::AcceptAllRevisionsRequest(
         const std::wstring& name,
         const std::optional<std::wstring>& folder,
@@ -86,12 +86,5 @@ namespace aspose::words::cloud::api::models::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }
-
-    std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase > createResponse()
-    {
-        return std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase >(
-            new aspose::words::cloud::api::models::responses::AcceptAllRevisionsResponse()
-        );
     }
 }

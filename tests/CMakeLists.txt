@@ -28,7 +28,7 @@
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 
 project(aspose_words_cloud_test CXX)
-file(GLOB TEST_SOURCES *.cpp *.h)
+file(GLOB_RECURSE TEST_SOURCES *.cpp *.h)
 add_executable(aspose_words_cloud_test ${TEST_SOURCES})
 add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)

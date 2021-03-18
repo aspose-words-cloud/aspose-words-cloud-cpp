@@ -29,7 +29,7 @@
 #include <memory>
 #include <string>
 
-namespace aspose::words::cloud::api::models {
+namespace aspose::words::cloud::models {
     class ModelBase
     {
     public:

@@ -25,7 +25,7 @@
 
 #include "aspose_words_cloud/responses/accept_all_revisions_response.h"
 
-namespace aspose::words::cloud::api::models::responses {
+namespace aspose::words::cloud::responses {
     std::shared_ptr< std::istream > AcceptAllRevisionsResponse::getResult() const
     {
         return m_Result;

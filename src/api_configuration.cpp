@@ -27,44 +27,20 @@
 #include "aspose_words_cloud/api_exception.h"
 
 namespace aspose::words::cloud {
-    ApiConfiguration::ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret)
-    {
-        setClientId(clientId);
-        setClientSecret(clientSecret);
-    }
+    ApiConfiguration::ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret, const std::wstring& baseUrl)
+        : m_ClientId(clientId), m_ClientSecret(clientSecret), m_BaseUrl(baseUrl) { }
 
     const std::wstring& ApiConfiguration::getBaseUrl() const
     {
         return m_BaseUrl;
     }
 
-    void ApiConfiguration::setBaseUrl( const std::wstring& value )
-    {
-        m_BaseUrl = value;
-    }
-
     const std::wstring& ApiConfiguration::getClientId() const{
-        return m_clientId;
-    }
-
-    void ApiConfiguration::setClientId(const std::wstring& clientId){
-        if (clientId.empty()) {
-            throw ApiException(400, L"ClientId could not be an empty string.");
-        }
-
-        m_clientId = clientId;
+        return m_ClientId;
     }
 
     const std::wstring& ApiConfiguration::getClientSecret() const {
-        return m_clientSecret;
-    }
-
-    void ApiConfiguration::setClientSecret(const std::wstring& clientSecret){
-        if (clientSecret.empty()) {
-            throw ApiException(400, L"ClientSecret could not be an empty string.");
-        }
-
-        m_clientSecret = clientSecret;
+        return m_ClientSecret;
     }
 
     bool ApiConfiguration::isDebugMode() const {

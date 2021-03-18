@@ -22,8 +22,8 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-
-#include "test_base.h"
+/*
+#include "./test_base.h"
 #include <list>
 #include <fstream>
 #include <regex>
@@ -37,7 +37,7 @@ namespace fs = std::filesystem;
 /// </summary>
 class ReadmeTest : public InfrastructureTest {
 protected:
-	const std::wstring dataFolder = path_combine_url(remoteBaseTestDataFolder, STCONVERT("Readme"));
+	const std::wstring dataFolder = path_combine_url(remoteBaseTestDataFolder, L"Readme");
 	void WriteCodeToReadme();
 };
 
@@ -45,9 +45,9 @@ protected:
 /// Test for getting range text
 /// </summary>
 TEST_F(ReadmeTest, TestReadmeCode) {
-	auto remoteName = STCONVERT("ReadmeCode.docx");
+	auto remoteName = L"ReadmeCode.docx";
 	auto remotePath = path_combine_url(dataFolder, remoteName);
-	auto localPath = path_combine(get_data_dir(commonFolder), STCONVERT("test_multi_pages.docx"));
+	auto localPath = path_combine(get_data_dir(commonFolder), L"test_multi_pages.docx");
 
 	// get config settings
 	auto tesConfig = get_config();
@@ -72,7 +72,7 @@ TEST_F(ReadmeTest, TestReadmeCode) {
 	content->setContentDisposition(_XPLATSTR("form-data"));
 
 	// upload file
-	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath, std::none);
+	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath);
 	api->uploadFile(uploadRequest).get();
 
 	// call one of API methods
@@ -85,11 +85,11 @@ TEST_F(ReadmeTest, TestReadmeCode) {
 	WriteCodeToReadme();
 }
 
-void ReadmeTest::WriteCodeToReadme() {
+void ReadmeTest::WriteCodeToReadme() {*/
 	// set regex patterns
-	auto startPatern = R"(^\s*// Start README example\s*$)";
-	auto endPattern = R"(^\s*// End README example\s*$)";
-
+	//auto startPatern = R"(^\s*// Start README example\s*$)";
+	//auto endPattern = R"(^\s*// End README example\s*$)";
+    /*
 	// set paths
 	fs::path readmePath = { fs::path{ TEST_ROOT }.parent_path() / "README.md" };
 	fs::path sourcePath = { fs::path{ TEST_ROOT } / "readmeTest.cpp" };
@@ -155,4 +155,4 @@ void ReadmeTest::WriteCodeToReadme() {
 	std::ofstream readmeOutputFile(readmePath.string());
 	for (const auto& line : newReadmeLines) readmeOutputFile << line << "\n";
 	readmeOutputFile.close();
-}
+}*/

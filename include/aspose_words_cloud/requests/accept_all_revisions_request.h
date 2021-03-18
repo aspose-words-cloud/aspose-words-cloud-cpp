@@ -26,7 +26,7 @@
 #pragma once
 #include "./request_model_base.h"
 
-namespace aspose::words::cloud::api::models::requests {
+namespace aspose::words::cloud::requests {
     class AcceptAllRevisionsRequest : public RequestModelBase {
     public:
         AcceptAllRevisionsRequest(
@@ -46,7 +46,6 @@ namespace aspose::words::cloud::api::models::requests {
         const std::optional<std::wstring>& getDestFileName() const;
 
         virtual std::shared_ptr< HttpRequestData > createHttpRequest() const override;
-        virtual std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase > createResponse() override;
 
     private:
         const std::wstring m_Name;

@@ -26,7 +26,7 @@
 #include "aspose_words_cloud/models/words_api_error_response.h"
 #include "../thirdparty/json.hpp"
 
-namespace aspose::words::cloud::api::models {
+namespace aspose::words::cloud::models {
     void WordsApiErrorResponse::toJson(void* jsonIfc) const
     {
         WordsResponse::toJson(jsonIfc);

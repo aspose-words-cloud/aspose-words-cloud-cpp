@@ -26,7 +26,7 @@
 #pragma once
 #include "./response_model_base.h"
 
-namespace aspose::words::cloud::api::models::responses {
+namespace aspose::words::cloud::responses {
     class AcceptAllRevisionsResponse : public ResponseModelBase {
     public: 
         virtual ~AcceptAllRevisionsResponse() = default;

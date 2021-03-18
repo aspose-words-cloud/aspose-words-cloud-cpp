@@ -28,7 +28,7 @@
 #include "api_error.h"
 #include "words_response.h"
 
-namespace aspose::words::cloud::api::models {
+namespace aspose::words::cloud::models {
     /// <summary>
     /// The REST response with an API error.
     /// </summary>

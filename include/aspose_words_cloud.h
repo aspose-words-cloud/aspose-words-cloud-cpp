@@ -27,5 +27,7 @@
 
 #include "aspose_words_cloud/api_exception.h"
 #include "aspose_words_cloud/api_configuration.h"
-#include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/models/api_error.h"
+#include "aspose_words_cloud/models/words_api_error_response.h"
+#include "aspose_words_cloud/models/words_response.h"
 #include "aspose_words_cloud/api/words_api.h"

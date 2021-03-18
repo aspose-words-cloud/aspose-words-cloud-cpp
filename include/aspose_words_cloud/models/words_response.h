@@ -26,7 +26,7 @@
 #pragma once
 #include "./model_base.h"
 
-namespace aspose::words::cloud::api::models {
+namespace aspose::words::cloud::models {
     /// <summary>
     /// The base class for all responses.
     /// </summary>

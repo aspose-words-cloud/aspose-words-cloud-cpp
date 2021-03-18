@@ -26,7 +26,7 @@
 #include "aspose_words_cloud/models/api_error.h"
 #include "../thirdparty/json.hpp"
 
-namespace aspose::words::cloud::api::models {
+namespace aspose::words::cloud::models {
     void ApiError::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);

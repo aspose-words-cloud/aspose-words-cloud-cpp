@@ -30,28 +30,22 @@ namespace aspose::words::cloud {
     class  ApiConfiguration
     {
     public:
-        ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret);
+        ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret, const std::wstring& baseUrl = L"https://api.aspose.cloud");
         virtual ~ApiConfiguration() = default;
 
         const std::wstring& getBaseUrl() const;
-        void setBaseUrl( const std::wstring& value );
-
         const std::wstring& getClientId() const;
-        void setClientId( const std::wstring& apiSid );
-
         const std::wstring& getClientSecret() const;
-        void setClientSecret( const std::wstring& clientSecret );
+        const std::wstring& getApiVersion() const;
 
         bool isDebugMode() const;
         void setDebugMode(bool debug);
 
-        const std::wstring& getApiVersion() const;
-
     protected:
         bool m_DebugMode = false;
         const std::wstring m_Version = L"v4.0";
-        std::wstring m_BaseUrl = L"https://api.aspose.cloud";
-        std::wstring m_clientSecret;
-        std::wstring m_clientId;
+        std::wstring m_BaseUrl;
+        std::wstring m_ClientSecret;
+        std::wstring m_ClientId;
     };
 }

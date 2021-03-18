@@ -23,15 +23,15 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include "test_base.h"
-
+#include "./test_base.h"
+/*
 /// <summary>
 /// URL encode test
 /// </summary>
 class UrlEncodeTest : public InfrastructureTest {
 protected:
 	std::wstring get_data_folder() override {
-		return path_combine_url(STCONVERT("Temp/SdkTests/TestData"), STCONVERT("DocumentElements/Bookmarks"));
+		return path_combine_url(L"Temp/SdkTests/TestData", L"DocumentElements/Bookmarks");
 	}
 };
 
@@ -40,17 +40,16 @@ protected:
 /// </summary>
 TEST_F(UrlEncodeTest, TestUrlEncode) {
 	std::wstring localName = STCONVERT("test_multi_pages.docx"),
-		remoteName = web::uri::encode_uri(STCONVERT("[“Test_Two,_Inc.”]-_83(b)Election([“Bill_Gates”]).docx"), web::uri::components::fragment),
+		remoteName = web::uri::encode_uri(L"[“Test_Two,_Inc.”]-_83(b)Election([“Bill_Gates”]).docx", web::uri::components::fragment),
 		fullName = path_combine(get_data_folder(), remoteName);
 	std::wstring filePath = path_combine(get_data_dir(commonFolder), localName);
 
 	UploadFileToStorage(fullName, filePath);
 	std::shared_ptr<GetBookmarksRequest> req =
-		std::make_shared<GetBookmarksRequest>(remoteName, get_data_folder(), std::none,
-			std::none, std::none);
+		std::make_shared<GetBookmarksRequest>(remoteName, get_data_folder());
 
 	auto requestTask = get_api()->getBookmarks(req);
 
 	AsposeResponse<BookmarksResponse> actual = requestTask.get();
 	ASSERT_EQ(200, actual.httpResponse->status_code());
-}
+}*/

@@ -31,12 +31,11 @@
 #include "aspose_words_cloud/http_request_data.h"
 #include "aspose_words_cloud/responses/response_model_base.h"
 
-namespace aspose::words::cloud::api::models::requests {
+namespace aspose::words::cloud::requests {
     class RequestModelBase
     {
     public:
         virtual ~RequestModelBase() = default;
         virtual std::shared_ptr< HttpRequestData > createHttpRequest() const = 0;
-        virtual std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase > createResponse() = 0;
     };
 }

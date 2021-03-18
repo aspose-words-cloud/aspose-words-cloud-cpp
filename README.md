@@ -219,11 +219,11 @@ Typical usage of the SDK in code follows this template:
 	content->setContentDisposition(_XPLATSTR("form-data"));
 
 	// upload file
-	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath, std::none);
+	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath);
 	api->uploadFile(uploadRequest).get();
 
 	// call one of API methods
-	auto request = std::make_shared<GetSectionsRequest>(remoteName, dataFolder, std::none, std::none, std::none);
+	auto request = std::make_shared<GetSectionsRequest>(remoteName, dataFolder);
 	auto response = api->getSections(request).get();
 	auto sections = response.body->getSections();
 

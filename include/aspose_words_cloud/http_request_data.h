@@ -45,10 +45,10 @@ namespace aspose::words::cloud {
         void addQueryParam(const std::wstring& name, const std::wstring& value);
         void addHeader(const std::wstring& name, const std::wstring& value);
         void setMethod(HttpRequestMethod method);
-        void setBody(const aspose::words::cloud::api::models::ModelBase& model);
+        void setBody(const aspose::words::cloud::models::ModelBase& model);
         void setBody(const std::istream& stream);
         void setBody(const std::wstring& value);
-        void addFormDataParam(const std::wstring& name, const aspose::words::cloud::api::models::ModelBase& model);
+        void addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model);
         void addFormDataParam(const std::wstring& name, const std::istream& stream);
         void addFormDataParam(const std::wstring& name, const std::wstring& value);
         void setContentType(const std::string& value);

@@ -30,8 +30,8 @@
 /// </summary>
 class RevisionsTests : public InfrastructureTest {
 protected:
-    std::wstring remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentActions/Revisions");
-    std::wstring localFile = STCONVERT("Common/test_multi_pages.docx");
+    std::wstring remoteDataFolder = remoteBaseTestDataFolder + L"/DocumentActions/Revisions";
+    std::wstring localFile = L"Common/test_multi_pages.docx";
 
 };
 
@@ -39,21 +39,22 @@ protected:
 /// Test for accepting revisions in document.
 /// </summary>
 TEST_F(RevisionsTests, TestAcceptAllRevisions) {
-    std::wstring remoteFileName = STCONVERT("TestAcceptAllRevisions.docx");
+    std::wstring remoteFileName = L"TestAcceptAllRevisions.docx";
 
-    UploadFileToStorage(
-        remoteDataFolder + STCONVERT("/") + remoteFileName,
+    /*UploadFileToStorage(
+        remoteDataFolder + L"/" + remoteFileName,
         path_combine(LocalTestDataFolder, localFile)
-    );
+    );*/
 
-    std::shared_ptr< AcceptAllRevisionsRequest > request(new AcceptAllRevisionsRequest(
+    std::shared_ptr<requests::AcceptAllRevisionsRequest> request(new requests::AcceptAllRevisionsRequest(
         remoteFileName,
         remoteDataFolder,
-        std::none,
-        std::none,
-        std::none,
-        baseTestOutPath + STCONVERT("/") + remoteFileName
+        std::nullopt,
+        std::nullopt,
+        std::nullopt,
+        baseTestOutPath + L"/" + remoteFileName
     ));
 
-   get_api()->acceptAllRevisions(request).get();
+    auto actual = getApi()->acceptAllRevisions(request);
+    ASSERT_EQ(200, actual->getStatusCode());
 }

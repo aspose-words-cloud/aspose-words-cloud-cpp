@@ -30,15 +30,13 @@
 #pragma warning(pop)
 
 namespace aspose::words::cloud {
-    ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
-        : m_Configuration(configuration)
+    std::array<std::pair<std::string, std::string>, 2> m_DefaultHeaders =
     {
-        std::string baseUrlUtf8;
-        utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
-        m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
-    }
+        std::make_pair<std::string, std::string>("x-aspose-client-version", "21.3"),
+        std::make_pair<std::string, std::string>("x-aspose-client", "C++ SDK")
+    };
 
-    inline ::httplib::Result executeAsyncInternal(
+    inline ::httplib::Result callInternal(
         std::shared_ptr<::httplib::Client> client,
         HttpRequestMethod method,
         const char* path,
@@ -66,9 +64,17 @@ namespace aspose::words::cloud {
         throw ApiException(400, L"Invalid http method type.");
     }
 
+    ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
+        : m_Configuration(configuration)
+    {
+        std::string baseUrlUtf8;
+        utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
+        m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
+    }
+
     void ApiClient::call(
         std::shared_ptr<HttpRequestData> httpRequest,
-        aspose::words::cloud::api::models::responses::ResponseModelBase& response)
+        aspose::words::cloud::responses::ResponseModelBase& response)
     {
         std::wstring path(httpRequest->getFullPath());
         std::string pathUtf8;
@@ -85,7 +91,7 @@ namespace aspose::words::cloud {
         for (auto& pair : m_DefaultHeaders)
             headers.emplace(pair.first, pair.second);
 
-        ::httplib::Result httpResponse = executeAsyncInternal(
+        ::httplib::Result httpResponse = callInternal(
             m_HttpClient, 
             httpRequest->getMethod(), 
             pathUtf8.c_str(), headers, 

@@ -25,7 +25,7 @@
 
 #include "aspose_words_cloud/responses/response_model_base.h"
 
-namespace aspose::words::cloud::api::models::responses {
+namespace aspose::words::cloud::responses {
     void ResponseModelBase::setStatusCode(int statusCode)
     {
         m_StatusCode = statusCode;

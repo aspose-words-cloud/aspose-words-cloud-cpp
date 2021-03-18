@@ -28,7 +28,7 @@
 #include <memory>
 #include <string>
 
-namespace aspose::words::cloud::api::models::responses {
+namespace aspose::words::cloud::responses {
     class ResponseModelBase
     {
     public:

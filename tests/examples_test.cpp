@@ -22,12 +22,12 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include "WordsApi.h"
-using namespace aspose::words::cloud::api;
-#include "TestBase.h"
+#include "aspose_words_cloud.h"
+using namespace aspose::words::cloud;
+#include "./test_base.h"
 
 class ExamplesTest : public InfrastructureTest {
 protected:
-    std::filesystem::path LocalTestExamplesFolder{get_sdk_root()/"ExamplesData"};
+    std::wstring localTestExamplesFolder = getSdkRoot() + L"/ExamplesData";
 };
 

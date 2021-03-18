@@ -29,10 +29,10 @@ namespace aspose::words::cloud {
     ApiException::ApiException(
         int errorCode,
         const std::wstring& message,
-        std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > response
+        std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > response
     ) : m_ErrorCode(errorCode), m_Message(message), m_Response(response) {}
 
-    std::shared_ptr< aspose::words::cloud::api::models::WordsApiErrorResponse > ApiException::getResponse() const
+    std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > ApiException::getResponse() const
     {
         return m_Response;
     }

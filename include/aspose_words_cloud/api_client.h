@@ -44,7 +44,7 @@ namespace aspose::words::cloud {
 
         void call(
             std::shared_ptr< HttpRequestData > httpRequest,
-            aspose::words::cloud::api::models::responses::ResponseModelBase& response);
+            aspose::words::cloud::responses::ResponseModelBase& response);
 
     private:
         void requestToken();
@@ -53,10 +53,5 @@ namespace aspose::words::cloud {
         std::shared_ptr<::httplib::Client> m_HttpClient;
         std::shared_ptr<ApiConfiguration> m_Configuration;
         std::wstring m_AccessToken;
-        std::array<std::pair<std::string, std::string>, 2> m_DefaultHeaders =
-        {
-            std::make_pair<std::string, std::string>("x-aspose-client-version", "21.3"),
-            std::make_pair<std::string, std::string>("x-aspose-client", "C++ SDK")
-        };
     };
 }

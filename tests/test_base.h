@@ -23,19 +23,12 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#ifndef TEST_BASE
-#define TEST_BASE
-
+#pragma once
 #include <gtest/gtest.h>
-#include "words_api.h"
+#include <iostream>
+#include "aspose_words_cloud.h"
 
-#define STCONVERT(s) utility::conversions::to_string_t(s)
-
-using streambuf_t = std::basic_streambuf<utility::char_t>;
-
-using namespace aspose::words::cloud::api;
-
-std::shared_ptr<ApiConfiguration> get_config();
+using namespace aspose::words::cloud;
 
 template<typename T>
 bool IsNotNull(std::vector<T> vector) { return true; }
@@ -46,46 +39,30 @@ bool IsNotNull(std::shared_ptr<T> ptr) { return bool(ptr); }
 class InfrastructureTest : public ::testing::Test
 {
 protected:
-    static std::filesystem::path get_sdk_root();
+    static std::wstring getSdkRoot();
 
-    std::filesystem::path LocalTestDataFolder{get_sdk_root()/"TestData"};
+    std::wstring localTestDataFolder = getSdkRoot() + L"/TestData";
 
-    virtual std::wstring get_data_folder();
+    std::shared_ptr<ApiConfiguration> getConfig();
 
-	void SetUp() override
-    {
-		m_Config = get_config();
-	};
-    static std::wstring path_combine(const std::filesystem::path& base, const std::wstring& stringToAdd);
-    static std::wstring path_combine_url(const std::wstring& base, const std::wstring& stringToAdd);
-    static std::wstring cutFileExtension(const std::filesystem::path& filename);
-    std::filesystem::path get_data_dir(const std::filesystem::path& subfolder) const;
+    virtual void SetUp() override;
 
-    std::wstring create_random_guid() const;
-
-    static std::shared_ptr<HttpContent> generate_http_content_from_file(const std::filesystem::path& filePath,
-        const std::wstring& filename = {}, const std::wstring& contentType = {});
-
-    static std::wstring get_file_text(const std::filesystem::path& file);
-
-    static std::vector<std::filesystem::path> get_directory_files(const std::filesystem::path& dir);
+    std::wstring getDataDir(const std::wstring& subfolder) const;
+    std::wstring createRandomGuid() const;
+    void getFileText(const std::wstring& file, std::wstring& result);
+    void uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath);
 
 public:
-	void UploadFileToStorage(const std::wstring& path, const std::filesystem::path& filePath);
-	bool DoesFileExist(const std::wstring& path);
-
-public:
-	std::shared_ptr<ApiConfiguration> get_configuration() const;
-	std::shared_ptr<WordsApi> get_api();
+    std::shared_ptr<ApiConfiguration> getConfiguration() const;
+    std::shared_ptr<api::WordsApi> getApi();
 
 protected:
-    const std::wstring baseTestOutPath{_XPLATSTR("TestOut/Cpp")};
-    const std::wstring remoteBaseTestDataFolder{_XPLATSTR("Temp/SdkTests/Cpp/TestData")};
-    const std::filesystem::path commonFolder{"Common"};
+    const std::wstring baseTestOutPath = L"TestOut/Cpp";
+    const std::wstring remoteBaseTestDataFolder = L"Temp/SdkTests/Cpp/TestData";
+    const std::wstring commonFolder = L"Common";
 
 private:
-	std::shared_ptr<ApiClient> client;
-	std::shared_ptr<WordsApi> api;
-	std::shared_ptr<ApiConfiguration> m_Config;
+    std::shared_ptr<ApiClient> m_Client;
+    std::shared_ptr<api::WordsApi> m_wordsApi;
+    std::shared_ptr<ApiConfiguration> m_Config;
 };
-#endif
