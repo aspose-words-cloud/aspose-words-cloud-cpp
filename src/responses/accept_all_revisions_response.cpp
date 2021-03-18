@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="words_response.h">
+* <copyright company="Aspose" file="accept_all_revisions_response.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,32 +23,16 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#pragma once
-#include "./model_base.h"
+#include "aspose_words_cloud/responses/accept_all_revisions_response.h"
 
-namespace aspose::words::cloud::api::models {
-    /// <summary>
-    /// The base class for all responses.
-    /// </summary>
-    class WordsResponse : public ModelBase
+namespace aspose::words::cloud::api::models::responses {
+    std::shared_ptr< std::istream > AcceptAllRevisionsResponse::getResult() const
     {
-    public:
-        virtual ~WordsResponse() = default;
-        virtual void toJson(void* jsonIfc) const override;
-        virtual void fromJson(const void* jsonIfc) override;
+        return m_Result;
+    }
 
-        /// <summary>
-        /// Gets or sets the request Id.
-        /// </summary>
-        std::shared_ptr< std::wstring >& getRequestId();
+    void AcceptAllRevisionsResponse::deserialize(const std::string& response)
+    {
 
-        /// <summary>
-        /// Gets or sets the request Id.
-        /// </summary>
-        void setRequestId(std::shared_ptr< std::wstring >& value);
-
-    protected:
-        std::shared_ptr< std::wstring > m_RequestId;
-    };
+    }
 }
-

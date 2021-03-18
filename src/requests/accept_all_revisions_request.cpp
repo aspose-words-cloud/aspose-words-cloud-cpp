@@ -24,22 +24,23 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
+#include "aspose_words_cloud/responses/accept_all_revisions_response.h"
 
 namespace aspose::words::cloud::api::models::requests {
     AcceptAllRevisionsRequest::AcceptAllRevisionsRequest(
-        const std::wstring&& name,
-        const std::optional<std::wstring>&& folder,
-        const std::optional<std::wstring>&& storage,
-        const std::optional<std::wstring>&& loadEncoding,
-        const std::optional<std::wstring>&& password,
-        const std::optional<std::wstring>&& destFileName
+        const std::wstring& name,
+        const std::optional<std::wstring>& folder,
+        const std::optional<std::wstring>& storage,
+        const std::optional<std::wstring>& loadEncoding,
+        const std::optional<std::wstring>& password,
+        const std::optional<std::wstring>& destFileName
     ) : 
-        m_Name(std::move(name)),
-        m_Folder(std::move(folder)),
-        m_Storage(std::move(storage)),
-        m_LoadEncoding(std::move(loadEncoding)),
-        m_Password(std::move(password)),
-        m_DestFileName(std::move(destFileName))
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName)
     {
     }
 
@@ -73,17 +74,24 @@ namespace aspose::words::cloud::api::models::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr<HttpRequestData> AcceptAllRevisionsRequest::createHttpRequest() const
+    std::shared_ptr< HttpRequestData > AcceptAllRevisionsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
-        result->setMethod("put");
-        result->setPath("/words/{name}/revisions/acceptAll");
-        result->setPathParam("{name}", m_Name);
-        if (m_Folder) result->addQueryParam("folder", *m_Folder);
-        if (m_Storage) result->addQueryParam("storage", *m_Storage);
-        if (m_LoadEncoding) result->addQueryParam("loadEncoding", *m_LoadEncoding);
-        if (m_Password) result->addQueryParam("password", *m_Password);
-        if (m_DestFileName) result->addQueryParam("destFileName", *m_DestFileName);
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/{name}/revisions/acceptAll");
+        result->setPathParam(L"{name}", m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase > createResponse()
+    {
+        return std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase >(
+            new aspose::words::cloud::api::models::responses::AcceptAllRevisionsResponse()
+        );
     }
 }

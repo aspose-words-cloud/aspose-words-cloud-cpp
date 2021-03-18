@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "model_base.h"
+#include "./model_base.h"
 #include "api_error.h"
 #include "words_response.h"
 

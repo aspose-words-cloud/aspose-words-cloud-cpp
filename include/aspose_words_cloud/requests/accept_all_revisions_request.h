@@ -24,18 +24,18 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "request_model_base.h"
+#include "./request_model_base.h"
 
 namespace aspose::words::cloud::api::models::requests {
     class AcceptAllRevisionsRequest : public RequestModelBase {
     public:
         AcceptAllRevisionsRequest(
-            const std::wstring&& name,
-            const std::optional<std::wstring>&& folder = std::nullopt,
-            const std::optional<std::wstring>&& storage = std::nullopt,
-            const std::optional<std::wstring>&& loadEncoding = std::nullopt,
-            const std::optional<std::wstring>&& password = std::nullopt,
-            const std::optional<std::wstring>&& destFileName = std::nullopt
+            const std::wstring& name,
+            const std::optional<std::wstring>& folder = std::nullopt,
+            const std::optional<std::wstring>& storage = std::nullopt,
+            const std::optional<std::wstring>& loadEncoding = std::nullopt,
+            const std::optional<std::wstring>& password = std::nullopt,
+            const std::optional<std::wstring>& destFileName = std::nullopt
         );
 
         const std::wstring& getName() const;
@@ -45,7 +45,8 @@ namespace aspose::words::cloud::api::models::requests {
         const std::optional<std::wstring>& getPassword() const;
         const std::optional<std::wstring>& getDestFileName() const;
 
-        virtual std::shared_ptr<HttpRequestData> createHttpRequest() const override;
+        virtual std::shared_ptr< HttpRequestData > createHttpRequest() const override;
+        virtual std::shared_ptr< aspose::words::cloud::api::models::responses::ResponseModelBase > createResponse() override;
 
     private:
         const std::wstring m_Name;

@@ -31,6 +31,6 @@ namespace aspose::words::cloud::api {
 
     void WordsApi::acceptAllRevisions(std::shared_ptr<aspose::words::cloud::api::models::requests::AcceptAllRevisionsRequest> request)
     {
-        m_ApiClient->executeSync( request->createHttpRequest() );
+        //m_ApiClient->executeSync( request->createHttpRequest() );
     }
 }

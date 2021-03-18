@@ -24,19 +24,73 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #include "aspose_words_cloud/api_client.h"
+#include "../thirdparty/utf8.h"
+#pragma warning(push, 0) 
+#include "../thirdparty/httplib.h"
+#pragma warning(pop)
 
 namespace aspose::words::cloud {
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
-        : m_Configuration(configuration) { }
-
-    int ApiClient::executeSync(std::shared_ptr<HttpRequestData>)
+        : m_Configuration(configuration)
     {
-        return -1;
+        std::string baseUrlUtf8;
+        utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
+        m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
     }
 
-    void ApiClient::executeAsync(std::shared_ptr<HttpRequestData>, std::function<void(int)>)
+    inline ::httplib::Result executeAsyncInternal(
+        std::shared_ptr<::httplib::Client> client,
+        HttpRequestMethod method,
+        const char* path,
+        const ::httplib::Headers& headers,
+        const std::string& body,
+        const std::string& contentType)
     {
+        if (method == HttpRequestMethod::HttpGET)
+        {
+            return client->Get(path, headers);
+        }
+        else if (method == HttpRequestMethod::HttpPOST)
+        {
+            return client->Post(path, headers, body, contentType.c_str());
+        }
+        else if (method == HttpRequestMethod::HttpPUT)
+        {
+            return client->Put(path, headers, body, contentType.c_str());
+        }
+        else if (method == HttpRequestMethod::HttpDELETE)
+        {
+            return client->Delete(path, headers, body, contentType.c_str());
+        }
 
+        throw ApiException(400, L"Invalid http method type.");
+    }
+
+    void ApiClient::call(
+        std::shared_ptr<HttpRequestData> httpRequest,
+        aspose::words::cloud::api::models::responses::ResponseModelBase& response)
+    {
+        std::wstring path(httpRequest->getFullPath());
+        std::string pathUtf8;
+        ::utf8::utf16to8(path.begin(), path.end(), back_inserter(pathUtf8));
+
+        ::httplib::Headers headers;
+        for (auto& pair : httpRequest->getHeaders())
+        {
+            std::string keyUtf8, valueUtf8;
+            ::utf8::utf16to8(pair.first.begin(), pair.first.end(), back_inserter(keyUtf8));
+            ::utf8::utf16to8(pair.second.begin(), pair.second.end(), back_inserter(valueUtf8));
+            headers.emplace(keyUtf8, valueUtf8);
+        }
+        for (auto& pair : m_DefaultHeaders)
+            headers.emplace(pair.first, pair.second);
+
+        ::httplib::Result httpResponse = executeAsyncInternal(
+            m_HttpClient, 
+            httpRequest->getMethod(), 
+            pathUtf8.c_str(), headers, 
+            httpRequest->getBody(), 
+            httpRequest->getContentType());
     }
 
     void ApiClient::requestToken()

@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="words_response.h">
+* <copyright company="Aspose" file="revisions_test.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -23,32 +23,37 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#pragma once
-#include "./model_base.h"
+#include "../test_base.h"
 
-namespace aspose::words::cloud::api::models {
-    /// <summary>
-    /// The base class for all responses.
-    /// </summary>
-    class WordsResponse : public ModelBase
-    {
-    public:
-        virtual ~WordsResponse() = default;
-        virtual void toJson(void* jsonIfc) const override;
-        virtual void fromJson(const void* jsonIfc) override;
+/// <summary>
+/// Example of how to accept all revisions in document.
+/// </summary>
+class RevisionsTests : public InfrastructureTest {
+protected:
+    std::wstring remoteDataFolder = remoteBaseTestDataFolder + STCONVERT("/DocumentActions/Revisions");
+    std::wstring localFile = STCONVERT("Common/test_multi_pages.docx");
 
-        /// <summary>
-        /// Gets or sets the request Id.
-        /// </summary>
-        std::shared_ptr< std::wstring >& getRequestId();
+};
 
-        /// <summary>
-        /// Gets or sets the request Id.
-        /// </summary>
-        void setRequestId(std::shared_ptr< std::wstring >& value);
+/// <summary>
+/// Test for accepting revisions in document.
+/// </summary>
+TEST_F(RevisionsTests, TestAcceptAllRevisions) {
+    std::wstring remoteFileName = STCONVERT("TestAcceptAllRevisions.docx");
 
-    protected:
-        std::shared_ptr< std::wstring > m_RequestId;
-    };
+    UploadFileToStorage(
+        remoteDataFolder + STCONVERT("/") + remoteFileName,
+        path_combine(LocalTestDataFolder, localFile)
+    );
+
+    std::shared_ptr< AcceptAllRevisionsRequest > request(new AcceptAllRevisionsRequest(
+        remoteFileName,
+        remoteDataFolder,
+        std::none,
+        std::none,
+        std::none,
+        baseTestOutPath + STCONVERT("/") + remoteFileName
+    ));
+
+   get_api()->acceptAllRevisions(request).get();
 }
-

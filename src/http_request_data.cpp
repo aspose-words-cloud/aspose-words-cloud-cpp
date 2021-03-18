@@ -23,44 +23,103 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include <codecvt>
 #include "aspose_words_cloud/http_request_data.h"
-#include "../thirdparty/httplib.h"
-#include "../thirdparty/utf8.h"
 
 namespace aspose::words::cloud {
-    void HttpRequestData::setPath(const std::string&& path)
+    void HttpRequestData::setPath(const std::wstring& path)
     {
-        m_Path = std::move(path);
+        m_Path = path;
     }
 
-    void HttpRequestData::setPathParam(const std::string& name, const std::wstring& value)
+    void HttpRequestData::setPathParam(const std::wstring& name, const std::wstring& value)
     {
-        std::string valueUtf8;
-        utf8::utf16to8(value.begin(), value.end(), back_inserter(valueUtf8));
+        size_t start_pos;
+        if ((start_pos = m_Path.find(name)) != std::wstring::npos) {
+            m_Path.replace(start_pos, name.length(), value);
+        }
+    }
+
+    void HttpRequestData::addQueryParam(const std::wstring& name, const std::wstring& value)
+    {
+        m_QueryParams.emplace(name, value);
+    }
+
+    void HttpRequestData::addHeader(const std::wstring& name, const std::wstring& value)
+    {
+        m_Headers.emplace(name, value);
+    }
+
+    void HttpRequestData::setMethod(HttpRequestMethod method)
+    {
+         m_Method = method;
+    }
+
+    void HttpRequestData::setContentType(const std::string& value)
+    {
+        m_ContentType = value;
+    }
+
+    std::wstring HttpRequestData::getFullPath() const
+    {
+        int c = 0;
+        std::wstring result(m_Path);
+        for (auto& pair : m_QueryParams)
+        {
+            result += (c == 0 ? L"?" : L"&");
+            result += urlEncode(pair.first);
+            result += L"=";
+            result += urlEncode(pair.second);
+            c++;
+        }
 
         size_t start_pos;
-        if ((start_pos = m_Path.find(name)) != std::string::npos) {
-            m_Path.replace(start_pos, name.length(), valueUtf8);
+        while ((start_pos = result.find(L"//")) != std::wstring::npos) {
+            result.replace(start_pos, 2, L"/");
+            start_pos = 0;
         }
 
-        if ((start_pos = m_Path.find("//")) != std::string::npos) {
-            m_Path.replace(start_pos, 2, "/");
+        return result;
+    }
+
+    HttpRequestMethod HttpRequestData::getMethod() const
+    {
+        return m_Method;
+    }
+
+    const std::map<std::wstring, std::wstring>& HttpRequestData::getHeaders() const
+    {
+        return m_Headers;
+    }
+
+    const std::string& HttpRequestData::getBody() const
+    {
+        return m_Body;
+    }
+
+    const std::string& HttpRequestData::getContentType() const
+    {
+        return m_ContentType;
+    }
+
+    std::wstring HttpRequestData::urlEncode(const std::wstring& source) const
+    {
+        std::wstring result;
+        wchar_t bufHex[10];
+        for (int i = 0; i < source.length(); i++) {
+            wchar_t c = source[i];
+            int ic = c;
+            if (c==L' ') result += L'+';
+            else if (isalnum(c) || c == L'-' || c == L'_' || c == L'.' || c == L'~') result += c;
+            else {
+                swprintf(bufHex, 10, L"%X", c);
+                if (ic < 16)
+                    result += L"%0";
+                else
+                    result += L"%";
+                result += bufHex;
+            }
         }
-    }
 
-    void HttpRequestData::addQueryParam(const std::string& name, const std::wstring& value)
-    {
-        m_QueryParams.emplace(name, std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(value));
-    }
-
-    void HttpRequestData::addHeader(const std::string& name, const std::wstring& value)
-    {
-        m_Headers.emplace(name, std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(value));
-    }
-
-    void HttpRequestData::setMethod(const std::string&& method)
-    {
-         m_Method = std::move(method);
+        return result;
     }
 }

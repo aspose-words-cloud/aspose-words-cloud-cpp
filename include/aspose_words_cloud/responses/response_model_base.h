@@ -1,5 +1,5 @@
 /** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="words_response.h">
+* <copyright company="Aspose" file="response_model_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,31 +24,20 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include <iostream>
+#include <memory>
+#include <string>
 
-namespace aspose::words::cloud::api::models {
-    /// <summary>
-    /// The base class for all responses.
-    /// </summary>
-    class WordsResponse : public ModelBase
+namespace aspose::words::cloud::api::models::responses {
+    class ResponseModelBase
     {
     public:
-        virtual ~WordsResponse() = default;
-        virtual void toJson(void* jsonIfc) const override;
-        virtual void fromJson(const void* jsonIfc) override;
+        virtual ~ResponseModelBase() = default;
+        virtual void deserialize(const std::string& response) = 0;
+        void setStatusCode(int statusCode);
+        int getStatusCode();
 
-        /// <summary>
-        /// Gets or sets the request Id.
-        /// </summary>
-        std::shared_ptr< std::wstring >& getRequestId();
-
-        /// <summary>
-        /// Gets or sets the request Id.
-        /// </summary>
-        void setRequestId(std::shared_ptr< std::wstring >& value);
-
-    protected:
-        std::shared_ptr< std::wstring > m_RequestId;
+    private:
+        int m_StatusCode = 0;
     };
 }
-

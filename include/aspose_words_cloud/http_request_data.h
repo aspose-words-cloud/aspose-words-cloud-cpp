@@ -28,30 +28,46 @@
 #include <string>
 #include <optional>
 #include <map>
-#include "models/model_base.h"
+#include "./models/model_base.h"
 
 namespace aspose::words::cloud {
+    enum class HttpRequestMethod {
+        HttpGET, HttpPOST, HttpPUT, HttpDELETE
+    };
+
     class HttpRequestData
     {
     public:
         virtual ~HttpRequestData() = default;
 
-        void setPath(const std::string&& path);
-        void setPathParam(const std::string& name, const std::wstring& value);
-        void addQueryParam(const std::string& name, const std::wstring& value);
-        void addHeader(const std::string& name, const std::wstring& value);
-        void setMethod(const std::string&& method);
+        void setPath(const std::wstring& path);
+        void setPathParam(const std::wstring& name, const std::wstring& value);
+        void addQueryParam(const std::wstring& name, const std::wstring& value);
+        void addHeader(const std::wstring& name, const std::wstring& value);
+        void setMethod(HttpRequestMethod method);
         void setBody(const aspose::words::cloud::api::models::ModelBase& model);
         void setBody(const std::istream& stream);
         void setBody(const std::wstring& value);
-        void addFormDataParam(const std::string& name, const aspose::words::cloud::api::models::ModelBase& model);
-        void addFormDataParam(const std::string& name, const std::istream& stream);
-        void addFormDataParam(const std::string& name, const std::wstring& value);
+        void addFormDataParam(const std::wstring& name, const aspose::words::cloud::api::models::ModelBase& model);
+        void addFormDataParam(const std::wstring& name, const std::istream& stream);
+        void addFormDataParam(const std::wstring& name, const std::wstring& value);
+        void setContentType(const std::string& value);
+
+        std::wstring getFullPath() const;
+        HttpRequestMethod getMethod() const;
+        const std::map<std::wstring, std::wstring>& getHeaders() const;
+        const std::string& getBody() const;
+        const std::string& getContentType() const;
+
+    private:
+        std::wstring urlEncode(const std::wstring& source) const;
 
     protected:
-        std::string m_Path;
-        std::map<std::string, std::string> m_QueryParams;
-        std::map<std::string, std::string> m_Headers;
-        std::string m_Method;
+        std::wstring m_Path;
+        std::map<std::wstring, std::wstring> m_QueryParams;
+        std::map<std::wstring, std::wstring> m_Headers;
+        HttpRequestMethod m_Method = HttpRequestMethod::HttpGET;
+        std::string m_Body;
+        std::string m_ContentType;
     };
 }

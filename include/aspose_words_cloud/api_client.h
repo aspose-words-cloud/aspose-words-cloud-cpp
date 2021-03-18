@@ -26,9 +26,14 @@
 #pragma once
 #include <memory>
 #include <functional>
-#include "api_configuration.h"
-#include "api_exception.h"
-#include "http_request_data.h"
+#include "./api_configuration.h"
+#include "./api_exception.h"
+#include "./http_request_data.h"
+#include "./responses/response_model_base.h"
+
+namespace httplib {
+    class Client;
+}
 
 namespace aspose::words::cloud {
     class ApiClient
@@ -37,16 +42,18 @@ namespace aspose::words::cloud {
         ApiClient(std::shared_ptr<ApiConfiguration> configuration);
         virtual ~ApiClient() = default;
 
-        int executeSync(std::shared_ptr<HttpRequestData>);
-        void executeAsync(std::shared_ptr<HttpRequestData>, std::function<void(int)>);
+        void call(
+            std::shared_ptr< HttpRequestData > httpRequest,
+            aspose::words::cloud::api::models::responses::ResponseModelBase& response);
 
     private:
         void requestToken();
 
     private:
+        std::shared_ptr<::httplib::Client> m_HttpClient;
         std::shared_ptr<ApiConfiguration> m_Configuration;
         std::wstring m_AccessToken;
-        std::array<std::pair<std::string, std::string>, 2> defaultHeaders =
+        std::array<std::pair<std::string, std::string>, 2> m_DefaultHeaders =
         {
             std::make_pair<std::string, std::string>("x-aspose-client-version", "21.3"),
             std::make_pair<std::string, std::string>("x-aspose-client", "C++ SDK")

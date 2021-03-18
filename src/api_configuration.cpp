@@ -40,7 +40,7 @@ namespace aspose::words::cloud {
 
     void ApiConfiguration::setBaseUrl( const std::wstring& value )
     {
-        m_BaseUrl = std::move(value);
+        m_BaseUrl = value;
     }
 
     const std::wstring& ApiConfiguration::getClientId() const{
@@ -52,7 +52,7 @@ namespace aspose::words::cloud {
             throw ApiException(400, L"ClientId could not be an empty string.");
         }
 
-        m_clientId = std::move(clientId);
+        m_clientId = clientId;
     }
 
     const std::wstring& ApiConfiguration::getClientSecret() const {
@@ -64,7 +64,7 @@ namespace aspose::words::cloud {
             throw ApiException(400, L"ClientSecret could not be an empty string.");
         }
 
-        m_clientSecret = std::move(clientSecret);
+        m_clientSecret = clientSecret;
     }
 
     bool ApiConfiguration::isDebugMode() const {
