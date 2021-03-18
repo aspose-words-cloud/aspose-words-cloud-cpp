@@ -26,6 +26,28 @@
 #include "aspose_words_cloud/http_request_data.h"
 
 namespace aspose::words::cloud {
+    inline std::wstring urlEncode(const std::wstring& source)
+    {
+        std::wstring result;
+        wchar_t bufHex[10];
+        for (int i = 0; i < source.length(); i++) {
+            wchar_t c = source[i];
+            int ic = c;
+            if (c==L' ') result += L'+';
+            else if (isalnum(c) || c == L'-' || c == L'_' || c == L'.' || c == L'~') result += c;
+            else {
+                swprintf(bufHex, 10, L"%X", c);
+                if (ic < 16)
+                    result += L"%0";
+                else
+                    result += L"%";
+                result += bufHex;
+            }
+        }
+
+        return result;
+    }
+
     void HttpRequestData::setPath(const std::wstring& path)
     {
         m_Path = path;
@@ -99,27 +121,5 @@ namespace aspose::words::cloud {
     const std::string& HttpRequestData::getContentType() const
     {
         return m_ContentType;
-    }
-
-    std::wstring HttpRequestData::urlEncode(const std::wstring& source) const
-    {
-        std::wstring result;
-        wchar_t bufHex[10];
-        for (int i = 0; i < source.length(); i++) {
-            wchar_t c = source[i];
-            int ic = c;
-            if (c==L' ') result += L'+';
-            else if (isalnum(c) || c == L'-' || c == L'_' || c == L'.' || c == L'~') result += c;
-            else {
-                swprintf(bufHex, 10, L"%X", c);
-                if (ic < 16)
-                    result += L"%0";
-                else
-                    result += L"%";
-                result += bufHex;
-            }
-        }
-
-        return result;
     }
 }

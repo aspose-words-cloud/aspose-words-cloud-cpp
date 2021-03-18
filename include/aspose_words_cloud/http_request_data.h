@@ -59,9 +59,6 @@ namespace aspose::words::cloud {
         const std::string& getBody() const;
         const std::string& getContentType() const;
 
-    private:
-        std::wstring urlEncode(const std::wstring& source) const;
-
     protected:
         std::wstring m_Path;
         std::map<std::wstring, std::wstring> m_QueryParams;

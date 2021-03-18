@@ -30,6 +30,14 @@
 #include <sstream>
 #include "./test_base.h"
 #include "../thirdparty/json.hpp"
+#include "../thirdparty/utf8.h"
+
+inline std::wstring convertUtf8(const std::string& value)
+{
+    std::wstring result;
+    ::utf8::utf8to16(value.begin(), value.end(), back_inserter(result));
+    return result;
+}
 
 std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
 {
@@ -38,9 +46,9 @@ std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
 
     auto fileJson = ::nlohmann::json::parse(credentials);
     return std::make_shared<ApiConfiguration>(
-        fileJson["ClientId"].get<std::wstring>(),
-        fileJson["ClientSecret"].get<std::wstring>(),
-        fileJson["BaseUrl"].get<std::wstring>()
+        convertUtf8(fileJson["ClientId"].get<std::string>()),
+        convertUtf8(fileJson["ClientSecret"].get<std::string>()),
+        convertUtf8(fileJson["BaseUrl"].get<std::string>())
     );
 }
 
@@ -80,15 +88,15 @@ std::wstring InfrastructureTest::createRandomGuid() const
 
 void InfrastructureTest::getFileText(const std::wstring& file, std::wstring& result)
 {
-    std::wifstream fileStream(file);
+    std::ifstream fileStream(file);
     if (!fileStream.good())
     {
         throw L"Failed to open file: " + file;
     }
 
-    std::wstringstream buffer;
+    std::stringstream buffer;
     buffer << fileStream.rdbuf();
-    result = buffer.str();
+    result = convertUtf8(buffer.str());
 }
 
 void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath)

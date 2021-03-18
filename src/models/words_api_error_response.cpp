@@ -25,8 +25,23 @@
 
 #include "aspose_words_cloud/models/words_api_error_response.h"
 #include "../thirdparty/json.hpp"
+#include "../thirdparty/utf8.h"
 
 namespace aspose::words::cloud::models {
+    inline std::wstring convertUtf8(const std::string& value)
+    {
+        std::wstring result;
+        ::utf8::utf8to16(value.begin(), value.end(), back_inserter(result));
+        return result;
+    }
+
+    inline std::string convertUtf16(const std::wstring& value)
+    {
+        std::string result;
+        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(result));
+        return result;
+    }
+
     void WordsApiErrorResponse::toJson(void* jsonIfc) const
     {
         WordsResponse::toJson(jsonIfc);

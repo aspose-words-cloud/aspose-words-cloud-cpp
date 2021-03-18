@@ -25,26 +25,41 @@
 
 #include "aspose_words_cloud/models/api_error.h"
 #include "../thirdparty/json.hpp"
+#include "../thirdparty/utf8.h"
 
 namespace aspose::words::cloud::models {
+    inline std::wstring convertUtf8(const std::string& value)
+    {
+        std::wstring result;
+        ::utf8::utf8to16(value.begin(), value.end(), back_inserter(result));
+        return result;
+    }
+
+    inline std::string convertUtf16(const std::wstring& value)
+    {
+        std::string result;
+        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(result));
+        return result;
+    }
+
     void ApiError::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (m_Code) json["Code"] = *m_Code;
+        if (m_Code) json["Code"] = convertUtf16(*m_Code);
         if (m_DateTime) json["DateTime"] = *m_DateTime;
-        if (m_Description) json["Description"] = *m_Description;
+        if (m_Description) json["Description"] = convertUtf16(*m_Description);
         if (m_InnerError) m_InnerError->toJson(&json["InnerError"]);
-        if (m_Message) json["Message"] = *m_Message;
+        if (m_Message) json["Message"] = convertUtf16(*m_Message);
     }
 
     void ApiError::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("Code") && !json["Code"].is_null()) m_Code = std::make_shared< std::wstring >(json["Code"].get< std::wstring >());
+        if (json.contains("Code") && !json["Code"].is_null()) m_Code = std::make_shared< std::wstring >(convertUtf8( json["Code"].get< std::string >() ));
         if (json.contains("DateTime") && !json["DateTime"].is_null()) m_DateTime = std::make_shared< std::time_t >(json["DateTime"].get< std::time_t >());
-        if (json.contains("Description") && !json["Description"].is_null()) m_Description = std::make_shared< std::wstring >(json["Description"].get< std::wstring >());
+        if (json.contains("Description") && !json["Description"].is_null()) m_Description = std::make_shared< std::wstring >(convertUtf8( json["Description"].get< std::string >() ));
         if (json.contains("InnerError") && !json["InnerError"].is_null()) m_InnerError->fromJson(&json["InnerError"]);
-        if (json.contains("Message") && !json["Message"].is_null()) m_Message = std::make_shared< std::wstring >(json["Message"].get< std::wstring >());
+        if (json.contains("Message") && !json["Message"].is_null()) m_Message = std::make_shared< std::wstring >(convertUtf8( json["Message"].get< std::string >() ));
     }
 
     std::shared_ptr< std::wstring >& ApiError::getCode()
