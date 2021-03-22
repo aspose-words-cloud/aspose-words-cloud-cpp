@@ -25,6 +25,7 @@
 
 #include "aspose_words_cloud/api_client.h"
 #include "../thirdparty/utf8.h"
+#include "../thirdparty/json.hpp"
 #pragma warning(push, 0) 
 #include "../thirdparty/httplib.h"
 #pragma warning(pop)
@@ -68,7 +69,7 @@ namespace aspose::words::cloud {
         : m_Configuration(configuration)
     {
         std::string baseUrlUtf8;
-        utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
+        ::utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
         m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
     }
 
@@ -76,6 +77,7 @@ namespace aspose::words::cloud {
         std::shared_ptr<HttpRequestData> httpRequest,
         aspose::words::cloud::responses::ResponseModelBase& response)
     {
+        if (m_AccessToken.empty()) requestToken();
         std::wstring path(httpRequest->getFullPath());
         std::string pathUtf8;
         ::utf8::utf16to8(path.begin(), path.end(), back_inserter(pathUtf8));
@@ -97,6 +99,23 @@ namespace aspose::words::cloud {
             pathUtf8.c_str(), headers, 
             httpRequest->getBody(), 
             httpRequest->getContentType());
+
+        if (httpResponse->status == 401)
+        {
+            requestToken();
+            httpResponse = callInternal(
+                m_HttpClient,
+                httpRequest->getMethod(),
+                pathUtf8.c_str(), headers,
+                httpRequest->getBody(),
+                httpRequest->getContentType());
+        }
+
+        response.setStatusCode(httpResponse->status);
+        if (httpResponse->status == 200)
+        {
+            response.deserialize(httpResponse->body);
+        }
     }
 
     void ApiClient::requestToken()
@@ -110,32 +129,19 @@ namespace aspose::words::cloud {
         if (m_Configuration->getClientSecret().empty())
             throw ApiException(400, L"Configuration parameter ClientSecret must be set before calling an api methods");
 
-        if (m_Configuration->getBaseUrl().empty())
-            throw ApiException(400, L"Configuration parameter BaseUrl must be set before calling an api methods");
+        std::string bodyUtf8;
+        std::wstring body = L"grant_type=client_credentials&client_id=" + m_Configuration->getClientId() + L"&client_secret=" + m_Configuration->getClientSecret();
+        ::utf8::utf16to8(body.begin(), body.end(), back_inserter(bodyUtf8));
 
-        std::map<std::wstring, std::wstring> queryParams, headerParams;
+        ::httplib::Result result = m_HttpClient->Post("connect/token", bodyUtf8, "application/x-www-form-urlencoded");
+        if (result->status != 200)
+        {
+            std::wstring errorMessage;
+            ::utf8::utf8to16(result->body.begin(), result->body.end(), back_inserter(errorMessage));
+            throw ApiException(result->status, L"Failed to request authorization token:\r\n" + errorMessage);
+        }
 
-        /*std::vector<FormParamContainer> formParams = {
-            FormParamContainer(_XPLATSTR("grant_type"), _XPLATSTR("client_credentials")),
-            FormParamContainer(_XPLATSTR("client_id"), m_Configuration->getClientId()),
-            FormParamContainer(_XPLATSTR("client_secret"), m_Configuration->getClientSecret())
-        };
-
-        return callApi(getTokenUrl(), _XPLATSTR("POST"), queryParams, nullptr, headerParams, formParams, 
-            _XPLATSTR("application/x-www-form-urlencoded")).then([=](web::http::http_response response) {
-
-            if (response.status_code() >= 400)
-            {
-                auto code = response.status_code();
-                auto reason = response.reason_phrase();
-                auto message = response.extract_string().get();
-
-                throw ApiException(code, _XPLATSTR("error requesting token: ") + reason + _XPLATSTR("\n") + message);
-            }
-
-            return response.extract_json();
-        }).then([this](web::json::value val) {
-            this->setAccessToken(val[_XPLATSTR("access_token")].as_string());
-        });*/
+        auto json = ::nlohmann::json::parse(result->body);
+        m_AccessToken = json["access_token"].get<std::string>();
     }
 }

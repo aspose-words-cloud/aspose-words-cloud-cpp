@@ -41,10 +41,10 @@ inline std::wstring convertUtf8(const std::string& value)
 
 std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
 {
-    std::wstring credentials;
-    InfrastructureTest::getFileText(getSdkRoot() + L"/settings/servercreds.json", credentials);
+    std::string credentialsUtf8;
+    InfrastructureTest::getFileText(getSdkRoot() + L"/settings/servercreds.json", credentialsUtf8);
 
-    auto fileJson = ::nlohmann::json::parse(credentials);
+    auto fileJson = ::nlohmann::json::parse(credentialsUtf8);
     return std::make_shared<ApiConfiguration>(
         convertUtf8(fileJson["ClientId"].get<std::string>()),
         convertUtf8(fileJson["ClientSecret"].get<std::string>()),
@@ -86,7 +86,7 @@ std::wstring InfrastructureTest::createRandomGuid() const
     return res;
 }
 
-void InfrastructureTest::getFileText(const std::wstring& file, std::wstring& result)
+void InfrastructureTest::getFileText(const std::wstring& file, std::string& result)
 {
     std::ifstream fileStream(file);
     if (!fileStream.good())
@@ -96,7 +96,7 @@ void InfrastructureTest::getFileText(const std::wstring& file, std::wstring& res
 
     std::stringstream buffer;
     buffer << fileStream.rdbuf();
-    result = convertUtf8(buffer.str());
+    result = buffer.str();
 }
 
 void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath)

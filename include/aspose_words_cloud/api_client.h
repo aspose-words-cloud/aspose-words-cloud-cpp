@@ -52,6 +52,6 @@ namespace aspose::words::cloud {
     private:
         std::shared_ptr<::httplib::Client> m_HttpClient;
         std::shared_ptr<ApiConfiguration> m_Configuration;
-        std::wstring m_AccessToken;
+        std::string m_AccessToken;
     };
 }

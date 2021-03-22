@@ -49,7 +49,7 @@ protected:
 
     std::wstring getDataDir(const std::wstring& subfolder) const;
     std::wstring createRandomGuid() const;
-    void getFileText(const std::wstring& file, std::wstring& result);
+    void getFileText(const std::wstring& file, std::string& result);
     void uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath);
 
 public:
