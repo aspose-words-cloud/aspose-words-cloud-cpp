@@ -30,6 +30,7 @@
 #include "./api_exception.h"
 #include "./http_request_data.h"
 #include "./responses/response_model_base.h"
+#include "./common.h"
 
 namespace httplib {
     class Client;
@@ -39,17 +40,15 @@ namespace aspose::words::cloud {
     class ApiClient
     {
     public:
-        ApiClient(std::shared_ptr<ApiConfiguration> configuration);
-        virtual ~ApiClient() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT ApiClient(std::shared_ptr<ApiConfiguration> configuration);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ApiClient() = default;
 
-        void call(
+        ASPOSE_WORDS_CLOUD_EXPORT void call(
             std::shared_ptr< HttpRequestData > httpRequest,
             aspose::words::cloud::responses::ResponseModelBase& response);
 
     private:
         void requestToken();
-
-    private:
         std::shared_ptr<::httplib::Client> m_HttpClient;
         std::shared_ptr<ApiConfiguration> m_Configuration;
         std::string m_AccessToken;

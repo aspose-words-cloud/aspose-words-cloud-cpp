@@ -25,14 +25,19 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 ]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 
 project(aspose_words_cloud_sdk LANGUAGES CXX)
 
-add_library(aspose_words_cloud_sdk)
+find_package(OpenSSL REQUIRED)
+
+add_library(aspose_words_cloud_sdk SHARED)
+include_directories(${OPENSSL_INCLUDE_DIR})
 
 file(GLOB_RECURSE srcs "../include/*.h" "*.cpp")
 target_sources(aspose_words_cloud_sdk PRIVATE ${srcs})
+target_link_libraries(${PROJECT_NAME} OpenSSL::Crypto)
+target_link_libraries(${PROJECT_NAME} OpenSSL::SSL)
 
 if(MSVC)
   target_compile_options(aspose_words_cloud_sdk PRIVATE /bigobj)

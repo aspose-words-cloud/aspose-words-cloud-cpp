@@ -27,15 +27,16 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include "aspose_words_cloud/common.h"
 
 namespace aspose::words::cloud::responses {
     class ResponseModelBase
     {
     public:
-        virtual ~ResponseModelBase() = default;
-        virtual void deserialize(const std::string& response) = 0;
-        void setStatusCode(int statusCode);
-        int getStatusCode();
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ResponseModelBase() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& response) = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT void setStatusCode(int statusCode);
+        ASPOSE_WORDS_CLOUD_EXPORT int getStatusCode();
 
     private:
         int m_StatusCode = 0;

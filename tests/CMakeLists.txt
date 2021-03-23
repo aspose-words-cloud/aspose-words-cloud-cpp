@@ -25,14 +25,14 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 ]]
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 
 project(aspose_words_cloud_test CXX)
+
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.h)
 add_executable(aspose_words_cloud_test ${TEST_SOURCES})
 add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
-
 target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
 if (COMMAND cotire)

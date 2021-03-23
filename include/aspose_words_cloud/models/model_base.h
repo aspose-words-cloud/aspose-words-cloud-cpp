@@ -28,13 +28,14 @@
 #include <ctime>
 #include <memory>
 #include <string>
+#include "aspose_words_cloud/common.h"
 
 namespace aspose::words::cloud::models {
     class ModelBase
     {
     public:
-        virtual ~ModelBase() = default;
-        virtual void toJson(void* jsonIfc) const = 0;
-        virtual void fromJson(const void* jsonIfc) = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ModelBase() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) = 0;
     };
 }

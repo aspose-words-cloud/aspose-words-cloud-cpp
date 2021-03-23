@@ -25,21 +25,22 @@
 
 #pragma once
 #include <string>
+#include "./common.h"
 
 namespace aspose::words::cloud {
     class  ApiConfiguration
     {
     public:
-        ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret, const std::wstring& baseUrl = L"https://api.aspose.cloud");
-        virtual ~ApiConfiguration() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret, const std::wstring& baseUrl = L"https://api.aspose.cloud");
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ApiConfiguration() = default;
 
-        const std::wstring& getBaseUrl() const;
-        const std::wstring& getClientId() const;
-        const std::wstring& getClientSecret() const;
-        const std::wstring& getApiVersion() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getBaseUrl() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getClientId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getClientSecret() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getApiVersion() const;
 
-        bool isDebugMode() const;
-        void setDebugMode(bool debug);
+        ASPOSE_WORDS_CLOUD_EXPORT bool isDebugMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT void setDebugMode(bool debug);
 
     protected:
         bool m_DebugMode = false;

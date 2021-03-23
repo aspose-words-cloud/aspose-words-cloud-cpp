@@ -33,19 +33,19 @@ namespace aspose::words::cloud::models {
     class WordsResponse : public ModelBase
     {
     public:
-        virtual ~WordsResponse() = default;
-        virtual void toJson(void* jsonIfc) const override;
-        virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~WordsResponse() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
         /// <summary>
         /// Gets or sets the request Id.
         /// </summary>
-        std::shared_ptr< std::wstring >& getRequestId();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring >& getRequestId();
 
         /// <summary>
         /// Gets or sets the request Id.
         /// </summary>
-        void setRequestId(std::shared_ptr< std::wstring >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setRequestId(std::shared_ptr< std::wstring >& value);
 
     protected:
         std::shared_ptr< std::wstring > m_RequestId;

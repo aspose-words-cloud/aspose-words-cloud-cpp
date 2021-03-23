@@ -28,6 +28,7 @@
 #include <string>
 #include <optional>
 #include <map>
+#include "./common.h"
 #include "./models/model_base.h"
 
 namespace aspose::words::cloud {
@@ -38,26 +39,26 @@ namespace aspose::words::cloud {
     class HttpRequestData
     {
     public:
-        virtual ~HttpRequestData() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~HttpRequestData() = default;
 
-        void setPath(const std::wstring& path);
-        void setPathParam(const std::wstring& name, const std::wstring& value);
-        void addQueryParam(const std::wstring& name, const std::wstring& value);
-        void addHeader(const std::wstring& name, const std::wstring& value);
-        void setMethod(HttpRequestMethod method);
-        void setBody(const aspose::words::cloud::models::ModelBase& model);
-        void setBody(const std::istream& stream);
-        void setBody(const std::wstring& value);
-        void addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model);
-        void addFormDataParam(const std::wstring& name, const std::istream& stream);
-        void addFormDataParam(const std::wstring& name, const std::wstring& value);
-        void setContentType(const std::string& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setPath(const std::wstring& path);
+        ASPOSE_WORDS_CLOUD_EXPORT void setPathParam(const std::wstring& name, const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void addQueryParam(const std::wstring& name, const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void addHeader(const std::wstring& name, const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setMethod(HttpRequestMethod method);
+        ASPOSE_WORDS_CLOUD_EXPORT void setBody(const aspose::words::cloud::models::ModelBase& model);
+        ASPOSE_WORDS_CLOUD_EXPORT void setBody(const std::istream& stream);
+        ASPOSE_WORDS_CLOUD_EXPORT void setBody(const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model);
+        ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::istream& stream);
+        ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setContentType(const std::string& value);
 
-        std::wstring getFullPath() const;
-        HttpRequestMethod getMethod() const;
-        const std::map<std::wstring, std::wstring>& getHeaders() const;
-        const std::string& getBody() const;
-        const std::string& getContentType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::wstring getFullPath() const;
+        ASPOSE_WORDS_CLOUD_EXPORT HttpRequestMethod getMethod() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::map<std::wstring, std::wstring>& getHeaders() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::string& getBody() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::string& getContentType() const;
 
     protected:
         std::wstring m_Path;

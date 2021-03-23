@@ -26,17 +26,14 @@
 #include "aspose_words_cloud/api_client.h"
 #include "../thirdparty/utf8.h"
 #include "../thirdparty/json.hpp"
+
+// USE HTTPLIB ONLY IN SOURCES!!!
 #pragma warning(push, 0) 
+#define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "../thirdparty/httplib.h"
 #pragma warning(pop)
 
 namespace aspose::words::cloud {
-    std::array<std::pair<std::string, std::string>, 2> m_DefaultHeaders =
-    {
-        std::make_pair<std::string, std::string>("x-aspose-client-version", "21.3"),
-        std::make_pair<std::string, std::string>("x-aspose-client", "C++ SDK")
-    };
-
     inline ::httplib::Result callInternal(
         std::shared_ptr<::httplib::Client> client,
         HttpRequestMethod method,
@@ -65,6 +62,12 @@ namespace aspose::words::cloud {
         throw ApiException(400, L"Invalid http method type.");
     }
 
+    inline void HandleHttpError(::httplib::Result& httpResponse)
+    {
+        if (httpResponse.error() != ::httplib::Error::Success)
+            throw ApiException(400, L"Unknown api error: " + httpResponse.error());
+    }
+
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
         : m_Configuration(configuration)
     {
@@ -83,15 +86,16 @@ namespace aspose::words::cloud {
         ::utf8::utf16to8(path.begin(), path.end(), back_inserter(pathUtf8));
 
         ::httplib::Headers headers;
-        for (auto& pair : httpRequest->getHeaders())
-        {
+        headers.emplace("Authorization", m_AccessToken);
+        headers.emplace("x-aspose-client-version", "21.3");
+        headers.emplace("x-aspose-client", "C++ SDK");
+
+        for (auto& pair : httpRequest->getHeaders()) {
             std::string keyUtf8, valueUtf8;
             ::utf8::utf16to8(pair.first.begin(), pair.first.end(), back_inserter(keyUtf8));
             ::utf8::utf16to8(pair.second.begin(), pair.second.end(), back_inserter(valueUtf8));
             headers.emplace(keyUtf8, valueUtf8);
         }
-        for (auto& pair : m_DefaultHeaders)
-            headers.emplace(pair.first, pair.second);
 
         ::httplib::Result httpResponse = callInternal(
             m_HttpClient, 
@@ -99,6 +103,7 @@ namespace aspose::words::cloud {
             pathUtf8.c_str(), headers, 
             httpRequest->getBody(), 
             httpRequest->getContentType());
+        HandleHttpError(httpResponse);
 
         if (httpResponse->status == 401)
         {
@@ -109,6 +114,7 @@ namespace aspose::words::cloud {
                 pathUtf8.c_str(), headers,
                 httpRequest->getBody(),
                 httpRequest->getContentType());
+            HandleHttpError(httpResponse);
         }
 
         response.setStatusCode(httpResponse->status);
@@ -133,7 +139,7 @@ namespace aspose::words::cloud {
         std::wstring body = L"grant_type=client_credentials&client_id=" + m_Configuration->getClientId() + L"&client_secret=" + m_Configuration->getClientSecret();
         ::utf8::utf16to8(body.begin(), body.end(), back_inserter(bodyUtf8));
 
-        ::httplib::Result result = m_HttpClient->Post("connect/token", bodyUtf8, "application/x-www-form-urlencoded");
+        ::httplib::Result result = m_HttpClient->Post("/connect/token", bodyUtf8, "application/x-www-form-urlencoded");
         if (result->status != 200)
         {
             std::wstring errorMessage;
@@ -142,6 +148,6 @@ namespace aspose::words::cloud {
         }
 
         auto json = ::nlohmann::json::parse(result->body);
-        m_AccessToken = json["access_token"].get<std::string>();
+        m_AccessToken = "Bearer " + json["access_token"].get<std::string>();
     }
 }

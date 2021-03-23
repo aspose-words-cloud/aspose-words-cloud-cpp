@@ -131,6 +131,7 @@ Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/
 
 Build Aspose.Words.Cloud SDK
 ```cmd
+vcpkg install openssl:x64-windows
 git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
 cd aspose-words-cloud-cpp
 mkdir .\build
@@ -184,6 +185,7 @@ The complete source code is available at [GitHub Repository](https://github.com/
 
 - gcc version 8+ for Linux
 - [VS Build Tools](https://aka.ms/vs/15/release/vs_buildtools.exe) for Windows
+- [VCPKG](https://github.com/microsoft/vcpkg) for Windows
 - [CMake](https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-win64-x64.msi)
 
 ## Getting started with the SDK

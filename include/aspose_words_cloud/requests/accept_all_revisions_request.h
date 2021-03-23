@@ -29,7 +29,7 @@
 namespace aspose::words::cloud::requests {
     class AcceptAllRevisionsRequest : public RequestModelBase {
     public:
-        AcceptAllRevisionsRequest(
+        ASPOSE_WORDS_CLOUD_EXPORT AcceptAllRevisionsRequest(
             const std::wstring& name,
             const std::optional<std::wstring>& folder = std::nullopt,
             const std::optional<std::wstring>& storage = std::nullopt,
@@ -38,14 +38,14 @@ namespace aspose::words::cloud::requests {
             const std::optional<std::wstring>& destFileName = std::nullopt
         );
 
-        const std::wstring& getName() const;
-        const std::optional<std::wstring>& getFolder() const;
-        const std::optional<std::wstring>& getStorage() const;
-        const std::optional<std::wstring>& getLoadEncoding() const;
-        const std::optional<std::wstring>& getPassword() const;
-        const std::optional<std::wstring>& getDestFileName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getFolder() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getStorage() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getLoadEncoding() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getDestFileName() const;
 
-        virtual std::shared_ptr< HttpRequestData > createHttpRequest() const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< HttpRequestData > createHttpRequest() const override;
 
     private:
         const std::wstring m_Name;

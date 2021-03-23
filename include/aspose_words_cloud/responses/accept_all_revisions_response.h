@@ -29,11 +29,11 @@
 namespace aspose::words::cloud::responses {
     class AcceptAllRevisionsResponse : public ResponseModelBase {
     public: 
-        virtual ~AcceptAllRevisionsResponse() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~AcceptAllRevisionsResponse() = default;
 
-        std::shared_ptr< std::istream > getResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > getResult() const;
 
-        virtual void deserialize(const std::string& response) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& response) override;
 
     private:
         std::shared_ptr< std::istream > m_Result;
