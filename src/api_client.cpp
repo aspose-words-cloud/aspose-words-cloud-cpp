@@ -74,6 +74,8 @@ namespace aspose::words::cloud {
         std::string baseUrlUtf8;
         ::utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
         m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
+        m_HttpClient->set_read_timeout(60, 0);
+        m_HttpClient->set_write_timeout(60, 0);
     }
 
     void ApiClient::call(
@@ -97,6 +99,24 @@ namespace aspose::words::cloud {
             headers.emplace(keyUtf8, valueUtf8);
         }
 
+        if (m_Configuration->isDebugMode()) {
+            std::cout << "==================== CALL START ====================" << std::endl;
+            std::cout << "REQUEST:" << std::endl;
+            std::cout << "\tURL: " << pathUtf8 << std::endl;
+            if (headers.size() > 0) {
+                std::cout << "\tHEADERS: " << std::endl;
+            }
+            for (auto& pair : headers) {
+                std::cout << "\t\t" << pair.first << ": " << pair.second << std::endl;
+            }
+            if (httpRequest->getContentType().size() > 0) {
+                std::cout << "\tCONTENT-TYPE: " << httpRequest->getContentType() << std::endl;
+            }
+            if (httpRequest->getBody().size() > 0) {
+                std::cout << "\tBODY: " << httpRequest->getBody() << std::endl;
+            }
+        }
+
         ::httplib::Result httpResponse = callInternal(
             m_HttpClient, 
             httpRequest->getMethod(), 
@@ -115,6 +135,13 @@ namespace aspose::words::cloud {
                 httpRequest->getBody(),
                 httpRequest->getContentType());
             HandleHttpError(httpResponse);
+        }
+
+        if (m_Configuration->isDebugMode()) {
+            std::cout << "RESPONSE:" << std::endl;
+            std::cout << "\tSTATUS CODE: " << httpResponse->status << std::endl;
+            std::cout << "\tRESULT: " << httpResponse->body << std::endl;
+            std::cout << "==================== CALL END ====================" << std::endl;
         }
 
         response.setStatusCode(httpResponse->status);

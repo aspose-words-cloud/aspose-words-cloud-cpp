@@ -45,11 +45,15 @@ std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
     InfrastructureTest::getFileText(getSdkRoot() + L"/settings/servercreds.json", credentialsUtf8);
 
     auto fileJson = ::nlohmann::json::parse(credentialsUtf8);
-    return std::make_shared<ApiConfiguration>(
-        convertUtf8(fileJson["ClientId"].get<std::string>()),
-        convertUtf8(fileJson["ClientSecret"].get<std::string>()),
-        convertUtf8(fileJson["BaseUrl"].get<std::string>())
+    auto config = std::make_shared<ApiConfiguration>(
+        convertUtf8(fileJson.contains("ClientId") ? fileJson["ClientId"].get<std::string>() : ""),
+        convertUtf8(fileJson.contains("ClientSecret") ? fileJson["ClientSecret"].get<std::string>() : ""),
+        convertUtf8(fileJson.contains("BaseUrl") ? fileJson["BaseUrl"].get<std::string>() : "")
     );
+    if (fileJson.contains("DebugMode")) {
+        config->setDebugMode(fileJson["DebugMode"].get<bool>());
+    }
+    return config;
 }
 
 void InfrastructureTest::SetUp()

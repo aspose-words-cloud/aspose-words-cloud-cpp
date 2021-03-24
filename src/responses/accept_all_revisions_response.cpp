@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #include "aspose_words_cloud/responses/accept_all_revisions_response.h"
+#include "../thirdparty/json.hpp"
 
 namespace aspose::words::cloud::responses {
     std::shared_ptr< std::istream > AcceptAllRevisionsResponse::getResult() const
@@ -33,6 +34,8 @@ namespace aspose::words::cloud::responses {
 
     void AcceptAllRevisionsResponse::deserialize(const std::string& response)
     {
-
+        auto* resultStream = new std::stringstream;
+        resultStream->str(response);
+        m_Result = std::shared_ptr< std::istream >(resultStream);
     }
 }

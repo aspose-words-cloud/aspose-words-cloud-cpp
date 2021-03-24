@@ -47,10 +47,10 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT void addHeader(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setMethod(HttpRequestMethod method);
         ASPOSE_WORDS_CLOUD_EXPORT void setBody(const aspose::words::cloud::models::ModelBase& model);
-        ASPOSE_WORDS_CLOUD_EXPORT void setBody(const std::istream& stream);
+        ASPOSE_WORDS_CLOUD_EXPORT void setBody(std::istream& stream);
         ASPOSE_WORDS_CLOUD_EXPORT void setBody(const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model);
-        ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::istream& stream);
+        ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, std::istream& stream);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setContentType(const std::string& value);
 
@@ -67,5 +67,6 @@ namespace aspose::words::cloud {
         HttpRequestMethod m_Method = HttpRequestMethod::HttpGET;
         std::string m_Body;
         std::string m_ContentType;
+        std::string m_Boundary;
     };
 }

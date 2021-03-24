@@ -24,6 +24,8 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #include "aspose_words_cloud/http_request_data.h"
+#include "../thirdparty/json.hpp"
+#include "../thirdparty/utf8.h"
 
 namespace aspose::words::cloud {
     inline std::wstring urlEncode(const std::wstring& source)
@@ -46,6 +48,25 @@ namespace aspose::words::cloud {
         }
 
         return result;
+    }
+
+    inline std::string createRandomGuid()
+    {
+        static std::random_device dev;
+        static std::mt19937 rng(dev());
+
+        std::uniform_int_distribution<int> dist(0, 15);
+
+        const char* v = "0123456789abcdef";
+        const bool dash[] = { 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 };
+
+        std::string res;
+        for (int i = 0; i < 16; i++) {
+            if (dash[i]) res += '-';
+            res += v[dist(rng)];
+            res += v[dist(rng)];
+        }
+        return res;
     }
 
     void HttpRequestData::setPath(const std::wstring& path)
@@ -76,6 +97,122 @@ namespace aspose::words::cloud {
          m_Method = method;
     }
 
+    void HttpRequestData::setBody(const aspose::words::cloud::models::ModelBase& model)
+    {
+        ::nlohmann::json json;
+        model.toJson(&json);
+        m_Body = std::move(json.dump());
+    }
+
+    void HttpRequestData::setBody(std::istream& stream)
+    {
+        constexpr size_t BUFFER_SIZE = 1024 * 4;
+        char buffer[BUFFER_SIZE];
+        while (stream.read(buffer, BUFFER_SIZE)) {
+            m_Body.append(buffer, BUFFER_SIZE);
+        }
+        m_Body.append(buffer, stream.gcount());
+    }
+
+    void HttpRequestData::setBody(const std::wstring& value)
+    {
+        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+    }
+
+    void HttpRequestData::addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model)
+    {
+        if (m_Boundary.empty()) {
+            m_Boundary = createRandomGuid();
+        }
+
+        if (m_Body.empty())
+        {
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("\r\n");
+        }
+        else {
+            m_Body[m_Body.size() - 2] = '\r';
+            m_Body[m_Body.size() - 1] = '\n';
+        }
+
+        m_Body.append("Content-Disposition: form-data; name=\"");
+        ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+        m_Body.append("\";\r\n\r\n");
+
+        ::nlohmann::json json;
+        model.toJson(&json);
+        m_Body.append(std::move(json.dump()));
+
+        m_Body.append("\r\n");
+        m_Body.append("--");
+        m_Body.append(m_Boundary);
+        m_Body.append("--");
+    }
+
+    void HttpRequestData::addFormDataParam(const std::wstring& name, std::istream& stream)
+    {
+        if (m_Boundary.empty()) {
+            m_Boundary = createRandomGuid();
+        }
+
+        if (m_Body.empty())
+        {
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("\r\n");
+        }
+        else {
+            m_Body[m_Body.size() - 2] = '\r';
+            m_Body[m_Body.size() - 1] = '\n';
+        }
+
+        m_Body.append("Content-Disposition: form-data; name=\"");
+        ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+        m_Body.append("\";\r\n\r\n");
+
+        constexpr size_t BUFFER_SIZE = 1024 * 4;
+        char buffer[BUFFER_SIZE];
+        while (stream.read(buffer, BUFFER_SIZE)) {
+            m_Body.append(buffer, BUFFER_SIZE);
+        }
+        m_Body.append(buffer, stream.gcount());
+
+        m_Body.append("\r\n");
+        m_Body.append("--");
+        m_Body.append(m_Boundary);
+        m_Body.append("--");
+    }
+
+    void HttpRequestData::addFormDataParam(const std::wstring& name, const std::wstring& value)
+    {
+        if (m_Boundary.empty()) {
+            m_Boundary = createRandomGuid();
+        }
+
+        if (m_Body.empty())
+        {
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("\r\n");
+        }
+        else {
+            m_Body[m_Body.size() - 2] = '\r';
+            m_Body[m_Body.size() - 1] = '\n';
+        }
+
+        m_Body.append("Content-Disposition: form-data; name=\"");
+        ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+        m_Body.append("\";\r\n\r\n");
+
+        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+
+        m_Body.append("\r\n");
+        m_Body.append("--");
+        m_Body.append(m_Boundary);
+        m_Body.append("--");
+    }
+
     void HttpRequestData::setContentType(const std::string& value)
     {
         m_ContentType = value;
@@ -84,7 +221,7 @@ namespace aspose::words::cloud {
     std::wstring HttpRequestData::getFullPath() const
     {
         int c = 0;
-        std::wstring result(m_Path);
+        std::wstring result(L"/v4.0" + m_Path);
         for (auto& pair : m_QueryParams)
         {
             result += (c == 0 ? L"?" : L"&");
