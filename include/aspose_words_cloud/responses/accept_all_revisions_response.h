@@ -25,17 +25,17 @@
 
 #pragma once
 #include "./response_model_base.h"
+#include "aspose_words_cloud/models/revisions_modification_response.h"
 
 namespace aspose::words::cloud::responses {
     class AcceptAllRevisionsResponse : public ResponseModelBase {
     public: 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~AcceptAllRevisionsResponse() = default;
 
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > getResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > getResult() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& response) override;
-
     private:
-        std::shared_ptr< std::istream > m_Result;
+        std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > m_Result;
     };
 }

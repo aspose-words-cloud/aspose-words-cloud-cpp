@@ -25,9 +25,9 @@
 
 #pragma once
 #include <iostream>
-#include <ctime>
 #include <memory>
 #include <string>
+#include <vector>
 #include "aspose_words_cloud/common.h"
 
 namespace aspose::words::cloud::models {

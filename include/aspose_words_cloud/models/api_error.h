@@ -33,6 +33,7 @@ namespace aspose::words::cloud::models {
     class ApiError : public ModelBase
     {
     public:
+
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ApiError() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
@@ -40,58 +41,58 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the API error code.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring >& getCode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCode();
 
         /// <summary>
         /// Gets or sets the API error code.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCode(std::shared_ptr< std::wstring >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setCode(std::shared_ptr< std::wstring > value);
 
         /// <summary>
         /// Gets or sets the server DateTime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::time_t >& getDateTime();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime();
 
         /// <summary>
         /// Gets or sets the server DateTime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDateTime(std::shared_ptr< std::time_t >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setDateTime(std::shared_ptr< std::wstring > value);
 
         /// <summary>
         /// Gets or sets the error description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring >& getDescription();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDescription();
 
         /// <summary>
         /// Gets or sets the error description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDescription(std::shared_ptr< std::wstring >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setDescription(std::shared_ptr< std::wstring > value);
 
         /// <summary>
         /// Gets or sets the inner error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< ApiError >& getInnerError();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ApiError > getInnerError();
 
         /// <summary>
         /// Gets or sets the inner error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setInnerError(std::shared_ptr< ApiError >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setInnerError(std::shared_ptr< aspose::words::cloud::models::ApiError > value);
 
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring >& getMessage();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getMessage();
 
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMessage(std::shared_ptr< std::wstring >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setMessage(std::shared_ptr< std::wstring > value);
 
     protected:
         std::shared_ptr< std::wstring > m_Code;
-        std::shared_ptr< std::time_t > m_DateTime;
+        std::shared_ptr< std::wstring > m_DateTime;
         std::shared_ptr< std::wstring > m_Description;
-        std::shared_ptr< ApiError > m_InnerError;
+        std::shared_ptr< aspose::words::cloud::models::ApiError > m_InnerError;
         std::shared_ptr< std::wstring > m_Message;
     };
 }

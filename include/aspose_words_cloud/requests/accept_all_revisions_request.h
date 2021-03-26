@@ -30,29 +30,29 @@ namespace aspose::words::cloud::requests {
     class AcceptAllRevisionsRequest : public RequestModelBase {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT AcceptAllRevisionsRequest(
-            const std::wstring& name,
-            const std::optional<std::wstring>& folder = std::nullopt,
-            const std::optional<std::wstring>& storage = std::nullopt,
-            const std::optional<std::wstring>& loadEncoding = std::nullopt,
-            const std::optional<std::wstring>& password = std::nullopt,
-            const std::optional<std::wstring>& destFileName = std::nullopt
+            const std::shared_ptr< std::wstring > name,
+            const std::shared_ptr< std::wstring > folder = nullptr,
+            const std::shared_ptr< std::wstring > storage = nullptr,
+            const std::shared_ptr< std::wstring > loadEncoding = nullptr,
+            const std::shared_ptr< std::wstring > password = nullptr,
+            const std::shared_ptr< std::wstring > destFileName = nullptr
         );
 
-        ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getName() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getFolder() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getStorage() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getLoadEncoding() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getPassword() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::optional<std::wstring>& getDestFileName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDestFileName() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< HttpRequestData > createHttpRequest() const override;
 
     private:
-        const std::wstring m_Name;
-        const std::optional<std::wstring> m_Folder;
-        const std::optional<std::wstring> m_Storage;
-        const std::optional<std::wstring> m_LoadEncoding;
-        const std::optional<std::wstring> m_Password;
-        const std::optional<std::wstring> m_DestFileName;
+        const std::shared_ptr< std::wstring > m_Name;
+        const std::shared_ptr< std::wstring > m_Folder;
+        const std::shared_ptr< std::wstring > m_Storage;
+        const std::shared_ptr< std::wstring > m_LoadEncoding;
+        const std::shared_ptr< std::wstring > m_Password;
+        const std::shared_ptr< std::wstring > m_DestFileName;
     };
 }

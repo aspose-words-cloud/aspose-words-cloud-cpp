@@ -25,7 +25,6 @@
 
 #pragma once
 #include <iostream>
-#include <ctime>
 #include <memory>
 #include <string>
 #include "aspose_words_cloud/common.h"

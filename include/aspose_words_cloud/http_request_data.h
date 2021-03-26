@@ -26,7 +26,6 @@
 #pragma once
 #include <memory>
 #include <string>
-#include <optional>
 #include <map>
 #include "./common.h"
 #include "./models/model_base.h"
@@ -43,7 +42,11 @@ namespace aspose::words::cloud {
 
         ASPOSE_WORDS_CLOUD_EXPORT void setPath(const std::wstring& path);
         ASPOSE_WORDS_CLOUD_EXPORT void setPathParam(const std::wstring& name, const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setPathParam(const std::wstring& name, int32_t value);
         ASPOSE_WORDS_CLOUD_EXPORT void addQueryParam(const std::wstring& name, const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void addQueryParam(const std::wstring& name, int32_t value);
+        ASPOSE_WORDS_CLOUD_EXPORT void addQueryParam(const std::wstring& name, bool value);
+        ASPOSE_WORDS_CLOUD_EXPORT void addQueryParam(const std::wstring& name, double value);
         ASPOSE_WORDS_CLOUD_EXPORT void addHeader(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setMethod(HttpRequestMethod method);
         ASPOSE_WORDS_CLOUD_EXPORT void setBody(const aspose::words::cloud::models::ModelBase& model);

@@ -23,6 +23,7 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
+#include <random>
 #include "aspose_words_cloud/http_request_data.h"
 #include "../thirdparty/json.hpp"
 #include "../thirdparty/utf8.h"
@@ -82,9 +83,29 @@ namespace aspose::words::cloud {
         }
     }
 
+    void HttpRequestData::setPathParam(const std::wstring& name, int32_t value)
+    {
+        setPathParam(name, std::to_wstring(value));
+    }
+
     void HttpRequestData::addQueryParam(const std::wstring& name, const std::wstring& value)
     {
         m_QueryParams.emplace(name, value);
+    }
+
+    void HttpRequestData::addQueryParam(const std::wstring& name, int32_t value)
+    {
+        m_QueryParams.emplace(name, std::to_wstring(value));
+    }
+
+    void HttpRequestData::addQueryParam(const std::wstring& name, bool value)
+    {
+        m_QueryParams.emplace(name, value ? L"true" : L"false");
+    }
+
+    void HttpRequestData::addQueryParam(const std::wstring& name, double value)
+    {
+        m_QueryParams.emplace(name, std::to_wstring(value));
     }
 
     void HttpRequestData::addHeader(const std::wstring& name, const std::wstring& value)

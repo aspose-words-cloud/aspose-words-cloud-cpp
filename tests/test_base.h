@@ -26,15 +26,10 @@
 #pragma once
 #include <gtest/gtest.h>
 #include <iostream>
+#include <fstream>
 #include "aspose_words_cloud.h"
 
 using namespace aspose::words::cloud;
-
-template<typename T>
-bool IsNotNull(std::vector<T> vector) { return true; }
-
-template<typename T>
-bool IsNotNull(std::shared_ptr<T> ptr) { return bool(ptr); }
 
 class InfrastructureTest : public ::testing::Test
 {
@@ -49,7 +44,8 @@ protected:
 
     std::wstring getDataDir(const std::wstring& subfolder) const;
     std::wstring createRandomGuid() const;
-    void getFileText(const std::wstring& file, std::string& result);
+    std::string getFileText(const std::wstring& file);
+    std::wstring getFileTextUtf16(const std::wstring& file);
     void uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath);
 
 public:

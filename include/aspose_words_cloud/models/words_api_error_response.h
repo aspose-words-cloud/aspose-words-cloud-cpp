@@ -35,6 +35,7 @@ namespace aspose::words::cloud::models {
     class WordsApiErrorResponse : public WordsResponse
     {
     public:
+
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~WordsApiErrorResponse() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
@@ -42,15 +43,15 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the API error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< ApiError >& getError();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ApiError > getError();
 
         /// <summary>
         /// Gets or sets the API error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setError(std::shared_ptr< ApiError >& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setError(std::shared_ptr< aspose::words::cloud::models::ApiError > value);
 
     protected:
-        std::shared_ptr< ApiError > m_Error;
+        std::shared_ptr< aspose::words::cloud::models::ApiError > m_Error;
     };
 }
 

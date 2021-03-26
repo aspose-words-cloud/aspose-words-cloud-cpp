@@ -36,7 +36,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-include(thirdparty/cotire.cmake)
 include_directories(include)
 add_subdirectory(src aspose_words_cloud_sdk)
 

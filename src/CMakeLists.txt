@@ -42,7 +42,3 @@ target_link_libraries(${PROJECT_NAME} OpenSSL::SSL)
 if(MSVC)
   target_compile_options(aspose_words_cloud_sdk PRIVATE /bigobj)
 endif()
-
-if (COMMAND cotire)
-    cotire(aspose_words_cloud_sdk)
-endif()

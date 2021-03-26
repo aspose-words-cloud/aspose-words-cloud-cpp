@@ -41,20 +41,50 @@ protected:
 TEST_F(RevisionsTests, TestAcceptAllRevisions) {
     std::wstring remoteFileName = L"TestAcceptAllRevisions.docx";
 
-    /*UploadFileToStorage(
-        remoteDataFolder + L"/" + remoteFileName,
-        path_combine(LocalTestDataFolder, localFile)
-    );*/
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
 
     std::shared_ptr<requests::AcceptAllRevisionsRequest> request(new requests::AcceptAllRevisionsRequest(
-        remoteFileName,
-        remoteDataFolder,
-        std::nullopt,
-        std::nullopt,
-        std::nullopt,
-        baseTestOutPath + L"/" + remoteFileName
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 
     auto actual = getApi()->acceptAllRevisions(request);
-    ASSERT_EQ(200, actual->getStatusCode());
+    ASSERT_TRUE(actual->getResult() != nullptr);
+    ASSERT_TRUE(actual->getResult()->getDest() != nullptr);
 }
+
+
+
+/// <summary>
+/// Test for rejecting revisions in document.
+/// </summary>
+TEST_F(RevisionsTests, TestRejectAllRevisions) {
+    std::wstring remoteFileName = L"TestRejectAllRevisions.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::RejectAllRevisionsRequest> request(new requests::RejectAllRevisionsRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
+    ));
+
+    auto actual = getApi()->rejectAllRevisions(request);
+    ASSERT_TRUE(actual->getResult() != nullptr);
+    ASSERT_TRUE(actual->getResult()->getDest() != nullptr);
+}
+
+

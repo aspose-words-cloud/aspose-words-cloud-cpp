@@ -41,9 +41,7 @@ inline std::wstring convertUtf8(const std::string& value)
 
 std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
 {
-    std::string credentialsUtf8;
-    InfrastructureTest::getFileText(getSdkRoot() + L"/settings/servercreds.json", credentialsUtf8);
-
+    std::string credentialsUtf8 = InfrastructureTest::getFileText(getSdkRoot() + L"/settings/servercreds.json");
     auto fileJson = ::nlohmann::json::parse(credentialsUtf8);
     auto config = std::make_shared<ApiConfiguration>(
         convertUtf8(fileJson.contains("ClientId") ? fileJson["ClientId"].get<std::string>() : ""),
@@ -90,7 +88,7 @@ std::wstring InfrastructureTest::createRandomGuid() const
     return res;
 }
 
-void InfrastructureTest::getFileText(const std::wstring& file, std::string& result)
+std::string InfrastructureTest::getFileText(const std::wstring& file)
 {
     std::ifstream fileStream(file);
     if (!fileStream.good())
@@ -100,14 +98,33 @@ void InfrastructureTest::getFileText(const std::wstring& file, std::string& resu
 
     std::stringstream buffer;
     buffer << fileStream.rdbuf();
-    result = buffer.str();
+    return buffer.str();
+}
+
+std::wstring InfrastructureTest::getFileTextUtf16(const std::wstring& file)
+{
+    std::wifstream fileStream(file);
+    if (!fileStream.good())
+    {
+        throw L"Failed to open file: " + file;
+    }
+
+    std::wstringstream buffer;
+    buffer << fileStream.rdbuf();
+    return buffer.str();
 }
 
 void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath)
 {
-    //std::shared_ptr<UploadFileRequest> request = std::make_shared<UploadFileRequest>(generate_http_content_from_file(filePath), remoteName);
-    //std::shared_ptr<WordsApi> api = get_api();
-    //auto result = api->uploadFile(request).get();
+    auto request = std::shared_ptr<aspose::words::cloud::requests::UploadFileRequest>(
+        new aspose::words::cloud::requests::UploadFileRequest(
+            std::shared_ptr<std::istream>(new std::ifstream(localPath)),
+            std::make_shared<std::wstring>(remotePath)
+        )
+    );
+    auto result = getApi()->uploadFile(request);
+    ASSERT_TRUE(result->getErrors()->size() == 0);
+    ASSERT_TRUE(result->getUploaded()->size() == 1);
 }
 
 std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfiguration() const

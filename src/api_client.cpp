@@ -149,6 +149,12 @@ namespace aspose::words::cloud {
         {
             response.deserialize(httpResponse->body);
         }
+        else
+        {
+            std::wstring errorMessage;
+            ::utf8::utf8to16(httpResponse->body.begin(), httpResponse->body.end(), back_inserter(errorMessage));
+            response.setErrorMessage(errorMessage);
+        }
     }
 
     void ApiClient::requestToken()

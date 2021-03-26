@@ -1,0 +1,167 @@
+/** --------------------------------------------------------------------------------------------------------------------
+* <copyright company="Aspose" file="drawing_object_update.h">
+*   Copyright (c) 2021 Aspose.Words for Cloud
+* </copyright>
+* <summary>
+*   Permission is hereby granted, free of charge, to any person obtaining a copy
+*  of this software and associated documentation files (the "Software"), to deal
+*  in the Software without restriction, including without limitation the rights
+*  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+*  copies of the Software, and to permit persons to whom the Software is
+*  furnished to do so, subject to the following conditions:
+* 
+*  The above copyright notice and this permission notice shall be included in all
+*  copies or substantial portions of the Software.
+* 
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+*  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+*  SOFTWARE.
+* </summary> 
+-------------------------------------------------------------------------------------------------------------------- **/
+
+#pragma once
+#include "./model_base.h"
+
+namespace aspose::words::cloud::models {
+    /// <summary>
+    /// Drawing object element for update.
+    /// </summary>
+    class DrawingObjectUpdate : public ModelBase
+    {
+    public:
+        /// <summary>
+        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
+        /// </summary>
+        enum class RelativeHorizontalPosition
+        { 
+            MARGIN,
+            PAGE,
+            COLUMN,
+            DEFAULT,
+            CHARACTER,
+            LEFT_MARGIN,
+            RIGHT_MARGIN,
+            INSIDE_MARGIN,
+            OUTSIDE_MARGIN
+        };
+
+        /// <summary>
+        /// Gets or sets the relative vertical position, from which the distance to the image measured.
+        /// </summary>
+        enum class RelativeVerticalPosition
+        { 
+            MARGIN,
+            TABLE_DEFAULT,
+            PAGE,
+            PARAGRAPH,
+            TEXT_FRAME_DEFAULT,
+            LINE,
+            TOP_MARGIN,
+            BOTTOM_MARGIN,
+            INSIDE_MARGIN,
+            OUTSIDE_MARGIN
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how to wrap text around the image.
+        /// </summary>
+        enum class WrapType
+        { 
+            INLINE,
+            TOP_BOTTOM,
+            SQUARE,
+            NONE,
+            TIGHT,
+            THROUGH
+        };
+
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~DrawingObjectUpdate() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+
+        /// <summary>
+        /// Gets or sets the height of the DrawingObject in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeight();
+
+        /// <summary>
+        /// Gets or sets the height of the DrawingObject in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setHeight(std::shared_ptr< double > value);
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the left side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeft();
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the left side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setLeft(std::shared_ptr< double > value);
+
+        /// <summary>
+        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > getRelativeHorizontalPosition();
+
+        /// <summary>
+        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > value);
+
+        /// <summary>
+        /// Gets or sets the relative vertical position, from which the distance to the image measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition > getRelativeVerticalPosition();
+
+        /// <summary>
+        /// Gets or sets the relative vertical position, from which the distance to the image measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setRelativeVerticalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition > value);
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the top side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTop();
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the top side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setTop(std::shared_ptr< double > value);
+
+        /// <summary>
+        /// Gets or sets the width of the DrawingObjects in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getWidth();
+
+        /// <summary>
+        /// Gets or sets the width of the DrawingObjects in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setWidth(std::shared_ptr< double > value);
+
+        /// <summary>
+        /// Gets or sets the option that controls how to wrap text around the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > getWrapType();
+
+        /// <summary>
+        /// Gets or sets the option that controls how to wrap text around the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setWrapType(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > value);
+
+    protected:
+        std::shared_ptr< double > m_Height;
+        std::shared_ptr< double > m_Left;
+        std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > m_RelativeHorizontalPosition;
+        std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition > m_RelativeVerticalPosition;
+        std::shared_ptr< double > m_Top;
+        std::shared_ptr< double > m_Width;
+        std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > m_WrapType;
+    };
+}
+
