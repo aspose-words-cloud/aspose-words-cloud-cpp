@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="comment_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the author name for a comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAuthor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAuthor() const;
 
         /// <summary>
         /// Gets or sets the author name for a comment.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the date and time that the comment was made.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime() const;
 
         /// <summary>
         /// Gets or sets the date and time that the comment was made.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the initials of the user associated with a specific comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getInitial();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getInitial() const;
 
         /// <summary>
         /// Gets or sets the initials of the user associated with a specific comment.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to comment range end node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd() const;
 
         /// <summary>
         /// Gets or sets the link to comment range end node.
@@ -82,7 +82,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeStart();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeStart() const;
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
@@ -92,7 +92,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets text of the comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets text of the comment.

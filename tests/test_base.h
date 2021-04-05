@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="test_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -36,11 +36,9 @@ class InfrastructureTest : public ::testing::Test
 protected:
     static std::wstring getSdkRoot();
 
-    std::wstring localTestDataFolder = getSdkRoot() + L"/TestData";
+    std::wstring localTestDataFolder = getSdkRoot() + L"/test_data";
 
     std::shared_ptr<ApiConfiguration> getConfig();
-
-    virtual void SetUp() override;
 
     std::wstring getDataDir(const std::wstring& subfolder) const;
     std::wstring createRandomGuid() const;
@@ -49,16 +47,10 @@ protected:
     void uploadFileToStorage(const std::wstring& localPath, const std::wstring& remotePath);
 
 public:
-    std::shared_ptr<ApiConfiguration> getConfiguration() const;
     std::shared_ptr<api::WordsApi> getApi();
 
 protected:
     const std::wstring baseTestOutPath = L"TestOut/Cpp";
     const std::wstring remoteBaseTestDataFolder = L"Temp/SdkTests/Cpp/TestData";
     const std::wstring commonFolder = L"Common";
-
-private:
-    std::shared_ptr<ApiClient> m_Client;
-    std::shared_ptr<api::WordsApi> m_wordsApi;
-    std::shared_ptr<ApiConfiguration> m_Config;
 };

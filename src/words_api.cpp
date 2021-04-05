@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="words_api.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -3207,5 +3207,37 @@ namespace aspose::words::cloud::api {
         }
 
         return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::BatchResponse> WordsApi::batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests) {
+        auto response = std::make_shared<aspose::words::cloud::responses::BatchResponse>();
+        auto requestData = std::make_shared<aspose::words::cloud::HttpRequestData>();
+        {
+            auto& requestBodyRef = requestData->getBodyMutable();
+            auto boundary = ApiClient::createRandomGuid();
+            requestData->setMethod(aspose::words::cloud::HttpRequestMethod::HttpPUT);
+            requestData->setPath(L"/words/batch");
+            requestData->setContentType("multipart/form-data; boundary=" + boundary);
+            for (auto& batchRequest : requests) {
+                requestBodyRef.append("--");
+                requestBodyRef.append(boundary);
+                requestBodyRef.append("\r\n");
+                requestBodyRef.append("Content-Type: application/http; msgtype=request\r\n");
+                requestBodyRef.append("Content-Disposition: form-data\r\n\r\n");
+                batchRequest.serialize(requestBodyRef);
+                requestBodyRef.append("\r\n");
+            }
+            requestBodyRef.append("--");
+            requestBodyRef.append(boundary);
+            requestBodyRef.append("--");
+        }
+
+        response->initialize(requests);
+        m_ApiClient->call(requestData, *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
     }
 }

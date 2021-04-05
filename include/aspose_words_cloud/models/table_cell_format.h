@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_cell_format.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -86,7 +86,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the amount of space (in points) to add below the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getBottomPadding();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getBottomPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add below the contents of the cell.
@@ -96,7 +96,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to fit text in the cell, compress each paragraph to the width of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFitText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFitText() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to fit text in the cell, compress each paragraph to the width of the cell.
@@ -106,7 +106,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged horizontally with other cells in the row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::HorizontalMerge > getHorizontalMerge();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::HorizontalMerge > getHorizontalMerge() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged horizontally with other cells in the row.
@@ -116,7 +116,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the left of the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeftPadding();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeftPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the left of the contents of the cell.
@@ -126,7 +126,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the orientation of text in a table cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::Orientation > getOrientation();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::Orientation > getOrientation() const;
 
         /// <summary>
         /// Gets or sets the orientation of text in a table cell.
@@ -136,7 +136,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the preferred width of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PreferredWidth > getPreferredWidth();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PreferredWidth > getPreferredWidth() const;
 
         /// <summary>
         /// Gets or sets the preferred width of the cell.
@@ -146,7 +146,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the right of the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getRightPadding();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getRightPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the right of the contents of the cell.
@@ -156,7 +156,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the amount of space (in points) to add above the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTopPadding();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTopPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add above the contents of the cell.
@@ -166,7 +166,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the vertical alignment of text in the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalAlignment > getVerticalAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalAlignment > getVerticalAlignment() const;
 
         /// <summary>
         /// Gets or sets the vertical alignment of text in the cell.
@@ -176,7 +176,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged with other cells vertically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalMerge > getVerticalMerge();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalMerge > getVerticalMerge() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged with other cells vertically.
@@ -186,7 +186,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the width of the cell in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getWidth();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getWidth() const;
 
         /// <summary>
         /// Gets or sets the width of the cell in points.
@@ -196,7 +196,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to wrap text in the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getWrapText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getWrapText() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to wrap text in the cell.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="tab_stop.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether this tab stop clears any existing tab stops in this position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsClear();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsClear() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this tab stop clears any existing tab stops in this position.

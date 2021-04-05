@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="comments_collection.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of comments.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Comment>> > getCommentList();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Comment>> > getCommentList() const;
 
         /// <summary>
         /// Gets or sets the collection of comments.

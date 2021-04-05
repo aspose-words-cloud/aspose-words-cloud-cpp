@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="bookmark_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the bookmark.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Bookmark > getBookmark();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Bookmark > getBookmark() const;
 
         /// <summary>
         /// Gets or sets the bookmark.

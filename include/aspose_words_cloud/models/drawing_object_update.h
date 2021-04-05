@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="drawing_object_update.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -87,7 +87,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the height of the DrawingObject in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeight();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeight() const;
 
         /// <summary>
         /// Gets or sets the height of the DrawingObject in points.
@@ -97,7 +97,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the distance in points from the origin to the left side of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeft();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeft() const;
 
         /// <summary>
         /// Gets or sets the distance in points from the origin to the left side of the image.
@@ -107,7 +107,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > getRelativeHorizontalPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > getRelativeHorizontalPosition() const;
 
         /// <summary>
         /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
@@ -117,7 +117,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the relative vertical position, from which the distance to the image measured.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition > getRelativeVerticalPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition > getRelativeVerticalPosition() const;
 
         /// <summary>
         /// Gets or sets the relative vertical position, from which the distance to the image measured.
@@ -127,7 +127,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the distance in points from the origin to the top side of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTop();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTop() const;
 
         /// <summary>
         /// Gets or sets the distance in points from the origin to the top side of the image.
@@ -137,7 +137,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the width of the DrawingObjects in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getWidth();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getWidth() const;
 
         /// <summary>
         /// Gets or sets the width of the DrawingObjects in points.
@@ -147,7 +147,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how to wrap text around the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > getWrapType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > getWrapType() const;
 
         /// <summary>
         /// Gets or sets the option that controls how to wrap text around the image.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="field.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the LCID of the field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLocaleId();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLocaleId() const;
 
         /// <summary>
         /// Gets or sets the LCID of the field.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the field result.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResult();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResult() const;
 
         /// <summary>
         /// Gets or sets the field result.

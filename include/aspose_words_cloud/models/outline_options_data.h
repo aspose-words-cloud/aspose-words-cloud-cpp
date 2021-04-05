@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="outline_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the individual bookmarks outline level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > getBookmarksOutlineLevels();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > getBookmarksOutlineLevels() const;
 
         /// <summary>
         /// Gets or sets the individual bookmarks outline level.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to create missing outline levels when the document is exported. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getCreateMissingOutlineLevels();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getCreateMissingOutlineLevels() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to create missing outline levels when the document is exported. The default value is false.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to create outlines for headings (paragraphs formatted with the Heading styles) inside tables.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getCreateOutlinesForHeadingsInTables();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getCreateOutlinesForHeadingsInTables() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to create outlines for headings (paragraphs formatted with the Heading styles) inside tables.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the default level in the document outline at which to display Word bookmarks.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getDefaultBookmarksOutlineLevel();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getDefaultBookmarksOutlineLevel() const;
 
         /// <summary>
         /// Gets or sets the default level in the document outline at which to display Word bookmarks.
@@ -82,7 +82,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of levels in the document outline to show expanded when the file is viewed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getExpandedOutlineLevels();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getExpandedOutlineLevels() const;
 
         /// <summary>
         /// Gets or sets the number of levels in the document outline to show expanded when the file is viewed.
@@ -92,7 +92,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getHeadingsOutlineLevels();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getHeadingsOutlineLevels() const;
 
         /// <summary>
         /// Gets or sets the number of levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.

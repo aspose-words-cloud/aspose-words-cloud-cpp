@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="run_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the run's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets the run's text.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="error.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Code.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCode() const;
 
         /// <summary>
         /// Code.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDescription();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDescription() const;
 
         /// <summary>
         /// Description.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Inner Error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ErrorDetails > getInnerError();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ErrorDetails > getInnerError() const;
 
         /// <summary>
         /// Inner Error.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Message.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getMessage();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getMessage() const;
 
         /// <summary>
         /// Message.

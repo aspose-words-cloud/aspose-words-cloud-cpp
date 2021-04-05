@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="protection_request.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the new password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNewPassword();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNewPassword() const;
 
         /// <summary>
         /// Gets or sets the new password.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the current password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the current password.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the new type of protection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getProtectionType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getProtectionType() const;
 
         /// <summary>
         /// Gets or sets the new type of protection.

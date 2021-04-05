@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="office_math_object.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -102,7 +102,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the content of a footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
 
         /// <summary>
         /// Gets or sets the content of a footnote.
@@ -112,7 +112,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > getDisplayType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > getDisplayType() const;
 
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
@@ -122,7 +122,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > getJustification();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > getJustification() const;
 
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
@@ -132,7 +132,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the type of the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::MathObjectType > getMathObjectType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::MathObjectType > getMathObjectType() const;
 
         /// <summary>
         /// Gets or sets the type of the OfficeMath object.

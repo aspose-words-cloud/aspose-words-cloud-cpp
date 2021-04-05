@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="report_engine_settings.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the options for parsing CSV data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > getCsvDataLoadOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > getCsvDataLoadOptions() const;
 
         /// <summary>
         /// Gets or sets the options for parsing CSV data.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name to reference the data source object in the template.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDataSourceName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDataSourceName() const;
 
         /// <summary>
         /// Gets or sets the name to reference the data source object in the template.
@@ -73,7 +73,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets type of datasource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > getDataSourceType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > getDataSourceType() const;
 
         /// <summary>
         /// Gets or sets type of datasource.
@@ -83,7 +83,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets type of options to build report.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > getReportBuildOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > getReportBuildOptions() const;
 
         /// <summary>
         /// Gets or sets type of options to build report.

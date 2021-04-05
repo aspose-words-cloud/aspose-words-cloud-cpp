@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_row_format.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the text in a table row is allowed to split across a page break.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllowBreakAcrossPages();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllowBreakAcrossPages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the text in a table row is allowed to split across a page break.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the row is repeated as a table heading on every page when the table spans more than one page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHeadingFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHeadingFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the row is repeated as a table heading on every page when the table spans more than one page.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the height of the table row in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeight();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeight() const;
 
         /// <summary>
         /// Gets or sets the height of the table row in points.
@@ -82,7 +82,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the rule for determining the height of the table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRowFormat::HeightRule > getHeightRule();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRowFormat::HeightRule > getHeightRule() const;
 
         /// <summary>
         /// Gets or sets the rule for determining the height of the table row.

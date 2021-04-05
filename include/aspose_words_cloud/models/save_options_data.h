@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -50,7 +50,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllowEmbeddingPostScriptFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllowEmbeddingPostScriptFonts() const;
 
         /// <summary>
         /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
@@ -60,7 +60,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > getDml3DEffectsRenderingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > getDml3DEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDmlEffectsRenderingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDmlEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
@@ -82,7 +82,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDmlRenderingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDmlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
@@ -92,7 +92,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of destination file.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFileName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFileName() const;
 
         /// <summary>
         /// Gets or sets the name of destination file.
@@ -102,7 +102,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the format of save.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSaveFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSaveFormat() const;
 
         /// <summary>
         /// Gets or sets the format of save.
@@ -113,7 +113,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
         /// Default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateCreatedTimeProperty();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateCreatedTimeProperty() const;
 
         /// <summary>
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
@@ -124,7 +124,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether fields should be updated before saving the document to a fixed page format. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateFields();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateFields() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fields should be updated before saving the document to a fixed page format. The default value is true.
@@ -134,7 +134,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateLastPrintedProperty();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateLastPrintedProperty() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
@@ -144,7 +144,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateLastSavedTimeProperty();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateLastSavedTimeProperty() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
@@ -154,7 +154,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateSdtContent();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateSdtContent() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
@@ -165,7 +165,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether to zip output or not.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getZipOutput();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getZipOutput() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to zip output or not.

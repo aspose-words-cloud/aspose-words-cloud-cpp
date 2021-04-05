@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="font.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -463,7 +463,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as all capital letters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllCaps();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllCaps() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as all capital letters.
@@ -473,7 +473,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall have right-to-left characteristics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBidi();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall have right-to-left characteristics.
@@ -483,7 +483,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as bold.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBold();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBold() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as bold.
@@ -493,7 +493,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as bold.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBoldBi();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBoldBi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as bold.
@@ -503,7 +503,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the border object, that specifies border for the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border > getBorder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border > getBorder() const;
 
         /// <summary>
         /// Gets or sets the border object, that specifies border for the font.
@@ -513,7 +513,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the color of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
 
         /// <summary>
         /// Gets or sets the color of the font.
@@ -523,7 +523,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getComplexScript();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getComplexScript() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.
@@ -533,7 +533,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as double strikethrough text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDoubleStrikeThrough();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDoubleStrikeThrough() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as double strikethrough text.
@@ -543,7 +543,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as embossed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmboss();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmboss() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as embossed.
@@ -553,7 +553,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as engraved.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEngrave();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEngrave() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as engraved.
@@ -563,7 +563,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as hidden text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHidden();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHidden() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as hidden text.
@@ -573,7 +573,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the highlight (marker) color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getHighlightColor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getHighlightColor() const;
 
         /// <summary>
         /// Gets or sets the highlight (marker) color.
@@ -583,7 +583,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as italic.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getItalic();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getItalic() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as italic.
@@ -593,7 +593,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as italic.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getItalicBi();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getItalicBi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as italic.
@@ -603,7 +603,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font size at which kerning starts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getKerning();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getKerning() const;
 
         /// <summary>
         /// Gets or sets the font size at which kerning starts.
@@ -613,7 +613,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleId();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleId() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted characters.
@@ -623,7 +623,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted right-to-left characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleIdBi();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleIdBi() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted right-to-left characters.
@@ -633,7 +633,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted Asian characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleIdFarEast();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleIdFarEast() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted Asian characters.
@@ -643,7 +643,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the name of the font.
@@ -653,7 +653,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameAscii();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameAscii() const;
 
         /// <summary>
         /// Gets or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).
@@ -663,7 +663,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the font in a right-to-left language document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameBi();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameBi() const;
 
         /// <summary>
         /// Gets or sets the name of the font in a right-to-left language document.
@@ -673,7 +673,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the East Asian font name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameFarEast();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameFarEast() const;
 
         /// <summary>
         /// Gets or sets the East Asian font name.
@@ -683,7 +683,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font used for characters with character codes from 128 through 255.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameOther();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameOther() const;
 
         /// <summary>
         /// Gets or sets the font used for characters with character codes from 128 through 255.
@@ -693,7 +693,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the formatted characters are not to be spell checked.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getNoProofing();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getNoProofing() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the formatted characters are not to be spell checked.
@@ -703,7 +703,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOutline();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOutline() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as outline.
@@ -714,7 +714,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the position of text (in points) relative to the base line.
         /// A positive number raises the text, and a negative number lowers it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position of text (in points) relative to the base line.
@@ -725,7 +725,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets character width scaling in percent.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getScaling();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getScaling() const;
 
         /// <summary>
         /// Gets or sets character width scaling in percent.
@@ -735,7 +735,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as shadowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShadow();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShadow() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as shadowed.
@@ -745,7 +745,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font size in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSize();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSize() const;
 
         /// <summary>
         /// Gets or sets the font size in points.
@@ -755,7 +755,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font size in points used in a right-to-left document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSizeBi();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSizeBi() const;
 
         /// <summary>
         /// Gets or sets the font size in points used in a right-to-left document.
@@ -765,7 +765,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as small capital letters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSmallCaps();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSmallCaps() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as small capital letters.
@@ -775,7 +775,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the spacing (in points) between characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSpacing();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSpacing() const;
 
         /// <summary>
         /// Gets or sets the spacing (in points) between characters.
@@ -785,7 +785,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as strikethrough text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getStrikeThrough();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getStrikeThrough() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as strikethrough text.
@@ -795,7 +795,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the locale independent style identifier of the character style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::StyleIdentifier > getStyleIdentifier();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::StyleIdentifier > getStyleIdentifier() const;
 
         /// <summary>
         /// Gets or sets the locale independent style identifier of the character style applied to this formatting.
@@ -805,7 +805,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the character style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the character style applied to this formatting.
@@ -815,7 +815,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as subscript.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSubscript();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSubscript() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as subscript.
@@ -825,7 +825,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as superscript.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSuperscript();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSuperscript() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as superscript.
@@ -835,7 +835,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font animation effect.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::TextEffect > getTextEffect();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::TextEffect > getTextEffect() const;
 
         /// <summary>
         /// Gets or sets the font animation effect.
@@ -845,7 +845,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the type of underline applied to the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::Underline > getUnderline();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::Underline > getUnderline() const;
 
         /// <summary>
         /// Gets or sets the type of underline applied to the font.
@@ -855,7 +855,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the color of the underline applied to the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getUnderlineColor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getUnderlineColor() const;
 
         /// <summary>
         /// Gets or sets the color of the underline applied to the font.

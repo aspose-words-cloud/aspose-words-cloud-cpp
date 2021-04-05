@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="paragraph_format.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph style is one of the built-in Heading styles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsHeading();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsHeading() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph style is one of the built-in Heading styles.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is an item in a bulleted or numbered list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsListItem();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsListItem() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is an item in a bulleted or numbered list.

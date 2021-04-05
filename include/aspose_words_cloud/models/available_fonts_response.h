@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="available_fonts_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list of additional fonts, provided by Aspose team.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getAdditionalFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getAdditionalFonts() const;
 
         /// <summary>
         /// Gets or sets the list of additional fonts, provided by Aspose team.
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list of custom user fonts from user cloud storage. To use them, you should specify "fontsLocation" parameter in any request.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getCustomFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getCustomFonts() const;
 
         /// <summary>
         /// Gets or sets the list of custom user fonts from user cloud storage. To use them, you should specify "fontsLocation" parameter in any request.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list of system fonts, available on the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getSystemFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getSystemFonts() const;
 
         /// <summary>
         /// Gets or sets the list of system fonts, available on the server.

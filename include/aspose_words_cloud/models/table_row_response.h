@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_row_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRow > getRow();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRow > getRow() const;
 
         /// <summary>
         /// Gets or sets the table row.

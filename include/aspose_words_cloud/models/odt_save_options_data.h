@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="odt_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether export should correspond to ODT specification 1.1 strictly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsStrictSchema11();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsStrictSchema11() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether export should correspond to ODT specification 1.1 strictly.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.
         /// Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > getMeasureUnit();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > getMeasureUnit() const;
 
         /// <summary>
         /// Gets or sets the units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.
@@ -74,7 +74,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the password to encrypt document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the password to encrypt document.
@@ -84,7 +84,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.

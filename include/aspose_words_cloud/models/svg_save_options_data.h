@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="svg_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether images should be embedded into SVG document as base64.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedImages();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedImages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether images should be embedded into SVG document as base64.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFitToViewPort();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFitToViewPort() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the physical folder where resources (images) are saved when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder() const;
 
         /// <summary>
         /// Gets or sets the physical folder where resources (images) are saved when exporting.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias() const;
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
@@ -82,7 +82,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to show or hide page stepper.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShowPageBorder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShowPageBorder() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show or hide page stepper.
@@ -92,7 +92,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how text should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextOutputMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextOutputMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how text should be rendered.

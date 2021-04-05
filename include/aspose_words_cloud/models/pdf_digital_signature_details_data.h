@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="pdf_digital_signature_details_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the certificate's filename using for signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCertificateFilename();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCertificateFilename() const;
 
         /// <summary>
         /// Gets or sets the certificate's filename using for signing.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the hash algorithm.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getHashAlgorithm();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getHashAlgorithm() const;
 
         /// <summary>
         /// Gets or sets the hash algorithm.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the location of the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLocation();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLocation() const;
 
         /// <summary>
         /// Gets or sets the location of the signing.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the reason for the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getReason();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getReason() const;
 
         /// <summary>
         /// Gets or sets the reason for the signing.
@@ -81,7 +81,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the date of the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSignatureDate();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSignatureDate() const;
 
         /// <summary>
         /// Gets or sets the date of the signing.

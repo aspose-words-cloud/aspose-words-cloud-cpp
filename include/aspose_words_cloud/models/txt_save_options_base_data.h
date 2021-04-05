@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="txt_save_options_base_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character encoding to use when exporting in plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEncoding();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEncoding() const;
 
         /// <summary>
         /// Gets or sets the character encoding to use when exporting in plain text format.
@@ -64,7 +64,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
         /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > getExportHeadersFootersMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > getExportHeadersFootersMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
@@ -76,7 +76,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether the page breaks should be preserved during export.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getForcePageBreaks();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getForcePageBreaks() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the page breaks should be preserved during export.
@@ -87,7 +87,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the string to use as a paragraph break when exporting in plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getParagraphBreak();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getParagraphBreak() const;
 
         /// <summary>
         /// Gets or sets the string to use as a paragraph break when exporting in plain text format.

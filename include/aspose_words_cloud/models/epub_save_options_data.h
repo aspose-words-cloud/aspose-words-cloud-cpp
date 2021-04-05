@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="epub_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the maximum level of headings populated to the navigation map when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getEpubNavigationMapLevel();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getEpubNavigationMapLevel() const;
 
         /// <summary>
         /// Gets or sets the maximum level of headings populated to the navigation map when exporting.

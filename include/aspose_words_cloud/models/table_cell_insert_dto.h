@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_cell_insert_dto.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the 0-based index, the table cell will be inserted after.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getInsertAfter();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getInsertAfter() const;
 
         /// <summary>
         /// Gets or sets the 0-based index, the table cell will be inserted after.

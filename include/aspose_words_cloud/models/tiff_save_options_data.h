@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="tiff_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
         /// Default value is 128.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getThresholdForFloydSteinbergDithering();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getThresholdForFloydSteinbergDithering() const;
 
         /// <summary>
         /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the method used while converting images to 1 bpp format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTiffBinarizationMethod();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTiffBinarizationMethod() const;
 
         /// <summary>
         /// Gets or sets the method used while converting images to 1 bpp format.
@@ -64,7 +64,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the type of compression.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTiffCompression();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTiffCompression() const;
 
         /// <summary>
         /// Gets or sets the type of compression.

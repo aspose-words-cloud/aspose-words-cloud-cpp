@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_row_insert_dto.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the count of columns. The default value is 1.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getColumnsCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getColumnsCount() const;
 
         /// <summary>
         /// Gets or sets the count of columns. The default value is 1.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets table row will be inserted after row with specified 0-based index.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getInsertAfter();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getInsertAfter() const;
 
         /// <summary>
         /// Gets or sets table row will be inserted after row with specified 0-based index.

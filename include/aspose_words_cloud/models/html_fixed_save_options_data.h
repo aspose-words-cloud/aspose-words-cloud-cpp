@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="html_fixed_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the prefix which is added to all class names in style.css file.
         /// Default value is "aw".
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCssClassNamesPrefix();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCssClassNamesPrefix() const;
 
         /// <summary>
         /// Gets or sets the prefix which is added to all class names in style.css file.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character encoding.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEncoding();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEncoding() const;
 
         /// <summary>
         /// Gets or sets the character encoding.
@@ -64,7 +64,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the CSS (Cascading Style Sheet) should be embedded into the Html document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedCss();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedCss() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the CSS (Cascading Style Sheet) should be embedded into the Html document.
@@ -74,7 +74,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether fonts should be embedded into the Html document in Base64 format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedFonts() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fonts should be embedded into the Html document in Base64 format.
@@ -84,7 +84,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether images should be embedded into the Html document in Base64 format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedImages();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedImages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether images should be embedded into the Html document in Base64 format.
@@ -94,7 +94,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether form fields are exported as interactive items (as 'input' tag) rather than converted to text or graphics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportFormFields();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportFormFields() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether form fields are exported as interactive items (as 'input' tag) rather than converted to text or graphics.
@@ -104,7 +104,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the export format of fonts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontFormat() const;
 
         /// <summary>
         /// Gets or sets the export format of fonts.
@@ -115,7 +115,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the horizontal alignment of pages in the HTML document.
         /// The default value is HtmlFixedHorizontalPageAlignment.Center.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPageHorizontalAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPageHorizontalAlignment() const;
 
         /// <summary>
         /// Gets or sets the horizontal alignment of pages in the HTML document.
@@ -128,7 +128,7 @@ namespace aspose::words::cloud::models {
         /// The margins value is measured in points and should be equal to or greater than 0.
         /// Default value is 10 points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPageMargins();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPageMargins() const;
 
         /// <summary>
         /// Gets or sets the margin around pages in HTML document.
@@ -140,7 +140,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the physical folder where resources are saved when exporting the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder() const;
 
         /// <summary>
         /// Gets or sets the physical folder where resources are saved when exporting the document.
@@ -150,7 +150,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the folder used to construct resource URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias() const;
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct resource URIs.
@@ -160,7 +160,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether "@font-face" CSS rules should be placed into a separate file "fontFaces.css" when a document is being saved with external stylesheet (that is, when Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedCss is false). The default value is false, all CSS rules are written into single file "styles.css".
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveFontFaceCssSeparately();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveFontFaceCssSeparately() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether "@font-face" CSS rules should be placed into a separate file "fontFaces.css" when a document is being saved with external stylesheet (that is, when Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedCss is false). The default value is false, all CSS rules are written into single file "styles.css".
@@ -170,7 +170,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to show border around pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShowPageBorder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShowPageBorder() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show border around pages.
@@ -180,7 +180,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether fonts from target machine must be used to display the document. If this flag is set to true, Aspose.Words.Saving.HtmlFixedSaveOptions.FontFormat and Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedFonts properties do not have effect, also Aspose.Words.Saving.HtmlFixedSaveOptions.ResourceSavingCallback is not fired for fonts. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseTargetMachineFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseTargetMachineFonts() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fonts from target machine must be used to display the document. If this flag is set to true, Aspose.Words.Saving.HtmlFixedSaveOptions.FontFormat and Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedFonts properties do not have effect, also Aspose.Words.Saving.HtmlFixedSaveOptions.ResourceSavingCallback is not fired for fonts. The default value is false.

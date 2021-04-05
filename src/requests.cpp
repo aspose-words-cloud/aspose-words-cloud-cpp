@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="requests.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -23,9 +23,66 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
+#include <sstream>
 #include "aspose_words_cloud.h"
 
+// USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
+#include "../thirdparty/utf8.h"
+
 namespace aspose::words::cloud::requests {
+    BatchRequest::BatchRequest(std::shared_ptr<RequestModelBase> request) :
+        m_Request(request),
+        m_RequestId(aspose::words::cloud::ApiClient::createRandomGuid())
+    { }
+
+    void BatchRequest::dependsOn(const BatchRequest& other) {
+        m_DependsOn = other.m_RequestId;
+    }
+
+    std::shared_ptr<std::istream> BatchRequest::asResult() const {
+        return std::shared_ptr<std::istream>(
+            new std::istringstream("resultOf(" + m_RequestId + ")", std::ios_base::in)
+        );
+    }
+
+    void BatchRequest::serialize(std::string& body) const {
+        auto httpRequest = m_Request->createHttpRequest();
+        auto method = httpRequest->getMethod();
+        if (method == aspose::words::cloud::HttpRequestMethod::HttpGET) body.append("GET ");
+        else if (method == aspose::words::cloud::HttpRequestMethod::HttpPOST) body.append("POST ");
+        else if (method == aspose::words::cloud::HttpRequestMethod::HttpPUT) body.append("PUT ");
+        else if (method == aspose::words::cloud::HttpRequestMethod::HttpDELETE) body.append("DELETE ");
+        else throw "Undefined http method";
+
+        static const std::string preffix("/words/");
+        body.append(httpRequest->getFullPath().substr(preffix.size()));
+        body.append(" \r\n");
+
+        body.append("RequestId: ");
+        body.append(m_RequestId);
+        body.append("\r\n");
+
+        if (!m_DependsOn.empty()) {
+            body.append("DependsOn: ");
+            body.append(m_DependsOn);
+            body.append("\r\n");
+        }
+
+        for (auto& header : httpRequest->getHeaders()) {
+            ::utf8::utf16to8(header.first.begin(), header.first.end(), back_inserter(body));
+            body.append(": ");
+            ::utf8::utf16to8(header.second.begin(), header.second.end(), back_inserter(body));
+            body.append("\r\n");
+        }
+
+        body.append("\r\n");
+        body.append(httpRequest->getBody());
+    }
+
+    std::shared_ptr<RequestModelBase> BatchRequest::get() const {
+        return m_Request;
+    }
+
     /*
      * AcceptAllRevisions request implementation
      */
@@ -76,7 +133,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > AcceptAllRevisionsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AcceptAllRevisionsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -89,7 +146,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > AcceptAllRevisionsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::AcceptAllRevisionsResponse()
+        );
+    }
+
+    /*
      * AcceptAllRevisionsOnline request implementation
      */
     AcceptAllRevisionsOnlineRequest::AcceptAllRevisionsOnlineRequest(
@@ -125,7 +191,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > AcceptAllRevisionsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AcceptAllRevisionsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -133,10 +199,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > AcceptAllRevisionsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::AcceptAllRevisionsOnlineResponse()
+        );
+    }
+
+    /*
      * AppendDocument request implementation
      */
     AppendDocumentRequest::AppendDocumentRequest(
@@ -207,7 +282,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > AppendDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -224,7 +299,16 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentList) result->setBody(*m_DocumentList);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > AppendDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::AppendDocumentResponse()
+        );
+    }
+
+    /*
      * AppendDocumentOnline request implementation
      */
     AppendDocumentOnlineRequest::AppendDocumentOnlineRequest(
@@ -281,7 +365,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > AppendDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -296,7 +380,16 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentList) result->addFormDataParam(L"documentList", *m_DocumentList);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > AppendDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::AppendDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * ApplyStyleToDocumentElement request implementation
      */
     ApplyStyleToDocumentElementRequest::ApplyStyleToDocumentElementRequest(
@@ -374,7 +467,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > ApplyStyleToDocumentElementRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ApplyStyleToDocumentElementRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -393,7 +486,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleApply) result->setBody(*m_StyleApply);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleApply' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ApplyStyleToDocumentElementRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ApplyStyleToDocumentElementResponse()
+        );
+    }
+
+    /*
      * ApplyStyleToDocumentElementOnline request implementation
      */
     ApplyStyleToDocumentElementOnlineRequest::ApplyStyleToDocumentElementOnlineRequest(
@@ -457,7 +559,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > ApplyStyleToDocumentElementOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ApplyStyleToDocumentElementOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -474,7 +576,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleApply) result->addFormDataParam(L"styleApply", *m_StyleApply);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleApply' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ApplyStyleToDocumentElementOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ApplyStyleToDocumentElementOnlineResponse()
+        );
+    }
+
+    /*
      * BuildReport request implementation
      */
     BuildReportRequest::BuildReportRequest(
@@ -538,7 +649,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > BuildReportRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > BuildReportRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -555,7 +666,16 @@ namespace aspose::words::cloud::requests {
         if (m_ReportEngineSettings) result->addFormDataParam(L"reportEngineSettings", *m_ReportEngineSettings);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReportEngineSettings' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > BuildReportRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::BuildReportResponse()
+        );
+    }
+
+    /*
      * BuildReportOnline request implementation
      */
     BuildReportOnlineRequest::BuildReportOnlineRequest(
@@ -591,7 +711,7 @@ namespace aspose::words::cloud::requests {
         return m_DocumentFileName;
     }
 
-    std::shared_ptr< HttpRequestData > BuildReportOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > BuildReportOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -604,7 +724,16 @@ namespace aspose::words::cloud::requests {
         if (m_ReportEngineSettings) result->addFormDataParam(L"reportEngineSettings", *m_ReportEngineSettings);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReportEngineSettings' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > BuildReportOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::BuildReportOnlineResponse()
+        );
+    }
+
+    /*
      * Classify request implementation
      */
     ClassifyRequest::ClassifyRequest(
@@ -626,16 +755,25 @@ namespace aspose::words::cloud::requests {
         return m_BestClassesCount;
     }
 
-    std::shared_ptr< HttpRequestData > ClassifyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/classify");
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
-        if (m_Text) result->setBody(*m_Text);
+        if (m_Text) result->setBodyJson(*m_Text);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Text' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ClassifyRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ClassifyResponse()
+        );
+    }
+
+    /*
      * ClassifyDocument request implementation
      */
     ClassifyDocumentRequest::ClassifyDocumentRequest(
@@ -692,7 +830,7 @@ namespace aspose::words::cloud::requests {
         return m_Taxonomy;
     }
 
-    std::shared_ptr< HttpRequestData > ClassifyDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -706,7 +844,16 @@ namespace aspose::words::cloud::requests {
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ClassifyDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ClassifyDocumentResponse()
+        );
+    }
+
+    /*
      * ClassifyDocumentOnline request implementation
      */
     ClassifyDocumentOnlineRequest::ClassifyDocumentOnlineRequest(
@@ -749,7 +896,7 @@ namespace aspose::words::cloud::requests {
         return m_Taxonomy;
     }
 
-    std::shared_ptr< HttpRequestData > ClassifyDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -758,10 +905,19 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ClassifyDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ClassifyDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * CompareDocument request implementation
      */
     CompareDocumentRequest::CompareDocumentRequest(
@@ -818,7 +974,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > CompareDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -833,7 +989,16 @@ namespace aspose::words::cloud::requests {
         if (m_CompareData) result->setBody(*m_CompareData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CompareDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CompareDocumentResponse()
+        );
+    }
+
+    /*
      * CompareDocumentOnline request implementation
      */
     CompareDocumentOnlineRequest::CompareDocumentOnlineRequest(
@@ -876,7 +1041,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > CompareDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -889,7 +1054,16 @@ namespace aspose::words::cloud::requests {
         if (m_CompareData) result->addFormDataParam(L"compareData", *m_CompareData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CompareDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CompareDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * ConvertDocument request implementation
      */
     ConvertDocumentRequest::ConvertDocumentRequest(
@@ -939,7 +1113,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > ConvertDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ConvertDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -950,10 +1124,19 @@ namespace aspose::words::cloud::requests {
         if (m_FileNameFieldValue) result->addQueryParam(L"fileNameFieldValue", *m_FileNameFieldValue);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ConvertDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ConvertDocumentResponse()
+        );
+    }
+
+    /*
      * CopyFile request implementation
      */
     CopyFileRequest::CopyFileRequest(
@@ -996,7 +1179,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< HttpRequestData > CopyFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyFileRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1009,7 +1192,16 @@ namespace aspose::words::cloud::requests {
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CopyFileRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CopyFileResponse()
+        );
+    }
+
+    /*
      * CopyFolder request implementation
      */
     CopyFolderRequest::CopyFolderRequest(
@@ -1045,7 +1237,7 @@ namespace aspose::words::cloud::requests {
         return m_DestStorageName;
     }
 
-    std::shared_ptr< HttpRequestData > CopyFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyFolderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1057,7 +1249,16 @@ namespace aspose::words::cloud::requests {
         if (m_SrcStorageName) result->addQueryParam(L"srcStorageName", *m_SrcStorageName);
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CopyFolderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CopyFolderResponse()
+        );
+    }
+
+    /*
      * CopyStyle request implementation
      */
     CopyStyleRequest::CopyStyleRequest(
@@ -1128,7 +1329,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > CopyStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStyleRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -1145,7 +1346,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleCopy) result->setBody(*m_StyleCopy);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleCopy' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CopyStyleRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CopyStyleResponse()
+        );
+    }
+
+    /*
      * CopyStyleOnline request implementation
      */
     CopyStyleOnlineRequest::CopyStyleOnlineRequest(
@@ -1202,7 +1412,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > CopyStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStyleOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1217,7 +1427,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleCopy) result->addFormDataParam(L"styleCopy", *m_StyleCopy);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleCopy' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CopyStyleOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CopyStyleOnlineResponse()
+        );
+    }
+
+    /*
      * CreateDocument request implementation
      */
     CreateDocumentRequest::CreateDocumentRequest(
@@ -1246,7 +1465,7 @@ namespace aspose::words::cloud::requests {
         return m_Storage;
     }
 
-    std::shared_ptr< HttpRequestData > CreateDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1255,7 +1474,16 @@ namespace aspose::words::cloud::requests {
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CreateDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CreateDocumentResponse()
+        );
+    }
+
+    /*
      * CreateFolder request implementation
      */
     CreateFolderRequest::CreateFolderRequest(
@@ -1277,7 +1505,7 @@ namespace aspose::words::cloud::requests {
         return m_StorageName;
     }
 
-    std::shared_ptr< HttpRequestData > CreateFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateFolderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1286,7 +1514,16 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{path}", *m_Path);
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CreateFolderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CreateFolderResponse()
+        );
+    }
+
+    /*
      * CreateOrUpdateDocumentProperty request implementation
      */
     CreateOrUpdateDocumentPropertyRequest::CreateOrUpdateDocumentPropertyRequest(
@@ -1364,7 +1601,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > CreateOrUpdateDocumentPropertyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateOrUpdateDocumentPropertyRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1383,7 +1620,16 @@ namespace aspose::words::cloud::requests {
         if (m_Property) result->setBody(*m_Property);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Property' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CreateOrUpdateDocumentPropertyRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CreateOrUpdateDocumentPropertyResponse()
+        );
+    }
+
+    /*
      * CreateOrUpdateDocumentPropertyOnline request implementation
      */
     CreateOrUpdateDocumentPropertyOnlineRequest::CreateOrUpdateDocumentPropertyOnlineRequest(
@@ -1447,7 +1693,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > CreateOrUpdateDocumentPropertyOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateOrUpdateDocumentPropertyOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1464,7 +1710,16 @@ namespace aspose::words::cloud::requests {
         if (m_Property) result->addFormDataParam(L"property", *m_Property);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Property' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CreateOrUpdateDocumentPropertyOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CreateOrUpdateDocumentPropertyOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteAllParagraphTabStops request implementation
      */
     DeleteAllParagraphTabStopsRequest::DeleteAllParagraphTabStopsRequest(
@@ -1528,7 +1783,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteAllParagraphTabStopsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteAllParagraphTabStopsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -1544,7 +1799,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteAllParagraphTabStopsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteAllParagraphTabStopsResponse()
+        );
+    }
+
+    /*
      * DeleteAllParagraphTabStopsOnline request implementation
      */
     DeleteAllParagraphTabStopsOnlineRequest::DeleteAllParagraphTabStopsOnlineRequest(
@@ -1594,7 +1858,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteAllParagraphTabStopsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteAllParagraphTabStopsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1605,10 +1869,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteAllParagraphTabStopsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteAllParagraphTabStopsOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteBorder request implementation
      */
     DeleteBorderRequest::DeleteBorderRequest(
@@ -1686,7 +1959,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteBorderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBorderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -1704,7 +1977,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBorderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBorderResponse()
+        );
+    }
+
+    /*
      * DeleteBorderOnline request implementation
      */
     DeleteBorderOnlineRequest::DeleteBorderOnlineRequest(
@@ -1768,7 +2050,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteBorderOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBorderOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1781,10 +2063,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBorderOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBorderOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteBorders request implementation
      */
     DeleteBordersRequest::DeleteBordersRequest(
@@ -1855,7 +2146,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteBordersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBordersRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -1871,7 +2162,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBordersRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBordersResponse()
+        );
+    }
+
+    /*
      * DeleteBordersOnline request implementation
      */
     DeleteBordersOnlineRequest::DeleteBordersOnlineRequest(
@@ -1928,7 +2228,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteBordersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBordersOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -1939,10 +2239,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBordersOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBordersOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteComment request implementation
      */
     DeleteCommentRequest::DeleteCommentRequest(
@@ -2013,7 +2322,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2030,7 +2339,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCommentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCommentResponse()
+        );
+    }
+
+    /*
      * DeleteCommentOnline request implementation
      */
     DeleteCommentOnlineRequest::DeleteCommentOnlineRequest(
@@ -2087,7 +2405,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -2099,10 +2417,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCommentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCommentOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteComments request implementation
      */
     DeleteCommentsRequest::DeleteCommentsRequest(
@@ -2166,7 +2493,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteCommentsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2181,7 +2508,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCommentsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCommentsResponse()
+        );
+    }
+
+    /*
      * DeleteCommentsOnline request implementation
      */
     DeleteCommentsOnlineRequest::DeleteCommentsOnlineRequest(
@@ -2231,7 +2567,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteCommentsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -2241,10 +2577,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCommentsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCommentsOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteDocumentProperty request implementation
      */
     DeleteDocumentPropertyRequest::DeleteDocumentPropertyRequest(
@@ -2315,7 +2660,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteDocumentPropertyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDocumentPropertyRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2332,7 +2677,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteDocumentPropertyRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteDocumentPropertyResponse()
+        );
+    }
+
+    /*
      * DeleteDocumentPropertyOnline request implementation
      */
     DeleteDocumentPropertyOnlineRequest::DeleteDocumentPropertyOnlineRequest(
@@ -2389,7 +2743,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteDocumentPropertyOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDocumentPropertyOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -2401,10 +2755,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteDocumentPropertyOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteDocumentPropertyOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteDrawingObject request implementation
      */
     DeleteDrawingObjectRequest::DeleteDrawingObjectRequest(
@@ -2482,7 +2845,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDrawingObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2500,7 +2863,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteDrawingObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteDrawingObjectResponse()
+        );
+    }
+
+    /*
      * DeleteDrawingObjectOnline request implementation
      */
     DeleteDrawingObjectOnlineRequest::DeleteDrawingObjectOnlineRequest(
@@ -2564,7 +2936,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDrawingObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -2577,10 +2949,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteDrawingObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteDrawingObjectOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteField request implementation
      */
     DeleteFieldRequest::DeleteFieldRequest(
@@ -2658,7 +3039,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2676,7 +3057,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFieldResponse()
+        );
+    }
+
+    /*
      * DeleteFieldOnline request implementation
      */
     DeleteFieldOnlineRequest::DeleteFieldOnlineRequest(
@@ -2740,7 +3130,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -2753,10 +3143,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFieldOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteFields request implementation
      */
     DeleteFieldsRequest::DeleteFieldsRequest(
@@ -2827,7 +3226,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2843,7 +3242,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFieldsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFieldsResponse()
+        );
+    }
+
+    /*
      * DeleteFieldsOnline request implementation
      */
     DeleteFieldsOnlineRequest::DeleteFieldsOnlineRequest(
@@ -2900,7 +3308,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -2911,10 +3319,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFieldsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFieldsOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteFile request implementation
      */
     DeleteFileRequest::DeleteFileRequest(
@@ -2943,7 +3360,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFileRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2953,7 +3370,16 @@ namespace aspose::words::cloud::requests {
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFileRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFileResponse()
+        );
+    }
+
+    /*
      * DeleteFolder request implementation
      */
     DeleteFolderRequest::DeleteFolderRequest(
@@ -2982,7 +3408,7 @@ namespace aspose::words::cloud::requests {
         return m_Recursive;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFolderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -2992,7 +3418,16 @@ namespace aspose::words::cloud::requests {
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         if (m_Recursive) result->addQueryParam(L"recursive", *m_Recursive);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFolderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFolderResponse()
+        );
+    }
+
+    /*
      * DeleteFootnote request implementation
      */
     DeleteFootnoteRequest::DeleteFootnoteRequest(
@@ -3070,7 +3505,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFootnoteRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -3088,7 +3523,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFootnoteRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFootnoteResponse()
+        );
+    }
+
+    /*
      * DeleteFootnoteOnline request implementation
      */
     DeleteFootnoteOnlineRequest::DeleteFootnoteOnlineRequest(
@@ -3152,7 +3596,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFootnoteOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -3165,10 +3609,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFootnoteOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFootnoteOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteFormField request implementation
      */
     DeleteFormFieldRequest::DeleteFormFieldRequest(
@@ -3246,7 +3699,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFormFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -3264,7 +3717,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFormFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFormFieldResponse()
+        );
+    }
+
+    /*
      * DeleteFormFieldOnline request implementation
      */
     DeleteFormFieldOnlineRequest::DeleteFormFieldOnlineRequest(
@@ -3328,7 +3790,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFormFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -3341,10 +3803,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteFormFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteFormFieldOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteHeaderFooter request implementation
      */
     DeleteHeaderFooterRequest::DeleteHeaderFooterRequest(
@@ -3422,7 +3893,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteHeaderFooterRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeaderFooterRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -3441,7 +3912,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteHeaderFooterRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteHeaderFooterResponse()
+        );
+    }
+
+    /*
      * DeleteHeaderFooterOnline request implementation
      */
     DeleteHeaderFooterOnlineRequest::DeleteHeaderFooterOnlineRequest(
@@ -3505,7 +3985,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteHeaderFooterOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeaderFooterOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -3519,10 +3999,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteHeaderFooterOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteHeaderFooterOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteHeadersFooters request implementation
      */
     DeleteHeadersFootersRequest::DeleteHeadersFootersRequest(
@@ -3600,7 +4089,7 @@ namespace aspose::words::cloud::requests {
         return m_HeadersFootersTypes;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteHeadersFootersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeadersFootersRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -3618,7 +4107,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         if (m_HeadersFootersTypes) result->addQueryParam(L"headersFootersTypes", *m_HeadersFootersTypes);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteHeadersFootersRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteHeadersFootersResponse()
+        );
+    }
+
+    /*
      * DeleteHeadersFootersOnline request implementation
      */
     DeleteHeadersFootersOnlineRequest::DeleteHeadersFootersOnlineRequest(
@@ -3682,7 +4180,7 @@ namespace aspose::words::cloud::requests {
         return m_HeadersFootersTypes;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteHeadersFootersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeadersFootersOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -3695,10 +4193,19 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         if (m_HeadersFootersTypes) result->addQueryParam(L"headersFootersTypes", *m_HeadersFootersTypes);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteHeadersFootersOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteHeadersFootersOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteMacros request implementation
      */
     DeleteMacrosRequest::DeleteMacrosRequest(
@@ -3762,7 +4269,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteMacrosRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteMacrosRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -3777,7 +4284,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteMacrosRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteMacrosResponse()
+        );
+    }
+
+    /*
      * DeleteMacrosOnline request implementation
      */
     DeleteMacrosOnlineRequest::DeleteMacrosOnlineRequest(
@@ -3827,7 +4343,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteMacrosOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteMacrosOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -3837,10 +4353,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteMacrosOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteMacrosOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteOfficeMathObject request implementation
      */
     DeleteOfficeMathObjectRequest::DeleteOfficeMathObjectRequest(
@@ -3918,7 +4443,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteOfficeMathObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -3936,7 +4461,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteOfficeMathObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteOfficeMathObjectResponse()
+        );
+    }
+
+    /*
      * DeleteOfficeMathObjectOnline request implementation
      */
     DeleteOfficeMathObjectOnlineRequest::DeleteOfficeMathObjectOnlineRequest(
@@ -4000,7 +4534,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteOfficeMathObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -4013,10 +4547,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteOfficeMathObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteOfficeMathObjectOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteParagraph request implementation
      */
     DeleteParagraphRequest::DeleteParagraphRequest(
@@ -4094,7 +4637,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -4112,7 +4655,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteParagraphRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteParagraphResponse()
+        );
+    }
+
+    /*
      * DeleteParagraphListFormat request implementation
      */
     DeleteParagraphListFormatRequest::DeleteParagraphListFormatRequest(
@@ -4190,7 +4742,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteParagraphListFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphListFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -4208,7 +4760,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteParagraphListFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteParagraphListFormatResponse()
+        );
+    }
+
+    /*
      * DeleteParagraphListFormatOnline request implementation
      */
     DeleteParagraphListFormatOnlineRequest::DeleteParagraphListFormatOnlineRequest(
@@ -4272,7 +4833,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteParagraphListFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphListFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -4285,10 +4846,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteParagraphListFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteParagraphListFormatOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteParagraphOnline request implementation
      */
     DeleteParagraphOnlineRequest::DeleteParagraphOnlineRequest(
@@ -4352,7 +4922,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -4365,10 +4935,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteParagraphOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteParagraphOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteParagraphTabStop request implementation
      */
     DeleteParagraphTabStopRequest::DeleteParagraphTabStopRequest(
@@ -4439,7 +5018,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteParagraphTabStopRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphTabStopRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -4457,7 +5036,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteParagraphTabStopRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteParagraphTabStopResponse()
+        );
+    }
+
+    /*
      * DeleteParagraphTabStopOnline request implementation
      */
     DeleteParagraphTabStopOnlineRequest::DeleteParagraphTabStopOnlineRequest(
@@ -4514,7 +5102,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteParagraphTabStopOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphTabStopOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -4527,10 +5115,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteParagraphTabStopOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteParagraphTabStopOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteRun request implementation
      */
     DeleteRunRequest::DeleteRunRequest(
@@ -4608,7 +5205,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteRunRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -4627,7 +5224,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteRunRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteRunResponse()
+        );
+    }
+
+    /*
      * DeleteRunOnline request implementation
      */
     DeleteRunOnlineRequest::DeleteRunOnlineRequest(
@@ -4691,7 +5297,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteRunOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -4705,10 +5311,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteRunOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteRunOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteSection request implementation
      */
     DeleteSectionRequest::DeleteSectionRequest(
@@ -4779,7 +5394,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteSectionRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -4796,7 +5411,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteSectionRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteSectionResponse()
+        );
+    }
+
+    /*
      * DeleteSectionOnline request implementation
      */
     DeleteSectionOnlineRequest::DeleteSectionOnlineRequest(
@@ -4853,7 +5477,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteSectionOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -4865,10 +5489,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteSectionOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteSectionOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteTable request implementation
      */
     DeleteTableRequest::DeleteTableRequest(
@@ -4946,7 +5579,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -4964,7 +5597,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteTableRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteTableResponse()
+        );
+    }
+
+    /*
      * DeleteTableCell request implementation
      */
     DeleteTableCellRequest::DeleteTableCellRequest(
@@ -5042,7 +5684,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteTableCellRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableCellRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -5061,7 +5703,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteTableCellRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteTableCellResponse()
+        );
+    }
+
+    /*
      * DeleteTableCellOnline request implementation
      */
     DeleteTableCellOnlineRequest::DeleteTableCellOnlineRequest(
@@ -5125,7 +5776,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteTableCellOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableCellOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5139,10 +5790,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteTableCellOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteTableCellOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteTableOnline request implementation
      */
     DeleteTableOnlineRequest::DeleteTableOnlineRequest(
@@ -5206,7 +5866,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5219,10 +5879,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteTableOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteTableOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteTableRow request implementation
      */
     DeleteTableRowRequest::DeleteTableRowRequest(
@@ -5300,7 +5969,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteTableRowRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRowRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -5319,7 +5988,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteTableRowRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteTableRowResponse()
+        );
+    }
+
+    /*
      * DeleteTableRowOnline request implementation
      */
     DeleteTableRowOnlineRequest::DeleteTableRowOnlineRequest(
@@ -5383,7 +6061,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteTableRowOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRowOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5397,10 +6075,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteTableRowOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteTableRowOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteWatermark request implementation
      */
     DeleteWatermarkRequest::DeleteWatermarkRequest(
@@ -5464,7 +6151,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteWatermarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteWatermarkRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -5479,7 +6166,16 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteWatermarkRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteWatermarkResponse()
+        );
+    }
+
+    /*
      * DeleteWatermarkOnline request implementation
      */
     DeleteWatermarkOnlineRequest::DeleteWatermarkOnlineRequest(
@@ -5529,7 +6225,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > DeleteWatermarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteWatermarkOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5539,10 +6235,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteWatermarkOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteWatermarkOnlineResponse()
+        );
+    }
+
+    /*
      * DownloadFile request implementation
      */
     DownloadFileRequest::DownloadFileRequest(
@@ -5571,7 +6276,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< HttpRequestData > DownloadFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DownloadFileRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -5581,7 +6286,16 @@ namespace aspose::words::cloud::requests {
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DownloadFileRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DownloadFileResponse()
+        );
+    }
+
+    /*
      * ExecuteMailMerge request implementation
      */
     ExecuteMailMergeRequest::ExecuteMailMergeRequest(
@@ -5666,7 +6380,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > ExecuteMailMergeRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5682,9 +6396,18 @@ namespace aspose::words::cloud::requests {
         if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
         if (m_UseWholeParagraphAsRegion) result->addQueryParam(L"useWholeParagraphAsRegion", *m_UseWholeParagraphAsRegion);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Data) result->addFormDataParam(L"data", *m_Data);
+        if (m_Data) result->setBodyText(*m_Data);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ExecuteMailMergeRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ExecuteMailMergeResponse()
+        );
+    }
+
+    /*
      * ExecuteMailMergeOnline request implementation
      */
     ExecuteMailMergeOnlineRequest::ExecuteMailMergeOnlineRequest(
@@ -5727,7 +6450,7 @@ namespace aspose::words::cloud::requests {
         return m_DocumentFileName;
     }
 
-    std::shared_ptr< HttpRequestData > ExecuteMailMergeOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5740,7 +6463,16 @@ namespace aspose::words::cloud::requests {
         if (m_Data) result->addFormDataParam(L"data", *m_Data);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ExecuteMailMergeOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ExecuteMailMergeOnlineResponse()
+        );
+    }
+
+    /*
      * GetAvailableFonts request implementation
      */
     GetAvailableFontsRequest::GetAvailableFontsRequest(
@@ -5755,14 +6487,23 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > GetAvailableFontsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetAvailableFontsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
         result->setPath(L"/words/fonts/available");
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetAvailableFontsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetAvailableFontsResponse()
+        );
+    }
+
+    /*
      * GetBookmarkByName request implementation
      */
     GetBookmarkByNameRequest::GetBookmarkByNameRequest(
@@ -5812,7 +6553,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBookmarkByNameRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -5826,7 +6567,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBookmarkByNameRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBookmarkByNameResponse()
+        );
+    }
+
+    /*
      * GetBookmarkByNameOnline request implementation
      */
     GetBookmarkByNameOnlineRequest::GetBookmarkByNameOnlineRequest(
@@ -5862,7 +6612,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBookmarkByNameOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -5871,10 +6621,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{bookmarkName}", *m_BookmarkName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBookmarkByNameOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBookmarkByNameOnlineResponse()
+        );
+    }
+
+    /*
      * GetBookmarks request implementation
      */
     GetBookmarksRequest::GetBookmarksRequest(
@@ -5917,7 +6676,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBookmarksRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -5929,7 +6688,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBookmarksRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBookmarksResponse()
+        );
+    }
+
+    /*
      * GetBookmarksOnline request implementation
      */
     GetBookmarksOnlineRequest::GetBookmarksOnlineRequest(
@@ -5958,17 +6726,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBookmarksOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/bookmarks");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBookmarksOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBookmarksOnlineResponse()
+        );
+    }
+
+    /*
      * GetBorder request implementation
      */
     GetBorderRequest::GetBorderRequest(
@@ -6025,7 +6802,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBorderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6040,7 +6817,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBorderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBorderResponse()
+        );
+    }
+
+    /*
      * GetBorderOnline request implementation
      */
     GetBorderOnlineRequest::GetBorderOnlineRequest(
@@ -6083,7 +6869,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBorderOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6093,10 +6879,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBorderOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBorderOnlineResponse()
+        );
+    }
+
+    /*
      * GetBorders request implementation
      */
     GetBordersRequest::GetBordersRequest(
@@ -6146,7 +6941,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBordersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6159,7 +6954,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBordersRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBordersResponse()
+        );
+    }
+
+    /*
      * GetBordersOnline request implementation
      */
     GetBordersOnlineRequest::GetBordersOnlineRequest(
@@ -6195,7 +6999,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetBordersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6203,10 +7007,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetBordersOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetBordersOnlineResponse()
+        );
+    }
+
+    /*
      * GetComment request implementation
      */
     GetCommentRequest::GetCommentRequest(
@@ -6256,7 +7069,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6270,7 +7083,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCommentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCommentResponse()
+        );
+    }
+
+    /*
      * GetCommentOnline request implementation
      */
     GetCommentOnlineRequest::GetCommentOnlineRequest(
@@ -6306,7 +7128,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6315,10 +7137,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{commentIndex}", *m_CommentIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCommentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCommentOnlineResponse()
+        );
+    }
+
+    /*
      * GetComments request implementation
      */
     GetCommentsRequest::GetCommentsRequest(
@@ -6361,7 +7192,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetCommentsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6373,7 +7204,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCommentsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCommentsResponse()
+        );
+    }
+
+    /*
      * GetCommentsOnline request implementation
      */
     GetCommentsOnlineRequest::GetCommentsOnlineRequest(
@@ -6402,17 +7242,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetCommentsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/comments");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCommentsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCommentsOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocument request implementation
      */
     GetDocumentRequest::GetDocumentRequest(
@@ -6455,7 +7304,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6467,7 +7316,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectByIndex request implementation
      */
     GetDocumentDrawingObjectByIndexRequest::GetDocumentDrawingObjectByIndexRequest(
@@ -6524,7 +7382,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectByIndexRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6539,7 +7397,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectByIndexRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectByIndexResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectByIndexOnline request implementation
      */
     GetDocumentDrawingObjectByIndexOnlineRequest::GetDocumentDrawingObjectByIndexOnlineRequest(
@@ -6582,7 +7449,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectByIndexOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6592,10 +7459,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectByIndexOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectByIndexOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectImageData request implementation
      */
     GetDocumentDrawingObjectImageDataRequest::GetDocumentDrawingObjectImageDataRequest(
@@ -6652,7 +7528,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectImageDataRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6667,7 +7543,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectImageDataRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectImageDataResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectImageDataOnline request implementation
      */
     GetDocumentDrawingObjectImageDataOnlineRequest::GetDocumentDrawingObjectImageDataOnlineRequest(
@@ -6710,7 +7595,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectImageDataOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6720,10 +7605,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectImageDataOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectImageDataOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectOleData request implementation
      */
     GetDocumentDrawingObjectOleDataRequest::GetDocumentDrawingObjectOleDataRequest(
@@ -6780,7 +7674,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectOleDataRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6795,7 +7689,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectOleDataRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectOleDataResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectOleDataOnline request implementation
      */
     GetDocumentDrawingObjectOleDataOnlineRequest::GetDocumentDrawingObjectOleDataOnlineRequest(
@@ -6838,7 +7741,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectOleDataOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6848,10 +7751,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectOleDataOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectOleDataOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjects request implementation
      */
     GetDocumentDrawingObjectsRequest::GetDocumentDrawingObjectsRequest(
@@ -6901,7 +7813,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -6914,7 +7826,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectsResponse()
+        );
+    }
+
+    /*
      * GetDocumentDrawingObjectsOnline request implementation
      */
     GetDocumentDrawingObjectsOnlineRequest::GetDocumentDrawingObjectsOnlineRequest(
@@ -6950,7 +7871,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentDrawingObjectsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -6958,10 +7879,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentDrawingObjectsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentDrawingObjectsOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentFieldNames request implementation
      */
     GetDocumentFieldNamesRequest::GetDocumentFieldNamesRequest(
@@ -7011,7 +7941,7 @@ namespace aspose::words::cloud::requests {
         return m_UseNonMergeFields;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentFieldNamesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentFieldNamesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7024,7 +7954,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentFieldNamesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentFieldNamesResponse()
+        );
+    }
+
+    /*
      * GetDocumentFieldNamesOnline request implementation
      */
     GetDocumentFieldNamesOnlineRequest::GetDocumentFieldNamesOnlineRequest(
@@ -7060,7 +7999,7 @@ namespace aspose::words::cloud::requests {
         return m_UseNonMergeFields;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentFieldNamesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentFieldNamesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -7068,10 +8007,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentFieldNamesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentFieldNamesOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentHyperlinkByIndex request implementation
      */
     GetDocumentHyperlinkByIndexRequest::GetDocumentHyperlinkByIndexRequest(
@@ -7121,7 +8069,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentHyperlinkByIndexRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7135,7 +8083,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentHyperlinkByIndexRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentHyperlinkByIndexResponse()
+        );
+    }
+
+    /*
      * GetDocumentHyperlinkByIndexOnline request implementation
      */
     GetDocumentHyperlinkByIndexOnlineRequest::GetDocumentHyperlinkByIndexOnlineRequest(
@@ -7171,7 +8128,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentHyperlinkByIndexOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -7180,10 +8137,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{hyperlinkIndex}", *m_HyperlinkIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentHyperlinkByIndexOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentHyperlinkByIndexOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentHyperlinks request implementation
      */
     GetDocumentHyperlinksRequest::GetDocumentHyperlinksRequest(
@@ -7226,7 +8192,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentHyperlinksRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7238,7 +8204,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentHyperlinksRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentHyperlinksResponse()
+        );
+    }
+
+    /*
      * GetDocumentHyperlinksOnline request implementation
      */
     GetDocumentHyperlinksOnlineRequest::GetDocumentHyperlinksOnlineRequest(
@@ -7267,17 +8242,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentHyperlinksOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/hyperlinks");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentHyperlinksOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentHyperlinksOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentProperties request implementation
      */
     GetDocumentPropertiesRequest::GetDocumentPropertiesRequest(
@@ -7320,7 +8304,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentPropertiesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7332,7 +8316,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentPropertiesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentPropertiesResponse()
+        );
+    }
+
+    /*
      * GetDocumentPropertiesOnline request implementation
      */
     GetDocumentPropertiesOnlineRequest::GetDocumentPropertiesOnlineRequest(
@@ -7361,17 +8354,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentPropertiesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/documentProperties");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentPropertiesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentPropertiesOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentProperty request implementation
      */
     GetDocumentPropertyRequest::GetDocumentPropertyRequest(
@@ -7421,7 +8423,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentPropertyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7435,7 +8437,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentPropertyRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentPropertyResponse()
+        );
+    }
+
+    /*
      * GetDocumentPropertyOnline request implementation
      */
     GetDocumentPropertyOnlineRequest::GetDocumentPropertyOnlineRequest(
@@ -7471,7 +8482,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentPropertyOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -7480,10 +8491,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{propertyName}", *m_PropertyName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentPropertyOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentPropertyOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentProtection request implementation
      */
     GetDocumentProtectionRequest::GetDocumentProtectionRequest(
@@ -7526,7 +8546,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentProtectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7538,7 +8558,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentProtectionRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentProtectionResponse()
+        );
+    }
+
+    /*
      * GetDocumentProtectionOnline request implementation
      */
     GetDocumentProtectionOnlineRequest::GetDocumentProtectionOnlineRequest(
@@ -7567,17 +8596,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentProtectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/protection");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentProtectionOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentProtectionOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentStatistics request implementation
      */
     GetDocumentStatisticsRequest::GetDocumentStatisticsRequest(
@@ -7641,7 +8679,7 @@ namespace aspose::words::cloud::requests {
         return m_IncludeTextInShapes;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentStatisticsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentStatisticsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7656,7 +8694,16 @@ namespace aspose::words::cloud::requests {
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentStatisticsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentStatisticsResponse()
+        );
+    }
+
+    /*
      * GetDocumentStatisticsOnline request implementation
      */
     GetDocumentStatisticsOnlineRequest::GetDocumentStatisticsOnlineRequest(
@@ -7706,7 +8753,7 @@ namespace aspose::words::cloud::requests {
         return m_IncludeTextInShapes;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentStatisticsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentStatisticsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -7716,10 +8763,19 @@ namespace aspose::words::cloud::requests {
         if (m_IncludeComments) result->addQueryParam(L"includeComments", *m_IncludeComments);
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentStatisticsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentStatisticsOnlineResponse()
+        );
+    }
+
+    /*
      * GetDocumentWithFormat request implementation
      */
     GetDocumentWithFormatRequest::GetDocumentWithFormatRequest(
@@ -7783,7 +8839,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > GetDocumentWithFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentWithFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7799,7 +8855,16 @@ namespace aspose::words::cloud::requests {
         if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetDocumentWithFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetDocumentWithFormatResponse()
+        );
+    }
+
+    /*
      * GetField request implementation
      */
     GetFieldRequest::GetFieldRequest(
@@ -7856,7 +8921,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7871,7 +8936,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFieldResponse()
+        );
+    }
+
+    /*
      * GetFieldOnline request implementation
      */
     GetFieldOnlineRequest::GetFieldOnlineRequest(
@@ -7914,7 +8988,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -7924,10 +8998,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFieldOnlineResponse()
+        );
+    }
+
+    /*
      * GetFields request implementation
      */
     GetFieldsRequest::GetFieldsRequest(
@@ -7977,7 +9060,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -7990,7 +9073,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFieldsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFieldsResponse()
+        );
+    }
+
+    /*
      * GetFieldsOnline request implementation
      */
     GetFieldsOnlineRequest::GetFieldsOnlineRequest(
@@ -8026,7 +9118,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8034,10 +9126,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFieldsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFieldsOnlineResponse()
+        );
+    }
+
+    /*
      * GetFilesList request implementation
      */
     GetFilesListRequest::GetFilesListRequest(
@@ -8059,7 +9160,7 @@ namespace aspose::words::cloud::requests {
         return m_StorageName;
     }
 
-    std::shared_ptr< HttpRequestData > GetFilesListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFilesListRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8068,7 +9169,16 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{path}", *m_Path);
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFilesListRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFilesListResponse()
+        );
+    }
+
+    /*
      * GetFootnote request implementation
      */
     GetFootnoteRequest::GetFootnoteRequest(
@@ -8125,7 +9235,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8140,7 +9250,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFootnoteRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFootnoteResponse()
+        );
+    }
+
+    /*
      * GetFootnoteOnline request implementation
      */
     GetFootnoteOnlineRequest::GetFootnoteOnlineRequest(
@@ -8183,7 +9302,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8193,10 +9312,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFootnoteOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFootnoteOnlineResponse()
+        );
+    }
+
+    /*
      * GetFootnotes request implementation
      */
     GetFootnotesRequest::GetFootnotesRequest(
@@ -8246,7 +9374,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFootnotesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8259,7 +9387,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFootnotesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFootnotesResponse()
+        );
+    }
+
+    /*
      * GetFootnotesOnline request implementation
      */
     GetFootnotesOnlineRequest::GetFootnotesOnlineRequest(
@@ -8295,7 +9432,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFootnotesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8303,10 +9440,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFootnotesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFootnotesOnlineResponse()
+        );
+    }
+
+    /*
      * GetFormField request implementation
      */
     GetFormFieldRequest::GetFormFieldRequest(
@@ -8363,7 +9509,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8378,7 +9524,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFormFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFormFieldResponse()
+        );
+    }
+
+    /*
      * GetFormFieldOnline request implementation
      */
     GetFormFieldOnlineRequest::GetFormFieldOnlineRequest(
@@ -8421,7 +9576,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8431,10 +9586,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFormFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFormFieldOnlineResponse()
+        );
+    }
+
+    /*
      * GetFormFields request implementation
      */
     GetFormFieldsRequest::GetFormFieldsRequest(
@@ -8484,7 +9648,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFormFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8497,7 +9661,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFormFieldsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFormFieldsResponse()
+        );
+    }
+
+    /*
      * GetFormFieldsOnline request implementation
      */
     GetFormFieldsOnlineRequest::GetFormFieldsOnlineRequest(
@@ -8533,7 +9706,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetFormFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8541,10 +9714,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetFormFieldsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetFormFieldsOnlineResponse()
+        );
+    }
+
+    /*
      * GetHeaderFooter request implementation
      */
     GetHeaderFooterRequest::GetHeaderFooterRequest(
@@ -8601,7 +9783,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< HttpRequestData > GetHeaderFooterRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8616,7 +9798,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetHeaderFooterRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetHeaderFooterResponse()
+        );
+    }
+
+    /*
      * GetHeaderFooterOfSection request implementation
      */
     GetHeaderFooterOfSectionRequest::GetHeaderFooterOfSectionRequest(
@@ -8680,7 +9871,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< HttpRequestData > GetHeaderFooterOfSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOfSectionRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8697,7 +9888,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetHeaderFooterOfSectionRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetHeaderFooterOfSectionResponse()
+        );
+    }
+
+    /*
      * GetHeaderFooterOfSectionOnline request implementation
      */
     GetHeaderFooterOfSectionOnlineRequest::GetHeaderFooterOfSectionOnlineRequest(
@@ -8747,7 +9947,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< HttpRequestData > GetHeaderFooterOfSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOfSectionOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8759,10 +9959,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetHeaderFooterOfSectionOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetHeaderFooterOfSectionOnlineResponse()
+        );
+    }
+
+    /*
      * GetHeaderFooterOnline request implementation
      */
     GetHeaderFooterOnlineRequest::GetHeaderFooterOnlineRequest(
@@ -8805,7 +10014,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< HttpRequestData > GetHeaderFooterOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8815,10 +10024,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetHeaderFooterOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetHeaderFooterOnlineResponse()
+        );
+    }
+
+    /*
      * GetHeaderFooters request implementation
      */
     GetHeaderFootersRequest::GetHeaderFootersRequest(
@@ -8875,7 +10093,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< HttpRequestData > GetHeaderFootersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFootersRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -8890,7 +10108,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetHeaderFootersRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetHeaderFootersResponse()
+        );
+    }
+
+    /*
      * GetHeaderFootersOnline request implementation
      */
     GetHeaderFootersOnlineRequest::GetHeaderFootersOnlineRequest(
@@ -8933,7 +10160,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< HttpRequestData > GetHeaderFootersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFootersOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -8943,10 +10170,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetHeaderFootersOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetHeaderFootersOnlineResponse()
+        );
+    }
+
+    /*
      * GetList request implementation
      */
     GetListRequest::GetListRequest(
@@ -8996,7 +10232,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9010,7 +10246,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetListRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetListResponse()
+        );
+    }
+
+    /*
      * GetListOnline request implementation
      */
     GetListOnlineRequest::GetListOnlineRequest(
@@ -9046,7 +10291,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetListOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -9055,10 +10300,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{listId}", *m_ListId);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetListOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetListOnlineResponse()
+        );
+    }
+
+    /*
      * GetLists request implementation
      */
     GetListsRequest::GetListsRequest(
@@ -9101,7 +10355,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetListsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9113,7 +10367,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetListsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetListsResponse()
+        );
+    }
+
+    /*
      * GetListsOnline request implementation
      */
     GetListsOnlineRequest::GetListsOnlineRequest(
@@ -9142,17 +10405,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetListsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/lists");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetListsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetListsOnlineResponse()
+        );
+    }
+
+    /*
      * GetOfficeMathObject request implementation
      */
     GetOfficeMathObjectRequest::GetOfficeMathObjectRequest(
@@ -9209,7 +10481,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetOfficeMathObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9224,7 +10496,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetOfficeMathObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetOfficeMathObjectResponse()
+        );
+    }
+
+    /*
      * GetOfficeMathObjectOnline request implementation
      */
     GetOfficeMathObjectOnlineRequest::GetOfficeMathObjectOnlineRequest(
@@ -9267,7 +10548,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetOfficeMathObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -9277,10 +10558,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetOfficeMathObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetOfficeMathObjectOnlineResponse()
+        );
+    }
+
+    /*
      * GetOfficeMathObjects request implementation
      */
     GetOfficeMathObjectsRequest::GetOfficeMathObjectsRequest(
@@ -9330,7 +10620,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetOfficeMathObjectsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9343,7 +10633,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetOfficeMathObjectsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetOfficeMathObjectsResponse()
+        );
+    }
+
+    /*
      * GetOfficeMathObjectsOnline request implementation
      */
     GetOfficeMathObjectsOnlineRequest::GetOfficeMathObjectsOnlineRequest(
@@ -9379,7 +10678,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetOfficeMathObjectsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -9387,10 +10686,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetOfficeMathObjectsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetOfficeMathObjectsOnlineResponse()
+        );
+    }
+
+    /*
      * GetParagraph request implementation
      */
     GetParagraphRequest::GetParagraphRequest(
@@ -9447,7 +10755,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9462,7 +10770,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphResponse()
+        );
+    }
+
+    /*
      * GetParagraphFormat request implementation
      */
     GetParagraphFormatRequest::GetParagraphFormatRequest(
@@ -9519,7 +10836,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9534,7 +10851,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphFormatResponse()
+        );
+    }
+
+    /*
      * GetParagraphFormatOnline request implementation
      */
     GetParagraphFormatOnlineRequest::GetParagraphFormatOnlineRequest(
@@ -9577,7 +10903,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -9587,10 +10913,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphFormatOnlineResponse()
+        );
+    }
+
+    /*
      * GetParagraphListFormat request implementation
      */
     GetParagraphListFormatRequest::GetParagraphListFormatRequest(
@@ -9647,7 +10982,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphListFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9662,7 +10997,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphListFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphListFormatResponse()
+        );
+    }
+
+    /*
      * GetParagraphListFormatOnline request implementation
      */
     GetParagraphListFormatOnlineRequest::GetParagraphListFormatOnlineRequest(
@@ -9705,7 +11049,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphListFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -9715,10 +11059,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphListFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphListFormatOnlineResponse()
+        );
+    }
+
+    /*
      * GetParagraphOnline request implementation
      */
     GetParagraphOnlineRequest::GetParagraphOnlineRequest(
@@ -9761,7 +11114,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -9771,10 +11124,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphOnlineResponse()
+        );
+    }
+
+    /*
      * GetParagraphs request implementation
      */
     GetParagraphsRequest::GetParagraphsRequest(
@@ -9824,7 +11186,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9837,7 +11199,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphsResponse()
+        );
+    }
+
+    /*
      * GetParagraphsOnline request implementation
      */
     GetParagraphsOnlineRequest::GetParagraphsOnlineRequest(
@@ -9873,7 +11244,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -9881,10 +11252,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphsOnlineResponse()
+        );
+    }
+
+    /*
      * GetParagraphTabStops request implementation
      */
     GetParagraphTabStopsRequest::GetParagraphTabStopsRequest(
@@ -9941,7 +11321,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphTabStopsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -9956,7 +11336,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphTabStopsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphTabStopsResponse()
+        );
+    }
+
+    /*
      * GetParagraphTabStopsOnline request implementation
      */
     GetParagraphTabStopsOnlineRequest::GetParagraphTabStopsOnlineRequest(
@@ -9999,7 +11388,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetParagraphTabStopsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10009,10 +11398,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetParagraphTabStopsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetParagraphTabStopsOnlineResponse()
+        );
+    }
+
+    /*
      * GetRangeText request implementation
      */
     GetRangeTextRequest::GetRangeTextRequest(
@@ -10069,7 +11467,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRangeTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10084,7 +11482,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRangeTextRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRangeTextResponse()
+        );
+    }
+
+    /*
      * GetRangeTextOnline request implementation
      */
     GetRangeTextOnlineRequest::GetRangeTextOnlineRequest(
@@ -10127,7 +11534,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRangeTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10137,10 +11544,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{rangeEndIdentifier}", m_RangeEndIdentifier ? *m_RangeEndIdentifier : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRangeTextOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRangeTextOnlineResponse()
+        );
+    }
+
+    /*
      * GetRun request implementation
      */
     GetRunRequest::GetRunRequest(
@@ -10197,7 +11613,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10213,7 +11629,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRunRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRunResponse()
+        );
+    }
+
+    /*
      * GetRunFont request implementation
      */
     GetRunFontRequest::GetRunFontRequest(
@@ -10270,7 +11695,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRunFontRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10286,7 +11711,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRunFontRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRunFontResponse()
+        );
+    }
+
+    /*
      * GetRunFontOnline request implementation
      */
     GetRunFontOnlineRequest::GetRunFontOnlineRequest(
@@ -10329,7 +11763,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRunFontOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10340,10 +11774,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRunFontOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRunFontOnlineResponse()
+        );
+    }
+
+    /*
      * GetRunOnline request implementation
      */
     GetRunOnlineRequest::GetRunOnlineRequest(
@@ -10386,7 +11829,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10397,10 +11840,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRunOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRunOnlineResponse()
+        );
+    }
+
+    /*
      * GetRuns request implementation
      */
     GetRunsRequest::GetRunsRequest(
@@ -10450,7 +11902,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRunsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10464,7 +11916,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRunsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRunsResponse()
+        );
+    }
+
+    /*
      * GetRunsOnline request implementation
      */
     GetRunsOnlineRequest::GetRunsOnlineRequest(
@@ -10500,7 +11961,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetRunsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10509,10 +11970,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{paragraphPath}", *m_ParagraphPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetRunsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetRunsOnlineResponse()
+        );
+    }
+
+    /*
      * GetSection request implementation
      */
     GetSectionRequest::GetSectionRequest(
@@ -10562,7 +12032,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10576,7 +12046,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSectionRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSectionResponse()
+        );
+    }
+
+    /*
      * GetSectionOnline request implementation
      */
     GetSectionOnlineRequest::GetSectionOnlineRequest(
@@ -10612,7 +12091,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10621,10 +12100,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSectionOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSectionOnlineResponse()
+        );
+    }
+
+    /*
      * GetSectionPageSetup request implementation
      */
     GetSectionPageSetupRequest::GetSectionPageSetupRequest(
@@ -10674,7 +12162,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetSectionPageSetupRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10688,7 +12176,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSectionPageSetupRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSectionPageSetupResponse()
+        );
+    }
+
+    /*
      * GetSectionPageSetupOnline request implementation
      */
     GetSectionPageSetupOnlineRequest::GetSectionPageSetupOnlineRequest(
@@ -10724,7 +12221,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetSectionPageSetupOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -10733,10 +12230,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSectionPageSetupOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSectionPageSetupOnlineResponse()
+        );
+    }
+
+    /*
      * GetSections request implementation
      */
     GetSectionsRequest::GetSectionsRequest(
@@ -10779,7 +12285,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetSectionsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10791,7 +12297,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSectionsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSectionsResponse()
+        );
+    }
+
+    /*
      * GetSectionsOnline request implementation
      */
     GetSectionsOnlineRequest::GetSectionsOnlineRequest(
@@ -10820,17 +12335,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetSectionsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/sections");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSectionsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSectionsOnlineResponse()
+        );
+    }
+
+    /*
      * GetStyle request implementation
      */
     GetStyleRequest::GetStyleRequest(
@@ -10880,7 +12404,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10894,7 +12418,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStyleRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStyleResponse()
+        );
+    }
+
+    /*
      * GetStyleFromDocumentElement request implementation
      */
     GetStyleFromDocumentElementRequest::GetStyleFromDocumentElementRequest(
@@ -10944,7 +12477,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetStyleFromDocumentElementRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -10958,7 +12491,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStyleFromDocumentElementRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStyleFromDocumentElementResponse()
+        );
+    }
+
+    /*
      * GetStyleFromDocumentElementOnline request implementation
      */
     GetStyleFromDocumentElementOnlineRequest::GetStyleFromDocumentElementOnlineRequest(
@@ -10994,7 +12536,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetStyleFromDocumentElementOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11003,10 +12545,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{styledNodePath}", *m_StyledNodePath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStyleFromDocumentElementOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStyleFromDocumentElementOnlineResponse()
+        );
+    }
+
+    /*
      * GetStyleOnline request implementation
      */
     GetStyleOnlineRequest::GetStyleOnlineRequest(
@@ -11042,7 +12593,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11051,10 +12602,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{styleName}", *m_StyleName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStyleOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStyleOnlineResponse()
+        );
+    }
+
+    /*
      * GetStyles request implementation
      */
     GetStylesRequest::GetStylesRequest(
@@ -11097,7 +12657,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetStylesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11109,7 +12669,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStylesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStylesResponse()
+        );
+    }
+
+    /*
      * GetStylesOnline request implementation
      */
     GetStylesOnlineRequest::GetStylesOnlineRequest(
@@ -11138,17 +12707,26 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetStylesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/get/styles");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStylesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStylesOnlineResponse()
+        );
+    }
+
+    /*
      * GetTable request implementation
      */
     GetTableRequest::GetTableRequest(
@@ -11205,7 +12783,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11220,7 +12798,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableResponse()
+        );
+    }
+
+    /*
      * GetTableCell request implementation
      */
     GetTableCellRequest::GetTableCellRequest(
@@ -11277,7 +12864,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableCellRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11293,7 +12880,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableCellRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableCellResponse()
+        );
+    }
+
+    /*
      * GetTableCellFormat request implementation
      */
     GetTableCellFormatRequest::GetTableCellFormatRequest(
@@ -11350,7 +12946,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableCellFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11366,7 +12962,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableCellFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableCellFormatResponse()
+        );
+    }
+
+    /*
      * GetTableCellFormatOnline request implementation
      */
     GetTableCellFormatOnlineRequest::GetTableCellFormatOnlineRequest(
@@ -11409,7 +13014,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableCellFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11420,10 +13025,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableCellFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableCellFormatOnlineResponse()
+        );
+    }
+
+    /*
      * GetTableCellOnline request implementation
      */
     GetTableCellOnlineRequest::GetTableCellOnlineRequest(
@@ -11466,7 +13080,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableCellOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11477,10 +13091,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableCellOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableCellOnlineResponse()
+        );
+    }
+
+    /*
      * GetTableOnline request implementation
      */
     GetTableOnlineRequest::GetTableOnlineRequest(
@@ -11523,7 +13146,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11533,10 +13156,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableOnlineResponse()
+        );
+    }
+
+    /*
      * GetTableProperties request implementation
      */
     GetTablePropertiesRequest::GetTablePropertiesRequest(
@@ -11593,7 +13225,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTablePropertiesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11608,7 +13240,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTablePropertiesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTablePropertiesResponse()
+        );
+    }
+
+    /*
      * GetTablePropertiesOnline request implementation
      */
     GetTablePropertiesOnlineRequest::GetTablePropertiesOnlineRequest(
@@ -11651,7 +13292,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTablePropertiesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11661,10 +13302,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTablePropertiesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTablePropertiesOnlineResponse()
+        );
+    }
+
+    /*
      * GetTableRow request implementation
      */
     GetTableRowRequest::GetTableRowRequest(
@@ -11721,7 +13371,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableRowRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11737,7 +13387,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableRowRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableRowResponse()
+        );
+    }
+
+    /*
      * GetTableRowFormat request implementation
      */
     GetTableRowFormatRequest::GetTableRowFormatRequest(
@@ -11794,7 +13453,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableRowFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11810,7 +13469,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableRowFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableRowFormatResponse()
+        );
+    }
+
+    /*
      * GetTableRowFormatOnline request implementation
      */
     GetTableRowFormatOnlineRequest::GetTableRowFormatOnlineRequest(
@@ -11853,7 +13521,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableRowFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11864,10 +13532,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableRowFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableRowFormatOnlineResponse()
+        );
+    }
+
+    /*
      * GetTableRowOnline request implementation
      */
     GetTableRowOnlineRequest::GetTableRowOnlineRequest(
@@ -11910,7 +13587,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTableRowOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -11921,10 +13598,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTableRowOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTableRowOnlineResponse()
+        );
+    }
+
+    /*
      * GetTables request implementation
      */
     GetTablesRequest::GetTablesRequest(
@@ -11974,7 +13660,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTablesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -11987,7 +13673,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTablesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTablesResponse()
+        );
+    }
+
+    /*
      * GetTablesOnline request implementation
      */
     GetTablesOnlineRequest::GetTablesOnlineRequest(
@@ -12023,7 +13718,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > GetTablesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -12031,10 +13726,19 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetTablesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetTablesOnlineResponse()
+        );
+    }
+
+    /*
      * InsertComment request implementation
      */
     InsertCommentRequest::InsertCommentRequest(
@@ -12105,7 +13809,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCommentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -12122,7 +13826,16 @@ namespace aspose::words::cloud::requests {
         if (m_Comment) result->setBody(*m_Comment);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertCommentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertCommentResponse()
+        );
+    }
+
+    /*
      * InsertCommentOnline request implementation
      */
     InsertCommentOnlineRequest::InsertCommentOnlineRequest(
@@ -12179,7 +13892,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCommentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -12194,7 +13907,16 @@ namespace aspose::words::cloud::requests {
         if (m_Comment) result->addFormDataParam(L"comment", *m_Comment);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertCommentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertCommentOnlineResponse()
+        );
+    }
+
+    /*
      * InsertDrawingObject request implementation
      */
     InsertDrawingObjectRequest::InsertDrawingObjectRequest(
@@ -12279,7 +14001,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertDrawingObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -12299,7 +14021,16 @@ namespace aspose::words::cloud::requests {
         if (m_ImageFile) result->addFormDataParam(L"imageFile", *m_ImageFile);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertDrawingObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertDrawingObjectResponse()
+        );
+    }
+
+    /*
      * InsertDrawingObjectOnline request implementation
      */
     InsertDrawingObjectOnlineRequest::InsertDrawingObjectOnlineRequest(
@@ -12370,7 +14101,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertDrawingObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -12388,7 +14119,16 @@ namespace aspose::words::cloud::requests {
         if (m_ImageFile) result->addFormDataParam(L"imageFile", *m_ImageFile);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertDrawingObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertDrawingObjectOnlineResponse()
+        );
+    }
+
+    /*
      * InsertField request implementation
      */
     InsertFieldRequest::InsertFieldRequest(
@@ -12473,7 +14213,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -12492,7 +14232,16 @@ namespace aspose::words::cloud::requests {
         if (m_Field) result->setBody(*m_Field);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertFieldResponse()
+        );
+    }
+
+    /*
      * InsertFieldOnline request implementation
      */
     InsertFieldOnlineRequest::InsertFieldOnlineRequest(
@@ -12563,7 +14312,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -12580,7 +14329,16 @@ namespace aspose::words::cloud::requests {
         if (m_Field) result->addFormDataParam(L"field", *m_Field);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertFieldOnlineResponse()
+        );
+    }
+
+    /*
      * InsertFootnote request implementation
      */
     InsertFootnoteRequest::InsertFootnoteRequest(
@@ -12658,7 +14416,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFootnoteRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -12676,7 +14434,16 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto) result->setBody(*m_FootnoteDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertFootnoteRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertFootnoteResponse()
+        );
+    }
+
+    /*
      * InsertFootnoteOnline request implementation
      */
     InsertFootnoteOnlineRequest::InsertFootnoteOnlineRequest(
@@ -12740,7 +14507,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFootnoteOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -12756,7 +14523,16 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto) result->addFormDataParam(L"footnoteDto", *m_FootnoteDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertFootnoteOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertFootnoteOnlineResponse()
+        );
+    }
+
+    /*
      * InsertFormField request implementation
      */
     InsertFormFieldRequest::InsertFormFieldRequest(
@@ -12841,7 +14617,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFormFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -12860,7 +14636,16 @@ namespace aspose::words::cloud::requests {
         if (m_FormField) result->setBody(*m_FormField);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertFormFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertFormFieldResponse()
+        );
+    }
+
+    /*
      * InsertFormFieldOnline request implementation
      */
     InsertFormFieldOnlineRequest::InsertFormFieldOnlineRequest(
@@ -12931,7 +14716,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFormFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -12948,7 +14733,16 @@ namespace aspose::words::cloud::requests {
         if (m_FormField) result->addFormDataParam(L"formField", *m_FormField);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertFormFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertFormFieldOnlineResponse()
+        );
+    }
+
+    /*
      * InsertHeaderFooter request implementation
      */
     InsertHeaderFooterRequest::InsertHeaderFooterRequest(
@@ -13026,7 +14820,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertHeaderFooterRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertHeaderFooterRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13042,10 +14836,19 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_HeaderFooterType) result->setBody(*m_HeaderFooterType);
+        if (m_HeaderFooterType) result->setBodyJson(*m_HeaderFooterType);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'HeaderFooterType' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertHeaderFooterRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertHeaderFooterResponse()
+        );
+    }
+
+    /*
      * InsertHeaderFooterOnline request implementation
      */
     InsertHeaderFooterOnlineRequest::InsertHeaderFooterOnlineRequest(
@@ -13109,7 +14912,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertHeaderFooterOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertHeaderFooterOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13126,7 +14929,16 @@ namespace aspose::words::cloud::requests {
         if (m_HeaderFooterType) result->addFormDataParam(L"headerFooterType", *m_HeaderFooterType);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'HeaderFooterType' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertHeaderFooterOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertHeaderFooterOnlineResponse()
+        );
+    }
+
+    /*
      * InsertList request implementation
      */
     InsertListRequest::InsertListRequest(
@@ -13197,7 +15009,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertListRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -13214,7 +15026,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListInsert) result->setBody(*m_ListInsert);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListInsert' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertListRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertListResponse()
+        );
+    }
+
+    /*
      * InsertListOnline request implementation
      */
     InsertListOnlineRequest::InsertListOnlineRequest(
@@ -13271,7 +15092,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertListOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertListOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13286,7 +15107,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListInsert) result->addFormDataParam(L"listInsert", *m_ListInsert);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListInsert' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertListOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertListOnlineResponse()
+        );
+    }
+
+    /*
      * InsertOrUpdateParagraphTabStop request implementation
      */
     InsertOrUpdateParagraphTabStopRequest::InsertOrUpdateParagraphTabStopRequest(
@@ -13357,7 +15187,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > InsertOrUpdateParagraphTabStopRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertOrUpdateParagraphTabStopRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -13375,7 +15205,16 @@ namespace aspose::words::cloud::requests {
         if (m_TabStopInsertDto) result->setBody(*m_TabStopInsertDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertOrUpdateParagraphTabStopRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertOrUpdateParagraphTabStopResponse()
+        );
+    }
+
+    /*
      * InsertOrUpdateParagraphTabStopOnline request implementation
      */
     InsertOrUpdateParagraphTabStopOnlineRequest::InsertOrUpdateParagraphTabStopOnlineRequest(
@@ -13432,7 +15271,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > InsertOrUpdateParagraphTabStopOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertOrUpdateParagraphTabStopOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13448,7 +15287,16 @@ namespace aspose::words::cloud::requests {
         if (m_TabStopInsertDto) result->addFormDataParam(L"tabStopInsertDto", *m_TabStopInsertDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertOrUpdateParagraphTabStopOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertOrUpdateParagraphTabStopOnlineResponse()
+        );
+    }
+
+    /*
      * InsertPageNumbers request implementation
      */
     InsertPageNumbersRequest::InsertPageNumbersRequest(
@@ -13519,7 +15367,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertPageNumbersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertPageNumbersRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13536,7 +15384,16 @@ namespace aspose::words::cloud::requests {
         if (m_PageNumber) result->setBody(*m_PageNumber);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageNumber' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertPageNumbersRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertPageNumbersResponse()
+        );
+    }
+
+    /*
      * InsertPageNumbersOnline request implementation
      */
     InsertPageNumbersOnlineRequest::InsertPageNumbersOnlineRequest(
@@ -13593,7 +15450,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertPageNumbersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertPageNumbersOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13608,7 +15465,16 @@ namespace aspose::words::cloud::requests {
         if (m_PageNumber) result->addFormDataParam(L"pageNumber", *m_PageNumber);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageNumber' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertPageNumbersOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertPageNumbersOnlineResponse()
+        );
+    }
+
+    /*
      * InsertParagraph request implementation
      */
     InsertParagraphRequest::InsertParagraphRequest(
@@ -13693,7 +15559,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -13712,7 +15578,16 @@ namespace aspose::words::cloud::requests {
         if (m_Paragraph) result->setBody(*m_Paragraph);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Paragraph' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertParagraphRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertParagraphResponse()
+        );
+    }
+
+    /*
      * InsertParagraphOnline request implementation
      */
     InsertParagraphOnlineRequest::InsertParagraphOnlineRequest(
@@ -13783,7 +15658,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13800,7 +15675,16 @@ namespace aspose::words::cloud::requests {
         if (m_Paragraph) result->addFormDataParam(L"paragraph", *m_Paragraph);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Paragraph' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertParagraphOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertParagraphOnlineResponse()
+        );
+    }
+
+    /*
      * InsertRun request implementation
      */
     InsertRunRequest::InsertRunRequest(
@@ -13885,7 +15769,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -13905,7 +15789,16 @@ namespace aspose::words::cloud::requests {
         if (m_Run) result->setBody(*m_Run);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertRunRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertRunResponse()
+        );
+    }
+
+    /*
      * InsertRunOnline request implementation
      */
     InsertRunOnlineRequest::InsertRunOnlineRequest(
@@ -13976,7 +15869,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< HttpRequestData > InsertRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -13994,7 +15887,16 @@ namespace aspose::words::cloud::requests {
         if (m_Run) result->addFormDataParam(L"run", *m_Run);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertRunOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertRunOnlineResponse()
+        );
+    }
+
+    /*
      * InsertStyle request implementation
      */
     InsertStyleRequest::InsertStyleRequest(
@@ -14065,7 +15967,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStyleRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -14082,7 +15984,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleInsert) result->setBody(*m_StyleInsert);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleInsert' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertStyleRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertStyleResponse()
+        );
+    }
+
+    /*
      * InsertStyleOnline request implementation
      */
     InsertStyleOnlineRequest::InsertStyleOnlineRequest(
@@ -14139,7 +16050,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStyleOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -14154,7 +16065,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleInsert) result->addFormDataParam(L"styleInsert", *m_StyleInsert);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleInsert' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertStyleOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertStyleOnlineResponse()
+        );
+    }
+
+    /*
      * InsertTable request implementation
      */
     InsertTableRequest::InsertTableRequest(
@@ -14232,7 +16152,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -14250,7 +16170,16 @@ namespace aspose::words::cloud::requests {
         if (m_Table) result->setBody(*m_Table);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Table' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertTableRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertTableResponse()
+        );
+    }
+
+    /*
      * InsertTableCell request implementation
      */
     InsertTableCellRequest::InsertTableCellRequest(
@@ -14328,7 +16257,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertTableCellRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableCellRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -14347,7 +16276,16 @@ namespace aspose::words::cloud::requests {
         if (m_Cell) result->setBody(*m_Cell);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Cell' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertTableCellRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertTableCellResponse()
+        );
+    }
+
+    /*
      * InsertTableCellOnline request implementation
      */
     InsertTableCellOnlineRequest::InsertTableCellOnlineRequest(
@@ -14411,7 +16349,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertTableCellOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableCellOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -14428,7 +16366,16 @@ namespace aspose::words::cloud::requests {
         if (m_Cell) result->addFormDataParam(L"cell", *m_Cell);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Cell' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertTableCellOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertTableCellOnlineResponse()
+        );
+    }
+
+    /*
      * InsertTableOnline request implementation
      */
     InsertTableOnlineRequest::InsertTableOnlineRequest(
@@ -14492,7 +16439,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -14508,7 +16455,16 @@ namespace aspose::words::cloud::requests {
         if (m_Table) result->addFormDataParam(L"table", *m_Table);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Table' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertTableOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertTableOnlineResponse()
+        );
+    }
+
+    /*
      * InsertTableRow request implementation
      */
     InsertTableRowRequest::InsertTableRowRequest(
@@ -14586,7 +16542,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertTableRowRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRowRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -14605,7 +16561,16 @@ namespace aspose::words::cloud::requests {
         if (m_Row) result->setBody(*m_Row);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Row' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertTableRowRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertTableRowResponse()
+        );
+    }
+
+    /*
      * InsertTableRowOnline request implementation
      */
     InsertTableRowOnlineRequest::InsertTableRowOnlineRequest(
@@ -14669,7 +16634,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertTableRowOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRowOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -14686,7 +16651,16 @@ namespace aspose::words::cloud::requests {
         if (m_Row) result->addFormDataParam(L"row", *m_Row);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Row' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertTableRowOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertTableRowOnlineResponse()
+        );
+    }
+
+    /*
      * InsertWatermarkImage request implementation
      */
     InsertWatermarkImageRequest::InsertWatermarkImageRequest(
@@ -14771,7 +16745,7 @@ namespace aspose::words::cloud::requests {
         return m_Image;
     }
 
-    std::shared_ptr< HttpRequestData > InsertWatermarkImageRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkImageRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -14787,9 +16761,18 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         if (m_RotationAngle) result->addQueryParam(L"rotationAngle", *m_RotationAngle);
         if (m_Image) result->addQueryParam(L"image", *m_Image);
-        if (m_ImageFile) result->addFormDataParam(L"imageFile", *m_ImageFile);
+        if (m_ImageFile) result->setBody(*m_ImageFile);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertWatermarkImageRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertWatermarkImageResponse()
+        );
+    }
+
+    /*
      * InsertWatermarkImageOnline request implementation
      */
     InsertWatermarkImageOnlineRequest::InsertWatermarkImageOnlineRequest(
@@ -14860,7 +16843,7 @@ namespace aspose::words::cloud::requests {
         return m_Image;
     }
 
-    std::shared_ptr< HttpRequestData > InsertWatermarkImageOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkImageOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -14877,7 +16860,16 @@ namespace aspose::words::cloud::requests {
         if (m_ImageFile) result->addFormDataParam(L"imageFile", *m_ImageFile);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertWatermarkImageOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse()
+        );
+    }
+
+    /*
      * InsertWatermarkText request implementation
      */
     InsertWatermarkTextRequest::InsertWatermarkTextRequest(
@@ -14948,7 +16940,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertWatermarkTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkTextRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -14965,7 +16957,16 @@ namespace aspose::words::cloud::requests {
         if (m_WatermarkText) result->setBody(*m_WatermarkText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkText' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertWatermarkTextRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertWatermarkTextResponse()
+        );
+    }
+
+    /*
      * InsertWatermarkTextOnline request implementation
      */
     InsertWatermarkTextOnlineRequest::InsertWatermarkTextOnlineRequest(
@@ -15022,7 +17023,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > InsertWatermarkTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkTextOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15037,7 +17038,16 @@ namespace aspose::words::cloud::requests {
         if (m_WatermarkText) result->addFormDataParam(L"watermarkText", *m_WatermarkText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkText' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertWatermarkTextOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertWatermarkTextOnlineResponse()
+        );
+    }
+
+    /*
      * LoadWebDocument request implementation
      */
     LoadWebDocumentRequest::LoadWebDocumentRequest(
@@ -15059,7 +17069,7 @@ namespace aspose::words::cloud::requests {
         return m_Storage;
     }
 
-    std::shared_ptr< HttpRequestData > LoadWebDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > LoadWebDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15068,7 +17078,16 @@ namespace aspose::words::cloud::requests {
         if (m_Data) result->setBody(*m_Data);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > LoadWebDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::LoadWebDocumentResponse()
+        );
+    }
+
+    /*
      * MoveFile request implementation
      */
     MoveFileRequest::MoveFileRequest(
@@ -15111,7 +17130,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< HttpRequestData > MoveFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > MoveFileRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15124,7 +17143,16 @@ namespace aspose::words::cloud::requests {
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > MoveFileRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::MoveFileResponse()
+        );
+    }
+
+    /*
      * MoveFolder request implementation
      */
     MoveFolderRequest::MoveFolderRequest(
@@ -15160,7 +17188,7 @@ namespace aspose::words::cloud::requests {
         return m_DestStorageName;
     }
 
-    std::shared_ptr< HttpRequestData > MoveFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > MoveFolderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15172,7 +17200,16 @@ namespace aspose::words::cloud::requests {
         if (m_SrcStorageName) result->addQueryParam(L"srcStorageName", *m_SrcStorageName);
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > MoveFolderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::MoveFolderResponse()
+        );
+    }
+
+    /*
      * OptimizeDocument request implementation
      */
     OptimizeDocumentRequest::OptimizeDocumentRequest(
@@ -15243,7 +17280,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > OptimizeDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > OptimizeDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15260,7 +17297,16 @@ namespace aspose::words::cloud::requests {
         if (m_Options) result->setBody(*m_Options);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Options' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > OptimizeDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::OptimizeDocumentResponse()
+        );
+    }
+
+    /*
      * OptimizeDocumentOnline request implementation
      */
     OptimizeDocumentOnlineRequest::OptimizeDocumentOnlineRequest(
@@ -15317,7 +17363,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > OptimizeDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > OptimizeDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15332,7 +17378,16 @@ namespace aspose::words::cloud::requests {
         if (m_Options) result->addFormDataParam(L"options", *m_Options);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Options' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > OptimizeDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::OptimizeDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * ProtectDocument request implementation
      */
     ProtectDocumentRequest::ProtectDocumentRequest(
@@ -15389,7 +17444,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > ProtectDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ProtectDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15404,7 +17459,16 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest) result->setBody(*m_ProtectionRequest);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ProtectDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ProtectDocumentResponse()
+        );
+    }
+
+    /*
      * ProtectDocumentOnline request implementation
      */
     ProtectDocumentOnlineRequest::ProtectDocumentOnlineRequest(
@@ -15447,7 +17511,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > ProtectDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ProtectDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15460,7 +17524,16 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest) result->addFormDataParam(L"protectionRequest", *m_ProtectionRequest);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ProtectDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ProtectDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * RejectAllRevisions request implementation
      */
     RejectAllRevisionsRequest::RejectAllRevisionsRequest(
@@ -15510,7 +17583,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > RejectAllRevisionsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RejectAllRevisionsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15523,7 +17596,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RejectAllRevisionsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RejectAllRevisionsResponse()
+        );
+    }
+
+    /*
      * RejectAllRevisionsOnline request implementation
      */
     RejectAllRevisionsOnlineRequest::RejectAllRevisionsOnlineRequest(
@@ -15559,7 +17641,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > RejectAllRevisionsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RejectAllRevisionsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15567,10 +17649,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RejectAllRevisionsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RejectAllRevisionsOnlineResponse()
+        );
+    }
+
+    /*
      * RemoveRange request implementation
      */
     RemoveRangeRequest::RemoveRangeRequest(
@@ -15634,7 +17725,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > RemoveRangeRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveRangeRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -15650,7 +17741,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RemoveRangeRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RemoveRangeResponse()
+        );
+    }
+
+    /*
      * RemoveRangeOnline request implementation
      */
     RemoveRangeOnlineRequest::RemoveRangeOnlineRequest(
@@ -15700,7 +17800,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > RemoveRangeOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveRangeOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15711,10 +17811,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RemoveRangeOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RemoveRangeOnlineResponse()
+        );
+    }
+
+    /*
      * RenderDrawingObject request implementation
      */
     RenderDrawingObjectRequest::RenderDrawingObjectRequest(
@@ -15792,7 +17901,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderDrawingObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -15811,7 +17920,16 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderDrawingObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderDrawingObjectResponse()
+        );
+    }
+
+    /*
      * RenderDrawingObjectOnline request implementation
      */
     RenderDrawingObjectOnlineRequest::RenderDrawingObjectOnlineRequest(
@@ -15875,7 +17993,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderDrawingObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -15889,10 +18007,19 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderDrawingObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderDrawingObjectOnlineResponse()
+        );
+    }
+
+    /*
      * RenderMathObject request implementation
      */
     RenderMathObjectRequest::RenderMathObjectRequest(
@@ -15970,7 +18097,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderMathObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderMathObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -15989,7 +18116,16 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderMathObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderMathObjectResponse()
+        );
+    }
+
+    /*
      * RenderMathObjectOnline request implementation
      */
     RenderMathObjectOnlineRequest::RenderMathObjectOnlineRequest(
@@ -16053,7 +18189,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderMathObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderMathObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16067,10 +18203,19 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderMathObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderMathObjectOnlineResponse()
+        );
+    }
+
+    /*
      * RenderPage request implementation
      */
     RenderPageRequest::RenderPageRequest(
@@ -16134,7 +18279,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderPageRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderPageRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -16151,7 +18296,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderPageRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderPageResponse()
+        );
+    }
+
+    /*
      * RenderPageOnline request implementation
      */
     RenderPageOnlineRequest::RenderPageOnlineRequest(
@@ -16201,7 +18355,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderPageOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderPageOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16213,10 +18367,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderPageOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderPageOnlineResponse()
+        );
+    }
+
+    /*
      * RenderParagraph request implementation
      */
     RenderParagraphRequest::RenderParagraphRequest(
@@ -16294,7 +18457,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderParagraphRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -16313,7 +18476,16 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderParagraphRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderParagraphResponse()
+        );
+    }
+
+    /*
      * RenderParagraphOnline request implementation
      */
     RenderParagraphOnlineRequest::RenderParagraphOnlineRequest(
@@ -16377,7 +18549,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderParagraphOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16391,10 +18563,19 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderParagraphOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderParagraphOnlineResponse()
+        );
+    }
+
+    /*
      * RenderTable request implementation
      */
     RenderTableRequest::RenderTableRequest(
@@ -16472,7 +18653,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderTableRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -16491,7 +18672,16 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderTableRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderTableResponse()
+        );
+    }
+
+    /*
      * RenderTableOnline request implementation
      */
     RenderTableOnlineRequest::RenderTableOnlineRequest(
@@ -16555,7 +18745,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > RenderTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderTableOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16569,10 +18759,19 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RenderTableOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RenderTableOnlineResponse()
+        );
+    }
+
+    /*
      * ReplaceText request implementation
      */
     ReplaceTextRequest::ReplaceTextRequest(
@@ -16643,7 +18842,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > ReplaceTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceTextRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16660,7 +18859,16 @@ namespace aspose::words::cloud::requests {
         if (m_ReplaceText) result->setBody(*m_ReplaceText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReplaceText' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ReplaceTextRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ReplaceTextResponse()
+        );
+    }
+
+    /*
      * ReplaceTextOnline request implementation
      */
     ReplaceTextOnlineRequest::ReplaceTextOnlineRequest(
@@ -16717,7 +18925,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > ReplaceTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceTextOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16732,7 +18940,16 @@ namespace aspose::words::cloud::requests {
         if (m_ReplaceText) result->addFormDataParam(L"replaceText", *m_ReplaceText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReplaceText' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ReplaceTextOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ReplaceTextOnlineResponse()
+        );
+    }
+
+    /*
      * ReplaceWithText request implementation
      */
     ReplaceWithTextRequest::ReplaceWithTextRequest(
@@ -16803,7 +19020,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > ReplaceWithTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceWithTextRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -16821,7 +19038,16 @@ namespace aspose::words::cloud::requests {
         if (m_RangeText) result->setBody(*m_RangeText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ReplaceWithTextRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ReplaceWithTextResponse()
+        );
+    }
+
+    /*
      * ReplaceWithTextOnline request implementation
      */
     ReplaceWithTextOnlineRequest::ReplaceWithTextOnlineRequest(
@@ -16878,7 +19104,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > ReplaceWithTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceWithTextOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16894,7 +19120,16 @@ namespace aspose::words::cloud::requests {
         if (m_RangeText) result->addFormDataParam(L"rangeText", *m_RangeText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ReplaceWithTextOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ReplaceWithTextOnlineResponse()
+        );
+    }
+
+    /*
      * ResetCache request implementation
      */
     ResetCacheRequest::ResetCacheRequest(
@@ -16903,13 +19138,22 @@ namespace aspose::words::cloud::requests {
     }
 
 
-    std::shared_ptr< HttpRequestData > ResetCacheRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ResetCacheRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
         result->setPath(L"/words/fonts/cache");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ResetCacheRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ResetCacheResponse()
+        );
+    }
+
+    /*
      * SaveAs request implementation
      */
     SaveAsRequest::SaveAsRequest(
@@ -16966,7 +19210,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > SaveAsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -16981,7 +19225,16 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptionsData) result->setBody(*m_SaveOptionsData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SaveAsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SaveAsResponse()
+        );
+    }
+
+    /*
      * SaveAsOnline request implementation
      */
     SaveAsOnlineRequest::SaveAsOnlineRequest(
@@ -17024,7 +19277,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > SaveAsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17037,7 +19290,16 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptionsData) result->addFormDataParam(L"saveOptionsData", *m_SaveOptionsData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SaveAsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SaveAsOnlineResponse()
+        );
+    }
+
+    /*
      * SaveAsRange request implementation
      */
     SaveAsRangeRequest::SaveAsRangeRequest(
@@ -17101,7 +19363,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > SaveAsRangeRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
@@ -17118,7 +19380,16 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentParameters) result->setBody(*m_DocumentParameters);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SaveAsRangeRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SaveAsRangeResponse()
+        );
+    }
+
+    /*
      * SaveAsRangeOnline request implementation
      */
     SaveAsRangeOnlineRequest::SaveAsRangeOnlineRequest(
@@ -17168,7 +19439,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > SaveAsRangeOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17183,7 +19454,16 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentParameters) result->addFormDataParam(L"documentParameters", *m_DocumentParameters);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SaveAsRangeOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SaveAsRangeOnlineResponse()
+        );
+    }
+
+    /*
      * SaveAsTiff request implementation
      */
     SaveAsTiffRequest::SaveAsTiffRequest(
@@ -17359,7 +19639,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > SaveAsTiffRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsTiffRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17391,7 +19671,16 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptions) result->setBody(*m_SaveOptions);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptions' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SaveAsTiffRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SaveAsTiffResponse()
+        );
+    }
+
+    /*
      * SaveAsTiffOnline request implementation
      */
     SaveAsTiffOnlineRequest::SaveAsTiffOnlineRequest(
@@ -17553,7 +19842,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > SaveAsTiffOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsTiffOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17583,7 +19872,16 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptions) result->addFormDataParam(L"saveOptions", *m_SaveOptions);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptions' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SaveAsTiffOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SaveAsTiffOnlineResponse()
+        );
+    }
+
+    /*
      * Search request implementation
      */
     SearchRequest::SearchRequest(
@@ -17633,7 +19931,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > SearchRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
@@ -17647,7 +19945,16 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SearchRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SearchResponse()
+        );
+    }
+
+    /*
      * SearchOnline request implementation
      */
     SearchOnlineRequest::SearchOnlineRequest(
@@ -17683,7 +19990,7 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
-    std::shared_ptr< HttpRequestData > SearchOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17692,10 +19999,19 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Pattern' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SearchOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SearchOnlineResponse()
+        );
+    }
+
+    /*
      * SplitDocument request implementation
      */
     SplitDocumentRequest::SplitDocumentRequest(
@@ -17780,7 +20096,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > SplitDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17799,7 +20115,16 @@ namespace aspose::words::cloud::requests {
         if (m_ZipOutput) result->addQueryParam(L"zipOutput", *m_ZipOutput);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SplitDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SplitDocumentResponse()
+        );
+    }
+
+    /*
      * SplitDocumentOnline request implementation
      */
     SplitDocumentOnlineRequest::SplitDocumentOnlineRequest(
@@ -17870,7 +20195,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< HttpRequestData > SplitDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -17884,10 +20209,19 @@ namespace aspose::words::cloud::requests {
         if (m_To) result->addQueryParam(L"to", *m_To);
         if (m_ZipOutput) result->addQueryParam(L"zipOutput", *m_ZipOutput);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SplitDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SplitDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * UnprotectDocument request implementation
      */
     UnprotectDocumentRequest::UnprotectDocumentRequest(
@@ -17944,7 +20278,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > UnprotectDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UnprotectDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
@@ -17959,7 +20293,16 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest) result->setBody(*m_ProtectionRequest);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UnprotectDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UnprotectDocumentResponse()
+        );
+    }
+
+    /*
      * UnprotectDocumentOnline request implementation
      */
     UnprotectDocumentOnlineRequest::UnprotectDocumentOnlineRequest(
@@ -18002,7 +20345,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > UnprotectDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UnprotectDocumentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18015,7 +20358,16 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest) result->addFormDataParam(L"protectionRequest", *m_ProtectionRequest);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UnprotectDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UnprotectDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateBookmark request implementation
      */
     UpdateBookmarkRequest::UpdateBookmarkRequest(
@@ -18093,7 +20445,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateBookmarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBookmarkRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18112,7 +20464,16 @@ namespace aspose::words::cloud::requests {
         if (m_BookmarkData) result->setBody(*m_BookmarkData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkData' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateBookmarkRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateBookmarkResponse()
+        );
+    }
+
+    /*
      * UpdateBookmarkOnline request implementation
      */
     UpdateBookmarkOnlineRequest::UpdateBookmarkOnlineRequest(
@@ -18176,7 +20537,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateBookmarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBookmarkOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18193,7 +20554,16 @@ namespace aspose::words::cloud::requests {
         if (m_BookmarkData) result->addFormDataParam(L"bookmarkData", *m_BookmarkData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkData' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateBookmarkOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateBookmarkOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateBorder request implementation
      */
     UpdateBorderRequest::UpdateBorderRequest(
@@ -18278,7 +20648,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateBorderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBorderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18298,7 +20668,16 @@ namespace aspose::words::cloud::requests {
         if (m_BorderProperties) result->setBody(*m_BorderProperties);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BorderProperties' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateBorderRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateBorderResponse()
+        );
+    }
+
+    /*
      * UpdateBorderOnline request implementation
      */
     UpdateBorderOnlineRequest::UpdateBorderOnlineRequest(
@@ -18369,7 +20748,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateBorderOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBorderOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18387,7 +20766,16 @@ namespace aspose::words::cloud::requests {
         if (m_BorderProperties) result->addFormDataParam(L"borderProperties", *m_BorderProperties);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BorderProperties' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateBorderOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateBorderOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateComment request implementation
      */
     UpdateCommentRequest::UpdateCommentRequest(
@@ -18465,7 +20853,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCommentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18484,7 +20872,16 @@ namespace aspose::words::cloud::requests {
         if (m_Comment) result->setBody(*m_Comment);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateCommentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateCommentResponse()
+        );
+    }
+
+    /*
      * UpdateCommentOnline request implementation
      */
     UpdateCommentOnlineRequest::UpdateCommentOnlineRequest(
@@ -18548,7 +20945,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCommentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18565,7 +20962,16 @@ namespace aspose::words::cloud::requests {
         if (m_Comment) result->addFormDataParam(L"comment", *m_Comment);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateCommentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateCommentOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateDrawingObject request implementation
      */
     UpdateDrawingObjectRequest::UpdateDrawingObjectRequest(
@@ -18657,7 +21063,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateDrawingObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18679,7 +21085,16 @@ namespace aspose::words::cloud::requests {
         if (m_ImageFile) result->addFormDataParam(L"imageFile", *m_ImageFile);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateDrawingObjectRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateDrawingObjectResponse()
+        );
+    }
+
+    /*
      * UpdateDrawingObjectOnline request implementation
      */
     UpdateDrawingObjectOnlineRequest::UpdateDrawingObjectOnlineRequest(
@@ -18757,7 +21172,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateDrawingObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18777,7 +21192,16 @@ namespace aspose::words::cloud::requests {
         if (m_ImageFile) result->addFormDataParam(L"imageFile", *m_ImageFile);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateDrawingObjectOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateDrawingObjectOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateField request implementation
      */
     UpdateFieldRequest::UpdateFieldRequest(
@@ -18862,7 +21286,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18882,7 +21306,16 @@ namespace aspose::words::cloud::requests {
         if (m_Field) result->setBody(*m_Field);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFieldResponse()
+        );
+    }
+
+    /*
      * UpdateFieldOnline request implementation
      */
     UpdateFieldOnlineRequest::UpdateFieldOnlineRequest(
@@ -18953,7 +21386,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -18971,7 +21404,16 @@ namespace aspose::words::cloud::requests {
         if (m_Field) result->addFormDataParam(L"field", *m_Field);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFieldOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateFields request implementation
      */
     UpdateFieldsRequest::UpdateFieldsRequest(
@@ -19021,7 +21463,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19034,7 +21476,16 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFieldsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFieldsResponse()
+        );
+    }
+
+    /*
      * UpdateFieldsOnline request implementation
      */
     UpdateFieldsOnlineRequest::UpdateFieldsOnlineRequest(
@@ -19070,7 +21521,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19078,10 +21529,19 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFieldsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFieldsOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateFootnote request implementation
      */
     UpdateFootnoteRequest::UpdateFootnoteRequest(
@@ -19166,7 +21626,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFootnoteRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19186,7 +21646,16 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto) result->setBody(*m_FootnoteDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFootnoteRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFootnoteResponse()
+        );
+    }
+
+    /*
      * UpdateFootnoteOnline request implementation
      */
     UpdateFootnoteOnlineRequest::UpdateFootnoteOnlineRequest(
@@ -19257,7 +21726,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFootnoteOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19275,7 +21744,16 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto) result->addFormDataParam(L"footnoteDto", *m_FootnoteDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFootnoteOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFootnoteOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateFormField request implementation
      */
     UpdateFormFieldRequest::UpdateFormFieldRequest(
@@ -19360,7 +21838,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFormFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19380,7 +21858,16 @@ namespace aspose::words::cloud::requests {
         if (m_FormField) result->setBody(*m_FormField);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFormFieldRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFormFieldResponse()
+        );
+    }
+
+    /*
      * UpdateFormFieldOnline request implementation
      */
     UpdateFormFieldOnlineRequest::UpdateFormFieldOnlineRequest(
@@ -19451,7 +21938,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFormFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19469,7 +21956,16 @@ namespace aspose::words::cloud::requests {
         if (m_FormField) result->addFormDataParam(L"formField", *m_FormField);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateFormFieldOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateFormFieldOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateList request implementation
      */
     UpdateListRequest::UpdateListRequest(
@@ -19547,7 +22043,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19566,7 +22062,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate) result->setBody(*m_ListUpdate);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateListRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateListResponse()
+        );
+    }
+
+    /*
      * UpdateListLevel request implementation
      */
     UpdateListLevelRequest::UpdateListLevelRequest(
@@ -19651,7 +22156,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateListLevelRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListLevelRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19672,7 +22177,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate) result->setBody(*m_ListUpdate);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateListLevelRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateListLevelResponse()
+        );
+    }
+
+    /*
      * UpdateListLevelOnline request implementation
      */
     UpdateListLevelOnlineRequest::UpdateListLevelOnlineRequest(
@@ -19743,7 +22257,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateListLevelOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListLevelOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19762,7 +22276,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate) result->addFormDataParam(L"listUpdate", *m_ListUpdate);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateListLevelOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateListLevelOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateListOnline request implementation
      */
     UpdateListOnlineRequest::UpdateListOnlineRequest(
@@ -19826,7 +22349,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateListOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19843,7 +22366,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate) result->addFormDataParam(L"listUpdate", *m_ListUpdate);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateListOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateListOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateParagraphFormat request implementation
      */
     UpdateParagraphFormatRequest::UpdateParagraphFormatRequest(
@@ -19928,7 +22460,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateParagraphFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -19948,7 +22480,16 @@ namespace aspose::words::cloud::requests {
         if (m_ParagraphFormatDto) result->setBody(*m_ParagraphFormatDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphFormatDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateParagraphFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateParagraphFormatResponse()
+        );
+    }
+
+    /*
      * UpdateParagraphFormatOnline request implementation
      */
     UpdateParagraphFormatOnlineRequest::UpdateParagraphFormatOnlineRequest(
@@ -20019,7 +22560,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateParagraphFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20037,7 +22578,16 @@ namespace aspose::words::cloud::requests {
         if (m_ParagraphFormatDto) result->addFormDataParam(L"paragraphFormatDto", *m_ParagraphFormatDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphFormatDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateParagraphFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateParagraphFormatOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateParagraphListFormat request implementation
      */
     UpdateParagraphListFormatRequest::UpdateParagraphListFormatRequest(
@@ -20122,7 +22672,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateParagraphListFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphListFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20142,7 +22692,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListFormatDto) result->setBody(*m_ListFormatDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListFormatDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateParagraphListFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateParagraphListFormatResponse()
+        );
+    }
+
+    /*
      * UpdateParagraphListFormatOnline request implementation
      */
     UpdateParagraphListFormatOnlineRequest::UpdateParagraphListFormatOnlineRequest(
@@ -20213,7 +22772,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateParagraphListFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphListFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20231,7 +22790,16 @@ namespace aspose::words::cloud::requests {
         if (m_ListFormatDto) result->addFormDataParam(L"listFormatDto", *m_ListFormatDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListFormatDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateParagraphListFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateParagraphListFormatOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateRun request implementation
      */
     UpdateRunRequest::UpdateRunRequest(
@@ -20316,7 +22884,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20337,7 +22905,16 @@ namespace aspose::words::cloud::requests {
         if (m_Run) result->setBody(*m_Run);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateRunRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateRunResponse()
+        );
+    }
+
+    /*
      * UpdateRunFont request implementation
      */
     UpdateRunFontRequest::UpdateRunFontRequest(
@@ -20422,7 +22999,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateRunFontRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunFontRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20443,7 +23020,16 @@ namespace aspose::words::cloud::requests {
         if (m_FontDto) result->setBody(*m_FontDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FontDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateRunFontRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateRunFontResponse()
+        );
+    }
+
+    /*
      * UpdateRunFontOnline request implementation
      */
     UpdateRunFontOnlineRequest::UpdateRunFontOnlineRequest(
@@ -20514,7 +23100,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateRunFontOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunFontOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20533,7 +23119,16 @@ namespace aspose::words::cloud::requests {
         if (m_FontDto) result->addFormDataParam(L"fontDto", *m_FontDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FontDto' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateRunFontOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateRunFontOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateRunOnline request implementation
      */
     UpdateRunOnlineRequest::UpdateRunOnlineRequest(
@@ -20604,7 +23199,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20623,7 +23218,16 @@ namespace aspose::words::cloud::requests {
         if (m_Run) result->addFormDataParam(L"run", *m_Run);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateRunOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateRunOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateSectionPageSetup request implementation
      */
     UpdateSectionPageSetupRequest::UpdateSectionPageSetupRequest(
@@ -20701,7 +23305,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateSectionPageSetupRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateSectionPageSetupRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20720,7 +23324,16 @@ namespace aspose::words::cloud::requests {
         if (m_PageSetup) result->setBody(*m_PageSetup);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageSetup' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateSectionPageSetupRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateSectionPageSetupResponse()
+        );
+    }
+
+    /*
      * UpdateSectionPageSetupOnline request implementation
      */
     UpdateSectionPageSetupOnlineRequest::UpdateSectionPageSetupOnlineRequest(
@@ -20784,7 +23397,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateSectionPageSetupOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateSectionPageSetupOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20801,7 +23414,16 @@ namespace aspose::words::cloud::requests {
         if (m_PageSetup) result->addFormDataParam(L"pageSetup", *m_PageSetup);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageSetup' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateSectionPageSetupOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateStyle request implementation
      */
     UpdateStyleRequest::UpdateStyleRequest(
@@ -20879,7 +23501,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStyleRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20898,7 +23520,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleUpdate) result->setBody(*m_StyleUpdate);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleUpdate' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateStyleRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateStyleResponse()
+        );
+    }
+
+    /*
      * UpdateStyleOnline request implementation
      */
     UpdateStyleOnlineRequest::UpdateStyleOnlineRequest(
@@ -20962,7 +23593,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStyleOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -20979,7 +23610,16 @@ namespace aspose::words::cloud::requests {
         if (m_StyleUpdate) result->addFormDataParam(L"styleUpdate", *m_StyleUpdate);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleUpdate' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateStyleOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateStyleOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateTableCellFormat request implementation
      */
     UpdateTableCellFormatRequest::UpdateTableCellFormatRequest(
@@ -21064,7 +23704,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateTableCellFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableCellFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21085,7 +23725,16 @@ namespace aspose::words::cloud::requests {
         if (m_Format) result->setBody(*m_Format);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateTableCellFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateTableCellFormatResponse()
+        );
+    }
+
+    /*
      * UpdateTableCellFormatOnline request implementation
      */
     UpdateTableCellFormatOnlineRequest::UpdateTableCellFormatOnlineRequest(
@@ -21156,7 +23805,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateTableCellFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableCellFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21175,7 +23824,16 @@ namespace aspose::words::cloud::requests {
         if (m_Format) result->addFormDataParam(L"format", *m_Format);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateTableCellFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateTableCellFormatOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateTableProperties request implementation
      */
     UpdateTablePropertiesRequest::UpdateTablePropertiesRequest(
@@ -21260,7 +23918,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateTablePropertiesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTablePropertiesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21280,7 +23938,16 @@ namespace aspose::words::cloud::requests {
         if (m_Properties) result->setBody(*m_Properties);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Properties' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateTablePropertiesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateTablePropertiesResponse()
+        );
+    }
+
+    /*
      * UpdateTablePropertiesOnline request implementation
      */
     UpdateTablePropertiesOnlineRequest::UpdateTablePropertiesOnlineRequest(
@@ -21351,7 +24018,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateTablePropertiesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTablePropertiesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21369,7 +24036,16 @@ namespace aspose::words::cloud::requests {
         if (m_Properties) result->addFormDataParam(L"properties", *m_Properties);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Properties' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateTablePropertiesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateTablePropertiesOnlineResponse()
+        );
+    }
+
+    /*
      * UpdateTableRowFormat request implementation
      */
     UpdateTableRowFormatRequest::UpdateTableRowFormatRequest(
@@ -21454,7 +24130,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateTableRowFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableRowFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21475,7 +24151,16 @@ namespace aspose::words::cloud::requests {
         if (m_Format) result->setBody(*m_Format);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateTableRowFormatRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateTableRowFormatResponse()
+        );
+    }
+
+    /*
      * UpdateTableRowFormatOnline request implementation
      */
     UpdateTableRowFormatOnlineRequest::UpdateTableRowFormatOnlineRequest(
@@ -21546,7 +24231,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< HttpRequestData > UpdateTableRowFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableRowFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21565,7 +24250,16 @@ namespace aspose::words::cloud::requests {
         if (m_Format) result->addFormDataParam(L"format", *m_Format);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         return result;
-    }/*
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateTableRowFormatOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateTableRowFormatOnlineResponse()
+        );
+    }
+
+    /*
      * UploadFile request implementation
      */
     UploadFileRequest::UploadFileRequest(
@@ -21594,7 +24288,7 @@ namespace aspose::words::cloud::requests {
         return m_StorageName;
     }
 
-    std::shared_ptr< HttpRequestData > UploadFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UploadFileRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
@@ -21602,8 +24296,15 @@ namespace aspose::words::cloud::requests {
         if (!m_Path) throw aspose::words::cloud::ApiException(400, L"Parameter 'Path' is required.");
         result->setPathParam(L"{path}", *m_Path);
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
-        if (m_FileContent) result->addFormDataParam(L"fileContent", *m_FileContent);
+        if (m_FileContent) result->setBody(*m_FileContent);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FileContent' is required.");
         return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UploadFileRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UploadFileResponse()
+        );
     }
 }

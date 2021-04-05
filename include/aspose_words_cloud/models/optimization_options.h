@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="optimization_options.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -56,7 +56,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the specific MSWord version.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > getMsWordVersion();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > getMsWordVersion() const;
 
         /// <summary>
         /// Gets or sets the specific MSWord version.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_insert.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of columns. The default value is 2.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getColumnsCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getColumnsCount() const;
 
         /// <summary>
         /// Gets or sets the number of columns. The default value is 2.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of rows. The default value is 2.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getRowsCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getRowsCount() const;
 
         /// <summary>
         /// Gets or sets the number of rows. The default value is 2.

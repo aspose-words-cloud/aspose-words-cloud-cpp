@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="downsample_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether images should be downsampled.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDownsampleImages();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDownsampleImages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether images should be downsampled.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the resolution in pixels per inch which the images should be downsampled to.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getResolution();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getResolution() const;
 
         /// <summary>
         /// Gets or sets the resolution in pixels per inch which the images should be downsampled to.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getResolutionThreshold();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getResolutionThreshold() const;
 
         /// <summary>
         /// Gets or sets the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.

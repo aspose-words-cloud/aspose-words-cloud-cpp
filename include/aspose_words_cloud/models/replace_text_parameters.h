@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="replace_text_parameters.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsMatchCase();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsMatchCase() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether flag, means that only whole word matched are replaced.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsMatchWholeWord();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsMatchWholeWord() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether flag, means that only whole word matched are replaced.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsOldValueRegex();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsOldValueRegex() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the new text value to replace by.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNewValue();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNewValue() const;
 
         /// <summary>
         /// Gets or sets the new text value to replace by.
@@ -81,7 +81,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the old text value (or regex pattern IsOldValueRegex) to replace.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getOldValue();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getOldValue() const;
 
         /// <summary>
         /// Gets or sets the old text value (or regex pattern IsOldValueRegex) to replace.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="insert_run_online_request.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -52,7 +52,8 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionDateTime() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getInsertBeforeNode() const;
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< HttpRequestData > createHttpRequest() const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
 
     private:
         const std::shared_ptr< std::istream > m_Document;

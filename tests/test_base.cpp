@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="test_base.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -23,12 +23,62 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
+// Include all testsing cases
+#include "./api/bookmark_test.h"
+#include "./api/compatibility_test.h"
+#include "./api/append_document_test.h"
+#include "./api/classification_test.h"
+#include "./api/comment_test.h"
+#include "./api/compare_document_test.h"
+#include "./api/convert_document_test.h"
+#include "./api/document_test.h"
+#include "./api/document_statistics_test.h"
+#include "./api/document_with_format_test.h"
+#include "./api/load_web_document_test.h"
+#include "./api/revisions_test.h"
+#include "./api/split_document_to_format_test.h"
+#include "./api/document_properties_test.h"
+#include "./api/document_protection_test.h"
+#include "./api/drawing_objects_test.h"
+#include "./api/field_test.h"
+#include "./api/form_field_test.h"
+#include "./api/font_test.h"
+#include "./api/footnote_test.h"
+#include "./api/header_footer_test.h"
+#include "./api/hyperlink_test.h"
+#include "./api/lists_test.h"
+#include "./api/macros_test.h"
+#include "./api/execute_mail_merge_test.h"
+#include "./api/execute_template_test.h"
+#include "./api/mail_merge_fileds_test.h"
+#include "./api/math_object_test.h"
+#include "./api/page_setup_test.h"
+#include "./api/paragraph_test.h"
+#include "./api/range_test.h"
+#include "./api/build_report_test.h"
+#include "./api/run_test.h"
+#include "./api/section_test.h"
+#include "./api/file_test.h"
+#include "./api/folder_test.h"
+#include "./api/styles_test.h"
+#include "./api/table_test.h"
+#include "./api/table_border_test.h"
+#include "./api/text_test.h"
+#include "./api/watermark_test.h"
+#include "./other/readme_test.h"
+#include "./other/url_encode_test.h"
+#include "./other/examples_test.h"
+#include "./other/batch_test.h"
+
+// Include support headers
 #include <filesystem>
 #include <random>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include "./test_base.h"
+
+// USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
 #include "../thirdparty/json.hpp"
 #include "../thirdparty/utf8.h"
 
@@ -52,11 +102,6 @@ std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
         config->setDebugMode(fileJson["DebugMode"].get<bool>());
     }
     return config;
-}
-
-void InfrastructureTest::SetUp()
-{
-    m_Config = getConfig();
 }
 
 std::wstring InfrastructureTest::getSdkRoot()
@@ -118,7 +163,7 @@ void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, cons
 {
     auto request = std::shared_ptr<aspose::words::cloud::requests::UploadFileRequest>(
         new aspose::words::cloud::requests::UploadFileRequest(
-            std::shared_ptr<std::istream>(new std::ifstream(localPath)),
+            std::shared_ptr<std::istream>(new std::ifstream(localPath, std::ifstream::binary)),
             std::make_shared<std::wstring>(remotePath)
         )
     );
@@ -127,16 +172,8 @@ void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, cons
     ASSERT_TRUE(result->getUploaded()->size() == 1);
 }
 
-std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfiguration() const
-{
-    return m_Config;
-}
-
 std::shared_ptr<api::WordsApi> InfrastructureTest::getApi()
 {
-    if (!m_wordsApi)
-    {
-        m_wordsApi = std::make_shared<api::WordsApi>(getConfiguration());
-    }
-    return m_wordsApi;
+    static std::shared_ptr<api::WordsApi> wordsApi = std::make_shared<api::WordsApi>(getConfig());
+    return wordsApi;
 }

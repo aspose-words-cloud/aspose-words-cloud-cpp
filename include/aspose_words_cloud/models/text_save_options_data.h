@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="text_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether to add bi-directional marks before each BiDi run when exporting in plain text format.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAddBidiMarks();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAddBidiMarks() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to add bi-directional marks before each BiDi run when exporting in plain text format.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the program should attempt to preserve layout of tables when saving in the plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreserveTableLayout();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreserveTableLayout() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the program should attempt to preserve layout of tables when saving in the plain text format.
@@ -64,7 +64,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSimplifyListLabels();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSimplifyListLabels() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="http_request_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -51,13 +51,15 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT void setMethod(HttpRequestMethod method);
         ASPOSE_WORDS_CLOUD_EXPORT void setBody(const aspose::words::cloud::models::ModelBase& model);
         ASPOSE_WORDS_CLOUD_EXPORT void setBody(std::istream& stream);
-        ASPOSE_WORDS_CLOUD_EXPORT void setBody(const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT std::string& getBodyMutable();
+        ASPOSE_WORDS_CLOUD_EXPORT void setBodyJson(const std::wstring& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void setBodyText(const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, std::istream& stream);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setContentType(const std::string& value);
 
-        ASPOSE_WORDS_CLOUD_EXPORT std::wstring getFullPath() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::string getFullPath() const;
         ASPOSE_WORDS_CLOUD_EXPORT HttpRequestMethod getMethod() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::map<std::wstring, std::wstring>& getHeaders() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::string& getBody() const;

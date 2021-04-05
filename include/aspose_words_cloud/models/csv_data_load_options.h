@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="csv_data_load_options.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character that is used to comment lines of CSV data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCommentChar();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCommentChar() const;
 
         /// <summary>
         /// Gets or sets the character that is used to comment lines of CSV data.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character to be used as a column delimiter.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDelimiter();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDelimiter() const;
 
         /// <summary>
         /// Gets or sets the character to be used as a column delimiter.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the first record of CSV data contains column names.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHasHeaders();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHasHeaders() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the first record of CSV data contains column names.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character that is used to quote field values.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getQuoteChar();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getQuoteChar() const;
 
         /// <summary>
         /// Gets or sets the character that is used to quote field values.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="response_model_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -27,6 +27,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <string_view>
 #include "aspose_words_cloud/common.h"
 
 namespace aspose::words::cloud::responses {
@@ -34,7 +35,7 @@ namespace aspose::words::cloud::responses {
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ResponseModelBase() = default;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& response) = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) = 0;
         ASPOSE_WORDS_CLOUD_EXPORT void setStatusCode(int statusCode);
         ASPOSE_WORDS_CLOUD_EXPORT int getStatusCode() const;
         ASPOSE_WORDS_CLOUD_EXPORT void setErrorMessage(const std::wstring& errorMessage);

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="xaml_flow_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the physical folder where images are saved when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImagesFolder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImagesFolder() const;
 
         /// <summary>
         /// Gets or sets the physical folder where images are saved when exporting.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImagesFolderAlias();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImagesFolderAlias() const;
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.

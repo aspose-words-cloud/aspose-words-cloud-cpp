@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="list_update.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether list should be restarted at each section. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsRestartAtEachSection();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsRestartAtEachSection() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether list should be restarted at each section. The default value is false.

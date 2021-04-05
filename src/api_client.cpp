@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="api_client.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -23,11 +23,12 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
+#include <random>
 #include "aspose_words_cloud/api_client.h"
+
+// USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
 #include "../thirdparty/utf8.h"
 #include "../thirdparty/json.hpp"
-
-// USE HTTPLIB ONLY IN SOURCES!!!
 #pragma warning(push, 0) 
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "../thirdparty/httplib.h"
@@ -68,24 +69,53 @@ namespace aspose::words::cloud {
             throw ApiException(400, L"Unknown api error: " + httpResponse.error());
     }
 
+    inline void PrintDebugData(const std::string& data)
+    {
+        std::string printBuffer;
+        printBuffer.reserve(2048);
+        char bufHex[10];
+        for (int i = 0; i < data.length(); i++) {
+            uint8_t c = data[i];
+            if (isprint(c)) {
+                printBuffer += c;
+            }
+            else if (c == '\r' || c == '\n' || c == '\t') {
+                printBuffer += c;
+            }
+            else {
+                sprintf_s(bufHex, "%X", c);
+                if (c < 16) printBuffer += "x0";
+                else printBuffer += "x";
+                printBuffer.append(bufHex);
+            }
+
+            if (printBuffer.size() > 1024) {
+                std::cout << printBuffer;
+                printBuffer.clear();
+            }
+        }
+    }
+
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
         : m_Configuration(configuration)
     {
         std::string baseUrlUtf8;
         ::utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
         m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
-        m_HttpClient->set_read_timeout(60, 0);
-        m_HttpClient->set_write_timeout(60, 0);
+        m_HttpClient->set_read_timeout(300, 0);
+        m_HttpClient->set_write_timeout(300, 0);
+        m_HttpClient->set_keep_alive(true);
+        m_HttpClient->set_tcp_nodelay(true);
     }
 
     void ApiClient::call(
         std::shared_ptr<HttpRequestData> httpRequest,
         aspose::words::cloud::responses::ResponseModelBase& response)
     {
+        std::lock_guard<std::mutex> lock(m_Mutex);
         if (m_AccessToken.empty()) requestToken();
-        std::wstring path(httpRequest->getFullPath());
-        std::string pathUtf8;
-        ::utf8::utf16to8(path.begin(), path.end(), back_inserter(pathUtf8));
+        std::string path("/v4.0");
+        path.append(httpRequest->getFullPath());
 
         ::httplib::Headers headers;
         headers.emplace("Authorization", m_AccessToken);
@@ -102,7 +132,7 @@ namespace aspose::words::cloud {
         if (m_Configuration->isDebugMode()) {
             std::cout << "==================== CALL START ====================" << std::endl;
             std::cout << "REQUEST:" << std::endl;
-            std::cout << "\tURL: " << pathUtf8 << std::endl;
+            std::cout << "\tURL: " << path << std::endl;
             if (headers.size() > 0) {
                 std::cout << "\tHEADERS: " << std::endl;
             }
@@ -113,14 +143,16 @@ namespace aspose::words::cloud {
                 std::cout << "\tCONTENT-TYPE: " << httpRequest->getContentType() << std::endl;
             }
             if (httpRequest->getBody().size() > 0) {
-                std::cout << "\tBODY: " << httpRequest->getBody() << std::endl;
+                std::cout << "\tBODY: ";
+                PrintDebugData(httpRequest->getBody());
+                std::cout << std::endl;
             }
         }
 
         ::httplib::Result httpResponse = callInternal(
             m_HttpClient, 
             httpRequest->getMethod(), 
-            pathUtf8.c_str(), headers, 
+            path.c_str(), headers, 
             httpRequest->getBody(), 
             httpRequest->getContentType());
         HandleHttpError(httpResponse);
@@ -131,7 +163,7 @@ namespace aspose::words::cloud {
             httpResponse = callInternal(
                 m_HttpClient,
                 httpRequest->getMethod(),
-                pathUtf8.c_str(), headers,
+                path.c_str(), headers,
                 httpRequest->getBody(),
                 httpRequest->getContentType());
             HandleHttpError(httpResponse);
@@ -140,7 +172,9 @@ namespace aspose::words::cloud {
         if (m_Configuration->isDebugMode()) {
             std::cout << "RESPONSE:" << std::endl;
             std::cout << "\tSTATUS CODE: " << httpResponse->status << std::endl;
-            std::cout << "\tRESULT: " << httpResponse->body << std::endl;
+            std::cout << "\tRESULT: ";
+            PrintDebugData(httpResponse->body);
+            std::cout << std::endl;
             std::cout << "==================== CALL END ====================" << std::endl;
         }
 
@@ -182,5 +216,24 @@ namespace aspose::words::cloud {
 
         auto json = ::nlohmann::json::parse(result->body);
         m_AccessToken = "Bearer " + json["access_token"].get<std::string>();
+    }
+
+    std::string ApiClient::createRandomGuid()
+    {
+        static std::random_device dev;
+        static std::mt19937 rng(dev());
+
+        std::uniform_int_distribution<int> dist(0, 15);
+
+        const char* v = "0123456789abcdef";
+        const bool dash[] = { 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 };
+
+        std::string res;
+        for (int i = 0; i < 16; i++) {
+            if (dash[i]) res += '-';
+            res += v[dist(rng)];
+            res += v[dist(rng)];
+        }
+        return res;
     }
 }

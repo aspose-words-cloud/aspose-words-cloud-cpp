@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="stat_data_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -44,7 +44,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FileLink > getDocumentLink();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FileLink > getDocumentLink() const;
 
         /// <summary>
         /// Gets or sets the link to the document.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the statistical data of the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentStatData > getStatData();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentStatData > getStatData() const;
 
         /// <summary>
         /// Gets or sets the statistical data of the document.

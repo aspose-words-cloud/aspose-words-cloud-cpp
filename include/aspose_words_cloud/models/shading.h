@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="shading.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -103,7 +103,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the color that's applied to the background of the Shading object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getBackgroundPatternColor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getBackgroundPatternColor() const;
 
         /// <summary>
         /// Gets or sets the color that's applied to the background of the Shading object.
@@ -113,7 +113,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the color that's applied to the foreground of the Shading object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getForegroundPatternColor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getForegroundPatternColor() const;
 
         /// <summary>
         /// Gets or sets the color that's applied to the foreground of the Shading object.
@@ -123,7 +123,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the shading texture.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Shading::Texture > getTexture();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Shading::Texture > getTexture() const;
 
         /// <summary>
         /// Gets or sets the shading texture.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="footnote_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option, that specifies whether this is a footnote or endnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > getFootnoteType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > getFootnoteType() const;
 
         /// <summary>
         /// Gets or sets the option, that specifies whether this is a footnote or endnote.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the custom reference mark to be used for this footnote.
         /// Default value is Empty, meaning auto-numbered footnotes are used.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getReferenceMark();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getReferenceMark() const;
 
         /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
@@ -83,7 +83,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets text of the footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets text of the footnote.

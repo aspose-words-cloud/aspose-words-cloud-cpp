@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="graphics_quality_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -106,7 +106,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value, that specifies how composited images are drawn to this Graphics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode > getCompositingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode > getCompositingMode() const;
 
         /// <summary>
         /// Gets or sets the value, that specifies how composited images are drawn to this Graphics.
@@ -116,7 +116,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the rendering quality of composited images drawn to this Graphics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality > getCompositingQuality();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality > getCompositingQuality() const;
 
         /// <summary>
         /// Gets or sets the rendering quality of composited images drawn to this Graphics.
@@ -126,7 +126,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the interpolation mode associated with this Graphics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode > getInterpolationMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode > getInterpolationMode() const;
 
         /// <summary>
         /// Gets or sets the interpolation mode associated with this Graphics.
@@ -136,7 +136,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the rendering quality for this Graphics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode > getSmoothingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode > getSmoothingMode() const;
 
         /// <summary>
         /// Gets or sets the rendering quality for this Graphics.
@@ -146,7 +146,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets text layout information (such as alignment, orientation and tab stops) display manipulations (such as ellipsis insertion and national digit substitution) and OpenType features.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData > getStringFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData > getStringFormat() const;
 
         /// <summary>
         /// Gets or sets text layout information (such as alignment, orientation and tab stops) display manipulations (such as ellipsis insertion and national digit substitution) and OpenType features.
@@ -156,7 +156,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the rendering mode for text associated with this Graphics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint > getTextRenderingHint();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint > getTextRenderingHint() const;
 
         /// <summary>
         /// Gets or sets the rendering mode for text associated with this Graphics.

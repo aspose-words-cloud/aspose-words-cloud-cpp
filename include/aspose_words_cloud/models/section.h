@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="section.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list of child nodes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > getChildNodes();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > getChildNodes() const;
 
         /// <summary>
         /// Gets or sets the list of child nodes.
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to HeaderFooters resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getHeaderFooters();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getHeaderFooters() const;
 
         /// <summary>
         /// Gets or sets the link to HeaderFooters resource.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to PageSetup resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getPageSetup();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getPageSetup() const;
 
         /// <summary>
         /// Gets or sets the link to PageSetup resource.
@@ -73,7 +73,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to Paragraphs resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs() const;
 
         /// <summary>
         /// Gets or sets the link to Paragraphs resource.
@@ -83,7 +83,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to Tables resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getTables();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getTables() const;
 
         /// <summary>
         /// Gets or sets the link to Tables resource.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="list_level.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -133,7 +133,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the justification of the actual number of the list item.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > getAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > getAlignment() const;
 
         /// <summary>
         /// Gets or sets the justification of the actual number of the list item.
@@ -143,7 +143,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets character formatting used for the list label.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font > getFont();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font > getFont() const;
 
         /// <summary>
         /// Gets or sets character formatting used for the list label.
@@ -153,7 +153,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsLegal();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsLegal() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
@@ -163,7 +163,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the paragraph style that is linked to this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style > getLinkedStyle();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style > getLinkedStyle() const;
 
         /// <summary>
         /// Gets or sets the paragraph style that is linked to this list level.
@@ -173,7 +173,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number format for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNumberFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNumberFormat() const;
 
         /// <summary>
         /// Gets or sets the number format for the list level.
@@ -183,7 +183,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the position (in points) of the number or bullet for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getNumberPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getNumberPosition() const;
 
         /// <summary>
         /// Gets or sets the position (in points) of the number or bullet for the list level.
@@ -193,7 +193,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number style for this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevel::NumberStyle > getNumberStyle();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevel::NumberStyle > getNumberStyle() const;
 
         /// <summary>
         /// Gets or sets the number style for this list level.
@@ -203,7 +203,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list level, that must appear before the specified list level restarts numbering.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getRestartAfterLevel();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getRestartAfterLevel() const;
 
         /// <summary>
         /// Gets or sets the list level, that must appear before the specified list level restarts numbering.
@@ -213,7 +213,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the starting number for this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getStartAt();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getStartAt() const;
 
         /// <summary>
         /// Gets or sets the starting number for this list level.
@@ -223,7 +223,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the tab position (in points) for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTabPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTabPosition() const;
 
         /// <summary>
         /// Gets or sets the tab position (in points) for the list level.
@@ -233,7 +233,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the position (in points) for the second line of wrapping text for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTextPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTextPosition() const;
 
         /// <summary>
         /// Gets or sets the position (in points) for the second line of wrapping text for the list level.
@@ -243,7 +243,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character inserted after the number for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > getTrailingCharacter();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > getTrailingCharacter() const;
 
         /// <summary>
         /// Gets or sets the character inserted after the number for the list level.

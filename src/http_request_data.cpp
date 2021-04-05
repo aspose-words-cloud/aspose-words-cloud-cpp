@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="http_request_data.cpp">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -23,53 +23,19 @@
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
 
-#include <random>
 #include "aspose_words_cloud/http_request_data.h"
+#include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/api_exception.h"
+
+// USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
 #include "../thirdparty/json.hpp"
 #include "../thirdparty/utf8.h"
+#pragma warning(push, 0) 
+#define CPPHTTPLIB_OPENSSL_SUPPORT
+#include "../thirdparty/httplib.h"
+#pragma warning(pop)
 
 namespace aspose::words::cloud {
-    inline std::wstring urlEncode(const std::wstring& source)
-    {
-        std::wstring result;
-        wchar_t bufHex[10];
-        for (int i = 0; i < source.length(); i++) {
-            wchar_t c = source[i];
-            int ic = c;
-            if (c==L' ') result += L'+';
-            else if (isalnum(c) || c == L'-' || c == L'_' || c == L'.' || c == L'~') result += c;
-            else {
-                swprintf(bufHex, 10, L"%X", c);
-                if (ic < 16)
-                    result += L"%0";
-                else
-                    result += L"%";
-                result += bufHex;
-            }
-        }
-
-        return result;
-    }
-
-    inline std::string createRandomGuid()
-    {
-        static std::random_device dev;
-        static std::mt19937 rng(dev());
-
-        std::uniform_int_distribution<int> dist(0, 15);
-
-        const char* v = "0123456789abcdef";
-        const bool dash[] = { 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 };
-
-        std::string res;
-        for (int i = 0; i < 16; i++) {
-            if (dash[i]) res += '-';
-            res += v[dist(rng)];
-            res += v[dist(rng)];
-        }
-        return res;
-    }
-
     void HttpRequestData::setPath(const std::wstring& path)
     {
         m_Path = path;
@@ -122,28 +88,54 @@ namespace aspose::words::cloud {
     {
         ::nlohmann::json json;
         model.toJson(&json);
-        m_Body = std::move(json.dump());
+        if (json.empty()) {
+            m_Body = "{}";
+        }
+        else {
+            m_Body = std::move(json.dump());
+        }
+
+        setContentType("application/json; charset=utf-8");
     }
 
     void HttpRequestData::setBody(std::istream& stream)
     {
+        if (!stream.good()) {
+            throw ApiException(400, L"Invalid input stream in operation request.");
+        }
+
         constexpr size_t BUFFER_SIZE = 1024 * 4;
         char buffer[BUFFER_SIZE];
         while (stream.read(buffer, BUFFER_SIZE)) {
             m_Body.append(buffer, BUFFER_SIZE);
         }
         m_Body.append(buffer, stream.gcount());
+        setContentType("application/octet-stream");
     }
 
-    void HttpRequestData::setBody(const std::wstring& value)
+    std::string& HttpRequestData::getBodyMutable()
+    {
+        return m_Body;
+    }
+
+    void HttpRequestData::setBodyJson(const std::wstring& value)
+    {
+        m_Body.append("\"");
+        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+        m_Body.append("\"");
+        setContentType("application/json; charset=utf-8");
+    }
+
+    void HttpRequestData::setBodyText(const std::wstring& value)
     {
         ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+        setContentType("application/json; charset=utf-8");
     }
 
     void HttpRequestData::addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model)
     {
         if (m_Boundary.empty()) {
-            m_Boundary = createRandomGuid();
+            m_Boundary = ApiClient::createRandomGuid();
         }
 
         if (m_Body.empty())
@@ -157,24 +149,36 @@ namespace aspose::words::cloud {
             m_Body[m_Body.size() - 1] = '\n';
         }
 
+        m_Body.append("Content-Type: application/json; charset=utf-8\r\n");
         m_Body.append("Content-Disposition: form-data; name=\"");
         ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
-        m_Body.append("\";\r\n\r\n");
+        m_Body.append("\"\r\n\r\n");
 
         ::nlohmann::json json;
         model.toJson(&json);
-        m_Body.append(std::move(json.dump()));
+        if (json.empty()) {
+            m_Body.append("{}");
+        }
+        else {
+            m_Body.append(std::move(json.dump()));
+        }
 
         m_Body.append("\r\n");
         m_Body.append("--");
         m_Body.append(m_Boundary);
         m_Body.append("--");
+
+        setContentType("multipart/form-data; boundary=" + m_Boundary);
     }
 
     void HttpRequestData::addFormDataParam(const std::wstring& name, std::istream& stream)
     {
+        if (!stream.good()) {
+            throw ApiException(400, L"Invalid input stream in operation request.");
+        }
+
         if (m_Boundary.empty()) {
-            m_Boundary = createRandomGuid();
+            m_Boundary = ApiClient::createRandomGuid();
         }
 
         if (m_Body.empty())
@@ -188,9 +192,10 @@ namespace aspose::words::cloud {
             m_Body[m_Body.size() - 1] = '\n';
         }
 
+        m_Body.append("Content-Type: application/octet-stream\r\n");
         m_Body.append("Content-Disposition: form-data; name=\"");
         ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
-        m_Body.append("\";\r\n\r\n");
+        m_Body.append("\"\r\n\r\n");
 
         constexpr size_t BUFFER_SIZE = 1024 * 4;
         char buffer[BUFFER_SIZE];
@@ -203,12 +208,14 @@ namespace aspose::words::cloud {
         m_Body.append("--");
         m_Body.append(m_Boundary);
         m_Body.append("--");
+
+        setContentType("multipart/form-data; boundary=" + m_Boundary);
     }
 
     void HttpRequestData::addFormDataParam(const std::wstring& name, const std::wstring& value)
     {
         if (m_Boundary.empty()) {
-            m_Boundary = createRandomGuid();
+            m_Boundary = ApiClient::createRandomGuid();
         }
 
         if (m_Body.empty())
@@ -222,9 +229,10 @@ namespace aspose::words::cloud {
             m_Body[m_Body.size() - 1] = '\n';
         }
 
+        m_Body.append("Content-Type: application/json; charset=utf-8\r\n");
         m_Body.append("Content-Disposition: form-data; name=\"");
         ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
-        m_Body.append("\";\r\n\r\n");
+        m_Body.append("\"\r\n\r\n");
 
         ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
 
@@ -232,6 +240,8 @@ namespace aspose::words::cloud {
         m_Body.append("--");
         m_Body.append(m_Boundary);
         m_Body.append("--");
+
+        setContentType("multipart/form-data; boundary=" + m_Boundary);
     }
 
     void HttpRequestData::setContentType(const std::string& value)
@@ -239,23 +249,31 @@ namespace aspose::words::cloud {
         m_ContentType = value;
     }
 
-    std::wstring HttpRequestData::getFullPath() const
+    std::string HttpRequestData::getFullPath() const
     {
-        int c = 0;
-        std::wstring result(L"/v4.0" + m_Path);
-        for (auto& pair : m_QueryParams)
-        {
-            result += (c == 0 ? L"?" : L"&");
-            result += urlEncode(pair.first);
-            result += L"=";
-            result += urlEncode(pair.second);
-            c++;
-        }
+        std::string result;
+        ::utf8::utf16to8(m_Path.begin(), m_Path.end(), back_inserter(result));
 
         size_t start_pos;
-        while ((start_pos = result.find(L"//")) != std::wstring::npos) {
-            result.replace(start_pos, 2, L"/");
+        while ((start_pos = result.find("//")) != std::string::npos) {
+            result.replace(start_pos, 2, "/");
             start_pos = 0;
+        }
+
+        result = ::httplib::detail::encode_url(result);
+
+        int c = 0;
+        for (auto& pair : m_QueryParams)
+        {
+            std::string queryKeyUtf8, queryParamUtf8;
+            ::utf8::utf16to8(pair.first.begin(), pair.first.end(), back_inserter(queryKeyUtf8));
+            ::utf8::utf16to8(pair.second.begin(), pair.second.end(), back_inserter(queryParamUtf8));
+
+            result += (c == 0 ? "?" : "&");
+            result += queryKeyUtf8;
+            result += "=";
+            result += ::httplib::detail::encode_query_param(queryParamUtf8);
+            c++;
         }
 
         return result;

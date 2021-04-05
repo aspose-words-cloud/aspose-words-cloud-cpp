@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="xml_color.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the Alpha component of color structure.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getAlpha();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getAlpha() const;
 
         /// <summary>
         /// Gets or sets the Alpha component of color structure.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the HTML string color representation.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getWeb();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getWeb() const;
 
         /// <summary>
         /// Gets or sets the HTML string color representation.

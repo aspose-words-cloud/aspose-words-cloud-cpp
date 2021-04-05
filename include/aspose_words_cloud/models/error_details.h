@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="error_details.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Error datetime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getErrorDateTime();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getErrorDateTime() const;
 
         /// <summary>
         /// Error datetime.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// The request id.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getRequestId();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getRequestId() const;
 
         /// <summary>
         /// The request id.

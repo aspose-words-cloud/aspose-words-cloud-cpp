@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="page_stat_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the detailed statistics on the footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > getFootnotesStatData();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > getFootnotesStatData() const;
 
         /// <summary>
         /// Gets or sets the detailed statistics on the footnotes.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the page number.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageNumber();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageNumber() const;
 
         /// <summary>
         /// Gets or sets the page number.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the total count of paragraphs in the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getParagraphCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getParagraphCount() const;
 
         /// <summary>
         /// Gets or sets the total count of paragraphs in the page.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the total count of words in the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getWordCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getWordCount() const;
 
         /// <summary>
         /// Gets or sets the total count of words in the page.

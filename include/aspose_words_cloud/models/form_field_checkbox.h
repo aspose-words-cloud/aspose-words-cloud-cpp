@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="form_field_checkbox.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the size of the checkbox in points. Has effect only when IsCheckBoxExactSize is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getCheckBoxSize();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getCheckBoxSize() const;
 
         /// <summary>
         /// Gets or sets the size of the checkbox in points. Has effect only when IsCheckBoxExactSize is true.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the checked status of the check box form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getChecked();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getChecked() const;
 
         /// <summary>
         /// Gets or sets the checked status of the check box form field.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the size of the textbox is automatic or specified explicitly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsCheckBoxExactSize();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsCheckBoxExactSize() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the size of the textbox is automatic or specified explicitly.

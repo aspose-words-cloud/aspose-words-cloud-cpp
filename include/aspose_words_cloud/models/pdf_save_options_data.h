@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="pdf_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -57,7 +57,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCompliance();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCompliance() const;
 
         /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
@@ -69,7 +69,7 @@ namespace aspose::words::cloud::models {
         /// When clicked the hyperlink will lead to the corresponding footnote/endnote.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getCreateNoteHyperlinks();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getCreateNoteHyperlinks() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to convert footnote/endnote references in main text story into active hyperlinks.
@@ -82,7 +82,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the option that controls the way CustomDocumentProperties are exported to PDF file.
         /// The default value is None.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCustomPropertiesExport();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCustomPropertiesExport() const;
 
         /// <summary>
         /// Gets or sets the option that controls the way CustomDocumentProperties are exported to PDF file.
@@ -93,7 +93,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the details for signing the output PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData > getDigitalSignatureDetails();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData > getDigitalSignatureDetails() const;
 
         /// <summary>
         /// Gets or sets the details for signing the output PDF document.
@@ -103,7 +103,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the window’s title bar should display the document title taken from the Title entry of the document information dictionary.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDisplayDocTitle();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDisplayDocTitle() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the window’s title bar should display the document title taken from the Title entry of the document information dictionary.
@@ -113,7 +113,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the downsample options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > getDownsampleOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > getDownsampleOptions() const;
 
         /// <summary>
         /// Gets or sets the downsample options.
@@ -123,7 +123,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether fonts are embedded into the resulting PDF documents.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmbedFullFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmbedFullFonts() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fonts are embedded into the resulting PDF documents.
@@ -133,7 +133,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the details for encrypting the output PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > getEncryptionDetails();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > getEncryptionDetails() const;
 
         /// <summary>
         /// Gets or sets the details for encrypting the output PDF document.
@@ -143,7 +143,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether URI should be escaped before writing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEscapeUri();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEscapeUri() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether URI should be escaped before writing.
@@ -153,7 +153,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to export document structure.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportDocumentStructure();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportDocumentStructure() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to export document structure.
@@ -163,7 +163,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font embedding mode.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontEmbeddingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontEmbeddingMode() const;
 
         /// <summary>
         /// Gets or sets the font embedding mode.
@@ -174,7 +174,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the option that controls how bookmarks in headers/footers are exported.
         /// The default value is Aspose.Words.Saving.HeaderFooterBookmarksExportMode.All.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode > getHeaderFooterBookmarksExportMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode > getHeaderFooterBookmarksExportMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how bookmarks in headers/footers are exported.
@@ -185,7 +185,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the color space will be selected for the images in PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImageColorSpaceExportMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImageColorSpaceExportMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the color space will be selected for the images in PDF document.
@@ -195,7 +195,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the compression type to be used for all images in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImageCompression();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImageCompression() const;
 
         /// <summary>
         /// Gets or sets the compression type to be used for all images in the document.
@@ -205,7 +205,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether image interpolation shall be performed by a conforming reader. When false is specified, the flag is not written to the output document and the default behavior of reader is used instead.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getInterpolateImages();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getInterpolateImages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether image interpolation shall be performed by a conforming reader. When false is specified, the flag is not written to the output document and the default behavior of reader is used instead.
@@ -215,7 +215,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOpenHyperlinksInNewWindow();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOpenHyperlinksInNewWindow() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
@@ -225,7 +225,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the outline options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > getOutlineOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > getOutlineOptions() const;
 
         /// <summary>
         /// Gets or sets the outline options.
@@ -235,7 +235,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the PDF document should be displayed when opened in the PDF reader.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPageMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPageMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the PDF document should be displayed when opened in the PDF reader.
@@ -245,7 +245,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to preblend transparent images with black background color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreblendImages();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreblendImages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to preblend transparent images with black background color.
@@ -255,7 +255,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to preserve Microsoft Word form fields as form fields in PDF or convert them to text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreserveFormFields();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreserveFormFields() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to preserve Microsoft Word form fields as form fields in PDF or convert them to text.
@@ -265,7 +265,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the compression type to be used for all textual content in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextCompression();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextCompression() const;
 
         /// <summary>
         /// Gets or sets the compression type to be used for all textual content in the document.
@@ -275,7 +275,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
@@ -285,7 +285,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to substitute TrueType fonts Arial, Times New Roman, Courier New and Symbol with core PDF Type 1 fonts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseCoreFonts();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseCoreFonts() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to substitute TrueType fonts Arial, Times New Roman, Courier New and Symbol with core PDF Type 1 fonts.
@@ -295,7 +295,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getZoomBehavior();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getZoomBehavior() const;
 
         /// <summary>
         /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
@@ -305,7 +305,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the zoom factor (in percentages) for a document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getZoomFactor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getZoomFactor() const;
 
         /// <summary>
         /// Gets or sets the zoom factor (in percentages) for a document.

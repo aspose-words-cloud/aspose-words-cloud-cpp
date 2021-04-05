@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="string_format_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -100,7 +100,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets horizontal alignment of the string.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::Alignment > getAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::Alignment > getAlignment() const;
 
         /// <summary>
         /// Gets or sets horizontal alignment of the string.
@@ -110,7 +110,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the System.Drawing.StringFormatFlags enumeration, that contains formatting information.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::FormatFlags > getFormatFlags();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::FormatFlags > getFormatFlags() const;
 
         /// <summary>
         /// Gets or sets the System.Drawing.StringFormatFlags enumeration, that contains formatting information.
@@ -120,7 +120,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the System.Drawing.Text.HotkeyPrefix object for this System.Drawing.StringFormat object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::HotkeyPrefix > getHotkeyPrefix();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::HotkeyPrefix > getHotkeyPrefix() const;
 
         /// <summary>
         /// Gets or sets the System.Drawing.Text.HotkeyPrefix object for this System.Drawing.StringFormat object.
@@ -130,7 +130,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the vertical alignment of the string.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::LineAlignment > getLineAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::LineAlignment > getLineAlignment() const;
 
         /// <summary>
         /// Gets or sets the vertical alignment of the string.
@@ -140,7 +140,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the System.Drawing.StringTrimming enumeration for this System.Drawing.StringFormat object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::Trimming > getTrimming();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StringFormatData::Trimming > getTrimming() const;
 
         /// <summary>
         /// Gets or sets the System.Drawing.StringTrimming enumeration for this System.Drawing.StringFormat object.

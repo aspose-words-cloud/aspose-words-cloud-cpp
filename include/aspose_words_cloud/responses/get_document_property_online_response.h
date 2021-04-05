@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="get_document_property_online_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -34,7 +34,7 @@ namespace aspose::words::cloud::responses {
 
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > getResult() const;
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& response) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) override;
     private:
         std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > m_Result;
     };

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="aspose_words_cloud.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -265,6 +265,7 @@
 #include "./aspose_words_cloud/models/xaml_flow_save_options_data.h"
 #include "./aspose_words_cloud/models/xml_color.h"
 #include "./aspose_words_cloud/models/xps_save_options_data.h"
+#include "./aspose_words_cloud/requests/batch_request.h"
 #include "./aspose_words_cloud/requests/accept_all_revisions_request.h"
 #include "./aspose_words_cloud/requests/accept_all_revisions_online_request.h"
 #include "./aspose_words_cloud/requests/append_document_request.h"
@@ -559,6 +560,7 @@
 #include "./aspose_words_cloud/requests/update_table_row_format_request.h"
 #include "./aspose_words_cloud/requests/update_table_row_format_online_request.h"
 #include "./aspose_words_cloud/requests/upload_file_request.h"
+#include "./aspose_words_cloud/responses/batch_response.h"
 #include "./aspose_words_cloud/responses/accept_all_revisions_response.h"
 #include "./aspose_words_cloud/responses/accept_all_revisions_online_response.h"
 #include "./aspose_words_cloud/responses/append_document_response.h"

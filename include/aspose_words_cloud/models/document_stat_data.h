@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="document_stat_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the detailed statistics on footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > getFootnotesStatData();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > getFootnotesStatData() const;
 
         /// <summary>
         /// Gets or sets the detailed statistics on footnotes.
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the total count of pages in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageCount() const;
 
         /// <summary>
         /// Gets or sets the total count of pages in the document.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the detailed statistics on all pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > getPageStatData();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > getPageStatData() const;
 
         /// <summary>
         /// Gets or sets the detailed statistics on all pages.
@@ -73,7 +73,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the total count of paragraphs in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getParagraphCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getParagraphCount() const;
 
         /// <summary>
         /// Gets or sets the total count of paragraphs in the document.
@@ -83,7 +83,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the total count of words in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getWordCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getWordCount() const;
 
         /// <summary>
         /// Gets or sets the total count of words in the document.

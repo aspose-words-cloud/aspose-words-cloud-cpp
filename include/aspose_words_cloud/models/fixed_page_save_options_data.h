@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="fixed_page_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -44,7 +44,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getColorMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getColorMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
@@ -55,7 +55,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the quality of the JPEG images inside PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getJpegQuality();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getJpegQuality() const;
 
         /// <summary>
         /// Gets or sets the quality of the JPEG images inside PDF document.
@@ -65,7 +65,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the metafile rendering options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > getMetafileRenderingOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > getMetafileRenderingOptions() const;
 
         /// <summary>
         /// Gets or sets the metafile rendering options.
@@ -75,7 +75,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNumeralFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNumeralFormat() const;
 
         /// <summary>
         /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
@@ -87,7 +87,7 @@ namespace aspose::words::cloud::models {
         /// If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated.
         /// Note: The accuracy of the content display may be affected if this property is set to true.. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOptimizeOutput();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOptimizeOutput() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether it is required to optimize output of XPS.
@@ -99,7 +99,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of pages to render.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageCount();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageCount() const;
 
         /// <summary>
         /// Gets or sets the number of pages to render.
@@ -109,7 +109,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the 0-based index of the first page to render.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageIndex();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageIndex() const;
 
         /// <summary>
         /// Gets or sets the 0-based index of the first page to render.

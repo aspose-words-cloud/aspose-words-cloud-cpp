@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="create_folder_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -32,6 +32,6 @@ namespace aspose::words::cloud::responses {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~CreateFolderResponse() = default;
 
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& response) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) override;
     };
 }

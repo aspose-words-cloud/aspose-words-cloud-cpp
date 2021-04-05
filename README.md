@@ -1,4 +1,4 @@
-ASpose.Words Cloud SDK for C++ wraps Aspose.Words REST API so you could seamlessly integrate Microsoft Word® document generation, manipulation, conversion & inspection features into your own C++ applications.
+﻿ASpose.Words Cloud SDK for C++ wraps Aspose.Words REST API so you could seamlessly integrate Microsoft Word® document generation, manipulation, conversion & inspection features into your own C++ applications.
 
 # Word Document Processing in the Cloud
 
@@ -142,9 +142,9 @@ cmake --build .\build --config Debug --target words-cloud-test
 Create servercreds.json in '<SDK-ROOT>\settings' directory:
 ````
 {
-	"ClientId" : "xxxx",
-	"ClientSecret" : "xxxxx",
-	"BaseUrl" : "xxx" 
+    "ClientId" : "xxxx",
+    "ClientSecret" : "xxxxx",
+    "BaseUrl" : "xxx" 
 }
 ````
 
@@ -168,9 +168,9 @@ cmake --build ./build --config Debug --target all_unity -- VERBOSE=1
 Create servercreds.json in '<SDK-ROOT>/settings' directory:
 ````
 {
-	"ClientId" : "xxxx",
-	"ClientSecret" : "xxxxx",
-	"BaseUrl" : "xxx" 
+    "ClientId" : "xxxx",
+    "ClientSecret" : "xxxxx",
+    "BaseUrl" : "xxx" 
 }
 ````
 
@@ -183,10 +183,7 @@ The complete source code is available at [GitHub Repository](https://github.com/
 
 ### SDK Dependencies
 
-- gcc version 8+ for Linux
-- [VS Build Tools](https://aka.ms/vs/15/release/vs_buildtools.exe) for Windows
-- [VCPKG](https://github.com/microsoft/vcpkg) for Windows
-- [CMake](https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-win64-x64.msi)
+- [OpenSSL](https://www.openssl.org/)
 
 ## Getting started with the SDK
 
@@ -204,32 +201,32 @@ target_link_libraries(your_app_target PRIVATE Aspose::Words.Cloud)
 
 Typical usage of the SDK in code follows this template:
 ```
-	// Start README example
+    // Start README example
+    using namespace aspose::words::cloud;
 
-	//  create client configuration
-	auto config = std::make_shared<ApiConfiguration>(yourClientId, yourClientSecret);
-	// optional step, default value is https://api.aspose.cloud
-	config->setBaseUrl(baseUrl);
+    // Create client configuration
+    auto config = std::make_shared<ApiConfiguration>(yourClientId, yourClientSecret, /*optional*/baseUrl);
 
-	// create API
-	auto api = std::make_shared<WordsApi>(config);
+    // Create API
+    auto api = std::make_shared<api::WordsApi>(config);
 
-	// read file content
-	auto content = std::make_shared<HttpContent>();
-	auto stream = std::make_shared<fs::ifstream>(localPath, std::ifstream::binary);
-	content->setData(stream);
-	content->setContentDisposition(_XPLATSTR("form-data"));
+    // Read file content
+    auto stream = std::shared_ptr<std::istream>(new std::ifstream(localPath, std::ifstream::binary));
 
-	// upload file
-	std::shared_ptr<UploadFileRequest> uploadRequest = std::make_shared<UploadFileRequest>(content, remotePath);
-	api->uploadFile(uploadRequest).get();
+    // upload file
+    auto uploadRequest = std::shared_ptr<requests::UploadFileRequest>(
+        new requests::UploadFileRequest(stream, remotePath)
+    );
+    auto uploadResult = api->uploadFile(uploadRequest);
 
-	// call one of API methods
-	auto request = std::make_shared<GetSectionsRequest>(remoteName, dataFolder);
-	auto response = api->getSections(request).get();
-	auto sections = response.body->getSections();
+    // call one of API methods
+    auto request = std::shared_ptr<requests::GetSectionsRequest>(
+        new requests::GetSectionsRequest(remoteName, remoteDir)
+    );
+    auto response = api->getSections(request);
+    auto sections = response->getSections();
 
-	// End README example
+    // End README example
 ```
 
 [Product Page](https://products.aspose.cloud/words/cpp) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)

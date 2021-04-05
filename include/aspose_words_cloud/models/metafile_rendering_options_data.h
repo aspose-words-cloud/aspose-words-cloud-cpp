@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="metafile_rendering_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEmfPlusDualRenderingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEmfPlusDualRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the raster operations should be emulated.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmulateRasterOperations();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmulateRasterOperations() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the raster operations should be emulated.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getRenderingMode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getScaleWmfFontsToMetafileSize();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getScaleWmfFontsToMetafileSize() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
@@ -83,7 +83,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the flag, that controls how WMF metafiles with embedded EMF metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseEmfEmbeddedToWmf();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseEmfEmbeddedToWmf() const;
 
         /// <summary>
         /// Gets or sets the flag, that controls how WMF metafiles with embedded EMF metafiles should be rendered.

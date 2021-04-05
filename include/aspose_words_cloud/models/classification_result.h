@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="classification_result.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the class.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getClassName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getClassName() const;
 
         /// <summary>
         /// Gets or sets the name of the class.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the probability of class.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getClassProbability();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getClassProbability() const;
 
         /// <summary>
         /// Gets or sets the probability of class.

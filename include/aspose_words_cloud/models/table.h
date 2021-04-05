@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -44,7 +44,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets table properties.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableProperties > getTableProperties();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableProperties > getTableProperties() const;
 
         /// <summary>
         /// Gets or sets table properties.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of table's rows.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > getTableRowList();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > getTableRowList() const;
 
         /// <summary>
         /// Gets or sets the collection of table's rows.

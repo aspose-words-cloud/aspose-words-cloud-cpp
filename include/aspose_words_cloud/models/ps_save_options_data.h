@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ps_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="xps_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the level in the XPS document outline at which to display Word bookmarks.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getBookmarksOutlineLevel();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getBookmarksOutlineLevel() const;
 
         /// <summary>
         /// Gets or sets the level in the XPS document outline at which to display Word bookmarks.
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of heading levels (paragraphs formatted with the Heading styles) to include in the XPS document outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getHeadingsOutlineLevels();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getHeadingsOutlineLevels() const;
 
         /// <summary>
         /// Gets or sets the number of heading levels (paragraphs formatted with the Heading styles) to include in the XPS document outline.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the outline options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > getOutlineOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > getOutlineOptions() const;
 
         /// <summary>
         /// Gets or sets the outline options.
@@ -73,7 +73,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.

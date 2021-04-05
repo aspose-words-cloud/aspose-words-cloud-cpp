@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="rtf_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportCompactSize();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportCompactSize() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the keywords for "old readers" are written to RTF or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportImagesForOldReaders();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportImagesForOldReaders() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the keywords for "old readers" are written to RTF or not.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveImagesAsWmf();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveImagesAsWmf() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.

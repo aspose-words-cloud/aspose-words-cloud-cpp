@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="request_model_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -36,6 +36,7 @@ namespace aspose::words::cloud::requests {
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~RequestModelBase() = default;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< HttpRequestData > createHttpRequest() const = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const = 0;
     };
 }

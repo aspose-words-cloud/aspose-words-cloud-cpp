@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="header_footer_link.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -55,7 +55,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the paragraph's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > getType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > getType() const;
 
         /// <summary>
         /// Gets or sets the paragraph's text.

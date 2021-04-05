@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="words_api.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -24,8 +24,11 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <vector>
 #include "aspose_words_cloud/common.h"
 #include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/requests/batch_request.h"
+#include "aspose_words_cloud/responses/batch_response.h"
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
 #include "aspose_words_cloud/responses/accept_all_revisions_response.h"
 #include "aspose_words_cloud/requests/accept_all_revisions_online_request.h"
@@ -4194,11 +4197,20 @@ namespace aspose::words::cloud::api {
         /// <param name="storageName">Storage name.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FilesUploadResult > uploadFile(std::shared_ptr<aspose::words::cloud::requests::UploadFileRequest> request);
 
+        /// <summary>
+        /// The batching technique comprises both concurrent and sequential request processing,
+        /// where concurrent requests can be processed in an arbitrary order with the same result,
+        /// and sequential requests depend on being processed step-by-step.
+        /// There is no restriction on the number of inner requests inside a single batch request.
+        /// </summary>
+        /// <param name="requests">List of batch requests.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::BatchResponse> batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests);
+
     public:
         ASPOSE_WORDS_CLOUD_EXPORT WordsApi(std::shared_ptr<ApiConfiguration> configuration);
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~WordsApi() = default;
 
-    protected:
+    private:
         std::shared_ptr<ApiClient> m_ApiClient;
     };
 }

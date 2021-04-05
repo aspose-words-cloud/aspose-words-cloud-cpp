@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="xaml_fixed_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format.
         /// The default value is null.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder() const;
 
         /// <summary>
         /// Gets or sets the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs written into an fixed page Xaml document. The default value is null.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias() const;
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs written into an fixed page Xaml document. The default value is null.

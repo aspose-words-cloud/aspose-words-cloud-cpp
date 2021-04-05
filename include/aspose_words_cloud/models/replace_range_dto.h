@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="replace_range_dto.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -50,7 +50,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the range's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets the range's text.
@@ -60,7 +60,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the range's text type.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > getTextType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > getTextType() const;
 
         /// <summary>
         /// Gets or sets the range's text type.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="doc_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating when False, that small metafiles are not compressed for performance reason.
         /// The default value is true, all metafiles are compressed regardless of its size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAlwaysCompressMetafiles();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAlwaysCompressMetafiles() const;
 
         /// <summary>
         /// Gets or sets a value indicating when False, that small metafiles are not compressed for performance reason.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the password.
@@ -65,7 +65,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating when False, that PictureBullet data is not saved to the output document.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSavePictureBullet();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSavePictureBullet() const;
 
         /// <summary>
         /// Gets or sets a value indicating when False, that PictureBullet data is not saved to the output document.
@@ -76,7 +76,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to save RoutingSlip data to output document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveRoutingSlip();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveRoutingSlip() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to save RoutingSlip data to output document.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="storage_file.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// True if it is a folder.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsFolder();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsFolder() const;
 
         /// <summary>
         /// True if it is a folder.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// File or folder last modified DateTime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getModifiedDate();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getModifiedDate() const;
 
         /// <summary>
         /// File or folder last modified DateTime.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// File or folder name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// File or folder name.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// File or folder path.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPath();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPath() const;
 
         /// <summary>
         /// File or folder path.
@@ -81,7 +81,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// File or folder size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getSize();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getSize() const;
 
         /// <summary>
         /// File or folder size.

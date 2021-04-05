@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="pcl_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font name, that will be used if no expected font is found in printer and built-in fonts collections.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFalllbackFontName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFalllbackFontName() const;
 
         /// <summary>
         /// Gets or sets the font name, that will be used if no expected font is found in printer and built-in fonts collections.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether complex transformed elements should be rasterized before saving to PCL document.. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getRasterizeTransformedElements();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getRasterizeTransformedElements() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether complex transformed elements should be rasterized before saving to PCL document.. The default value is true.

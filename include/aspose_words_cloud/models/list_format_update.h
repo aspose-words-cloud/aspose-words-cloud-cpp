@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="list_format_update.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list id of this paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListId();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListId() const;
 
         /// <summary>
         /// Gets or sets the list id of this paragraph.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list level number (0 to 8) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListLevelNumber();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListLevelNumber() const;
 
         /// <summary>
         /// Gets or sets the list level number (0 to 8) for the paragraph.

@@ -1,4 +1,4 @@
-#[[
+﻿#[[
 /** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CMakeLists.txt">
 *   Copyright (c) 2021 Aspose.Words for Cloud
@@ -27,7 +27,7 @@
 
 cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 
-project(aspose_words_cloud_test CXX)
+project(aspose_words_cloud_test LANGUAGES CXX)
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.h)
 add_executable(aspose_words_cloud_test ${TEST_SOURCES})
@@ -35,8 +35,9 @@ add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
 target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test_unity --gtest_output=xml:test_result.xml) 
+add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test --gtest_output=xml:test_result.xml) 
 
 if (MSVC)
-  set_property(TEST aspose_words_cloud_test PROPERTY ENVIRONMENT "PATH=${DLL_ROOT_DEBUG};$ENV{PATH}")
+  set_property(TARGET aspose_words_cloud_test PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+  target_compile_options(aspose_words_cloud_test PRIVATE /bigobj)
 endif()

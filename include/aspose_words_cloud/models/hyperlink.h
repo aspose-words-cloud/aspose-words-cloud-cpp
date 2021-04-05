@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="hyperlink.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the hypelink's display text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDisplayText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDisplayText() const;
 
         /// <summary>
         /// Gets or sets the hypelink's display text.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getValue();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getValue() const;
 
         /// <summary>
         /// Gets or sets the value.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compare_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the initials of the author to use for revisions.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAuthor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAuthor() const;
 
         /// <summary>
         /// Gets or sets the initials of the author to use for revisions.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the compare options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompareOptions > getCompareOptions();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompareOptions > getCompareOptions() const;
 
         /// <summary>
         /// Gets or sets the compare options.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the path to document to compare at the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getComparingWithDocument();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getComparingWithDocument() const;
 
         /// <summary>
         /// Gets or sets the path to document to compare at the server.
@@ -72,7 +72,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the date and time to use for revisions.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime() const;
 
         /// <summary>
         /// Gets or sets the date and time to use for revisions.

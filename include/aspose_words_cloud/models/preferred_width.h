@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="preferred_width.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the unit of measure used for this preferred width value.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > getType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > getType() const;
 
         /// <summary>
         /// Gets or sets the unit of measure used for this preferred width value.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getValue();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getValue() const;
 
         /// <summary>
         /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.

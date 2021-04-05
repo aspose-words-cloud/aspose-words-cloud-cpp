@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="api_error.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the API error code.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCode();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCode() const;
 
         /// <summary>
         /// Gets or sets the API error code.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the server DateTime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime() const;
 
         /// <summary>
         /// Gets or sets the server DateTime.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the error description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDescription();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDescription() const;
 
         /// <summary>
         /// Gets or sets the error description.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the inner error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ApiError > getInnerError();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ApiError > getInnerError() const;
 
         /// <summary>
         /// Gets or sets the inner error.
@@ -81,7 +81,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getMessage();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getMessage() const;
 
         /// <summary>
         /// Gets or sets the error message.

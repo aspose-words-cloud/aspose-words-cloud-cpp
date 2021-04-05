@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="form_field_drop_down.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the items array of a dropdown form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getDropDownItems();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getDropDownItems() const;
 
         /// <summary>
         /// Gets or sets the items array of a dropdown form field.
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the index specifying the currently selected item in a dropdown form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getDropDownSelectedIndex();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getDropDownSelectedIndex() const;
 
         /// <summary>
         /// Gets or sets the index specifying the currently selected item in a dropdown form field.

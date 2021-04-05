@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="markdown_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -55,7 +55,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the value, that specifies how to align contents in tables when exporting into the Markdown format.
         /// The default value is Auto.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > getTableContentAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > getTableContentAlignment() const;
 
         /// <summary>
         /// Gets or sets the value, that specifies how to align contents in tables when exporting into the Markdown format.

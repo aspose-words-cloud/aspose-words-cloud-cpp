@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="document_property.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -43,7 +43,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether the property is built-in or not.
         /// If true the property is built-in, if false the property is custom.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBuiltIn();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBuiltIn() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the property is built-in or not.
@@ -54,7 +54,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the document property.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the name of the document property.
@@ -64,7 +64,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value of the document property.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getValue();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getValue() const;
 
         /// <summary>
         /// Gets or sets the value of the document property.

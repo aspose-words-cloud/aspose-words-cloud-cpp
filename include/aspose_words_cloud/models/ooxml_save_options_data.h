@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ooxml_save_options_data.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -53,7 +53,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the oOXML version for the output document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCompliance();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCompliance() const;
 
         /// <summary>
         /// Gets or sets the oOXML version for the output document.
@@ -63,7 +63,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the compression level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel > getCompressionLevel();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel > getCompressionLevel() const;
 
         /// <summary>
         /// Gets or sets the compression level.
@@ -73,7 +73,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the password to encrypt document using ECMA376 Standard encryption algorithm.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the password to encrypt document using ECMA376 Standard encryption algorithm.
@@ -83,7 +83,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.

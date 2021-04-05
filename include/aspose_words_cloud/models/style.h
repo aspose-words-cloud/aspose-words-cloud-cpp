@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="style.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -434,7 +434,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getAliases();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getAliases() const;
 
         /// <summary>
         /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
@@ -444,7 +444,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the style this style is based on.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getBaseStyleName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getBaseStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the style this style is based on.
@@ -454,7 +454,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether this style is one of the built-in styles in MS Word.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBuiltIn();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBuiltIn() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this style is one of the built-in styles in MS Word.
@@ -464,7 +464,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the character formatting of the style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font > getFont();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font > getFont() const;
 
         /// <summary>
         /// Gets or sets the character formatting of the style.
@@ -474,7 +474,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the style is one of the built-in Heading styles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsHeading();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsHeading() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the style is one of the built-in Heading styles.
@@ -484,7 +484,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether this style is shown in the Quick Style gallery inside MS Word UI.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsQuickStyle();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsQuickStyle() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this style is shown in the Quick Style gallery inside MS Word UI.
@@ -494,7 +494,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the Style linked to this one. Returns Empty string if no styles are linked.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLinkedStyleName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLinkedStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the Style linked to this one. Returns Empty string if no styles are linked.
@@ -504,7 +504,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the name of the style.
@@ -514,7 +514,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNextParagraphStyleName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNextParagraphStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
@@ -524,7 +524,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the locale independent style identifier for a built-in style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style::StyleIdentifier > getStyleIdentifier();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style::StyleIdentifier > getStyleIdentifier() const;
 
         /// <summary>
         /// Gets or sets the locale independent style identifier for a built-in style.
@@ -534,7 +534,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the style type (paragraph or character).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style::Type > getType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style::Type > getType() const;
 
         /// <summary>
         /// Gets or sets the style type (paragraph or character).

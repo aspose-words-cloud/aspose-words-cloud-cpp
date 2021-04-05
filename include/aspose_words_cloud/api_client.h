@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="api_client.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -24,8 +24,8 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <mutex>
 #include <memory>
-#include <functional>
 #include "./api_configuration.h"
 #include "./api_exception.h"
 #include "./http_request_data.h"
@@ -47,10 +47,13 @@ namespace aspose::words::cloud {
             std::shared_ptr< HttpRequestData > httpRequest,
             aspose::words::cloud::responses::ResponseModelBase& response);
 
+        static ASPOSE_WORDS_CLOUD_EXPORT std::string createRandomGuid();
+
     private:
         void requestToken();
         std::shared_ptr<::httplib::Client> m_HttpClient;
         std::shared_ptr<ApiConfiguration> m_Configuration;
         std::string m_AccessToken;
+        std::mutex m_Mutex;
     };
 }

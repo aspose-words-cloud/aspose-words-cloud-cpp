@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compare_options.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -50,7 +50,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether documents comparison is case insensitive. By default comparison is case sensitive.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreCaseChanges();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreCaseChanges() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether documents comparison is case insensitive. By default comparison is case sensitive.
@@ -60,7 +60,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether comments content is ignored. By default comments are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreComments();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreComments() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether comments content is ignored. By default comments are not ignored.
@@ -70,7 +70,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether fields content is ignored. By default fields are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFields();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFields() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fields content is ignored. By default fields are not ignored.
@@ -80,7 +80,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether footnotes/endnotes content is ignored. By default footnotes/endnotes are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFootnotes();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFootnotes() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether footnotes/endnotes content is ignored. By default footnotes/endnotes are not ignored.
@@ -90,7 +90,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether formatting is ignored. By default document formatting is not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFormatting();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFormatting() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether formatting is ignored. By default document formatting is not ignored.
@@ -100,7 +100,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether headers and footers content is ignored. By default headers and footers are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreHeadersAndFooters();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreHeadersAndFooters() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether headers and footers content is ignored. By default headers and footers are not ignored.
@@ -110,7 +110,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether tables content is ignored. By default tables are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreTables();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreTables() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether tables content is ignored. By default tables are not ignored.
@@ -120,7 +120,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether textboxes content is ignored. By default textboxes are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreTextboxes();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreTextboxes() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether textboxes content is ignored. By default textboxes are not ignored.
@@ -130,7 +130,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls which document shall be used as a target during comparison.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > getTarget();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > getTarget() const;
 
         /// <summary>
         /// Gets or sets the option that controls which document shall be used as a target during comparison.

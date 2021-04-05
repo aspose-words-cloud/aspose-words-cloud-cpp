@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="border.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -93,7 +93,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the border type.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border::BorderType > getBorderType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border::BorderType > getBorderType() const;
 
         /// <summary>
         /// Gets or sets the border type.
@@ -103,7 +103,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the border color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
 
         /// <summary>
         /// Gets or sets the border color.
@@ -113,7 +113,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the distance of the border from text or from the page edge in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getDistanceFromText();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getDistanceFromText() const;
 
         /// <summary>
         /// Gets or sets the distance of the border from text or from the page edge in points.
@@ -123,7 +123,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the border style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > getLineStyle();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > getLineStyle() const;
 
         /// <summary>
         /// Gets or sets the border style.
@@ -133,7 +133,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the border width in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLineWidth();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLineWidth() const;
 
         /// <summary>
         /// Gets or sets the border width in points.
@@ -143,7 +143,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the border has a shadow.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShadow();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShadow() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the border has a shadow.

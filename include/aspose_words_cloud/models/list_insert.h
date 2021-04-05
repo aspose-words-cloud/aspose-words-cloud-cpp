@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="list_insert.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -70,7 +70,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how list should be restarted at each section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListInsert::Template > getTemplate();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListInsert::Template > getTemplate() const;
 
         /// <summary>
         /// Gets or sets the option that controls how list should be restarted at each section.

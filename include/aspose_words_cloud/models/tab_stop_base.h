@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="tab_stop_base.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -68,7 +68,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the alignment of text at this tab stop.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > getAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > getAlignment() const;
 
         /// <summary>
         /// Gets or sets the alignment of text at this tab stop.
@@ -78,7 +78,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the type of the leader line displayed under the tab character.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopBase::Leader > getLeader();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopBase::Leader > getLeader() const;
 
         /// <summary>
         /// Gets or sets the type of the leader line displayed under the tab character.
@@ -88,7 +88,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the position of the tab stop in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPosition();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position of the tab stop in points.

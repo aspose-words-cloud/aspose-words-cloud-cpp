@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="form_field_text_input.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -55,7 +55,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the maximum length for the text field. Zero when the length is not limited.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getMaxLength();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getMaxLength() const;
 
         /// <summary>
         /// Gets or sets the maximum length for the text field. Zero when the length is not limited.
@@ -65,7 +65,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the default string or a calculation expression of the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextInputDefault();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextInputDefault() const;
 
         /// <summary>
         /// Gets or sets the default string or a calculation expression of the text form field.
@@ -75,7 +75,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets text formatting for the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextInputFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextInputFormat() const;
 
         /// <summary>
         /// Gets or sets text formatting for the text form field.
@@ -85,7 +85,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the type of the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FormFieldTextInput::TextInputType > getTextInputType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FormFieldTextInput::TextInputType > getTextInputType() const;
 
         /// <summary>
         /// Gets or sets the type of the text form field.

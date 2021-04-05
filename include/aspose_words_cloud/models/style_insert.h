@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="style_insert.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -52,7 +52,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the case sensitive name of the style to create.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName() const;
 
         /// <summary>
         /// Gets or sets the case sensitive name of the style to create.
@@ -62,7 +62,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the StyleType value that specifies the type of the style to create.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StyleInsert::StyleType > getStyleType();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StyleInsert::StyleType > getStyleType() const;
 
         /// <summary>
         /// Gets or sets the StyleType value that specifies the type of the style to create.

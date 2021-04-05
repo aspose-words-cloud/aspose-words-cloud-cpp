@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="font_info.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the path to the font file if any.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFilePath();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFilePath() const;
 
         /// <summary>
         /// Gets or sets the path to the font file if any.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the family name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontFamilyName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontFamilyName() const;
 
         /// <summary>
         /// Gets or sets the family name of the font.
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the full name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFullFontName();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFullFontName() const;
 
         /// <summary>
         /// Gets or sets the full name of the font.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the version string of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getVersion();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getVersion() const;
 
         /// <summary>
         /// Gets or sets the version string of the font.

@@ -1,4 +1,4 @@
-/** --------------------------------------------------------------------------------------------------------------------
+﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="page_number.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
@@ -41,7 +41,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets text alignment, possible values are left, right, center or justify.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAlignment();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAlignment() const;
 
         /// <summary>
         /// Gets or sets text alignment, possible values are left, right, center or justify.
@@ -51,7 +51,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the page number format, e.g. "{PAGE} of {NUMPAGES}".
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFormat();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFormat() const;
 
         /// <summary>
         /// Gets or sets the page number format, e.g. "{PAGE} of {NUMPAGES}".
@@ -61,7 +61,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsTop();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsTop() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
@@ -71,7 +71,7 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added on first page too.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSetPageNumberOnFirstPage();
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSetPageNumberOnFirstPage() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added on first page too.
