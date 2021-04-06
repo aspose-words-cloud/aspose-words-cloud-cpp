@@ -39,6 +39,7 @@ target_sources(aspose_words_cloud_sdk PRIVATE ${srcs})
 target_link_libraries(aspose_words_cloud_sdk OpenSSL::Crypto)
 target_link_libraries(aspose_words_cloud_sdk OpenSSL::SSL)
 set_target_properties(aspose_words_cloud_sdk PROPERTIES CXX_STANDARD 17)
+target_compile_features(aspose_words_cloud_sdk PRIVATE cxx_std_17)
 
 if(MSVC)
   target_compile_options(aspose_words_cloud_sdk PRIVATE /bigobj)
