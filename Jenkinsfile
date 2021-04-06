@@ -48,6 +48,7 @@ parallel windows: {
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
+                                archiveArtifacts artifacts: '**\\out\\LastTest.log'
                                 junit '**\\out\\test_result.xml'
                             }
                         }

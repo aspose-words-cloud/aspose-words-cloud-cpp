@@ -12,5 +12,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0
       && ./cmake.sh --skip-license --prefix=/usr/bin/cmake \
       && rm cmake.sh
 
+ENV PATH="/usr/bin/cmake/bin:${PATH}"
+
 FROM build as tests
 COPY . aspose-words-cloud-cpp
