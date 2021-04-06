@@ -163,6 +163,11 @@ cmake -E chdir ./build ctest -V -C Debug
 
 ### How to build and test Aspose.Words.Cloud SDK on Linux
 
+Required packages:
+ - gcc >= 8.1
+ - cmake >= 3.7
+ - openssl >= 1.1.1
+
 Build Aspose.Words.Cloud SDK
 ```cmd
 sudo apt-get install gcc cmake openssl-dev
