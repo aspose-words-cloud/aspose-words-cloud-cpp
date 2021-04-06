@@ -4,7 +4,7 @@ ENV  DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install dialog  apt-utils  -y --no-install-recommends
 RUN apt-get install git-core python-dev libxml2-dev libxslt-dev -y
-RUN apt-get install wget gcc g++ make libssl-dev -y
+RUN apt-get install wget gcc-7 g++-7 make libssl-dev -y
 
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh -O cmake.sh \
       && chmod u+x cmake.sh \
@@ -13,6 +13,8 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0
       && rm cmake.sh
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
+
+RUN g++ --version
 
 FROM build as tests
 COPY . aspose-words-cloud-cpp
