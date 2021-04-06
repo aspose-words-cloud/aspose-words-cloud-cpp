@@ -1,5 +1,5 @@
 # Compile aw
-aspose-words-cloud-cpp
+cd aspose-words-cloud-cpp
 mkdir -p build
 mkdir -p settings
 
