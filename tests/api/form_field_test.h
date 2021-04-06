@@ -79,7 +79,7 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
 /// Test for posting form field online.
 /// </summary>
 TEST_F(FormFieldTests, TestUpdateFormFieldOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(fieldFolder + L"/FormFilled.docx"), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
     auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
     requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
     requestFormField->setEnabled(std::make_shared< bool >(true));
@@ -172,7 +172,7 @@ TEST_F(FormFieldTests, TestGetFormField) {
 /// Test for getting form field online.
 /// </summary>
 TEST_F(FormFieldTests, TestGetFormFieldOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(fieldFolder + L"/FormFilled.docx"), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
     std::shared_ptr<requests::GetFormFieldOnlineRequest> request(new requests::GetFormFieldOnlineRequest(
         documentStream,
         std::make_shared< int32_t >(0),
@@ -241,7 +241,7 @@ TEST_F(FormFieldTests, TestGetFormFields) {
 /// Test for getting form fields online.
 /// </summary>
 TEST_F(FormFieldTests, TestGetFormFieldsOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(fieldFolder + L"/FormFilled.docx"), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
     std::shared_ptr<requests::GetFormFieldsOnlineRequest> request(new requests::GetFormFieldsOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"sections/0"),
@@ -323,7 +323,7 @@ TEST_F(FormFieldTests, TestInsertFormField) {
 /// Test for insert form field without node path online.
 /// </summary>
 TEST_F(FormFieldTests, TestInsertFormFieldOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(fieldFolder + L"/FormFilled.docx"), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
     auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
     requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
     requestFormField->setEnabled(std::make_shared< bool >(true));
@@ -419,7 +419,7 @@ getApi()->deleteFormField(request);
 /// Test for deleting form field online.
 /// </summary>
 TEST_F(FormFieldTests, TestDeleteFormFieldOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(fieldFolder + L"/FormFilled.docx"), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
     std::shared_ptr<requests::DeleteFormFieldOnlineRequest> request(new requests::DeleteFormFieldOnlineRequest(
         documentStream,
         std::make_shared< int32_t >(0),

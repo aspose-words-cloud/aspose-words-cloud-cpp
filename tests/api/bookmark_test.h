@@ -63,7 +63,7 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
 /// Test for getting bookmarks from document online.
 /// </summary>
 TEST_F(BookmarkTests, TestGetBookmarksOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBookmarksOnlineRequest> request(new requests::GetBookmarksOnlineRequest(
         documentStream,
         nullptr,
@@ -100,7 +100,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
 /// Test for getting bookmark by specified name online.
 /// </summary>
 TEST_F(BookmarkTests, TestGetBookmarkByNameOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBookmarkByNameOnlineRequest> request(new requests::GetBookmarkByNameOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(bookmarkName),
@@ -149,7 +149,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
 TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
     std::wstring remoteFileName = L"TestUpdateDocumentBookmark.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
     requestBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
     requestBookmarkData->setText(std::make_shared< std::wstring >(L"This will be the text for Aspose"));

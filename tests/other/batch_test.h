@@ -41,7 +41,7 @@ TEST_F(BatchTest, TestBatchParallel) {
     requests::BatchRequest request1(
         std::shared_ptr<requests::GetBookmarksOnlineRequest>(
             new requests::GetBookmarksOnlineRequest(
-                std::shared_ptr<std::istream>(new std::ifstream(localTestDataFolder + L"/" + localFile, std::ios_base::binary))
+                std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(localTestDataFolder + L"/" + localFile), std::ios_base::binary))
             )
         )
     );
@@ -49,7 +49,7 @@ TEST_F(BatchTest, TestBatchParallel) {
     requests::BatchRequest request2(
         std::shared_ptr<requests::GetCommentsOnlineRequest>(
             new requests::GetCommentsOnlineRequest(
-                std::shared_ptr<std::istream>(new std::ifstream(localTestDataFolder + L"/" + localFile, std::ios_base::binary))
+                std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(localTestDataFolder + L"/" + localFile), std::ios_base::binary))
             )
         )
     );
@@ -74,7 +74,7 @@ TEST_F(BatchTest, TestBatchDepends) {
     requests::BatchRequest request0(
         std::shared_ptr<requests::UploadFileRequest>(
             new requests::UploadFileRequest(
-                std::shared_ptr<std::istream>(new std::ifstream(localTestDataFolder + L"/" + localFile, std::ios_base::binary)),
+                std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(localTestDataFolder + L"/" + localFile), std::ios_base::binary)),
                 std::make_shared< std::wstring >(remoteBaseTestDataFolder + L"/" + remoteFileName)
             )
         )
@@ -119,7 +119,7 @@ TEST_F(BatchTest, TestBatchResultOf) {
     requests::BatchRequest request1(
         std::shared_ptr<requests::GetBookmarksOnlineRequest>(
             new requests::GetBookmarksOnlineRequest(
-                std::shared_ptr<std::istream>(new std::ifstream(localTestDataFolder + L"/" + localFile, std::ios_base::binary))
+                std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(localTestDataFolder + L"/" + localFile), std::ios_base::binary))
             )
         )
     );

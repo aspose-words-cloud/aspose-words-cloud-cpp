@@ -39,7 +39,7 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
     std::wstring fileName  = L"test_doc.docx";
 
     // Upload original document to cloud storage.
-    auto fileContentStream = std::shared_ptr<std::istream>(new std::ifstream(documentsDir + L"/" + fileName, std::istream::binary));
+    auto fileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
     std::shared_ptr< requests::UploadFileRequest > uploadFileRequest(
         new requests::UploadFileRequest(
             fileContentStream, std::make_shared< std::wstring >(fileName)
@@ -63,7 +63,7 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
     std::wstring fileName  = L"test_doc.docx";
 
     // Calls AcceptAllRevisionsOnline method for document in cloud.
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(documentsDir + L"/" + fileName, std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
     std::shared_ptr< requests::AcceptAllRevisionsOnlineRequest > request(
         new requests::AcceptAllRevisionsOnlineRequest(
             documentStream

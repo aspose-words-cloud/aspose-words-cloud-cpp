@@ -27,6 +27,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include "aspose_words_cloud.h"
 
 using namespace aspose::words::cloud;
