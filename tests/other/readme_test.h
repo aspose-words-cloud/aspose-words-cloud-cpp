@@ -92,8 +92,8 @@ void ReadmeTest::writeCodeToReadme() {
     auto endPattern = R"(^\s*// End README example\s*$)";
 
     // set paths
-    std::filesystem::path readmePath = { std::filesystem::path{ TEST_ROOT }.parent_path() / "README.md" };
-    std::filesystem::path sourcePath = { std::filesystem::path{ TEST_ROOT } / "readmeTest.cpp" };
+    std::filesystem::path readmePath(getSdkRoot() + L"/README.md");
+    std::filesystem::path sourcePath(getSdkRoot() + L"/tests/other/readmeTest.cpp");
 
     // read test code
     std::list<std::string> codeLines;
