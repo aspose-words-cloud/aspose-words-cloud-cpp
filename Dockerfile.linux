@@ -1,4 +1,4 @@
-FROM debian:stretch as build
+FROM debian:buster as build
 ENV  DEBIAN_FRONTEND=noninteractive 
 
 RUN apt-get update
@@ -13,8 +13,6 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0
       && rm cmake.sh
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
-
-RUN g++ --version
 
 FROM build as tests
 COPY . aspose-words-cloud-cpp
