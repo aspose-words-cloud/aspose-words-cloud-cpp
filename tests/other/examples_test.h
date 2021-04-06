@@ -59,7 +59,7 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
 TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    uploadFileToStorage(localTestExamplesFolder + L"/test_doc.docx", L"test_doc.docx");
+    uploadFileToStorage(documentsDir + L"/test_doc.docx", L"test_doc.docx");
     std::wstring fileName  = L"test_doc.docx";
 
     // Calls AcceptAllRevisionsOnline method for document in cloud.

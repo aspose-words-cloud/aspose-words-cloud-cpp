@@ -127,77 +127,74 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 
 Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/#/apps) to get your application information and free quota to use the API. 
 
+### SDK Dependencies
+
+- [OpenSSL 1.1.1 or newer](https://www.openssl.org/)
+
 ### How to build Aspose.Words.Cloud SDK on Windows
 
 Build Aspose.Words.Cloud SDK
+- Install [Microsoft Visual Studio 2019](https://visualstudio.microsoft.com/)
+- Intsall [CMake 3.7 or newer](https://cmake.org/download/) and add "<CMAKE_INSTALATION_FOLDER>/bin" to PATH environment variable.
+- Install [VcPkg](https://github.com/Microsoft/vcpkg) and add "<VCPKG_INSTALATION_FOLDER>" and "<VCPKG_INSTALATION_FOLDER>/installed/x64-windows" to PATH environment variable.
+
 ```cmd
 vcpkg install openssl:x64-windows
 git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
 cd aspose-words-cloud-cpp
 mkdir .\build
-cmake -G "Visual Studio 15 2017" -Thost=x64 -Ax64 -S . -B .\build
-cmake --build .\build --config Debug --target words-cloud-test
-```
-
-Create servercreds.json in '<SDK-ROOT>\settings' directory:
-````
-{
-    "ClientId" : "xxxx",
-    "ClientSecret" : "xxxxx",
-    "BaseUrl" : "xxx" 
-}
-````
-
-Run tests
-```cmd
-cmake -E chdir aspose-words-cloud-cpp\build ctest -V -C Debug
-```
-
-### How to build and test Aspose.Words.Cloud SDK on Linux
-
-Build Aspose.Words.Cloud SDK
-```cmd
-git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
-cd aspose-words-cloud-cpp
-mkdir -p ./build
-
-cmake -DCMAKE_BUILD_TYPE=Debug -S . -B ./build 
-cmake --build ./build --config Debug --target all_unity -- VERBOSE=1
+cmake -G "Visual Studio 16 2019" -Thost=x64 -Ax64 -S . -B ./build
+cmake --build ./build --config Release --target aspose_words_cloud_sdk
 ```
 
 Create servercreds.json in '<SDK-ROOT>/settings' directory:
 ````
 {
     "ClientId" : "xxxx",
-    "ClientSecret" : "xxxxx",
-    "BaseUrl" : "xxx" 
+    "ClientSecret" : "xxxxx"
 }
 ````
 
 Run tests
 ```cmd
+cmake --build .\build --config Debug --target aspose_words_cloud_test
+cmake -E chdir ./build ctest -V -C Debug
+```
+
+### How to build and test Aspose.Words.Cloud SDK on Linux
+
+Build Aspose.Words.Cloud SDK
+```cmd
+sudo apt-get install gcc cmake openssl-dev
+git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
+cd aspose-words-cloud-cpp
+mkdir -p ./build
+
+cmake -DCMAKE_BUILD_TYPE=Release -S . -B ./build 
+cmake --build ./build --config Release --target aspose_words_cloud_sdk
+```
+
+Create servercreds.json in '<SDK-ROOT>/settings' directory:
+````
+{
+    "ClientId" : "xxxx",
+    "ClientSecret" : "xxxxx"
+}
+````
+
+Run tests
+```cmd
+cmake --build ./build --config Release --target aspose_words_cloud_test
 cmake -E chdir ./build ctest -V -C Debug
 ```
 
 The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp).
 
-### SDK Dependencies
-
-- [OpenSSL](https://www.openssl.org/)
-
 ## Getting started with the SDK
 
-Copy SDK files from the repository to target directory
-```powershell
-Get-ChildItem -Path aspose-words-cloud-cpp/sources | Copy-Item -Destination targetFolderPath -Recurse -Exclude (".*", "*.sh")
-```
-
-Add the SDK to your application in CMakeLists.txt:
-```
-add_subdirectory(Aspose.Words.Cloud targetFolderPath)
-....
-target_link_libraries(your_app_target PRIVATE Aspose::Words.Cloud)
-```
+Add "<SDK_ROOT>/include" directory to your project includes path.
+Link "<SDK_ROOT>/build/aspose_words_cloud_sdk/Release/aspose_words_cloud_sdk.lib" with your project.
+Link "<SDK_ROOT>/build/bin/Release/aspose_words_cloud_sdk.dll" for windows or "<SDK_ROOT>/build/bin/Release/aspose_words_cloud_sdk.so" for linux with your project.
 
 Typical usage of the SDK in code follows this template:
 ```

@@ -83,7 +83,11 @@ namespace aspose::words::cloud {
                 printBuffer += c;
             }
             else {
+#ifdef WIN32
+                sprintf_s(bufHex, "%X", c);
+#else
                 sprintf(bufHex, "%X", c);
+#endif // WIN32
                 if (c < 16) printBuffer += "x0";
                 else printBuffer += "x";
                 printBuffer.append(bufHex);

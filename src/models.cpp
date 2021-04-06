@@ -22,7 +22,6 @@
 *  SOFTWARE.
 * </summary> 
 -------------------------------------------------------------------------------------------------------------------- **/
-#include <exception>
 #include "aspose_words_cloud.h"
 
 // USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
@@ -50,7 +49,7 @@ namespace aspose::words::cloud::models {
         if (value == ReportBuildOptions::ALLOW_MISSING_MEMBERS) return "AllowMissingMembers";
         if (value == ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline ReportBuildOptions reportBuildOptionsFromString(const std::string& value)
@@ -59,7 +58,7 @@ namespace aspose::words::cloud::models {
         if (value == "AllowMissingMembers") return ReportBuildOptions::ALLOW_MISSING_MEMBERS;
         if (value == "RemoveEmptyParagraphs") return ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return ReportBuildOptions::INLINE_ERROR_MESSAGES;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
 
@@ -534,7 +533,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Border::BorderType::DIAGONAL_DOWN) return "DiagonalDown";
         if (value == aspose::words::cloud::models::Border::BorderType::DIAGONAL_UP) return "DiagonalUp";
         if (value == aspose::words::cloud::models::Border::BorderType::NONE) return "None";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Border::BorderType borderBorderTypeFromString(const std::string& value)
@@ -548,7 +547,7 @@ namespace aspose::words::cloud::models {
         if (value == "DiagonalDown") return aspose::words::cloud::models::Border::BorderType::DIAGONAL_DOWN;
         if (value == "DiagonalUp") return aspose::words::cloud::models::Border::BorderType::DIAGONAL_UP;
         if (value == "None") return aspose::words::cloud::models::Border::BorderType::NONE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string borderLineStyleToString(aspose::words::cloud::models::Border::LineStyle value)
@@ -580,7 +579,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Border::LineStyle::ENGRAVE3_D) return "Engrave3D";
         if (value == aspose::words::cloud::models::Border::LineStyle::OUTSET) return "Outset";
         if (value == aspose::words::cloud::models::Border::LineStyle::INSET) return "Inset";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Border::LineStyle borderLineStyleFromString(const std::string& value)
@@ -612,7 +611,7 @@ namespace aspose::words::cloud::models {
         if (value == "Engrave3D") return aspose::words::cloud::models::Border::LineStyle::ENGRAVE3_D;
         if (value == "Outset") return aspose::words::cloud::models::Border::LineStyle::OUTSET;
         if (value == "Inset") return aspose::words::cloud::models::Border::LineStyle::INSET;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Border::toJson(void* jsonIfc) const
     {
@@ -1465,14 +1464,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::CompareOptions::Target::CURRENT) return "Current";
         if (value == aspose::words::cloud::models::CompareOptions::Target::NEW) return "New";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::CompareOptions::Target compareOptionsTargetFromString(const std::string& value)
     {
         if (value == "Current") return aspose::words::cloud::models::CompareOptions::Target::CURRENT;
         if (value == "New") return aspose::words::cloud::models::CompareOptions::Target::NEW;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void CompareOptions::toJson(void* jsonIfc) const
     {
@@ -1847,7 +1846,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Document::SourceFormat::XPS) return "Xps";
         if (value == aspose::words::cloud::models::Document::SourceFormat::TIFF) return "Tiff";
         if (value == aspose::words::cloud::models::Document::SourceFormat::SVG) return "Svg";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Document::SourceFormat documentSourceFormatFromString(const std::string& value)
@@ -1873,7 +1872,7 @@ namespace aspose::words::cloud::models {
         if (value == "Xps") return aspose::words::cloud::models::Document::SourceFormat::XPS;
         if (value == "Tiff") return aspose::words::cloud::models::Document::SourceFormat::TIFF;
         if (value == "Svg") return aspose::words::cloud::models::Document::SourceFormat::SVG;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Document::toJson(void* jsonIfc) const
     {
@@ -2594,7 +2593,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition::RIGHT_MARGIN) return "RightMargin";
         if (value == aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition::INSIDE_MARGIN) return "InsideMargin";
         if (value == aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition::OUTSIDE_MARGIN) return "OutsideMargin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition drawingObjectRelativeHorizontalPositionFromString(const std::string& value)
@@ -2608,7 +2607,7 @@ namespace aspose::words::cloud::models {
         if (value == "RightMargin") return aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition::RIGHT_MARGIN;
         if (value == "InsideMargin") return aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition::INSIDE_MARGIN;
         if (value == "OutsideMargin") return aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition::OUTSIDE_MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string drawingObjectRelativeVerticalPositionToString(aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition value)
@@ -2623,7 +2622,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition::BOTTOM_MARGIN) return "BottomMargin";
         if (value == aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition::INSIDE_MARGIN) return "InsideMargin";
         if (value == aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition::OUTSIDE_MARGIN) return "OutsideMargin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition drawingObjectRelativeVerticalPositionFromString(const std::string& value)
@@ -2638,7 +2637,7 @@ namespace aspose::words::cloud::models {
         if (value == "BottomMargin") return aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition::BOTTOM_MARGIN;
         if (value == "InsideMargin") return aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition::INSIDE_MARGIN;
         if (value == "OutsideMargin") return aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition::OUTSIDE_MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string drawingObjectWrapTypeToString(aspose::words::cloud::models::DrawingObject::WrapType value)
@@ -2649,7 +2648,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObject::WrapType::NONE) return "None";
         if (value == aspose::words::cloud::models::DrawingObject::WrapType::TIGHT) return "Tight";
         if (value == aspose::words::cloud::models::DrawingObject::WrapType::THROUGH) return "Through";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObject::WrapType drawingObjectWrapTypeFromString(const std::string& value)
@@ -2660,7 +2659,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::DrawingObject::WrapType::NONE;
         if (value == "Tight") return aspose::words::cloud::models::DrawingObject::WrapType::TIGHT;
         if (value == "Through") return aspose::words::cloud::models::DrawingObject::WrapType::THROUGH;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void DrawingObject::toJson(void* jsonIfc) const
     {
@@ -2909,7 +2908,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::RIGHT_MARGIN) return "RightMargin";
         if (value == aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::INSIDE_MARGIN) return "InsideMargin";
         if (value == aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::OUTSIDE_MARGIN) return "OutsideMargin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition drawingObjectInsertRelativeHorizontalPositionFromString(const std::string& value)
@@ -2923,7 +2922,7 @@ namespace aspose::words::cloud::models {
         if (value == "RightMargin") return aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::RIGHT_MARGIN;
         if (value == "InsideMargin") return aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::INSIDE_MARGIN;
         if (value == "OutsideMargin") return aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::OUTSIDE_MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string drawingObjectInsertRelativeVerticalPositionToString(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition value)
@@ -2938,7 +2937,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::BOTTOM_MARGIN) return "BottomMargin";
         if (value == aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::INSIDE_MARGIN) return "InsideMargin";
         if (value == aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::OUTSIDE_MARGIN) return "OutsideMargin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition drawingObjectInsertRelativeVerticalPositionFromString(const std::string& value)
@@ -2953,7 +2952,7 @@ namespace aspose::words::cloud::models {
         if (value == "BottomMargin") return aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::BOTTOM_MARGIN;
         if (value == "InsideMargin") return aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::INSIDE_MARGIN;
         if (value == "OutsideMargin") return aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::OUTSIDE_MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string drawingObjectInsertWrapTypeToString(aspose::words::cloud::models::DrawingObjectInsert::WrapType value)
@@ -2964,7 +2963,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObjectInsert::WrapType::NONE) return "None";
         if (value == aspose::words::cloud::models::DrawingObjectInsert::WrapType::TIGHT) return "Tight";
         if (value == aspose::words::cloud::models::DrawingObjectInsert::WrapType::THROUGH) return "Through";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObjectInsert::WrapType drawingObjectInsertWrapTypeFromString(const std::string& value)
@@ -2975,7 +2974,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::DrawingObjectInsert::WrapType::NONE;
         if (value == "Tight") return aspose::words::cloud::models::DrawingObjectInsert::WrapType::TIGHT;
         if (value == "Through") return aspose::words::cloud::models::DrawingObjectInsert::WrapType::THROUGH;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void DrawingObjectInsert::toJson(void* jsonIfc) const
     {
@@ -3227,7 +3226,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition::RIGHT_MARGIN) return "RightMargin";
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition::INSIDE_MARGIN) return "InsideMargin";
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition::OUTSIDE_MARGIN) return "OutsideMargin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition drawingObjectUpdateRelativeHorizontalPositionFromString(const std::string& value)
@@ -3241,7 +3240,7 @@ namespace aspose::words::cloud::models {
         if (value == "RightMargin") return aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition::RIGHT_MARGIN;
         if (value == "InsideMargin") return aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition::INSIDE_MARGIN;
         if (value == "OutsideMargin") return aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition::OUTSIDE_MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string drawingObjectUpdateRelativeVerticalPositionToString(aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition value)
@@ -3256,7 +3255,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition::BOTTOM_MARGIN) return "BottomMargin";
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition::INSIDE_MARGIN) return "InsideMargin";
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition::OUTSIDE_MARGIN) return "OutsideMargin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition drawingObjectUpdateRelativeVerticalPositionFromString(const std::string& value)
@@ -3271,7 +3270,7 @@ namespace aspose::words::cloud::models {
         if (value == "BottomMargin") return aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition::BOTTOM_MARGIN;
         if (value == "InsideMargin") return aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition::INSIDE_MARGIN;
         if (value == "OutsideMargin") return aspose::words::cloud::models::DrawingObjectUpdate::RelativeVerticalPosition::OUTSIDE_MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string drawingObjectUpdateWrapTypeToString(aspose::words::cloud::models::DrawingObjectUpdate::WrapType value)
@@ -3282,7 +3281,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::WrapType::NONE) return "None";
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::WrapType::TIGHT) return "Tight";
         if (value == aspose::words::cloud::models::DrawingObjectUpdate::WrapType::THROUGH) return "Through";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::DrawingObjectUpdate::WrapType drawingObjectUpdateWrapTypeFromString(const std::string& value)
@@ -3293,7 +3292,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::DrawingObjectUpdate::WrapType::NONE;
         if (value == "Tight") return aspose::words::cloud::models::DrawingObjectUpdate::WrapType::TIGHT;
         if (value == "Through") return aspose::words::cloud::models::DrawingObjectUpdate::WrapType::THROUGH;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void DrawingObjectUpdate::toJson(void* jsonIfc) const
     {
@@ -4589,7 +4588,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::NIL) return "Nil";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Font::StyleIdentifier fontStyleIdentifierFromString(const std::string& value)
@@ -4967,7 +4966,7 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::Font::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "User") return aspose::words::cloud::models::Font::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::Font::StyleIdentifier::NIL;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string fontTextEffectToString(aspose::words::cloud::models::Font::TextEffect value)
@@ -4979,7 +4978,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Font::TextEffect::MARCHING_BLACK_ANTS) return "MarchingBlackAnts";
         if (value == aspose::words::cloud::models::Font::TextEffect::MARCHING_RED_ANTS) return "MarchingRedAnts";
         if (value == aspose::words::cloud::models::Font::TextEffect::SHIMMER) return "Shimmer";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Font::TextEffect fontTextEffectFromString(const std::string& value)
@@ -4991,7 +4990,7 @@ namespace aspose::words::cloud::models {
         if (value == "MarchingBlackAnts") return aspose::words::cloud::models::Font::TextEffect::MARCHING_BLACK_ANTS;
         if (value == "MarchingRedAnts") return aspose::words::cloud::models::Font::TextEffect::MARCHING_RED_ANTS;
         if (value == "Shimmer") return aspose::words::cloud::models::Font::TextEffect::SHIMMER;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string fontUnderlineToString(aspose::words::cloud::models::Font::Underline value)
@@ -5014,7 +5013,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Font::Underline::DASH_LONG) return "DashLong";
         if (value == aspose::words::cloud::models::Font::Underline::WAVY_DOUBLE) return "WavyDouble";
         if (value == aspose::words::cloud::models::Font::Underline::DASH_LONG_HEAVY) return "DashLongHeavy";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Font::Underline fontUnderlineFromString(const std::string& value)
@@ -5037,7 +5036,7 @@ namespace aspose::words::cloud::models {
         if (value == "DashLong") return aspose::words::cloud::models::Font::Underline::DASH_LONG;
         if (value == "WavyDouble") return aspose::words::cloud::models::Font::Underline::WAVY_DOUBLE;
         if (value == "DashLongHeavy") return aspose::words::cloud::models::Font::Underline::DASH_LONG_HEAVY;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Font::toJson(void* jsonIfc) const
     {
@@ -5908,14 +5907,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::Footnote::FootnoteType::FOOTNOTE) return "Footnote";
         if (value == aspose::words::cloud::models::Footnote::FootnoteType::ENDNOTE) return "Endnote";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Footnote::FootnoteType footnoteFootnoteTypeFromString(const std::string& value)
     {
         if (value == "Footnote") return aspose::words::cloud::models::Footnote::FootnoteType::FOOTNOTE;
         if (value == "Endnote") return aspose::words::cloud::models::Footnote::FootnoteType::ENDNOTE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Footnote::toJson(void* jsonIfc) const
     {
@@ -6025,14 +6024,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::FootnoteBase::FootnoteType::FOOTNOTE) return "Footnote";
         if (value == aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE) return "Endnote";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::FootnoteBase::FootnoteType footnoteBaseFootnoteTypeFromString(const std::string& value)
     {
         if (value == "Footnote") return aspose::words::cloud::models::FootnoteBase::FootnoteType::FOOTNOTE;
         if (value == "Endnote") return aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void FootnoteBase::toJson(void* jsonIfc) const
     {
@@ -6737,7 +6736,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::FormFieldTextInput::TextInputType::CURRENT_DATE) return "CurrentDate";
         if (value == aspose::words::cloud::models::FormFieldTextInput::TextInputType::CURRENT_TIME) return "CurrentTime";
         if (value == aspose::words::cloud::models::FormFieldTextInput::TextInputType::CALCULATED) return "Calculated";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::FormFieldTextInput::TextInputType formFieldTextInputTextInputTypeFromString(const std::string& value)
@@ -6748,7 +6747,7 @@ namespace aspose::words::cloud::models {
         if (value == "CurrentDate") return aspose::words::cloud::models::FormFieldTextInput::TextInputType::CURRENT_DATE;
         if (value == "CurrentTime") return aspose::words::cloud::models::FormFieldTextInput::TextInputType::CURRENT_TIME;
         if (value == "Calculated") return aspose::words::cloud::models::FormFieldTextInput::TextInputType::CALCULATED;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void FormFieldTextInput::toJson(void* jsonIfc) const
     {
@@ -6858,14 +6857,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_OVER) return "SourceOver";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_COPY) return "SourceCopy";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode graphicsQualityOptionsDataCompositingModeFromString(const std::string& value)
     {
         if (value == "SourceOver") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_OVER;
         if (value == "SourceCopy") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_COPY;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string graphicsQualityOptionsDataCompositingQualityToString(aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality value)
@@ -6876,7 +6875,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::GAMMA_CORRECTED) return "GammaCorrected";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::ASSUME_LINEAR) return "AssumeLinear";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::INVALID) return "Invalid";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality graphicsQualityOptionsDataCompositingQualityFromString(const std::string& value)
@@ -6887,7 +6886,7 @@ namespace aspose::words::cloud::models {
         if (value == "GammaCorrected") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::GAMMA_CORRECTED;
         if (value == "AssumeLinear") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::ASSUME_LINEAR;
         if (value == "Invalid") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::INVALID;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string graphicsQualityOptionsDataInterpolationModeToString(aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode value)
@@ -6901,7 +6900,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BILINEAR) return "HighQualityBilinear";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BICUBIC) return "HighQualityBicubic";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::INVALID) return "Invalid";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode graphicsQualityOptionsDataInterpolationModeFromString(const std::string& value)
@@ -6915,7 +6914,7 @@ namespace aspose::words::cloud::models {
         if (value == "HighQualityBilinear") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BILINEAR;
         if (value == "HighQualityBicubic") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BICUBIC;
         if (value == "Invalid") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::INVALID;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string graphicsQualityOptionsDataSmoothingModeToString(aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode value)
@@ -6926,7 +6925,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::NONE) return "None";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::ANTI_ALIAS) return "AntiAlias";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::INVALID) return "Invalid";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode graphicsQualityOptionsDataSmoothingModeFromString(const std::string& value)
@@ -6937,7 +6936,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::NONE;
         if (value == "AntiAlias") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::ANTI_ALIAS;
         if (value == "Invalid") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::INVALID;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string graphicsQualityOptionsDataTextRenderingHintToString(aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint value)
@@ -6948,7 +6947,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS_GRID_FIT) return "AntiAliasGridFit";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS) return "AntiAlias";
         if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::CLEAR_TYPE_GRID_FIT) return "ClearTypeGridFit";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint graphicsQualityOptionsDataTextRenderingHintFromString(const std::string& value)
@@ -6959,7 +6958,7 @@ namespace aspose::words::cloud::models {
         if (value == "AntiAliasGridFit") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS_GRID_FIT;
         if (value == "AntiAlias") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS;
         if (value == "ClearTypeGridFit") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::CLEAR_TYPE_GRID_FIT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void GraphicsQualityOptionsData::toJson(void* jsonIfc) const
     {
@@ -7162,7 +7161,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::HeaderFooterLink::Type::FOOTER_PRIMARY) return "FooterPrimary";
         if (value == aspose::words::cloud::models::HeaderFooterLink::Type::HEADER_FIRST) return "HeaderFirst";
         if (value == aspose::words::cloud::models::HeaderFooterLink::Type::FOOTER_FIRST) return "FooterFirst";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::HeaderFooterLink::Type headerFooterLinkTypeFromString(const std::string& value)
@@ -7173,7 +7172,7 @@ namespace aspose::words::cloud::models {
         if (value == "FooterPrimary") return aspose::words::cloud::models::HeaderFooterLink::Type::FOOTER_PRIMARY;
         if (value == "HeaderFirst") return aspose::words::cloud::models::HeaderFooterLink::Type::HEADER_FIRST;
         if (value == "FooterFirst") return aspose::words::cloud::models::HeaderFooterLink::Type::FOOTER_FIRST;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void HeaderFooterLink::toJson(void* jsonIfc) const
     {
@@ -7585,14 +7584,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion::XHTML) return "Xhtml";
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion::HTML5) return "Html5";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion htmlSaveOptionsDataHtmlVersionFromString(const std::string& value)
     {
         if (value == "Xhtml") return aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion::XHTML;
         if (value == "Html5") return aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion::HTML5;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string htmlSaveOptionsDataMetafileFormatToString(aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat value)
@@ -7600,7 +7599,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat::PNG) return "Png";
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat::SVG) return "Svg";
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat::EMF_OR_WMF) return "EmfOrWmf";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat htmlSaveOptionsDataMetafileFormatFromString(const std::string& value)
@@ -7608,7 +7607,7 @@ namespace aspose::words::cloud::models {
         if (value == "Png") return aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat::PNG;
         if (value == "Svg") return aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat::SVG;
         if (value == "EmfOrWmf") return aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat::EMF_OR_WMF;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string htmlSaveOptionsDataOfficeMathOutputModeToString(aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode value)
@@ -7616,7 +7615,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::IMAGE) return "Image";
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::MATH_ML) return "MathML";
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::TEXT) return "Text";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode htmlSaveOptionsDataOfficeMathOutputModeFromString(const std::string& value)
@@ -7624,7 +7623,7 @@ namespace aspose::words::cloud::models {
         if (value == "Image") return aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::IMAGE;
         if (value == "MathML") return aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::MATH_ML;
         if (value == "Text") return aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::TEXT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void HtmlSaveOptionsData::toJson(void* jsonIfc) const
     {
@@ -9166,7 +9165,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListInsert::Template::OUTLINE_HEADINGS_LEGAL) return "OutlineHeadingsLegal";
         if (value == aspose::words::cloud::models::ListInsert::Template::OUTLINE_HEADINGS_NUMBERS) return "OutlineHeadingsNumbers";
         if (value == aspose::words::cloud::models::ListInsert::Template::OUTLINE_HEADINGS_CHAPTER) return "OutlineHeadingsChapter";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListInsert::Template listInsertTemplateFromString(const std::string& value)
@@ -9193,7 +9192,7 @@ namespace aspose::words::cloud::models {
         if (value == "OutlineHeadingsLegal") return aspose::words::cloud::models::ListInsert::Template::OUTLINE_HEADINGS_LEGAL;
         if (value == "OutlineHeadingsNumbers") return aspose::words::cloud::models::ListInsert::Template::OUTLINE_HEADINGS_NUMBERS;
         if (value == "OutlineHeadingsChapter") return aspose::words::cloud::models::ListInsert::Template::OUTLINE_HEADINGS_CHAPTER;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ListInsert::toJson(void* jsonIfc) const
     {
@@ -9232,7 +9231,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListLevel::Alignment::LEFT) return "Left";
         if (value == aspose::words::cloud::models::ListLevel::Alignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::ListLevel::Alignment::RIGHT) return "Right";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListLevel::Alignment listLevelAlignmentFromString(const std::string& value)
@@ -9240,7 +9239,7 @@ namespace aspose::words::cloud::models {
         if (value == "Left") return aspose::words::cloud::models::ListLevel::Alignment::LEFT;
         if (value == "Center") return aspose::words::cloud::models::ListLevel::Alignment::CENTER;
         if (value == "Right") return aspose::words::cloud::models::ListLevel::Alignment::RIGHT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string listLevelNumberStyleToString(aspose::words::cloud::models::ListLevel::NumberStyle value)
@@ -9307,7 +9306,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListLevel::NumberStyle::UPPERCASE_RUSSIAN) return "UppercaseRussian";
         if (value == aspose::words::cloud::models::ListLevel::NumberStyle::NONE) return "None";
         if (value == aspose::words::cloud::models::ListLevel::NumberStyle::CUSTOM) return "Custom";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListLevel::NumberStyle listLevelNumberStyleFromString(const std::string& value)
@@ -9374,7 +9373,7 @@ namespace aspose::words::cloud::models {
         if (value == "UppercaseRussian") return aspose::words::cloud::models::ListLevel::NumberStyle::UPPERCASE_RUSSIAN;
         if (value == "None") return aspose::words::cloud::models::ListLevel::NumberStyle::NONE;
         if (value == "Custom") return aspose::words::cloud::models::ListLevel::NumberStyle::CUSTOM;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string listLevelTrailingCharacterToString(aspose::words::cloud::models::ListLevel::TrailingCharacter value)
@@ -9382,7 +9381,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListLevel::TrailingCharacter::TAB) return "Tab";
         if (value == aspose::words::cloud::models::ListLevel::TrailingCharacter::SPACE) return "Space";
         if (value == aspose::words::cloud::models::ListLevel::TrailingCharacter::NOTHING) return "Nothing";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListLevel::TrailingCharacter listLevelTrailingCharacterFromString(const std::string& value)
@@ -9390,7 +9389,7 @@ namespace aspose::words::cloud::models {
         if (value == "Tab") return aspose::words::cloud::models::ListLevel::TrailingCharacter::TAB;
         if (value == "Space") return aspose::words::cloud::models::ListLevel::TrailingCharacter::SPACE;
         if (value == "Nothing") return aspose::words::cloud::models::ListLevel::TrailingCharacter::NOTHING;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ListLevel::toJson(void* jsonIfc) const
     {
@@ -9665,7 +9664,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::LEFT) return "Left";
         if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT) return "Right";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListLevelUpdate::Alignment listLevelUpdateAlignmentFromString(const std::string& value)
@@ -9673,7 +9672,7 @@ namespace aspose::words::cloud::models {
         if (value == "Left") return aspose::words::cloud::models::ListLevelUpdate::Alignment::LEFT;
         if (value == "Center") return aspose::words::cloud::models::ListLevelUpdate::Alignment::CENTER;
         if (value == "Right") return aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string listLevelUpdateNumberStyleToString(aspose::words::cloud::models::ListLevelUpdate::NumberStyle value)
@@ -9740,7 +9739,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListLevelUpdate::NumberStyle::UPPERCASE_RUSSIAN) return "UppercaseRussian";
         if (value == aspose::words::cloud::models::ListLevelUpdate::NumberStyle::NONE) return "None";
         if (value == aspose::words::cloud::models::ListLevelUpdate::NumberStyle::CUSTOM) return "Custom";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListLevelUpdate::NumberStyle listLevelUpdateNumberStyleFromString(const std::string& value)
@@ -9807,7 +9806,7 @@ namespace aspose::words::cloud::models {
         if (value == "UppercaseRussian") return aspose::words::cloud::models::ListLevelUpdate::NumberStyle::UPPERCASE_RUSSIAN;
         if (value == "None") return aspose::words::cloud::models::ListLevelUpdate::NumberStyle::NONE;
         if (value == "Custom") return aspose::words::cloud::models::ListLevelUpdate::NumberStyle::CUSTOM;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string listLevelUpdateTrailingCharacterToString(aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter value)
@@ -9815,7 +9814,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::TAB) return "Tab";
         if (value == aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::SPACE) return "Space";
         if (value == aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::NOTHING) return "Nothing";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter listLevelUpdateTrailingCharacterFromString(const std::string& value)
@@ -9823,7 +9822,7 @@ namespace aspose::words::cloud::models {
         if (value == "Tab") return aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::TAB;
         if (value == "Space") return aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::SPACE;
         if (value == "Nothing") return aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::NOTHING;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ListLevelUpdate::toJson(void* jsonIfc) const
     {
@@ -10210,7 +10209,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment::LEFT) return "Left";
         if (value == aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment::RIGHT) return "Right";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment markdownSaveOptionsDataTableContentAlignmentFromString(const std::string& value)
@@ -10219,7 +10218,7 @@ namespace aspose::words::cloud::models {
         if (value == "Left") return aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment::LEFT;
         if (value == "Center") return aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment::CENTER;
         if (value == "Right") return aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment::RIGHT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void MarkdownSaveOptionsData::toJson(void* jsonIfc) const
     {
@@ -10479,14 +10478,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit::CENTIMETERS) return "Centimeters";
         if (value == aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit::INCHES) return "Inches";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit odtSaveOptionsDataMeasureUnitFromString(const std::string& value)
     {
         if (value == "Centimeters") return aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit::CENTIMETERS;
         if (value == "Inches") return aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit::INCHES;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void OdtSaveOptionsData::toJson(void* jsonIfc) const
     {
@@ -10596,14 +10595,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::OfficeMathObject::DisplayType::DISPLAY) return "Display";
         if (value == aspose::words::cloud::models::OfficeMathObject::DisplayType::INLINE) return "Inline";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::OfficeMathObject::DisplayType officeMathObjectDisplayTypeFromString(const std::string& value)
     {
         if (value == "Display") return aspose::words::cloud::models::OfficeMathObject::DisplayType::DISPLAY;
         if (value == "Inline") return aspose::words::cloud::models::OfficeMathObject::DisplayType::INLINE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string officeMathObjectJustificationToString(aspose::words::cloud::models::OfficeMathObject::Justification value)
@@ -10614,7 +10613,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::OfficeMathObject::Justification::LEFT) return "Left";
         if (value == aspose::words::cloud::models::OfficeMathObject::Justification::RIGHT) return "Right";
         if (value == aspose::words::cloud::models::OfficeMathObject::Justification::INLINE) return "Inline";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::OfficeMathObject::Justification officeMathObjectJustificationFromString(const std::string& value)
@@ -10625,7 +10624,7 @@ namespace aspose::words::cloud::models {
         if (value == "Left") return aspose::words::cloud::models::OfficeMathObject::Justification::LEFT;
         if (value == "Right") return aspose::words::cloud::models::OfficeMathObject::Justification::RIGHT;
         if (value == "Inline") return aspose::words::cloud::models::OfficeMathObject::Justification::INLINE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string officeMathObjectMathObjectTypeToString(aspose::words::cloud::models::OfficeMathObject::MathObjectType value)
@@ -10660,7 +10659,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUBSCRIPT) return "Subscript";
         if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUB_SUPERSCRIPT) return "SubSuperscript";
         if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUPERCRIPT) return "Supercript";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::OfficeMathObject::MathObjectType officeMathObjectMathObjectTypeFromString(const std::string& value)
@@ -10695,7 +10694,7 @@ namespace aspose::words::cloud::models {
         if (value == "Subscript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUBSCRIPT;
         if (value == "SubSuperscript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUB_SUPERSCRIPT;
         if (value == "Supercript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUPERCRIPT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void OfficeMathObject::toJson(void* jsonIfc) const
     {
@@ -10894,7 +10893,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::MAXIMUM) return "Maximum";
         if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::FAST) return "Fast";
         if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::SUPER_FAST) return "SuperFast";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel ooxmlSaveOptionsDataCompressionLevelFromString(const std::string& value)
@@ -10903,7 +10902,7 @@ namespace aspose::words::cloud::models {
         if (value == "Maximum") return aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::MAXIMUM;
         if (value == "Fast") return aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::FAST;
         if (value == "SuperFast") return aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::SUPER_FAST;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void OoxmlSaveOptionsData::toJson(void* jsonIfc) const
     {
@@ -11003,7 +11002,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2013) return "Word2013";
         if (value == aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2016) return "Word2016";
         if (value == aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2019) return "Word2019";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::OptimizationOptions::MsWordVersion optimizationOptionsMsWordVersionFromString(const std::string& value)
@@ -11016,7 +11015,7 @@ namespace aspose::words::cloud::models {
         if (value == "Word2013") return aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2013;
         if (value == "Word2016") return aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2016;
         if (value == "Word2019") return aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2019;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void OptimizationOptions::toJson(void* jsonIfc) const
     {
@@ -11267,7 +11266,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::BorderAppliesTo::ALL_PAGES) return "AllPages";
         if (value == aspose::words::cloud::models::PageSetup::BorderAppliesTo::FIRST_PAGE) return "FirstPage";
         if (value == aspose::words::cloud::models::PageSetup::BorderAppliesTo::OTHER_PAGES) return "OtherPages";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::BorderAppliesTo pageSetupBorderAppliesToFromString(const std::string& value)
@@ -11275,21 +11274,21 @@ namespace aspose::words::cloud::models {
         if (value == "AllPages") return aspose::words::cloud::models::PageSetup::BorderAppliesTo::ALL_PAGES;
         if (value == "FirstPage") return aspose::words::cloud::models::PageSetup::BorderAppliesTo::FIRST_PAGE;
         if (value == "OtherPages") return aspose::words::cloud::models::PageSetup::BorderAppliesTo::OTHER_PAGES;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupBorderDistanceFromToString(aspose::words::cloud::models::PageSetup::BorderDistanceFrom value)
     {
         if (value == aspose::words::cloud::models::PageSetup::BorderDistanceFrom::TEXT) return "Text";
         if (value == aspose::words::cloud::models::PageSetup::BorderDistanceFrom::PAGE_EDGE) return "PageEdge";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::BorderDistanceFrom pageSetupBorderDistanceFromFromString(const std::string& value)
     {
         if (value == "Text") return aspose::words::cloud::models::PageSetup::BorderDistanceFrom::TEXT;
         if (value == "PageEdge") return aspose::words::cloud::models::PageSetup::BorderDistanceFrom::PAGE_EDGE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupLineNumberRestartModeToString(aspose::words::cloud::models::PageSetup::LineNumberRestartMode value)
@@ -11297,7 +11296,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::LineNumberRestartMode::RESTART_PAGE) return "RestartPage";
         if (value == aspose::words::cloud::models::PageSetup::LineNumberRestartMode::RESTART_SECTION) return "RestartSection";
         if (value == aspose::words::cloud::models::PageSetup::LineNumberRestartMode::CONTINUOUS) return "Continuous";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::LineNumberRestartMode pageSetupLineNumberRestartModeFromString(const std::string& value)
@@ -11305,21 +11304,21 @@ namespace aspose::words::cloud::models {
         if (value == "RestartPage") return aspose::words::cloud::models::PageSetup::LineNumberRestartMode::RESTART_PAGE;
         if (value == "RestartSection") return aspose::words::cloud::models::PageSetup::LineNumberRestartMode::RESTART_SECTION;
         if (value == "Continuous") return aspose::words::cloud::models::PageSetup::LineNumberRestartMode::CONTINUOUS;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupOrientationToString(aspose::words::cloud::models::PageSetup::Orientation value)
     {
         if (value == aspose::words::cloud::models::PageSetup::Orientation::PORTRAIT) return "Portrait";
         if (value == aspose::words::cloud::models::PageSetup::Orientation::LANDSCAPE) return "Landscape";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::Orientation pageSetupOrientationFromString(const std::string& value)
     {
         if (value == "Portrait") return aspose::words::cloud::models::PageSetup::Orientation::PORTRAIT;
         if (value == "Landscape") return aspose::words::cloud::models::PageSetup::Orientation::LANDSCAPE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupPageNumberStyleToString(aspose::words::cloud::models::PageSetup::PageNumberStyle value)
@@ -11386,7 +11385,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::PageNumberStyle::UPPERCASE_RUSSIAN) return "UppercaseRussian";
         if (value == aspose::words::cloud::models::PageSetup::PageNumberStyle::NONE) return "None";
         if (value == aspose::words::cloud::models::PageSetup::PageNumberStyle::CUSTOM) return "Custom";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::PageNumberStyle pageSetupPageNumberStyleFromString(const std::string& value)
@@ -11453,7 +11452,7 @@ namespace aspose::words::cloud::models {
         if (value == "UppercaseRussian") return aspose::words::cloud::models::PageSetup::PageNumberStyle::UPPERCASE_RUSSIAN;
         if (value == "None") return aspose::words::cloud::models::PageSetup::PageNumberStyle::NONE;
         if (value == "Custom") return aspose::words::cloud::models::PageSetup::PageNumberStyle::CUSTOM;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupPaperSizeToString(aspose::words::cloud::models::PageSetup::PaperSize value)
@@ -11475,7 +11474,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14) return "Paper10x14";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17) return "Paper11x17";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM) return "Custom";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::PaperSize pageSetupPaperSizeFromString(const std::string& value)
@@ -11497,7 +11496,7 @@ namespace aspose::words::cloud::models {
         if (value == "Paper10x14") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14;
         if (value == "Paper11x17") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17;
         if (value == "Custom") return aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupSectionStartToString(aspose::words::cloud::models::PageSetup::SectionStart value)
@@ -11507,7 +11506,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::SectionStart::NEW_PAGE) return "NewPage";
         if (value == aspose::words::cloud::models::PageSetup::SectionStart::EVEN_PAGE) return "EvenPage";
         if (value == aspose::words::cloud::models::PageSetup::SectionStart::ODD_PAGE) return "OddPage";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::SectionStart pageSetupSectionStartFromString(const std::string& value)
@@ -11517,7 +11516,7 @@ namespace aspose::words::cloud::models {
         if (value == "NewPage") return aspose::words::cloud::models::PageSetup::SectionStart::NEW_PAGE;
         if (value == "EvenPage") return aspose::words::cloud::models::PageSetup::SectionStart::EVEN_PAGE;
         if (value == "OddPage") return aspose::words::cloud::models::PageSetup::SectionStart::ODD_PAGE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string pageSetupVerticalAlignmentToString(aspose::words::cloud::models::PageSetup::VerticalAlignment value)
@@ -11526,7 +11525,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::VerticalAlignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::PageSetup::VerticalAlignment::JUSTIFY) return "Justify";
         if (value == aspose::words::cloud::models::PageSetup::VerticalAlignment::BOTTOM) return "Bottom";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PageSetup::VerticalAlignment pageSetupVerticalAlignmentFromString(const std::string& value)
@@ -11535,7 +11534,7 @@ namespace aspose::words::cloud::models {
         if (value == "Center") return aspose::words::cloud::models::PageSetup::VerticalAlignment::CENTER;
         if (value == "Justify") return aspose::words::cloud::models::PageSetup::VerticalAlignment::JUSTIFY;
         if (value == "Bottom") return aspose::words::cloud::models::PageSetup::VerticalAlignment::BOTTOM;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void PageSetup::toJson(void* jsonIfc) const
     {
@@ -12261,7 +12260,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_HIGH_KASHIDA) return "ArabicHighKashida";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_LOW_KASHIDA) return "ArabicLowKashida";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::THAI_DISTRIBUTED) return "ThaiDistributed";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ParagraphFormatBase::Alignment paragraphFormatBaseAlignmentFromString(const std::string& value)
@@ -12275,7 +12274,7 @@ namespace aspose::words::cloud::models {
         if (value == "ArabicHighKashida") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_HIGH_KASHIDA;
         if (value == "ArabicLowKashida") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_LOW_KASHIDA;
         if (value == "ThaiDistributed") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::THAI_DISTRIBUTED;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string paragraphFormatBaseDropCapPositionToString(aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition value)
@@ -12283,7 +12282,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition::NONE) return "None";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition::NORMAL) return "Normal";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition::MARGIN) return "Margin";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition paragraphFormatBaseDropCapPositionFromString(const std::string& value)
@@ -12291,7 +12290,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition::NONE;
         if (value == "Normal") return aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition::NORMAL;
         if (value == "Margin") return aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition::MARGIN;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string paragraphFormatBaseLineSpacingRuleToString(aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule value)
@@ -12299,7 +12298,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule::AT_LEAST) return "AtLeast";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule::EXACTLY) return "Exactly";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule::MULTIPLE) return "Multiple";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule paragraphFormatBaseLineSpacingRuleFromString(const std::string& value)
@@ -12307,7 +12306,7 @@ namespace aspose::words::cloud::models {
         if (value == "AtLeast") return aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule::AT_LEAST;
         if (value == "Exactly") return aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule::EXACTLY;
         if (value == "Multiple") return aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule::MULTIPLE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string paragraphFormatBaseOutlineLevelToString(aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel value)
@@ -12322,7 +12321,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel::LEVEL8) return "Level8";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel::LEVEL9) return "Level9";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel::BODY_TEXT) return "BodyText";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel paragraphFormatBaseOutlineLevelFromString(const std::string& value)
@@ -12337,7 +12336,7 @@ namespace aspose::words::cloud::models {
         if (value == "Level8") return aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel::LEVEL8;
         if (value == "Level9") return aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel::LEVEL9;
         if (value == "BodyText") return aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel::BODY_TEXT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string paragraphFormatBaseStyleIdentifierToString(aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier value)
@@ -12715,7 +12714,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::NIL) return "Nil";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier paragraphFormatBaseStyleIdentifierFromString(const std::string& value)
@@ -13093,7 +13092,7 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "User") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::NIL;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ParagraphFormatBase::toJson(void* jsonIfc) const
     {
@@ -14077,7 +14076,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::NONE) return "None";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::FIRST) return "First";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::ALL) return "All";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode pdfSaveOptionsDataHeaderFooterBookmarksExportModeFromString(const std::string& value)
@@ -14085,7 +14084,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::NONE;
         if (value == "First") return aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::FIRST;
         if (value == "All") return aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::ALL;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void PdfSaveOptionsData::toJson(void* jsonIfc) const
     {
@@ -14570,7 +14569,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PreferredWidth::Type::AUTO) return "Auto";
         if (value == aspose::words::cloud::models::PreferredWidth::Type::PERCENT) return "Percent";
         if (value == aspose::words::cloud::models::PreferredWidth::Type::POINTS) return "Points";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PreferredWidth::Type preferredWidthTypeFromString(const std::string& value)
@@ -14578,7 +14577,7 @@ namespace aspose::words::cloud::models {
         if (value == "Auto") return aspose::words::cloud::models::PreferredWidth::Type::AUTO;
         if (value == "Percent") return aspose::words::cloud::models::PreferredWidth::Type::PERCENT;
         if (value == "Points") return aspose::words::cloud::models::PreferredWidth::Type::POINTS;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void PreferredWidth::toJson(void* jsonIfc) const
     {
@@ -14916,14 +14915,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::ReplaceRange::TextType::TEXT) return "Text";
         if (value == aspose::words::cloud::models::ReplaceRange::TextType::HTML) return "Html";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ReplaceRange::TextType replaceRangeTextTypeFromString(const std::string& value)
     {
         if (value == "Text") return aspose::words::cloud::models::ReplaceRange::TextType::TEXT;
         if (value == "Html") return aspose::words::cloud::models::ReplaceRange::TextType::HTML;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReplaceRange::toJson(void* jsonIfc) const
     {
@@ -14979,14 +14978,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::ReplaceRangeDto::TextType::TEXT) return "Text";
         if (value == aspose::words::cloud::models::ReplaceRangeDto::TextType::HTML) return "Html";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ReplaceRangeDto::TextType replaceRangeDtoTextTypeFromString(const std::string& value)
     {
         if (value == "Text") return aspose::words::cloud::models::ReplaceRangeDto::TextType::TEXT;
         if (value == "Html") return aspose::words::cloud::models::ReplaceRangeDto::TextType::HTML;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReplaceRangeDto::toJson(void* jsonIfc) const
     {
@@ -15198,7 +15197,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportEngineSettings::DataSourceType::XML) return "Xml";
         if (value == aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON) return "Json";
         if (value == aspose::words::cloud::models::ReportEngineSettings::DataSourceType::CSV) return "Csv";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ReportEngineSettings::DataSourceType reportEngineSettingsDataSourceTypeFromString(const std::string& value)
@@ -15206,7 +15205,7 @@ namespace aspose::words::cloud::models {
         if (value == "Xml") return aspose::words::cloud::models::ReportEngineSettings::DataSourceType::XML;
         if (value == "Json") return aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON;
         if (value == "Csv") return aspose::words::cloud::models::ReportEngineSettings::DataSourceType::CSV;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string reportEngineSettingsReportBuildOptionsToString(aspose::words::cloud::models::ReportBuildOptions value)
@@ -15215,7 +15214,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS) return "AllowMissingMembers";
         if (value == aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::ReportBuildOptions reportEngineSettingsReportBuildOptionsFromString(const std::string& value)
@@ -15224,7 +15223,7 @@ namespace aspose::words::cloud::models {
         if (value == "AllowMissingMembers") return aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS;
         if (value == "RemoveEmptyParagraphs") return aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReportEngineSettings::toJson(void* jsonIfc) const
     {
@@ -15658,14 +15657,14 @@ namespace aspose::words::cloud::models {
     {
         if (value == aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode::BASIC) return "Basic";
         if (value == aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode::ADVANCED) return "Advanced";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode saveOptionsDataDml3DEffectsRenderingModeFromString(const std::string& value)
     {
         if (value == "Basic") return aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode::BASIC;
         if (value == "Advanced") return aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode::ADVANCED;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void SaveOptionsData::toJson(void* jsonIfc) const
     {
@@ -16452,7 +16451,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Shading::Texture::TEXTURE95_PERCENT) return "Texture95Percent";
         if (value == aspose::words::cloud::models::Shading::Texture::TEXTURE97_PT5_PERCENT) return "Texture97Pt5Percent";
         if (value == aspose::words::cloud::models::Shading::Texture::TEXTURE_NIL) return "TextureNil";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Shading::Texture shadingTextureFromString(const std::string& value)
@@ -16511,7 +16510,7 @@ namespace aspose::words::cloud::models {
         if (value == "Texture95Percent") return aspose::words::cloud::models::Shading::Texture::TEXTURE95_PERCENT;
         if (value == "Texture97Pt5Percent") return aspose::words::cloud::models::Shading::Texture::TEXTURE97_PT5_PERCENT;
         if (value == "TextureNil") return aspose::words::cloud::models::Shading::Texture::TEXTURE_NIL;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Shading::toJson(void* jsonIfc) const
     {
@@ -16877,7 +16876,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::StringFormatData::Alignment::_NEAR) return "Near";
         if (value == aspose::words::cloud::models::StringFormatData::Alignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::StringFormatData::Alignment::_FAR) return "Far";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::StringFormatData::Alignment stringFormatDataAlignmentFromString(const std::string& value)
@@ -16885,7 +16884,7 @@ namespace aspose::words::cloud::models {
         if (value == "Near") return aspose::words::cloud::models::StringFormatData::Alignment::_NEAR;
         if (value == "Center") return aspose::words::cloud::models::StringFormatData::Alignment::CENTER;
         if (value == "Far") return aspose::words::cloud::models::StringFormatData::Alignment::_FAR;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string stringFormatDataFormatFlagsToString(aspose::words::cloud::models::StringFormatData::FormatFlags value)
@@ -16899,7 +16898,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::NO_WRAP) return "NoWrap";
         if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::LINE_LIMIT) return "LineLimit";
         if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::NO_CLIP) return "NoClip";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::StringFormatData::FormatFlags stringFormatDataFormatFlagsFromString(const std::string& value)
@@ -16913,7 +16912,7 @@ namespace aspose::words::cloud::models {
         if (value == "NoWrap") return aspose::words::cloud::models::StringFormatData::FormatFlags::NO_WRAP;
         if (value == "LineLimit") return aspose::words::cloud::models::StringFormatData::FormatFlags::LINE_LIMIT;
         if (value == "NoClip") return aspose::words::cloud::models::StringFormatData::FormatFlags::NO_CLIP;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string stringFormatDataHotkeyPrefixToString(aspose::words::cloud::models::StringFormatData::HotkeyPrefix value)
@@ -16921,7 +16920,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::StringFormatData::HotkeyPrefix::NONE) return "None";
         if (value == aspose::words::cloud::models::StringFormatData::HotkeyPrefix::SHOW) return "Show";
         if (value == aspose::words::cloud::models::StringFormatData::HotkeyPrefix::HIDE) return "Hide";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::StringFormatData::HotkeyPrefix stringFormatDataHotkeyPrefixFromString(const std::string& value)
@@ -16929,7 +16928,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::StringFormatData::HotkeyPrefix::NONE;
         if (value == "Show") return aspose::words::cloud::models::StringFormatData::HotkeyPrefix::SHOW;
         if (value == "Hide") return aspose::words::cloud::models::StringFormatData::HotkeyPrefix::HIDE;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string stringFormatDataLineAlignmentToString(aspose::words::cloud::models::StringFormatData::LineAlignment value)
@@ -16937,7 +16936,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::StringFormatData::LineAlignment::_NEAR) return "Near";
         if (value == aspose::words::cloud::models::StringFormatData::LineAlignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::StringFormatData::LineAlignment::_FAR) return "Far";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::StringFormatData::LineAlignment stringFormatDataLineAlignmentFromString(const std::string& value)
@@ -16945,7 +16944,7 @@ namespace aspose::words::cloud::models {
         if (value == "Near") return aspose::words::cloud::models::StringFormatData::LineAlignment::_NEAR;
         if (value == "Center") return aspose::words::cloud::models::StringFormatData::LineAlignment::CENTER;
         if (value == "Far") return aspose::words::cloud::models::StringFormatData::LineAlignment::_FAR;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string stringFormatDataTrimmingToString(aspose::words::cloud::models::StringFormatData::Trimming value)
@@ -16956,7 +16955,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_CHARACTER) return "EllipsisCharacter";
         if (value == aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_WORD) return "EllipsisWord";
         if (value == aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_PATH) return "EllipsisPath";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::StringFormatData::Trimming stringFormatDataTrimmingFromString(const std::string& value)
@@ -16967,7 +16966,7 @@ namespace aspose::words::cloud::models {
         if (value == "EllipsisCharacter") return aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_CHARACTER;
         if (value == "EllipsisWord") return aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_WORD;
         if (value == "EllipsisPath") return aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_PATH;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void StringFormatData::toJson(void* jsonIfc) const
     {
@@ -17448,7 +17447,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::NIL) return "Nil";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Style::StyleIdentifier styleStyleIdentifierFromString(const std::string& value)
@@ -17826,7 +17825,7 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::Style::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "User") return aspose::words::cloud::models::Style::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::Style::StyleIdentifier::NIL;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string styleTypeToString(aspose::words::cloud::models::Style::Type value)
@@ -17835,7 +17834,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Style::Type::CHARACTER) return "Character";
         if (value == aspose::words::cloud::models::Style::Type::TABLE) return "Table";
         if (value == aspose::words::cloud::models::Style::Type::LIST) return "List";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::Style::Type styleTypeFromString(const std::string& value)
@@ -17844,7 +17843,7 @@ namespace aspose::words::cloud::models {
         if (value == "Character") return aspose::words::cloud::models::Style::Type::CHARACTER;
         if (value == "Table") return aspose::words::cloud::models::Style::Type::TABLE;
         if (value == "List") return aspose::words::cloud::models::Style::Type::LIST;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Style::toJson(void* jsonIfc) const
     {
@@ -18133,7 +18132,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::StyleInsert::StyleType::CHARACTER) return "Character";
         if (value == aspose::words::cloud::models::StyleInsert::StyleType::TABLE) return "Table";
         if (value == aspose::words::cloud::models::StyleInsert::StyleType::LIST) return "List";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::StyleInsert::StyleType styleInsertStyleTypeFromString(const std::string& value)
@@ -18142,7 +18141,7 @@ namespace aspose::words::cloud::models {
         if (value == "Character") return aspose::words::cloud::models::StyleInsert::StyleType::CHARACTER;
         if (value == "Table") return aspose::words::cloud::models::StyleInsert::StyleType::TABLE;
         if (value == "List") return aspose::words::cloud::models::StyleInsert::StyleType::LIST;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void StyleInsert::toJson(void* jsonIfc) const
     {
@@ -18573,7 +18572,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableCellFormat::HorizontalMerge::NONE) return "None";
         if (value == aspose::words::cloud::models::TableCellFormat::HorizontalMerge::FIRST) return "First";
         if (value == aspose::words::cloud::models::TableCellFormat::HorizontalMerge::PREVIOUS) return "Previous";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableCellFormat::HorizontalMerge tableCellFormatHorizontalMergeFromString(const std::string& value)
@@ -18581,7 +18580,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::TableCellFormat::HorizontalMerge::NONE;
         if (value == "First") return aspose::words::cloud::models::TableCellFormat::HorizontalMerge::FIRST;
         if (value == "Previous") return aspose::words::cloud::models::TableCellFormat::HorizontalMerge::PREVIOUS;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tableCellFormatOrientationToString(aspose::words::cloud::models::TableCellFormat::Orientation value)
@@ -18592,7 +18591,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableCellFormat::Orientation::HORIZONTAL_ROTATED_FAR_EAST) return "HorizontalRotatedFarEast";
         if (value == aspose::words::cloud::models::TableCellFormat::Orientation::VERTICAL_FAR_EAST) return "VerticalFarEast";
         if (value == aspose::words::cloud::models::TableCellFormat::Orientation::VERTICAL_ROTATED_FAR_EAST) return "VerticalRotatedFarEast";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableCellFormat::Orientation tableCellFormatOrientationFromString(const std::string& value)
@@ -18603,7 +18602,7 @@ namespace aspose::words::cloud::models {
         if (value == "HorizontalRotatedFarEast") return aspose::words::cloud::models::TableCellFormat::Orientation::HORIZONTAL_ROTATED_FAR_EAST;
         if (value == "VerticalFarEast") return aspose::words::cloud::models::TableCellFormat::Orientation::VERTICAL_FAR_EAST;
         if (value == "VerticalRotatedFarEast") return aspose::words::cloud::models::TableCellFormat::Orientation::VERTICAL_ROTATED_FAR_EAST;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tableCellFormatVerticalAlignmentToString(aspose::words::cloud::models::TableCellFormat::VerticalAlignment value)
@@ -18611,7 +18610,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableCellFormat::VerticalAlignment::TOP) return "Top";
         if (value == aspose::words::cloud::models::TableCellFormat::VerticalAlignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::TableCellFormat::VerticalAlignment::BOTTOM) return "Bottom";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableCellFormat::VerticalAlignment tableCellFormatVerticalAlignmentFromString(const std::string& value)
@@ -18619,7 +18618,7 @@ namespace aspose::words::cloud::models {
         if (value == "Top") return aspose::words::cloud::models::TableCellFormat::VerticalAlignment::TOP;
         if (value == "Center") return aspose::words::cloud::models::TableCellFormat::VerticalAlignment::CENTER;
         if (value == "Bottom") return aspose::words::cloud::models::TableCellFormat::VerticalAlignment::BOTTOM;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tableCellFormatVerticalMergeToString(aspose::words::cloud::models::TableCellFormat::VerticalMerge value)
@@ -18627,7 +18626,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableCellFormat::VerticalMerge::NONE) return "None";
         if (value == aspose::words::cloud::models::TableCellFormat::VerticalMerge::FIRST) return "First";
         if (value == aspose::words::cloud::models::TableCellFormat::VerticalMerge::PREVIOUS) return "Previous";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableCellFormat::VerticalMerge tableCellFormatVerticalMergeFromString(const std::string& value)
@@ -18635,7 +18634,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::TableCellFormat::VerticalMerge::NONE;
         if (value == "First") return aspose::words::cloud::models::TableCellFormat::VerticalMerge::FIRST;
         if (value == "Previous") return aspose::words::cloud::models::TableCellFormat::VerticalMerge::PREVIOUS;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void TableCellFormat::toJson(void* jsonIfc) const
     {
@@ -19238,7 +19237,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableProperties::Alignment::LEFT) return "Left";
         if (value == aspose::words::cloud::models::TableProperties::Alignment::CENTER) return "Center";
         if (value == aspose::words::cloud::models::TableProperties::Alignment::RIGHT) return "Right";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableProperties::Alignment tablePropertiesAlignmentFromString(const std::string& value)
@@ -19246,7 +19245,7 @@ namespace aspose::words::cloud::models {
         if (value == "Left") return aspose::words::cloud::models::TableProperties::Alignment::LEFT;
         if (value == "Center") return aspose::words::cloud::models::TableProperties::Alignment::CENTER;
         if (value == "Right") return aspose::words::cloud::models::TableProperties::Alignment::RIGHT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tablePropertiesStyleIdentifierToString(aspose::words::cloud::models::TableProperties::StyleIdentifier value)
@@ -19624,7 +19623,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::NIL) return "Nil";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableProperties::StyleIdentifier tablePropertiesStyleIdentifierFromString(const std::string& value)
@@ -20002,7 +20001,7 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::TableProperties::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "User") return aspose::words::cloud::models::TableProperties::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::TableProperties::StyleIdentifier::NIL;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tablePropertiesStyleOptionsToString(aspose::words::cloud::models::TableProperties::StyleOptions value)
@@ -20016,7 +20015,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableProperties::StyleOptions::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS) return "ColumnBands";
         if (value == aspose::words::cloud::models::TableProperties::StyleOptions::DEFAULT2003) return "Default2003";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableProperties::StyleOptions tablePropertiesStyleOptionsFromString(const std::string& value)
@@ -20030,7 +20029,7 @@ namespace aspose::words::cloud::models {
         if (value == "Default") return aspose::words::cloud::models::TableProperties::StyleOptions::DEFAULT;
         if (value == "ColumnBands") return aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS;
         if (value == "Default2003") return aspose::words::cloud::models::TableProperties::StyleOptions::DEFAULT2003;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tablePropertiesTextWrappingToString(aspose::words::cloud::models::TableProperties::TextWrapping value)
@@ -20038,7 +20037,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::NONE) return "None";
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::AROUND) return "Around";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableProperties::TextWrapping tablePropertiesTextWrappingFromString(const std::string& value)
@@ -20046,7 +20045,7 @@ namespace aspose::words::cloud::models {
         if (value == "Default") return aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT;
         if (value == "None") return aspose::words::cloud::models::TableProperties::TextWrapping::NONE;
         if (value == "Around") return aspose::words::cloud::models::TableProperties::TextWrapping::AROUND;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void TableProperties::toJson(void* jsonIfc) const
     {
@@ -20455,7 +20454,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableRowFormat::HeightRule::AT_LEAST) return "AtLeast";
         if (value == aspose::words::cloud::models::TableRowFormat::HeightRule::EXACTLY) return "Exactly";
         if (value == aspose::words::cloud::models::TableRowFormat::HeightRule::AUTO) return "Auto";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableRowFormat::HeightRule tableRowFormatHeightRuleFromString(const std::string& value)
@@ -20463,7 +20462,7 @@ namespace aspose::words::cloud::models {
         if (value == "AtLeast") return aspose::words::cloud::models::TableRowFormat::HeightRule::AT_LEAST;
         if (value == "Exactly") return aspose::words::cloud::models::TableRowFormat::HeightRule::EXACTLY;
         if (value == "Auto") return aspose::words::cloud::models::TableRowFormat::HeightRule::AUTO;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void TableRowFormat::toJson(void* jsonIfc) const
     {
@@ -20776,7 +20775,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TabStopBase::Alignment::BAR) return "Bar";
         if (value == aspose::words::cloud::models::TabStopBase::Alignment::LIST) return "List";
         if (value == aspose::words::cloud::models::TabStopBase::Alignment::CLEAR) return "Clear";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TabStopBase::Alignment tabStopBaseAlignmentFromString(const std::string& value)
@@ -20788,7 +20787,7 @@ namespace aspose::words::cloud::models {
         if (value == "Bar") return aspose::words::cloud::models::TabStopBase::Alignment::BAR;
         if (value == "List") return aspose::words::cloud::models::TabStopBase::Alignment::LIST;
         if (value == "Clear") return aspose::words::cloud::models::TabStopBase::Alignment::CLEAR;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline std::string tabStopBaseLeaderToString(aspose::words::cloud::models::TabStopBase::Leader value)
@@ -20799,7 +20798,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TabStopBase::Leader::LINE) return "Line";
         if (value == aspose::words::cloud::models::TabStopBase::Leader::HEAVY) return "Heavy";
         if (value == aspose::words::cloud::models::TabStopBase::Leader::MIDDLE_DOT) return "MiddleDot";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TabStopBase::Leader tabStopBaseLeaderFromString(const std::string& value)
@@ -20810,7 +20809,7 @@ namespace aspose::words::cloud::models {
         if (value == "Line") return aspose::words::cloud::models::TabStopBase::Leader::LINE;
         if (value == "Heavy") return aspose::words::cloud::models::TabStopBase::Leader::HEAVY;
         if (value == "MiddleDot") return aspose::words::cloud::models::TabStopBase::Leader::MIDDLE_DOT;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void TabStopBase::toJson(void* jsonIfc) const
     {
@@ -21079,7 +21078,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode::NONE) return "None";
         if (value == aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode::PRIMARY_ONLY) return "PrimaryOnly";
         if (value == aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode::ALL_AT_END) return "AllAtEnd";
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode txtSaveOptionsBaseDataExportHeadersFootersModeFromString(const std::string& value)
@@ -21087,7 +21086,7 @@ namespace aspose::words::cloud::models {
         if (value == "None") return aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode::NONE;
         if (value == "PrimaryOnly") return aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode::PRIMARY_ONLY;
         if (value == "AllAtEnd") return aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode::ALL_AT_END;
-        throw std::exception("Invalid enum value");
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void TxtSaveOptionsBaseData::toJson(void* jsonIfc) const
     {
