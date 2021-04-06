@@ -34,6 +34,7 @@ add_executable(aspose_words_cloud_test ${TEST_SOURCES})
 add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
 target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+set_target_properties(aspose_words_cloud_test PROPERTIES CXX_STANDARD 17)
 
 add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test --gtest_output=xml:test_result.xml WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}) 
 
