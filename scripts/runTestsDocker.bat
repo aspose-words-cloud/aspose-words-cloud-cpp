@@ -21,5 +21,5 @@ REM Run tests
 cmake -E chdir ./build ctest -V -C Debug --rerun-failed --output-on-failure --gtest_output=xml:test_result.xml || goto end
 
 :end
-if exist .\build\tests\test_result.xml copy .\build\tests\test_result.xml c:\out
+if exist .\test_result.xml copy .\test_result.xml c:\out
 exit /b %ERRORLEVEL%
