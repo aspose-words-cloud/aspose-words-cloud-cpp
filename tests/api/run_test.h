@@ -73,7 +73,7 @@ TEST_F(RunTests, TestUpdateRun) {
 /// Test for updating run online.
 /// </summary>
 TEST_F(RunTests, TestUpdateRunOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
 
@@ -130,7 +130,7 @@ TEST_F(RunTests, TestInsertRun) {
 /// Test for adding run online.
 /// </summary>
 TEST_F(RunTests, TestInsertRunOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
 
@@ -180,7 +180,7 @@ getApi()->deleteRun(request);
 /// Test for deleting run online.
 /// </summary>
 TEST_F(RunTests, TestDeleteRunOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
     std::shared_ptr<requests::DeleteRunOnlineRequest> request(new requests::DeleteRunOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"paragraphs/1"),

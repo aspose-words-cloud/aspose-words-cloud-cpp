@@ -69,7 +69,7 @@ getApi()->optimizeDocument(request);
 /// Test for optimize document to specific MS Word version.
 /// </summary>
 TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
     auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
 

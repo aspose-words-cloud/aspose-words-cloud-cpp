@@ -43,7 +43,7 @@ TEST_F(BuildReportTests, TestBuildReportOnline) {
     std::wstring localDocumentFile = L"ReportTemplate.docx";
     std::wstring localDataFile = getFileTextUtf16(localTestDataFolder + L"/" + reportingFolder + L"/ReportData.json");
 
-    auto templateStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(reportingFolder + L"/" + localDocumentFile), std::istream::binary));
+    auto templateStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(reportingFolder + L"/" + localDocumentFile).c_str(), std::istream::binary));
     auto requestReportEngineSettings = std::make_shared< aspose::words::cloud::models::ReportEngineSettings >();
     requestReportEngineSettings->setDataSourceType(std::make_shared< aspose::words::cloud::models::ReportEngineSettings::DataSourceType >(aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON));
     requestReportEngineSettings->setDataSourceName(std::make_shared< std::wstring >(L"persons"));

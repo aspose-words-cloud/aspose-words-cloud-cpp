@@ -213,7 +213,7 @@ Typical usage of the SDK in code follows this template:
     auto api = std::make_shared<api::WordsApi>(config);
 
     // Read file content
-    auto stream = std::shared_ptr<std::istream>(new std::ifstream(localPath, std::ifstream::binary));
+    auto stream = std::shared_ptr<std::istream>(new std::ifstream(localPath.c_str(), std::ifstream::binary));
 
     // upload file
     auto uploadRequest = std::shared_ptr<requests::UploadFileRequest>(

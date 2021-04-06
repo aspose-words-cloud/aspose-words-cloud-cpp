@@ -66,7 +66,7 @@ TEST_F(ReadmeTest, TestReadmeCode) {
     auto api = std::make_shared<api::WordsApi>(config);
 
     // Read file content
-    auto stream = std::shared_ptr<std::istream>(new std::ifstream(localPath, std::ifstream::binary));
+    auto stream = std::shared_ptr<std::istream>(new std::ifstream(localPath.c_str(), std::ifstream::binary));
 
     // upload file
     auto uploadRequest = std::shared_ptr<requests::UploadFileRequest>(
@@ -97,7 +97,7 @@ void ReadmeTest::writeCodeToReadme() {
 
     // read test code
     std::list<std::string> codeLines;
-    std::ifstream testFile(sourcePath.string());
+    std::ifstream testFile(sourcePath.string().c_str());
     std::string s;
     while (std::getline(testFile, s)) codeLines.push_back(s);
     testFile.close();
@@ -121,7 +121,7 @@ void ReadmeTest::writeCodeToReadme() {
 
     // read readme.md
     std::list<std::string> readmeLines;
-    std::ifstream readmeFile(readmePath.string());
+    std::ifstream readmeFile(readmePath.string().c_str());
     while (std::getline(readmeFile, s)) readmeLines.push_back(s);
     readmeFile.close();
 

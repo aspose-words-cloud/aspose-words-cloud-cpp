@@ -73,7 +73,7 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
 TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
     std::wstring localName = L"test_multi_pages.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(L"Common/" + localName), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(L"Common/" + localName).c_str(), std::istream::binary));
     auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
     requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
@@ -174,7 +174,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
 TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
     std::wstring localName = L"test_multi_pages.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(L"Common/" + localName), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(L"Common/" + localName).c_str(), std::istream::binary));
     auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
     requestSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
     requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
@@ -211,7 +211,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
 /// A test for ConvertDocument.
 /// </summary>
 TEST_F(ConvertDocumentTests, TestConvertDocument) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFolder + L"/test_uploadfile.docx"), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFolder + L"/test_uploadfile.docx").c_str(), std::istream::binary));
     std::shared_ptr<requests::ConvertDocumentRequest> request(new requests::ConvertDocumentRequest(
         documentStream,
         std::make_shared< std::wstring >(L"pdf"),
