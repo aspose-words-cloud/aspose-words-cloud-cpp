@@ -35,7 +35,7 @@ add_subdirectory(../thirdparty/gtest gtest)
 target_link_libraries(aspose_words_cloud_test PRIVATE gtest aspose_words_cloud_sdk)
 target_compile_definitions(aspose_words_cloud_test PRIVATE TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
-add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test --gtest_output=xml:test_result.xml WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}) 
+add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/aspose_words_cloud_test --gtest_output=xml:test_result.xml WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}) 
 
 if (MSVC)
   set_property(TARGET aspose_words_cloud_test PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
