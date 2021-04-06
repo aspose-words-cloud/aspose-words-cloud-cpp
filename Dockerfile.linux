@@ -5,6 +5,8 @@ RUN apt-get update
 RUN apt-get install dialog  apt-utils  -y --no-install-recommends
 RUN apt-get install git-core python-dev libxml2-dev libxslt-dev -y
 RUN apt-get install wget gcc-7 g++-7 make libssl-dev -y
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 40
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 40
 
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh -O cmake.sh \
       && chmod u+x cmake.sh \
