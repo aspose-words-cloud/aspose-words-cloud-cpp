@@ -39,6 +39,10 @@ target_compile_features(aspose_words_cloud_test PRIVATE cxx_std_17)
 
 add_test(NAME aspose_words_cloud_test COMMAND aspose_words_cloud_test --gtest_output=xml:test_result.xml WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}) 
 
+if (_option_COMPILER_ID MATCHES "GNU")
+    target_link_libraries(aspose_words_cloud_test PRIVATE stdc++fs)
+endif()
+
 if (MSVC)
   set_property(TARGET aspose_words_cloud_test PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
   target_compile_options(aspose_words_cloud_test PRIVATE /bigobj)
