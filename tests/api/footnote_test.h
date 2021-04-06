@@ -74,7 +74,7 @@ TEST_F(FootnoteTests, TestInsertFootnote) {
 /// Test for adding footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestInsertFootnoteOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc").c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc"), std::istream::binary));
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteInsert >();
     requestFootnoteDto->setFootnoteType(std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE));
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
@@ -158,7 +158,7 @@ getApi()->deleteFootnote(request);
 /// Test for deleting footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestDeleteFootnoteOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc").c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc"), std::istream::binary));
     std::shared_ptr<requests::DeleteFootnoteOnlineRequest> request(new requests::DeleteFootnoteOnlineRequest(
         documentStream,
         std::make_shared< int32_t >(0),
@@ -231,7 +231,7 @@ TEST_F(FootnoteTests, TestGetFootnotes) {
 /// Test for getting footnotes online.
 /// </summary>
 TEST_F(FootnoteTests, TestGetFootnotesOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc").c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc"), std::istream::binary));
     std::shared_ptr<requests::GetFootnotesOnlineRequest> request(new requests::GetFootnotesOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L""),
@@ -299,7 +299,7 @@ TEST_F(FootnoteTests, TestGetFootnote) {
 /// Test for getting footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestGetFootnoteOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc").c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc"), std::istream::binary));
     std::shared_ptr<requests::GetFootnoteOnlineRequest> request(new requests::GetFootnoteOnlineRequest(
         documentStream,
         std::make_shared< int32_t >(0),
@@ -374,7 +374,7 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
 /// Test for updating footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestUpdateFootnoteOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc").c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(footnoteFolder + L"/Footnote.doc"), std::istream::binary));
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteUpdate >();
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
 

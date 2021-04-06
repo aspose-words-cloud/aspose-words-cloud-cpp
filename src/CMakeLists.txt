@@ -38,6 +38,7 @@ file(GLOB_RECURSE srcs "../include/*.h" "*.cpp")
 target_sources(aspose_words_cloud_sdk PRIVATE ${srcs})
 target_link_libraries(${PROJECT_NAME} OpenSSL::Crypto)
 target_link_libraries(${PROJECT_NAME} OpenSSL::SSL)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 if(MSVC)
   target_compile_options(aspose_words_cloud_sdk PRIVATE /bigobj)

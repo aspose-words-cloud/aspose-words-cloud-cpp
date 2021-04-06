@@ -82,7 +82,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
     std::wstring localName2 = L"compareTestDoc2.doc";
     std::wstring remoteName2 = L"TestCompareDocument2.doc";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFolder + L"/" + localName1).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFolder + L"/" + localName1), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFolder + L"/" + localName2,
         remoteFolder + L"/" + remoteName2

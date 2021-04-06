@@ -135,7 +135,7 @@ std::wstring InfrastructureTest::createRandomGuid() const
 
 std::string InfrastructureTest::getFileText(const std::wstring& file)
 {
-    std::ifstream fileStream(file.c_str());
+    std::ifstream fileStream(file);
     if (!fileStream.good())
     {
         throw L"Failed to open file: " + file;
@@ -148,7 +148,7 @@ std::string InfrastructureTest::getFileText(const std::wstring& file)
 
 std::wstring InfrastructureTest::getFileTextUtf16(const std::wstring& file)
 {
-    std::wifstream fileStream(file.c_str());
+    std::wifstream fileStream(file);
     if (!fileStream.good())
     {
         throw L"Failed to open file: " + file;
@@ -163,7 +163,7 @@ void InfrastructureTest::uploadFileToStorage(const std::wstring& localPath, cons
 {
     auto request = std::shared_ptr<aspose::words::cloud::requests::UploadFileRequest>(
         new aspose::words::cloud::requests::UploadFileRequest(
-            std::shared_ptr<std::istream>(new std::ifstream(localPath.c_str(), std::ifstream::binary)),
+            std::shared_ptr<std::istream>(new std::ifstream(localPath, std::ifstream::binary)),
             std::make_shared<std::wstring>(remotePath)
         )
     );

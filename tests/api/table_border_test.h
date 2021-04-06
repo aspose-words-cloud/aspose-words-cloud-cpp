@@ -68,7 +68,7 @@ TEST_F(TableBorderTests, TestGetBorders) {
 /// Test for getting borders online.
 /// </summary>
 TEST_F(TableBorderTests, TestGetBordersOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
     std::shared_ptr<requests::GetBordersOnlineRequest> request(new requests::GetBordersOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
@@ -110,7 +110,7 @@ TEST_F(TableBorderTests, TestGetBorder) {
 /// Test for getting border online.
 /// </summary>
 TEST_F(TableBorderTests, TestGetBorderOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
     std::shared_ptr<requests::GetBorderOnlineRequest> request(new requests::GetBorderOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"left"),
@@ -152,7 +152,7 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
 /// Test for deleting borders online.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBordersOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
     std::shared_ptr<requests::DeleteBordersOnlineRequest> request(new requests::DeleteBordersOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
@@ -197,7 +197,7 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
 /// Test for deleting border online.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBorderOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
     std::shared_ptr<requests::DeleteBorderOnlineRequest> request(new requests::DeleteBorderOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"left"),
@@ -261,7 +261,7 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
 /// Test for updating border online.
 /// </summary>
 TEST_F(TableBorderTests, TestUpdateBorderOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
     auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
     requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
 

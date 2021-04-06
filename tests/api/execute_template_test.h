@@ -75,8 +75,8 @@ TEST_F(ExecuteTemplateTests, TestExecuteTemplateOnline) {
     std::wstring localDocumentFile = L"SampleMailMergeTemplate.docx";
     std::wstring localDataFile = L"SampleExecuteTemplateData.txt";
 
-    auto templateStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(mailMergeFolder + L"/" + localDocumentFile).c_str(), std::istream::binary));
-    auto dataStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(mailMergeFolder + L"/" + localDataFile).c_str(), std::istream::binary));
+    auto templateStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(mailMergeFolder + L"/" + localDocumentFile), std::istream::binary));
+    auto dataStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(mailMergeFolder + L"/" + localDataFile), std::istream::binary));
     std::shared_ptr<requests::ExecuteMailMergeOnlineRequest> request(new requests::ExecuteMailMergeOnlineRequest(
         templateStream,
         dataStream,

@@ -65,7 +65,7 @@ getApi()->deleteMacros(request);
 /// Test for deleting macros online.
 /// </summary>
 TEST_F(MacrosTests, TestDeleteMacrosOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile).c_str(), std::istream::binary));
+    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(getDataDir(localFile), std::istream::binary));
     std::shared_ptr<requests::DeleteMacrosOnlineRequest> request(new requests::DeleteMacrosOnlineRequest(
         documentStream,
         nullptr,
