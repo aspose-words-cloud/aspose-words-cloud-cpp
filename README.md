@@ -1,4 +1,4 @@
-﻿ASpose.Words Cloud SDK for C++ wraps Aspose.Words REST API so you could seamlessly integrate Microsoft Word® document generation, manipulation, conversion & inspection features into your own C++ applications.
+﻿Aspose.Words Cloud SDK for C++ wraps Aspose.Words REST API so you could seamlessly integrate Microsoft Word® document generation, manipulation, conversion & inspection features into your own C++ applications.
 
 # Word Document Processing in the Cloud
 
@@ -15,6 +15,7 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Find and replace text.
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
+- Thread safe
 
 ## Enhancements in Version 21.3
 
