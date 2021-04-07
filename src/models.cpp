@@ -14114,9 +14114,6 @@ namespace aspose::words::cloud::models {
         if (m_EncryptionDetails) {
             m_EncryptionDetails->toJson(&json["EncryptionDetails"]);
         }
-        if (m_EscapeUri) {
-            json["EscapeUri"] = *m_EscapeUri;
-        }
         if (m_ExportDocumentStructure) {
             json["ExportDocumentStructure"] = *m_ExportDocumentStructure;
         }
@@ -14207,11 +14204,6 @@ namespace aspose::words::cloud::models {
         if (json.contains("EncryptionDetails") && !json["EncryptionDetails"].is_null()) {
             m_EncryptionDetails = std::make_shared< aspose::words::cloud::models::PdfEncryptionDetailsData >();
             m_EncryptionDetails->fromJson(&json["EncryptionDetails"]);
-        }
-        if (json.contains("EscapeUri") && !json["EscapeUri"].is_null()) {
-            m_EscapeUri = std::make_shared< bool >(
-                json["EscapeUri"].get< bool >()
-            );
         }
         if (json.contains("ExportDocumentStructure") && !json["ExportDocumentStructure"].is_null()) {
             m_ExportDocumentStructure = std::make_shared< bool >(
@@ -14372,16 +14364,6 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setEncryptionDetails(std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > value)
     {
         m_EncryptionDetails = value;
-    }
-
-    std::shared_ptr< bool > PdfSaveOptionsData::getEscapeUri() const
-    {
-        return m_EscapeUri;
-    }
-
-    void PdfSaveOptionsData::setEscapeUri(std::shared_ptr< bool > value)
-    {
-        m_EscapeUri = value;
     }
 
     std::shared_ptr< bool > PdfSaveOptionsData::getExportDocumentStructure() const

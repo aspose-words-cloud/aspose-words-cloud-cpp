@@ -141,16 +141,6 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setEncryptionDetails(std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > value);
 
         /// <summary>
-        /// Gets or sets a value indicating whether URI should be escaped before writing.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEscapeUri() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether URI should be escaped before writing.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEscapeUri(std::shared_ptr< bool > value);
-
-        /// <summary>
         /// Gets or sets a value indicating whether to export document structure.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportDocumentStructure() const;
@@ -321,7 +311,6 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > m_DownsampleOptions;
         std::shared_ptr< bool > m_EmbedFullFonts;
         std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > m_EncryptionDetails;
-        std::shared_ptr< bool > m_EscapeUri;
         std::shared_ptr< bool > m_ExportDocumentStructure;
         std::shared_ptr< std::wstring > m_FontEmbeddingMode;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode > m_HeaderFooterBookmarksExportMode;
