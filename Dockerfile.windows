@@ -29,4 +29,3 @@ RUN vcpkg install openssl:x64-windows
 
 from build as tests
 COPY . aspose-words-cloud-cpp
-RUN C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat 69f6c7d5-85df-4caa-af7c-6c4dac95bae6 6f853993bb96ea72997e5bff1a044b20 https://api-qa.aspose.cloud
