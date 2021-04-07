@@ -4,9 +4,9 @@ rmdir settings /s /q
 mkdir settings
 
 REM Generate credentials
-echo { "ClientId" : "%1", > .\servercreds.json
-echo  "ClientSecret" : "%2", >> .\servercreds.json
-echo  "BaseUrl" : "%3" >> .\servercreds.json
+echo { "ClientId" : "%1", > .\settings\servercreds.json
+echo  "ClientSecret" : "%2", >> .\settings\servercreds.json
+echo  "BaseUrl" : "%3" >> .\settings\servercreds.json
 echo } >> .\settings\servercreds.json
 
 REM remove build directory
