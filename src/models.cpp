@@ -15654,6 +15654,9 @@ namespace aspose::words::cloud::models {
         if (m_AllowEmbeddingPostScriptFonts) {
             json["AllowEmbeddingPostScriptFonts"] = *m_AllowEmbeddingPostScriptFonts;
         }
+        if (m_CustomTimeZoneInfoData) {
+            m_CustomTimeZoneInfoData->toJson(&json["CustomTimeZoneInfoData"]);
+        }
         if (m_Dml3DEffectsRenderingMode) {
             json["Dml3DEffectsRenderingMode"] = saveOptionsDataDml3DEffectsRenderingModeToString(*m_Dml3DEffectsRenderingMode);
         }
@@ -15696,6 +15699,10 @@ namespace aspose::words::cloud::models {
             m_AllowEmbeddingPostScriptFonts = std::make_shared< bool >(
                 json["AllowEmbeddingPostScriptFonts"].get< bool >()
             );
+        }
+        if (json.contains("CustomTimeZoneInfoData") && !json["CustomTimeZoneInfoData"].is_null()) {
+            m_CustomTimeZoneInfoData = std::make_shared< aspose::words::cloud::models::TimeZoneInfoData >();
+            m_CustomTimeZoneInfoData->fromJson(&json["CustomTimeZoneInfoData"]);
         }
         if (json.contains("Dml3DEffectsRenderingMode") && !json["Dml3DEffectsRenderingMode"].is_null()) {
             m_Dml3DEffectsRenderingMode = std::make_shared< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode >(
@@ -15762,6 +15769,16 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setAllowEmbeddingPostScriptFonts(std::shared_ptr< bool > value)
     {
         m_AllowEmbeddingPostScriptFonts = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > SaveOptionsData::getCustomTimeZoneInfoData() const
+    {
+        return m_CustomTimeZoneInfoData;
+    }
+
+    void SaveOptionsData::setCustomTimeZoneInfoData(std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > value)
+    {
+        m_CustomTimeZoneInfoData = value;
     }
 
     std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > SaveOptionsData::getDml3DEffectsRenderingMode() const
@@ -21049,6 +21066,92 @@ namespace aspose::words::cloud::models {
     void TiffSaveOptionsData::setTiffCompression(std::shared_ptr< std::wstring > value)
     {
         m_TiffCompression = value;
+    }
+
+
+    /*
+     * TimeZoneInfoData implementation
+     */
+    void TimeZoneInfoData::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_BaseUtcOffset) {
+            json["BaseUtcOffset"] = convertUtf16(*m_BaseUtcOffset);
+        }
+        if (m_DisplayName) {
+            json["DisplayName"] = convertUtf16(*m_DisplayName);
+        }
+        if (m_Id) {
+            json["Id"] = convertUtf16(*m_Id);
+        }
+        if (m_StandardDisplayName) {
+            json["StandardDisplayName"] = convertUtf16(*m_StandardDisplayName);
+        }
+    }
+
+    void TimeZoneInfoData::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("BaseUtcOffset") && !json["BaseUtcOffset"].is_null()) {
+            m_BaseUtcOffset = std::make_shared< std::wstring >(
+                convertUtf8( json["BaseUtcOffset"].get< std::string >() )
+            );
+        }
+        if (json.contains("DisplayName") && !json["DisplayName"].is_null()) {
+            m_DisplayName = std::make_shared< std::wstring >(
+                convertUtf8( json["DisplayName"].get< std::string >() )
+            );
+        }
+        if (json.contains("Id") && !json["Id"].is_null()) {
+            m_Id = std::make_shared< std::wstring >(
+                convertUtf8( json["Id"].get< std::string >() )
+            );
+        }
+        if (json.contains("StandardDisplayName") && !json["StandardDisplayName"].is_null()) {
+            m_StandardDisplayName = std::make_shared< std::wstring >(
+                convertUtf8( json["StandardDisplayName"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > TimeZoneInfoData::getBaseUtcOffset() const
+    {
+        return m_BaseUtcOffset;
+    }
+
+    void TimeZoneInfoData::setBaseUtcOffset(std::shared_ptr< std::wstring > value)
+    {
+        m_BaseUtcOffset = value;
+    }
+
+    std::shared_ptr< std::wstring > TimeZoneInfoData::getDisplayName() const
+    {
+        return m_DisplayName;
+    }
+
+    void TimeZoneInfoData::setDisplayName(std::shared_ptr< std::wstring > value)
+    {
+        m_DisplayName = value;
+    }
+
+    std::shared_ptr< std::wstring > TimeZoneInfoData::getId() const
+    {
+        return m_Id;
+    }
+
+    void TimeZoneInfoData::setId(std::shared_ptr< std::wstring > value)
+    {
+        m_Id = value;
+    }
+
+    std::shared_ptr< std::wstring > TimeZoneInfoData::getStandardDisplayName() const
+    {
+        return m_StandardDisplayName;
+    }
+
+    void TimeZoneInfoData::setStandardDisplayName(std::shared_ptr< std::wstring > value)
+    {
+        m_StandardDisplayName = value;
     }
 
 

@@ -25,6 +25,7 @@
 
 #pragma once
 #include "./model_base.h"
+#include "time_zone_info_data.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -56,6 +57,16 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT void setAllowEmbeddingPostScriptFonts(std::shared_ptr< bool > value);
+
+        /// <summary>
+        /// Gets or sets CustomTimeZoneInfo.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > getCustomTimeZoneInfoData() const;
+
+        /// <summary>
+        /// Gets or sets CustomTimeZoneInfo.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setCustomTimeZoneInfoData(std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > value);
 
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
@@ -175,6 +186,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< bool > m_AllowEmbeddingPostScriptFonts;
+        std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > m_CustomTimeZoneInfoData;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > m_Dml3DEffectsRenderingMode;
         std::shared_ptr< std::wstring > m_DmlEffectsRenderingMode;
         std::shared_ptr< std::wstring > m_DmlRenderingMode;

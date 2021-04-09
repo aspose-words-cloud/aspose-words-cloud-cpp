@@ -255,6 +255,7 @@
 #include "./aspose_words_cloud/models/tab_stops_response.h"
 #include "./aspose_words_cloud/models/text_save_options_data.h"
 #include "./aspose_words_cloud/models/tiff_save_options_data.h"
+#include "./aspose_words_cloud/models/time_zone_info_data.h"
 #include "./aspose_words_cloud/models/txt_save_options_base_data.h"
 #include "./aspose_words_cloud/models/watermark_text.h"
 #include "./aspose_words_cloud/models/word_ml_save_options_data.h"
