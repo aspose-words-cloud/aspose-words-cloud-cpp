@@ -114,11 +114,14 @@ namespace aspose::words::cloud::responses {
 
     void BatchResponse::initialize(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests)
     {
+        m_Order = std::make_shared< std::unordered_map< std::string, size_t > >();
         m_Result = std::make_shared< std::vector< std::shared_ptr< ResponseModelBase > > >();
         m_Result->reserve(requests.size());
 
-        for (auto& request : requests) {
+        for (size_t i = 0; i < requests.size(); i++) {
+            auto& request = requests[i];
             m_Result->push_back(request.get()->createResponse());
+            m_Order->emplace(request.getRequestId(), i);
         }
     }
 
@@ -126,11 +129,33 @@ namespace aspose::words::cloud::responses {
     {
         std::vector<std::string_view> parts;
         parseMultipart(response, parts);
+
+        std::unordered_map<std::string_view, std::string_view> sortedParts;
         for (size_t i = 0; i < parts.size(); i++) {
             auto& part = parts.at(i);
-            auto& result = m_Result->at(i);
             auto bodyIndex = part.find("\r\n\r\n");
             if (bodyIndex == std::string::npos)
+                throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
+
+            std::string requestId;
+            auto metadata = part.substr(0, bodyIndex + 2);
+            size_t lastMetadataIndex = 0;
+            while (true) {
+                auto metadataIndex = metadata.find("\r\n", lastMetadataIndex);
+                if (metadataIndex == std::string::npos) {
+                    break;
+                }
+
+                auto metadataPart = metadata.substr(lastMetadataIndex, metadataIndex - lastMetadataIndex);
+                if (metadataPart.find("RequestId") == 0) {
+                    auto requestIdIndex = metadataPart.find(": ");
+                    requestId = metadataPart.substr(requestIdIndex + 2);
+                }
+
+                lastMetadataIndex = metadataIndex + 2;
+            }
+
+            if (requestId.empty())
                 throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
 
             auto bodyData = part.substr(bodyIndex + 4);
@@ -148,6 +173,15 @@ namespace aspose::words::cloud::responses {
                 throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
 
             auto contentData = bodyData.substr(contentIndex + 4);
+
+            if (m_Order->find(requestId) == m_Order->end())
+                throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
+
+            auto requestIndex = m_Order->at(requestId);
+            if (requestIndex < 0 || requestIndex >= m_Result->size())
+                throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
+
+            auto& result = m_Result->at(requestIndex);
             result->setStatusCode(statusCode);
             if (statusCode == 200) {
                 result->deserialize(contentData);

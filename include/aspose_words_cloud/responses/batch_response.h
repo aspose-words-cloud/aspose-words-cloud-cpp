@@ -26,6 +26,8 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <unordered_map>
+#include <string_view>
 #include "aspose_words_cloud/common.h"
 #include "aspose_words_cloud/requests/batch_request.h"
 #include "aspose_words_cloud/responses/response_model_base.h"
@@ -49,6 +51,7 @@ namespace aspose::words::cloud::responses {
         }
 
     private:
+        std::shared_ptr< std::unordered_map< std::string, size_t > > m_Order;
         std::shared_ptr< std::vector< std::shared_ptr< ResponseModelBase > > > m_Result;
     };
 }

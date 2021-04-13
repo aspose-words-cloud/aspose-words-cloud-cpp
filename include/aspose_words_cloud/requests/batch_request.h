@@ -40,6 +40,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<std::istream> asResult() const;
         ASPOSE_WORDS_CLOUD_EXPORT void serialize(std::string& body) const;
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<RequestModelBase> get() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::string& getRequestId() const;
 
     private:
         std::shared_ptr<RequestModelBase> m_Request;

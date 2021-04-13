@@ -83,6 +83,10 @@ namespace aspose::words::cloud::requests {
         return m_Request;
     }
 
+    const std::string& BatchRequest::getRequestId() const {
+        return m_RequestId;
+    }
+
     /*
      * AcceptAllRevisions request implementation
      */
