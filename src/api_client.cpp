@@ -94,7 +94,7 @@ namespace aspose::words::cloud {
         std::string printBuffer;
         printBuffer.reserve(2048);
         char bufHex[10];
-        for (int i = 0; i < data.length(); i++) {
+        for (int i = 0; i < data.size(); i++) {
             uint8_t c = data[i];
             if (isprint(c)) {
                 printBuffer += c;
@@ -118,6 +118,8 @@ namespace aspose::words::cloud {
                 printBuffer.clear();
             }
         }
+
+        std::cout << printBuffer;
     }
 
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
