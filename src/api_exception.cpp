@@ -48,7 +48,7 @@ namespace aspose::words::cloud {
         return m_Message;
     }
 
-    char const* ApiException::what() const
+    char const* ApiException::what() const noexcept
     {
         return m_DisplayMessage.c_str();
     }

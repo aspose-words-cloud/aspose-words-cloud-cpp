@@ -39,7 +39,7 @@ namespace aspose::words::cloud {
 
         ASPOSE_WORDS_CLOUD_EXPORT int getErrorCode() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getMessage() const;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual char const* what() const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual char const* what() const noexcept override;
 
     protected:
         int m_ErrorCode;
