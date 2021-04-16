@@ -102,9 +102,28 @@ namespace aspose::words::cloud::responses {
         return m_StatusCode;
     }
 
-    void ResponseModelBase::setErrorMessage(const std::wstring& errorMessage)
+    void ResponseModelBase::setErrorData(const std::string_view& errorData)
     {
-        m_ErrorMessage = errorMessage;
+        m_ErrorMessage.clear();
+
+        // Try to parse error from json
+        if (errorData.size() > 0 && errorData.find('{') == 0) {
+            auto json = ::nlohmann::json::parse(errorData);
+            if (json.contains("Error") && json["Error"].contains("Message")) {
+                if (json["Error"].contains("Code")) {
+                    std::string codeStr = json["Error"]["Code"].get<std::string>();
+                    ::utf8::utf8to16(codeStr.begin(), codeStr.end(), back_inserter(m_ErrorMessage));
+                    m_ErrorMessage.append(L" - ");
+                }
+
+                std::string messageStr = json["Error"]["Message"].get<std::string>();
+                ::utf8::utf8to16(messageStr.begin(), messageStr.end(), back_inserter(m_ErrorMessage));
+                return;
+            }
+        }
+
+        // Else use whole error data
+        ::utf8::utf8to16(errorData.begin(), errorData.end(), back_inserter(m_ErrorMessage));
     }
 
     const std::wstring& ResponseModelBase::getErrorMessage() const
@@ -187,9 +206,7 @@ namespace aspose::words::cloud::responses {
                 result->deserialize(contentData);
             }
             else {
-                std::wstring errorMessage;
-                ::utf8::utf8to16(contentData.begin(), contentData.end(), back_inserter(errorMessage));
-                result->setErrorMessage(errorMessage);
+                result->setErrorData(contentData);
             }
         }
     }

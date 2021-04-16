@@ -28,24 +28,22 @@
 #include <string>
 #include <exception>
 #include "./common.h"
-#include "./models/words_api_error_response.h"
 
 namespace aspose::words::cloud {
-    class  ApiException : std::exception
+    class  ApiException : public std::exception
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT ApiException(
             int errorCode,
-            const std::wstring& message,
-            std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > response = nullptr);
+            const std::wstring& message);
 
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > getResponse() const;
         ASPOSE_WORDS_CLOUD_EXPORT int getErrorCode() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::wstring& getMessage() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual char const* what() const override;
 
     protected:
         int m_ErrorCode;
-        const std::wstring& m_Message;
-        std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > m_Response;
+        std::wstring m_Message;
+        std::string m_DisplayMessage;
     };
 }

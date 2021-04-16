@@ -25,16 +25,17 @@
 
 #include "aspose_words_cloud/api_exception.h"
 
+// USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
+#include "../thirdparty/utf8.h"
+
 namespace aspose::words::cloud {
     ApiException::ApiException(
         int errorCode,
-        const std::wstring& message,
-        std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > response
-    ) : m_ErrorCode(errorCode), m_Message(message), m_Response(response) {}
-
-    std::shared_ptr< aspose::words::cloud::models::WordsApiErrorResponse > ApiException::getResponse() const
-    {
-        return m_Response;
+        const std::wstring& message
+    ) : m_ErrorCode(errorCode), m_Message(message) {
+        m_DisplayMessage.append(std::to_string(errorCode));
+        m_DisplayMessage.append(": ");
+        ::utf8::utf16to8(message.begin(), message.end(), back_inserter(m_DisplayMessage));
     }
 
     int ApiException::getErrorCode() const
@@ -45,5 +46,10 @@ namespace aspose::words::cloud {
     const std::wstring& ApiException::getMessage() const
     {
         return m_Message;
+    }
+
+    char const* ApiException::what() const
+    {
+        return m_DisplayMessage.c_str();
     }
 }

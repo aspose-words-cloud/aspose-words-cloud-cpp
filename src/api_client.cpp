@@ -65,8 +65,28 @@ namespace aspose::words::cloud {
 
     inline void HandleHttpError(::httplib::Result& httpResponse)
     {
-        if (httpResponse.error() != ::httplib::Error::Success)
-            throw ApiException(400, L"Unknown api error: " + httpResponse.error());
+        if (httpResponse.error() == ::httplib::Error::Success)
+            return;
+
+        if (httpResponse.error() == ::httplib::Error::Canceled)
+            throw ApiException(400, L"Canceled");
+
+        if (httpResponse.error() == ::httplib::Error::Connection)
+            throw ApiException(400, L"Failed to establish a connection to the server");
+
+        if (httpResponse.error() == ::httplib::Error::ExceedRedirectCount)
+            throw ApiException(400, L"Exceed redirect count");
+
+        if (httpResponse.error() == ::httplib::Error::Read)
+            throw ApiException(400, L"Failed read from socket");
+
+        if (httpResponse.error() == ::httplib::Error::Write)
+            throw ApiException(400, L"Failed write to socket");
+
+        if (httpResponse.error() == ::httplib::Error::SSLConnection)
+            throw ApiException(400, L"Failed to establish SSL connection");
+
+        throw ApiException(400, L"Unknown socket error: " + httpResponse.error());
     }
 
     inline void PrintDebugData(const std::string& data)
@@ -189,9 +209,7 @@ namespace aspose::words::cloud {
         }
         else
         {
-            std::wstring errorMessage;
-            ::utf8::utf8to16(httpResponse->body.begin(), httpResponse->body.end(), back_inserter(errorMessage));
-            response.setErrorMessage(errorMessage);
+            response.setErrorData(httpResponse->body);
         }
     }
 
@@ -211,6 +229,7 @@ namespace aspose::words::cloud {
         ::utf8::utf16to8(body.begin(), body.end(), back_inserter(bodyUtf8));
 
         ::httplib::Result result = m_HttpClient->Post("/connect/token", bodyUtf8, "application/x-www-form-urlencoded");
+        HandleHttpError(result);
         if (result->status != 200)
         {
             std::wstring errorMessage;
