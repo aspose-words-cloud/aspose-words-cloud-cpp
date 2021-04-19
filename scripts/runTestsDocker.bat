@@ -1,7 +1,10 @@
 cd C:\\aspose-words-cloud-cpp
 
-rmdir settings /s /q
-mkdir settings
+if exist build rmdir build /s /q
+mkdir -p build
+
+if exist settings rmdir settings /s /q
+mkdir -p settings
 
 REM Generate credentials
 echo { "ClientId" : "%1", > .\settings\servercreds.json

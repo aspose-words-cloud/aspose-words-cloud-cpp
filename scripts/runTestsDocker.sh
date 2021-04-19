@@ -1,6 +1,10 @@
 # Compile aw
 cd /aspose-words-cloud-cpp
+
+if [ -d "build" ]; then rm -Rf build; fi
 mkdir -p build
+
+if [ -d "settings" ]; then rm -Rf settings; fi
 mkdir -p settings
 
 # start test section
