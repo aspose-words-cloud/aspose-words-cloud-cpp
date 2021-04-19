@@ -85,7 +85,7 @@ parallel windows: {
                                 sh (script: "docker build --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
                                 sh (script: "docker push ${buildCacheImage}/linux")
 
-                                sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD/aspose-words-cloud-cpp:/aspose-words-cloud-cpp/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
+                                sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD/aspose-words-cloud-cpp:/aspose-words-cloud-cpp/" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
                                 junit '**\\out\\test_result.xml'
                             }
