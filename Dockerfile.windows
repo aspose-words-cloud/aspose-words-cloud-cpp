@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/windows/servercore:1607 as build
 
 # Visual Studio
-ADD https://aka.ms/vs/15/release/vs_buildtools.exe vs_buildtools.exe
-RUN C:\vs_BuildTools.exe \
+RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; $wc = New-Object net.webclient; $wc.Downloadfile('https://aka.ms/vs/15/release/vs_buildtools.exe', 'vs_buildtools.exe')" \
+    && C:\vs_BuildTools.exe \
         --add Microsoft.VisualStudio.Product.BuildTools \
         --add Microsoft.VisualStudio.Workload.MSBuildTools \
         --add Microsoft.VisualStudio.Workload.VCTools \
@@ -12,8 +12,8 @@ RUN C:\vs_BuildTools.exe \
         --passive \
         --norestart \
         --wait \
-        --nocache
-RUN del C:\vs_BuildTools.exe 
+        --nocache \
+    && del C:\vs_BuildTools.exe 
 
 # Chocolatey & Git
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
