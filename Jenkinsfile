@@ -44,7 +44,7 @@ parallel windows: {
                                     if exist out rmdir out /s /q
                                     mkdir out
 
-                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c "C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
+                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" -v "%cd%/aspose-words-cloud-cpp:C:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:windows cmd /c "C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
@@ -85,7 +85,7 @@ parallel windows: {
                                 sh (script: "docker build --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
                                 sh (script: "docker push ${buildCacheImage}/linux")
 
-                                sh 'docker run --rm -v "$PWD/out:/out/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
+                                sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD/aspose-words-cloud-cpp:/aspose-words-cloud-cpp/" aspose-words-cloud-cpp-tests:linux bash aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
                                 junit '**\\out\\test_result.xml'
                             }

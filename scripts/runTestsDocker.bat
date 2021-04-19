@@ -1,4 +1,4 @@
-cd aspose-words-cloud-cpp
+cd C:\\aspose-words-cloud-cpp
 
 rmdir settings /s /q
 mkdir settings

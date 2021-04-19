@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2016 as build
+FROM mcr.microsoft.com/windows/servercore:ltsc2016
 
 # Visual Studio
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; $wc = New-Object net.webclient; $wc.Downloadfile('https://aka.ms/vs/15/release/vs_buildtools.exe', 'vs_buildtools.exe')" \
@@ -25,6 +25,3 @@ RUN git clone https://github.com/microsoft/vcpkg C:\vcpkg && \
     C:\vcpkg\bootstrap-vcpkg.bat && \
     setx path "%path%;C:\vcpkg;C:\vcpkg\installed\x64-windows;C:\vcpkg\installed\x64-windows\bin"
 RUN vcpkg install openssl:x64-windows
-
-FROM build as tests
-COPY . aspose-words-cloud-cpp
