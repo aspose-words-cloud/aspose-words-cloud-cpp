@@ -101,6 +101,10 @@ std::shared_ptr<ApiConfiguration> InfrastructureTest::getConfig()
     if (fileJson.contains("DebugMode")) {
         config->setDebugMode(fileJson["DebugMode"].get<bool>());
     }
+
+    // Disable for testing only
+    config->setSslCertValidation(false);
+
     return config;
 }
 

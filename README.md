@@ -17,18 +17,6 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
-## Enhancements in Version 21.4
-
-- Removed obsolete pdf save option 'EscapeUri'
-- SaveOptions now contains CustomTimeZoneInfo to set custom timezone when SdtType.Date structured document tag updated from custom XML
-- Url of child requests in batch can be full now (earlier it can be only relative)
-- Added 'RquestId' header to all responses
-- Remove boost and cpprest dependencies
-- Add openssl dependency
-- Support online methods
-- Support batch requests
-- Added DependsOn and ResultOf features support for batch requests
-
 ## Enhancements in Version 21.3
 
 - Added 'UpdateCreatedTimeProperty' save option

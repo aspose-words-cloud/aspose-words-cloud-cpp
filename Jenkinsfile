@@ -53,7 +53,7 @@ parallel windows: {
                         }
                     }
                 }
-            }            
+            }
         } finally {
             deleteDir()
         }

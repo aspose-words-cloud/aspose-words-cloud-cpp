@@ -42,8 +42,12 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT bool isDebugMode() const;
         ASPOSE_WORDS_CLOUD_EXPORT void setDebugMode(bool debug);
 
+        ASPOSE_WORDS_CLOUD_EXPORT bool isSslCertValidation() const;
+        ASPOSE_WORDS_CLOUD_EXPORT void setSslCertValidation(bool enable);
+
     protected:
         bool m_DebugMode = false;
+        bool m_SslCertValidation = true;
         const std::wstring m_Version = L"v4.0";
         std::wstring m_BaseUrl;
         std::wstring m_ClientSecret;

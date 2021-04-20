@@ -51,6 +51,14 @@ namespace aspose::words::cloud {
         m_DebugMode = debug;
     }
 
+    bool ApiConfiguration::isSslCertValidation() const {
+        return m_SslCertValidation;
+    }
+
+    void ApiConfiguration::setSslCertValidation(bool enable) {
+        m_SslCertValidation = enable;
+    }
+
     const std::wstring& ApiConfiguration::getApiVersion() const
     {
         return m_Version;
