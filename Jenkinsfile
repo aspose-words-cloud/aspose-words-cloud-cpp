@@ -50,6 +50,10 @@ parallel windows: {
                             } finally {
                                 junit '**\\out\\test_result.xml'
                             }
+                            
+                            if (currentBuild.result == "UNSTABLE") {
+                                currentBuild.result = "FAILURE"
+                            }
                         }
                     }
                 }
@@ -88,6 +92,10 @@ parallel windows: {
                                 sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
                                 junit '**\\out\\test_result.xml'
+                            }
+                            
+                            if (currentBuild.result == "UNSTABLE") {
+                                currentBuild.result = "FAILURE"
                             }
                         }
                     }
