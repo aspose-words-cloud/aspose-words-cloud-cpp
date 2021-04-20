@@ -24,8 +24,10 @@ echo "{
 
 # Run tests
 cmake -E chdir ./build ctest -V -C Debug --gtest_output=xml:test_result.xml
-local exit_code=$?
+
 cp ./test_result.xml /out
+
+# end test section
 set +e
+
 chmod 777 -R /out
-exit $exit_code

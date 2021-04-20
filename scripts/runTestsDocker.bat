@@ -19,6 +19,5 @@ REM Run tests
 cmake -E chdir ./build ctest -V -C Debug --rerun-failed --output-on-failure --gtest_output=xml:test_result.xml || goto end
 
 :end
-SET EXIT_CODE=%ERRORLEVEL%
 if exist .\test_result.xml copy .\test_result.xml c:\out
-exit /b %EXIT_CODE%
+exit /b %ERRORLEVEL%
