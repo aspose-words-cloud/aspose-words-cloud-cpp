@@ -86,7 +86,7 @@ namespace aspose::words::cloud {
         if (httpResponse.error() == ::httplib::Error::SSLConnection)
             throw ApiException(400, L"Failed to establish SSL connection");
 
-        throw ApiException(400, L"Unknown socket error: " + httpResponse.error());
+        throw ApiException(400, L"Unknown socket error: " + std::to_wstring(httpResponse.error()));
     }
 
     inline void PrintDebugData(const std::string& data)

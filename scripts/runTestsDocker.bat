@@ -1,10 +1,10 @@
 cd C:\\aspose-words-cloud-cpp
 
 if exist build rmdir build /s /q
-mkdir -p build
+mkdir build
 
 if exist settings rmdir settings /s /q
-mkdir -p settings
+mkdir settings
 
 REM Generate credentials
 echo { "ClientId" : "%1", > .\settings\servercreds.json
@@ -12,11 +12,6 @@ echo  "ClientSecret" : "%2", >> .\settings\servercreds.json
 echo  "BaseUrl" : "%3" >> .\settings\servercreds.json
 echo } >> .\settings\servercreds.json
 
-REM remove build directory
-rmdir .\build /s /q
-
-REM Compile aw
-mkdir .\build
 cmake -G "Visual Studio 15 2017" -Thost=x64 -Ax64 -S . -B ./build || goto end
 cmake --build ./build --config Debug --target aspose_words_cloud_test || goto end
 
