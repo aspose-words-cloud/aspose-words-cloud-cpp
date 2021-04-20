@@ -222,6 +222,10 @@ Typical usage of the SDK in code follows this template:
     // Create client configuration
     auto config = std::make_shared<ApiConfiguration>(yourClientId, yourClientSecret, /*optional*/baseUrl);
 
+    // Disable SSL cert validation for testing only, not for production
+    // Enabled by default
+    config->setSslCertValidation(false);
+
     // Create API
     auto api = std::make_shared<api::WordsApi>(config);
 
