@@ -787,7 +787,9 @@ enum Error {
   Canceled,
   SSLConnection,
   SSLLoadingCerts,
-  SSLServerVerification,
+  SSLServerVerification1 = 1000,
+  SSLServerVerification2 = 2000,
+  SSLServerVerification3 = 3000,
   UnsupportedMultipartBoundaryChars,
   Compression,
 };
@@ -6855,20 +6857,20 @@ inline bool SSLClient::initialize_ssl(Socket &socket, Error &error) {
           verify_result_ = SSL_get_verify_result(ssl);
 
           if (verify_result_ != X509_V_OK) {
-            error = Error::SSLServerVerification;
+            error = Error::SSLServerVerification1;
             return false;
           }
 
           auto server_cert = SSL_get_peer_certificate(ssl);
 
           if (server_cert == nullptr) {
-            error = Error::SSLServerVerification;
+            error = Error::SSLServerVerification2;
             return false;
           }
 
           if (!verify_host(server_cert)) {
             X509_free(server_cert);
-            error = Error::SSLServerVerification;
+            error = Error::SSLServerVerification3;
             return false;
           }
           X509_free(server_cert);
