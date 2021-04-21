@@ -90,7 +90,7 @@ namespace aspose::words::cloud {
             throw ApiException(400, L"Failed to loading SSL certificates");
 
         if (httpResponse.error() == ::httplib::Error::SSLServerVerification)
-            throw ApiException(400, L"Failed to validate server SSL certificate");
+            throw ApiException(400, L"Failed to validate server SSL certificate or root certificate is not present in local storage.");
 
         throw ApiException(400, L"Unknown socket error: " + std::to_wstring(httpResponse.error()));
     }
@@ -138,7 +138,6 @@ namespace aspose::words::cloud {
         m_HttpClient->set_write_timeout(300, 0);
         m_HttpClient->set_keep_alive(true);
         m_HttpClient->set_tcp_nodelay(true);
-        m_HttpClient->enable_server_certificate_verification(configuration->isSslCertValidation());
     }
 
     void ApiClient::call(
