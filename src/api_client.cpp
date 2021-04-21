@@ -138,7 +138,7 @@ namespace aspose::words::cloud {
         m_HttpClient->set_write_timeout(300, 0);
         m_HttpClient->set_keep_alive(true);
         m_HttpClient->set_tcp_nodelay(true);
-        m_HttpClient->enable_server_certificate_verification(configuration->isSslCertValidation());
+        //m_HttpClient->enable_server_certificate_verification(configuration->isSslCertValidation());
     }
 
     void ApiClient::call(
