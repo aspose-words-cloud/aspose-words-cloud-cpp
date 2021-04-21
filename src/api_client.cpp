@@ -89,8 +89,8 @@ namespace aspose::words::cloud {
         if (httpResponse.error() == ::httplib::Error::SSLLoadingCerts)
             throw ApiException(400, L"Failed to loading SSL certificates");
 
-        if (httpResponse.error() == ::httplib::Error::SSLServerVerification)
-            throw ApiException(400, L"Failed to validate server SSL certificate");
+        //if (httpResponse.error() == ::httplib::Error::SSLServerVerification)
+        //    throw ApiException(400, L"Failed to validate server SSL certificate");
 
         throw ApiException(400, L"Unknown socket error: " + std::to_wstring(httpResponse.error()));
     }
