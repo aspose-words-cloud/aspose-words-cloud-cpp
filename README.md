@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 21.5
+
+- Update dependencies in sdk
+
+
 ## Enhancements in Version 21.4
 
 - Removed obsolete pdf save option 'EscapeUri'

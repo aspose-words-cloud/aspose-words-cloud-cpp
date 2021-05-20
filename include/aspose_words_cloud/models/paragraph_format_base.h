@@ -464,6 +464,7 @@ namespace aspose::words::cloud::models {
             LIST_TABLE5_DARK_ACCENT6,
             LIST_TABLE6_COLORFUL_ACCENT6,
             LIST_TABLE7_COLORFUL_ACCENT6,
+            SMART_LINK,
             USER,
             NIL
         };
