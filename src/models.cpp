@@ -1476,6 +1476,9 @@ namespace aspose::words::cloud::models {
     void CompareOptions::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AcceptAllRevisionsBeforeComparison) {
+            json["AcceptAllRevisionsBeforeComparison"] = *m_AcceptAllRevisionsBeforeComparison;
+        }
         if (m_IgnoreCaseChanges) {
             json["IgnoreCaseChanges"] = *m_IgnoreCaseChanges;
         }
@@ -1508,6 +1511,11 @@ namespace aspose::words::cloud::models {
     void CompareOptions::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AcceptAllRevisionsBeforeComparison") && !json["AcceptAllRevisionsBeforeComparison"].is_null()) {
+            m_AcceptAllRevisionsBeforeComparison = std::make_shared< bool >(
+                json["AcceptAllRevisionsBeforeComparison"].get< bool >()
+            );
+        }
         if (json.contains("IgnoreCaseChanges") && !json["IgnoreCaseChanges"].is_null()) {
             m_IgnoreCaseChanges = std::make_shared< bool >(
                 json["IgnoreCaseChanges"].get< bool >()
@@ -1553,6 +1561,16 @@ namespace aspose::words::cloud::models {
                 compareOptionsTargetFromString(json["Target"].get< std::string >())
             );
         }
+    }
+
+    std::shared_ptr< bool > CompareOptions::getAcceptAllRevisionsBeforeComparison() const
+    {
+        return m_AcceptAllRevisionsBeforeComparison;
+    }
+
+    void CompareOptions::setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value)
+    {
+        m_AcceptAllRevisionsBeforeComparison = value;
     }
 
     std::shared_ptr< bool > CompareOptions::getIgnoreCaseChanges() const

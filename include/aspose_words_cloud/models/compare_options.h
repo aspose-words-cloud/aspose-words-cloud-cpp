@@ -48,6 +48,16 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
         /// <summary>
+        /// Gets or sets whether accept revisions before comparison or not.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAcceptAllRevisionsBeforeComparison() const;
+
+        /// <summary>
+        /// Gets or sets whether accept revisions before comparison or not.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value);
+
+        /// <summary>
         /// Gets or sets a value indicating whether documents comparison is case insensitive. By default comparison is case sensitive.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreCaseChanges() const;
@@ -138,6 +148,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setTarget(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > value);
 
     protected:
+        std::shared_ptr< bool > m_AcceptAllRevisionsBeforeComparison;
         std::shared_ptr< bool > m_IgnoreCaseChanges;
         std::shared_ptr< bool > m_IgnoreComments;
         std::shared_ptr< bool > m_IgnoreFields;
