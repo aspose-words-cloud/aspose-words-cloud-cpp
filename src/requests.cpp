@@ -1008,12 +1008,14 @@ namespace aspose::words::cloud::requests {
     CompareDocumentOnlineRequest::CompareDocumentOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< aspose::words::cloud::models::CompareData > compareData,
+        const std::shared_ptr< std::istream > comparingDocument,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_CompareData(compareData),
+        m_ComparingDocument(comparingDocument),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_DestFileName(destFileName)
@@ -1028,6 +1030,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< aspose::words::cloud::models::CompareData > CompareDocumentOnlineRequest::getCompareData() const
     {
         return m_CompareData;
+    }
+
+    const std::shared_ptr< std::istream > CompareDocumentOnlineRequest::getComparingDocument() const
+    {
+        return m_ComparingDocument;
     }
 
     const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getLoadEncoding() const
@@ -1057,6 +1064,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         if (m_CompareData) result->addFormDataParam(L"compareData", *m_CompareData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
+        if (m_ComparingDocument) result->addFormDataParam(L"comparingDocument", *m_ComparingDocument);
         return result;
     }
 

@@ -33,6 +33,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT CompareDocumentOnlineRequest(
             const std::shared_ptr< std::istream > document,
             const std::shared_ptr< aspose::words::cloud::models::CompareData > compareData,
+            const std::shared_ptr< std::istream > comparingDocument = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > destFileName = nullptr
@@ -40,6 +41,7 @@ namespace aspose::words::cloud::requests {
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::CompareData > getCompareData() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getComparingDocument() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDestFileName() const;
@@ -50,6 +52,7 @@ namespace aspose::words::cloud::requests {
     private:
         const std::shared_ptr< std::istream > m_Document;
         const std::shared_ptr< aspose::words::cloud::models::CompareData > m_CompareData;
+        const std::shared_ptr< std::istream > m_ComparingDocument;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
         const std::shared_ptr< std::wstring > m_DestFileName;

@@ -764,6 +764,7 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="compareData">Compare data.</param>
+        /// <param name="comparingDocument">The comparing document.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password for opening an encrypted document.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
