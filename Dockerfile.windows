@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2016
+FROM mcr.microsoft.com/windows/servercore:10.0.14393.4530
 
 # Visual Studio
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; $wc = New-Object net.webclient; $wc.Downloadfile('https://aka.ms/vs/15/release/vs_buildtools.exe', 'vs_buildtools.exe')" \
