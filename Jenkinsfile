@@ -36,9 +36,9 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
-                                bat (script: "docker pull ${buildCacheImage}/win")
-                                bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows - < Dockerfile.windows")
-                                bat (script: "docker push ${buildCacheImage}/win")
+                                bat (script: "docker pull ${buildCacheImage}/win:latest")
+                                bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win:latest -t ${buildCacheImage}/win:latest -t aspose-words-cloud-cpp-tests:windows - < Dockerfile.windows")
+                                bat (script: "docker push ${buildCacheImage}/win:latest")
                                 def apiUrl = params.apiUrl
                                 bat """
                                     if exist out rmdir out /s /q
@@ -85,9 +85,9 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
-                                sh (script: "docker pull ${buildCacheImage}/linux")
-                                sh (script: "docker build --rm=false --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
-                                sh (script: "docker push ${buildCacheImage}/linux")
+                                sh (script: "docker pull ${buildCacheImage}/linux:latest")
+                                sh (script: "docker build --rm=false --cache-from=${buildCacheImage}/linux:latest -t ${buildCacheImage}/linux:latest -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
+                                sh (script: "docker push ${buildCacheImage}/linux:latest")
 
                                 sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
