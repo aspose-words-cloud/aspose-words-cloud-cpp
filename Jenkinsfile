@@ -36,15 +36,15 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
-                                bat (script: "docker pull ${buildCacheImage}/win")
-                                bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows - < Dockerfile.windows")
-                                bat (script: "docker push ${buildCacheImage}/win")
+                                bat (script: "docker pull ${buildCacheImage}/win:v1")
+                                bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win:v1 -t ${buildCacheImage}/win:v1 - < Dockerfile.windows")
+                                bat (script: "docker push ${buildCacheImage}/win:v1")
                                 def apiUrl = params.apiUrl
                                 bat """
                                     if exist out rmdir out /s /q
                                     mkdir out
 
-                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" -v "%cd%:C:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:windows cmd /c "C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
+                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" -v "%cd%:C:/aspose-words-cloud-cpp" ${buildCacheImage}/win:v1 cmd /c "C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
