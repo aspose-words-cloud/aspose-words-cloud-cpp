@@ -36,15 +36,15 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
-                                bat (script: "docker pull ${buildCacheImage}/win")
-                                bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win -t ${buildCacheImage}/win -t aspose-words-cloud-cpp-tests:windows - < Dockerfile.windows")
-                                bat (script: "docker push ${buildCacheImage}/win")
+                                bat (script: "docker pull ${buildCacheImage}/win:latest")
+                                bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win:latest -t ${buildCacheImage}/win:latest - < Dockerfile.windows")
+                                bat (script: "docker push ${buildCacheImage}/win:latest")
                                 def apiUrl = params.apiUrl
                                 bat """
                                     if exist out rmdir out /s /q
                                     mkdir out
 
-                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" -v "%cd%:C:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:windows cmd /c "C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
+                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" -v "%cd%:C:/aspose-words-cloud-cpp" ${buildCacheImage}/win:latest cmd /c "C:/aspose-words-cloud-cpp/scripts/runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
@@ -85,11 +85,11 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
-                                sh (script: "docker pull ${buildCacheImage}/linux")
-                                sh (script: "docker build --rm=false --cache-from=${buildCacheImage}/linux -t ${buildCacheImage}/linux -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
-                                sh (script: "docker push ${buildCacheImage}/linux")
+                                sh (script: "docker pull ${buildCacheImage}/linux:latest")
+                                sh (script: "docker build --rm=false --cache-from=${buildCacheImage}/linux:latest -t ${buildCacheImage}/linux:latest - < Dockerfile.linux")
+                                sh (script: "docker push ${buildCacheImage}/linux:latest")
 
-                                sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
+                                sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" ${buildCacheImage}/linux:latest bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
                                 junit '**\\out\\test_result.xml'
                             }
