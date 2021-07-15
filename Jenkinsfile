@@ -36,7 +36,6 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
-                                bat (script: "docker pull ${buildCacheImage}/win:v1")
                                 bat (script: "docker build --rm=false --cache-from=${buildCacheImage}/win:v1 -t ${buildCacheImage}/win:v1 - < Dockerfile.windows")
                                 bat (script: "docker push ${buildCacheImage}/win:v1")
                                 def apiUrl = params.apiUrl
