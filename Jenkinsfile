@@ -36,6 +36,7 @@ parallel windows: {
                         }
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                             try {
+                                bat (script: "docker pull ${buildCacheImage}/wincore:latest")
                                 bat (script: "docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore")
                                 bat (script: "docker push ${buildCacheImage}/wincore:latest")
                                 bat (script: "docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows .")
