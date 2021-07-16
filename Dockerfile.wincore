@@ -1,0 +1,38 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2016
+
+# Visual Studio
+RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; $wc = New-Object net.webclient; $wc.Downloadfile('https://aka.ms/vs/15/release/vs_buildtools.exe', 'vs_buildtools.exe')" \
+    && C:\vs_BuildTools.exe \
+        --add Microsoft.VisualStudio.Product.BuildTools \
+        --add Microsoft.VisualStudio.Workload.MSBuildTools \
+        --add Microsoft.VisualStudio.Workload.VCTools \
+        --add Microsoft.VisualStudio.Component.VC.ATL \
+        --add Microsoft.VisualStudio.Component.VC.ATLMFC \
+        --includeRecommended \
+        --passive \
+        --norestart \
+        --wait \
+        --nocache \
+    && del C:\vs_BuildTools.exe 
+
+# Chocolatey & Git
+RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && \
+    SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" && \ 
+    %ALLUSERSPROFILE%\chocolatey\bin\choco.exe install -y git && \
+    %ALLUSERSPROFILE%\chocolatey\bin\choco.exe install -y cmake --version=3.19.0 --installargs 'ADD_CMAKE_TO_PATH=""System""'
+
+# install vcpkg
+RUN git clone https://github.com/microsoft/vcpkg C:\vcpkg && \
+    C:\vcpkg\bootstrap-vcpkg.bat && \
+    setx path "%path%;C:\vcpkg;C:\vcpkg\installed\x64-windows;C:\vcpkg\installed\x64-windows\bin"
+RUN vcpkg install openssl:x64-windows
+
+# install certificate from api.aspose.cloud to container certificates storage
+RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " \
+    $webRequest = [Net.WebRequest]::Create(""""https://api.aspose.cloud""""); \
+    $webRequest.GetResponse(); \
+    $cert = $webRequest.ServicePoint.Certificate; \
+    $chain = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Chain; \
+    $chain.build($cert); \
+    $chain.ChainElements.Certificate | % {set-content -value $(""""-----BEGIN CERTIFICATE-----`r`n$([System.Convert]::ToBase64String($($_.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert)), 'InsertLineBreaks'))`r`n-----END CERTIFICATE-----`r`n"""") -encoding Ascii -path """"$($_.Thumbprint).cer""""; CertUtil -addStore Root """"$($_.Thumbprint).cer""""; }; \
+"
