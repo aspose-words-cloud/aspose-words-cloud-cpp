@@ -45,7 +45,7 @@ parallel windows: {
                                     if exist out rmdir out /s /q
                                     mkdir out
 
-                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\scripts\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
+                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
