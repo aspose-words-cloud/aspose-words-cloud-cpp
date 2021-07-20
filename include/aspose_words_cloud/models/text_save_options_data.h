@@ -52,6 +52,18 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setAddBidiMarks(std::shared_ptr< bool > value);
 
         /// <summary>
+        /// Gets or sets an integer value that specifies the maximum number of characters per one line.
+        /// The default value is 0, that means no limit.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getMaxCharactersPerLine() const;
+
+        /// <summary>
+        /// Gets or sets an integer value that specifies the maximum number of characters per one line.
+        /// The default value is 0, that means no limit.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setMaxCharactersPerLine(std::shared_ptr< int32_t > value);
+
+        /// <summary>
         /// Gets or sets a value indicating whether the program should attempt to preserve layout of tables when saving in the plain text format.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreserveTableLayout() const;
@@ -73,6 +85,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< bool > m_AddBidiMarks;
+        std::shared_ptr< int32_t > m_MaxCharactersPerLine;
         std::shared_ptr< bool > m_PreserveTableLayout;
         std::shared_ptr< bool > m_SimplifyListLabels;
     };
