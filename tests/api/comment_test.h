@@ -65,9 +65,9 @@ TEST_F(CommentTests, TestGetComment) {
 /// Test for getting comment by specified comment's index online.
 /// </summary>
 TEST_F(CommentTests, TestGetCommentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetCommentOnlineRequest> request(new requests::GetCommentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr
@@ -106,9 +106,9 @@ TEST_F(CommentTests, TestGetComments) {
 /// Test for getting all comments from document online.
 /// </summary>
 TEST_F(CommentTests, TestGetCommentsOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetCommentsOnlineRequest> request(new requests::GetCommentsOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         nullptr,
         nullptr
     ));
@@ -172,7 +172,7 @@ TEST_F(CommentTests, TestInsertComment) {
 /// Test for adding comment online.
 /// </summary>
 TEST_F(CommentTests, TestInsertCommentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
 
@@ -195,7 +195,7 @@ TEST_F(CommentTests, TestInsertCommentOnline) {
     requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
 
     std::shared_ptr<requests::InsertCommentOnlineRequest> request(new requests::InsertCommentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestComment,
         nullptr,
         nullptr,
@@ -264,7 +264,7 @@ TEST_F(CommentTests, TestUpdateComment) {
 /// Test for updating comment online.
 /// </summary>
 TEST_F(CommentTests, TestUpdateCommentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
 
@@ -287,7 +287,7 @@ TEST_F(CommentTests, TestUpdateCommentOnline) {
     requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
 
     std::shared_ptr<requests::UpdateCommentOnlineRequest> request(new requests::UpdateCommentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         requestComment,
         nullptr,
@@ -330,9 +330,9 @@ getApi()->deleteComment(request);
 /// A test for DeleteComment online.
 /// </summary>
 TEST_F(CommentTests, TestDeleteCommentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteCommentOnlineRequest> request(new requests::DeleteCommentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -373,9 +373,9 @@ getApi()->deleteComments(request);
 /// A test for DeleteComments online.
 /// </summary>
 TEST_F(CommentTests, TestDeleteCommentsOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteCommentsOnlineRequest> request(new requests::DeleteCommentsOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         nullptr,
         nullptr,
         nullptr,

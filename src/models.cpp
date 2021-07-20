@@ -15691,6 +15691,9 @@ namespace aspose::words::cloud::models {
         if (m_FileName) {
             json["FileName"] = convertUtf16(*m_FileName);
         }
+        if (m_ImlRenderingMode) {
+            json["ImlRenderingMode"] = convertUtf16(*m_ImlRenderingMode);
+        }
         if (m_SaveFormat) {
             json["SaveFormat"] = convertUtf16(*m_SaveFormat);
         }
@@ -15744,6 +15747,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FileName") && !json["FileName"].is_null()) {
             m_FileName = std::make_shared< std::wstring >(
                 convertUtf8( json["FileName"].get< std::string >() )
+            );
+        }
+        if (json.contains("ImlRenderingMode") && !json["ImlRenderingMode"].is_null()) {
+            m_ImlRenderingMode = std::make_shared< std::wstring >(
+                convertUtf8( json["ImlRenderingMode"].get< std::string >() )
             );
         }
         if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
@@ -15841,6 +15849,16 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setFileName(std::shared_ptr< std::wstring > value)
     {
         m_FileName = value;
+    }
+
+    std::shared_ptr< std::wstring > SaveOptionsData::getImlRenderingMode() const
+    {
+        return m_ImlRenderingMode;
+    }
+
+    void SaveOptionsData::setImlRenderingMode(std::shared_ptr< std::wstring > value)
+    {
+        m_ImlRenderingMode = value;
     }
 
     std::shared_ptr< std::wstring > SaveOptionsData::getSaveFormat() const
@@ -20965,6 +20983,9 @@ namespace aspose::words::cloud::models {
         if (m_AddBidiMarks) {
             json["AddBidiMarks"] = *m_AddBidiMarks;
         }
+        if (m_MaxCharactersPerLine) {
+            json["MaxCharactersPerLine"] = *m_MaxCharactersPerLine;
+        }
         if (m_PreserveTableLayout) {
             json["PreserveTableLayout"] = *m_PreserveTableLayout;
         }
@@ -20980,6 +21001,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("AddBidiMarks") && !json["AddBidiMarks"].is_null()) {
             m_AddBidiMarks = std::make_shared< bool >(
                 json["AddBidiMarks"].get< bool >()
+            );
+        }
+        if (json.contains("MaxCharactersPerLine") && !json["MaxCharactersPerLine"].is_null()) {
+            m_MaxCharactersPerLine = std::make_shared< int32_t >(
+                json["MaxCharactersPerLine"].get< int32_t >()
             );
         }
         if (json.contains("PreserveTableLayout") && !json["PreserveTableLayout"].is_null()) {
@@ -21002,6 +21028,16 @@ namespace aspose::words::cloud::models {
     void TextSaveOptionsData::setAddBidiMarks(std::shared_ptr< bool > value)
     {
         m_AddBidiMarks = value;
+    }
+
+    std::shared_ptr< int32_t > TextSaveOptionsData::getMaxCharactersPerLine() const
+    {
+        return m_MaxCharactersPerLine;
+    }
+
+    void TextSaveOptionsData::setMaxCharactersPerLine(std::shared_ptr< int32_t > value)
+    {
+        m_MaxCharactersPerLine = value;
     }
 
     std::shared_ptr< bool > TextSaveOptionsData::getPreserveTableLayout() const

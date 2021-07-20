@@ -82,9 +82,9 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
 /// Test for document classification online.
 /// </summary>
 TEST_F(ClassificationTests, TestClassifyDocumentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::ClassifyDocumentOnlineRequest> request(new requests::ClassifyDocumentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(L"3"),

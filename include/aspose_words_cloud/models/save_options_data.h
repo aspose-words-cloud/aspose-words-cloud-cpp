@@ -111,6 +111,16 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setFileName(std::shared_ptr< std::wstring > value);
 
         /// <summary>
+        /// Gets or sets the value determining how ink (InkML) objects are rendered.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImlRenderingMode() const;
+
+        /// <summary>
+        /// Gets or sets the value determining how ink (InkML) objects are rendered.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setImlRenderingMode(std::shared_ptr< std::wstring > value);
+
+        /// <summary>
         /// Gets or sets the format of save.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSaveFormat() const;
@@ -191,6 +201,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_DmlEffectsRenderingMode;
         std::shared_ptr< std::wstring > m_DmlRenderingMode;
         std::shared_ptr< std::wstring > m_FileName;
+        std::shared_ptr< std::wstring > m_ImlRenderingMode;
         std::shared_ptr< std::wstring > m_SaveFormat;
         std::shared_ptr< bool > m_UpdateCreatedTimeProperty;
         std::shared_ptr< bool > m_UpdateFields;

@@ -39,10 +39,10 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
     std::wstring fileName  = L"test_doc.docx";
 
     // Upload original document to cloud storage.
-    auto fileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
+    auto requestFileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
     std::shared_ptr< requests::UploadFileRequest > uploadFileRequest(
         new requests::UploadFileRequest(
-            fileContentStream, std::make_shared< std::wstring >(fileName)
+            requestFileContentStream, std::make_shared< std::wstring >(fileName)
         )
     );
     wordsApi->uploadFile(uploadFileRequest);
@@ -63,10 +63,10 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
     std::wstring fileName  = L"test_doc.docx";
 
     // Calls AcceptAllRevisionsOnline method for document in cloud.
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
     std::shared_ptr< requests::AcceptAllRevisionsOnlineRequest > request(
         new requests::AcceptAllRevisionsOnlineRequest(
-            documentStream
+            requestDocumentStream
         )
     );
     auto acceptAllRevisionsOnlineResult = wordsApi->acceptAllRevisionsOnline(request);
@@ -79,4 +79,21 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
         fileWriter.write(buffer, acceptAllRevisionsOnlineResult->getDocument()->gcount());
         fileWriter.close();
     }
+}
+
+TEST_F(ExamplesTest, TestExampleUpdateBookmark) {
+    auto wordsApi = getApi();
+    std::wstring remoteFileName = L"Sample.docx";
+    std::wstring bookmarkName = L"aspose";
+
+    auto testBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
+    testBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
+    testBookmarkData->setText(std::make_shared< std::wstring >(L"New Bookmark Text"));
+
+    std::shared_ptr< requests::UpdateBookmarkRequest > updateBookmark(
+        new requests::UpdateBookmarkRequest(
+            std::make_shared< std::wstring >(remoteFileName), std::make_shared< std::wstring >(bookmarkName), testBookmarkData
+        )
+    );
+    wordsApi->updateBookmark(updateBookmark);
 }

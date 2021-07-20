@@ -73,13 +73,13 @@ TEST_F(TextTests, TestReplaceText) {
 TEST_F(TextTests, TestReplaceTextOnline) {
     std::wstring localFile = L"Common/test_multi_pages.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestReplaceText = std::make_shared< aspose::words::cloud::models::ReplaceTextParameters >();
     requestReplaceText->setOldValue(std::make_shared< std::wstring >(L"aspose"));
     requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"aspose new"));
 
     std::shared_ptr<requests::ReplaceTextOnlineRequest> request(new requests::ReplaceTextOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestReplaceText,
         nullptr,
         nullptr,
@@ -126,9 +126,9 @@ TEST_F(TextTests, TestSearch) {
 TEST_F(TextTests, TestSearchOnline) {
     std::wstring localFile = L"DocumentElements/Text/SampleWordDocument.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::SearchOnlineRequest> request(new requests::SearchOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"aspose"),
         nullptr,
         nullptr

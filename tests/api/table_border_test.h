@@ -68,9 +68,9 @@ TEST_F(TableBorderTests, TestGetBorders) {
 /// Test for getting borders online.
 /// </summary>
 TEST_F(TableBorderTests, TestGetBordersOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBordersOnlineRequest> request(new requests::GetBordersOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
         nullptr
@@ -110,9 +110,9 @@ TEST_F(TableBorderTests, TestGetBorder) {
 /// Test for getting border online.
 /// </summary>
 TEST_F(TableBorderTests, TestGetBorderOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBorderOnlineRequest> request(new requests::GetBorderOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
@@ -152,9 +152,9 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
 /// Test for deleting borders online.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBordersOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteBordersOnlineRequest> request(new requests::DeleteBordersOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
         nullptr,
@@ -197,9 +197,9 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
 /// Test for deleting border online.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBorderOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteBorderOnlineRequest> request(new requests::DeleteBorderOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
@@ -261,7 +261,7 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
 /// Test for updating border online.
 /// </summary>
 TEST_F(TableBorderTests, TestUpdateBorderOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
     requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
 
@@ -274,7 +274,7 @@ TEST_F(TableBorderTests, TestUpdateBorderOnline) {
     requestBorderProperties->setShadow(std::make_shared< bool >(true));
 
     std::shared_ptr<requests::UpdateBorderOnlineRequest> request(new requests::UpdateBorderOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestBorderProperties,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),

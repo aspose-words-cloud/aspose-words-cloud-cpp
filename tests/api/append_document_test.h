@@ -80,7 +80,7 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     std::wstring remoteFileName = L"TestAppendDocument.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFile,
         remoteDataFolder + L"/" + remoteFileName
@@ -97,7 +97,7 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
 
     std::shared_ptr<requests::AppendDocumentOnlineRequest> request(new requests::AppendDocumentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestDocumentList,
         nullptr,
         nullptr,

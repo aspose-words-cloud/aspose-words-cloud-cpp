@@ -73,13 +73,13 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
 TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
     std::wstring localName = L"test_multi_pages.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
     auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
     requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
 
     std::shared_ptr<requests::SaveAsOnlineRequest> request(new requests::SaveAsOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestSaveOptionsData,
         nullptr,
         nullptr,
@@ -174,13 +174,13 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
 TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
     std::wstring localName = L"test_multi_pages.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
     auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
     requestSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
     requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
 
     std::shared_ptr<requests::SaveAsTiffOnlineRequest> request(new requests::SaveAsTiffOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestSaveOptions,
         nullptr,
         nullptr,
@@ -211,9 +211,9 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
 /// A test for ConvertDocument.
 /// </summary>
 TEST_F(ConvertDocumentTests, TestConvertDocument) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/test_uploadfile.docx")), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/test_uploadfile.docx")), std::istream::binary));
     std::shared_ptr<requests::ConvertDocumentRequest> request(new requests::ConvertDocumentRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"pdf"),
         nullptr,
         nullptr,

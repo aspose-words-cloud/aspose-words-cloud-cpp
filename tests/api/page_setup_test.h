@@ -66,9 +66,9 @@ TEST_F(PageSetupTests, TestGetSectionPageSetup) {
 /// Test for getting page settings online.
 /// </summary>
 TEST_F(PageSetupTests, TestGetSectionPageSetupOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetSectionPageSetupOnlineRequest> request(new requests::GetSectionPageSetupOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr
@@ -118,7 +118,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 /// Test for updating page settings online.
 /// </summary>
 TEST_F(PageSetupTests, TestUpdateSectionPageSetupOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestPageSetup = std::make_shared< aspose::words::cloud::models::PageSetup >();
     requestPageSetup->setRtlGutter(std::make_shared< bool >(true));
     requestPageSetup->setLeftMargin(std::make_shared< double >(10));
@@ -126,7 +126,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetupOnline) {
     requestPageSetup->setPaperSize(std::make_shared< aspose::words::cloud::models::PageSetup::PaperSize >(aspose::words::cloud::models::PageSetup::PaperSize::A5));
 
     std::shared_ptr<requests::UpdateSectionPageSetupOnlineRequest> request(new requests::UpdateSectionPageSetupOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         requestPageSetup,
         nullptr,
@@ -168,9 +168,9 @@ TEST_F(PageSetupTests, TestGetRenderPage) {
 /// Test for page rendering.
 /// </summary>
 TEST_F(PageSetupTests, TestGetRenderPageOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localTextFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localTextFile)), std::istream::binary));
     std::shared_ptr<requests::RenderPageOnlineRequest> request(new requests::RenderPageOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L"bmp"),
         nullptr,

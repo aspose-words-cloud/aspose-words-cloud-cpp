@@ -67,9 +67,9 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
 /// Test for document classification online.
 /// </summary>
 TEST_F(DocumentStatisticsTests, TestGetDocumentStatisticsOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentStatisticsOnlineRequest> request(new requests::GetDocumentStatisticsOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         nullptr,
         nullptr,
         nullptr,

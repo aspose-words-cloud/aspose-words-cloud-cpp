@@ -73,12 +73,12 @@ TEST_F(RunTests, TestUpdateRun) {
 /// Test for updating run online.
 /// </summary>
 TEST_F(RunTests, TestUpdateRunOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
 
     std::shared_ptr<requests::UpdateRunOnlineRequest> request(new requests::UpdateRunOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"paragraphs/1"),
         requestRun,
         std::make_shared< int32_t >(0),
@@ -130,12 +130,12 @@ TEST_F(RunTests, TestInsertRun) {
 /// Test for adding run online.
 /// </summary>
 TEST_F(RunTests, TestInsertRunOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
 
     std::shared_ptr<requests::InsertRunOnlineRequest> request(new requests::InsertRunOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"paragraphs/1"),
         requestRun,
         nullptr,
@@ -180,9 +180,9 @@ getApi()->deleteRun(request);
 /// Test for deleting run online.
 /// </summary>
 TEST_F(RunTests, TestDeleteRunOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteRunOnlineRequest> request(new requests::DeleteRunOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"paragraphs/1"),
         std::make_shared< int32_t >(0),
         nullptr,

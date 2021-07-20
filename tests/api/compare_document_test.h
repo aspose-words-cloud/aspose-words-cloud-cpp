@@ -82,7 +82,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
     std::wstring localName2 = L"compareTestDoc2.doc";
     std::wstring remoteName2 = L"TestCompareDocument2.doc";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFolder + L"/" + localName2,
         remoteFolder + L"/" + remoteName2
@@ -94,7 +94,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
 
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestCompareData,
         nullptr,
         nullptr,
@@ -113,8 +113,8 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
     std::wstring localName2 = L"compareTestDoc2.doc";
     std::wstring remoteName2 = L"TestCompareDocument2.doc";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
-    auto comparingDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName2)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
+    auto requestComparingDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName2)), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFolder + L"/" + localName2,
         remoteFolder + L"/" + remoteName2
@@ -126,9 +126,9 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
 
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         requestCompareData,
-        comparingDocumentStream,
+        requestComparingDocumentStream,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")

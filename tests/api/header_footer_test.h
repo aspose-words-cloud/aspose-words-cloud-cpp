@@ -67,9 +67,9 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooters) {
 /// Test for getting headers and footers online.
 /// </summary>
 TEST_F(HeaderFooterTests, TestGetHeaderFootersOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetHeaderFootersOnlineRequest> request(new requests::GetHeaderFootersOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr,
@@ -111,9 +111,9 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
 /// Test for getting headerfooter online.
 /// </summary>
 TEST_F(HeaderFooterTests, TestGetHeaderFooterOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetHeaderFooterOnlineRequest> request(new requests::GetHeaderFooterOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -156,9 +156,9 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSection) {
 /// Test for getting headerfooter of section online.
 /// </summary>
 TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSectionOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetHeaderFooterOfSectionOnlineRequest> request(new requests::GetHeaderFooterOfSectionOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         std::make_shared< int32_t >(0),
         nullptr,
@@ -200,9 +200,9 @@ getApi()->deleteHeaderFooter(request);
 /// Test for deleting headerfooter online.
 /// </summary>
 TEST_F(HeaderFooterTests, TestDeleteHeaderFooterOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteHeaderFooterOnlineRequest> request(new requests::DeleteHeaderFooterOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L""),
         std::make_shared< int32_t >(0),
         nullptr,
@@ -246,9 +246,9 @@ getApi()->deleteHeadersFooters(request);
 /// Test for deleting headerfooters online.
 /// </summary>
 TEST_F(HeaderFooterTests, TestDeleteHeadersFootersOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteHeadersFootersOnlineRequest> request(new requests::DeleteHeadersFootersOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr,
@@ -292,9 +292,9 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
 /// Test for adding headerfooters online.
 /// </summary>
 TEST_F(HeaderFooterTests, TestInsertHeaderFooterOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::InsertHeaderFooterOnlineRequest> request(new requests::InsertHeaderFooterOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(L"FooterEven"),
         nullptr,
