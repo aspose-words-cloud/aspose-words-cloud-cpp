@@ -64,9 +64,9 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjects) {
 /// Test for getting drawing objects from document online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentDrawingObjectsOnlineRequest> request(new requests::GetDocumentDrawingObjectsOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
         nullptr
@@ -126,9 +126,9 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndex) {
 /// Test for getting drawing object by specified index online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentDrawingObjectByIndexOnlineRequest> request(new requests::GetDocumentDrawingObjectByIndexOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
@@ -193,9 +193,9 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObject) {
 /// Test for getting drawing object by specified index and format online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestRenderDrawingObjectOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::RenderDrawingObjectOnlineRequest> request(new requests::RenderDrawingObjectOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
@@ -263,9 +263,9 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageData) {
 /// Test for reading drawing object's image data online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageDataOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentDrawingObjectImageDataOnlineRequest> request(new requests::GetDocumentDrawingObjectImageDataOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
@@ -327,9 +327,9 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleData) {
 /// Test for getting drawing object OLE data online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localDrawingFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localDrawingFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentDrawingObjectOleDataOnlineRequest> request(new requests::GetDocumentDrawingObjectOleDataOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
@@ -369,25 +369,25 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataWithoutNodePath) 
 TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
     std::wstring remoteFileName = L"TestInsetDrawingObject.docx";
 
-    auto imageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFile,
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto drawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
-    drawingObject->setHeight(std::make_shared< double >(0));
-    drawingObject->setLeft(std::make_shared< double >(0));
-    drawingObject->setTop(std::make_shared< double >(0));
-    drawingObject->setWidth(std::make_shared< double >(0));
-    drawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
-    drawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
-    drawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
+    auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
+    requestDrawingObject->setHeight(std::make_shared< double >(0));
+    requestDrawingObject->setLeft(std::make_shared< double >(0));
+    requestDrawingObject->setTop(std::make_shared< double >(0));
+    requestDrawingObject->setWidth(std::make_shared< double >(0));
+    requestDrawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
+    requestDrawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
+    requestDrawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
 
     std::shared_ptr<requests::InsertDrawingObjectRequest> request(new requests::InsertDrawingObjectRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        drawingObject,
-        imageFileStream,
+        requestDrawingObject,
+        requestImageFileStream,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -405,21 +405,21 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
 /// Test for adding drawing object online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestInsertDrawingObjectOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto imageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
-    auto drawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
-    drawingObject->setHeight(std::make_shared< double >(0));
-    drawingObject->setLeft(std::make_shared< double >(0));
-    drawingObject->setTop(std::make_shared< double >(0));
-    drawingObject->setWidth(std::make_shared< double >(0));
-    drawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
-    drawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
-    drawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
+    requestDrawingObject->setHeight(std::make_shared< double >(0));
+    requestDrawingObject->setLeft(std::make_shared< double >(0));
+    requestDrawingObject->setTop(std::make_shared< double >(0));
+    requestDrawingObject->setWidth(std::make_shared< double >(0));
+    requestDrawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
+    requestDrawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
+    requestDrawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
 
     std::shared_ptr<requests::InsertDrawingObjectOnlineRequest> request(new requests::InsertDrawingObjectOnlineRequest(
-        documentStream,
-        drawingObject,
-        imageFileStream,
+        requestDocumentStream,
+        requestDrawingObject,
+        requestImageFileStream,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr,
@@ -437,25 +437,25 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectOnline) {
 TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
     std::wstring remoteFileName = L"TestInsetDrawingObjectWithoutNodePath.docx";
 
-    auto imageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFile,
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto drawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
-    drawingObject->setHeight(std::make_shared< double >(0));
-    drawingObject->setLeft(std::make_shared< double >(0));
-    drawingObject->setTop(std::make_shared< double >(0));
-    drawingObject->setWidth(std::make_shared< double >(0));
-    drawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
-    drawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
-    drawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
+    auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
+    requestDrawingObject->setHeight(std::make_shared< double >(0));
+    requestDrawingObject->setLeft(std::make_shared< double >(0));
+    requestDrawingObject->setTop(std::make_shared< double >(0));
+    requestDrawingObject->setWidth(std::make_shared< double >(0));
+    requestDrawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
+    requestDrawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
+    requestDrawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
 
     std::shared_ptr<requests::InsertDrawingObjectRequest> request(new requests::InsertDrawingObjectRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        drawingObject,
-        imageFileStream,
+        requestDrawingObject,
+        requestImageFileStream,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -500,9 +500,9 @@ getApi()->deleteDrawingObject(request);
 /// Test for deleting drawing object online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteDrawingObjectOnlineRequest> request(new requests::DeleteDrawingObjectOnlineRequest(
-        documentStream,
+        requestDocumentStream,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -548,19 +548,19 @@ getApi()->deleteDrawingObject(request);
 TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
     std::wstring remoteFileName = L"TestUpdateDrawingObject.docx";
 
-    auto imageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFile,
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto drawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
-    drawingObject->setLeft(std::make_shared< double >(0));
+    auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
+    requestDrawingObject->setLeft(std::make_shared< double >(0));
 
     std::shared_ptr<requests::UpdateDrawingObjectRequest> request(new requests::UpdateDrawingObjectRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        drawingObject,
-        imageFileStream,
+        requestDrawingObject,
+        requestImageFileStream,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
@@ -579,15 +579,15 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
 /// Test for updating drawing object online.
 /// </summary>
 TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto imageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
-    auto drawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
-    drawingObject->setLeft(std::make_shared< double >(0));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
+    requestDrawingObject->setLeft(std::make_shared< double >(0));
 
     std::shared_ptr<requests::UpdateDrawingObjectOnlineRequest> request(new requests::UpdateDrawingObjectOnlineRequest(
-        documentStream,
-        drawingObject,
-        imageFileStream,
+        requestDocumentStream,
+        requestDrawingObject,
+        requestImageFileStream,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -606,19 +606,19 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectOnline) {
 TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
     std::wstring remoteFileName = L"TestUpdateDrawingObjectWithoutNodePath.docx";
 
-    auto imageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFile,
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto drawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
-    drawingObject->setLeft(std::make_shared< double >(0));
+    auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
+    requestDrawingObject->setLeft(std::make_shared< double >(0));
 
     std::shared_ptr<requests::UpdateDrawingObjectRequest> request(new requests::UpdateDrawingObjectRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        drawingObject,
-        imageFileStream,
+        requestDrawingObject,
+        requestImageFileStream,
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),

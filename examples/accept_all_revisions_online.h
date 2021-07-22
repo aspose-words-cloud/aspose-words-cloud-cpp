@@ -4,10 +4,10 @@ auto wordsApi = std::make_shared<WordsApi>(config);
 std::wstring fileName  = L"test_doc.docx";
 
 // Calls AcceptAllRevisionsOnline method for document in cloud.
-auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
+auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
 std::shared_ptr< requests::AcceptAllRevisionsOnlineRequest > request(
     new requests::AcceptAllRevisionsOnlineRequest(
-        documentStream
+        requestDocumentStream
     )
 );
 auto acceptAllRevisionsOnlineResult = wordsApi->acceptAllRevisionsOnline(request);

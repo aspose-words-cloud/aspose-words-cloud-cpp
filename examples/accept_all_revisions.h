@@ -7,10 +7,10 @@ auto wordsApi = std::make_shared<WordsApi>(config);
 std::wstring fileName  = L"test_doc.docx";
 
 // Upload original document to cloud storage.
-auto fileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
+auto requestFileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
 std::shared_ptr< requests::UploadFileRequest > uploadFileRequest(
     new requests::UploadFileRequest(
-        fileContentStream, std::make_shared< std::wstring >(fileName)
+        requestFileContentStream, std::make_shared< std::wstring >(fileName)
     )
 );
 wordsApi->uploadFile(uploadFileRequest);

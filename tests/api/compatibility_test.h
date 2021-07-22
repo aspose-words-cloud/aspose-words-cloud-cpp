@@ -47,12 +47,12 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto options = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
-    options->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
+    auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
+    requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
 
     std::shared_ptr<requests::OptimizeDocumentRequest> request(new requests::OptimizeDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        options,
+        requestOptions,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -69,13 +69,13 @@ getApi()->optimizeDocument(request);
 /// Test for optimize document to specific MS Word version.
 /// </summary>
 TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto options = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
-    options->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
+    requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
 
     std::shared_ptr<requests::OptimizeDocumentOnlineRequest> request(new requests::OptimizeDocumentOnlineRequest(
-        documentStream,
-        options,
+        requestDocumentStream,
+        requestOptions,
         nullptr,
         nullptr,
         nullptr,

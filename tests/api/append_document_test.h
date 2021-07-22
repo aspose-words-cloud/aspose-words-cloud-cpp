@@ -47,19 +47,19 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto documentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
-    documentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
-    documentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
+    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
 
-    auto documentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
-    documentListDocumentEntries->push_back(documentListDocumentEntries0);
+    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
+    requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
 
-    auto documentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
-    documentList->setDocumentEntries(documentListDocumentEntries);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
 
     std::shared_ptr<requests::AppendDocumentRequest> request(new requests::AppendDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        documentList,
+        requestDocumentList,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -80,25 +80,25 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     std::wstring remoteFileName = L"TestAppendDocument.docx";
 
-    auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFile,
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto documentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
-    documentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
-    documentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
+    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
 
-    auto documentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
-    documentListDocumentEntries->push_back(documentListDocumentEntries0);
+    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
+    requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
 
-    auto documentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
-    documentList->setDocumentEntries(documentListDocumentEntries);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
 
     std::shared_ptr<requests::AppendDocumentOnlineRequest> request(new requests::AppendDocumentOnlineRequest(
-        documentStream,
-        documentList,
+        requestDocumentStream,
+        requestDocumentList,
         nullptr,
         nullptr,
         nullptr,

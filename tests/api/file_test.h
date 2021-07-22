@@ -42,9 +42,9 @@ protected:
 TEST_F(FileTests, TestUploadFile) {
     std::wstring remoteFileName = L"TestUploadFile.docx";
 
-    auto fileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestFileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::UploadFileRequest> request(new requests::UploadFileRequest(
-        fileContentStream,
+        requestFileContentStream,
         std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName),
         nullptr
     ));
