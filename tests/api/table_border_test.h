@@ -223,21 +223,21 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
-    requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
+    auto borderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
+    borderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
 
-    auto requestBorderProperties = std::make_shared< aspose::words::cloud::models::Border >();
-    requestBorderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
-    requestBorderProperties->setColor(requestBorderPropertiesColor);
-    requestBorderProperties->setDistanceFromText(std::make_shared< double >(6.0));
-    requestBorderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
-    requestBorderProperties->setLineWidth(std::make_shared< double >(2.0));
-    requestBorderProperties->setShadow(std::make_shared< bool >(true));
+    auto borderProperties = std::make_shared< aspose::words::cloud::models::Border >();
+    borderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
+    borderProperties->setColor(borderPropertiesColor);
+    borderProperties->setDistanceFromText(std::make_shared< double >(6.0));
+    borderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
+    borderProperties->setLineWidth(std::make_shared< double >(2.0));
+    borderProperties->setShadow(std::make_shared< bool >(true));
 
     std::shared_ptr<requests::UpdateBorderRequest> request(new requests::UpdateBorderRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"left"),
-        requestBorderProperties,
+        borderProperties,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -262,20 +262,20 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
 /// </summary>
 TEST_F(TableBorderTests, TestUpdateBorderOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
-    requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
+    auto borderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
+    borderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
 
-    auto requestBorderProperties = std::make_shared< aspose::words::cloud::models::Border >();
-    requestBorderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
-    requestBorderProperties->setColor(requestBorderPropertiesColor);
-    requestBorderProperties->setDistanceFromText(std::make_shared< double >(6));
-    requestBorderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
-    requestBorderProperties->setLineWidth(std::make_shared< double >(2));
-    requestBorderProperties->setShadow(std::make_shared< bool >(true));
+    auto borderProperties = std::make_shared< aspose::words::cloud::models::Border >();
+    borderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
+    borderProperties->setColor(borderPropertiesColor);
+    borderProperties->setDistanceFromText(std::make_shared< double >(6));
+    borderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
+    borderProperties->setLineWidth(std::make_shared< double >(2));
+    borderProperties->setShadow(std::make_shared< bool >(true));
 
     std::shared_ptr<requests::UpdateBorderOnlineRequest> request(new requests::UpdateBorderOnlineRequest(
         documentStream,
-        requestBorderProperties,
+        borderProperties,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,

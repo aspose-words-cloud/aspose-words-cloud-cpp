@@ -48,13 +48,13 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
         remoteFolder + L"/" + remoteName
     );
 
-    auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
-    requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
-    requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
+    auto saveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
+    saveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
+    saveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
 
     std::shared_ptr<requests::SaveAsRequest> request(new requests::SaveAsRequest(
         std::make_shared< std::wstring >(remoteName),
-        requestSaveOptionsData,
+        saveOptionsData,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -74,13 +74,13 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
     std::wstring localName = L"test_multi_pages.docx";
 
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
-    auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
-    requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
-    requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
+    auto saveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
+    saveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
+    saveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
 
     std::shared_ptr<requests::SaveAsOnlineRequest> request(new requests::SaveAsOnlineRequest(
         documentStream,
-        requestSaveOptionsData,
+        saveOptionsData,
         nullptr,
         nullptr,
         nullptr
@@ -101,13 +101,13 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
         remoteFolder + L"/" + remoteName
     );
 
-    auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
-    requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"docx"));
-    requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAsFromPdfToDoc.docx"));
+    auto saveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
+    saveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"docx"));
+    saveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAsFromPdfToDoc.docx"));
 
     std::shared_ptr<requests::SaveAsRequest> request(new requests::SaveAsRequest(
         std::make_shared< std::wstring >(remoteName),
-        requestSaveOptionsData,
+        saveOptionsData,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -132,13 +132,13 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
         remoteFolder + L"/" + remoteName
     );
 
-    auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
-    requestSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
-    requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
+    auto saveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
+    saveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
+    saveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
 
     std::shared_ptr<requests::SaveAsTiffRequest> request(new requests::SaveAsTiffRequest(
         std::make_shared< std::wstring >(remoteName),
-        requestSaveOptions,
+        saveOptions,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -175,13 +175,13 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
     std::wstring localName = L"test_multi_pages.docx";
 
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
-    auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
-    requestSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
-    requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
+    auto saveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
+    saveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
+    saveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
 
     std::shared_ptr<requests::SaveAsTiffOnlineRequest> request(new requests::SaveAsTiffOnlineRequest(
         documentStream,
-        requestSaveOptions,
+        saveOptions,
         nullptr,
         nullptr,
         nullptr,

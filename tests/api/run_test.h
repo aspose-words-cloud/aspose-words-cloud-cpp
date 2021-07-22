@@ -47,14 +47,14 @@ TEST_F(RunTests, TestUpdateRun) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
-    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
+    auto run = std::make_shared< aspose::words::cloud::models::RunUpdate >();
+    run->setText(std::make_shared< std::wstring >(L"run with text"));
 
     std::shared_ptr<requests::UpdateRunRequest> request(new requests::UpdateRunRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1"),
         std::make_shared< int32_t >(0),
-        requestRun,
+        run,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -74,13 +74,13 @@ TEST_F(RunTests, TestUpdateRun) {
 /// </summary>
 TEST_F(RunTests, TestUpdateRunOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
-    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
+    auto run = std::make_shared< aspose::words::cloud::models::RunUpdate >();
+    run->setText(std::make_shared< std::wstring >(L"run with text"));
 
     std::shared_ptr<requests::UpdateRunOnlineRequest> request(new requests::UpdateRunOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"paragraphs/1"),
-        requestRun,
+        run,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -103,13 +103,13 @@ TEST_F(RunTests, TestInsertRun) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
-    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
+    auto run = std::make_shared< aspose::words::cloud::models::RunInsert >();
+    run->setText(std::make_shared< std::wstring >(L"run with text"));
 
     std::shared_ptr<requests::InsertRunRequest> request(new requests::InsertRunRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1"),
-        requestRun,
+        run,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -131,13 +131,13 @@ TEST_F(RunTests, TestInsertRun) {
 /// </summary>
 TEST_F(RunTests, TestInsertRunOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
-    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
+    auto run = std::make_shared< aspose::words::cloud::models::RunInsert >();
+    run->setText(std::make_shared< std::wstring >(L"run with text"));
 
     std::shared_ptr<requests::InsertRunOnlineRequest> request(new requests::InsertRunOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"paragraphs/1"),
-        requestRun,
+        run,
         nullptr,
         nullptr,
         nullptr,

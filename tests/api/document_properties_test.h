@@ -174,13 +174,13 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestProperty = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
-    requestProperty->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
+    auto property = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
+    property->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
 
     std::shared_ptr<requests::CreateOrUpdateDocumentPropertyRequest> request(new requests::CreateOrUpdateDocumentPropertyRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"AsposeAuthor"),
-        requestProperty,
+        property,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -201,13 +201,13 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestUpdateDocumentPropertyOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestProperty = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
-    requestProperty->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
+    auto property = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
+    property->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
 
     std::shared_ptr<requests::CreateOrUpdateDocumentPropertyOnlineRequest> request(new requests::CreateOrUpdateDocumentPropertyOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"AsposeAuthor"),
-        requestProperty,
+        property,
         nullptr,
         nullptr,
         nullptr,

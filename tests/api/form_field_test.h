@@ -47,18 +47,18 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
-    requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
-    requestFormField->setEnabled(std::make_shared< bool >(true));
-    requestFormField->setCalculateOnExit(std::make_shared< bool >(true));
-    requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
-    requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
-    requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
+    auto formField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
+    formField->setName(std::make_shared< std::wstring >(L"FullName"));
+    formField->setEnabled(std::make_shared< bool >(true));
+    formField->setCalculateOnExit(std::make_shared< bool >(true));
+    formField->setStatusText(std::make_shared< std::wstring >(L""));
+    formField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
+    formField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
 
     std::shared_ptr<requests::UpdateFormFieldRequest> request(new requests::UpdateFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestFormField,
+        formField,
         std::make_shared< std::wstring >(L"sections/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -80,17 +80,17 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
 /// </summary>
 TEST_F(FormFieldTests, TestUpdateFormFieldOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
-    auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
-    requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
-    requestFormField->setEnabled(std::make_shared< bool >(true));
-    requestFormField->setCalculateOnExit(std::make_shared< bool >(true));
-    requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
-    requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
-    requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
+    auto formField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
+    formField->setName(std::make_shared< std::wstring >(L"FullName"));
+    formField->setEnabled(std::make_shared< bool >(true));
+    formField->setCalculateOnExit(std::make_shared< bool >(true));
+    formField->setStatusText(std::make_shared< std::wstring >(L""));
+    formField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
+    formField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
 
     std::shared_ptr<requests::UpdateFormFieldOnlineRequest> request(new requests::UpdateFormFieldOnlineRequest(
         documentStream,
-        requestFormField,
+        formField,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
@@ -114,18 +114,18 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
-    requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
-    requestFormField->setEnabled(std::make_shared< bool >(true));
-    requestFormField->setCalculateOnExit(std::make_shared< bool >(true));
-    requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
-    requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
-    requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
+    auto formField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
+    formField->setName(std::make_shared< std::wstring >(L"FullName"));
+    formField->setEnabled(std::make_shared< bool >(true));
+    formField->setCalculateOnExit(std::make_shared< bool >(true));
+    formField->setStatusText(std::make_shared< std::wstring >(L""));
+    formField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
+    formField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
 
     std::shared_ptr<requests::UpdateFormFieldRequest> request(new requests::UpdateFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestFormField,
+        formField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -290,18 +290,18 @@ TEST_F(FormFieldTests, TestInsertFormField) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
-    requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
-    requestFormField->setEnabled(std::make_shared< bool >(true));
-    requestFormField->setCalculateOnExit(std::make_shared< bool >(true));
-    requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
-    requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
-    requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
-    requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
+    auto formField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
+    formField->setName(std::make_shared< std::wstring >(L"FullName"));
+    formField->setEnabled(std::make_shared< bool >(true));
+    formField->setCalculateOnExit(std::make_shared< bool >(true));
+    formField->setStatusText(std::make_shared< std::wstring >(L""));
+    formField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
+    formField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
+    formField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
 
     std::shared_ptr<requests::InsertFormFieldRequest> request(new requests::InsertFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestFormField,
+        formField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -324,18 +324,18 @@ TEST_F(FormFieldTests, TestInsertFormField) {
 /// </summary>
 TEST_F(FormFieldTests, TestInsertFormFieldOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/FormFilled.docx")), std::istream::binary));
-    auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
-    requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
-    requestFormField->setEnabled(std::make_shared< bool >(true));
-    requestFormField->setCalculateOnExit(std::make_shared< bool >(true));
-    requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
-    requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
-    requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
-    requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
+    auto formField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
+    formField->setName(std::make_shared< std::wstring >(L"FullName"));
+    formField->setEnabled(std::make_shared< bool >(true));
+    formField->setCalculateOnExit(std::make_shared< bool >(true));
+    formField->setStatusText(std::make_shared< std::wstring >(L""));
+    formField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
+    formField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
+    formField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
 
     std::shared_ptr<requests::InsertFormFieldOnlineRequest> request(new requests::InsertFormFieldOnlineRequest(
         documentStream,
-        requestFormField,
+        formField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         nullptr,
         nullptr,
@@ -359,18 +359,18 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
-    requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
-    requestFormField->setEnabled(std::make_shared< bool >(true));
-    requestFormField->setCalculateOnExit(std::make_shared< bool >(true));
-    requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
-    requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
-    requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
-    requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
+    auto formField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
+    formField->setName(std::make_shared< std::wstring >(L"FullName"));
+    formField->setEnabled(std::make_shared< bool >(true));
+    formField->setCalculateOnExit(std::make_shared< bool >(true));
+    formField->setStatusText(std::make_shared< std::wstring >(L""));
+    formField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
+    formField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
+    formField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
 
     std::shared_ptr<requests::InsertFormFieldRequest> request(new requests::InsertFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestFormField,
+        formField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,

@@ -312,14 +312,14 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestFontDto = std::make_shared< aspose::words::cloud::models::Font >();
-    requestFontDto->setBold(std::make_shared< bool >(true));
+    auto fontDto = std::make_shared< aspose::words::cloud::models::Font >();
+    fontDto->setBold(std::make_shared< bool >(true));
 
     std::shared_ptr<requests::UpdateRunFontRequest> request(new requests::UpdateRunFontRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
-        requestFontDto,
+        fontDto,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -339,13 +339,13 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateRunFontOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestFontDto = std::make_shared< aspose::words::cloud::models::Font >();
-    requestFontDto->setBold(std::make_shared< bool >(true));
+    auto fontDto = std::make_shared< aspose::words::cloud::models::Font >();
+    fontDto->setBold(std::make_shared< bool >(true));
 
     std::shared_ptr<requests::UpdateRunFontOnlineRequest> request(new requests::UpdateRunFontOnlineRequest(
         documentStream,
         std::make_shared< std::wstring >(L"paragraphs/0"),
-        requestFontDto,
+        fontDto,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -368,12 +368,12 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
-    requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
+    auto paragraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
+    paragraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
 
     std::shared_ptr<requests::InsertParagraphRequest> request(new requests::InsertParagraphRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestParagraph,
+        paragraph,
         std::make_shared< std::wstring >(L"sections/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -395,12 +395,12 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
 /// </summary>
 TEST_F(ParagraphTests, TestInsertParagraphOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
-    requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
+    auto paragraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
+    paragraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
 
     std::shared_ptr<requests::InsertParagraphOnlineRequest> request(new requests::InsertParagraphOnlineRequest(
         documentStream,
-        requestParagraph,
+        paragraph,
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
         nullptr,
@@ -424,12 +424,12 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
-    requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
+    auto paragraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
+    paragraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
 
     std::shared_ptr<requests::InsertParagraphRequest> request(new requests::InsertParagraphRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestParagraph,
+        paragraph,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -598,13 +598,13 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestParagraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
-    requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
+    auto paragraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
+    paragraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
 
     std::shared_ptr<requests::UpdateParagraphFormatRequest> request(new requests::UpdateParagraphFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestParagraphFormatDto,
+        paragraphFormatDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -625,12 +625,12 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateParagraphFormatOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestParagraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
-    requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
+    auto paragraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
+    paragraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
 
     std::shared_ptr<requests::UpdateParagraphFormatOnlineRequest> request(new requests::UpdateParagraphFormatOnlineRequest(
         documentStream,
-        requestParagraphFormatDto,
+        paragraphFormatDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -795,13 +795,13 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
-    requestListFormatDto->setListId(std::make_shared< int32_t >(2));
+    auto listFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
+    listFormatDto->setListId(std::make_shared< int32_t >(2));
 
     std::shared_ptr<requests::UpdateParagraphListFormatRequest> request(new requests::UpdateParagraphListFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestListFormatDto,
+        listFormatDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -822,12 +822,12 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateParagraphListFormatOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphUpdateListFormat.doc")), std::istream::binary));
-    auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
-    requestListFormatDto->setListId(std::make_shared< int32_t >(2));
+    auto listFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
+    listFormatDto->setListId(std::make_shared< int32_t >(2));
 
     std::shared_ptr<requests::UpdateParagraphListFormatOnlineRequest> request(new requests::UpdateParagraphListFormatOnlineRequest(
         documentStream,
-        requestListFormatDto,
+        listFormatDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -851,13 +851,13 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
-    requestListFormatDto->setListId(std::make_shared< int32_t >(2));
+    auto listFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
+    listFormatDto->setListId(std::make_shared< int32_t >(2));
 
     std::shared_ptr<requests::UpdateParagraphListFormatRequest> request(new requests::UpdateParagraphListFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestListFormatDto,
+        listFormatDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -1027,15 +1027,15 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
-    requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
-    requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
-    requestTabStopInsertDto->setPosition(std::make_shared< double >(100.0));
+    auto tabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
+    tabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
+    tabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
+    tabStopInsertDto->setPosition(std::make_shared< double >(100.0));
 
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopRequest> request(new requests::InsertOrUpdateParagraphTabStopRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestTabStopInsertDto,
+        tabStopInsertDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -1057,14 +1057,14 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
 /// </summary>
 TEST_F(ParagraphTests, TestInsertParagraphTabStopsOnline) {
     auto documentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
-    auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
-    requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
-    requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
-    requestTabStopInsertDto->setPosition(std::make_shared< double >(72));
+    auto tabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
+    tabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
+    tabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
+    tabStopInsertDto->setPosition(std::make_shared< double >(72));
 
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopOnlineRequest> request(new requests::InsertOrUpdateParagraphTabStopOnlineRequest(
         documentStream,
-        requestTabStopInsertDto,
+        tabStopInsertDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -1086,15 +1086,15 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
-    requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
-    requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
-    requestTabStopInsertDto->setPosition(std::make_shared< double >(100.0));
+    auto tabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
+    tabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
+    tabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
+    tabStopInsertDto->setPosition(std::make_shared< double >(100.0));
 
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopRequest> request(new requests::InsertOrUpdateParagraphTabStopRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestTabStopInsertDto,
+        tabStopInsertDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
