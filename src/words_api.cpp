@@ -1622,6 +1622,17 @@ namespace aspose::words::cloud::api {
         return response->getResult();
     }
 
+    std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > WordsApi::getPublicKey(std::shared_ptr<aspose::words::cloud::requests::GetPublicKeyRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetPublicKeyResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > WordsApi::getRangeText(std::shared_ptr<aspose::words::cloud::requests::GetRangeTextRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::GetRangeTextResponse >();

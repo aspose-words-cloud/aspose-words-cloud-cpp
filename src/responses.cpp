@@ -2400,6 +2400,21 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * GetPublicKey request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > GetPublicKeyResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetPublicKeyResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::PublicKeyResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
      * GetRangeText request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > GetRangeTextResponse::getResult() const

@@ -327,6 +327,8 @@
 #include "aspose_words_cloud/responses/get_paragraph_tab_stops_response.h"
 #include "aspose_words_cloud/requests/get_paragraph_tab_stops_online_request.h"
 #include "aspose_words_cloud/responses/get_paragraph_tab_stops_online_response.h"
+#include "aspose_words_cloud/requests/get_public_key_request.h"
+#include "aspose_words_cloud/responses/get_public_key_response.h"
 #include "aspose_words_cloud/requests/get_range_text_request.h"
 #include "aspose_words_cloud/responses/get_range_text_response.h"
 #include "aspose_words_cloud/requests/get_range_text_online_request.h"
@@ -2322,6 +2324,11 @@ namespace aspose::words::cloud::api {
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password for opening an encrypted document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > getParagraphTabStopsOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphTabStopsOnlineRequest> request);
+
+        /// <summary>
+        /// Get assymetric public key.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > getPublicKey(std::shared_ptr<aspose::words::cloud::requests::GetPublicKeyRequest> request);
 
         /// <summary>
         /// Reads range text from the document.

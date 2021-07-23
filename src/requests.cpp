@@ -11423,6 +11423,30 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * GetPublicKey request implementation
+     */
+    GetPublicKeyRequest::GetPublicKeyRequest(
+    ) 
+    {
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetPublicKeyRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/encryption/publickey");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetPublicKeyRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetPublicKeyResponse()
+        );
+    }
+
+    /*
      * GetRangeText request implementation
      */
     GetRangeTextRequest::GetRangeTextRequest(

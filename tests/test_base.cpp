@@ -35,6 +35,7 @@
 #include "./api/document_statistics_test.h"
 #include "./api/document_with_format_test.h"
 #include "./api/load_web_document_test.h"
+#include "./api/password_encryption_test.h"
 #include "./api/revisions_test.h"
 #include "./api/split_document_to_format_test.h"
 #include "./api/document_properties_test.h"

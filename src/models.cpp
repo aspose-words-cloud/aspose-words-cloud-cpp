@@ -14815,6 +14815,58 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * PublicKeyResponse implementation
+     */
+    void PublicKeyResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Exponent) {
+            json["Exponent"] = convertUtf16(*m_Exponent);
+        }
+        if (m_Modulus) {
+            json["Modulus"] = convertUtf16(*m_Modulus);
+        }
+    }
+
+    void PublicKeyResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Exponent") && !json["Exponent"].is_null()) {
+            m_Exponent = std::make_shared< std::wstring >(
+                convertUtf8( json["Exponent"].get< std::string >() )
+            );
+        }
+        if (json.contains("Modulus") && !json["Modulus"].is_null()) {
+            m_Modulus = std::make_shared< std::wstring >(
+                convertUtf8( json["Modulus"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > PublicKeyResponse::getExponent() const
+    {
+        return m_Exponent;
+    }
+
+    void PublicKeyResponse::setExponent(std::shared_ptr< std::wstring > value)
+    {
+        m_Exponent = value;
+    }
+
+    std::shared_ptr< std::wstring > PublicKeyResponse::getModulus() const
+    {
+        return m_Modulus;
+    }
+
+    void PublicKeyResponse::setModulus(std::shared_ptr< std::wstring > value)
+    {
+        m_Modulus = value;
+    }
+
+
+    /*
      * RangeDocument implementation
      */
     void RangeDocument::toJson(void* jsonIfc) const
