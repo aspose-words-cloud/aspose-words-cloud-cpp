@@ -14,6 +14,14 @@ export CC=gcc
 export CXX=g++
 cmake -DCMAKE_BUILD_TYPE=Debug -S . -B ./build 
 cmake --build ./build --config Debug --target aspose_words_cloud_test -- VERBOSE=1
+cmake --build ./build --config Release --target aspose_words_cloud_test -- VERBOSE=1
+
+mkdir -p ./build/artifacts
+cp -v -R ./build/aspose_words_cloud_sdk/Debug ./build/artifacts/lib/Debug
+cp -v -R ./build/aspose_words_cloud_sdk/Release ./build/artifacts/lib/Release
+cp -v -R ./build/bin ./build/artifacts/bin
+cp -v -R ./include ./build/artifacts/include
+zip -r /out/linux-x64.zip ./build/artifacts/*
 
 # Generate credentials
 echo "{

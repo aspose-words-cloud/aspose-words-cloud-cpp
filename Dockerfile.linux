@@ -4,7 +4,7 @@ ENV  DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install dialog  apt-utils  -y --no-install-recommends
 RUN apt-get install git-core python-dev libxml2-dev libxslt-dev -y
-RUN apt-get install wget gcc-8 g++-8 make libssl-dev -y
+RUN apt-get install zip wget gcc-8 g++-8 make libssl-dev -y
 RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 40
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 40
 

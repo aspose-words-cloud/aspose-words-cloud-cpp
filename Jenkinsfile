@@ -103,6 +103,7 @@ parallel windows: {
 
                                 sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
+                                archiveArtifacts artifacts: '**\\out\\linux-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
