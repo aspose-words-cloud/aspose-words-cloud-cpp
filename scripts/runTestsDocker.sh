@@ -16,15 +16,20 @@ mkdir -p ./build/artifacts
 cmake -DCMAKE_BUILD_TYPE=Debug -S . -B ./build
 cmake --build ./build --config Debug --target aspose_words_cloud_sdk -- VERBOSE=1
 cmake --build ./build --config Debug --target aspose_words_cloud_test -- VERBOSE=1
-cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/bin/Debug/libaspose_words_cloud_sdk.so
+mkdir -p ./build/artifacts/Debug
+cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/artifacts/bin/Debug/libaspose_words_cloud_sdk.so
+cp -v ./build/bin/libaspose_words_cloud_tests ./build/artifacts/bin/Debug/libaspose_words_cloud_tests
 
 cmake --build ./build --config Release --target aspose_words_cloud_test -- VERBOSE=1
 cmake --build ./build --config Release --target aspose_words_cloud_sdk -- VERBOSE=1
-cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/bin/Release/libaspose_words_cloud_sdk.so
+mkdir -p ./build/artifacts/Release
+cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/artifacts/bin/Release/libaspose_words_cloud_sdk.so
+cp -v ./build/bin/libaspose_words_cloud_tests ./build/artifacts/bin/Release/libaspose_words_cloud_tests
 
-cp -v -R ./build/bin ./build/artifacts/bin
 cp -v -R ./include ./build/artifacts/include
-zip -r /out/linux-x64.zip ./build/artifacts/*
+cd ./build/artifacts
+zip -r /out/linux-x64.zip ./*
+cd ./../..
 
 # Generate credentials
 echo "{
