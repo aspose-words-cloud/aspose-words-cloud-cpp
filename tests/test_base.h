@@ -52,6 +52,11 @@ public:
 
 protected:
     const std::wstring baseTestOutPath = L"TestOut/Cpp";
-    const std::wstring remoteBaseTestDataFolder = L"Temp/SdkTests/Cpp/TestData";
     const std::wstring commonFolder = L"Common";
+
+#ifdef _WIN32
+    const std::wstring remoteBaseTestDataFolder = L"Temp/SdkTests/Cpp/Windows/TestData";
+#else
+    const std::wstring remoteBaseTestDataFolder = L"Temp/SdkTests/Cpp/Linux/TestData";
+#endif
 };
