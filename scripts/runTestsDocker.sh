@@ -17,14 +17,14 @@ cmake -DCMAKE_BUILD_TYPE=Debug -S . -B ./build
 cmake --build ./build --config Debug --target aspose_words_cloud_sdk -- VERBOSE=1
 cmake --build ./build --config Debug --target aspose_words_cloud_test -- VERBOSE=1
 mkdir -p ./build/artifacts/bin/Debug
-cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/artifacts/bin/Debug/libaspose_words_cloud_sdk.so
-cp -v ./build/bin/libaspose_words_cloud_tests ./build/artifacts/bin/Debug/libaspose_words_cloud_tests
+cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/artifacts/bin/Debug/aspose_words_cloud_sdk.so
+cp -v ./build/bin/aspose_words_cloud_test ./build/artifacts/bin/Debug/aspose_words_cloud_test
 
 cmake --build ./build --config Release --target aspose_words_cloud_test -- VERBOSE=1
 cmake --build ./build --config Release --target aspose_words_cloud_sdk -- VERBOSE=1
 mkdir -p ./build/artifacts/bin/Release
-cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/artifacts/bin/Release/libaspose_words_cloud_sdk.so
-cp -v ./build/bin/libaspose_words_cloud_tests ./build/artifacts/bin/Release/libaspose_words_cloud_tests
+cp -v ./build/aspose_words_cloud_sdk/libaspose_words_cloud_sdk.so ./build/artifacts/bin/Release/aspose_words_cloud_sdk.so
+cp -v ./build/bin/aspose_words_cloud_test ./build/artifacts/bin/Release/aspose_words_cloud_test
 
 cp -v -R ./include ./build/artifacts/include
 cd ./build/artifacts
