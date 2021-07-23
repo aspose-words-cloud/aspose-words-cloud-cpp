@@ -22,7 +22,7 @@ Xcopy /E /I .\build\aspose_words_cloud_sdk\Debug .\build\artifacts\lib\Debug
 Xcopy /E /I .\build\aspose_words_cloud_sdk\Release .\build\artifacts\lib\Release
 Xcopy /E /I .\build\bin .\build\artifacts\bin
 Xcopy /E /I .\include .\build\artifacts\include
-powershell Compress-Archive .\build\artifacts\* .\build\windows-x64.zip
+powershell Compress-Archive .\build\artifacts\* c:\out\windows-x64.zip
 
 REM Run tests
 cmake -E chdir ./build ctest -V -C Debug --rerun-failed --output-on-failure --gtest_output=xml:test_result.xml || goto end

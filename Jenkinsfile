@@ -54,12 +54,12 @@ parallel windows: {
                                 bat """
                                     if exist out rmdir out /s /q
                                     mkdir out
-
+                                    
                                     docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
-                                archiveArtifacts artifacts: 'build/windows-x64.zip'
+                                archiveArtifacts artifacts: '**\\out\\windows-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
