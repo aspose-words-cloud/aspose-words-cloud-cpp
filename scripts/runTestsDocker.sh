@@ -17,6 +17,7 @@ cmake --build ./build --config Debug --target aspose_words_cloud_test -- VERBOSE
 cmake --build ./build --config Release --target aspose_words_cloud_test -- VERBOSE=1
 
 mkdir -p ./build/artifacts
+ls ./build
 cp -v -R ./build/aspose_words_cloud_sdk/Debug ./build/artifacts/lib/Debug
 cp -v -R ./build/aspose_words_cloud_sdk/Release ./build/artifacts/lib/Release
 cp -v -R ./build/bin ./build/artifacts/bin
