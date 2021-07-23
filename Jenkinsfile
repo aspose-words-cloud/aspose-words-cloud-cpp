@@ -59,6 +59,7 @@ parallel windows: {
                                     exit /b %ERRORLEVEL%
                                     """
                             } finally {
+                                archiveArtifacts artifacts: 'build/windows-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
