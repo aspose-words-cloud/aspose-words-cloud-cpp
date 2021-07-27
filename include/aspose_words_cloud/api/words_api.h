@@ -661,7 +661,7 @@ namespace aspose::words::cloud::api {
         /// <summary>
         /// Appends documents to the original document.
         /// </summary>
-        /// <param name="document">The document.</param>
+        /// <param name="document">Original document.</param>
         /// <param name="documentList"><see cref="DocumentEntryList"/> with a list of documents to append.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password for opening an encrypted document.</param>
@@ -1799,7 +1799,7 @@ namespace aspose::words::cloud::api {
         /// <summary>
         /// Reads merge field names from the document.
         /// </summary>
-        /// <param name="document">The document.</param>
+        /// <param name="_template">The template document.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password for opening an encrypted document.</param>
         /// <param name="useNonMergeFields">The flag indicating whether to use non merge fields. If true, result includes "mustache" field names.</param>
@@ -3484,7 +3484,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > saveAs(std::shared_ptr<aspose::words::cloud::requests::SaveAsRequest> request);
 
         /// <summary>
-        /// Converts a document in cloud storage to the specified format.
+        /// Converts a document to the specified format.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="saveOptionsData">Save options.</param>
@@ -3547,7 +3547,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > saveAsTiff(std::shared_ptr<aspose::words::cloud::requests::SaveAsTiffRequest> request);
 
         /// <summary>
-        /// Converts a document in cloud storage to TIFF format using detailed conversion settings.
+        /// Converts a document to TIFF format using detailed conversion settings.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="saveOptions">Tiff save options.</param>
