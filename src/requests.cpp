@@ -7979,21 +7979,21 @@ namespace aspose::words::cloud::requests {
      * GetDocumentFieldNamesOnline request implementation
      */
     GetDocumentFieldNamesOnlineRequest::GetDocumentFieldNamesOnlineRequest(
-        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::istream > _template,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< bool > useNonMergeFields
     ) : 
-        m_Document(document),
+        m_Template(_template),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_UseNonMergeFields(useNonMergeFields)
     {
     }
 
-    const std::shared_ptr< std::istream > GetDocumentFieldNamesOnlineRequest::getDocument() const
+    const std::shared_ptr< std::istream > GetDocumentFieldNamesOnlineRequest::getTemplate() const
     {
-        return m_Document;
+        return m_Template;
     }
 
     const std::shared_ptr< std::wstring > GetDocumentFieldNamesOnlineRequest::getLoadEncoding() const
@@ -8019,8 +8019,8 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
-        if (m_Document) result->setBody(*m_Document);
-        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        if (m_Template) result->setBody(*m_Template);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Template' is required.");
         return result;
     }
 
