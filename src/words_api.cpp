@@ -371,6 +371,46 @@ namespace aspose::words::cloud::api {
         return response->getDocument();
     }
 
+    void WordsApi::deleteCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteCustomXmlPartResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::istream > WordsApi::deleteCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteCustomXmlPartOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
+    void WordsApi::deleteCustomXmlParts(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteCustomXmlPartsResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::istream > WordsApi::deleteCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteCustomXmlPartsOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     void WordsApi::deleteDocumentProperty(std::shared_ptr<aspose::words::cloud::requests::DeleteDocumentPropertyRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteDocumentPropertyResponse >();
@@ -943,6 +983,50 @@ namespace aspose::words::cloud::api {
     std::shared_ptr< aspose::words::cloud::models::CommentsResponse > WordsApi::getCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::GetCommentsOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::GetCommentsOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > WordsApi::getCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetCustomXmlPartResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > WordsApi::getCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetCustomXmlPartOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > WordsApi::getCustomXmlParts(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartsRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetCustomXmlPartsResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > WordsApi::getCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartsOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetCustomXmlPartsOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
         if (response->getStatusCode() != 200) {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
@@ -2029,6 +2113,28 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > WordsApi::insertCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::InsertCustomXmlPartRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertCustomXmlPartResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse> WordsApi::insertCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::InsertCustomXmlPartOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > WordsApi::insertDrawingObject(std::shared_ptr<aspose::words::cloud::requests::InsertDrawingObjectRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertDrawingObjectResponse >();
@@ -2849,6 +2955,28 @@ namespace aspose::words::cloud::api {
     std::shared_ptr<aspose::words::cloud::responses::UpdateCommentOnlineResponse> WordsApi::updateCommentOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateCommentOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::UpdateCommentOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > WordsApi::updateCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::UpdateCustomXmlPartRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::UpdateCustomXmlPartResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse> WordsApi::updateCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateCustomXmlPartOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
         if (response->getStatusCode() != 200) {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());

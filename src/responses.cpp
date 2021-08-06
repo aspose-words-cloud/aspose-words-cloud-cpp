@@ -775,6 +775,48 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * DeleteCustomXmlPart request implementation
+     */
+
+    void DeleteCustomXmlPartResponse::deserialize(const std::string_view& response)
+    {
+    }
+
+    /*
+     * DeleteCustomXmlPartOnline request implementation
+     */
+    std::shared_ptr< std::istream > DeleteCustomXmlPartOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void DeleteCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    {
+        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+    }
+
+    /*
+     * DeleteCustomXmlParts request implementation
+     */
+
+    void DeleteCustomXmlPartsResponse::deserialize(const std::string_view& response)
+    {
+    }
+
+    /*
+     * DeleteCustomXmlPartsOnline request implementation
+     */
+    std::shared_ptr< std::istream > DeleteCustomXmlPartsOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void DeleteCustomXmlPartsOnlineResponse::deserialize(const std::string_view& response)
+    {
+        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+    }
+
+    /*
      * DeleteDocumentProperty request implementation
      */
 
@@ -1491,6 +1533,66 @@ namespace aspose::words::cloud::responses {
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentsResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetCustomXmlPart request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > GetCustomXmlPartResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetCustomXmlPartResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetCustomXmlPartOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > GetCustomXmlPartOnlineResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetCustomXmlParts request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > GetCustomXmlPartsResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetCustomXmlPartsResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartsResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetCustomXmlPartsOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > GetCustomXmlPartsOnlineResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetCustomXmlPartsOnlineResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartsResponse >();
         m_Result->fromJson(&json);
     }
 
@@ -2960,6 +3062,50 @@ namespace aspose::words::cloud::responses {
             const std::string_view& part = parts.at("Model");
             auto json = ::nlohmann::json::parse(part);
             m_Model = std::make_shared< aspose::words::cloud::models::CommentResponse >();
+            m_Model->fromJson(&json);
+        }
+        if (parts.find("Document") != parts.end()) {
+            const std::string_view& part = parts.at("Document");
+            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+        }
+    }
+
+    /*
+     * InsertCustomXmlPart request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > InsertCustomXmlPartResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void InsertCustomXmlPartResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * InsertCustomXmlPartOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > InsertCustomXmlPartOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::istream > InsertCustomXmlPartOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void InsertCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::string_view> parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const std::string_view& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(part);
+            m_Model = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
@@ -4456,6 +4602,50 @@ namespace aspose::words::cloud::responses {
             const std::string_view& part = parts.at("Model");
             auto json = ::nlohmann::json::parse(part);
             m_Model = std::make_shared< aspose::words::cloud::models::CommentResponse >();
+            m_Model->fromJson(&json);
+        }
+        if (parts.find("Document") != parts.end()) {
+            const std::string_view& part = parts.at("Document");
+            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+        }
+    }
+
+    /*
+     * UpdateCustomXmlPart request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > UpdateCustomXmlPartResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void UpdateCustomXmlPartResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * UpdateCustomXmlPartOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > UpdateCustomXmlPartOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::istream > UpdateCustomXmlPartOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void UpdateCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::string_view> parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const std::string_view& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(part);
+            m_Model = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {

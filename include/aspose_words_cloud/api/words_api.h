@@ -93,6 +93,14 @@
 #include "aspose_words_cloud/responses/delete_comments_response.h"
 #include "aspose_words_cloud/requests/delete_comments_online_request.h"
 #include "aspose_words_cloud/responses/delete_comments_online_response.h"
+#include "aspose_words_cloud/requests/delete_custom_xml_part_request.h"
+#include "aspose_words_cloud/responses/delete_custom_xml_part_response.h"
+#include "aspose_words_cloud/requests/delete_custom_xml_part_online_request.h"
+#include "aspose_words_cloud/responses/delete_custom_xml_part_online_response.h"
+#include "aspose_words_cloud/requests/delete_custom_xml_parts_request.h"
+#include "aspose_words_cloud/responses/delete_custom_xml_parts_response.h"
+#include "aspose_words_cloud/requests/delete_custom_xml_parts_online_request.h"
+#include "aspose_words_cloud/responses/delete_custom_xml_parts_online_response.h"
 #include "aspose_words_cloud/requests/delete_document_property_request.h"
 #include "aspose_words_cloud/responses/delete_document_property_response.h"
 #include "aspose_words_cloud/requests/delete_document_property_online_request.h"
@@ -205,6 +213,14 @@
 #include "aspose_words_cloud/responses/get_comments_response.h"
 #include "aspose_words_cloud/requests/get_comments_online_request.h"
 #include "aspose_words_cloud/responses/get_comments_online_response.h"
+#include "aspose_words_cloud/requests/get_custom_xml_part_request.h"
+#include "aspose_words_cloud/responses/get_custom_xml_part_response.h"
+#include "aspose_words_cloud/requests/get_custom_xml_part_online_request.h"
+#include "aspose_words_cloud/responses/get_custom_xml_part_online_response.h"
+#include "aspose_words_cloud/requests/get_custom_xml_parts_request.h"
+#include "aspose_words_cloud/responses/get_custom_xml_parts_response.h"
+#include "aspose_words_cloud/requests/get_custom_xml_parts_online_request.h"
+#include "aspose_words_cloud/responses/get_custom_xml_parts_online_response.h"
 #include "aspose_words_cloud/requests/get_document_request.h"
 #include "aspose_words_cloud/responses/get_document_response.h"
 #include "aspose_words_cloud/requests/get_document_drawing_object_by_index_request.h"
@@ -401,6 +417,10 @@
 #include "aspose_words_cloud/responses/insert_comment_response.h"
 #include "aspose_words_cloud/requests/insert_comment_online_request.h"
 #include "aspose_words_cloud/responses/insert_comment_online_response.h"
+#include "aspose_words_cloud/requests/insert_custom_xml_part_request.h"
+#include "aspose_words_cloud/responses/insert_custom_xml_part_response.h"
+#include "aspose_words_cloud/requests/insert_custom_xml_part_online_request.h"
+#include "aspose_words_cloud/responses/insert_custom_xml_part_online_response.h"
 #include "aspose_words_cloud/requests/insert_drawing_object_request.h"
 #include "aspose_words_cloud/responses/insert_drawing_object_response.h"
 #include "aspose_words_cloud/requests/insert_drawing_object_online_request.h"
@@ -553,6 +573,10 @@
 #include "aspose_words_cloud/responses/update_comment_response.h"
 #include "aspose_words_cloud/requests/update_comment_online_request.h"
 #include "aspose_words_cloud/responses/update_comment_online_response.h"
+#include "aspose_words_cloud/requests/update_custom_xml_part_request.h"
+#include "aspose_words_cloud/responses/update_custom_xml_part_response.h"
+#include "aspose_words_cloud/requests/update_custom_xml_part_online_request.h"
+#include "aspose_words_cloud/responses/update_custom_xml_part_online_response.h"
 #include "aspose_words_cloud/requests/update_drawing_object_request.h"
 #include "aspose_words_cloud/responses/update_drawing_object_response.h"
 #include "aspose_words_cloud/requests/update_drawing_object_online_request.h"
@@ -998,6 +1022,56 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentsOnlineRequest> request);
+
+        /// <summary>
+        /// Removes the custom xml part from the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="customXmlPartIndex">The index of the custom xml part. This index is the number of the entry in the collection of custom xml parts, not the ID of the part.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void deleteCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartRequest> request);
+
+        /// <summary>
+        /// Removes the custom xml part from the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="customXmlPartIndex">The index of the custom xml part. This index is the number of the entry in the collection of custom xml parts, not the ID of the part.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartOnlineRequest> request);
+
+        /// <summary>
+        /// Removes all custom xml parts from the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void deleteCustomXmlParts(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsRequest> request);
+
+        /// <summary>
+        /// Removes all custom xml parts from the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsOnlineRequest> request);
 
         /// <summary>
         /// Removes a document property.
@@ -1688,6 +1762,44 @@ namespace aspose::words::cloud::api {
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password for opening an encrypted document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CommentsResponse > getCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::GetCommentsOnlineRequest> request);
+
+        /// <summary>
+        /// Reads the custom xml part from the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="customXmlPartIndex">The index of the custom xml part. This index is the number of the entry in the collection of custom xml parts, not the ID of the part.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > getCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartRequest> request);
+
+        /// <summary>
+        /// Reads the custom xml part from the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="customXmlPartIndex">The index of the custom xml part. This index is the number of the entry in the collection of custom xml parts, not the ID of the part.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > getCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartOnlineRequest> request);
+
+        /// <summary>
+        /// Reads custom xml parts from the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > getCustomXmlParts(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartsRequest> request);
+
+        /// <summary>
+        /// Reads custom xml parts from the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > getCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartsOnlineRequest> request);
 
         /// <summary>
         /// Reads common information from the document.
@@ -2711,6 +2823,32 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertCommentOnlineResponse> insertCommentOnline(std::shared_ptr<aspose::words::cloud::requests::InsertCommentOnlineRequest> request);
 
         /// <summary>
+        /// Inserts a new custom xml part to the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="customXmlPart">Custom xml part.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > insertCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::InsertCustomXmlPartRequest> request);
+
+        /// <summary>
+        /// Inserts a new custom xml part to the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="customXmlPart">Custom xml part.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse> insertCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::InsertCustomXmlPartOnlineRequest> request);
+
+        /// <summary>
         /// Inserts a new DrawingObject to the document node.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -3730,6 +3868,34 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::UpdateCommentOnlineResponse> updateCommentOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateCommentOnlineRequest> request);
+
+        /// <summary>
+        /// Updates the custom xml part in the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="customXmlPartIndex">The index of the custom xml part. This index is the number of the entry in the collection of custom xml parts, not the ID of the part.</param>
+        /// <param name="customXmlPart">Custom xml part.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > updateCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::UpdateCustomXmlPartRequest> request);
+
+        /// <summary>
+        /// Updates the custom xml part in the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="customXmlPartIndex">The index of the custom xml part. This index is the number of the entry in the collection of custom xml parts, not the ID of the part.</param>
+        /// <param name="customXmlPart">Custom xml part.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password for opening an encrypted document.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse> updateCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateCustomXmlPartOnlineRequest> request);
 
         /// <summary>
         /// Updates a DrawingObject in the document node.
