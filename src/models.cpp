@@ -1751,6 +1751,210 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * CustomXmlPart implementation
+     */
+    void CustomXmlPart::toJson(void* jsonIfc) const
+    {
+        CustomXmlPartLink::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Data) {
+            json["Data"] = convertUtf16(*m_Data);
+        }
+        if (m_Id) {
+            json["Id"] = convertUtf16(*m_Id);
+        }
+    }
+
+    void CustomXmlPart::fromJson(const void* jsonIfc)
+    {
+        CustomXmlPartLink::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Data") && !json["Data"].is_null()) {
+            m_Data = std::make_shared< std::wstring >(
+                convertUtf8( json["Data"].get< std::string >() )
+            );
+        }
+        if (json.contains("Id") && !json["Id"].is_null()) {
+            m_Id = std::make_shared< std::wstring >(
+                convertUtf8( json["Id"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > CustomXmlPart::getData() const
+    {
+        return m_Data;
+    }
+
+    void CustomXmlPart::setData(std::shared_ptr< std::wstring > value)
+    {
+        m_Data = value;
+    }
+
+    std::shared_ptr< std::wstring > CustomXmlPart::getId() const
+    {
+        return m_Id;
+    }
+
+    void CustomXmlPart::setId(std::shared_ptr< std::wstring > value)
+    {
+        m_Id = value;
+    }
+
+
+    /*
+     * CustomXmlPartInsert implementation
+     */
+    void CustomXmlPartInsert::toJson(void* jsonIfc) const
+    {
+        CustomXmlPart::toJson(jsonIfc);
+    }
+
+    void CustomXmlPartInsert::fromJson(const void* jsonIfc)
+    {
+        CustomXmlPart::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
+     * CustomXmlPartLink implementation
+     */
+    void CustomXmlPartLink::toJson(void* jsonIfc) const
+    {
+        LinkElement::toJson(jsonIfc);
+    }
+
+    void CustomXmlPartLink::fromJson(const void* jsonIfc)
+    {
+        LinkElement::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
+     * CustomXmlPartResponse implementation
+     */
+    void CustomXmlPartResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_CustomXmlPart) {
+            m_CustomXmlPart->toJson(&json["CustomXmlPart"]);
+        }
+    }
+
+    void CustomXmlPartResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CustomXmlPart") && !json["CustomXmlPart"].is_null()) {
+            m_CustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPart >();
+            m_CustomXmlPart->fromJson(&json["CustomXmlPart"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > CustomXmlPartResponse::getCustomXmlPart() const
+    {
+        return m_CustomXmlPart;
+    }
+
+    void CustomXmlPartResponse::setCustomXmlPart(std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > value)
+    {
+        m_CustomXmlPart = value;
+    }
+
+
+    /*
+     * CustomXmlPartsCollection implementation
+     */
+    void CustomXmlPartsCollection::toJson(void* jsonIfc) const
+    {
+        LinkElement::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_CustomXmlPartsList) {
+            json["CustomXmlPartsList"] = ::nlohmann::json::array();
+            for (auto& element : *m_CustomXmlPartsList) {
+                element->toJson(&json["CustomXmlPartsList"].emplace_back());
+            }
+        }
+    }
+
+    void CustomXmlPartsCollection::fromJson(const void* jsonIfc)
+    {
+        LinkElement::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CustomXmlPartsList") && !json["CustomXmlPartsList"].is_null()) {
+            m_CustomXmlPartsList = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> >();
+            for (auto& element : json["CustomXmlPartsList"]) {
+                m_CustomXmlPartsList->emplace_back(std::make_shared< aspose::words::cloud::models::CustomXmlPart >())->fromJson(&element);
+            }
+        }
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > CustomXmlPartsCollection::getCustomXmlPartsList() const
+    {
+        return m_CustomXmlPartsList;
+    }
+
+    void CustomXmlPartsCollection::setCustomXmlPartsList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > value)
+    {
+        m_CustomXmlPartsList = value;
+    }
+
+
+    /*
+     * CustomXmlPartsResponse implementation
+     */
+    void CustomXmlPartsResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_CustomXmlParts) {
+            m_CustomXmlParts->toJson(&json["CustomXmlParts"]);
+        }
+    }
+
+    void CustomXmlPartsResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CustomXmlParts") && !json["CustomXmlParts"].is_null()) {
+            m_CustomXmlParts = std::make_shared< aspose::words::cloud::models::CustomXmlPartsCollection >();
+            m_CustomXmlParts->fromJson(&json["CustomXmlParts"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > CustomXmlPartsResponse::getCustomXmlParts() const
+    {
+        return m_CustomXmlParts;
+    }
+
+    void CustomXmlPartsResponse::setCustomXmlParts(std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > value)
+    {
+        m_CustomXmlParts = value;
+    }
+
+
+    /*
+     * CustomXmlPartUpdate implementation
+     */
+    void CustomXmlPartUpdate::toJson(void* jsonIfc) const
+    {
+        CustomXmlPart::toJson(jsonIfc);
+    }
+
+    void CustomXmlPartUpdate::fromJson(const void* jsonIfc)
+    {
+        CustomXmlPart::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
      * DocSaveOptionsData implementation
      */
     void DocSaveOptionsData::toJson(void* jsonIfc) const

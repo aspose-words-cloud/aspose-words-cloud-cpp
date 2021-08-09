@@ -2602,6 +2602,344 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * DeleteCustomXmlPart request implementation
+     */
+    DeleteCustomXmlPartRequest::DeleteCustomXmlPartRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > customXmlPartIndex,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_CustomXmlPartIndex(customXmlPartIndex),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > DeleteCustomXmlPartRequest::getCustomXmlPartIndex() const
+    {
+        return m_CustomXmlPartIndex;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpDELETE);
+        result->setPath(L"/words/{name}/customXmlParts/{customXmlPartIndex}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_CustomXmlPartIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPartIndex' is required.");
+        result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCustomXmlPartRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCustomXmlPartResponse()
+        );
+    }
+
+    /*
+     * DeleteCustomXmlPartOnline request implementation
+     */
+    DeleteCustomXmlPartOnlineRequest::DeleteCustomXmlPartOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< int32_t > customXmlPartIndex,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_CustomXmlPartIndex(customXmlPartIndex),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > DeleteCustomXmlPartOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< int32_t > DeleteCustomXmlPartOnlineRequest::getCustomXmlPartIndex() const
+    {
+        return m_CustomXmlPartIndex;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/delete/customXmlParts/{customXmlPartIndex}");
+        if (!m_CustomXmlPartIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPartIndex' is required.");
+        result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->setBody(*m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCustomXmlPartOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCustomXmlPartOnlineResponse()
+        );
+    }
+
+    /*
+     * DeleteCustomXmlParts request implementation
+     */
+    DeleteCustomXmlPartsRequest::DeleteCustomXmlPartsRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartsRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpDELETE);
+        result->setPath(L"/words/{name}/customXmlParts");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCustomXmlPartsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCustomXmlPartsResponse()
+        );
+    }
+
+    /*
+     * DeleteCustomXmlPartsOnline request implementation
+     */
+    DeleteCustomXmlPartsOnlineRequest::DeleteCustomXmlPartsOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > DeleteCustomXmlPartsOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartsOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/delete/customXmlParts");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->setBody(*m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteCustomXmlPartsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteCustomXmlPartsOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteDocumentProperty request implementation
      */
     DeleteDocumentPropertyRequest::DeleteDocumentPropertyRequest(
@@ -7270,6 +7608,248 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetCommentsOnlineResponse()
+        );
+    }
+
+    /*
+     * GetCustomXmlPart request implementation
+     */
+    GetCustomXmlPartRequest::GetCustomXmlPartRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > customXmlPartIndex,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password
+    ) : 
+        m_Name(name),
+        m_CustomXmlPartIndex(customXmlPartIndex),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > GetCustomXmlPartRequest::getCustomXmlPartIndex() const
+    {
+        return m_CustomXmlPartIndex;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/customXmlParts/{customXmlPartIndex}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_CustomXmlPartIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPartIndex' is required.");
+        result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCustomXmlPartRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCustomXmlPartResponse()
+        );
+    }
+
+    /*
+     * GetCustomXmlPartOnline request implementation
+     */
+    GetCustomXmlPartOnlineRequest::GetCustomXmlPartOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< int32_t > customXmlPartIndex,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password
+    ) : 
+        m_Document(document),
+        m_CustomXmlPartIndex(customXmlPartIndex),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password)
+    {
+    }
+
+    const std::shared_ptr< std::istream > GetCustomXmlPartOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< int32_t > GetCustomXmlPartOnlineRequest::getCustomXmlPartIndex() const
+    {
+        return m_CustomXmlPartIndex;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/customXmlParts/{customXmlPartIndex}");
+        if (!m_CustomXmlPartIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPartIndex' is required.");
+        result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_Document) result->setBody(*m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCustomXmlPartOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCustomXmlPartOnlineResponse()
+        );
+    }
+
+    /*
+     * GetCustomXmlParts request implementation
+     */
+    GetCustomXmlPartsRequest::GetCustomXmlPartsRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password
+    ) : 
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/customXmlParts");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCustomXmlPartsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCustomXmlPartsResponse()
+        );
+    }
+
+    /*
+     * GetCustomXmlPartsOnline request implementation
+     */
+    GetCustomXmlPartsOnlineRequest::GetCustomXmlPartsOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password
+    ) : 
+        m_Document(document),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password)
+    {
+    }
+
+    const std::shared_ptr< std::istream > GetCustomXmlPartsOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/customXmlParts");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_Document) result->setBody(*m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetCustomXmlPartsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetCustomXmlPartsOnlineResponse()
         );
     }
 
@@ -13949,6 +14529,184 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertCommentOnlineResponse()
+        );
+    }
+
+    /*
+     * InsertCustomXmlPart request implementation
+     */
+    InsertCustomXmlPartRequest::InsertCustomXmlPartRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartInsert > customXmlPart,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_CustomXmlPart(customXmlPart),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartInsert > InsertCustomXmlPartRequest::getCustomXmlPart() const
+    {
+        return m_CustomXmlPart;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCustomXmlPartRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setPath(L"/words/{name}/customXmlParts");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_CustomXmlPart) result->setBody(*m_CustomXmlPart);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertCustomXmlPartRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertCustomXmlPartResponse()
+        );
+    }
+
+    /*
+     * InsertCustomXmlPartOnline request implementation
+     */
+    InsertCustomXmlPartOnlineRequest::InsertCustomXmlPartOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartInsert > customXmlPart,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_CustomXmlPart(customXmlPart),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > InsertCustomXmlPartOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartInsert > InsertCustomXmlPartOnlineRequest::getCustomXmlPart() const
+    {
+        return m_CustomXmlPart;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCustomXmlPartOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/post/customXmlParts");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        if (m_CustomXmlPart) result->addFormDataParam(L"customXmlPart", *m_CustomXmlPart);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertCustomXmlPartOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse()
         );
     }
 
@@ -21004,6 +21762,202 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateCommentOnlineResponse()
+        );
+    }
+
+    /*
+     * UpdateCustomXmlPart request implementation
+     */
+    UpdateCustomXmlPartRequest::UpdateCustomXmlPartRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > customXmlPartIndex,
+        const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartUpdate > customXmlPart,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_CustomXmlPartIndex(customXmlPartIndex),
+        m_CustomXmlPart(customXmlPart),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > UpdateCustomXmlPartRequest::getCustomXmlPartIndex() const
+    {
+        return m_CustomXmlPartIndex;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartUpdate > UpdateCustomXmlPartRequest::getCustomXmlPart() const
+    {
+        return m_CustomXmlPart;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCustomXmlPartRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/{name}/customXmlParts/{customXmlPartIndex}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_CustomXmlPartIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPartIndex' is required.");
+        result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_CustomXmlPart) result->setBody(*m_CustomXmlPart);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateCustomXmlPartRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateCustomXmlPartResponse()
+        );
+    }
+
+    /*
+     * UpdateCustomXmlPartOnline request implementation
+     */
+    UpdateCustomXmlPartOnlineRequest::UpdateCustomXmlPartOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< int32_t > customXmlPartIndex,
+        const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartUpdate > customXmlPart,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_CustomXmlPartIndex(customXmlPartIndex),
+        m_CustomXmlPart(customXmlPart),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > UpdateCustomXmlPartOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< int32_t > UpdateCustomXmlPartOnlineRequest::getCustomXmlPartIndex() const
+    {
+        return m_CustomXmlPartIndex;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartUpdate > UpdateCustomXmlPartOnlineRequest::getCustomXmlPart() const
+    {
+        return m_CustomXmlPart;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCustomXmlPartOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/put/customXmlParts/{customXmlPartIndex}");
+        if (!m_CustomXmlPartIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPartIndex' is required.");
+        result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        if (m_CustomXmlPart) result->addFormDataParam(L"customXmlPart", *m_CustomXmlPart);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateCustomXmlPartOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse()
         );
     }
 
