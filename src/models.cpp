@@ -1390,6 +1390,9 @@ namespace aspose::words::cloud::models {
         if (m_DateTime) {
             json["DateTime"] = convertUtf16(*m_DateTime);
         }
+        if (m_ResultDocumentFormat) {
+            json["ResultDocumentFormat"] = convertUtf16(*m_ResultDocumentFormat);
+        }
     }
 
     void CompareData::fromJson(const void* jsonIfc)
@@ -1412,6 +1415,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("DateTime") && !json["DateTime"].is_null()) {
             m_DateTime = std::make_shared< std::wstring >(
                 convertUtf8( json["DateTime"].get< std::string >() )
+            );
+        }
+        if (json.contains("ResultDocumentFormat") && !json["ResultDocumentFormat"].is_null()) {
+            m_ResultDocumentFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["ResultDocumentFormat"].get< std::string >() )
             );
         }
     }
@@ -1454,6 +1462,16 @@ namespace aspose::words::cloud::models {
     void CompareData::setDateTime(std::shared_ptr< std::wstring > value)
     {
         m_DateTime = value;
+    }
+
+    std::shared_ptr< std::wstring > CompareData::getResultDocumentFormat() const
+    {
+        return m_ResultDocumentFormat;
+    }
+
+    void CompareData::setResultDocumentFormat(std::shared_ptr< std::wstring > value)
+    {
+        m_ResultDocumentFormat = value;
     }
 
 
