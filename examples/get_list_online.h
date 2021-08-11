@@ -1,0 +1,10 @@
+﻿std::wstring documentsDir = L"...";
+auto config = std::make_shared<ApiConfiguration>(/*clientId*/ L"####-####-####-####-####", /*clientSecret*/ L"##################");
+auto wordsApi = std::make_shared<WordsApi>(config);
+auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"DocumentElements/Lists/ListsGet.doc"), std::istream::binary));
+std::shared_ptr< requests::GetListOnlineRequest > request(
+    new requests::GetListOnlineRequest(
+        requestDocumentStream, std::make_shared< int32_t >(1)
+    )
+);
+wordsApi->getListOnline(request);
