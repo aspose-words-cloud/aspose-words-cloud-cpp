@@ -1,7 +1,5 @@
 ﻿auto config = std::make_shared<ApiConfiguration>(/*clientId*/ L"####-####-####-####-####", /*clientSecret*/ L"##################");
 auto wordsApi = std::make_shared<WordsApi>(config);
-std::wstring remoteFileName = L"Sample.docx";
-
 auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
 requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
 requestFormField->setEnabled(std::make_shared< bool >(true));
@@ -13,7 +11,7 @@ requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCAS
 
 std::shared_ptr< requests::InsertFormFieldRequest > insertRequest(
     new requests::InsertFormFieldRequest(
-        std::make_shared< std::wstring >(remoteFileName), requestFormField, std::make_shared< std::wstring >(remoteFileName)
+        std::make_shared< std::wstring >(L"Sample.docx"), requestFormField
     )
 );
 wordsApi->insertFormField(insertRequest);

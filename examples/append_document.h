@@ -14,7 +14,7 @@ requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
 
 std::shared_ptr< requests::AppendDocumentRequest > appendRequest(
     new requests::AppendDocumentRequest(
-        std::make_shared< std::wstring >(remoteFileName), requestDocumentList, std::make_shared< std::wstring >(remoteFileName)
+        std::make_shared< std::wstring >(remoteFileName), requestDocumentList
     )
 );
 wordsApi->appendDocument(appendRequest);
