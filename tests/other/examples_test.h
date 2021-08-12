@@ -3286,6 +3286,7 @@ TEST_F(ExamplesTest, TestExampleUnprotectDocumentOnline) {
 
 TEST_F(ExamplesTest, TestExampleUpdateBookmark) {
     auto wordsApi = getApi();
+    std::wstring bookmarkName = L"aspose";
     std::wstring remoteFileName = L"Sample.docx";
 
     auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
@@ -3303,6 +3304,8 @@ TEST_F(ExamplesTest, TestExampleUpdateBookmark) {
 TEST_F(ExamplesTest, TestExampleUpdateBookmarkOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
+    std::wstring bookmarkName = L"aspose";
+
     auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
     requestBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
