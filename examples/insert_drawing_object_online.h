@@ -14,7 +14,7 @@ requestDrawingObject->setWrapType(std::make_shared< aspose::words::cloud::models
 
 std::shared_ptr< requests::InsertDrawingObjectOnlineRequest > insertRequest(
     new requests::InsertDrawingObjectOnlineRequest(
-        requestDocumentStream, requestDrawingObject, requestImageFileStream, std::make_shared< std::wstring >(L"")
+        requestDocumentStream, requestDrawingObject, requestImageFileStream
     )
 );
 wordsApi->insertDrawingObjectOnline(insertRequest);

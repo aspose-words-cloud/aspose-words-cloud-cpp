@@ -5,7 +5,7 @@ requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::
 
 std::shared_ptr< requests::UpdateParagraphFormatRequest > updateRequest(
     new requests::UpdateParagraphFormatRequest(
-        std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestParagraphFormatDto, std::make_shared< std::wstring >(L"")
+        std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestParagraphFormatDto
     )
 );
 wordsApi->updateParagraphFormat(updateRequest);

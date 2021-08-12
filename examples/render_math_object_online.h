@@ -4,7 +4,7 @@ auto wordsApi = std::make_shared<WordsApi>(config);
 auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
 std::shared_ptr< requests::RenderMathObjectOnlineRequest > renderRequest(
     new requests::RenderMathObjectOnlineRequest(
-        requestDocumentStream, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"")
+        requestDocumentStream, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
     )
 );
 wordsApi->renderMathObjectOnline(renderRequest);

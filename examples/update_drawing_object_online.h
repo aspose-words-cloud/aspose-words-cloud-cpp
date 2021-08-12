@@ -8,7 +8,7 @@ requestDrawingObject->setLeft(std::make_shared< double >(0));
 
 std::shared_ptr< requests::UpdateDrawingObjectOnlineRequest > updateRequest(
     new requests::UpdateDrawingObjectOnlineRequest(
-        requestDocumentStream, requestDrawingObject, requestImageFileStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"")
+        requestDocumentStream, requestDrawingObject, requestImageFileStream, std::make_shared< int32_t >(0)
     )
 );
 wordsApi->updateDrawingObjectOnline(updateRequest);

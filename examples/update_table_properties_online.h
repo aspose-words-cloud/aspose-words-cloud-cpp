@@ -12,7 +12,7 @@ requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::model
 
 std::shared_ptr< requests::UpdateTablePropertiesOnlineRequest > updateRequest(
     new requests::UpdateTablePropertiesOnlineRequest(
-        requestDocumentStream, requestProperties, std::make_shared< int32_t >(1), std::make_shared< std::wstring >(L"")
+        requestDocumentStream, requestProperties, std::make_shared< int32_t >(1)
     )
 );
 wordsApi->updateTablePropertiesOnline(updateRequest);

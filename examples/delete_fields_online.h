@@ -4,7 +4,7 @@ auto wordsApi = std::make_shared<WordsApi>(config);
 auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
 std::shared_ptr< requests::DeleteFieldsOnlineRequest > deleteRequest(
     new requests::DeleteFieldsOnlineRequest(
-        requestDocumentStream, std::make_shared< std::wstring >(L"")
+        requestDocumentStream
     )
 );
 wordsApi->deleteFieldsOnline(deleteRequest);

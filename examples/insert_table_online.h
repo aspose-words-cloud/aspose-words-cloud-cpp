@@ -8,7 +8,7 @@ requestTable->setRowsCount(std::make_shared< int32_t >(4));
 
 std::shared_ptr< requests::InsertTableOnlineRequest > insertRequest(
     new requests::InsertTableOnlineRequest(
-        requestDocumentStream, requestTable, std::make_shared< std::wstring >(L"")
+        requestDocumentStream, requestTable
     )
 );
 wordsApi->insertTableOnline(insertRequest);
