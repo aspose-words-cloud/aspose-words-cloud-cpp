@@ -68,9 +68,9 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
 /// Test for getting paragraph online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetDocumentParagraphOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetParagraphOnlineRequest> request(new requests::GetParagraphOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
@@ -137,9 +137,9 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphs) {
 /// Test for getting all paragraphs online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetDocumentParagraphsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetParagraphsOnlineRequest> request(new requests::GetParagraphsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
         nullptr
@@ -205,9 +205,9 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRun) {
 /// Test for getting paragraph run online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetDocumentParagraphRunOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetRunOnlineRequest> request(new requests::GetRunOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
         nullptr,
@@ -247,9 +247,9 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunFont) {
 /// Test for getting paragraph run font online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetDocumentParagraphRunFontOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetRunFontOnlineRequest> request(new requests::GetRunFontOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
         nullptr,
@@ -290,9 +290,9 @@ TEST_F(ParagraphTests, TestGetParagraphRuns) {
 /// Test for getting paragraph runs online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetParagraphRunsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetRunsOnlineRequest> request(new requests::GetRunsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         nullptr,
         nullptr
@@ -312,14 +312,11 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestFontDto = std::make_shared< aspose::words::cloud::models::Font >();
-    requestFontDto->setBold(std::make_shared< bool >(true));
-
     std::shared_ptr<requests::UpdateRunFontRequest> request(new requests::UpdateRunFontRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
-        requestFontDto,
+        nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -338,14 +335,12 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
 /// Test for updating paragraph run font online.
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateRunFontOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestFontDto = std::make_shared< aspose::words::cloud::models::Font >();
-    requestFontDto->setBold(std::make_shared< bool >(true));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::UpdateRunFontOnlineRequest> request(new requests::UpdateRunFontOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/0"),
-        requestFontDto,
+        nullptr,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -368,12 +363,9 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
-    requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
-
     std::shared_ptr<requests::InsertParagraphRequest> request(new requests::InsertParagraphRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestParagraph,
+        nullptr,
         std::make_shared< std::wstring >(L"sections/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -394,13 +386,11 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
 /// Test for adding paragraph online.
 /// </summary>
 TEST_F(ParagraphTests, TestInsertParagraphOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
-    requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::InsertParagraphOnlineRequest> request(new requests::InsertParagraphOnlineRequest(
-        requestDocumentStream,
-        requestParagraph,
+        requestDocument,
+        nullptr,
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
         nullptr,
@@ -424,12 +414,9 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
-    requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
-
     std::shared_ptr<requests::InsertParagraphRequest> request(new requests::InsertParagraphRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestParagraph,
+        nullptr,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -477,9 +464,9 @@ TEST_F(ParagraphTests, TestRenderParagraph) {
 /// Test for paragraph rendering.
 /// </summary>
 TEST_F(ParagraphTests, TestRenderParagraphOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::RenderParagraphOnlineRequest> request(new requests::RenderParagraphOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
@@ -549,9 +536,9 @@ TEST_F(ParagraphTests, TestGetParagraphFormat) {
 /// Test for getting paragraph format settings online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetParagraphFormatOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetParagraphFormatOnlineRequest> request(new requests::GetParagraphFormatOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -598,13 +585,10 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestParagraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
-    requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
-
     std::shared_ptr<requests::UpdateParagraphFormatRequest> request(new requests::UpdateParagraphFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestParagraphFormatDto,
+        nullptr,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -624,13 +608,11 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
 /// Test for updating  paragraph format settings online.
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateParagraphFormatOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestParagraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
-    requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::UpdateParagraphFormatOnlineRequest> request(new requests::UpdateParagraphFormatOnlineRequest(
-        requestDocumentStream,
-        requestParagraphFormatDto,
+        requestDocument,
+        nullptr,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -674,9 +656,9 @@ getApi()->deleteParagraph(request);
 /// Test for deleting  a paragraph online.
 /// </summary>
 TEST_F(ParagraphTests, TestDeleteParagraphOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteParagraphOnlineRequest> request(new requests::DeleteParagraphOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -746,9 +728,9 @@ TEST_F(ParagraphTests, TestGetParagraphListFormat) {
 /// Test for getting paragraph list format online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetParagraphListFormatOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphGetListFormat.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphGetListFormat.doc")), std::istream::binary));
     std::shared_ptr<requests::GetParagraphListFormatOnlineRequest> request(new requests::GetParagraphListFormatOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -795,13 +777,10 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
-    requestListFormatDto->setListId(std::make_shared< int32_t >(2));
-
     std::shared_ptr<requests::UpdateParagraphListFormatRequest> request(new requests::UpdateParagraphListFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestListFormatDto,
+        nullptr,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -821,13 +800,11 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
 /// Test for updating paragraph list format online.
 /// </summary>
 TEST_F(ParagraphTests, TestUpdateParagraphListFormatOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphUpdateListFormat.doc")), std::istream::binary));
-    auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
-    requestListFormatDto->setListId(std::make_shared< int32_t >(2));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphUpdateListFormat.doc")), std::istream::binary));
 
     std::shared_ptr<requests::UpdateParagraphListFormatOnlineRequest> request(new requests::UpdateParagraphListFormatOnlineRequest(
-        requestDocumentStream,
-        requestListFormatDto,
+        requestDocument,
+        nullptr,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -851,13 +828,10 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
-    requestListFormatDto->setListId(std::make_shared< int32_t >(2));
-
     std::shared_ptr<requests::UpdateParagraphListFormatRequest> request(new requests::UpdateParagraphListFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestListFormatDto,
+        nullptr,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -904,9 +878,9 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormat) {
 /// Test for deleting paragraph list format online.
 /// </summary>
 TEST_F(ParagraphTests, TestDeleteParagraphListFormatOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphDeleteListFormat.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(listFolder + L"/ParagraphDeleteListFormat.doc")), std::istream::binary));
     std::shared_ptr<requests::DeleteParagraphListFormatOnlineRequest> request(new requests::DeleteParagraphListFormatOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -977,9 +951,9 @@ TEST_F(ParagraphTests, TestGetParagraphTabStops) {
 /// Test for getting paragraph tab stops online.
 /// </summary>
 TEST_F(ParagraphTests, TestGetParagraphTabStopsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
     std::shared_ptr<requests::GetParagraphTabStopsOnlineRequest> request(new requests::GetParagraphTabStopsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -1027,15 +1001,10 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
-    requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
-    requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
-    requestTabStopInsertDto->setPosition(std::make_shared< double >(100.0));
-
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopRequest> request(new requests::InsertOrUpdateParagraphTabStopRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestTabStopInsertDto,
+        nullptr,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -1056,15 +1025,11 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
 /// Test for inserting paragraph tab stop online.
 /// </summary>
 TEST_F(ParagraphTests, TestInsertParagraphTabStopsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
-    auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
-    requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
-    requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
-    requestTabStopInsertDto->setPosition(std::make_shared< double >(72));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
 
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopOnlineRequest> request(new requests::InsertOrUpdateParagraphTabStopOnlineRequest(
-        requestDocumentStream,
-        requestTabStopInsertDto,
+        requestDocument,
+        nullptr,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -1086,15 +1051,10 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
-    requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
-    requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
-    requestTabStopInsertDto->setPosition(std::make_shared< double >(100.0));
-
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopRequest> request(new requests::InsertOrUpdateParagraphTabStopRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        requestTabStopInsertDto,
+        nullptr,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -1142,9 +1102,9 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStops) {
 /// Test for deleting all paragraph tab stops online.
 /// </summary>
 TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
     std::shared_ptr<requests::DeleteAllParagraphTabStopsOnlineRequest> request(new requests::DeleteAllParagraphTabStopsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -1214,9 +1174,9 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStop) {
 /// Test for deleting a tab stops online.
 /// </summary>
 TEST_F(ParagraphTests, TestDeleteParagraphTabStopOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(tabStopFolder + L"/ParagraphTabStops.docx")), std::istream::binary));
     std::shared_ptr<requests::DeleteParagraphTabStopOnlineRequest> request(new requests::DeleteParagraphTabStopOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< double >(72.0),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),

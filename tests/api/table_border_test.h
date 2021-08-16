@@ -68,9 +68,9 @@ TEST_F(TableBorderTests, TestGetBorders) {
 /// Test for getting borders online.
 /// </summary>
 TEST_F(TableBorderTests, TestGetBordersOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBordersOnlineRequest> request(new requests::GetBordersOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
         nullptr
@@ -110,9 +110,9 @@ TEST_F(TableBorderTests, TestGetBorder) {
 /// Test for getting border online.
 /// </summary>
 TEST_F(TableBorderTests, TestGetBorderOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBorderOnlineRequest> request(new requests::GetBorderOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
@@ -152,9 +152,9 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
 /// Test for deleting borders online.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBordersOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteBordersOnlineRequest> request(new requests::DeleteBordersOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
         nullptr,
@@ -197,9 +197,9 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
 /// Test for deleting border online.
 /// </summary>
 TEST_F(TableBorderTests, TestDeleteBorderOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteBorderOnlineRequest> request(new requests::DeleteBorderOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,
@@ -223,21 +223,10 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
-    requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
-
-    auto requestBorderProperties = std::make_shared< aspose::words::cloud::models::Border >();
-    requestBorderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
-    requestBorderProperties->setColor(requestBorderPropertiesColor);
-    requestBorderProperties->setDistanceFromText(std::make_shared< double >(6.0));
-    requestBorderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
-    requestBorderProperties->setLineWidth(std::make_shared< double >(2.0));
-    requestBorderProperties->setShadow(std::make_shared< bool >(true));
-
     std::shared_ptr<requests::UpdateBorderRequest> request(new requests::UpdateBorderRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"left"),
-        requestBorderProperties,
+        nullptr,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -261,21 +250,12 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
 /// Test for updating border online.
 /// </summary>
 TEST_F(TableBorderTests, TestUpdateBorderOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
-    requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
-    auto requestBorderProperties = std::make_shared< aspose::words::cloud::models::Border >();
-    requestBorderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
-    requestBorderProperties->setColor(requestBorderPropertiesColor);
-    requestBorderProperties->setDistanceFromText(std::make_shared< double >(6));
-    requestBorderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
-    requestBorderProperties->setLineWidth(std::make_shared< double >(2));
-    requestBorderProperties->setShadow(std::make_shared< bool >(true));
 
     std::shared_ptr<requests::UpdateBorderOnlineRequest> request(new requests::UpdateBorderOnlineRequest(
-        requestDocumentStream,
-        requestBorderProperties,
+        requestDocument,
+        nullptr,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
         nullptr,

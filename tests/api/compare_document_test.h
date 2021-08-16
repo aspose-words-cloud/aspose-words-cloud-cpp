@@ -54,14 +54,9 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
         remoteFolder + L"/" + remoteName2
     );
 
-    auto requestCompareData = std::make_shared< aspose::words::cloud::models::CompareData >();
-    requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
-    requestCompareData->setComparingWithDocument(std::make_shared< std::wstring >(remoteFolder + L"/" + remoteName2));
-    requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
-
     std::shared_ptr<requests::CompareDocumentRequest> request(new requests::CompareDocumentRequest(
         std::make_shared< std::wstring >(remoteName1),
-        requestCompareData,
+        nullptr,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -82,20 +77,16 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
     std::wstring localName2 = L"compareTestDoc2.doc";
     std::wstring remoteName2 = L"TestCompareDocument2.doc";
 
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFolder + L"/" + localName2,
         remoteFolder + L"/" + remoteName2
     );
 
-    auto requestCompareData = std::make_shared< aspose::words::cloud::models::CompareData >();
-    requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
-    requestCompareData->setComparingWithDocument(std::make_shared< std::wstring >(remoteFolder + L"/" + remoteName2));
-    requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
 
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
-        requestDocumentStream,
-        requestCompareData,
+        requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -113,22 +104,18 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
     std::wstring localName2 = L"compareTestDoc2.doc";
     std::wstring remoteName2 = L"TestCompareDocument2.doc";
 
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
-    auto requestComparingDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName2)), std::istream::binary));
     uploadFileToStorage(
         localTestDataFolder + L"/" + localFolder + L"/" + localName2,
         remoteFolder + L"/" + remoteName2
     );
 
-    auto requestCompareData = std::make_shared< aspose::words::cloud::models::CompareData >();
-    requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
-    requestCompareData->setComparingWithDocument(std::make_shared< std::wstring >(remoteFolder + L"/" + remoteName2));
-    requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName1)), std::istream::binary));
 
+    auto requestComparingDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName2)), std::istream::binary));
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
-        requestDocumentStream,
-        requestCompareData,
-        requestComparingDocumentStream,
+        requestDocument,
+        nullptr,
+        requestComparingDocument,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")

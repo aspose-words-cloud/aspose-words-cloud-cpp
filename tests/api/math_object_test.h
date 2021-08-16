@@ -67,9 +67,9 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjects) {
 /// Test for getting mathObjects online.
 /// </summary>
 TEST_F(MathObjectTests, TestGetOfficeMathObjectsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetOfficeMathObjectsOnlineRequest> request(new requests::GetOfficeMathObjectsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr
@@ -135,9 +135,9 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
 /// Test for getting mathObject online.
 /// </summary>
 TEST_F(MathObjectTests, TestGetOfficeMathObjectOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetOfficeMathObjectOnlineRequest> request(new requests::GetOfficeMathObjectOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -204,9 +204,9 @@ TEST_F(MathObjectTests, TestRenderMathObject) {
 /// Test for rendering mathObject.
 /// </summary>
 TEST_F(MathObjectTests, TestRenderMathObjectOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::RenderMathObjectOnlineRequest> request(new requests::RenderMathObjectOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
@@ -277,9 +277,9 @@ getApi()->deleteOfficeMathObject(request);
 /// Test for deleting mathObject online.
 /// </summary>
 TEST_F(MathObjectTests, TestDeleteOfficeMathObjectOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteOfficeMathObjectOnlineRequest> request(new requests::DeleteOfficeMathObjectOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,

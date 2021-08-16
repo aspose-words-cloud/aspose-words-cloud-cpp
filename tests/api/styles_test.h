@@ -65,9 +65,9 @@ TEST_F(StylesTests, TestGetStyles) {
 /// Test for getting styles from document online.
 /// </summary>
 TEST_F(StylesTests, TestGetStylesOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetStylesOnlineRequest> request(new requests::GetStylesOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr
     ));
@@ -104,9 +104,9 @@ TEST_F(StylesTests, TestGetStyle) {
 /// Test for getting style from document online.
 /// </summary>
 TEST_F(StylesTests, TestGetStyleOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetStyleOnlineRequest> request(new requests::GetStyleOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"Heading 1"),
         nullptr,
         nullptr
@@ -126,13 +126,10 @@ TEST_F(StylesTests, TestUpdateStyle) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestStyleUpdate = std::make_shared< aspose::words::cloud::models::StyleUpdate >();
-    requestStyleUpdate->setName(std::make_shared< std::wstring >(L"My Style"));
-
     std::shared_ptr<requests::UpdateStyleRequest> request(new requests::UpdateStyleRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"Heading 1"),
-        requestStyleUpdate,
+        nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -151,14 +148,12 @@ TEST_F(StylesTests, TestUpdateStyle) {
 /// Test for updating style from document online.
 /// </summary>
 TEST_F(StylesTests, TestUpdateStyleOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestStyleUpdate = std::make_shared< aspose::words::cloud::models::StyleUpdate >();
-    requestStyleUpdate->setName(std::make_shared< std::wstring >(L"My Style"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::UpdateStyleOnlineRequest> request(new requests::UpdateStyleOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"Heading 1"),
-        requestStyleUpdate,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -180,13 +175,9 @@ TEST_F(StylesTests, TestInsertStyle) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestStyleInsert = std::make_shared< aspose::words::cloud::models::StyleInsert >();
-    requestStyleInsert->setStyleName(std::make_shared< std::wstring >(L"My Style"));
-    requestStyleInsert->setStyleType(std::make_shared< aspose::words::cloud::models::StyleInsert::StyleType >(aspose::words::cloud::models::StyleInsert::StyleType::PARAGRAPH));
-
     std::shared_ptr<requests::InsertStyleRequest> request(new requests::InsertStyleRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestStyleInsert,
+        nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -205,14 +196,11 @@ TEST_F(StylesTests, TestInsertStyle) {
 /// Test for inserting style from document online.
 /// </summary>
 TEST_F(StylesTests, TestInsertStyleOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestStyleInsert = std::make_shared< aspose::words::cloud::models::StyleInsert >();
-    requestStyleInsert->setStyleName(std::make_shared< std::wstring >(L"My Style"));
-    requestStyleInsert->setStyleType(std::make_shared< aspose::words::cloud::models::StyleInsert::StyleType >(aspose::words::cloud::models::StyleInsert::StyleType::PARAGRAPH));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::InsertStyleOnlineRequest> request(new requests::InsertStyleOnlineRequest(
-        requestDocumentStream,
-        requestStyleInsert,
+        requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -234,12 +222,9 @@ TEST_F(StylesTests, TestCopyStyle) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestStyleCopy = std::make_shared< aspose::words::cloud::models::StyleCopy >();
-    requestStyleCopy->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
-
     std::shared_ptr<requests::CopyStyleRequest> request(new requests::CopyStyleRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        requestStyleCopy,
+        nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -258,13 +243,11 @@ TEST_F(StylesTests, TestCopyStyle) {
 /// Test for coping style from document online.
 /// </summary>
 TEST_F(StylesTests, TestCopyStyleOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestStyleCopy = std::make_shared< aspose::words::cloud::models::StyleCopy >();
-    requestStyleCopy->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::CopyStyleOnlineRequest> request(new requests::CopyStyleOnlineRequest(
-        requestDocumentStream,
-        requestStyleCopy,
+        requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -304,9 +287,9 @@ TEST_F(StylesTests, TestGetStyleFromDocumentElement) {
 /// Test for getting style from document element online.
 /// </summary>
 TEST_F(StylesTests, TestGetStyleFromDocumentElementOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetStyleFromDocumentElementOnlineRequest> request(new requests::GetStyleFromDocumentElementOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
         nullptr,
         nullptr
@@ -326,13 +309,10 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElement) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestStyleApply = std::make_shared< aspose::words::cloud::models::StyleApply >();
-    requestStyleApply->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
-
     std::shared_ptr<requests::ApplyStyleToDocumentElementRequest> request(new requests::ApplyStyleToDocumentElementRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
-        requestStyleApply,
+        nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -349,14 +329,12 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElement) {
 /// Test for applying style to document element online.
 /// </summary>
 TEST_F(StylesTests, TestApplyStyleToDocumentElementOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestStyleApply = std::make_shared< aspose::words::cloud::models::StyleApply >();
-    requestStyleApply->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
 
     std::shared_ptr<requests::ApplyStyleToDocumentElementOnlineRequest> request(new requests::ApplyStyleToDocumentElementOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
-        requestStyleApply,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
