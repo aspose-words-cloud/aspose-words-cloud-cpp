@@ -137,6 +137,9 @@ TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPart) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartInsert >();
+    requestCustomXmlPart->setId(std::make_shared< std::wstring >(L"hello"));
+    requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
     std::shared_ptr<requests::InsertCustomXmlPartRequest> request(new requests::InsertCustomXmlPartRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -160,7 +163,9 @@ TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPart) {
 /// </summary>
 TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPartOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartInsert >();
+    requestCustomXmlPart->setId(std::make_shared< std::wstring >(L"hello"));
+    requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
     std::shared_ptr<requests::InsertCustomXmlPartOnlineRequest> request(new requests::InsertCustomXmlPartOnlineRequest(
         requestDocument,
         nullptr,
@@ -188,6 +193,8 @@ TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPart) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartUpdate >();
+    requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
     std::shared_ptr<requests::UpdateCustomXmlPartRequest> request(new requests::UpdateCustomXmlPartRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
@@ -212,7 +219,8 @@ TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPart) {
 /// </summary>
 TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPartOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartUpdate >();
+    requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
     std::shared_ptr<requests::UpdateCustomXmlPartOnlineRequest> request(new requests::UpdateCustomXmlPartOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),

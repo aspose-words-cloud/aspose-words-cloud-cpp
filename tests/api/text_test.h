@@ -47,6 +47,9 @@ TEST_F(TextTests, TestReplaceText) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestReplaceText = std::make_shared< aspose::words::cloud::models::ReplaceTextParameters >();
+    requestReplaceText->setOldValue(std::make_shared< std::wstring >(L"Testing"));
+    requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"Aspose testing"));
     std::shared_ptr<requests::ReplaceTextRequest> request(new requests::ReplaceTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -70,7 +73,9 @@ TEST_F(TextTests, TestReplaceTextOnline) {
     std::wstring localFile = L"Common/test_multi_pages.docx";
 
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestReplaceText = std::make_shared< aspose::words::cloud::models::ReplaceTextParameters >();
+    requestReplaceText->setOldValue(std::make_shared< std::wstring >(L"aspose"));
+    requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"aspose new"));
     std::shared_ptr<requests::ReplaceTextOnlineRequest> request(new requests::ReplaceTextOnlineRequest(
         requestDocument,
         nullptr,

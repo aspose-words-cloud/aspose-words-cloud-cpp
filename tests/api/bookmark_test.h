@@ -123,6 +123,9 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
+    requestBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
+    requestBookmarkData->setText(std::make_shared< std::wstring >(bookmarkText));
     std::shared_ptr<requests::UpdateBookmarkRequest> request(new requests::UpdateBookmarkRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(bookmarkName),
@@ -146,7 +149,9 @@ TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
     std::wstring remoteFileName = L"TestUpdateDocumentBookmark.docx";
 
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
+    requestBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
+    requestBookmarkData->setText(std::make_shared< std::wstring >(L"This will be the text for Aspose"));
     std::shared_ptr<requests::UpdateBookmarkOnlineRequest> request(new requests::UpdateBookmarkOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),

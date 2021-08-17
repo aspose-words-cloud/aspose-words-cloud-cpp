@@ -190,6 +190,8 @@ TEST_F(FieldTests, TestInsertField) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestField = std::make_shared< aspose::words::cloud::models::FieldInsert >();
+    requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::InsertFieldRequest> request(new requests::InsertFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -215,7 +217,8 @@ TEST_F(FieldTests, TestInsertField) {
 /// </summary>
 TEST_F(FieldTests, TestInsertFieldOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/GetField.docx")), std::istream::binary));
-
+    auto requestField = std::make_shared< aspose::words::cloud::models::FieldInsert >();
+    requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::InsertFieldOnlineRequest> request(new requests::InsertFieldOnlineRequest(
         requestDocument,
         nullptr,
@@ -243,6 +246,8 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestField = std::make_shared< aspose::words::cloud::models::FieldInsert >();
+    requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::InsertFieldRequest> request(new requests::InsertFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -275,6 +280,8 @@ TEST_F(FieldTests, TestUpdateField) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestField = std::make_shared< aspose::words::cloud::models::FieldUpdate >();
+    requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::UpdateFieldRequest> request(new requests::UpdateFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
@@ -300,7 +307,8 @@ TEST_F(FieldTests, TestUpdateField) {
 /// </summary>
 TEST_F(FieldTests, TestUpdateFieldOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(fieldFolder + L"/GetField.docx")), std::istream::binary));
-
+    auto requestField = std::make_shared< aspose::words::cloud::models::FieldUpdate >();
+    requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::UpdateFieldOnlineRequest> request(new requests::UpdateFieldOnlineRequest(
         requestDocument,
         nullptr,
@@ -328,6 +336,9 @@ TEST_F(FieldTests, TestInsertPageNumbers) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestPageNumber = std::make_shared< aspose::words::cloud::models::PageNumber >();
+    requestPageNumber->setAlignment(std::make_shared< std::wstring >(L"center"));
+    requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
     std::shared_ptr<requests::InsertPageNumbersRequest> request(new requests::InsertPageNumbersRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -352,7 +363,9 @@ TEST_F(FieldTests, TestInsertPageNumbersOnline) {
     std::wstring localFileName = L"test_multi_pages.docx";
 
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localFileName)), std::istream::binary));
-
+    auto requestPageNumber = std::make_shared< aspose::words::cloud::models::PageNumber >();
+    requestPageNumber->setAlignment(std::make_shared< std::wstring >(L"center"));
+    requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
     std::shared_ptr<requests::InsertPageNumbersOnlineRequest> request(new requests::InsertPageNumbersOnlineRequest(
         requestDocument,
         nullptr,

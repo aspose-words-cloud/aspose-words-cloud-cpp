@@ -130,6 +130,8 @@ TEST_F(RangeTests, TestSaveAsRange) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestDocumentParameters = std::make_shared< aspose::words::cloud::models::RangeDocument >();
+    requestDocumentParameters->setDocumentName(std::make_shared< std::wstring >(remoteDataFolder + L"/NewDoc.docx"));
     std::shared_ptr<requests::SaveAsRangeRequest> request(new requests::SaveAsRangeRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"id0.0.0"),
@@ -151,7 +153,8 @@ TEST_F(RangeTests, TestSaveAsRange) {
 /// </summary>
 TEST_F(RangeTests, TestSaveAsRangeOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestDocumentParameters = std::make_shared< aspose::words::cloud::models::RangeDocument >();
+    requestDocumentParameters->setDocumentName(std::make_shared< std::wstring >(remoteDataFolder + L"/NewDoc.docx"));
     std::shared_ptr<requests::SaveAsRangeOnlineRequest> request(new requests::SaveAsRangeOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
@@ -175,6 +178,8 @@ TEST_F(RangeTests, TestReplaceWithText) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestRangeText = std::make_shared< aspose::words::cloud::models::ReplaceRange >();
+    requestRangeText->setText(std::make_shared< std::wstring >(L"Replaced header"));
     std::shared_ptr<requests::ReplaceWithTextRequest> request(new requests::ReplaceWithTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"id0.0.0"),
@@ -197,7 +202,8 @@ TEST_F(RangeTests, TestReplaceWithText) {
 /// </summary>
 TEST_F(RangeTests, TestReplaceWithTextOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestRangeText = std::make_shared< aspose::words::cloud::models::ReplaceRange >();
+    requestRangeText->setText(std::make_shared< std::wstring >(L"Replaced header"));
     std::shared_ptr<requests::ReplaceWithTextOnlineRequest> request(new requests::ReplaceWithTextOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),

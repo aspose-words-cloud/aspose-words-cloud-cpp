@@ -263,6 +263,9 @@ TEST_F(TableTests, TestInsertTable) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestTable = std::make_shared< aspose::words::cloud::models::TableInsert >();
+    requestTable->setColumnsCount(std::make_shared< int32_t >(5));
+    requestTable->setRowsCount(std::make_shared< int32_t >(4));
     std::shared_ptr<requests::InsertTableRequest> request(new requests::InsertTableRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -289,7 +292,9 @@ TEST_F(TableTests, TestInsertTable) {
 /// </summary>
 TEST_F(TableTests, TestInsertTableOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestTable = std::make_shared< aspose::words::cloud::models::TableInsert >();
+    requestTable->setColumnsCount(std::make_shared< int32_t >(5));
+    requestTable->setRowsCount(std::make_shared< int32_t >(4));
     std::shared_ptr<requests::InsertTableOnlineRequest> request(new requests::InsertTableOnlineRequest(
         requestDocument,
         nullptr,
@@ -315,6 +320,9 @@ TEST_F(TableTests, TestInsertTableWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestTable = std::make_shared< aspose::words::cloud::models::TableInsert >();
+    requestTable->setColumnsCount(std::make_shared< int32_t >(5));
+    requestTable->setRowsCount(std::make_shared< int32_t >(4));
     std::shared_ptr<requests::InsertTableRequest> request(new requests::InsertTableRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -415,6 +423,13 @@ TEST_F(TableTests, TestUpdateTableProperties) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestProperties = std::make_shared< aspose::words::cloud::models::TableProperties >();
+    requestProperties->setAlignment(std::make_shared< aspose::words::cloud::models::TableProperties::Alignment >(aspose::words::cloud::models::TableProperties::Alignment::RIGHT));
+    requestProperties->setAllowAutoFit(std::make_shared< bool >(false));
+    requestProperties->setBidi(std::make_shared< bool >(true));
+    requestProperties->setBottomPadding(std::make_shared< double >(1));
+    requestProperties->setCellSpacing(std::make_shared< double >(2.0));
+    requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::models::TableProperties::StyleOptions >(aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS));
     std::shared_ptr<requests::UpdateTablePropertiesRequest> request(new requests::UpdateTablePropertiesRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
@@ -442,7 +457,13 @@ TEST_F(TableTests, TestUpdateTableProperties) {
 /// </summary>
 TEST_F(TableTests, TestUpdateTablePropertiesOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestProperties = std::make_shared< aspose::words::cloud::models::TableProperties >();
+    requestProperties->setAlignment(std::make_shared< aspose::words::cloud::models::TableProperties::Alignment >(aspose::words::cloud::models::TableProperties::Alignment::RIGHT));
+    requestProperties->setAllowAutoFit(std::make_shared< bool >(false));
+    requestProperties->setBidi(std::make_shared< bool >(true));
+    requestProperties->setBottomPadding(std::make_shared< double >(1));
+    requestProperties->setCellSpacing(std::make_shared< double >(2));
+    requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::models::TableProperties::StyleOptions >(aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS));
     std::shared_ptr<requests::UpdateTablePropertiesOnlineRequest> request(new requests::UpdateTablePropertiesOnlineRequest(
         requestDocument,
         nullptr,
@@ -469,6 +490,13 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestProperties = std::make_shared< aspose::words::cloud::models::TableProperties >();
+    requestProperties->setAlignment(std::make_shared< aspose::words::cloud::models::TableProperties::Alignment >(aspose::words::cloud::models::TableProperties::Alignment::RIGHT));
+    requestProperties->setAllowAutoFit(std::make_shared< bool >(false));
+    requestProperties->setBidi(std::make_shared< bool >(true));
+    requestProperties->setBottomPadding(std::make_shared< double >(1.0));
+    requestProperties->setCellSpacing(std::make_shared< double >(2.0));
+    requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::models::TableProperties::StyleOptions >(aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS));
     std::shared_ptr<requests::UpdateTablePropertiesRequest> request(new requests::UpdateTablePropertiesRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
@@ -591,6 +619,8 @@ TEST_F(TableTests, TestInsertTableRow) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestRow = std::make_shared< aspose::words::cloud::models::TableRowInsert >();
+    requestRow->setColumnsCount(std::make_shared< int32_t >(5));
     std::shared_ptr<requests::InsertTableRowRequest> request(new requests::InsertTableRowRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
@@ -615,7 +645,8 @@ TEST_F(TableTests, TestInsertTableRow) {
 /// </summary>
 TEST_F(TableTests, TestInsertTableRowOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestRow = std::make_shared< aspose::words::cloud::models::TableRowInsert >();
+    requestRow->setColumnsCount(std::make_shared< int32_t >(5));
     std::shared_ptr<requests::InsertTableRowOnlineRequest> request(new requests::InsertTableRowOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
@@ -683,6 +714,11 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestFormat = std::make_shared< aspose::words::cloud::models::TableRowFormat >();
+    requestFormat->setAllowBreakAcrossPages(std::make_shared< bool >(true));
+    requestFormat->setHeadingFormat(std::make_shared< bool >(true));
+    requestFormat->setHeight(std::make_shared< double >(10.0));
+    requestFormat->setHeightRule(std::make_shared< aspose::words::cloud::models::TableRowFormat::HeightRule >(aspose::words::cloud::models::TableRowFormat::HeightRule::EXACTLY));
     std::shared_ptr<requests::UpdateTableRowFormatRequest> request(new requests::UpdateTableRowFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
@@ -709,7 +745,11 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
 /// </summary>
 TEST_F(TableTests, TestUpdateTableRowFormatOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestFormat = std::make_shared< aspose::words::cloud::models::TableRowFormat >();
+    requestFormat->setAllowBreakAcrossPages(std::make_shared< bool >(true));
+    requestFormat->setHeadingFormat(std::make_shared< bool >(true));
+    requestFormat->setHeight(std::make_shared< double >(10));
+    requestFormat->setHeightRule(std::make_shared< aspose::words::cloud::models::TableRowFormat::HeightRule >(aspose::words::cloud::models::TableRowFormat::HeightRule::AUTO));
     std::shared_ptr<requests::UpdateTableRowFormatOnlineRequest> request(new requests::UpdateTableRowFormatOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
@@ -915,6 +955,11 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestFormat = std::make_shared< aspose::words::cloud::models::TableCellFormat >();
+    requestFormat->setBottomPadding(std::make_shared< double >(5.0));
+    requestFormat->setFitText(std::make_shared< bool >(true));
+    requestFormat->setHorizontalMerge(std::make_shared< aspose::words::cloud::models::TableCellFormat::HorizontalMerge >(aspose::words::cloud::models::TableCellFormat::HorizontalMerge::FIRST));
+    requestFormat->setWrapText(std::make_shared< bool >(true));
     std::shared_ptr<requests::UpdateTableCellFormatRequest> request(new requests::UpdateTableCellFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
@@ -941,7 +986,11 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
 /// </summary>
 TEST_F(TableTests, TestUpdateTableCellFormatOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestFormat = std::make_shared< aspose::words::cloud::models::TableCellFormat >();
+    requestFormat->setBottomPadding(std::make_shared< double >(5));
+    requestFormat->setFitText(std::make_shared< bool >(true));
+    requestFormat->setHorizontalMerge(std::make_shared< aspose::words::cloud::models::TableCellFormat::HorizontalMerge >(aspose::words::cloud::models::TableCellFormat::HorizontalMerge::FIRST));
+    requestFormat->setWrapText(std::make_shared< bool >(true));
     std::shared_ptr<requests::UpdateTableCellFormatOnlineRequest> request(new requests::UpdateTableCellFormatOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),

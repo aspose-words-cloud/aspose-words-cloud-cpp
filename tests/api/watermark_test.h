@@ -103,6 +103,9 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestWatermarkText = std::make_shared< aspose::words::cloud::models::WatermarkText >();
+    requestWatermarkText->setText(std::make_shared< std::wstring >(L"This is the text"));
+    requestWatermarkText->setRotationAngle(std::make_shared< double >(90.0));
     std::shared_ptr<requests::InsertWatermarkTextRequest> request(new requests::InsertWatermarkTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -125,7 +128,9 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
 /// </summary>
 TEST_F(WatermarkTests, TestInsertWatermarkTextOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestWatermarkText = std::make_shared< aspose::words::cloud::models::WatermarkText >();
+    requestWatermarkText->setText(std::make_shared< std::wstring >(L"This is the text"));
+    requestWatermarkText->setRotationAngle(std::make_shared< double >(90));
     std::shared_ptr<requests::InsertWatermarkTextOnlineRequest> request(new requests::InsertWatermarkTextOnlineRequest(
         requestDocument,
         nullptr,

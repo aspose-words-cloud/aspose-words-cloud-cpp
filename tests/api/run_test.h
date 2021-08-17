@@ -47,6 +47,8 @@ TEST_F(RunTests, TestUpdateRun) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
+    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
     std::shared_ptr<requests::UpdateRunRequest> request(new requests::UpdateRunRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1"),
@@ -71,7 +73,8 @@ TEST_F(RunTests, TestUpdateRun) {
 /// </summary>
 TEST_F(RunTests, TestUpdateRunOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
+    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
     std::shared_ptr<requests::UpdateRunOnlineRequest> request(new requests::UpdateRunOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1"),
@@ -98,6 +101,8 @@ TEST_F(RunTests, TestInsertRun) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
+    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
     std::shared_ptr<requests::InsertRunRequest> request(new requests::InsertRunRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1"),
@@ -123,7 +128,8 @@ TEST_F(RunTests, TestInsertRun) {
 /// </summary>
 TEST_F(RunTests, TestInsertRunOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
+    requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
     std::shared_ptr<requests::InsertRunOnlineRequest> request(new requests::InsertRunOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1"),

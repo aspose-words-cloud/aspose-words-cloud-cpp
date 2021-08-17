@@ -127,6 +127,8 @@ TEST_F(ListsTests, TestUpdateList) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListUpdate >();
+    requestListUpdate->setIsRestartAtEachSection(std::make_shared< bool >(true));
     std::shared_ptr<requests::UpdateListRequest> request(new requests::UpdateListRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
@@ -148,7 +150,8 @@ TEST_F(ListsTests, TestUpdateList) {
 /// </summary>
 TEST_F(ListsTests, TestUpdateListOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListUpdate >();
+    requestListUpdate->setIsRestartAtEachSection(std::make_shared< bool >(true));
     std::shared_ptr<requests::UpdateListOnlineRequest> request(new requests::UpdateListOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(1),
@@ -177,6 +180,8 @@ TEST_F(ListsTests, TestUpdateListLevel) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListLevelUpdate >();
+    requestListUpdate->setAlignment(std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT));
     std::shared_ptr<requests::UpdateListLevelRequest> request(new requests::UpdateListLevelRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
@@ -199,7 +204,8 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 /// </summary>
 TEST_F(ListsTests, TestUpdateListLevelOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListLevelUpdate >();
+    requestListUpdate->setAlignment(std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT));
     std::shared_ptr<requests::UpdateListLevelOnlineRequest> request(new requests::UpdateListLevelOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(1),
@@ -231,6 +237,8 @@ TEST_F(ListsTests, TestInsertList) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestListInsert = std::make_shared< aspose::words::cloud::models::ListInsert >();
+    requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
     std::shared_ptr<requests::InsertListRequest> request(new requests::InsertListRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -253,7 +261,8 @@ TEST_F(ListsTests, TestInsertList) {
 /// </summary>
 TEST_F(ListsTests, TestInsertListOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestListInsert = std::make_shared< aspose::words::cloud::models::ListInsert >();
+    requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
     std::shared_ptr<requests::InsertListOnlineRequest> request(new requests::InsertListOnlineRequest(
         requestDocument,
         nullptr,

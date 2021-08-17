@@ -47,6 +47,13 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
+    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
+    requestDocumentListDocumentEntries->push_back(nullptr);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(nullptr);
     std::shared_ptr<requests::AppendDocumentRequest> request(new requests::AppendDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -76,9 +83,13 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     );
 
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
-
-
+    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
+    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
+    requestDocumentListDocumentEntries->push_back(nullptr);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(nullptr);
     std::shared_ptr<requests::AppendDocumentOnlineRequest> request(new requests::AppendDocumentOnlineRequest(
         requestDocument,
         nullptr,

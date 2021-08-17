@@ -127,6 +127,22 @@ TEST_F(CommentTests, TestInsertComment) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeStart->setNode(nullptr);
+    requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
+    auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeEnd->setNode(nullptr);
+    requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
+    auto requestComment = std::make_shared< aspose::words::cloud::models::CommentInsert >();
+    requestComment->setRangeStart(nullptr);
+    requestComment->setRangeEnd(nullptr);
+    requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
+    requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
+    requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
     std::shared_ptr<requests::InsertCommentRequest> request(new requests::InsertCommentRequest(
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
@@ -152,11 +168,22 @@ TEST_F(CommentTests, TestInsertComment) {
 /// </summary>
 TEST_F(CommentTests, TestInsertCommentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
-
-
-
-
+    auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeStart->setNode(nullptr);
+    requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
+    auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeEnd->setNode(nullptr);
+    requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
+    auto requestComment = std::make_shared< aspose::words::cloud::models::CommentInsert >();
+    requestComment->setRangeStart(nullptr);
+    requestComment->setRangeEnd(nullptr);
+    requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
+    requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
+    requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
     std::shared_ptr<requests::InsertCommentOnlineRequest> request(new requests::InsertCommentOnlineRequest(
         requestDocument,
         nullptr,
@@ -181,6 +208,22 @@ TEST_F(CommentTests, TestUpdateComment) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeStart->setNode(nullptr);
+    requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
+    auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeEnd->setNode(nullptr);
+    requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
+    auto requestComment = std::make_shared< aspose::words::cloud::models::CommentUpdate >();
+    requestComment->setRangeStart(nullptr);
+    requestComment->setRangeEnd(nullptr);
+    requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
+    requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
+    requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
     std::shared_ptr<requests::UpdateCommentRequest> request(new requests::UpdateCommentRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
@@ -207,11 +250,22 @@ TEST_F(CommentTests, TestUpdateComment) {
 /// </summary>
 TEST_F(CommentTests, TestUpdateCommentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
-
-
-
-
+    auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeStart->setNode(nullptr);
+    requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
+    auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestCommentRangeEnd->setNode(nullptr);
+    requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
+    auto requestComment = std::make_shared< aspose::words::cloud::models::CommentUpdate >();
+    requestComment->setRangeStart(nullptr);
+    requestComment->setRangeEnd(nullptr);
+    requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
+    requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
+    requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
     std::shared_ptr<requests::UpdateCommentOnlineRequest> request(new requests::UpdateCommentOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),

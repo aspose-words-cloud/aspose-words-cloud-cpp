@@ -88,6 +88,11 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestPageSetup = std::make_shared< aspose::words::cloud::models::PageSetup >();
+    requestPageSetup->setRtlGutter(std::make_shared< bool >(true));
+    requestPageSetup->setLeftMargin(std::make_shared< double >(10.0));
+    requestPageSetup->setOrientation(std::make_shared< aspose::words::cloud::models::PageSetup::Orientation >(aspose::words::cloud::models::PageSetup::Orientation::LANDSCAPE));
+    requestPageSetup->setPaperSize(std::make_shared< aspose::words::cloud::models::PageSetup::PaperSize >(aspose::words::cloud::models::PageSetup::PaperSize::A5));
     std::shared_ptr<requests::UpdateSectionPageSetupRequest> request(new requests::UpdateSectionPageSetupRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
@@ -113,7 +118,11 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
 /// </summary>
 TEST_F(PageSetupTests, TestUpdateSectionPageSetupOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-
+    auto requestPageSetup = std::make_shared< aspose::words::cloud::models::PageSetup >();
+    requestPageSetup->setRtlGutter(std::make_shared< bool >(true));
+    requestPageSetup->setLeftMargin(std::make_shared< double >(10));
+    requestPageSetup->setOrientation(std::make_shared< aspose::words::cloud::models::PageSetup::Orientation >(aspose::words::cloud::models::PageSetup::Orientation::LANDSCAPE));
+    requestPageSetup->setPaperSize(std::make_shared< aspose::words::cloud::models::PageSetup::PaperSize >(aspose::words::cloud::models::PageSetup::PaperSize::A5));
     std::shared_ptr<requests::UpdateSectionPageSetupOnlineRequest> request(new requests::UpdateSectionPageSetupOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
