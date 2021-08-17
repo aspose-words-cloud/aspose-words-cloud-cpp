@@ -108,7 +108,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
     requestWatermarkText->setRotationAngle(std::make_shared< double >(90.0));
     std::shared_ptr<requests::InsertWatermarkTextRequest> request(new requests::InsertWatermarkTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestWatermarkText,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -133,7 +133,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkTextOnline) {
     requestWatermarkText->setRotationAngle(std::make_shared< double >(90));
     std::shared_ptr<requests::InsertWatermarkTextOnlineRequest> request(new requests::InsertWatermarkTextOnlineRequest(
         requestDocument,
-        nullptr,
+        requestWatermarkText,
         nullptr,
         nullptr,
         nullptr,

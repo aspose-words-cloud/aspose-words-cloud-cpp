@@ -131,7 +131,7 @@ TEST_F(StylesTests, TestUpdateStyle) {
     std::shared_ptr<requests::UpdateStyleRequest> request(new requests::UpdateStyleRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"Heading 1"),
-        nullptr,
+        requestStyleUpdate,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -156,7 +156,7 @@ TEST_F(StylesTests, TestUpdateStyleOnline) {
     std::shared_ptr<requests::UpdateStyleOnlineRequest> request(new requests::UpdateStyleOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"Heading 1"),
-        nullptr,
+        requestStyleUpdate,
         nullptr,
         nullptr,
         nullptr,
@@ -183,7 +183,7 @@ TEST_F(StylesTests, TestInsertStyle) {
     requestStyleInsert->setStyleType(std::make_shared< aspose::words::cloud::models::StyleInsert::StyleType >(aspose::words::cloud::models::StyleInsert::StyleType::PARAGRAPH));
     std::shared_ptr<requests::InsertStyleRequest> request(new requests::InsertStyleRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestStyleInsert,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -208,7 +208,7 @@ TEST_F(StylesTests, TestInsertStyleOnline) {
     requestStyleInsert->setStyleType(std::make_shared< aspose::words::cloud::models::StyleInsert::StyleType >(aspose::words::cloud::models::StyleInsert::StyleType::PARAGRAPH));
     std::shared_ptr<requests::InsertStyleOnlineRequest> request(new requests::InsertStyleOnlineRequest(
         requestDocument,
-        nullptr,
+        requestStyleInsert,
         nullptr,
         nullptr,
         nullptr,
@@ -234,7 +234,7 @@ TEST_F(StylesTests, TestCopyStyle) {
     requestStyleCopy->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
     std::shared_ptr<requests::CopyStyleRequest> request(new requests::CopyStyleRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestStyleCopy,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -258,7 +258,7 @@ TEST_F(StylesTests, TestCopyStyleOnline) {
     requestStyleCopy->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
     std::shared_ptr<requests::CopyStyleOnlineRequest> request(new requests::CopyStyleOnlineRequest(
         requestDocument,
-        nullptr,
+        requestStyleCopy,
         nullptr,
         nullptr,
         nullptr,
@@ -325,7 +325,7 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElement) {
     std::shared_ptr<requests::ApplyStyleToDocumentElementRequest> request(new requests::ApplyStyleToDocumentElementRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
-        nullptr,
+        requestStyleApply,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -348,7 +348,7 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElementOnline) {
     std::shared_ptr<requests::ApplyStyleToDocumentElementOnlineRequest> request(new requests::ApplyStyleToDocumentElementOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
-        nullptr,
+        requestStyleApply,
         nullptr,
         nullptr,
         nullptr,

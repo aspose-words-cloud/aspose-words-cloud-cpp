@@ -52,7 +52,7 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
     requestProtectionRequest->setProtectionType(std::make_shared< std::wstring >(L"ReadOnly"));
     std::shared_ptr<requests::ProtectDocumentRequest> request(new requests::ProtectDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestProtectionRequest,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -74,7 +74,7 @@ TEST_F(DocumentProtectionTests, TestProtectDocumentOnline) {
     requestProtectionRequest->setNewPassword(std::make_shared< std::wstring >(L"123"));
     std::shared_ptr<requests::ProtectDocumentOnlineRequest> request(new requests::ProtectDocumentOnlineRequest(
         requestDocument,
-        nullptr,
+        requestProtectionRequest,
         nullptr,
         nullptr,
         nullptr
@@ -136,7 +136,7 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"aspose"));
     std::shared_ptr<requests::UnprotectDocumentRequest> request(new requests::UnprotectDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestProtectionRequest,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -160,7 +160,7 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocumentOnline) {
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"aspose"));
     std::shared_ptr<requests::UnprotectDocumentOnlineRequest> request(new requests::UnprotectDocumentOnlineRequest(
         requestDocument,
-        nullptr,
+        requestProtectionRequest,
         nullptr,
         nullptr,
         nullptr

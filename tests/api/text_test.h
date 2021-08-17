@@ -52,7 +52,7 @@ TEST_F(TextTests, TestReplaceText) {
     requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"Aspose testing"));
     std::shared_ptr<requests::ReplaceTextRequest> request(new requests::ReplaceTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestReplaceText,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -78,7 +78,7 @@ TEST_F(TextTests, TestReplaceTextOnline) {
     requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"aspose new"));
     std::shared_ptr<requests::ReplaceTextOnlineRequest> request(new requests::ReplaceTextOnlineRequest(
         requestDocument,
-        nullptr,
+        requestReplaceText,
         nullptr,
         nullptr,
         nullptr,

@@ -129,7 +129,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
     std::shared_ptr<requests::UpdateBookmarkRequest> request(new requests::UpdateBookmarkRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(bookmarkName),
-        nullptr,
+        requestBookmarkData,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -155,7 +155,7 @@ TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
     std::shared_ptr<requests::UpdateBookmarkOnlineRequest> request(new requests::UpdateBookmarkOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),
-        nullptr,
+        requestBookmarkData,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),

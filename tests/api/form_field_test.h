@@ -57,7 +57,7 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
     std::shared_ptr<requests::UpdateFormFieldRequest> request(new requests::UpdateFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFormField,
         std::make_shared< std::wstring >(L"sections/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -88,7 +88,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldOnline) {
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
     std::shared_ptr<requests::UpdateFormFieldOnlineRequest> request(new requests::UpdateFormFieldOnlineRequest(
         requestDocument,
-        nullptr,
+        requestFormField,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
@@ -122,7 +122,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
     std::shared_ptr<requests::UpdateFormFieldRequest> request(new requests::UpdateFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFormField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -297,7 +297,7 @@ TEST_F(FormFieldTests, TestInsertFormField) {
     requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
     std::shared_ptr<requests::InsertFormFieldRequest> request(new requests::InsertFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestFormField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -330,7 +330,7 @@ TEST_F(FormFieldTests, TestInsertFormFieldOnline) {
     requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
     std::shared_ptr<requests::InsertFormFieldOnlineRequest> request(new requests::InsertFormFieldOnlineRequest(
         requestDocument,
-        nullptr,
+        requestFormField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         nullptr,
         nullptr,
@@ -364,7 +364,7 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
     requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
     std::shared_ptr<requests::InsertFormFieldRequest> request(new requests::InsertFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestFormField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,

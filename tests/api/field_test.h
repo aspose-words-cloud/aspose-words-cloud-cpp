@@ -194,7 +194,7 @@ TEST_F(FieldTests, TestInsertField) {
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::InsertFieldRequest> request(new requests::InsertFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -221,7 +221,7 @@ TEST_F(FieldTests, TestInsertFieldOnline) {
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::InsertFieldOnlineRequest> request(new requests::InsertFieldOnlineRequest(
         requestDocument,
-        nullptr,
+        requestField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         nullptr,
         nullptr,
@@ -250,7 +250,7 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::InsertFieldRequest> request(new requests::InsertFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -285,7 +285,7 @@ TEST_F(FieldTests, TestUpdateField) {
     std::shared_ptr<requests::UpdateFieldRequest> request(new requests::UpdateFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -311,7 +311,7 @@ TEST_F(FieldTests, TestUpdateFieldOnline) {
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
     std::shared_ptr<requests::UpdateFieldOnlineRequest> request(new requests::UpdateFieldOnlineRequest(
         requestDocument,
-        nullptr,
+        requestField,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         nullptr,
@@ -341,7 +341,7 @@ TEST_F(FieldTests, TestInsertPageNumbers) {
     requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
     std::shared_ptr<requests::InsertPageNumbersRequest> request(new requests::InsertPageNumbersRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestPageNumber,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -368,7 +368,7 @@ TEST_F(FieldTests, TestInsertPageNumbersOnline) {
     requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
     std::shared_ptr<requests::InsertPageNumbersOnlineRequest> request(new requests::InsertPageNumbersOnlineRequest(
         requestDocument,
-        nullptr,
+        requestPageNumber,
         nullptr,
         nullptr,
         nullptr,

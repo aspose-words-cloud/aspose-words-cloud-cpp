@@ -50,7 +50,7 @@ TEST_F(BuildReportTests, TestBuildReportOnline) {
     std::shared_ptr<requests::BuildReportOnlineRequest> request(new requests::BuildReportOnlineRequest(
         requestTemplate,
         std::make_shared< std::wstring >(localDataFile),
-        nullptr,
+        requestReportEngineSettings,
         nullptr
     ));
 
@@ -75,11 +75,11 @@ TEST_F(BuildReportTests, TestBuildReport) {
     requestReportEngineSettingsReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS));
     auto requestReportEngineSettings = std::make_shared< aspose::words::cloud::models::ReportEngineSettings >();
     requestReportEngineSettings->setDataSourceType(std::make_shared< aspose::words::cloud::models::ReportEngineSettings::DataSourceType >(aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON));
-    requestReportEngineSettings->setReportBuildOptions(nullptr);
+    requestReportEngineSettings->setReportBuildOptions(requestReportEngineSettingsReportBuildOptions);
     std::shared_ptr<requests::BuildReportRequest> request(new requests::BuildReportRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(localDataFile),
-        nullptr,
+        requestReportEngineSettings,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,

@@ -135,7 +135,7 @@ TEST_F(RangeTests, TestSaveAsRange) {
     std::shared_ptr<requests::SaveAsRangeRequest> request(new requests::SaveAsRangeRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"id0.0.0"),
-        nullptr,
+        requestDocumentParameters,
         std::make_shared< std::wstring >(L"id0.0.1"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -158,7 +158,7 @@ TEST_F(RangeTests, TestSaveAsRangeOnline) {
     std::shared_ptr<requests::SaveAsRangeOnlineRequest> request(new requests::SaveAsRangeOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
-        nullptr,
+        requestDocumentParameters,
         std::make_shared< std::wstring >(L"id0.0.1"),
         nullptr,
         nullptr
@@ -183,7 +183,7 @@ TEST_F(RangeTests, TestReplaceWithText) {
     std::shared_ptr<requests::ReplaceWithTextRequest> request(new requests::ReplaceWithTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"id0.0.0"),
-        nullptr,
+        requestRangeText,
         std::make_shared< std::wstring >(L"id0.0.1"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -207,7 +207,7 @@ TEST_F(RangeTests, TestReplaceWithTextOnline) {
     std::shared_ptr<requests::ReplaceWithTextOnlineRequest> request(new requests::ReplaceWithTextOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
-        nullptr,
+        requestRangeText,
         std::make_shared< std::wstring >(L"id0.0.1"),
         nullptr,
         nullptr,

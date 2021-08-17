@@ -51,7 +51,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
     std::shared_ptr<requests::OptimizeDocumentRequest> request(new requests::OptimizeDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestOptions,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -73,7 +73,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
     std::shared_ptr<requests::OptimizeDocumentOnlineRequest> request(new requests::OptimizeDocumentOnlineRequest(
         requestDocument,
-        nullptr,
+        requestOptions,
         nullptr,
         nullptr,
         nullptr,

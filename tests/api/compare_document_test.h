@@ -60,7 +60,7 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
     std::shared_ptr<requests::CompareDocumentRequest> request(new requests::CompareDocumentRequest(
         std::make_shared< std::wstring >(remoteName1),
-        nullptr,
+        requestCompareData,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -93,7 +93,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
         requestDocument,
-        nullptr,
+        requestCompareData,
         nullptr,
         nullptr,
         nullptr,
@@ -124,7 +124,7 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
     auto requestComparingDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/" + localName2)), std::istream::binary));
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
         requestDocument,
-        nullptr,
+        requestCompareData,
         requestComparingDocument,
         nullptr,
         nullptr,

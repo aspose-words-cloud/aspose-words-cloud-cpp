@@ -52,7 +52,7 @@ TEST_F(FootnoteTests, TestInsertFootnote) {
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
     std::shared_ptr<requests::InsertFootnoteRequest> request(new requests::InsertFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestFootnoteDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -79,7 +79,7 @@ TEST_F(FootnoteTests, TestInsertFootnoteOnline) {
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
     std::shared_ptr<requests::InsertFootnoteOnlineRequest> request(new requests::InsertFootnoteOnlineRequest(
         requestDocument,
-        nullptr,
+        requestFootnoteDto,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr,
@@ -107,7 +107,7 @@ TEST_F(FootnoteTests, TestInsertFootnoteWithoutNodePath) {
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
     std::shared_ptr<requests::InsertFootnoteRequest> request(new requests::InsertFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestFootnoteDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -350,7 +350,7 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
     std::shared_ptr<requests::UpdateFootnoteRequest> request(new requests::UpdateFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFootnoteDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -375,7 +375,7 @@ TEST_F(FootnoteTests, TestUpdateFootnoteOnline) {
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
     std::shared_ptr<requests::UpdateFootnoteOnlineRequest> request(new requests::UpdateFootnoteOnlineRequest(
         requestDocument,
-        nullptr,
+        requestFootnoteDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -404,7 +404,7 @@ TEST_F(FootnoteTests, TestUpdateFootnoteWithoutNodePath) {
     std::shared_ptr<requests::UpdateFootnoteRequest> request(new requests::UpdateFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFootnoteDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,

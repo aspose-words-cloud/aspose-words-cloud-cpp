@@ -96,7 +96,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
     std::shared_ptr<requests::UpdateSectionPageSetupRequest> request(new requests::UpdateSectionPageSetupRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestPageSetup,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -126,7 +126,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetupOnline) {
     std::shared_ptr<requests::UpdateSectionPageSetupOnlineRequest> request(new requests::UpdateSectionPageSetupOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestPageSetup,
         nullptr,
         nullptr,
         nullptr,

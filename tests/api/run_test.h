@@ -53,7 +53,7 @@ TEST_F(RunTests, TestUpdateRun) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1"),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestRun,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -78,7 +78,7 @@ TEST_F(RunTests, TestUpdateRunOnline) {
     std::shared_ptr<requests::UpdateRunOnlineRequest> request(new requests::UpdateRunOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1"),
-        nullptr,
+        requestRun,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -106,7 +106,7 @@ TEST_F(RunTests, TestInsertRun) {
     std::shared_ptr<requests::InsertRunRequest> request(new requests::InsertRunRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/1"),
-        nullptr,
+        requestRun,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -133,7 +133,7 @@ TEST_F(RunTests, TestInsertRunOnline) {
     std::shared_ptr<requests::InsertRunOnlineRequest> request(new requests::InsertRunOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1"),
-        nullptr,
+        requestRun,
         nullptr,
         nullptr,
         nullptr,

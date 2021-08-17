@@ -268,7 +268,7 @@ TEST_F(TableTests, TestInsertTable) {
     requestTable->setRowsCount(std::make_shared< int32_t >(4));
     std::shared_ptr<requests::InsertTableRequest> request(new requests::InsertTableRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestTable,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -297,7 +297,7 @@ TEST_F(TableTests, TestInsertTableOnline) {
     requestTable->setRowsCount(std::make_shared< int32_t >(4));
     std::shared_ptr<requests::InsertTableOnlineRequest> request(new requests::InsertTableOnlineRequest(
         requestDocument,
-        nullptr,
+        requestTable,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr,
@@ -325,7 +325,7 @@ TEST_F(TableTests, TestInsertTableWithoutNodePath) {
     requestTable->setRowsCount(std::make_shared< int32_t >(4));
     std::shared_ptr<requests::InsertTableRequest> request(new requests::InsertTableRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestTable,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -433,7 +433,7 @@ TEST_F(TableTests, TestUpdateTableProperties) {
     std::shared_ptr<requests::UpdateTablePropertiesRequest> request(new requests::UpdateTablePropertiesRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
-        nullptr,
+        requestProperties,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -466,7 +466,7 @@ TEST_F(TableTests, TestUpdateTablePropertiesOnline) {
     requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::models::TableProperties::StyleOptions >(aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS));
     std::shared_ptr<requests::UpdateTablePropertiesOnlineRequest> request(new requests::UpdateTablePropertiesOnlineRequest(
         requestDocument,
-        nullptr,
+        requestProperties,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -500,7 +500,7 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
     std::shared_ptr<requests::UpdateTablePropertiesRequest> request(new requests::UpdateTablePropertiesRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
-        nullptr,
+        requestProperties,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -624,7 +624,7 @@ TEST_F(TableTests, TestInsertTableRow) {
     std::shared_ptr<requests::InsertTableRowRequest> request(new requests::InsertTableRowRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
-        nullptr,
+        requestRow,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -650,7 +650,7 @@ TEST_F(TableTests, TestInsertTableRowOnline) {
     std::shared_ptr<requests::InsertTableRowOnlineRequest> request(new requests::InsertTableRowOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
-        nullptr,
+        requestRow,
         nullptr,
         nullptr,
         nullptr,
@@ -723,7 +723,7 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFormat,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -753,7 +753,7 @@ TEST_F(TableTests, TestUpdateTableRowFormatOnline) {
     std::shared_ptr<requests::UpdateTableRowFormatOnlineRequest> request(new requests::UpdateTableRowFormatOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
-        nullptr,
+        requestFormat,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -864,10 +864,12 @@ TEST_F(TableTests, TestInsertTableCell) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestCell = std::make_shared< aspose::words::cloud::models::TableCellInsert >();
+
     std::shared_ptr<requests::InsertTableCellRequest> request(new requests::InsertTableCellRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
-        nullptr,
+        requestCell,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -887,11 +889,12 @@ TEST_F(TableTests, TestInsertTableCell) {
 /// </summary>
 TEST_F(TableTests, TestInsertTableCellOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestCell = std::make_shared< aspose::words::cloud::models::TableCellInsert >();
 
     std::shared_ptr<requests::InsertTableCellOnlineRequest> request(new requests::InsertTableCellOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
-        nullptr,
+        requestCell,
         nullptr,
         nullptr,
         nullptr,
@@ -964,7 +967,7 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFormat,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -994,7 +997,7 @@ TEST_F(TableTests, TestUpdateTableCellFormatOnline) {
     std::shared_ptr<requests::UpdateTableCellFormatOnlineRequest> request(new requests::UpdateTableCellFormatOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
-        nullptr,
+        requestFormat,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,

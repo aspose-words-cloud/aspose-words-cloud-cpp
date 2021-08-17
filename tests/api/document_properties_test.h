@@ -179,7 +179,7 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
     std::shared_ptr<requests::CreateOrUpdateDocumentPropertyRequest> request(new requests::CreateOrUpdateDocumentPropertyRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"AsposeAuthor"),
-        nullptr,
+        requestProperty,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -205,7 +205,7 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentPropertyOnline) {
     std::shared_ptr<requests::CreateOrUpdateDocumentPropertyOnlineRequest> request(new requests::CreateOrUpdateDocumentPropertyOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"AsposeAuthor"),
-        nullptr,
+        requestProperty,
         nullptr,
         nullptr,
         nullptr,

@@ -46,9 +46,9 @@ TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
     requestDataSaveOptions->setZipOutput(std::make_shared< bool >(false));
     auto requestData = std::make_shared< aspose::words::cloud::models::LoadWebDocumentData >();
     requestData->setLoadingDocumentUrl(std::make_shared< std::wstring >(L"http://google.com"));
-    requestData->setSaveOptions(nullptr);
+    requestData->setSaveOptions(requestDataSaveOptions);
     std::shared_ptr<requests::LoadWebDocumentRequest> request(new requests::LoadWebDocumentRequest(
-        nullptr,
+        requestData,
         nullptr
     ));
 

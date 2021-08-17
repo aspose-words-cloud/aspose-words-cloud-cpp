@@ -53,7 +53,7 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
     std::shared_ptr<requests::SaveAsRequest> request(new requests::SaveAsRequest(
         std::make_shared< std::wstring >(remoteName),
-        nullptr,
+        requestSaveOptionsData,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -78,7 +78,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAs.pdf"));
     std::shared_ptr<requests::SaveAsOnlineRequest> request(new requests::SaveAsOnlineRequest(
         requestDocument,
-        nullptr,
+        requestSaveOptionsData,
         nullptr,
         nullptr,
         nullptr
@@ -104,7 +104,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAsFromPdfToDoc.docx"));
     std::shared_ptr<requests::SaveAsRequest> request(new requests::SaveAsRequest(
         std::make_shared< std::wstring >(remoteName),
-        nullptr,
+        requestSaveOptionsData,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -134,7 +134,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
     requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
     std::shared_ptr<requests::SaveAsTiffRequest> request(new requests::SaveAsTiffRequest(
         std::make_shared< std::wstring >(remoteName),
-        nullptr,
+        requestSaveOptions,
         std::make_shared< std::wstring >(remoteFolder),
         nullptr,
         nullptr,
@@ -176,7 +176,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
     requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
     std::shared_ptr<requests::SaveAsTiffOnlineRequest> request(new requests::SaveAsTiffOnlineRequest(
         requestDocument,
-        nullptr,
+        requestSaveOptions,
         nullptr,
         nullptr,
         nullptr,

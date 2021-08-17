@@ -318,7 +318,7 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestFontDto,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -343,7 +343,7 @@ TEST_F(ParagraphTests, TestUpdateRunFontOnline) {
     std::shared_ptr<requests::UpdateRunFontOnlineRequest> request(new requests::UpdateRunFontOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/0"),
-        nullptr,
+        requestFontDto,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,
@@ -370,7 +370,7 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
     requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
     std::shared_ptr<requests::InsertParagraphRequest> request(new requests::InsertParagraphRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestParagraph,
         std::make_shared< std::wstring >(L"sections/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -396,7 +396,7 @@ TEST_F(ParagraphTests, TestInsertParagraphOnline) {
     requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
     std::shared_ptr<requests::InsertParagraphOnlineRequest> request(new requests::InsertParagraphOnlineRequest(
         requestDocument,
-        nullptr,
+        requestParagraph,
         std::make_shared< std::wstring >(L"sections/0"),
         nullptr,
         nullptr,
@@ -424,7 +424,7 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
     requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
     std::shared_ptr<requests::InsertParagraphRequest> request(new requests::InsertParagraphRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestParagraph,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -598,7 +598,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
     std::shared_ptr<requests::UpdateParagraphFormatRequest> request(new requests::UpdateParagraphFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestParagraphFormatDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -623,7 +623,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormatOnline) {
     requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
     std::shared_ptr<requests::UpdateParagraphFormatOnlineRequest> request(new requests::UpdateParagraphFormatOnlineRequest(
         requestDocument,
-        nullptr,
+        requestParagraphFormatDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -793,7 +793,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
     std::shared_ptr<requests::UpdateParagraphListFormatRequest> request(new requests::UpdateParagraphListFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestListFormatDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -818,7 +818,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatOnline) {
     requestListFormatDto->setListId(std::make_shared< int32_t >(2));
     std::shared_ptr<requests::UpdateParagraphListFormatOnlineRequest> request(new requests::UpdateParagraphListFormatOnlineRequest(
         requestDocument,
-        nullptr,
+        requestListFormatDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -847,7 +847,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
     std::shared_ptr<requests::UpdateParagraphListFormatRequest> request(new requests::UpdateParagraphListFormatRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestListFormatDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -1024,7 +1024,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopRequest> request(new requests::InsertOrUpdateParagraphTabStopRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestTabStopInsertDto,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
@@ -1052,7 +1052,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsOnline) {
     requestTabStopInsertDto->setPosition(std::make_shared< double >(72));
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopOnlineRequest> request(new requests::InsertOrUpdateParagraphTabStopOnlineRequest(
         requestDocument,
-        nullptr,
+        requestTabStopInsertDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -1081,7 +1081,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
     std::shared_ptr<requests::InsertOrUpdateParagraphTabStopRequest> request(new requests::InsertOrUpdateParagraphTabStopRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestTabStopInsertDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,

@@ -132,7 +132,7 @@ TEST_F(ListsTests, TestUpdateList) {
     std::shared_ptr<requests::UpdateListRequest> request(new requests::UpdateListRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
-        nullptr,
+        requestListUpdate,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -155,7 +155,7 @@ TEST_F(ListsTests, TestUpdateListOnline) {
     std::shared_ptr<requests::UpdateListOnlineRequest> request(new requests::UpdateListOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(1),
-        nullptr,
+        requestListUpdate,
         nullptr,
         nullptr,
         nullptr,
@@ -186,7 +186,7 @@ TEST_F(ListsTests, TestUpdateListLevel) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
         std::make_shared< int32_t >(1),
-        nullptr,
+        requestListUpdate,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -209,7 +209,7 @@ TEST_F(ListsTests, TestUpdateListLevelOnline) {
     std::shared_ptr<requests::UpdateListLevelOnlineRequest> request(new requests::UpdateListLevelOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(1),
-        nullptr,
+        requestListUpdate,
         std::make_shared< int32_t >(1),
         nullptr,
         nullptr,
@@ -241,7 +241,7 @@ TEST_F(ListsTests, TestInsertList) {
     requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
     std::shared_ptr<requests::InsertListRequest> request(new requests::InsertListRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestListInsert,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -265,7 +265,7 @@ TEST_F(ListsTests, TestInsertListOnline) {
     requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
     std::shared_ptr<requests::InsertListOnlineRequest> request(new requests::InsertListOnlineRequest(
         requestDocument,
-        nullptr,
+        requestListInsert,
         nullptr,
         nullptr,
         nullptr,

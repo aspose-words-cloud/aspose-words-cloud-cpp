@@ -142,7 +142,7 @@ TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPart) {
     requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
     std::shared_ptr<requests::InsertCustomXmlPartRequest> request(new requests::InsertCustomXmlPartRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        nullptr,
+        requestCustomXmlPart,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -168,7 +168,7 @@ TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPartOnline) {
     requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
     std::shared_ptr<requests::InsertCustomXmlPartOnlineRequest> request(new requests::InsertCustomXmlPartOnlineRequest(
         requestDocument,
-        nullptr,
+        requestCustomXmlPart,
         nullptr,
         nullptr,
         nullptr,
@@ -198,7 +198,7 @@ TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPart) {
     std::shared_ptr<requests::UpdateCustomXmlPartRequest> request(new requests::UpdateCustomXmlPartRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestCustomXmlPart,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -224,7 +224,7 @@ TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPartOnline) {
     std::shared_ptr<requests::UpdateCustomXmlPartOnlineRequest> request(new requests::UpdateCustomXmlPartOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
-        nullptr,
+        requestCustomXmlPart,
         nullptr,
         nullptr,
         nullptr,
