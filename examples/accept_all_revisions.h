@@ -1,13 +1,12 @@
 ﻿#include "aspose_words_cloud.h"
 using namespace aspose::words::cloud;
 
-std::wstring documentsDir = L"...";
 auto config = std::make_shared<ApiConfiguration>(/*clientId*/ L"####-####-####-####-####", /*clientSecret*/ L"##################");
 auto wordsApi = std::make_shared<WordsApi>(config);
 std::wstring fileName  = L"test_doc.docx";
 
 // Upload original document to cloud storage.
-auto myVar1 = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
+auto myVar1 = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(fileName), std::istream::binary));
 auto myVar2 = std::make_shared< std::wstring >(fileName);
 std::shared_ptr< requests::UploadFileRequest > uploadFileRequest(
     new requests::UploadFileRequest(
