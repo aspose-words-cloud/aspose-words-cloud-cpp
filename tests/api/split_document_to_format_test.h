@@ -71,9 +71,9 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocument) {
 /// Test for document splitting online.
 /// </summary>
 TEST_F(SplitDocumentToFormatTests, TestSplitDocumentOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::SplitDocumentOnlineRequest> request(new requests::SplitDocumentOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"text"),
         nullptr,
         nullptr,

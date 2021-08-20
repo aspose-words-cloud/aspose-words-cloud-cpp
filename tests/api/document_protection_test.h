@@ -50,7 +50,6 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"123"));
     requestProtectionRequest->setProtectionType(std::make_shared< std::wstring >(L"ReadOnly"));
-
     std::shared_ptr<requests::ProtectDocumentRequest> request(new requests::ProtectDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestProtectionRequest,
@@ -70,12 +69,11 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
 /// Test for setting document protection.
 /// </summary>
 TEST_F(DocumentProtectionTests, TestProtectDocumentOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setNewPassword(std::make_shared< std::wstring >(L"123"));
-
     std::shared_ptr<requests::ProtectDocumentOnlineRequest> request(new requests::ProtectDocumentOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestProtectionRequest,
         nullptr,
         nullptr,
@@ -112,9 +110,9 @@ TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
 /// Test for getting document protection.
 /// </summary>
 TEST_F(DocumentProtectionTests, TestGetDocumentProtectionOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentProtectionOnlineRequest> request(new requests::GetDocumentProtectionOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr
     ));
@@ -136,7 +134,6 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
 
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"aspose"));
-
     std::shared_ptr<requests::UnprotectDocumentRequest> request(new requests::UnprotectDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestProtectionRequest,
@@ -158,12 +155,11 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
 TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocumentOnline) {
     std::wstring localFilePath = L"DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx";
 
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFilePath)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFilePath)), std::istream::binary));
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"aspose"));
-
     std::shared_ptr<requests::UnprotectDocumentOnlineRequest> request(new requests::UnprotectDocumentOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestProtectionRequest,
         nullptr,
         nullptr,

@@ -67,9 +67,9 @@ TEST_F(SectionTests, TestGetSection) {
 /// Test for getting section by index online.
 /// </summary>
 TEST_F(SectionTests, TestGetSectionOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetSectionOnlineRequest> request(new requests::GetSectionOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr
@@ -108,9 +108,9 @@ TEST_F(SectionTests, TestGetSections) {
 /// Test for getting sections online.
 /// </summary>
 TEST_F(SectionTests, TestGetSectionsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetSectionsOnlineRequest> request(new requests::GetSectionsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr
     ));
@@ -148,9 +148,9 @@ getApi()->deleteSection(request);
 /// Test for delete a section online.
 /// </summary>
 TEST_F(SectionTests, TestDeleteSectionOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteSectionOnlineRequest> request(new requests::DeleteSectionOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         nullptr,
         nullptr,

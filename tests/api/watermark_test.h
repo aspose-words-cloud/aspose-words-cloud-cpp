@@ -75,11 +75,11 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
 /// Test for adding watermark image online.
 /// </summary>
 TEST_F(WatermarkTests, TestInsertWatermarkImageOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestImageFile = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
     std::shared_ptr<requests::InsertWatermarkImageOnlineRequest> request(new requests::InsertWatermarkImageOnlineRequest(
-        requestDocumentStream,
-        requestImageFileStream,
+        requestDocument,
+        requestImageFile,
         nullptr,
         nullptr,
         nullptr,
@@ -106,7 +106,6 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
     auto requestWatermarkText = std::make_shared< aspose::words::cloud::models::WatermarkText >();
     requestWatermarkText->setText(std::make_shared< std::wstring >(L"This is the text"));
     requestWatermarkText->setRotationAngle(std::make_shared< double >(90.0));
-
     std::shared_ptr<requests::InsertWatermarkTextRequest> request(new requests::InsertWatermarkTextRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestWatermarkText,
@@ -128,13 +127,12 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
 /// Test for adding watermark text online.
 /// </summary>
 TEST_F(WatermarkTests, TestInsertWatermarkTextOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestWatermarkText = std::make_shared< aspose::words::cloud::models::WatermarkText >();
     requestWatermarkText->setText(std::make_shared< std::wstring >(L"This is the text"));
     requestWatermarkText->setRotationAngle(std::make_shared< double >(90));
-
     std::shared_ptr<requests::InsertWatermarkTextOnlineRequest> request(new requests::InsertWatermarkTextOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestWatermarkText,
         nullptr,
         nullptr,
@@ -177,9 +175,9 @@ TEST_F(WatermarkTests, TestDeleteWatermark) {
 /// Test for deleting watermark online.
 /// </summary>
 TEST_F(WatermarkTests, TestDeleteWatermarkOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteWatermarkOnlineRequest> request(new requests::DeleteWatermarkOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr,
         nullptr,

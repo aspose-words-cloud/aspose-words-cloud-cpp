@@ -66,9 +66,9 @@ TEST_F(ListsTests, TestGetLists) {
 /// Test for getting lists from document online.
 /// </summary>
 TEST_F(ListsTests, TestGetListsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetListsOnlineRequest> request(new requests::GetListsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr
     ));
@@ -105,9 +105,9 @@ TEST_F(ListsTests, TestGetList) {
 /// Test for getting list from document online.
 /// </summary>
 TEST_F(ListsTests, TestGetListOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetListOnlineRequest> request(new requests::GetListOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(1),
         nullptr,
         nullptr
@@ -129,7 +129,6 @@ TEST_F(ListsTests, TestUpdateList) {
 
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListUpdate >();
     requestListUpdate->setIsRestartAtEachSection(std::make_shared< bool >(true));
-
     std::shared_ptr<requests::UpdateListRequest> request(new requests::UpdateListRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
@@ -150,12 +149,11 @@ TEST_F(ListsTests, TestUpdateList) {
 /// Test for updating list from document online.
 /// </summary>
 TEST_F(ListsTests, TestUpdateListOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListUpdate >();
     requestListUpdate->setIsRestartAtEachSection(std::make_shared< bool >(true));
-
     std::shared_ptr<requests::UpdateListOnlineRequest> request(new requests::UpdateListOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(1),
         requestListUpdate,
         nullptr,
@@ -184,7 +182,6 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListLevelUpdate >();
     requestListUpdate->setAlignment(std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT));
-
     std::shared_ptr<requests::UpdateListLevelRequest> request(new requests::UpdateListLevelRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
@@ -206,12 +203,11 @@ TEST_F(ListsTests, TestUpdateListLevel) {
 /// Test for updating list level from document online.
 /// </summary>
 TEST_F(ListsTests, TestUpdateListLevelOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListLevelUpdate >();
     requestListUpdate->setAlignment(std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT));
-
     std::shared_ptr<requests::UpdateListLevelOnlineRequest> request(new requests::UpdateListLevelOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(1),
         requestListUpdate,
         std::make_shared< int32_t >(1),
@@ -243,7 +239,6 @@ TEST_F(ListsTests, TestInsertList) {
 
     auto requestListInsert = std::make_shared< aspose::words::cloud::models::ListInsert >();
     requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
-
     std::shared_ptr<requests::InsertListRequest> request(new requests::InsertListRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestListInsert,
@@ -265,12 +260,11 @@ TEST_F(ListsTests, TestInsertList) {
 /// Test for inserting list from document online.
 /// </summary>
 TEST_F(ListsTests, TestInsertListOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestListInsert = std::make_shared< aspose::words::cloud::models::ListInsert >();
     requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
-
     std::shared_ptr<requests::InsertListOnlineRequest> request(new requests::InsertListOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestListInsert,
         nullptr,
         nullptr,
