@@ -14361,6 +14361,9 @@ namespace aspose::words::cloud::models {
         if (m_ExportDocumentStructure) {
             json["ExportDocumentStructure"] = *m_ExportDocumentStructure;
         }
+        if (m_ExportLanguageToSpanTag) {
+            json["ExportLanguageToSpanTag"] = *m_ExportLanguageToSpanTag;
+        }
         if (m_FontEmbeddingMode) {
             json["FontEmbeddingMode"] = convertUtf16(*m_FontEmbeddingMode);
         }
@@ -14452,6 +14455,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("ExportDocumentStructure") && !json["ExportDocumentStructure"].is_null()) {
             m_ExportDocumentStructure = std::make_shared< bool >(
                 json["ExportDocumentStructure"].get< bool >()
+            );
+        }
+        if (json.contains("ExportLanguageToSpanTag") && !json["ExportLanguageToSpanTag"].is_null()) {
+            m_ExportLanguageToSpanTag = std::make_shared< bool >(
+                json["ExportLanguageToSpanTag"].get< bool >()
             );
         }
         if (json.contains("FontEmbeddingMode") && !json["FontEmbeddingMode"].is_null()) {
@@ -14618,6 +14626,16 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setExportDocumentStructure(std::shared_ptr< bool > value)
     {
         m_ExportDocumentStructure = value;
+    }
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getExportLanguageToSpanTag() const
+    {
+        return m_ExportLanguageToSpanTag;
+    }
+
+    void PdfSaveOptionsData::setExportLanguageToSpanTag(std::shared_ptr< bool > value)
+    {
+        m_ExportLanguageToSpanTag = value;
     }
 
     std::shared_ptr< std::wstring > PdfSaveOptionsData::getFontEmbeddingMode() const
@@ -15965,6 +15983,9 @@ namespace aspose::words::cloud::models {
         if (m_FileName) {
             json["FileName"] = convertUtf16(*m_FileName);
         }
+        if (m_FlatOpcXmlMappingOnly) {
+            json["FlatOpcXmlMappingOnly"] = *m_FlatOpcXmlMappingOnly;
+        }
         if (m_ImlRenderingMode) {
             json["ImlRenderingMode"] = convertUtf16(*m_ImlRenderingMode);
         }
@@ -16021,6 +16042,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FileName") && !json["FileName"].is_null()) {
             m_FileName = std::make_shared< std::wstring >(
                 convertUtf8( json["FileName"].get< std::string >() )
+            );
+        }
+        if (json.contains("FlatOpcXmlMappingOnly") && !json["FlatOpcXmlMappingOnly"].is_null()) {
+            m_FlatOpcXmlMappingOnly = std::make_shared< bool >(
+                json["FlatOpcXmlMappingOnly"].get< bool >()
             );
         }
         if (json.contains("ImlRenderingMode") && !json["ImlRenderingMode"].is_null()) {
@@ -16123,6 +16149,16 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setFileName(std::shared_ptr< std::wstring > value)
     {
         m_FileName = value;
+    }
+
+    std::shared_ptr< bool > SaveOptionsData::getFlatOpcXmlMappingOnly() const
+    {
+        return m_FlatOpcXmlMappingOnly;
+    }
+
+    void SaveOptionsData::setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value)
+    {
+        m_FlatOpcXmlMappingOnly = value;
     }
 
     std::shared_ptr< std::wstring > SaveOptionsData::getImlRenderingMode() const
