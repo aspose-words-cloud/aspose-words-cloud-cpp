@@ -12,6 +12,22 @@ node('win2019') {
 	
 		env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.aspose.cloud/v4.0/words/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
 		
+        gitlabCommitStatus("Merge master to release") {
+            stage('Merge master to release'){
+                checkout([$class: 'GitSCM', branches: [[name: '*/release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+                sh "git config user.email 'jenkins.aspose@gmail.com'"
+                sh "git config user.name 'jenkins'"
+                sh "git checkout --merge release"
+                sh "git reset --hard origin/release"
+                sh "git merge --no-ff --allow-unrelated-histories origin/master"
+                sh "git diff --name-status"			
+                sh 'git commit -am "Merged master branch to release" || exit 0'
+                withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
+                    sh "git push https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git release"
+                }
+            }
+        }
+        
 		gitlabCommitStatus("add version tag") {
 			stage('add version tag') {			
 				bat "git config user.email 'jenkins.aspose@gmail.com'"
